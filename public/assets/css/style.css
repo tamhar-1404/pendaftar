@@ -6144,18 +6144,7 @@ pre {
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
         var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-.shadow-\[0_6px_10px_0_rgba\(0\2c
-    0\2c
-    0\2c
-    0\.14\)\2c
-    _0_1px_18px_0_rgba\(0\2c
-    0\2c
-    0\2c
-    0\.12\)\2c
-    _0_3px_5px_-1px_rgba\(0\2c
-    0\2c
-    0\2c
-    0\.20\)\] {
+.shadow-\[0_6px_10px_0_rgba\(0\2c0\2c0\2c0\.14\)\2c_0_1px_18px_0_rgba\(0\2c0\2c0\2c0\.12\)\2c_0_3px_5px_-1px_rgba\(0\2c0\2c0\2c0\.20\)\] {
     --tw-shadow: 0 6px 10px 0 #00000024, 0 1px 18px 0 #0000001f,
         0 3px 5px -1px #0003;
     --tw-shadow-colored: 0 6px 10px 0 var(--tw-shadow-color),
