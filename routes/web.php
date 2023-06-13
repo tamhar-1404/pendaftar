@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/dashboard_admin', App\Http\Controllers\DashboardController::class);
+Route::resource('/dashboard_siswa', App\Http\Controllers\DashboardSiswaController::class);
+
