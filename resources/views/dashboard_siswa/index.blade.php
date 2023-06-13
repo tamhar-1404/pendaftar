@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:26 GMT -->
+<!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014'], Thu, 25 May 2023 02:32:26 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>VRISTO - Multipurpose Tailwind Dashboard Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" type="image/x-icon" href="favicon.png" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/perfect-scrollbar.min.css" />
-        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-        <link defer rel="stylesheet" type="text/css" media="screen" href="assets/css/animate.css" />
-        <script src="assets/js/perfect-scrollbar.min.js"></script>
-        <script defer src="assets/js/popper.min.js"></script>
-        <script defer src="assets/js/tippy-bundle.umd.min.js"></script>
-        <script defer src="assets/js/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/perfect-scrollbar.min.css') }}" />
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/style.css') }}" />
+        <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/animate.css') }}" />
+        <script src="{{ asset('assets/js/perfect-scrollbar.min.js') }}"></script>
+        <script defer src="{{ asset('assets/js/popper.min.js') }}"></script>
+        <script defer src="{{ asset('assets/js/tippy-bundle.umd.min.js') }}"></script>
+        <script defer src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
     </head>
     <body
         x-data="main"
@@ -3008,16 +3008,16 @@
                             <li>
                                 <a href="javascript:;" class="text-primary hover:underline">Dashboard</a>
                             </li>
-                            <li class="before:content-['/'] ltr:before:mr-1 rtl:before:ml-1">
+                            {{--  <li class="before:content-['/'] ltr:before:mr-1 rtl:before:ml-1">
                                 <span>Sales</span>
-                            </li>
+                            </li>  --}}
                         </ul>
 
                         <div class="pt-5">
                             <div class="mb-6 grid gap-6 xl:grid-cols-3">
                                 <div class="panel h-full xl:col-span-2">
                                     <div class="mb-5 flex items-center dark:text-white-light">
-                                        <h5 class="text-lg font-semibold">Revenue</h5>
+                                        <h5 class="text-lg font-semibold">Grafik Absensi</h5>
                                         <div x-data="dropdown" @click.outside="open = false" class="dropdown ltr:ml-auto rtl:mr-auto">
                                             <a href="javascript:;" @click="toggle">
                                                 <svg
