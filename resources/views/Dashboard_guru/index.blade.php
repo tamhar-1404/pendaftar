@@ -3527,7 +3527,7 @@
                     // sales by category
                     get salesByCategoryOptions() {
                         return {
-                            series: [985, 737, 270],
+                            series: [985, 737],
                             chart: {
                                 type: 'donut',
                                 height: 460,
@@ -3590,7 +3590,7 @@
                                     },
                                 },
                             },
-                            labels: ['Apparel', 'Sports', 'Others'],
+                            labels: ['Apparel', 'Sports'],
                             states: {
                                 hover: {
                                     filter: {
