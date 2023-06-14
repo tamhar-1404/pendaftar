@@ -6,7 +6,7 @@
 <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>VRISTO - Multipurpose Tailwind Dashboard Template</title>
+        <title>Guru - Dashboad</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/x-icon" href="favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
@@ -377,7 +377,7 @@
                         <div class="flex items-center justify-between px-4 py-3">
                             <a href="" class="main-logo flex shrink-0 items-center">
                                 <img class="ml-[5px] w-8 flex-none" src="" alt="image" />
-                           
+
                             </a>
                             <a
                                 href="javascript:;"
@@ -783,7 +783,7 @@
                                         </svg>
                                     </div>
                                 </button>
-                               
+
                             </li>
 
                             <li class="menu nav-item">
@@ -1518,7 +1518,7 @@
                             <div class="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
                                 <a href="index-2.html" class="main-logo flex shrink-0 items-center">
                                     <img class="inline w-20
-                                     ltr:-ml-1 rtl:-mr-1" src="assets/images/LOGO HUMMASOFT 2.png" alt="image" /> 
+                                     ltr:-ml-1 rtl:-mr-1" src="assets/images/LOGO HUMMASOFT 2.png" alt="image" />
                                 </a>
 
                                 <a
@@ -1673,9 +1673,9 @@
                                     </a>
                                 </div>
 
-                                
 
-                                
+
+
                                 <div class="dropdown" x-data="dropdown" @click.outside="open = false">
                                     <a
                                         href="javascript:;"
@@ -1962,7 +1962,7 @@
                                         </svg>
                                         <span class="px-1">Dashboard</span>
                                     </div>
-                                </a>   
+                                </a>
                             </li>
                             <li class="menu nav-item relative">
                                 <a href="javascript:;" class="nav-link">
@@ -1972,7 +1972,7 @@
                                           </svg>
                                         <span class="px-1">Siswa</span>
                                     </div>
-                                </a>                             
+                                </a>
                             </li>
                             <li class="menu nav-item relative">
                                 <a href="javascript:;" class="nav-link">
