@@ -13,13 +13,13 @@
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/perfect-scrollbar.min.css" />
-        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-        <link defer rel="stylesheet" type="text/css" media="screen" href="assets/css/animate.css" />
-        <script src="assets/js/perfect-scrollbar.min.js"></script>
-        <script defer src="assets/js/popper.min.js"></script>
-        <script defer src="assets/js/tippy-bundle.umd.min.js"></script>
-        <script defer src="assets/js/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/perfect-scrollbar.min.css') }}" />
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
+        <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />
+        <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>
+        <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
+        <script defer src="{{ asset('admin/assets/js/tippy-bundle.umd.min.js') }}"></script>
+        <script defer src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
     </head>
 
     <body
@@ -378,7 +378,7 @@
                     <div class="h-full bg-white dark:bg-[#0e1726]">
                         <div class="flex items-center justify-between px-4 py-3">
                             <a href="index-2.html" class="main-logo flex shrink-0 items-center">
-                                <img class="ml-[50px] w-9    flex-none" src="assets/images/logo.png" alt="image" />
+                                <img class="ml-[50px] w-9    flex-none" src="{{ asset('admin/assets/images/logo.png') }}" alt="image" />
                                       </a>
                             <a
                                 href="javascript:;"
@@ -664,7 +664,7 @@
                         <div class="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
                             <div class="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
                                 <a href="index-2.html" class="main-logo flex shrink-0 items-center">
-                                    <img class="inline w-8 ltr:-ml-1 rtl:-mr-1" src="assets/images/logo.svg" alt="image" />
+                                    <img class="inline w-8 ltr:-ml-1 rtl:-mr-1" src="{{ asset('admin/assets/images/logo.svg') }}" alt="image" />
                                     <span
                                         class="hidden align-middle text-2xl font-semibold transition-all duration-300 ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light md:inline"
                                         >VRIST111O</span
@@ -1037,7 +1037,7 @@
                                         <span
                                             ><img
                                                 class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                                src="assets/images/user-profile.jpeg"
+                                                src="{{ asset('admin/assets/images/user-profile.jpeg') }}"
                                                 alt="image"
                                         /></span>
                                     </a>
@@ -1051,7 +1051,7 @@
                                         <li>
                                             <div class="flex items-center px-4 py-4">
                                                 <div class="flex-none">
-                                                    <img class="h-10 w-10 rounded-md object-cover" src="assets/images/user-profile.jpeg" alt="image" />
+                                                    <img class="h-10 w-10 rounded-md object-cover" src="{{ asset('admin/assets/images/user-profile.jpeg') }}" alt="image" />
                                                 </div>
                                                 <div class="ltr:pl-4 rtl:pr-4">
                                                     <h4 class="text-base">
@@ -2565,7 +2565,7 @@
                                             <div class="flex items-center rounded-full bg-black/50 p-1 font-semibold text-white ltr:pr-3 rtl:pl-3">
                                                 <img
                                                     class="block h-8 w-8 rounded-full border-2 border-white/50 object-cover ltr:mr-1 rtl:ml-1"
-                                                    src="assets/images/profile-34.jpeg"
+                                                    src="{{ asset('admin/assets/images/profile-34.jpeg') }}"
                                                     alt="image"
                                                 />
                                                 Alan Green
@@ -2680,7 +2680,7 @@
                                                         <div class="flex items-center">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/profile-6.jpeg"
+                                                                src="{{ asset('admin/assets/images/profile-6.jpeg') }}"
                                                                 alt="avatar"
                                                             />
                                                             <span class="whitespace-nowrap">Luke Ivory</span>
@@ -2696,7 +2696,7 @@
                                                         <div class="flex items-center">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/profile-7.jpeg"
+                                                                src="{{ asset('admin/assets/images/profile-7.jpeg') }}"
                                                                 alt="avatar"
                                                             />
                                                             <span class="whitespace-nowrap">Andy King</span>
@@ -2712,7 +2712,7 @@
                                                         <div class="flex items-center">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/profile-8.jpeg"
+                                                                src="{{ asset('admin/assets/images/profile-8.jpeg') }}"
                                                                 alt="avatar"
                                                             />
                                                             <span class="whitespace-nowrap">Laurie Fox</span>
@@ -2728,7 +2728,7 @@
                                                         <div class="flex items-center">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/profile-9.jpeg"
+                                                                src="{{ asset('admin/assets/images/profile-9.jpeg') }}"
                                                                 alt="avatar"
                                                             />
                                                             <span class="whitespace-nowrap">Ryan Collins</span>
@@ -2744,7 +2744,7 @@
                                                         <div class="flex items-center">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/profile-10.jpeg"
+                                                                src="{{ asset('admin/assets/images/profile-10.jpeg') }}"
                                                                 alt="avatar"
                                                             />
                                                             <span class="whitespace-nowrap">Irene Collins</span>
@@ -2781,7 +2781,7 @@
                                                         <div class="flex">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/product-headphones.jpg"
+                                                                src="{{ asset('admin/assets/images/product-headphones.jpg') }}"
                                                                 alt="avatar"
                                                             />
                                                             <p class="whitespace-nowrap">Headphone <span class="block text-xs text-primary">Digital</span></p>
@@ -2823,7 +2823,7 @@
                                                         <div class="flex">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/product-shoes.jpg"
+                                                                src="{{ asset('admin/assets/images/product-shoes.jpg') }}"
                                                                 alt="avatar"
                                                             />
                                                             <p class="whitespace-nowrap">Shoes <span class="block text-xs text-warning">Faishon</span></p>
@@ -2864,7 +2864,7 @@
                                                         <div class="flex">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/product-watch.jpg"
+                                                                src="{{ asset('admin/assets/images/product-watch.jpg') }}"
                                                                 alt="avatar"
                                                             />
                                                             <p class="whitespace-nowrap">Watch <span class="block text-xs text-danger">Accessories</span></p>
@@ -2905,7 +2905,7 @@
                                                         <div class="flex">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/product-laptop.jpg"
+                                                                src="{{ asset('admin/assets/images/product-laptop.jpg') }}"
                                                                 alt="avatar"
                                                             />
                                                             <p class="whitespace-nowrap">Laptop <span class="block text-xs text-primary">Digital</span></p>
@@ -2946,7 +2946,7 @@
                                                         <div class="flex">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/product-camera.jpg"
+                                                                src="{{ asset('admin/assets/images/product-camera.jpg') }}"
                                                                 alt="avatar"
                                                             />
                                                             <p class="whitespace-nowrap">Camera <span class="block text-xs text-primary">Digital</span></p>
@@ -3000,13 +3000,13 @@
             </div>
         </div>
 
-        <script src="assets/js/alpine-collaspe.min.js"></script>
-        <script src="assets/js/alpine-persist.min.js"></script>
-        <script defer src="assets/js/alpine-ui.min.js"></script>
-        <script defer src="assets/js/alpine-focus.min.js"></script>
-        <script defer src="assets/js/alpine.min.js"></script>
-        <script src="assets/js/custom.js"></script>
-        <script defer src="assets/js/apexcharts.js"></script>
+        <script src="{{ asset('admin/assets/js/alpine-collaspe.min.js') }}"></script>
+        <script src="{{ asset('admin/assets/js/alpine-persist.min.js') }}"></script>
+        <script defer src="{{ asset('admin/assets/js/alpine-ui.min.js') }}"></script>
+        <script defer src="{{ asset('admin/assets/js/alpine-focus.min.js') }}"></script>
+        <script defer src="{{ asset('admin/assets/js/alpine.min.js') }}"></script>
+        <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+        <script defer src="{{ asset('admin/assets/js/apexcharts.js') }}"></script>
 
         <script>
             document.addEventListener('alpine:init', () => {
