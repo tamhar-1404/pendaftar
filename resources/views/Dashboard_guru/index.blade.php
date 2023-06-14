@@ -230,12 +230,12 @@
                             </button>
                         </div>
                     </div>
-
                     <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
                         <h5 class="mb-1 text-base leading-none dark:text-white">Navigation Position</h5>
                         <p class="text-xs text-white-dark">Select the primary navigation paradigm for your app.</p>
-                        <div class="mt-3 grid grid-cols-3 gap-2">
+                        <div class="mt-3">
                             <button
+                            id="horizontalButton"
                                 type="button"
                                 class="btn"
                                 :class="[$store.app.menu === 'horizontal' ? 'btn-primary' :'btn-outline-primary']"
@@ -244,6 +244,7 @@
                                 Horizontal
                             </button>
                             <button
+
                                 type="button"
                                 class="btn"
                                 :class="[$store.app.menu === 'vertical' ? 'btn-primary' :'btn-outline-primary']"
@@ -260,7 +261,16 @@
                                 Collapsible
                             </button>
                         </div>
-                        <div class="mt-5 text-primary">
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const horizontalButton = document.getElementById("horizontalButton");
+                            horizontalButton.classList.add("btn-primary");
+                            horizontalButton.click();
+                        });
+                    </script>
+                                            <div class="mt-5 text-primary">
                             <label class="mb-0 inline-flex">
                                 <input
                                     x-model="$store.app.semidark"
