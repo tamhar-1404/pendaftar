@@ -3012,10 +3012,10 @@
                             >
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center">
-                                        <div class="flex-none"><img src="assets/images/profile-34.jpeg" class="h-12 w-12 rounded-full object-cover" /></div>
+                                        <div class="flex-none"><img src="assets/images/logo.png" class="h-12 w-12 rounded-full object-cover" /></div>
                                         <div class="mx-3">
-                                            <p class="mb-1 font-semibold">Alon Smith</p>
-                                            <p class="text-xs text-white-dark">Software Developer</p>
+                                            <p class="mb-1 font-semibold">Hummasoft</p>
+                                            <p class="text-xs text-white-dark">CEO Hummasoft technology</p>
                                         </div>
                                     </div>
                                     <div x-data="dropdown" @click.outside="open = false" class="dropdown">
@@ -3128,7 +3128,7 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <div class="flex items-center justify-between text-xs">
+                                <div class="flex items-center justify-start gap-6 text-xs">
                                     <button type="button" class="group hover:text-primary">
                                         <svg
                                             width="24"
@@ -3148,55 +3148,6 @@
                                         Chats
                                     </button>
 
-                                    <button type="button" class="group hover:text-primary">
-                                        <svg
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="mx-auto mb-1 h-5 w-5"
-                                        >
-                                            <path
-                                                d="M5.00659 6.93309C5.04956 5.7996 5.70084 4.77423 6.53785 3.93723C7.9308 2.54428 10.1532 2.73144 11.0376 4.31617L11.6866 5.4791C12.2723 6.52858 12.0372 7.90533 11.1147 8.8278M17.067 18.9934C18.2004 18.9505 19.2258 18.2992 20.0628 17.4622C21.4558 16.0692 21.2686 13.8468 19.6839 12.9624L18.5209 12.3134C17.4715 11.7277 16.0947 11.9628 15.1722 12.8853"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                            />
-                                            <path
-                                                opacity="0.5"
-                                                d="M5.00655 6.93311C4.93421 8.84124 5.41713 12.0817 8.6677 15.3323C11.9183 18.5829 15.1588 19.0658 17.0669 18.9935M15.1722 12.8853C15.1722 12.8853 14.0532 14.0042 12.0245 11.9755C9.99578 9.94676 11.1147 8.82782 11.1147 8.82782"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                            />
-                                        </svg>
-                                        Calls
-                                    </button>
-
-                                    <button type="button" class="group hover:text-primary">
-                                        <svg
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="mx-auto mb-1 h-5 w-5"
-                                        >
-                                            <circle cx="10" cy="6" r="4" stroke="currentColor" stroke-width="1.5" />
-                                            <path
-                                                opacity="0.5"
-                                                d="M18 17.5C18 19.9853 18 22 10 22C2 22 2 19.9853 2 17.5C2 15.0147 5.58172 13 10 13C14.4183 13 18 15.0147 18 17.5Z"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                            />
-                                            <path
-                                                d="M21 10H19M19 10H17M19 10L19 8M19 10L19 12"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
-                                            />
-                                        </svg>
-                                        Contacts
-                                    </button>
 
                                     <button type="button" class="group hover:text-primary">
                                         <svg
@@ -3220,7 +3171,15 @@
                                                 stroke-linecap="round"
                                             />
                                         </svg>
-                                        Notification
+                                        Contacts
+                                    </button>
+
+                                    <button type="button" class="group hover:text-primary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
+                                          </svg>
+
+                                        Filter
                                     </button>
                                 </div>
                                 <div class="h-px w-full border-b border-[#e0e6ed] dark:border-[#1b2e4b]"></div>
@@ -3834,10 +3793,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="hidden items-center space-x-3 py-3 rtl:space-x-reverse sm:block sm:py-0">
-                                                    <button
-                                                        type="button"
-                                                        class="rounded-md bg-[#f4f4f4] p-2 hover:bg-primary-light hover:text-primary dark:bg-[#1b2e4b]"
-                                                    >
+
                                                         <svg
                                                             width="24"
                                                             height="24"
