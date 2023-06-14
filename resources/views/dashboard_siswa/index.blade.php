@@ -12,13 +12,13 @@
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/perfect-scrollbar.min.css') }}" />
-        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/style.css') }}" />
-        <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/animate.css') }}" />
-        <script src="{{ asset('assets/js/perfect-scrollbar.min.js') }}"></script>
-        <script defer src="{{ asset('assets/js/popper.min.js') }}"></script>
-        <script defer src="{{ asset('assets/js/tippy-bundle.umd.min.js') }}"></script>
-        <script defer src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets1/css/perfect-scrollbar.min.css') }}" />
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets1/css/style.css') }}" />
+        <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets1/css/animate.css') }}" />
+        <script src="{{ asset('assets1/js/perfect-scrollbar.min.js') }}"></script>
+        <script defer src="{{ asset('assets1/js/popper.min.js') }}"></script>
+        <script defer src="{{ asset('assets1/js/tippy-bundle.umd.min.js') }}"></script>
+        <script defer src="{{ asset('assets1/js/sweetalert.min.js') }}"></script>
     </head>
     <body
         x-data="main"
@@ -69,7 +69,7 @@
             </template>
         </div>
 
-      
+
 
         <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
             <!-- start sidebar section -->
@@ -81,7 +81,7 @@
                     <div class="h-full bg-white dark:bg-[#0e1726]">
                         <div class="flex items-center justify-between px-4 py-3">
                             <a href="index-2.html" class="main-logo flex shrink-0 items-center">
-                                <img class="ml-[5px] w-8 flex-none" src="assets/images/logo.svg" alt="image" />
+                                <img class="ml-[5px] w-8 flex-none" src="assets1/images/logo.svg" alt="image" />
                                 <span class="align-middle text-2xl font-semibold ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light lg:inline">VRISTO</span>
                             </a>
                             <a
@@ -1279,8 +1279,8 @@
                     <div class="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
                             <div class="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
                                 <a href="index-2.html" class="main-logo flex shrink-0 items-center">
-                                    <img class="inline w-20 ltr:-ml-1 rtl:-mr-1" src="assets/images/LOGO HUMMASOFT 2.png" alt="image" />
-                                    
+                                    <img class="inline w-20 ltr:-ml-1 rtl:-mr-1" src="assets1/images/LOGO HUMMASOFT 2.png" alt="image" />
+
                                 </a>
 
                                 <a
@@ -1295,13 +1295,13 @@
                                     </svg>
                                 </a>
                             </div>
-                           
+
                             <div
                                 x-data="header"
                                 class="flex items-center space-x-1.5 ltr:ml-auto rtl:mr-auto rtl:space-x-reverse dark:text-[#d0d2d6] sm:flex-1 ltr:sm:ml-0 sm:rtl:mr-0 lg:space-x-2"
                             >
                                 <div class="sm:ltr:mr-auto sm:rtl:ml-auto" x-data="{ search: false }" @click.outside="search = false">
-                                    
+
                                     <button
                                         type="button"
                                         class="search_btn rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 dark:bg-dark/40 dark:hover:bg-dark/60 sm:hidden"
@@ -1400,15 +1400,15 @@
                                     </a>
                                 </div>
 
-                              
 
-                                
+
+
                                 <div class="dropdown flex-shrink-0" x-data="dropdown" @click.outside="open = false">
                                     <a href="javascript:;" class="group relative" @click="toggle()">
                                         <span
                                             ><img
                                                 class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                                src="assets/images/user-profile.jpeg"
+                                                src="assets1/images/user-profile.jpeg"
                                                 alt="image"
                                         /></span>
                                     </a>
@@ -1422,7 +1422,7 @@
                                         <li>
                                             <div class="flex items-center px-4 py-4">
                                                 <div class="flex-none">
-                                                    <img class="h-10 w-10 rounded-md object-cover" src="assets/images/user-profile.jpeg" alt="image" />
+                                                    <img class="h-10 w-10 rounded-md object-cover" src="assets1/images/user-profile.jpeg" alt="image" />
                                                 </div>
                                                 <div class="ltr:pl-4 rtl:pr-4">
                                                     <h4 class="text-base">
@@ -1576,7 +1576,7 @@
                                         </svg>
                                         <span class="px-1 text-white">Dashboard</span>
                                     </div>
-                                   
+
                                 </a>
                                 <!-- <ul class="sub-menu">
                                     <li>
@@ -1600,13 +1600,13 @@
                                             <g opacity="0.5">
                                             <path fill="currentColor" d="M436 160c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-20V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h320c26.5 0 48-21.5 48-48v-48h20c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-20v-64h20c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-20v-64h20zm-228-32c35.3 0 64 28.7 64 64s-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64zm112 236.8c0 10.6-10 19.2-22.4 19.2H118.4C106 384 96 375.4 96 364.8v-19.2c0-31.8 30.1-57.6 67.2-57.6h5c12.3 5.1 25.7 8 39.8 8s27.6-2.9 39.8-8h5c37.1 0 67.2 25.8 67.2 57.6v19.2z"/>
                                             </g>
-                                            
+
                                         </svg>
                                         <span class="px-1">Jurnal</span>
                                     </div>
-                                  
+
                                 </a>
-                               
+
                             </li>
                             <li class="menu nav-item relative">
                                 <a href="javascript:;" class="nav-link">
@@ -1616,9 +1616,9 @@
                                         </svg>
                                         <span class="px-1">Absensi</span>
                                     </div>
-                                   
+
                                 </a>
-                             
+
                             </li>
                             <li class="menu nav-item relative">
                                 <a href="javascript:;" class="nav-link">
@@ -1628,7 +1628,7 @@
                                         </svg>
                                         <span class="px-1">Berita</span>
                                     </div>
-                                    
+
                                 </a>
                             </li>
                             <li class="menu nav-item relative">
@@ -1683,7 +1683,7 @@
                                     </li>
                                 </ul>
                             </li>
-                           
+
                         </ul>
                     </div>
                 </header>
@@ -2302,7 +2302,7 @@
                                             <div class="flex items-center rounded-full bg-black/50 p-1 font-semibold text-white ltr:pr-3 rtl:pl-3">
                                                 <img
                                                     class="block h-8 w-8 rounded-full border-2 border-white/50 object-cover ltr:mr-1 rtl:ml-1"
-                                                    src="assets/images/profile-34.jpeg"
+                                                    src="assets1/images/profile-34.jpeg"
                                                     alt="image"
                                                 />
                                                 Alan Green
@@ -2417,7 +2417,7 @@
                                                         <div class="flex items-center">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/profile-6.jpeg"
+                                                                src="assets1/images/profile-6.jpeg"
                                                                 alt="avatar"
                                                             />
                                                             <span class="whitespace-nowrap">Luke Ivory</span>
@@ -2433,7 +2433,7 @@
                                                         <div class="flex items-center">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/profile-7.jpeg"
+                                                                src="assets1/images/profile-7.jpeg"
                                                                 alt="avatar"
                                                             />
                                                             <span class="whitespace-nowrap">Andy King</span>
@@ -2449,7 +2449,7 @@
                                                         <div class="flex items-center">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/profile-8.jpeg"
+                                                                src="assets1/images/profile-8.jpeg"
                                                                 alt="avatar"
                                                             />
                                                             <span class="whitespace-nowrap">Laurie Fox</span>
@@ -2465,7 +2465,7 @@
                                                         <div class="flex items-center">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/profile-9.jpeg"
+                                                                src="assets1/images/profile-9.jpeg"
                                                                 alt="avatar"
                                                             />
                                                             <span class="whitespace-nowrap">Ryan Collins</span>
@@ -2481,7 +2481,7 @@
                                                         <div class="flex items-center">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/profile-10.jpeg"
+                                                                src="assets1/images/profile-10.jpeg"
                                                                 alt="avatar"
                                                             />
                                                             <span class="whitespace-nowrap">Irene Collins</span>
@@ -2518,7 +2518,7 @@
                                                         <div class="flex">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/product-headphones.jpg"
+                                                                src="assets1/images/product-headphones.jpg"
                                                                 alt="avatar"
                                                             />
                                                             <p class="whitespace-nowrap">Headphone <span class="block text-xs text-primary">Digital</span></p>
@@ -2560,7 +2560,7 @@
                                                         <div class="flex">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/product-shoes.jpg"
+                                                                src="assets1/images/product-shoes.jpg"
                                                                 alt="avatar"
                                                             />
                                                             <p class="whitespace-nowrap">Shoes <span class="block text-xs text-warning">Faishon</span></p>
@@ -2601,7 +2601,7 @@
                                                         <div class="flex">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/product-watch.jpg"
+                                                                src="assets1/images/product-watch.jpg"
                                                                 alt="avatar"
                                                             />
                                                             <p class="whitespace-nowrap">Watch <span class="block text-xs text-danger">Accessories</span></p>
@@ -2642,7 +2642,7 @@
                                                         <div class="flex">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/product-laptop.jpg"
+                                                                src="assets1/images/product-laptop.jpg"
                                                                 alt="avatar"
                                                             />
                                                             <p class="whitespace-nowrap">Laptop <span class="block text-xs text-primary">Digital</span></p>
@@ -2683,7 +2683,7 @@
                                                         <div class="flex">
                                                             <img
                                                                 class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets/images/product-camera.jpg"
+                                                                src="assets1/images/product-camera.jpg"
                                                                 alt="avatar"
                                                             />
                                                             <p class="whitespace-nowrap">Camera <span class="block text-xs text-primary">Digital</span></p>
@@ -2737,13 +2737,13 @@
             </div>
         </div>
 
-        <script src="assets/js/alpine-collaspe.min.js"></script>
-        <script src="assets/js/alpine-persist.min.js"></script>
-        <script defer src="assets/js/alpine-ui.min.js"></script>
-        <script defer src="assets/js/alpine-focus.min.js"></script>
-        <script defer src="assets/js/alpine.min.js"></script>
-        <script src="assets/js/custom.js"></script>
-        <script defer src="assets/js/apexcharts.js"></script>
+        <script src="assets1/js/alpine-collaspe.min.js"></script>
+        <script src="assets1/js/alpine-persist.min.js"></script>
+        <script defer src="assets1/js/alpine-ui.min.js"></script>
+        <script defer src="assets1/js/alpine-focus.min.js"></script>
+        <script defer src="assets1/js/alpine.min.js"></script>
+        <script src="assets1/js/custom.js"></script>
+        <script defer src="assets1/js/apexcharts.js"></script>
 
         <script>
             document.addEventListener('alpine:init', () => {
