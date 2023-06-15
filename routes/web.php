@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,5 @@ Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
 Route::resource('/siswamagang', App\Http\Controllers\DashboardSiswaController::class);
 Route::resource('/guru', App\Http\Controllers\DashboardGuruController::class);
 Route::resource('/chat', App\Http\Controllers\ChatController::class);
+Route::resource('/login', App\Http\Controllers\LoginController::class);
+Route::get('/register', [LoginController::class, 'register'])->name('register');
