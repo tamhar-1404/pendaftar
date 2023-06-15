@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/dashboard_admin', App\Http\Controllers\DashboardController::class);
-Route::resource('/dashboard_siswa', App\Http\Controllers\DashboardSiswaController::class);
-Route::resource('/dashboard_guru', App\Http\Controllers\DashboardGuruController::class);
-Route::resource('/chat_admin', App\Http\Controllers\ChatController::class);
+Route::resource('/Ceo', App\Http\Controllers\DashboardController::class);
+Route::resource('/siswa', App\Http\Controllers\DashboardSiswaController::class);
+Route::resource('/guru', App\Http\Controllers\DashboardGuruController::class);
+Route::resource('/chat', App\Http\Controllers\ChatController::class);
