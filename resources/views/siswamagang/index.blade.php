@@ -8,25 +8,25 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>siswa - Dashboad</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        @vite('resources/css/app.css')
+        {{-- @vite('resources/css/app.css') --}}
         <link rel="stylesheet" href="css/app.css" />
         <link rel="icon" type="image/x-icon" href="favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" media="screen" href="assets1/css/perfect-scrollbar.min.css" />
-        <link rel="stylesheet" type="text/css" media="screen" href="assets1/css/style.css" />
-        <link defer rel="stylesheet" type="text/css" media="screen" href="assets1/css/animate.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="siswa/css/perfect-scrollbar.min.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="siswa/css/style.css" />
+        <link defer rel="stylesheet" type="text/css" media="screen" href="siswa/css/animate.css" />
         <link
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
             rel="stylesheet" />
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
-        <script src="assets1/js/perfect-scrollbar.min.js"></script>
-        <script defer src="assets1/js/popper.min.js"></script>
-        <script defer src="assets1/js/tippy-bundle.umd.min.js"></script>
-        <script defer src="assets1/js/sweetalert.min.js"></script>
+        <script src="siswa/js/perfect-scrollbar.min.js"></script>
+        <script defer src="siswa/js/popper.min.js"></script>
+        <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
+        <script defer src="siswa/js/sweetalert.min.js"></script>
     </head>
     <body
         x-data="main"
@@ -1529,7 +1529,7 @@
             <!-- end sidebar section -->
 
             <div class="main-content">
-               @include('siswa.nav_siswa')
+               @include('siswamagang.nav_siswa')
 
                 <div class="animate__animated p-6" :class="[$store.app.animation]">
                     <!-- start main content section -->
@@ -1753,7 +1753,7 @@
                                         <h5 class="text-lg font-semibold dark:text-white-light">Tata tertib</h5>
                                     </div>
                                     <div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -1770,13 +1770,13 @@
             </div>
         </div>
 
-        <script src="assets1/js/alpine-collaspe.min.js"></script>
-        <script src="assets1/js/alpine-persist.min.js"></script>
-        <script defer src="assets1/js/alpine-ui.min.js"></script>
-        <script defer src="assets1/js/alpine-focus.min.js"></script>
-        <script defer src="assets1/js/alpine.min.js"></script>
-        <script src="assets1/js/custom.js"></script>
-        <script defer src="assets1/js/apexcharts.js"></script>
+        <script src="siswa/js/alpine-collaspe.min.js"></script>
+        <script src="siswa/js/alpine-persist.min.js"></script>
+        <script defer src="siswa/js/alpine-ui.min.js"></script>
+        <script defer src="siswa/js/alpine-focus.min.js"></script>
+        <script defer src="siswa/js/alpine.min.js"></script>
+        <script src="siswa/js/custom.js"></script>
+        <script defer src="siswa/js/apexcharts.js"></script>
         <script src="https://cdn.tailwindcss.com/3.3.0"></script>
         <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
         <script>

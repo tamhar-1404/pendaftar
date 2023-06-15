@@ -5,7 +5,7 @@
             <div class="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
                 <a href="index-2.html" class="main-logo flex shrink-0 items-center">
                     <img class="inline w-20
-                     ltr:-ml-1 rtl:-mr-1" src="assets1/images/LOGO HUMMASOFT 2.png" alt="image" />
+                     ltr:-ml-1 rtl:-mr-1" src="siswa/images/LOGO HUMMASOFT 2.png" alt="image" />
                 </a>
 
                 <a
@@ -213,7 +213,7 @@
                                         <div class="relative h-12 w-12">
                                             <img
                                                 class="h-12 w-12 rounded-full object-cover"
-                                                :src="`assets1/images/${notification.profile}`"
+                                                :src="`siswa/images/${notification.profile}`"
                                                 alt="image"
                                             />
                                             <span class="absolute right-[6px] bottom-0 block h-2 w-2 rounded-full bg-success"></span>
@@ -281,7 +281,7 @@
                         <span
                             ><img
                                 class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                src="assets1/images/user-profile.jpeg"
+                                src="siswa/images/user-profile.jpeg"
                                 alt="image"
                         /></span>
                     </a>
@@ -295,7 +295,7 @@
                         <li>
                             <div class="flex items-center px-4 py-4">
                                 <div class="flex-none">
-                                    <img class="h-10 w-10 rounded-md object-cover" src="assets1/images/user-profile.jpeg" alt="image" />
+                                    <img class="h-10 w-10 rounded-md object-cover" src="siswa/images/user-profile.jpeg" alt="image" />
                                 </div>
                                 <div class="ltr:pl-4 rtl:pr-4">
                                     <h4 class="text-base">
