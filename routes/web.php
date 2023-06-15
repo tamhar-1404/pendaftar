@@ -16,6 +16,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
-Route::resource('/siswa', App\Http\Controllers\DashboardSiswaController::class);
+Route::resource('/siswamagang', App\Http\Controllers\DashboardSiswaController::class);
 Route::resource('/guru', App\Http\Controllers\DashboardGuruController::class);
 Route::resource('/chat', App\Http\Controllers\ChatController::class);
