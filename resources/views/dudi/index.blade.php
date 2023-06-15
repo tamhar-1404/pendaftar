@@ -2,6 +2,8 @@
 <html lang="en" dir="ltr">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/app.css" />
+
 <!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:26 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
@@ -670,11 +672,11 @@
 
             <div class="main-content">
                 <!-- start header section -->
-                <header :class="{'dark' : $store.app.semidark && $store.app.menu === 'horizontal'}">
-                    <div class="shadow-sm">
-                        <div class="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
-                            <div class="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
-                                <a href="index-2.html" class="main-logo flex shrink-0 items-center">
+                    <header :class="{'dark' : $store.app.semidark && $store.app.menu === 'horizontal'}">
+                        <div class="shadow-sm">
+                            <div class="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
+                                <div class="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
+                                <a href="index-2.html" class="main-logo flex shrink-9 items-center">
                                     <img class="inline w-8 ltr:-ml-1 rtl:-mr-1" src="{{ asset('admin/assets/images/logo.svg') }}" alt="image" />
                                     <span
                                         class="hidden align-middle text-2xl font-semibold transition-all duration-300 ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light md:inline"
@@ -1973,7 +1975,6 @@
                     </div>
                 </header>
                 <!-- end header section -->
-
 
 
         <script src="{{ asset('admin/assets/js/alpine-collaspe.min.js') }}"></script>
