@@ -53,7 +53,7 @@
             <template x-if="showTopButton">
                 <button
                     type="button"
-                    class="btn btn-outline-primary animate-pulse rounded-full bg-[#fafafa] p-2 dark:bg-[#060818] dark:hover:bg-primary"
+                    class="btn btn-outline-primary animate-pulse rounded-full bg-[#fafafa] p-5 dark:bg-[#060818] dark:hover:bg-primary"
                     @click="goToTop"
                 >
                     <svg width="24" height="24" class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/0/svg">
@@ -672,16 +672,13 @@
 
             <div class="main-content">
                 <!-- start header section -->
-                    <header :class="{'dark' : $store.app.semidark && $store.app.menu === 'horizontal'}">
+                <header :class="{'dark' : $store.app.semidark && $store.app.menu === 'horizontal'}" style="position: fixed; top: 0; left: 0; right: 0;">
                         <div class="shadow-sm">
                             <div class="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
                                 <div class="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
                                 <a href="index-2.html" class="main-logo flex shrink-9 items-center">
-                                    <img class="inline w-8 ltr:-ml-1 rtl:-mr-1" src="{{ asset('admin/assets/images/logo.svg') }}" alt="image" />
-                                    <span
-                                        class="hidden align-middle text-2xl font-semibold transition-all duration-300 ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light md:inline"
-                                        >VRIST111O</span
-                                    >
+                                    <img class="inline w-40 ltr:-ml-1 rtl:-mr-1" src="{{ asset('admin/assets/images/humma.png') }}" alt="image" />
+
                                 </a>
 
                                 <a
@@ -1975,7 +1972,74 @@
                     </div>
                 </header>
                 <!-- end header section -->
+                <div class="mt-4 grid grid-cols-1 px-4 gap-4 sm:mt-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
+                        <div class="flex justify-between">
+                        <p class="text-xl mt-1 font-semibold text-slate-700 dark:text-navy-100">
+                          12
+                        </p>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" color="#1AB5F2" />
+                          </svg>
 
+                      </div>
+                      <p class="mt-1 text-xs">Anak magang</p>
+                    </div>
+                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
+
+                      <div class="flex justify-between">
+                        <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
+                          25
+                        </p>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" color="#1AB5F2" />
+                          </svg>
+
+                      </div>
+                      <p class="mt-1 text-xs">Pembimbing</p>
+                    </div>
+                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
+
+                      <div class="flex justify-between">
+                        <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
+                         16
+                        </p>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819" color="#1AB5F2"/>
+                          </svg>
+
+                      </div>
+                      <p class="mt-1 text-xs">MOU</p>
+                    </div>
+                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
+
+                      <div class="flex justify-between">
+                        <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
+                         15
+                        </p>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" color="#1AB5F2" />
+                          </svg>
+
+                      </div>
+                      <p class="mt-1 text-xs">Ditolak</p>
+                    </div>
+                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
+
+                        <div class="flex justify-between">
+                          <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
+                           12
+                          </p>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" color="#1AB5F2"/>
+                          </svg>
+
+                        </div>
+                        <p class="mt-1 text-xs">Menunggu diterima</p>
+                      </div>
+                    </div>
+                  </div>
+                  
 
         <script src="{{ asset('admin/assets/js/alpine-collaspe.min.js') }}"></script>
         <script src="{{ asset('admin/assets/js/alpine-persist.min.js') }}"></script>
