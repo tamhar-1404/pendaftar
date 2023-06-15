@@ -15,7 +15,7 @@ class DashboardSiswaController extends Controller
      */
     public function index()
     {
-        return view('siswa.index');
+        return view('siswamagang.index');
     }
 
     /**
