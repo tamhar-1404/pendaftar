@@ -10,6 +10,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>Admin - Dashboard</title>
+        @vite('resources/css/app.css')
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/x-icon" href="favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
@@ -677,7 +678,7 @@
                             <div class="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
                                 <div class="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
                                 <a href="index-2.html" class="main-logo flex shrink-9 items-center">
-                                    <img class="inline w-40 ltr:-ml-1 rtl:-mr-1" src="{{ asset('admin/assets/images/humma.png') }}" alt="image" />
+                                    <img class="inline w-20 ltr:-ml-1 rtl:-mr-1" src="{{ asset('admin/assets/images/humma.png') }}" alt="image" />
 
                                 </a>
 
@@ -1972,7 +1973,7 @@
                     </div>
                 </header>
                 <!-- end header section -->
-                <div class="mt-4 grid grid-cols-1 px-4 gap-4 sm:mt-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                <div class=" mt-28 pt-10 grid grid-cols-1 px-4 gap-4 sm:mt-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
                     <div class="rounded-lg bg-white p-5 dark:bg-navy-600" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
                         <div class="flex justify-between">
                         <p class="text-xl mt-1 font-semibold text-slate-700 dark:text-navy-100">
@@ -2038,9 +2039,20 @@
                         <p class="mt-1 text-xs">Menunggu diterima</p>
                       </div>
                     </div>
-                  </div>
-                  
+                     {{-- grafik --}}
+                     <div class="w-full px-4 mt-6">
+                        <div class="w-80% bg-white rounded-t-lg pl-4 pt-5 text-lg font-bold">
+                            Grafik Pendaftaran
+                        </div>
+                        <div id="grafik_admin" class=" w-80% h-20 bg-white rounded-lg " >
+                        </div>
+                     </div>
 
+                {{-- end grafik --}}
+                  </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="{{ asset('admin/assets/js/alpine-collaspe.min.js') }}"></script>
         <script src="{{ asset('admin/assets/js/alpine-persist.min.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/alpine-ui.min.js') }}"></script>
@@ -2048,6 +2060,79 @@
         <script defer src="{{ asset('admin/assets/js/alpine.min.js') }}"></script>
         <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/apexcharts.js') }}"></script>
+
+        <script>
+
+        var options = {
+          series: [{
+          name: 'Menunggu',
+          data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 70, 67, 50]
+        }, {
+          name: 'Terima',
+          data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 110, 104, 120]
+        }, {
+          name: 'Tolak',
+          data: [35, 41, 36, 26, 45, 48, 52, 53, 41, 30, 20, 70]
+        }],
+          chart: {
+          type: 'bar',
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '55%',
+            endingShape: 'rounded',
+            borderRadius: 7,
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        animations: {
+            enabled: true,
+            easing: 'easeinout',
+            speed: 1200,
+            animateGradually: {
+                enabled: true,
+                delay: 200
+            },
+            dynamicAnimation: {
+                enabled: true,
+                speed: 450
+            }
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+          categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+
+        },
+        yaxis: {
+          title: {
+            text: 'jumlah siswa'
+          }
+        },
+        fill: {
+          opacity: 2,
+          colors: ['#6769EB', '#47EBB3', '#FFA726']
+        },
+        tooltip: {
+          y: {
+            // formatter: function (val) {
+            //   return "$ " + val + " thousands"
+            // }
+          }
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#grafik_admin"), options);
+        chart.render();
+
+        </script>
 
         <script>
             document.addEventListener('alpine:init', () => {
