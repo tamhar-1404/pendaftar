@@ -1521,548 +1521,7 @@
             <!-- end sidebar section -->
 
             <div class="main-content">
-                <!-- start header section -->
-                <header :class="{'dark' : $store.app.semidark && $store.app.menu === 'horizontal'}">
-                    <div class="shadow-sm">
-                        <div class="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
-                            <div class="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
-                                <a href="index-2.html" class="main-logo flex shrink-0 items-center">
-                                    <img class="inline w-20
-                                     ltr:-ml-1 rtl:-mr-1" src="assets_guru/images/LOGO HUMMASOFT 2.png" alt="image" />
-                                </a>
-
-                                <a
-                                    href="javascript:;"
-                                    class="collapse-icon flex flex-none rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary ltr:ml-2 rtl:mr-2 dark:bg-dark/40 dark:text-[#d0d2d6] dark:hover:bg-dark/60 dark:hover:text-primary lg:hidden"
-                                    @click="$store.app.toggleSidebar()"
-                                >
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M20 7L4 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                        <path opacity="0.5" d="M20 12L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                        <path d="M20 17L4 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                    </svg>
-                                </a>
-                            </div>
-                            <div
-                                x-data="header"
-                                class="flex items-center space-x-1.5 ltr:ml-auto rtl:mr-auto rtl:space-x-reverse dark:text-[#d0d2d6] sm:flex-1 ltr:sm:ml-0 sm:rtl:mr-0 lg:space-x-2"
-                            >
-                                <div class="sm:ltr:mr-auto sm:rtl:ml-auto" x-data="{ search: false }" @click.outside="search = false">
-                                    <form
-                                        class="absolute inset-x-0 top-1/2 z-10 mx-4 hidden -translate-y-1/2 sm:relative sm:top-0 sm:mx-0 sm:block sm:translate-y-0"
-                                        :class="{'!block' : search}"
-                                        @submit.prevent="search = false"
-                                    >
-                                        <div class="relative">
-                                            <input
-                                                type="text"
-                                                class="peer form-input bg-gray-100 placeholder:tracking-widest ltr:pl-9 ltr:pr-9 rtl:pr-9 rtl:pl-9 sm:bg-transparent ltr:sm:pr-4 rtl:sm:pl-4"
-                                                placeholder="Search..."
-                                            />
-                                            <button
-                                                type="button"
-                                                class="absolute inset-0 h-9 w-9 appearance-none peer-focus:text-primary ltr:right-auto rtl:left-auto"
-                                            >
-                                                <svg class="mx-auto" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="11.5" cy="11.5" r="9.5" stroke="currentColor" stroke-width="1.5" opacity="0.5" />
-                                                    <path d="M18.5 18.5L22 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                                </svg>
-                                            </button>
-                                            <button
-                                                type="button"
-                                                class="absolute top-1/2 block -translate-y-1/2 hover:opacity-80 ltr:right-2 rtl:left-2 sm:hidden"
-                                                @click="search = false"
-                                            >
-                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <circle opacity="0.5" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" />
-                                                    <path
-                                                        d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                        stroke-linecap="round"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </form>
-                                    <button
-                                        type="button"
-                                        class="search_btn rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 dark:bg-dark/40 dark:hover:bg-dark/60 sm:hidden"
-                                        @click="search = ! search"
-                                    >
-                                        <svg
-                                            class="mx-auto h-4.5 w-4.5 dark:text-[#d0d2d6]"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <circle cx="11.5" cy="11.5" r="9.5" stroke="currentColor" stroke-width="1.5" opacity="0.5" />
-                                            <path d="M18.5 18.5L22 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div>
-                                    <a
-                                        href="javascript:;"
-                                        x-cloak
-                                        x-show="$store.app.theme === 'light'"
-                                        href="javascript:;"
-                                        class="flex items-center rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
-                                        @click="$store.app.toggleTheme('dark')"
-                                    >
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" />
-                                            <path d="M12 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                            <path d="M12 20V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                            <path d="M4 12L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                            <path d="M22 12L20 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                            <path
-                                                opacity="0.5"
-                                                d="M19.7778 4.22266L17.5558 6.25424"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
-                                            />
-                                            <path
-                                                opacity="0.5"
-                                                d="M4.22217 4.22266L6.44418 6.25424"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
-                                            />
-                                            <path
-                                                opacity="0.5"
-                                                d="M6.44434 17.5557L4.22211 19.7779"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
-                                            />
-                                            <path
-                                                opacity="0.5"
-                                                d="M19.7778 19.7773L17.5558 17.5551"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
-                                            />
-                                        </svg>
-                                    </a>
-                                    <a
-                                        href="javascript:;"
-                                        x-cloak
-                                        x-show="$store.app.theme === 'dark'"
-                                        href="javascript:;"
-                                        class="flex items-center rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
-                                        @click="$store.app.toggleTheme('system')"
-                                    >
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M21.0672 11.8568L20.4253 11.469L21.0672 11.8568ZM12.1432 2.93276L11.7553 2.29085V2.29085L12.1432 2.93276ZM21.25 12C21.25 17.1086 17.1086 21.25 12 21.25V22.75C17.9371 22.75 22.75 17.9371 22.75 12H21.25ZM12 21.25C6.89137 21.25 2.75 17.1086 2.75 12H1.25C1.25 17.9371 6.06294 22.75 12 22.75V21.25ZM2.75 12C2.75 6.89137 6.89137 2.75 12 2.75V1.25C6.06294 1.25 1.25 6.06294 1.25 12H2.75ZM15.5 14.25C12.3244 14.25 9.75 11.6756 9.75 8.5H8.25C8.25 12.5041 11.4959 15.75 15.5 15.75V14.25ZM20.4253 11.469C19.4172 13.1373 17.5882 14.25 15.5 14.25V15.75C18.1349 15.75 20.4407 14.3439 21.7092 12.2447L20.4253 11.469ZM9.75 8.5C9.75 6.41182 10.8627 4.5828 12.531 3.57467L11.7553 2.29085C9.65609 3.5593 8.25 5.86509 8.25 8.5H9.75ZM12 2.75C11.9115 2.75 11.8077 2.71008 11.7324 2.63168C11.6686 2.56527 11.6538 2.50244 11.6503 2.47703C11.6461 2.44587 11.6482 2.35557 11.7553 2.29085L12.531 3.57467C13.0342 3.27065 13.196 2.71398 13.1368 2.27627C13.0754 1.82126 12.7166 1.25 12 1.25V2.75ZM21.7092 12.2447C21.6444 12.3518 21.5541 12.3539 21.523 12.3497C21.4976 12.3462 21.4347 12.3314 21.3683 12.2676C21.2899 12.1923 21.25 12.0885 21.25 12H22.75C22.75 11.2834 22.1787 10.9246 21.7237 10.8632C21.286 10.804 20.7293 10.9658 20.4253 11.469L21.7092 12.2447Z"
-                                                fill="currentColor"
-                                            />
-                                        </svg>
-                                    </a>
-                                    <a
-                                        href="javascript:;"
-                                        x-cloak
-                                        x-show="$store.app.theme === 'system'"
-                                        href="javascript:;"
-                                        class="flex items-center rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
-                                        @click="$store.app.toggleTheme('light')"
-                                    >
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M3 9C3 6.17157 3 4.75736 3.87868 3.87868C4.75736 3 6.17157 3 9 3H15C17.8284 3 19.2426 3 20.1213 3.87868C21 4.75736 21 6.17157 21 9V14C21 15.8856 21 16.8284 20.4142 17.4142C19.8284 18 18.8856 18 17 18H7C5.11438 18 4.17157 18 3.58579 17.4142C3 16.8284 3 15.8856 3 14V9Z"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                            />
-                                            <path opacity="0.5" d="M22 21H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                            <path opacity="0.5" d="M15 15H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                        </svg>
-                                    </a>
-                                </div>
-
-
-
-
-                                <div class="dropdown" x-data="dropdown" @click.outside="open = false">
-                                    <a
-                                        href="javascript:;"
-                                        class="relative block rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
-                                        @click="toggle"
-                                    >
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M19.0001 9.7041V9C19.0001 5.13401 15.8661 2 12.0001 2C8.13407 2 5.00006 5.13401 5.00006 9V9.7041C5.00006 10.5491 4.74995 11.3752 4.28123 12.0783L3.13263 13.8012C2.08349 15.3749 2.88442 17.5139 4.70913 18.0116C9.48258 19.3134 14.5175 19.3134 19.291 18.0116C21.1157 17.5139 21.9166 15.3749 20.8675 13.8012L19.7189 12.0783C19.2502 11.3752 19.0001 10.5491 19.0001 9.7041Z"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                            />
-                                            <path
-                                                d="M7.5 19C8.15503 20.7478 9.92246 22 12 22C14.0775 22 15.845 20.7478 16.5 19"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
-                                            />
-                                            <path d="M12 6V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                        </svg>
-
-                                        <span class="absolute top-0 flex h-3 w-3 ltr:right-0 rtl:left-0">
-                                            <span
-                                                class="absolute -top-[3px] inline-flex h-full w-full animate-ping rounded-full bg-success/50 opacity-75 ltr:-left-[3px] rtl:-right-[3px]"
-                                            ></span>
-                                            <span class="relative inline-flex h-[6px] w-[6px] rounded-full bg-success"></span>
-                                        </span>
-                                    </a>
-                                    <ul
-                                        x-cloak
-                                        x-show="open"
-                                        x-transition
-                                        x-transition.duration.300ms
-                                        class="top-11 w-[300px] divide-y !py-0 text-dark ltr:-right-2 rtl:-left-2 dark:divide-white/10 dark:text-white-dark sm:w-[350px]"
-                                    >
-                                        <li>
-                                            <div class="flex items-center justify-between px-4 py-2 font-semibold hover:!bg-transparent">
-                                                <h4 class="text-lg">Notification</h4>
-                                                <template x-if="notifications.length">
-                                                    <span class="badge bg-primary/80" x-text="notifications.length + 'New'"></span>
-                                                </template>
-                                            </div>
-                                        </li>
-                                        <template x-for="notification in notifications">
-                                            <li class="dark:text-white-light/90">
-                                                <div class="group flex items-center px-4 py-2" @click.self="toggle">
-                                                    <div class="grid place-content-center rounded">
-                                                        <div class="relative h-12 w-12">
-                                                            <img
-                                                                class="h-12 w-12 rounded-full object-cover"
-                                                                :src="`assets_guru/images/${notification.profile}`"
-                                                                alt="image"
-                                                            />
-                                                            <span class="absolute right-[6px] bottom-0 block h-2 w-2 rounded-full bg-success"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex flex-auto ltr:pl-3 rtl:pr-3">
-                                                        <div class="ltr:pr-3 rtl:pl-3">
-                                                            <h6 x-html="notification.message"></h6>
-                                                            <span class="block text-xs font-normal dark:text-gray-500" x-text="notification.time"></span>
-                                                        </div>
-                                                        <button
-                                                            type="button"
-                                                            class="text-neutral-300 opacity-0 hover:text-danger group-hover:opacity-100 ltr:ml-auto rtl:mr-auto"
-                                                            @click="removeNotification(notification.id)"
-                                                        >
-                                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <circle opacity="0.5" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" />
-                                                                <path
-                                                                    d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="1.5"
-                                                                    stroke-linecap="round"
-                                                                />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </template>
-                                        <template x-if="notifications.length">
-                                            <li>
-                                                <div class="p-4">
-                                                    <button class="btn btn-primary btn-small block w-full" @click="toggle">Read All Notifications</button>
-                                                </div>
-                                            </li>
-                                        </template>
-                                        <template x-if="!notifications.length">
-                                            <li>
-                                                <div class="!grid min-h-[200px] place-content-center text-lg hover:!bg-transparent">
-                                                    <div class="mx-auto mb-4 rounded-full text-primary ring-4 ring-primary/30">
-                                                        <svg width="40" height="40" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                opacity="0.5"
-                                                                d="M20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20C15.5228 20 20 15.5228 20 10Z"
-                                                                fill="currentColor"
-                                                            />
-                                                            <path
-                                                                d="M10 4.25C10.4142 4.25 10.75 4.58579 10.75 5V11C10.75 11.4142 10.4142 11.75 10 11.75C9.58579 11.75 9.25 11.4142 9.25 11V5C9.25 4.58579 9.58579 4.25 10 4.25Z"
-                                                                fill="currentColor"
-                                                            />
-                                                            <path
-                                                                d="M10 15C10.5523 15 11 14.5523 11 14C11 13.4477 10.5523 13 10 13C9.44772 13 9 13.4477 9 14C9 14.5523 9.44772 15 10 15Z"
-                                                                fill="currentColor"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                    No data available.
-                                                </div>
-                                            </li>
-                                        </template>
-                                    </ul>
-                                </div>
-                                <div class="dropdown flex-shrink-0" x-data="dropdown" @click.outside="open = false">
-                                    <a href="javascript:;" class="group relative" @click="toggle()">
-                                        <span
-                                            ><img
-                                                class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                                src="assets_guru/images/user-profile.jpeg"
-                                                alt="image"
-                                        /></span>
-                                    </a>
-                                    <ul
-                                        x-cloak
-                                        x-show="open"
-                                        x-transition
-                                        x-transition.duration.300ms
-                                        class="top-11 w-[230px] !py-0 font-semibold text-dark ltr:right-0 rtl:left-0 dark:text-white-dark dark:text-white-light/90"
-                                    >
-                                        <li>
-                                            <div class="flex items-center px-4 py-4">
-                                                <div class="flex-none">
-                                                    <img class="h-10 w-10 rounded-md object-cover" src="assets_guru/images/user-profile.jpeg" alt="image" />
-                                                </div>
-                                                <div class="ltr:pl-4 rtl:pr-4">
-                                                    <h4 class="text-base">
-                                                        John Doe<span class="rounded bg-success-light px-1 text-xs text-success ltr:ml-2 rtl:ml-2">Pro</span>
-                                                    </h4>
-                                                    <a
-                                                        class="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white"
-                                                        href="javascript:;"
-                                                        >johndoe@gmail.com</a
-                                                    >
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a href="users-profile.html" class="dark:hover:text-white" @click="toggle">
-                                                <svg
-                                                    class="h-4.5 w-4.5 ltr:mr-2 rtl:ml-2"
-                                                    width="18"
-                                                    height="18"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                >
-                                                    <circle cx="12" cy="6" r="4" stroke="currentColor" stroke-width="1.5" />
-                                                    <path
-                                                        opacity="0.5"
-                                                        d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                    />
-                                                </svg>
-                                                Profile</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a href="apps-mailbox.html" class="dark:hover:text-white" @click="toggle">
-                                                <svg
-                                                    class="h-4.5 w-4.5 ltr:mr-2 rtl:ml-2"
-                                                    width="18"
-                                                    height="18"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                >
-                                                    <path
-                                                        opacity="0.5"
-                                                        d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12Z"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                    />
-                                                    <path
-                                                        d="M6 8L8.1589 9.79908C9.99553 11.3296 10.9139 12.0949 12 12.0949C13.0861 12.0949 14.0045 11.3296 15.8411 9.79908L18 8"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                        stroke-linecap="round"
-                                                    />
-                                                </svg>
-                                                Inbox</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a href="auth-boxed-lockscreen.html" class="dark:hover:text-white" @click="toggle">
-                                                <svg
-                                                    class="h-4.5 w-4.5 ltr:mr-2 rtl:ml-2"
-                                                    width="18"
-                                                    height="18"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                >
-                                                    <path
-                                                        d="M2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.75736 10 5.17157 10 8 10H16C18.8284 10 20.2426 10 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16Z"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                    />
-                                                    <path
-                                                        opacity="0.5"
-                                                        d="M6 10V8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8V10"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                        stroke-linecap="round"
-                                                    />
-                                                    <g opacity="0.5">
-                                                        <path
-                                                            d="M9 16C9 16.5523 8.55228 17 8 17C7.44772 17 7 16.5523 7 16C7 15.4477 7.44772 15 8 15C8.55228 15 9 15.4477 9 16Z"
-                                                            fill="currentColor"
-                                                        />
-                                                        <path
-                                                            d="M13 16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16C11 15.4477 11.4477 15 12 15C12.5523 15 13 15.4477 13 16Z"
-                                                            fill="currentColor"
-                                                        />
-                                                        <path
-                                                            d="M17 16C17 16.5523 16.5523 17 16 17C15.4477 17 15 16.5523 15 16C15 15.4477 15.4477 15 16 15C16.5523 15 17 15.4477 17 16Z"
-                                                            fill="currentColor"
-                                                        />
-                                                    </g>
-                                                </svg>
-                                                Lock Screen</a
-                                            >
-                                        </li>
-                                        <li class="border-t border-white-light dark:border-white-light/10">
-                                            <a href="auth-boxed-signin.html" class="!py-3 text-danger" @click="toggle">
-                                                <svg
-                                                    class="h-4.5 w-4.5 rotate-90 ltr:mr-2 rtl:ml-2"
-                                                    width="18"
-                                                    height="18"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                >
-                                                    <path
-                                                        opacity="0.5"
-                                                        d="M17 9.00195C19.175 9.01406 20.3529 9.11051 21.1213 9.8789C22 10.7576 22 12.1718 22 15.0002V16.0002C22 18.8286 22 20.2429 21.1213 21.1215C20.2426 22.0002 18.8284 22.0002 16 22.0002H8C5.17157 22.0002 3.75736 22.0002 2.87868 21.1215C2 20.2429 2 18.8286 2 16.0002L2 15.0002C2 12.1718 2 10.7576 2.87868 9.87889C3.64706 9.11051 4.82497 9.01406 7 9.00195"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                        stroke-linecap="round"
-                                                    />
-                                                    <path
-                                                        d="M12 15L12 2M12 2L15 5.5M12 2L9 5.5"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    />
-                                                </svg>
-                                                Sign Out
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- horizontal menu -->
-                        <ul
-                            class="horizontal-menu hidden border-t border-[#ebedf2] bg-white py-1.5 px-6 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-[#0e1726] dark:text-white-dark lg:space-x-1.5 xl:space-x-8"
-                        >
-                            <li class="menu nav-item relative">
-                                <a href="javascript:;" class="nav-link active">
-                                    <div class="flex items-center">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                opacity="0.5"
-                                                d="M2 12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274C22 8.77128 22 9.91549 22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039Z"
-                                                fill="currentColor"
-                                            />
-                                            <path
-                                                d="M9 17.25C8.58579 17.25 8.25 17.5858 8.25 18C8.25 18.4142 8.58579 18.75 9 18.75H15C15.4142 18.75 15.75 18.4142 15.75 18C15.75 17.5858 15.4142 17.25 15 17.25H9Z"
-                                                fill="currentColor"
-                                            />
-                                        </svg>
-                                        <span class="px-1">Dashboard</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="menu nav-item relative">
-                                <a href="javascript:;" class="nav-link">
-                                    <div class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                                          </svg>
-                                        <span class="px-1">Siswa</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="menu nav-item relative">
-                                <a href="javascript:;" class="nav-link">
-                                    <div class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
-                                          </svg>
-                                        <span class="px-1">Jurnal</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="menu nav-item relative">
-                                <a href="javascript:;" class="nav-link">
-                                    <div class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                                          </svg>
-                                        <span class="px-1">Absensi</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="menu nav-item relative">
-                                <a href="javascript:;" class="nav-link">
-                                    <div class="flex items-center">
-                                        <svg
-                                            class="group-hover:!text-primary"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                opacity="0.5"
-                                                d="M13 15.4C13 13.3258 13 12.2887 13.659 11.6444C14.318 11 15.3787 11 17.5 11C19.6213 11 20.682 11 21.341 11.6444C22 12.2887 22 13.3258 22 15.4V17.6C22 19.6742 22 20.7113 21.341 21.3556C20.682 22 19.6213 22 17.5 22C15.3787 22 14.318 22 13.659 21.3556C13 20.7113 13 19.6742 13 17.6V15.4Z"
-                                                fill="currentColor"
-                                            />
-                                            <path
-                                                d="M2 8.6C2 10.6742 2 11.7113 2.65901 12.3556C3.31802 13 4.37868 13 6.5 13C8.62132 13 9.68198 13 10.341 12.3556C11 11.7113 11 10.6742 11 8.6V6.4C11 4.32582 11 3.28873 10.341 2.64437C9.68198 2 8.62132 2 6.5 2C4.37868 2 3.31802 2 2.65901 2.64437C2 3.28873 2 4.32582 2 6.4V8.6Z"
-                                                fill="currentColor"
-                                            />
-                                            <path
-                                                d="M13 5.5C13 4.4128 13 3.8692 13.1713 3.44041C13.3996 2.86867 13.8376 2.41443 14.389 2.17761C14.8024 2 15.3266 2 16.375 2H18.625C19.6734 2 20.1976 2 20.611 2.17761C21.1624 2.41443 21.6004 2.86867 21.8287 3.44041C22 3.8692 22 4.4128 22 5.5C22 6.5872 22 7.1308 21.8287 7.55959C21.6004 8.13133 21.1624 8.58557 20.611 8.82239C20.1976 9 19.6734 9 18.625 9H16.375C15.3266 9 14.8024 9 14.389 8.82239C13.8376 8.58557 13.3996 8.13133 13.1713 7.55959C13 7.1308 13 6.5872 13 5.5Z"
-                                                fill="currentColor"
-                                            />
-                                            <path
-                                                opacity="0.5"
-                                                d="M2 18.5C2 19.5872 2 20.1308 2.17127 20.5596C2.39963 21.1313 2.83765 21.5856 3.38896 21.8224C3.80245 22 4.32663 22 5.375 22H7.625C8.67337 22 9.19755 22 9.61104 21.8224C10.1624 21.5856 10.6004 21.1313 10.8287 20.5596C11 20.1308 11 19.5872 11 18.5C11 17.4128 11 16.8692 10.8287 16.4404C10.6004 15.8687 10.1624 15.4144 9.61104 15.1776C9.19755 15 8.67337 15 7.625 15H5.375C4.32663 15 3.80245 15 3.38896 15.1776C2.83765 15.4144 2.39963 15.8687 2.17127 16.4404C2 16.8692 2 17.4128 2 18.5Z"
-                                                fill="currentColor"
-                                            />
-                                        </svg>
-                                        <span class="px-1">Lainnya</span>
-                                    </div>
-                                    <div class="right_arrow">
-                                        <svg
-                                            class="h-4 w-4 rotate-90"
-                                            width="16"
-                                            height="16"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </div>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="">Berita</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Chat</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </header>
-                <!-- end header section -->
-
+                @include('guru.nav_guru')
                 <div class="animate__animated p-6" :class="[$store.app.animation]">
                     <!-- start main content section -->
                     <div x-data="sales">
@@ -2070,14 +1529,57 @@
                             <li>
                                 <a href="javascript:;" class="text-primary hover:underline">Dashboard</a>
                             </li>
-                            <li class="before:content-['/'] ltr:before:mr-1 rtl:before:ml-1">
-                                <span>Sales</span>
-                            </li>
                         </ul>
+                    </div>
+                        
 
-                        <div class="pt-5">
+                        <div class="pt-6">
                             <div class="mb-6 grid gap-6 xl:grid-cols-3">
                                 <div class="panel h-full xl:col-span-2">
+                                    {{-- card  --}}
+                                    <div class="pt-5 pb-6">
+                                        <div class="mb-5  grid grid-cols-1 gap-8 text-white sm:grid-cols-9 xl:grid-cols-3">
+                                            <!-- Users Visit -->
+                                            <div class="panel bg-gradient-to-r from-white-500 to-white-400">
+                                                <div class="flex justify-between">
+                                                    <div class="text-2xl text-black font-semibold ltr:mr-1 rtl:ml-1">Total Jurnal</div>
+                                                    <div x-data="dropdown" @click.outside="open = false" class="dropdown">
+                                                    </div>
+                                                </div>
+                                                <div class="mt-5 flex items-center">
+                                                    <div class="text-1xl text-black  font-bold ltr:mr-3 rtl:ml-3">230</div>
+                                                </div>
+                                            </div>
+            
+                                            <!-- Sessions -->
+                                            <div class="panel bg-gradient-to-r  from-white-500 to-white-400">
+                                                <div class="flex justify-between">
+                                                    <div class="text-2xl text-black  font-semibold ltr:mr-1 rtl:ml-1">Total Siswa</div>
+                                                </div>
+                                                <div class="mt-5 flex items-center">
+                                                    <div class="text-1xl text-black  font-bold ltr:mr-3 rtl:ml-3">7</div>
+                                                </div>
+                                            </div>
+            
+                                            <!-- Time On-Site -->
+                                            <div class="panel bg-gradient-to-r from-white-500 to-white-400">
+                                                <div class="flex justify-between">
+                                                    <div class="text-md text-black font-semibold ltr:mr-1 rtl:ml-1">Total Absensi</div>
+                                                    <div x-data="dropdown" @click.outside="open = false" class="dropdown">
+                                                    </div>
+                                                </div>
+                                                <div class="mt-5 flex items-center">
+                                                    <div class="text-1xl text-black font-bold ltr:mr-3 rtl:ml-3">380</div>
+                                                </div>
+                                            </div>
+            
+                                            <!-- Bounce Rate -->
+                                        </div>
+                                </div>
+
+                                {{-- end card --}}
+
+                                {{-- judul grafik --}}
                                     <div class="mb-5 flex items-center dark:text-white-light">
                                         <h5 class="text-lg font-semibold">Revenue</h5>
                                         <div x-data="dropdown" @click.outside="open = false" class="dropdown ltr:ml-auto rtl:mr-auto">
@@ -2100,6 +1602,8 @@
                                             </ul>
                                         </div>
                                     </div>
+                                {{-- end judul grafik --}}
+                                {{-- grafik --}}
                                     <p class="text-lg dark:text-white-light/90">Total Profit <span class="ml-2 text-primary">$10,840</span></p>
                                     <div class="relative">
                                         <div x-ref="revenueChart" class="rounded-lg bg-white dark:bg-black">
@@ -2111,990 +1615,24 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {{-- end grafik --}}
                                 </div>
 
                                 <div class="panel h-full">
                                     <div class="mb-5 flex items-center">
-                                        <h5 class="text-lg font-semibold dark:text-white-light">Sales By Category</h5>
+                                        
                                     </div>
                                     <div>
-                                        <div x-ref="salesByCategory" class="rounded-lg bg-white dark:bg-black">
-                                            <!-- loader -->
-                                            <div class="grid min-h-[353px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
-                                                <span
-                                                    class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"
-                                                ></span>
+                                        <div class="mb-5 flex items-center justify-between">
+                                            <h5 class="text-lg font-semibold dark:text-white-light">Siswa </h5>
+                                            <button type="submit" class="btn btn-primary !mt-6">Detail</button>
+                                        </div>
+                                        <div x-data="basic">
+                                            <div class="panel">
+                                                <h5 class="text-lg font-semibold dark:text-white-light">Basic</h5>
+                                                <table id="myTable" class="table-hover whitespace-nowrap"></table>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mb-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                                <div class="panel h-full sm:col-span-2 xl:col-span-1">
-                                    <div class="mb-5 flex items-center">
-                                        <h5 class="text-lg font-semibold dark:text-white-light">
-                                            Daily Sales <span class="block text-sm font-normal text-white-dark">Go to columns for details.</span>
-                                        </h5>
-                                        <div class="relative ltr:ml-auto rtl:mr-auto">
-                                            <div
-                                                class="grid h-11 w-11 place-content-center rounded-full bg-[#ffeccb] text-warning dark:bg-warning dark:text-[#ffeccb]"
-                                            >
-                                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M12 6V18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                                    <path
-                                                        d="M15 9.5C15 8.11929 13.6569 7 12 7C10.3431 7 9 8.11929 9 9.5C9 10.8807 10.3431 12 12 12C13.6569 12 15 13.1193 15 14.5C15 15.8807 13.6569 17 12 17C10.3431 17 9 15.8807 9 14.5"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                        stroke-linecap="round"
-                                                    />
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div x-ref="dailySales" class="rounded-lg bg-white dark:bg-black">
-                                            <!-- loader -->
-                                            <div class="grid min-h-[175px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
-                                                <span
-                                                    class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"
-                                                ></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="panel h-full">
-                                    <div class="mb-5 flex items-center dark:text-white-light">
-                                        <h5 class="text-lg font-semibold">Summary</h5>
-                                        <div x-data="dropdown" @click.outside="open = false" class="dropdown ltr:ml-auto rtl:mr-auto">
-                                            <a href="javascript:;" @click="toggle">
-                                                <svg
-                                                    class="h-5 w-5 text-black/70 hover:!text-primary dark:text-white/70"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                >
-                                                    <circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                    <circle opacity="0.5" cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                    <circle cx="19" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                </svg>
-                                            </a>
-                                            <ul x-cloak x-show="open" x-transition x-transition.duration.300ms class="ltr:right-0 rtl:left-0">
-                                                <li><a href="javascript:;" @click="toggle">View Report</a></li>
-                                                <li><a href="javascript:;" @click="toggle">Edit Report</a></li>
-                                                <li><a href="javascript:;" @click="toggle">Mark as Done</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="space-y-9">
-                                        <div class="flex items-center">
-                                            <div class="h-9 w-9 ltr:mr-3 rtl:ml-3">
-                                                <div
-                                                    class="grid h-9 w-9 place-content-center rounded-full bg-secondary-light text-secondary dark:bg-secondary dark:text-secondary-light"
-                                                >
-                                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M3.74157 18.5545C4.94119 20 7.17389 20 11.6393 20H12.3605C16.8259 20 19.0586 20 20.2582 18.5545M3.74157 18.5545C2.54194 17.1091 2.9534 14.9146 3.77633 10.5257C4.36155 7.40452 4.65416 5.84393 5.76506 4.92196M3.74157 18.5545C3.74156 18.5545 3.74157 18.5545 3.74157 18.5545ZM20.2582 18.5545C21.4578 17.1091 21.0464 14.9146 20.2235 10.5257C19.6382 7.40452 19.3456 5.84393 18.2347 4.92196M20.2582 18.5545C20.2582 18.5545 20.2582 18.5545 20.2582 18.5545ZM18.2347 4.92196C17.1238 4 15.5361 4 12.3605 4H11.6393C8.46374 4 6.87596 4 5.76506 4.92196M18.2347 4.92196C18.2347 4.92196 18.2347 4.92196 18.2347 4.92196ZM5.76506 4.92196C5.76506 4.92196 5.76506 4.92196 5.76506 4.92196Z"
-                                                            stroke="currentColor"
-                                                            stroke-width="1.5"
-                                                        />
-                                                        <path
-                                                            opacity="0.5"
-                                                            d="M9.1709 8C9.58273 9.16519 10.694 10 12.0002 10C13.3064 10 14.4177 9.16519 14.8295 8"
-                                                            stroke="currentColor"
-                                                            stroke-width="1.5"
-                                                            stroke-linecap="round"
-                                                        />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="flex-1">
-                                                <div class="mb-2 flex font-semibold text-white-dark">
-                                                    <h6>Income</h6>
-                                                    <p class="ltr:ml-auto rtl:mr-auto">$92,600</p>
-                                                </div>
-                                                <div class="h-2 rounded-full bg-dark-light shadow dark:bg-[#1b2e4b]">
-                                                    <div class="h-full w-11/12 rounded-full bg-gradient-to-r from-[#7579ff] to-[#b224ef]"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="h-9 w-9 ltr:mr-3 rtl:ml-3">
-                                                <div
-                                                    class="grid h-9 w-9 place-content-center rounded-full bg-success-light text-success dark:bg-success dark:text-success-light"
-                                                >
-                                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M4.72848 16.1369C3.18295 14.5914 2.41018 13.8186 2.12264 12.816C1.83509 11.8134 2.08083 10.7485 2.57231 8.61875L2.85574 7.39057C3.26922 5.59881 3.47597 4.70292 4.08944 4.08944C4.70292 3.47597 5.59881 3.26922 7.39057 2.85574L8.61875 2.57231C10.7485 2.08083 11.8134 1.83509 12.816 2.12264C13.8186 2.41018 14.5914 3.18295 16.1369 4.72848L17.9665 6.55812C20.6555 9.24711 22 10.5916 22 12.2623C22 13.933 20.6555 15.2775 17.9665 17.9665C15.2775 20.6555 13.933 22 12.2623 22C10.5916 22 9.24711 20.6555 6.55812 17.9665L4.72848 16.1369Z"
-                                                            stroke="currentColor"
-                                                            stroke-width="1.5"
-                                                        />
-                                                        <circle
-                                                            opacity="0.5"
-                                                            cx="8.60699"
-                                                            cy="8.87891"
-                                                            r="2"
-                                                            transform="rotate(-45 8.60699 8.87891)"
-                                                            stroke="currentColor"
-                                                            stroke-width="1.5"
-                                                        />
-                                                        <path
-                                                            opacity="0.5"
-                                                            d="M11.5417 18.5L18.5208 11.5208"
-                                                            stroke="currentColor"
-                                                            stroke-width="1.5"
-                                                            stroke-linecap="round"
-                                                        />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="flex-1">
-                                                <div class="mb-2 flex font-semibold text-white-dark">
-                                                    <h6>Profit</h6>
-                                                    <p class="ltr:ml-auto rtl:mr-auto">$37,515</p>
-                                                </div>
-                                                <div class="h-2 w-full rounded-full bg-dark-light shadow dark:bg-[#1b2e4b]">
-                                                    <div
-                                                        class="h-full w-full rounded-full bg-gradient-to-r from-[#3cba92] to-[#0ba360]"
-                                                        style="width: 65%"
-                                                    ></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="h-9 w-9 ltr:mr-3 rtl:ml-3">
-                                                <div
-                                                    class="grid h-9 w-9 place-content-center rounded-full bg-warning-light text-warning dark:bg-warning dark:text-warning-light"
-                                                >
-                                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12Z"
-                                                            stroke="currentColor"
-                                                            stroke-width="1.5"
-                                                        />
-                                                        <path opacity="0.5" d="M10 16H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                                        <path opacity="0.5" d="M14 16H12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                                        <path opacity="0.5" d="M2 10L22 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="flex-1">
-                                                <div class="mb-2 flex font-semibold text-white-dark">
-                                                    <h6>Expenses</h6>
-                                                    <p class="ltr:ml-auto rtl:mr-auto">$55,085</p>
-                                                </div>
-                                                <div class="h-2 w-full rounded-full bg-dark-light shadow dark:bg-[#1b2e4b]">
-                                                    <div
-                                                        class="h-full w-full rounded-full bg-gradient-to-r from-[#f09819] to-[#ff5858]"
-                                                        style="width: 80%"
-                                                    ></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="panel h-full p-0">
-                                    <div class="absolute flex w-full items-center justify-between p-5">
-                                        <div class="relative">
-                                            <div
-                                                class="flex h-11 w-11 items-center justify-center rounded-lg bg-success-light text-success dark:bg-success dark:text-success-light"
-                                            >
-                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M2 3L2.26491 3.0883C3.58495 3.52832 4.24497 3.74832 4.62248 4.2721C5 4.79587 5 5.49159 5 6.88304V9.5C5 12.3284 5 13.7426 5.87868 14.6213C6.75736 15.5 8.17157 15.5 11 15.5H19"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                        stroke-linecap="round"
-                                                    />
-                                                    <path
-                                                        opacity="0.5"
-                                                        d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                    />
-                                                    <path
-                                                        opacity="0.5"
-                                                        d="M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                    />
-                                                    <path opacity="0.5" d="M11 9H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                                    <path
-                                                        d="M5 6H16.4504C18.5054 6 19.5328 6 19.9775 6.67426C20.4221 7.34853 20.0173 8.29294 19.2078 10.1818L18.7792 11.1818C18.4013 12.0636 18.2123 12.5045 17.8366 12.7523C17.4609 13 16.9812 13 16.0218 13H5"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                    />
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <h5 class="text-2xl font-semibold ltr:text-right rtl:text-left dark:text-white-light">
-                                            3,192
-                                            <span class="block text-sm font-normal">Total Orders</span>
-                                        </h5>
-                                    </div>
-                                    <div x-ref="totalOrders" class="rounded-lg bg-transparent">
-                                        <!-- loader -->
-                                        <div class="grid min-h-[290px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
-                                            <span
-                                                class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"
-                                            ></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mb-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                                <div class="panel h-full pb-0 sm:col-span-2 xl:col-span-1">
-                                    <h5 class="mb-5 text-lg font-semibold dark:text-white-light">Recent Activities</h5>
-
-                                    <div class="perfect-scrollbar relative mb-4 -mr-3 h-[290px] pr-3">
-                                        <div class="cursor-pointer text-sm">
-                                            <div class="group relative flex items-center py-1.5">
-                                                <div class="h-1.5 w-1.5 rounded-full bg-primary ltr:mr-1 rtl:ml-1.5"></div>
-                                                <div class="flex-1">Updated Server Logs</div>
-                                                <div class="text-xs text-white-dark ltr:ml-auto rtl:mr-auto dark:text-gray-500">Just Now</div>
-
-                                                <span
-                                                    class="badge badge-outline-primary absolute bg-primary-light text-xs opacity-0 group-hover:opacity-100 ltr:right-0 rtl:left-0 dark:bg-[#0e1726]"
-                                                    >Pending</span
-                                                >
-                                            </div>
-                                            <div class="group relative flex items-center py-1.5">
-                                                <div class="h-1.5 w-1.5 rounded-full bg-success ltr:mr-1 rtl:ml-1.5"></div>
-                                                <div class="flex-1">Send Mail to HR and Admin</div>
-                                                <div class="text-xs text-white-dark ltr:ml-auto rtl:mr-auto dark:text-gray-500">2 min ago</div>
-
-                                                <span
-                                                    class="badge badge-outline-success absolute bg-success-light text-xs opacity-0 group-hover:opacity-100 ltr:right-0 rtl:left-0 dark:bg-[#0e1726]"
-                                                    >Completed</span
-                                                >
-                                            </div>
-                                            <div class="group relative flex items-center py-1.5">
-                                                <div class="h-1.5 w-1.5 rounded-full bg-danger ltr:mr-1 rtl:ml-1.5"></div>
-                                                <div class="flex-1">Backup Files EOD</div>
-                                                <div class="text-xs text-white-dark ltr:ml-auto rtl:mr-auto dark:text-gray-500">14:00</div>
-
-                                                <span
-                                                    class="badge badge-outline-danger absolute bg-danger-light text-xs opacity-0 group-hover:opacity-100 ltr:right-0 rtl:left-0 dark:bg-[#0e1726]"
-                                                    >Pending</span
-                                                >
-                                            </div>
-                                            <div class="group relative flex items-center py-1.5">
-                                                <div class="h-1.5 w-1.5 rounded-full bg-black ltr:mr-1 rtl:ml-1.5"></div>
-                                                <div class="flex-1">Collect documents from Sara</div>
-                                                <div class="text-xs text-white-dark ltr:ml-auto rtl:mr-auto dark:text-gray-500">16:00</div>
-
-                                                <span
-                                                    class="badge badge-outline-dark absolute bg-dark-light text-xs opacity-0 group-hover:opacity-100 ltr:right-0 rtl:left-0 dark:bg-[#0e1726]"
-                                                    >Completed</span
-                                                >
-                                            </div>
-                                            <div class="group relative flex items-center py-1.5">
-                                                <div class="h-1.5 w-1.5 rounded-full bg-warning ltr:mr-1 rtl:ml-1.5"></div>
-                                                <div class="flex-1">Conference call with Marketing Manager.</div>
-                                                <div class="text-xs text-white-dark ltr:ml-auto rtl:mr-auto dark:text-gray-500">17:00</div>
-
-                                                <span
-                                                    class="badge badge-outline-warning absolute bg-warning-light text-xs opacity-0 group-hover:opacity-100 ltr:right-0 rtl:left-0 dark:bg-[#0e1726]"
-                                                    >In progress</span
-                                                >
-                                            </div>
-                                            <div class="group relative flex items-center py-1.5">
-                                                <div class="h-1.5 w-1.5 rounded-full bg-info ltr:mr-1 rtl:ml-1.5"></div>
-                                                <div class="flex-1">Rebooted Server</div>
-                                                <div class="text-xs text-white-dark ltr:ml-auto rtl:mr-auto dark:text-gray-500">17:00</div>
-
-                                                <span
-                                                    class="badge badge-outline-info absolute bg-info-light text-xs opacity-0 group-hover:opacity-100 ltr:right-0 rtl:left-0 dark:bg-[#0e1726]"
-                                                    >Completed</span
-                                                >
-                                            </div>
-                                            <div class="group relative flex items-center py-1.5">
-                                                <div class="h-1.5 w-1.5 rounded-full bg-secondary ltr:mr-1 rtl:ml-1.5"></div>
-                                                <div class="flex-1">Send contract details to Freelancer</div>
-                                                <div class="text-xs text-white-dark ltr:ml-auto rtl:mr-auto dark:text-gray-500">18:00</div>
-
-                                                <span
-                                                    class="badge badge-outline-secondary absolute bg-secondary-light text-xs opacity-0 group-hover:opacity-100 ltr:right-0 rtl:left-0 dark:bg-[#0e1726]"
-                                                    >Pending</span
-                                                >
-                                            </div>
-                                            <div class="group relative flex items-center py-1.5">
-                                                <div class="h-1.5 w-1.5 rounded-full bg-primary ltr:mr-1 rtl:ml-1.5"></div>
-                                                <div class="flex-1">Updated Server Logs</div>
-                                                <div class="text-xs text-white-dark ltr:ml-auto rtl:mr-auto dark:text-gray-500">Just Now</div>
-
-                                                <span
-                                                    class="badge badge-outline-primary absolute bg-primary-light text-xs opacity-0 group-hover:opacity-100 ltr:right-0 rtl:left-0 dark:bg-[#0e1726]"
-                                                    >Pending</span
-                                                >
-                                            </div>
-                                            <div class="group relative flex items-center py-1.5">
-                                                <div class="h-1.5 w-1.5 rounded-full bg-success ltr:mr-1 rtl:ml-1.5"></div>
-                                                <div class="flex-1">Send Mail to HR and Admin</div>
-                                                <div class="text-xs text-white-dark ltr:ml-auto rtl:mr-auto dark:text-gray-500">2 min ago</div>
-
-                                                <span
-                                                    class="badge badge-outline-success absolute bg-success-light text-xs opacity-0 group-hover:opacity-100 ltr:right-0 rtl:left-0 dark:bg-[#0e1726]"
-                                                    >Completed</span
-                                                >
-                                            </div>
-                                            <div class="group relative flex items-center py-1.5">
-                                                <div class="h-1.5 w-1.5 rounded-full bg-danger ltr:mr-1 rtl:ml-1.5"></div>
-                                                <div class="flex-1">Backup Files EOD</div>
-                                                <div class="text-xs text-white-dark ltr:ml-auto rtl:mr-auto dark:text-gray-500">14:00</div>
-
-                                                <span
-                                                    class="badge badge-outline-danger absolute bg-danger-light text-xs opacity-0 group-hover:opacity-100 ltr:right-0 rtl:left-0 dark:bg-[#0e1726]"
-                                                    >Pending</span
-                                                >
-                                            </div>
-                                            <div class="group relative flex items-center py-1.5">
-                                                <div class="h-1.5 w-1.5 rounded-full bg-black ltr:mr-1 rtl:ml-1.5"></div>
-                                                <div class="flex-1">Collect documents from Sara</div>
-                                                <div class="text-xs text-white-dark ltr:ml-auto rtl:mr-auto dark:text-gray-500">16:00</div>
-
-                                                <span
-                                                    class="badge badge-outline-dark absolute bg-dark-light text-xs opacity-0 group-hover:opacity-100 ltr:right-0 rtl:left-0 dark:bg-[#0e1726]"
-                                                    >Completed</span
-                                                >
-                                            </div>
-                                            <div class="group relative flex items-center py-1.5">
-                                                <div class="h-1.5 w-1.5 rounded-full bg-warning ltr:mr-1 rtl:ml-1.5"></div>
-                                                <div class="flex-1">Conference call with Marketing Manager.</div>
-                                                <div class="text-xs text-white-dark ltr:ml-auto rtl:mr-auto dark:text-gray-500">17:00</div>
-
-                                                <span
-                                                    class="badge badge-outline-warning absolute bg-warning-light text-xs opacity-0 group-hover:opacity-100 ltr:right-0 rtl:left-0 dark:bg-[#0e1726]"
-                                                    >In progress</span
-                                                >
-                                            </div>
-                                            <div class="group relative flex items-center py-1.5">
-                                                <div class="h-1.5 w-1.5 rounded-full bg-info ltr:mr-1 rtl:ml-1.5"></div>
-                                                <div class="flex-1">Rebooted Server</div>
-                                                <div class="text-xs text-white-dark ltr:ml-auto rtl:mr-auto dark:text-gray-500">17:00</div>
-
-                                                <span
-                                                    class="badge badge-outline-info absolute bg-info-light text-xs opacity-0 group-hover:opacity-100 ltr:right-0 rtl:left-0 dark:bg-[#0e1726]"
-                                                    >Completed</span
-                                                >
-                                            </div>
-                                            <div class="group relative flex items-center py-1.5">
-                                                <div class="h-1.5 w-1.5 rounded-full bg-secondary ltr:mr-1 rtl:ml-1.5"></div>
-                                                <div class="flex-1">Send contract details to Freelancer</div>
-                                                <div class="text-xs text-white-dark ltr:ml-auto rtl:mr-auto dark:text-gray-500">18:00</div>
-
-                                                <span
-                                                    class="badge badge-outline-secondary absolute bg-secondary-light text-xs opacity-0 group-hover:opacity-100 ltr:right-0 rtl:left-0 dark:bg-[#0e1726]"
-                                                    >Pending</span
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="border-t border-white-light dark:border-white/10">
-                                        <a href="javascript:;" class="group group flex items-center justify-center p-4 font-semibold hover:text-primary">
-                                            View All
-                                            <svg
-                                                class="h-4 w-4 transition duration-300 group-hover:translate-x-1 ltr:ml-1 rtl:mr-1 rtl:rotate-180 rtl:group-hover:-translate-x-1"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M4 12H20M20 12L14 6M20 12L14 18"
-                                                    stroke="currentColor"
-                                                    stroke-width="1.5"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="panel h-full">
-                                    <div class="mb-5 flex items-center justify-between dark:text-white-light">
-                                        <h5 class="text-lg font-semibold">Transactions</h5>
-                                        <div x-data="dropdown" @click.outside="open = false" class="dropdown">
-                                            <a href="javascript:;" @click="toggle">
-                                                <svg
-                                                    class="h-5 w-5 text-black/70 hover:!text-primary dark:text-white/70"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                >
-                                                    <circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                    <circle opacity="0.5" cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                    <circle cx="19" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                </svg>
-                                            </a>
-                                            <ul x-cloak x-show="open" x-transition x-transition.duration.300ms class="ltr:right-0 rtl:left-0">
-                                                <li><a href="javascript:;" @click="toggle">View Report</a></li>
-                                                <li><a href="javascript:;" @click="toggle">Edit Report</a></li>
-                                                <li><a href="javascript:;" @click="toggle">Mark as Done</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="space-y-6">
-                                            <div class="flex">
-                                                <span
-                                                    class="grid h-9 w-9 place-content-center rounded-md bg-success-light text-base text-success dark:bg-success dark:text-success-light"
-                                                    >SP</span
-                                                >
-                                                <div class="flex-1 px-3">
-                                                    <div>Shaun Park</div>
-                                                    <div class="text-xs text-white-dark dark:text-gray-500">10 Jan 1:00PM</div>
-                                                </div>
-                                                <span class="whitespace-pre px-1 text-base text-success ltr:ml-auto rtl:mr-auto">+$36.11</span>
-                                            </div>
-                                            <div class="flex">
-                                                <span
-                                                    class="grid h-9 w-9 place-content-center rounded-md bg-warning-light text-warning dark:bg-warning dark:text-warning-light"
-                                                >
-                                                    <svg
-                                                        width="24"
-                                                        height="24"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-6 w-6"
-                                                    >
-                                                        <path
-                                                            d="M2 10C2 7.17157 2 5.75736 2.87868 4.87868C3.75736 4 5.17157 4 8 4H13C15.8284 4 17.2426 4 18.1213 4.87868C19 5.75736 19 7.17157 19 10C19 12.8284 19 14.2426 18.1213 15.1213C17.2426 16 15.8284 16 13 16H8C5.17157 16 3.75736 16 2.87868 15.1213C2 14.2426 2 12.8284 2 10Z"
-                                                            stroke="currentColor"
-                                                            stroke-width="1.5"
-                                                        />
-                                                        <path
-                                                            opacity="0.5"
-                                                            d="M19.0003 7.07617C19.9754 7.17208 20.6317 7.38885 21.1216 7.87873C22.0003 8.75741 22.0003 10.1716 22.0003 13.0001C22.0003 15.8285 22.0003 17.2427 21.1216 18.1214C20.2429 19.0001 18.8287 19.0001 16.0003 19.0001H11.0003C8.17187 19.0001 6.75766 19.0001 5.87898 18.1214C5.38909 17.6315 5.17233 16.9751 5.07642 16"
-                                                            stroke="currentColor"
-                                                            stroke-width="1.5"
-                                                        />
-                                                        <path
-                                                            d="M13 10C13 11.3807 11.8807 12.5 10.5 12.5C9.11929 12.5 8 11.3807 8 10C8 8.61929 9.11929 7.5 10.5 7.5C11.8807 7.5 13 8.61929 13 10Z"
-                                                            stroke="currentColor"
-                                                            stroke-width="1.5"
-                                                        />
-                                                        <path opacity="0.5" d="M16 12L16 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                                        <path opacity="0.5" d="M5 12L5 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                                    </svg>
-                                                </span>
-                                                <div class="flex-1 px-3">
-                                                    <div>Cash withdrawal</div>
-                                                    <div class="text-xs text-white-dark dark:text-gray-500">04 Jan 1:00PM</div>
-                                                </div>
-                                                <span class="whitespace-pre px-1 text-base text-danger ltr:ml-auto rtl:mr-auto">-$16.44</span>
-                                            </div>
-                                            <div class="flex">
-                                                <span
-                                                    class="grid h-9 w-9 place-content-center rounded-md bg-danger-light text-danger dark:bg-danger dark:text-danger-light"
-                                                >
-                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <circle cx="12" cy="6" r="4" stroke="currentColor" stroke-width="1.5" />
-                                                        <path
-                                                            opacity="0.5"
-                                                            d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z"
-                                                            stroke="currentColor"
-                                                            stroke-width="1.5"
-                                                        />
-                                                    </svg>
-                                                </span>
-                                                <div class="flex-1 px-3">
-                                                    <div>Amy Diaz</div>
-                                                    <div class="text-xs text-white-dark dark:text-gray-500">10 Jan 1:00PM</div>
-                                                </div>
-                                                <span class="whitespace-pre px-1 text-base text-success ltr:ml-auto rtl:mr-auto">+$66.44</span>
-                                            </div>
-                                            <div class="flex">
-                                                <span
-                                                    class="grid h-9 w-9 place-content-center rounded-md bg-secondary-light text-secondary dark:bg-secondary dark:text-secondary-light"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="1em"
-                                                        height="1em"
-                                                        preserveAspectRatio="xMidYMid meet"
-                                                        viewBox="0 0 24 24"
-                                                    >
-                                                        <path
-                                                            fill="currentColor"
-                                                            d="M5.398 0v.006c3.028 8.556 5.37 15.175 8.348 23.596c2.344.058 4.85.398 4.854.398c-2.8-7.924-5.923-16.747-8.487-24zm8.489 0v9.63L18.6 22.951c-.043-7.86-.004-15.913.002-22.95zM5.398 1.05V24c1.873-.225 2.81-.312 4.715-.398v-9.22z"
-                                                        />
-                                                    </svg>
-                                                </span>
-                                                <div class="flex-1 px-3">
-                                                    <div>Netflix</div>
-                                                    <div class="text-xs text-white-dark dark:text-gray-500">04 Jan 1:00PM</div>
-                                                </div>
-                                                <span class="whitespace-pre px-1 text-base text-danger ltr:ml-auto rtl:mr-auto">-$32.00</span>
-                                            </div>
-                                            <div class="flex">
-                                                <span
-                                                    class="grid h-9 w-9 place-content-center rounded-md bg-info-light text-base text-info dark:bg-info dark:text-info-light"
-                                                    >DA</span
-                                                >
-                                                <div class="flex-1 px-3">
-                                                    <div>Daisy Anderson</div>
-                                                    <div class="text-xs text-white-dark dark:text-gray-500">10 Jan 1:00PM</div>
-                                                </div>
-                                                <span class="whitespace-pre px-1 text-base text-success ltr:ml-auto rtl:mr-auto">+$10.08</span>
-                                            </div>
-                                            <div class="flex">
-                                                <span
-                                                    class="grid h-9 w-9 place-content-center rounded-md bg-primary-light text-primary dark:bg-primary dark:text-primary-light"
-                                                >
-                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M13.926 9.70541C13.5474 9.33386 13.5474 8.74151 13.5474 7.55682V7.24712C13.5474 3.96249 13.5474 2.32018 12.6241 2.03721C11.7007 1.75425 10.711 3.09327 8.73167 5.77133L5.66953 9.91436C4.3848 11.6526 3.74244 12.5217 4.09639 13.205C4.10225 13.2164 4.10829 13.2276 4.1145 13.2387C4.48945 13.9117 5.59888 13.9117 7.81775 13.9117C9.05079 13.9117 9.6673 13.9117 10.054 14.2754"
-                                                            stroke="currentColor"
-                                                            stroke-width="1.5"
-                                                        />
-                                                        <path
-                                                            opacity="0.5"
-                                                            d="M13.9259 9.70557L13.9459 9.72481C14.3326 10.0885 14.9492 10.0885 16.1822 10.0885C18.4011 10.0885 19.5105 10.0885 19.8854 10.7615C19.8917 10.7726 19.8977 10.7838 19.9036 10.7951C20.2575 11.4785 19.6151 12.3476 18.3304 14.0858L15.2682 18.2288C13.2888 20.9069 12.2991 22.2459 11.3758 21.9629C10.4524 21.68 10.4524 20.0376 10.4525 16.753L10.4525 16.4434C10.4525 15.2587 10.4525 14.6663 10.074 14.2948L10.054 14.2755"
-                                                            stroke="currentColor"
-                                                            stroke-width="1.5"
-                                                        />
-                                                    </svg>
-                                                </span>
-                                                <div class="flex-1 px-3">
-                                                    <div>Electricity Bill</div>
-                                                    <div class="text-xs text-white-dark dark:text-gray-500">04 Jan 1:00PM</div>
-                                                </div>
-                                                <span class="whitespace-pre px-1 text-base text-danger ltr:ml-auto rtl:mr-auto">-$22.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="panel h-full overflow-hidden border-0 p-0">
-                                    <div class="min-h-[190px] bg-gradient-to-r from-[#4361ee] to-[#160f6b] p-6">
-                                        <div class="mb-6 flex items-center justify-between">
-                                            <div class="flex items-center rounded-full bg-black/50 p-1 font-semibold text-white ltr:pr-3 rtl:pl-3">
-                                                <img
-                                                    class="block h-8 w-8 rounded-full border-2 border-white/50 object-cover ltr:mr-1 rtl:ml-1"
-                                                    src="assets_guru/images/profile-34.jpeg"
-                                                    alt="image"
-                                                />
-                                                Alan Green
-                                            </div>
-                                            <button
-                                                type="button"
-                                                class="flex h-9 w-9 items-center justify-between rounded-md bg-black text-white hover:opacity-80 ltr:ml-auto rtl:mr-auto"
-                                            >
-                                                <svg
-                                                    class="m-auto h-6 w-6"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                    stroke-width="1.5"
-                                                    fill="none"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                >
-                                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <div class="flex items-center justify-between text-white">
-                                            <p class="text-xl">Wallet Balance</p>
-                                            <h5 class="text-2xl ltr:ml-auto rtl:mr-auto"><span class="text-white-light">$</span>2953</h5>
-                                        </div>
-                                    </div>
-                                    <div class="-mt-12 grid grid-cols-2 gap-2 px-8">
-                                        <div class="rounded-md bg-white px-4 py-2.5 shadow dark:bg-[#060818]">
-                                            <span class="mb-4 flex items-center justify-between dark:text-white"
-                                                >Received
-                                                <svg class="h-4 w-4 text-success" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M19 15L12 9L5 15"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    />
-                                                </svg>
-                                            </span>
-                                            <div
-                                                class="btn w-full border-0 bg-[#ebedf2] py-1 text-base text-[#515365] shadow-none dark:bg-black dark:text-[#bfc9d4]"
-                                            >
-                                                $97.99
-                                            </div>
-                                        </div>
-                                        <div class="rounded-md bg-white px-4 py-2.5 shadow dark:bg-[#060818]">
-                                            <span class="mb-4 flex items-center justify-between dark:text-white"
-                                                >Spent
-                                                <svg class="h-4 w-4 text-danger" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M19 9L12 15L5 9"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    />
-                                                </svg>
-                                            </span>
-                                            <div
-                                                class="btn w-full border-0 bg-[#ebedf2] py-1 text-base text-[#515365] shadow-none dark:bg-black dark:text-[#bfc9d4]"
-                                            >
-                                                $53.00
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="p-5">
-                                        <div class="mb-5">
-                                            <span
-                                                class="rounded-full bg-[#1b2e4b] px-4 py-1.5 text-xs text-white before:inline-block before:h-1.5 before:w-1.5 before:rounded-full before:bg-white ltr:before:mr-2 rtl:before:ml-2"
-                                                >Pending</span
-                                            >
-                                        </div>
-                                        <div class="mb-5 space-y-1">
-                                            <div class="flex items-center justify-between">
-                                                <p class="font-semibold text-[#515365]">Netflix</p>
-                                                <p class="text-base"><span>$</span> <span class="font-semibold">13.85</span></p>
-                                            </div>
-                                            <div class="flex items-center justify-between">
-                                                <p class="font-semibold text-[#515365]">BlueHost VPN</p>
-                                                <p class="text-base"><span>$</span> <span class="font-semibold">15.66</span></p>
-                                            </div>
-                                        </div>
-                                        <div class="flex justify-around px-2 text-center">
-                                            <button type="button" class="btn btn-secondary ltr:mr-2 rtl:ml-2">View Details</button>
-                                            <button type="button" class="btn btn-success">Pay Now $29.51</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                                <div class="panel h-full w-full">
-                                    <div class="mb-5 flex items-center justify-between">
-                                        <h5 class="text-lg font-semibold dark:text-white-light">Recent Orders</h5>
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th class="ltr:rounded-l-md rtl:rounded-r-md">Customer</th>
-                                                    <th>Product</th>
-                                                    <th>Invoice</th>
-                                                    <th>Price</th>
-                                                    <th class="ltr:rounded-r-md rtl:rounded-l-md">Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
-                                                    <td class="min-w-[150px] text-black dark:text-white">
-                                                        <div class="flex items-center">
-                                                            <img
-                                                                class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets_guru/images/profile-6.jpeg"
-                                                                alt="avatar"
-                                                            />
-                                                            <span class="whitespace-nowrap">Luke Ivory</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-primary">Headphone</td>
-                                                    <td><a href="apps-invoice-preview.html">#46894</a></td>
-                                                    <td>$56.07</td>
-                                                    <td><span class="badge bg-success shadow-md dark:group-hover:bg-transparent">Paid</span></td>
-                                                </tr>
-                                                <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
-                                                    <td class="text-black dark:text-white">
-                                                        <div class="flex items-center">
-                                                            <img
-                                                                class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets_guru/images/profile-7.jpeg"
-                                                                alt="avatar"
-                                                            />
-                                                            <span class="whitespace-nowrap">Andy King</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-info">Nike Sport</td>
-                                                    <td><a href="apps-invoice-preview.html">#76894</a></td>
-                                                    <td>$126.04</td>
-                                                    <td><span class="badge bg-secondary shadow-md dark:group-hover:bg-transparent">Shipped</span></td>
-                                                </tr>
-                                                <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
-                                                    <td class="text-black dark:text-white">
-                                                        <div class="flex items-center">
-                                                            <img
-                                                                class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets_guru/images/profile-8.jpeg"
-                                                                alt="avatar"
-                                                            />
-                                                            <span class="whitespace-nowrap">Laurie Fox</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-warning">Sunglasses</td>
-                                                    <td><a href="apps-invoice-preview.html">#66894</a></td>
-                                                    <td>$56.07</td>
-                                                    <td><span class="badge bg-success shadow-md dark:group-hover:bg-transparent">Paid</span></td>
-                                                </tr>
-                                                <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
-                                                    <td class="text-black dark:text-white">
-                                                        <div class="flex items-center">
-                                                            <img
-                                                                class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets_guru/images/profile-9.jpeg"
-                                                                alt="avatar"
-                                                            />
-                                                            <span class="whitespace-nowrap">Ryan Collins</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-danger">Sport</td>
-                                                    <td><a href="apps-invoice-preview.html">#75844</a></td>
-                                                    <td>$110.00</td>
-                                                    <td><span class="badge bg-secondary shadow-md dark:group-hover:bg-transparent">Shipped</span></td>
-                                                </tr>
-                                                <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
-                                                    <td class="text-black dark:text-white">
-                                                        <div class="flex items-center">
-                                                            <img
-                                                                class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets_guru/images/profile-10.jpeg"
-                                                                alt="avatar"
-                                                            />
-                                                            <span class="whitespace-nowrap">Irene Collins</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-secondary">Speakers</td>
-                                                    <td><a href="apps-invoice-preview.html">#46894</a></td>
-                                                    <td>$56.07</td>
-                                                    <td><span class="badge bg-success shadow-md dark:group-hover:bg-transparent">Paid</span></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <div class="panel h-full w-full">
-                                    <div class="mb-5 flex items-center justify-between">
-                                        <h5 class="text-lg font-semibold dark:text-white-light">Top Selling Product</h5>
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table>
-                                            <thead>
-                                                <tr class="border-b-0">
-                                                    <th class="ltr:rounded-l-md rtl:rounded-r-md">Product</th>
-                                                    <th>Price</th>
-                                                    <th>Discount</th>
-                                                    <th>Sold</th>
-                                                    <th class="ltr:rounded-r-md rtl:rounded-l-md">Source</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
-                                                    <td class="min-w-[150px] text-black dark:text-white">
-                                                        <div class="flex">
-                                                            <img
-                                                                class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets_guru/images/product-headphones.jpg"
-                                                                alt="avatar"
-                                                            />
-                                                            <p class="whitespace-nowrap">Headphone <span class="block text-xs text-primary">Digital</span></p>
-                                                        </div>
-                                                    </td>
-                                                    <td>$168.09</td>
-                                                    <td>$60.09</td>
-                                                    <td>170</td>
-                                                    <td>
-                                                        <a class="flex items-center text-danger" href="javascript:;">
-                                                            <svg
-                                                                class="h-3.5 w-3.5 ltr:mr-1 rtl:ml-1 rtl:rotate-180"
-                                                                viewBox="0 0 24 24"
-                                                                fill="none"
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                            >
-                                                                <path
-                                                                    d="M12.6644 5.47875L16.6367 9.00968C18.2053 10.404 18.9896 11.1012 18.9896 11.9993C18.9896 12.8975 18.2053 13.5946 16.6367 14.989L12.6644 18.5199C11.9484 19.1563 11.5903 19.4746 11.2952 19.342C11 19.2095 11 18.7305 11 17.7725V15.4279C7.4 15.4279 3.5 17.1422 2 19.9993C2 10.8565 7.33333 8.57075 11 8.57075V6.22616C11 5.26817 11 4.78917 11.2952 4.65662C11.5903 4.52407 11.9484 4.8423 12.6644 5.47875Z"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="1.5"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                />
-                                                                <path
-                                                                    opacity="0.5"
-                                                                    d="M15.5386 4.5L20.7548 9.34362C21.5489 10.081 22.0001 11.1158 22.0001 12.1994C22.0001 13.3418 21.4989 14.4266 20.629 15.1671L15.5386 19.5"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="1.5"
-                                                                    stroke-linecap="round"
-                                                                />
-                                                            </svg>
-
-                                                            Direct
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
-                                                    <td class="text-black dark:text-white">
-                                                        <div class="flex">
-                                                            <img
-                                                                class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets_guru/images/product-shoes.jpg"
-                                                                alt="avatar"
-                                                            />
-                                                            <p class="whitespace-nowrap">Shoes <span class="block text-xs text-warning">Faishon</span></p>
-                                                        </div>
-                                                    </td>
-                                                    <td>$126.04</td>
-                                                    <td>$47.09</td>
-                                                    <td>130</td>
-                                                    <td>
-                                                        <a class="flex items-center text-success" href="javascript:;">
-                                                            <svg
-                                                                class="h-3.5 w-3.5 ltr:mr-1 rtl:ml-1 rtl:rotate-180"
-                                                                viewBox="0 0 24 24"
-                                                                fill="none"
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                            >
-                                                                <path
-                                                                    d="M12.6644 5.47875L16.6367 9.00968C18.2053 10.404 18.9896 11.1012 18.9896 11.9993C18.9896 12.8975 18.2053 13.5946 16.6367 14.989L12.6644 18.5199C11.9484 19.1563 11.5903 19.4746 11.2952 19.342C11 19.2095 11 18.7305 11 17.7725V15.4279C7.4 15.4279 3.5 17.1422 2 19.9993C2 10.8565 7.33333 8.57075 11 8.57075V6.22616C11 5.26817 11 4.78917 11.2952 4.65662C11.5903 4.52407 11.9484 4.8423 12.6644 5.47875Z"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="1.5"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                />
-                                                                <path
-                                                                    opacity="0.5"
-                                                                    d="M15.5386 4.5L20.7548 9.34362C21.5489 10.081 22.0001 11.1158 22.0001 12.1994C22.0001 13.3418 21.4989 14.4266 20.629 15.1671L15.5386 19.5"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="1.5"
-                                                                    stroke-linecap="round"
-                                                                />
-                                                            </svg>
-                                                            Google
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
-                                                    <td class="text-black dark:text-white">
-                                                        <div class="flex">
-                                                            <img
-                                                                class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets_guru/images/product-watch.jpg"
-                                                                alt="avatar"
-                                                            />
-                                                            <p class="whitespace-nowrap">Watch <span class="block text-xs text-danger">Accessories</span></p>
-                                                        </div>
-                                                    </td>
-                                                    <td>$56.07</td>
-                                                    <td>$20.00</td>
-                                                    <td>66</td>
-                                                    <td>
-                                                        <a class="flex items-center text-warning" href="javascript:;">
-                                                            <svg
-                                                                class="h-3.5 w-3.5 ltr:mr-1 rtl:ml-1 rtl:rotate-180"
-                                                                viewBox="0 0 24 24"
-                                                                fill="none"
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                            >
-                                                                <path
-                                                                    d="M12.6644 5.47875L16.6367 9.00968C18.2053 10.404 18.9896 11.1012 18.9896 11.9993C18.9896 12.8975 18.2053 13.5946 16.6367 14.989L12.6644 18.5199C11.9484 19.1563 11.5903 19.4746 11.2952 19.342C11 19.2095 11 18.7305 11 17.7725V15.4279C7.4 15.4279 3.5 17.1422 2 19.9993C2 10.8565 7.33333 8.57075 11 8.57075V6.22616C11 5.26817 11 4.78917 11.2952 4.65662C11.5903 4.52407 11.9484 4.8423 12.6644 5.47875Z"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="1.5"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                />
-                                                                <path
-                                                                    opacity="0.5"
-                                                                    d="M15.5386 4.5L20.7548 9.34362C21.5489 10.081 22.0001 11.1158 22.0001 12.1994C22.0001 13.3418 21.4989 14.4266 20.629 15.1671L15.5386 19.5"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="1.5"
-                                                                    stroke-linecap="round"
-                                                                />
-                                                            </svg>
-                                                            Ads
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
-                                                    <td class="text-black dark:text-white">
-                                                        <div class="flex">
-                                                            <img
-                                                                class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets_guru/images/product-laptop.jpg"
-                                                                alt="avatar"
-                                                            />
-                                                            <p class="whitespace-nowrap">Laptop <span class="block text-xs text-primary">Digital</span></p>
-                                                        </div>
-                                                    </td>
-                                                    <td>$110.00</td>
-                                                    <td>$33.00</td>
-                                                    <td>35</td>
-                                                    <td>
-                                                        <a class="flex items-center text-secondary" href="javascript:;">
-                                                            <svg
-                                                                class="h-3.5 w-3.5 ltr:mr-1 rtl:ml-1 rtl:rotate-180"
-                                                                viewBox="0 0 24 24"
-                                                                fill="none"
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                            >
-                                                                <path
-                                                                    d="M12.6644 5.47875L16.6367 9.00968C18.2053 10.404 18.9896 11.1012 18.9896 11.9993C18.9896 12.8975 18.2053 13.5946 16.6367 14.989L12.6644 18.5199C11.9484 19.1563 11.5903 19.4746 11.2952 19.342C11 19.2095 11 18.7305 11 17.7725V15.4279C7.4 15.4279 3.5 17.1422 2 19.9993C2 10.8565 7.33333 8.57075 11 8.57075V6.22616C11 5.26817 11 4.78917 11.2952 4.65662C11.5903 4.52407 11.9484 4.8423 12.6644 5.47875Z"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="1.5"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                />
-                                                                <path
-                                                                    opacity="0.5"
-                                                                    d="M15.5386 4.5L20.7548 9.34362C21.5489 10.081 22.0001 11.1158 22.0001 12.1994C22.0001 13.3418 21.4989 14.4266 20.629 15.1671L15.5386 19.5"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="1.5"
-                                                                    stroke-linecap="round"
-                                                                />
-                                                            </svg>
-                                                            Email
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
-                                                    <td class="text-black dark:text-white">
-                                                        <div class="flex">
-                                                            <img
-                                                                class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3"
-                                                                src="assets_guru/images/product-camera.jpg"
-                                                                alt="avatar"
-                                                            />
-                                                            <p class="whitespace-nowrap">Camera <span class="block text-xs text-primary">Digital</span></p>
-                                                        </div>
-                                                    </td>
-                                                    <td>$56.07</td>
-                                                    <td>$26.04</td>
-                                                    <td>30</td>
-                                                    <td>
-                                                        <a class="flex items-center text-primary" href="javascript:;">
-                                                            <svg
-                                                                class="h-3.5 w-3.5 ltr:mr-1 rtl:ml-1 rtl:rotate-180"
-                                                                viewBox="0 0 24 24"
-                                                                fill="none"
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                            >
-                                                                <path
-                                                                    d="M12.6644 5.47875L16.6367 9.00968C18.2053 10.404 18.9896 11.1012 18.9896 11.9993C18.9896 12.8975 18.2053 13.5946 16.6367 14.989L12.6644 18.5199C11.9484 19.1563 11.5903 19.4746 11.2952 19.342C11 19.2095 11 18.7305 11 17.7725V15.4279C7.4 15.4279 3.5 17.1422 2 19.9993C2 10.8565 7.33333 8.57075 11 8.57075V6.22616C11 5.26817 11 4.78917 11.2952 4.65662C11.5903 4.52407 11.9484 4.8423 12.6644 5.47875Z"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="1.5"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                />
-                                                                <path
-                                                                    opacity="0.5"
-                                                                    d="M15.5386 4.5L20.7548 9.34362C21.5489 10.081 22.0001 11.1158 22.0001 12.1994C22.0001 13.3418 21.4989 14.4266 20.629 15.1671L15.5386 19.5"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="1.5"
-                                                                    stroke-linecap="round"
-                                                                />
-                                                            </svg>
-                                                            Referral
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -3118,7 +1656,7 @@
         <script defer src="assets_guru/js/alpine.min.js"></script>
         <script src="assets_guru/js/custom.js"></script>
         <script defer src="assets_guru/js/apexcharts.js"></script>
-
+        <script src="assets/js/simple-datatables.js"></script>
         <script>
             document.addEventListener('alpine:init', () => {
                 // main section
@@ -3527,7 +2065,7 @@
                     // sales by category
                     get salesByCategoryOptions() {
                         return {
-                            series: [985, 737, 270],
+                            series: [985, 737],
                             chart: {
                                 type: 'donut',
                                 height: 460,
@@ -3590,7 +2128,7 @@
                                     },
                                 },
                             },
-                            labels: ['Apparel', 'Sports', 'Others'],
+                            labels: ['Apparel', 'Sports'],
                             states: {
                                 hover: {
                                     filter: {
@@ -3744,7 +2282,56 @@
                         };
                     },
                 }));
+                Alpine.data('basic', () => ({
+                    datatable: null,
+                    init() {
+                        this.datatable = new simpleDatatables.DataTable('#myTable', {
+                            data: {
+                                headings: ['ID', ' Nama Siswa', 'Kelas', 'Jurusan'],
+                                data: [
+                                    [1, 'mamat', '11', 'RPL'],
+                                    [2, 'mamat', '11', 'RPL'],
+                                    [3, 'mamat', '11', 'RPL'],
+                                    [4, 'mamat', '11', 'RPL'],
+                                    [5, 'mamat', '11', 'RPL'],
+                                    [6, 'mamat', '11', 'RPL'],
+                                    [7, 'mamat', '11', 'RPL'],
+                                    [8, 'mamat', '11', 'RPL'],
+                                    [9, 'mamat', '11', 'RPL'],
+                                    [10, 'mamat', '11', 'RPL'],
+                                    [11, 'mamat', '11', 'RPL'],
+                                    [12, 'mamat', '11', 'RPL'],
+                                    [13, 'mamat', '11', 'RPL'],
+                                    [14, 'mamat', '11', 'RPL'],
+                                    [15, 'mamat', '11', 'RPL'],
+                                ],
+                            },
+                            sortable: true,
+                            searchable: false,
+                            perPage: 10,
+                            perPageSelect: [5, 10, 15, 20, 25, 30],
+                            firstLast: true,
+                            firstText:
+                                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                            lastText:
+                                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                            prevText:
+                                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                            nextText:
+                                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                            labels: {
+                                perPage: '{select}',
+                            },
+                            layout: {
+                                top: '{search}',
+                                bottom: '{info}{select}{pager}',
+                            },
+                        });
+                    },
+                }));
+                
             });
+            
         </script>
     </body>
 
