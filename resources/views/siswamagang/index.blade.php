@@ -8,7 +8,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>siswa - Dashboad</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {{-- @vite('resources/css/app.css') --}}
+        @vite('resources/css/app.css')
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
         <link rel="stylesheet" href="css/app.css" />
         <link rel="icon" type="image/x-icon" href="favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
@@ -30,7 +31,7 @@
     </head>
     <body
         x-data="main"
-        class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
+        class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased bg-[#F6F5FF]"
         :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout,$store.app.rtlClass]"
     >
         <!-- sidebar menu overlay -->
@@ -446,7 +447,7 @@
                                             />
                                         </svg>
 
-                                        <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Dashboard</span>
+                                        <span class="text-white ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Dashboard</span>
                                     </div>
                                     <div class="rtl:rotate-180" :class="{'!rotate-90' : activeDropdown === 'dashboard'}">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1543,8 +1544,8 @@
                             </li>
                         </ul>
 
-                        <div class="pt-5">
-                            <div class="mb-6 grid gap-6 xl:grid-cols-3">
+                        <div class="pt-5 lg:w-full  md: sm:w-10/12">
+                            <div class="mb-6 grid gap-6 xl:grid-cols-3 lg:grid-cols-1">
                                 <div class="panel h-full xl:col-span-2">
                                     <div class="mb-5 flex items-center dark:text-white-light">
                                         <h5 class="text-lg font-semibold">Revenue</h5>
@@ -1569,14 +1570,8 @@
                                         </div>
                                     </div>
                                     <p class="text-lg dark:text-white-light/90">Total Profit <span class="ml-2 text-primary">$10,840</span></p>
-                                    <div class="relative">
-                                        <div x-ref="revenueChart" class="rounded-lg bg-white dark:bg-black">
-                                            <!-- loader -->
-                                            <div class="grid min-h-[325px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
-                                                <span
-                                                    class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"
-                                                ></span>
-                                            </div>
+                                    <div class="relative w-full ">
+                                        <div x-ref="revenueChart" class="rounded-lg bg-white dark:bg-black lg:w-full">
                                         </div>
                                     </div>
                                 </div>
@@ -1601,143 +1596,284 @@
                                         <h5 class="text-lg font-semibold dark:text-white-light">Tata tertib</h5>
                                     </div>
                                     {{-- tata tertib  --}}
+                                    <div class=" panel w-full flex justify-around gap-20 px-5">
+                                        {{-- pertama --}}
+                                        <div class=" w-9/12">
+                                            <div id="accordionFlushExample">
+                                                <div
+                                                class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+                                                <h2 class="mb-0" id="flush-headingOne">
+                                                    <button
+                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+                                                    type="button"
+                                                    data-te-collapse-init
+                                                    data-te-target="#flush-collapseOne"
+                                                    aria-expanded="false"
+                                                    aria-controls="flush-collapseOne">
+                                                    Tata tertib magang
+                                                    <span
+                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                                                        <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        stroke-width="1.5"
+                                                        stroke="currentColor"
+                                                        class="h-6 w-6">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                                        </svg>
+                                                    </span>
+                                                    </button>
+                                                </h2>
+                                                <div
+                                                    id="flush-collapseOne"
+                                                    class="!visible border-0"
+                                                    data-te-collapse-item
+                                                    data-te-collapse-show
+                                                    aria-labelledby="flush-headingOne"
+                                                    data-te-parent="#accordionFlushExample">
+                                                    <div class="px-5 py-4">
+                                                    Placeholder content for this accordion, which is intended to
+                                                    demonstrate the
+                                                    <code>.accordion-flush</code> class. This is the first item's
+                                                    accordion body.
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div
+                                                class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+                                                <h2 class="mb-0" id="flush-headingTwo">
+                                                    <button
+                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+                                                    type="button"
+                                                    data-te-collapse-init
+                                                    data-te-collapse-collapsed
+                                                    data-te-target="#flush-collapseTwo"
+                                                    aria-expanded="false"
+                                                    aria-controls="flush-collapseTwo">
+                                                    Tata tertib piket
+                                                    <span
+                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                                                        <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        stroke-width="1.5"
+                                                        stroke="currentColor"
+                                                        class="h-6 w-6">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                                        </svg>
+                                                    </span>
+                                                    </button>
+                                                </h2>
+                                                <div
+                                                    id="flush-collapseTwo"
+                                                    class="!visible hidden border-0"
+                                                    data-te-collapse-item
+                                                    aria-labelledby="flush-headingTwo"
+                                                    data-te-parent="#accordionFlushExample">
+                                                    <div class="px-5 py-4">
+                                                    Placeholder content for this accordion, which is intended to
+                                                    demonstrate the
+                                                    <code>.accordion-flush</code> class. This is the second item's
+                                                    accordion body. Let's imagine this being filled with some actual
+                                                    content.
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div
+                                                class="rounded-none border border-b-0 border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+                                                <h2 class="mb-0" id="flush-headingThree">
+                                                    <button
+                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+                                                    type="button"
+                                                    data-te-collapse-init
+                                                    data-te-collapse-collapsed
+                                                    data-te-target="#flush-collapseThree"
+                                                    aria-expanded="false"
+                                                    aria-controls="flush-collapseThree">
+                                                    Tata tertib tugas
+                                                    <span
+                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                                                        <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        stroke-width="1.5"
+                                                        stroke="currentColor"
+                                                        class="h-6 w-6">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                                        </svg>
+                                                    </span>
+                                                    </button>
+                                                </h2>
+                                                <div
+                                                    id="flush-collapseThree"
+                                                    class="!visible hidden"
+                                                    data-te-collapse-item
+                                                    aria-labelledby="flush-headingThree"
+                                                    data-te-parent="#accordionFlushExample">
+                                                    <div class="px-5 py-4">
+                                                    Placeholder content for this accordion, which is intended to
+                                                    demonstrate the
+                                                    <code>.accordion-flush</code> class. This is the third item's
+                                                    accordion body. Nothing more exciting happening here in terms of
+                                                    content, but just filling up the space to make it look, at least
+                                                    at first glance, a bit more representative of how this would look
+                                                    in a real-world application.
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                    <div>
-                                        <div id="accordionFlushExample">
-                                            <div
-                                              class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                              <h2 class="mb-0" id="flush-headingOne">
-                                                <button
-                                                  class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                  type="button"
-                                                  data-te-collapse-init
-                                                  data-te-target="#flush-collapseOne"
-                                                  aria-expanded="false"
-                                                  aria-controls="flush-collapseOne">
-                                                  Tata tertib magang
-                                                  <span
-                                                    class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                    <svg
-                                                      xmlns="http://www.w3.org/2000/svg"
-                                                      fill="none"
-                                                      viewBox="0 0 24 24"
-                                                      stroke-width="1.5"
-                                                      stroke="currentColor"
-                                                      class="h-6 w-6">
-                                                      <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                    </svg>
-                                                  </span>
-                                                </button>
-                                              </h2>
-                                              <div
-                                                id="flush-collapseOne"
-                                                class="!visible border-0"
-                                                data-te-collapse-item
-                                                data-te-collapse-show
-                                                aria-labelledby="flush-headingOne"
-                                                data-te-parent="#accordionFlushExample">
-                                                <div class="px-5 py-4">
-                                                  Placeholder content for this accordion, which is intended to
-                                                  demonstrate the
-                                                  <code>.accordion-flush</code> class. This is the first item's
-                                                  accordion body.
+                                        {{-- kedua --}}
+                                        <div class=" w-9/12">
+                                            <div id="accordionFlushExample">
+                                                <div
+                                                class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+                                                <h2 class="mb-0" id="flush-headingfour">
+                                                    <button
+                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+                                                    type="button"
+                                                    data-te-collapse-init
+                                                    data-te-target="#flush-collapsefour"
+                                                    aria-expanded="false"
+                                                    aria-controls="flush-collapsefour">
+                                                    Tata tertib magang
+                                                    <span
+                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                                                        <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        stroke-width="1.5"
+                                                        stroke="currentColor"
+                                                        class="h-6 w-6">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                                        </svg>
+                                                    </span>
+                                                    </button>
+                                                </h2>
+                                                <div
+                                                    id="flush-collapsefour"
+                                                    class="!visible border-0"
+                                                    data-te-collapse-item
+                                                    data-te-collapse-show
+                                                    aria-labelledby="flush-headingfour"
+                                                    data-te-parent="#accordionFlushExample">
+                                                    <div class="px-5 py-4">
+                                                    Placeholder content for this accordion, which is intended to
+                                                    demonstrate the
+                                                    <code>.accordion-flush</code> class. This is the first item's
+                                                    accordion body.
+                                                    </div>
                                                 </div>
-                                              </div>
-                                            </div>
-                                            <div
-                                              class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                              <h2 class="mb-0" id="flush-headingTwo">
-                                                <button
-                                                  class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                  type="button"
-                                                  data-te-collapse-init
-                                                  data-te-collapse-collapsed
-                                                  data-te-target="#flush-collapseTwo"
-                                                  aria-expanded="false"
-                                                  aria-controls="flush-collapseTwo">
-                                                  Tata tertib piket
-                                                  <span
-                                                    class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                    <svg
-                                                      xmlns="http://www.w3.org/2000/svg"
-                                                      fill="none"
-                                                      viewBox="0 0 24 24"
-                                                      stroke-width="1.5"
-                                                      stroke="currentColor"
-                                                      class="h-6 w-6">
-                                                      <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                    </svg>
-                                                  </span>
-                                                </button>
-                                              </h2>
-                                              <div
-                                                id="flush-collapseTwo"
-                                                class="!visible hidden border-0"
-                                                data-te-collapse-item
-                                                aria-labelledby="flush-headingTwo"
-                                                data-te-parent="#accordionFlushExample">
-                                                <div class="px-5 py-4">
-                                                  Placeholder content for this accordion, which is intended to
-                                                  demonstrate the
-                                                  <code>.accordion-flush</code> class. This is the second item's
-                                                  accordion body. Let's imagine this being filled with some actual
-                                                  content.
                                                 </div>
-                                              </div>
-                                            </div>
-                                            <div
-                                              class="rounded-none border border-b-0 border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                              <h2 class="mb-0" id="flush-headingThree">
-                                                <button
-                                                  class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                  type="button"
-                                                  data-te-collapse-init
-                                                  data-te-collapse-collapsed
-                                                  data-te-target="#flush-collapseThree"
-                                                  aria-expanded="false"
-                                                  aria-controls="flush-collapseThree">
-                                                  Tata tertib tugas
-                                                  <span
-                                                    class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                    <svg
-                                                      xmlns="http://www.w3.org/2000/svg"
-                                                      fill="none"
-                                                      viewBox="0 0 24 24"
-                                                      stroke-width="1.5"
-                                                      stroke="currentColor"
-                                                      class="h-6 w-6">
-                                                      <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                    </svg>
-                                                  </span>
-                                                </button>
-                                              </h2>
-                                              <div
-                                                id="flush-collapseThree"
-                                                class="!visible hidden"
-                                                data-te-collapse-item
-                                                aria-labelledby="flush-headingThree"
-                                                data-te-parent="#accordionFlushExample">
-                                                <div class="px-5 py-4">
-                                                  Placeholder content for this accordion, which is intended to
-                                                  demonstrate the
-                                                  <code>.accordion-flush</code> class. This is the third item's
-                                                  accordion body. Nothing more exciting happening here in terms of
-                                                  content, but just filling up the space to make it look, at least
-                                                  at first glance, a bit more representative of how this would look
-                                                  in a real-world application.
+                                                <div
+                                                class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+                                                <h2 class="mb-0" id="flush-headingfive">
+                                                    <button
+                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+                                                    type="button"
+                                                    data-te-collapse-init
+                                                    data-te-collapse-collapsed
+                                                    data-te-target="#flush-collapsefive"
+                                                    aria-expanded="false"
+                                                    aria-controls="flush-collapsefive">
+                                                    Tata tertib piket
+                                                    <span
+                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                                                        <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        stroke-width="1.5"
+                                                        stroke="currentColor"
+                                                        class="h-6 w-6">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                                        </svg>
+                                                    </span>
+                                                    </button>
+                                                </h2>
+                                                <div
+                                                    id="flush-collapsefive"
+                                                    class="!visible hidden border-0"
+                                                    data-te-collapse-item
+                                                    aria-labelledby="flush-headingfive"
+                                                    data-te-parent="#accordionFlushExample">
+                                                    <div class="px-5 py-4">
+                                                    Placeholder content for this accordion, which is intended to
+                                                    demonstrate the
+                                                    <code>.accordion-flush</code> class. This is the second item's
+                                                    accordion body. Let's imagine this being filled with some actual
+                                                    content.
+                                                    </div>
                                                 </div>
-                                              </div>
+                                                </div>
+                                                <div
+                                                class="rounded-none border border-b-0 border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+                                                <h2 class="mb-0" id="flush-headingsix">
+                                                    <button
+                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+                                                    type="button"
+                                                    data-te-collapse-init
+                                                    data-te-collapse-collapsed
+                                                    data-te-target="#flush-collapsesix"
+                                                    aria-expanded="false"
+                                                    aria-controls="flush-collapsesix">
+                                                    Tata tertib tugas
+                                                    <span
+                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                                                        <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        stroke-width="1.5"
+                                                        stroke="currentColor"
+                                                        class="h-6 w-6">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                                        </svg>
+                                                    </span>
+                                                    </button>
+                                                </h2>
+                                                <div
+                                                    id="flush-collapsesix"
+                                                    class="!visible hidden"
+                                                    data-te-collapse-item
+                                                    aria-labelledby="flush-headingsix"
+                                                    data-te-parent="#accordionFlushExample">
+                                                    <div class="px-5 py-4">
+                                                    Placeholder content for this accordion, which is intended to
+                                                    demonstrate the
+                                                    <code>.accordion-flush</code> class. This is the third item's
+                                                    accordion body. Nothing more exciting happening here in terms of
+                                                    content, but just filling up the space to make it look, at least
+                                                    at first glance, a bit more representative of how this would look
+                                                    in a real-world application.
+                                                    </div>
+                                                </div>
+                                                </div>
                                             </div>
-                                          </div>
+                                        </div>
                                     </div>
                                     {{-- end tata tertib --}}
 
@@ -1746,46 +1882,79 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex items-center justify-between py-5 lg:py-6">
-                            <div class="flex items-center space-x-1">
-                                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-                                    <div class="card w-full">
-                                        <img class="h-72 w-full rounded-lg object-cover object-center" src="images/object/object-2.jpg" alt="image" />
-                                        <div class="absolute inset-0 flex h-full w-full flex-col justify-end">
-                                            <div class="space-y-1.5 rounded-lg bg-gradient-to-t from-[#19213299] via-[#19213266] to-transparent px-4 pb-3 pt-12">
-                                                <div class="line-clamp-2">
-                                                    <a href="#" class="text-base font-medium text-white">10 Tips for Making a Good Camera Even Better</a>
-                                                </div>
-                                                <div class="flex items-center justify-between">
-                                                    <div class="flex items-center text-xs text-slate-200">
-                                                        <p class="flex items-center space-x-1">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                                                            </svg>
-                                                            <span class="line-clamp-1">Technology</span>
-                                                        </p>
-                                                        <div class="mx-3 my-0.5 w-px self-stretch bg-white/20"></div>
-                                                        <p class="shrink-0 text-tiny+">48 min ago</p>
-                                                    </div>
-                                                    <div class="-mr-1.5 flex">
-                                                        <button x-tooltip.secondary="'Like'" class="btn h-7 w-7 rounded-full p-0 text-secondary-light hover:bg-secondary/20 focus:bg-secondary/20 active:bg-secondary/25 dark:hover:bg-secondary-light/20 dark:focus:bg-secondary-light/20 dark:active:bg-secondary-light/25">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                                            </svg>
-                                                        </button>
-                                                        <button x-tooltip="'Save'" class="btn h-7 w-7 rounded-full p-0 text-navy-100 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                     <!-- multiple -->
+                     <div class=" panel rounded-lg px-1 pt-4  mt-5 bg-white dark:bg-dark dark:bg-opacity-[0.08]  ">
+                        <div class="text-dark pb-5 font-bold text-lg bg-transparent pt-2 pl-5 dark:text-white-light dark:bg-transparent">
+                            berita
                         </div>
+                        <div class="swiper bg-white p-1 dark:bg-dark dark:bg-opacity-[0.08]" id="slider5" x-data="carousel()">
+                            <div class="swiper-wrapper">
+                                <template x-for="item in items" :key="item">
+                                    <div class="swiper-slide">
+                                        <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
+                                    </div>
+                                </template>
+                                <template x-for="item in items" :key="item">
+                                    <div class="swiper-slide">
+                                        <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
+                                    </div>
+                                </template>
+                            </div>
+                            <a href="javascript:;" class="swiper-button-prev-ex5 grid place-content-center ltr:left-2 rtl:right-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-transparent rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                                </svg>
+
+                            </a>
+                            <a href="javascript:;" class="swiper-button-next-ex5 grid place-content-center ltr:right-2 rtl:left-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-transparent rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                </svg>
+                            </a>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <script>
+                            function carousel() {
+                                return {
+                                    items: [
+                                        'carousel1.jpeg',
+                                        'carousel2.jpeg',
+                                        'carousel3.jpeg'
+
+                                    ],
+
+                                    init() {
+                                        const swiper5 = new Swiper('#slider5', {
+                                            navigation: {
+                                                nextEl: '.swiper-button-next-ex5',
+                                                prevEl: '.swiper-button-prev-ex5',
+                                            },
+                                            pagination: {
+                                                el: '.swiper-pagination',
+                                                clickable: true,
+                                            },
+                                            breakpoints: {
+                                                1024: {
+                                                    slidesPerView: 3,
+                                                    spaceBetween: 30,
+                                                },
+                                                768: {
+                                                    slidesPerView: 2,
+                                                    spaceBetween: 40,
+                                                },
+                                                320: {
+                                                    slidesPerView: 1,
+                                                    spaceBetween: 20,
+                                                },
+                                            },
+                                        });
+                                    },
+                                };
+                            }
+                        </script>
+                    </div>
+                    {{-- end carousel --}}
 
 
                     <!-- start footer section -->
@@ -1797,6 +1966,7 @@
             </div>
         </div>
 
+        <script src="assets/js/swiper-bundle.min.js"></script>
         <script src="siswa/js/alpine-collaspe.min.js"></script>
         <script src="siswa/js/alpine-persist.min.js"></script>
         <script defer src="siswa/js/alpine-ui.min.js"></script>
@@ -1832,6 +2002,87 @@
         </script>
         <script>
             document.addEventListener('alpine:init', () => {
+                 //Carousel
+                 Alpine.data('carousel', () => ({
+                    items: ['carousel1.jpeg', 'carousel2.jpeg', 'carousel3.jpeg'],
+
+                    init() {
+                        // basic
+                        const swiper1 = new Swiper('#slider1', {
+                            navigation: {
+                                nextEl: '.swiper-button-next-ex1',
+                                prevEl: '.swiper-button-prev-ex1',
+                            },
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                            },
+                        });
+                        // Autoplay
+                        const swiper2 = new Swiper('#slider2', {
+                            navigation: {
+                                nextEl: '.swiper-button-next-ex2',
+                                prevEl: '.swiper-button-prev-ex2',
+                            },
+                            autoplay: {
+                                delay: 2000,
+                            },
+                        });
+                        // vertical
+                        setTimeout(() => {
+                            const swiper3 = new Swiper('#slider3', {
+                                direction: 'vertical',
+                                pagination: {
+                                    el: '.swiper-pagination',
+                                    clickable: true,
+                                },
+                                autoplay: {
+                                    delay: 2000,
+                                },
+                            });
+                        });
+                        // Loop
+                        const swiper4 = new Swiper('#slider4', {
+                            slidesPerView: 1,
+                            spaceBetween: 30,
+                            loop: true,
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                                type: 'fraction',
+                            },
+                            navigation: {
+                                nextEl: '.swiper-button-next-ex4',
+                                prevEl: '.swiper-button-prev-ex4',
+                            },
+                        });
+                        // Multiple Slides
+                        const swiper5 = new Swiper('#slider5', {
+                            navigation: {
+                                nextEl: '.swiper-button-next-ex5',
+                                prevEl: '.swiper-button-prev-ex5',
+                            },
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                            },
+                            breakpoints: {
+                                1024: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 30,
+                                },
+                                768: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 40,
+                                },
+                                320: {
+                                    slidesPerView: 1,
+                                    spaceBetween: 20,
+                                },
+                            },
+                        });
+                    },
+                }));
                 // main section
                 Alpine.data('scrollToTop', () => ({
                     showTopButton: false,
