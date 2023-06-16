@@ -2,15 +2,14 @@
 <html lang="en" dir="ltr">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/app.css" />
 
-<!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:26 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+
 <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>Admin - Dashboard</title>
-        @vite('resources/css/app.css')
+
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/x-icon" href="favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
@@ -24,6 +23,11 @@
         <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/tippy-bundle.umd.min.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
+        <link rel="stylesheet" href="css/app.css" />
+
+        {{--  <!-- Javascript Assets -->  --}}
+        <script src="admin/js/app.js" defer></script>
+
     </head>
 
     <body
@@ -31,10 +35,10 @@
         class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
         :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout,$store.app.rtlClass]"
     >
-        <!-- sidebar menu overlay -->
+        {{--  <!-- sidebar menu overlay -->  --}}
         <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{'hidden' : !$store.app.sidebar}" @click="$store.app.toggleSidebar()"></div>
 
-        <!-- screen loader -->
+        {{--  <!-- screen loader -->  --}}
         <div class="screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
             <svg width="64" height="64" viewBox="0 0 135 135" xmlns="http://www.w3./2000/svg" fill="#4361ee">
                 <path
@@ -50,7 +54,7 @@
             </svg>
         </div>
 
-        <!-- scroll to top button -->
+        {{--  <!-- scroll to top button -->  --}}
         <div class="fixed bottom-6 z-50 ltr:right-6 rtl:left-6" x-data="scrollToTop">
             <template x-if="showTopButton">
                 <button
@@ -75,7 +79,7 @@
             </template>
         </div>
 
-        <!-- start theme customizer section -->
+        {{--  <!-- start theme customizer section -->  --}}
         <div x-data="customizer">
             <div
                 class="fixed inset-0 z-[51] hidden bg-[black]/60 px-4 transition-[display]"
@@ -381,10 +385,10 @@
                 </div>
             </nav>
         </div>
-        <!-- end theme customizer section -->
+        {{--  <!-- end theme customizer section -->  --}}
 
         <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
-            <!-- start sidebar section -->
+            {{--  <!-- start sidebar section -->  --}}
             <div :class="{'dark text-white-dark' : $store.app.semidark}">
                 <nav
                     x-data="sidebar"
@@ -670,10 +674,10 @@
                     </div>
                 </nav>
             </div>
-            <!-- end sidebar section -->
+            {{--  <!-- end sidebar section -->  --}}
 
             <div class="main-content">
-                <!-- start header section -->
+                {{--  <!-- start header section -->  --}}
                 <header :class="{'dark' : $store.app.semidark && $store.app.menu === 'horizontal'}" style="position: fixed; top: 0; left: 0; right: 0;">
                         <div class="shadow-sm">
                             <div class="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
@@ -707,35 +711,7 @@
                                         @submit.prevent="search = false"
                                     >
                                         <div class="relative">
-                                            <input
-                                                type="text"
-                                                class="peer form-input bg-gray-100 placeholder:tracking-widest ltr:pl-9 ltr:pr-9 rtl:pr-9 rtl:pl-9 sm:bg-transparent ltr:sm:pr-4 rtl:sm:pl-4"
-                                                placeholder="Search..."
-                                            />
-                                            <button
-                                                type="button"
-                                                class="absolute inset-0 h-9 w-9 appearance-none peer-focus:text-primary ltr:right-auto rtl:left-auto"
-                                            >
-                                                <svg class="mx-auto" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="11.5" cy="11.5" r="9.5" stroke="currentColor" stroke-width="1.5" opacity="0.5" />
-                                                    <path d="M18.5 18.5L22 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                                </svg>
-                                            </button>
-                                            <button
-                                                type="button"
-                                                class="absolute top-1/2 block -translate-y-1/2 hover:opacity-80 ltr:right-2 rtl:left-2 sm:hidden"
-                                                @click="search = false"
-                                            >
-                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <circle opacity="0.5" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" />
-                                                    <path
-                                                        d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                        stroke-linecap="round"
-                                                    />
-                                                </svg>
-                                            </button>
+
                                         </div>
                                     </form>
                                     <button
@@ -1197,7 +1173,7 @@
                             </div>
                         </div>
 
-                        <!-- horizontal menu -->
+                        {{--  <!-- horizontal menu -->  --}}
                         <ul
                             class="horizontal-menu hidden border-t border-[#ebedf2] bg-white py-1.5 px-6 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-[#0e1726] dark:text-white-dark lg:space-x-1.5 xl:space-x-8"
                         >
@@ -1973,9 +1949,9 @@
                         </ul>
                     </div>
                 </header>
-                <!-- end header section -->
-                <div class=" mt-28 pt-10 grid grid-cols-1 px-4 gap-4 sm:mt-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
-                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
+                {{--  <!-- end header section -->  --}}
+                <div class="mt-20 pt-10 grid grid-cols-1 px-4 gap-2 sm:mt-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5">
+                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600 dark:bg-black" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
                         <div class="flex justify-between">
                         <p class="text-xl mt-1 font-semibold text-slate-700 dark:text-navy-100">
                           12
@@ -1987,7 +1963,7 @@
                       </div>
                       <p class="mt-1 text-xs">Anak magang</p>
                     </div>
-                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
+                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600 dark:bg-black" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
 
                       <div class="flex justify-between">
                         <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
@@ -2000,7 +1976,7 @@
                       </div>
                       <p class="mt-1 text-xs">Pembimbing</p>
                     </div>
-                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
+                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600 dark:bg-black" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
 
                       <div class="flex justify-between">
                         <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
@@ -2013,7 +1989,7 @@
                       </div>
                       <p class="mt-1 text-xs">MOU</p>
                     </div>
-                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
+                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600 dark:bg-black" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
 
                       <div class="flex justify-between">
                         <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
@@ -2026,7 +2002,7 @@
                       </div>
                       <p class="mt-1 text-xs">Ditolak</p>
                     </div>
-                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
+                    <div class="rounded-lg bg-white p-5 dark:bg-navy-600 dark:bg-black" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
 
                         <div class="flex justify-between">
                           <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
@@ -2041,88 +2017,253 @@
                       </div>
                     </div>
                      {{-- grafik --}}
-                     <div class="w-full px-4 mt-6">
-                        <div class="w-80% bg-white rounded-t-lg pl-4 pt-5 text-lg font-bold">
-                            Grafik Pendaftaran
-                        </div>
-                        <div id="grafik_admin" class=" w-80% h-20 bg-white rounded-lg " >
+                     <div id="grafik_admin" class=" w-80% h-35 mx-4 bg-white rounded-lg dark:bg-black "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
+                            <div class="w-full px-4 mt-6">
+                               <div class="w-80%  bg-white rounded-t-lg pl-4 pt-5 text-same font-semibold dark:bg-transparent">
+                                   Grafik Pendaftaran
+                               </div>
                         </div>
                      </div>
 
                 {{-- end grafik --}}
                 {{-- caraousel --}}
-                <!-- multiple -->
-                <div class="w-full px-10 pt-4  mt-5">
-                    <div class="text-dark pb-5 font-bold text-lg bg-white pt-2 pl-5">
-                        berita
+
+                <div class="w-80%  bg-white rounded-t-lg  mt-8 mx-4 text-same font-semibold dark:bg-transparent">
+                    Grafik Pendaftaran
                     </div>
-                    <div class="swiper bg-white p-4" id="slider5" x-data="carousel()">
-                        <div class="swiper-wrapper">
-                            <template x-for="item in items" :key="item">
-                                <div class="swiper-slide">
-                                    <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
-                                </div>
-                            </template>
-                            <template x-for="item in items" :key="item">
-                                <div class="swiper-slide">
-                                    <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
-                                </div>
-                            </template>
+
+                    <section>
+                    <div class="swiper mySwiper container w-full" >
+                      <div class="swiper-wrapper content">
+                        <div class="swiper-slide card dark:bg-black">
+                          <div class="card-content ">
+                            <div class="image">
+                             <img src="admin/assets/images/smkn1.jpg"  alt="">
+                            </div>
+
+
+                          </div>
                         </div>
-                        <a href="javascript:;" class="swiper-button-prev-ex5 grid place-content-center ltr:left-2 rtl:right-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-primary rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                              </svg>
+                        <div class="swiper-slide card dark:bg-black">
+                          <div class="card-content">
+                            <div class="image1">
+                                <img src="admin/assets/images/smkn1.jpg"  alt="">
+                            </div>
 
-                        </a>
-                        <a href="javascript:;" class="swiper-button-next-ex5 grid place-content-center ltr:right-2 rtl:left-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-primary rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                              </svg>
-                        </a>
-                        <div class="swiper-pagination"></div>
+                          </div>
+                        </div>
+                        <div class="swiper-slide card dark:bg-black">
+                          <div class="card-content">
+                            <div class="image">
+                                <img src="admin/assets/images/smkn1.jpg"  alt="">
+                            </div>
+
+
+                          </div>
+                        </div>
+                        <div class="swiper-slide card dark:bg-black">
+                            <div class="card-content">
+                              <div class="image">
+                                  <img src="admin/assets/images/smkn1.jpg"  alt="">
+                              </div>
+
+
+                            </div>
+                          </div>
+                          <div class="swiper-slide card dark:bg-black">
+                            <div class="card-content">
+                              <div class="image">
+                                  <img src="admin/assets/images/smkn1.jpg"  alt="">
+                              </div>
+
+
+                            </div>
+                          </div>
+                          <div class="swiper-slide card dark:bg-black">
+                            <div class="card-content">
+                              <div class="image">
+                                  <img src="admin/assets/images/smkn1.jpg"  alt="">
+                              </div>
+
+
+                            </div>
+                          </div>
+                          <div class="swiper-slide card dark:bg-black">
+                            <div class="card-content">
+                              <div class="image">
+                                  <img src="admin/assets/images/smkn1.jpg"  alt="">
+                              </div>
+
+
+                            </div>
+                          </div>
+                        <div class="swiper-slide card dark:bg-black">
+                          <div class="card-content">
+                            <div class="image">
+                                <img src="admin/assets/images/smkn1.jpg"  alt="">
+                            </div>
+
+
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <script>
-                        function carousel() {
-                            return {
-                                items: [
-                                    'carousel1.jpeg',
-                                    'carousel2.jpeg',
-                                    'carousel3.jpeg'
+                    <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
+                      <div class="swiper-pagination"></div>
+                  </section>
+                  {{--  <!-- Swiper JS -->  --}}
+                  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+                  {{--  <!-- Initialize Swiper -->  --}}
+                  <script>
+                    var swiper = new Swiper(".mySwiper", {
+                      slidesPerView: 3,
+                      spaceBetween: 30,
+                      slidesPerGroup: 3,
+                      loop: true,
+                      loopFillGroupWithBlank: true,
+                      pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                      },
+                      navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                      },
+                    });
+                  </script>
+                  <style>
+                    /* === Google Font Import - Poppins === */
+                    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-                                ],
 
-                                init() {
-                                    const swiper5 = new Swiper('#slider5', {
-                                        navigation: {
-                                            nextEl: '.swiper-button-next-ex5',
-                                            prevEl: '.swiper-button-prev-ex5',
-                                        },
-                                        pagination: {
-                                            el: '.swiper-pagination',
-                                            clickable: true,
-                                        },
-                                        breakpoints: {
-                                            1024: {
-                                                slidesPerView: 3,
-                                                spaceBetween: 30,
-                                            },
-                                            768: {
-                                                slidesPerView: 2,
-                                                spaceBetween: 40,
-                                            },
-                                            320: {
-                                                slidesPerView: 1,
-                                                spaceBetween: 20,
-                                            },
-                                        },
-                                    });
-                                },
-                            };
-                        }
-                    </script>
-                </div>
-                {{-- end carousel --}}
+
+                    section {
+                      position: relative;
+                      display: flex;
+                      align-items: center;
+                      padding: 20px;
+                    }
+
+                    .swiper {
+                      flex: 1;
+                    }
+
+                    .card {
+                      position: ;
+                      background: #fff;
+                      border-radius: 20px;
+                      margin: 20px 0;
+                      box-shadow:0px 0px 4px rgba(0, 0, 0, 0.1);
+                    }
+
+
+
+                    .card .card-content {
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      padding: 30px;
+                      position: relative;
+                      z-index: 100;
+                    }
+
+
+
+                    .card .media-icons i:hover {
+                      opacity: 1;
+                    }
+
+                    .card .name-profession {
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      margin-top: 10px;
+                      color:black;
+                    }
+
+                    .name-profession .name {
+                      font-size: 20px;
+                      font-weight: 600;
+                    }
+
+                    .name-profession .profession {
+                      font-size: 15px;
+                      font-weight: 500;
+                    }
+
+
+                    .card .button {
+                      width: 100%;
+                      display: flex;
+                      justify-content: space-around;
+                      margin-top: 20px;
+                    }
+
+                    .card .button button {
+                      background: #278be1;
+                      outline: none;
+                      border: none;
+                      color: #000000;
+                      padding: 8px 22px;
+                      border-radius: 20px;
+                      font-size: 14px;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    }
+
+                    .card .button button:hover {
+                      background: #278be1;
+                    }
+
+                    .swiper-pagination {
+                      position: absolute;
+                    }
+
+                    .swiper-pagination-bullet {
+                      height: 7px;
+                      width: 26px;
+                      border-radius: 25px;
+                      background: #278be1;
+                    }
+
+                    .swiper-button-next,
+                    .swiper-button-prev {
+                      opacity: 0.7;
+                      color: #278be1;
+                      transition: all 0.3s ease;
+                    }
+
+                    .swiper-button-next:hover,
+                    .swiper-button-prev:hover {
+                      opacity: 1;
+                      color: #278be1;
+                    }
+
+                    @media (max-width: 768px) {
+                      section {
+                        flex-direction: column;
+                      }
+
+                      .swiper {
+                        width: 100%;
+                        max-width: 400px;
+                        margin: 0 auto;
+                      }
+
+                      .card {
+                        width: 100%;
+                      }
+
+                      .card::before {
+                        border-radius: 20px;
+                      }
+                    }
+                  </style>
+
+                  {{--  <!-- Include necessary scripts, e.g., Font Awesome -->  --}}
+                  <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+                          {{-- end carousel --}}
 
         <script src="assets/js/swiper-bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -2186,7 +2327,7 @@
         },
         yaxis: {
           title: {
-            text: 'jumlah siswa'
+            text: ''
           }
         },
         fill: {
