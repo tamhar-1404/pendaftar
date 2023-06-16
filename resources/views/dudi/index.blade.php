@@ -18,6 +18,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/perfect-scrollbar.min.css') }}" />
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
         <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />
         <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
@@ -2049,9 +2050,81 @@
                      </div>
 
                 {{-- end grafik --}}
-                  </div>
+                {{-- caraousel --}}
+                <!-- multiple -->
+                <div class="w-full px-10 pt-4  mt-5">
+                    <div class="text-dark pb-5 font-bold text-lg bg-white pt-2 pl-5">
+                        berita
+                    </div>
+                    <div class="swiper bg-white p-4" id="slider5" x-data="carousel()">
+                        <div class="swiper-wrapper">
+                            <template x-for="item in items" :key="item">
+                                <div class="swiper-slide">
+                                    <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
+                                </div>
+                            </template>
+                            <template x-for="item in items" :key="item">
+                                <div class="swiper-slide">
+                                    <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
+                                </div>
+                            </template>
+                        </div>
+                        <a href="javascript:;" class="swiper-button-prev-ex5 grid place-content-center ltr:left-2 rtl:right-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-primary rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                              </svg>
 
+                        </a>
+                        <a href="javascript:;" class="swiper-button-next-ex5 grid place-content-center ltr:right-2 rtl:left-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-primary rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                              </svg>
+                        </a>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <script>
+                        function carousel() {
+                            return {
+                                items: [
+                                    'carousel1.jpeg',
+                                    'carousel2.jpeg',
+                                    'carousel3.jpeg'
 
+                                ],
+
+                                init() {
+                                    const swiper5 = new Swiper('#slider5', {
+                                        navigation: {
+                                            nextEl: '.swiper-button-next-ex5',
+                                            prevEl: '.swiper-button-prev-ex5',
+                                        },
+                                        pagination: {
+                                            el: '.swiper-pagination',
+                                            clickable: true,
+                                        },
+                                        breakpoints: {
+                                            1024: {
+                                                slidesPerView: 3,
+                                                spaceBetween: 30,
+                                            },
+                                            768: {
+                                                slidesPerView: 2,
+                                                spaceBetween: 40,
+                                            },
+                                            320: {
+                                                slidesPerView: 1,
+                                                spaceBetween: 20,
+                                            },
+                                        },
+                                    });
+                                },
+                            };
+                        }
+                    </script>
+                </div>
+                {{-- end carousel --}}
+
+        <script src="assets/js/swiper-bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="{{ asset('admin/assets/js/alpine-collaspe.min.js') }}"></script>
         <script src="{{ asset('admin/assets/js/alpine-persist.min.js') }}"></script>
@@ -2136,6 +2209,86 @@
 
         <script>
             document.addEventListener('alpine:init', () => {
+                //Carousel
+                Alpine.data('carousel', () => ({
+                    items: ['carousel1.jpeg', 'carousel2.html', 'carousel3.jpeg'],
+
+                    init() {
+                        // basic
+                        const swiper1 = new Swiper('#slider1', {
+                            navigation: {
+                                nextEl: '.swiper-button-next-ex1',
+                                prevEl: '.swiper-button-prev-ex1',
+                            },
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                            },
+                        });
+                        // Autoplay
+                        const swiper2 = new Swiper('#slider2', {
+                            navigation: {
+                                nextEl: '.swiper-button-next-ex2',
+                                prevEl: '.swiper-button-prev-ex2',
+                            },
+                            autoplay: {
+                                delay: 2000,
+                            },
+                        });
+                        // vertical
+                        setTimeout(() => {
+                            const swiper3 = new Swiper('#slider3', {
+                                direction: 'vertical',
+                                pagination: {
+                                    el: '.swiper-pagination',
+                                    clickable: true,
+                                },
+                                autoplay: {
+                                    delay: 2000,
+                                },
+                            });
+                        });
+                        // Loop
+                        const swiper4 = new Swiper('#slider4', {
+                            slidesPerView: 1,
+                            spaceBetween: 30,
+                            loop: true,
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                                type: 'fraction',
+                            },
+                            navigation: {
+                                nextEl: '.swiper-button-next-ex4',
+                                prevEl: '.swiper-button-prev-ex4',
+                            },
+                        });
+                        // Multiple Slides
+                        const swiper5 = new Swiper('#slider5', {
+                            navigation: {
+                                nextEl: '.swiper-button-next-ex5',
+                                prevEl: '.swiper-button-prev-ex5',
+                            },
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                            },
+                            breakpoints: {
+                                1024: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 30,
+                                },
+                                768: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 40,
+                                },
+                                320: {
+                                    slidesPerView: 1,
+                                    spaceBetween: 20,
+                                },
+                            },
+                        });
+                    },
                 // main section
                 Alpine.data('scrollToTop', () => ({
                     showTopButton: false,
