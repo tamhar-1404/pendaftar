@@ -285,6 +285,7 @@
     </nav>
 </div>
 {{--  <!-- end sidebar section -->  --}}
+{{--  header  --}}
 <header :class="{'dark' : $store.app.semidark && $store.app.menu === 'horizontal'}" style="position: fixed; top: 0; left: 0; right: 0;">
     <div class="shadow-sm">
         <div class="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
@@ -1556,3 +1557,4 @@
     </ul>
 </div>
 </header>
+{{--  end header  --}}

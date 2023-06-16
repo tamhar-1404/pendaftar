@@ -23,7 +23,7 @@
         <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/tippy-bundle.umd.min.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
-        <link rel="stylesheet" href="css/app.css" />
+
 
         {{--  <!-- Javascript Assets -->  --}}
         <script src="admin/js/app.js" defer></script>
@@ -461,9 +461,9 @@
                       </div>
                     </div>
                      {{-- grafik --}}
-                     <div id="grafik_admin" class=" w-80% h-35 mx-4 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
+                     <div id="grafik_admin" class=" w-90% h-35 mx-4 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
                             <div class="w-full px-4 mt-6">
-                               <div class="w-80%  bg-white rounded-t-lg pl-4 pt-5 text-same font-semibold dark:bg-transparent">
+                               <div class="w-80%  bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
                                    Grafik Pendaftaran
                                </div>
                         </div>
