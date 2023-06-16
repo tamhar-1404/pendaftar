@@ -2052,72 +2052,76 @@
                 {{-- end grafik --}}
                 {{-- caraousel --}}
                 <!-- multiple -->
-                <div class="swiper" id="slider5" x-data="carousel()">
-                    <div class="swiper-wrapper">
-                        <template x-for="item in items" :key="item">
-                            <div class="swiper-slide">
-                                <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
-                            </div>
-                        </template>
-                        <template x-for="item in items" :key="item">
-                            <div class="swiper-slide">
-                                <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
-                            </div>
-                        </template>
+                <div class="w-full px-10 pt-4  mt-5">
+                    <div class="text-dark pb-5 font-bold text-lg bg-white pt-2 pl-5">
+                        berita
                     </div>
-                    <a href="javascript:;" class="swiper-button-prev-ex5 grid place-content-center ltr:left-2 rtl:right-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-primary rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                          </svg>
+                    <div class="swiper bg-white p-4" id="slider5" x-data="carousel()">
+                        <div class="swiper-wrapper">
+                            <template x-for="item in items" :key="item">
+                                <div class="swiper-slide">
+                                    <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
+                                </div>
+                            </template>
+                            <template x-for="item in items" :key="item">
+                                <div class="swiper-slide">
+                                    <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
+                                </div>
+                            </template>
+                        </div>
+                        <a href="javascript:;" class="swiper-button-prev-ex5 grid place-content-center ltr:left-2 rtl:right-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-primary rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                              </svg>
 
-                    </a>
-                    <a href="javascript:;" class="swiper-button-next-ex5 grid place-content-center ltr:right-2 rtl:left-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-primary rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                          </svg>
-                    </a>
-                    <div class="swiper-pagination"></div>
+                        </a>
+                        <a href="javascript:;" class="swiper-button-next-ex5 grid place-content-center ltr:right-2 rtl:left-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-primary rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                              </svg>
+                        </a>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <script>
+                        function carousel() {
+                            return {
+                                items: [
+                                    'carousel1.jpeg',
+                                    'carousel2.jpeg',
+                                    'carousel3.jpeg'
+
+                                ],
+
+                                init() {
+                                    const swiper5 = new Swiper('#slider5', {
+                                        navigation: {
+                                            nextEl: '.swiper-button-next-ex5',
+                                            prevEl: '.swiper-button-prev-ex5',
+                                        },
+                                        pagination: {
+                                            el: '.swiper-pagination',
+                                            clickable: true,
+                                        },
+                                        breakpoints: {
+                                            1024: {
+                                                slidesPerView: 3,
+                                                spaceBetween: 30,
+                                            },
+                                            768: {
+                                                slidesPerView: 2,
+                                                spaceBetween: 40,
+                                            },
+                                            320: {
+                                                slidesPerView: 1,
+                                                spaceBetween: 20,
+                                            },
+                                        },
+                                    });
+                                },
+                            };
+                        }
+                    </script>
                 </div>
-                <script>
-                    function carousel() {
-                        return {
-                            items: [
-                                'carousel1.jpeg',
-                                'carousel2.jpeg',
-                                'carousel3.jpeg'
-
-                            ],
-
-                            init() {
-                                const swiper5 = new Swiper('#slider5', {
-                                    navigation: {
-                                        nextEl: '.swiper-button-next-ex5',
-                                        prevEl: '.swiper-button-prev-ex5',
-                                    },
-                                    pagination: {
-                                        el: '.swiper-pagination',
-                                        clickable: true,
-                                    },
-                                    breakpoints: {
-                                        1024: {
-                                            slidesPerView: 3,
-                                            spaceBetween: 30,
-                                        },
-                                        768: {
-                                            slidesPerView: 2,
-                                            spaceBetween: 40,
-                                        },
-                                        320: {
-                                            slidesPerView: 1,
-                                            spaceBetween: 20,
-                                        },
-                                    },
-                                });
-                            },
-                        };
-                    }
-                </script>
-
                 {{-- end carousel --}}
 
         <script src="assets/js/swiper-bundle.min.js"></script>
