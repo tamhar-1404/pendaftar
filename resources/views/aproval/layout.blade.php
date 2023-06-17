@@ -6,8 +6,8 @@
     >
         <div class="h-full bg-white dark:bg-[#0e1726]">
             <div class="flex items-center justify-between px-4 py-3">
-                <a href="index-2.html" class="main-logo flex shrink-0 items-center">
-                    <img class="ml-[50px] w-9    flex-none" src="{{ asset('admin/assets/images/logo.png') }}" alt="image" />
+                <a href="index-2.html" class=" flex shrink-0 items-center">
+                    <img class="w-40 border-1 border-blue-200 flex-none" src="{{ asset('admin/assets/images/LOGO Hummasoft BD.png') }}" alt="logo" />
                           </a>
                 <a
                     href="javascript:;"
@@ -29,7 +29,7 @@
             </div>
             <ul
                 class="perfect-scrollbar relative h-[calc(100vh-80px)] space-y-0.5 overflow-y-auto overflow-x-hidden p-4 py-0 font-semibold"
-                x-data="{ activeDropdown: 'dashboard' }"
+                x-data="{ activeDropdown: 'components' }"
             >
                 <li class="menu nav-item">
                     <button
@@ -72,7 +72,7 @@
                     </button>
                     <ul x-cloak x-show="activeDropdown === 'components'" x-collapse class="sub-menu text-gray-500">
                         <li>
-                            <a href="components-tabs.html">Pendaftaran</a>
+                            <a href="components-tabs.html" class="text-[#00B7FF] hover:bg-[#00B7FF]">Pendaftaran</a>
                         </li>
                         <li>
                             <a href="components-accordions.html">Izin & Sakit</a>
