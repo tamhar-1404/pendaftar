@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
-
+    {{--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />  --}}
 <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -18,13 +15,11 @@
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/perfect-scrollbar.min.css') }}" />
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-        <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />
+        {{--  <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />  --}}
         <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/tippy-bundle.umd.min.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
-
-
         {{--  <!-- Javascript Assets -->  --}}
         <script src="admin/js/app.js" defer></script>
 
@@ -392,9 +387,9 @@
 
             <div class="main-content">
                 {{--  <!-- start header section -->  --}}
-            @include('dudi.sidebar')
+            @include('dudi.header')
                 {{--  <!-- end header section -->  --}}
-                <div class="mt-20 pt-10 grid grid-cols-1 px-4 gap-2 sm:mt-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5">
+                <div class="mt-4 pt-10 grid grid-cols-1 px-4 gap-2 sm:mt-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
                     <div class="rounded-lg bg-white p-5 dark:bg-navy-600 dark:bg-black" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
                         <div class="flex justify-between">
                         <p class="text-xl mt-1 font-semibold text-slate-700 dark:text-navy-100">
