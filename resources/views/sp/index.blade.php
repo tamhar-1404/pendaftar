@@ -20,7 +20,7 @@
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
         <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />
-        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+
         <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/tippy-bundle.umd.min.js') }}"></script>
@@ -463,11 +463,10 @@
                                                 <div class=" rounded-full border-2 border-[#FFE500]"></div>
                                             </td>
                                             <td class="whitespace-nowrap px-4 py-4">
-                                                <a href="#">
-                                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
+                                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent " data-te-toggle="modal"
+                                                    data-te-target="#exampleModalCenteredScrollable">
                                                         <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
                                                     </div>
-                                                </a>
                                             </td>
                                           </tr>
                                           <tr
@@ -564,8 +563,112 @@
                         © <span id="footer-year">2022</span>. Vristo All rights reserved.
                     </p>
                     <!-- end footer section -->
-                </div>
 
+                </div>
+                {{-- modal --}}
+                <div
+                    data-te-modal-init
+                    class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+                    id="exampleModalCenteredScrollable"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalCenteredScrollable"
+                    aria-modal="true"
+                    role="dialog">
+                    <div
+                        data-te-modal-dialog-ref
+                        class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
+                        <div
+                        class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+                        <div
+                            class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                            <!--Modal title-->
+                            <h5
+                            class="text-xl font-medium leading-normal text-neutral-900 dark:text-neutral-200"
+                            id="exampleModalCenteredScrollableLabel">
+                            Detail SP
+                            </h5>
+                            <!--Close button-->
+                            <button
+                            type="button"
+                            class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                            data-te-modal-dismiss
+                            aria-label="Close">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="h-6 w-6">
+                                <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                            </button>
+                        </div>
+
+                        <!--Modal body-->
+                        <div class="relative p-4">
+                            <p class=" text-md">
+                            Nama :
+                            </p >
+
+                            <p class="ml-5 mt-2 text-md text-gray-400">
+                                Mark
+                            </p>
+
+                            <p class=" text-md mt-4">
+                                Tanggal :
+                            </p >
+
+                            <p class="ml-5 mt-2 text-md text-gray-400">
+                                03-04-2023
+                            </p>
+
+                            <p class=" text-md mt-4">
+                                Sekolah :
+                            </p >
+
+                            <p class="ml-5 mt-2 text-md text-gray-400">
+                                SMKN 1 KEPANJEN
+                            </p>
+
+                            <p class=" text-md mt-4">
+                                Status :
+                            </p >
+
+                            <p class="ml-5 mt-2 text-md text-gray-400">
+                                SP 1
+                            </p>
+
+                            <p class=" text-md mt-4">
+                                Dokumen :
+                            </p >
+
+                            <p class="ml-5 mt-2 text-md text-gray-400">
+                                Dokumen
+                            </p>
+
+
+                        </div>
+
+                        <!--Modal footer-->
+                        <div
+                            class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                            <button
+                            type="button"
+                            class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                            data-te-ripple-init
+                            data-te-modal-dismiss
+                            data-te-ripple-color="light">
+                            Kembali
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                {{-- end modal --}}
 
         <script src="assets/js/swiper-bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -577,71 +680,23 @@
         <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/apexcharts.js') }}"></script>
         <script src="{{ asset('admin/assets/js/simple-datatables.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+        <script>
+            // Initialization for ES Users
+            import {
+                Modal,
+                Ripple,
+                initTE,
+                } from "tw-elements";
 
+                initTE({ Modal, Ripple });
+        </script>
 
 
         <script>
             document.addEventListener('alpine:init', () => {
-                Alpine.data('basic', () => ({
-                    datatable: null,
-                    init() {
-                        this.datatable = new simpleDatatables.DataTable('#myTable', {
-                            data: {
-                                headings: ['ID', 'Nama', 'Jurusan', 'Lama Magang', 'Sekolah', 'Kelas', 'Aksi'],
-                                data: [
-                                    [1, 'Caroline', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
-                                    [2, 'Celeste', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
-                                    [3, 'Tillman', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
-                                    [4, 'Daisy', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
-                                    [5, 'Weber', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
-                                    [6, 'Buckley', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
-                                    [7, 'Latoya', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
-                                    [8, 'Kate', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
-                                    [9, 'Marva', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
-                                    [10, 'Decker', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
-                                    [11, 'Odom', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
-                                    [12, 'Sellers', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
-                                    [13, 'Wendi', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 MALANG', '12', ''],
-                                    [14, 'Sophie', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 MALANG', '11', ''],
-                                    [15, 'Levine', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 MALANG', '11', ''],
 
-                                ],
-                            },
-                            sortable: true,
-                            searchable: true,
-                            perPage: 10,
-                            perPageSelect: [10, 20, 30, 50, 100],
 
-                            firstLast: true,
-                            firstText:
-                                '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                            lastText:
-                                '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                            prevText:
-                                '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                            nextText:
-                                '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                            labels: {
-                                perPage: '{select}',
-                            },
-                            layout: {
-                                top: '{search}',
-                                bottom: '{info}{select}{pager}',
-                            },
-                            columns: [
-                                {
-                                    select: 6,
-                                    render: (data, cell, row) => {
-                                        return `
-
-                                        `;
-                                    },
-                                    sortable: false,
-                                },
-                            ],
-                        });
-                    },
-                }));
                 // main section
                 Alpine.data('scrollToTop', () => ({
                     showTopButton: false,
@@ -1267,6 +1322,7 @@
                 }));
             });
         </script>
+
     </body>
 
 </html>
