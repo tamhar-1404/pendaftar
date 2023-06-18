@@ -266,20 +266,17 @@
             </div>
         </nav>
     </div>
-    <!-- end theme customizer section -->
-
+    {{--  end  --}}
     <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
-        <!-- start sidebar section -->
+        {{--  sidebar  --}}
         @include('dudi.sidebar')
-        <!-- end sidebar section -->
-
+        {{--  end sidebar  --}}
         <div class="main-content">
-            <!-- start header section -->
+        {{--  header  --}}
             @include('dudi.header')
-            <!-- end header section -->
-
+            {{--  end header  --}}
+            {{--  main  --}}
             <div class="animate__animated p-6" :class="[$store.app.animation]">
-                <!-- start main content section -->
                 <div x-data="chat">
                     <div class="relative flex h-full gap-5 sm:h-[calc(100vh_-_150px)] sm:min-h-0"
                         :class="{ 'min-h-[999px]': isShowChatMenu }">
