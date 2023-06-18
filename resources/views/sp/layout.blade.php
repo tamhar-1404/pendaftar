@@ -32,7 +32,7 @@
 
             <ul
                 class="perfect-scrollbar relative h-[calc(100vh-80px)] space-y-0.5 overflow-y-auto overflow-x-hidden p-4 py-0 font-semibold"
-                x-data="{ activeDropdown: 'components'
+                x-data="{ activeDropdown: 'users'
 
                 }"
             >
@@ -182,7 +182,7 @@
                             <a href="users-account-settings.html">Laporan Piket</a>
                         </li>
                         <li>
-                            <a href="users-account-settings.html">Laporan SP</a>
+                            <a href="users-account-settings.html " class="text-[#24AEE4]">Laporan SP</a>
                         </li>
                     </ul>
                 </li>

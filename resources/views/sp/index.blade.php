@@ -9,7 +9,7 @@
 <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Admin - Dashboard</title>
+        <title>Admin - Peraturan</title>
         @vite('resources/css/app.css')
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/x-icon" href="favicon.png" />
@@ -390,32 +390,48 @@
 
 
             <div class="main-content">
-                @include('aproval.layout')
+                @include('sp.layout')
                 <div class="animate__animated p-6" :class="[$store.app.animation]">
                     <!-- start main content section -->
 
                     <div x-data="basic" class="mt-16">
                         {{-- judul --}}
                         <div class="mb-5 font-semibold">
-                            <span>Approval / <span class="text-[#00B7FF]">Pendaftaran</span></span>
+                            <span>Peraturan / <span class="text-[#00B7FF]">Laporan SP</span></span>
                         </div>
                         <div class="panel">
-                            {{-- serch dan filter --}}
-                            <div class="flex justify-end">
-                                {{-- serch --}}
-                                <div class="mr-4 ">
-                                    <input class=" p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent" type="text" placeholder="cari">
+                            <div class="flex justify-between">
+                                 {{-- serch dan filter --}}
+                                <div class="flex justify-start items-center">
+                                    {{-- filter --}}
+                                    <div class="border-2 rounded-full border-gray-400 flex items-center mr-2 ">
+                                        <span class="mr-1 ml-3">
+                                            filter
+                                        </span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" mr-3 w-4 h-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
+                                        </svg>
+                                    </div>
+                                    {{-- serch --}}
+                                    <div class="mr-4 ">
+                                        <input class=" p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent" type="text" placeholder="cari">
+                                    </div>
                                 </div>
-                                {{-- filter --}}
-                                <div class="border-2 rounded-full border-gray-400 flex items-center mr-2 ">
-                                    <span class="mr-1 ml-3">
-                                        filter
-                                    </span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" mr-3 w-4 h-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
-                                    </svg>
+                                {{-- keterangan --}}
+                                <div class="w-24 ">
+                                    <div class="flex  w-full ">
+                                        <div class=" w-14 mr-1  mt-2 mb-2 rounded-full border-2 border-[#FFE500]"></div>
+                                        <span class="w-8 text-xs"> = Sp1</span>
+                                    </div>
+                                    <div class="flex  w-full ">
+                                        <div class=" w-14 mr-1  mt-2 mb-2 rounded-full border-2 border-[#FF0000]"></div>
+                                        <span class="w-8 text-xs"> = Sp2</span>
+                                    </div>
+
+
                                 </div>
                             </div>
+
                             {{-- tabel --}}
 
                             <div class="flex flex-col">
@@ -427,10 +443,10 @@
                                           <tr class="">
                                             <th scope="col" class="px-6 py-4">#</th>
                                             <th scope="col" class="px-6 py-4">Nama</th>
-                                            <th scope="col" class="px-6 py-4">Jurusan</th>
-                                            <th scope="col" class="px-6 py-4">Masa Magang</th>
+                                            <th scope="col" class="px-6 py-4">Tanggal</th>
                                             <th scope="col" class="px-6 py-4">Sekolah</th>
-                                            <th scope="col" class="px-6 py-4">Kelas</th>
+                                            <th scope="col" class="px-6 py-4">Deskripsi</th>
+                                            <th scope="col" class="px-6 py-4">keterangan</th>
                                             <th scope="col" class="px-6 py-4">Aksi</th>
 
                                           </tr>
@@ -438,13 +454,15 @@
                                         <tbody>
                                           <tr
                                             class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                            <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                                            <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                            <td class="whitespace-nowrap px-6 py-4">RPL</td>
-                                            <td class="whitespace-nowrap px-6 py-4">03-04-2023 -> 03-10-2023</td>
-                                            <td class="whitespace-nowrap px-6 py-4">SMKN 1 KEPANJEN</td>
-                                            <td class="whitespace-nowrap px-6 py-4">12</td>
-                                            <td class="whitespace-nowrap px-6 py-4">
+                                            <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
+                                            <td class="whitespace-nowrap px-4 py-4">Mark</td>
+                                            <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
+                                            <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
+                                            <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
+                                            <td class="whitespace-nowrap px-4 py-4">
+                                                <div class=" rounded-full border-2 border-[#FFE500]"></div>
+                                            </td>
+                                            <td class="whitespace-nowrap px-4 py-4">
                                                 <a href="#">
                                                     <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
                                                         <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
@@ -453,14 +471,14 @@
                                             </td>
                                           </tr>
                                           <tr
-                                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
-                                            <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                                            <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                            <td class="whitespace-nowrap px-6 py-4">RPL</td>
-                                            <td class="whitespace-nowrap px-6 py-4">03-04-2023 -> 03-10-2023</td>
-                                            <td class="whitespace-nowrap px-6 py-4">SMKN 1 KEPANJEN</td>
-                                            <td class="whitespace-nowrap px-6 py-4">12</td>
-                                            <td class="whitespace-nowrap px-6 py-4">
+                                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                            <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
+                                            <td class="whitespace-nowrap px-4 py-4">Mark</td>
+                                            <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
+                                            <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
+                                            <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
+                                            <td class="whitespace-nowrap px-4 py-4"><div class=" rounded-full border-2 border-[#FFE500]"></div></td>
+                                            <td class="whitespace-nowrap px-4 py-4">
                                                 <a href="#">
                                                     <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
                                                         <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
@@ -469,14 +487,14 @@
                                             </td>
                                           </tr>
                                           <tr
-                                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
-                                            <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                                            <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                            <td class="whitespace-nowrap px-6 py-4">RPL</td>
-                                            <td class="whitespace-nowrap px-6 py-4">03-04-2023 -> 03-10-2023</td>
-                                            <td class="whitespace-nowrap px-6 py-4">SMKN 1 KEPANJEN</td>
-                                            <td class="whitespace-nowrap px-6 py-4">12</td>
-                                            <td class="whitespace-nowrap px-6 py-4">
+                                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                            <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
+                                            <td class="whitespace-nowrap px-4 py-4">Mark</td>
+                                            <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
+                                            <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
+                                            <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
+                                            <td class="whitespace-nowrap px-4 py-4"><div class=" rounded-full border-2 border-[#FF0000]"></div></td>
+                                            <td class="whitespace-nowrap px-4 py-4">
                                                 <a href="#">
                                                     <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
                                                         <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>

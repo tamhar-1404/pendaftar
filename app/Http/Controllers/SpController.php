@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\aproval;
-use App\Http\Requests\StoreaprovalRequest;
-use App\Http\Requests\UpdateaprovalRequest;
+use App\Models\sp;
+use App\Http\Requests\StorespRequest;
+use App\Http\Requests\UpdatespRequest;
 
-class AprovalController extends Controller
+class SpController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class AprovalController extends Controller
      */
     public function index()
     {
-        $id = 'aproval';
-        return view('aproval.index',compact('id'));
+        return view('sp.index');
     }
 
     /**
@@ -32,10 +31,10 @@ class AprovalController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreaprovalRequest  $request
+     * @param  \App\Http\Requests\StorespRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreaprovalRequest $request)
+    public function store(StorespRequest $request)
     {
         //
     }
@@ -43,10 +42,10 @@ class AprovalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Models\sp  $sp
      * @return \Illuminate\Http\Response
      */
-    public function show(aproval $aproval)
+    public function show(sp $sp)
     {
         //
     }
@@ -54,10 +53,10 @@ class AprovalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Models\sp  $sp
      * @return \Illuminate\Http\Response
      */
-    public function edit(aproval $aproval)
+    public function edit(sp $sp)
     {
         //
     }
@@ -65,11 +64,11 @@ class AprovalController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateaprovalRequest  $request
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Http\Requests\UpdatespRequest  $request
+     * @param  \App\Models\sp  $sp
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateaprovalRequest $request, aproval $aproval)
+    public function update(UpdatespRequest $request, sp $sp)
     {
         //
     }
@@ -77,10 +76,10 @@ class AprovalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Models\sp  $sp
      * @return \Illuminate\Http\Response
      */
-    public function destroy(aproval $aproval)
+    public function destroy(sp $sp)
     {
         //
     }
