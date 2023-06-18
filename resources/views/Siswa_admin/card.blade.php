@@ -55,13 +55,13 @@
           <div id="dropdown" class="absolute right-0 mt-8 w-40 bg-white shadow-md rounded-md z-10" style="display: none;">
             <ul class="py-2">
                 <li class="px-4 py-2 hover:bg-gray-100 flex items-center">
-                    <a href="#" class="text-gray-700 hover:text-gray-900 flex items-center">
+                    <a href="http://127.0.0.1:8000/siswa_admin/show" class="text-gray-700 hover:text-gray-900 flex items-center">
                       <i class="fa fa-eye mr-2"></i>
                       <span>Detail</span>
                     </a>
                   </li>
                   <li class="px-4 py-2 hover:bg-gray-100 flex items-center">
-                    <a href="#" class="text-gray-700 hover:text-gray-900 flex items-center">
+                    <a href="{{ route('chat.index') }}" class="text-gray-700 hover:text-gray-900 flex items-center">
                       <i class="fa fa-comment mr-2"></i>
                       <span>Chat</span>
                     </a>

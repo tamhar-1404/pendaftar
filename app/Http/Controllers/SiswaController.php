@@ -17,6 +17,10 @@ class SiswaController extends Controller
     {
         return view('Siswa_admin.index');
     }
+    public function view()
+    {
+        //
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +29,7 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('Siswa_admin.create');
     }
 
     /**
@@ -47,7 +51,7 @@ class SiswaController extends Controller
      */
     public function show(Siswa $siswa)
     {
-        //
+        return view('Siswa_admin.detail');
     }
 
     /**

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<!-- Mirrored from html.vristo.sbthemes.com/apps-chat.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:01 GMT -->
+{{--  <!-- Mirrored from html.vristo.sbthemes.com/apps-chat.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:01 GMT -->  --}}
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
@@ -936,9 +936,9 @@
                 <!-- end main content section -->
 
                 <!-- start footer section -->
-                <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
+                {{--  <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
                     © <span id="footer-year">2022</span>. Vristo All rights reserved.
-                </p>
+                </p>  --}}
                 <!-- end footer section -->
             </div>
         </div>
@@ -1434,6 +1434,6 @@
     </script>
 </body>
 
-<!-- Mirrored from html.vristo.sbthemes.com/apps-chat.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:01 GMT -->
+{{--  <!-- Mirrored from html.vristo.sbthemes.com/apps-chat.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:01 GMT -->  --}}
 
 </html>
