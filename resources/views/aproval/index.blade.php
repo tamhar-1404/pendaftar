@@ -20,6 +20,7 @@
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
         <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />
+        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
         <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/tippy-bundle.umd.min.js') }}"></script>
@@ -388,86 +389,163 @@
 
             <div class="main-content">
                 @include('aproval.layout')
-                <div class=" mt-28 pt-10  ">
-                     {{-- tabel --}}
-                     <div class="w-full px-4 mt-6 bg-white">
+                <div class="animate__animated p-6" :class="[$store.app.animation]">
+                    <!-- start main content section -->
 
-                     </div>
-                {{-- end tebel --}}
-                </div>
-                {{-- caraousel --}}
-                <!-- multiple -->
-                <div class="w-full px-10 pt-4  mt-5">
-                    <div class="text-dark pb-5 font-bold text-lg bg-white pt-2 pl-5">
-                        berita
-                    </div>
-                    <div class="swiper bg-white p-4" id="slider5" x-data="carousel()">
-                        <div class="swiper-wrapper">
-                            <template x-for="item in items" :key="item">
-                                <div class="swiper-slide">
-                                    <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
-                                </div>
-                            </template>
-                            <template x-for="item in items" :key="item">
-                                <div class="swiper-slide">
-                                    <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
-                                </div>
-                            </template>
+                    <div x-data="basic" class="mt-16">
+                        {{-- judul --}}
+                        <div class="mb-5 font-semibold">
+                            <span>Approval / <span class="text-[#00B7FF]">Pendaftaran</span></span>
                         </div>
-                        <a href="javascript:;" class="swiper-button-prev-ex5 grid place-content-center ltr:left-2 rtl:right-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-primary rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                              </svg>
+                        <div class="panel">
+                            {{-- serch dan filter --}}
+                            <div class="flex justify-end">
+                                {{-- serch --}}
+                                <div class="mr-4 ">
+                                    <input class=" p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent" type="text" placeholder="cari">
+                                </div>
+                                {{-- filter --}}
+                                <div class="border-2 rounded-full border-gray-400 flex items-center mr-2 ">
+                                    <span class="mr-1 ml-3">
+                                        filter
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" mr-3 w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            {{-- tabel --}}
 
-                        </a>
-                        <a href="javascript:;" class="swiper-button-next-ex5 grid place-content-center ltr:right-2 rtl:left-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-primary rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                              </svg>
-                        </a>
-                        <div class="swiper-pagination"></div>
+                            <div class="flex flex-col">
+                                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                  <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                    <div class="overflow-hidden">
+                                      <table class="min-w-full text-left text-sm font-light">
+                                        <thead class="border-b font-medium dark:border-neutral-500 ">
+                                          <tr class="">
+                                            <th scope="col" class="px-6 py-4">#</th>
+                                            <th scope="col" class="px-6 py-4">Nama</th>
+                                            <th scope="col" class="px-6 py-4">Jurusan</th>
+                                            <th scope="col" class="px-6 py-4">Masa Magang</th>
+                                            <th scope="col" class="px-6 py-4">Sekolah</th>
+                                            <th scope="col" class="px-6 py-4">Kelas</th>
+                                            <th scope="col" class="px-6 py-4">Aksi</th>
+
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr
+                                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                            <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
+                                            <td class="whitespace-nowrap px-6 py-4">Mark</td>
+                                            <td class="whitespace-nowrap px-6 py-4">RPL</td>
+                                            <td class="whitespace-nowrap px-6 py-4">03-04-2023 -> 03-10-2023</td>
+                                            <td class="whitespace-nowrap px-6 py-4">SMKN 1 KEPANJEN</td>
+                                            <td class="whitespace-nowrap px-6 py-4">12</td>
+                                            <td class="whitespace-nowrap px-6 py-4">
+                                                <a href="#">
+                                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
+                                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                          </tr>
+                                          <tr
+                                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+                                            <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
+                                            <td class="whitespace-nowrap px-6 py-4">Mark</td>
+                                            <td class="whitespace-nowrap px-6 py-4">RPL</td>
+                                            <td class="whitespace-nowrap px-6 py-4">03-04-2023 -> 03-10-2023</td>
+                                            <td class="whitespace-nowrap px-6 py-4">SMKN 1 KEPANJEN</td>
+                                            <td class="whitespace-nowrap px-6 py-4">12</td>
+                                            <td class="whitespace-nowrap px-6 py-4">
+                                                <a href="#">
+                                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
+                                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                          </tr>
+                                          <tr
+                                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+                                            <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
+                                            <td class="whitespace-nowrap px-6 py-4">Mark</td>
+                                            <td class="whitespace-nowrap px-6 py-4">RPL</td>
+                                            <td class="whitespace-nowrap px-6 py-4">03-04-2023 -> 03-10-2023</td>
+                                            <td class="whitespace-nowrap px-6 py-4">SMKN 1 KEPANJEN</td>
+                                            <td class="whitespace-nowrap px-6 py-4">12</td>
+                                            <td class="whitespace-nowrap px-6 py-4">
+                                                <a href="#">
+                                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
+                                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            {{-- end tabel --}}
+                            {{-- paginate --}}
+                            <div class="flex justify-between">
+                                <p>
+                                    menampilkan 1 sampai 10 dari 15 data
+                                </p>
+                                <nav aria-label="Page navigation example">
+                                    <ul class="list-style-none flex">
+                                      <li>
+                                        <a
+                                          class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400"
+                                          >Previous</a
+                                        >
+                                      </li>
+                                      <li>
+                                        <a
+                                          class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
+                                          href="#!"
+                                          >1</a
+                                        >
+
+                                      </li>
+                                      <li aria-current="page">
+                                        <a
+                                          class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
+                                          href="#!"
+                                          >2
+
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a
+                                          class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
+                                          href="#!"
+                                          >3</a
+                                        >
+                                      </li>
+                                      <li>
+                                        <a
+                                          class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
+                                          href="#!"
+                                          >Next</a
+                                        >
+                                      </li>
+                                    </ul>
+                                  </nav>
+                            </div>
+                        </div>
                     </div>
-                    <script>
-                        function carousel() {
-                            return {
-                                items: [
-                                    'carousel1.jpeg',
-                                    'carousel2.jpeg',
-                                    'carousel3.jpeg'
+                    <!-- end main content section -->
 
-                                ],
-
-                                init() {
-                                    const swiper5 = new Swiper('#slider5', {
-                                        navigation: {
-                                            nextEl: '.swiper-button-next-ex5',
-                                            prevEl: '.swiper-button-prev-ex5',
-                                        },
-                                        pagination: {
-                                            el: '.swiper-pagination',
-                                            clickable: true,
-                                        },
-                                        breakpoints: {
-                                            1024: {
-                                                slidesPerView: 3,
-                                                spaceBetween: 30,
-                                            },
-                                            768: {
-                                                slidesPerView: 2,
-                                                spaceBetween: 40,
-                                            },
-                                            320: {
-                                                slidesPerView: 1,
-                                                spaceBetween: 20,
-                                            },
-                                        },
-                                    });
-                                },
-                            };
-                        }
-                    </script>
+                    <!-- start footer section -->
+                    <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
+                        © <span id="footer-year">2022</span>. Vristo All rights reserved.
+                    </p>
+                    <!-- end footer section -->
                 </div>
-                {{-- end carousel --}}
+
 
         <script src="assets/js/swiper-bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -478,162 +556,72 @@
         <script defer src="{{ asset('admin/assets/js/alpine.min.js') }}"></script>
         <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/apexcharts.js') }}"></script>
+        <script src="{{ asset('admin/assets/js/simple-datatables.js')}}"></script>
 
-        <script>
 
-        var options = {
-          series: [{
-          name: 'Menunggu',
-          data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 70, 67, 50]
-        }, {
-          name: 'Terima',
-          data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 110, 104, 120]
-        }, {
-          name: 'Tolak',
-          data: [35, 41, 36, 26, 45, 48, 52, 53, 41, 30, 20, 70]
-        }],
-          chart: {
-          type: 'bar',
-          height: 350
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: '55%',
-            endingShape: 'rounded',
-            borderRadius: 7,
-          },
-        },
-        dataLabels: {
-          enabled: false,
-        },
-        animations: {
-            enabled: true,
-            easing: 'easeinout',
-            speed: 1200,
-            animateGradually: {
-                enabled: true,
-                delay: 200
-            },
-            dynamicAnimation: {
-                enabled: true,
-                speed: 450
-            }
-        },
-        stroke: {
-          show: true,
-          width: 2,
-          colors: ['transparent']
-        },
-        xaxis: {
-          categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
-
-        },
-        yaxis: {
-          title: {
-            text: 'jumlah siswa'
-          }
-        },
-        fill: {
-          opacity: 2,
-          colors: ['#6769EB', '#47EBB3', '#FFA726']
-        },
-        tooltip: {
-          y: {
-            // formatter: function (val) {
-            //   return "$ " + val + " thousands"
-            // }
-          }
-        }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#grafik_admin"), options);
-        chart.render();
-
-        </script>
 
         <script>
             document.addEventListener('alpine:init', () => {
-                //Carousel
-                Alpine.data('carousel', () => ({
-                    items: ['carousel1.jpeg', 'carousel2.html', 'carousel3.jpeg'],
-
+                Alpine.data('basic', () => ({
+                    datatable: null,
                     init() {
-                        // basic
-                        const swiper1 = new Swiper('#slider1', {
-                            navigation: {
-                                nextEl: '.swiper-button-next-ex1',
-                                prevEl: '.swiper-button-prev-ex1',
+                        this.datatable = new simpleDatatables.DataTable('#myTable', {
+                            data: {
+                                headings: ['ID', 'Nama', 'Jurusan', 'Lama Magang', 'Sekolah', 'Kelas', 'Aksi'],
+                                data: [
+                                    [1, 'Caroline', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
+                                    [2, 'Celeste', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
+                                    [3, 'Tillman', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
+                                    [4, 'Daisy', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
+                                    [5, 'Weber', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
+                                    [6, 'Buckley', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
+                                    [7, 'Latoya', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
+                                    [8, 'Kate', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
+                                    [9, 'Marva', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
+                                    [10, 'Decker', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
+                                    [11, 'Odom', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
+                                    [12, 'Sellers', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 KEPANJEN', '12', ''],
+                                    [13, 'Wendi', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 MALANG', '12', ''],
+                                    [14, 'Sophie', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 MALANG', '11', ''],
+                                    [15, 'Levine', 'RPL', '03-04-2023 -> 03-04-2023', 'SMKN 1 MALANG', '11', ''],
+
+                                ],
                             },
-                            pagination: {
-                                el: '.swiper-pagination',
-                                clickable: true,
+                            sortable: true,
+                            searchable: true,
+                            perPage: 10,
+                            perPageSelect: [10, 20, 30, 50, 100],
+
+                            firstLast: true,
+                            firstText:
+                                '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                            lastText:
+                                '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                            prevText:
+                                '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                            nextText:
+                                '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                            labels: {
+                                perPage: '{select}',
                             },
-                        });
-                        // Autoplay
-                        const swiper2 = new Swiper('#slider2', {
-                            navigation: {
-                                nextEl: '.swiper-button-next-ex2',
-                                prevEl: '.swiper-button-prev-ex2',
+                            layout: {
+                                top: '{search}',
+                                bottom: '{info}{select}{pager}',
                             },
-                            autoplay: {
-                                delay: 2000,
-                            },
-                        });
-                        // vertical
-                        setTimeout(() => {
-                            const swiper3 = new Swiper('#slider3', {
-                                direction: 'vertical',
-                                pagination: {
-                                    el: '.swiper-pagination',
-                                    clickable: true,
+                            columns: [
+                                {
+                                    select: 6,
+                                    render: (data, cell, row) => {
+                                        return `
+
+                                        `;
+                                    },
+                                    sortable: false,
                                 },
-                                autoplay: {
-                                    delay: 2000,
-                                },
-                            });
-                        });
-                        // Loop
-                        const swiper4 = new Swiper('#slider4', {
-                            slidesPerView: 1,
-                            spaceBetween: 30,
-                            loop: true,
-                            pagination: {
-                                el: '.swiper-pagination',
-                                clickable: true,
-                                type: 'fraction',
-                            },
-                            navigation: {
-                                nextEl: '.swiper-button-next-ex4',
-                                prevEl: '.swiper-button-prev-ex4',
-                            },
-                        });
-                        // Multiple Slides
-                        const swiper5 = new Swiper('#slider5', {
-                            navigation: {
-                                nextEl: '.swiper-button-next-ex5',
-                                prevEl: '.swiper-button-prev-ex5',
-                            },
-                            pagination: {
-                                el: '.swiper-pagination',
-                                clickable: true,
-                            },
-                            breakpoints: {
-                                1024: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 30,
-                                },
-                                768: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 40,
-                                },
-                                320: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 20,
-                                },
-                            },
+                            ],
                         });
                     },
+                }));
                 // main section
                 Alpine.data('scrollToTop', () => ({
                     showTopButton: false,
