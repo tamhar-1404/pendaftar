@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>VRISTO - Multipurpose Tailwind Dashboard Template</title>
+    <title>Siswa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     @include('Siswa_admin.css')
 </head>

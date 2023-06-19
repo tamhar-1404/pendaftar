@@ -23,5 +23,6 @@ Route::resource('/chat', App\Http\Controllers\ChatController::class);
 Route::resource('/login', App\Http\Controllers\LoginController::class);
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::get('/register', [LoginController::class, 'register'])->name('register');
-
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
+Route::resource('/pembimbing', App\Http\Controllers\PembimbingController::class);
+Route::resource('/Berita', App\Http\Controllers\BeritaController::class);
