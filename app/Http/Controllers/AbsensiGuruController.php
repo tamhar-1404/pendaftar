@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\aproval;
-use App\Http\Requests\StoreaprovalRequest;
-use App\Http\Requests\UpdateaprovalRequest;
+use App\Models\absensi_guru;
+use App\Http\Requests\Storeabsensi_guruRequest;
+use App\Http\Requests\Updateabsensi_guruRequest;
 
-class AprovalController extends Controller
+class AbsensiGuruController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class AprovalController extends Controller
      */
     public function index()
     {
-        $id = 'aproval';
-        return view('aproval.index',compact('id'));
+        return view('absensi_guru.index');
     }
 
     /**
@@ -32,10 +31,10 @@ class AprovalController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreaprovalRequest  $request
+     * @param  \App\Http\Requests\Storeabsensi_guruRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreaprovalRequest $request)
+    public function store(Storeabsensi_guruRequest $request)
     {
         //
     }
@@ -43,10 +42,10 @@ class AprovalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Models\absensi_guru  $absensi_guru
      * @return \Illuminate\Http\Response
      */
-    public function show(aproval $aproval)
+    public function show(absensi_guru $absensi_guru)
     {
         //
     }
@@ -54,10 +53,10 @@ class AprovalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Models\absensi_guru  $absensi_guru
      * @return \Illuminate\Http\Response
      */
-    public function edit(aproval $aproval)
+    public function edit(absensi_guru $absensi_guru)
     {
         //
     }
@@ -65,11 +64,11 @@ class AprovalController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateaprovalRequest  $request
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Http\Requests\Updateabsensi_guruRequest  $request
+     * @param  \App\Models\absensi_guru  $absensi_guru
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateaprovalRequest $request, aproval $aproval)
+    public function update(Updateabsensi_guruRequest $request, absensi_guru $absensi_guru)
     {
         //
     }
@@ -77,10 +76,10 @@ class AprovalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Models\absensi_guru  $absensi_guru
      * @return \Illuminate\Http\Response
      */
-    public function destroy(aproval $aproval)
+    public function destroy(absensi_guru $absensi_guru)
     {
         //
     }
