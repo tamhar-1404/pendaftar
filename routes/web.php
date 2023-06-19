@@ -27,3 +27,7 @@ Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::get('/register', [LoginController::class, 'register'])->name('register');
 
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
+
+Route::get('/sidebar', function () {
+    return view('sidebar.layout');
+});
