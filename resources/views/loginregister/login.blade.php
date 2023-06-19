@@ -46,7 +46,7 @@
     <div id="root" class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900" x-cloak>
         <div class="fixed top-0 hidden p-6 lg:block lg:px-12">
             <a href="#" class="flex items-center space-x-2">
-                <img class="h-14 w-100" src="lineone/images/hummasoft2.png" alt="logo" />
+                <img class="h-12 w-100" src="lineone/images/hummasoft2.png" alt="logo" />
                 <p class="text-xl font-semibold uppercase text-slate-700 dark:text-navy-100">
                 </p>
             </a>
