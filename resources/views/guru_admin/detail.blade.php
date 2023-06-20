@@ -585,7 +585,7 @@
         <div>
             <ul class="flex space-x-2 rtl:space-x-reverse">
                 <li>
-                    <a href="javascript:;" class="text-primary hover:underline">Users</a>
+                    <a href="javascript:;" class="text-primary hover:underline">Guru</a>
                 </li>
                 <li class="before:content-['/'] ltr:before:mr-1 rtl:before:ml-1">
                     <span>Profile</span>
@@ -601,7 +601,7 @@
                         <div class="mb-5">
                             <div class="flex flex-col items-center justify-center">
                                 <img src="{{ asset('admin/assets/images/profile-34.jpeg') }}" alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
-                                <p class="text-xl font-semibold text-info">Abdul kader</p>
+                                <p class="text-xl font-semibold text-info">Jimmy Turner</p>
                             </div>
                             <ul class="m-auto mt-5 flex max-w-[160px] flex-col space-y-4 font-semibold text-white-dark">
                                 <li class="flex items-center gap-2">
@@ -640,9 +640,9 @@
                                             stroke-linejoin="round"
                                         />
                                     </svg>
-                                    Smkn 1 kraksaan
+                                    jimmy@gmail.com
                                 </li>
-                                <li class="flex items-center gap-2">
+                                <li class="flex items-center gap-2 ">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
                                         <path
                                             d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12Z"
@@ -653,7 +653,7 @@
                                         <path opacity="0.5" d="M17 4V2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                         <path opacity="0.5" d="M2 9H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                     </svg>
-                                    Jan , 01 , 2006
+                                   kraksaan, probolinggo
                                 </li>
                                 <li class="flex items-center gap-2">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
@@ -665,73 +665,23 @@
                                         />
                                         <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5" />
                                     </svg>
-                                   Kraksaan jawa timur
+                                  09187361253426
                                 </li>
-                                <li>
-                                    <a href="javascript:;" class="flex items-center gap-2">
-                                        <svg
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="h-5 w-5"
-                                        >
-                                            <path
-                                                opacity="0.5"
-                                                d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12Z"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                            />
-                                            <path
-                                                d="M6 8L8.1589 9.79908C9.99553 11.3296 10.9139 12.0949 12 12.0949C13.0861 12.0949 14.0045 11.3296 15.8411 9.79908L18 8"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
-                                            />
-                                        </svg>
-                                        <span class="text-info">Kader@gmail.com</span></a
-                                    >
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
-                                        <path
-                                            d="M16.1007 13.359L16.5562 12.9062C17.1858 12.2801 18.1672 12.1515 18.9728 12.5894L20.8833 13.628C22.1102 14.2949 22.3806 15.9295 21.4217 16.883L20.0011 18.2954C19.6399 18.6546 19.1917 18.9171 18.6763 18.9651M4.00289 5.74561C3.96765 5.12559 4.25823 4.56668 4.69185 4.13552L6.26145 2.57483C7.13596 1.70529 8.61028 1.83992 9.37326 2.85908L10.6342 4.54348C11.2507 5.36691 11.1841 6.49484 10.4775 7.19738L10.1907 7.48257"
-                                            stroke="currentColor"
-                                            stroke-width="1.5"
-                                        />
-                                        <path
-                                            opacity="0.5"
-                                            d="M18.6763 18.9651C17.0469 19.117 13.0622 18.9492 8.8154 14.7266C4.81076 10.7447 4.09308 7.33182 4.00293 5.74561"
-                                            stroke="currentColor"
-                                            stroke-width="1.5"
-                                        />
-                                        <path
-                                            opacity="0.5"
-                                            d="M16.1007 13.3589C16.1007 13.3589 15.0181 14.4353 12.0631 11.4971C9.10807 8.55886 10.1907 7.48242 10.1907 7.48242"
-                                            stroke="currentColor"
-                                            stroke-width="1.5"
-                                            stroke-linecap="round"
-                                        />
-                                    </svg>
-                                    <span class="whitespace-nowrap" dir="ltr">0894 8736 9872</span>
-                                </li>
+
+
                             </ul>
                             <ul class="mt-7  justify-center gap-2">
                                <li class="font-bold">Status</li>
-                               <li>
-                                <div class="flex h-1.5 w-full rounded-full bg-[#ebedf2] dark:bg-dark/40 relative">
-                                    <div class="w-full rounded-full" style="background-color: #DAFE00;">
-                                        <span class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">SP 1</span>
-                                    </div>
-                                </div>
+                               <li class="px-5">
+                                    Pembimbing
+
                             </li>
                             </ul>
                         </div>
                     </div>
                     <div class="panel lg:col-span-3 xl:col-span-3">
                         <div class="flex items-center justify-between mb-5">
-                          <h5 class="text-lg font-semibold dark:text-white-light">Pelanggaran</h5>
+                          <h5 class="text-lg font-semibold dark:text-white-light">Siswa</h5>
                           <div class="flex items-center space-x-2">
                             <a href="http://127.0.0.1:8000/siswa_admin/create" class="btn btn-outline-info w-73 h-27">Detail</a>
                             <a href="{{ route('siswa_admin.index') }}" class="btn btn-outline-danger w-73 h-27">Kembali</a>
@@ -739,52 +689,24 @@
                         </div>
 
                         <div class="table-responsive font-semibold text-[#515365] dark:text-white-light">
-                          <table class="whitespace-nowrap">
-                            <thead>
-                              <tr>
-                                <th>Tanggal pelanggaran</th>
-                                <th>Judul pelanggaran</th>
-                                <th>Deskripsi</th>
-                              </tr>
-                            </thead>
-                            <tbody  >
-                              <tr >
-                                <td > 11/02/2020</td>
-                                <td>Peraturan tata tertib</td>
-                                <td>Telat masuk jam magang</td>
-                              </tr>
-                              <tr>
-                                <td>11/02/2020</td>
-                                <td>Peraturan tata tertib</td>
-                                <td>Telat masuk jam magang</td>
-                              </tr>
-                              <tr>
-                                <td>11/02/2020</td>
-                                <td>Peraturan tata tertib</td>
-                                <td>Telat masuk jam magang</td>
-                              </tr>
-                              <tr>
-                                <td>11/02/2020</td>
-                                <td>Peraturan tata tertib</td>
-                                <td>Telat masuk jam magang</td>
-                              </tr>
-                              <tr>
-                                <td>11/02/2020</td>
-                                <td>Peraturan tata tertib</td>
-                                <td>Telat masuk jam magang</td>
-                              </tr>
-                              <tr>
-                                <td>11/02/2020</td>
-                                <td>Peraturan tata tertib</td>
-                                <td>Telat masuk jam magang</td>
-                              </tr>
-                              <tr>
-                                <td>11/02/2020</td>
-                                <td>Peraturan tata tertib</td>
-                                <td>Telat masuk jam magang</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                            <table class="whitespace-nowrap">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Nama</th>
+                                    <th>Jurusan</th>
+                                    <th>Email</th>
+                                    <th>Alamat</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td >
+                                            1
+                                        </td>
+                                    </tr>
+                                </tbody>
+                              </table>
                         </div>
                       </div>
 

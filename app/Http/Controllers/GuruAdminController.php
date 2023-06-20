@@ -27,6 +27,10 @@ class GuruAdminController extends Controller
     {
         //
     }
+    public function detail ()
+    {
+        return view('guru_admin.detail');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -47,7 +51,7 @@ class GuruAdminController extends Controller
      */
     public function show(Guru_admin $guru_admin)
     {
-        //
+      //
     }
 
     /**
