@@ -428,7 +428,7 @@
         autocomplete="off"
         type="search"
         class="relative m-0 inline-block w-[1%] min-w-[225px] flex-auto rounded border border-solid border-gray-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition duration-300 ease-in-out focus:border-primary-600 focus:text-gray-700 focus:shadow-te-primary focus:outline-none dark:text-gray-200 dark:placeholder:text-gray-200"
-        placeholder='Search (ctrl + "/" to focus)' />
+        placeholder='Cari...' />
         <span
         class="flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-gray-700 dark:text-gray-200 [&>svg]:w-4"
         id="basic-addon2">
@@ -566,7 +566,7 @@
     <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
-
+   
     </div>
 
 
