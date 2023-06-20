@@ -57,7 +57,9 @@
                                     </svg>
                                 </div>
                                 {{-- hari --}}
-                                div
+                                <div class="text-center font-bold mt-3">
+                                    Senin
+                                </div>
                             </div>
                             <div class=" w-full aspect-[3/4] bg-[#EAF1FF]" ></div>
                             <div class=" w-full aspect-[3/4] bg-[#EAF1FF]" ></div>
