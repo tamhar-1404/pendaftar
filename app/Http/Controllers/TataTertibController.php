@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pembimbing;
-use App\Http\Requests\StorePembimbingRequest;
-use App\Http\Requests\UpdatePembimbingRequest;
+use App\Models\TataTertib;
+use App\Http\Requests\StoreTataTertibRequest;
+use App\Http\Requests\UpdateTataTertibRequest;
 
-class PembimbingController extends Controller
+class TataTertibController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PembimbingController extends Controller
      */
     public function index()
     {
-        return view('pembimbing.index');
+        return view('tatatertib.index');
     }
 
     /**
@@ -31,10 +31,10 @@ class PembimbingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePembimbingRequest  $request
+     * @param  \App\Http\Requests\StoreTataTertibRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePembimbingRequest $request)
+    public function store(StoreTataTertibRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class PembimbingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pembimbing  $pembimbing
+     * @param  \App\Models\TataTertib  $tataTertib
      * @return \Illuminate\Http\Response
      */
-    public function show(Pembimbing $pembimbing)
+    public function show(TataTertib $tataTertib)
     {
         //
     }
@@ -53,10 +53,10 @@ class PembimbingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pembimbing  $pembimbing
+     * @param  \App\Models\TataTertib  $tataTertib
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pembimbing $pembimbing)
+    public function edit(TataTertib $tataTertib)
     {
         //
     }
@@ -64,11 +64,11 @@ class PembimbingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePembimbingRequest  $request
-     * @param  \App\Models\Pembimbing  $pembimbing
+     * @param  \App\Http\Requests\UpdateTataTertibRequest  $request
+     * @param  \App\Models\TataTertib  $tataTertib
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePembimbingRequest $request, Pembimbing $pembimbing)
+    public function update(UpdateTataTertibRequest $request, TataTertib $tataTertib)
     {
         //
     }
@@ -76,10 +76,10 @@ class PembimbingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pembimbing  $pembimbing
+     * @param  \App\Models\TataTertib  $tataTertib
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pembimbing $pembimbing)
+    public function destroy(TataTertib $tataTertib)
     {
         //
     }

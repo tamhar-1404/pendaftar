@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pembimbing;
-use App\Http\Requests\StorePembimbingRequest;
-use App\Http\Requests\UpdatePembimbingRequest;
+use App\Models\MOU;
+use App\Http\Requests\StoreMOURequest;
+use App\Http\Requests\UpdateMOURequest;
 
-class PembimbingController extends Controller
+class MOUController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PembimbingController extends Controller
      */
     public function index()
     {
-        return view('pembimbing.index');
+        return view('mou.index');
     }
 
     /**
@@ -31,10 +31,10 @@ class PembimbingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePembimbingRequest  $request
+     * @param  \App\Http\Requests\StoreMOURequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePembimbingRequest $request)
+    public function store(StoreMOURequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class PembimbingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pembimbing  $pembimbing
+     * @param  \App\Models\MOU  $mOU
      * @return \Illuminate\Http\Response
      */
-    public function show(Pembimbing $pembimbing)
+    public function show(MOU $mOU)
     {
         //
     }
@@ -53,10 +53,10 @@ class PembimbingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pembimbing  $pembimbing
+     * @param  \App\Models\MOU  $mOU
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pembimbing $pembimbing)
+    public function edit(MOU $mOU)
     {
         //
     }
@@ -64,11 +64,11 @@ class PembimbingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePembimbingRequest  $request
-     * @param  \App\Models\Pembimbing  $pembimbing
+     * @param  \App\Http\Requests\UpdateMOURequest  $request
+     * @param  \App\Models\MOU  $mOU
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePembimbingRequest $request, Pembimbing $pembimbing)
+    public function update(UpdateMOURequest $request, MOU $mOU)
     {
         //
     }
@@ -76,10 +76,10 @@ class PembimbingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pembimbing  $pembimbing
+     * @param  \App\Models\MOU  $mOU
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pembimbing $pembimbing)
+    public function destroy(MOU $mOU)
     {
         //
     }

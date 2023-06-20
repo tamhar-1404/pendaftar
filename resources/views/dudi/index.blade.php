@@ -382,14 +382,14 @@
         </div>
         {{--  <!-- end theme customizer section -->  --}}
         <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
-            @include('dudi.sidebar')
+            @include('.sidebar.layout')
 
 
             <div class="main-content">
                 {{--  <!-- start header section -->  --}}
-            @include('dudi.header')
+
                 {{--  <!-- end header section -->  --}}
-                <div class="mt-4 pt-10 grid grid-cols-1 px-4 gap-2 sm:mt-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
+                <div class="mt-4 pt-10 grid grid-cols-1 px-4 gap-2 sm:mt-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5">
                     <div class="rounded-lg bg-white p-5 dark:bg-navy-600 dark:bg-black" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
                         <div class="flex justify-between">
                         <p class="text-xl mt-1 font-semibold text-slate-700 dark:text-navy-100">
@@ -467,9 +467,6 @@
                 {{-- end grafik --}}
                 {{-- caraousel --}}
 
-                <div class="w-80%  bg-white rounded-t-lg  mt-8 mx-4 text-same font-semibold dark:bg-transparent">
-                    Grafik Pendaftaran
-                    </div>
 
                     <section>
                     <div class="swiper mySwiper container w-full" >

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:26 GMT -->
+{{--  <!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:26 GMT -->  --}}
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
         <meta charset="utf-8" />
@@ -69,7 +69,7 @@
             </template>
         </div>
 
-      
+
 
         <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
             <!-- start sidebar section -->
@@ -1280,7 +1280,7 @@
                             <div class="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
                                 <a href="index-2.html" class="main-logo flex shrink-0 items-center">
                                     <img class="inline w-20 ltr:-ml-1 rtl:-mr-1" src="assets/images/LOGO HUMMASOFT 2.png" alt="image" />
-                                    
+
                                 </a>
 
                                 <a
@@ -1295,13 +1295,13 @@
                                     </svg>
                                 </a>
                             </div>
-                           
+
                             <div
                                 x-data="header"
                                 class="flex items-center space-x-1.5 ltr:ml-auto rtl:mr-auto rtl:space-x-reverse dark:text-[#d0d2d6] sm:flex-1 ltr:sm:ml-0 sm:rtl:mr-0 lg:space-x-2"
                             >
                                 <div class="sm:ltr:mr-auto sm:rtl:ml-auto" x-data="{ search: false }" @click.outside="search = false">
-                                    
+
                                     <button
                                         type="button"
                                         class="search_btn rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 dark:bg-dark/40 dark:hover:bg-dark/60 sm:hidden"
@@ -1400,9 +1400,9 @@
                                     </a>
                                 </div>
 
-                              
 
-                                
+
+
                                 <div class="dropdown flex-shrink-0" x-data="dropdown" @click.outside="open = false">
                                     <a href="javascript:;" class="group relative" @click="toggle()">
                                         <span
@@ -1576,7 +1576,7 @@
                                         </svg>
                                         <span class="px-1 text-white">Dashboard</span>
                                     </div>
-                                   
+
                                 </a>
                                 <!-- <ul class="sub-menu">
                                     <li>
@@ -1634,9 +1634,9 @@
                                         </svg>
                                         <span class="px-1">Jurnal</span>
                                     </div>
-                                  
+
                                 </a>
-                               
+
                             </li>
                             <li class="menu nav-item relative">
                                 <a href="javascript:;" class="nav-link">
@@ -1659,9 +1659,9 @@
                                         </svg>
                                         <span class="px-1">Absensi</span>
                                     </div>
-                                   
+
                                 </a>
-                             
+
                             </li>
                             <li class="menu nav-item relative">
                                 <a href="javascript:;" class="nav-link">
@@ -1681,7 +1681,7 @@
                                         </svg>
                                         <span class="px-1">Berita</span>
                                     </div>
-                                    
+
                                 </a>
                             </li>
                             <li class="menu nav-item relative">
@@ -1736,7 +1736,7 @@
                                     </li>
                                 </ul>
                             </li>
-                           
+
                         </ul>
                     </div>
                 </header>
