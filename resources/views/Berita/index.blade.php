@@ -55,7 +55,7 @@
         </a>
         </li>
         {{-- dashboard --}}
-        <li class="relative">
+        <li class="relative mt-5">
         <a
             class="flex h-12 cursor-pointer items-center   rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 {{request()->routeIs('dudi.index') ? 'bg-blue-500 text-white' : ''}} hover:text-white hover:outline-none focus:bg-blue-500 focus:text-white focus:outline-none active:bg-blue-500 active:text-white active:outline-none data-[te-sidenav-state-active]:text-white data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
             >

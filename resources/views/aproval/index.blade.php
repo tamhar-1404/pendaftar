@@ -387,8 +387,6 @@
         <!-- end theme customizer section -->
 
         <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
-
-
             <div class="main-content">
                 @include('aproval.layout')
                 <div class="animate__animated p-6" :class="[$store.app.animation]">
@@ -547,6 +545,8 @@
                     </p>
                     <!-- end footer section -->
                 </div>
+            </div>
+        </div>
 
 
         <script src="assets/js/swiper-bundle.min.js"></script>

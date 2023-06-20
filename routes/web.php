@@ -46,6 +46,10 @@ Route::resource('/chat', App\Http\Controllers\ChatController::class);
 
 Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
 Route::resource('/login', App\Http\Controllers\LoginController::class);
+Route::resource('/sp', App\Http\Controllers\SpController::class);
+Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
+Route::resource('/piket', App\Http\Controllers\PiketController::class);
+Route::get('/register', [LoginController::class, 'register'])->name('register');
 
 Route::resource('/sp', App\Http\Controllers\SpController::class);
 
