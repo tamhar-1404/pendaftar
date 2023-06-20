@@ -34,6 +34,7 @@ Route::get('/laporansiswa', function () {
 Route::get('/jurnal_admin', function () {
     return view('jurnal_admin.grafik');
 });
+Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
 
 Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
 Route::resource('/mou', App\Http\Controllers\MOUController::class);
@@ -49,6 +50,7 @@ Route::resource('/chat', App\Http\Controllers\ChatController::class);
 
 
 Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
+
 Route::resource('/login', App\Http\Controllers\LoginController::class);
 Route::resource('/sp', App\Http\Controllers\SpController::class);
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
@@ -59,16 +61,21 @@ Route::resource('/sp', App\Http\Controllers\SpController::class);
 
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 
-Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
 
 Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
+
+Route::resource('/tatib_siswa', App\Http\Controllers\TatibSiswaController::class);
+
 Route::resource('/pembimbing', App\Http\Controllers\PembimbingController::class);
+
 Route::resource('/Berita', App\Http\Controllers\BeritaController::class);
 Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
 
 
 Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
+
+Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::class);
 
 Route::get('/sidebar', function () {
     return view('sidebar.layout');
