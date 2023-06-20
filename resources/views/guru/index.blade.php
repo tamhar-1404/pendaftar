@@ -16,6 +16,7 @@
         <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/perfect-scrollbar.min.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/style.css" />
         <link defer rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/animate.css" />
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
         <script src="assets_guru/js/perfect-scrollbar.min.js"></script>
         <script defer src="assets_guru/js/popper.min.js"></script>
         <script defer src="assets_guru/js/tippy-bundle.umd.min.js"></script>
@@ -1639,6 +1640,310 @@
                         </div>
                     </div>
                     <!-- end main content section -->
+                    <section>
+                        <div class="swiper mySwiper container w-full" >
+                          <div class="swiper-wrapper content">
+                            <div class="swiper-slide card dark:bg-black">
+                              <div class="card-content ">
+                                <div class="image">
+                                 <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                </div>
+    
+    
+                              </div>
+                            </div>
+                            <div class="swiper-slide card dark:bg-black">
+                              <div class="card-content">
+                                <div class="image1">
+                                    <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                </div>
+    
+                              </div>
+                            </div>
+                            <div class="swiper-slide card dark:bg-black">
+                              <div class="card-content">
+                                <div class="image">
+                                    <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                </div>
+    
+    
+                              </div>
+                            </div>
+                            <div class="swiper-slide card dark:bg-black">
+                                <div class="card-content">
+                                  <div class="image">
+                                      <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                  </div>
+    
+    
+                                </div>
+                              </div>
+                              <div class="swiper-slide card dark:bg-black">
+                                <div class="card-content">
+                                  <div class="image">
+                                      <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                  </div>
+    
+    
+                                </div>
+                              </div>
+                              <div class="swiper-slide card dark:bg-black">
+                                <div class="card-content">
+                                  <div class="image">
+                                      <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                  </div>
+    
+    
+                                </div>
+                              </div>
+                              <div class="swiper-slide card dark:bg-black">
+                                <div class="card-content">
+                                  <div class="image">
+                                      <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                  </div>
+    
+    
+                                </div>
+                              </div>
+                            <div class="swiper-slide card dark:bg-black">
+                              <div class="card-content">
+                                <div class="image">
+                                    <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                </div>
+    
+    
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                          <div class="swiper-button-prev"></div>
+                          <div class="swiper-pagination"></div>
+                      </section>
+                      {{--  <!-- Swiper JS -->  --}}
+                      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+                      {{--  <!-- Initialize Swiper -->  --}}
+                      <script>
+                        var swiper = new Swiper(".mySwiper", {
+                          slidesPerView: 3,
+                          spaceBetween: 30,
+                          slidesPerGroup: 3,
+                          loop: true,
+                          loopFillGroupWithBlank: true,
+                          pagination: {
+                            el: ".swiper-pagination",
+                            clickable: true,
+                          },
+                          navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                          },
+                        });
+                      </script>
+                      <style>
+                        /* === Google Font Import - Poppins === */
+                        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    
+    
+                        section {
+                          position: relative;
+                          display: flex; 
+                          align-items: center;
+                          padding: 20px;
+                        }
+    
+                        .swiper {
+                          flex: 1;
+                        }
+    
+                        .card {
+                          position: ;
+                          background: #fff;
+                          border-radius: 20px;
+                          margin: 20px 0;
+                          box-shadow:0px 0px 4px rgba(0, 0, 0, 0.1);
+                        }
+    
+    
+    
+                        .card .card-content {
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          padding: 30px;
+                          position: relative;
+                          z-index: 100;
+                        }
+    
+    
+    
+                        .card .media-icons i:hover {
+                          opacity: 1;
+                        }
+    
+                        .card .name-profession {
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          margin-top: 10px;
+                          color:black;
+                        }
+    
+                        .name-profession .name {
+                          font-size: 20px;
+                          font-weight: 600;
+                        }
+    
+                        .name-profession .profession {
+                          font-size: 15px;
+                          font-weight: 500;
+                        }
+    
+    
+                        .card .button {
+                          width: 100%;
+                          display: flex;
+                          justify-content: space-around;
+                          margin-top: 20px;
+                        }
+    
+                        .card .button button {
+                          background: #278be1;
+                          outline: none;
+                          border: none;
+                          color: #000000;
+                          padding: 8px 22px;
+                          border-radius: 20px;
+                          font-size: 14px;
+                          transition: all 0.3s ease;
+                          cursor: pointer;
+                        }
+    
+                        .card .button button:hover {
+                          background: #278be1;
+                        }
+    
+                        .swiper-pagination {
+                          position: absolute;
+                        }
+    
+                        .swiper-pagination-bullet {
+                          height: 7px;
+                          width: 26px;
+                          border-radius: 25px;
+                          background: #278be1;
+                        }
+    
+                        .swiper-button-next,
+                        .swiper-button-prev {
+                          opacity: 0.7;
+                          color: #278be1;
+                          transition: all 0.3s ease;
+                        }
+    
+                        .swiper-button-next:hover,
+                        .swiper-button-prev:hover {
+                          opacity: 1;
+                          color: #278be1;
+                        }
+    
+                        @media (max-width: 768px) {
+                          section {
+                            flex-direction: column;
+                          }
+    
+                          .swiper {
+                            width: 100%;
+                            max-width: 400px;
+                            margin: 0 auto;
+                          }
+    
+                          .card {
+                            width: 100%;
+                          }
+    
+                          .card::before {
+                            border-radius: 20px;
+                          }
+                        }
+                      </style>
+    
+                      {{--  <!-- Include necessary scripts, e.g., Font Awesome -->  --}}
+                      <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+
+                       <!-- multiple -->
+                     <div class=" panel rounded-lg px-1 pt-4  mt-5 bg-white dark:bg-dark dark:bg-opacity-[0.08]  ">
+                        <div class="text-dark pb-5 font-bold text-lg bg-transparent pt-2 pl-10 dark:text-white-light dark:bg-transparent">
+                            berita
+                        </div>
+                        <div class="swiper bg-white p-1 dark:bg-dark dark:bg-opacity-[0.08]" id="slider5" x-data="carousel()">
+                            <div class="swiper-wrapper">
+                                <template x-for="item in items" :key="item">
+                                    <div class="swiper-slide">
+                                        <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
+                                    </div>
+                                </template>
+                                <template x-for="item in items" :key="item">
+                                    <div class="swiper-slide">
+                                        <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
+                                    </div>
+                                </template>
+                            </div>
+                            <a href="javascript:;" class="swiper-button-prev-ex5 grid place-content-center ltr:left-2 rtl:right-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-transparent rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                                </svg>
+
+                            </a>
+                            <a href="javascript:;" class="swiper-button-next-ex5 grid place-content-center ltr:right-2 rtl:left-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-transparent rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                </svg>
+                            </a>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <script>
+                            function carousel() {
+                                return {
+                                    items: [
+                                        'carousel1.jpeg',
+                                        'carousel2.jpeg',
+                                        'carousel3.jpeg'
+
+                                    ],
+
+                                    init() {
+                                        const swiper5 = new Swiper('#slider5', {
+                                            navigation: {
+                                                nextEl: '.swiper-button-next-ex5',
+                                                prevEl: '.swiper-button-prev-ex5',
+                                            },
+                                            pagination: {
+                                                el: '.swiper-pagination',
+                                                clickable: true,
+                                            },
+                                            breakpoints: {
+                                                1024: {
+                                                    slidesPerView: 3,
+                                                    spaceBetween: 30,
+                                                },
+                                                768: {
+                                                    slidesPerView: 2,
+                                                    spaceBetween: 40,
+                                                },
+                                                320: {
+                                                    slidesPerView: 1,
+                                                    spaceBetween: 20,
+                                                },
+                                            },
+                                        });
+                                    },
+                                };
+                            }
+                        </script>
+                    </div>
+                    {{-- end carousel --}}
 
                     <!-- start footer section -->
                     <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
@@ -1649,6 +1954,8 @@
             </div>
         </div>
 
+        <script src="assets/js/swiper-bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="assets_guru/js/alpine-collaspe.min.js"></script>
         <script src="assets_guru/js/alpine-persist.min.js"></script>
         <script defer src="assets_guru/js/alpine-ui.min.js"></script>
@@ -1658,6 +1965,7 @@
         <script defer src="assets_guru/js/apexcharts.js"></script>
         <script src="assets/js/simple-datatables.js"></script>
         <script>
+            
             document.addEventListener('alpine:init', () => {
                 // main section
                 Alpine.data('scrollToTop', () => ({
@@ -1862,6 +2170,86 @@
 
                     removeMessage(value) {
                         this.messages = this.messages.filter((d) => d.id !== value);
+                    },
+                }));
+                Alpine.data('carousel', () => ({
+                    items: ['carousel1.jpeg', 'carousel2.html', 'carousel3.jpeg'],
+
+                    init() {
+                        // basic
+                        const swiper1 = new Swiper('#slider1', {
+                            navigation: {
+                                nextEl: '.swiper-button-next-ex1',
+                                prevEl: '.swiper-button-prev-ex1',
+                            },
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                            },
+                        });
+                        // Autoplay
+                        const swiper2 = new Swiper('#slider2', {
+                            navigation: {
+                                nextEl: '.swiper-button-next-ex2',
+                                prevEl: '.swiper-button-prev-ex2',
+                            },
+                            autoplay: {
+                                delay: 2000,
+                            },
+                        });
+                        // vertical
+                        setTimeout(() => {
+                            const swiper3 = new Swiper('#slider3', {
+                                direction: 'vertical',
+                                pagination: {
+                                    el: '.swiper-pagination',
+                                    clickable: true,
+                                },
+                                autoplay: {
+                                    delay: 2000,
+                                },
+                            });
+                        });
+                        // Loop
+                        const swiper4 = new Swiper('#slider4', {
+                            slidesPerView: 1,
+                            spaceBetween: 30,
+                            loop: true,
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                                type: 'fraction',
+                            },
+                            navigation: {
+                                nextEl: '.swiper-button-next-ex4',
+                                prevEl: '.swiper-button-prev-ex4',
+                            },
+                        });
+                        // Multiple Slides
+                        const swiper5 = new Swiper('#slider5', {
+                            navigation: {
+                                nextEl: '.swiper-button-next-ex5',
+                                prevEl: '.swiper-button-prev-ex5',
+                            },
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                            },
+                            breakpoints: {
+                                1024: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 30,
+                                },
+                                768: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 40,
+                                },
+                                320: {
+                                    slidesPerView: 1,
+                                    spaceBetween: 20,
+                                },
+                            },
+                        });
                     },
                 }));
 

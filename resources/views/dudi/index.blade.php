@@ -571,7 +571,7 @@
                       },
                     });
                   </script>
-                  <style>
+                 <style>
                     /* === Google Font Import - Poppins === */
                     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -579,7 +579,7 @@
 
                     section {
                       position: relative;
-                      display: flex;
+                      display: flex; 
                       align-items: center;
                       padding: 20px;
                     }
