@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\aproval;
-use App\Http\Requests\StoreaprovalRequest;
-use App\Http\Requests\UpdateaprovalRequest;
+use App\Models\laporan_piket;
+use App\Http\Requests\Storelaporan_piketRequest;
+use App\Http\Requests\Updatelaporan_piketRequest;
 
-class AprovalController extends Controller
+class LaporanPiketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class AprovalController extends Controller
      */
     public function index()
     {
-
-        return view('aproval.index');
+        return view('laporan_piket.index');
     }
 
     /**
@@ -32,10 +31,10 @@ class AprovalController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreaprovalRequest  $request
+     * @param  \App\Http\Requests\Storelaporan_piketRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreaprovalRequest $request)
+    public function store(Storelaporan_piketRequest $request)
     {
         //
     }
@@ -43,21 +42,21 @@ class AprovalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Models\laporan_piket  $laporan_piket
      * @return \Illuminate\Http\Response
      */
-    public function show(aproval $aproval)
+    public function show(laporan_piket $laporan_piket)
     {
-        return view('aproval.view');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Models\laporan_piket  $laporan_piket
      * @return \Illuminate\Http\Response
      */
-    public function edit(aproval $aproval)
+    public function edit(laporan_piket $laporan_piket)
     {
         //
     }
@@ -65,11 +64,11 @@ class AprovalController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateaprovalRequest  $request
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Http\Requests\Updatelaporan_piketRequest  $request
+     * @param  \App\Models\laporan_piket  $laporan_piket
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateaprovalRequest $request, aproval $aproval)
+    public function update(Updatelaporan_piketRequest $request, laporan_piket $laporan_piket)
     {
         //
     }
@@ -77,10 +76,10 @@ class AprovalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Models\laporan_piket  $laporan_piket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(aproval $aproval)
+    public function destroy(laporan_piket $laporan_piket)
     {
         //
     }

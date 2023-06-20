@@ -34,11 +34,13 @@
                             <span >Lainnya / <span class="text-[#00B7FF]">Jadwal Piket Harian</span></span>
                         </div>
                         <div class="flex gap-4 mb-3" >
+                            <a href="{{route('piket.index')}}">
                             <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
                                 Pagi
                             </button>
+                            </a>
 
-                            <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white {{request()->routeIs('piket.index') ? 'bg-[#24AEE4] text-white' : ''}}    ">
+                            <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white {{request()->routeIs('piket.sidebar_sore') ? 'bg-[#24AEE4] text-white' : ''}}    ">
                                 Sore
                             </button>
                             <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
