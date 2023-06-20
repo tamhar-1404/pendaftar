@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Guru_admin;
-use App\Http\Requests\StoreGuru_adminRequest;
-use App\Http\Requests\UpdateGuru_adminRequest;
+use App\Models\LaporanSiswa;
+use App\Http\Requests\StoreLaporanSiswaRequest;
+use App\Http\Requests\UpdateLaporanSiswaRequest;
 
-class GuruAdminController extends Controller
+class LaporanSiswaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class GuruAdminController extends Controller
      */
     public function index()
     {
-        return view('guru_admin.index');
+        return view('laporansiswa.index');
     }
 
     /**
@@ -27,18 +27,14 @@ class GuruAdminController extends Controller
     {
         //
     }
-    public function detail ()
-    {
-        return view('guru_admin.detail');
-    }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreGuru_adminRequest  $request
+     * @param  \App\Http\Requests\StoreLaporanSiswaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreGuru_adminRequest $request)
+    public function store(StoreLaporanSiswaRequest $request)
     {
         //
     }
@@ -46,21 +42,21 @@ class GuruAdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Guru_admin  $guru_admin
+     * @param  \App\Models\LaporanSiswa  $laporanSiswa
      * @return \Illuminate\Http\Response
      */
-    public function show(Guru_admin $guru_admin)
+    public function show(LaporanSiswa $laporanSiswa)
     {
-      //
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Guru_admin  $guru_admin
+     * @param  \App\Models\LaporanSiswa  $laporanSiswa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Guru_admin $guru_admin)
+    public function edit(LaporanSiswa $laporanSiswa)
     {
         //
     }
@@ -68,11 +64,11 @@ class GuruAdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateGuru_adminRequest  $request
-     * @param  \App\Models\Guru_admin  $guru_admin
+     * @param  \App\Http\Requests\UpdateLaporanSiswaRequest  $request
+     * @param  \App\Models\LaporanSiswa  $laporanSiswa
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateGuru_adminRequest $request, Guru_admin $guru_admin)
+    public function update(UpdateLaporanSiswaRequest $request, LaporanSiswa $laporanSiswa)
     {
         //
     }
@@ -80,10 +76,10 @@ class GuruAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Guru_admin  $guru_admin
+     * @param  \App\Models\LaporanSiswa  $laporanSiswa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Guru_admin $guru_admin)
+    public function destroy(LaporanSiswa $laporanSiswa)
     {
         //
     }
