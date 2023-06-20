@@ -85,6 +85,9 @@ Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 
 Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::class);
 
+Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
+Route::resource('/editprofileguru', App\Http\Controllers\EditprofileGuruController::class);
+
 Route::get('/sidebar', function () {
     return view('sidebar.layout');
 });
