@@ -31,7 +31,6 @@ Route::get('/chatadmin', function () {
 Route::get('/laporansiswa', function () {
     return view('laporansiswa.index');
 });
-
 Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
 Route::resource('/mou', App\Http\Controllers\MOUController::class);
 
@@ -59,6 +58,9 @@ Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class)
 Route::resource('/pembimbing', App\Http\Controllers\PembimbingController::class);
 Route::resource('/Berita', App\Http\Controllers\BeritaController::class);
 Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
+
+
+Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 
 Route::get('/sidebar', function () {
     return view('sidebar.layout');
