@@ -601,7 +601,8 @@
                 <div class="table-responsive font-semibold text-[#515365] dark:text-white-light">
                   <table class="whitespace-nowrap">
                     <thead>
-                        <tr>
+                        <tr class="text-sm">
+                            <th>No</th>
                             <th>
                                 Tanggal pelanggaran
                             </th>
@@ -613,10 +614,8 @@
                                 Deskripsi
                             </th>
                         </tr>
-
                     </thead>
                     <tbody>
-
                     </tbody>
                   </table>
                 </div>
