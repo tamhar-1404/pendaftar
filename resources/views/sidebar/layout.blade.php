@@ -387,7 +387,7 @@
     <!-- Navbar -->
     <nav
     id="main-navbar"
-    class="relative left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start "
+    class="relative left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start fixed"
     data-te-navbar-ref>
     <!-- Container wrapper -->
 
@@ -566,7 +566,7 @@
     <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
-   
+
     </div>
 
 
