@@ -3294,7 +3294,7 @@
             <h2
               class="text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl"
             >
-              Data guru
+              Data Siswa
             </h2>
             <div
               x-data="usePopper({placement:'bottom-start',offset:4})"

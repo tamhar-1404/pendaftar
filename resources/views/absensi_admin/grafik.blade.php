@@ -534,7 +534,7 @@
                      <div id="grafik_admin" class=" w-90% h-35 mx-4 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
                         <div class="w-full px-4 mt-6">
                            <div class="w-80%  bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
-                              Grafik Jurnal
+                               tabel jurnal
                            </div>
                     </div>
                  </div>
@@ -550,78 +550,61 @@
                                         <div class="w-80%  bg-white h-35 pb-5 text-same font-semibold dark:bg-transparent">
                                             tabel jurnal
                                         </div>
-                                      <table class="min-w-full text-left text-sm font-light">
-                                        <thead class="border-b font-medium dark:border-neutral-500 ">
-                                          <tr class="">
-                                            <th scope="col" class="px-6 py-4">#</th>
-                                            <th scope="col" class="px-6 py-4">Nama</th>
-                                            <th scope="col" class="px-6 py-4">Tanggal</th>
-                                            <th scope="col" class="px-6 py-4">Sekolah</th>
-                                            <th scope="col" class="px-6 py-4">kegiatan</th>
-                                            <th scope="col" class="px-6 py-4 ">bukti</th>
-                                            <th scope="col" class="px-6 py-4">Aksi</th>
-
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr
-                                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                            <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                                            <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                            <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
-                                            <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                            <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                                            <td class="whitespace-nowrap px-6 pl-17 py-4"><img
-                                                src="{{ asset('admin/assets/images/carousel2.jpeg') }}"
-                                                width="100px" alt="">
-                                            </td>
-                                            <td class="whitespace-nowrap px-4 py-4">
-                                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent " data-te-toggle="modal"
-                                                    data-te-target="#exampleModalCenteredScrollable">
-                                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                                    </div>
-                                            </td>
-                                          </tr>
-                                          <tr
-                                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                            <td class="whitespace-nowrap px-4 py-4 font-medium">2</td>
-                                            <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                            <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
-                                            <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                            <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                                            <td class="whitespace-nowrap px-6 pl-17 py-4"><img
-                                                src="{{ asset('admin/assets/images/carousel2.jpeg') }}"
-                                                width="100px" alt="">
-                                            </td>
-                                            <td class="whitespace-nowrap px-4 py-4">
-                                                <a href="#">
-                                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
-                                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                          </tr>
-                                          <tr
-                                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                            <td class="whitespace-nowrap px-4 py-4 font-medium">3</td>
-                                            <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                            <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
-                                            <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                            <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                                            <td class="whitespace-nowrap px-6 pl-17 py-4"><img
-                                                src="{{ asset('admin/assets/images/carousel2.jpeg') }}"
-                                                width="100px" alt="">
-                                            </td>
-                                            <td class="whitespace-nowrap px-4 py-4">
-                                                <a href="#">
-                                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
-                                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
+                                        <table class="min-w-full text-left text-sm font-light">
+                                            <thead class="border-b font-medium dark:border-neutral-500 ">
+                                              <tr class="">
+                                                <th scope="col" class="px-6 py-4">#</th>
+                                                <th scope="col" class="px-6 py-4">Nama</th>
+                                                <th scope="col" class="px-6 py-4">NISN</th>
+                                                <th scope="col" class="px-6 py-4">Sekolah</th>
+                                                <th scope="col" class="px-6 py-4">Tanggal</th>
+                                                <th scope="col" class="px-6 py-4 ">jam</th>
+                                                <th scope="col" class="px-6 py-4">keterangan</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr
+                                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                                <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
+                                                <td class="whitespace-nowrap px-4 py-4">Mark</td>
+                                                <td class="whitespace-nowrap px-4 py-4">12543256</td>
+                                                <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
+                                                <td class="whitespace-nowrap px-4 py-4" >23-06-2023</td>
+                                                <td class="whitespace-nowrap px-6 py-4">07.45</td>
+                                                <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
+                                              </tr>
+                                              <tr
+                                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                                <td class="whitespace-nowrap px-4 py-4 font-medium">2</td>
+                                                <td class="whitespace-nowrap px-4 py-4">Mark</td>
+                                                <td class="whitespace-nowrap px-4 py-4">12543256</td>
+                                                <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
+                                                <td class="whitespace-nowrap px-4 py-4" >23-06-2023</td>
+                                                <td class="whitespace-nowrap px-6 py-4">07.45</td>
+                                                <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
+                                              </tr>
+                                              <tr
+                                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                                <td class="whitespace-nowrap px-4 py-4 font-medium">3</td>
+                                                <td class="whitespace-nowrap px-4 py-4">Mark</td>
+                                                <td class="whitespace-nowrap px-4 py-4">12543256</td>
+                                                <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
+                                                <td class="whitespace-nowrap px-4 py-4" >23-06-2023</td>
+                                                <td class="whitespace-nowrap px-6 py-4">07.45</td>
+                                                <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
+                                              </tr>
+                                              <tr
+                                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                                <td class="whitespace-nowrap px-4 py-4 font-medium">4</td>
+                                                <td class="whitespace-nowrap px-4 py-4">Mark</td>
+                                                <td class="whitespace-nowrap px-4 py-4">12543256</td>
+                                                <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
+                                                <td class="whitespace-nowrap px-4 py-4" >23-06-2023</td>
+                                                <td class="whitespace-nowrap px-6 py-4">07.45</td>
+                                                <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
                                     </div>
                                   </div>
                                 </div>
@@ -803,14 +786,16 @@
         <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 
         <script>
-            // Initialization for ES Users
-           var options = {
+         var options = {
           series: [{
-          name: 'Mengisi',
-          data: [25, 27, 27, 23, 24,26, 27, 29, 28, 27, 25, 23]
+          name: 'Izin & Sakit',
+          data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 70, 67, 50]
         }, {
-          name: 'Tidak Mengisi',
-          data: [6, 1, 4, 7, 7, 4, 4, 2, 2, 4, 5, 8]
+          name: 'Hadir',
+          data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 110, 104, 120]
+        }, {
+          name: 'alfa',
+          data: [35, 41, 36, 26, 45, 48, 52, 53, 41, 30, 20, 70]
         }],
           chart: {
           type: 'bar',
@@ -856,7 +841,7 @@
         },
         fill: {
           opacity: 2,
-          colors: [ '#47EBB3', '#FFA726']
+          colors: ['#6769EB', '#47EBB3', '#FFA726']
         },
         tooltip: {
           y: {
@@ -869,6 +854,7 @@
 
         var chart = new ApexCharts(document.querySelector("#grafik_admin"), options);
         chart.render();
+
 
         </script>
 
