@@ -45,25 +45,25 @@
     <div id="root" class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900" x-cloak>
         <div class="fixed top-0 hidden p-6 lg:block lg:px-12">
             <a href="#" class="flex items-center space-x-2">
-                <img class="h-14 w-100" src="lineone/images/hummasoft2.png" alt="logo" />
+                <img class="h-12 w-100" src="lineone/images/hummasoft2.png" alt="logo" />
             </a>
         </div>
-        <div class="hidden w-full place-items-center lg:grid">
-            <div class="w-full max-w-lg p-6">
-                <img class="w-full" x-show="!$store.global.isDarkModeEnabled"
-                    src="lineone/images/illustrations/login.svg" alt="image" />
-                <img class="w-full" x-show="$store.global.isDarkModeEnabled"
-                    src="lineone/images/illustrations/dashboard-meet-dark.svg" alt="image" />
-            </div>
+        <div class="w-full">
+            <div class="hidden w-full place-items-center lg:grid">
+                <div class="w-full max-w-lg p-6">
+                    <img class="w-full" x-show="!$store.global.isDarkModeEnabled"
+                        src="lineone/images/illustrations/login.svg" alt="image" />
+                    <img class="w-full" x-show="$store.global.isDarkModeEnabled"
+                        src="lineone/images/illustrations/dashboard-meet-dark.svg" alt="image" />
+                </div>
 
-        </div>
-        <div class="col-span-12 grid lg:col-span-6 lg:place-items-center">
-            <ol class="steps is-vertical line-space [--size:2.75rem] [--line:.5rem]">
+            </div>
+            <ol class="steps is-horizontal line-space [--size:2.75rem] [--line:.5rem]">
                 <li class="step space-x-4 pb-12 before:bg-slate-200 dark:before:bg-navy-500">
                     <div class="step-header mask is-hexagon bg-info text-white dark:bg-accent">
                         <i class="fa-solid fa-layer-group text-base"></i>
                     </div>
-                    <div class="text-left">
+                    <div class="text-center">
                         <p class="text-xs text-slate-400 dark:text-navy-300">Step 1</p>
                         <h3 class="text-base font-medium text-info dark:text-accent-light">Data Diri</h3>
                     </div>
@@ -73,7 +73,7 @@
                         class="step-header mask is-hexagon bg-slate-200 text-slate-500 dark:bg-navy-500 dark:text-navy-100">
                         <i class="fa-solid fa-user text-base"></i>
                     </div>
-                    <div class="text-left">
+                    <div class="text-center">
                         <p class="text-xs text-slate-400 dark:text-navy-300">Step 2</p>
                         <h3 class="text-base font-medium">Data Diri</h3>
                     </div>
@@ -83,7 +83,7 @@
                         class="step-header mask is-hexagon bg-slate-200 text-slate-500 dark:bg-navy-500 dark:text-navy-100">
                         <i class="fa-solid fa-file-lines text-base"></i>
                     </div>
-                    <div class="text-left">
+                    <div class="text-center">
                         <p class="text-xs text-slate-400 dark:text-navy-300">Step 3</p>
                         <h3 class="text-base font-medium">Berkas</h3>
                     </div>
@@ -93,12 +93,16 @@
                         class="step-header mask is-hexagon bg-slate-200 text-slate-500 dark:bg-navy-500 dark:text-navy-100">
                         <i class="fa-solid fa-check text-base"></i>
                     </div>
-                    <div class="text-left">
+                    <div class="text-center">
                         <p class="text-xs text-slate-400 dark:text-navy-300">Step 4</p>
                         <h3 class="text-base font-medium">Konfirmasi</h3>
                     </div>
                 </li>
             </ol>
+        </div>
+
+        <div class="col-span-12 grid lg:col-span-6 lg:place-items-center z-10">
+
         </div>
         <main class="flex w-full flex-col items-center bg-white dark:bg-navy-700 lg:max-w-md">
             <div class="flex w-full max-w-sm grow flex-col justify-center p-5">
