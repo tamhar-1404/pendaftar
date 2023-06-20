@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\GuruAdminController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,12 @@ Route::resource('/sp', App\Http\Controllers\SpController::class);
 
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 
+Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
+
+
+Route::get('/detail', [GuruAdminController::class, 'detail'])->name('detail');
+
+
 Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
 
@@ -62,9 +69,6 @@ Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class)
 Route::resource('/pembimbing', App\Http\Controllers\PembimbingController::class);
 Route::resource('/Berita', App\Http\Controllers\BeritaController::class);
 Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
-
-
-Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 
 Route::get('/sidebar', function () {
     return view('sidebar.layout');
