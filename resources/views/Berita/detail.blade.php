@@ -1,3661 +1,617 @@
 <!DOCTYPE html>
 <html lang="en">
-
-{{--  <!-- Mirrored from lineone.piniastudio.com/pages-blog-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 May 2023 04:16:41 GMT -->  --}}
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-    <!-- Meta tags  -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-
-    <title>Lineone - Blog Details</title>
-    <link rel="icon" type="image/png" href="images/favicon.png" />
-
-    <!-
-    - CSS Assets -->
-    <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
-
-    <!-- Javascript Assets -->
-    <script src="{{ asset('admin/js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com/" />
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    @vite('resources/css/app.css')
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
-      rel="stylesheet"
-    />
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+    rel="stylesheet" />
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
     <script>
-      /**
-       * THIS SCRIPT REQUIRED FOR PREVENT FLICKERING IN SOME BROWSERS
-       */
-      localStorage.getItem("_x_darkMode_on") === "true" &&
-        document.documentElement.classList.add("dark");
-    </script>
-  </head>
-
-  <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
-    <!-- App preloader-->
-    <div
-      class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900"
-    >
-      <div class="app-preloader-inner relative inline-block h-48 w-48"></div>
-    </div>
-
-    <!-- Page Wrapper -->
-    <div
-      id="root"
-      class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900"
-      x-cloak
-    >
-      <!-- Sidebar -->
-
-      <!-- App Header Wrapper-->
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            fontFamily: {
+              sans: ["Roboto", "sans-serif"],
+              body: ["Roboto", "sans-serif"],
+              mono: ["ui-monospace", "monospace"],
+            },
+          },
+          corePlugins: {
+            preflight: false,
+          },
+        };
+      </script>
+</head>
+<body>
 
 
-      <!-- Mobile Searchbar -->
-      <div
-        x-show="$store.breakpoints.isXs && $store.global.isSearchbarActive"
-        x-transition:enter="easy-out transition-all"
-        x-transition:enter-start="opacity-0 scale-105"
-        x-transition:enter-end="opacity-100 scale-100"
-        x-transition:leave="easy-in transition-all"
-        x-transition:leave-start="opacity-100 scale-100"
-        x-transition:leave-end="opacity-0 scale-95"
-        class="fixed inset-0 z-[100] flex flex-col bg-white dark:bg-navy-700 sm:hidden"
-      >
-        <div
-          class="flex items-center space-x-2 bg-slate-100 px-3 pt-2 dark:bg-navy-800"
-        >
-          <button
-            class="btn -ml-1.5 h-7 w-7 shrink-0 rounded-full p-0 text-slate-600 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25"
-            @click="$store.global.isSearchbarActive = false"
-          >
+    <!-- Sidenav -->
+    <nav
+    id="sidenav-2"
+    class="fixed left-0 top-0 z-[1035] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
+    data-te-sidenav-init
+    data-te-sidenav-hidden="false"
+    data-te-sidenav-mode="side"
+    data-te-sidenav-accordion="true"
+    data-te-sidenav-content="#content">
+
+    <ul class="relative m-0  px-[0.2rem]" data-te-sidenav-menu-ref>
+        <li class="relative">
+        <a
+            class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            data-te-sidenav-link-ref>
+            <span
+            class="mr-4 [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+            <img src="{{ asset('admin/assets/images/humma.png')}}" alt="">
+            </span>
+
+        </a>
+        </li>
+        {{-- dashboard --}}
+        <li class="relative">
+        <a
+            class="flex h-12 cursor-pointer items-center   rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 {{request()->routeIs('dudi.index') ? 'bg-blue-500 text-white' : ''}} hover:text-white hover:outline-none focus:bg-blue-500 focus:text-white focus:outline-none active:bg-blue-500 active:text-white active:outline-none data-[te-sidenav-state-active]:text-white data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            >
+            <span
+            class="mr-4 [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              stroke-width="1.5"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15 19l-7-7 7-7"
-              />
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="h-4 w-4">
+                <path
+                fill-rule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 00-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 01-.189-.866c0-.298.059-.605.189-.866zm2.023 6.828a.75.75 0 10-1.06-1.06 3.75 3.75 0 01-5.304 0 .75.75 0 00-1.06 1.06 5.25 5.25 0 007.424 0z"
+                clip-rule="evenodd" />
             </svg>
-          </button>
-          <input
-            x-effect="$store.global.isSearchbarActive && $nextTick(() => $el.focus() );"
-            class="form-input h-8 w-full bg-transparent placeholder-slate-400 dark:placeholder-navy-300"
-            type="text"
-            placeholder="Search here..."
-          />
-        </div>
+            </span>
+            <span>Dashboard</span>
 
-        <div
-          x-data="{activeTab:'tabAll'}"
-          class="is-scrollbar-hidden flex shrink-0 overflow-x-auto bg-slate-100 px-2 text-slate-600 dark:bg-navy-800 dark:text-navy-200"
-        >
-          <button
-            @click="activeTab = 'tabAll'"
-            :class="activeTab === 'tabAll' ? 'border-primary dark:border-accent text-primary dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'"
-            class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5"
-          >
-            All
-          </button>
-          <button
-            @click="activeTab = 'tabFiles'"
-            :class="activeTab === 'tabFiles' ? 'border-primary dark:border-accent text-primary dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'"
-            class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5"
-          >
-            Files
-          </button>
-          <button
-            @click="activeTab = 'tabChats'"
-            :class="activeTab === 'tabChats' ? 'border-primary dark:border-accent text-primary dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'"
-            class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5"
-          >
-            Chats
-          </button>
-          <button
-            @click="activeTab = 'tabEmails'"
-            :class="activeTab === 'tabEmails' ? 'border-primary dark:border-accent text-primary dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'"
-            class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5"
-          >
-            Emails
-          </button>
-          <button
-            @click="activeTab = 'tabProjects'"
-            :class="activeTab === 'tabProjects' ? 'border-primary dark:border-accent text-primary dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'"
-            class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5"
-          >
-            Projects
-          </button>
-          <button
-            @click="activeTab = 'tabTasks'"
-            :class="activeTab === 'tabTasks' ? 'border-primary dark:border-accent text-primary dark:text-accent-light' : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100'"
-            class="btn shrink-0 rounded-none border-b-2 px-3.5 py-2.5"
-          >
-            Tasks
-          </button>
-        </div>
+        </a>
+        </li>
+        {{-- approval --}}
+        <li class="relative">
+        <a
+            class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear  hover:bg-blue-500 hover:text-white hover:outline-none focus:bg-blue-500 focus:text-white focus:outline-none active:bg-slate-50 active:text-white active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            data-te-sidenav-link-ref>
+            <span
+            class="mr-4 [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+            <svg
 
-        <div
-          class="is-scrollbar-hidden overflow-y-auto overscroll-contain pb-2"
-        >
-          <div
-            class="is-scrollbar-hidden mt-3 flex space-x-4 overflow-x-auto px-3"
-          >
-            <a href="apps-kanban.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div class="is-initial rounded-full bg-success text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Kanban
-              </p>
-            </a>
-            <a href="dashboards-crm-analytics.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div class="is-initial rounded-full bg-secondary text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Analytics
-              </p>
-            </a>
-            <a href="apps-chat.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div class="is-initial rounded-full bg-info text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Chat
-              </p>
-            </a>
-            <a href="apps-filemanager.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div class="is-initial rounded-full bg-error text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Files
-              </p>
-            </a>
-            <a href="dashboards-crypto-1.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div class="is-initial rounded-full bg-secondary text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15 9a2 2 0 10-4 0v5a2 2 0 01-2 2h6m-6-4h4m8 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Crypto
-              </p>
-            </a>
-            <a href="dashboards-banking-1.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div
-                  class="is-initial rounded-full bg-primary text-white dark:bg-accent"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Banking
-              </p>
-            </a>
-            <a href="apps-todo.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div class="is-initial rounded-full bg-info text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M12.5293 18L20.9999 8.40002"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M3 13.2L7.23529 18L17.8235 6"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Todo
-              </p>
-            </a>
-
-            <a href="dashboards-orders.html" class="w-14 text-center">
-              <div class="avatar h-12 w-12">
-                <div class="is-initial rounded-full bg-warning text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p
-                class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-              >
-                Orders
-              </p>
-            </a>
-          </div>
-
-          <div
-            class="mt-3 flex items-center justify-between bg-slate-100 py-1.5 px-3 dark:bg-navy-800"
-          >
-            <p class="text-xs uppercase">Recent</p>
-            <a
-              href="#"
-              class="text-tiny+ font-medium uppercase text-primary outline-none transition-colors duration-300 hover:text-primary/70 focus:text-primary/70 dark:text-accent-light dark:hover:text-accent-light/70 dark:focus:text-accent-light/70"
-            >
-              View All
-            </a>
-          </div>
-
-          <div class="mt-1 font-inter font-medium">
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="apps-chat.html"
-            >
-              <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
+                fill="currentColor"
+                class="h-4 w-4">
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                />
-              </svg>
-              <span>Chat App</span>
-            </a>
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="apps-filemanager.html"
-            >
-              <svg
+                fill-rule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 00-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 01-.189-.866c0-.298.059-.605.189-.866zm2.023 6.828a.75.75 0 10-1.06-1.06 3.75 3.75 0 01-5.304 0 .75.75 0 00-1.06 1.06 5.25 5.25 0 007.424 0z"
+                clip-rule="evenodd" />
+            </svg>
+            </span>
+            <span>Approval</span>
+            <span
+            class="absolute  right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+            data-te-sidenav-rotate-icon-ref>
+            <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                class="h-5 w-5 ">
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-                />
-              </svg>
-              <span>File Manager App</span>
-            </a>
+                fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd" />
+            </svg>
+            </span>
+        </a>
+        <ul
+            class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+            data-te-sidenav-collapse-ref>
+            <li class="relative">
             <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="apps-mail.html"
+                class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                data-te-sidenav-link-ref
+                >pendaftaran</a
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-              <span>Email App</span>
-            </a>
+            </li>
+            <li class="relative">
             <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="apps-kanban.html"
+                class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                data-te-sidenav-link-ref
+                >izin & sakit</a
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
-                />
-              </svg>
-              <span>Kanban Board</span>
-            </a>
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="apps-todo.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  d="M3 13.2L7.23529 18L17.8235 6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M12.5293 18L20.9999 8.40002"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <span>Todo App</span>
-            </a>
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="dashboards-crypto-2.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15 9a2 2 0 10-4 0v5a2 2 0 01-2 2h6m-6-4h4m8 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
+            </li>
 
-              <span>Crypto Dashboard</span>
-            </a>
+        </ul>
+        </li>
+        {{-- user --}}
+        <li class="relative">
             <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="dashboards-banking-2.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
-                />
-              </svg>
-
-              <span>Banking Dashboard</span>
-            </a>
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="dashboards-crm-analytics.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                />
-              </svg>
-
-              <span>Analytics Dashboard</span>
-            </a>
-            <a
-              class="group flex items-center space-x-2 px-2.5 py-2 tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-              href="dashboards-influencer.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4.5 w-4.5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-
-              <span>Influencer Dashboard</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Sidebar -->
-      <div
-        x-show="$store.global.isRightSidebarExpanded"
-        @keydown.window.escape="$store.global.isRightSidebarExpanded = false"
-      >
-        <div
-          class="fixed inset-0 z-[150] bg-slate-900/60 transition-opacity duration-200"
-          @click="$store.global.isRightSidebarExpanded = false"
-          x-show="$store.global.isRightSidebarExpanded"
-          x-transition:enter="ease-out"
-          x-transition:enter-start="opacity-0"
-          x-transition:enter-end="opacity-100"
-          x-transition:leave="ease-in"
-          x-transition:leave-start="opacity-100"
-          x-transition:leave-end="opacity-0"
-        ></div>
-        <div class="fixed right-0 top-0 z-[151] h-full w-full sm:w-80">
-          <div
-            x-data="{activeTab:'tabHome'}"
-            class="relative flex h-full w-full transform-gpu flex-col bg-white transition-transform duration-200 dark:bg-navy-750"
-            x-show="$store.global.isRightSidebarExpanded"
-            x-transition:enter="ease-out"
-            x-transition:enter-start="translate-x-full"
-            x-transition:enter-end="translate-x-0"
-            x-transition:leave="ease-in"
-            x-transition:leave-start="translate-x-0"
-            x-transition:leave-end="translate-x-full"
-          >
-            <div class="flex items-center justify-between py-2 px-4">
-              <p
-                x-show="activeTab === 'tabHome'"
-                class="flex shrink-0 items-center space-x-1.5"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                <span class="text-xs">25 May, 2022</span>
-              </p>
-              <p
-                x-show="activeTab === 'tabProjects'"
-                class="flex shrink-0 items-center space-x-1.5"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
-                  />
-                </svg>
-                <span class="text-xs">Projects</span>
-              </p>
-              <p
-                x-show="activeTab === 'tabActivity'"
-                class="flex shrink-0 items-center space-x-1.5"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span class="text-xs">Activity</span>
-              </p>
-
-              <button
-                @click="$store.global.isRightSidebarExpanded=false"
-                class="btn -mr-1 h-6 w-6 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            <div
-              x-show="activeTab === 'tabHome'"
-              x-transition:enter="transition-all duration-500 easy-in-out"
-              x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]"
-              x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]"
-              class="is-scrollbar-hidden overflow-y-auto overscroll-contain pt-1"
-            >
-              <label class="relative flex px-3">
-                <input
-                  class="form-input peer h-8 w-full rounded-lg bg-slate-150 px-3 py-2 pl-9 text-xs+ ring-primary/50 placeholder:text-slate-400 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:ring-accent/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
-                  placeholder="Search here..."
-                  type="text"
-                />
+                class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-white hover:outline-none focus:bg-slate-50 focus:text-white focus:outline-none active:bg-slate-50 active:text-white active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                data-te-sidenav-link-ref>
                 <span
-                  class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4.5 w-4.5 transition-colors duration-200"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M3.316 13.781l.73-.171-.73.171zm0-5.457l.73.171-.73-.171zm15.473 0l.73-.171-.73.171zm0 5.457l.73.171-.73-.171zm-5.008 5.008l-.171-.73.171.73zm-5.457 0l-.171.73.171-.73zm0-15.473l-.171-.73.171.73zm5.457 0l.171-.73-.171.73zM20.47 21.53a.75.75 0 101.06-1.06l-1.06 1.06zM4.046 13.61a11.198 11.198 0 010-5.115l-1.46-.342a12.698 12.698 0 000 5.8l1.46-.343zm14.013-5.115a11.196 11.196 0 010 5.115l1.46.342a12.698 12.698 0 000-5.8l-1.46.343zm-4.45 9.564a11.196 11.196 0 01-5.114 0l-.342 1.46c1.907.448 3.892.448 5.8 0l-.343-1.46zM8.496 4.046a11.198 11.198 0 015.115 0l.342-1.46a12.698 12.698 0 00-5.8 0l.343 1.46zm0 14.013a5.97 5.97 0 01-4.45-4.45l-1.46.343a7.47 7.47 0 005.568 5.568l.342-1.46zm5.457 1.46a7.47 7.47 0 005.568-5.567l-1.46-.342a5.97 5.97 0 01-4.45 4.45l.342 1.46zM13.61 4.046a5.97 5.97 0 014.45 4.45l1.46-.343a7.47 7.47 0 00-5.568-5.567l-.342 1.46zm-5.457-1.46a7.47 7.47 0 00-5.567 5.567l1.46.342a5.97 5.97 0 014.45-4.45l-.343-1.46zm8.652 15.28l3.665 3.664 1.06-1.06-3.665-3.665-1.06 1.06z"
-                    />
-                  </svg>
-                </span>
-              </label>
-              <div class="mt-3">
-                <h2
-                  class="px-3 text-xs+ font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100"
-                >
-                  Banking cards
-                </h2>
-                <div
-                  class="swiper mt-3 px-3"
-                  x-init="$nextTick(()=>new Swiper($el,{  slidesPerView: 'auto', spaceBetween: 16}))"
-                >
-                  <div class="swiper-wrapper">
-                    <div
-                      class="swiper-slide relative flex h-28 w-48 flex-col overflow-hidden rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 p-3"
-                    >
-                      <div class="grow">
-                        <img
-                          class="h-3"
-                          src="images/payments/cc-visa-white.svg"
-                          alt="image"
-                        />
-                      </div>
-                      <div class="text-white">
-                        <p class="text-lg font-semibold tracking-wide">
-                          $2,139.22
-                        </p>
-                        <p class="mt-1 text-xs font-medium">
-                          **** **** **** 8945
-                        </p>
-                      </div>
-                      <div
-                        class="mask is-reuleaux-triangle absolute top-0 right-0 -m-3 h-16 w-16 bg-white/20"
-                      ></div>
-                    </div>
-                    <div
-                      class="swiper-slide relative flex h-28 w-48 flex-col overflow-hidden rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 p-3"
-                    >
-                      <div class="grow">
-                        <img
-                          class="h-3"
-                          src="images/payments/cc-visa-white.svg"
-                          alt="image"
-                        />
-                      </div>
-                      <div class="text-white">
-                        <p class="text-lg font-semibold tracking-wide">
-                          $2,139.22
-                        </p>
-                        <p class="mt-1 text-xs font-medium">
-                          **** **** **** 8945
-                        </p>
-                      </div>
-                      <div
-                        class="mask is-diamond absolute bottom-0 right-0 -m-3 h-16 w-16 bg-white/20"
-                      ></div>
-                    </div>
-                    <div
-                      class="swiper-slide relative flex h-28 w-48 flex-col overflow-hidden rounded-xl bg-gradient-to-br from-info to-info-focus p-3"
-                    >
-                      <div class="grow">
-                        <img
-                          class="h-3"
-                          src="images/payments/cc-visa-white.svg"
-                          alt="image"
-                        />
-                      </div>
-                      <div class="text-white">
-                        <p class="text-lg font-semibold tracking-wide">
-                          $2,139.22
-                        </p>
-                        <p class="mt-1 text-xs font-medium">
-                          **** **** **** 8945
-                        </p>
-                      </div>
-                      <div
-                        class="mask is-hexagon-2 absolute top-0 right-0 -m-3 h-16 w-16 bg-white/20"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mt-4 px-3">
-                <h2
-                  class="text-xs+ font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100"
-                >
-                  Pinned Apps
-                </h2>
-                <div class="mt-3 flex space-x-3">
-                  <a href="apps-kanban.html" class="w-12 text-center">
-                    <div class="avatar h-10 w-10">
-                      <div
-                        class="is-initial mask is-squircle bg-success text-white"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                    <p
-                      class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-                    >
-                      Kanban
-                    </p>
-                  </a>
-                  <a
-                    href="dashboards-crm-analytics.html"
-                    class="w-12 text-center"
-                  >
-                    <div class="avatar h-10 w-10">
-                      <div
-                        class="is-initial mask is-squircle bg-warning text-white"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                    <p
-                      class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-                    >
-                      Analytics
-                    </p>
-                  </a>
-                  <a href="apps-chat.html" class="w-12 text-center">
-                    <div class="avatar h-10 w-10">
-                      <div
-                        class="is-initial mask is-squircle bg-info text-white"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                    <p
-                      class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-                    >
-                      Chat
-                    </p>
-                  </a>
-                  <a href="apps-filemanager.html" class="w-12 text-center">
-                    <div class="avatar h-10 w-10">
-                      <div
-                        class="is-initial mask is-squircle bg-error text-white"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                    <p
-                      class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-                    >
-                      Files
-                    </p>
-                  </a>
-                  <a href="dashboards-banking-1.html" class="w-12 text-center">
-                    <div class="avatar h-10 w-10">
-                      <div
-                        class="is-initial mask is-squircle bg-secondary text-white"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                    <p
-                      class="mt-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-slate-700 dark:text-navy-100"
-                    >
-                      Banking
-                    </p>
-                  </a>
-                </div>
-              </div>
-
-              <div class="mt-4">
-                <div class="grid grid-cols-2 gap-3 px-3">
-                  <div
-                    class="rounded-lg bg-slate-150 px-2.5 py-2 dark:bg-navy-600"
-                  >
-                    <div class="flex items-center justify-between space-x-1">
-                      <p>
-                        <span
-                          class="text-lg font-medium text-slate-700 dark:text-navy-100"
-                          >11.3</span
-                        >
-                        <span class="text-xs">hr</span>
-                      </p>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-4.5 w-4.5 text-secondary dark:text-secondary-light"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </div>
-
-                    <p class="mt-0.5 text-tiny+ uppercase">Working Hours</p>
-
-                    <div
-                      class="progress mt-3 h-1.5 bg-secondary/15 dark:bg-secondary-light/25"
-                    >
-                      <div
-                        class="is-active relative w-8/12 overflow-hidden rounded-full bg-secondary dark:bg-secondary-light"
-                      ></div>
-                    </div>
-
-                    <div
-                      class="mt-1.5 flex items-center justify-between text-xs text-slate-400 dark:text-navy-300"
-                    >
-                      <button
-                        class="btn -ml-1 h-6 w-6 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-4 w-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                          />
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                          />
-                        </svg>
-                      </button>
-                      <span> 71%</span>
-                    </div>
-                  </div>
-                  <div
-                    class="rounded-lg bg-slate-150 px-2.5 py-2 dark:bg-navy-600"
-                  >
-                    <div class="flex items-center justify-between space-x-1">
-                      <p>
-                        <span
-                          class="text-lg font-medium text-slate-700 dark:text-navy-100"
-                          >13</span
-                        >
-                        <span class="text-xs">/22</span>
-                      </p>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-4.5 w-4.5 text-success"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </div>
-
-                    <p class="mt-0.5 text-tiny+ uppercase">Completed tasks</p>
-
-                    <div
-                      class="progress mt-3 h-1.5 bg-success/15 dark:bg-success/25"
-                    >
-                      <div
-                        class="relative w-6/12 overflow-hidden rounded-full bg-success"
-                      ></div>
-                    </div>
-
-                    <div
-                      class="mt-1.5 flex items-center justify-between text-xs text-slate-400 dark:text-navy-300"
-                    >
-                      <button
-                        class="btn -ml-1 h-6 w-6 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-4 w-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                          />
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                          />
-                        </svg>
-                      </button>
-                      <span> 49%</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mt-4">
-                <h2
-                  class="px-3 text-xs+ font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100"
-                >
-                  Stock Market
-                </h2>
-                <div class="mt-3 grid grid-cols-2 gap-3 px-3">
-                  <div class="rounded-lg bg-slate-100 p-2.5 dark:bg-navy-600">
-                    <div class="flex items-center space-x-2">
-                      <img
-                        class="h-10 w-10"
-                        src="images/logos/bitcoin.svg"
-                        alt="image"
-                      />
-                      <div>
-                        <h2
-                          class="font-medium tracking-wide text-slate-700 dark:text-navy-100"
-                        >
-                          BTC
-                        </h2>
-                        <p class="text-xs">Bitcoin</p>
-                      </div>
-                    </div>
-
-                    <div class="ax-transparent-gridline">
-                      <div
-                        x-init="$nextTick(() => { $el._x_chart = new ApexCharts($el,pages.charts.stockMarket1); $el._x_chart.render() });"
-                      ></div>
-                    </div>
-
-                    <div class="mt-2 flex items-center justify-between">
-                      <p
-                        class="font-medium tracking-wide text-slate-700 dark:text-navy-100"
-                      >
-                        60.33$
-                      </p>
-                      <p class="text-xs font-medium tracking-wide text-success">
-                        +3.3%
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="rounded-lg bg-slate-100 p-2.5 dark:bg-navy-600">
-                    <div class="flex items-center space-x-2">
-                      <img
-                        class="h-10 w-10"
-                        src="images/logos/solana.svg"
-                        alt="image"
-                      />
-                      <div>
-                        <h2
-                          class="font-medium tracking-wide text-slate-700 dark:text-navy-100"
-                        >
-                          SOL
-                        </h2>
-                        <p class="text-xs">Solana</p>
-                      </div>
-                    </div>
-
-                    <div class="ax-transparent-gridline">
-                      <div
-                        x-init="$nextTick(() => { $el._x_chart = new ApexCharts($el,pages.charts.stockMarket2); $el._x_chart.render() });"
-                      ></div>
-                    </div>
-
-                    <div class="mt-2 flex items-center justify-between">
-                      <p
-                        class="font-medium tracking-wide text-slate-700 dark:text-navy-100"
-                      >
-                        20.56$
-                      </p>
-                      <p class="text-xs font-medium tracking-wide text-success">
-                        +4.11%
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mt-4">
-                <h2
-                  class="px-3 text-xs+ font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100"
-                >
-                  Latest News
-                </h2>
-                <div class="mt-3 space-y-3 px-2">
-                  <div
-                    class="flex justify-between space-x-2 rounded-lg bg-slate-100 p-2.5 dark:bg-navy-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-between">
-                      <div class="line-clamp-2">
-                        <a
-                          href="#"
-                          class="font-medium text-slate-700 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                          >What is Tailwind CSS?</a
-                        >
-                      </div>
-                      <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                          <div class="avatar h-7 w-7">
-                            <img
-                              class="rounded-full"
-                              src="images/avatar/avatar-20.jpg"
-                              alt="avatar"
-                            />
-                          </div>
-                          <div>
-                            <p class="text-xs font-medium line-clamp-1">
-                              John D.
-                            </p>
-                            <p
-                              class="text-tiny+ text-slate-400 line-clamp-1 dark:text-navy-300"
-                            >
-                              2 min read
-                            </p>
-                          </div>
-                        </div>
-                        <div class="flex">
-                          <button
-                            class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="h-4 w-4"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              stroke-width="2"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
-                              />
-                            </svg>
-                          </button>
-                          <button
-                            class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="h-4 w-4"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              stroke-width="2"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                              />
-                            </svg>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <img
-                      src="images/object/object-18.jpg"
-                      class="h-20 w-20 rounded-lg object-cover object-center"
-                      alt="image"
-                    />
-                  </div>
-
-                  <div
-                    class="flex justify-between space-x-2 rounded-lg bg-slate-100 p-2.5 dark:bg-navy-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-between">
-                      <div class="line-clamp-2">
-                        <a
-                          href="#"
-                          class="font-medium text-slate-700 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                          >Tailwind CSS Card Example</a
-                        >
-                      </div>
-                      <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                          <div class="avatar h-7 w-7">
-                            <img
-                              class="rounded-full"
-                              src="images/avatar/avatar-19.jpg"
-                              alt="avatar"
-                            />
-                          </div>
-                          <div>
-                            <p class="text-xs font-medium line-clamp-1">
-                              Travis F.
-                            </p>
-                            <p
-                              class="text-tiny+ text-slate-400 line-clamp-1 dark:text-navy-300"
-                            >
-                              5 min read
-                            </p>
-                          </div>
-                        </div>
-                        <div class="flex">
-                          <button
-                            class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="h-4 w-4"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              stroke-width="2"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
-                              />
-                            </svg>
-                          </button>
-                          <button
-                            class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="h-4 w-4"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              stroke-width="2"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                              />
-                            </svg>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <img
-                      src="images/object/object-2.jpg"
-                      class="h-20 w-20 rounded-lg object-cover object-center"
-                      alt="image"
-                    />
-                  </div>
-
-                  <div
-                    class="flex justify-between space-x-2 rounded-lg bg-slate-100 p-2.5 dark:bg-navy-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-between">
-                      <div class="line-clamp-2">
-                        <a
-                          href="#"
-                          class="font-medium text-slate-700 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                          >10 Tips for Making a Good Camera Even Better</a
-                        >
-                      </div>
-                      <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                          <div class="avatar h-7 w-7">
-                            <img
-                              class="rounded-full"
-                              src="images/avatar/avatar-18.jpg"
-                              alt="avatar"
-                            />
-                          </div>
-                          <div>
-                            <p class="text-xs font-medium line-clamp-1">
-                              Alfredo E .
-                            </p>
-                            <p
-                              class="text-tiny+ text-slate-400 line-clamp-1 dark:text-navy-300"
-                            >
-                              4 min read
-                            </p>
-                          </div>
-                        </div>
-                        <div class="flex">
-                          <button
-                            class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="h-4 w-4"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              stroke-width="2"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
-                              />
-                            </svg>
-                          </button>
-                          <button
-                            class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="h-4 w-4"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              stroke-width="2"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                              />
-                            </svg>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <img
-                      src="images/object/object-1.jpg"
-                      class="h-20 w-20 rounded-lg object-cover object-center"
-                      alt="image"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div class="mt-3 px-3">
-                <h2
-                  class="text-xs+ font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100"
-                >
-                  Settings
-                </h2>
-                <div class="mt-2 flex flex-col space-y-2">
-                  <label class="inline-flex items-center space-x-2">
-                    <input
-                      x-model="$store.global.isDarkModeEnabled"
-                      class="form-switch h-5 w-10 rounded-lg bg-slate-300 before:rounded-md before:bg-slate-50 checked:bg-slate-500 checked:before:bg-white dark:bg-navy-900 dark:before:bg-navy-300 dark:checked:bg-navy-400 dark:checked:before:bg-white"
-                      type="checkbox"
-                    />
-                    <span>Dark Mode</span>
-                  </label>
-                  <label class="inline-flex items-center space-x-2">
-                    <input
-                      x-model="$store.global.isMonochromeModeEnabled"
-                      class="form-switch h-5 w-10 rounded-lg bg-slate-300 before:rounded-md before:bg-slate-50 checked:bg-slate-500 checked:before:bg-white dark:bg-navy-900 dark:before:bg-navy-300 dark:checked:bg-navy-400 dark:checked:before:bg-white"
-                      type="checkbox"
-                    />
-                    <span>Monochrome Mode</span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="mt-3 px-3">
-                <div class="rounded-lg bg-slate-100 p-3 dark:bg-navy-600">
-                  <div class="flex items-center justify-between">
-                    <p>
-                      <span
-                        class="font-medium text-slate-600 dark:text-navy-100"
-                        >35GB</span
-                      >
-                      of 1TB
-                    </p>
-                    <a
-                      href="#"
-                      class="text-xs+ font-medium text-primary outline-none transition-colors duration-300 hover:text-primary/70 focus:text-primary/70 dark:text-accent-light dark:hover:text-accent-light/70 dark:focus:text-accent-light/70"
-                      >Upgrade</a
-                    >
-                  </div>
-
-                  <div class="progress mt-2 h-2 bg-slate-150 dark:bg-navy-500">
-                    <div class="w-7/12 rounded-full bg-info"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="h-18"></div>
-            </div>
-
-            <div
-              x-show="activeTab === 'tabProjects'"
-              x-transition:enter="transition-all duration-500 easy-in-out"
-              x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]"
-              x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]"
-              class="is-scrollbar-hidden overflow-y-auto overscroll-contain px-3 pt-1"
-            >
-              <div class="grid grid-cols-2 gap-3">
-                <div class="rounded-lg bg-slate-100 p-3 dark:bg-navy-600">
-                  <div class="flex justify-between space-x-1">
-                    <p
-                      class="text-xl font-semibold text-slate-700 dark:text-navy-100"
-                    >
-                      14
-                    </p>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      stroke-width="1.5"
-                      class="h-5 w-5 text-primary dark:text-accent"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <p class="mt-1 text-xs+">Pending</p>
-                </div>
-                <div class="rounded-lg bg-slate-100 p-3 dark:bg-navy-600">
-                  <div class="flex justify-between">
-                    <p
-                      class="text-xl font-semibold text-slate-700 dark:text-navy-100"
-                    >
-                      36
-                    </p>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5 text-success"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                      />
-                    </svg>
-                  </div>
-                  <p class="mt-1 text-xs+">Completed</p>
-                </div>
-                <div class="rounded-lg bg-slate-100 p-3 dark:bg-navy-600">
-                  <div class="flex justify-between">
-                    <p
-                      class="text-xl font-semibold text-slate-700 dark:text-navy-100"
-                    >
-                      143
-                    </p>
-
-                    <i class="fa fa-spinner text-base text-warning"></i>
-                  </div>
-                  <p class="mt-1 text-xs+">In Progress</p>
-                </div>
-                <div class="rounded-lg bg-slate-100 p-3 dark:bg-navy-600">
-                  <div class="flex justify-between">
-                    <p
-                      class="text-xl font-semibold text-slate-700 dark:text-navy-100"
-                    >
-                      279
-                    </p>
-
-                    <i class="fa-solid fa-list-check text-base text-info"></i>
-                  </div>
-                  <p class="mt-1 text-xs+">Total</p>
-                </div>
-              </div>
-
-              <div
-                class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600"
-              >
-                <div class="flex items-center space-x-3">
-                  <img
-                    class="h-10 w-10 rounded-lg object-cover object-center"
-                    src="images/illustrations/lms-ui.svg"
-                    alt="image"
-                  />
-                  <div>
-                    <p
-                      class="font-medium leading-snug text-slate-700 dark:text-navy-100"
-                    >
-                      LMS App Design
-                    </p>
-                    <p class="text-xs text-slate-400 dark:text-navy-300">
-                      Updated at 7 Sep
-                    </p>
-                  </div>
-                </div>
-
-                <div class="mt-4">
-                  <div class="progress h-1.5 bg-slate-150 dark:bg-navy-500">
-                    <div
-                      class="w-4/12 rounded-full bg-primary dark:bg-accent"
-                    ></div>
-                  </div>
-                  <p
-                    class="mt-2 text-right text-xs+ font-medium text-primary dark:text-accent-light"
-                  >
-                    25%
-                  </p>
-                </div>
-
-                <div class="mt-3 flex items-center justify-between space-x-2">
-                  <div class="flex -space-x-3">
-                    <div class="avatar h-7 w-7 hover:z-10">
-                      <img
-                        class="rounded-full ring ring-white dark:ring-navy-700"
-                        src="images/avatar/avatar-16.jpg"
-                        alt="avatar"
-                      />
-                    </div>
-                    <div class="avatar h-7 w-7 hover:z-10">
-                      <div
-                        class="is-initial rounded-full bg-info text-xs+ uppercase text-white ring ring-white dark:ring-navy-700"
-                      >
-                        jd
-                      </div>
-                    </div>
-                    <div class="avatar h-7 w-7 hover:z-10">
-                      <img
-                        class="rounded-full ring ring-white dark:ring-navy-700"
-                        src="images/avatar/avatar-20.jpg"
-                        alt="avatar"
-                      />
-                    </div>
-                  </div>
-                  <button
-                    class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5 rotate-45"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 11l5-5m0 0l5 5m-5-5v12"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              <div
-                class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600"
-              >
-                <div class="flex items-center space-x-3">
-                  <img
-                    class="h-10 w-10 rounded-lg object-cover object-center"
-                    src="images/illustrations/store-ui.svg"
-                    alt="image"
-                  />
-                  <div>
-                    <p
-                      class="font-medium leading-snug text-slate-700 dark:text-navy-100"
-                    >
-                      Store Dashboard
-                    </p>
-                    <p class="text-xs text-slate-400 dark:text-navy-300">
-                      Updated at 11 Sep
-                    </p>
-                  </div>
-                </div>
-
-                <div class="mt-4">
-                  <div class="progress h-1.5 bg-slate-150 dark:bg-navy-500">
-                    <div
-                      class="w-6/12 rounded-full bg-primary dark:bg-accent"
-                    ></div>
-                  </div>
-                  <p
-                    class="mt-2 text-right text-xs+ font-medium text-primary dark:text-accent-light"
-                  >
-                    49%
-                  </p>
-                </div>
-
-                <div class="mt-3 flex items-center justify-between space-x-2">
-                  <div class="flex -space-x-3">
-                    <div class="avatar h-7 w-7 hover:z-10">
-                      <img
-                        class="rounded-full ring ring-white dark:ring-navy-700"
-                        src="images/avatar/avatar-17.jpg"
-                        alt="avatar"
-                      />
-                    </div>
-                    <div class="avatar h-7 w-7 hover:z-10">
-                      <div
-                        class="is-initial rounded-full bg-warning text-xs+ uppercase text-white ring ring-white dark:ring-navy-700"
-                      >
-                        dv
-                      </div>
-                    </div>
-                    <div class="avatar h-7 w-7 hover:z-10">
-                      <img
-                        class="rounded-full ring ring-white dark:ring-navy-700"
-                        src="images/avatar/avatar-19.jpg"
-                        alt="avatar"
-                      />
-                    </div>
-                  </div>
-                  <button
-                    class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5 rotate-45"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 11l5-5m0 0l5 5m-5-5v12"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              <div
-                class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600"
-              >
-                <div class="flex items-center space-x-3">
-                  <img
-                    class="h-10 w-10 rounded-lg object-cover object-center"
-                    src="images/illustrations/chat-ui.svg"
-                    alt="image"
-                  />
-                  <div>
-                    <p
-                      class="font-medium leading-snug text-slate-700 dark:text-navy-100"
-                    >
-                      Chat Mobile App
-                    </p>
-                    <p class="text-xs text-slate-400 dark:text-navy-300">
-                      Updated at 19 Sep
-                    </p>
-                  </div>
-                </div>
-
-                <div class="mt-4">
-                  <div class="progress h-1.5 bg-slate-150 dark:bg-navy-500">
-                    <div
-                      class="w-2/12 rounded-full bg-primary dark:bg-accent"
-                    ></div>
-                  </div>
-                  <p
-                    class="mt-2 text-right text-xs+ font-medium text-primary dark:text-accent-light"
-                  >
-                    13%
-                  </p>
-                </div>
-
-                <div class="mt-3 flex items-center justify-between space-x-2">
-                  <div class="flex -space-x-3">
-                    <div class="avatar h-7 w-7 hover:z-10">
-                      <img
-                        class="rounded-full ring ring-white dark:ring-navy-700"
-                        src="images/avatar/avatar-5.jpg"
-                        alt="avatar"
-                      />
-                    </div>
-                    <div class="avatar h-7 w-7 hover:z-10">
-                      <div
-                        class="is-initial rounded-full bg-error text-xs+ uppercase text-white ring ring-white dark:ring-navy-700"
-                      >
-                        gt
-                      </div>
-                    </div>
-                    <div class="avatar h-7 w-7 hover:z-10">
-                      <img
-                        class="rounded-full ring ring-white dark:ring-navy-700"
-                        src="images/avatar/avatar-11.jpg"
-                        alt="avatar"
-                      />
-                    </div>
-                  </div>
-                  <button
-                    class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5 rotate-45"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 11l5-5m0 0l5 5m-5-5v12"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              <div
-                class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600"
-              >
-                <div class="flex items-center space-x-3">
-                  <img
-                    class="h-10 w-10 rounded-lg object-cover object-center"
-                    src="images/illustrations/nft.svg"
-                    alt="image"
-                  />
-                  <div>
-                    <p
-                      class="font-medium leading-snug text-slate-700 dark:text-navy-100"
-                    >
-                      NFT Marketplace App
-                    </p>
-                    <p class="text-xs text-slate-400 dark:text-navy-300">
-                      Updated at 5 Sep
-                    </p>
-                  </div>
-                </div>
-
-                <div class="mt-4">
-                  <div class="progress h-1.5 bg-slate-150 dark:bg-navy-500">
-                    <div
-                      class="w-9/12 rounded-full bg-primary dark:bg-accent"
-                    ></div>
-                  </div>
-                  <p
-                    class="mt-2 text-right text-xs+ font-medium text-primary dark:text-accent-light"
-                  >
-                    78%
-                  </p>
-                </div>
-
-                <div class="mt-3 flex items-center justify-between space-x-2">
-                  <div class="flex -space-x-3">
-                    <div class="avatar h-7 w-7 hover:z-10">
-                      <img
-                        class="rounded-full ring ring-white dark:ring-navy-700"
-                        src="images/avatar/avatar-8.jpg"
-                        alt="avatar"
-                      />
-                    </div>
-                    <div class="avatar h-7 w-7 hover:z-10">
-                      <div
-                        class="is-initial rounded-full bg-success text-xs+ uppercase text-white ring ring-white dark:ring-navy-700"
-                      >
-                        jd
-                      </div>
-                    </div>
-                    <div class="avatar h-7 w-7 hover:z-10">
-                      <img
-                        class="rounded-full ring ring-white dark:ring-navy-700"
-                        src="images/avatar/avatar-12.jpg"
-                        alt="avatar"
-                      />
-                    </div>
-                  </div>
-                  <button
-                    class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5 rotate-45"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 11l5-5m0 0l5 5m-5-5v12"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              <div class="h-18"></div>
-            </div>
-
-            <div
-              x-show="activeTab === 'tabActivity'"
-              x-transition:enter="transition-all duration-500 easy-in-out"
-              x-transition:enter-start="opacity-0 [transform:translate3d(0,1rem,0)]"
-              x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]"
-              class="is-scrollbar-hidden overflow-y-auto overscroll-contain pt-1"
-            >
-              <div
-                class="mx-3 flex flex-col items-center rounded-lg bg-slate-100 py-3 px-8 dark:bg-navy-600"
-              >
+                class="mr-4 [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-8 w-8 text-secondary dark:text-secondary-light"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="h-4 w-4">
+                    <path
+                    fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 00-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 01-.189-.866c0-.298.059-.605.189-.866zm2.023 6.828a.75.75 0 10-1.06-1.06 3.75 3.75 0 01-5.304 0 .75.75 0 00-1.06 1.06 5.25 5.25 0 007.424 0z"
+                    clip-rule="evenodd" />
                 </svg>
-
-                <p class="mt-2 text-xs">Today</p>
-
-                <p
-                  class="text-lg font-medium text-slate-700 dark:text-navy-100"
-                >
-                  6hr 22m
-                </p>
-
-                <div
-                  class="progress mt-3 h-2 bg-secondary/15 dark:bg-secondary-light/25"
-                >
-                  <div
-                    class="is-active relative w-8/12 overflow-hidden rounded-full bg-secondary dark:bg-secondary-light"
-                  ></div>
-                </div>
-
-                <button
-                  class="btn mt-5 space-x-2 rounded-full border border-slate-300 px-3 text-xs+ font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90"
-                >
-                  <svg
+                </span>
+                <span>User</span>
+                <span
+                class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+                data-te-sidenav-rotate-icon-ref>
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-4.5 w-4.5 text-slate-400 dark:text-navy-300"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z"
-                    />
-                  </svg>
-                  <span> Download Report</span>
-                </button>
-              </div>
-
-              <ol class="timeline line-space mt-5 px-4 [--size:1.5rem]">
-                <li class="timeline-item">
-                  <div
-                    class="timeline-item-point rounded-full border border-current bg-white text-secondary dark:bg-navy-700 dark:text-secondary-light"
-                  >
-                    <i class="fa fa-user-edit text-tiny"></i>
-                  </div>
-                  <div class="timeline-item-content flex-1 pl-4">
-                    <div
-                      class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
-                    >
-                      <p
-                        class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
-                      >
-                        User Photo Changed
-                      </p>
-                      <span class="text-xs text-slate-400 dark:text-navy-300"
-                        >12 minute ago</span
-                      >
-                    </div>
-                    <p class="py-1">John Doe changed his avatar photo</p>
-                    <div class="avatar mt-2 h-20 w-20">
-                      <img
-                        class="mask is-squircle"
-                        src="images/avatar/avatar-19.jpg"
-                        alt="avatar"
-                      />
-                    </div>
-                  </div>
-                </li>
-                <li class="timeline-item">
-                  <div
-                    class="timeline-item-point rounded-full border border-current bg-white text-primary dark:bg-navy-700 dark:text-accent"
-                  >
-                    <i class="fa-solid fa-image text-tiny"></i>
-                  </div>
-                  <div class="timeline-item-content flex-1 pl-4">
-                    <div
-                      class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
-                    >
-                      <p
-                        class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
-                      >
-                        Images Added
-                      </p>
-                      <span class="text-xs text-slate-400 dark:text-navy-300"
-                        >1 hour ago</span
-                      >
-                    </div>
-                    <p class="py-1">Mores Clarke added new image gallery</p>
-                    <div class="mt-4 grid grid-cols-3 gap-3">
-                      <img
-                        class="rounded-lg"
-                        src="images/object/object-1.jpg"
-                        alt="image"
-                      />
-                      <img
-                        class="rounded-lg"
-                        src="images/object/object-2.jpg"
-                        alt="image"
-                      />
-                      <img
-                        class="rounded-lg"
-                        src="images/object/object-3.jpg"
-                        alt="image"
-                      />
-                      <img
-                        class="rounded-lg"
-                        src="images/object/object-4.jpg"
-                        alt="image"
-                      />
-                      <img
-                        class="rounded-lg"
-                        src="images/object/object-5.jpg"
-                        alt="image"
-                      />
-                      <img
-                        class="rounded-lg"
-                        src="images/object/object-6.jpg"
-                        alt="image"
-                      />
-                    </div>
-                    <div class="mt-4">
-                      <span
-                        class="font-medium text-slate-600 dark:text-navy-100"
-                      >
-                        Category:
-                      </span>
-
-                      <a
-                        href="#"
-                        class="text-xs text-primary hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"
-                      >
-                        #Tag
-                      </a>
-
-                      <a
-                        href="#"
-                        class="text-xs text-primary hover:text-primary-focus dark:text-accent-light dark:hover:text-accent"
-                      >
-                        #Category
-                      </a>
-                    </div>
-                  </div>
-                </li>
-                <li class="timeline-item">
-                  <div
-                    class="timeline-item-point rounded-full border border-current bg-white text-success dark:bg-navy-700"
-                  >
-                    <i class="fa fa-leaf text-tiny"></i>
-                  </div>
-                  <div class="timeline-item-content flex-1 pl-4">
-                    <div
-                      class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
-                    >
-                      <p
-                        class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
-                      >
-                        Design Completed
-                      </p>
-                      <span class="text-xs text-slate-400 dark:text-navy-300"
-                        >3 hours ago</span
-                      >
-                    </div>
-                    <p class="py-1">
-                      Robert Nolan completed the design of the CRM application
-                    </p>
-                    <a
-                      href="#"
-                      class="inline-flex items-center space-x-1 pt-2 text-slate-600 transition-colors hover:text-primary dark:text-navy-100 dark:hover:text-accent"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                        />
-                      </svg>
-                      <span>File_final.fig</span>
-                    </a>
-                    <div class="pt-2">
-                      <a
-                        href="#"
-                        class="tag rounded-full border border-secondary/30 bg-secondary/10 text-secondary hover:bg-secondary/20 focus:bg-secondary/20 active:bg-secondary/25 dark:border-secondary-light/30 dark:bg-secondary-light/10 dark:text-secondary-light dark:hover:bg-secondary-light/20 dark:focus:bg-secondary-light/20 dark:active:bg-secondary-light/25"
-                      >
-                        UI/UX
-                      </a>
-
-                      <a
-                        href="#"
-                        class="tag rounded-full border border-info/30 bg-info/10 text-info hover:bg-info/20 focus:bg-info/20 active:bg-info/25"
-                      >
-                        CRM
-                      </a>
-
-                      <a
-                        href="#"
-                        class="tag rounded-full border border-success/30 bg-success/10 text-success hover:bg-success/20 focus:bg-success/20 active:bg-success/25"
-                      >
-                        Dashboard
-                      </a>
-                    </div>
-                  </div>
-                </li>
-                <li class="timeline-item">
-                  <div
-                    class="timeline-item-point rounded-full border border-current bg-white text-warning dark:bg-navy-700"
-                  >
-                    <i class="fa fa-project-diagram text-tiny"></i>
-                  </div>
-                  <div class="timeline-item-content flex-1 pl-4">
-                    <div
-                      class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
-                    >
-                      <p
-                        class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
-                      >
-                        ER Diagram
-                      </p>
-                      <span class="text-xs text-slate-400 dark:text-navy-300"
-                        >a day ago</span
-                      >
-                    </div>
-                    <p class="py-1">Team completed the ER diagram app</p>
-                    <div>
-                      <p class="text-xs text-slate-400 dark:text-navy-300">
-                        Members:
-                      </p>
-                      <div class="mt-2 flex justify-between">
-                        <div class="flex flex-wrap -space-x-2">
-                          <div class="avatar h-7 w-7 hover:z-10">
-                            <img
-                              class="rounded-full ring ring-white dark:ring-navy-700"
-                              src="images/avatar/avatar-16.jpg"
-                              alt="avatar"
-                            />
-                          </div>
-
-                          <div class="avatar h-7 w-7 hover:z-10">
-                            <div
-                              class="is-initial rounded-full bg-info text-xs+ uppercase text-white ring ring-white dark:ring-navy-700"
-                            >
-                              jd
-                            </div>
-                          </div>
-
-                          <div class="avatar h-7 w-7 hover:z-10">
-                            <img
-                              class="rounded-full ring ring-white dark:ring-navy-700"
-                              src="images/avatar/avatar-20.jpg"
-                              alt="avatar"
-                            />
-                          </div>
-
-                          <div class="avatar h-7 w-7 hover:z-10">
-                            <img
-                              class="rounded-full ring ring-white dark:ring-navy-700"
-                              src="images/avatar/avatar-8.jpg"
-                              alt="avatar"
-                            />
-                          </div>
-
-                          <div class="avatar h-7 w-7 hover:z-10">
-                            <img
-                              class="rounded-full ring ring-white dark:ring-navy-700"
-                              src="images/avatar/avatar-5.jpg"
-                              alt="avatar"
-                            />
-                          </div>
-                        </div>
-                        <button
-                          class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5 rotate-45"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M7 11l5-5m0 0l5 5m-5-5v12"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="timeline-item">
-                  <div
-                    class="timeline-item-point rounded-full border border-current bg-white text-error dark:bg-navy-700"
-                  >
-                    <i class="fa fa-history text-tiny"></i>
-                  </div>
-                  <div class="timeline-item-content flex-1 pl-4">
-                    <div
-                      class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
-                    >
-                      <p
-                        class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
-                      >
-                        Weekly Report
-                      </p>
-                      <span class="text-xs text-slate-400 dark:text-navy-300"
-                        >a day ago</span
-                      >
-                    </div>
-                    <p class="py-1">The weekly report was uploaded</p>
-                  </div>
-                </li>
-              </ol>
-              <div class="h-18"></div>
-            </div>
-
-            <div
-              class="pointer-events-none absolute bottom-4 flex w-full justify-center"
-            >
-              <div
-                class="pointer-events-auto mx-auto flex space-x-1 rounded-full border border-slate-150 bg-white px-4 py-0.5 shadow-lg dark:border-navy-700 dark:bg-navy-900"
-              >
-                <button
-                  @click="activeTab = 'tabHome'"
-                  :class="activeTab === 'tabHome' && 'text-primary dark:text-accent'"
-                  class="btn h-9 rounded-full py-0 px-4 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    x-show="activeTab === 'tabHome'"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 shrink-0"
                     viewBox="0 0 20 20"
                     fill="currentColor"
-                  >
+                    class="h-5 w-5">
                     <path
-                      d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
-                    />
-                  </svg>
-                  <svg
-                    x-show="activeTab !== 'tabHome'"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                    />
-                  </svg>
-                </button>
-                <button
-                  @click="activeTab = 'tabProjects'"
-                  :class="activeTab === 'tabProjects' && 'text-primary dark:text-accent'"
-                  class="btn h-9 rounded-full py-0 px-4 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    x-show="activeTab === 'tabProjects'"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 shrink-0"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-
-                  <svg
-                    x-show="activeTab !== 'tabProjects'"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
-                    />
-                  </svg>
-                </button>
-                <button
-                  @click="activeTab = 'tabActivity'"
-                  :class="activeTab === 'tabActivity' && 'text-primary dark:text-accent'"
-                  class="btn h-9 rounded-full py-0 px-4 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    x-show="activeTab ===  'tabActivity'"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 shrink-0"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <svg
-                    x-show="activeTab !==  'tabActivity'"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Main Content Wrapper -->
-      <main class="main-content w-full px-[var(--margin-x)]">
-        <div class="grid grid-cols-12 lg:gap-6">
-          <div class="col-span-12 pt-6 lg:col-span-8 lg:pb-6">
-            <div class="card p-4 lg:p-6">
-              <!-- Author -->
-              <div>
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center space-x-3">
-                    <div
-                      x-data="usePopper({
-                       offset: 12,
-                       placement: 'bottom',
-                       modifiers: [
-                          {name: 'preventOverflow', options: {padding: 10}}
-                       ]
-                    })"
-                      class="flex"
-                      @mouseleave="isShowPopper = false"
-                      @mouseenter="isShowPopper = true"
-                    >
-                      <div x-ref="popperRef" class="avatar h-12 w-12">
-                        <img
-                          class="mask is-squircle"
-                          src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
-                          alt="avatar"
-                        />
-                      </div>
-                      <div
-                        x-ref="popperRoot"
-                        class="popper-root"
-                        :class="isShowPopper && 'show'"
-                      >
-                        <div class="popper-box">
-                          <div
-                            class="flex w-48 flex-col items-center rounded-md border border-slate-150 bg-white p-3 text-center dark:border-navy-600 dark:bg-navy-700"
-                          >
-                            <div class="avatar h-16 w-16">
-                              <img
-                                class="rounded-full"
-                                src="{{ asset('admin/images/avatar/logo.png') }}"
-                                alt="avatar"
-                              />
-                            </div>
-                            <p
-                              class="mt-2 font-medium tracking-wide text-slate-700 dark:text-navy-100"
-                            >
-                              Travis Fuller
-                            </p>
-                            <a
-                              href="#"
-                              class="font-inter text-xs tracking-wide hover:text-primary focus:text-primary dark:hover:text-accent-light dark:focus:text-accent-light"
-                              >@travisfuller
-                            </a>
-                            <button
-                              class="btn mt-4 h-6 rounded-full bg-primary px-4 text-xs font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                            >
-                              Follow
-                            </button>
-                          </div>
-                          <div class="h-4 w-4" data-popper-arrow>
-                            <svg
-                              viewBox="0 0 16 9"
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="absolute h-4 w-4"
-                              fill="currentColor"
-                            >
-                              <path
-                                class="text-slate-150 dark:text-navy-600"
-                                d="M1.5 8.357s-.48.624 2.754-4.779C5.583 1.35 6.796.01 8 0c1.204-.009 2.417 1.33 3.76 3.578 3.253 5.43 2.74 4.78 2.74 4.78h-13z"
-                              />
-                              <path
-                                class="text-white dark:text-navy-700"
-                                d="M0 9s1.796-.017 4.67-4.648C5.853 2.442 6.93 1.293 8 1.286c1.07-.008 2.147 1.14 3.343 3.066C14.233 9.006 15.999 9 15.999 9H0z"
-                              />
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <a
-                        href="#"
-                        class="font-medium text-slate-700 line-clamp-1 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                      >
-                        Hummasoft technology
-                      </a>
-                      <div class="mt-1.5 flex items-center text-xs">
-                        <span class="line-clamp-1">Jun 26</span>
-                        <div
-                          class="mx-2 my-0.5 w-px self-stretch bg-white/20"
-                        ></div>
-                        <p class="shrink-0">8 min</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="flex space-x-3">
-                    <div class="hidden sm:flex">
-                      <button
-                        class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                          ></path>
-                        </svg>
-                      </button>
-                      <button
-                        class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                      >
-                        <i class="fab fa-twitter text-base"></i>
-                      </button>
-                      <button
-                        class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                      >
-                        <i class="fab fa-linkedin text-base"></i>
-                      </button>
-                      <button
-                        class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                      >
-                        <i class="fab fa-instagram text-base"></i>
-                      </button>
-                      <button
-                        class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                      >
-                        <i class="fab fa-facebook text-base"></i>
-                      </button>
-                    </div>
-                    <div
-                      x-data="usePopper({placement:'bottom-end',offset:4})"
-                      @click.outside="isShowPopper && (isShowPopper = false)"
-                      class="inline-flex"
-                    >
-                      <button
-                        x-ref="popperRef"
-                        @click="isShowPopper = !isShowPopper"
-                        class="btn -mr-1.5 h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                          />
-                        </svg>
-                      </button>
-
-                      <div
-                        x-ref="popperRoot"
-                        class="popper-root"
-                        :class="isShowPopper && 'show'"
-                      >
-                        <div
-                          class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                        >
-                          <ul>
-                            <li>
-                              <a
-                                href="#"
-                                class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                >Action</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                href="#"
-                                class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                >Another Action</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                href="#"
-                                class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                >Something else</a
-                              >
-                            </li>
-                          </ul>
-                          <div
-                            class="my-1 h-px bg-slate-150 dark:bg-navy-500"
-                          ></div>
-                          <ul>
-                            <li>
-                              <a
-                                href="#"
-                                class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                >Separated Link</a
-                              >
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="mt-6 flex items-center space-x-3 sm:hidden">
-                  <button
-                    class="btn space-x-2 rounded-full border border-slate-300 px-4 text-xs+ font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-4.5 w-4.5 text-slate-400 dark:text-navy-300"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                      />
-                    </svg>
-
-                    <span> Save</span>
-                  </button>
-                  <div class="flex">
-                    <button
-                      class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                    >
-                      <i class="fab fa-twitter text-base"></i>
-                    </button>
-                    <button
-                      class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                    >
-                      <i class="fab fa-linkedin text-base"></i>
-                    </button>
-                    <button
-                      class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                    >
-                      <i class="fab fa-instagram text-base"></i>
-                    </button>
-                    <button
-                      class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                    >
-                      <i class="fab fa-facebook text-base"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Blog Post -->
-              <div
-                class="mt-6 font-inter text-base text-slate-600 dark:text-navy-200"
-              >
-                <h1
-                  class="text-xl font-medium text-slate-900 dark:text-navy-50 lg:text-2xl"
-                >
-                  313 Pattern and Color ideas
-                </h1>
-                <h3 class="mt-1">
-                  Spurred on by my observations at work, I have come up with a
-                  list of things to avoid as a doctor in a hospital setting
-                  (especially for interns and medical students):
-                </h3>
-                <img
-                  class="mt-5 h-80 w-full rounded-lg object-cover object-center"
-                  src="{{ asset('admin/images/object/magang.jpeg') }}"
-                  alt="image"
-                />
-                <p
-                  class="mt-1 text-center text-xs+ text-slate-400 dark:text-navy-300"
-                >
-                  <span> Photo by </span>
-                  <a href="#" class="underline">Unsplash</a>
-                </p>
-                <br />
-                <p>
-                  Major changes have recently occured in my life, both
-                  personally and professionally. We're approaching five years
-                  since the inception of this blog, and going back to read the
-                  posts from May '04 is quite the experience. I suppose its what
-                  diaries and journals are for, the chance to go back and read
-                  out your thoughts and ideas from another time. Kind of like
-                  mental time travel.
-                </p>
-                <br />
-                <p>
-                  One thing is for sure, I am not who I was then. In fact, I am
-                  not who I was last year or the year before that. I may have
-                  some (we shed and create a lot of cells frequently) of the
-                  bodily composition of that person but we are definitely on
-                  different wavelengths.
-                </p>
-                <br />
-                <p>
-                  This whole blogging business started off as a documentation of
-                  odd and quirky ideas I might have. I had a lot of time on my
-                  hands back then, hence the frequency of the posts. With time,
-                  the posts have decreased in number but have also slightly
-                  sharpened in focus. They may still be random and don't
-                  generally adhere to one unified theme, but this thing was
-                  meant to be disjointed and arbitrary anyway.
-                </p>
-                <br />
-                <div
-                  class="border-l-4 border-slate-300 pl-4 dark:border-navy-400"
-                >
-                  <p
-                    class="font-medium italic text-slate-800 dark:text-navy-100"
-                  >
-                    Why is Tailwind removing the default styles on my h1
-                    elements? How do I disable this? What do you mean I lose all
-                    the other base styles too?
-                  </p>
-                </div>
-                <br />
-                <p>
-                  One thing is for sure, I am not who I was then. In fact, I am
-                  not who I was last year or the year before that. I may have
-                  some (we shed and create a lot of cells frequently) of the
-                  bodily composition of that person but we are definitely on
-                  different wavelengths.
-                </p>
-                <br />
-                <p>
-                  This whole blogging business started off as a documentation of
-                  odd and quirky ideas I might have. I had a lot of time on my
-                  hands back then, hence the frequency of the posts. With time,
-                  the posts have decreased in number but have also slightly
-                  sharpened in focus. They may still be random and don't
-                  generally adhere to one unified theme, but this thing was
-                  meant to be disjointed and arbitrary anyway.
-                </p>
-                <br />
-                <ul
-                  class="list-inside list-disc font-medium text-slate-800 dark:text-navy-100"
-                >
-                  <li>
-                    Now this is a story all about how, my life got
-                    flipped-turned upside down
-                  </li>
-                  <li>And I'd like to take a minute just sit right there</li>
-                  <li>
-                    I'll tell you how I became the prince of a town called
-                    Bel-Air
-                  </li>
-                </ul>
-                <br />
-                <p>
-                  Major changes have recently occured in my life, both
-                  personally and professionally. We're approaching five years
-                  since the inception of this blog, and going back to read the
-                  posts from May '04 is quite the experience. I suppose its what
-                  diaries and journals are for, the chance to go back and read
-                  out your thoughts and ideas from another time. Kind of like
-                  mental time travel.
-                </p>
-              </div>
-
-              <!-- Footer Blog Post -->
-              <div class="mt-5 flex space-x-3">
-                <button
-                  class="btn space-x-2 rounded-full border border-slate-300 px-4 text-xs+ font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4.5 w-4.5 text-slate-400 dark:text-navy-300"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z"
-                    />
-                  </svg>
-
-                  <span> 235</span>
-                </button>
-                <button
-                  class="btn space-x-2 rounded-full border border-slate-300 px-4 text-xs+ font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4.5 w-4.5 text-slate-400 dark:text-navy-300"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"
-                    />
-                  </svg>
-
-                  <span> 49</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="mt-5">
-              <div class="flex items-center justify-between">
-                <p
-                  class="text-lg font-medium text-slate-800 dark:text-navy-100"
-                >
-                  Recent Articles
-                </p>
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd" />
+                </svg>
+                </span>
+            </a>
+            <ul
+                class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+                data-te-sidenav-collapse-ref>
+                <li class="relative">
                 <a
-                  href="#"
-                  class="border-b border-dotted border-current pb-0.5 text-xs+ font-medium text-primary outline-none transition-colors duration-300 hover:text-primary/70 focus:text-primary/70 dark:text-accent-light dark:hover:text-accent-light/70 dark:focus:text-accent-light/70"
-                  >View All</a
+                    class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref
+                    >Siswa</a
                 >
-              </div>
-              <div
-                class="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-1 lg:gap-6"
-              >
-                <div class="card lg:flex-row">
-                  <img
-                    class="h-48 w-full shrink-0 rounded-t-lg bg-cover bg-center object-cover object-center lg:h-auto lg:w-48 lg:rounded-t-none lg:rounded-l-lg"
-                    src="images/object/object-2.jpg"
-                    alt="image"
-                  />
-                  <div class="flex w-full grow flex-col px-4 py-3 sm:px-5">
-                    <div class="flex items-center justify-between">
-                      <a class="text-xs+ text-info" href="#">Frameworks</a>
-                      <div class="-mr-1.5 flex space-x-1">
-                        <button
-                          class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                            />
-                          </svg>
-                        </button>
-
-                        <div
-                          x-data="usePopper({placement:'bottom-end',offset:4})"
-                          @click.outside="isShowPopper && (isShowPopper = false)"
-                          class="inline-flex"
-                        >
-                          <button
-                            x-ref="popperRef"
-                            @click="isShowPopper = !isShowPopper"
-                            class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="h-4.5 w-4.5"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              stroke-width="2"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-                              />
-                            </svg>
-                          </button>
-
-                          <div
-                            x-ref="popperRoot"
-                            class="popper-root"
-                            :class="isShowPopper && 'show'"
-                          >
-                            <div
-                              class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                            >
-                              <ul>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Action</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Another Action</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Something else</a
-                                  >
-                                </li>
-                              </ul>
-                              <div
-                                class="my-1 h-px bg-slate-150 dark:bg-navy-500"
-                              ></div>
-                              <ul>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Separated Link</a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <a
-                        href="#"
-                        class="text-lg font-medium text-slate-700 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                        >What is Tailwind CSS?</a
-                      >
-                    </div>
-                    <p class="mt-1 line-clamp-3">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Eveniet, provident quasi recusandae repudiandae rerum
-                      temporibus!
-                    </p>
-                    <div class="grow">
-                      <div class="mt-2 flex items-center text-xs">
-                        <a
-                          href="#"
-                          class="flex items-center space-x-2 hover:text-slate-800 dark:hover:text-navy-100"
-                        >
-                          <div class="avatar h-6 w-6">
-                            <img
-                              class="rounded-full"
-                              src="images/avatar/avatar-10.jpg"
-                              alt="avatar"
-                            />
-                          </div>
-                          <span class="line-clamp-1">John Doe</span>
-                        </a>
-                        <div
-                          class="mx-3 my-1 w-px self-stretch bg-slate-200 dark:bg-navy-500"
-                        ></div>
-                        <span class="shrink-0 text-slate-400 dark:text-navy-300"
-                          >June 23, 2021
-                        </span>
-                      </div>
-                    </div>
-                    <div class="mt-1 flex justify-end">
-                      <a
-                        href="#"
-                        class="btn px-2.5 py-1.5 font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25"
-                      >
-                        READ ARTICLE
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="card lg:flex-row">
-                  <img
-                    class="h-48 w-full shrink-0 rounded-t-lg bg-cover bg-center object-cover object-center lg:h-auto lg:w-48 lg:rounded-t-none lg:rounded-l-lg"
-                    src="images/object/object-3.jpg"
-                    alt="image"
-                  />
-                  <div class="flex w-full grow flex-col px-4 py-3 sm:px-5">
-                    <div class="flex items-center justify-between">
-                      <a class="text-xs+ text-info" href="#">Frameworks</a>
-                      <div class="-mr-1.5 flex space-x-1">
-                        <button
-                          class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                            />
-                          </svg>
-                        </button>
-
-                        <div
-                          x-data="usePopper({placement:'bottom-end',offset:4})"
-                          @click.outside="isShowPopper && (isShowPopper = false)"
-                          class="inline-flex"
-                        >
-                          <button
-                            x-ref="popperRef"
-                            @click="isShowPopper = !isShowPopper"
-                            class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="h-4.5 w-4.5"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              stroke-width="2"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-                              />
-                            </svg>
-                          </button>
-
-                          <div
-                            x-ref="popperRoot"
-                            class="popper-root"
-                            :class="isShowPopper && 'show'"
-                          >
-                            <div
-                              class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                            >
-                              <ul>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Action</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Another Action</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Something else</a
-                                  >
-                                </li>
-                              </ul>
-                              <div
-                                class="my-1 h-px bg-slate-150 dark:bg-navy-500"
-                              ></div>
-                              <ul>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Separated Link</a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <a
-                        href="#"
-                        class="text-lg font-medium text-slate-700 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                        >Tailwind CSS Card Example
-                      </a>
-                    </div>
-                    <p class="mt-1 line-clamp-3">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Est repellat nisi corrupti. Lorem, ipsum.
-                    </p>
-                    <div class="grow">
-                      <div class="mt-2 flex items-center text-xs">
-                        <a
-                          href="#"
-                          class="flex items-center space-x-2 hover:text-slate-800 dark:hover:text-navy-100"
-                        >
-                          <div class="avatar h-6 w-6">
-                            <img
-                              class="rounded-full"
-                              src="images/avatar/avatar-2.jpg"
-                              alt="avatar"
-                            />
-                          </div>
-                          <span class="line-clamp-1">Konnor Guzman </span>
-                        </a>
-                        <div
-                          class="mx-3 my-1 w-px self-stretch bg-slate-200 dark:bg-navy-500"
-                        ></div>
-                        <span class="shrink-0 text-slate-400 dark:text-navy-300"
-                          >May 25, 2021
-                        </span>
-                      </div>
-                    </div>
-                    <div class="mt-1 flex justify-end">
-                      <a
-                        href="#"
-                        class="btn px-2.5 py-1.5 font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25"
-                      >
-                        READ ARTICLE
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="card lg:flex-row">
-                  <img
-                    class="h-48 w-full shrink-0 rounded-t-lg bg-cover bg-center object-cover object-center lg:h-auto lg:w-48 lg:rounded-t-none lg:rounded-l-lg"
-                    src="images/object/object-4.jpg"
-                    alt="image"
-                  />
-                  <div class="flex w-full grow flex-col px-4 py-3 sm:px-5">
-                    <div class="flex items-center justify-between">
-                      <a class="text-xs+ text-info" href="#"
-                        >Programming Language</a
-                      >
-                      <div class="-mr-1.5 flex space-x-1">
-                        <button
-                          class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                            />
-                          </svg>
-                        </button>
-
-                        <div
-                          x-data="usePopper({placement:'bottom-end',offset:4})"
-                          @click.outside="isShowPopper && (isShowPopper = false)"
-                          class="inline-flex"
-                        >
-                          <button
-                            x-ref="popperRef"
-                            @click="isShowPopper = !isShowPopper"
-                            class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="h-4.5 w-4.5"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              stroke-width="2"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-                              />
-                            </svg>
-                          </button>
-
-                          <div
-                            x-ref="popperRoot"
-                            class="popper-root"
-                            :class="isShowPopper && 'show'"
-                          >
-                            <div
-                              class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                            >
-                              <ul>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Action</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Another Action</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Something else</a
-                                  >
-                                </li>
-                              </ul>
-                              <div
-                                class="my-1 h-px bg-slate-150 dark:bg-navy-500"
-                              ></div>
-                              <ul>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Separated Link</a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <a
-                        href="#"
-                        class="text-lg font-medium text-slate-700 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                        >What is PHP?
-                      </a>
-                    </div>
-                    <p class="mt-1 line-clamp-3">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Eveniet, provident quasi recusandae repudiandae rerum
-                      temporibus!
-                    </p>
-                    <div class="grow">
-                      <div class="mt-2 flex items-center text-xs">
-                        <a
-                          href="#"
-                          class="flex items-center space-x-2 hover:text-slate-800 dark:hover:text-navy-100"
-                        >
-                          <div class="avatar h-6 w-6">
-                            <img
-                              class="rounded-full"
-                              src="images/avatar/avatar-1.jpg"
-                              alt="avatar"
-                            />
-                          </div>
-                          <span class="line-clamp-1">Travis Fuller </span>
-                        </a>
-                        <div
-                          class="mx-3 my-1 w-px self-stretch bg-slate-200 dark:bg-navy-500"
-                        ></div>
-                        <span class="shrink-0 text-slate-400 dark:text-navy-300"
-                          >March 14, 2022
-                        </span>
-                      </div>
-                    </div>
-                    <div class="mt-1 flex justify-end">
-                      <a
-                        href="#"
-                        class="btn px-2.5 py-1.5 font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25"
-                      >
-                        READ ARTICLE
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="card lg:flex-row">
-                  <img
-                    class="h-48 w-full shrink-0 rounded-t-lg bg-cover bg-center object-cover object-center lg:h-auto lg:w-48 lg:rounded-t-none lg:rounded-l-lg"
-                    src="images/object/object-14.jpg"
-                    alt="image"
-                  />
-                  <div class="flex w-full grow flex-col px-4 py-3 sm:px-5">
-                    <div class="flex items-center justify-between">
-                      <a class="text-xs+ text-info" href="#">UI/UX</a>
-                      <div class="-mr-1.5 flex space-x-1">
-                        <button
-                          class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4.5 w-4.5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                            />
-                          </svg>
-                        </button>
-
-                        <div
-                          x-data="usePopper({placement:'bottom-end',offset:4})"
-                          @click.outside="isShowPopper && (isShowPopper = false)"
-                          class="inline-flex"
-                        >
-                          <button
-                            x-ref="popperRef"
-                            @click="isShowPopper = !isShowPopper"
-                            class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="h-4.5 w-4.5"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              stroke-width="2"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-                              />
-                            </svg>
-                          </button>
-
-                          <div
-                            x-ref="popperRoot"
-                            class="popper-root"
-                            :class="isShowPopper && 'show'"
-                          >
-                            <div
-                              class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                            >
-                              <ul>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Action</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Another Action</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Something else</a
-                                  >
-                                </li>
-                              </ul>
-                              <div
-                                class="my-1 h-px bg-slate-150 dark:bg-navy-500"
-                              ></div>
-                              <ul>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Separated Link</a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <a
-                        href="#"
-                        class="text-lg font-medium text-slate-700 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                        >Top Design Systems
-                      </a>
-                    </div>
-                    <p class="mt-1 line-clamp-3">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Quidem quibusdam, ipsam in eveniet quod voluptatum!
-                    </p>
-                    <div class="grow">
-                      <div class="mt-2 flex items-center text-xs">
-                        <a
-                          href="#"
-                          class="flex items-center space-x-2 hover:text-slate-800 dark:hover:text-navy-100"
-                        >
-                          <div class="avatar h-6 w-6">
-                            <img
-                              class="rounded-full"
-                              src="images/avatar/avatar-7.jpg"
-                              alt="avatar"
-                            />
-                          </div>
-                          <span class="line-clamp-1">Alfredo Elliott </span>
-                        </a>
-                        <div
-                          class="mx-3 my-1 w-px self-stretch bg-slate-200 dark:bg-navy-500"
-                        ></div>
-                        <span class="shrink-0 text-slate-400 dark:text-navy-300"
-                          >March 14, 2022
-                        </span>
-                      </div>
-                    </div>
-                    <div class="mt-1 flex justify-end">
-                      <a
-                        href="#"
-                        class="btn px-2.5 py-1.5 font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25"
-                      >
-                        READ ARTICLE
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="col-span-12 py-6 lg:sticky lg:bottom-0 lg:col-span-4 lg:self-end"
-          >
-            <div class="card">
-              <div class="h-24 rounded-t-lg bg-primary dark:bg-accent">
-                <img
-                  class="h-full w-full rounded-t-lg object-cover object-center"
-                  src="{{ asset('admin/images/object/object-7.jpg') }}"
-                  alt="image"
-                />
-              </div>
-              <div class="px-4 pt-2 pb-5 sm:px-5">
-                <div class="avatar -mt-12 h-20 w-20">
-                  <img
-                    class="rounded-full border-2 border-white dark:border-navy-700"
-                    src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
-                    alt="avatar"
-                  />
-                </div>
-                <h3
-                  class="pt-2 text-lg font-medium text-slate-700 dark:text-navy-100"
+                </li>
+                <li class="relative">
+                <a
+                    class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref
+                    >Alumni</a
                 >
-                  Travis Fuller
-                </h3>
-                <p class="text-xs+ text-slate-400 dark:text-navy-300">
-                  1,596 followers
-                </p>
-                <p class="mt-3">
-                  Professional product designer and amateur cyclist living in
-                  New York City, USA.
-                </p>
-                <div class="mt-5 flex space-x-1">
-                  <button
-                    class="btn h-7 rounded-full bg-slate-150 px-3 text-xs+ font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                  >
-                    Follow
-                  </button>
-                  <button
-                    class="btn h-7 w-7 rounded-full bg-slate-150 px-0 text-xs+ font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                  >
-                    <i class="far fa-envelope"></i>
-                  </button>
-                  <button
-                    class="btn h-7 w-7 rounded-full bg-slate-150 px-0 text-xs+ font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                  >
-                    <i class="fa fa-ellipsis-h"></i>
-                  </button>
-                </div>
-              </div>
+                </li>
+                <li class="relative">
+                <a
+                    class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref
+                    >Penanggung jawab</a
+                >
+                </li>
+
+            </ul>
+        </li>
+        {{-- jurnal --}}
+        <li class="relative">
+            <a
+                class="flex h-12 cursor-pointer items-center   rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-white hover:outline-none focus:bg-blue-500 focus:text-white focus:outline-none active:bg-blue-500 active:text-white active:outline-none data-[te-sidenav-state-active]:text-white data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                >
+                <span
+                class="mr-4 [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="h-4 w-4">
+                    <path
+                    fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 00-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 01-.189-.866c0-.298.059-.605.189-.866zm2.023 6.828a.75.75 0 10-1.06-1.06 3.75 3.75 0 01-5.304 0 .75.75 0 00-1.06 1.06 5.25 5.25 0 007.424 0z"
+                    clip-rule="evenodd" />
+                </svg>
+                </span>
+                <span>Jurnal</span>
+
+            </a>
+            </li>
+        {{-- absensi --}}
+        <li class="relative">
+            <a
+                class="flex h-12 cursor-pointer items-center   rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-white hover:outline-none focus:bg-blue-500 focus:text-white focus:outline-none active:bg-blue-500 active:text-white active:outline-none data-[te-sidenav-state-active]:text-white data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                >
+                <span
+                class="mr-4 [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="h-4 w-4">
+                    <path
+                    fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 00-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 01-.189-.866c0-.298.059-.605.189-.866zm2.023 6.828a.75.75 0 10-1.06-1.06 3.75 3.75 0 01-5.304 0 .75.75 0 00-1.06 1.06 5.25 5.25 0 007.424 0z"
+                    clip-rule="evenodd" />
+                </svg>
+                </span>
+                <span>Absensi</span>
+
+            </a>
+            </li>
+        {{-- peraturan --}}
+        <li class="relative">
+            <a
+            class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-white hover:outline-none focus:bg-slate-50 focus:text-white focus:outline-none active:bg-slate-50 active:text-white active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            data-te-sidenav-link-ref>
+                <span
+                class="mr-4 [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="h-4 w-4">
+                    <path
+                    fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 00-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 01-.189-.866c0-.298.059-.605.189-.866zm2.023 6.828a.75.75 0 10-1.06-1.06 3.75 3.75 0 01-5.304 0 .75.75 0 00-1.06 1.06 5.25 5.25 0 007.424 0z"
+                    clip-rule="evenodd" />
+                </svg>
+                </span>
+                <span>Peraturan</span>
+                <span
+                class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+                data-te-sidenav-rotate-icon-ref>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="h-5 w-5">
+                    <path
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd" />
+                </svg>
+                </span>
+            </a>
+            <ul
+                class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+                data-te-sidenav-collapse-ref>
+                <li class="relative">
+                <a
+                    class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref
+                    >Tata tertib</a
+                >
+                </li>
+                <li class="relative">
+                <a
+                    class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref
+                    >Laporan Siswa</a
+                >
+                </li>
+                <li class="relative">
+                <a
+                    class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref
+                    >Laporan PIket</a
+                >
+                </li>
+                <li class="relative">
+                <a
+                    class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref
+                    >Laporan SP</a
+                >
+                </li>
+
+            </ul>
+        </li>
+        {{-- lainnya --}}
+        <li class="relative">
+            <a
+            class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-white hover:outline-none focus:bg-slate-50 focus:text-white focus:outline-none active:bg-slate-50 active:text-white active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            data-te-sidenav-link-ref>
+                <span
+                class="mr-4 [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="h-4 w-4">
+                    <path
+                    fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 00-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 01-.189-.866c0-.298.059-.605.189-.866zm2.023 6.828a.75.75 0 10-1.06-1.06 3.75 3.75 0 01-5.304 0 .75.75 0 00-1.06 1.06 5.25 5.25 0 007.424 0z"
+                    clip-rule="evenodd" />
+                </svg>
+                </span>
+                <span>Lainnya</span>
+                <span
+                class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+                data-te-sidenav-rotate-icon-ref>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="h-5 w-5">
+                    <path
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd" />
+                </svg>
+                </span>
+            </a>
+            <ul
+                class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+                data-te-sidenav-collapse-ref>
+                <li class="relative">
+                <a
+                    class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref
+                    >Berita</a
+                >
+                </li>
+                <li class="relative">
+                <a
+                    class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref
+                    >Chat</a
+                >
+                </li>
+                <li class="relative">
+                <a
+                    class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref
+                    >Jadwal Piket</a
+                >
+                </li>
+                <li class="relative">
+                <a
+                    class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref
+                    >MOU</a
+                >
+                <li class="relative">
+                <a
+                    class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref
+                    >Di Tolak</a
+                >
+
+            </ul>
+        </li>
+    </ul>
+    </nav>
+    <!-- Sidenav -->
+
+    <div class=" pl-[px] " id="content">
+
+
+    <!-- Navbar -->
+    <nav
+    id="main-navbar"
+    class="relative left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start "
+    data-te-navbar-ref>
+    <!-- Container wrapper -->
+
+    <div
+    class="flex w-full flex-wrap items-center justify-between px-4 ">
+    <div class="flex gap-4">
+            <!-- Toggler -->
+            <div class="flex items-center justify-between ltr:mr-2 rtl:ml-2 ">
+                <a href="index-2.html" class="main-logo flex shrink-9 items-center">
+                    <img class="inline w-40 ltr:-ml-1 rtl:-mr-1 hidden" src="{{ asset('admin/assets/images/humma.png') }}" alt="image" />
+                </a>
             </div>
-            <div class="mt-5">
-              <p
-                class="border-b border-slate-200 pb-2 text-base text-slate-800 dark:border-navy-600 dark:text-navy-100"
-              >
-                More from Travis Fuller
-              </p>
-              <div
-                class="mt-3 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-1"
-              >
-                <div class="flex justify-between space-x-2">
-                  <div class="flex flex-1 flex-col justify-between">
-                    <div>
-                      <p class="text-xs font-medium line-clamp-1">06 Nov</p>
-                      <div
-                        class="mt-1 text-slate-800 line-clamp-3 dark:text-navy-100"
-                      >
-                        <a
-                          href="#"
-                          class="font-medium text-slate-700 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                          >What is Tailwind CSS?</a
-                        >
-                      </div>
-                    </div>
-                    <div class="flex items-center justify-between">
-                      <p class="text-xs font-medium line-clamp-1">2 min read</p>
+            <button
+            class="mt-0.5 inline-block rounded bg-primary px-3 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+            data-te-sidenav-toggle-ref
+            data-te-target="#sidenav-2"
+            aria-controls="#sidenav-2"
+            aria-haspopup="true">
+            <span class="block [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-white">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="h-5 w-5">
+                <path
+                fill-rule="evenodd"
+                d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                clip-rule="evenodd" />
+            </svg>
+            </span>
+        </button>
+        <!-- Toggler -->
 
-                      <div class="flex">
-                        <button
-                          class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                            ></path>
-                          </svg>
-                        </button>
-                        <button
-                          class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                            ></path>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <img
-                    src="images/object/object-1.jpg"
-                    class="h-24 w-24 rounded-lg object-cover object-center"
-                    alt="image"
-                  />
-                </div>
-                <div class="flex justify-between space-x-2">
-                  <div class="flex flex-1 flex-col justify-between">
-                    <div>
-                      <p class="text-xs font-medium line-clamp-1">13 Oct</p>
-                      <div
-                        class="mt-1 text-slate-800 line-clamp-3 dark:text-navy-100"
-                      >
-                        <a
-                          href="#"
-                          class="font-medium text-slate-700 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                          >Top Design Systems</a
-                        >
-                      </div>
-                    </div>
-                    <div class="flex items-center justify-between">
-                      <p class="text-xs font-medium line-clamp-1">6 min read</p>
+    <!-- Search form -->
+    <form
+        class="relative  mr-auto flex flex-wrap items-stretch xl:mx-0">
+        <input
+        autocomplete="off"
+        type="search"
+        class="relative m-0 inline-block w-[1%] min-w-[225px] flex-auto rounded border border-solid border-gray-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition duration-300 ease-in-out focus:border-primary-600 focus:text-gray-700 focus:shadow-te-primary focus:outline-none dark:text-gray-200 dark:placeholder:text-gray-200"
+        placeholder='Cari...' />
+        <span
+        class="flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-gray-700 dark:text-gray-200 [&>svg]:w-4"
+        id="basic-addon2">
+        <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            data-icon="search"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512">
+            <path
+            fill="currentColor"
+            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+        </svg>
+        </span>
+    </form>
 
-                      <div class="flex">
-                        <button
-                          class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                            ></path>
-                          </svg>
-                        </button>
-                        <button
-                          class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                            ></path>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <img
-                    src="images/object/object-18.jpg"
-                    class="h-24 w-24 rounded-lg object-cover object-center"
-                    alt="image"
-                  />
-                </div>
-                <div class="flex justify-between space-x-2">
-                  <div class="flex flex-1 flex-col justify-between">
-                    <div>
-                      <p class="text-xs font-medium line-clamp-1">22 Oct</p>
-                      <div
-                        class="mt-1 text-slate-800 line-clamp-3 dark:text-navy-100"
-                      >
-                        <a
-                          href="#"
-                          class="font-medium text-slate-700 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                          >10 Tips for Making a Good Camera Even Better</a
-                        >
-                      </div>
-                    </div>
-                    <div class="flex items-center justify-between">
-                      <p class="text-xs font-medium line-clamp-1">8 min read</p>
-
-                      <div class="flex">
-                        <button
-                          class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                            ></path>
-                          </svg>
-                        </button>
-                        <button
-                          class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                            ></path>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <img
-                    src="images/object/object-16.jpg"
-                    class="h-24 w-24 rounded-lg object-cover object-center"
-                    alt="image"
-                  />
-                </div>
-                <div class="flex justify-between space-x-2">
-                  <div class="flex flex-1 flex-col justify-between">
-                    <div>
-                      <p class="text-xs font-medium line-clamp-1">01 Nov</p>
-                      <div
-                        class="mt-1 text-slate-800 line-clamp-3 dark:text-navy-100"
-                      >
-                        <a
-                          href="#"
-                          class="font-medium text-slate-700 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                          >25 Surprising Facts About Chair</a
-                        >
-                      </div>
-                    </div>
-                    <div class="flex items-center justify-between">
-                      <p class="text-xs font-medium line-clamp-1">
-                        14 min read
-                      </p>
-
-                      <div class="flex">
-                        <button
-                          class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                            ></path>
-                          </svg>
-                        </button>
-                        <button
-                          class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                            ></path>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <img
-                    src="images/object/object-11.jpg"
-                    class="h-24 w-24 rounded-lg object-cover object-center"
-                    alt="image"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
     </div>
-    <!--
-        This is a place for Alpine.js Teleport feature
-        @see https://alpinejs.dev/directives/teleport
-      -->
-    <div id="x-teleport-target"></div>
-    <script>
-      window.addEventListener("DOMContentLoaded", () => Alpine.start());
-    </script>
-  </body>
 
-<!-- Mirrored from lineone.piniastudio.com/pages-blog-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 May 2023 04:16:41 GMT -->
+    <!-- Right links -->
+    <ul class="relative flex items-center">
+        <!-- Notification dropdown -->
+        <li class="relative" data-te-dropdown-ref>
+        <a
+            class="mr-4 flex items-center text-gray-500 hover:text-gray-700 focus:text-gray-700"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-te-dropdown-toggle-ref
+            aria-expanded="false">
+            <span class="dark:text-gray-200 [&>svg]:w-3.5">
+            <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fas"
+                data-icon="bell"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512">
+                <path
+                fill="currentColor"
+                d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+            </svg>
+            </span>
+            <span
+            class="absolute -mt-2.5 ml-2 rounded-full bg-red-600 px-1.5 py-[1px] text-[0.6rem] text-white"
+            >1</span
+            >
+        </a>
+        <ul
+            class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
+            aria-labelledby="navbarDropdownMenuLink"
+            data-te-dropdown-menu-ref>
+            <li>
+            <a
+                class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                href="#"
+                data-te-dropdown-item-ref
+                >Some news</a
+            >
+            </li>
+            <li>
+            <a
+                class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                href="#"
+                data-te-dropdown-item-ref
+                >Another news</a
+            >
+            </li>
+            <li>
+            <a
+                class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                href="#"
+                data-te-dropdown-item-ref
+                >Something else here</a
+            >
+            </li>
+        </ul>
+        </li>
+
+
+
+
+
+
+        <!-- Avatar -->
+        <li class="relative" data-te-dropdown-ref>
+        <a
+            class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-te-dropdown-toggle-ref
+            aria-expanded="false">
+            <img
+            src="https://tecdn.b-cdn.net/img/Photos/Avatars/img (31).webp"
+            class="rounded-full"
+            style="height: 22px; width: 22px"
+            alt="Avatar"
+            loading="lazy" />
+        </a>
+        <ul
+            class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
+            aria-labelledby="dropdownMenuButton2"
+            data-te-dropdown-menu-ref>
+            <li>
+            <a
+                class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                href="#"
+                data-te-dropdown-item-ref
+                >My profile</a
+            >
+            </li>
+            <li>
+            <a
+                class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                href="#"
+                data-te-dropdown-item-ref
+                >Settings</a
+            >
+            </li>
+            <li>
+            <a
+                class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                href="#"
+                data-te-dropdown-item-ref
+                >Logout</a
+            >
+            </li>
+        </ul>
+        </li>
+    </ul>
+    </div>
+    <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+    @include('Berita.asset')
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script>
+       const instanceMode = te.Sidenav.getInstance(
+        document.getElementById("sidenav-2")
+        );
+        const modes = ["side"];
+
+        modes.forEach((mode) => {
+        const modeSwitch = document.getElementById(mode);
+        modeSwitch.addEventListener("click", () => {
+            const instance = te.Sidenav.getInstance(
+            document.getElementById("sidenav-2")
+            );
+            instance.changeMode(mode);
+            modes.forEach((el) => {
+            if (el === mode) {
+                ["text-primary-600", "border-primary-600"].forEach((item) =>
+                modeSwitch.classList.remove(item)
+                );
+                modeSwitch.className +=
+                " bg-primary text-white hover:bg-primary-700 active:bg-primary-800 focus:bg-primary-700 border-transparent";
+            } else {
+                const node = document.getElementById(el);
+                node.className += " text-primary-600 border-primary-600";
+                [
+
+                ].forEach((item) => node.classList.remove(item));
+            }
+            });
+        });
+        });
+    </script>
+    <script>
+                // Initialization for ES Users
+        import {
+        sidenav-2,
+        initTE,
+        } from "tw-elements";
+
+        initTE({ sidenav-2 });
+    </script>
+</body>
+
 </html>
