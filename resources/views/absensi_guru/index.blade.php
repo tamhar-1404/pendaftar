@@ -1697,7 +1697,7 @@
                             {{-- tabel --}}
 
                             <div class="flex flex-col">
-                                <div class="overflow-x-auto pt-40 sm:-mx-6 lg:-mx-8">
+                                <div class="overflow-x-auto mt-10 sm:-mx-6 lg:-mx-8">
                                   <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                     <div class="overflow-hidden">
                                       <table class="min-w-full text-left text-sm font-light">
@@ -1705,12 +1705,11 @@
                                           <tr class="">
                                             <th scope="col" class="px-6 py-4">#</th>
                                             <th scope="col" class="px-6 py-4">Nama</th>
-                                            <th scope="col" class="px-6 py-4">Tanggal</th>
+                                            <th scope="col" class="px-6 py-4">NISN</th>
                                             <th scope="col" class="px-6 py-4">Sekolah</th>
-                                            <th scope="col" class="px-6 py-4">kegiatan</th>
-                                            <th scope="col" class="px-6 py-4 ">bukti</th>
-                                            <th scope="col" class="px-6 py-4">Aksi</th>
-
+                                            <th scope="col" class="px-6 py-4">Tanggal</th>
+                                            <th scope="col" class="px-6 py-4 ">jam</th>
+                                            <th scope="col" class="px-6 py-4">keterangan</th>
                                           </tr>
                                         </thead>
                                         <tbody>
@@ -1718,57 +1717,41 @@
                                             class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                             <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
                                             <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                            <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
+                                            <td class="whitespace-nowrap px-4 py-4">12543256</td>
                                             <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
+                                            <td class="whitespace-nowrap px-4 py-4" >23-06-2023</td>
+                                            <td class="whitespace-nowrap px-6 py-4">07.45</td>
                                             <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                                            <td class="whitespace-nowrap px-6 pl-17 py-4"><img
-                                                src="{{ asset('admin/assets/images/carousel2.jpeg') }}"
-                                                width="100px" alt="">
-                                            </td>
-                                            <td class="whitespace-nowrap px-4 py-4">
-                                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent " data-te-toggle="modal"
-                                                    data-te-target="#exampleModalCenteredScrollable">
-                                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                                    </div>
-                                            </td>
                                           </tr>
                                           <tr
                                             class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                             <td class="whitespace-nowrap px-4 py-4 font-medium">2</td>
                                             <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                            <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
+                                            <td class="whitespace-nowrap px-4 py-4">12543256</td>
                                             <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
+                                            <td class="whitespace-nowrap px-4 py-4" >23-06-2023</td>
+                                            <td class="whitespace-nowrap px-6 py-4">07.45</td>
                                             <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                                            <td class="whitespace-nowrap px-6 pl-17 py-4"><img
-                                                src="{{ asset('admin/assets/images/carousel2.jpeg') }}"
-                                                width="100px" alt="">
-                                            </td>
-                                            <td class="whitespace-nowrap px-4 py-4">
-                                                <a href="#">
-                                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
-                                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                                    </div>
-                                                </a>
-                                            </td>
                                           </tr>
                                           <tr
                                             class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                             <td class="whitespace-nowrap px-4 py-4 font-medium">3</td>
                                             <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                            <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
+                                            <td class="whitespace-nowrap px-4 py-4">12543256</td>
                                             <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
+                                            <td class="whitespace-nowrap px-4 py-4" >23-06-2023</td>
+                                            <td class="whitespace-nowrap px-6 py-4">07.45</td>
                                             <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                                            <td class="whitespace-nowrap px-6 pl-17 py-4"><img
-                                                src="{{ asset('admin/assets/images/carousel2.jpeg') }}"
-                                                width="100px" alt="">
-                                            </td>
-                                            <td class="whitespace-nowrap px-4 py-4">
-                                                <a href="#">
-                                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
-                                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                                    </div>
-                                                </a>
-                                            </td>
+                                          </tr>
+                                          <tr
+                                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                            <td class="whitespace-nowrap px-4 py-4 font-medium">4</td>
+                                            <td class="whitespace-nowrap px-4 py-4">Mark</td>
+                                            <td class="whitespace-nowrap px-4 py-4">12543256</td>
+                                            <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
+                                            <td class="whitespace-nowrap px-4 py-4" >23-06-2023</td>
+                                            <td class="whitespace-nowrap px-6 py-4">07.45</td>
+                                            <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
                                           </tr>
                                         </tbody>
                                       </table>

@@ -88,3 +88,5 @@ Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::cla
 Route::get('/sidebar', function () {
     return view('sidebar.layout');
 });
+Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
+Route::resource('/tolak',App\Http\Controllers\TolakController::class);
