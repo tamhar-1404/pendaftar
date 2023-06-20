@@ -592,7 +592,7 @@
                 </li>
             </ul>
             <div class="pt-5">
-                <div class="mb-5 grid grid-cols-1 gap-5 lg:grid-cols-3 xl:grid-cols-4">
+                <div class="mb-5 grid grid-cols-1 text-sm gap-5 lg:grid-cols-3 xl:grid-cols-4">
                     <div class="panel">
                         <div class="mb-5 flex items-center justify-between">
                             <h5 class="text-lg font-semibold dark:text-white-light">Profile</h5>
@@ -739,52 +739,98 @@
                         </div>
 
                         <div class="table-responsive font-semibold text-[#515365] dark:text-white-light">
-                          <table class="whitespace-nowrap">
-                            <thead>
-                              <tr>
-                                <th>Tanggal pelanggaran</th>
-                                <th>Judul pelanggaran</th>
-                                <th>Deskripsi</th>
-                              </tr>
-                            </thead>
-                            <tbody  >
-                              <tr >
-                                <td > 11/02/2020</td>
-                                <td>Peraturan tata tertib</td>
-                                <td>Telat masuk jam magang</td>
-                              </tr>
-                              <tr>
-                                <td>11/02/2020</td>
-                                <td>Peraturan tata tertib</td>
-                                <td>Telat masuk jam magang</td>
-                              </tr>
-                              <tr>
-                                <td>11/02/2020</td>
-                                <td>Peraturan tata tertib</td>
-                                <td>Telat masuk jam magang</td>
-                              </tr>
-                              <tr>
-                                <td>11/02/2020</td>
-                                <td>Peraturan tata tertib</td>
-                                <td>Telat masuk jam magang</td>
-                              </tr>
-                              <tr>
-                                <td>11/02/2020</td>
-                                <td>Peraturan tata tertib</td>
-                                <td>Telat masuk jam magang</td>
-                              </tr>
-                              <tr>
-                                <td>11/02/2020</td>
-                                <td>Peraturan tata tertib</td>
-                                <td>Telat masuk jam magang</td>
-                              </tr>
-                              <tr>
-                                <td>11/02/2020</td>
-                                <td>Peraturan tata tertib</td>
-                                <td>Telat masuk jam magang</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                         <table>
+                            <tr class="text-sm bg-[#E2E8F0]">
+                                <td>No</td>
+                                <td>Tanggal pelanggaran</td>
+                                <td>Judul pelanggaran</td>
+                                <td>Deskripsi</td>
+                            </tr>
+                            <tr class="text-sm">
+                                <td>1</td>
+                                <td>
+                                    11/11/2022
+                                </td>
+                                <td>
+                                    Peraturan tata tertib
+                                </td>
+                                <td>
+                                    Telat masuk jam magang
+                                </td>
+                            </tr>
+                            <tr  class="text-sm">
+                                <td>2</td>
+                                <td>
+                                    11/11/2022
+                                </td>
+                                <td>
+                                    Peraturan tata tertib
+                                </td>
+                                <td>
+                                    Telat masuk jam magang
+                                </td>
+                            </tr>
+                            <tr  class="text-sm">
+                                <td>3</td>
+                                <td>
+                                    11/11/2022
+                                </td>
+                                <td>
+                                    Peraturan tata tertib
+                                </td>
+                                <td>
+                                    Telat masuk jam magang
+                                </td>
+                            </tr>
+                            <tr  class="text-sm">
+                                <td>4</td>
+                                <td>
+                                    11/11/2022
+                                </td>
+                                <td>
+                                    Peraturan tata tertib
+                                </td>
+                                <td>
+                                    Telat masuk jam magang
+                                </td>
+                            </tr>
+                            <tr  class="text-sm">
+                                <td>5</td>
+                                <td>
+                                    11/11/2022
+                                </td>
+                                <td>
+                                    Peraturan tata tertib
+                                </td>
+                                <td>
+                                    Telat masuk jam magang
+                                </td>
+                            </tr>
+                            <tr  class="text-sm">
+                                <td>6</td>
+                                <td>
+                                    11/11/2022
+                                </td>
+                                <td>
+                                    Peraturan tata tertib
+                                </td>
+                                <td>
+                                    Telat masuk jam magang
+                                </td>
+                            </tr>
+                            <tr  class="text-sm">
+                                <td>7</td>
+                                <td>
+                                    11/11/2022
+                                </td>
+                                <td>
+                                    Peraturan tata tertib
+                                </td>
+                                <td>
+                                    Telat masuk jam magang
+                                </td>
+                            </tr>
+                        </table>
                         </div>
                       </div>
 
