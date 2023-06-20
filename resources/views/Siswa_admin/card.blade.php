@@ -1,4 +1,4 @@
-<div class="text-lg">
+<div class="text-base">
     <h1 class="font-bold">Data siswa</h1>
 </div>
 
@@ -23,10 +23,9 @@
     </div>
     <div class="relative flex justify-end">
       <button type="button" class="btn btn-outline-success text-CBD5E1">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
-          <circle cx="11.5" cy="11.5" r="9.5" stroke="currentColor" stroke-width="1.5" opacity="0.5" class="rounded-full" />
-          <path d="M18.5 18.5L22 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
+          </svg>
         <span class="text-sm px-2">Filter</span>
       </button>
     </div>
@@ -40,7 +39,7 @@
           <div class="avatar h-20 w-20 rounded-full overflow-hidden" style="margin-top: 18px;">
             <img class="h-full w-full object-cover" src="admin/assets/images/avatar-5.jpg" alt="avatar">
           </div>
-          <h3 class="pt-3 text-base font-medium text-slate-700 dark:text-navy-100 font-bold font-Poppins">Abdul Kader</h3>
+          <h3 class="pt-3 text-base font-medium text-slate-700 dark:text-navy-100 font-bold font-Poppins font-sans">Abdul Kader</h3>
           <p class="text-xs">RPL</p>
           <div class="inline-space mt-1 flex-grow flex-wrap items-start">
             <a href="#" class="tag rounded-full font-serif hover:bg-primary/20 focus:bg-success/20 active:bg-success/25 smkn-font">SMKN 1 KRAKSAAN</a>

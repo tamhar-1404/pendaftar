@@ -1,37 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
-{{--  <!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:26 GMT -->  --}}
+    
+<!-- Mirrored from html.vristo.sbthemes.com/datatables-export.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:33 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>siswa - Dashboad</title>
+        <title>VRISTO - Multipurpose Tailwind Dashboard Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        @vite('resources/css/app.css')
-        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-        <link rel="stylesheet" href="css/app.css" />
         <link rel="icon" type="image/x-icon" href="favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" media="screen" href="siswa/css/perfect-scrollbar.min.css" />
-        <link rel="stylesheet" type="text/css" media="screen" href="siswa/css/style.css" />
-        <link defer rel="stylesheet" type="text/css" media="screen" href="siswa/css/animate.css" />
-        <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
-            rel="stylesheet" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
-        <script src="siswa/js/perfect-scrollbar.min.js"></script>
-        <script defer src="siswa/js/popper.min.js"></script>
-        <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
-        <script defer src="siswa/js/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/perfect-scrollbar.min.css" />
+        <link rel="stylesheet" href="assets/css/highlight.min.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+        <link defer rel="stylesheet" type="text/css" media="screen" href="assets/css/animate.css" />
+        <script src="assets/js/perfect-scrollbar.min.js"></script>
+        <script defer src="assets/js/popper.min.js"></script>
+        <script defer src="assets/js/tippy-bundle.umd.min.js"></script>
+        <script defer src="assets/js/sweetalert.min.js"></script>
     </head>
+
     <body
         x-data="main"
-        class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased bg-[#F6F5FF]"
+        class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
         :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout,$store.app.rtlClass]"
     >
         <!-- sidebar menu overlay -->
@@ -239,12 +232,12 @@
                             </button>
                         </div>
                     </div>
+
                     <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
                         <h5 class="mb-1 text-base leading-none dark:text-white">Navigation Position</h5>
                         <p class="text-xs text-white-dark">Select the primary navigation paradigm for your app.</p>
-                        <div class="mt-3">
+                        <div class="mt-3 grid grid-cols-3 gap-2">
                             <button
-                            id="horizontalButton"
                                 type="button"
                                 class="btn"
                                 :class="[$store.app.menu === 'horizontal' ? 'btn-primary' :'btn-outline-primary']"
@@ -253,7 +246,6 @@
                                 Horizontal
                             </button>
                             <button
-
                                 type="button"
                                 class="btn"
                                 :class="[$store.app.menu === 'vertical' ? 'btn-primary' :'btn-outline-primary']"
@@ -270,16 +262,7 @@
                                 Collapsible
                             </button>
                         </div>
-                    </div>
-
-                    <script>
-                        document.addEventListener("DOMContentLoaded", function() {
-                            const horizontalButton = document.getElementById("horizontalButton");
-                            horizontalButton.classList.add("btn-primary");
-                            horizontalButton.click();
-                        });
-                    </script>
-                                            <div class="mt-5 text-primary">
+                        <div class="mt-5 text-primary">
                             <label class="mb-0 inline-flex">
                                 <input
                                     x-model="$store.app.semidark"
@@ -394,9 +377,9 @@
                 >
                     <div class="h-full bg-white dark:bg-[#0e1726]">
                         <div class="flex items-center justify-between px-4 py-3">
-                            <a href="" class="main-logo flex shrink-0 items-center">
-                                <img class="ml-[5px] w-8 flex-none" src="" alt="image" />
-
+                            <a href="index-2.html" class="main-logo flex shrink-0 items-center">
+                                <img class="ml-[5px] w-8 flex-none" src="assets/images/logo.svg" alt="image" />
+                                <span class="align-middle text-2xl font-semibold ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light lg:inline">VRISTO</span>
                             </a>
                             <a
                                 href="javascript:;"
@@ -418,7 +401,7 @@
                         </div>
                         <ul
                             class="perfect-scrollbar relative h-[calc(100vh-80px)] space-y-0.5 overflow-y-auto overflow-x-hidden p-4 py-0 font-semibold"
-                            x-data="{ activeDropdown: 'dashboard' }"
+                            x-data="{ activeDropdown: 'datatables' }"
                         >
                             <li class="menu nav-item">
                                 <button
@@ -447,7 +430,7 @@
                                             />
                                         </svg>
 
-                                        <span class="text-white ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Dashboard</span>
+                                        <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Dashboard</span>
                                     </div>
                                     <div class="rtl:rotate-180" :class="{'!rotate-90' : activeDropdown === 'dashboard'}">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -455,6 +438,20 @@
                                         </svg>
                                     </div>
                                 </button>
+                                <ul x-cloak x-show="activeDropdown === 'dashboard'" x-collapse class="sub-menu text-gray-500">
+                                    <li>
+                                        <a href="index-2.html">Sales</a>
+                                    </li>
+                                    <li>
+                                        <a href="analytics.html">Analytics</a>
+                                    </li>
+                                    <li>
+                                        <a href="finance.html">Finance</a>
+                                    </li>
+                                    <li>
+                                        <a href="crypto.html">Crypto</a>
+                                    </li>
+                                </ul>
                             </li>
 
                             <h2 class="-mx-4 mb-1 flex items-center bg-white-light/30 py-3 px-7 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
@@ -469,7 +466,7 @@
                                 >
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                 </svg>
-                                <span>Siswa</span>
+                                <span>Apps</span>
                             </h2>
 
                             <li class="nav-item">
@@ -794,7 +791,7 @@
                                                 fill="currentColor"
                                             />
                                         </svg>
-                                        <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Jurnal</span>
+                                        <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Components</span>
                                     </div>
                                     <div class="rtl:rotate-180" :class="{'!rotate-90' : activeDropdown === 'components'}">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -802,7 +799,50 @@
                                         </svg>
                                     </div>
                                 </button>
-
+                                <ul x-cloak x-show="activeDropdown === 'components'" x-collapse class="sub-menu text-gray-500">
+                                    <li>
+                                        <a href="components-tabs.html">Tabs</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-accordions.html">Accordions</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-modals.html">Modals</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-cards.html">Cards</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-carousel.html">Carousel</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-countdown.html">Countdown</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-counter.html">Counter</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-sweetalert.html">Sweet Alerts</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-timeline.html">Timeline</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-notifications.html">Notifications</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-media-object.html">Media Object</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-list-group.html">List Group</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-pricing-table.html">Pricing Tables</a>
+                                    </li>
+                                    <li>
+                                        <a href="components-lightbox.html">Lightbox</a>
+                                    </li>
+                                </ul>
                             </li>
 
                             <li class="menu nav-item">
@@ -1150,7 +1190,7 @@
                                         <a href="datatables-range-search.html">Range Search</a>
                                     </li>
                                     <li>
-                                        <a href="datatables-export.html">Export</a>
+                                        <a href="datatables-export.html" class="active">Export</a>
                                     </li>
                                     <li>
                                         <a href="datatables-sticky-header.html">Sticky Header</a>
@@ -1530,432 +1570,137 @@
             <!-- end sidebar section -->
 
             <div class="main-content">
-               @include('siswamagang.nav_siswa')
+                <!-- start header section -->
+            @include('guru.nav_guru')
+                <!-- end header section -->
 
                 <div class="animate__animated p-6" :class="[$store.app.animation]">
                     <!-- start main content section -->
-                    <div x-data="sales">
-                        <ul class="flex space-x-2 rtl:space-x-reverse">
-                            <li>
-                                <a href="javascript:;" class="text-primary hover:underline">Dashboard</a>
-                            </li>
-                            <li class="before:content-['/'] ltr:before:mr-1 rtl:before:ml-1">
-                                <span>Sales</span>
-                            </li>
-                        </ul>
-
-                        <div class="pt-5 lg:w-full  md: sm:w-10/12">
-                            <div class="mb-6 grid gap-6 xl:grid-cols-3 lg:grid-cols-1">
-                                <div class="panel h-full xl:col-span-2">
-                                    <div class="mb-5 flex items-center dark:text-white-light">
-                                        <h5 class="text-lg font-semibold">Revenue</h5>
-                                        <div x-data="dropdown" @click.outside="open = false" class="dropdown ltr:ml-auto rtl:mr-auto">
-                                            <a href="javascript:;" @click="toggle">
-                                                <svg
-                                                    class="h-5 w-5 text-black/70 hover:!text-primary dark:text-white/70"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                >
-                                                    <circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                    <circle opacity="0.5" cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                    <circle cx="19" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                </svg>
-                                            </a>
-                                            <ul x-cloak x-show="open" x-transition x-transition.duration.300ms class="ltr:right-0 rtl:left-0">
-                                                <li><a href="javascript:;" @click="toggle">Weekly</a></li>
-                                                <li><a href="javascript:;" @click="toggle">Monthly</a></li>
-                                                <li><a href="javascript:;" @click="toggle">Yearly</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <p class="text-lg dark:text-white-light/90">Total Profit <span class="ml-2 text-primary">$10,840</span></p>
-                                    <div class="relative w-full ">
-                                        <div x-ref="revenueChart" class="rounded-lg bg-white dark:bg-black lg:w-full">
-                                        </div>
-                                    </div>
+                    <div x-data="basic">
+                        <div class="panel">
+                            <div class="md:absolute md:top-5 ltr:md:left-20 rtl:md:right-20">
+                                <h5 class="text-lg font-semibold dark:text-white-light">Absensi Siswa </h5>
+                                <div class="mb-5 flex flex-wrap  mt-5 items-center">
+                                    <button type="button" class="btn btn-primary btn-sm m-1" @click="exportTable('csv')">
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-5 w-5 ltr:mr-2 rtl:ml-2"
+                                        >
+                                            <path
+                                                d="M15.3929 4.05365L14.8912 4.61112L15.3929 4.05365ZM19.3517 7.61654L18.85 8.17402L19.3517 7.61654ZM21.654 10.1541L20.9689 10.4592V10.4592L21.654 10.1541ZM3.17157 20.8284L3.7019 20.2981H3.7019L3.17157 20.8284ZM20.8284 20.8284L20.2981 20.2981L20.2981 20.2981L20.8284 20.8284ZM14 21.25H10V22.75H14V21.25ZM2.75 14V10H1.25V14H2.75ZM21.25 13.5629V14H22.75V13.5629H21.25ZM14.8912 4.61112L18.85 8.17402L19.8534 7.05907L15.8947 3.49618L14.8912 4.61112ZM22.75 13.5629C22.75 11.8745 22.7651 10.8055 22.3391 9.84897L20.9689 10.4592C21.2349 11.0565 21.25 11.742 21.25 13.5629H22.75ZM18.85 8.17402C20.2034 9.3921 20.7029 9.86199 20.9689 10.4592L22.3391 9.84897C21.9131 8.89241 21.1084 8.18853 19.8534 7.05907L18.85 8.17402ZM10.0298 2.75C11.6116 2.75 12.2085 2.76158 12.7405 2.96573L13.2779 1.5653C12.4261 1.23842 11.498 1.25 10.0298 1.25V2.75ZM15.8947 3.49618C14.8087 2.51878 14.1297 1.89214 13.2779 1.5653L12.7405 2.96573C13.2727 3.16993 13.7215 3.55836 14.8912 4.61112L15.8947 3.49618ZM10 21.25C8.09318 21.25 6.73851 21.2484 5.71085 21.1102C4.70476 20.975 4.12511 20.7213 3.7019 20.2981L2.64124 21.3588C3.38961 22.1071 4.33855 22.4392 5.51098 22.5969C6.66182 22.7516 8.13558 22.75 10 22.75V21.25ZM1.25 14C1.25 15.8644 1.24841 17.3382 1.40313 18.489C1.56076 19.6614 1.89288 20.6104 2.64124 21.3588L3.7019 20.2981C3.27869 19.8749 3.02502 19.2952 2.88976 18.2892C2.75159 17.2615 2.75 15.9068 2.75 14H1.25ZM14 22.75C15.8644 22.75 17.3382 22.7516 18.489 22.5969C19.6614 22.4392 20.6104 22.1071 21.3588 21.3588L20.2981 20.2981C19.8749 20.7213 19.2952 20.975 18.2892 21.1102C17.2615 21.2484 15.9068 21.25 14 21.25V22.75ZM21.25 14C21.25 15.9068 21.2484 17.2615 21.1102 18.2892C20.975 19.2952 20.7213 19.8749 20.2981 20.2981L21.3588 21.3588C22.1071 20.6104 22.4392 19.6614 22.5969 18.489C22.7516 17.3382 22.75 15.8644 22.75 14H21.25ZM2.75 10C2.75 8.09318 2.75159 6.73851 2.88976 5.71085C3.02502 4.70476 3.27869 4.12511 3.7019 3.7019L2.64124 2.64124C1.89288 3.38961 1.56076 4.33855 1.40313 5.51098C1.24841 6.66182 1.25 8.13558 1.25 10H2.75ZM10.0298 1.25C8.15538 1.25 6.67442 1.24842 5.51887 1.40307C4.34232 1.56054 3.39019 1.8923 2.64124 2.64124L3.7019 3.7019C4.12453 3.27928 4.70596 3.02525 5.71785 2.88982C6.75075 2.75158 8.11311 2.75 10.0298 2.75V1.25Z"
+                                                fill="currentColor"
+                                            />
+                                            <path
+                                                opacity="0.5"
+                                                d="M13 2.5V5C13 7.35702 13 8.53553 13.7322 9.26777C14.4645 10 15.643 10 18 10H22"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                            />
+                                        </svg>
+                                        CSV
+                                    </button>
+                                    <button type="button" class="btn btn-primary btn-sm m-1" @click="exportTable('txt')">
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-5 w-5 ltr:mr-2 rtl:ml-2"
+                                        >
+                                            <path
+                                                d="M15.3929 4.05365L14.8912 4.61112L15.3929 4.05365ZM19.3517 7.61654L18.85 8.17402L19.3517 7.61654ZM21.654 10.1541L20.9689 10.4592V10.4592L21.654 10.1541ZM3.17157 20.8284L3.7019 20.2981H3.7019L3.17157 20.8284ZM20.8284 20.8284L20.2981 20.2981L20.2981 20.2981L20.8284 20.8284ZM14 21.25H10V22.75H14V21.25ZM2.75 14V10H1.25V14H2.75ZM21.25 13.5629V14H22.75V13.5629H21.25ZM14.8912 4.61112L18.85 8.17402L19.8534 7.05907L15.8947 3.49618L14.8912 4.61112ZM22.75 13.5629C22.75 11.8745 22.7651 10.8055 22.3391 9.84897L20.9689 10.4592C21.2349 11.0565 21.25 11.742 21.25 13.5629H22.75ZM18.85 8.17402C20.2034 9.3921 20.7029 9.86199 20.9689 10.4592L22.3391 9.84897C21.9131 8.89241 21.1084 8.18853 19.8534 7.05907L18.85 8.17402ZM10.0298 2.75C11.6116 2.75 12.2085 2.76158 12.7405 2.96573L13.2779 1.5653C12.4261 1.23842 11.498 1.25 10.0298 1.25V2.75ZM15.8947 3.49618C14.8087 2.51878 14.1297 1.89214 13.2779 1.5653L12.7405 2.96573C13.2727 3.16993 13.7215 3.55836 14.8912 4.61112L15.8947 3.49618ZM10 21.25C8.09318 21.25 6.73851 21.2484 5.71085 21.1102C4.70476 20.975 4.12511 20.7213 3.7019 20.2981L2.64124 21.3588C3.38961 22.1071 4.33855 22.4392 5.51098 22.5969C6.66182 22.7516 8.13558 22.75 10 22.75V21.25ZM1.25 14C1.25 15.8644 1.24841 17.3382 1.40313 18.489C1.56076 19.6614 1.89288 20.6104 2.64124 21.3588L3.7019 20.2981C3.27869 19.8749 3.02502 19.2952 2.88976 18.2892C2.75159 17.2615 2.75 15.9068 2.75 14H1.25ZM14 22.75C15.8644 22.75 17.3382 22.7516 18.489 22.5969C19.6614 22.4392 20.6104 22.1071 21.3588 21.3588L20.2981 20.2981C19.8749 20.7213 19.2952 20.975 18.2892 21.1102C17.2615 21.2484 15.9068 21.25 14 21.25V22.75ZM21.25 14C21.25 15.9068 21.2484 17.2615 21.1102 18.2892C20.975 19.2952 20.7213 19.8749 20.2981 20.2981L21.3588 21.3588C22.1071 20.6104 22.4392 19.6614 22.5969 18.489C22.7516 17.3382 22.75 15.8644 22.75 14H21.25ZM2.75 10C2.75 8.09318 2.75159 6.73851 2.88976 5.71085C3.02502 4.70476 3.27869 4.12511 3.7019 3.7019L2.64124 2.64124C1.89288 3.38961 1.56076 4.33855 1.40313 5.51098C1.24841 6.66182 1.25 8.13558 1.25 10H2.75ZM10.0298 1.25C8.15538 1.25 6.67442 1.24842 5.51887 1.40307C4.34232 1.56054 3.39019 1.8923 2.64124 2.64124L3.7019 3.7019C4.12453 3.27928 4.70596 3.02525 5.71785 2.88982C6.75075 2.75158 8.11311 2.75 10.0298 2.75V1.25Z"
+                                                fill="currentColor"
+                                            />
+                                            <path opacity="0.5" d="M6 14.5H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                            <path opacity="0.5" d="M6 18H11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                            <path
+                                                opacity="0.5"
+                                                d="M13 2.5V5C13 7.35702 13 8.53553 13.7322 9.26777C14.4645 10 15.643 10 18 10H22"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                            />
+                                        </svg>
+                                        TXT
+                                    </button>
+                                    <button type="button" class="btn btn-primary btn-sm m-1" @click="exportTable('json')">
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-5 w-5 ltr:mr-2 rtl:ml-2"
+                                        >
+                                            <path
+                                                d="M15.3929 4.05365L14.8912 4.61112L15.3929 4.05365ZM19.3517 7.61654L18.85 8.17402L19.3517 7.61654ZM21.654 10.1541L20.9689 10.4592V10.4592L21.654 10.1541ZM3.17157 20.8284L3.7019 20.2981H3.7019L3.17157 20.8284ZM20.8284 20.8284L20.2981 20.2981L20.2981 20.2981L20.8284 20.8284ZM14 21.25H10V22.75H14V21.25ZM2.75 14V10H1.25V14H2.75ZM21.25 13.5629V14H22.75V13.5629H21.25ZM14.8912 4.61112L18.85 8.17402L19.8534 7.05907L15.8947 3.49618L14.8912 4.61112ZM22.75 13.5629C22.75 11.8745 22.7651 10.8055 22.3391 9.84897L20.9689 10.4592C21.2349 11.0565 21.25 11.742 21.25 13.5629H22.75ZM18.85 8.17402C20.2034 9.3921 20.7029 9.86199 20.9689 10.4592L22.3391 9.84897C21.9131 8.89241 21.1084 8.18853 19.8534 7.05907L18.85 8.17402ZM10.0298 2.75C11.6116 2.75 12.2085 2.76158 12.7405 2.96573L13.2779 1.5653C12.4261 1.23842 11.498 1.25 10.0298 1.25V2.75ZM15.8947 3.49618C14.8087 2.51878 14.1297 1.89214 13.2779 1.5653L12.7405 2.96573C13.2727 3.16993 13.7215 3.55836 14.8912 4.61112L15.8947 3.49618ZM10 21.25C8.09318 21.25 6.73851 21.2484 5.71085 21.1102C4.70476 20.975 4.12511 20.7213 3.7019 20.2981L2.64124 21.3588C3.38961 22.1071 4.33855 22.4392 5.51098 22.5969C6.66182 22.7516 8.13558 22.75 10 22.75V21.25ZM1.25 14C1.25 15.8644 1.24841 17.3382 1.40313 18.489C1.56076 19.6614 1.89288 20.6104 2.64124 21.3588L3.7019 20.2981C3.27869 19.8749 3.02502 19.2952 2.88976 18.2892C2.75159 17.2615 2.75 15.9068 2.75 14H1.25ZM14 22.75C15.8644 22.75 17.3382 22.7516 18.489 22.5969C19.6614 22.4392 20.6104 22.1071 21.3588 21.3588L20.2981 20.2981C19.8749 20.7213 19.2952 20.975 18.2892 21.1102C17.2615 21.2484 15.9068 21.25 14 21.25V22.75ZM21.25 14C21.25 15.9068 21.2484 17.2615 21.1102 18.2892C20.975 19.2952 20.7213 19.8749 20.2981 20.2981L21.3588 21.3588C22.1071 20.6104 22.4392 19.6614 22.5969 18.489C22.7516 17.3382 22.75 15.8644 22.75 14H21.25ZM2.75 10C2.75 8.09318 2.75159 6.73851 2.88976 5.71085C3.02502 4.70476 3.27869 4.12511 3.7019 3.7019L2.64124 2.64124C1.89288 3.38961 1.56076 4.33855 1.40313 5.51098C1.24841 6.66182 1.25 8.13558 1.25 10H2.75ZM10.0298 1.25C8.15538 1.25 6.67442 1.24842 5.51887 1.40307C4.34232 1.56054 3.39019 1.8923 2.64124 2.64124L3.7019 3.7019C4.12453 3.27928 4.70596 3.02525 5.71785 2.88982C6.75075 2.75158 8.11311 2.75 10.0298 2.75V1.25Z"
+                                                fill="currentColor"
+                                            />
+                                            <path
+                                                opacity="0.5"
+                                                d="M13 2.5V5C13 7.35702 13 8.53553 13.7322 9.26777C14.4645 10 15.643 10 18 10H22"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                            />
+                                            <path
+                                                opacity="0.5"
+                                                d="M7 14L6 15L7 16M11.5 16L12.5 17L11.5 18M10 14L8.5 18"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                        JSON
+                                    </button>
+                                    <button type="button" class="btn btn-primary btn-sm m-1" @click="printTable">
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-5 w-5 ltr:mr-2 rtl:ml-2"
+                                        >
+                                            <path
+                                                d="M6 17.9827C4.44655 17.9359 3.51998 17.7626 2.87868 17.1213C2 16.2426 2 14.8284 2 12C2 9.17157 2 7.75736 2.87868 6.87868C3.75736 6 5.17157 6 8 6H16C18.8284 6 20.2426 6 21.1213 6.87868C22 7.75736 22 9.17157 22 12C22 14.8284 22 16.2426 21.1213 17.1213C20.48 17.7626 19.5535 17.9359 18 17.9827"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                            />
+                                            <path opacity="0.5" d="M9 10H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                            <path d="M19 14L5 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                            <path
+                                                d="M18 14V16C18 18.8284 18 20.2426 17.1213 21.1213C16.2426 22 14.8284 22 12 22C9.17157 22 7.75736 22 6.87868 21.1213C6 20.2426 6 18.8284 6 16V14"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                            />
+                                            <path
+                                                opacity="0.5"
+                                                d="M17.9827 6C17.9359 4.44655 17.7626 3.51998 17.1213 2.87868C16.2427 2 14.8284 2 12 2C9.17158 2 7.75737 2 6.87869 2.87868C6.23739 3.51998 6.06414 4.44655 6.01733 6"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                            />
+                                            <circle opacity="0.5" cx="17" cy="10" r="1" fill="currentColor" />
+                                            <path opacity="0.5" d="M15 16.5H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                            <path opacity="0.5" d="M13 19H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                        PRINT
+                                    </button>
                                 </div>
-
-                                <div class="panel h-full">
-                                    <div class="mb-5 flex items-center">
-                                        <h5 class="text-lg font-semibold dark:text-white-light">Sales By Category</h5>
-                                    </div>
-                                    <div>
-                                        <div x-ref="salesByCategory" class="rounded-lg bg-white dark:bg-black">
-                                            <!-- loader -->
-                                            <div class="grid min-h-[353px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
-                                                <span
-                                                    class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"
-                                                ></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel h-full lg:col-span-3" >
-                                    <div class="mb-5 flex items-center">
-                                        <h5 class="text-lg font-semibold dark:text-white-light">Tata tertib</h5>
-                                    </div>
-                                    {{-- tata tertib  --}}
-                                    <div class=" panel w-full flex justify-around gap-20 px-5">
-                                        {{-- pertama --}}
-                                        <div class=" w-9/12">
-                                            <div id="accordionFlushExample">
-                                                <div
-                                                class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2 class="mb-0" id="flush-headingOne">
-                                                    <button
-                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                    type="button"
-                                                    data-te-collapse-init
-                                                    data-te-target="#flush-collapseOne"
-                                                    aria-expanded="false"
-                                                    aria-controls="flush-collapseOne">
-                                                    Tata tertib magang
-                                                    <span
-                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                        <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke-width="1.5"
-                                                        stroke="currentColor"
-                                                        class="h-6 w-6">
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                        </svg>
-                                                    </span>
-                                                    </button>
-                                                </h2>
-                                                <div
-                                                    id="flush-collapseOne"
-                                                    class="!visible border-0"
-                                                    data-te-collapse-item
-                                                    data-te-collapse-show
-                                                    aria-labelledby="flush-headingOne"
-                                                    data-te-parent="#accordionFlushExample">
-                                                    <div class="px-5 py-4">
-                                                    Placeholder content for this accordion, which is intended to
-                                                    demonstrate the
-                                                    <code>.accordion-flush</code> class. This is the first item's
-                                                    accordion body.
-                                                    </div>
-                                                </div>
-                                                </div>
-                                                <div
-                                                class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2 class="mb-0" id="flush-headingTwo">
-                                                    <button
-                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                    type="button"
-                                                    data-te-collapse-init
-                                                    data-te-collapse-collapsed
-                                                    data-te-target="#flush-collapseTwo"
-                                                    aria-expanded="false"
-                                                    aria-controls="flush-collapseTwo">
-                                                    Tata tertib piket
-                                                    <span
-                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                        <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke-width="1.5"
-                                                        stroke="currentColor"
-                                                        class="h-6 w-6">
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                        </svg>
-                                                    </span>
-                                                    </button>
-                                                </h2>
-                                                <div
-                                                    id="flush-collapseTwo"
-                                                    class="!visible hidden border-0"
-                                                    data-te-collapse-item
-                                                    aria-labelledby="flush-headingTwo"
-                                                    data-te-parent="#accordionFlushExample">
-                                                    <div class="px-5 py-4">
-                                                    Placeholder content for this accordion, which is intended to
-                                                    demonstrate the
-                                                    <code>.accordion-flush</code> class. This is the second item's
-                                                    accordion body. Let's imagine this being filled with some actual
-                                                    content.
-                                                    </div>
-                                                </div>
-                                                </div>
-                                                <div
-                                                class="rounded-none border border-b-0 border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2 class="mb-0" id="flush-headingThree">
-                                                    <button
-                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                    type="button"
-                                                    data-te-collapse-init
-                                                    data-te-collapse-collapsed
-                                                    data-te-target="#flush-collapseThree"
-                                                    aria-expanded="false"
-                                                    aria-controls="flush-collapseThree">
-                                                    Tata tertib tugas
-                                                    <span
-                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                        <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke-width="1.5"
-                                                        stroke="currentColor"
-                                                        class="h-6 w-6">
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                        </svg>
-                                                    </span>
-                                                    </button>
-                                                </h2>
-                                                <div
-                                                    id="flush-collapseThree"
-                                                    class="!visible hidden"
-                                                    data-te-collapse-item
-                                                    aria-labelledby="flush-headingThree"
-                                                    data-te-parent="#accordionFlushExample">
-                                                    <div class="px-5 py-4">
-                                                    Placeholder content for this accordion, which is intended to
-                                                    demonstrate the
-                                                    <code>.accordion-flush</code> class. This is the third item's
-                                                    accordion body. Nothing more exciting happening here in terms of
-                                                    content, but just filling up the space to make it look, at least
-                                                    at first glance, a bit more representative of how this would look
-                                                    in a real-world application.
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {{-- kedua --}}
-                                        <div class=" w-9/12">
-                                            <div id="accordionFlushExample">
-                                                <div
-                                                class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2 class="mb-0" id="flush-headingfour">
-                                                    <button
-                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                    type="button"
-                                                    data-te-collapse-init
-                                                    data-te-target="#flush-collapsefour"
-                                                    aria-expanded="false"
-                                                    aria-controls="flush-collapsefour">
-                                                    Tata tertib magang
-                                                    <span
-                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                        <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke-width="1.5"
-                                                        stroke="currentColor"
-                                                        class="h-6 w-6">
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                        </svg>
-                                                    </span>
-                                                    </button>
-                                                </h2>
-                                                <div
-                                                    id="flush-collapsefour"
-                                                    class="!visible border-0"
-                                                    data-te-collapse-item
-                                                    data-te-collapse-show
-                                                    aria-labelledby="flush-headingfour"
-                                                    data-te-parent="#accordionFlushExample">
-                                                    <div class="px-5 py-4">
-                                                    Placeholder content for this accordion, which is intended to
-                                                    demonstrate the
-                                                    <code>.accordion-flush</code> class. This is the first item's
-                                                    accordion body.
-                                                    </div>
-                                                </div>
-                                                </div>
-                                                <div
-                                                class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2 class="mb-0" id="flush-headingfive">
-                                                    <button
-                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                    type="button"
-                                                    data-te-collapse-init
-                                                    data-te-collapse-collapsed
-                                                    data-te-target="#flush-collapsefive"
-                                                    aria-expanded="false"
-                                                    aria-controls="flush-collapsefive">
-                                                    Tata tertib piket
-                                                    <span
-                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                        <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke-width="1.5"
-                                                        stroke="currentColor"
-                                                        class="h-6 w-6">
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                        </svg>
-                                                    </span>
-                                                    </button>
-                                                </h2>
-                                                <div
-                                                    id="flush-collapsefive"
-                                                    class="!visible hidden border-0"
-                                                    data-te-collapse-item
-                                                    aria-labelledby="flush-headingfive"
-                                                    data-te-parent="#accordionFlushExample">
-                                                    <div class="px-5 py-4">
-                                                    Placeholder content for this accordion, which is intended to
-                                                    demonstrate the
-                                                    <code>.accordion-flush</code> class. This is the second item's
-                                                    accordion body. Let's imagine this being filled with some actual
-                                                    content.
-                                                    </div>
-                                                </div>
-                                                </div>
-                                                <div
-                                                class="rounded-none border border-b-0 border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2 class="mb-0" id="flush-headingsix">
-                                                    <button
-                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                    type="button"
-                                                    data-te-collapse-init
-                                                    data-te-collapse-collapsed
-                                                    data-te-target="#flush-collapsesix"
-                                                    aria-expanded="false"
-                                                    aria-controls="flush-collapsesix">
-                                                    Tata tertib tugas
-                                                    <span
-                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                        <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke-width="1.5"
-                                                        stroke="currentColor"
-                                                        class="h-6 w-6">
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                        </svg>
-                                                    </span>
-                                                    </button>
-                                                </h2>
-                                                <div
-                                                    id="flush-collapsesix"
-                                                    class="!visible hidden"
-                                                    data-te-collapse-item
-                                                    aria-labelledby="flush-headingsix"
-                                                    data-te-parent="#accordionFlushExample">
-                                                    <div class="px-5 py-4">
-                                                    Placeholder content for this accordion, which is intended to
-                                                    demonstrate the
-                                                    <code>.accordion-flush</code> class. This is the third item's
-                                                    accordion body. Nothing more exciting happening here in terms of
-                                                    content, but just filling up the space to make it look, at least
-                                                    at first glance, a bit more representative of how this would look
-                                                    in a real-world application.
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- end tata tertib --}}
-
-
-
+                            </div>
+                            <div x-data="basic" class="mt-10">
+                                <div class="">
+                                    <table id="myTable" class="table-hover whitespace-nowrap"></table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                     <!-- multiple -->
-                     <div class=" panel rounded-lg px-1 pt-4  mt-5 bg-white dark:bg-dark dark:bg-opacity-[0.08]  ">
-                        <div class="text-dark pb-5 font-bold text-lg bg-transparent pt-2 pl-5 dark:text-white-light dark:bg-transparent">
-                            berita
-                        </div>
-                        <div class="swiper bg-white p-1 dark:bg-dark dark:bg-opacity-[0.08]" id="slider5" x-data="carousel()">
-                            <div class="swiper-wrapper">
-                                <template x-for="item in items" :key="item">
-                                    <div class="swiper-slide">
-                                        <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
-                                    </div>
-                                </template>
-                                <template x-for="item in items" :key="item">
-                                    <div class="swiper-slide">
-                                        <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
-                                    </div>
-                                </template>
-                            </div>
-                            <a href="javascript:;" class="swiper-button-prev-ex5 grid place-content-center ltr:left-2 rtl:right-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-transparent rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                                </svg>
-
-                            </a>
-                            <a href="javascript:;" class="swiper-button-next-ex5 grid place-content-center ltr:right-2 rtl:left-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-transparent rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                </svg>
-                            </a>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                        <script>
-                            function carousel() {
-                                return {
-                                    items: [
-                                        'carousel1.jpeg',
-                                        'carousel2.jpeg',
-                                        'carousel3.jpeg'
-
-                                    ],
-
-                                    init() {
-                                        const swiper5 = new Swiper('#slider5', {
-                                            navigation: {
-                                                nextEl: '.swiper-button-next-ex5',
-                                                prevEl: '.swiper-button-prev-ex5',
-                                            },
-                                            pagination: {
-                                                el: '.swiper-pagination',
-                                                clickable: true,
-                                            },
-                                            breakpoints: {
-                                                1024: {
-                                                    slidesPerView: 3,
-                                                    spaceBetween: 30,
-                                                },
-                                                768: {
-                                                    slidesPerView: 2,
-                                                    spaceBetween: 40,
-                                                },
-                                                320: {
-                                                    slidesPerView: 1,
-                                                    spaceBetween: 20,
-                                                },
-                                            },
-                                        });
-                                    },
-                                };
-                            }
-                        </script>
-                    </div>
-                    {{-- end carousel --}}
-
+                    <!-- end main content section -->
 
                     <!-- start footer section -->
                     <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
@@ -1966,123 +1711,16 @@
             </div>
         </div>
 
-        <script src="assets/js/swiper-bundle.min.js"></script>
-        <script src="siswa/js/alpine-collaspe.min.js"></script>
-        <script src="siswa/js/alpine-persist.min.js"></script>
-        <script defer src="siswa/js/alpine-ui.min.js"></script>
-        <script defer src="siswa/js/alpine-focus.min.js"></script>
-        <script defer src="siswa/js/alpine.min.js"></script>
-        <script src="siswa/js/custom.js"></script>
-        <script defer src="siswa/js/apexcharts.js"></script>
-        <script src="https://cdn.tailwindcss.com/3.3.0"></script>
-        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-        <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-            fontFamily: {
-                sans: ["Roboto", "sans-serif"],
-                body: ["Roboto", "sans-serif"],
-                mono: ["ui-monospace", "monospace"],
-            },
-            },
-            corePlugins: {
-            preflight: false,
-            },
-        };
-        </script>
-        <script>
-            // Initialization for ES Users
-            import {
-            Collapse,
-            initTE,
-            } from "tw-elements";
-
-            initTE({ Collapse });
-        </script>
+        <script src="assets/js/highlight.min.js"></script>
+        <script src="assets/js/alpine-collaspe.min.js"></script>
+        <script src="assets/js/alpine-persist.min.js"></script>
+        <script defer src="assets/js/alpine-ui.min.js"></script>
+        <script defer src="assets/js/alpine-focus.min.js"></script>
+        <script defer src="assets/js/alpine.min.js"></script>
+        <script src="assets/js/custom.js"></script>
+        <script src="assets/js/simple-datatables.js"></script>
         <script>
             document.addEventListener('alpine:init', () => {
-                 //Carousel
-                 Alpine.data('carousel', () => ({
-                    items: ['carousel1.jpeg', 'carousel2.jpeg', 'carousel3.jpeg'],
-
-                    init() {
-                        // basic
-                        const swiper1 = new Swiper('#slider1', {
-                            navigation: {
-                                nextEl: '.swiper-button-next-ex1',
-                                prevEl: '.swiper-button-prev-ex1',
-                            },
-                            pagination: {
-                                el: '.swiper-pagination',
-                                clickable: true,
-                            },
-                        });
-                        // Autoplay
-                        const swiper2 = new Swiper('#slider2', {
-                            navigation: {
-                                nextEl: '.swiper-button-next-ex2',
-                                prevEl: '.swiper-button-prev-ex2',
-                            },
-                            autoplay: {
-                                delay: 2000,
-                            },
-                        });
-                        // vertical
-                        setTimeout(() => {
-                            const swiper3 = new Swiper('#slider3', {
-                                direction: 'vertical',
-                                pagination: {
-                                    el: '.swiper-pagination',
-                                    clickable: true,
-                                },
-                                autoplay: {
-                                    delay: 2000,
-                                },
-                            });
-                        });
-                        // Loop
-                        const swiper4 = new Swiper('#slider4', {
-                            slidesPerView: 1,
-                            spaceBetween: 30,
-                            loop: true,
-                            pagination: {
-                                el: '.swiper-pagination',
-                                clickable: true,
-                                type: 'fraction',
-                            },
-                            navigation: {
-                                nextEl: '.swiper-button-next-ex4',
-                                prevEl: '.swiper-button-prev-ex4',
-                            },
-                        });
-                        // Multiple Slides
-                        const swiper5 = new Swiper('#slider5', {
-                            navigation: {
-                                nextEl: '.swiper-button-next-ex5',
-                                prevEl: '.swiper-button-prev-ex5',
-                            },
-                            pagination: {
-                                el: '.swiper-pagination',
-                                clickable: true,
-                            },
-                            breakpoints: {
-                                1024: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 30,
-                                },
-                                768: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 40,
-                                },
-                                320: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 20,
-                                },
-                            },
-                        });
-                    },
-                }));
                 // main section
                 Alpine.data('scrollToTop', () => ({
                     showTopButton: false,
@@ -2289,426 +1927,84 @@
                     },
                 }));
 
-                // content section
-                Alpine.data('sales', () => ({
+                Alpine.data('basic', () => ({
+                    datatable: null,
                     init() {
-                        isDark = this.$store.app.theme === 'dark' ? true : false;
-                        isRtl = this.$store.app.rtlClass === 'rtl' ? true : false;
-
-                        const revenueChart = null;
-                        const salesByCategory = null;
-                        const dailySales = null;
-                        const totalOrders = null;
-
-                        // revenue
-                        setTimeout(() => {
-                            this.revenueChart = new ApexCharts(this.$refs.revenueChart, this.revenueChartOptions);
-                            this.$refs.revenueChart.innerHTML = '';
-                            this.revenueChart.render();
-
-                            // sales by category
-                            this.salesByCategory = new ApexCharts(this.$refs.salesByCategory, this.salesByCategoryOptions);
-                            this.$refs.salesByCategory.innerHTML = '';
-                            this.salesByCategory.render();
-
-                            // daily sales
-                            this.dailySales = new ApexCharts(this.$refs.dailySales, this.dailySalesOptions);
-                            this.$refs.dailySales.innerHTML = '';
-                            this.dailySales.render();
-
-                            // total orders
-                            this.totalOrders = new ApexCharts(this.$refs.totalOrders, this.totalOrdersOptions);
-                            this.$refs.totalOrders.innerHTML = '';
-                            this.totalOrders.render();
-                        }, 300);
-
-                        this.$watch('$store.app.theme', () => {
-                            isDark = this.$store.app.theme === 'dark' ? true : false;
-
-                            this.revenueChart.updateOptions(this.revenueChartOptions);
-                            this.salesByCategory.updateOptions(this.salesByCategoryOptions);
-                            this.dailySales.updateOptions(this.dailySalesOptions);
-                            this.totalOrders.updateOptions(this.totalOrdersOptions);
-                        });
-
-                        this.$watch('$store.app.rtlClass', () => {
-                            isRtl = this.$store.app.rtlClass === 'rtl' ? true : false;
-                            this.revenueChart.updateOptions(this.revenueChartOptions);
-                        });
-                    },
-
-                    // revenue
-                    get revenueChartOptions() {
-                        return {
-                            series: [
-                                {
-                                    name: 'Income',
-                                    data: [16800, 16800, 15500, 17800, 15500, 17000, 19000, 16000, 15000, 17000, 14000, 17000],
-                                },
-                                {
-                                    name: 'Expenses',
-                                    data: [16500, 17500, 16200, 17300, 16000, 19500, 16000, 17000, 16000, 19000, 18000, 19000],
-                                },
-                            ],
-                            chart: {
-                                height: 325,
-                                type: 'area',
-                                fontFamily: 'Nunito, sans-serif',
-                                zoom: {
-                                    enabled: false,
-                                },
-                                toolbar: {
-                                    show: false,
-                                },
-                            },
-                            dataLabels: {
-                                enabled: false,
-                            },
-                            stroke: {
-                                show: true,
-                                curve: 'smooth',
-                                width: 2,
-                                lineCap: 'square',
-                            },
-                            dropShadow: {
-                                enabled: true,
-                                opacity: 0.2,
-                                blur: 10,
-                                left: -7,
-                                top: 22,
-                            },
-                            colors: isDark ? ['#2196f3', '#e7515a'] : ['#1b55e2', '#e7515a'],
-                            markers: {
-                                discrete: [
-                                    {
-                                        seriesIndex: 0,
-                                        dataPointIndex: 6,
-                                        fillColor: '#1b55e2',
-                                        strokeColor: 'transparent',
-                                        size: 7,
-                                    },
-                                    {
-                                        seriesIndex: 1,
-                                        dataPointIndex: 5,
-                                        fillColor: '#e7515a',
-                                        strokeColor: 'transparent',
-                                        size: 7,
-                                    },
+                        this.datatable = new simpleDatatables.DataTable('#myTable', {
+                            data: {
+                                headings: ['#', ' Nama Siswa', 'Jenis kelamin', 'NISN', 'tanggal', 'keterangan'],
+                                data: [
+                                    [1, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
+                                    [2, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
+                                    [3, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
+                                    [4, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
+                                    [5, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
+                                    [6, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
+                                    [7, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
+                                    [8, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
+                                    [9, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
+                                    [10, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
+                                    [11, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
+                                    [12, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
+                                    [13, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
+                                    [14, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
+                                    [15, 'mamat', 'Laki-Laki', '546478678', '2023-20-03', 'hadir'],
                                 ],
                             },
-                            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                            xaxis: {
-                                axisBorder: {
-                                    show: false,
-                                },
-                                axisTicks: {
-                                    show: false,
-                                },
-                                crosshairs: {
-                                    show: true,
-                                },
-                                labels: {
-                                    offsetX: isRtl ? 2 : 0,
-                                    offsetY: 5,
-                                    style: {
-                                        fontSize: '12px',
-                                        cssClass: 'apexcharts-xaxis-title',
-                                    },
-                                },
+                            sortable: true,
+                            searchable: true,
+                            perPage: 10,
+                            perPageSelect: [5, 10, 15, 20, 25, 30],
+                            firstLast: true,
+                            firstText:
+                                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                            lastText:
+                                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                            prevText:
+                                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                            nextText:
+                                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                            labels: {
+                                perPage: '{select}',
                             },
-                            yaxis: {
-                                tickAmount: 7,
-                                labels: {
-                                    formatter: (value) => {
-                                        return value / 1000 + 'K';
-                                    },
-                                    offsetX: isRtl ? -30 : -10,
-                                    offsetY: 0,
-                                    style: {
-                                        fontSize: '12px',
-                                        cssClass: 'apexcharts-yaxis-title',
-                                    },
-                                },
-                                opposite: isRtl ? true : false,
+                            layout: {
+                                top: '{search}',
+                                bottom: '{info}{select}{pager}',
                             },
-                            grid: {
-                                borderColor: isDark ? '#191e3a' : '#e0e6ed',
-                                strokeDashArray: 5,
-                                xaxis: {
-                                    lines: {
-                                        show: true,
-                                    },
-                                },
-                                yaxis: {
-                                    lines: {
-                                        show: false,
-                                    },
-                                },
-                                padding: {
-                                    top: 0,
-                                    right: 0,
-                                    bottom: 0,
-                                    left: 0,
-                                },
-                            },
-                            legend: {
-                                position: 'top',
-                                horizontalAlign: 'right',
-                                fontSize: '16px',
-                                markers: {
-                                    width: 10,
-                                    height: 10,
-                                    offsetX: -2,
-                                },
-                                itemMargin: {
-                                    horizontal: 10,
-                                    vertical: 5,
-                                },
-                            },
-                            tooltip: {
-                                marker: {
-                                    show: true,
-                                },
-                                x: {
-                                    show: false,
-                                },
-                            },
-                            fill: {
-                                type: 'gradient',
-                                gradient: {
-                                    shadeIntensity: 1,
-                                    inverseColors: !1,
-                                    opacityFrom: isDark ? 0.19 : 0.28,
-                                    opacityTo: 0.05,
-                                    stops: isDark ? [100, 100] : [45, 100],
-                                },
-                            },
+                        });
+                    },
+                
+                    exportTable(eType) {
+                        var data = {
+                            type: eType,
+                            filename: 'table',
+                            download: true,
                         };
+
+                        if (data.type === 'csv') {
+                            data.lineDelimiter = '\n';
+                            data.columnDelimiter = ';';
+                        }
+                        this.datatable.basic(data);
                     },
 
-                    // sales by category
-                    get salesByCategoryOptions() {
-                        return {
-                            series: [985, 737, 270],
-                            chart: {
-                                type: 'donut',
-                                height: 460,
-                                fontFamily: 'Nunito, sans-serif',
-                            },
-                            dataLabels: {
-                                enabled: false,
-                            },
-                            stroke: {
-                                show: true,
-                                width: 25,
-                                colors: isDark ? '#0e1726' : '#fff',
-                            },
-                            colors: isDark ? ['#5c1ac3', '#e2a03f', '#e7515a', '#e2a03f'] : ['#e2a03f', '#5c1ac3', '#e7515a'],
-                            legend: {
-                                position: 'bottom',
-                                horizontalAlign: 'center',
-                                fontSize: '14px',
-                                markers: {
-                                    width: 10,
-                                    height: 10,
-                                    offsetX: -2,
-                                },
-                                height: 50,
-                                offsetY: 20,
-                            },
-                            plotOptions: {
-                                pie: {
-                                    donut: {
-                                        size: '65%',
-                                        background: 'transparent',
-                                        labels: {
-                                            show: true,
-                                            name: {
-                                                show: true,
-                                                fontSize: '29px',
-                                                offsetY: -10,
-                                            },
-                                            value: {
-                                                show: true,
-                                                fontSize: '26px',
-                                                color: isDark ? '#bfc9d4' : undefined,
-                                                offsetY: 16,
-                                                formatter: (val) => {
-                                                    return val;
-                                                },
-                                            },
-                                            total: {
-                                                show: true,
-                                                label: 'Total',
-                                                color: '#888ea8',
-                                                fontSize: '29px',
-                                                formatter: (w) => {
-                                                    return w.globals.seriesTotals.reduce(function (a, b) {
-                                                        return a + b;
-                                                    }, 0);
-                                                },
-                                            },
-                                        },
-                                    },
-                                },
-                            },
-                            labels: ['Apparel', 'Sports', 'Others'],
-                            states: {
-                                hover: {
-                                    filter: {
-                                        type: 'none',
-                                        value: 0.15,
-                                    },
-                                },
-                                active: {
-                                    filter: {
-                                        type: 'none',
-                                        value: 0.15,
-                                    },
-                                },
-                            },
-                        };
+                    printTable() {
+                        this.datatable.print();
                     },
 
-                    // daily sales
-                    get dailySalesOptions() {
-                        return {
-                            series: [
-                                {
-                                    name: 'Sales',
-                                    data: [44, 55, 41, 67, 22, 43, 21],
-                                },
-                                {
-                                    name: 'Last Week',
-                                    data: [13, 23, 20, 8, 13, 27, 33],
-                                },
-                            ],
-                            chart: {
-                                height: 160,
-                                type: 'bar',
-                                fontFamily: 'Nunito, sans-serif',
-                                toolbar: {
-                                    show: false,
-                                },
-                                stacked: true,
-                                stackType: '100%',
-                            },
-                            dataLabels: {
-                                enabled: false,
-                            },
-                            stroke: {
-                                show: true,
-                                width: 1,
-                            },
-                            colors: ['#e2a03f', '#e0e6ed'],
-                            responsive: [
-                                {
-                                    breakpoint: 480,
-                                    options: {
-                                        legend: {
-                                            position: 'bottom',
-                                            offsetX: -10,
-                                            offsetY: 0,
-                                        },
-                                    },
-                                },
-                            ],
-                            xaxis: {
-                                labels: {
-                                    show: false,
-                                },
-                                categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'],
-                            },
-                            yaxis: {
-                                show: false,
-                            },
-                            fill: {
-                                opacity: 1,
-                            },
-                            plotOptions: {
-                                bar: {
-                                    horizontal: false,
-                                    columnWidth: '25%',
-                                },
-                            },
-                            legend: {
-                                show: false,
-                            },
-                            grid: {
-                                show: false,
-                                xaxis: {
-                                    lines: {
-                                        show: false,
-                                    },
-                                },
-                                padding: {
-                                    top: 10,
-                                    right: -20,
-                                    bottom: -20,
-                                    left: -20,
-                                },
-                            },
-                        };
-                    },
-
-                    // total orders
-                    get totalOrdersOptions() {
-                        return {
-                            series: [
-                                {
-                                    name: 'Sales',
-                                    data: [28, 40, 36, 52, 38, 60, 38, 52, 36, 40],
-                                },
-                            ],
-                            chart: {
-                                height: 290,
-                                type: 'area',
-                                fontFamily: 'Nunito, sans-serif',
-                                sparkline: {
-                                    enabled: true,
-                                },
-                            },
-                            stroke: {
-                                curve: 'smooth',
-                                width: 2,
-                            },
-                            colors: isDark ? ['#00ab55'] : ['#00ab55'],
-                            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-                            yaxis: {
-                                min: 0,
-                                show: false,
-                            },
-                            grid: {
-                                padding: {
-                                    top: 125,
-                                    right: 0,
-                                    bottom: 0,
-                                    left: 0,
-                                },
-                            },
-                            fill: {
-                                opacity: 1,
-                                type: 'gradient',
-                                gradient: {
-                                    type: 'vertical',
-                                    shadeIntensity: 1,
-                                    inverseColors: !1,
-                                    opacityFrom: 0.3,
-                                    opacityTo: 0.05,
-                                    stops: [100, 100],
-                                },
-                            },
-                            tooltip: {
-                                x: {
-                                    show: false,
-                                },
-                            },
-                        };
+                    formatDate(date) {
+                        if (date) {
+                            const dt = new Date(date);
+                            const month = dt.getMonth() + 1 < 10 ? '0' + (dt.getMonth() + 1) : dt.getMonth() + 1;
+                            const day = dt.getDate() < 10 ? '0' + dt.getDate() : dt.getDate();
+                            return day + '/' + month + '/' + dt.getFullYear();
+                        }
+                        return '';
                     },
                 }));
             });
         </script>
     </body>
 
-<!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:57 GMT -->
+<!-- Mirrored from html.vristo.sbthemes.com/datatables-export.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:33 GMT -->
 </html>

@@ -7,6 +7,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>Guru - Dashboad</title>
+        @vite('resources/css/app.css')
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/x-icon" href="favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
@@ -461,7 +462,7 @@
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                 </svg>
                                 <span>Siswa</span>
-                            </h2>
+                            </h2>   
 
                             <li class="nav-item">
                                 <ul>
@@ -1629,7 +1630,6 @@
                                         </div>
                                         <div x-data="basic">
                                             <div class="panel">
-                                                <h5 class="text-lg font-semibold dark:text-white-light">Basic</h5>
                                                 <table id="myTable" class="table-hover whitespace-nowrap"></table>
                                             </div>
                                         </div>
