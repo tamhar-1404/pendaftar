@@ -390,7 +390,7 @@
 
 
             <div class="main-content">
-                {{-- @include('jurnal_admin.layout') --}}
+                @include('jurnal_admin.layout')
                 <div class="animate__animated p-6" :class="[$store.app.animation]">
                     <!-- start main content section -->
 
@@ -568,7 +568,7 @@
                             <h5
                             class="text-xl font-medium leading-normal text-neutral-900 dark:text-neutral-200"
                             id="exampleModalCenteredScrollableLabel">
-                            Detail Jurnal
+                            Detail Siswa Ditolak
                             </h5>
                             <!--Close button-->
                             <button
@@ -602,11 +602,11 @@
                             </p>
 
                             <p class=" text-md mt-4">
-                                Tanggal :
+                                Jurusan :
                             </p >
 
                             <p class="ml-5 mt-2 text-md text-gray-400">
-                                03-04-2023
+                                RPL
                             </p>
 
                             <p class=" text-md mt-4">
@@ -618,7 +618,7 @@
                             </p>
 
                             <p class=" text-md mt-4">
-                                kegiatan :
+                                Alasan :
                             </p >
 
                             <p class="ml-5 mt-2 text-md text-gray-400">
@@ -626,12 +626,11 @@
                             </p>
 
                             <p class=" text-md mt-4">
-                                bukti
+                                Kelas :
                             </p >
 
                             <p class="ml-5 mt-2 text-md text-gray-400">
-                                <img src="{{ asset('admin/assets/images/carousel2.jpeg') }}"
-                                 width="100px" alt="">
+                               12
                             </p>
 
 
