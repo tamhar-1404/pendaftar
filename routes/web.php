@@ -31,6 +31,9 @@ Route::get('/chatadmin', function () {
 Route::get('/laporansiswa', function () {
     return view('laporansiswa.index');
 });
+Route::get('/jurnal_admin', function () {
+    return view('jurnal_admin.grafik');
+});
 
 Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
 Route::resource('/mou', App\Http\Controllers\MOUController::class);

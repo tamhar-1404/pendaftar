@@ -1873,7 +1873,7 @@
                       <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
 
                        <!-- multiple -->
-                     <div class=" panel rounded-lg px-1 pt-4  mt-5 bg-white dark:bg-dark dark:bg-opacity-[0.08]  ">
+                     <div class=" panel rounded-lg px-1 pt-8  m5t-5 bg-white dark:bg-dark dark:bg-opacity-[0.08]  ">
                         <div class="text-dark pb-5 font-bold text-lg bg-transparent pt-2 pl-10 dark:text-white-light dark:bg-transparent">
                             berita
                         </div>
