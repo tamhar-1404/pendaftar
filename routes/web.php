@@ -104,3 +104,4 @@ Route::get('/detail_daftar', function () {
     return view('aproval.view');
 });
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
+Route::resource('/profilesiswa', App\Http\Controllers\ProfilsiswaController::class);
