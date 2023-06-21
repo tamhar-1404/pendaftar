@@ -13,7 +13,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
     <title>Lineone - Doctor Dashboard</title>
-    <link rel="icon" type="image/png" href="lineone/images/favicon.png" />
+    <link rel="icon" type="image/png" href="{{ asset('admin/favicon.png') }}" />
 
     <!-- CSS Assets -->
     <link rel="stylesheet" href="{{ asset('lineone/css/app.css') }}" />
@@ -2784,7 +2784,7 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <button
+                                    <button id="viewbutton"
                                         class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium text-slate-800 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -2793,8 +2793,122 @@
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                         </svg>
-
                                     </button>
+                                    <div id="detail" class="fixed z-10 inset-0 overflow-y-auto hidden">
+                                        <div
+                                            class="flex justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                                            <div class="fixed inset-0 transition-opacity">
+                                                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                            </div>
+                                            <div
+                                                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                                                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                                    <div class="max-w-7xl mx-auto">
+                                                        <div class="flex flex-col">
+                                                            <h3 class="text-lg leading-6 font-medium text-gray-900"
+                                                                id="modal-title">
+                                                                Detail Izin & Sakit
+                                                            </h3>
+                                                            <div class="mt-4">
+                                                                <div class="mt-4 space-y-4">
+                                                                    <label class="block">
+                                                                        <span class="font-semibold text-black">Nama :</span>
+                                                                        <span class="relative mt-1 flex">
+                                                                            <p class="peer w-full border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent">Dimas Juliansyah</p>
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="mt-4 space-y-4">
+                                                                    <label class="block">
+                                                                        <span class="font-semibold text-black">Sekolah :</span>
+                                                                        <span class="relative mt-1 flex">
+                                                                            <p class="peer w-full border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent">SMKN 12 Malang</p>
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="mt-4 space-y-4">
+                                                                    <label class="block">
+                                                                        <span class="font-semibold text-black">Dari Tanggal :</span>
+                                                                        <span class="relative mt-1 flex">
+                                                                            <p class="peer w-full border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent">10-8-2030</p>
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="mt-4 space-y-4">
+                                                                    <label class="block">
+                                                                        <span class="font-semibold text-black">Sampai Tanggal :</span>
+                                                                        <span class="relative mt-1 flex">
+                                                                            <p class="peer w-full border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent">10-8-2031</p>
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="mt-4 space-y-4">
+                                                                    <label class="block">
+                                                                        <span class="font-semibold text-black">Deskripsi :</span>
+                                                                        <span class="relative mt-1 flex">
+                                                                            <p class="peer w-full border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, consectetur!                                                                            </p>
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="mt-4 space-y-4">
+                                                                    <label class="block">
+                                                                        <span class="font-semibold text-black">Keterangan :</span>
+                                                                        <span class="relative mt-1 flex">
+                                                                            <p class="peer w-full border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent">Sakit</p>
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="mt-4 space-y-4">
+                                                                    <label class="block">
+                                                                        <span class="font-semibold text-black">Bukti :</span>
+                                                                        <span class="relative mt-1 flex">
+                                                                            <img src="{{ asset('admin/images/buktisakit.png') }}" alt="" width="1000">
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="flex items-center justify-end mt-4">
+                                                                    <div class="ml-auto">
+                                                                        <button type="button"
+                                                                            class="bg-transparent border border-gray-300 text-gray-800 hover:bg-gray-300 hover:text-gray-800 font-semibold py-2 px-4 rounded">
+                                                                            Batal
+                                                                        </button>
+                                                                        <button
+                                                                            class="bg-blue-500 text-white hover:bg-blue-700 font-semibold py-2 px-4 rounded"
+                                                                            @click="showAlert()">
+                                                                            Simpan
+                                                                        </button>
+                                                                        <script>
+                                                                            async function showAlert() {
+                                                                                new window.Swal({
+                                                                                    title: "Berhasil",
+                                                                                    text: "Data berhasil di tambahkan",
+                                                                                    icon: "success",
+                                                                                    button: "oke",
+                                                                                });
+                                                                            }
+                                                                        </script>
+                                                                        <script>
+                                                                            const viewbutton = document.querySelector("#viewbutton");
+                                                                            const detail = document.querySelector("#detail");
+                                                                            const cancelButton = document.querySelector(".ml-auto button");
+
+                                                                            viewbutton.addEventListener("click", () => {
+                                                                                detail.classList.remove("hidden");
+                                                                            });
+
+                                                                            cancelButton.addEventListener("click", () => {
+                                                                                detail.classList.add("hidden");
+                                                                            });
+                                                                        </script>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card space-y-4 p-5">
@@ -2908,6 +3022,51 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="flex justify-center items-center mt-4">
+                        <ol class="pagination">
+                            <li class="rounded-l-lg bg-slate-150 dark:bg-navy-500">
+                                <a href="#"
+                                    class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:text-navy-200 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="bg-slate-150 dark:bg-navy-500">
+                                <a href="#"
+                                    class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">1</a>
+                            </li>
+                            <li class="bg-slate-150 dark:bg-navy-500">
+                                <a href="#"
+                                    class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg bg-info px-3 leading-tight text-white transition-colors hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">2</a>
+                            </li>
+                            <li class="bg-slate-150 dark:bg-navy-500">
+                                <a href="#"
+                                    class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">3</a>
+                            </li>
+                            <li class="bg-slate-150 dark:bg-navy-500">
+                                <a href="#"
+                                    class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">4</a>
+                            </li>
+                            <li class="bg-slate-150 dark:bg-navy-500">
+                                <a href="#"
+                                    class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">5</a>
+                            </li>
+                            <li class="rounded-r-lg bg-slate-150 dark:bg-navy-500">
+                                <a href="#"
+                                    class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:text-navy-200 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </ol>
                     </div>
 
                     <div class="mt-4 sm:mt-5 lg:mt-6">
