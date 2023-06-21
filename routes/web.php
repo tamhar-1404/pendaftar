@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GuruAdminController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\BeritaGuruController;
 use App\Http\Controllers\AlumniGuruController;
 use App\Http\Controllers\BeritaSiswaController;
 use Illuminate\Support\Facades\Route;
@@ -90,6 +91,7 @@ Route::resource('/pembimbing', App\Http\Controllers\PembimbingController::class)
 Route::resource('/Berita', App\Http\Controllers\BeritaController::class);
 
 Route::get('/edit', [BeritaController::class, 'edit'])->name('edit');
+Route::get('/detail_berita_guru', [BeritaGuruController::class, 'show'])->name('detail_berita_guru');
 Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
 Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
 

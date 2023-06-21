@@ -160,7 +160,7 @@
   <div
     class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 mt-4 lg:grid-cols-3 lg:gap-6"
   >
-    <div class="card">
+    <div class="card dark:bg-black">
       <img
         class="h-72 w-full rounded-lg object-cover object-center"
         src="admin/images/object/object-2.jpg"
@@ -197,7 +197,7 @@
           class="space-y-1.5 rounded-lg bg-gradient-to-t from-[#19213299] via-[#19213266] to-transparent px-4 pb-3 pt-12"
         >
           <div class="line-clamp-2">
-            <a href="http://127.0.0.1:8000/Berita/detail" class="text-base font-medium text-white">
+            <a href="{{ route('detail_berita_guru') }}" class="text-base font-medium text-white">
               10 Tips for Making a Good Camera Even Better
             </a>
           </div>

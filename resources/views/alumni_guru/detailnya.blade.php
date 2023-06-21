@@ -114,9 +114,9 @@
                 <div class="flex items-center justify-between mb-5">
                     <h5 class="text-lg font-semibold dark:text-white-light">Pelanggaran</h5>
                     <div class="flex items-center space-x-2">
-                        <a href="http://127.0.0.1:8000/alumni_admin/create"
+                        <a href="{{ route('detail') }}"
                             class="btn btn-outline-info w-73 h-27">Detail</a>
-                        <a href="{{ route('alumni_admin.index') }}"
+                        <a href="{{ route('alumni_guru.index') }}"
                             class="btn btn-outline-danger w-73 h-27">Kembali</a>
                     </div>
                 </div>
