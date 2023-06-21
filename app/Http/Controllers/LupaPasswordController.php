@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Berita_Siswa;
-use App\Http\Requests\StoreBerita_SiswaRequest;
-use App\Http\Requests\UpdateBerita_SiswaRequest;
+use App\Models\LupaPassword;
+use App\Http\Requests\StoreLupaPasswordRequest;
+use App\Http\Requests\UpdateLupaPasswordRequest;
 
-class BeritaSiswaController extends Controller
+class LupaPasswordController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class BeritaSiswaController extends Controller
      */
     public function index()
     {
-        return view('berita_siswa.index');
+        return view('lupapassword.index');
     }
 
     /**
@@ -31,10 +31,10 @@ class BeritaSiswaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBerita_SiswaRequest  $request
+     * @param  \App\Http\Requests\StoreLupaPasswordRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBerita_SiswaRequest $request)
+    public function store(StoreLupaPasswordRequest $request)
     {
         //
     }
@@ -42,21 +42,21 @@ class BeritaSiswaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Berita_Siswa  $berita_Siswa
+     * @param  \App\Models\LupaPassword  $lupaPassword
      * @return \Illuminate\Http\Response
      */
-    public function show(Berita_Siswa $berita_Siswa)
+    public function show(LupaPassword $lupaPassword)
     {
-        return view('berita_siswa.detail');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Berita_Siswa  $berita_Siswa
+     * @param  \App\Models\LupaPassword  $lupaPassword
      * @return \Illuminate\Http\Response
      */
-    public function edit(Berita_Siswa $berita_Siswa)
+    public function edit(LupaPassword $lupaPassword)
     {
         //
     }
@@ -64,11 +64,11 @@ class BeritaSiswaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBerita_SiswaRequest  $request
-     * @param  \App\Models\Berita_Siswa  $berita_Siswa
+     * @param  \App\Http\Requests\UpdateLupaPasswordRequest  $request
+     * @param  \App\Models\LupaPassword  $lupaPassword
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBerita_SiswaRequest $request, Berita_Siswa $berita_Siswa)
+    public function update(UpdateLupaPasswordRequest $request, LupaPassword $lupaPassword)
     {
         //
     }
@@ -76,10 +76,10 @@ class BeritaSiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Berita_Siswa  $berita_Siswa
+     * @param  \App\Models\LupaPassword  $lupaPassword
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Berita_Siswa $berita_Siswa)
+    public function destroy(LupaPassword $lupaPassword)
     {
         //
     }
