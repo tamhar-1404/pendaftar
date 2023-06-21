@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MOU;
-use App\Http\Requests\StoreMOURequest;
-use App\Http\Requests\UpdateMOURequest;
+use App\Models\siswamagang;
+use App\Http\Requests\StoresiswamagangRequest;
+use App\Http\Requests\UpdatesiswamagangRequest;
 
-class MOUController extends Controller
+class SiswamagangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class MOUController extends Controller
      */
     public function index()
     {
-        return view('mou.layout');
+        return view('siswamagang_siswa.index');
     }
 
     /**
@@ -31,10 +31,10 @@ class MOUController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreMOURequest  $request
+     * @param  \App\Http\Requests\StoresiswamagangRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMOURequest $request)
+    public function store(StoresiswamagangRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class MOUController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MOU  $mOU
+     * @param  \App\Models\siswamagang  $siswamagang
      * @return \Illuminate\Http\Response
      */
-    public function show(MOU $mOU)
+    public function show(siswamagang $siswamagang)
     {
         //
     }
@@ -53,10 +53,10 @@ class MOUController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MOU  $mOU
+     * @param  \App\Models\siswamagang  $siswamagang
      * @return \Illuminate\Http\Response
      */
-    public function edit(MOU $mOU)
+    public function edit(siswamagang $siswamagang)
     {
         //
     }
@@ -64,11 +64,11 @@ class MOUController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateMOURequest  $request
-     * @param  \App\Models\MOU  $mOU
+     * @param  \App\Http\Requests\UpdatesiswamagangRequest  $request
+     * @param  \App\Models\siswamagang  $siswamagang
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMOURequest $request, MOU $mOU)
+    public function update(UpdatesiswamagangRequest $request, siswamagang $siswamagang)
     {
         //
     }
@@ -76,10 +76,10 @@ class MOUController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MOU  $mOU
+     * @param  \App\Models\siswamagang  $siswamagang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MOU $mOU)
+    public function destroy(siswamagang $siswamagang)
     {
         //
     }

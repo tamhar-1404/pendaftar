@@ -5,7 +5,7 @@
             <div class="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
                 <a href="index-2.html" class="main-logo flex shrink-0 items-center">
                     <img class="inline w-20
-                     ltr:-ml-1 rtl:-mr-1" src="siswa/images/LOGO HUMMASOFT 2.png" alt="image" />
+                     ltr:-ml-1 rtl:-mr-1" src="{{ asset('siswa/images/hummasoft.png') }}" alt="image" />
                 </a>
 
                 <a
@@ -25,7 +25,7 @@
                 class="flex items-center space-x-1.5 ltr:ml-auto rtl:mr-auto rtl:space-x-reverse dark:text-[#d0d2d6] sm:flex-1 ltr:sm:ml-0 sm:rtl:mr-0 lg:space-x-2"
             >
                 <div class="sm:ltr:mr-auto sm:rtl:ml-auto" x-data="{ search: false }" @click.outside="search = false">
-                  
+
                     <button
                         type="button"
                         class="search_btn rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 dark:bg-dark/40 dark:hover:bg-dark/60 sm:hidden"
@@ -245,7 +245,7 @@
                         <span
                             ><img
                                 class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                src="siswa/images/user-profile.jpeg"
+                                src="{{ asset('siswa/images/user-profile.jpeg') }}"
                                 alt="image"
                         /></span>
                     </a>

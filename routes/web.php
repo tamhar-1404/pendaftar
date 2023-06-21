@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GuruAdminController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\BeritaGuruController;
 use App\Http\Controllers\AlumniGuruController;
 use App\Http\Controllers\BeritaSiswaController;
 use Illuminate\Support\Facades\Route;
@@ -36,7 +37,7 @@ Route::get('/laporansiswa', function () {
     return view('laporansiswa.index');
 });
 Route::get('/jurnal_admin', function () {
-    return view('jurnal_admin.grafik');
+    return view('jurnal_admin.index');
 });
 
 Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
@@ -90,6 +91,7 @@ Route::resource('/pembimbing', App\Http\Controllers\PembimbingController::class)
 Route::resource('/Berita', App\Http\Controllers\BeritaController::class);
 
 Route::get('/edit', [BeritaController::class, 'edit'])->name('edit');
+Route::get('/detail_berita_guru', [BeritaGuruController::class, 'show'])->name('detail_berita_guru');
 Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
 Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
 
@@ -126,7 +128,10 @@ Route::get('/detail_pelangaran_siwaguru', function () {
     return view('siswa_guru.detail_pelanggaran');
 });
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
+Route::resource('/profilesiswa', App\Http\Controllers\ProfilsiswaController::class);
 
 Route::resource('/piket_siswa', App\Http\Controllers\PiketSiswaController::class);
 Route::resource('/siswa_guru', App\Http\Controllers\SiswaGuruController::class);
 Route::resource('/jurnal_guru', App\Http\Controllers\JurnalGuruController::class);
+Route::resource('/jurnalsiswa', App\Http\Controllers\JurnalsiswaController::class);
+Route::resource('/siswa_magang', App\Http\Controllers\SiswamagangController::class);

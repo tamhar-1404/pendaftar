@@ -15,7 +15,7 @@ class JurnaladminController extends Controller
      */
     public function index()
     {
-        return view('jurnal_admin.grafik');
+        return view('jurnal_admin.index');
     }
 
     /**
