@@ -36,7 +36,7 @@ Route::get('/laporansiswa', function () {
     return view('laporansiswa.index');
 });
 Route::get('/jurnal_admin', function () {
-    return view('jurnal_admin.index');
+    return view('jurnal_admin.grafik');
 });
 
 Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
