@@ -574,7 +574,7 @@
     <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
-   @include('Berita.berita')
+   @include('Berita.ubah_assset')
     </div>
 
 

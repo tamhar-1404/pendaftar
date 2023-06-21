@@ -25,7 +25,7 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        //
+        return view('Berita.create');
     }
 
     /**
@@ -58,7 +58,7 @@ class BeritaController extends Controller
      */
     public function edit(Berita $berita)
     {
-        //
+       return view('berita.edit');
     }
 
     /**

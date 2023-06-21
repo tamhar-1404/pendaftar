@@ -15,7 +15,7 @@ class BeritaSiswaController extends Controller
      */
     public function index()
     {
-        //
+        return view('berita_siswa.index');
     }
 
     /**
@@ -47,7 +47,7 @@ class BeritaSiswaController extends Controller
      */
     public function show(Berita_Siswa $berita_Siswa)
     {
-        //
+        return view('berita_siswa.detail');
     }
 
     /**

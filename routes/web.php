@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GuruAdminController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\BeritaSiswaController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +80,8 @@ Route::resource('/tatib_siswa', App\Http\Controllers\TatibSiswaController::class
 Route::resource('/pembimbing', App\Http\Controllers\PembimbingController::class);
 
 Route::resource('/Berita', App\Http\Controllers\BeritaController::class);
+
+Route::get('/edit', [BeritaController::class, 'edit'])->name('edit');
 Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
 
 
@@ -91,3 +95,6 @@ Route::get('/sidebar', function () {
 Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
 Route::resource('/tolak',App\Http\Controllers\TolakController::class);
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
+
+
+Route::resource('/berita_siswa', App\Http\Controllers\BeritaSiswaController::class);
