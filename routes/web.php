@@ -119,6 +119,14 @@ Route::get('/detail_daftar', function () {
 Route::get('/navbar', function () {
     return view('navbar.index');
 });
+Route::get('/detail_siswaguru', function () {
+    return view('siswa_guru.detail');
+});
+Route::get('/detail_pelangaran_siwaguru', function () {
+    return view('siswa_guru.detail_pelanggaran');
+});
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
 
 Route::resource('/piket_siswa', App\Http\Controllers\PiketSiswaController::class);
+Route::resource('/siswa_guru', App\Http\Controllers\SiswaGuruController::class);
+Route::resource('/jurnal_guru', App\Http\Controllers\JurnalGuruController::class);
