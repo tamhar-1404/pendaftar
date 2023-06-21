@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GuruAdminController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\AlumniGuruController;
 use App\Http\Controllers\BeritaSiswaController;
 use Illuminate\Support\Facades\Route;
 /*
@@ -37,6 +38,11 @@ Route::get('/laporansiswa', function () {
 Route::get('/jurnal_admin', function () {
     return view('jurnal_admin.index');
 });
+
+Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
+
+Route::resource('/berita_guru', App\Http\Controllers\BeritaGuruController::class);
+
 Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
 
 Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
@@ -70,6 +76,8 @@ Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 
 
 Route::get('/detail', [GuruAdminController::class, 'detail'])->name('detail');
+Route::get('/view', [AlumniGuruController::class, 'show'])->name('view');
+Route::get('/tabel', [AlumniGuruController::class, 'create'])->name('tabel');
 
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
 
@@ -97,12 +105,10 @@ Route::get('/sidebar', function () {
 });
 Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
 Route::resource('/tolak',App\Http\Controllers\TolakController::class);
-<<<<<<< HEAD
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
 
 
 Route::resource('/berita_siswa', App\Http\Controllers\BeritaSiswaController::class);
-=======
 Route::get('/sore', function () {
     return view('piket.sidebar_sore');
 });
@@ -110,4 +116,3 @@ Route::get('/detail_daftar', function () {
     return view('aproval.view');
 });
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
->>>>>>> 02a81b2cabf708f915f71b919b23141d4cae4cf0
