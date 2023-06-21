@@ -1713,14 +1713,27 @@
                                     </button>
                                 </div>
                             </div>
+                                 {{-- grafik --}}
+                     <div id="grafik_admin" class=" w-80% h-35 mx-3 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
+                        <div class="w-full px-4 mt-6">
+                            <div class="w-80%  bg-white h-35 pb-5 text-same font-semibold dark:bg-transparent">
+                                tabel jurnal
+                            </div>
+                    </div>
+                 </div>
+
+            {{-- end grafik --}}
 
                             {{-- tabel --}}
 
                             <div class="flex flex-col">
-                                <div class="overflow-x-auto mt-5 sm:-mx-6 lg:-mx-8">
+                                <div class="overflow-x-auto mt-12 sm:-mx-6 lg:-mx-8">
                                   <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                     <div class="overflow-hidden">
-                                      <table class="min-w-full text-left text-sm font-light">
+                                        <div class="w-80%  bg-white h-35 pb-5 text-same font-semibold dark:bg-transparent">
+                                            tabel jurnal
+                                        </div>
+                                      <table class="min-w-full text-left text-sm font-light mt-5">
                                         <thead class="border-b font-medium dark:border-neutral-500 ">
                                           <tr class="">
                                             <th scope="col" class="px-6 py-4">#</th>
@@ -1842,6 +1855,8 @@
             </div>
         </div>
 
+        <script src="assets/js/swiper-bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="assets/js/highlight.min.js"></script>
         <script src="assets/js/alpine-collaspe.min.js"></script>
         <script src="assets/js/alpine-persist.min.js"></script>
@@ -1850,6 +1865,80 @@
         <script defer src="assets/js/alpine.min.js"></script>
         <script src="assets/js/custom.js"></script>
         <script src="assets/js/simple-datatables.js"></script>
+
+        <script>
+            var options = {
+             series: [{
+             name: 'Izin & Sakit',
+             data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 70, 67, 50]
+           }, {
+             name: 'Hadir',
+             data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 110, 104, 120]
+           }, {
+             name: 'alfa',
+             data: [35, 41, 36, 26, 45, 48, 52, 53, 41, 30, 20, 70]
+           }],
+             chart: {
+             type: 'bar',
+             height: 400,
+             width: 1600,    
+           },
+           plotOptions: {
+             bar: {
+               horizontal: false,
+               columnWidth: '55%',
+               endingShape: 'rounded',
+               borderRadius: 7,
+             },
+           },
+           dataLabels: {
+             enabled: false,
+           },
+           animations: {
+               enabled: true,
+               easing: 'easeinout',
+               speed: 1200,
+               animateGradually: {
+                   enabled: true,
+                   delay: 200
+               },
+               dynamicAnimation: {
+                   enabled: true,
+                   speed: 450
+               }
+           },
+           stroke: {
+             show: true,
+             width: 2,
+             colors: ['transparent']
+           },
+           xaxis: {
+             categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+   
+           },
+           yaxis: {
+             title: {
+               text: ''
+             }
+           },
+           fill: {
+             opacity: 2,
+             colors: ['#6769EB', '#47EBB3', '#FFA726']
+           },
+           tooltip: {
+             y: {
+               // formatter: function (val) {
+               //   return "$ " + val + " thousands"
+               // }
+             }
+           }
+           };
+   
+           var chart = new ApexCharts(document.querySelector("#grafik_admin"), options);
+           chart.render();
+   
+   
+           </script>
         <script>
             document.addEventListener('alpine:init', () => {
                 // main section

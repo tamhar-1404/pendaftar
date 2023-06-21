@@ -33,7 +33,7 @@ Route::get('/laporansiswa', function () {
     return view('laporansiswa.index');
 });
 Route::get('/jurnal_admin', function () {
-    return view('jurnal_admin.index');
+    return view('jurnal_admin.grafik');
 });
 Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
 
@@ -92,7 +92,6 @@ Route::get('/sidebar', function () {
     return view('sidebar.layout');
 });
 Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
-Route::resource('/tolak',App\Http\Controllers\TolakController::class);
 Route::get('/sore', function () {
     return view('piket.sidebar_sore');
 });
@@ -100,3 +99,5 @@ Route::get('/detail_daftar', function () {
     return view('aproval.view');
 });
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
+Route::resource('/profilsiswa', App\Http\Controllers\ProfilsiswaController::class);
+Route::resource('/tolak',App\Http\Controllers\TolakController::class);
