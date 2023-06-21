@@ -25,7 +25,7 @@ class SiswaAlumniController extends Controller
      */
     public function create()
     {
-        //
+        return view('alumni_admin.tabel');
     }
 
     /**

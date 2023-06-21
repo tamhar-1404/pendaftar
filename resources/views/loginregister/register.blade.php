@@ -200,7 +200,7 @@
                     <p class="line-clamp-1">
                         <span>Sudah punya Akun? </span>
                         <a class="text-info transition-colors hover:text-info-focus dark:text-accent-light dark:hover:text-accent"
-                            href="pages-login-2.html">Login</a>
+                            href="{{ route('login.index') }}">Login</a>
                     </p>
                 </div>
             </div>

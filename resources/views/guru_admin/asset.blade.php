@@ -20,7 +20,8 @@
 
     <!-- Javascript Assets -->
     <script src="{{asset('admin/js/app.js')}}" defer></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script defer src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
@@ -3478,9 +3479,85 @@
             </div>
           </div>
         </div>
-        <button class="outline outline-offset-2 outline-1 bg-[#24AEE4] hover:bg-blue-700 text-white  text-sm py-2 px-4 rounded">
+        <button id="addButton" class="outline outline-offset-2 outline-1 bg-[#24AEE4] hover:bg-blue-700 text-white text-sm py-2 px-4 rounded">
             Tambah data
           </button>
+          <div id="registerModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
+            <div class="flex justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+              <div class="fixed inset-0 transition-opacity">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+              </div>
+              <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                  <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-col">
+                      <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                        Form Tambah Guru
+                      </h3>
+                      <form class="mt-4">
+                        <div class="mt-4">
+                          <label for="Nama" class="block text-gray-700 font-medium mb-2">Sekolah</label>
+                          <input type="text" placeholder="Masukkan nama " id="sekolah" name="sekolah" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        </div>
+                        <div class="mt-4">
+                          <label for="tanggal_lahir" class="block text-gray-700 font-medium mb-2">Tanggal lahir</label>
+                          <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        </div>
+                        <div class="mt-4">
+                          <label for="sekolah" class="block text-gray-700 font-medium mb-2">Sekolah</label>
+                          <input type="text" placeholder="Masukkan nama sekolah" id="sekolah" name="sekolah" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        </div>
+                        <div class="mt-4">
+                          <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                          <input type="email" placeholder="Masukkan email" id="email" name="email" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        </div>
+                        <div class="mt-4">
+                          <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
+                          <input type="password" placeholder="Masukkan password" id="password" name="password" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        </div>
+                        <div class="flex items-center justify-end mt-4">
+                          <div class="ml-auto">
+                            <button type="button" class="bg-transparent border border-gray-300 text-gray-800 hover:bg-gray-300 hover:text-gray-800 font-bold py-2 px-4 rounded">
+                              Batal
+                            </button>
+                            <button class="bg-blue-500 text-white hover:bg-blue-700 font-bold py-2 px-4 rounded" @click="showAlert()">
+                                Simpan
+                              </button>
+                              <script>
+                                  async function showAlert() {
+                                      new window.Swal({
+                                          title: "Berhasil",
+                                          text: "Data berhasil di tambahkan",
+                                          icon: "success",
+                                          button: "oke",
+                                      });
+                                  }
+                            </script>
+                            </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <script>
+            const addButton = document.querySelector("#addButton");
+            const registerModal = document.querySelector("#registerModal");
+            const cancelButton = document.querySelector(".ml-auto button");
+
+            addButton.addEventListener("click", () => {
+              registerModal.classList.remove("hidden");
+            });
+
+            cancelButton.addEventListener("click", () => {
+              registerModal.classList.add("hidden");
+            });
+          </script>
+
         <div
           class="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4"
         >
@@ -3491,26 +3568,7 @@
                 @click.outside="isShowPopper && (isShowPopper = false)"
                 class="inline-flex"
               >
-                <button
-                  x-ref="popperRef"
-                  @click="isShowPopper = !isShowPopper"
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                    />
-                  </svg>
-                </button>
+
 
                 <div
                   x-ref="popperRoot"
@@ -3612,6 +3670,7 @@
               </div>
             </div>
           </div>
+          {{--  card  --}}
           <div class="card">
             <div class="p-2 text-right">
               <div
@@ -3619,26 +3678,7 @@
                 @click.outside="isShowPopper && (isShowPopper = false)"
                 class="inline-flex"
               >
-                <button
-                  x-ref="popperRef"
-                  @click="isShowPopper = !isShowPopper"
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                    />
-                  </svg>
-                </button>
+
 
                 <div
                   x-ref="popperRoot"
@@ -3747,26 +3787,7 @@
                 @click.outside="isShowPopper && (isShowPopper = false)"
                 class="inline-flex"
               >
-                <button
-                  x-ref="popperRef"
-                  @click="isShowPopper = !isShowPopper"
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                    />
-                  </svg>
-                </button>
+
 
                 <div
                   x-ref="popperRoot"
@@ -3813,148 +3834,20 @@
                 </div>
               </div>
             </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
-              <div class="avatar h-20 w-20">
-                <img
-                  class="mask is-squircle"
-                  src="{{ asset('admin/images/avatar/avatar-18.jpg') }}"
-                  alt="avatar"
-                />
-              </div>
-              <h3
-                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
-              >
-                Alfredo Elliott
-              </h3>
-              <p class="text-xs+">UI/UX designer</p>
-
-              <div class="mt-6 grid w-full grid-cols-2 gap-2">
-                <button
-                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-width="2"
-                      d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z"
-                    />
-                  </svg>
-                  <span>Profile</span>
-                </button>
-                <button
-                  class="btn space-x-2 bg-slate-150 px-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                    />
-                  </svg>
-                  <span> Chat </span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="p-2 text-right">
-              <div
-                x-data="usePopper({placement:'bottom-end',offset:4})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="inline-flex"
-              >
-                <button
-                  x-ref="popperRef"
-                  @click="isShowPopper = !isShowPopper"
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                    />
-                  </svg>
-                </button>
-
-                <div
-                  x-ref="popperRoot"
-                  class="popper-root"
-                  :class="isShowPopper && 'show'"
-                >
-                  <div
-                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Another Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Something else</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Separated Link</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
+            <div class="flex grow flex-col items-center px-4 pb-5 ">
               <div class="avatar h-20 w-20">
                 <img
                   class="rounded-full"
-                  src="{{ asset('admin/images/avatar/avatar-17.jpg') }}"
+                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
                   alt="avatar"
                 />
               </div>
               <h3
                 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
               >
-                Derrick Simmons
+                Travis Fuller
               </h3>
-              <p class="text-xs+">React Developer</p>
+              <p class="text-xs+">Web Developer</p>
 
               <div class="mt-6 grid w-full grid-cols-2 gap-2">
                 <button
@@ -4003,26 +3896,7 @@
                 @click.outside="isShowPopper && (isShowPopper = false)"
                 class="inline-flex"
               >
-                <button
-                  x-ref="popperRef"
-                  @click="isShowPopper = !isShowPopper"
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                    />
-                  </svg>
-                </button>
+
 
                 <div
                   x-ref="popperRoot"
@@ -4069,20 +3943,20 @@
                 </div>
               </div>
             </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
+            <div class="flex grow flex-col items-center px-4 pb-5 ">
               <div class="avatar h-20 w-20">
                 <img
-                  class="mask is-reuleaux-triangle"
-                  src="{{ asset('admin/images/avatar/avatar-11.jpg') }}"
+                  class="rounded-full"
+                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
                   alt="avatar"
                 />
               </div>
               <h3
                 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
               >
-                Katrina West
+                Travis Fuller
               </h3>
-              <p class="text-xs+">Android Developer</p>
+              <p class="text-xs+">Web Developer</p>
 
               <div class="mt-6 grid w-full grid-cols-2 gap-2">
                 <button
@@ -4131,14 +4005,92 @@
                 @click.outside="isShowPopper && (isShowPopper = false)"
                 class="inline-flex"
               >
+
+
+                <div
+                  x-ref="popperRoot"
+                  class="popper-root"
+                  :class="isShowPopper && 'show'"
+                >
+                  <div
+                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
+                  >
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Action</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Another Action</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Something else</a
+                        >
+                      </li>
+                    </ul>
+                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Separated Link</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex grow flex-col items-center px-4 pb-5 ">
+              <div class="avatar h-20 w-20">
+                <img
+                  class="rounded-full"
+                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
+                  alt="avatar"
+                />
+              </div>
+              <h3
+                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
+              >
+                Travis Fuller
+              </h3>
+              <p class="text-xs+">Web Developer</p>
+
+              <div class="mt-6 grid w-full grid-cols-2 gap-2">
                 <button
-                  x-ref="popperRef"
-                  @click="isShowPopper = !isShowPopper"
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
+                    class="h-4 w-4 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-width="2"
+                      d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z"
+                    />
+                  </svg>
+                  <span>Profile</span>
+                </button>
+                <button
+                  class="btn space-x-2 bg-slate-150 px-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -4147,10 +4099,21 @@
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                     />
                   </svg>
+                  <span> Chat </span>
                 </button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="p-2 text-right">
+              <div
+                x-data="usePopper({placement:'bottom-end',offset:4})"
+                @click.outside="isShowPopper && (isShowPopper = false)"
+                class="inline-flex"
+              >
 
                 <div
                   x-ref="popperRoot"
@@ -4252,33 +4215,14 @@
               </div>
             </div>
           </div>
-          <div class="card">
+           <div class="card">
             <div class="p-2 text-right">
               <div
                 x-data="usePopper({placement:'bottom-end',offset:4})"
                 @click.outside="isShowPopper && (isShowPopper = false)"
                 class="inline-flex"
               >
-                <button
-                  x-ref="popperRef"
-                  @click="isShowPopper = !isShowPopper"
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                    />
-                  </svg>
-                </button>
+
 
                 <div
                   x-ref="popperRoot"
@@ -4325,20 +4269,20 @@
                 </div>
               </div>
             </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
+            <div class="flex grow flex-col items-center px-4 pb-5 ">
               <div class="avatar h-20 w-20">
                 <img
-                  class="mask is-diamond"
-                  src="admin/images/avatar/avatar-5.jpg"
+                  class="rounded-full"
+                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
                   alt="avatar"
                 />
               </div>
               <h3
                 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
               >
-                Raul Bradley
+                Travis Fuller
               </h3>
-              <p class="text-xs+">Laravel Developer</p>
+              <p class="text-xs+">Web Developer</p>
 
               <div class="mt-6 grid w-full grid-cols-2 gap-2">
                 <button
@@ -4387,26 +4331,7 @@
                 @click.outside="isShowPopper && (isShowPopper = false)"
                 class="inline-flex"
               >
-                <button
-                  x-ref="popperRef"
-                  @click="isShowPopper = !isShowPopper"
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                    />
-                  </svg>
-                </button>
+
 
                 <div
                   x-ref="popperRoot"
@@ -4453,24 +4378,24 @@
                 </div>
               </div>
             </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
+            <div class="flex grow flex-col items-center px-4 pb-5 ">
               <div class="avatar h-20 w-20">
                 <img
-                  class="mask is-hexagon"
-                  src="admin/images/avatar/avatar-7.jpg"
+                  class="rounded-full"
+                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
                   alt="avatar"
                 />
               </div>
               <h3
                 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
               >
-                Samantha Shelton
+                Travis Fuller
               </h3>
-              <p class="text-xs+">Backend Developer</p>
+              <p class="text-xs+">Web Developer</p>
 
               <div class="mt-6 grid w-full grid-cols-2 gap-2">
                 <button
-                  class="btn space-x-2 bg-[#24AEE4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -4508,6 +4433,7 @@
               </div>
             </div>
           </div>
+          {{--  end  --}}
 
       </main>
     </div>

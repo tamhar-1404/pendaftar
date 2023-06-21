@@ -13,6 +13,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
     <title>Login</title>
+    @vite('resources/css/app.css')
     <link rel="icon" type="image/png" href="lineone/images/favicon.png" />
 
     <!-- CSS Assets -->
@@ -76,7 +77,7 @@
                     <label class="relative flex">
                         <input
                             class="form-input peer w-full rounded-lg bg-slate-150 px-3 py-2 pl-9 ring-primary/50 placeholder:text-slate-400 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:ring-accent/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
-                            placeholder="Username" type="text" />
+                            placeholder="Email" type="email" />
                         <span
                             class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-colors duration-200"
@@ -106,7 +107,7 @@
                                 type="checkbox" />
                             <span class="line-clamp-1">Ingat Saya</span>
                         </label>
-                        <a href="#"
+                        <a href="{{ route('lupapassword.index') }}"
                             class="text-xs text-slate-400 transition-colors line-clamp-1 hover:text-slate-800 focus:text-slate-800 dark:text-navy-300 dark:hover:text-navy-100 dark:focus:text-navy-100">Lupa Password?</a>
                     </div>
                     <button
@@ -117,7 +118,7 @@
                         <p class="line-clamp-1">
                             <span>Belum punya Akun?</span>
                             <a class="text-info transition-colors hover:text-info-focus dark:text-accent-light dark:hover:text-accent"
-                                href="#">Daftar</a>
+                                href="/register">Daftar</a>
                         </p>
                     </div>
                 </div>

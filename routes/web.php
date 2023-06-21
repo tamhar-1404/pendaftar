@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GuruAdminController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\BeritaSiswaController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +35,7 @@ Route::get('/laporansiswa', function () {
     return view('laporansiswa.index');
 });
 Route::get('/jurnal_admin', function () {
-    return view('jurnal_admin.index');
+    return view('jurnal_admin.grafik');
 });
 Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
 
@@ -53,12 +55,14 @@ Route::resource('/chat', App\Http\Controllers\ChatController::class);
 Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
 
 Route::resource('/login', App\Http\Controllers\LoginController::class);
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::resource('/lupapassword', App\Http\Controllers\LupaPasswordController::class);
+Route::resource('/ubahpassword', App\Http\Controllers\UbahPasswordController::class);
+
+
 Route::resource('/sp', App\Http\Controllers\SpController::class);
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::resource('/piket', App\Http\Controllers\PiketController::class);
-Route::get('/register', [LoginController::class, 'register'])->name('register');
-
-Route::resource('/sp', App\Http\Controllers\SpController::class);
 
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 
@@ -67,8 +71,6 @@ Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 
 Route::get('/detail', [GuruAdminController::class, 'detail'])->name('detail');
 
-
-Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
 
 Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
@@ -78,6 +80,8 @@ Route::resource('/tatib_siswa', App\Http\Controllers\TatibSiswaController::class
 Route::resource('/pembimbing', App\Http\Controllers\PembimbingController::class);
 
 Route::resource('/Berita', App\Http\Controllers\BeritaController::class);
+
+Route::get('/edit', [BeritaController::class, 'edit'])->name('edit');
 Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
 Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
 

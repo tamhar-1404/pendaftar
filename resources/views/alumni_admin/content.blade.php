@@ -2268,16 +2268,6 @@
                                     d="M3 5.109C3 4.496 3.47 4 4.05 4h16.79c.58 0 1.049.496 1.049 1.109 0 .612-.47 1.108-1.05 1.108H4.05C3.47 6.217 3 5.721 3 5.11zM5.798 12.5c0-.612.47-1.109 1.05-1.109H18.04c.58 0 1.05.497 1.05 1.109s-.47 1.109-1.05 1.109H6.848c-.58 0-1.05-.497-1.05-1.109zM9.646 18.783c-.58 0-1.05.496-1.05 1.108 0 .613.47 1.109 1.05 1.109h5.597c.58 0 1.05-.496 1.05-1.109 0-.612-.47-1.108-1.05-1.108H9.646z" />
                             </svg>
                         </button>
-                        <button
-                            class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:h-9 sm:w-9">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -2296,7 +2286,8 @@
                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
                             Konnor Guzman
                         </h3>
-                        <p class="text-xs+">Senior Developer</p>
+                        <p class="text-xs+ mt-1">SMKN 100 Malang</p>
+                        <p class="text-xs+ mt-1">Lulus</p>
 
                         <div class="mt-6 grid w-full grid-cols-2 gap-2">
                             <a href="http://127.0.0.1:8000/alumni_admin/detail"
@@ -2334,7 +2325,8 @@
                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
                             Travis Fuller
                         </h3>
-                        <p class="text-xs+">Web Developer</p>
+                        <p class="text-xs+ mt-1">SMKN 100 Malang</p>
+                        <p class="text-xs+ mt-1">Lulus</p>
 
                         <div class="mt-6 grid w-full grid-cols-2 gap-2">
                             <button
@@ -2372,7 +2364,8 @@
                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
                             Alfredo Elliott
                         </h3>
-                        <p class="text-xs+">UI/UX designer</p>
+                        <p class="text-xs+ mt-1">SMKN 100 Malang</p>
+                        <p class="text-xs+ mt-1">Lulus</p>
 
                         <div class="mt-6 grid w-full grid-cols-2 gap-2">
                             <button
@@ -2410,7 +2403,8 @@
                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
                             Derrick Simmons
                         </h3>
-                        <p class="text-xs+">React Developer</p>
+                        <p class="text-xs+ mt-1">SMKN 100 Malang</p>
+                        <p class="text-xs+ mt-1">Lulus</p>
 
                         <div class="mt-6 grid w-full grid-cols-2 gap-2">
                             <button
@@ -2448,7 +2442,8 @@
                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
                             Katrina West
                         </h3>
-                        <p class="text-xs+">Android Developer</p>
+                        <p class="text-xs+ mt-1">SMKN 100 Malang</p>
+                        <p class="text-xs+ mt-1">Lulus</p>
 
                         <div class="mt-6 grid w-full grid-cols-2 gap-2">
                             <button
@@ -2485,7 +2480,8 @@
                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
                             Henry Curtis
                         </h3>
-                        <p class="text-xs+">Full Stack Developer</p>
+                        <p class="text-xs+ mt-1">SMKN 100 Malang</p>
+                        <p class="text-xs+ mt-1">Lulus</p>
 
                         <div class="mt-6 grid w-full grid-cols-2 gap-2">
                             <button
@@ -2522,7 +2518,8 @@
                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
                             Raul Bradley
                         </h3>
-                        <p class="text-xs+">Laravel Developer</p>
+                        <p class="text-xs+ mt-1">SMKN 100 Malang</p>
+                        <p class="text-xs+ mt-1">Lulus</p>
 
                         <div class="mt-6 grid w-full grid-cols-2 gap-2">
                             <button
@@ -2559,7 +2556,8 @@
                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
                             Samantha Shelton
                         </h3>
-                        <p class="text-xs+">Backend Developer</p>
+                        <p class="text-xs+ mt-1">SMKN 100 Malang</p>
+                        <p class="text-xs+ mt-1">Lulus</p>
 
                         <div class="mt-6 grid w-full grid-cols-2 gap-2">
                             <button

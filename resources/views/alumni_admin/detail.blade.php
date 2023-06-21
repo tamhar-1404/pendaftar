@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin - Detail Alumni</title>
+    <title>Admin - Siswa Alumni</title>
     @vite('resources/css/app.css')
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('admin/favicon.png') }}admin/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
@@ -406,14 +406,14 @@
             <div>
                 <ul class="flex space-x-2 rtl:space-x-reverse">
                     <li>
-                        <a href="javascript:;" class="text-primary hover:underline">Users</a>
+                        <a href="javascript:;" class="text-primary hover:underline">Siswa Alumni</a>
                     </li>
                     <li class="before:content-['/'] ltr:before:mr-1 rtl:before:ml-1">
-                        <span>Profile</span>
+                        <span>Detail</span>
                     </li>
                 </ul>
                 <div class="pt-5">
-                    <div class="mb-5 grid grid-cols-1 gap-5 lg:grid-cols-3 xl:grid-cols-4">
+                    <div class="mb-5 grid grid-cols-1 text-sm gap-5 lg:grid-cols-3 xl:grid-cols-4">
                         <div class="panel">
                             <div class="mb-5 flex items-center justify-between">
                                 <h5 class="text-lg font-semibold dark:text-white-light">Profile</h5>
@@ -489,7 +489,7 @@
                                                     stroke="currentColor" stroke-width="1.5"
                                                     stroke-linecap="round" />
                                             </svg>
-                                            <span class="text-info">Kader@gmail.com</span></a>
+                                            <span class="">Kader@gmail.com</span></a>
                                     </li>
                                     <li class="flex items-center gap-2">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -507,17 +507,10 @@
                                         <span class="whitespace-nowrap" dir="ltr">0894 8736 9872</span>
                                     </li>
                                 </ul>
-                                <ul class="mt-7  justify-center gap-2">
+                                <ul class="m-auto mt-5 flex max-w-[160px] flex-col space-y-4 ">
                                     <li class="font-bold">Status</li>
-                                    <li>
-                                        <div
-                                            class="flex h-1.5 w-full rounded-full bg-[#ebedf2] dark:bg-dark/40 relative">
-                                            <div class="w-full rounded-full" style="background-color: #DAFE00;">
-                                                <span
-                                                    class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">SP
-                                                    1</span>
-                                            </div>
-                                        </div>
+                                    <li class="flex items-center gap-2">
+                                        <span class="whitespace-nowrap font-semibold text-success" dir="ltr">Lulus</span>
                                     </li>
                                 </ul>
                             </div>
@@ -526,59 +519,105 @@
                             <div class="flex items-center justify-between mb-5">
                                 <h5 class="text-lg font-semibold dark:text-white-light">Pelanggaran</h5>
                                 <div class="flex items-center space-x-2">
-                                    <a href="#"
+                                    <a href="http://127.0.0.1:8000/alumni_admin/create"
                                         class="btn btn-outline-info w-73 h-27">Detail</a>
-                                    <a href="#"
+                                    <a href="{{ route('alumni_admin.index') }}"
                                         class="btn btn-outline-danger w-73 h-27">Kembali</a>
                                 </div>
                             </div>
 
                             <div class="table-responsive font-semibold text-[#515365] dark:text-white-light">
-                                <table class="whitespace-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th>Tanggal pelanggaran</th>
-                                            <th>Judul pelanggaran</th>
-                                            <th>Deskripsi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td> 11/02/2020</td>
-                                            <td>Peraturan tata tertib</td>
-                                            <td>Telat masuk jam magang</td>
-                                        </tr>
-                                        <tr>
-                                            <td>11/02/2020</td>
-                                            <td>Peraturan tata tertib</td>
-                                            <td>Telat masuk jam magang</td>
-                                        </tr>
-                                        <tr>
-                                            <td>11/02/2020</td>
-                                            <td>Peraturan tata tertib</td>
-                                            <td>Telat masuk jam magang</td>
-                                        </tr>
-                                        <tr>
-                                            <td>11/02/2020</td>
-                                            <td>Peraturan tata tertib</td>
-                                            <td>Telat masuk jam magang</td>
-                                        </tr>
-                                        <tr>
-                                            <td>11/02/2020</td>
-                                            <td>Peraturan tata tertib</td>
-                                            <td>Telat masuk jam magang</td>
-                                        </tr>
-                                        <tr>
-                                            <td>11/02/2020</td>
-                                            <td>Peraturan tata tertib</td>
-                                            <td>Telat masuk jam magang</td>
-                                        </tr>
-                                        <tr>
-                                            <td>11/02/2020</td>
-                                            <td>Peraturan tata tertib</td>
-                                            <td>Telat masuk jam magang</td>
-                                        </tr>
-                                    </tbody>
+                                <table>
+                                    <tr class="text-sm bg-[#E2E8F0]">
+                                        <td>No</td>
+                                        <td>Tanggal pelanggaran</td>
+                                        <td>Judul pelanggaran</td>
+                                        <td>Deskripsi</td>
+                                    </tr>
+                                    <tr class="text-sm">
+                                        <td>1</td>
+                                        <td>
+                                            11/11/2022
+                                        </td>
+                                        <td>
+                                            Peraturan tata tertib
+                                        </td>
+                                        <td>
+                                            Telat masuk jam magang
+                                        </td>
+                                    </tr>
+                                    <tr class="text-sm">
+                                        <td>2</td>
+                                        <td>
+                                            11/11/2022
+                                        </td>
+                                        <td>
+                                            Peraturan tata tertib
+                                        </td>
+                                        <td>
+                                            Telat masuk jam magang
+                                        </td>
+                                    </tr>
+                                    <tr class="text-sm">
+                                        <td>3</td>
+                                        <td>
+                                            11/11/2022
+                                        </td>
+                                        <td>
+                                            Peraturan tata tertib
+                                        </td>
+                                        <td>
+                                            Telat masuk jam magang
+                                        </td>
+                                    </tr>
+                                    <tr class="text-sm">
+                                        <td>4</td>
+                                        <td>
+                                            11/11/2022
+                                        </td>
+                                        <td>
+                                            Peraturan tata tertib
+                                        </td>
+                                        <td>
+                                            Telat masuk jam magang
+                                        </td>
+                                    </tr>
+                                    <tr class="text-sm">
+                                        <td>5</td>
+                                        <td>
+                                            11/11/2022
+                                        </td>
+                                        <td>
+                                            Peraturan tata tertib
+                                        </td>
+                                        <td>
+                                            Telat masuk jam magang
+                                        </td>
+                                    </tr>
+                                    <tr class="text-sm">
+                                        <td>6</td>
+                                        <td>
+                                            11/11/2022
+                                        </td>
+                                        <td>
+                                            Peraturan tata tertib
+                                        </td>
+                                        <td>
+                                            Telat masuk jam magang
+                                        </td>
+                                    </tr>
+                                    <tr class="text-sm">
+                                        <td>7</td>
+                                        <td>
+                                            11/11/2022
+                                        </td>
+                                        <td>
+                                            Peraturan tata tertib
+                                        </td>
+                                        <td>
+                                            Telat masuk jam magang
+                                        </td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>

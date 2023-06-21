@@ -9,6 +9,13 @@
     <link
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
     rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <!-
+    - CSS Assets -->
+    <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
+    <!-- Javascript Assets -->
+    <script src="{{ asset('admin/js/app.js') }}" defer></script>
     <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
@@ -341,11 +348,12 @@
             <ul
                 class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
                 data-te-sidenav-collapse-ref>
+                <li></li>
                 <li class="relative">
                 <a
                     class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
                     data-te-sidenav-link-ref
-                    >Berita</a
+                    >Brita</a
                 >
                 </li>
                 <li class="relative">
@@ -385,7 +393,7 @@
 
 
     <!-- Navbar -->
-    <nav 
+    <nav
     id="main-navbar"
     class="relative left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start "
     data-te-navbar-ref>
@@ -566,7 +574,7 @@
     <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
-    @include('Berita.berita')
+   @include('Berita.berita')
     </div>
 
 

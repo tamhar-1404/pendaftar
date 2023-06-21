@@ -15,7 +15,7 @@ class AbsensiGuruController extends Controller
      */
     public function index()
     {
-        return view('absensi_guru.index');
+        return view('absensi_guru.grafik');
     }
 
     /**
