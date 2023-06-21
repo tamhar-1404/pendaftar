@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\jurnaladmin;
-use App\Http\Requests\StorejurnaladminRequest;
-use App\Http\Requests\UpdatejurnaladminRequest;
+use App\Models\Alumni_guru;
+use App\Http\Requests\StoreAlumni_guruRequest;
+use App\Http\Requests\UpdateAlumni_guruRequest;
 
-class JurnaladminController extends Controller
+class AlumniGuruController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class JurnaladminController extends Controller
      */
     public function index()
     {
-        return view('jurnal_admin.grafik');
+        return view('alumni_guru.index');
     }
 
     /**
@@ -25,16 +25,16 @@ class JurnaladminController extends Controller
      */
     public function create()
     {
-        //
+       return view('alumni_guru.tabel');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorejurnaladminRequest  $request
+     * @param  \App\Http\Requests\StoreAlumni_guruRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorejurnaladminRequest $request)
+    public function store(StoreAlumni_guruRequest $request)
     {
         //
     }
@@ -42,21 +42,21 @@ class JurnaladminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\jurnaladmin  $jurnaladmin
+     * @param  \App\Models\Alumni_guru  $alumni_guru
      * @return \Illuminate\Http\Response
      */
-    public function show(jurnaladmin $jurnaladmin)
+    public function show(Alumni_guru $alumni_guru)
     {
-        //
+      return view('alumni_guru.view');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\jurnaladmin  $jurnaladmin
+     * @param  \App\Models\Alumni_guru  $alumni_guru
      * @return \Illuminate\Http\Response
      */
-    public function edit(jurnaladmin $jurnaladmin)
+    public function edit(Alumni_guru $alumni_guru)
     {
         //
     }
@@ -64,11 +64,11 @@ class JurnaladminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatejurnaladminRequest  $request
-     * @param  \App\Models\jurnaladmin  $jurnaladmin
+     * @param  \App\Http\Requests\UpdateAlumni_guruRequest  $request
+     * @param  \App\Models\Alumni_guru  $alumni_guru
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatejurnaladminRequest $request, jurnaladmin $jurnaladmin)
+    public function update(UpdateAlumni_guruRequest $request, Alumni_guru $alumni_guru)
     {
         //
     }
@@ -76,10 +76,10 @@ class JurnaladminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\jurnaladmin  $jurnaladmin
+     * @param  \App\Models\Alumni_guru  $alumni_guru
      * @return \Illuminate\Http\Response
      */
-    public function destroy(jurnaladmin $jurnaladmin)
+    public function destroy(Alumni_guru $alumni_guru)
     {
         //
     }

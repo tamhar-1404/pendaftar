@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\jurnaladmin;
-use App\Http\Requests\StorejurnaladminRequest;
-use App\Http\Requests\UpdatejurnaladminRequest;
+use App\Models\BeritaGuru;
+use App\Http\Requests\StoreBeritaGuruRequest;
+use App\Http\Requests\UpdateBeritaGuruRequest;
 
-class JurnaladminController extends Controller
+class BeritaGuruController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class JurnaladminController extends Controller
      */
     public function index()
     {
-        return view('jurnal_admin.grafik');
+        return view('Berita_guru.index');
     }
 
     /**
@@ -31,10 +31,10 @@ class JurnaladminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorejurnaladminRequest  $request
+     * @param  \App\Http\Requests\StoreBeritaGuruRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorejurnaladminRequest $request)
+    public function store(StoreBeritaGuruRequest $request)
     {
         //
     }
@@ -42,21 +42,21 @@ class JurnaladminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\jurnaladmin  $jurnaladmin
+     * @param  \App\Models\BeritaGuru  $beritaGuru
      * @return \Illuminate\Http\Response
      */
-    public function show(jurnaladmin $jurnaladmin)
+    public function show(BeritaGuru $beritaGuru)
     {
-        //
+       //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\jurnaladmin  $jurnaladmin
+     * @param  \App\Models\BeritaGuru  $beritaGuru
      * @return \Illuminate\Http\Response
      */
-    public function edit(jurnaladmin $jurnaladmin)
+    public function edit(BeritaGuru $beritaGuru)
     {
         //
     }
@@ -64,11 +64,11 @@ class JurnaladminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatejurnaladminRequest  $request
-     * @param  \App\Models\jurnaladmin  $jurnaladmin
+     * @param  \App\Http\Requests\UpdateBeritaGuruRequest  $request
+     * @param  \App\Models\BeritaGuru  $beritaGuru
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatejurnaladminRequest $request, jurnaladmin $jurnaladmin)
+    public function update(UpdateBeritaGuruRequest $request, BeritaGuru $beritaGuru)
     {
         //
     }
@@ -76,10 +76,10 @@ class JurnaladminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\jurnaladmin  $jurnaladmin
+     * @param  \App\Models\BeritaGuru  $beritaGuru
      * @return \Illuminate\Http\Response
      */
-    public function destroy(jurnaladmin $jurnaladmin)
+    public function destroy(BeritaGuru $beritaGuru)
     {
         //
     }
