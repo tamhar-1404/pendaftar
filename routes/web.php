@@ -55,12 +55,14 @@ Route::resource('/chat', App\Http\Controllers\ChatController::class);
 Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
 
 Route::resource('/login', App\Http\Controllers\LoginController::class);
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::resource('/lupapassword', App\Http\Controllers\LupaPasswordController::class);
+Route::resource('/ubahpassword', App\Http\Controllers\UbahPasswordController::class);
+
+
 Route::resource('/sp', App\Http\Controllers\SpController::class);
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::resource('/piket', App\Http\Controllers\PiketController::class);
-Route::get('/register', [LoginController::class, 'register'])->name('register');
-
-Route::resource('/sp', App\Http\Controllers\SpController::class);
 
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 
@@ -69,8 +71,6 @@ Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 
 Route::get('/detail', [GuruAdminController::class, 'detail'])->name('detail');
 
-
-Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
 
 Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
@@ -83,18 +83,31 @@ Route::resource('/Berita', App\Http\Controllers\BeritaController::class);
 
 Route::get('/edit', [BeritaController::class, 'edit'])->name('edit');
 Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
-
+Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
 
 Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 
 Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::class);
+
+Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
+Route::resource('/editprofileguru', App\Http\Controllers\EditprofileGuruController::class);
 
 Route::get('/sidebar', function () {
     return view('sidebar.layout');
 });
 Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
 Route::resource('/tolak',App\Http\Controllers\TolakController::class);
+<<<<<<< HEAD
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
 
 
 Route::resource('/berita_siswa', App\Http\Controllers\BeritaSiswaController::class);
+=======
+Route::get('/sore', function () {
+    return view('piket.sidebar_sore');
+});
+Route::get('/detail_daftar', function () {
+    return view('aproval.view');
+});
+Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
+>>>>>>> 02a81b2cabf708f915f71b919b23141d4cae4cf0

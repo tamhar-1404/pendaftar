@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SiswaAlumni;
-use App\Http\Requests\StoreSiswaAlumniRequest;
-use App\Http\Requests\UpdateSiswaAlumniRequest;
+use App\Models\LupaPassword;
+use App\Http\Requests\StoreLupaPasswordRequest;
+use App\Http\Requests\UpdateLupaPasswordRequest;
 
-class SiswaAlumniController extends Controller
+class LupaPasswordController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class SiswaAlumniController extends Controller
      */
     public function index()
     {
-        return view('alumni_admin.index');
+        return view('lupapassword.index');
     }
 
     /**
@@ -25,16 +25,16 @@ class SiswaAlumniController extends Controller
      */
     public function create()
     {
-        return view('alumni_admin.tabel');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSiswaAlumniRequest  $request
+     * @param  \App\Http\Requests\StoreLupaPasswordRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSiswaAlumniRequest $request)
+    public function store(StoreLupaPasswordRequest $request)
     {
         //
     }
@@ -42,21 +42,21 @@ class SiswaAlumniController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SiswaAlumni  $siswaAlumni
+     * @param  \App\Models\LupaPassword  $lupaPassword
      * @return \Illuminate\Http\Response
      */
-    public function show(SiswaAlumni $siswaAlumni)
+    public function show(LupaPassword $lupaPassword)
     {
-        return view('alumni_admin.detail');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SiswaAlumni  $siswaAlumni
+     * @param  \App\Models\LupaPassword  $lupaPassword
      * @return \Illuminate\Http\Response
      */
-    public function edit(SiswaAlumni $siswaAlumni)
+    public function edit(LupaPassword $lupaPassword)
     {
         //
     }
@@ -64,11 +64,11 @@ class SiswaAlumniController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSiswaAlumniRequest  $request
-     * @param  \App\Models\SiswaAlumni  $siswaAlumni
+     * @param  \App\Http\Requests\UpdateLupaPasswordRequest  $request
+     * @param  \App\Models\LupaPassword  $lupaPassword
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSiswaAlumniRequest $request, SiswaAlumni $siswaAlumni)
+    public function update(UpdateLupaPasswordRequest $request, LupaPassword $lupaPassword)
     {
         //
     }
@@ -76,10 +76,10 @@ class SiswaAlumniController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SiswaAlumni  $siswaAlumni
+     * @param  \App\Models\LupaPassword  $lupaPassword
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SiswaAlumni $siswaAlumni)
+    public function destroy(LupaPassword $lupaPassword)
     {
         //
     }

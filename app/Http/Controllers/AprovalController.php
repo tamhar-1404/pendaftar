@@ -15,8 +15,8 @@ class AprovalController extends Controller
      */
     public function index()
     {
-        $id = 'aproval';
-        return view('aproval.index',compact('id'));
+
+        return view('aproval.index');
     }
 
     /**
@@ -48,7 +48,7 @@ class AprovalController extends Controller
      */
     public function show(aproval $aproval)
     {
-        //
+        return view('aproval.view');
     }
 
     /**
