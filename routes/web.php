@@ -53,12 +53,14 @@ Route::resource('/chat', App\Http\Controllers\ChatController::class);
 Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
 
 Route::resource('/login', App\Http\Controllers\LoginController::class);
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::resource('/lupapassword', App\Http\Controllers\LupaPasswordController::class);
+Route::resource('/ubahpassword', App\Http\Controllers\UbahPasswordController::class);
+
+
 Route::resource('/sp', App\Http\Controllers\SpController::class);
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::resource('/piket', App\Http\Controllers\PiketController::class);
-Route::get('/register', [LoginController::class, 'register'])->name('register');
-
-Route::resource('/sp', App\Http\Controllers\SpController::class);
 
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 
@@ -67,8 +69,6 @@ Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 
 Route::get('/detail', [GuruAdminController::class, 'detail'])->name('detail');
 
-
-Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
 
 Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
