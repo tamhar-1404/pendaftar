@@ -11,13 +11,13 @@
 </head>
 <body>
     <header class="shadow-sm w-full h-12 z-10 fixed">
-        <nav class=" w-full h-full bg-white flex  p-4">
+        <nav class=" w-full bg-white flex  justify-between p-4">
             {{-- logo --}}
-            <div class="flex items-center ">
+            <div class="flex items-start ">
                 <img src="admin/assets/images/humma.png" class="w-1/12 " alt="logo" srcset="">
             </div>
             {{-- profil --}}
-            <div class="flex items-center justify-between gap-5 ">
+            <div class="flex items-end justify-end gap-5 ">
                 <div class=" ">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0M3.124 7.5A8.969 8.969 0 015.292 3m13.416 0a8.969 8.969 0 012.168 4.5" />
@@ -34,7 +34,7 @@
             </div>
 
         </nav>
-        <nav class=" w-full h-full bg-white flex items-center gap-10  p-4">
+        <nav class=" w-full  bg-white flex items-center gap-10  p-4">
             {{-- dashboard --}}
             <button class=" active flex gap-1 items-center text-gray-900 bg-white focus:outline-none hover:bg-[#24AEE4] hover:text-white focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2 mr-2  my-2 ">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
