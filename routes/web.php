@@ -109,10 +109,16 @@ Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::clas
 
 
 Route::resource('/berita_siswa', App\Http\Controllers\BeritaSiswaController::class);
+Route::resource('/absensi_siswa',App\Http\Controllers\AbsensiSiswaController::class);
 Route::get('/sore', function () {
     return view('piket.sidebar_sore');
 });
 Route::get('/detail_daftar', function () {
     return view('aproval.view');
 });
+Route::get('/navbar', function () {
+    return view('navbar.index');
+});
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
+
+Route::resource('/piket_siswa', App\Http\Controllers\PiketSiswaController::class);
