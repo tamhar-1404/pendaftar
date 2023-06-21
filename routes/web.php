@@ -93,10 +93,16 @@ Route::get('/sidebar', function () {
 });
 Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
 Route::resource('/tolak',App\Http\Controllers\TolakController::class);
+Route::resource('/absensi_siswa',App\Http\Controllers\AbsensiSiswaController::class);
 Route::get('/sore', function () {
     return view('piket.sidebar_sore');
 });
 Route::get('/detail_daftar', function () {
     return view('aproval.view');
 });
+Route::get('/navbar', function () {
+    return view('navbar.index');
+});
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
+
+Route::resource('/piket_siswa', App\Http\Controllers\PiketSiswaController::class);
