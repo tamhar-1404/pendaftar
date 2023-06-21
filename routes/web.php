@@ -126,3 +126,4 @@ Route::resource('/profilesiswa', App\Http\Controllers\ProfilsiswaController::cla
 
 Route::resource('/piket_siswa', App\Http\Controllers\PiketSiswaController::class);
 Route::resource('/jurnalsiswa', App\Http\Controllers\JurnalsiswaController::class);
+Route::resource('/siswa_magang', App\Http\Controllers\SiswamagangController::class);

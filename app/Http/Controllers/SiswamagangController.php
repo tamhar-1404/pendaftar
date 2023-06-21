@@ -1,0 +1,86 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\siswamagang;
+use App\Http\Requests\StoresiswamagangRequest;
+use App\Http\Requests\UpdatesiswamagangRequest;
+
+class SiswamagangController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('siswamagang_siswa.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StoresiswamagangRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoresiswamagangRequest $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\siswamagang  $siswamagang
+     * @return \Illuminate\Http\Response
+     */
+    public function show(siswamagang $siswamagang)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\siswamagang  $siswamagang
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(siswamagang $siswamagang)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdatesiswamagangRequest  $request
+     * @param  \App\Models\siswamagang  $siswamagang
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdatesiswamagangRequest $request, siswamagang $siswamagang)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\siswamagang  $siswamagang
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(siswamagang $siswamagang)
+    {
+        //
+    }
+}
