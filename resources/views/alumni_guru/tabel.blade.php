@@ -1567,7 +1567,7 @@
     <div class="panel lg:col-span-3 xl:col-span-3 mt-4">
         <div class="flex items-center justify-between mb-5">
             <h5 class="text-lg font-semibold dark:text-white-light">Pelanggaran</h5>
-            <a href="http://127.0.0.1:8000/alumni_admin/detail"
+            <a href="{{ route('alumni_guru.index') }}"
                 class="btn btn-outline-danger w-73 h-27">Kembali</a>
         </div>
         <div class="">

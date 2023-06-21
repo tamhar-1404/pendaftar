@@ -47,7 +47,7 @@ class BeritaGuruController extends Controller
      */
     public function show(BeritaGuru $beritaGuru)
     {
-       //
+       return view('berita_guru.detail');
     }
 
     /**
