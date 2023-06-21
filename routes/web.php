@@ -79,15 +79,24 @@ Route::resource('/pembimbing', App\Http\Controllers\PembimbingController::class)
 
 Route::resource('/Berita', App\Http\Controllers\BeritaController::class);
 Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
-
+Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
 
 Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 
 Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::class);
+
+Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
+Route::resource('/editprofileguru', App\Http\Controllers\EditprofileGuruController::class);
 
 Route::get('/sidebar', function () {
     return view('sidebar.layout');
 });
 Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
 Route::resource('/tolak',App\Http\Controllers\TolakController::class);
+Route::get('/sore', function () {
+    return view('piket.sidebar_sore');
+});
+Route::get('/detail_daftar', function () {
+    return view('aproval.view');
+});
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);

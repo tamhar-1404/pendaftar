@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SiswaAlumni;
-use App\Http\Requests\StoreSiswaAlumniRequest;
-use App\Http\Requests\UpdateSiswaAlumniRequest;
+use App\Models\laporan_piket;
+use App\Http\Requests\Storelaporan_piketRequest;
+use App\Http\Requests\Updatelaporan_piketRequest;
 
-class SiswaAlumniController extends Controller
+class LaporanPiketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class SiswaAlumniController extends Controller
      */
     public function index()
     {
-        return view('alumni_admin.index');
+        return view('laporan_piket.index');
     }
 
     /**
@@ -31,10 +31,10 @@ class SiswaAlumniController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSiswaAlumniRequest  $request
+     * @param  \App\Http\Requests\Storelaporan_piketRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSiswaAlumniRequest $request)
+    public function store(Storelaporan_piketRequest $request)
     {
         //
     }
@@ -42,21 +42,21 @@ class SiswaAlumniController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SiswaAlumni  $siswaAlumni
+     * @param  \App\Models\laporan_piket  $laporan_piket
      * @return \Illuminate\Http\Response
      */
-    public function show(SiswaAlumni $siswaAlumni)
+    public function show(laporan_piket $laporan_piket)
     {
-        return view('alumni_admin.detail');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SiswaAlumni  $siswaAlumni
+     * @param  \App\Models\laporan_piket  $laporan_piket
      * @return \Illuminate\Http\Response
      */
-    public function edit(SiswaAlumni $siswaAlumni)
+    public function edit(laporan_piket $laporan_piket)
     {
         //
     }
@@ -64,11 +64,11 @@ class SiswaAlumniController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSiswaAlumniRequest  $request
-     * @param  \App\Models\SiswaAlumni  $siswaAlumni
+     * @param  \App\Http\Requests\Updatelaporan_piketRequest  $request
+     * @param  \App\Models\laporan_piket  $laporan_piket
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSiswaAlumniRequest $request, SiswaAlumni $siswaAlumni)
+    public function update(Updatelaporan_piketRequest $request, laporan_piket $laporan_piket)
     {
         //
     }
@@ -76,10 +76,10 @@ class SiswaAlumniController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SiswaAlumni  $siswaAlumni
+     * @param  \App\Models\laporan_piket  $laporan_piket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SiswaAlumni $siswaAlumni)
+    public function destroy(laporan_piket $laporan_piket)
     {
         //
     }

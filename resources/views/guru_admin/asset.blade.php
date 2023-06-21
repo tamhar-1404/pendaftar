@@ -3478,8 +3478,11 @@
             </div>
           </div>
         </div>
+        <button class="outline outline-offset-2 outline-1 bg-[#24AEE4] hover:bg-blue-700 text-white  text-sm py-2 px-4 rounded">
+            Tambah data
+          </button>
         <div
-          class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4"
+          class="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4"
         >
           <div class="card">
             <div class="p-2 text-right">
@@ -3571,7 +3574,7 @@
 
               <div class="mt-6 grid w-full grid-cols-2 gap-2">
                 <button
-                  class="btn space-x-2 bg-primary px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -3699,7 +3702,7 @@
 
               <div class="mt-6 grid w-full grid-cols-2 gap-2">
                 <button
-                  class="btn space-x-2 bg-primary px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -3827,7 +3830,7 @@
 
               <div class="mt-6 grid w-full grid-cols-2 gap-2">
                 <button
-                  class="btn space-x-2 bg-primary px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -3955,7 +3958,7 @@
 
               <div class="mt-6 grid w-full grid-cols-2 gap-2">
                 <button
-                  class="btn space-x-2 bg-primary px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -4083,7 +4086,7 @@
 
               <div class="mt-6 grid w-full grid-cols-2 gap-2">
                 <button
-                  class="btn space-x-2 bg-primary px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -4211,7 +4214,7 @@
 
               <div class="mt-6 grid w-full grid-cols-2 gap-2">
                 <button
-                  class="btn space-x-2 bg-primary px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -4339,7 +4342,7 @@
 
               <div class="mt-6 grid w-full grid-cols-2 gap-2">
                 <button
-                  class="btn space-x-2 bg-primary px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -4467,7 +4470,7 @@
 
               <div class="mt-6 grid w-full grid-cols-2 gap-2">
                 <button
-                  class="btn space-x-2 bg-primary px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                  class="btn space-x-2 bg-[#24AEE4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

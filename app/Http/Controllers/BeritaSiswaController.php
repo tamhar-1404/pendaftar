@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SiswaAlumni;
-use App\Http\Requests\StoreSiswaAlumniRequest;
-use App\Http\Requests\UpdateSiswaAlumniRequest;
+use App\Models\Berita_Siswa;
+use App\Http\Requests\StoreBerita_SiswaRequest;
+use App\Http\Requests\UpdateBerita_SiswaRequest;
 
-class SiswaAlumniController extends Controller
+class BeritaSiswaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class SiswaAlumniController extends Controller
      */
     public function index()
     {
-        return view('alumni_admin.index');
+        //
     }
 
     /**
@@ -31,10 +31,10 @@ class SiswaAlumniController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSiswaAlumniRequest  $request
+     * @param  \App\Http\Requests\StoreBerita_SiswaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSiswaAlumniRequest $request)
+    public function store(StoreBerita_SiswaRequest $request)
     {
         //
     }
@@ -42,21 +42,21 @@ class SiswaAlumniController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SiswaAlumni  $siswaAlumni
+     * @param  \App\Models\Berita_Siswa  $berita_Siswa
      * @return \Illuminate\Http\Response
      */
-    public function show(SiswaAlumni $siswaAlumni)
+    public function show(Berita_Siswa $berita_Siswa)
     {
-        return view('alumni_admin.detail');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SiswaAlumni  $siswaAlumni
+     * @param  \App\Models\Berita_Siswa  $berita_Siswa
      * @return \Illuminate\Http\Response
      */
-    public function edit(SiswaAlumni $siswaAlumni)
+    public function edit(Berita_Siswa $berita_Siswa)
     {
         //
     }
@@ -64,11 +64,11 @@ class SiswaAlumniController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSiswaAlumniRequest  $request
-     * @param  \App\Models\SiswaAlumni  $siswaAlumni
+     * @param  \App\Http\Requests\UpdateBerita_SiswaRequest  $request
+     * @param  \App\Models\Berita_Siswa  $berita_Siswa
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSiswaAlumniRequest $request, SiswaAlumni $siswaAlumni)
+    public function update(UpdateBerita_SiswaRequest $request, Berita_Siswa $berita_Siswa)
     {
         //
     }
@@ -76,10 +76,10 @@ class SiswaAlumniController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SiswaAlumni  $siswaAlumni
+     * @param  \App\Models\Berita_Siswa  $berita_Siswa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SiswaAlumni $siswaAlumni)
+    public function destroy(Berita_Siswa $berita_Siswa)
     {
         //
     }
