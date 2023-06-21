@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
+    <script defer src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
+
 </head>
 <body>
 
@@ -32,17 +34,28 @@
 
                     <div class="main">
                     <div class="flex justify-end mb-5 gap-3">
-                        <button class=" w-1/12 h-6 outline outline-1 outline-red-400 text-red-400 rounded-md flex gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <button class=" w-1/12 h-6 outline outline-1 outline-red-400 text-red-400 rounded-md flex gap-2" onclick="tolak()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-1 w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                             Tolak</button>
-                        <button class=" w-1/12 h-6 outline outline-1 outline-green-400 text-green-400 rounded-md flex gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <button class=" w-1/12 h-6 outline outline-1 outline-green-400 text-green-400 rounded-md flex gap-2 @click="showAlert()">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" ml-1 w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
 
                             Terima</button>
+                           <!-- script -->
+                            <script>
+                                async function showAlert() {
+                                    new window.Swal({
+                                        icon: 'success',
+                                        title: 'Good job!',
+                                        text: 'You clicked the!',
+                                        padding: '2em',
+                                    });
+                                }
+                            </script>
                     </div>
                     <div class="flex gap-5">
                         <div class="panel w-1/3 ">
@@ -197,10 +210,7 @@
             </div>
         </div>
 
-
-
-
-
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js%22%3E"></script>
 
 </body>
 </html>

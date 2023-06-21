@@ -435,7 +435,7 @@
         >
             <li class="menu nav-item relative">
                 <a href="javascript:;" class="nav-link active">
-                    <div class="flex items-center">
+                    <div class="flex items-center text-white">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 opacity="0.5"
@@ -447,7 +447,7 @@
                                 fill="currentColor"
                             />
                         </svg>
-                        <span class="px-1">Dashboard</span>
+                        <span class="px-1 text-white">Dashboard</span>
                     </div>
                 </a>
             </li>
