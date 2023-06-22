@@ -64,7 +64,7 @@
                                   </tr>
                                   <tr
                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
-                                    <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
+                                    <td class="whitespace-nowrap px-6 py-4 font-medium">2</td>
                                     <td class="whitespace-nowrap px-6 py-4">Mark</td>
                                     <td class="whitespace-nowrap px-6 py-4">RPL</td>
                                     <td class="whitespace-nowrap px-6 py-4">03-04-2023 -> 03-10-2023</td>
@@ -80,7 +80,7 @@
                                   </tr>
                                   <tr
                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
-                                    <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
+                                    <td class="whitespace-nowrap px-6 py-4 font-medium">3</td>
                                     <td class="whitespace-nowrap px-6 py-4">Mark</td>
                                     <td class="whitespace-nowrap px-6 py-4">RPL</td>
                                     <td class="whitespace-nowrap px-6 py-4">03-04-2023 -> 03-10-2023</td>

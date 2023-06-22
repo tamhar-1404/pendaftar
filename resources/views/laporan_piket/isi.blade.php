@@ -41,9 +41,11 @@
                                 </button>
                                 </a>
 
-                                <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white    ">
-                                    Sore
-                                </button>
+                                <a href="/sore">
+                                    <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
+                                        Sore
+                                    </button>
+                                    </a>
                                 <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white {{request()->routeIs('laporan_piket.index') ? 'bg-[#24AEE4] text-white' : ''}}  ">
                                     Laporan
                                 </button>

@@ -120,6 +120,9 @@ Route::get('/detail_daftar', function () {
 Route::get('/navbar', function () {
     return view('navbar.index');
 });
+Route::get('/sore_siswa', function () {
+    return view('piket_siswa.navsore');
+});
 Route::get('/detail_siswaguru', function () {
     return view('siswa_guru.detail');
 });

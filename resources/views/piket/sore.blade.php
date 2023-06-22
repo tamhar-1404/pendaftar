@@ -43,9 +43,11 @@
                             <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white {{request()->routeIs('piket.sidebar_sore') ? 'bg-[#24AEE4] text-white' : ''}}    ">
                                 Sore
                             </button>
+                            <a href="{{route('laporan_piket.index')}}">
                             <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
                                 Laporan
                             </button>
+                            </a>
                         </div>
                         <div class="flex grid-cols-5 gap-1 w-lg" id="#pagi">
                             {{-- senin --}}
@@ -61,14 +63,14 @@
                                     Senin
                                 </div>
                                 {{-- nama --}}
-                                <div class="text-sm font-medium text-center mt-5">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1 mb-4">Daffa</div>
+                                <div class="text-sm font-medium text-center mt-5">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1 mb-4">Toni</div>
                                 {{-- inspectur --}}
                                 <div class="w-full flex justify-center mb-6">
                                 <div class="w-1/2 bg-[#24AEE4] rounded-lg flex justify-center">
-                                    <div class=" bg-transparent text-white">dhsbdsb</div>
+                                    <div class=" bg-transparent text-white">Santoso</div>
                                 </div>
                                 </div>
                             </div>
@@ -85,14 +87,14 @@
                                     Selasa
                                 </div>
                                 {{-- nama --}}
-                                <div class="text-sm font-medium text-center mt-5">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1 mb-4">Daffa</div>
+                                <div class="text-sm font-medium text-center mt-5">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1 mb-4">Toni</div>
                                 {{-- inspectur --}}
                                 <div class="w-full flex justify-center mb-6">
                                 <div class="w-1/2 bg-[#24AEE4] rounded-lg flex justify-center">
-                                    <div class=" bg-transparent text-white">dhsbdsb</div>
+                                    <div class=" bg-transparent text-white">Santoso</div>
                                 </div>
                                 </div>
                             </div>
@@ -109,15 +111,15 @@
                                     Rabu
                                 </div>
                                 {{-- nama --}}
-                                <div class="text-sm font-medium text-center mt-5">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1 mb-4">Daffa</div>
+                                <div class="text-sm font-medium text-center mt-5">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1 mb-4">Toni</div>
 
                                 {{-- inspectur --}}
                                 <div class="w-full flex justify-center mb-6">
                                 <div class="w-1/2 bg-[#24AEE4] rounded-lg flex justify-center">
-                                    <div class=" bg-transparent text-white">dhsbdsb</div>
+                                    <div class=" bg-transparent text-white">Santoso</div>
                                 </div>
                                 </div>
                             </div>
@@ -134,15 +136,15 @@
                                     Kamis
                                 </div>
                                 {{-- nama --}}
-                                <div class="text-sm font-medium text-center mt-5">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1 mb-4">Daffa</div>
+                                <div class="text-sm font-medium text-center mt-5">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1 mb-4">Toni</div>
 
                                 {{-- inspectur --}}
                                 <div class="w-full flex justify-center mb-6">
                                 <div class="w-1/2 bg-[#24AEE4] rounded-lg flex justify-center">
-                                    <div class=" bg-transparent text-white">dhsbdsb</div>
+                                    <div class=" bg-transparent text-white">Santoso</div>
                                 </div>
                                 </div>
                             </div>
@@ -159,19 +161,40 @@
                                     Jumat
                                 </div>
                                 {{-- nama --}}
-                                <div class="text-sm font-medium text-center mt-5">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1">Daffa</div>
-                                <div class="text-sm font-medium text-center mt-1 mb-4">Daffa</div>
+                                <div class="text-sm font-medium text-center mt-5">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1">Toni</div>
+                                <div class="text-sm font-medium text-center mt-1 mb-4">Toni</div>
 
                                 {{-- inspectur --}}
                                 <div class=" w-full flex justify-center mb-6">
                                 <div class="w-1/2 bg-[#24AEE4] rounded-lg flex justify-center">
-                                    <div class=" bg-transparent text-white">dhsbdsb</div>
+                                    <div class=" bg-transparent text-white">Santoso</div>
                                 </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="flex grid-cols-5 gap-1 w-lg mt-5" id="#pagi">
+                            {{-- catatan --}}
+                            <div class=" w-full h-30 bg-[#EAF1FF]" >
+                               {{-- button edit --}}
+                               <div class="flex justify-end">
+                                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                   <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                   </svg>
+                               </div>
+                               {{-- hari --}}
+                               <div class="text-left font-bold mt-0 ml-5">
+                                   catatan
+                               </div>
+                               {{-- nama --}}
+                               <div class="text-sm font-medium text-left ml-5 mt-5 mb-3">
+                                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere et odio voluptatum, expedita ad non vitae accusantium deserunt voluptates. Mollitia quos temporibus cum reiciendis dolores ad nulla asperiores quidem dolorum.
+                               </div>
+
+                           </div>
+                           </div>
+                       </div>
                     </div>
                     </div>
 
