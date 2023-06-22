@@ -47,7 +47,7 @@ class ChatSiswaController extends Controller
      */
     public function show(Chat_Siswa $chat_Siswa)
     {
-        //
+        return view('chat_siswa.chatadmin');
     }
 
     /**
