@@ -6,6 +6,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BeritaGuruController;
 use App\Http\Controllers\AlumniGuruController;
 use App\Http\Controllers\BeritaSiswaController;
+use App\Http\Controllers\TataTertibController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,8 @@ Route::get('/tabel', [AlumniGuruController::class, 'create'])->name('tabel');
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
 
 Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
+Route::get('/edittatib', [TataTertibController::class, 'edit'])->name('edit');
+Route::get('/detailtatib', [TataTertibController::class, 'show'])->name('detail');
 
 Route::resource('/tatib_siswa', App\Http\Controllers\TatibSiswaController::class);
 

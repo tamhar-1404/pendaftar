@@ -25,7 +25,7 @@ class TataTertibController extends Controller
      */
     public function create()
     {
-        //
+        return view('tatatertib.laycreate');
     }
 
     /**
@@ -47,7 +47,7 @@ class TataTertibController extends Controller
      */
     public function show(TataTertib $tataTertib)
     {
-        //
+        return view('tatatertib.laydetail');
     }
 
     /**
@@ -58,7 +58,7 @@ class TataTertibController extends Controller
      */
     public function edit(TataTertib $tataTertib)
     {
-        //
+        return view('tatatertib.layedit');
     }
 
     /**
