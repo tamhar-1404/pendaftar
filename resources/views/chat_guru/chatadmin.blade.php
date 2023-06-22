@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<!-- Mirrored from html.vristo.sbthemes.com/apps-chat.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:01 GMT -->
+{{--  <!-- Mirrored from html.vristo.sbthemes.com/apps-chat.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:01 GMT -->  --}}
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
