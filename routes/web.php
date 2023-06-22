@@ -37,7 +37,7 @@ Route::get('/laporansiswa', function () {
     return view('laporansiswa.index');
 });
 Route::get('/jurnal_admin', function () {
-    return view('jurnal_admin.grafik');
+    return view('jurnal_admin.index');
 });
 
 Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
@@ -121,6 +121,17 @@ Route::get('/detail_daftar', function () {
 Route::get('/navbar', function () {
     return view('navbar.index');
 });
+Route::get('/detail_siswaguru', function () {
+    return view('siswa_guru.detail');
+});
+Route::get('/detail_pelangaran_siwaguru', function () {
+    return view('siswa_guru.detail_pelanggaran');
+});
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
+Route::resource('/profilesiswa', App\Http\Controllers\ProfilsiswaController::class);
 
 Route::resource('/piket_siswa', App\Http\Controllers\PiketSiswaController::class);
+Route::resource('/siswa_guru', App\Http\Controllers\SiswaGuruController::class);
+Route::resource('/jurnal_guru', App\Http\Controllers\JurnalGuruController::class);
+Route::resource('/jurnalsiswa', App\Http\Controllers\JurnalsiswaController::class);
+Route::resource('/siswa_magang', App\Http\Controllers\SiswamagangController::class);
