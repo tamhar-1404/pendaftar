@@ -127,6 +127,9 @@ Route::get('/detail_siswaguru', function () {
 Route::get('/detail_pelangaran_siwaguru', function () {
     return view('siswa_guru.detail_pelanggaran');
 });
+Route::get('/grafik_jurnal_guru', function () {
+    return view('jurnalguru.grafik');
+});
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
 Route::resource('/profilesiswa', App\Http\Controllers\ProfilsiswaController::class);
 
