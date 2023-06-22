@@ -88,7 +88,7 @@ Route::resource('/tatib_siswa', App\Http\Controllers\TatibSiswaController::class
 
 Route::resource('/pembimbing', App\Http\Controllers\PembimbingController::class);
 
-Route::resource('/Berita', App\Http\Controllers\BeritaController::class);
+Route::resource('/berita', App\Http\Controllers\BeritaController::class);
 
 Route::get('/edit', [BeritaController::class, 'edit'])->name('edit');
 Route::get('/detail_berita_guru', [BeritaGuruController::class, 'show'])->name('detail_berita_guru');
