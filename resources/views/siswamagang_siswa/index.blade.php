@@ -303,9 +303,7 @@
             </div>
           </div>
         </div>
-        <div
-          class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4 flex justify-center"
-        >
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
           <div class="card pb-2">
             <div class="p-2 text-right">
               <div
@@ -386,8 +384,29 @@
               >
                 Konnor Guzman
               </h3>
-              <p class="text-xs+ mt-2">Rekaya perangkat lunak</p>
+              <div class="Link w-10 h-6 px-2 pt-[5.67px] pb-[6.33px] bg-emerald-500 bg-opacity-10 rounded-full justify-start items-start inline-flex">
+                <div class="Rpl text-emerald-500 text-[12px] font-medium leading-3 tracking-wide">RPL</div>
+              </div>
               <p class="text-xs+ mt-2">Smkn 1 kraksaan</p>
+              <div class="DivMt6 h-[36px] pl-[6.50px] pr-[4.16px] justify-center items-start gap-[11.42px] inline-flex mt-8">
+                <div class="Button w-[98.92px] self-stretch pl-[19.44px] pr-[22.48px] py-2 bg-rose-500 rounded-lg justify-center items-center gap-[5px] inline-flex">
+                  <div class="Svg w-20 h-20 p-[0px] relative flex-col justify-start items-start flex"></div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                  </svg>    
+                  <div class="Frame w-4 h-4 relative flex-col justify-start items-start flex"></div>              
+                  <div class="Laporkan text-center text-white text-[14px] font-medium leading-tight tracking-wide">Laporkan</div>
+                </div>
+                <div class="Button w-[98.92px] self-stretch pl-[19.44px] pr-[22.48px] py-2 bg-slate-200 rounded-lg justify-center items-center gap-[5px] inline-flex">
+                  <div class="Svg w-20 h-20 p-[0px] justify-center items-center inline-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                    </svg>
+                    <div class="Frame w-4 h-4 relative flex-col justify-start items-start flex"></div>
+                  </div>
+                  <div class="Chat text-center text-slate-800 text-[14px] font-medium leading-tight tracking-wide">Chat</div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="card">
