@@ -52,7 +52,7 @@
                     <img src="admin/assets/images/profile-1.jpeg" class=" rounded-full" alt="" srcset="">
                 </div>
             </div>
-
+            
         </nav>
         <nav class=" w-full  bg-white flex items-center gap-10  p-4">
             {{-- dashboard --}}
@@ -303,9 +303,7 @@
             </div>
           </div>
         </div>
-        <div
-          class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4 flex justify-center"
-        >
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
           <div class="card pb-2">
             <div class="p-2 text-right">
               <div
@@ -386,368 +384,29 @@
               >
                 Konnor Guzman
               </h3>
-              <p class="text-xs+ mt-2">Rekaya perangkat lunak</p>
+              <div class="Link w-10 h-6 px-2 pt-[5.67px] pb-[6.33px] bg-emerald-500 bg-opacity-10 rounded-full justify-start items-start inline-flex">
+                <div class="Rpl text-emerald-500 text-[12px] font-medium leading-3 tracking-wide">RPL</div>
+              </div>
               <p class="text-xs+ mt-2">Smkn 1 kraksaan</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="p-2 text-right">
-              <div
-                x-data="usePopper({placement:'bottom-end',offset:4})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="inline-flex"
-              >
-                <button
-                  x-ref="popperRef"
-                  @click="isShowPopper = !isShowPopper"
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                    />
-                  </svg>
-                </button>
-
-                <div
-                  x-ref="popperRoot"
-                  class="popper-root"
-                  :class="isShowPopper && 'show'"
-                >
-                  <div
-                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Another Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Something else</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Separated Link</a
-                        >
-                      </li>
-                    </ul>
+              <div class="DivMt6 h-[36px] pl-[6.50px] pr-[4.16px] justify-center items-start gap-[11.42px] inline-flex mt-8">
+                <button class="Button w-[110px] self-stretch pl-[12.57px] pr-2 py-2 bg-rose-500 rounded-lg justify-end items-center gap-[5px] inline-flex">
+                  <div class="IconsaxBrokenWarning2 w- h- relative flex-col justify-start items-start flex text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>                    
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 ">
-              <div class="avatar h-20 w-20">
-                <img
-                  class="rounded-full"
-                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
-                  alt="avatar"
-                />
-              </div>
-              <h3
-                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
-              >
-                Travis Fuller
-              </h3>
-              <p class="text-xs+ mt-2">Rekaya perangkat lunak</p>
-              <p class="text-xs+ mt-2">Smkn 1 kraksaan</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="p-2 text-right">
-              <div
-                x-data="usePopper({placement:'bottom-end',offset:4})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="inline-flex"
-              >
-                <button
-                  x-ref="popperRef"
-                  @click="isShowPopper = !isShowPopper"
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                    />
-                  </svg>
+                  <div class="Laporkan text-center text-white text-[14px] font-medium leading-tight tracking-wide">Laporkan</div>
                 </button>
-
-                <div
-                  x-ref="popperRoot"
-                  class="popper-root"
-                  :class="isShowPopper && 'show'"
-                >
-                  <div
-                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Another Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Something else</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Separated Link</a
-                        >
-                      </li>
-                    </ul>
+                <button class="Button w-[98.92px] self-stretch pl-[19.44px] pr-[22.48px] py-2 bg-slate-200 rounded-lg justify-center items-center gap-[5px] inline-flex">
+                  <div class="Svg w-20 h-20 p-[0px] justify-center items-center inline-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                    <div class="Frame w-4 h-4 relative flex-col justify-start items-start flex"></div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 ">
-              <div class="avatar h-20 w-20">
-                <img
-                  class="rounded-full"
-                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
-                  alt="avatar"
-                />
-              </div>
-              <h3
-                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
-              >
-                Travis Fuller
-              </h3>
-              <p class="text-xs+ mt-2">Rekaya perangkat lunak</p>
-              <p class="text-xs+ mt-2">Smkn 1 kraksaan</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="p-2 text-right">
-              <div
-                x-data="usePopper({placement:'bottom-end',offset:4})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="inline-flex"
-              >
-                <button
-                  x-ref="popperRef"
-                  @click="isShowPopper = !isShowPopper"
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                    />
-                  </svg>
+                  <div class="Chat text-center text-slate-800 text-[14px] font-medium leading-tight tracking-wide">Chat</div>
                 </button>
-
-                <div
-                  x-ref="popperRoot"
-                  class="popper-root"
-                  :class="isShowPopper && 'show'"
-                >
-                  <div
-                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Another Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Something else</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Separated Link</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
               </div>
-            </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 ">
-              <div class="avatar h-20 w-20">
-                <img
-                  class="rounded-full"
-                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
-                  alt="avatar"
-                />
-              </div>
-              <h3
-                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
-              >
-                Travis Fuller
-              </h3>
-              <p class="text-xs+ mt-2">Rekaya perangkat lunak</p>
-              <p class="text-xs+ mt-2">Smkn 1 kraksaan</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="p-2 text-right">
-              <div
-                x-data="usePopper({placement:'bottom-end',offset:4})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="inline-flex"
-              >
-                <button
-                  x-ref="popperRef"
-                  @click="isShowPopper = !isShowPopper"
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                    />
-                  </svg>
-                </button>
-
-                <div
-                  x-ref="popperRoot"
-                  class="popper-root"
-                  :class="isShowPopper && 'show'"
-                >
-                  <div
-                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Another Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Something else</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Separated Link</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 ">
-              <div class="avatar h-20 w-20">
-                <img
-                  class="rounded-full"
-                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
-                  alt="avatar"
-                />
-              </div>
-              <h3
-                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
-              >
-                Travis Fuller
-              </h3>
-              <p class="text-xs+ mt-2">Rekaya perangkat lunak</p>
-              <p class="text-xs+ mt-2">Smkn 1 kraksaan</p>
             </div>
           </div>
           <div class="card">
@@ -827,17 +486,38 @@
               <div class="avatar h-20 w-20">
                 <img
                   class="rounded-full"
-                  src="admin/images/avatar/avatar-4.jpg"
+                  src="{{ asset('admin/images/avatar/avatar-20.jpg') }}"
                   alt="avatar"
                 />
               </div>
               <h3
                 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
               >
-                Henry Curtis
+                Konnor Guzman
               </h3>
-              <p class="text-xs+ mt-2">Rekaya perangkat lunak</p>
+              <div class="Link w-10 h-6 px-2 pt-[5.67px] pb-[6.33px] bg-emerald-500 bg-opacity-10 rounded-full justify-start items-start inline-flex">
+                <div class="Rpl text-emerald-500 text-[12px] font-medium leading-3 tracking-wide">RPL</div>
+              </div>
               <p class="text-xs+ mt-2">Smkn 1 kraksaan</p>
+              <div class="DivMt6 h-[36px] pl-[6.50px] pr-[4.16px] justify-center items-start gap-[11.42px] inline-flex mt-8">
+                <button class="Button w-[110px] self-stretch pl-[12.57px] pr-2 py-2 bg-rose-500 rounded-lg justify-end items-center gap-[5px] inline-flex">
+                  <div class="IconsaxBrokenWarning2 w- h- relative flex-col justify-start items-start flex text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>                    
+                  </div>
+                  <div class="Laporkan text-center text-white text-[14px] font-medium leading-tight tracking-wide">Laporkan</div>
+                </button>
+                <button class="Button w-[98.92px] self-stretch pl-[19.44px] pr-[22.48px] py-2 bg-slate-200 rounded-lg justify-center items-center gap-[5px] inline-flex">
+                  <div class="Svg w-20 h-20 p-[0px] justify-center items-center inline-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                    <div class="Frame w-4 h-4 relative flex-col justify-start items-start flex"></div>
+                  </div>
+                  <div class="Chat text-center text-slate-800 text-[14px] font-medium leading-tight tracking-wide">Chat</div>
+                </button>
+              </div>
             </div>
           </div>
           <div class="card">
@@ -913,21 +593,42 @@
                 </div>
               </div>
             </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 ">
+            <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
               <div class="avatar h-20 w-20">
                 <img
                   class="rounded-full"
-                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
+                  src="{{ asset('admin/images/avatar/avatar-20.jpg') }}"
                   alt="avatar"
                 />
               </div>
               <h3
                 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
               >
-                Travis Fuller
+                Konnor Guzman
               </h3>
-              <p class="text-xs+ mt-2">Rekaya perangkat lunak</p>
+              <div class="Link w-10 h-6 px-2 pt-[5.67px] pb-[6.33px] bg-emerald-500 bg-opacity-10 rounded-full justify-start items-start inline-flex">
+                <div class="Rpl text-emerald-500 text-[12px] font-medium leading-3 tracking-wide">RPL</div>
+              </div>
               <p class="text-xs+ mt-2">Smkn 1 kraksaan</p>
+              <div class="DivMt6 h-[36px] pl-[6.50px] pr-[4.16px] justify-center items-start gap-[11.42px] inline-flex mt-8">
+                <button class="Button w-[110px] self-stretch pl-[12.57px] pr-2 py-2 bg-rose-500 rounded-lg justify-end items-center gap-[5px] inline-flex">
+                  <div class="IconsaxBrokenWarning2 w- h- relative flex-col justify-start items-start flex text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>                    
+                  </div>
+                  <div class="Laporkan text-center text-white text-[14px] font-medium leading-tight tracking-wide">Laporkan</div>
+                </button>
+                <button class="Button w-[98.92px] self-stretch pl-[19.44px] pr-[22.48px] py-2 bg-slate-200 rounded-lg justify-center items-center gap-[5px] inline-flex">
+                  <div class="Svg w-20 h-20 p-[0px] justify-center items-center inline-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                    <div class="Frame w-4 h-4 relative flex-col justify-start items-start flex"></div>
+                  </div>
+                  <div class="Chat text-center text-slate-800 text-[14px] font-medium leading-tight tracking-wide">Chat</div>
+                </button>
+              </div>
             </div>
           </div>
           <div class="card">
@@ -1003,25 +704,565 @@
                 </div>
               </div>
             </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 ">
+            <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
               <div class="avatar h-20 w-20">
                 <img
                   class="rounded-full"
-                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
+                  src="{{ asset('admin/images/avatar/avatar-20.jpg') }}"
                   alt="avatar"
                 />
               </div>
               <h3
                 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
               >
-                Travis Fuller
+                Konnor Guzman
               </h3>
-              <p class="text-xs+ mt-2">Rekaya perangkat lunak</p>
+              <div class="Link w-10 h-6 px-2 pt-[5.67px] pb-[6.33px] bg-emerald-500 bg-opacity-10 rounded-full justify-start items-start inline-flex">
+                <div class="Rpl text-emerald-500 text-[12px] font-medium leading-3 tracking-wide">RPL</div>
+              </div>
               <p class="text-xs+ mt-2">Smkn 1 kraksaan</p>
+              <div class="DivMt6 h-[36px] pl-[6.50px] pr-[4.16px] justify-center items-start gap-[11.42px] inline-flex mt-8">
+                <button class="Button w-[110px] self-stretch pl-[12.57px] pr-2 py-2 bg-rose-500 rounded-lg justify-end items-center gap-[5px] inline-flex">
+                  <div class="IconsaxBrokenWarning2 w- h- relative flex-col justify-start items-start flex text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>                    
+                  </div>
+                  <div class="Laporkan text-center text-white text-[14px] font-medium leading-tight tracking-wide">Laporkan</div>
+                </button>
+                <button class="Button w-[98.92px] self-stretch pl-[19.44px] pr-[22.48px] py-2 bg-slate-200 rounded-lg justify-center items-center gap-[5px] inline-flex">
+                  <div class="Svg w-20 h-20 p-[0px] justify-center items-center inline-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                    <div class="Frame w-4 h-4 relative flex-col justify-start items-start flex"></div>
+                  </div>
+                  <div class="Chat text-center text-slate-800 text-[14px] font-medium leading-tight tracking-wide">Chat</div>
+                </button>
+              </div>
             </div>
           </div>
+          <div class="card">
+            <div class="p-2 text-right">
+              <div
+                x-data="usePopper({placement:'bottom-end',offset:4})"
+                @click.outside="isShowPopper && (isShowPopper = false)"
+                class="inline-flex"
+              >
+                <button
+                  x-ref="popperRef"
+                  @click="isShowPopper = !isShowPopper"
+                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+                    />
+                  </svg>
+                </button>
+
+                <div
+                  x-ref="popperRoot"
+                  class="popper-root"
+                  :class="isShowPopper && 'show'"
+                >
+                  <div
+                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
+                  >
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Action</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Another Action</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Something else</a
+                        >
+                      </li>
+                    </ul>
+                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Separated Link</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
+              <div class="avatar h-20 w-20">
+                <img
+                  class="rounded-full"
+                  src="{{ asset('admin/images/avatar/avatar-20.jpg') }}"
+                  alt="avatar"
+                />
+              </div>
+              <h3
+                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
+              >
+                Konnor Guzman
+              </h3>
+              <div class="Link w-10 h-6 px-2 pt-[5.67px] pb-[6.33px] bg-emerald-500 bg-opacity-10 rounded-full justify-start items-start inline-flex">
+                <div class="Rpl text-emerald-500 text-[12px] font-medium leading-3 tracking-wide">RPL</div>
+              </div>
+              <p class="text-xs+ mt-2">Smkn 1 kraksaan</p>
+              <div class="DivMt6 h-[36px] pl-[6.50px] pr-[4.16px] justify-center items-start gap-[11.42px] inline-flex mt-8">
+                <button class="Button w-[110px] self-stretch pl-[12.57px] pr-2 py-2 bg-rose-500 rounded-lg justify-end items-center gap-[5px] inline-flex">
+                  <div class="IconsaxBrokenWarning2 w- h- relative flex-col justify-start items-start flex text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>                    
+                  </div>
+                  <div class="Laporkan text-center text-white text-[14px] font-medium leading-tight tracking-wide">Laporkan</div>
+                </button>
+                <button class="Button w-[98.92px] self-stretch pl-[19.44px] pr-[22.48px] py-2 bg-slate-200 rounded-lg justify-center items-center gap-[5px] inline-flex">
+                  <div class="Svg w-20 h-20 p-[0px] justify-center items-center inline-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                    <div class="Frame w-4 h-4 relative flex-col justify-start items-start flex"></div>
+                  </div>
+                  <div class="Chat text-center text-slate-800 text-[14px] font-medium leading-tight tracking-wide">Chat</div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="p-2 text-right">
+              <div
+                x-data="usePopper({placement:'bottom-end',offset:4})"
+                @click.outside="isShowPopper && (isShowPopper = false)"
+                class="inline-flex"
+              >
+                <button
+                  x-ref="popperRef"
+                  @click="isShowPopper = !isShowPopper"
+                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+                    />
+                  </svg>
+                </button>
+
+                <div
+                  x-ref="popperRoot"
+                  class="popper-root"
+                  :class="isShowPopper && 'show'"
+                >
+                  <div
+                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
+                  >
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Action</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Another Action</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Something else</a
+                        >
+                      </li>
+                    </ul>
+                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Separated Link</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
+              <div class="avatar h-20 w-20">
+                <img
+                  class="rounded-full"
+                  src="{{ asset('admin/images/avatar/avatar-20.jpg') }}"
+                  alt="avatar"
+                />
+              </div>
+              <h3
+                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
+              >
+                Konnor Guzman
+              </h3>
+              <div class="Link w-10 h-6 px-2 pt-[5.67px] pb-[6.33px] bg-emerald-500 bg-opacity-10 rounded-full justify-start items-start inline-flex">
+                <div class="Rpl text-emerald-500 text-[12px] font-medium leading-3 tracking-wide">RPL</div>
+              </div>
+              <p class="text-xs+ mt-2">Smkn 1 kraksaan</p>
+              <div class="DivMt6 h-[36px] pl-[6.50px] pr-[4.16px] justify-center items-start gap-[11.42px] inline-flex mt-8">
+                <button class="Button w-[110px] self-stretch pl-[12.57px] pr-2 py-2 bg-rose-500 rounded-lg justify-end items-center gap-[5px] inline-flex">
+                  <div class="IconsaxBrokenWarning2 w- h- relative flex-col justify-start items-start flex text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>                    
+                  </div>
+                  <div class="Laporkan text-center text-white text-[14px] font-medium leading-tight tracking-wide">Laporkan</div>
+                </button>
+                <button class="Button w-[98.92px] self-stretch pl-[19.44px] pr-[22.48px] py-2 bg-slate-200 rounded-lg justify-center items-center gap-[5px] inline-flex">
+                  <div class="Svg w-20 h-20 p-[0px] justify-center items-center inline-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                    <div class="Frame w-4 h-4 relative flex-col justify-start items-start flex"></div>
+                  </div>
+                  <div class="Chat text-center text-slate-800 text-[14px] font-medium leading-tight tracking-wide">Chat</div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="p-2 text-right">
+              <div
+                x-data="usePopper({placement:'bottom-end',offset:4})"
+                @click.outside="isShowPopper && (isShowPopper = false)"
+                class="inline-flex"
+              >
+                <button
+                  x-ref="popperRef"
+                  @click="isShowPopper = !isShowPopper"
+                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+                    />
+                  </svg>
+                </button>
+
+                <div
+                  x-ref="popperRoot"
+                  class="popper-root"
+                  :class="isShowPopper && 'show'"
+                >
+                  <div
+                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
+                  >
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Action</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Another Action</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Something else</a
+                        >
+                      </li>
+                    </ul>
+                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Separated Link</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
+              <div class="avatar h-20 w-20">
+                <img
+                  class="rounded-full"
+                  src="{{ asset('admin/images/avatar/avatar-20.jpg') }}"
+                  alt="avatar"
+                />
+              </div>
+              <h3
+                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
+              >
+                Konnor Guzman
+              </h3>
+              <div class="Link w-10 h-6 px-2 pt-[5.67px] pb-[6.33px] bg-emerald-500 bg-opacity-10 rounded-full justify-start items-start inline-flex">
+                <div class="Rpl text-emerald-500 text-[12px] font-medium leading-3 tracking-wide">RPL</div>
+              </div>
+              <p class="text-xs+ mt-2">Smkn 1 kraksaan</p>
+              <div class="DivMt6 h-[36px] pl-[6.50px] pr-[4.16px] justify-center items-start gap-[11.42px] inline-flex mt-8">
+                <button class="Button w-[110px] self-stretch pl-[12.57px] pr-2 py-2 bg-rose-500 rounded-lg justify-end items-center gap-[5px] inline-flex">
+                  <div class="IconsaxBrokenWarning2 w- h- relative flex-col justify-start items-start flex text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>                    
+                  </div>
+                  <div class="Laporkan text-center text-white text-[14px] font-medium leading-tight tracking-wide">Laporkan</div>
+                </button>
+                <button class="Button w-[98.92px] self-stretch pl-[19.44px] pr-[22.48px] py-2 bg-slate-200 rounded-lg justify-center items-center gap-[5px] inline-flex">
+                  <div class="Svg w-20 h-20 p-[0px] justify-center items-center inline-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                    <div class="Frame w-4 h-4 relative flex-col justify-start items-start flex"></div>
+                  </div>
+                  <div class="Chat text-center text-slate-800 text-[14px] font-medium leading-tight tracking-wide">Chat</div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="p-2 text-right">
+              <div
+                x-data="usePopper({placement:'bottom-end',offset:4})"
+                @click.outside="isShowPopper && (isShowPopper = false)"
+                class="inline-flex"
+              >
+                <button
+                  x-ref="popperRef"
+                  @click="isShowPopper = !isShowPopper"
+                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+                    />
+                  </svg>
+                </button>
+
+                <div
+                  x-ref="popperRoot"
+                  class="popper-root"
+                  :class="isShowPopper && 'show'"
+                >
+                  <div
+                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
+                  >
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Action</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Another Action</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Something else</a
+                        >
+                      </li>
+                    </ul>
+                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                          >Separated Link</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
+              <div class="avatar h-20 w-20">
+                <img
+                  class="rounded-full"
+                  src="{{ asset('admin/images/avatar/avatar-20.jpg') }}"
+                  alt="avatar"
+                />
+              </div>
+              <h3
+                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
+              >
+                Konnor Guzman
+              </h3>
+              <div class="Link w-10 h-6 px-2 pt-[5.67px] pb-[6.33px] bg-emerald-500 bg-opacity-10 rounded-full justify-start items-start inline-flex">
+                <div class="Rpl text-emerald-500 text-[12px] font-medium leading-3 tracking-wide">RPL</div>
+              </div>
+              <p class="text-xs+ mt-2">Smkn 1 kraksaan</p>
+              <div class="DivMt6 h-[36px] pl-[6.50px] pr-[4.16px] justify-center items-start gap-[11.42px] inline-flex mt-8">
+                <button class="Button w-[110px] self-stretch pl-[12.57px] pr-2 py-2 bg-rose-500 rounded-lg justify-end items-center gap-[5px] inline-flex">
+                  <div class="IconsaxBrokenWarning2 w- h- relative flex-col justify-start items-start flex text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>                    
+                  </div>
+                  <div class="Laporkan text-center text-white text-[14px] font-medium leading-tight tracking-wide">Laporkan</div>
+                </button>
+                <button class="Button w-[98.92px] self-stretch pl-[19.44px] pr-[22.48px] py-2 bg-slate-200 rounded-lg justify-center items-center gap-[5px] inline-flex">
+                  <div class="Svg w-20 h-20 p-[0px] justify-center items-center inline-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                    <div class="Frame w-4 h-4 relative flex-col justify-start items-start flex"></div>
+                  </div>
+                  <div class="Chat text-center text-slate-800 text-[14px] font-medium leading-tight tracking-wide">Chat</div>
+                </button>
+              </div>
+            </div> 
+          </div>
+        </div>
+           
+
 
       </main>
+      <div class="flex justify-center ">
+        <nav aria-label="Page navigation example">
+          <ul class="inline-flex items-center -space-x-px  ">
+            <li>
+              <a href="#" class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                <span class="sr-only">Previous</span>
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+            </li>
+            <li>
+              <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+            </li>
+            <li>
+              <a href="#" aria-current="page" class="z-10 px-3 py-2 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+            </li>
+            <li>
+              <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+            </li>
+            <li>
+              <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+            </li>
+            <li>
+              <a href="#" class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                <span class="sr-only">Next</span>
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+              </a>
+            </li>
+          </ul>
+        </nav>  
+      </div> 
+
+    
+<!-- Modal toggle -->
+<button data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+  Toggle modal
+</button>
+
+<!-- Main modal -->
+<div id="defaultModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Terms of Service
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="defaultModal">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6">
+                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                    With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
+                </p>
+                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                    The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
+                </p>
+            </div>
+            <!-- Modal footer -->
+            <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                <button data-modal-hide="defaultModal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
+                <button data-modal-hide="defaultModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>

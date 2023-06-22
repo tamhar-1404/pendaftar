@@ -23,7 +23,6 @@
         <script defer src="assets/js/sweetalert.min.js"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css"  rel="stylesheet" />
 
-
     </head>
 
     <body
@@ -1580,11 +1579,15 @@
 
                 <div class="animate__animated p-6" :class="[$store.app.animation]">
                     <!-- start main content section -->
-                    <div x-data="basic" class="">
+
+                    </div>
+                    <div x-data="" class=" p-6">
                         {{-- judul --}}
                         <div class="mb-5 font-semibold">
                             <span>Jurnal / <span class="text-[#00B7FF]"></span></span>
                         </div>
+
+
                         <div class="panel">
                             <div class="flex justify-between">
                                  {{-- serch dan filter --}}
@@ -1714,6 +1717,14 @@
                                         </svg>
                                         PRINT
                                     </button>
+                                </div>
+                            </div>
+                            {{-- grafik --}}
+                            <div id="grafik_admin" class=" w-full h-35  bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
+                                <div class="w-full px-0 mt-6">
+                                    <div class="w-full bg-white p-5  h-35 pt-5 text-same font-semibold dark:bg-transparent">
+                                        Grafik Pendaftaran
+                                    </div>
                                 </div>
                             </div>
 
@@ -1880,8 +1891,9 @@
                 </div>
             </div>
         </div>
-          {{-- modal --}}
-          <div id="staticModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+
+        {{-- modal --}}
+        <div id="staticModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-2xl max-h-full">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -1951,23 +1963,7 @@
         <script defer src="assets/js/alpine.min.js"></script>
         <script src="assets/js/custom.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-        <!-- Main modal -->
-        <div id="exampleModalCenteredScrollable" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative w-full max-w-md max-h-full">
-                <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
-                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                    <div class="px-6 py-6 lg:px-8">
-                        <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Detail Jurnal </h3>
 
-
-                    </div>
-                </div>
-            </div>
-        </div>
         <script>
             document.addEventListener('alpine:init', () => {
                 // main section
@@ -2179,6 +2175,78 @@
 
             });
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script>
+
+        var options = {
+            series: [{
+            name: 'Belum di isi',
+            data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 70, 67, 50]
+        }, {
+            name: 'Sudah di isi',
+            data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 110, 104, 120]
+        }],
+            chart: {
+            type: 'bar',
+            height: 350,
+            width:1300
+        },
+        plotOptions: {
+            bar: {
+            horizontal: false,
+            columnWidth: '45%',
+            endingShape: 'rounded',
+            borderRadius: 7,
+            },
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        animations: {
+            enabled: true,
+            easing: 'easeinout',
+            speed: 1200,
+            animateGradually: {
+                enabled: true,
+                delay: 200
+            },
+            dynamicAnimation: {
+                enabled: true,
+                speed: 450
+            }
+        },
+        stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
+        },
+        xaxis: {
+            categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+
+        },
+        yaxis: {
+            title: {
+            text: ''
+            }
+        },
+        fill: {
+            opacity: 2,
+            colors: ['#6769EB', '#47EBB3', '#FFA726']
+        },
+        tooltip: {
+            y: {
+            // formatter: function (val) {
+            //   return "$ " + val + " thousands"
+            // }
+            }
+        },
+
+        };
+
+        var chart = new ApexCharts(document.querySelector("#grafik_admin"), options);
+        chart.render();
+
+    </script>
     </body>
 
 <!-- Mirrored from html.vristo.sbthemes.com/datatables-export.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:33 GMT -->
