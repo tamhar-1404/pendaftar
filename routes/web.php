@@ -71,7 +71,6 @@ Route::resource('/sp', App\Http\Controllers\SpController::class);
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::resource('/piket', App\Http\Controllers\PiketController::class);
 
-Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 
 Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 

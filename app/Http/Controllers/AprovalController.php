@@ -16,7 +16,7 @@ class AprovalController extends Controller
     public function index()
     {
 
-        return view('aproval.index');
+        return view('aproval.layout');
     }
 
     /**
