@@ -25,7 +25,7 @@
         {{--  <!-- start header section -->  --}}
 
         {{--  <!-- end header section -->  --}}
-        <div class="mt-4 pt-10 grid grid-cols-1 px-4 gap-2 sm:mt-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5">
+        <div class="grid grid-cols-1 px-4 gap-2 sm:mt-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5">
             <div class="rounded-lg bg-white p-5 dark:bg-navy-600 dark:bg-black" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
                 <div class="flex justify-between">
                 <p class="text-xl mt-1 font-semibold text-slate-700 dark:text-navy-100">
