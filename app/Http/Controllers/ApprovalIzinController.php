@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TataTertib;
-use App\Http\Requests\StoreTataTertibRequest;
-use App\Http\Requests\UpdateTataTertibRequest;
+use App\Models\ApprovalIzin;
+use App\Http\Requests\StoreApprovalIzinRequest;
+use App\Http\Requests\UpdateApprovalIzinRequest;
 
-class TataTertibController extends Controller
+class ApprovalIzinController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class TataTertibController extends Controller
      */
     public function index()
     {
-        return view('tatatertib.index');
+        return view('izinadmin.index');
     }
 
     /**
@@ -25,16 +25,16 @@ class TataTertibController extends Controller
      */
     public function create()
     {
-        return view('tatatertib.laycreate');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTataTertibRequest  $request
+     * @param  \App\Http\Requests\StoreApprovalIzinRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTataTertibRequest $request)
+    public function store(StoreApprovalIzinRequest $request)
     {
         //
     }
@@ -42,33 +42,33 @@ class TataTertibController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TataTertib  $tataTertib
+     * @param  \App\Models\ApprovalIzin  $approvalIzin
      * @return \Illuminate\Http\Response
      */
-    public function show(TataTertib $tataTertib)
+    public function show(ApprovalIzin $approvalIzin)
     {
-        return view('tatatertib.laydetail');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TataTertib  $tataTertib
+     * @param  \App\Models\ApprovalIzin  $approvalIzin
      * @return \Illuminate\Http\Response
      */
-    public function edit(TataTertib $tataTertib)
+    public function edit(ApprovalIzin $approvalIzin)
     {
-        return view('tatatertib.layedit');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTataTertibRequest  $request
-     * @param  \App\Models\TataTertib  $tataTertib
+     * @param  \App\Http\Requests\UpdateApprovalIzinRequest  $request
+     * @param  \App\Models\ApprovalIzin  $approvalIzin
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTataTertibRequest $request, TataTertib $tataTertib)
+    public function update(UpdateApprovalIzinRequest $request, ApprovalIzin $approvalIzin)
     {
         //
     }
@@ -76,10 +76,10 @@ class TataTertibController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TataTertib  $tataTertib
+     * @param  \App\Models\ApprovalIzin  $approvalIzin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TataTertib $tataTertib)
+    public function destroy(ApprovalIzin $approvalIzin)
     {
         //
     }

@@ -1,9 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: monserrat;
+    background: white;
+}
 
+.center {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
-.app-preloader-inner {
+.ring {
     position: absolute;
     width: 10%;
     height: auto;
@@ -29,7 +39,7 @@
     }
 }
 
-.app-preloader::before {
+.ring::before {
     position: absolute;
     content: '';
     left: 0;
@@ -61,4 +71,3 @@
         transform: scale(1);
     }
 }
-

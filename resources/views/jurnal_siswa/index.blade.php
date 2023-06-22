@@ -286,10 +286,12 @@
                                     width="100px" alt="">
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-4">
-                                        <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent " data-te-toggle="modal"
-                                        data-modal-target="staticModal" data-modal-toggle="staticModal">
+                                    <a href="#">
+                                        <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent" data-te-toggle="modal"
+                                        data-modal-target="staticModal" data-modal-toggle="staticModal" ">
                                             <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
                                         </div>
+                                    </a>
                                 </td>
                               </tr>
                               <tr
@@ -305,7 +307,8 @@
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-4">
                                     <a href="#">
-                                        <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
+                                        <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent" data-te-toggle="modal"
+                                        data-modal-target="staticModal" data-modal-toggle="staticModal" ">
                                             <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
                                         </div>
                                     </a>

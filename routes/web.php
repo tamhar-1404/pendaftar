@@ -6,6 +6,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BeritaGuruController;
 use App\Http\Controllers\AlumniGuruController;
 use App\Http\Controllers\BeritaSiswaController;
+use App\Http\Controllers\TataTertibController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/approvalizin', function () {
-    return view('izinadmin.index');
-});
+
 Route::get('/chatguru', function () {
     return view('chat_guru.index');
 });
@@ -35,6 +34,7 @@ Route::get('/laporansiswa', function () {
 Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
 
 Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
+Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
 
 Route::resource('/berita_guru', App\Http\Controllers\BeritaGuruController::class);
 
@@ -76,6 +76,8 @@ Route::get('/tabel', [AlumniGuruController::class, 'create'])->name('tabel');
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
 
 Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
+Route::get('/edittatib', [TataTertibController::class, 'edit'])->name('edit');
+Route::get('/detailtatib', [TataTertibController::class, 'show'])->name('detail');
 
 Route::resource('/tatib_siswa', App\Http\Controllers\TatibSiswaController::class);
 
