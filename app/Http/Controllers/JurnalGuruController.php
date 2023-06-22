@@ -15,7 +15,7 @@ class JurnalGuruController extends Controller
      */
     public function index()
     {
-        return view('jurnalguru.index');
+        return view('jurnal_guru.index');
     }
 
     /**
@@ -47,7 +47,7 @@ class JurnalGuruController extends Controller
      */
     public function show(JurnalGuru $jurnalGuru)
     {
-        //
+        return view('jurnal_guru.grafik');
     }
 
     /**
