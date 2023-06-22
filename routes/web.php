@@ -88,7 +88,7 @@ Route::resource('/tatib_siswa', App\Http\Controllers\TatibSiswaController::class
 
 Route::resource('/pembimbing', App\Http\Controllers\PembimbingController::class);
 
-Route::resource('/Berita', App\Http\Controllers\BeritaController::class);
+Route::resource('/berita', App\Http\Controllers\BeritaController::class);
 
 Route::get('/edit', [BeritaController::class, 'edit'])->name('edit');
 Route::get('/detail_berita_guru', [BeritaGuruController::class, 'show'])->name('detail_berita_guru');
@@ -126,6 +126,9 @@ Route::get('/detail_siswaguru', function () {
 });
 Route::get('/detail_pelangaran_siwaguru', function () {
     return view('siswa_guru.detail_pelanggaran');
+});
+Route::get('/grafik_jurnal_guru', function () {
+    return view('jurnalguru.grafik');
 });
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
 Route::resource('/profilesiswa', App\Http\Controllers\ProfilsiswaController::class);

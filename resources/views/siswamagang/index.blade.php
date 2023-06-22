@@ -21,13 +21,15 @@
         <link
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
             rel="stylesheet" />
-        <link
+        {{-- <link
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+            href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" /> --}}
         <script src="siswa/js/perfect-scrollbar.min.js"></script>
         <script defer src="siswa/js/popper.min.js"></script>
         <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
         <script defer src="siswa/js/sweetalert.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css"  rel="stylesheet" />
     </head>
     <body
         x-data="main"
@@ -1530,7 +1532,7 @@
             <!-- end sidebar section -->
 
             <div class="main-content">
-               @include('navbar.index')
+               @include('siswamagang.nav_siswa')
 
                 <div class="animate__animated p-6" :class="[$store.app.animation]">
                     <!-- start main content section -->
@@ -1599,138 +1601,46 @@
                                     <div class=" panel w-full flex justify-around gap-20 px-5">
                                         {{-- pertama --}}
                                         <div class=" w-9/12">
-                                            <div id="accordionFlushExample">
-                                                <div
-                                                class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2 class="mb-0" id="flush-headingOne">
-                                                    <button
-                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                    type="button"
-                                                    data-te-collapse-init
-                                                    data-te-target="#flush-collapseOne"
-                                                    aria-expanded="false"
-                                                    aria-controls="flush-collapseOne">
-                                                    Tata tertib magang
-                                                    <span
-                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                        <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke-width="1.5"
-                                                        stroke="currentColor"
-                                                        class="h-6 w-6">
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                        </svg>
-                                                    </span>
-                                                    </button>
+                                            <div id="accordion-collapse" data-accordion="collapse">
+                                                <h2 id="accordion-collapse-heading-1">
+                                                <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-collapse-body-1" aria-expanded="false" aria-controls="accordion-collapse-body-1">
+                                                    <span>What is Flowbite?</span>
+                                                    <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                </button>
                                                 </h2>
-                                                <div
-                                                    id="flush-collapseOne"
-                                                    class="!visible border-0"
-                                                    data-te-collapse-item
-                                                    data-te-collapse-show
-                                                    aria-labelledby="flush-headingOne"
-                                                    data-te-parent="#accordionFlushExample">
-                                                    <div class="px-5 py-4">
-                                                    Placeholder content for this accordion, which is intended to
-                                                    demonstrate the
-                                                    <code>.accordion-flush</code> class. This is the first item's
-                                                    accordion body.
-                                                    </div>
+                                                <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
+                                                <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
+                                                    <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
+                                                    <p class="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
                                                 </div>
                                                 </div>
-                                                <div
-                                                class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2 class="mb-0" id="flush-headingTwo">
-                                                    <button
-                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                    type="button"
-                                                    data-te-collapse-init
-                                                    data-te-collapse-collapsed
-                                                    data-te-target="#flush-collapseTwo"
-                                                    aria-expanded="false"
-                                                    aria-controls="flush-collapseTwo">
-                                                    Tata tertib piket
-                                                    <span
-                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                        <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke-width="1.5"
-                                                        stroke="currentColor"
-                                                        class="h-6 w-6">
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                        </svg>
-                                                    </span>
-                                                    </button>
+                                                <h2 id="accordion-collapse-heading-2">
+                                                <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">
+                                                    <span>Is there a Figma file available?</span>
+                                                    <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                </button>
                                                 </h2>
-                                                <div
-                                                    id="flush-collapseTwo"
-                                                    class="!visible hidden border-0"
-                                                    data-te-collapse-item
-                                                    aria-labelledby="flush-headingTwo"
-                                                    data-te-parent="#accordionFlushExample">
-                                                    <div class="px-5 py-4">
-                                                    Placeholder content for this accordion, which is intended to
-                                                    demonstrate the
-                                                    <code>.accordion-flush</code> class. This is the second item's
-                                                    accordion body. Let's imagine this being filled with some actual
-                                                    content.
-                                                    </div>
+                                                <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
+                                                <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
+                                                    <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>
+                                                    <p class="text-gray-500 dark:text-gray-400">Check out the <a href="https://flowbite.com/figma/" class="text-blue-600 dark:text-blue-500 hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.</p>
                                                 </div>
                                                 </div>
-                                                <div
-                                                class="rounded-none border border-b-0 border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2 class="mb-0" id="flush-headingThree">
-                                                    <button
-                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                    type="button"
-                                                    data-te-collapse-init
-                                                    data-te-collapse-collapsed
-                                                    data-te-target="#flush-collapseThree"
-                                                    aria-expanded="false"
-                                                    aria-controls="flush-collapseThree">
-                                                    Tata tertib tugas
-                                                    <span
-                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                        <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke-width="1.5"
-                                                        stroke="currentColor"
-                                                        class="h-6 w-6">
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                        </svg>
-                                                    </span>
-                                                    </button>
+                                                <h2 id="accordion-collapse-heading-3">
+                                                <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-collapse-body-3" aria-expanded="false" aria-controls="accordion-collapse-body-3">
+                                                    <span>What are the differences between Flowbite and Tailwind UI?</span>
+                                                    <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                </button>
                                                 </h2>
-                                                <div
-                                                    id="flush-collapseThree"
-                                                    class="!visible hidden"
-                                                    data-te-collapse-item
-                                                    aria-labelledby="flush-headingThree"
-                                                    data-te-parent="#accordionFlushExample">
-                                                    <div class="px-5 py-4">
-                                                    Placeholder content for this accordion, which is intended to
-                                                    demonstrate the
-                                                    <code>.accordion-flush</code> class. This is the third item's
-                                                    accordion body. Nothing more exciting happening here in terms of
-                                                    content, but just filling up the space to make it look, at least
-                                                    at first glance, a bit more representative of how this would look
-                                                    in a real-world application.
-                                                    </div>
+                                                <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">
+                                                <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
+                                                    <p class="mb-2 text-gray-500 dark:text-gray-400">The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.</p>
+                                                    <p class="mb-2 text-gray-500 dark:text-gray-400">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>
+                                                    <p class="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
+                                                    <ul class="pl-5 text-gray-500 list-disc dark:text-gray-400">
+                                                    <li><a href="https://flowbite.com/pro/" class="text-blue-600 dark:text-blue-500 hover:underline">Flowbite Pro</a></li>
+                                                    <li><a href="https://tailwindui.com/" rel="nofollow" class="text-blue-600 dark:text-blue-500 hover:underline">Tailwind UI</a></li>
+                                                    </ul>
                                                 </div>
                                                 </div>
                                             </div>
@@ -1738,223 +1648,143 @@
 
                                         {{-- kedua --}}
                                         <div class=" w-9/12">
-                                            <div id="accordionFlushExample">
-                                                <div
-                                                class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2 class="mb-0" id="flush-headingfour">
-                                                    <button
-                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                    type="button"
-                                                    data-te-collapse-init
-                                                    data-te-target="#flush-collapsefour"
-                                                    aria-expanded="false"
-                                                    aria-controls="flush-collapsefour">
-                                                    Tata tertib magang
-                                                    <span
-                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                        <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke-width="1.5"
-                                                        stroke="currentColor"
-                                                        class="h-6 w-6">
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                        </svg>
-                                                    </span>
-                                                    </button>
+                                            <div id="accordion-collapse" data-accordion="collapse">
+                                                <h2 id="accordion-collapse-heading-1">
+                                                <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-collapse-body-4" aria-expanded="false" aria-controls="accordion-collapse-body-4">
+                                                    <span>What is Flowbite?</span>
+                                                    <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                </button>
                                                 </h2>
-                                                <div
-                                                    id="flush-collapsefour"
-                                                    class="!visible border-0"
-                                                    data-te-collapse-item
-                                                    data-te-collapse-show
-                                                    aria-labelledby="flush-headingfour"
-                                                    data-te-parent="#accordionFlushExample">
-                                                    <div class="px-5 py-4">
-                                                    Placeholder content for this accordion, which is intended to
-                                                    demonstrate the
-                                                    <code>.accordion-flush</code> class. This is the first item's
-                                                    accordion body.
-                                                    </div>
+                                                <div id="accordion-collapse-body-4" class="hidden" aria-labelledby="accordion-collapse-heading-1">
+                                                <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
+                                                    <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
+                                                    <p class="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
                                                 </div>
                                                 </div>
-                                                <div
-                                                class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2 class="mb-0" id="flush-headingfive">
-                                                    <button
-                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                    type="button"
-                                                    data-te-collapse-init
-                                                    data-te-collapse-collapsed
-                                                    data-te-target="#flush-collapsefive"
-                                                    aria-expanded="false"
-                                                    aria-controls="flush-collapsefive">
-                                                    Tata tertib piket
-                                                    <span
-                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                        <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke-width="1.5"
-                                                        stroke="currentColor"
-                                                        class="h-6 w-6">
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                        </svg>
-                                                    </span>
-                                                    </button>
+                                                <h2 id="accordion-collapse-heading-2">
+                                                <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-collapse-body-5" aria-expanded="false" aria-controls="accordion-collapse-body-5">
+                                                    <span>Is there a Figma file available?</span>
+                                                    <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                </button>
                                                 </h2>
-                                                <div
-                                                    id="flush-collapsefive"
-                                                    class="!visible hidden border-0"
-                                                    data-te-collapse-item
-                                                    aria-labelledby="flush-headingfive"
-                                                    data-te-parent="#accordionFlushExample">
-                                                    <div class="px-5 py-4">
-                                                    Placeholder content for this accordion, which is intended to
-                                                    demonstrate the
-                                                    <code>.accordion-flush</code> class. This is the second item's
-                                                    accordion body. Let's imagine this being filled with some actual
-                                                    content.
-                                                    </div>
+                                                <div id="accordion-collapse-body-5" class="hidden" aria-labelledby="accordion-collapse-heading-2">
+                                                <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
+                                                    <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>
+                                                    <p class="text-gray-500 dark:text-gray-400">Check out the <a href="https://flowbite.com/figma/" class="text-blue-600 dark:text-blue-500 hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.</p>
                                                 </div>
                                                 </div>
-                                                <div
-                                                class="rounded-none border border-b-0 border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2 class="mb-0" id="flush-headingsix">
-                                                    <button
-                                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                    type="button"
-                                                    data-te-collapse-init
-                                                    data-te-collapse-collapsed
-                                                    data-te-target="#flush-collapsesix"
-                                                    aria-expanded="false"
-                                                    aria-controls="flush-collapsesix">
-                                                    Tata tertib tugas
-                                                    <span
-                                                        class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                        <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke-width="1.5"
-                                                        stroke="currentColor"
-                                                        class="h-6 w-6">
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                        </svg>
-                                                    </span>
-                                                    </button>
+                                                <h2 id="accordion-collapse-heading-3">
+                                                <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-collapse-body-6" aria-expanded="false" aria-controls="accordion-collapse-body-6">
+                                                    <span>What are the differences between Flowbite and Tailwind UI?</span>
+                                                    <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                </button>
                                                 </h2>
-                                                <div
-                                                    id="flush-collapsesix"
-                                                    class="!visible hidden"
-                                                    data-te-collapse-item
-                                                    aria-labelledby="flush-headingsix"
-                                                    data-te-parent="#accordionFlushExample">
-                                                    <div class="px-5 py-4">
-                                                    Placeholder content for this accordion, which is intended to
-                                                    demonstrate the
-                                                    <code>.accordion-flush</code> class. This is the third item's
-                                                    accordion body. Nothing more exciting happening here in terms of
-                                                    content, but just filling up the space to make it look, at least
-                                                    at first glance, a bit more representative of how this would look
-                                                    in a real-world application.
-                                                    </div>
+                                                <div id="accordion-collapse-body-6" class="hidden" aria-labelledby="accordion-collapse-heading-3">
+                                                <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
+                                                    <p class="mb-2 text-gray-500 dark:text-gray-400">The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.</p>
+                                                    <p class="mb-2 text-gray-500 dark:text-gray-400">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>
+                                                    <p class="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
+                                                    <ul class="pl-5 text-gray-500 list-disc dark:text-gray-400">
+                                                    <li><a href="https://flowbite.com/pro/" class="text-blue-600 dark:text-blue-500 hover:underline">Flowbite Pro</a></li>
+                                                    <li><a href="https://tailwindui.com/" rel="nofollow" class="text-blue-600 dark:text-blue-500 hover:underline">Tailwind UI</a></li>
+                                                    </ul>
                                                 </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     {{-- end tata tertib --}}
+                                      {{-- caraousel --}}
+                                        <section>
+                                            <div class="swiper mySwiper container w-full" >
+                                            <div class="swiper-wrapper content">
+                                                <div class="swiper-slide card dark:bg-black">
+                                                <div class="card-content ">
+                                                    <div class="image">
+                                                    <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                                    </div>
 
+
+                                                </div>
+                                                </div>
+                                                <div class="swiper-slide card dark:bg-black">
+                                                <div class="card-content">
+                                                    <div class="image1">
+                                                        <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                                    </div>
+
+                                                </div>
+                                                </div>
+                                                <div class="swiper-slide card dark:bg-black">
+                                                <div class="card-content">
+                                                    <div class="image">
+                                                        <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                                    </div>
+
+
+                                                </div>
+                                                </div>
+                                                <div class="swiper-slide card dark:bg-black">
+                                                    <div class="card-content">
+                                                    <div class="image">
+                                                        <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                                    </div>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide card dark:bg-black">
+                                                    <div class="card-content">
+                                                    <div class="image">
+                                                        <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                                    </div>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide card dark:bg-black">
+                                                    <div class="card-content">
+                                                    <div class="image">
+                                                        <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                                    </div>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide card dark:bg-black">
+                                                    <div class="card-content">
+                                                    <div class="image">
+                                                        <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                                    </div>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide card dark:bg-black">
+                                                <div class="card-content">
+                                                    <div class="image">
+                                                        <img src="admin/assets/images/smkn1.jpg"  alt="">
+                                                    </div>
+
+
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div class="swiper-button-next"></div>
+                                            <div class="swiper-button-prev"></div>
+                                            <div class="swiper-pagination"></div>
+                                        </section>
+
+
+                                    </div>
 
 
                                 </div>
                             </div>
                         </div>
                     </div>
-                     <!-- multiple -->
-                     <div class=" panel rounded-lg px-1 pt-4  mt-5 bg-white dark:bg-dark dark:bg-opacity-[0.08]  ">
-                        <div class="text-dark pb-5 font-bold text-lg bg-transparent pt-2 pl-5 dark:text-white-light dark:bg-transparent">
-                            berita
-                        </div>
-                        <div class="swiper bg-white p-1 dark:bg-dark dark:bg-opacity-[0.08]" id="slider5" x-data="carousel()">
-                            <div class="swiper-wrapper">
-                                <template x-for="item in items" :key="item">
-                                    <div class="swiper-slide">
-                                        <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
-                                    </div>
-                                </template>
-                                <template x-for="item in items" :key="item">
-                                    <div class="swiper-slide">
-                                        <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
-                                    </div>
-                                </template>
-                            </div>
-                            <a href="javascript:;" class="swiper-button-prev-ex5 grid place-content-center ltr:left-2 rtl:right-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-transparent rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                                </svg>
 
-                            </a>
-                            <a href="javascript:;" class="swiper-button-next-ex5 grid place-content-center ltr:right-2 rtl:left-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-transparent rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                </svg>
-                            </a>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                        <script>
-                            function carousel() {
-                                return {
-                                    items: [
-                                        'carousel1.jpeg',
-                                        'carousel2.jpeg',
-                                        'carousel3.jpeg'
-
-                                    ],
-
-                                    init() {
-                                        const swiper5 = new Swiper('#slider5', {
-                                            navigation: {
-                                                nextEl: '.swiper-button-next-ex5',
-                                                prevEl: '.swiper-button-prev-ex5',
-                                            },
-                                            pagination: {
-                                                el: '.swiper-pagination',
-                                                clickable: true,
-                                            },
-                                            breakpoints: {
-                                                1024: {
-                                                    slidesPerView: 3,
-                                                    spaceBetween: 30,
-                                                },
-                                                768: {
-                                                    slidesPerView: 2,
-                                                    spaceBetween: 40,
-                                                },
-                                                320: {
-                                                    slidesPerView: 1,
-                                                    spaceBetween: 20,
-                                                },
-                                            },
-                                        });
-                                    },
-                                };
-                            }
-                        </script>
-                    </div>
-                    {{-- end carousel --}}
 
 
                     <!-- start footer section -->
@@ -1966,6 +1796,159 @@
             </div>
         </div>
 
+        {{--  <!-- Swiper JS -->  --}}
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        {{--  <!-- Initialize Swiper -->  --}}
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            slidesPerGroup: 3,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            });
+        </script>
+         <style>
+            /* === Google Font Import - Poppins === */
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+
+            section {
+              position: relative;
+              display: flex;
+              align-items: center;
+              padding: 20px;
+            }
+
+            .swiper {
+              flex: 1;
+            }
+
+            .card {
+              position: ;
+              background: #fff;
+              border-radius: 20px;
+              margin: 20px 0;
+              box-shadow:0px 0px 4px rgba(0, 0, 0, 0.1);
+            }
+
+
+
+            .card .card-content {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              padding: 30px;
+              position: relative;
+              z-index: 100;
+            }
+
+
+
+            .card .media-icons i:hover {
+              opacity: 1;
+            }
+
+            .card .name-profession {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              margin-top: 10px;
+              color:black;
+            }
+
+            .name-profession .name {
+              font-size: 20px;
+              font-weight: 600;
+            }
+
+            .name-profession .profession {
+              font-size: 15px;
+              font-weight: 500;
+            }
+
+
+            .card .button {
+              width: 100%;
+              display: flex;
+              justify-content: space-around;
+              margin-top: 20px;
+            }
+
+            .card .button button {
+              background: #278be1;
+              outline: none;
+              border: none;
+              color: #000000;
+              padding: 8px 22px;
+              border-radius: 20px;
+              font-size: 14px;
+              transition: all 0.3s ease;
+              cursor: pointer;
+            }
+
+            .card .button button:hover {
+              background: #278be1;
+            }
+
+            .swiper-pagination {
+              position: absolute;
+            }
+
+            .swiper-pagination-bullet {
+              height: 7px;
+              width: 26px;
+              border-radius: 25px;
+              background: #278be1;
+            }
+
+            .swiper-button-next,
+            .swiper-button-prev {
+              opacity: 0.7;
+              color: #278be1;
+              transition: all 0.3s ease;
+            }
+
+            .swiper-button-next:hover,
+            .swiper-button-prev:hover {
+              opacity: 1;
+              color: #278be1;
+            }
+
+            @media (max-width: 768px) {
+              section {
+                flex-direction: column;
+              }
+
+              .swiper {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+              }
+
+              .card {
+                width: 100%;
+              }
+
+              .card::before {
+                border-radius: 20px;
+              }
+            }
+          </style>
+
+          {{--  <!-- Include necessary scripts, e.g., Font Awesome -->  --}}
+          <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+            {{-- end carousel --}}
+
         <script src="assets/js/swiper-bundle.min.js"></script>
         <script src="siswa/js/alpine-collaspe.min.js"></script>
         <script src="siswa/js/alpine-persist.min.js"></script>
@@ -1974,8 +1957,8 @@
         <script defer src="siswa/js/alpine.min.js"></script>
         <script src="siswa/js/custom.js"></script>
         <script defer src="siswa/js/apexcharts.js"></script>
-        <script src="https://cdn.tailwindcss.com/3.3.0"></script>
-        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+        {{-- <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script> --}}
         <script>
         tailwind.config = {
             darkMode: "class",
@@ -1991,15 +1974,8 @@
             },
         };
         </script>
-        <script>
-            // Initialization for ES Users
-            import {
-            Collapse,
-            initTE,
-            } from "tw-elements";
 
-            initTE({ Collapse });
-        </script>
+
         <script>
             document.addEventListener('alpine:init', () => {
                  //Carousel
