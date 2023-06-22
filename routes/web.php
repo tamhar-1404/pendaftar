@@ -36,9 +36,7 @@ Route::get('/chatadmin', function () {
 Route::get('/laporansiswa', function () {
     return view('laporansiswa.index');
 });
-Route::get('/jurnal_admin', function () {
-    return view('jurnal_admin.index');
-});
+Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
 
 Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
 
