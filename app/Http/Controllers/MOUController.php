@@ -15,7 +15,7 @@ class MOUController extends Controller
      */
     public function index()
     {
-        return view('mou.layout');
+        return view('mou.index');
     }
 
     /**
