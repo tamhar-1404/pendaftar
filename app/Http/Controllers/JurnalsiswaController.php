@@ -34,9 +34,11 @@ class JurnalsiswaController extends Controller
      * @param  \App\Http\Requests\StorejurnalsiswaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorejurnalsiswaRequest $request)
+    public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama'
+        ]);
     }
 
     /**

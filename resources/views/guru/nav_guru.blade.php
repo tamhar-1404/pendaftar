@@ -25,7 +25,7 @@
                 class="flex items-center space-x-1.5 ltr:ml-auto rtl:mr-auto rtl:space-x-reverse dark:text-[#d0d2d6] sm:flex-1 ltr:sm:ml-0 sm:rtl:mr-0 lg:space-x-2"
             >
                 <div class="sm:ltr:mr-auto sm:rtl:ml-auto flex items-center pt-4" x-data="{ search: false }" @click.outside="search = false">
-                    
+
                     <button
                         type="button"
                         class="search_btn rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 dark:bg-dark/40 dark:hover:bg-dark/60 sm:hidden"
@@ -416,7 +416,7 @@
                 </a>
             </li>
             <li class="menu nav-item relative">
-                <a href="javascript:;" class="nav-link">
+                <a href="{{route('siswa_guru.index')}}" class="nav-link">
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
@@ -426,7 +426,7 @@
                 </a>
             </li>
             <li class="menu nav-item relative">
-                <a href="javascript:;" class="nav-link">
+                <a href="{{route('jurnal_guru.index')}}" class="nav-link">
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
@@ -436,7 +436,7 @@
                 </a>
             </li>
             <li class="menu nav-item relative">
-                <a href="javascript:;" class="nav-link">
+                <a href="{{route('absensi_guru.index')}}" class="nav-link">
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
@@ -492,10 +492,10 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="">Berita</a>
+                        <a href="{{route('berita_guru.index')}}">Berita</a>
                     </li>
                     <li>
-                        <a href="">Chat</a>
+                        <a href="http://127.0.0.1:8000/chatguru">Chat</a>
                     </li>
                 </ul>
             </li>
