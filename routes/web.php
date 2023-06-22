@@ -21,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/approvalizin', function () {
-    return view('izinadmin.index');
-});
+
 Route::get('/chatguru', function () {
     return view('chat_guru.index');
 });
@@ -38,6 +36,7 @@ Route::get('/jurnal_admin', function () {
 });
 
 Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
+Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
 
 Route::resource('/berita_guru', App\Http\Controllers\BeritaGuruController::class);
 
