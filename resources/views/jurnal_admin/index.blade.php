@@ -723,10 +723,12 @@
                                 width="100px" alt="">
                             </td>
                             <td class="whitespace-nowrap px-4 py-4">
-                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent " data-te-toggle="modal"
-                                    data-te-target="#exampleModalCenteredScrollable">
+                                <a href="#">
+                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent" data-te-toggle="modal"
+                                    data-modal-target="staticModal" data-modal-toggle="staticModal" ">
                                         <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
                                     </div>
+                                </a>
                             </td>
                           </tr>
                           <tr
@@ -832,105 +834,72 @@
 
     </div>
     {{-- modal --}}
-    <div
-        data-te-modal-init
-        class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
-        id="exampleModalCenteredScrollable"
-        tabindex="-1"
-        aria-labelledby="exampleModalCenteredScrollable"
-        aria-modal="true"
-        role="dialog">
-        <div
-            data-te-modal-dialog-ref
-            class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
-            <div
-            class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
-            <div
-                class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                <!--Modal title-->
-                <h5
-                class="text-xl font-medium leading-normal text-neutral-900 dark:text-neutral-200"
-                id="exampleModalCenteredScrollableLabel">
-                Detail Jurnal
-                </h5>
-                <!--Close button-->
-                <button
-                type="button"
-                class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
-                data-te-modal-dismiss
-                aria-label="Close">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="h-6 w-6">
-                    <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M6 18L18 6M6 6l12 12" />
-                </svg>
-                </button>
+    <div id="staticModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-2xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                       Detail Jurnal
+                    </h3>
+                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="staticModal">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6 space-y-6">
+                    <div>
+                        <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
+                            Nama
+                        </p>
+                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                            mark
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                            Tanggal
+                        </p>
+                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                            03-04-2023
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                            Sekolah
+                        </p>
+                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                            SMKN 1 Kepanjen
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                            Kegiatan
+                        </p>
+                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum optio officiis provident eos amet, eius vel corporis nam delectus fuga eligendi fugit repellendus veniam repellat illo ipsam corrupti suscipit.
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                            Bukti
+                        </p>
+                        <img src="/siswa/images/carousel2.jpeg" alt="">
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button data-modal-hide="staticModal" type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                </div>
             </div>
-
-            <!--Modal body-->
-            <div class="relative p-4">
-                <p class=" text-md">
-                Nama :
-                </p >
-
-                <p class="ml-5 mt-2 text-md text-gray-400">
-                    Mark
-                </p>
-
-                <p class=" text-md mt-4">
-                    Tanggal :
-                </p >
-
-                <p class="ml-5 mt-2 text-md text-gray-400">
-                    03-04-2023
-                </p>
-
-                <p class=" text-md mt-4">
-                    Sekolah :
-                </p >
-
-                <p class="ml-5 mt-2 text-md text-gray-400">
-                    SMKN 1 KEPANJEN
-                </p>
-
-                <p class=" text-md mt-4">
-                    Kegiatan :
-                </p >
-
-                <p class="ml-5 mt-2 text-md text-gray-400">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?
-                </p>
-
-
-
-            </div>
-
-            <!--Modal footer-->
-            <div
-                class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                <button
-                type="button"
-                class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                data-te-ripple-init
-                data-te-modal-dismiss
-                data-te-ripple-color="light">
-                Kembali
-                </button>
-            </div>
-            </div>
+        </div>
+    </div>
     {{-- end modal --}}
-    </div>
-    </div>
+    
 
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script>
        const instanceMode = te.Sidenav.getInstance(

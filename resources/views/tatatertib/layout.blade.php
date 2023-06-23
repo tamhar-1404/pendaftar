@@ -13,10 +13,10 @@
         <!-- Users Table -->
         <div>
             <div class="flex items-center justify-between">
-                <button
+                <a href="{{ route('tatatertib.create') }}"
                     class="outline outline-offset-2 outline-1 bg-[#24AEE4] hover:bg-blue-500 text-white text-sm py-2 px-4 rounded">
                     Tambah data
-                </button>
+                </a>
                 <div class="flex">
                     <div class="flex items-center" x-data="{ isInputActive: false }">
                         <label class="block">
@@ -109,7 +109,7 @@
                                       </td>
                                 <td class="whitespace-nowrap px-3 py-3">
                                     <div class="flex items-center space-x-2">
-                                        <a href="" id="editbutton">
+                                        <a href="/edittatib">
                                             <div
                                                 class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
                                                 <span class=" p-1  font-semibold dark:hover:text-black">Edit</span>
@@ -159,7 +159,7 @@
                         </li>
                         <li class="bg-slate-150 dark:bg-navy-500">
                             <a href="#"
-                                class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg bg-primary px-3 leading-tight text-white transition-colors hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">2</a>
+                                class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg bg-info px-3 leading-tight text-white transition-colors hover:bg-info focus:bg-info active:bg-info dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">2</a>
                         </li>
                         <li class="bg-slate-150 dark:bg-navy-500">
                             <a href="#"
