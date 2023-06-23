@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from lineone.piniastudio.com/pages-login-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 May 2023 04:16:44 GMT -->
+{{--  <!-- Mirrored from lineone.piniastudio.com/pages-login-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 May 2023 04:16:44 GMT -->  --}}
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="mt-16">
-                    <form action="/postlogin" method="post">
+                    <form method="POST" action="{{ route('postlogin') }}">
                         @csrf
                         <label class="relative flex">
                             <input id="email" name="email"

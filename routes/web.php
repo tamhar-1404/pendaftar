@@ -134,10 +134,10 @@ Route::get('/detail_pelangaran_siwaguru', function () {
 Route::get('/sidebar', function () {
     return view('sidebar.layout');
 });
-Route::group(['middleware' => ['auth', 'cekrole:Admin']], function () {
-
+Route::group(['middleware' => 'auth'], function () {
     Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
 });
+
 
 Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
 Route::resource('/berita_guru', App\Http\Controllers\BeritaGuruController::class);
