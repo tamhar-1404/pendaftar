@@ -15,7 +15,7 @@ class ChatGuruController extends Controller
      */
     public function index()
     {
-        //
+        return view('chat_guru.index');
     }
 
     /**

@@ -25,7 +25,7 @@ class ApprovalIzinController extends Controller
      */
     public function create()
     {
-        //
+            //
     }
 
     /**

@@ -40,7 +40,7 @@
 
   <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
     <!-- App preloader-->
-  
+
     <!-- Page Wrapper -->
     <div
       id="root"
@@ -3388,7 +3388,7 @@
           <div class="flex items-center space-x-2">
             <label class="relative hidden sm:flex">
               <input
-                class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                class="relative form-input  h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                 placeholder="Search users..."
                 type="text"
               />
@@ -3409,68 +3409,99 @@
             </label>
 
             <div class="flex">
-              <button
-                class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:hidden sm:h-9 sm:w-9"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  stroke="currentColor"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    cx="10.2"
-                    cy="10.2"
-                    r="7.2"
-                    stroke-width="1.5"
-                  ></circle>
-                  <path
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    d="M21 21l-3.6-3.6"
-                  />
-                </svg>
-              </button>
-              <button
-                class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:h-9 sm:w-9"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M3 5.109C3 4.496 3.47 4 4.05 4h16.79c.58 0 1.049.496 1.049 1.109 0 .612-.47 1.108-1.05 1.108H4.05C3.47 6.217 3 5.721 3 5.11zM5.798 12.5c0-.612.47-1.109 1.05-1.109H18.04c.58 0 1.05.497 1.05 1.109s-.47 1.109-1.05 1.109H6.848c-.58 0-1.05-.497-1.05-1.109zM9.646 18.783c-.58 0-1.05.496-1.05 1.108 0 .613.47 1.109 1.05 1.109h5.597c.58 0 1.05-.496 1.05-1.109 0-.612-.47-1.108-1.05-1.108H9.646z"
-                  />
-                </svg>
-              </button>
-              <button
-                class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:h-9 sm:w-9"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-              </button>
+                <ul class="relative flex items-center">
+                    <!-- Notification dropdown -->
+                    <li class="relative" data-te-dropdown-ref>
+                    <a
+                        class="mr-4 flex items-center text-gray-500 hover:text-gray-700 focus:text-gray-700"
+                        href="#"
+                        id="navbarDropdownMenuLink"
+                        role="button"
+                        data-te-dropdown-toggle-ref
+                        aria-expanded="false">
+                        <span class="dark:black-gray-200 [&>svg]:w-3.5">
+                            <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M3 5.109C3 4.496 3.47 4 4.05 4h16.79c.58 0 1.049.496 1.049 1.109 0 .612-.47 1.108-1.05 1.108H4.05C3.47 6.217 3 5.721 3 5.11zM5.798 12.5c0-.612.47-1.109 1.05-1.109H18.04c.58 0 1.05.497 1.05 1.109s-.47 1.109-1.05 1.109H6.848c-.58 0-1.05-.497-1.05-1.109zM9.646 18.783c-.58 0-1.05.496-1.05 1.108 0 .613.47 1.109 1.05 1.109h5.597c.58 0 1.05-.496 1.05-1.109 0-.612-.47-1.108-1.05-1.108H9.646z"
+                            />
+                          </svg>
+                    </a>
+                    <ul
+                        class="absolute left-auto right-0 z-[1000] float-left m-0 mt-3 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
+                        aria-labelledby="navbarDropdownMenuLink"
+                        data-te-dropdown-menu-ref>
+                        <li>
+                        <a
+                            class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                            href="#"
+                            data-te-dropdown-item-ref
+                            >Some news</a
+                        >
+                        </li>
+                        <li>
+                        <a
+                            class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                            href="#"
+                            data-te-dropdown-item-ref
+                            >Another news</a
+                        >
+                        </li>
+                        <li>
+                        <a
+                            class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                            href="#"
+                            data-te-dropdown-item-ref
+                            >Something else here</a
+                        >
+                        </li>
+                    </ul>
+                    </li>
+
+
+
+
+
+
+                    <!-- Avatar -->
+
+                    <ul
+                        class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
+                        aria-labelledby="dropdownMenuButton2"
+                        data-te-dropdown-menu-ref>
+                        <li>
+                        <a
+                            class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                            href="#"
+                            data-te-dropdown-item-ref
+                            >My profile</a
+                        >
+                        </li>
+                        <li>
+                        <a
+                            class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                            href="#"
+                            data-te-dropdown-item-ref
+                            >Settings</a
+                        >
+                        </li>
+                        <li>
+                        <a
+                            class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                            href="#"
+                            data-te-dropdown-item-ref
+                            >Logout</a
+                        >
+                        </li>
+                    </ul>
+                    </li>
+                </ul>
+             
             </div>
           </div>
         </div>
@@ -3489,35 +3520,44 @@
                       <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
                         Form Tambah Guru
                       </h3>
-                      <form class="mt-4">
+                     <form action="{{ route('guru_admin.store') }}" class="mt-4" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="mt-4">
+                            <label for="Nama" class="block text-gray-700 font-medium mb-2">Foto</label>
+                            <input type="file" name="image" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+                          </div>
+                          <div class="mt-4">
+                            <label for="Nama" class="block text-gray-700 font-medium mb-2">Nama</label>
+                            <input type="text" placeholder="Masukkan nama " id="sekolah" name="nama" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                          </div>
                         <div class="mt-4">
                           <label for="Nama" class="block text-gray-700 font-medium mb-2">Sekolah</label>
                           <input type="text" placeholder="Masukkan nama " id="sekolah" name="sekolah" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
+
                         <div class="mt-4">
-                          <label for="tanggal_lahir" class="block text-gray-700 font-medium mb-2">Tanggal lahir</label>
-                          <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                          <label for="sekolah" class="block text-gray-700 font-medium mb-2">Email</label>
+                          <input type="email" placeholder="Masukkan nama sekolah" id="sekolah" name="email" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
                         <div class="mt-4">
-                          <label for="sekolah" class="block text-gray-700 font-medium mb-2">Sekolah</label>
-                          <input type="text" placeholder="Masukkan nama sekolah" id="sekolah" name="sekolah" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <label for="sekolah" class="block text-gray-700 font-medium mb-2">Alamat</label>
+                        <textarea name="alamat" id="" cols="65" rows="5" class="border border-1" placeholder="Masukkan alamat anda"></textarea>
                         </div>
                         <div class="mt-4">
-                          <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-                          <input type="email" placeholder="Masukkan email" id="email" name="email" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                        </div>
+                            <label for="tanggal_lahir" class="block text-gray-700 font-medium mb-2">No telephone </label>
+                            <input type="number" id="tanggal_lahir" name="no" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                          </div>
                         <div class="mt-4">
-                          <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
-                          <input type="password" placeholder="Masukkan password" id="password" name="password" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                          <label for="email" class="block text-gray-700 font-medium mb-2">Password</label>
+                          <input type="password" placeholder="Masukkan email" id="email" name="password" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
+
                         <div class="flex items-center justify-end mt-4">
                           <div class="ml-auto">
                             <button type="button" class="bg-transparent border border-gray-300 text-gray-800 hover:bg-gray-300 hover:text-gray-800 font-bold py-2 px-4 rounded">
                               Batal
                             </button>
-                            <button class="bg-blue-500 text-white hover:bg-blue-700 font-bold py-2 px-4 rounded" @click="showAlert()">
-                                Simpan
-                              </button>
+                          <button type="submit">Tambah</button>
                               <script>
                                   async function showAlert() {
                                       new window.Swal({
@@ -3553,882 +3593,123 @@
             });
           </script>
 
-        <div
+  <div
           class="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4"
         >
-          <div class="card">
-            <div class="p-2 text-right">
+        @forelse ($guru_admin as $guru )
+
+        <div class="card">
+          <div class="p-2 text-right">
+            <div
+              x-data="usePopper({placement:'bottom-end',offset:4})"
+              @click.outside="isShowPopper && (isShowPopper = false)"
+              class="inline-flex"
+            >
+
+
               <div
-                x-data="usePopper({placement:'bottom-end',offset:4})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="inline-flex"
+                x-ref="popperRoot"
+                class="popper-root"
+                :class="isShowPopper && 'show'"
               >
-
-
                 <div
-                  x-ref="popperRoot"
-                  class="popper-root"
-                  :class="isShowPopper && 'show'"
+                class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
                 >
-                  <div
-                  class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Another Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Something else</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Separated Link</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
+                  <ul>
+                    <li>
+                      <a
+                        href="#"
+                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                        >Action</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                        >Another Action</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                        >Something else</a
+                      >
+                    </li>
+                  </ul>
+                  <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
+                  <ul>
+                    <li>
+                      <a
+                        href="#"
+                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                        >Separated Link</a
+                      >
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
-              <div class="avatar h-20 w-20">
-                <img
-                  class="rounded-full"
-                  src="{{ asset('admin/images/avatar/avatar-20.jpg') }}"
-                  alt="avatar"
-                />
-              </div>
-              <h3
-                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
-              >
-                Konnor Guzman
-              </h3>
-              <p class="text-xs+">Senior Developer</p>
+          </div>
+          <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
+            <div class="avatar h-20 w-20">
+              <img
+                class="rounded-full"
+                src="{{ asset('storage/guru_image/' . $guru->image) }}"
+                alt="avatar"
+              />
+            </div>
+            <h3
+              class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
+            >
+             {{ $guru->nama }}
+            </h3>
+            <p class="text-xs+">{{ $guru->sekolah }}</p>
 
-              <div class="mt-6 grid w-full grid-cols-2 gap-2">
-                <button
-                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+            <div class="mt-6 grid w-full grid-cols-2 gap-2">
+              <button
+                class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 shrink-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-width="2"
-                      d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z"
-                    />
-                  </svg>
-                  <a href="http://127.0.0.1:8000/detail">Profile</a>
-                </button>
-                <button
-                  class="btn space-x-2 bg-slate-150 px-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
+                  <path
                     stroke="currentColor"
                     stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                    />
-                  </svg>
-                  <span> Chat </span>
-                </button>
-              </div>
+                    d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z"
+                  />
+                </svg>
+                <a href="http://127.0.0.1:8000/detail">Profile</a>
+              </button>
+              <button
+                class="btn space-x-2 bg-slate-150 px-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 shrink-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                  />
+                </svg>
+                <span> Chat </span>
+              </button>
             </div>
           </div>
-          {{--  card  --}}
-          <div class="card">
-            <div class="p-2 text-right">
-              <div
-                x-data="usePopper({placement:'bottom-end',offset:4})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="inline-flex"
-              >
+        </div>
+        @empty
 
-
-                <div
-                  x-ref="popperRoot"
-                  class="popper-root"
-                  :class="isShowPopper && 'show'"
-                >
-                  <div
-                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Another Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Something else</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Separated Link</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 ">
-              <div class="avatar h-20 w-20">
-                <img
-                  class="rounded-full"
-                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
-                  alt="avatar"
-                />
-              </div>
-              <h3
-                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
-              >
-                Travis Fuller
-              </h3>
-              <p class="text-xs+">Web Developer</p>
-
-              <div class="mt-6 grid w-full grid-cols-2 gap-2">
-                <button
-                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-width="2"
-                      d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z"
-                    />
-                  </svg>
-                  <span>Profile</span>
-                </button>
-                <button
-                  class="btn space-x-2 bg-slate-150 px-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                    />
-                  </svg>
-                  <span> Chat </span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="p-2 text-right">
-              <div
-                x-data="usePopper({placement:'bottom-end',offset:4})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="inline-flex"
-              >
-
-
-                <div
-                  x-ref="popperRoot"
-                  class="popper-root"
-                  :class="isShowPopper && 'show'"
-                >
-                  <div
-                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Another Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Something else</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Separated Link</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 ">
-              <div class="avatar h-20 w-20">
-                <img
-                  class="rounded-full"
-                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
-                  alt="avatar"
-                />
-              </div>
-              <h3
-                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
-              >
-                Travis Fuller
-              </h3>
-              <p class="text-xs+">Web Developer</p>
-
-              <div class="mt-6 grid w-full grid-cols-2 gap-2">
-                <button
-                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-width="2"
-                      d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z"
-                    />
-                  </svg>
-                  <span>Profile</span>
-                </button>
-                <button
-                  class="btn space-x-2 bg-slate-150 px-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                    />
-                  </svg>
-                  <span> Chat </span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="p-2 text-right">
-              <div
-                x-data="usePopper({placement:'bottom-end',offset:4})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="inline-flex"
-              >
-
-
-                <div
-                  x-ref="popperRoot"
-                  class="popper-root"
-                  :class="isShowPopper && 'show'"
-                >
-                  <div
-                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Another Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Something else</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Separated Link</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 ">
-              <div class="avatar h-20 w-20">
-                <img
-                  class="rounded-full"
-                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
-                  alt="avatar"
-                />
-              </div>
-              <h3
-                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
-              >
-                Travis Fuller
-              </h3>
-              <p class="text-xs+">Web Developer</p>
-
-              <div class="mt-6 grid w-full grid-cols-2 gap-2">
-                <button
-                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-width="2"
-                      d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z"
-                    />
-                  </svg>
-                  <span>Profile</span>
-                </button>
-                <button
-                  class="btn space-x-2 bg-slate-150 px-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                    />
-                  </svg>
-                  <span> Chat </span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="p-2 text-right">
-              <div
-                x-data="usePopper({placement:'bottom-end',offset:4})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="inline-flex"
-              >
-
-
-                <div
-                  x-ref="popperRoot"
-                  class="popper-root"
-                  :class="isShowPopper && 'show'"
-                >
-                  <div
-                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Another Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Something else</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Separated Link</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 ">
-              <div class="avatar h-20 w-20">
-                <img
-                  class="rounded-full"
-                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
-                  alt="avatar"
-                />
-              </div>
-              <h3
-                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
-              >
-                Travis Fuller
-              </h3>
-              <p class="text-xs+">Web Developer</p>
-
-              <div class="mt-6 grid w-full grid-cols-2 gap-2">
-                <button
-                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-width="2"
-                      d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z"
-                    />
-                  </svg>
-                  <span>Profile</span>
-                </button>
-                <button
-                  class="btn space-x-2 bg-slate-150 px-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                    />
-                  </svg>
-                  <span> Chat </span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="p-2 text-right">
-              <div
-                x-data="usePopper({placement:'bottom-end',offset:4})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="inline-flex"
-              >
-
-                <div
-                  x-ref="popperRoot"
-                  class="popper-root"
-                  :class="isShowPopper && 'show'"
-                >
-                  <div
-                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Another Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Something else</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Separated Link</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
-              <div class="avatar h-20 w-20">
-                <img
-                  class="rounded-full"
-                  src="admin/images/avatar/avatar-4.jpg"
-                  alt="avatar"
-                />
-              </div>
-              <h3
-                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
-              >
-                Henry Curtis
-              </h3>
-              <p class="text-xs+">Full Stack Developer</p>
-
-              <div class="mt-6 grid w-full grid-cols-2 gap-2">
-                <button
-                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-width="2"
-                      d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z"
-                    />
-                  </svg>
-                  <span>Profile</span>
-                </button>
-                <button
-                  class="btn space-x-2 bg-slate-150 px-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                    />
-                  </svg>
-                  <span> Chat </span>
-                </button>
-              </div>
-            </div>
-          </div>
-           <div class="card">
-            <div class="p-2 text-right">
-              <div
-                x-data="usePopper({placement:'bottom-end',offset:4})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="inline-flex"
-              >
-
-
-                <div
-                  x-ref="popperRoot"
-                  class="popper-root"
-                  :class="isShowPopper && 'show'"
-                >
-                  <div
-                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Another Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Something else</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Separated Link</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 ">
-              <div class="avatar h-20 w-20">
-                <img
-                  class="rounded-full"
-                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
-                  alt="avatar"
-                />
-              </div>
-              <h3
-                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
-              >
-                Travis Fuller
-              </h3>
-              <p class="text-xs+">Web Developer</p>
-
-              <div class="mt-6 grid w-full grid-cols-2 gap-2">
-                <button
-                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-width="2"
-                      d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z"
-                    />
-                  </svg>
-                  <span>Profile</span>
-                </button>
-                <button
-                  class="btn space-x-2 bg-slate-150 px-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                    />
-                  </svg>
-                  <span> Chat </span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="p-2 text-right">
-              <div
-                x-data="usePopper({placement:'bottom-end',offset:4})"
-                @click.outside="isShowPopper && (isShowPopper = false)"
-                class="inline-flex"
-              >
-
-
-                <div
-                  x-ref="popperRoot"
-                  class="popper-root"
-                  :class="isShowPopper && 'show'"
-                >
-                  <div
-                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Another Action</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Something else</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
-                    <ul>
-                      <li>
-                        <a
-                          href="#"
-                          class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                          >Separated Link</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex grow flex-col items-center px-4 pb-5 ">
-              <div class="avatar h-20 w-20">
-                <img
-                  class="rounded-full"
-                  src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
-                  alt="avatar"
-                />
-              </div>
-              <h3
-                class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
-              >
-                Travis Fuller
-              </h3>
-              <p class="text-xs+">Web Developer</p>
-
-              <div class="mt-6 grid w-full grid-cols-2 gap-2">
-                <button
-                  class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-width="2"
-                      d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z"
-                    />
-                  </svg>
-                  <span>Profile</span>
-                </button>
-                <button
-                  class="btn space-x-2 bg-slate-150 px-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                    />
-                  </svg>
-                  <span> Chat </span>
-                </button>
-              </div>
-            </div>
-          </div>
-          {{--  end  --}}
+        @endforelse
 
       </main>
     </div>
