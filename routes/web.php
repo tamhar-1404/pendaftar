@@ -6,6 +6,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BeritaGuruController;
 use App\Http\Controllers\AlumniGuruController;
 use App\Http\Controllers\BeritaSiswaController;
+use App\Http\Controllers\AbsensiGuruController;
 use App\Http\Controllers\TataTertibController;
 use Illuminate\Support\Facades\Route;
 /*
@@ -134,7 +135,7 @@ Route::get('/sidebar', function () {
     return view('sidebar.layout');
 });
 Route::group(['middleware' => ['auth', 'cekrole:Admin']], function () {
-    
+
     Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
 });
 
@@ -146,6 +147,9 @@ Route::resource('/siswamagang', App\Http\Controllers\DashboardSiswaController::c
 Route::resource('/guru', App\Http\Controllers\DashboardGuruController::class);
 Route::resource('/chat', App\Http\Controllers\ChatController::class);
 Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
+Route::resource('/login', App\Http\Controllers\LoginController::class);
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::get('/grafik', [AbsensiGuruController::class, 'show'])->name('grafik');
 Route::resource('/lupapassword', App\Http\Controllers\LupaPasswordController::class);
 Route::resource('/ubahpassword', App\Http\Controllers\UbahPasswordController::class);
 Route::resource('/sp', App\Http\Controllers\SpController::class);
