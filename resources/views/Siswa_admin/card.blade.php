@@ -11,6 +11,7 @@
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
+    <link rel="stylesheet" href="load/load.css">  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Lineone - User Grid v1</title>
     <link rel="icon" type="image/png" href="images/favicon.png" />
@@ -38,7 +39,17 @@
   </head>
 
   <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
-    <!-- App preloader-->
+    
+    
+     <!-- screen loader -->
+     <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+      <div class="center">
+          <div class="ring">
+          </div>
+          <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+      </div>
+  </div>
+
    
 
     <!-- Page Wrapper -->
@@ -4235,12 +4246,12 @@
     </div>
       
       
-   
-    <!--
-        This is a place for Alpine.js Teleport feature
-        @see https://alpinejs.dev/directives/teleport
-      -->
-    <div id="x-teleport-target"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+      $(window).on('load', function() {
+          $('.spin_load').fadeOut();
+      });
+  </script>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());
     </script>

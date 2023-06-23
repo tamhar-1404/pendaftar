@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" type="text/css" media="screen" href="siswa/css/perfect-scrollbar.min.css" />
+    <link rel="stylesheet" href="load/load.css">
     <link rel="stylesheet" type="text/css" media="screen" href="siswa/css/style.css" />
     <link defer rel="stylesheet" type="text/css" media="screen" href="siswa/css/animate.css" />
     <script src="siswa/js/perfect-scrollbar.min.js"></script>
@@ -25,10 +26,16 @@
     <script defer src="siswa/js/sweetalert.min.js"></script>
 </head>
 
-<body x-data="main" class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
-    :class="[$store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout, $store.app
-        .rtlClass
-    ]">
+<body>
+    
+     <!-- screen loader -->
+     <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+        <div class="center">
+            <div class="ring">
+            </div>
+            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+        </div>
+    </div>
     <!-- sidebar menu overlay -->
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>
@@ -2704,6 +2711,12 @@
     <script defer src="siswa/js/alpine-focus.min.js"></script>
     <script defer src="siswa/js/alpine.min.js"></script>
     <script src="siswa/js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+      $(window).on('load', function() {
+          $('.spin_load').fadeOut();
+      });
+  </script>
     <script>
         document.addEventListener('alpine:init', () => {
             // main section
