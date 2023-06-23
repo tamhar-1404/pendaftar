@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('guru_admins', function (Blueprint $table) {
             $table->id();
+            $table->string('image');
             $table->string('nama');
-            $table->date('tanggal');
             $table->string('sekolah');
-            $table->string('email');
-            $table->string('password');
+            $table->string('email')->unique();
+            $table->string('alamat');
+            $table->string('no')->unique();
+            $table->string('password');;
             $table->string('status')->default('pembimbing');
             $table->timestamps();
         });

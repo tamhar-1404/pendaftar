@@ -71,7 +71,7 @@ Route::resource('/piket', App\Http\Controllers\PiketController::class);
 Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 
 
-Route::get('/detail', [GuruAdminController::class, 'detail'])->name('detail');
+Route::get('/detail', [GuruAdminController::class, 'show'])->name('detail');
 Route::get('/view', [AlumniGuruController::class, 'show'])->name('view');
 Route::get('/tabel', [AlumniGuruController::class, 'create'])->name('tabel');
 
