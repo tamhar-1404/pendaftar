@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -40,7 +41,6 @@ Route::resource('/berita_guru', App\Http\Controllers\BeritaGuruController::class
 
 Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
 
-Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
 Route::resource('/mou', App\Http\Controllers\MOUController::class);
 
 
@@ -55,8 +55,14 @@ Route::resource('/chat', App\Http\Controllers\ChatController::class);
 
 Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
 
-Route::resource('/login', App\Http\Controllers\LoginController::class);
+// login & register
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
+
 Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/postregister', [LoginController::class, 'postregister'])->name('postregister');
+// akhir login & register
+
 Route::resource('/lupapassword', App\Http\Controllers\LupaPasswordController::class);
 Route::resource('/ubahpassword', App\Http\Controllers\UbahPasswordController::class);
 
@@ -101,12 +107,12 @@ Route::get('/sidebar', function () {
     return view('sidebar.layout');
 });
 Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
-Route::resource('/tolak',App\Http\Controllers\TolakController::class);
+Route::resource('/tolak', App\Http\Controllers\TolakController::class);
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
 
 
 Route::resource('/berita_siswa', App\Http\Controllers\BeritaSiswaController::class);
-Route::resource('/absensi_siswa',App\Http\Controllers\AbsensiSiswaController::class);
+Route::resource('/absensi_siswa', App\Http\Controllers\AbsensiSiswaController::class);
 Route::get('/sore', function () {
     return view('piket.sidebar_sore');
 });
@@ -128,10 +134,14 @@ Route::get('/detail_pelangaran_siwaguru', function () {
 Route::get('/sidebar', function () {
     return view('sidebar.layout');
 });
+Route::group(['middleware' => ['auth', 'cekrole:Admin']], function () {
+
+    Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
+});
+
 Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
 Route::resource('/berita_guru', App\Http\Controllers\BeritaGuruController::class);
 Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
-Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
 Route::resource('/mou', App\Http\Controllers\MOUController::class);
 Route::resource('/siswamagang', App\Http\Controllers\DashboardSiswaController::class);
 Route::resource('/guru', App\Http\Controllers\DashboardGuruController::class);
@@ -164,10 +174,10 @@ Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::cla
 Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
 Route::resource('/editprofileguru', App\Http\Controllers\EditprofileGuruController::class);
 Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
-Route::resource('/tolak',App\Http\Controllers\TolakController::class);
+Route::resource('/tolak', App\Http\Controllers\TolakController::class);
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
 Route::resource('/berita_siswa', App\Http\Controllers\BeritaSiswaController::class);
-Route::resource('/absensi_siswa',App\Http\Controllers\AbsensiSiswaController::class);
+Route::resource('/absensi_siswa', App\Http\Controllers\AbsensiSiswaController::class);
 Route::get('/grafik_jurnal_guru', function () {
     return view('jurnalguru.grafik');
 });
