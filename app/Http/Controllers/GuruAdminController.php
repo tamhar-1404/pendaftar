@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru_admin;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreGuru_adminRequest;
 use App\Http\Requests\UpdateGuru_adminRequest;
 
@@ -15,7 +16,8 @@ class GuruAdminController extends Controller
      */
     public function index()
     {
-        return view('guru_admin.index');
+        $guru_admin =  Guru_admin::latest()->paginate(5);
+        return view('guru_admin.index' , compact('guru_admin'));
     }
 
     /**
@@ -27,9 +29,10 @@ class GuruAdminController extends Controller
     {
         //
     }
-    public function detail ()
+    public function detail (Guru_admin $guru)
     {
-        return view('guru_admin.detail');
+        $guru = Guru_admin::latest()->get()->first();
+        return view('guru_admin.detail' , compact('guru'));
     }
 
     /**
@@ -38,9 +41,29 @@ class GuruAdminController extends Controller
      * @param  \App\Http\Requests\StoreGuru_adminRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreGuru_adminRequest $request)
+    public function store(Request $request)
     {
-        //
+        $this->validate($request , [
+            'image'=>'required',
+            'nama'=>'required',
+            'sekolah'=>'required',
+            'email'=>'required|unique:guru_admins',
+            'alamat'=>'required',
+            'no'=>'required',
+            'password'=>'required'
+        ]);
+        $image = $request->file('image');
+        $image->storeAs('public/guru_image', $image->hashName());
+        Guru_admin::create([
+            'image'=>$image->hashName(),
+            'nama'=>$request->nama,
+            'sekolah'=>$request->sekolah,
+            'email'=>$request->email,
+            'alamat'=>$request->alamat,
+            'no'=>$request->no,
+            'password'=>$request->password,
+        ]);
+        return redirect()->route('guru_admin.index');
     }
 
     /**
@@ -51,7 +74,7 @@ class GuruAdminController extends Controller
      */
     public function show(Guru_admin $guru_admin)
     {
-      //
+     //
     }
 
     /**

@@ -25,7 +25,6 @@
                 class="flex items-center space-x-1.5 ltr:ml-auto rtl:mr-auto rtl:space-x-reverse dark:text-[#d0d2d6] sm:flex-1 ltr:sm:ml-0 sm:rtl:mr-0 lg:space-x-2">
                 <div class="sm:ltr:mr-auto sm:rtl:ml-auto flex items-center pt-4" x-data="{ search: false }"
                     @click.outside="search = false">
-
                     <button type="button"
                         class="search_btn rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 dark:bg-dark/40 dark:hover:bg-dark/60 sm:hidden"
                         @click="search = ! search">
@@ -257,7 +256,7 @@
                 </a>
             </li>
             <li class="menu nav-item relative">
-                <a href="{{ route('siswa_guru.index') }}" class="nav-link">
+                <a href="{{route('siswa_guru.index')}}" class="nav-link">
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
