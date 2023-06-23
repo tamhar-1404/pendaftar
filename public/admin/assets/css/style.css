@@ -1328,19 +1328,7 @@ button,
 select {
     text-transform: none;
 }
-[type="button"],
-[type="reset"],
-button {
-    -webkit-appearance: button;
-    background-color: initial;
-    background-image: none;
-}
-:-moz-focusring {
-    outline: auto;
-}
-:-moz-ui-invalid {
-    box-shadow: none;
-}
+
 progress {
     vertical-align: initial;
 }

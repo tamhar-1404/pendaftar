@@ -581,30 +581,138 @@
     </nav>
     <!-- Navbar -->
     <div class="animate__animated p-6" :class="[$store.app.animation]">
-        <!-- start main content section -->
-        <div>
-            <ul class="flex space-x-2 rtl:space-x-reverse">
-                <li>
-                    <a href="javascript:;" class="text-primary hover:underline">Guru</a>
-                </li>
-                <li class="before:content-['/'] ltr:before:mr-1 rtl:before:ml-1">
-                    <span>Profile</span>
-                </li>
-            </ul>
-            <div class="pt-5">
-                <div class="mb-5 grid grid-cols-1 gap-5 lg:grid-cols-3 xl:grid-cols-4">
-                    <div class="panel">
-                        <div class="mb-5 flex items-center justify-between">
-                            <h5 class="text-lg font-semibold dark:text-white-light">Profile</h5>
 
-                        </div>
-                        <div class="mb-5">
-                            <div class="flex flex-col items-center justify-center">
-                                <img src="{{ asset('admin/assets/images/profile-34.jpeg') }}" alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
-                                <p class="text-xl font-semibold text-info">Jimmy Turner</p>
+        <form action="{{ route('detail',$guru->id) }}" method="post">
+
+            <div>
+                <ul class="flex space-x-2 rtl:space-x-reverse">
+                    <li>
+                        <a href="javascript:;" class="text-primary hover:underline">Guru</a>
+                    </li>
+                    <li class="before:content-['/'] ltr:before:mr-1 rtl:before:ml-1">
+                        <span>Profile</span>
+                    </li>
+                </ul>
+                <div class="pt-5">
+                    <div class="mb-5 grid grid-cols-1 gap-5 lg:grid-cols-3 xl:grid-cols-4">
+                        <div class="panel">
+                            <div class="mb-5 flex items-center justify-between">
+                                <h5 class="text-lg font-semibold dark:text-white-light">Profile</h5>
+
                             </div>
-                            <ul class="m-auto mt-5 flex max-w-[160px] flex-col text-xs space-y-5 font-semibold text-white-dark">
-                                <li class="flex items-center gap-2">
+                            <div class="mb-5">
+                                <div class="flex flex-col items-center justify-center">
+                                    <img src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
+                                    <p class="text-xl font-semibold text-info">{{ $guru->nama }}</p>
+                                </div>
+                                <ul class="m-auto mt-5 flex max-w-[160px] flex-col text-xs space-y-5 font-semibold text-white-dark">
+                                    <li class="flex items-center gap-2">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                            <path
+                                                d="M2.3153 12.6978C2.26536 12.2706 2.2404 12.057 2.2509 11.8809C2.30599 10.9577 2.98677 10.1928 3.89725 10.0309C4.07094 10 4.286 10 4.71612 10H15.2838C15.7139 10 15.929 10 16.1027 10.0309C17.0132 10.1928 17.694 10.9577 17.749 11.8809C17.7595 12.057 17.7346 12.2706 17.6846 12.6978L17.284 16.1258C17.1031 17.6729 16.2764 19.0714 15.0081 19.9757C14.0736 20.6419 12.9546 21 11.8069 21H8.19303C7.04537 21 5.9263 20.6419 4.99182 19.9757C3.72352 19.0714 2.89681 17.6729 2.71598 16.1258L2.3153 12.6978Z"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                            />
+                                            <path
+                                                opacity="0.5"
+                                                d="M17 17H19C20.6569 17 22 15.6569 22 14C22 12.3431 20.6569 11 19 11H17.5"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                            />
+                                            <path
+                                                opacity="0.5"
+                                                d="M10.0002 2C9.44787 2.55228 9.44787 3.44772 10.0002 4C10.5524 4.55228 10.5524 5.44772 10.0002 6"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                            <path
+                                                d="M4.99994 7.5L5.11605 7.38388C5.62322 6.87671 5.68028 6.0738 5.24994 5.5C4.81959 4.9262 4.87665 4.12329 5.38382 3.61612L5.49994 3.5"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                            <path
+                                                d="M14.4999 7.5L14.6161 7.38388C15.1232 6.87671 15.1803 6.0738 14.7499 5.5C14.3196 4.9262 14.3767 4.12329 14.8838 3.61612L14.9999 3.5"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                        {{ ($guru->sekolah) }}
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                            <path
+                                                d="M2.3153 12.6978C2.26536 12.2706 2.2404 12.057 2.2509 11.8809C2.30599 10.9577 2.98677 10.1928 3.89725 10.0309C4.07094 10 4.286 10 4.71612 10H15.2838C15.7139 10 15.929 10 16.1027 10.0309C17.0132 10.1928 17.694 10.9577 17.749 11.8809C17.7595 12.057 17.7346 12.2706 17.6846 12.6978L17.284 16.1258C17.1031 17.6729 16.2764 19.0714 15.0081 19.9757C14.0736 20.6419 12.9546 21 11.8069 21H8.19303C7.04537 21 5.9263 20.6419 4.99182 19.9757C3.72352 19.0714 2.89681 17.6729 2.71598 16.1258L2.3153 12.6978Z"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                            />
+                                            <path
+                                                opacity="0.5"
+                                                d="M17 17H19C20.6569 17 22 15.6569 22 14C22 12.3431 20.6569 11 19 11H17.5"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                            />
+                                            <path
+                                                opacity="0.5"
+                                                d="M10.0002 2C9.44787 2.55228 9.44787 3.44772 10.0002 4C10.5524 4.55228 10.5524 5.44772 10.0002 6"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                            <path
+                                                d="M4.99994 7.5L5.11605 7.38388C5.62322 6.87671 5.68028 6.0738 5.24994 5.5C4.81959 4.9262 4.87665 4.12329 5.38382 3.61612L5.49994 3.5"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                            <path
+                                                d="M14.4999 7.5L14.6161 7.38388C15.1232 6.87671 15.1803 6.0738 14.7499 5.5C14.3196 4.9262 14.3767 4.12329 14.8838 3.61612L14.9999 3.5"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                        {{ $guru->email }}
+                                    </li>
+                                    <li class="flex items-center gap-2 ">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                            <path
+                                                d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12Z"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                            />
+                                            <path opacity="0.5" d="M7 4V2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                            <path opacity="0.5" d="M17 4V2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                            <path opacity="0.5" d="M2 9H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                       {{ $guru->alamat }}
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                            <path
+                                                opacity="0.5"
+                                                d="M4 10.1433C4 5.64588 7.58172 2 12 2C16.4183 2 20 5.64588 20 10.1433C20 14.6055 17.4467 19.8124 13.4629 21.6744C12.5343 22.1085 11.4657 22.1085 10.5371 21.6744C6.55332 19.8124 4 14.6055 4 10.1433Z"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                            />
+                                            <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5" />
+                                        </svg>
+                                        {{ $guru->no }}
+                                    </li>
+
+
+                                </ul>
+                                <ul class="mt-5  justify-center gap-2">
+                                   <li class="font-bold">Status</li>
+                                   <li class="flex items-center gap-2 mt-2 px-4">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
                                         <path
                                             d="M2.3153 12.6978C2.26536 12.2706 2.2404 12.057 2.2509 11.8809C2.30599 10.9577 2.98677 10.1928 3.89725 10.0309C4.07094 10 4.286 10 4.71612 10H15.2838C15.7139 10 15.929 10 16.1027 10.0309C17.0132 10.1928 17.694 10.9577 17.749 11.8809C17.7595 12.057 17.7346 12.2706 17.6846 12.6978L17.284 16.1258C17.1031 17.6729 16.2764 19.0714 15.0081 19.9757C14.0736 20.6419 12.9546 21 11.8069 21H8.19303C7.04537 21 5.9263 20.6419 4.99182 19.9757C3.72352 19.0714 2.89681 17.6729 2.71598 16.1258L2.3153 12.6978Z"
@@ -640,235 +748,42 @@
                                             stroke-linejoin="round"
                                         />
                                     </svg>
-                                    SMKN 1 KRAKSAAN
+                                    {{ $guru->status }}
                                 </li>
-                                <li class="flex items-center gap-2">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
-                                        <path
-                                            d="M2.3153 12.6978C2.26536 12.2706 2.2404 12.057 2.2509 11.8809C2.30599 10.9577 2.98677 10.1928 3.89725 10.0309C4.07094 10 4.286 10 4.71612 10H15.2838C15.7139 10 15.929 10 16.1027 10.0309C17.0132 10.1928 17.694 10.9577 17.749 11.8809C17.7595 12.057 17.7346 12.2706 17.6846 12.6978L17.284 16.1258C17.1031 17.6729 16.2764 19.0714 15.0081 19.9757C14.0736 20.6419 12.9546 21 11.8069 21H8.19303C7.04537 21 5.9263 20.6419 4.99182 19.9757C3.72352 19.0714 2.89681 17.6729 2.71598 16.1258L2.3153 12.6978Z"
-                                            stroke="currentColor"
-                                            stroke-width="1.5"
-                                        />
-                                        <path
-                                            opacity="0.5"
-                                            d="M17 17H19C20.6569 17 22 15.6569 22 14C22 12.3431 20.6569 11 19 11H17.5"
-                                            stroke="currentColor"
-                                            stroke-width="1.5"
-                                        />
-                                        <path
-                                            opacity="0.5"
-                                            d="M10.0002 2C9.44787 2.55228 9.44787 3.44772 10.0002 4C10.5524 4.55228 10.5524 5.44772 10.0002 6"
-                                            stroke="currentColor"
-                                            stroke-width="1.5"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                        <path
-                                            d="M4.99994 7.5L5.11605 7.38388C5.62322 6.87671 5.68028 6.0738 5.24994 5.5C4.81959 4.9262 4.87665 4.12329 5.38382 3.61612L5.49994 3.5"
-                                            stroke="currentColor"
-                                            stroke-width="1.5"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                        <path
-                                            d="M14.4999 7.5L14.6161 7.38388C15.1232 6.87671 15.1803 6.0738 14.7499 5.5C14.3196 4.9262 14.3767 4.12329 14.8838 3.61612L14.9999 3.5"
-                                            stroke="currentColor"
-                                            stroke-width="1.5"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                    </svg>
-                                    jimmy@gmail.com
-                                </li>
-                                <li class="flex items-center gap-2 ">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
-                                        <path
-                                            d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12Z"
-                                            stroke="currentColor"
-                                            stroke-width="1.5"
-                                        />
-                                        <path opacity="0.5" d="M7 4V2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                        <path opacity="0.5" d="M17 4V2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                        <path opacity="0.5" d="M2 9H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                    </svg>
-                                   kraksaan probolinggo
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
-                                        <path
-                                            opacity="0.5"
-                                            d="M4 10.1433C4 5.64588 7.58172 2 12 2C16.4183 2 20 5.64588 20 10.1433C20 14.6055 17.4467 19.8124 13.4629 21.6744C12.5343 22.1085 11.4657 22.1085 10.5371 21.6744C6.55332 19.8124 4 14.6055 4 10.1433Z"
-                                            stroke="currentColor"
-                                            stroke-width="1.5"
-                                        />
-                                        <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5" />
-                                    </svg>
-                                  09187361253426
-                                </li>
-
-
-                            </ul>
-                            <ul class="mt-5  justify-center gap-2">
-                               <li class="font-bold">Status</li>
-                               <li class="flex items-center gap-2 mt-2 px-4">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
-                                    <path
-                                        d="M2.3153 12.6978C2.26536 12.2706 2.2404 12.057 2.2509 11.8809C2.30599 10.9577 2.98677 10.1928 3.89725 10.0309C4.07094 10 4.286 10 4.71612 10H15.2838C15.7139 10 15.929 10 16.1027 10.0309C17.0132 10.1928 17.694 10.9577 17.749 11.8809C17.7595 12.057 17.7346 12.2706 17.6846 12.6978L17.284 16.1258C17.1031 17.6729 16.2764 19.0714 15.0081 19.9757C14.0736 20.6419 12.9546 21 11.8069 21H8.19303C7.04537 21 5.9263 20.6419 4.99182 19.9757C3.72352 19.0714 2.89681 17.6729 2.71598 16.1258L2.3153 12.6978Z"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                    />
-                                    <path
-                                        opacity="0.5"
-                                        d="M17 17H19C20.6569 17 22 15.6569 22 14C22 12.3431 20.6569 11 19 11H17.5"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                    />
-                                    <path
-                                        opacity="0.5"
-                                        d="M10.0002 2C9.44787 2.55228 9.44787 3.44772 10.0002 4C10.5524 4.55228 10.5524 5.44772 10.0002 6"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                    <path
-                                        d="M4.99994 7.5L5.11605 7.38388C5.62322 6.87671 5.68028 6.0738 5.24994 5.5C4.81959 4.9262 4.87665 4.12329 5.38382 3.61612L5.49994 3.5"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                    <path
-                                        d="M14.4999 7.5L14.6161 7.38388C15.1232 6.87671 15.1803 6.0738 14.7499 5.5C14.3196 4.9262 14.3767 4.12329 14.8838 3.61612L14.9999 3.5"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                </svg>
-                                Pembimbing
-                            </li>
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="panel lg:col-span-3 xl:col-span-3">
-                        <div class="flex items-center justify-between mb-5">
-                          <h5 class="text-lg font-semibold dark:text-white-light">Siswa</h5>
-                          <div class="flex items-center space-x-2">
-                               <a href="{{ route('guru_admin.index') }}" class="btn btn-outline-danger w-73 h-27">Kembali</a>
+                        <div class="panel lg:col-span-3 xl:col-span-3">
+                            <div class="flex items-center justify-between mb-5">
+                              <h5 class="text-lg font-semibold dark:text-white-light">Siswa</h5>
+                              <div class="flex items-center space-x-2">
+                                   <a href="{{ route('guru_admin.index') }}" class="btn btn-outline-danger w-73 h-27">Kembali</a>
+                              </div>
+                            </div>
+                            <div class="table-responsive font-semibold text-[#515365] dark:text-white-light">
+                          <table >
+                            <tr class="bg-[#E2E8F0] text-sm">
+                                <td >#</td>
+                                <td>Nama</td>
+                                <td>Jurusan</td>
+                                <td>Email</td>
+                                <td>Alamat</td>
+                            </tr>
+
+
+                          </table>
                           </div>
-                        </div>
-                        <div class="table-responsive font-semibold text-[#515365] dark:text-white-light">
-                      <table >
-                        <tr class="bg-[#E2E8F0] text-sm">
-                            <td >#</td>
-                            <td>Nama</td>
-                            <td>Jurusan</td>
-                            <td>Email</td>
-                            <td>Alamat</td>
-                        </tr>
-                        <tr class="text-sm">
-                            <td>
-                                1
-                            </td>
-                            <td>
-                                Kader
-                            </td>
-                            <td>RPL</td>
-                            <td>
-                                Kader@gmail.com
-                            </td>
-                            <td>
-                                Satreyan,maron,probolinggo
-                            </td>
-                        </tr>
-                        <tr class="text-sm">
-                            <td>
-                                1
-                            </td>
-                            <td>
-                                Kader
-                            </td>
-                            <td>RPL</td>
-                            <td>
-                                Kader@gmail.com
-                            </td>
-                            <td>
-                                Satreyan,maron,probolinggo
-                            </td>
-                        </tr>
-                        <tr class="text-sm">
-                            <td>
-                                2
-                            </td>
-                            <td>
-                                Kader
-                            </td>
-                            <td>RPL</td>
-                            <td>
-                                Kader@gmail.com
-                            </td>
-                            <td>
-                                Satreyan,maron,probolinggo
-                            </td>
-                        </tr>
-                        <tr class="text-sm">
-                            <td>
-                                3
-                            </td>
-                            <td>
-                                Kader
-                            </td>
-                            <td>RPL</td>
-                            <td>
-                                Kader@gmail.com
-                            </td>
-                            <td>
-                                Satreyan,maron,probolinggo
-                            </td>
-                        </tr>
-                        <tr class="text-sm">
-                            <td>
-                                4
-                            </td>
-                            <td>
-                                Kader
-                            </td>
-                            <td>RPL</td>
-                            <td>
-                                Kader@gmail.com
-                            </td>
-                            <td>
-                                Satreyan,maron,probolinggo
-                            </td>
-                        </tr>
-                        <tr class="text-sm">
-                            <td>
-                                5
-                            </td>
-                            <td>
-                                Kader
-                            </td>
-                            <td>RPL</td>
-                            <td>
-                                Kader@gmail.com
-                            </td>
-                            <td>
-                                Satreyan,maron,probolinggo
-                            </td>
-                        </tr>
+                          </div>
 
-
-                      </table>
-                      </div>
-                      </div>
-
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
+                </div>
+            </form>
+
+        <!-- start main content section -->
         </div>
         <!-- end main content section -->
     </div>

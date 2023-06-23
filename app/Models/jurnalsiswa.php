@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class jurnalsiswa extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nama','tanggal','sekolah','kegiatan', 'bukti'
+    ];
 }

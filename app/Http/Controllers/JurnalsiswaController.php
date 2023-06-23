@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\jurnalsiswa;
 use App\Http\Requests\StorejurnalsiswaRequest;
 use App\Http\Requests\UpdatejurnalsiswaRequest;
+use Illuminate\Http\Request;
+
 
 class JurnalsiswaController extends Controller
 {
@@ -15,7 +17,8 @@ class JurnalsiswaController extends Controller
      */
     public function index()
     {
-        return view('jurnal_siswa.index');
+        $item = jurnalsiswa::latest()->paginate(10);
+        return view('jurnal_siswa.index',compact('item'));
     }
 
     /**
@@ -37,8 +40,23 @@ class JurnalsiswaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama'
+            'nama' =>"required",
+            'tanggal' => "required",
+            'sekolah' => "required",
+            'kegiatan'  => "required",
+            'bukti'  => "required"
+
         ]);
+        jurnalsiswa::create([
+            'nama' => $request->nama,
+            'tanggal' => $request->tanggal,
+            'sekolah' => $request->sekolah,
+            'kegiatan'=>$request->kegiatan,
+            'bukti'=>$request->bukti
+
+        ]);
+        
+        return redirect()->route('jurnalsiswa.index');
     }
 
     /**
