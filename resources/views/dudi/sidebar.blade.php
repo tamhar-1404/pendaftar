@@ -362,7 +362,7 @@
       chart: {
       type: 'bar',
       height: 350,
-      width:985
+      width:1600,
     },
     plotOptions: {
       bar: {

@@ -1167,11 +1167,11 @@
                         <div class="panel h-full xl:col-span-2">
                             {{-- card  --}}
                             <div class="pt-5 pb-6">
-                                <div class="mb-5  grid grid-cols-1 gap-8 text-white sm:grid-cols-9 xl:grid-cols-3">
+                                <div class="mb-5  grid grid-cols-1 gap-8 text-white sm:grid-cols-9 xl:grid-cols-3 ">
                                     <!-- Users Visit -->
                                     <div class="panel bg-gradient-to-r from-white-500 to-white-400">
                                         <div class="flex justify-between">
-                                            <div class="text-2xl text-black font-semibold ltr:mr-1 rtl:ml-1">Total
+                                            <div class="text-lg  text-black font-semibold ltr:mr-1 rtl:ml-1">Total
                                                 Jurnal</div>
                                             <div x-data="dropdown" @click.outside="open = false"
                                                 class="dropdown">
@@ -1185,7 +1185,7 @@
                                     <!-- Sessions -->
                                     <div class="panel bg-gradient-to-r  from-white-500 to-white-400">
                                         <div class="flex justify-between">
-                                            <div class="text-2xl text-black  font-semibold ltr:mr-1 rtl:ml-1">Total
+                                            <div class="text-lg text-black  font-semibold ltr:mr-1 rtl:ml-1">Total
                                                 Siswa</div>
                                         </div>
                                         <div class="mt-5 flex items-center">
@@ -1196,7 +1196,7 @@
                                     <!-- Time On-Site -->
                                     <div class="panel bg-gradient-to-r from-white-500 to-white-400">
                                         <div class="flex justify-between">
-                                            <div class="text-md text-black font-semibold ltr:mr-1 rtl:ml-1">Total
+                                            <div class="text-1xl text-black font-semibold ltr:mr-1 rtl:ml-1">Total
                                                 Absensi</div>
                                             <div x-data="dropdown" @click.outside="open = false"
                                                 class="dropdown">
