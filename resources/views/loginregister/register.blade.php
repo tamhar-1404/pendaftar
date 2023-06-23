@@ -24,6 +24,10 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <!-- CSS -->
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/smartwizard@6/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
         rel="stylesheet" />
@@ -48,7 +52,12 @@
     <!-- App preloader-->
     <div class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900">
         <div class="app-preloader-inner relative inline-block h-48 w-48"></div>
+
     </div>
+    {{-- <div class="center fixed z-50 grid h-full w-full place-content-center">
+        <div class="ring relative inline-block h-48 w-48"></div>
+        <img src="{{ asset('admin/loading/logo.png') }}" alt="Deskripsi gambar" class="my-img">
+    </div> --}}
 
     <!-- Page Wrapper -->
     <div id="root" class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900" x-cloak>
@@ -67,47 +76,53 @@
                 </div>
 
             </div>
-            <ol class="steps is-horizontal line-space [--size:2.75rem] [--line:.5rem]">
-                <li class="step space-x-4 pb-12 before:bg-slate-200 dark:before:bg-navy-500">
-                    <div class="step-header mask is-hexagon bg-info text-white dark:bg-accent">
-                        <i class="fa-solid fa-layer-group text-base"></i>
-                    </div>
-                    <div class="text-center">
-                        <p class="text-xs text-slate-400 dark:text-navy-300">Step 1</p>
-                        <h3 class="text-base font-medium text-info dark:text-accent-light">Data Diri</h3>
-                    </div>
-                </li>
-                <li class="step space-x-4 pb-12 before:bg-slate-200 dark:before:bg-navy-500">
-                    <div
-                        class="step-header mask is-hexagon bg-slate-200 text-slate-500 dark:bg-navy-500 dark:text-navy-100">
-                        <i class="fa-solid fa-user text-base"></i>
-                    </div>
-                    <div class="text-center">
-                        <p class="text-xs text-slate-400 dark:text-navy-300">Step 2</p>
-                        <h3 class="text-base font-medium">Data Diri</h3>
-                    </div>
-                </li>
-                <li class="step space-x-4 pb-12 before:bg-slate-200 dark:before:bg-navy-500">
-                    <div
-                        class="step-header mask is-hexagon bg-slate-200 text-slate-500 dark:bg-navy-500 dark:text-navy-100">
-                        <i class="fa-solid fa-file-lines text-base"></i>
-                    </div>
-                    <div class="text-center">
-                        <p class="text-xs text-slate-400 dark:text-navy-300">Step 3</p>
-                        <h3 class="text-base font-medium">Berkas</h3>
-                    </div>
-                </li>
-                <li class="step space-x-4 before:bg-slate-200 dark:before:bg-navy-500">
-                    <div
-                        class="step-header mask is-hexagon bg-slate-200 text-slate-500 dark:bg-navy-500 dark:text-navy-100">
-                        <i class="fa-solid fa-check text-base"></i>
-                    </div>
-                    <div class="text-center">
-                        <p class="text-xs text-slate-400 dark:text-navy-300">Step 4</p>
-                        <h3 class="text-base font-medium">Konfirmasi</h3>
-                    </div>
-                </li>
-            </ol>
+            <!-- SmartWizard html -->
+            <div id="smartwizard">
+                <ol class="steps is-horizontal line-space [--size:2.75rem] [--line:.5rem]">
+                    <li class="step space-x-4 pb-12 before:bg-slate-200 dark:before:bg-navy-500">
+                        <div class="step-header mask is-hexagon bg-info text-white dark:bg-accent">
+                            <i class="fa-solid fa-layer-group text-base"></i>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xs text-slate-400 dark:text-navy-300">Step 1</p>
+                            <h3 class="text-base font-medium text-info dark:text-accent-light">Data Diri</h3>
+                        </div>
+                    </li>
+                    <li id="" class="step space-x-4 pb-12 before:bg-slate-200 dark:before:bg-navy-500">
+                        <div
+                            class="step-header mask is-hexagon bg-slate-200 text-slate-500 dark:bg-navy-500 dark:text-navy-100">
+                            <i class="fa-solid fa-user text-base"></i>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xs text-slate-400 dark:text-navy-300">Step 2</p>
+                            <h3 class="text-base font-medium">Data Diri</h3>
+                        </div>
+                    </li>
+                    <li id="" class="step space-x-4 pb-12 before:bg-slate-200 dark:before:bg-navy-500">
+                        <div
+                            class="step-header mask is-hexagon bg-slate-200 text-slate-500 dark:bg-navy-500 dark:text-navy-100">
+                            <i class="fa-solid fa-file-lines text-base"></i>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xs text-slate-400 dark:text-navy-300">Step 3</p>
+                            <h3 class="text-base font-medium">Berkas</h3>
+                        </div>
+                    </li>
+                    <li id="" class="step space-x-4 before:bg-slate-200 dark:before:bg-navy-500">
+                        <div
+                            class="step-header mask is-hexagon bg-slate-200 text-slate-500 dark:bg-navy-500 dark:text-navy-100">
+                            <i class="fa-solid fa-check text-base"></i>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xs text-slate-400 dark:text-navy-300">Step 4</p>
+                            <h3 class="text-base font-medium">Konfirmasi</h3>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress"></div>
         </div>
 
         <div class="col-span-12 grid lg:col-span-6 lg:place-items-center z-10">
@@ -126,9 +141,9 @@
                         </p>
                     </div>
                 </div>
-                <div id="wizard">
-                    {{-- step 1 --}}
-                    <div class="step" id="step1">
+
+                <div class="tab-content">
+                    <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
                         <div class="mt-4 space-y-4">
                             <label class="block">
                                 <span>Nama</span>
@@ -205,14 +220,12 @@
                                 </div>
                             </label>
                         </div>
-                        <button onclick="nextStep()"
+                        <a href="#step-1"
                             class="btn mt-10 h-10 w-full bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                             Selanjutnya
-                        </button>
+                        </a>
                     </div>
-
-                    {{-- step 2 --}}
-                    <div class="step" id="step2">
+                    <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
                         <div class="mt-4 space-y-4">
                             <label class="block">
                                 <span>Alamat</span>
@@ -285,16 +298,14 @@
                                     class="btn mt-10 h-10 bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                                     Kembali
                                 </button>
-                                <button type="button" onclick="nextStep()"
+                                <a href="#step-2"
                                     class="btn mt-10 h-10 bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                                     Selanjutnya
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
-
-                    {{-- step 3 --}}
-                    <div class="step" id="step3">
+                    <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3">
                         <div class="mt-4 space-y-4">
                             <label class="block">
                                 <span>Foto Siswa</span>
@@ -358,9 +369,7 @@
                             </div>
                         </div>
                     </div>
-
-                    {{-- step 4 --}}
-                    <div class="step" id="step4">
+                    <div id="step-4" class="tab-pane" role="tabpanel" aria-labelledby="step-4">
                         <div class="mt-4 space-y-4">
                             <label class="relative flex">
                                 <input
@@ -423,6 +432,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="mt-4 text-center text-xs+">
                     <p class="line-clamp-1">
                         <span>Sudah punya Akun? </span>
@@ -444,28 +454,44 @@
         window.addEventListener("DOMContentLoaded", () => Alpine.start());
     </script>
 
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/smartwizard@6/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
+
+
     <script>
         var currentStep = 1;
         var totalSteps = 4;
+        var progressBar = document.querySelector('.progress-bar .progress');
+
+        function updateProgressBar() {
+            var progressPercentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            progressBar.style.width = progressPercentage + '%';
+        }
+
+        function showStep(step) {
+            if (step >= 1 && step <= totalSteps) {
+                document.getElementById('step' + currentStep).classList.remove('active');
+                currentStep = step;
+                document.getElementById('step' + currentStep).classList.add('active');
+                updateProgressBar();
+            }
+        }
 
         function nextStep() {
             if (currentStep < totalSteps) {
-                document.getElementById('step' + currentStep).classList.remove('active');
-                currentStep++;
-                document.getElementById('step' + currentStep).classList.add('active');
+                showStep(currentStep + 1);
             }
         }
 
         function prevStep() {
             if (currentStep > 1) {
-                document.getElementById('step' + currentStep).classList.remove('active');
-                currentStep--;
-                document.getElementById('step' + currentStep).classList.add('active');
+                showStep(currentStep - 1);
             }
         }
 
         function init() {
             document.getElementById('step1').classList.add('active');
+            updateProgressBar();
         }
 
         window.onload = init;

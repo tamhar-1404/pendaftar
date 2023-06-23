@@ -22,9 +22,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/chatguru', function () {
-    return view('chat_guru.index');
-});
+Route::resource('/chat_guru', App\Http\Controllers\ChatGuruController::class);
+
 Route::get('/chatadmin', function () {
     return view('chat_guru.chatadmin');
 });
