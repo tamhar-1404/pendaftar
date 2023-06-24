@@ -125,8 +125,7 @@
                     </button>
 
                     {{-- modal --}}
-                    <form action="{{route('jurnalsiswa.store')}}" method="post">
-                        @csrf
+
                     <!-- Main modal -->
                     <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative w-full max-w-md max-h-full">
@@ -138,24 +137,33 @@
                                 </button>
                                 <div class="px-6 py-6 lg:px-8">
                                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Jurnal</h3>
-                                    <form class="space-y-6" action="#">
+                                    <form class="space-y-6" action="{{route('jurnalsiswa.store')}}" method="post">
+                                        @csrf
+                                        <div>
+                                            <input type="text" name="nama" class="border border-2" id="">
+                                        </div>
+                                        <div>
+                                            <input type="date" name="tanggal" id="">
+                                        </div>
+                                        <div>
+                                            <input type="text" name="sekolah" id="">
+                                        </div>
                                         <div>
                                             <label for="kegiatan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
                                             <textarea name="kegiatan" class=" rounded-md" placeholder="kegiatan yang kamu lakukan" id="" cols="45" rows="5"></textarea>
                                         </div>
                                         <div>
                                             <label for="bukti" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti</label>
-                                            <input type="file" name="bukti" id="" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                                            <input type="text" name="bukti" id="" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                                         </div>
-                                        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-extrabold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
-
+                                        <button type="submit">kirim</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                     {{-- end modal --}}
-                  </form>
+
                     <div class="mb-5 flex flex-wrap  mt-5 items-center">
                          {{-- serch dan filter --}}
                     <div class="flex justify-start items-center">
@@ -274,65 +282,30 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr
+                                @forelse ( $item as $items )
+                                <tr
                                 class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                                <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
-                                <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
+                                <td class="whitespace-nowrap px-4 py-4 font-medium">{{$items -> id}}</td>
+                                <td class="whitespace-nowrap px-4 py-4">{{$items -> nama}}</td>
+                                <td class="whitespace-nowrap px-4 py-4">{{$items -> tanggal}}</td>
+                                <td class="whitespace-nowrap px-4 py-4">{{$items -> sekolah}}</td>
+                                <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$items -> kegiatan}}</td>
                                 <td class="whitespace-nowrap px-6 pl-17 py-4"><img
-                                    src="{{ asset('admin/assets/images/carousel2.jpeg') }}"
+                                    src="admin/assets/images/profile-1.jpeg"
                                     width="100px" alt="">
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-4">
                                     <a href="#">
                                         <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent" data-te-toggle="modal"
-                                        data-modal-target="staticModal" data-modal-toggle="staticModal" ">
+                                        data-modal-target="staticModal{{$items -> id}}" data-modal-toggle="staticModal{{$items-> id}}" ">
                                             <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
                                         </div>
                                     </a>
                                 </td>
                               </tr>
-                              <tr
-                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                <td class="whitespace-nowrap px-4 py-4 font-medium">2</td>
-                                <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
-                                <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                                <td class="whitespace-nowrap px-6 pl-17 py-4"><img
-                                    src="{{ asset('admin/assets/images/carousel2.jpeg') }}"
-                                    width="100px" alt="">
-                                </td>
-                                <td class="whitespace-nowrap px-4 py-4">
-                                    <a href="#">
-                                        <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent" data-te-toggle="modal"
-                                        data-modal-target="staticModal" data-modal-toggle="staticModal" ">
-                                            <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                        </div>
-                                    </a>
-                                </td>
-                              </tr>
-                              <tr
-                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                <td class="whitespace-nowrap px-4 py-4 font-medium">3</td>
-                                <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
-                                <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                                <td class="whitespace-nowrap px-6 pl-17 py-4"><img
-                                    src="{{ asset('admin/assets/images/carousel2.jpeg') }}"
-                                    width="100px" alt="">
-                                </td>
-                                <td class="whitespace-nowrap px-4 py-4">
-                                    <a href="#">
-                                        <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
-                                            <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                        </div>
-                                    </a>
-                                </td>
-                              </tr>
+                                @empty
+
+                                @endforelse
                             </tbody>
                           </table>
                         </div>
@@ -397,8 +370,9 @@
         <!-- end footer section -->
 
     </div>
-    {{-- modal --}}
-    <div id="staticModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    @forelse ( $item as $ireng)
+     {{-- modal --}}
+     <div id="staticModal{{$ireng -> id}}"  tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-2xl max-h-full">
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -418,7 +392,7 @@
                             Nama
                         </p>
                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            mark
+                            {{$items-> nama }}
                         </p>
                     </div>
                     <div>
@@ -426,7 +400,7 @@
                             Tanggal
                         </p>
                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            03-04-2023
+                            {{$ireng -> tanggal}}
                         </p>
                     </div>
                     <div>
@@ -434,7 +408,7 @@
                             Sekolah
                         </p>
                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            SMKN 1 Kepanjen
+                            {{$ireng -> sekolah}}
                         </p>
                     </div>
                     <div>
@@ -442,7 +416,7 @@
                             Kegiatan
                         </p>
                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum optio officiis provident eos amet, eius vel corporis nam delectus fuga eligendi fugit repellendus veniam repellat illo ipsam corrupti suscipit.
+                            {{$ireng -> kegiatan}}
                         </p>
                     </div>
                     <div>
@@ -459,6 +433,10 @@
             </div>
         </div>
     </div>
+    @empty
+
+    @endforelse
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>

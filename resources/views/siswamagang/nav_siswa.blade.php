@@ -489,7 +489,7 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="sub-menu">
+                <ul class="sub-menu">   
                     <li>
                         <a href="{{route('tatib_siswa.index')}}">Tata tertib</a>
                     </li>
