@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @vite('resources/css/app.css')
+    <link rel="stylesheet" href="load/load.css">
     <link
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
     rel="stylesheet" />
@@ -30,6 +31,14 @@
 </head>
 <body>
 
+      <!-- screen loader -->
+    <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+        <div class="center">
+            <div class="ring">
+            </div>
+            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+        </div>
+    </div>
 
     <!-- Sidenav -->
     <nav
@@ -504,6 +513,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script>
        const instanceMode = te.Sidenav.getInstance(
         document.getElementById("sidenav-2")
@@ -543,6 +553,11 @@
         } from "tw-elements";
 
         initTE({ sidenav-2 });
+    </script>
+     <script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
+        });
     </script>
 </body>
 
