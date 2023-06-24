@@ -47,13 +47,13 @@
 <body>
 
      <!-- screen loader -->
-     {{-- <div  class="screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+     <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
             <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
         </div>
-    </div> --}}
+    </div>
 
 
    @include('jurnal_admin.p')
@@ -375,7 +375,7 @@
     {{-- end modal --}}
 
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script>
@@ -417,6 +417,11 @@
         } from "tw-elements";
 
         initTE({ sidenav-2 });
+    </script>
+    <script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
+        });
     </script>
 </body>
 
