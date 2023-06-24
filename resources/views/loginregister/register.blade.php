@@ -136,29 +136,29 @@
                     </div>
                 </div>
                 <form method="POST" action="{{ route('postregister') }}" enctype="multipart/form-data"
-                    id="multistep-form" class="multistep-form">
+                    id="multistep-form">
                     {{-- step 1 --}}
                     <div class="step step-1" id="step1">
-                        <div class="steps mt-4 space-y-4">
+                        <div class="mt-4 space-y-4">
                             <label class="block">
                                 <span>Nama</span>
                                 <span class="relative mt-1.5 flex">
                                     <input id="name" name="name"
                                         class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Masukkan nama anda" type="text" required />
+                                        placeholder="Masukkan nama anda" type="text" re/>
                                 </span>
                             </label>
                         </div>
                         @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <div class="steps grid grid-cols-1 gap-4 sm:grid-cols-2 mt-4">
+                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 mt-4">
                             <label class="block">
                                 <span>Tempat</span>
                                 <span class="relative mt-1.5 flex">
                                     <input id="tempat" name="tempat"
                                         class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Kota anda" type="text" required />
+                                        placeholder="Kota anda" type="text" />
                                 </span>
                             </label>
                             @error('tempat')
@@ -169,7 +169,7 @@
                                 <span class="relative mt-1.5 flex">
                                     <input x-init="$el._x_flatpickr = flatpickr($el)" id="tanggal" name="tanggal"
                                         class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Choose date..." type="text" required />
+                                        placeholder="Choose date..." type="text" />
                                     <span
                                         class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -185,33 +185,33 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="steps mt-4 space-y-4">
+                        <div class="mt-4 space-y-4">
                             <label class="block">
                                 <span>Kelas</span>
                                 <span class="relative mt-1.5 flex">
                                     <input id="kelas" name="kelas"
                                         class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Masukkan Kelas anda" type="text" required />
+                                        placeholder="Masukkan Kelas anda" type="text" />
                                 </span>
                             </label>
                         </div>
                         @error('kelas')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <div class="steps mt-4 space-y-4">
+                        <div class="mt-4 space-y-4">
                             <label class="block">
                                 <span>NISN</span>
                                 <span class="relative mt-1.5 flex">
                                     <input id="nisn" name="nisn"
                                         class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Masukkan NISN anda" type="text" required />
+                                        placeholder="Masukkan NISN anda" type="text" />
                                 </span>
                             </label>
                         </div>
                         @error('nisn')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <div class="steps mt-4 space-y-4">
+                        <div class="mt-4 space-y-4">
                             <label class="block">
                                 <span>Jenis Kelamin</span>
                                 <div class="mt-2 grid grid-cols-2 place-items-start gap-6 sm:grid-cols-6">
@@ -233,60 +233,60 @@
                         @error('jeniskelamin')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <button type="button"
-                            class="navigation next-button btn mt-10 h-10 w-full bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+                        <button
+                            class="next-button btn mt-10 h-10 w-full bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                             Selanjutnya
                         </button>
                     </div>
 
                     {{-- step 2 --}}
                     <div class="step step-2" id="step2">
-                        <div class="steps mt-4 space-y-4">
+                        <div class="mt-4 space-y-4">
                             <label class="block">
                                 <span>Alamat</span>
                                 <span class="relative mt-1.5 flex">
                                     <textarea name="alamat" id="alamat"
                                         class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Masukkan nama anda" required></textarea>
+                                        placeholder="Masukkan nama anda"></textarea>
                                 </span>
                             </label>
                         </div>
                         @error('alamat')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <div class="steps mt-4 space-y-4">
+                        <div class="mt-4 space-y-4">
                             <label class="block">
                                 <span>Sekolah</span>
                                 <span class="relative mt-1.5 flex">
                                     <input id="sekolah" name="sekolah"
                                         class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Masukkan Kelas anda" type="text" required />
+                                        placeholder="Masukkan Kelas anda" type="text" />
                                 </span>
                             </label>
                         </div>
                         @error('sekolah')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <div class="steps mt-4 space-y-4">
+                        <div class="mt-4 space-y-4">
                             <label class="block">
                                 <span>Jurusan</span>
                                 <span class="relative mt-1.5 flex">
                                     <input id="jurusan" name="jurusan"
                                         class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Masukkan Kelas anda" type="text" required />
+                                        placeholder="Masukkan Kelas anda" type="text" />
                                 </span>
                             </label>
                         </div>
                         @error('jurusan')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <div class="steps grid grid-cols-1 gap-4 sm:grid-cols-2 mt-4">
+                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 mt-4">
                             <label class="block">
                                 <span>Awal Magang</span>
                                 <span class="relative mt-1.5 flex">
                                     <input x-init="$el._x_flatpickr = flatpickr($el)" id="magang_awal" name="magang_awal"
                                         class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Choose date..." type="text" required />
+                                        placeholder="Choose date..." type="text" />
                                     <span
                                         class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -306,7 +306,7 @@
                                 <span class="relative mt-1.5 flex">
                                     <input x-init="$el._x_flatpickr = flatpickr($el)" id="magang_akhir" name="magang_akhir"
                                         class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Choose date..." type="text" required />
+                                        placeholder="Choose date..." type="text" />
                                     <span
                                         class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -323,12 +323,12 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <div class="flex items-center justify-end mt-4">
-                            <div class="navigation ml-auto col">
+                            <div class="ml-auto col">
                                 <button type="button" onclick="prevStep()"
                                     class="prev-button btn mt-10 h-10 bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                                     Kembali
                                 </button>
-                                <button type="button"
+                                <button type="button" onclick="nextStep()"
                                     class="next-button btn mt-10 h-10 bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                                     Selanjutnya
                                 </button>
@@ -338,7 +338,7 @@
 
                     {{-- step 3 --}}
                     <div class="step step-3" id="step3">
-                        <div class="steps mt-4 space-y-4">
+                        <div class="mt-4 space-y-4">
                             <label class="block">
                                 <span>Foto Siswa</span>
                                 <span class="relative mt-1.5 flex">
@@ -351,7 +351,7 @@
                         @error('foto_siswa')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <div class="steps mt-4 space-y-4">
+                        <div class="mt-4 space-y-4">
                             <label class="block">
                                 <span>Surat Pernyataan diri sendiri</span>
                                 <span class="relative mt-1.5 flex">
@@ -364,7 +364,7 @@
                         @error('sp_diri')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <div class="steps mt-4 space-y-4">
+                        <div class="mt-4 space-y-4">
                             <label class="block">
                                 <span>Surat Pernyataan Orang Tua</span>
                                 <span class="relative mt-1.5 flex">
@@ -377,7 +377,7 @@
                         @error('sp_ortu')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <div class="steps mt-4 space-y-4">
+                        <div class="mt-4 space-y-4">
                             <label class="block">
                                 <span>SKCK</span>
                                 <span class="relative mt-1.5 flex">
@@ -388,7 +388,7 @@
                             </label>
                         </div>
                         @error('skck')
-                            <div class="steps alert alert-danger">{{ $message }}</div>
+                            <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <div class="mt-4 space-y-4">
                             <label class="block">
@@ -419,11 +419,11 @@
 
                     {{-- step 4 --}}
                     <div class="step step-4" id="step4">
-                        <div class="steps mt-4 space-y-4">
+                        <div class="mt-4 space-y-4">
                             <label class="relative flex">
                                 <input id="email" name="email"
                                     class="form-input peer w-full rounded-lg bg-slate-150 px-3 py-2 pl-9 ring-primary/50 placeholder:text-slate-400 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:ring-accent/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
-                                    placeholder="Email" type="email" required />
+                                    placeholder="Email" type="email" />
                                 <span
                                     class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -438,11 +438,11 @@
                         @error('email')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <div class="steps mt-4 space-y-4">
+                        <div class="mt-4 space-y-4">
                             <label class="relative mt-4 flex">
                                 <input id="password" name="password"
                                     class="form-input peer w-full rounded-lg bg-slate-150 px-3 py-2 pl-9 ring-primary/50 placeholder:text-slate-400 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:ring-accent/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
-                                    placeholder="Password" type="password" required />
+                                    placeholder="Password" type="password" />
                                 <span
                                     class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -457,11 +457,11 @@
                         @error('password')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <div class="steps mt-4 space-y-4">
+                        <div class="mt-4 space-y-4">
                             <label class="relative mt-4 flex">
                                 <input id="password" name="password"
                                     class="form-input peer w-full rounded-lg bg-slate-150 px-3 py-2 pl-9 ring-primary/50 placeholder:text-slate-400 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:ring-accent/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
-                                    placeholder="Konfirmasi Password" type="password" required />
+                                    placeholder="Konfirmasi Password" type="password" />
                                 <span
                                     class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -477,7 +477,7 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <div class="flex items-center justify-end mt-4">
-                            <div class="navigation ml-auto col">
+                            <div class="ml-auto col">
                                 <button type="button" onclick="prevStep()"
                                     class="prev-button btn mt-10 h-10 bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                                     Kembali
@@ -513,51 +513,53 @@
 
 
     <!-- JavaScript untuk mengatur tampilan dan navigasi antar langkah -->
-    document.addEventListener("DOMContentLoaded", function() {
-        const form = document.getElementById("multistep-form");
-        const steps = Array.from(form.getElementsByClassName("step"));
-        const nextButtons = Array.from(form.getElementsByClassName("next-button"));
-        const prevButtons = Array.from(form.getElementsByClassName("prev-button"));
-        let currentStep = 0;
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("multistep-form");
+            const steps = Array.from(form.getElementsByClassName("step"));
+            const nextButtons = Array.from(form.getElementsByClassName("next-button"));
+            const prevButtons = Array.from(form.getElementsByClassName("prev-button"));
+            let currentStep = 0;
 
-        function showStep(stepIndex) {
-            steps.forEach(function(step, index) {
-                if (index === stepIndex) {
-                    step.style.display = "block";
-                } else {
-                    step.style.display = "none";
+            function showStep(stepIndex) {
+                steps.forEach(function(step, index) {
+                    if (index === stepIndex) {
+                        step.style.display = "block";
+                    } else {
+                        step.style.display = "none";
+                    }
+                });
+            }
+
+            function goToNextStep() {
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    showStep(currentStep);
                 }
-            });
-        }
-
-        function goToNextStep() {
-            if (currentStep < steps.length - 1) {
-                currentStep++;
-                showStep(currentStep);
             }
-        }
 
-        function goToPrevStep() {
-            if (currentStep > 0) {
-                currentStep--;
-                showStep(currentStep);
+            function goToPrevStep() {
+                if (currentStep > 0) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
             }
-        }
 
-        nextButtons.forEach(function(button) {
-            button.addEventListener("click", function() {
-                goToNextStep();
+            nextButtons.forEach(function(button) {
+                button.addEventListener("click", function() {
+                    goToNextStep();
+                });
             });
-        });
 
-        prevButtons.forEach(function(button) {
-            button.addEventListener("click", function() {
-                goToPrevStep();
+            prevButtons.forEach(function(button) {
+                button.addEventListener("click", function() {
+                    goToPrevStep();
+                });
             });
-        });
 
-        showStep(currentStep);
-    });
+            showStep(currentStep);
+        });
+    </script>
 </body>
 
 <!-- Mirrored from lineone.piniastudio.com/pages-singup-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 May 2023 04:16:45 GMT -->
