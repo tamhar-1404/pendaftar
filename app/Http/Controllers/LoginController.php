@@ -109,7 +109,7 @@ class LoginController extends Controller
             'password.min' => 'Isi Password Minimal 6 Huruf !!',
         ]);
 
-        $aprovals=aproval::create([
+        aproval::create([
             'name' => $request ->name,
             'email' => $request ->email,
 
