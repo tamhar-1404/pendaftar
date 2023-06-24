@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreLoginRequest;
 use App\Http\Requests\UpdateLoginRequest;
+use App\Models\aproval;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 
@@ -108,7 +109,7 @@ class LoginController extends Controller
             'password.min' => 'Isi Password Minimal 6 Huruf !!',
         ]);
 
-        $user=User::create([
+        $aprovals=aproval::create([
             'name' => $request ->name,
             'email' => $request ->email,
 
@@ -132,7 +133,7 @@ class LoginController extends Controller
             'remember_token' => Str::random(60),
             'role' => 'Siswa'
         ]);
-        
+
         return redirect('login')->with('success','Siswa Berhasil Daftar');
     }
 
