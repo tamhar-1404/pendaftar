@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,12 +26,14 @@
         };
     </script>
 </head>
+
 <body>
     <!-- Sidenav -->
     <nav id="sidenav-2"
         class="fixed left-0 top-0 z-[1035] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
         data-te-sidenav-init data-te-sidenav-hidden="false" data-te-sidenav-mode="side" data-te-sidenav-accordion="true"
         data-te-sidenav-content="#content">
+
         <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
             <li class="relative mt-2">
                 <a class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
@@ -38,6 +41,7 @@
                     <span class="mr-4 [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
                         <img src="{{ asset('admin/assets/images/humma.png') }}" alt="">
                     </span>
+
                 </a>
             </li>
             {{-- dashboard --}}
@@ -57,6 +61,7 @@
                         </svg>
                     </span>
                     <span>Dashboard</span>
+
                 </a>
             </li>
             {{-- approval --}}
@@ -99,6 +104,7 @@
                             class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
                             data-te-sidenav-link-ref>izin & sakit</a>
                     </li>
+
                 </ul>
             </li>
             {{-- user --}}
@@ -140,6 +146,7 @@
                             class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
                             data-te-sidenav-link-ref>Penanggung jawab</a>
                     </li>
+
                 </ul>
             </li>
             {{-- jurnal --}}
@@ -159,6 +166,7 @@
                         </svg>
                     </span>
                     <span>Jurnal</span>
+
                 </a>
             </li>
             {{-- absensi --}}
@@ -178,6 +186,7 @@
                         </svg>
                     </span>
                     <span>Absensi</span>
+
                 </a>
             </li>
             {{-- peraturan --}}
@@ -230,6 +239,7 @@
                             class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
                             data-te-sidenav-link-ref>Laporan SP</a>
                     </li>
+
                 </ul>
             </li>
             {{-- lainnya --}}
@@ -242,6 +252,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
                         </svg>
+
                     </span>
                     <span>Lainnya</span>
                     <span
@@ -280,17 +291,22 @@
                         <a href="{{ route('tolak.index') }}"
                             class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
                             data-te-sidenav-link-ref>Di Tolak</a>
+
                 </ul>
             </li>
         </ul>
     </nav>
     <!-- Sidenav -->
+
     <div class=" pl-[px] " id="content">
+
+
         <!-- Navbar -->
         <nav id="main-navbar"
-            class=" left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start fixed"
+            class="relative left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start fixed"
             data-te-navbar-ref>
             <!-- Container wrapper -->
+
             <div class="flex w-full flex-wrap items-center justify-between px-4 ">
                 <div class="flex gap-4">
                     <!-- Toggler -->
@@ -318,6 +334,7 @@
                         </span>
                     </button>
                     <!-- Toggler -->
+
                     <!-- Search form -->
                     <form class="relative  mr-auto flex flex-wrap items-stretch xl:mx-0">
                         <input autocomplete="off" type="search"
@@ -334,7 +351,9 @@
                             </svg>
                         </span>
                     </form>
+
                 </div>
+
                 <!-- Right links -->
                 <ul class="relative flex items-center">
                     <!-- Notification dropdown -->
@@ -369,6 +388,12 @@
                             </li>
                         </ul>
                     </li>
+
+
+
+
+
+
                     <!-- Avatar -->
                     <li class="relative" data-te-dropdown-ref>
                         <a class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
@@ -398,14 +423,19 @@
             <!-- Container wrapper -->
         </nav>
         <!-- Navbar -->
+
         @include('dudi.sidebar')
     </div>
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script>
         const instanceMode = te.Sidenav.getInstance(
             document.getElementById("sidenav-2")
         );
         const modes = ["side"];
+
         modes.forEach((mode) => {
             const modeSwitch = document.getElementById(mode);
             modeSwitch.addEventListener("click", () => {
@@ -424,6 +454,7 @@
                         const node = document.getElementById(el);
                         node.className += " text-primary-600 border-primary-600";
                         [
+
                         ].forEach((item) => node.classList.remove(item));
                     }
                 });
@@ -436,9 +467,11 @@
             sidenav - 2,
             initTE,
         } from "tw-elements";
+
         initTE({
             sidenav - 2
         });
     </script>
 </body>
+
 </html>

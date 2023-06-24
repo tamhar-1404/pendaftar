@@ -135,7 +135,7 @@
                         </p>
                     </div>
                 </div>
-                <form action="/register" method="post">
+                <form method="POST" action="{{ route('postregister') }}" enctype="multipart/form-data">
                     <div id="wizard">
                         {{-- step 1 --}}
                         <div class="step" id="step1">
@@ -143,25 +143,31 @@
                                 <label class="block">
                                     <span>Nama</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input
+                                        <input id="name" name="name"
                                             class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                             placeholder="Masukkan nama anda" type="text" />
                                     </span>
                                 </label>
                             </div>
+                            @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 mt-4">
                                 <label class="block">
                                     <span>Tempat</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input
+                                        <input id="tempat" name="tempat"
                                             class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                             placeholder="Kota anda" type="text" />
                                     </span>
                                 </label>
+                                @error('tempat')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                                 <label class="block">
                                     <span>Tanggal lahir</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input x-init="$el._x_flatpickr = flatpickr($el)"
+                                        <input x-init="$el._x_flatpickr = flatpickr($el)" id="tanggal" name="tanggal"
                                             class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                             placeholder="Choose date..." type="text" />
                                         <span
@@ -175,39 +181,48 @@
                                         </span>
                                     </span>
                                 </label>
+                                @error('tanggal')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             </div>
                             <div class="mt-4 space-y-4">
                                 <label class="block">
                                     <span>Kelas</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input
+                                        <input id="kelas" name="kelas"
                                             class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                             placeholder="Masukkan Kelas anda" type="text" />
                                     </span>
                                 </label>
                             </div>
+                            @error('kelas')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="mt-4 space-y-4">
                                 <label class="block">
                                     <span>NISN</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input
+                                        <input id="nisn" name="nisn"
                                             class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                             placeholder="Masukkan NISN anda" type="text" />
                                     </span>
                                 </label>
                             </div>
+                            @error('nisn')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="mt-4 space-y-4">
                                 <label class="block">
                                     <span>Jenis Kelamin</span>
                                     <div class="mt-2 grid grid-cols-2 place-items-start gap-6 sm:grid-cols-6">
                                         <label class="inline-flex items-center space-x-2">
-                                            <input
+                                            <input id="jeniskelamin" name="jeniskelamin"
                                                 class="form-radio is-outline h-5 w-5 rounded-full border-slate-400/70 before:!bg-info checked:!border-info hover:!border-info focus:!border-info dark:border-navy-400"
                                                 name="outline_squircle" type="radio" />
                                             <span>Laki - laki</span>
                                         </label>
                                         <label class="inline-flex items-center space-x-2">
-                                            <input
+                                            <input id="jeniskelamin" name="jeniskelamin"
                                                 class="form-radio is-outline h-5 w-5 rounded-full border-slate-400/70 before:!bg-info checked:!border-info hover:!border-info focus:!border-info dark:border-navy-400"
                                                 name="outline_squircle" type="radio" />
                                             <span>Perempuan</span>
@@ -215,6 +230,9 @@
                                     </div>
                                 </label>
                             </div>
+                            @error('jeniskelamin')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <button onclick="nextStep()"
                                 class="btn mt-10 h-10 w-full bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                                 Selanjutnya
@@ -227,37 +245,46 @@
                                 <label class="block">
                                     <span>Alamat</span>
                                     <span class="relative mt-1.5 flex">
-                                        <textarea name="alamat" id=""
+                                        <textarea name="alamat" id="alamat"
                                             class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                             placeholder="Masukkan nama anda"></textarea>
                                     </span>
                                 </label>
                             </div>
+                            @error('alamat')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="mt-4 space-y-4">
                                 <label class="block">
                                     <span>Sekolah</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input
+                                        <input id="sekolah" name="sekolah"
                                             class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                             placeholder="Masukkan Kelas anda" type="text" />
                                     </span>
                                 </label>
                             </div>
+                            @error('sekolah')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="mt-4 space-y-4">
                                 <label class="block">
                                     <span>Jurusan</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input
+                                        <input id="jurusan" name="jurusan"
                                             class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                             placeholder="Masukkan Kelas anda" type="text" />
                                     </span>
                                 </label>
                             </div>
+                            @error('jurusan')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 mt-4">
                                 <label class="block">
                                     <span>Awal Magang</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input x-init="$el._x_flatpickr = flatpickr($el)"
+                                        <input x-init="$el._x_flatpickr = flatpickr($el)" id="magang_awal" name="magang_awal"
                                             class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                             placeholder="Choose date..." type="text" />
                                         <span
@@ -271,10 +298,13 @@
                                         </span>
                                     </span>
                                 </label>
+                                @error('magang_awal')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                                 <label class="block">
                                     <span>Akhir Magang</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input x-init="$el._x_flatpickr = flatpickr($el)"
+                                        <input x-init="$el._x_flatpickr = flatpickr($el)" id="magang_akhir" name="magang_akhir"
                                             class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                             placeholder="Choose date..." type="text" />
                                         <span
@@ -289,6 +319,9 @@
                                     </span>
                                 </label>
                             </div>
+                            @error('magang_akhir')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="flex items-center justify-end mt-4">
                                 <div class="ml-auto col">
                                     <button type="button" onclick="prevStep()"
@@ -309,52 +342,67 @@
                                 <label class="block">
                                     <span>Foto Siswa</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input id="ctnFile" type="file"
+                                        <input id="ctnFile" type="file" id="foto_siswa" name="foto_siswa"
                                             class="block w-full h-9 rounded-md file:py-2 file:px-4 file:border-0 file:font-semibold p-0  bg-white border focus:outline-none focus:ring  focus:ring-indigo-200 focus:ring-opacity-50 file:bg-[#24AEE4] ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-[#24AEE4]"
                                             required />
                                     </span>
                                 </label>
                             </div>
+                            @error('foto_siswa')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="mt-4 space-y-4">
                                 <label class="block">
                                     <span>Surat Pernyataan diri sendiri</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input id="ctnFile" type="file"
+                                        <input id="ctnFile" type="file" id="sp_diri" name="sp_diri"
                                             class="block w-full h-9 rounded-md file:py-2 file:px-4 file:border-0 file:font-semibold p-0  bg-white border focus:outline-none focus:ring  focus:ring-indigo-200 focus:ring-opacity-50 file:bg-[#24AEE4] ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-[#24AEE4]"
                                             required />
                                     </span>
                                 </label>
                             </div>
+                            @error('sp_diri')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="mt-4 space-y-4">
                                 <label class="block">
                                     <span>Surat Pernyataan Orang Tua</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input id="ctnFile" type="file"
+                                        <input id="ctnFile" type="file" id="sp_ortu" name="sp_ortu"
                                             class="block w-full h-9 rounded-md file:py-2 file:px-4 file:border-0 file:font-semibold p-0  bg-white border focus:outline-none focus:ring  focus:ring-indigo-200 focus:ring-opacity-50 file:bg-[#24AEE4] ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-[#24AEE4]"
                                             required />
                                     </span>
                                 </label>
                             </div>
+                            @error('sp_ortu')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="mt-4 space-y-4">
                                 <label class="block">
                                     <span>SKCK</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input id="ctnFile" type="file"
+                                        <input id="ctnFile" type="file" id="skck" name="skck"
                                             class="block w-full h-9 rounded-md file:py-2 file:px-4 file:border-0 file:font-semibold p-0  bg-white border focus:outline-none focus:ring  focus:ring-indigo-200 focus:ring-opacity-50 file:bg-[#24AEE4] ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-[#24AEE4]"
                                             required />
                                     </span>
                                 </label>
                             </div>
+                            @error('skck')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="mt-4 space-y-4">
                                 <label class="block">
                                     <span>CV</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input id="ctnFile" type="file"
+                                        <input id="ctnFile" type="file" id="cv" name="cv"
                                             class="block w-full h-9 rounded-md file:py-2 file:px-4 file:border-0 file:font-semibold p-0  bg-white border focus:outline-none focus:ring  focus:ring-indigo-200 focus:ring-opacity-50 file:bg-[#24AEE4] ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-[#24AEE4]"
                                             required />
                                     </span>
                                 </label>
                             </div>
+                            @error('cv')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="flex items-center justify-end mt-4">
                                 <div class="ml-auto col">
                                     <button type="button" onclick="prevStep()"
@@ -373,7 +421,7 @@
                         <div class="step" id="step4">
                             <div class="mt-4 space-y-4">
                                 <label class="relative flex">
-                                    <input
+                                    <input id="email" name="email"
                                         class="form-input peer w-full rounded-lg bg-slate-150 px-3 py-2 pl-9 ring-primary/50 placeholder:text-slate-400 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:ring-accent/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
                                         placeholder="Email" type="email" />
                                     <span
@@ -387,9 +435,12 @@
                                     </span>
                                 </label>
                             </div>
+                            @error('email')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="mt-4 space-y-4">
                                 <label class="relative mt-4 flex">
-                                    <input
+                                    <input id="password" name="password"
                                         class="form-input peer w-full rounded-lg bg-slate-150 px-3 py-2 pl-9 ring-primary/50 placeholder:text-slate-400 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:ring-accent/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
                                         placeholder="Password" type="password" />
                                     <span
@@ -403,9 +454,12 @@
                                     </span>
                                 </label>
                             </div>
+                            @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="mt-4 space-y-4">
                                 <label class="relative mt-4 flex">
-                                    <input
+                                    <input id="password" name="password"
                                         class="form-input peer w-full rounded-lg bg-slate-150 px-3 py-2 pl-9 ring-primary/50 placeholder:text-slate-400 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:ring-accent/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
                                         placeholder="Konfirmasi Password" type="password" />
                                     <span
@@ -419,13 +473,16 @@
                                     </span>
                                 </label>
                             </div>
+                            @error('password_confirmation')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                             <div class="flex items-center justify-end mt-4">
                                 <div class="ml-auto col">
                                     <button type="button" onclick="prevStep()"
                                         class="btn mt-10 h-10 bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                                         Kembali
                                     </button>
-                                    <button type="button"
+                                    <button type="submit"
                                         class="btn mt-10 h-10 bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                                         Daftar
                                     </button>
