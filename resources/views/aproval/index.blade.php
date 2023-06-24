@@ -4,7 +4,7 @@
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <!-- start main content section -->
 
-            <div x-data="basic" class="mt-16">
+            <div x-data="basic" class="mt-0">
                 {{-- judul --}}
                 <div class="mb-5 font-semibold">
                     <span>Approval / <span class="text-[#00B7FF]">Pendaftaran</span></span>

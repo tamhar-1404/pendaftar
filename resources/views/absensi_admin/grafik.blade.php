@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('load/load.css')}}">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/perfect-scrollbar.min.css') }}" />
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
@@ -45,6 +46,14 @@
 </head>
 <body>
 
+     <!-- screen loader -->
+     <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+        <div class="center">
+            <div class="ring">
+            </div>
+            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+        </div>
+    </div>
 
     <!-- Sidenav -->
     <nav
@@ -920,9 +929,14 @@
     </div>
     </div>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
+        });
+    </script>
     <script>
     var options = {
         series: [{

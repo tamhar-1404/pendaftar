@@ -226,12 +226,12 @@
                                     Balearjosari, Malang</td>
                                 <td class="whitespace-nowrap px-3 py-3">
                                     <div class="flex items-center space-x-2">
-                                        <a href="" id="editbutton">
+                                        <button data-modal-target="defaultModal" data-modal-toggle="defaultModal">
                                             <div
                                                 class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
                                                 <span class=" p-1  font-semibold dark:hover:text-black">Edit</span>
                                             </div>
-                                        </a>
+                                        </button>
                                         <div id="editmodal" class="fixed z-10 inset-0 overflow-y-auto hidden">
                                             <div class="flex justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                                                 <div class="fixed inset-0 transition-opacity">
