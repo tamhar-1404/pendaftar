@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\jurnaladmin;
+use App\Models\jurnalsiswa;
 use App\Http\Requests\StorejurnaladminRequest;
 use App\Http\Requests\UpdatejurnaladminRequest;
 
@@ -15,8 +16,9 @@ class JurnaladminController extends Controller
      */
     public function index()
     {
-        return view('jurnal_admin.index');
-        
+        $item = jurnalsiswa::paginate(10);
+        return view('jurnal_admin.index',compact('item'));
+
     }
 
     /**
@@ -48,6 +50,7 @@ class JurnaladminController extends Controller
      */
     public function show(jurnaladmin $jurnaladmin)
     {
+        $item = jurnalsiswa->where();
         return view('jurnal_admin.grafik');
     }
 

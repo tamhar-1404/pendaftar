@@ -17,7 +17,7 @@ class JurnalsiswaController extends Controller
      */
     public function index()
     {
-        $item = jurnalsiswa::latest()->paginate(10);
+        $item = jurnalsiswa::paginate(10);
         return view('jurnal_siswa.index',compact('item'));
     }
 
@@ -44,18 +44,22 @@ class JurnalsiswaController extends Controller
             'tanggal' => "required",
             'sekolah' => "required",
             'kegiatan'  => "required",
-            'bukti'  => "required"
+            'image'  => "required"
 
         ]);
+
+        $image = $request->file('image');
+        $image->storeAs('public/image', $image->hashName());
+
         jurnalsiswa::create([
+            'image'=>$image->hashName(),
             'nama' => $request->nama,
             'tanggal' => $request->tanggal,
             'sekolah' => $request->sekolah,
             'kegiatan'=>$request->kegiatan,
-            'bukti'=>$request->bukti
 
         ]);
-        
+
         return redirect()->route('jurnalsiswa.index');
     }
 
