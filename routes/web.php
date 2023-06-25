@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 Route::get('/', function () {
     return view('welcome');
 });
@@ -72,10 +73,6 @@ Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::resource('/piket', App\Http\Controllers\PiketController::class);
 
 
-Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
-
-
-Route::get('/detail', [GuruAdminController::class, 'show'])->name('detail');
 Route::get('/view', [AlumniGuruController::class, 'show'])->name('view');
 Route::get('/tabel', [AlumniGuruController::class, 'create'])->name('tabel');
 
@@ -83,7 +80,7 @@ Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
 
 Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
 Route::get('/edittatib', [TataTertibController::class, 'edit'])->name('edit');
-Route::get('/detailtatib', [TataTertibController::class, 'show'])->name('detail');
+Route::get('/detailtatib', [TataTertibController::class, 'show'])->name('detailtatib');
 
 Route::resource('/tatib_siswa', App\Http\Controllers\TatibSiswaController::class);
 
@@ -96,7 +93,6 @@ Route::get('/detail_berita_guru', [BeritaGuruController::class, 'show'])->name('
 Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
 Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
 
-Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 
 Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::class);
 
@@ -156,7 +152,6 @@ Route::resource('/sp', App\Http\Controllers\SpController::class);
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::resource('/piket', App\Http\Controllers\PiketController::class);
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
-Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 Route::get('/detail', [GuruAdminController::class, 'detail'])->name('detail');
 Route::get('/view', [AlumniGuruController::class, 'show'])->name('view');
 Route::get('/tabel', [AlumniGuruController::class, 'create'])->name('tabel');
@@ -169,7 +164,6 @@ Route::get('/edit', [BeritaController::class, 'edit'])->name('edit');
 Route::get('/detail_berita_guru', [BeritaGuruController::class, 'show'])->name('detail_berita_guru');
 Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
 Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
-Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::class);
 Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
 Route::resource('/editprofileguru', App\Http\Controllers\EditprofileGuruController::class);

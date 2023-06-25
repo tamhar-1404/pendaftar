@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru_admin;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreGuru_adminRequest;
 use App\Http\Requests\UpdateGuru_adminRequest;
@@ -43,28 +44,38 @@ class GuruAdminController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request , [
-            'image'=>'required',
-            'nama'=>'required',
-            'sekolah'=>'required',
-            'email'=>'required|unique:guru_admins',
-            'alamat'=>'required',
-            'no'=>'required',
-            'password'=>'required'
+        $this->validate($request, [
+            'image' => 'required',
+            'nama' => 'required',
+            'sekolah' => 'required',
+            'email' => 'required|unique:guru_admins',
+            'alamat' => 'required',
+            'no' => 'required',
+            'password' => 'required'
         ]);
+
         $image = $request->file('image');
         $image->storeAs('public/guru_image', $image->hashName());
-        Guru_admin::create([
-            'image'=>$image->hashName(),
-            'nama'=>$request->nama,
-            'sekolah'=>$request->sekolah,
-            'email'=>$request->email,
-            'alamat'=>$request->alamat,
-            'no'=>$request->no,
-            'password'=>$request->password,
+
+        $guruAdmin = Guru_admin::create([
+            'image' => $image->hashName(),
+            'nama' => $request->nama,
+            'sekolah' => $request->sekolah,
+            'email' => $request->email,
+            'alamat' => $request->alamat,
+            'no' => $request->no,
+            'password' => bcrypt($request->password)
         ]);
+
+        User::create([
+            'name' => $request->nama,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
         return redirect()->route('guru_admin.index');
     }
+
 
     /**
      * Display the specified resource.
@@ -85,7 +96,7 @@ class GuruAdminController extends Controller
      */
     public function edit(Guru_admin $guru_admin)
     {
-        //
+        return view('guru_admin.detail' , compact('guru_admin'));
     }
 
     /**

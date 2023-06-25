@@ -35,7 +35,6 @@ class LoginController extends Controller
             'password.min' => 'Password Minimal 6 Huruf !!',
         ]);
         // toastr()->success('Berhasil Login!');
-
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Admin'])) {
             return redirect()->route('dudi.index')->with('success','Berhasil Login Sebagai Admin');
         }
@@ -45,10 +44,8 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Guru'])) {
             return redirect()->route('guru.index')->with('success','Berhasil Login Sebagai Guru');
         }
-
             return redirect('login')->with('error','Password atau Email Salah');
     }
-
     public function register()
     {
         return view('loginregister.register');

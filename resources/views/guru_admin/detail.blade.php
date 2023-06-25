@@ -591,8 +591,6 @@
     <!-- Navbar -->
     <div class="animate__animated p-6" :class="[$store.app.animation]">
 
-        <form action="{{ route('detail',$guru->id) }}" method="post">
-
             <div>
                 <ul class="flex space-x-2 rtl:space-x-reverse">
                     <li>
@@ -611,8 +609,8 @@
                             </div>
                             <div class="mb-5">
                                 <div class="flex flex-col items-center justify-center">
-                                    <img src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
-                                    <p class="text-xl font-semibold text-info">{{ $guru->nama }}</p>
+                                    <img src="{{ asset('storage/guru_image/' . $guru_admin->image) }}" alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
+                                    <p class="text-xl font-semibold text-info">{{ $guru_admin->nama }}</p>
                                 </div>
                                 <ul class="m-auto mt-5 flex max-w-[160px] flex-col text-xs space-y-5 font-semibold text-white-dark">
                                     <li class="flex items-center gap-2">
@@ -651,7 +649,7 @@
                                                 stroke-linejoin="round"
                                             />
                                         </svg>
-                                        {{ ($guru->sekolah) }}
+                                        {{ ($guru_admin->sekolah) }}
                                     </li>
                                     <li class="flex items-center gap-2">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
@@ -689,7 +687,7 @@
                                                 stroke-linejoin="round"
                                             />
                                         </svg>
-                                        {{ $guru->email }}
+                                        {{ $guru_admin->email }}
                                     </li>
                                     <li class="flex items-center gap-2 ">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
@@ -702,7 +700,7 @@
                                             <path opacity="0.5" d="M17 4V2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                             <path opacity="0.5" d="M2 9H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                         </svg>
-                                       {{ $guru->alamat }}
+                                       {{ $guru_admin->alamat }}
                                     </li>
                                     <li class="flex items-center gap-2">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
@@ -714,7 +712,7 @@
                                             />
                                             <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5" />
                                         </svg>
-                                        {{ $guru->no }}
+                                        {{ $guru_admin->no }}
                                     </li>
 
 
@@ -757,7 +755,7 @@
                                             stroke-linejoin="round"
                                         />
                                     </svg>
-                                    {{ $guru->status }}
+                                    {{ $guru_admin->status }}
                                 </li>
                                 </ul>
                             </div>
@@ -778,9 +776,16 @@
                                 <td>Email</td>
                                 <td>Alamat</td>
                             </tr>
-
-
-                          </table>
+                            <tr>
+                            </tr>
+                        </table>
+                        <div class="mt-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <strong class="font-bold">Holy smokes!</strong>
+                            <span class="block sm:inline">Something seriously bad happened.</span>
+                            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                              <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+                            </span>
+                          </div>
                           </div>
                           </div>
 

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('no')->unique();
             $table->string('password');;
+            $table->string('role')->default('pembimbing');
             $table->string('status')->default('pembimbing');
             $table->timestamps();
         });

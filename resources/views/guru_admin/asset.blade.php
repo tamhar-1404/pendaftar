@@ -3432,35 +3432,25 @@
                             />
                           </svg>
                     </a>
-                    <ul
-                        class="absolute left-auto right-0 z-[1000] float-left m-0 mt-3 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
-                        aria-labelledby="navbarDropdownMenuLink"
-                        data-te-dropdown-menu-ref>
-                        <li>
-                        <a
-                            class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
-                            href="#"
-                            data-te-dropdown-item-ref
-                            >Some news</a
-                        >
-                        </li>
-                        <li>
-                        <a
-                            class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
-                            href="#"
-                            data-te-dropdown-item-ref
-                            >Another news</a
-                        >
-                        </li>
-                        <li>
-                        <a
-                            class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
-                            href="#"
-                            data-te-dropdown-item-ref
-                            >Something else here</a
-                        >
-                        </li>
-                    </ul>
+                    <ul class="absolute left-auto right-0 z-[1000] mt-3 hidden min-w-[12rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
+                    aria-labelledby="navbarDropdownMenuLink"
+                    data-te-dropdown-menu-ref>
+                    <li class="flex p-2 gap-2 mt-2 pb-2">
+                        <p>Filter</p>
+                    </li>
+                    <li class="flex p-2 gap-2">
+                        <input type="text" class="border border-gray-300 rounded"  placeholder="Alamat">
+                        <input type="text" class="border border-gray-300 rounded"  placeholder="Alamat">
+                    </li>
+                    <li class="flex p-2 gap-2">
+                        <input type="text" class="border border-gray-300 rounded"   placeholder="Alamat">
+                        <input type="text" class="border border-gray-300 rounded" placeholder="Alamat">
+                    </li>
+                    <li class="flex p-2 gap-2         ">
+                        <input type="text" class="border border-gray-300 rounded"  placeholder="Alamat">
+                        <input type="text" class="border border-gray-300 rounded" placeholder="Alamat">
+                    </li>
+                </ul>
                     </li>
 
 
@@ -3501,7 +3491,7 @@
                     </ul>
                     </li>
                 </ul>
-             
+
             </div>
           </div>
         </div>
@@ -3514,7 +3504,7 @@
                 <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
               </div>
               <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 w-30">
                   <div class="max-w-7xl mx-auto">
                     <div class="flex flex-col">
                       <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
@@ -3557,7 +3547,7 @@
                             <button type="button" class="bg-transparent border border-gray-300 text-gray-800 hover:bg-gray-300 hover:text-gray-800 font-bold py-2 px-4 rounded">
                               Batal
                             </button>
-                          <button type="submit">Tambah</button>
+                          <button type="submit" class="btn btn-primary">Tambah</button>
                               <script>
                                   async function showAlert() {
                                       new window.Swal({
@@ -3683,7 +3673,7 @@
                     d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z"
                   />
                 </svg>
-                <a href="http://127.0.0.1:8000/detail">Profile</a>
+                <a href="{{ route('guru_admin.edit', $guru->id) }}">Profile</a>
               </button>
               <button
                 class="btn space-x-2 bg-slate-150 px-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
