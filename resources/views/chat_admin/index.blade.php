@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/perfect-scrollbar.min.css" />
-    <link rel="stylesheet" href="load/load.css"> 
+    <link rel="stylesheet" href="load/load.css">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <link defer rel="stylesheet" type="text/css" media="screen" href="assets/css/animate.css" />
     <script src="assets/js/perfect-scrollbar.min.js"></script>
@@ -57,7 +57,7 @@
     <!-- Sidenav -->
     <nav
     id="sidenav-2"
-    class="fixed left-0 top-0 z-[1035] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
+    class="fixed left-0 top-0 z-[10] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
     data-te-sidenav-init
     data-te-sidenav-hidden="false"
     data-te-sidenav-mode="side"
