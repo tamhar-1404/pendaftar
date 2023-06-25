@@ -690,7 +690,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                               </svg>
-                              
+
                             Tambah
                         </button>
                     </div>
@@ -729,7 +729,7 @@
                           <tr
                             class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                             <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                            <td class="whitespace-nowrap px-4 py-4">Mark</td>
+                            <td class="whitespace-nowrap px-4 py-4">{{$item -> nama}}</td>
                             <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
                             <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
                             <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
@@ -911,7 +911,7 @@
     </div>
 </div>
 {{-- end modal --}}
-   
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
