@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->String('sekolah');
             $table->String('kegiatan');
-            $table->String('bukti');
+            $table->String('image');
             $table->timestamps();
         });
     }
