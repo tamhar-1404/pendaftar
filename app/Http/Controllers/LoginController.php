@@ -51,12 +51,11 @@ class LoginController extends Controller
 
     public function register()
     {
-        return view('loginregister.register');
+        return view('loginregister.index');
     }
 
     public function postregister(Request $request)
     {
-        // dd($request->all());
         $this->validate($request,[
             'name'=> 'required|unique:users|regex:/^[a-zA-Z ]+$/',
             'tempat'=> 'required',
@@ -134,6 +133,7 @@ class LoginController extends Controller
             'role' => 'Siswa'
         ]);
 
+        // dd($request->all());
         return redirect('login')->with('success','Siswa Berhasil Daftar');
     }
 

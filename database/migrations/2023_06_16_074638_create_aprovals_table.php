@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('jurusan')->nullable();
             $table->string('magang_awal')->nullable();
             $table->string('magang_akhir')->nullable();
-            $table->string('foto_siswa')->nullable();
+            $table->string('foto_siswa');
             $table->string('sp_diri')->nullable();
             $table->string('sp_ortu')->nullable();
             $table->string('skck')->nullable();
@@ -35,6 +35,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role');
+            $table->string('status');
             $table->rememberToken();
             $table->timestamps();
         });
