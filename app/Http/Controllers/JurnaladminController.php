@@ -51,8 +51,8 @@ class JurnaladminController extends Controller
      */
     public function show(Request $request)
     {
-        $hasil = $request->input('serch');
-        $item = jurnalsiswa::where('nama', 'like', '%'.$hasil.'%')->get();
+        // $hasil = $request->input('serch');
+        // $item = jurnalsiswa::where('nama', 'like', '%'.$hasil.'%')->get();
         return view('jurnal_admin.grafik',compact('item'));
     }
 
