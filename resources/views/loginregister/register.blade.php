@@ -115,9 +115,6 @@
                 </li>
             </ol>
         </div>
-        <div class="progress-bar">
-            <div class="progress"></div>
-        </div>
 
         <div class="col-span-12 grid lg:col-span-6 lg:place-items-center z-10">
 
@@ -145,7 +142,7 @@
                                 <span class="relative mt-1.5 flex">
                                     <input id="name" name="name"
                                         class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Masukkan nama anda" type="text" re/>
+                                        placeholder="Masukkan nama anda" type="text" re />
                                 </span>
                             </label>
                         </div>
@@ -189,9 +186,11 @@
                             <label class="block">
                                 <span>Kelas</span>
                                 <span class="relative mt-1.5 flex">
-                                    <input id="kelas" name="kelas"
-                                        class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Masukkan Kelas anda" type="text" />
+                                    <select id="kelas" name="kelas" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" required>
+                                        <option value="" disabled selected>Pilih kelas</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
                                 </span>
                             </label>
                         </div>
@@ -271,9 +270,11 @@
                             <label class="block">
                                 <span>Jurusan</span>
                                 <span class="relative mt-1.5 flex">
-                                    <input id="jurusan" name="jurusan"
-                                        class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Masukkan Kelas anda" type="text" />
+                                    <select id="jurusan" name="jurusan" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" required>
+                                        <option value="" disabled selected>Pilih jurusan</option>
+                                        <option value="rekayasa-perangkat-lunak">Rekayasa Perangkat Lunak</option>
+                                        <option value="multimedia">Multimedia</option>
+                                    </select>
                                 </span>
                             </label>
                         </div>
@@ -498,8 +499,7 @@
                     </p>
                 </div>
             </div>
-    </div>
-    </main>
+        </main>
     </div>
 
     <!--
