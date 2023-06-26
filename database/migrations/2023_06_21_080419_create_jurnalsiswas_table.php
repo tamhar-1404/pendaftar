@@ -20,6 +20,7 @@ return new class extends Migration
             $table->String('sekolah');
             $table->String('kegiatan');
             $table->String('image');
+            $table->String('status');
             $table->timestamps();
         });
     }

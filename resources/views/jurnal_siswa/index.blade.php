@@ -164,6 +164,7 @@
                                             <label for="bukti" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti</label>
                                             <input type="file" name="image" id="" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                                         </div>
+                                        <input type="hidden" name="status" value="sudah">
                                         <button type="submit">kirim</button>
                                     </form>
                                 </div>

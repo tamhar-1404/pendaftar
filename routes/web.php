@@ -8,6 +8,7 @@ use App\Http\Controllers\AlumniGuruController;
 use App\Http\Controllers\BeritaSiswaController;
 use App\Http\Controllers\AbsensiGuruController;
 use App\Http\Controllers\TataTertibController;
+use App\Http\Controllers\JurnaladminControlle;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -78,9 +79,19 @@ Route::get('/tabel', [AlumniGuruController::class, 'create'])->name('tabel');
 
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
 
-Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
-Route::get('/edittatib', [TataTertibController::class, 'edit'])->name('edit');
-Route::get('/detailtatib', [TataTertibController::class, 'show'])->name('detailtatib');
+// Tata Tertib Admin
+Route::get('/tatatertib', [TataTertibController::class, 'index'])->name('index');
+
+Route::get('/tambahtatib', [TataTertibController::class, 'create'])->name('create');
+Route::post('/inserttatib', [TataTertibController::class, 'inserttatib'])->name('inserttatib');
+Route::get('/edittatib/{id}', [TataTertibController::class, 'edittatib'])->name('edittatib');
+
+Route::post('/updatetatib/{id}', [TataTertibController::class, 'updatetatib'])->name('updatetatib');
+Route::delete('/deletetatib/{id}', [TataTertibController::class, 'deletetatib'])->name('deletetatib');
+// Route::resource('/deletetatib', App\Http\Controllers\TataTertibController::class);
+
+Route::get('/detailtatib', [TataTertibController::class, 'show'])->name('detail');
+// Akhir Tatib Admin
 
 Route::resource('/tatib_siswa', App\Http\Controllers\TatibSiswaController::class);
 
@@ -92,7 +103,6 @@ Route::get('/edit', [BeritaController::class, 'edit'])->name('edit');
 Route::get('/detail_berita_guru', [BeritaGuruController::class, 'show'])->name('detail_berita_guru');
 Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
 Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
-
 
 Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::class);
 
@@ -182,3 +192,4 @@ Route::resource('/siswa_guru', App\Http\Controllers\SiswaGuruController::class);
 Route::resource('/jurnal_guru', App\Http\Controllers\JurnalGuruController::class);
 Route::resource('/jurnalsiswa', App\Http\Controllers\JurnalsiswaController::class);
 Route::resource('/siswa_magang', App\Http\Controllers\SiswamagangController::class);
+Route::resource('/grafik', App\Http\Controllers\JurnaladminController::class);

@@ -1,7 +1,7 @@
 <!-- start header section -->
 <header :class="{ 'dark': $store.app.semidark && $store.app.menu === 'horizontal' }">
     <div class="shadow-sm">
-        <div class="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
+        <div class=" sticky relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
             <div class="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
                 <a href="index-2.html" class="main-logo flex shrink-0 items-center">
                     <img class="inline w-20
@@ -25,7 +25,6 @@
                 class="flex items-center space-x-1.5 ltr:ml-auto rtl:mr-auto rtl:space-x-reverse dark:text-[#d0d2d6] sm:flex-1 ltr:sm:ml-0 sm:rtl:mr-0 lg:space-x-2">
                 <div class="sm:ltr:mr-auto sm:rtl:ml-auto flex items-center pt-4" x-data="{ search: false }"
                     @click.outside="search = false">
-
                     <button type="button"
                         class="search_btn rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 dark:bg-dark/40 dark:hover:bg-dark/60 sm:hidden"
                         @click="search = ! search">
@@ -153,14 +152,6 @@
                                 </div>
                             </li>
                         </template>
-                        <template x-if="notifications.length">
-                            <li>
-                                <div class="p-4">
-                                    <button class="btn btn-primary btn-small block w-full" @click="toggle">Read All
-                                        Notifications</button>
-                                </div>
-                            </li>
-                        </template>
                         <template x-if="!notifications.length">
                             <li>
                                 <div class="!grid min-h-[200px] place-content-center text-lg hover:!bg-transparent">
@@ -241,8 +232,8 @@
         <ul
             class="horizontal-menu hidden border-t border-[#ebedf2] bg-white py-1.5 px-6 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-[#0e1726] dark:text-white-dark lg:space-x-1.5 xl:space-x-8">
             <li class="menu nav-item relative">
-                <a href="{{ route('guru.index') }}" class="nav-link">
-                    <div class="flex items-center">
+                <a href="{{ route('guru.index') }}" class="nav-link ">
+                    <div class="flex items-center ">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.5"
@@ -257,7 +248,7 @@
                 </a>
             </li>
             <li class="menu nav-item relative">
-                <a href="{{ route('siswa_guru.index') }}" class="nav-link">
+                <a href="javascript:;" class="nav-link">
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -266,17 +257,32 @@
                         </svg>
                         <span class="px-1">Siswa</span>
                     </div>
+                    <div class="right_arrow">
+                        <svg class="h-4 w-4 rotate-90" width="16" height="16" viewBox="0 0 24 24"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
                 </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{ route('siswa_guru.index') }}">Siswa Magang</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('alumni_guru.index') }}">Siswa Alumni</a>
+                    </li>
+                </ul>
             </li>
             <li class="menu nav-item relative">
-                <a href="{{ route('jurnal_guru.index') }}" class="nav-link ">
-                    <div class="flex items-center ">
+                <a href="{{ route('jurnal_guru.index') }}" class="nav-link">
+                    <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
                         </svg>
-                        <span class="px-1 ">Jurnal</span>
+                        <span class="px-1">Jurnal</span>
                     </div>
                 </a>
             </li>

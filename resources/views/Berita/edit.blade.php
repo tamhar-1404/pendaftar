@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Admin - Detail Berita</title>
     @vite('resources/css/app.css')
     <link
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
     rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script>
-    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="icon" type="image/png" href="lineone/images/favicon.png" />
     <!-
     - CSS Assets -->
     <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />

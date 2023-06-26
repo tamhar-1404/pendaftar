@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Admin - Berita</title>
     @vite('resources/css/app.css')
     <link
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
@@ -344,7 +344,7 @@
     <!-- Navbar -->
     <nav
     id="main-navbar"
-    class="relative left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start "
+    class="sticky z-50 left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start "
     data-te-navbar-ref>
     <!-- Container wrapper -->
 
