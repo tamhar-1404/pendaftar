@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @vite('resources/css/app.css')
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('admin/favicon.png') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
@@ -29,7 +29,7 @@
                 <div x-data="basic" class="mt-0">
                     {{-- judul --}}
                     <div class="mb-5 font-semibold">
-                        <span >approval / <span class="text-[#00B7FF]">Pendaftaran</span></span>
+                        <span >Approval / <span class="text-[#00B7FF]">Pendaftaran</span></span>
                     </div>
 
                     <div class="main">
@@ -124,9 +124,9 @@
                 <!-- end main content section -->
 
                 <!-- start footer section -->
-                <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
+                {{-- <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
                     © <span id="footer-year">2022</span>. Vristo All rights reserved.
-                </p>
+                </p> --}}
                 <!-- end footer section -->
             </div>
         </div>

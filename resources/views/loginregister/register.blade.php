@@ -147,7 +147,7 @@
                                     <span class="relative mt-1.5 flex">
                                         <input id="name" name="name"
                                             class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                            placeholder="Masukkan nama anda" type="text" re />
+                                            placeholder="Masukkan nama anda" type="text" required />
                                     </span>
                                 </label>
                             </div>
@@ -235,7 +235,7 @@
                             @error('jeniskelamin')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
-                            <button
+                            <button type="button"
                                 class="next-button btn mt-10 h-10 w-full bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                                 Selanjutnya
                             </button>
@@ -491,7 +491,7 @@
                     <p class="line-clamp-1">
                         <span>Sudah punya Akun? </span>
                         <a class="text-info transition-colors hover:text-info-focus dark:text-accent-light dark:hover:text-accent"
-                            href="pages-login-2.html">Login</a>
+                            href="{{ route('login.index') }}">Login</a>
                     </p>
                 </div>
             </div>

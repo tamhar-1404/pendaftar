@@ -78,9 +78,19 @@ Route::get('/tabel', [AlumniGuruController::class, 'create'])->name('tabel');
 
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
 
-Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
-Route::get('/edittatib', [TataTertibController::class, 'edit'])->name('edit');
-Route::get('/detailtatib', [TataTertibController::class, 'show'])->name('detailtatib');
+// Tata Tertib Admin
+Route::get('/tatatertib', [TataTertibController::class, 'index'])->name('index');
+
+Route::get('/tambahtatib', [TataTertibController::class, 'create'])->name('create');
+Route::post('/inserttatib', [TataTertibController::class, 'inserttatib'])->name('inserttatib');
+Route::get('/edittatib/{id}', [TataTertibController::class, 'edittatib'])->name('edittatib');
+
+Route::post('/updatetatib/{id}', [TataTertibController::class, 'updatetatib'])->name('updatetatib');
+Route::delete('/deletetatib/{id}', [TataTertibController::class, 'deletetatib'])->name('deletetatib');
+// Route::resource('/deletetatib', App\Http\Controllers\TataTertibController::class);
+
+Route::get('/detailtatib', [TataTertibController::class, 'show'])->name('detail');
+// Akhir Tatib Admin
 
 Route::resource('/tatib_siswa', App\Http\Controllers\TatibSiswaController::class);
 

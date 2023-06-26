@@ -99,31 +99,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
-                                <td class="whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">1</td>
-                                <td
-                                    class="whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
-                                    TATA TERTIB SISWA MAGANG</td>
-                                    <td class="whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae nemo autem animi quae voluptates odio. Ratione, ab dolorem explicabo fugiat, repudiandae blanditiis impedit ducimus, tenetur facilis culpa accusamus vero id pariatur sequi ipsam aliquam? Quaerat porro libero id sunt deserunt, consequatur architecto, quae sint nisi fuga sequi fugit, dicta iste!
-                                      </td>
-                                <td class="whitespace-nowrap px-3 py-3">
-                                    <div class="flex items-center space-x-2">
-                                        <a href="/edittatib">
-                                            <div
-                                                class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
-                                                <span class=" p-1  font-semibold dark:hover:text-black">Edit</span>
-                                            </div>
-                                        </a>
-                                        <a href="#">
-                                            <div
-                                                class="w-16 flex h-8 bg-white rounded-md border-2 border-red-500 justify-center items-center text-red-500 hover:bg-red-500 hover:text-white dark:bg-transparent ">
+                            @php
+                                $no = 1;
+                            @endphp
+                            @foreach ($data as $row)
+                                <tr class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
+                                    <td
+                                        class="whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
+                                        {{ $no++ }}</td>
+                                    <td
+                                        class="whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
+                                        {{ $row->judul }}</td>
+                                    <td class="whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5"
+                                        style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">
+                                        {!! $row->deskripsi !!}
+                                    </td>
+                                    <td class="whitespace-nowrap px-3 py-3">
+                                        <div class="flex items-center space-x-2">
+                                            <a href="/edittatib/{{ $row->id }}">
+                                                <div
+                                                    class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
+                                                    <span class=" p-1  font-semibold dark:hover:text-black">Edit</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" data-id="{{ $row->id }}"
+                                                data-nama="{{ $row->judul }}" class="deletetatib w-16 flex h-8 bg-white rounded-md border-2 border-red-500 justify-center items-center text-red-500 hover:bg-red-500 hover:text-white dark:bg-transparent ">
                                                 <span class=" p-1  font-semibold dark:hover:text-black">Hapus</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -143,51 +149,15 @@
                         <span>entries</span>
                     </div>
 
-                    <ol class="pagination">
-                        <li class="rounded-l-lg bg-slate-150 dark:bg-navy-500">
-                            <a href="#"
-                                class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:text-navy-200 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="bg-slate-150 dark:bg-navy-500">
-                            <a href="#"
-                                class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">1</a>
-                        </li>
-                        <li class="bg-slate-150 dark:bg-navy-500">
-                            <a href="#"
-                                class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg bg-info px-3 leading-tight text-white transition-colors hover:bg-info focus:bg-info active:bg-info dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">2</a>
-                        </li>
-                        <li class="bg-slate-150 dark:bg-navy-500">
-                            <a href="#"
-                                class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">3</a>
-                        </li>
-                        <li class="bg-slate-150 dark:bg-navy-500">
-                            <a href="#"
-                                class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">4</a>
-                        </li>
-                        <li class="bg-slate-150 dark:bg-navy-500">
-                            <a href="#"
-                                class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">5</a>
-                        </li>
-                        <li class="rounded-r-lg bg-slate-150 dark:bg-navy-500">
-                            <a href="#"
-                                class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:text-navy-200 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
-                            </a>
-                        </li>
-                    </ol>
-                    <div class="text-xs+">1 - 10 of 10 entries</div>
+                    <div class="pagination">
+                        <div
+                            class="flex h-8 min-w-[2rem] rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
+                            {{ $data->links() }}</div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </main>
 <!--
@@ -197,4 +167,31 @@
 <div id="x-teleport-target"></div>
 <script>
     window.addEventListener("DOMContentLoaded", () => Alpine.start());
+</script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script>
+    $('.deletetatib').click(function() {
+        var tatibid = $(this).attr('data-id');
+        var judul = $(this).attr('data-nama');
+        swal({
+                title: "Anda yakin?!",
+                text: "Ingin menghapus data dengan nama " + judul + " ",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location = "/deletetatib/" + tatibid + ""
+                    swal("Data berhasil dihapus!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Batal menghapus Data!");
+                }
+            });
+    });
 </script>

@@ -14,6 +14,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "summernote": "^0.8.20",
         "tw-elements": "^1.0.0-beta2"
     }
 }
