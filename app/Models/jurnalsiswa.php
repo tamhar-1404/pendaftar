@@ -9,6 +9,6 @@ class jurnalsiswa extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama','tanggal','sekolah','kegiatan', 'image'
+        'nama','tanggal','sekolah','kegiatan', 'image', 'status'
     ];
 }

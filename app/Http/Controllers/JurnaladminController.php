@@ -22,14 +22,17 @@ class JurnaladminController extends Controller
 
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $item = jurnalsiswa::where('nama', 'LIKE', $request -> serch)->GET();
+        $item = jurnalsiswa::where('status', 'LIKE', 'hadir')->GET();
+        return view('jurnal_admin.grafik', compact('item'));
     }
 
     /**
@@ -53,7 +56,7 @@ class JurnaladminController extends Controller
     {
         // $hasil = $request->input('serch');
         // $item = jurnalsiswa::where('nama', 'like', '%'.$hasil.'%')->get();
-        return view('jurnal_admin.grafik',compact('item'));
+        // return view('jurnal_admin.grafik',compact('item'));
     }
 
     /**
