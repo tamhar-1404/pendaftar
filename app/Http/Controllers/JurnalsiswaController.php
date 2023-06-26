@@ -21,6 +21,7 @@ class JurnalsiswaController extends Controller
         return view('jurnal_siswa.index',compact('item'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -57,6 +58,7 @@ class JurnalsiswaController extends Controller
             'tanggal' => $request->tanggal,
             'sekolah' => $request->sekolah,
             'kegiatan'=>$request->kegiatan,
+            'status' => $request -> status
 
         ]);
 

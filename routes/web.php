@@ -8,6 +8,7 @@ use App\Http\Controllers\AlumniGuruController;
 use App\Http\Controllers\BeritaSiswaController;
 use App\Http\Controllers\AbsensiGuruController;
 use App\Http\Controllers\TataTertibController;
+use App\Http\Controllers\JurnaladminControlle;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -182,3 +183,4 @@ Route::resource('/siswa_guru', App\Http\Controllers\SiswaGuruController::class);
 Route::resource('/jurnal_guru', App\Http\Controllers\JurnalGuruController::class);
 Route::resource('/jurnalsiswa', App\Http\Controllers\JurnalsiswaController::class);
 Route::resource('/siswa_magang', App\Http\Controllers\SiswamagangController::class);
+Route::resource('/grafik', App\Http\Controllers\JurnaladminController::class);

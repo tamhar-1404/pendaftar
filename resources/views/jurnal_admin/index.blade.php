@@ -58,7 +58,7 @@
    @include('jurnal_admin.p')
     <div class="animate__animated p-6" :class="[$store.app.animation]">
         <!-- start main content section -->
-        <div x-data="basic" class="mt-8">
+        <div x-data="basic" class="">
             {{-- judul --}}
             <div class="mb-5 font-semibold">
                 <span> Jurnal  <span class="text-[#00B7FF]"></span></span>
@@ -72,12 +72,13 @@
                             <span class="mr-1 ml-3">
                                 filter
                             </span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" mr-3 w-4 h-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="
+                            transparent" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" mr-3 w-4 h-4">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
                             </svg>
                         </div>
                         {{-- serch --}}
-                        <form action="{{route('jurnal_admin.show')}}" method="GET">
+                        <form action="{{route('jurnal_admin.create')}}" method="GET">
                             @csrf
                             <div class="mr-4 ">
                                 <input name="serch" class=" p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent" type="text" placeholder="cari">
@@ -85,7 +86,7 @@
                         </form>
                     </div>
                     <div class="mb-5 flex flex-wrap  mt-5 items-center">
-                        <button type="button" class="flex gap-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5  py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="exportTable('csv')">
+                        <button  class="flex gap-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5  py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="exportTable('csv')">
                             <svg
                                 width="24"
                                 height="24"
@@ -107,7 +108,7 @@
                             </svg>
                             CSV
                         </button>
-                        <button type="button" class="flex gap-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="exportTable('txt')">
+                        <button  class="flex gap-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="exportTable('txt')">
                             <svg
                                 width="22"
                                 height="22"
@@ -131,7 +132,7 @@
                             </svg>
                             TXT
                         </button>
-                        <button type="button" class="flex gap-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="printTable">
+                        <button  class="flex gap-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="printTable">
                             <svg
                                 width="24"
                                 height="24"
