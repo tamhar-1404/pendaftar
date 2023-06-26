@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 {{--  <!-- Mirrored from lineone.piniastudio.com/pages-singup-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 May 2023 04:16:45 GMT -->  --}}
@@ -35,6 +36,7 @@
         localStorage.getItem("_x_darkMode_on") === "true" && document.documentElement.classList.add("dark");
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/smartwizard/dist/css/smart_wizard.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
     {{-- <style>
         .step {
@@ -66,6 +68,7 @@
             </a>
         </div>
         <div class="w-full">
+
             <div class="hidden w-full place-items-center lg:grid">
                 <div class="w-full max-w-lg p-6">
                     <img class="w-full" x-show="!$store.global.isDarkModeEnabled"
@@ -75,7 +78,15 @@
                 </div>
 
             </div>
-            <ol class="steps is-horizontal line-space [--size:2.75rem] [--line:.5rem]">
+            <div class=" w-full flex justify-center items-end">
+                <div class="page-indicator w-full justify-around flex items-end h-full ">
+                    <!-- <em class="active"></em>
+                    <em></em>
+                    <em></em>
+                    <em></em> -->
+                </div>
+            </div>
+            {{-- <ol class="steps is-horizontal line-space [--size:2.75rem] [--line:.5rem]">
                 <li id="" class="step space-x-4 pb-12 before:bg-slate-200 dark:before:bg-navy-500">
                     <a  href="#step-1">
                         <div class="step-header mask is-hexagon bg-info text-white dark:bg-accent">
@@ -123,7 +134,7 @@
                         </div>
                     </a>
                 </li>
-            </ol>
+            </ol> --}}
         </div>
         {{-- <div class="progress-bar">
             <div class="progress"></div>
@@ -132,52 +143,138 @@
         <div class="col-span-12 grid lg:col-span-6 lg:place-items-center z-10">
 
         </div>
-        <main  id="smartwizard" class="flex w-full flex-col items-center bg-white dark:bg-navy-700 lg:max-w-md">
-            <div class="flex w-full max-w-sm grow flex-col justify-center p-5">
-
-                <div class="text-center">
-                    <img class="mx-auto h-16 w-16 lg:hidden" src="lineone/images/app-logo.svg" alt="logo" />
-                    <div class="mt-4">
-                        <h2 class="text-2xl font-semibold text-slate-600 dark:text-navy-100">
-                            Selamat Datang
-                        </h2>
-                        <p class="text-slate-400 dark:text-navy-300">
-                            di Hummasoft Technology
-                        </p>
+        <main  id="" class="flex h-80% w-full flex-col items-center bg-white dark:bg-navy-700 lg:max-w-md">
+            <section class="cover bg-white">
+                <div class="w-full flex justify-center mt-5 mb-5 ">
+                    <img class="mx-auto h-16 w-16 lg:hidden" src="admin/asset/images/humma.jpeg" alt="logo" />
+                    <div>
+                        <p class="font-bold text-lg">SELAMAT DATANG</p>
+                        <P>Hummasoft Technology </P>
                     </div>
                 </div>
-               {{-- form  --}}
-               <div class="tab-content">
-                <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
-                    Step content
-                </div>
-                <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
-                    Step content
-                </div>
-                <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3">
-                    Step content
-                </div>
-                <div id="step-4" class="tab-pane" role="tabpanel" aria-labelledby="step-4">
-                    Step content
-                </div>
-                </div>
-               {{-- end form  --}}
-                <div class="mt-4 text-center text-xs+">
-                    <p class="line-clamp-1">
-                        <span>Sudah punya Akun? </span>
-                        <a class="text-info transition-colors hover:text-info-focus dark:text-accent-light dark:hover:text-accent"
-                            href="{{ route('login.index') }}">Login</a>
-                    </p>
-                </div>
-            </div>
+                <form action="">
+                    <div class="form active">
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input type="text" placeholder="name">
+                            <span></span>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="field">
+                                <label for="name">tempat</label>
+                                <input type="text" placeholder="name">
+                                <span></span>
+                            </div>
+                            <div class="field">
+                                <label for="name">tanggal lahir</label>
+                                <input type="date" placeholder="name">
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="name">kelas</label>
+                            <input type="text" placeholder="name">
+                            <span></span>
+                        </div>
+                        <div class="field">
+                            <label for="email">nisn</label>
+                            <input type="number" placeholder="nisn">
+                            <span></span>
+                        </div>
+                        <div class="field">
+                            <label for="email">bukti kelamin</label>
+                            <input type="file" placeholder="nisn">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="form">
+                        <div class="field">
+                            <label for="username">alamat</label> <br>
+                            <textarea class="border border-gray-400" name="" id="" cols="45" rows="3"></textarea>
+                            <span></span>
+                        </div>
+                        <div class="field">
+                            <label for="phone">Jurusan</label>
+                            <input type="text" placeholder="Jurusan">
+                            <span></span>
+                        </div>
+                        <div class="field">
+                            <label for="phone">sekolah</label>
+                            <input type="text" placeholder="Jurusan">
+                            <span></span>
+                        </div>
+                        <div class="field">
+                            <label for="phone">lama magang</label>
+                            <div class="flex justify-between">
+                                <input type="text" placeholder="Jurusan">
+                                <input type="text" placeholder="Jurusan">
+                            </div>
+                            <span></span>
+                        </div>
+
+                    </div>
+                    <div class="form">
+                        <div class="field">
+                            <label for="file">Foto Siswa</label>
+                            <input type="file" placeholder="file">
+                            <span></span>
+                        </div>
+                        <div class="field">
+                            <label for="file">pernyataan diri sendiri</label>
+                            <input type="file" placeholder="file">
+                            <span></span>
+                        </div>
+                        <div class="field">
+                            <label for="file">pernyataan orang tua </label>
+                            <input type="file" placeholder="file">
+                            <span></span>
+                        </div>
+                        <div class="field">
+                            <label for="file">SKCK</label>
+                            <input type="file" placeholder="file">
+                            <span></span>
+                        </div>
+                        <div class="field">
+                            <label for="file">CV</label>
+                            <input type="file" placeholder="file">
+                            <span></span>
+                        </div>
+
+
+                    </div>
+                    <div class="form">
+                        <div class="field">
+                            <label for="DOB">email</label>
+                            <input type="email">
+                            <span></span>
+                        </div>
+                        <div class="field">
+                            <label for="image">password</label>
+                            <input type="password">
+                            <span></span>
+                        </div>
+                        <div class="field ">
+                            <label for="image">konfirmasi password</label>
+                            <input type="password">
+                            <span></span>
+                        </div>
+                    </div>
+                    <br><br><br><br>
+                    <div class="w-full h-full">
+                        <div class="flex justify-center items-center mt-2 h-full gap-4 p-4 ">
+                            <button class="border w-full border-blue-400 bg-blue-400 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-400 hover:text-white">Previous</button>
+                            <button class="border w-full border-blue-400 bg-blue-400 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-400 hover:text-white">Next</button>
+                        </div>
+                    </div>
+                </form>
+
+            </section>
         </main>
     </div>
 
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
-
+    <script type="text/javascript" src="js/main.js"></script>
 
 
     {{-- <div id="x-teleport-target"></div> --}}
