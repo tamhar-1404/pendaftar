@@ -137,7 +137,6 @@
             </div>
         </main>
     </div>
-
     <!--
         This is a place for Alpine.js Teleport feature
         @see https://alpinejs.dev/directives/teleport
@@ -147,7 +146,5 @@
         window.addEventListener("DOMContentLoaded", () => Alpine.start());
     </script>
 </body>
-
 <!-- Mirrored from lineone.piniastudio.com/pages-login-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 May 2023 04:16:45 GMT -->
-
 </html>

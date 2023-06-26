@@ -20,7 +20,6 @@ class JurnalsiswaController extends Controller
         $item = jurnalsiswa::paginate(10);
         return view('jurnal_siswa.index',compact('item'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -45,24 +44,18 @@ class JurnalsiswaController extends Controller
             'sekolah' => "required",
             'kegiatan'  => "required",
             'image'  => "required"
-
         ]);
-
         $image = $request->file('image');
         $image->storeAs('public/image', $image->hashName());
-
         jurnalsiswa::create([
             'image'=>$image->hashName(),
             'nama' => $request->nama,
             'tanggal' => $request->tanggal,
             'sekolah' => $request->sekolah,
             'kegiatan'=>$request->kegiatan,
-
         ]);
-
         return redirect()->route('jurnalsiswa.index');
     }
-
     /**
      * Display the specified resource.
      *
@@ -73,7 +66,6 @@ class JurnalsiswaController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
