@@ -25,5 +25,9 @@ class aproval extends Model
         'sp_ortu',
         'skck',
         'cv',
+        'email',
+        'password',
+        'role',
+        'status',
     ];
 }

@@ -152,62 +152,63 @@
                         <P>Hummasoft Technology </P>
                     </div>
                 </div>
-                <form action="">
+              <form action="{{ route('postregister') }}" method="post">
+                @csrf
                     <div class="form active">
                         <div class="field">
                             <label for="name">Name</label>
-                            <input type="text" placeholder="name">
+                            <input type="text" placeholder="name" name="name">
                             <span></span>
                         </div>
                         <div class="flex justify-between">
                             <div class="field">
                                 <label for="name">tempat</label>
-                                <input type="text" placeholder="name">
+                                <input type="text" placeholder="name" name="tempat">
                                 <span></span>
                             </div>
                             <div class="field">
                                 <label for="name">tanggal lahir</label>
-                                <input type="date" placeholder="name">
+                                <input type="date" placeholder="name" name="tanggal">
                                 <span></span>
                             </div>
                         </div>
                         <div class="field">
                             <label for="name">kelas</label>
-                            <input type="text" placeholder="name">
+                            <input type="text" placeholder="name" name="kelas">
                             <span></span>
                         </div>
                         <div class="field">
                             <label for="email">nisn</label>
-                            <input type="number" placeholder="nisn">
+                            <input type="number" placeholder="nisn" name="nisn">
                             <span></span>
                         </div>
                         <div class="field">
-                            <label for="email">bukti kelamin</label>
-                            <input type="file" placeholder="nisn">
+                            <label for="email">Jenis kelamin</label>
+                            <input type="file" placeholder="nisn" name="jeniskelamin">
                             <span></span>
                         </div>
                     </div>
                     <div class="form">
                         <div class="field">
                             <label for="username">alamat</label> <br>
-                            <textarea class="border border-gray-400" name="" id="" cols="45" rows="3"></textarea>
+                            <textarea class="border border-gray-400" name="alamat" id="" cols="45" rows="3"></textarea>
                             <span></span>
                         </div>
                         <div class="field">
                             <label for="phone">Jurusan</label>
-                            <input type="text" placeholder="Jurusan">
+                            <input type="text" placeholder="Jurusan" name="jurusan">
                             <span></span>
                         </div>
                         <div class="field">
                             <label for="phone">sekolah</label>
-                            <input type="text" placeholder="Jurusan">
+                            <input type="text" placeholder="Jurusan" name="sekolah">
                             <span></span>
                         </div>
                         <div class="field">
                             <label for="phone">lama magang</label>
                             <div class="flex justify-between">
-                                <input type="text" placeholder="Jurusan">
-                                <input type="text" placeholder="Jurusan">
+                                <input type="text" placeholder="awal" name="magang_awal">
+                                <input type="text" placeholder="akhir" name="magang_akhir">
                             </div>
                             <span></span>
                         </div>
@@ -216,27 +217,27 @@
                     <div class="form">
                         <div class="field">
                             <label for="file">Foto Siswa</label>
-                            <input type="file" placeholder="file">
+                            <input type="file" placeholder="file" name="foto_siswa">
                             <span></span>
                         </div>
                         <div class="field">
                             <label for="file">pernyataan diri sendiri</label>
-                            <input type="file" placeholder="file">
+                            <input type="file" placeholder="file" name="sp_diri">
                             <span></span>
                         </div>
                         <div class="field">
                             <label for="file">pernyataan orang tua </label>
-                            <input type="file" placeholder="file">
+                            <input type="file" placeholder="file" name="sp_ortu">
                             <span></span>
                         </div>
                         <div class="field">
                             <label for="file">SKCK</label>
-                            <input type="file" placeholder="file">
+                            <input type="file" placeholder="file" name="skck">
                             <span></span>
                         </div>
                         <div class="field">
                             <label for="file">CV</label>
-                            <input type="file" placeholder="file">
+                            <input type="file" placeholder="file" name="cv">
                             <span></span>
                         </div>
 
@@ -250,12 +251,12 @@
                         </div>
                         <div class="field">
                             <label for="image">password</label>
-                            <input type="password">
+                            <input type="password" name="password">
                             <span></span>
                         </div>
                         <div class="field ">
                             <label for="image">konfirmasi password</label>
-                            <input type="password">
+                            <input type="password" name="password">
                             <span></span>
                         </div>
                     </div>
