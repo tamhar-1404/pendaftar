@@ -384,6 +384,8 @@
                 chart: {
                     type: 'bar',
                     height: 350,
+                    width:990
+
                 },
                 plotOptions: {
                     bar: {

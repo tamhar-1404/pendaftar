@@ -297,16 +297,12 @@
         </ul>
     </nav>
     <!-- Sidenav -->
-
     <div class=" pl-[px] " id="content">
-
-
         <!-- Navbar -->
         <nav id="main-navbar"
-            class=" left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start sticky"
+            class=" left-0 z-50 right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start sticky"
             data-te-navbar-ref>
             <!-- Container wrapper -->
-
             <div class="flex w-full flex-wrap items-center justify-between px-4 ">
                 <div class="flex gap-4">
                     <!-- Toggler -->
@@ -334,7 +330,6 @@
                         </span>
                     </button>
                     <!-- Toggler -->
-
                     <!-- Search form -->
                     <form class="relative  mr-auto flex flex-wrap items-stretch xl:mx-0">
                         <input autocomplete="off" type="search"
@@ -351,9 +346,7 @@
                             </svg>
                         </span>
                     </form>
-
                 </div>
-
                 <!-- Right links -->
                 <ul class="relative flex items-center">
                     <!-- Notification dropdown -->
@@ -388,12 +381,6 @@
                             </li>
                         </ul>
                     </li>
-
-
-
-
-
-
                     <!-- Avatar -->
                     <li class="relative" data-te-dropdown-ref>
                         <a class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
@@ -423,19 +410,14 @@
             <!-- Container wrapper -->
         </nav>
         <!-- Navbar -->
-
         @include('izinadmin.content')
     </div>
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script>
         const instanceMode = te.Sidenav.getInstance(
             document.getElementById("sidenav-2")
         );
         const modes = ["side"];
-
         modes.forEach((mode) => {
             const modeSwitch = document.getElementById(mode);
             modeSwitch.addEventListener("click", () => {
@@ -454,7 +436,6 @@
                         const node = document.getElementById(el);
                         node.className += " text-primary-600 border-primary-600";
                         [
-
                         ].forEach((item) => node.classList.remove(item));
                     }
                 });
@@ -467,11 +448,9 @@
             sidenav - 2,
             initTE,
         } from "tw-elements";
-
         initTE({
             sidenav - 2
         });
     </script>
 </body>
-
 </html>
