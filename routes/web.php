@@ -186,6 +186,9 @@ Route::resource('/absensi_siswa', App\Http\Controllers\AbsensiSiswaController::c
 Route::get('/grafik_jurnal_guru', function () {
     return view('jurnalguru.grafik');
 });
+Route::get('/percobaan', function () {
+    return view('loginregister.iyah');
+});
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
 Route::resource('/profilesiswa', App\Http\Controllers\ProfilsiswaController::class);
 Route::resource('/piket_siswa', App\Http\Controllers\PiketSiswaController::class);
