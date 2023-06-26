@@ -34,8 +34,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role');
-            $table->string('status');
+            $table->string('role')->default('siswa');
+            $table->string('status')->default('menunggu');
             $table->rememberToken();
             $table->timestamps();
         });
