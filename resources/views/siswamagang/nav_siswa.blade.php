@@ -497,13 +497,6 @@
                         <a href="{{route('piket_siswa.index')}}">Jadwal Piket</a>
                     </li>
                     <li>
-                        <a href="{{route('chat_siswa.index')}}">Chat</a>
-                        <a href="{{ route('tatib_siswa.index') }}">Tata tertib</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('piket_siswa.index') }}">Jadwal Piket</a>
-                    </li>
-                    <li>
                         <a href="{{ route('chat_siswa.index') }}">Chat</a>
                     </li>
                     <li>

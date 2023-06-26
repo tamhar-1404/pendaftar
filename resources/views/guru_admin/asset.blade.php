@@ -3535,11 +3535,11 @@
                         </div>
                         <div class="mt-4">
                             <label for="tanggal_lahir" class="block text-gray-700 font-medium mb-2">No telephone </label>
-                            <input type="number" id="tanggal_lahir" name="no" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <input type="number" id="tanggal_lahir"  placeholder="Masukkan no telephone anda" name="no" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                           </div>
                         <div class="mt-4">
                           <label for="email" class="block text-gray-700 font-medium mb-2">Password</label>
-                          <input type="password" placeholder="Masukkan email" id="email" name="password" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                          <input type="password" placeholder="Masukkan password" id="email" name="password" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

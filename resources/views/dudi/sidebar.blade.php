@@ -92,7 +92,7 @@
               </div>
             </div>
              {{-- grafik --}}
-             <div id="grafik_admin" class="  h-35 mx-4 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
+             <div id="grafik_admin" class="  h-35 mx-4 md:w-auto lg:w-auto bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
                     <div class="w-full px-4 mt-6">
                        <div class=" bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
                            Grafik Pendaftaran
@@ -361,7 +361,7 @@
     }],
       chart: {
       type: 'bar',
-      height: 350,
+      height: 400,
     },
     plotOptions: {
       bar: {
