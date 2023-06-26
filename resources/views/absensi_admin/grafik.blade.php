@@ -702,8 +702,8 @@
                        <div class="w-80%  bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
                            Grafik Absensi
                        </div>
+                    </div>
                 </div>
-             </div>
 
                {{-- tabel --}}
 

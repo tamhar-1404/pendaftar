@@ -248,14 +248,14 @@
                 </a>
             </li>
             <li class="menu nav-item relative">
-                <a href="javascript:;" class="nav-link active">
-                    <div class="flex items-center text-white">
+                <a href="javascript:;" class="nav-link">
+                    <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                         </svg>
-                        <span class="px-1 text-white">Siswa</span>
+                        <span class="px-1">Siswa</span>
                     </div>
                     <div class="right_arrow">
                         <svg class="h-4 w-4 rotate-90" width="16" height="16" viewBox="0 0 24 24"
@@ -299,8 +299,8 @@
                 </a>
             </li>
             <li class="menu nav-item relative">
-                <a href="javascript:;" class="nav-link">
-                    <div class="flex items-center">
+                <a href="javascript:;" class="nav-link active">
+                    <div class="flex items-center text-white">
                         <svg class="group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.5"
@@ -316,7 +316,7 @@
                                 d="M2 18.5C2 19.5872 2 20.1308 2.17127 20.5596C2.39963 21.1313 2.83765 21.5856 3.38896 21.8224C3.80245 22 4.32663 22 5.375 22H7.625C8.67337 22 9.19755 22 9.61104 21.8224C10.1624 21.5856 10.6004 21.1313 10.8287 20.5596C11 20.1308 11 19.5872 11 18.5C11 17.4128 11 16.8692 10.8287 16.4404C10.6004 15.8687 10.1624 15.4144 9.61104 15.1776C9.19755 15 8.67337 15 7.625 15H5.375C4.32663 15 3.80245 15 3.38896 15.1776C2.83765 15.4144 2.39963 15.8687 2.17127 16.4404C2 16.8692 2 17.4128 2 18.5Z"
                                 fill="currentColor" />
                         </svg>
-                        <span class="px-1">Lainnya</span>
+                        <span class="px-1 text-white">Lainnya</span>
                     </div>
                     <div class="right_arrow">
                         <svg class="h-4 w-4 rotate-90" width="16" height="16" viewBox="0 0 24 24"

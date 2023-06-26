@@ -1,7 +1,7 @@
 <!-- start header section -->
 <header :class="{ 'dark': $store.app.semidark && $store.app.menu === 'horizontal' }">
     <div class="shadow-sm">
-        <div class="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
+        <div class=" sticky relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
             <div class="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
                 <a href="index-2.html" class="main-logo flex shrink-0 items-center">
                     <img class="inline w-20
@@ -23,37 +23,8 @@
             </div>
             <div x-data="header"
                 class="flex items-center space-x-1.5 ltr:ml-auto rtl:mr-auto rtl:space-x-reverse dark:text-[#d0d2d6] sm:flex-1 ltr:sm:ml-0 sm:rtl:mr-0 lg:space-x-2">
-                <div class="sm:ltr:mr-auto sm:rtl:ml-auto" x-data="{ search: false }" @click.outside="search = false">
-                    <form
-                        class="absolute inset-x-0 top-1/2 z-10 mx-4 hidden -translate-y-1/2 sm:relative sm:top-0 sm:mx-0 sm:block sm:translate-y-0"
-                        :class="{ '!block': search }" @submit.prevent="search = false">
-                        <div class="relative">
-                            <input type="text"
-                                class="peer form-input bg-gray-100 placeholder:tracking-widest ltr:pl-9 ltr:pr-9 rtl:pr-9 rtl:pl-9 sm:bg-transparent ltr:sm:pr-4 rtl:sm:pl-4"
-                                placeholder="Search..." />
-                            <button type="button"
-                                class="absolute inset-0 h-9 w-9 appearance-none peer-focus:text-primary ltr:right-auto rtl:left-auto">
-                                <svg class="mx-auto" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="11.5" cy="11.5" r="9.5" stroke="currentColor"
-                                        stroke-width="1.5" opacity="0.5" />
-                                    <path d="M18.5 18.5L22 22" stroke="currentColor" stroke-width="1.5"
-                                        stroke-linecap="round" />
-                                </svg>
-                            </button>
-                            <button type="button"
-                                class="absolute top-1/2 block -translate-y-1/2 hover:opacity-80 ltr:right-2 rtl:left-2 sm:hidden"
-                                @click="search = false">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <circle opacity="0.5" cx="12" cy="12" r="10"
-                                        stroke="currentColor" stroke-width="1.5" />
-                                    <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke="currentColor"
-                                        stroke-width="1.5" stroke-linecap="round" />
-                                </svg>
-                            </button>
-                        </div>
-                    </form>
+                <div class="sm:ltr:mr-auto sm:rtl:ml-auto flex items-center pt-4" x-data="{ search: false }"
+                    @click.outside="search = false">
                     <button type="button"
                         class="search_btn rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 dark:bg-dark/40 dark:hover:bg-dark/60 sm:hidden"
                         @click="search = ! search">
@@ -77,8 +48,7 @@
                             <path d="M12 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                             <path d="M12 20V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                             <path d="M4 12L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                            <path d="M22 12L20 12" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" />
+                            <path d="M22 12L20 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                             <path opacity="0.5" d="M19.7778 4.22266L17.5558 6.25424" stroke="currentColor"
                                 stroke-width="1.5" stroke-linecap="round" />
                             <path opacity="0.5" d="M4.22217 4.22266L6.44418 6.25424" stroke="currentColor"
@@ -182,14 +152,6 @@
                                 </div>
                             </li>
                         </template>
-                        <template x-if="notifications.length">
-                            <li>
-                                <div class="p-4">
-                                    <button class="btn btn-primary btn-small block w-full" @click="toggle">Read All
-                                        Notifications</button>
-                                </div>
-                            </li>
-                        </template>
                         <template x-if="!notifications.length">
                             <li>
                                 <div class="!grid min-h-[200px] place-content-center text-lg hover:!bg-transparent">
@@ -248,43 +210,6 @@
                                 </svg>
                                 Profile</a>
                         </li>
-                        <li>
-                            <a href="apps-mailbox.html" class="dark:hover:text-white" @click="toggle">
-                                <svg class="h-4.5 w-4.5 ltr:mr-2 rtl:ml-2" width="18" height="18"
-                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.5"
-                                        d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12Z"
-                                        stroke="currentColor" stroke-width="1.5" />
-                                    <path
-                                        d="M6 8L8.1589 9.79908C9.99553 11.3296 10.9139 12.0949 12 12.0949C13.0861 12.0949 14.0045 11.3296 15.8411 9.79908L18 8"
-                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                </svg>
-                                Inbox</a>
-                        </li>
-                        <li>
-                            <a href="auth-boxed-lockscreen.html" class="dark:hover:text-white" @click="toggle">
-                                <svg class="h-4.5 w-4.5 ltr:mr-2 rtl:ml-2" width="18" height="18"
-                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.75736 10 5.17157 10 8 10H16C18.8284 10 20.2426 10 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16Z"
-                                        stroke="currentColor" stroke-width="1.5" />
-                                    <path opacity="0.5"
-                                        d="M6 10V8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8V10"
-                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                    <g opacity="0.5">
-                                        <path
-                                            d="M9 16C9 16.5523 8.55228 17 8 17C7.44772 17 7 16.5523 7 16C7 15.4477 7.44772 15 8 15C8.55228 15 9 15.4477 9 16Z"
-                                            fill="currentColor" />
-                                        <path
-                                            d="M13 16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16C11 15.4477 11.4477 15 12 15C12.5523 15 13 15.4477 13 16Z"
-                                            fill="currentColor" />
-                                        <path
-                                            d="M17 16C17 16.5523 16.5523 17 16 17C15.4477 17 15 16.5523 15 16C15 15.4477 15.4477 15 16 15C16.5523 15 17 15.4477 17 16Z"
-                                            fill="currentColor" />
-                                    </g>
-                                </svg>
-                                Lock Screen</a>
-                        </li>
                         <li class="border-t border-white-light dark:border-white-light/10">
                             <a href="auth-boxed-signin.html" class="!py-3 text-danger" @click="toggle">
                                 <svg class="h-4.5 w-4.5 rotate-90 ltr:mr-2 rtl:ml-2" width="18" height="18"
@@ -295,7 +220,7 @@
                                     <path d="M12 15L12 2M12 2L15 5.5M12 2L9 5.5" stroke="currentColor"
                                         stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                Sign Out
+                                Logout
                             </a>
                         </li>
                     </ul>
@@ -307,7 +232,7 @@
         <ul
             class="horizontal-menu hidden border-t border-[#ebedf2] bg-white py-1.5 px-6 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-[#0e1726] dark:text-white-dark lg:space-x-1.5 xl:space-x-8">
             <li class="menu nav-item relative">
-                <a href="javascript:;" class="nav-link">
+                <a href="{{ route('guru.index') }}" class="nav-link">
                     <div class="flex items-center ">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -330,12 +255,27 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                         </svg>
-                        <span class="px-1">Siswa</span>
+                        <span class="px-1 ">Siswa</span>
+                    </div>
+                    <div class="right_arrow">
+                        <svg class="h-4 w-4 rotate-90" width="16" height="16" viewBox="0 0 24 24"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
                     </div>
                 </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{ route('siswa_guru.index') }}">Siswa Magang</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('alumni_guru.index') }}">Siswa Alumni</a>
+                    </li>
+                </ul>
             </li>
             <li class="menu nav-item relative">
-                <a href="javascript:;" class="nav-link">
+                <a href="{{ route('jurnal_guru.index') }}" class="nav-link">
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -347,7 +287,7 @@
                 </a>
             </li>
             <li class="menu nav-item relative">
-                <a href="javascript:;" class="nav-link">
+                <a href="{{ route('absensi_guru.index') }}" class="nav-link">
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -388,10 +328,10 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="">Berita</a>
+                        <a href="{{ route('berita_guru.index') }}">Berita</a>
                     </li>
                     <li>
-                        <a href="">Chat</a>
+                        <a href="{{ route('chat_guru.index') }}">Chat</a>
                     </li>
                 </ul>
             </li>

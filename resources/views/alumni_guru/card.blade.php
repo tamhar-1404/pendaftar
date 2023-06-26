@@ -11,8 +11,6 @@
             </ul>
             <div x-data="usePopper({ placement: 'bottom-start', offset: 4 })" @click.outside="isShowPopper && (isShowPopper = false)"
                 class="inline-flex">
-
-
                 <div x-ref="popperRoot" class="popper-root" :class="isShowPopper && 'show'">
                     <div
                         class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700">

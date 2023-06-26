@@ -152,14 +152,6 @@
                                 </div>
                             </li>
                         </template>
-                        <template x-if="notifications.length">
-                            <li>
-                                <div class="p-4">
-                                    <button class="btn btn-primary btn-small block w-full" @click="toggle">Read All
-                                        Notifications</button>
-                                </div>
-                            </li>
-                        </template>
                         <template x-if="!notifications.length">
                             <li>
                                 <div class="!grid min-h-[200px] place-content-center text-lg hover:!bg-transparent">
@@ -207,7 +199,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="users-profile.html" class="dark:hover:text-white" @click="toggle">
+                            <a href="{{ route('profileguru.index') }}" class="dark:hover:text-white" @click="toggle">
                                 <svg class="h-4.5 w-4.5 ltr:mr-2 rtl:ml-2" width="18" height="18"
                                     viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="12" cy="6" r="4" stroke="currentColor"
@@ -256,7 +248,7 @@
                 </a>
             </li>
             <li class="menu nav-item relative">
-                <a href="{{route('siswa_guru.index')}}" class="nav-link">
+                <a href="javascript:;" class="nav-link">
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -265,7 +257,22 @@
                         </svg>
                         <span class="px-1">Siswa</span>
                     </div>
+                    <div class="right_arrow">
+                        <svg class="h-4 w-4 rotate-90" width="16" height="16" viewBox="0 0 24 24"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
                 </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{ route('siswa_guru.index') }}">Siswa Magang</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('alumni_guru.index') }}">Siswa Alumni</a>
+                    </li>
+                </ul>
             </li>
             <li class="menu nav-item relative">
                 <a href="{{ route('jurnal_guru.index') }}" class="nav-link">
