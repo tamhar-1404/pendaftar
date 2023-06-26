@@ -30,7 +30,7 @@ class ApprovalIzinController extends Controller
      */
     public function create(ApprovalIzin $izin)
     {
-        
+
         return view('izinadmin.content');
     }
 
@@ -42,7 +42,7 @@ class ApprovalIzinController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         $this->validate($request, [
             'nama' => 'required',
             'sekolah' => 'required',
@@ -63,7 +63,7 @@ class ApprovalIzinController extends Controller
             'bukti' => $request->bukti,
             'status' => $request->status
         ]);
-        return redirect()->route('izinadmin.index');
+        return redirect()->route('guru_admin.index');
     }
 
     /**

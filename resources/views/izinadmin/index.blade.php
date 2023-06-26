@@ -453,12 +453,13 @@
                           <label for="sekolah" class="block text-gray-700 font-medium mb-2">sampai</label>
                           <input type="date" placeholder="masukan tanggal akhir" id="sekolah" name="sampai" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
+
                         <div class="flex items-center mb-4">
-                            <input  id="disabled-radio-1" type="radio" value="" name="keterangan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input  id="disabled-radio-1" type="radio" value="izin" name="keterangan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="disabled-radio-1" class="ml-2 text-sm font-medium text-gray-400 dark:text-gray-500">Izin</label>
                         </div>
                         <div class="flex items-center">
-                            <input   id="disabled-radio-2" type="radio" value="" name="keterangan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input   id="disabled-radio-2" type="radio" value="sakit" name="keterangan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="disabled-radio-2" class="ml-2 text-sm font-medium text-gray-400 dark:text-gray-500">Sakit</label>
                         </div>
                         <div class="mt-4">
@@ -470,7 +471,7 @@
                             <label for="Nama" class="block text-gray-700 font-medium mb-2">bukti</label>
                             <input type="file" name="bukti" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
                           </div>
-                        <input type="hidden" name="status" value="menungu">
+                        <input type="hidden" name="status" value="menunggu">
 
                         <div class="flex items-center justify-end mt-4">
                           <div class="ml-auto">
@@ -512,7 +513,7 @@
               registerModal.classList.add("hidden");
             });
           </script>
-    
+
 
         @include('izinadmin.content')
     </div>

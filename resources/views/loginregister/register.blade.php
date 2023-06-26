@@ -265,6 +265,7 @@
                         <div class="flex justify-center items-center mt-2 h-full gap-4 p-4 ">
                             <button class="border w-full border-blue-400 bg-blue-400 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-400 hover:text-white">Previous</button>
                             <button class="border w-full border-blue-400 bg-blue-400 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-400 hover:text-white">Next</button>
+                            <button class="border w-full border-blue-400 bg-blue-400 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-400 hover:text-white">submit</button>
                         </div>
                     </div>
                 </form>

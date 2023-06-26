@@ -36,8 +36,10 @@
 		if (inputFirst.value != '' && inputLast.value != ''){
 			curPage++;
 			button[0].style.display = 'block';
-			if (curPage>div.length-6) {button[1].textContent = 'Sign Up';}
-			if (curPage >= div.length) {
+			if (curPage>div.length) {button[1].textContent = 'Sign Up';}
+			if (curPage >= div.length-4) {
+                button[3].style.display = 'block';
+                button[3].textContent = 'Sign Up';
 				form.onsubmit =()=>{return true;}
 			}
 			dispayPage(curPage);
