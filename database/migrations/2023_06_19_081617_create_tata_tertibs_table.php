@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('tata_tertibs', function (Blueprint $table) {
             $table->id();
+            $table->string('judul');
+            $table->longText('deskripsi');
+            $table->longText('files')->nullable();
             $table->timestamps();
         });
     }

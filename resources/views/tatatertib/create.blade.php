@@ -39,12 +39,7 @@
                     Tambah Tata Tertib
                 </h2>
             </div>
-            <div class="flex justify-center space-x-2">
-                <a href="{{ route('tatatertib.index') }}"
-                    class="btn min-w-[7rem] border border-slate-300 font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90">Batal</a>
-                <a href="{{ route('tatatertib.index') }}"
-                    class="btn min-w-[7rem] bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">Simpan</a>
-            </div>
+
         </div>
         <div class="grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
             <div class="col-span-12 lg:col-span-12">
@@ -58,48 +53,83 @@
                                         <i class="fa-solid fa-layer-group text-base"></i>
                                         <span>Tata Tertib</span>
                                     </button>
-
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-content p-4 sm:p-5">
-                            <div class="space-y-5">
-                                <label class="block">
-                                    <span class="font-medium text-slate-600 dark:text-navy-100">Judul</span>
-                                    <input
-                                        class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Masukkan Judul" type="text" />
-                                </label>
-                                <div>
-                                    <span class="font-medium text-slate-600 dark:text-navy-100">Deskripsi</span>
-                                    <div class="mt-1.5 w-full">
-                                        <div id="summernote"></div>
-                                        <script>
-                                            $('#summernote').summernote({
-                                                placeholder: 'Deskripsi..',
-                                                tabsize: 2,
-                                                height: 120,
-                                                toolbar: [
-                                                    ['style', ['style']],
-                                                    ['font', ['bold', 'underline', 'clear']],
-                                                    ['color', ['color']],
-                                                    ['para', ['ul', 'ol', 'paragraph']],
-                                                    ['table', ['table']],
-                                                    ['insert', ['link', 'picture', 'video']],
-                                                    ['view', ['fullscreen', 'codeview', 'help']]
-                                                ]
-                                            });
-                                        </script>
+                        <form action="{{ route('inserttatib') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="tab-content p-4 sm:p-5">
+                                <div class="space-y-5">
+                                    <label class="block">
+                                        <span class="font-medium text-slate-600 dark:text-navy-100">Judul</span>
+                                        <input id="judul" name="judul"
+                                            class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                            placeholder="Masukkan Judul" type="text" />
+                                    </label>
+                                    @error('judul')
+                                        <div
+                                            class="alert flex space-x-2 rounded-lg border border-error px-4 py-2 text-error">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                                fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            <p>{{ $message }}</p>
+                                        </div>
+                                    @enderror
+                                    <div>
+                                        <span class="font-medium text-slate-600 dark:text-navy-100">Deskripsi</span>
+                                        <div class="mt-1.5 w-full">
+                                            <div>
+                                                <textarea name="deskripsi" id="summernote"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @error('deskripsi')
+                                        @error('judul')
+                                            <div
+                                                class="alert flex space-x-2 rounded-lg border border-error px-4 py-2 text-error">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                                    fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                                <p>{{ $message }}</p>
+                                            </div>
+                                        @enderror
+                                    @enderror
+                                    <div class="flex justify-end space-x-2">
+                                        <a href="{{ route('tatatertib.index') }}"
+                                            class="btn min-w-[7rem] border border-slate-300 font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90">Batal</a>
+                                        <button type="submit"
+                                            class="btn min-w-[7rem] bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">Simpan</button>
                                     </div>
                                 </div>
-
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 </body>
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Deskripsi..',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>
 
 </html>

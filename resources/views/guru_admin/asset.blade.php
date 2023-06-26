@@ -3531,7 +3531,7 @@
                         </div>
                         <div class="mt-4">
                             <label for="sekolah" class="block text-gray-700 font-medium mb-2">Alamat</label>
-                        <textarea name="alamat" id="" cols="65" rows="5" class="border border-1" placeholder="Masukkan alamat anda"></textarea>
+                        <textarea name="alamat" id="" cols="65" rows="5" class="border border-1 block w-full mt-2 px-4 rounded" placeholder="Masukkan alamat anda"></textarea>
                         </div>
                         <div class="mt-4">
                             <label for="tanggal_lahir" class="block text-gray-700 font-medium mb-2">No telephone </label>

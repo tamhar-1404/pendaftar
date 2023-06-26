@@ -104,7 +104,7 @@
                     {{-- paginate --}}
                     <div class="flex justify-between">
                         <p>
-                            menampilkan 1 sampai 10 dari 15 data
+                            Showing 1 to 10 of 15 entries
                         </p>
                         <nav aria-label="Page navigation example">
                             <ul class="list-style-none flex">
@@ -152,9 +152,9 @@
             <!-- end main content section -->
 
             <!-- start footer section -->
-            <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
+            {{-- <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
                 © <span id="footer-year">2022</span>. Vristo All rights reserved.
-            </p>
+            </p> --}}
             <!-- end footer section -->
         </div>
     </div>

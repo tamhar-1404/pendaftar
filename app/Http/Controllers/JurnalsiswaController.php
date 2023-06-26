@@ -46,12 +46,9 @@ class JurnalsiswaController extends Controller
             'sekolah' => "required",
             'kegiatan'  => "required",
             'image'  => "required"
-
         ]);
-
         $image = $request->file('image');
         $image->storeAs('public/image', $image->hashName());
-
         jurnalsiswa::create([
             'image'=>$image->hashName(),
             'nama' => $request->nama,
@@ -61,10 +58,8 @@ class JurnalsiswaController extends Controller
             'status' => $request -> status
 
         ]);
-
         return redirect()->route('jurnalsiswa.index');
     }
-
     /**
      * Display the specified resource.
      *
@@ -75,7 +70,6 @@ class JurnalsiswaController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Admin - Jadwal Piket</title>
     @vite('resources/css/app.css')
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
@@ -364,9 +364,9 @@
                 <!-- end main content section -->
 
                 <!-- start footer section -->
-                <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
+                {{-- <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
                     © <span id="footer-year">2022</span>. Vristo All rights reserved.
-                </p>
+                </p> --}}
                 <!-- end footer section -->
             </div>
         </div>

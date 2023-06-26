@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Admin - Jurnal</title>
     @vite('resources/css/app.css')
     <link
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
     rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
@@ -70,7 +70,7 @@
                         {{-- filter --}}
                         <div class="border-2 rounded-full border-gray-400 flex items-center mr-2 ">
                             <span class="mr-1 ml-3">
-                                filter
+                                Filter
                             </span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="
                             transparent" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" mr-3 w-4 h-4">
@@ -228,7 +228,7 @@
                 {{-- paginate --}}
                 <div class="flex justify-between">
                     <p>
-                        menampilkan 1 sampai 10 dari 15 data
+                        showing 1 to 10 of 15 entries
                     </p>
                     <nav aria-label="Page navigation example">
                         <ul class="list-style-none flex">
@@ -275,9 +275,9 @@
         </div>
         <!-- end main content section -->
            <!-- start footer section -->
-           <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
+           {{-- <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
             © <span id="footer-year">2022</span>. Vristo All rights reserved.
-        </p>
+        </p> --}}
         <!-- end footer section -->
 
     </div>
