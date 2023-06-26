@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <link rel="stylesheet" href="load/load.css">
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -28,6 +29,14 @@
 </head>
 
 <body>
+      <!-- screen loader -->
+      <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+        <div class="center">
+            <div class="ring">
+            </div>
+            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+        </div>
+    </div>
     <!-- Sidenav -->
     <nav id="sidenav-2"
         class="fixed left-0 top-0 z-[1035] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
@@ -303,7 +312,7 @@
 
         <!-- Navbar -->
         <nav id="main-navbar"
-            class=" left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start sticky"
+            class=" left-0 z-50  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start sticky"
             data-te-navbar-ref>
             <!-- Container wrapper -->
 
@@ -388,7 +397,7 @@
                             </li>
                         </ul>
                     </li>
-                    
+
                     <!-- Avatar -->
                     <li class="relative" data-te-dropdown-ref>
                         <a class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
@@ -425,6 +434,12 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+      $(window).on('load', function() {
+          $('.spin_load').fadeOut();
+      });
+  </script>
     <script>
         const instanceMode = te.Sidenav.getInstance(
             document.getElementById("sidenav-2")

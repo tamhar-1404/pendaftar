@@ -2741,7 +2741,8 @@
                                 Permintaan Izin
                             </h2>
                         </div>
-                        <div class=" mt-3 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
+                        
+                        <div class="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
                             <div class="card space-y-4 p-5">
                                 <div class=" flex-col w-full justify-center">
                                     <div class="flex justify-center items-center space-x-3">

@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('approval_izins', function (Blueprint $table) {
             $table->id();
+            $table->string('kegiatan');
+            $table->date('dari');
+            $table->date('sampai');
+            $table->string('alamat');
+            $table->string('keterangan');
+            $table->string('bukti');
             $table->timestamps();
         });
     }

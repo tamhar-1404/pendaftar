@@ -113,13 +113,12 @@
                 </div>
                 <p class="mt-1 text-xs">Menunggu diterima</p>
             </div>
-        </div>
-        {{-- grafik --}}
-        <div id="grafik_admin"
-            class="h-35 mx-4 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
-            <div class="w-full px-4 mt-6">
-                <div class=" bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
-                    Grafik Pendaftaran
+             {{-- grafik --}}
+             <div id="grafik_admin" class="  h-35 mx-4 md:w-auto lg:w-auto bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
+                    <div class="w-full px-4 mt-6">
+                       <div class=" bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
+                           Grafik Pendaftaran
+                       </div>
                 </div>
             </div>
         </div>
@@ -384,38 +383,54 @@
                 chart: {
                     type: 'bar',
                     height: 350,
-                },
-                plotOptions: {
-                    bar: {
-                        horizontal: false,
-                        columnWidth: '50%',
-                        endingShape: 'rounded',
-                        borderRadius: 7,
-                    },
-                },
-                dataLabels: {
-                    enabled: false,
-                },
-                animations: {
-                    enabled: true,
-                    easing: 'easeinout',
-                    speed: 1200,
-                    animateGradually: {
-                        enabled: true,
-                        delay: 200
-                    },
-                    dynamicAnimation: {
-                        enabled: true,
-                        speed: 450
-                    }
-                },
-                stroke: {
-                    show: true,
-                    width: 2,
-                    colors: ['transparent']
-                },
-                xaxis: {
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+                    width:990
+
+    var options = {
+      series: [{
+      name: 'Menunggu',
+      data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 70, 67, 50]
+    }, {
+      name: 'Terima',
+      data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 110, 104, 120]
+    }, {
+      name: 'Tolak',
+      data: [35, 41, 36, 26, 45, 48, 52, 53, 41, 30, 20, 70]
+    }],
+      chart: {
+      type: 'bar',
+      height: 400,
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: '55%',
+        endingShape: 'rounded',
+        borderRadius: 7,
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 1200,
+        animateGradually: {
+            enabled: true,
+            delay: 200
+        },
+        dynamicAnimation: {
+            enabled: true,
+            speed: 450
+        }
+    },
+    stroke: {
+      show: true,
+      width: 2,
+      colors: ['transparent']
+    },
+    xaxis: {
+      categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
 
                 },
                 yaxis: {
