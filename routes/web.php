@@ -103,7 +103,6 @@ Route::get('/detail_berita_guru', [BeritaGuruController::class, 'show'])->name('
 Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
 Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
 
-
 Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::class);
 
 Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
