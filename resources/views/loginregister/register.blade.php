@@ -134,6 +134,7 @@
         </div>
         <main  id="smartwizard" class="flex w-full flex-col items-center bg-white dark:bg-navy-700 lg:max-w-md">
             <div class="flex w-full max-w-sm grow flex-col justify-center p-5">
+
                 <div class="text-center">
                     <img class="mx-auto h-16 w-16 lg:hidden" src="lineone/images/app-logo.svg" alt="logo" />
                     <div class="mt-4">

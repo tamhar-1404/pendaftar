@@ -7,7 +7,7 @@
     <title>Guru - Dashboad</title>
     @vite('resources/css/app.css')
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/style.css" />
     <link defer rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/animate.css" />
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="load/load.css">
     <script src="assets_guru/js/perfect-scrollbar.min.js"></script>
     <script defer src="assets_guru/js/popper.min.js"></script>
     <script defer src="assets_guru/js/tippy-bundle.umd.min.js"></script>
@@ -31,19 +32,12 @@
         @click="$store.app.toggleSidebar()"></div>
     <!-- screen loader -->
     <div
-        class="screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
-        <svg width="64" height="64" viewBox="0 0 135 135" xmlns="http://www.w3.org/2000/svg" fill="#4361ee">
-            <path
-                d="M67.447 58c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zm9.448 9.447c0 5.523 4.477 10 10 10 5.522 0 10-4.477 10-10s-4.478-10-10-10c-5.523 0-10 4.477-10 10zm-9.448 9.448c-5.523 0-10 4.477-10 10 0 5.522 4.477 10 10 10s10-4.478 10-10c0-5.523-4.477-10-10-10zM58 67.447c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10z">
-                <animateTransform attributeName="transform" type="rotate" from="0 67 67" to="-360 67 67" dur="2.5s"
-                    repeatCount="indefinite" />
-            </path>
-            <path
-                d="M28.19 40.31c6.627 0 12-5.374 12-12 0-6.628-5.373-12-12-12-6.628 0-12 5.372-12 12 0 6.626 5.372 12 12 12zm30.72-19.825c4.686 4.687 12.284 4.687 16.97 0 4.686-4.686 4.686-12.284 0-16.97-4.686-4.687-12.284-4.687-16.97 0-4.687 4.686-4.687 12.284 0 16.97zm35.74 7.705c0 6.627 5.37 12 12 12 6.626 0 12-5.373 12-12 0-6.628-5.374-12-12-12-6.63 0-12 5.372-12 12zm19.822 30.72c-4.686 4.686-4.686 12.284 0 16.97 4.687 4.686 12.285 4.686 16.97 0 4.687-4.686 4.687-12.284 0-16.97-4.685-4.687-12.283-4.687-16.97 0zm-7.704 35.74c-6.627 0-12 5.37-12 12 0 6.626 5.373 12 12 12s12-5.374 12-12c0-6.63-5.373-12-12-12zm-30.72 19.822c-4.686-4.686-12.284-4.686-16.97 0-4.686 4.687-4.686 12.285 0 16.97 4.686 4.687 12.284 4.687 16.97 0 4.687-4.685 4.687-12.283 0-16.97zm-35.74-7.704c0-6.627-5.372-12-12-12-6.626 0-12 5.373-12 12s5.374 12 12 12c6.628 0 12-5.373 12-12zm-19.823-30.72c4.687-4.686 4.687-12.284 0-16.97-4.686-4.686-12.284-4.686-16.97 0-4.687 4.686-4.687 12.284 0 16.97 4.686 4.687 12.284 4.687 16.97 0z">
-                <animateTransform attributeName="transform" type="rotate" from="0 67 67" to="360 67 67" dur="8s"
-                    repeatCount="indefinite" />
-            </path>
-        </svg>
+        class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+        <div class="center">
+            <div class="ring">
+            </div>
+            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+        </div>
     </div>
     <!-- scroll to top button -->
     <div class="fixed bottom-6 z-50 ltr:right-6 rtl:left-6" x-data="scrollToTop">
@@ -1224,7 +1218,7 @@
                             <p class="text-lg dark:text-white-light/90">Total Profit <span
                                     class="ml-2 text-primary">$10,840</span></p>
                             <div class="relative">
-                                <div x-ref="revenueChart" class="rounded-lg bg-white dark:bg-black">
+                                <div x-ref="guruChart" class="rounded-lg bg-white dark:bg-black">
                                     <!-- loader -->
                                     <div
                                         class="grid min-h-[325px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
@@ -1264,13 +1258,11 @@
                                 <div class="image">
                                     <img src="admin/assets/images/1genteng.jpeg" alt="" width="180">
                                 </div>
-
-
                             </div>
                         </div>
                         <div class="swiper-slide card dark:bg-black">
                             <div class="card-content">
-                                <div class="image1">
+                                <div class="image">
                                     <img src="admin/assets/images/smkn1.jpg" alt="">
                                 </div>
 
@@ -1281,8 +1273,6 @@
                                 <div class="image">
                                     <img src="admin/assets/images/rogojampi.png" alt="" width="185">
                                 </div>
-
-
                             </div>
                         </div>
                         <div class="swiper-slide card dark:bg-black">
@@ -1290,8 +1280,6 @@
                                 <div class="image">
                                     <img src="admin/assets/images/smk1panjen.jpg" alt="" width="180">
                                 </div>
-
-
                             </div>
                         </div>
                         <div class="swiper-slide card dark:bg-black">
@@ -1299,8 +1287,6 @@
                                 <div class="image">
                                     <img src="admin/assets/images/smk12.jpg" alt="" width="175">
                                 </div>
-
-
                             </div>
                         </div>
                         <div class="swiper-slide card dark:bg-black">
@@ -1308,8 +1294,6 @@
                                 <div class="image">
                                     <img src="admin/assets/images/smkn1.jpg" alt="">
                                 </div>
-
-
                             </div>
                         </div>
                         <div class="swiper-slide card dark:bg-black">
@@ -1317,8 +1301,6 @@
                                 <div class="image">
                                     <img src="admin/assets/images/smkn1.jpg" alt="">
                                 </div>
-
-
                             </div>
                         </div>
                         <div class="swiper-slide card dark:bg-black">
@@ -1326,8 +1308,6 @@
                                 <div class="image">
                                     <img src="admin/assets/images/smkn1.jpg" alt="">
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -1886,17 +1866,17 @@
                     isDark = this.$store.app.theme === 'dark' ? true : false;
                     isRtl = this.$store.app.rtlClass === 'rtl' ? true : false;
 
-                    const revenueChart = null;
+                    const guruChart = null;
                     const salesByCategory = null;
                     const dailySales = null;
                     const totalOrders = null;
 
                     // revenue
                     setTimeout(() => {
-                        this.revenueChart = new ApexCharts(this.$refs.revenueChart, this
-                            .revenueChartOptions);
-                        this.$refs.revenueChart.innerHTML = '';
-                        this.revenueChart.render();
+                        this.guruChart = new ApexCharts(this.$refs.guruChart, this
+                            .guruChartOptions);
+                        this.$refs.guruChart.innerHTML = '';
+                        this.guruChart.render();
 
                         // sales by category
                         this.salesByCategory = new ApexCharts(this.$refs.salesByCategory, this
@@ -1920,7 +1900,7 @@
                     this.$watch('$store.app.theme', () => {
                         isDark = this.$store.app.theme === 'dark' ? true : false;
 
-                        this.revenueChart.updateOptions(this.revenueChartOptions);
+                        this.guruChart.updateOptions(this.guruChartOptions);
                         this.salesByCategory.updateOptions(this.salesByCategoryOptions);
                         this.dailySales.updateOptions(this.dailySalesOptions);
                         this.totalOrders.updateOptions(this.totalOrdersOptions);
@@ -1928,12 +1908,12 @@
 
                     this.$watch('$store.app.rtlClass', () => {
                         isRtl = this.$store.app.rtlClass === 'rtl' ? true : false;
-                        this.revenueChart.updateOptions(this.revenueChartOptions);
+                        this.guruChart.updateOptions(this.guruChartOptions);
                     });
                 },
 
                 // revenue
-                get revenueChartOptions() {
+                get guruChartOptions() {
                     return {
                         series: [{
                                 name: 'Income',
@@ -2347,6 +2327,11 @@
                 },
             }));
 
+        });
+    </script>
+    <script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
         });
     </script>
 </body>

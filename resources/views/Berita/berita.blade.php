@@ -101,7 +101,7 @@
     {{--  end  --}}
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 mt-4 lg:grid-cols-3 lg:gap-6">
         <div class="card">
-            <img class="h-72 w-full rounded-lg object-cover object-center" src="admin/images/object/object-2.jpg"
+            <img class="h-72 w-full rounded-lg object-cover object-center max-w-xs transition duration-300 ease-in-out hover:scale-110"  src="admin/images/object/object-2.jpg"
                 alt="image" />
 
             <div class="absolute inset-0 flex h-full w-full flex-col justify-end">
