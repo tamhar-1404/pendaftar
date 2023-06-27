@@ -30,4 +30,5 @@ class aproval extends Model
         'role',
         'status',
     ];
+
 }

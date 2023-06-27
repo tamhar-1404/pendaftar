@@ -122,10 +122,13 @@
                                                     <span class=" p-1  font-semibold dark:hover:text-black">Edit</span>
                                                 </div>
                                             </a>
-                                            <a href="#" data-id="{{ $row->id }}"
-                                                data-nama="{{ $row->judul }}" class="deletetatib w-16 flex h-8 bg-white rounded-md border-2 border-red-500 justify-center items-center text-red-500 hover:bg-red-500 hover:text-white dark:bg-transparent ">
-                                                <span class=" p-1  font-semibold dark:hover:text-black">Hapus</span>
-                                            </a>
+                                            <form action="{{ route('deletetatib', $row->id) }}" method="POST"
+                                                enctype="multipart/form-data">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit"
+                                                class="deletetatib w-16 flex h-8 bg-white rounded-md border-2 border-red-500 justify-center items-center text-red-500 hover:bg-red-500 hover:text-white dark:bg-transparent ">Hapus</button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>

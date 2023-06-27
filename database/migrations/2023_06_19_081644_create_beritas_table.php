@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('beritas', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->string('foto');
+            $table->string('judul');
+            $table->string('keterangan');
+            $table->date('tanggal')->nullable();
+            $table->longText('deskripsi');
+            $table->longText('files')->nullable();
+            $table->string('foto_id')->nullable();
+            $table->string('kategori');
             $table->timestamps();
         });
     }
