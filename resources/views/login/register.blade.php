@@ -55,7 +55,8 @@
           <div class="flex-grow h-2 bg-gray-300 mx-2"></div>
           <div class="w-16 h-16 bg-gray-300 rounded-full flex justify-center items-center text-gray-500 font-bold text-2xl">4</div>
         </div>
-        <form id="wizardForm" action="" class="relative" enctype="multipart/form-data">
+       <form id="wizardForm" action="{{ route('login.store') }}" class="relative"  method="post" enctype="multipart/form-data">
+        @csrf
           <!-- Step 1 -->
           <div class="step active">
             <h2 class="text-2xl mb-4">Step 1: Personal Information</h2>
@@ -66,27 +67,32 @@
             <div class="flex justify-between gap-2">
                 <div class="mb-4">
                   <label for="name" class="block font-bold mb-1">Tempat :</label>
-                  <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded" required>
+                  <input type="text" id="name" name="tempat" class="w-full px-4 py-2 border rounded" required>
                 </div>
                 <div class="mb-4">
                   <label for="birthdate" class="block font-bold mb-1">Birthdate:</label>
-                  <input type="date" id="birthdate" name="birthdate" class="w-full px-4 py-2 border rounded" required>
+                  <input type="date" id="birthdate" name="tanggal" class="w-full px-4 py-2 border rounded" required>
                 </div>
             </div>
             <div class="mb-4">
               <label for="nisn" class="block font-bold mb-1">NISN:</label>
-              <input type="text" id="nisn" name="nisn" class="w-full px-4 py-2 border rounded" required>
+              <input type="number" id="nisn" name="nisn" class="w-full px-4 py-2 border rounded" required>
             </div>
             <div class="mb-4">
               <label for="class" class="block font-bold mb-1">Kelas:</label>
-              <input type="text" id="class" name="class" class="w-full px-4 py-2 border rounded" required>
+              <select name="kelas" id="class"  class="w-full px-4 py-2 border rounded" required>
+                <option value="" disabled selected>Pilih kelas</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
             </div>
             <div class="mb-4 flex justify-around">
               <div class="flex gap-1">
-                <input type="radio" name="kelamin" id="" value="laki-laki"> <p>Laki-laki</p>
+                <input type="radio" name="jeniskelamin" id="" value="laki-laki"> <p>Laki-laki</p>
               </div>
               <div class="flex gap-1">
-                <input type="radio" name="kelamin" id="" value="Perempuan"> <p>Perempuan </p>
+                <input type="radio" name="jeniskelamin" id="" value="Perempuan"> <p>Perempuan </p>
               </div>
             </div>
             <button type="button" id="nextStep1" class="py-2 px-4 bg-blue-500 text-white rounded">Next</button>
@@ -97,24 +103,28 @@
             <h2 class="text-2xl mb-4">Step 2: Alamat & Education Information</h2>
             <div class="mb-4">
               <label for="address" class="block font-bold mb-1">Alamat :</label>
-              <input type="text" id="address" name="address" class="w-full px-4 py-2 border rounded" required>
+              <textarea id=""id="address" name="alamat" class="border rounded" cols="68" required></textarea>
             </div>
             <div class="mb-4">
               <label for="major" class="block font-bold mb-1">Jurusan :</label>
-              <input type="text" id="major" name="major" class="w-full px-4 py-2 border rounded" required>
+             <select name="jurusan" class="w-full px-4 py-2 border rounded"  id="" required>
+                <option value="" disabled selected>Pilih jurusan</option>
+                <option value="RPL">RPL</option>
+                <option value="Multimedia">Multimedia</option>
+             </select>
             </div>
             <div class="mb-4">
               <label for="school" class="block font-bold mb-1">Sekolah :</label>
-              <input type="text" id="school" name="school" class="w-full px-4 py-2 border rounded" required>
+              <input type="text" id="school" name="sekolah" class="w-full px-4 py-2 border rounded" required>
             </div>
             <div class="flex justify-between gap-2 ">
                 <div class="mb-4">
                     <label for="internship-start" class="block font-bold mb-1">Mulai Magang :</label>
-                    <input type="date" id="internship-start" name="internship-start" class="w-full px-4 py-2 border rounded" required>
+                    <input type="date" id="internship-start" name="magang_awal" class="w-full px-4 py-2 border rounded" required>
                   </div>
                   <div class="mb-4">
                     <label for="internship-end" class="block font-bold mb-1">Selesai MAgang:</label>
-                    <input type="date" id="internship-end" name="internship-end" class="w-full px-4 py-2 border rounded" required>
+                    <input type="date" id="internship-end" name="magang_akhir" class="w-full px-4 py-2 border rounded" required>
                   </div>
             </div>
 
@@ -127,15 +137,15 @@
             <h2 class="text-2xl mb-4">Step 3: Document Upload</h2>
             <div class="mb-4">
               <label for="photo" class="block font-bold mb-1">Foto Siswa :</label>
-              <input type="file" id="photo" name="photo" class="w-full px-4 py-2 border rounded"  required>
+              <input type="file" id="photo" name="foto_siswa" class="w-full px-4 py-2 border rounded"  required>
             </div>
             <div class="mb-4">
               <label for="self-statement" class="block font-bold mb-1">Pernyataan Siswa :</label>
-              <input type="file" ty id="self-statement"  name="self-statement" class="w-full px-4 py-2 border rounded" required>
+              <input type="file" ty id="self-statement"  name="sp_diri" class="w-full px-4 py-2 border rounded" required>
             </div>
             <div class="mb-4">
               <label for="outu-statement" class="block font-bold mb-1">Pernyataan Orang Tua :</label>
-              <input type="file" ty id="outu-statement" name="outu-statement" class="w-full px-4 py-2 border rounded" required>
+              <input type="file" ty id="outu-statement" name="sp_ortu" class="w-full px-4 py-2 border rounded" required>
             </div>
             <div class="mb-4">
               <label for="skck" class="block font-bold mb-1">SKCK:</label>
@@ -234,27 +244,7 @@
           });
         });
 
-        // form.addEventListener("submit", function(event) {
-        //     event.preventDefault();
-        //     if (validateStep(currentStep)) {
-        //         // Menggunakan fetch API untuk mengirim data ke controller
-        //         fetch("{{}}", {
-        //         method: "POST",
-        //         body: new FormData(form)
-        //         })
-        //         .then(function(response) {
-        //         if (response.ok) {
-        //             // Redirect ke controller setelah selesai
-        //             window.location.href = "{{ route('login.index') }}";
-        //         } else {
-        //             throw new Error("Error occurred while submitting the form.");
-        //         }
-        //         })
-        //         .catch(function(error) {
-        //         console.error(error);
-        //         });
-        //     }
-        //     });
+
 
       });
     </script>

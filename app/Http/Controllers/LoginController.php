@@ -66,7 +66,47 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request , [
+            'name'=>'required',
+            'tempat'=>'required',
+            'tanggal'=>'required',
+            'kelas'=>'required',
+            'nisn'=>'required',
+            'jeniskelamin'=>'required',
+            'alamat'=>'required',
+            'sekolah'=>'required',
+            'jurusan'=>'required',
+            'magang_awal'=>'required',
+            'magang_akhir'=>'required',
+            'foto_siswa'=>'required',
+            'sp_diri'=>'required',
+            'sp_ortu'=>'required',
+            'skck'=>'required',
+            'cv'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+        ]);
+        aproval::create([
+            'name'=>$request->name,
+            'tempat'=>$request->tempat,
+            'tanggal'=>$request->tanggal,
+            'kelas'=>$request->kelas,
+            'nisn'=>$request->nisn,
+            'jeniskelamin'=>$request->jeniskelamin,
+            'alamat'=>$request->alamat,
+            'sekolah'=>$request->sekolah,
+            'jurusan'=>$request->jurusan,
+            'magang_awal'=>$request->magang_awal,
+            'magang_akhir'=>$request->magang_akhir,
+            'foto_siswa'=>$request->foto_siswa,
+            'sp_diri'=>$request->sp_diri,
+            'sp_ortu'=>$request->sp_ortu,
+            'skck'=>$request->skck,
+            'cv'=>$request->cv,
+            'email'=>$request->email,
+            'password' => bcrypt($request->password)
+        ]);
+        return redirect()->route('login.index');
     }
 
     /**
