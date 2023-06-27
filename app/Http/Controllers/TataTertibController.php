@@ -110,7 +110,7 @@ class TataTertibController extends Controller
         $data->delete();
 
         // Redirect atau berikan respons sesuai kebutuhan Anda
-        return redirect()->route('tatatertib')->with('success', 'Item berhasil dihapus');
+        return redirect()->route('tatatertib.index')->with('success', 'Item berhasil dihapus');
     }
 
     /**
