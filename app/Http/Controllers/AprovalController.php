@@ -15,8 +15,8 @@ class AprovalController extends Controller
      */
     public function index()
     {
-
-        return view('aproval.layout');
+        $aprovals = aproval::latest()->paginate(5);
+        return view('aproval.layout' , compact('aprovals'));
     }
 
     /**
@@ -26,7 +26,7 @@ class AprovalController extends Controller
      */
     public function create()
     {
-        //
+        return view('aproval.view');
     }
 
     /**

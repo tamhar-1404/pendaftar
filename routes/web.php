@@ -39,8 +39,6 @@ Route::resource('/piket', App\Http\Controllers\ASiswaController::class);
 Route::resource('/mou', App\Http\Controllers\ASiswaController::class);
 Route::resource('/tolak', App\Http\Controllers\ASiswaController::class);
 
-
-
 // akhir admin
 
 // Pembimbing

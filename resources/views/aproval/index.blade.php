@@ -4,21 +4,22 @@
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <!-- start main content section -->
 
-            <div x-data="basic" class="mt-0">
+            <div x-data="basic" class="">
                 {{-- judul --}}
-                <div class="mb-5 font-semibold">
+                <div class="mb-5 font-semibold text-base">
                     <span>Approval / <span class="text-[#00B7FF]">Pendaftaran</span></span>
                 </div>
                 <div class="panel">
                     {{-- serch dan filter --}}
                     <div class="flex justify-end">
                         {{-- serch --}}
-                        <div class="mr-4 ">
-                            <input class=" p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent" type="text" placeholder="cari">
+                        <div class="mr-3 ">
+                            <input class="border-2 border-gray-200 rounded-xl outline-1 outline-gray-300 dark:bg-transparent text-sm px-2 py-1 tracking-wide" type="text" placeholder="Cari...">
+
                         </div>
                         {{-- filter --}}
-                        <div class="border-2 rounded-full border-gray-400 flex items-center mr-2 ">
-                            <span class="mr-1 ml-3">
+                        <div class="border-2 rounded-full border-gray-200 flex items-center mr-2 ">
+                            <span class="mr-1 ml-3 text-gray-320 text-sm">
                                 filter
                             </span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" mr-3 w-4 h-4">
@@ -32,78 +33,62 @@
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                           <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                             <div class="overflow-hidden">
-                              <table class="min-w-full text-left text-sm font-light">
-                                <thead class="border-b bg-gray-200 font-medium dark:border-neutral-500 ">
-                                  <tr class="">
-                                    <th scope="col" class="px-6 py-4">#</th>
-                                    <th scope="col" class="px-6 py-4">Nama</th>
-                                    <th scope="col" class="px-6 py-4">Jurusan</th>
-                                    <th scope="col" class="px-6 py-4">Masa Magang</th>
-                                    <th scope="col" class="px-6 py-4">Sekolah</th>
-                                    <th scope="col" class="px-6 py-4">Kelas</th>
-                                    <th scope="col" class="px-6 py-4">Aksi</th>
+                                <table class="min-w-full text-left text-sm ">
+                                    <thead class="border-rounded bg-gray-200  dark:border-neutral-500">
+                                      <tr class="">
+                                        <th scope="col" class="px-6 py-2">#</th>
+                                        <th scope="col" class="px-6 py-2">Nama</th>
+                                        <th scope="col" class="px-6 py-2">Jurusan</th>
+                                        <th scope="col" class="px-6 py-2">Kelas</th>
+                                        <th scope="col" class="px-6 py-2">Masa Magang</th>
+                                        <th scope="col" class="px-6 py-2">Sekolah</th>
+                                        <th scope="col" class="px-6 py-2">Aksi</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      @php
+                                      $no=1;
+                                      @endphp
+                                      @forelse ($aprovals as $aproval)
+                                      <tr class="text-sm">
+                                        <td class="whitespace-nowrap px-6 py-2">{{ $no++ }}</td>
+                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->name }}</td>
+                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->jurusan }}</td>
+                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->kelas }}</td>
+                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->magang_awal }} -- {{ $aproval->magang_akhir }}</td>
+                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->sekolah }}</td>
+                                        <td class="whitespace-nowrap px-6 py-2">
+                                          <a href="{{ route('aproval.create') }}">
+                                            <div class="flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent">
+                                              <span class="p-1 font-semibold dark:hover:text-black">Lihat</span>
+                                            </div>
+                                          </a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                      @empty
 
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr
-                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                    <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                    <td class="whitespace-nowrap px-6 py-4">RPL</td>
-                                    <td class="whitespace-nowrap px-6 py-4">03-04-2023 -> 03-10-2023</td>
-                                    <td class="whitespace-nowrap px-6 py-4">SMKN 1 KEPANJEN</td>
-                                    <td class="whitespace-nowrap px-6 py-4">12</td>
-                                    <td class="whitespace-nowrap px-6 py-4">
-                                        <a href="/detail_daftar">
-                                            <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
-                                                <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                  </tr>
-                                  <tr
-                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
-                                    <td class="whitespace-nowrap px-6 py-4 font-medium">2</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                    <td class="whitespace-nowrap px-6 py-4">RPL</td>
-                                    <td class="whitespace-nowrap px-6 py-4">03-04-2023 -> 03-10-2023</td>
-                                    <td class="whitespace-nowrap px-6 py-4">SMKN 1 KEPANJEN</td>
-                                    <td class="whitespace-nowrap px-6 py-4">12</td>
-                                    <td class="whitespace-nowrap px-6 py-4">
-                                        <a href="#">
-                                            <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
-                                                <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                  </tr>
-                                  <tr
-                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
-                                    <td class="whitespace-nowrap px-6 py-4 font-medium">3</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                    <td class="whitespace-nowrap px-6 py-4">RPL</td>
-                                    <td class="whitespace-nowrap px-6 py-4">03-04-2023 -> 03-10-2023</td>
-                                    <td class="whitespace-nowrap px-6 py-4">SMKN 1 KEPANJEN</td>
-                                    <td class="whitespace-nowrap px-6 py-4">12</td>
-                                    <td class="whitespace-nowrap px-6 py-4">
-                                        <a href="#">
-                                            <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
-                                                <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
+
+
+
+                                      <div class="bg-red-100 border mb-2  border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                        <strong class="font-bold">Data </strong>
+                                        <span class="block sm:inline">Tidak tersedia.</span>
+                                        <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                                          <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+                                        </span>
+                                      </div>
+                                      @endforelse
+
                             </div>
                           </div>
                         </div>
                       </div>
                     {{-- end tabel --}}
                     {{-- paginate --}}
-                    <div class="flex justify-between">
-                        <p>
+                    {{--  <div class="flex justify-between mt-4">
+                        <p class="text-sm">
                             Showing 1 to 10 of 15 entries
                         </p>
                         <nav aria-label="Page navigation example">
@@ -146,7 +131,7 @@
                               </li>
                             </ul>
                           </nav>
-                    </div>
+                    </div>  --}}
                 </div>
             </div>
             <!-- end main content section -->
