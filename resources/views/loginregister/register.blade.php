@@ -256,7 +256,7 @@
                         </div>
                         <div class="field ">
                             <label for="image">konfirmasi password</label>
-                            <input type="password" name="password">
+                            <input type="password" name="">
                             <span></span>
                         </div>
                     </div>

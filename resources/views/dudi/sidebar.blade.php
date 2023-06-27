@@ -114,14 +114,14 @@
                 <p class="mt-1 text-xs">Menunggu diterima</p>
             </div>
              {{-- grafik --}}
-             <div id="grafik_admin" class="  h-35 mx-4 md:w-auto lg:w-auto bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
-                    <div class="w-full px-4 mt-6">
-                       <div class=" bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
-                           Grafik Pendaftaran
-                       </div>
-                </div>
             </div>
-        </div>
+            <div id="grafik_admin" class="  h-35 mx-4 md:w-auto lg:w-auto bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
+                   <div class="w-full px-4 mt-6">
+                      <div class=" bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
+                          Grafik Pendaftaran
+                      </div>
+               </div>
+           </div>
 
         {{-- end grafik --}}
         {{-- caraousel --}}
@@ -202,8 +202,8 @@
                     </div>
                 </div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            {{--  <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>  --}}
             <div class="swiper-pagination"></div>
         </section>
         {{--  <!-- Swiper JS -->  --}}
@@ -383,8 +383,9 @@
                 chart: {
                     type: 'bar',
                     height: 350,
-                    width:990
 
+                }
+            }
     var options = {
       series: [{
       name: 'Menunggu',
@@ -399,6 +400,7 @@
       chart: {
       type: 'bar',
       height: 400,
+      width:990
     },
     plotOptions: {
       bar: {
