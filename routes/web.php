@@ -9,6 +9,7 @@ use App\Http\Controllers\BeritaSiswaController;
 use App\Http\Controllers\AbsensiGuruController;
 use App\Http\Controllers\TataTertibController;
 use App\Http\Controllers\JurnaladminControlle;
+use App\Http\Controllers\AprovalController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,8 @@ Route::resource('/chat', App\Http\Controllers\ASiswaController::class);
 Route::resource('/piket', App\Http\Controllers\ASiswaController::class);
 Route::resource('/mou', App\Http\Controllers\ASiswaController::class);
 Route::resource('/tolak', App\Http\Controllers\ASiswaController::class);
+Route::post('/aproval/{aproval}/confirm', [App\Http\Controllers\AprovalController::class, 'confirm'])->name('aproval.confirm');
+Route::post('/aproval/{aproval}/reject', [App\Http\Controllers\AprovalController::class, 'reject'])->name('aproval.reject');
 
 // akhir admin
 

@@ -15,20 +15,22 @@ return new class extends Migration
     {
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('foto');
-            $table->string('kelas');
-            $table->string('tempat_lahir');
-            $table->string('tanggal_lahir');
-            $table->string('jurusan');
-            $table->string('sekolah');
-            $table->string('alamat');
-            $table->string('nisn');
-            $table->string('no');
-            $table->string('jk');
-            $table->string('awal');
-            $table->string('email');
-            $table->string('password');
+            $table->string('nama')->nullable();
+            $table->string('status_sp')->nullable();
+            $table->string('foto')->nullable();
+            $table->string('kelas')->nullable();
+            $table->string('tempat_lahir')->nullable();
+            $table->string('tanggal_lahir')->nullable();
+            $table->string('jurusan')->nullable();
+            $table->string('sekolah')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('nisn')->nullable();
+            $table->string('no')->nullable();
+            $table->string('jk')->nullable();
+            $table->string('awal')->nullable();
+            $table->string('akhir')->nullable();
+            $table->string('email')->nullable();
+            $table->string('role')->nullable();
             $table->timestamps();
         });
     }

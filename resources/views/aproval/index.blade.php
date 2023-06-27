@@ -58,11 +58,16 @@
                                         <td class="whitespace-nowrap px-6 py-2">{{ $aproval->magang_awal }} -- {{ $aproval->magang_akhir }}</td>
                                         <td class="whitespace-nowrap px-6 py-2">{{ $aproval->sekolah }}</td>
                                         <td class="whitespace-nowrap px-6 py-2">
-                                          <a href="{{ route('aproval.create') }}">
-                                            <div class="flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent">
-                                              <span class="p-1 font-semibold dark:hover:text-black">Lihat</span>
-                                            </div>
-                                          </a>
+                                            <form id="confirm-form-{{ $aproval->id }}" action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-primary">KONFIRMASI</button>
+                                            </form>
+
+                                            <form id="reject-form-{{ $aproval->id }}" action="{{ route('aproval.reject', $aproval->id) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-danger">TOLAK</button>
+                                            </form>
+
                                         </td>
                                       </tr>
                                     </tbody>

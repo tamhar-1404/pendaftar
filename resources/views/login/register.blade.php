@@ -46,7 +46,7 @@
 <body class="bg-gray-900  ">
   <div class="flex ">
     <img class="w-[10%] absolute mt-7 z-50 ml-6" class="w-full h-full" src="{{asset('admin/assets/images/humma.png')}}" alt="" srcset="">
-    <div class="bg-white h-auto w-full flex justify-center items-center">
+    <div class="bg-white h-auto w-full flex justify-center items-center sticky ">
       <svg width="60%" height="50%" class="" viewbox="0 0 306 343" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M304.072 233.264L2.7392 212.038" stroke="#263238" stroke-miterlimit="10"/>
         <path d="M18.2025 212.943V179.036" stroke="#263238" stroke-miterlimit="10"/>
@@ -373,7 +373,7 @@
                 <div class="flex justify-between gap-2">
                     <div class="mb-4">
                       <label for="name" class="block font-bold mb-1">Tempat :</label>
-                      <input type="text" id="name" name="tempat" class="w-full px-4 py-2 border rounded" required>
+                      <input type="text" id="name" name="tempat" placeholder="Tempat lahir" class="w-full px-4 py-2 border rounded" required>
                     </div>
                     <div class="mb-4">
                       <label for="birthdate" class="block font-bold mb-1">Tanggal Lahir :</label>
@@ -382,7 +382,7 @@
                 </div>
                 <div class="mb-4">
                   <label for="nisn" class="block font-bold mb-1">NISN:</label>
-                  <input type="number" id="nisn" name="nisn" class="w-full px-4 py-2 border rounded" required>
+                  <input type="number" id="nisn" name="nisn"  placeholder="Masukkan nisn" class="w-full px-4 py-2 border rounded" required>
                 </div>
                 <div class="mb-4">
                   <label for="class" class="block font-bold mb-1">Kelas:</label>
@@ -393,16 +393,15 @@
                     <option value="12">12</option>
                   </select>
                 </div>
-                <div class="mb-4 flex justify-between">
-                    <label for="class" class="block font-bold mb-1">Jenis Kelamin :</label>
-                  <div class="flex gap-1">
+                <label for="class" class="block font-bold mb-1">Jenis Kelamin :</label>
+                <div class=" flex justify-between">
+                  <div class="flex gap-2">
                     <input type="radio" name="jeniskelamin" id="" value="laki-laki"> <p>Laki-laki</p>
-                  </div>
-                  <div class="flex gap-1">
+
                     <input type="radio" name="jeniskelamin" id="" value="Perempuan"> <p>Perempuan </p>
                   </div>
                 </div>
-                <div class="mt-20 ">
+                <div class="mt-19 "> <br>
                     <button type="button" id="nextStep1" class="py-2 px-4 bg-blue-500 text-white rounded w-full">Next</button>
                 </div>
               </div>
