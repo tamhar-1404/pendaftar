@@ -60,55 +60,64 @@
           <div class="step active">
             <h2 class="text-2xl mb-4">Step 1: Personal Information</h2>
             <div class="mb-4">
-              <label for="name" class="block font-bold mb-1">Name:</label>
+              <label for="name" class="block font-bold mb-1">Nama :</label>
               <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded" required>
             </div>
-            <div class="mb-4">
-              <label for="birthdate" class="block font-bold mb-1">Birthdate:</label>
-              <input type="date" id="birthdate" name="birthdate" class="w-full px-4 py-2 border rounded" required>
+            <div class="flex justify-between gap-2">
+                <div class="mb-4">
+                  <label for="name" class="block font-bold mb-1">Tempat :</label>
+                  <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded" required>
+                </div>
+                <div class="mb-4">
+                  <label for="birthdate" class="block font-bold mb-1">Birthdate:</label>
+                  <input type="date" id="birthdate" name="birthdate" class="w-full px-4 py-2 border rounded" required>
+                </div>
             </div>
             <div class="mb-4">
               <label for="nisn" class="block font-bold mb-1">NISN:</label>
               <input type="text" id="nisn" name="nisn" class="w-full px-4 py-2 border rounded" required>
             </div>
             <div class="mb-4">
-              <label for="class" class="block font-bold mb-1">Class:</label>
+              <label for="class" class="block font-bold mb-1">Kelas:</label>
               <input type="text" id="class" name="class" class="w-full px-4 py-2 border rounded" required>
             </div>
-            <div class="mb-4">
-              <label for="gender" class="block font-bold mb-1">Gender:</label>
-              <select id="gender" name="gender" class="w-full px-4 py-2 border rounded" required>
-                <option value="">Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
+            <div class="mb-4 flex justify-around">
+              <div class="flex gap-1">
+                <input type="radio" name="kelamin" id="" value="laki-laki"> <p>Laki-laki</p>
+              </div>
+              <div class="flex gap-1">
+                <input type="radio" name="kelamin" id="" value="Perempuan"> <p>Perempuan </p>
+              </div>
             </div>
             <button type="button" id="nextStep1" class="py-2 px-4 bg-blue-500 text-white rounded">Next</button>
           </div>
 
           <!-- Step 2 -->
           <div class="step">
-            <h2 class="text-2xl mb-4">Step 2: Address & Education Information</h2>
+            <h2 class="text-2xl mb-4">Step 2: Alamat & Education Information</h2>
             <div class="mb-4">
-              <label for="address" class="block font-bold mb-1">Address:</label>
+              <label for="address" class="block font-bold mb-1">Alamat :</label>
               <input type="text" id="address" name="address" class="w-full px-4 py-2 border rounded" required>
             </div>
             <div class="mb-4">
-              <label for="major" class="block font-bold mb-1">Major:</label>
+              <label for="major" class="block font-bold mb-1">Jurusan :</label>
               <input type="text" id="major" name="major" class="w-full px-4 py-2 border rounded" required>
             </div>
             <div class="mb-4">
-              <label for="school" class="block font-bold mb-1">School:</label>
+              <label for="school" class="block font-bold mb-1">Sekolah :</label>
               <input type="text" id="school" name="school" class="w-full px-4 py-2 border rounded" required>
             </div>
-            <div class="mb-4">
-              <label for="internship-start" class="block font-bold mb-1">Internship Start:</label>
-              <input type="date" id="internship-start" name="internship-start" class="w-full px-4 py-2 border rounded" required>
+            <div class="flex justify-between gap-2 ">
+                <div class="mb-4">
+                    <label for="internship-start" class="block font-bold mb-1">Mulai Magang :</label>
+                    <input type="date" id="internship-start" name="internship-start" class="w-full px-4 py-2 border rounded" required>
+                  </div>
+                  <div class="mb-4">
+                    <label for="internship-end" class="block font-bold mb-1">Selesai MAgang:</label>
+                    <input type="date" id="internship-end" name="internship-end" class="w-full px-4 py-2 border rounded" required>
+                  </div>
             </div>
-            <div class="mb-4">
-              <label for="internship-end" class="block font-bold mb-1">Internship End:</label>
-              <input type="date" id="internship-end" name="internship-end" class="w-full px-4 py-2 border rounded" required>
-            </div>
+
             <button type="button" id="prevStep2" class="mr-2 py-2 px-4 bg-blue-500 text-white rounded">Previous</button>
             <button type="button" id="nextStep2" class="py-2 px-4 bg-blue-500 text-white rounded">Next</button>
           </div>
@@ -117,24 +126,24 @@
           <div class="step">
             <h2 class="text-2xl mb-4">Step 3: Document Upload</h2>
             <div class="mb-4">
-              <label for="photo" class="block font-bold mb-1">Student Photo:</label>
-              <input type="file" id="photo" name="photo" class="w-full" required>
+              <label for="photo" class="block font-bold mb-1">Foto Siswa :</label>
+              <input type="file" id="photo" name="photo" class="w-full px-4 py-2 border rounded"  required>
             </div>
             <div class="mb-4">
-              <label for="self-statement" class="block font-bold mb-1">Self Statement:</label>
-              <textarea id="self-statement" name="self-statement" class="w-full px-4 py-2 border rounded" required></textarea>
+              <label for="self-statement" class="block font-bold mb-1">Pernyataan Siswa :</label>
+              <input type="file" ty id="self-statement"  name="self-statement" class="w-full px-4 py-2 border rounded" required>
             </div>
             <div class="mb-4">
-              <label for="outu-statement" class="block font-bold mb-1">OUTU Statement:</label>
-              <textarea id="outu-statement" name="outu-statement" class="w-full px-4 py-2 border rounded" required></textarea>
+              <label for="outu-statement" class="block font-bold mb-1">Pernyataan Orang Tua :</label>
+              <input type="file" ty id="outu-statement" name="outu-statement" class="w-full px-4 py-2 border rounded" required>
             </div>
             <div class="mb-4">
               <label for="skck" class="block font-bold mb-1">SKCK:</label>
-              <input type="file" id="skck" name="skck" class="w-full" required>
+              <input type="file" id="skck" name="skck" class="w-full px-4 py-2 border rounded" >
             </div>
             <div class="mb-4">
               <label for="cv" class="block font-bold mb-1">CV:</label>
-              <input type="file" id="cv" name="cv" class="w-full" required>
+              <input type="file" id="cv" name="cv" class="w-full px-4 py-2 border rounded" required>
             </div>
             <button type="button" id="prevStep3" class="mr-2 py-2 px-4 bg-blue-500 text-white rounded">Previous</button>
             <button type="button" id="nextStep3" class="py-2 px-4 bg-blue-500 text-white rounded">Next</button>
@@ -225,27 +234,27 @@
           });
         });
 
-        form.addEventListener("submit", function(event) {
-            event.preventDefault();
-            if (validateStep(currentStep)) {
-                // Menggunakan fetch API untuk mengirim data ke controller
-                fetch("{{}}", {
-                method: "POST",
-                body: new FormData(form)
-                })
-                .then(function(response) {
-                if (response.ok) {
-                    // Redirect ke controller setelah selesai
-                    window.location.href = "{{ route('login.index') }}";
-                } else {
-                    throw new Error("Error occurred while submitting the form.");
-                }
-                })
-                .catch(function(error) {
-                console.error(error);
-                });
-            }
-            });
+        // form.addEventListener("submit", function(event) {
+        //     event.preventDefault();
+        //     if (validateStep(currentStep)) {
+        //         // Menggunakan fetch API untuk mengirim data ke controller
+        //         fetch("{{}}", {
+        //         method: "POST",
+        //         body: new FormData(form)
+        //         })
+        //         .then(function(response) {
+        //         if (response.ok) {
+        //             // Redirect ke controller setelah selesai
+        //             window.location.href = "{{ route('login.index') }}";
+        //         } else {
+        //             throw new Error("Error occurred while submitting the form.");
+        //         }
+        //         })
+        //         .catch(function(error) {
+        //         console.error(error);
+        //         });
+        //     }
+        //     });
 
       });
     </script>
