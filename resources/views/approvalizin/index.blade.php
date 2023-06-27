@@ -432,41 +432,46 @@
                   <div class="max-w-7xl mx-auto">
                     <div class="flex flex-col">
                       <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-                        Form Tambah Guru
+                        Form Tambah absensi
                       </h3>
-                     <form action="{{ route('approvalizin.store') }}" class="mt-4" method="post" enctype="multipart/form-data">
+                     <form action="{{ route('approvalizin.store')   }}" class="mt-4" method="post" enctype="multipart/form-data">
                         @csrf
                           <div class="mt-4">
-                            <label for="Nama" class="block text-gray-700 font-medium mb-2">Kegiatan</label>
+                            <label for="Nama" class="block text-gray-700 font-medium mb-2">nama</label>
                             <input type="text" placeholder="Masukkan kegiatan Anda " id="Kegiatan" name="nama" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                          </div>
+                          <div class="mt-4">
+                            <label for="Nama" class="block text-gray-700 font-medium mb-2">sekolah</label>
+                            <input type="text" placeholder="Masukkan kegiatan Anda " id="Kegiatan" name="sekolah" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                           </div>
                         <div class="mt-4">
                           <label for="Nama" class="block text-gray-700 font-medium mb-2">dari</label>
-                          <input type="date" placeholder="Masukkan tanggal awal" id="sekolah" name="sekolah" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                          <input type="date" placeholder="Masukkan tanggal awal" id="sekolah" name="dari" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
 
                         <div class="mt-4">
                           <label for="sekolah" class="block text-gray-700 font-medium mb-2">sampai</label>
-                          <input type="date" placeholder="masukan tanggal akhir" id="sekolah" name="email" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                          <input type="date" placeholder="masukan tanggal akhir" id="sekolah" name="sampai" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
-                        <div class="mt-4">
-                            <label for="sekolah" class="block text-gray-700 font-medium mb-2">Alamat</label>
-                        <textarea name="alamat" id="" cols="65" rows="5" class="border border-1" placeholder="Masukkan alamat anda"></textarea>
-                        </div>
-                        
+
                         <div class="flex items-center mb-4">
-                            <input  id="disabled-radio-1" type="radio" value="" name="jenis Izin" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input  id="disabled-radio-1" type="radio" value="izin" name="keterangan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="disabled-radio-1" class="ml-2 text-sm font-medium text-gray-400 dark:text-gray-500">Izin</label>
                         </div>
                         <div class="flex items-center">
-                            <input   id="disabled-radio-2" type="radio" value="" name="jenis Izin" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input   id="disabled-radio-2" type="radio" value="sakit" name="keterangan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="disabled-radio-2" class="ml-2 text-sm font-medium text-gray-400 dark:text-gray-500">Sakit</label>
+                        </div>
+                        <div class="mt-4">
+                            <label for="sekolah" class="block text-gray-700 font-medium mb-2">deskripsi</label>
+                        <textarea name="deskripsi" id="" cols="65" rows="5" class="border border-1" placeholder="Masukkan alamat anda"></textarea>
                         </div>
 
                         <div class="mt-4">
-                            <label for="Nama" class="block text-gray-700 font-medium mb-2">Foto</label>
-                            <input type="file" name="image" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+                            <label for="Nama" class="block text-gray-700 font-medium mb-2">bukti</label>
+                            <input type="file" name="bukti" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
                           </div>
+                        <input type="hidden" name="status" value="menunggu">
 
                         <div class="flex items-center justify-end mt-4">
                           <div class="ml-auto">
@@ -508,7 +513,7 @@
               registerModal.classList.add("hidden");
             });
           </script>
-    
+
 
         @include('izinadmin.content')
     </div>

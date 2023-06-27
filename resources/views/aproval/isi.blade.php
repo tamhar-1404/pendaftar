@@ -137,7 +137,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
         <!-- Main modal -->
 
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js%22%3E"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js%22%3E"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        swal("Good job!", "You clicked the button!", "success");
+    </script>
 </body>
 </html>

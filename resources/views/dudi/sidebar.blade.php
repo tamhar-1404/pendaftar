@@ -113,15 +113,15 @@
                 </div>
                 <p class="mt-1 text-xs">Menunggu diterima</p>
             </div>
-             {{-- grafik --}}
-             <div id="grafik_admin" class="  h-35 mx-4 md:w-auto lg:w-auto bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
-                    <div class="w-full px-4 mt-6">
-                       <div class=" bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
-                           Grafik Pendaftaran
-                       </div>
-                </div>
-            </div>
         </div>
+        {{-- grafik --}}
+        <div id="grafik_admin" class=" w-auto h-35 mx-5 md:w-auto lg:w-auto bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
+               <div class="w-full px-4 mt-6">
+                  <div class=" w-auto bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
+                      Grafik Pendaftaran
+                  </div>
+           </div>
+       </div>
 
         {{-- end grafik --}}
         {{-- caraousel --}}
@@ -202,8 +202,8 @@
                     </div>
                 </div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            {{--  <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>  --}}
             <div class="swiper-pagination"></div>
         </section>
         {{--  <!-- Swiper JS -->  --}}
@@ -369,22 +369,6 @@
         <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
         <script defer src="{{ asset('admin/assets/js/apexcharts.js') }}"></script>
         <script>
-            var options = {
-                series: [{
-                    name: 'Menunggu',
-                    data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 70, 67, 50]
-                }, {
-                    name: 'Terima',
-                    data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 110, 104, 120]
-                }, {
-                    name: 'Tolak',
-                    data: [35, 41, 36, 26, 45, 48, 52, 53, 41, 30, 20, 70]
-                }],
-                chart: {
-                    type: 'bar',
-                    height: 350,
-                    width:990
-
     var options = {
       series: [{
       name: 'Menunggu',
@@ -399,6 +383,8 @@
       chart: {
       type: 'bar',
       height: 400,
+      width:980,
+
     },
     plotOptions: {
       bar: {

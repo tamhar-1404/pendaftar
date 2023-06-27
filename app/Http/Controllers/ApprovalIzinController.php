@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\ApprovalIzin;
 use App\Http\Requests\StoreApprovalIzinRequest;
 use App\Http\Requests\UpdateApprovalIzinRequest;
+use Illuminate\Http\Request;
+
+
+
 
 class ApprovalIzinController extends Controller
 {
@@ -15,7 +19,8 @@ class ApprovalIzinController extends Controller
      */
     public function index()
     {
-        return view('izinadmin.index');
+        $approvalizin = ApprovalIzin::latest()->paginate(5);
+        return view('izinadmin.index', compact('approvalizin'));
     }
 
     /**
@@ -23,9 +28,10 @@ class ApprovalIzinController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(ApprovalIzin $izin)
     {
-            //
+
+        return view('izinadmin.content');
     }
 
     /**
@@ -34,9 +40,30 @@ class ApprovalIzinController extends Controller
      * @param  \App\Http\Requests\StoreApprovalIzinRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreApprovalIzinRequest $request)
+    public function store(Request $request)
     {
-        //
+        // dd($request);
+        $this->validate($request, [
+            'nama' => 'required',
+            'sekolah' => 'required',
+            'dari' => 'required',
+            'sampai' => 'required',
+            'keterangan'=> 'required',
+            'deskripsi' => 'required',
+            'bukti' => 'required'
+        ]);
+
+       ApprovalIzin::create([
+            'nama' => $request->nama,
+            'sekolah' => $request->sekolah,
+            'dari' => $request->dari,
+            'sampai' => $request->sampai,
+            'keterangan' => $request->keterangan,
+            'deskripsi' => $request->deskripsi,
+            'bukti' => $request->bukti,
+            'status' => $request->status
+        ]);
+        return redirect()->route('guru_admin.index');
     }
 
     /**

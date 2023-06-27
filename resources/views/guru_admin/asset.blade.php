@@ -3700,6 +3700,7 @@
         @empty
 
         @endforelse
+      </div>
 
       </main>
     </div>

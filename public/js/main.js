@@ -1,32 +1,33 @@
-	let form, div, button, indicate, curPage, emn;
-	form = document.querySelector('form');
-	div = document.getElementsByClassName('form')
-	button = document.getElementsByTagName('button');
-	indicate = document.querySelector('.page-indicator');
-	curPage = 0;
-	emn = indicate.getElementsByTagName('em');
+let form, div, button, indicate, curPage, emn;
+form = document.querySelector('form');
+div = document.getElementsByClassName('form')
+button = document.getElementsByTagName('button');
+indicate = document.querySelector('.page-indicator');
+curPage = 0;
+emn = indicate.getElementsByTagName('em');
 
+window.onload = createIndicator;
+form.onsubmit = () => { return false; }
 
-	window.onload = createIndicator;
-	form.onsubmit =()=>{return false;}
+function createIndicator() {
+  for (let i = 0; i < div.length; i++) {
+    const em = document.createElement('em');
+    em.id = i;
+    if (i == 0) { em.className = 'cur-page' }
+    indicate.appendChild(em);
+  }
+}
 
-	function createIndicator(){
-		for(let i=0; i<div.length; i++){
-			const em = document.createElement('em');
-			em.id = i;
-			if (i==0) {em.className = 'cur-page'}
-			indicate.appendChild(em);
-		}
-	}
+button[1].type = 'submit'; // Mengubah tipe button menjadi "submit"
 
-	button[1].onclick = validate;
-	button[0].onclick = ()=>{
-		if (curPage > 0){curPage --;}
-		if (curPage<1) {button[0].style.display = 'none';}
-		if (curPage<div.length-1) {button[1].textContent = 'Next';}
-		dispayPage(curPage);
-		activeIndicator(curPage);
-	}
+button[1].onclick = validate;
+button[0].onclick = () => {
+  if (curPage > 0) { curPage--; }
+  if (curPage < 1) { button[0].style.display = 'none'; }
+  if (curPage < div.length - 1) { button[1].textContent = 'Next'; }
+  displayPage(curPage);
+  activeIndicator(curPage);
+}
 
 	function validate(){
 		const activePage = document.querySelector('.active')
@@ -36,8 +37,10 @@
 		if (inputFirst.value != '' && inputLast.value != ''){
 			curPage++;
 			button[0].style.display = 'block';
-			if (curPage>div.length-6) {button[1].textContent = 'Sign Up';}
-			if (curPage >= div.length) {
+			if (curPage>div.length) {button[1].textContent = 'Sign Up';}
+			if (curPage >= div.length-4) {
+                button[3].style.display = 'block';
+                button[3].textContent = 'Sign Up';
 				form.onsubmit =()=>{return true;}
 			}
 			dispayPage(curPage);
@@ -51,14 +54,19 @@
 		div[page].classList.add('active');
 	}
 
-	function hide(input){
-		input.nextElementSibling.textContent = "This field is empty";
-		setTimeout(()=>{
-			input.nextElementSibling.textContent = "";
-		}, 2000);
-	}
-	function activeIndicator(page){
-		for(let i of emn)i.classList.remove('cur-page');
-		emn[page].classList.add('cur-page');
+function displayPage(page) {
+  for (let i of div) i.classList.remove('active');
+  div[page].classList.add('active');
+}
 
-	}
+function hide(input) {
+  input.nextElementSibling.textContent = "This field is empty";
+  setTimeout(() => {
+    input.nextElementSibling.textContent = "";
+  }, 2000);
+}
+
+function activeIndicator(page) {
+  for (let i of emn) i.classList.remove('cur-page');
+  emn[page].classList.add('cur-page');
+}
