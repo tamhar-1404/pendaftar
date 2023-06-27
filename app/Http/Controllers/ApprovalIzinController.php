@@ -20,7 +20,7 @@ class ApprovalIzinController extends Controller
     public function index()
     {
         $approvalizin = ApprovalIzin::latest()->paginate(5);
-        return view('izinadmin.index', compact('approvalizin'));
+        return view('approvalizin.index', compact('approvalizin'));
     }
 
     /**
@@ -31,7 +31,7 @@ class ApprovalIzinController extends Controller
     public function create(ApprovalIzin $izin)
     {
 
-        return view('izinadmin.content');
+        return view('approvalizin.content');
     }
 
     /**
@@ -63,7 +63,7 @@ class ApprovalIzinController extends Controller
             'bukti' => $request->bukti,
             'status' => $request->status
         ]);
-        return redirect()->route('guru_admin.index');
+        return redirect()->route('approvalizin.index');
     }
 
     /**
