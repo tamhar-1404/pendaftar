@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                         </div>
-                        <form action="{{ route('inserttatib') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('tatatertib.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="tab-content p-4 sm:p-5">
                                 <div class="space-y-5">

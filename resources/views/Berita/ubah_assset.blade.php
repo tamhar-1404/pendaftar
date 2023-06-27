@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +40,8 @@
                 </h2>
             </div>
         </div>
-        <form action="{{ route('Berita.update') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('Berita.update', $blog->id) }}" method="POST" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
                 <div class="col-span-12 lg:col-span-8">
@@ -64,7 +64,8 @@
                                         <span class="font-medium text-slate-600 dark:text-navy-100">Judul</span>
                                         <input id="judul" name="judul"
                                             class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                            placeholder="Masukkan Judul" type="text" value="{{ old('judul', $row->judul) }}"/>
+                                            placeholder="Masukkan Judul" type="text"
+                                            value="{{ old('judul', $blog->judul) }}" />
                                     </label>
                                     @error('judul')
                                         <div
@@ -82,7 +83,8 @@
                                         <span class="font-medium text-slate-600 dark:text-navy-100">Keterangan</span>
                                         <input id="keterangan" name="keterangan"
                                             class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                            placeholder="Masukkan Keterangan" type="text" />
+                                            placeholder="Masukkan Keterangan" type="text"
+                                            value="{{ old('judul', $blog->keterangan) }}" />
                                     </label>
                                     @error('keterangan')
                                         <div
@@ -100,7 +102,7 @@
                                         <span class="font-medium text-slate-600 dark:text-navy-100">Deskripsi</span>
                                         <div class="mt-1.5 w-full">
                                             <div>
-                                                <textarea name="deskripsi" id="summernote"></textarea>
+                                                <textarea name="deskripsi" id="summernote">{{ old('judul', $blog->deskripsi) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -125,14 +127,13 @@
                     <div class="card space-y-5 p-4 sm:p-5">
                         <label class="block">
                             <span class="font-medium text-slate-600 dark:text-navy-100">Kategori</span>
-                            <select id="kategori" name="kategori"
-                                class="mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent  py-2 pl-2"
-                                x-init="$el._x_tom = new Tom($el, { create: false, sortField: { field: 'text', direction: 'asc' } })">
-                                <option value selected disabled>Pilih kategori</option>
-                                <option value="digital">Digital</option>
-                                <option value="technology">Technology</option>
-                                <option value="home">Hiburan</option>
-                            </select>
+                            <select id="kategori" name="kategori" class="mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent py-2 pl-2">
+                                <option value="" selected disabled>Pilih kategori</option>
+                                <option value="digital" {{ $blog->kategori == 'digital' ? 'selected' : '' }}>Digital</option>
+                                <option value="technology" {{ $blog->kategori == 'technology' ? 'selected' : '' }}>Technology</option>
+                                <option value="home" {{ $blog->kategori == 'hiburan' ? 'selected' : '' }}>Hiburan</option>
+                              </select>
+
                         </label>
                         @error('kategori')
                             <div class="alert flex space-x-2 rounded-lg border border-error px-4 py-2 text-error">
@@ -147,10 +148,17 @@
                         @enderror
                         <label>
                             <span class="font-medium text-slate-600 dark:text-navy-100">Foto</span>
+                            @if ($blog->foto)
+                                <img src="{{ asset('storage/fotoberita/' . $blog->foto) }}"
+                                    class="img-preview img-fluid mb-3 col-sm-5">
+                            @else
+                                <img class="img-preview img-fluid mb-3 col-sm-5">
+                            @endif
                             <span class="relative mt-1.5 flex">
                                 <div class="filepond fp-bordered">
-                                    <input id="foto" name="foto" type="file" >
-                                  </div>
+                                    <input id="foto" name="foto" type="file" onchange="previewImage()">
+                                    {{-- <input id="foto" name="foto_lama" type="hidden" value="{{ $blog->foto }}"> --}}
+                                </div>
                             </span>
                         </label>
                         @error('foto')
@@ -192,5 +200,20 @@
         ]
     });
 </script>
+<script>
+    function previewImage()
+    {
+        const image = document.querySelector('#foto');
+        const imgPreview = document.querySelector('.img-preview');
 
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>
 </html>

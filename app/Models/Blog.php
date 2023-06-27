@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Berita extends Model
+class Blog extends Model
 {
     use HasFactory;
     protected $fillable=[
@@ -19,7 +19,4 @@ class Berita extends Model
         'foto_id',
         'kategori'
     ];
-    // protected $dates = [
-    //     'created_at'
-    // ];
 }

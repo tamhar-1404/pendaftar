@@ -56,21 +56,22 @@
                                 </div>
                             </div>
                         </div>
-                        <form action="/updatetatib/{id}" method="POST" enctype="multipart/form-data">
-                            @csrf
+                        <form action="{{ route('tatatertib.update', $tataTertib->id) }}" method="post">
+                        @csrf
+                            @method('PUT')
                             <div class="tab-content p-4 sm:p-5">
                                 <div class="space-y-5">
                                     <label class="block">
                                         <span class="font-medium text-slate-600 dark:text-navy-100">Judul</span>
                                         <input id="judul" name="judul"
                                             class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                            value="{{ $data->judul }}" type="text" />
+                                            value="{{ $tataTertib->judul }}" type="text" />
                                     </label>
                                     <div>
                                         <span class="font-medium text-slate-600 dark:text-navy-100">Deskripsi</span>
                                         <div class="mt-1.5 w-full">
                                             <div>
-                                                <textarea name="deskripsi" id="summernote">{!! $data->deskripsi !!}</textarea>
+                                                <textarea name="deskripsi" id="summernote">{!! $tataTertib->deskripsi !!}</textarea>
                                             </div>
                                         </div>
                                     </div>

@@ -78,22 +78,22 @@
             <div class="card mt-3">
                 <div class="is-scrollbar-hidden min-w-full overflow-x-auto" x-data="pages.tables.initExample1">
                     <table class="is-hoverable w-full text-left">
-                        <thead>
-                            <tr>
+                        <thead class="">
+                            <tr class="">
                                 <th
-                                    class="whitespace-nowrap rounded-tl-lg bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                                    class="whitespace-nowrap rounded-tl-lg bg-slate-200 px-4 py-3 font-bold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                                     #
                                 </th>
                                 <th
-                                    class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                                    class="whitespace-nowrap bg-slate-200 px-4 py-3 font-bold  uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                                     Judul
                                 </th>
                                 <th
-                                    class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                                    class="whitespace-nowrap bg-slate-200 px-4 py-3 font-bold  uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                                     Deskripsi
                                 </th>
                                 <th
-                                    class="whitespace-nowrap rounded-tr-lg bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                                    class="whitespace-nowrap rounded-tr-lg bg-slate-200 px-4 py-3 font-bold  uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                                     Action
                                 </th>
                             </tr>
@@ -102,7 +102,7 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($data as $row)
+                            @foreach ($tatatertib as $row)
                                 <tr class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
                                     <td
                                         class="whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
@@ -116,18 +116,18 @@
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-3">
                                         <div class="flex items-center space-x-2">
-                                            <a href="/edittatib/{{ $row->id }}">
+                                            <a href="{{ route('tatatertib.edit', $row->id) }}">
                                                 <div
                                                     class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
                                                     <span class=" p-1  font-semibold dark:hover:text-black">Edit</span>
                                                 </div>
                                             </a>
-                                            <form action="{{ route('deletetatib', $row->id) }}" method="POST"
+                                            <form action="{{ route('tatatertib.destroy', $row->id) }}" method="POST"
                                                 enctype="multipart/form-data">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button type="submit"
-                                                class="deletetatib w-16 flex h-8 bg-white rounded-md border-2 border-red-500 justify-center items-center text-red-500 hover:bg-red-500 hover:text-white dark:bg-transparent ">Hapus</button>
+                                                <button type="submit" data-nama="judul"
+                                                    class="deletetatib w-16 flex h-8 bg-white rounded-md border-2 border-red-500 justify-center items-center text-red-500 hover:bg-red-500 hover:text-white dark:bg-transparent ">Hapus</button>
                                             </form>
                                         </div>
                                     </td>
@@ -155,7 +155,7 @@
                     <div class="pagination">
                         <div
                             class="flex h-8 min-w-[2rem] rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-                            {{ $data->links() }}</div>
+                            {{ $tatatertib->links() }}</div>
                     </div>
                 </div>
             </div>
@@ -174,7 +174,7 @@
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script>
     $('.deletetatib').click(function() {
         var tatibid = $(this).attr('data-id');

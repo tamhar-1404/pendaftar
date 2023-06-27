@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('beritas', function (Blueprint $table) {
+        Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
             $table->string('foto');
@@ -24,6 +24,7 @@ return new class extends Migration
             $table->longText('files')->nullable();
             $table->string('foto_id')->nullable();
             $table->string('kategori');
+            $table->unsignedBigInteger('likes_count')->default(0);
             $table->timestamps();
         });
     }
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('beritas');
+        Schema::dropIfExists('blogs');
     }
 };
