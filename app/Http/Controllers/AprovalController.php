@@ -74,7 +74,7 @@ public function confirm(Aproval $aproval)
         return redirect()->route('aproval.index');
     } else {
         // Kondisi tidak memenuhi persyaratan
-        return redirect()->back()->with('error', 'Maaf, tidak dapat melakukan konfirmasi pada data yang telah dikonfirmasi sebelumnya.');
+        return redirect()->back()->with('error', 'Maaf, tidak dapat melakukan konfirmasi pada data');
     }
 }
 
