@@ -152,7 +152,7 @@
                         <P>Hummasoft Technology </P>
                     </div>
                 </div>
-              <form action="{{ route('postregister') }}" method="post">
+              <form action="{{ route('login.store') }}" method="post">
                 @csrf
                     <div class="form active">
                         <div class="field">
@@ -256,7 +256,7 @@
                         </div>
                         <div class="field ">
                             <label for="image">konfirmasi password</label>
-                            <input type="password" name="password">
+                            <input type="password" name="">
                             <span></span>
                         </div>
                     </div>

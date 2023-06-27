@@ -20,179 +20,44 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Admin
 
-Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::resource('/chat_guru', App\Http\Controllers\ChatGuruController::class);
-
-Route::get('/chatadmin', function () {
-    return view('chat_guru.chatadmin');
-});
-Route::get('/laporansiswa', function () {
-    return view('laporansiswa.index');
-});
-Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
-
-Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
+Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
+Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
-
-Route::resource('/berita_guru', App\Http\Controllers\BeritaGuruController::class);
-
-Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
-
-Route::resource('/mou', App\Http\Controllers\MOUController::class);
-
-
-Route::resource('/siswamagang', App\Http\Controllers\DashboardSiswaController::class);
-
-
-Route::resource('/guru', App\Http\Controllers\DashboardGuruController::class);
-
-
-Route::resource('/chat', App\Http\Controllers\ChatController::class);
-
-
-Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
-
-// login & register
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
-
-Route::get('/register', [LoginController::class, 'register'])->name('register');
-Route::post('/postregister', [LoginController::class, 'postregister'])->name('postregister');
-// akhir login & register
-
-Route::resource('/lupapassword', App\Http\Controllers\LupaPasswordController::class);
-Route::resource('/ubahpassword', App\Http\Controllers\UbahPasswordController::class);
-
-
-Route::resource('/sp', App\Http\Controllers\SpController::class);
-Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
-Route::resource('/piket', App\Http\Controllers\PiketController::class);
-
-
-Route::get('/view', [AlumniGuruController::class, 'show'])->name('view');
-Route::get('/tabel', [AlumniGuruController::class, 'create'])->name('tabel');
-
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
-
-// Tata Tertib Admin
-Route::get('/tatatertib', [TataTertibController::class, 'index'])->name('index');
-
-Route::get('/tambahtatib', [TataTertibController::class, 'create'])->name('create');
-Route::post('/inserttatib', [TataTertibController::class, 'inserttatib'])->name('inserttatib');
-Route::get('/edittatib/{id}', [TataTertibController::class, 'edittatib'])->name('edittatib');
-
-Route::post('/updatetatib/{id}', [TataTertibController::class, 'updatetatib'])->name('updatetatib');
-Route::delete('/deletetatib/{id}', [TataTertibController::class, 'deletetatib'])->name('deletetatib');
-// Route::resource('/deletetatib', App\Http\Controllers\TataTertibController::class);
-
-Route::get('/detailtatib', [TataTertibController::class, 'show'])->name('detail');
-// Akhir Tatib Admin
-
-Route::resource('/tatib_siswa', App\Http\Controllers\TatibSiswaController::class);
-
-Route::resource('/pembimbing', App\Http\Controllers\PembimbingController::class);
-
-Route::resource('/berita', App\Http\Controllers\BeritaController::class);
-
-Route::get('/edit', [BeritaController::class, 'edit'])->name('edit');
-Route::get('/detail_berita_guru', [BeritaGuruController::class, 'show'])->name('detail_berita_guru');
-Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
-Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
-
-Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::class);
-
-Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
-Route::resource('/editprofileguru', App\Http\Controllers\EditprofileGuruController::class);
-
-Route::get('/sidebar', function () {
-    return view('sidebar.layout');
-});
-Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
-Route::resource('/tolak', App\Http\Controllers\TolakController::class);
-Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
+Route::resource('/alumni_admin', App\Http\Controllers\SiswaController::class);
+Route::resource('/guru_admin', App\Http\Controllers\ASiswaController::class);
+Route::resource('/absensi_admin', App\Http\Controllers\ASiswaController::class);
+Route::resource('/tatatertib', App\Http\Controllers\ASiswaController::class);
+Route::resource('/laporansiswa', App\Http\Controllers\ASiswaController::class);
+Route::resource('/laporan_piket', App\Http\Controllers\ASiswaController::class);
+Route::resource('/sp', App\Http\Controllers\ASiswaController::class);
+Route::resource('/Berita', App\Http\Controllers\ASiswaController::class);
+Route::resource('/chat', App\Http\Controllers\ASiswaController::class);
+Route::resource('/piket', App\Http\Controllers\ASiswaController::class);
+Route::resource('/mou', App\Http\Controllers\ASiswaController::class);
+Route::resource('/tolak', App\Http\Controllers\ASiswaController::class);
 
 
-Route::resource('/berita_siswa', App\Http\Controllers\BeritaSiswaController::class);
-Route::resource('/absensi_siswa', App\Http\Controllers\AbsensiSiswaController::class);
-Route::get('/sore', function () {
-    return view('piket.sidebar_sore');
-});
-Route::get('/detail_daftar', function () {
-    return view('aproval.view');
-});
-Route::get('/navbar', function () {
-    return view('navbar.index');
-});
-Route::get('/sore_siswa', function () {
-    return view('piket_siswa.navsore');
-});
-Route::get('/detail_siswaguru', function () {
-    return view('siswa_guru.detail');
-});
-Route::get('/detail_pelangaran_siwaguru', function () {
-    return view('siswa_guru.detail_pelanggaran');
-});
-Route::get('/sidebar', function () {
-    return view('sidebar.layout');
-});
-Route::group(['middleware' => 'auth'], function () {
-    Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
-});
+
+// akhir admin
+
+// Pembimbing
 
 
-Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
-Route::resource('/berita_guru', App\Http\Controllers\BeritaGuruController::class);
-Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
-Route::resource('/mou', App\Http\Controllers\MOUController::class);
-Route::resource('/siswamagang', App\Http\Controllers\DashboardSiswaController::class);
-Route::resource('/guru', App\Http\Controllers\DashboardGuruController::class);
-Route::resource('/chat', App\Http\Controllers\ChatController::class);
-Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
+
+// akhir Pembimbing
+// Siswa
+
+
+
+// akhir siswa
+
+// login
+
 Route::resource('/login', App\Http\Controllers\LoginController::class);
-Route::get('/register', [LoginController::class, 'register'])->name('register');
-Route::get('/grafik', [AbsensiGuruController::class, 'show'])->name('grafik');
-Route::resource('/lupapassword', App\Http\Controllers\LupaPasswordController::class);
-Route::resource('/ubahpassword', App\Http\Controllers\UbahPasswordController::class);
-Route::resource('/sp', App\Http\Controllers\SpController::class);
-Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
-Route::resource('/piket', App\Http\Controllers\PiketController::class);
-Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
-Route::get('/detail', [GuruAdminController::class, 'detail'])->name('detail');
-Route::get('/view', [AlumniGuruController::class, 'show'])->name('view');
-Route::get('/tabel', [AlumniGuruController::class, 'create'])->name('tabel');
-Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
-Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
-Route::resource('/tatib_siswa', App\Http\Controllers\TatibSiswaController::class);
-Route::resource('/pembimbing', App\Http\Controllers\PembimbingController::class);
-Route::resource('/Berita', App\Http\Controllers\BeritaController::class);
-Route::get('/edit', [BeritaController::class, 'edit'])->name('edit');
-Route::get('/detail_berita_guru', [BeritaGuruController::class, 'show'])->name('detail_berita_guru');
-Route::resource('/chat_siswa', App\Http\Controllers\ChatSiswaController::class);
-Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
-Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::class);
-Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
-Route::resource('/editprofileguru', App\Http\Controllers\EditprofileGuruController::class);
-Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
-Route::resource('/tolak', App\Http\Controllers\TolakController::class);
-Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
-Route::resource('/berita_siswa', App\Http\Controllers\BeritaSiswaController::class);
-Route::resource('/absensi_siswa', App\Http\Controllers\AbsensiSiswaController::class);
-Route::get('/grafik_jurnal_guru', function () {
-    return view('jurnalguru.grafik');
-});
-Route::get('/percobaan', function () {
-    return view('loginregister.iyah');
-});
-Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
-Route::resource('/profilesiswa', App\Http\Controllers\ProfilsiswaController::class);
-Route::resource('/piket_siswa', App\Http\Controllers\PiketSiswaController::class);
-Route::resource('/siswa_guru', App\Http\Controllers\SiswaGuruController::class);
-Route::resource('/jurnal_guru', App\Http\Controllers\JurnalGuruController::class);
-Route::resource('/jurnalsiswa', App\Http\Controllers\JurnalsiswaController::class);
-Route::resource('/siswa_magang', App\Http\Controllers\SiswamagangController::class);
-Route::resource('/grafik', App\Http\Controllers\JurnaladminController::class);
+Route::get('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
+
+
+// end login

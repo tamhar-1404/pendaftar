@@ -117,7 +117,7 @@
                                     type="checkbox" />
                                 <span class="line-clamp-1">Ingat Saya</span>
                             </label>
-                            <a href="{{ route('lupapassword.index') }}"
+                            <a href="#"
                                 class="text-xs text-slate-400 transition-colors line-clamp-1 hover:text-slate-800 focus:text-slate-800 dark:text-navy-300 dark:hover:text-navy-100 dark:focus:text-navy-100">Lupa
                                 Password?</a>
                         </div>
@@ -130,7 +130,7 @@
                         <p class="line-clamp-1">
                             <span>Belum punya Akun?</span>
                             <a class="text-info transition-colors hover:text-info-focus dark:text-accent-light dark:hover:text-accent"
-                                href="/register">Daftar</a>
+                                href="{{ route('login.create') }}">Daftar</a>
                         </p>
                     </div>
                 </div>

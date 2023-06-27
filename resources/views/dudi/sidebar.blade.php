@@ -202,8 +202,8 @@
                     </div>
                 </div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            {{--  <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>  --}}
             <div class="swiper-pagination"></div>
         </section>
         {{--  <!-- Swiper JS -->  --}}
@@ -383,7 +383,7 @@
       chart: {
       type: 'bar',
       height: 400,
-      width:1500,
+      width:980,
 
     },
     plotOptions: {
