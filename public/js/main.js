@@ -29,26 +29,30 @@ button[0].onclick = () => {
   activeIndicator(curPage);
 }
 
-function validate() {
-  const activePage = document.querySelector('.active');
-  const field = activePage.getElementsByClassName('field');
-  let inputFirst = field[0].children[1];
-  let inputLast = field[1].children[1];
-  if (inputFirst.value != '' && inputLast.value != '') {
-    if (curPage == div.length - 2) {
-      button[1].textContent = 'Submit';
-    }
-    curPage++;
-    button[0].style.display = 'block';
-    if (curPage >= div.length) {
-      form.onsubmit = () => { return true; };
-    }
-    displayPage(curPage);
-    activeIndicator(curPage);
-  }
-  if (inputFirst.value == '') { hide(inputFirst); }
-  if (inputLast.value == '') { hide(inputLast); }
-}
+	function validate(){
+		const activePage = document.querySelector('.active')
+		const field = activePage.getElementsByClassName('field');
+		let inputFirst = field[0].children[1];
+		let inputLast = field[1].children[1];
+		if (inputFirst.value != '' && inputLast.value != ''){
+			curPage++;
+			button[0].style.display = 'block';
+			if (curPage>div.length) {button[1].textContent = 'Sign Up';}
+			if (curPage >= div.length-4) {
+                button[3].style.display = 'block';
+                button[3].textContent = 'Sign Up';
+				form.onsubmit =()=>{return true;}
+			}
+			dispayPage(curPage);
+			activeIndicator(curPage);
+		}
+		if (inputFirst.value == '') {hide(inputFirst);}
+		if (inputLast.value == '') {hide(inputLast);}
+	}
+	function dispayPage(page) {
+		for(let i of div)i.classList.remove('active');
+		div[page].classList.add('active');
+	}
 
 function displayPage(page) {
   for (let i of div) i.classList.remove('active');
