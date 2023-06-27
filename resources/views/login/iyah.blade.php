@@ -55,7 +55,7 @@
           <div class="flex-grow h-2 bg-gray-300 mx-2"></div>
           <div class="w-16 h-16 bg-gray-300 rounded-full flex justify-center items-center text-gray-500 font-bold text-2xl">4</div>
         </div>
-        <form id="wizardForm" class="relative" enctype="multipart/form-data">
+        <form id="wizardForm" action="" class="relative" enctype="multipart/form-data">
           <!-- Step 1 -->
           <div class="step active">
             <h2 class="text-2xl mb-4">Step 1: Personal Information</h2>
