@@ -152,7 +152,7 @@
                         <P>Hummasoft Technology </P>
                     </div>
                 </div>
-              <form action="{{ route('postregister') }}" method="post">
+              <form action="{{ route('login.store') }}" method="post">
                 @csrf
                     <div class="form active">
                         <div class="field">

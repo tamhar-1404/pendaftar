@@ -53,3 +53,11 @@ Route::resource('/tolak', App\Http\Controllers\ASiswaController::class);
 
 
 // akhir siswa
+
+// login
+
+Route::resource('/login', App\Http\Controllers\LoginController::class);
+Route::get('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
+
+
+// end login
