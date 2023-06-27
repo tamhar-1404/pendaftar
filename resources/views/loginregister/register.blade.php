@@ -16,11 +16,6 @@
     <link rel="icon" type="image/png" href="lineone/images/favicon.png" />
     @vite('resources/css/app.css')
 
-    <!-- CSS Assets -->
-    <link rel="stylesheet" href="lineone/css/app.css" />
-
-    <!-- Javascript Assets -->
-    <script src="lineone/js/app.js" defer></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
@@ -29,15 +24,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
         rel="stylesheet" />
-    <script>
-        /**
-         * THIS SCRIPT REQUIRED FOR PREVENT FLICKERING IN SOME BROWSERS
-         */
-        localStorage.getItem("_x_darkMode_on") === "true" && document.documentElement.classList.add("dark");
-    </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/smartwizard/dist/css/smart_wizard.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
 
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/smartwizard/dist/css/smart_wizard.min.css"> --}}
+    {{-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet"> --}}
+    <style>
+      .step:not(.active) {
+        display: none;
+      }
+    </style>
     {{-- <style>
         .step {
             display: none;
@@ -48,247 +42,224 @@
         }
     </style> --}}
 </head>
-
-<body x-data class="is-header-blur" x-bind="$store.global.documentBody">
-    <!-- App preloader-->
-    {{-- <div class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900">
-        <div class="app-preloader-inner relative inline-block h-48 w-48"></div>
-
-    </div> --}}
-    {{-- <div class="center fixed z-50 grid h-full w-full place-content-center">
-        <div class="ring relative inline-block h-48 w-48"></div>
-        <img src="{{ asset('admin/loading/logo.png') }}" alt="Deskripsi gambar" class="my-img">
-    </div> --}}
-
-    <!-- Page Wrapper -->
-    <div id="" class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900" x-cloak>
-        <div class="fixed top-0 hidden p-6 lg:block lg:px-12">
-            <a href="#" class="flex items-center space-x-2">
-                <img class="h-12 w-100" src="lineone/images/hummasoft2.png" alt="logo" />
-            </a>
+<body class="bg-gray-100">
+    <div class="max-w-xl mx-auto py-10">
+      <div class="bg-white p-8 rounded shadow">
+        <div class="flex justify-center items-center mb-8">
+          <div class="w-16 h-16 bg-blue-500 rounded-full flex justify-center items-center text-white font-bold text-2xl">1</div>
+          <div class="flex-grow h-2 bg-gray-300 mx-2"></div>
+          <div class="w-16 h-16 bg-gray-300 rounded-full flex justify-center items-center text-gray-500 font-bold text-2xl">2</div>
+          <div class="flex-grow h-2 bg-gray-300 mx-2"></div>
+          <div class="w-16 h-16 bg-gray-300 rounded-full flex justify-center items-center text-gray-500 font-bold text-2xl">3</div>
+          <div class="flex-grow h-2 bg-gray-300 mx-2"></div>
+          <div class="w-16 h-16 bg-gray-300 rounded-full flex justify-center items-center text-gray-500 font-bold text-2xl">4</div>
         </div>
-        <div class="w-full">
-
-            <div class="hidden w-full place-items-center lg:grid">
-                <div class="w-full max-w-lg p-6">
-                    <img class="w-full" x-show="!$store.global.isDarkModeEnabled"
-                        src="lineone/images/illustrations/login.svg" alt="image" />
-                    <img class="w-full" x-show="$store.global.isDarkModeEnabled"
-                        src="lineone/images/illustrations/dashboard-meet-dark.svg" alt="image" />
-                </div>
-
+        <form id="wizardForm" action="{{route('login.index')}}" class="relative" enctype="multipart/form-data">
+            @csrf
+          <!-- Step 1 -->
+          <div class="step active" >
+            <h2 class="text-2xl mb-4">Step 1: Personal Information</h2>
+            <div class="mb-4">
+              <label for="name" class="block font-bold mb-1">nama :</label>
+              <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded" required>
             </div>
-            <div class=" w-full flex justify-center items-end">
-                <div class="page-indicator w-full justify-around flex items-end h-full ">
-                    <!-- <em class="active"></em>
-                    <em></em>
-                    <em></em>
-                    <em></em> -->
+            <div class="flex justify-between gap-2">
+                <div class="mb-4 w-full">
+                    <label for="name" class="block font-bold mb-1">Tempat :</label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded" required>
+                  </div>
+                  <div class="mb-4 w-full">
+                    <label for="birthdate" class="block font-bold mb-1">Tanggal:</label>
+                    <input type="date" id="birthdate" name="birthdate" class="w-full px-4 py-2 border rounded" required>
+                  </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="nisn" class="block font-bold mb-1">NISN:</label>
+              <input type="text" id="nisn" name="nisn" class="w-full px-4 py-2 border rounded" required>
+            </div>
+            <div class="mb-4">
+              <label for="class" class="block font-bold mb-1">Kelas:</label>
+              <input type="text" id="class" name="class" class="w-full px-4 py-2 border rounded" required>
+            </div>
+            <div class="mb-4 ">
+              <label for="gender" class="block font-bold mb-1">Gender:</label>
+              <div class="flex justify-around">
+                  <div class="flex gap-2">
+                      <input type="radio" name="kelamin" value="laki-laki" id=""><p>laki laki</p>
+                  </div>
+                  <div class="flex gap-2">
+                      <input type="radio" name="kelamin" value="perempuan" id=""><p>Perempuan</p>
+                  </div>
+              </div>
+            </div>
+            <button type="button" id="nextStep1" class="py-2 px-4 bg-blue-500 text-white rounded">Next</button>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step">
+            <h2 class="text-2xl mb-4">Step 2: alamat & informasi sekolah</h2>
+            <div class="mb-4">
+              <label for="address" class="block font-bold mb-1">Alamat:</label>
+              <input type="text" id="address" name="address" class="w-full px-4 py-2 border rounded" required>
+            </div>
+            <div class="mb-4">
+              <label for="major" class="block font-bold mb-1">Jurusan:</label>
+              <input type="text" id="major" name="major" class="w-full px-4 py-2 border rounded" required>
+            </div>
+            <div class="mb-4">
+              <label for="school" class="block font-bold mb-1">Sekolah:</label>
+              <input type="text" id="school" name="school" class="w-full px-4 py-2 border rounded" required>
+            </div>
+            <div class="flex justify-between gap-2">
+                <div class="mb-4 w-full">
+                  <label for="internship-start" class="block font-bold mb-1">Mulai Magang :</label>
+                  <input type="date" id="internship-start" name="internship-start" class="w-full px-4 py-2 border rounded" required>
+                </div>
+                <div class="mb-4 w-full">
+                  <label for="internship-end" class="block font-bold mb-1">Akhir Magang :</label>
+                  <input type="date" id="internship-end" name="internship-end" class="w-full px-4 py-2 border rounded" required>
                 </div>
             </div>
-            {{-- <ol class="steps is-horizontal line-space [--size:2.75rem] [--line:.5rem]">
-                <li id="" class="step space-x-4 pb-12 before:bg-slate-200 dark:before:bg-navy-500">
-                    <a  href="#step-1">
-                        <div class="step-header mask is-hexagon bg-info text-white dark:bg-accent">
-                            <i class="fa-solid fa-layer-group text-base"></i>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-xs text-slate-400 dark:text-navy-300">Step 1</p>
-                            <h3 class="text-base font-medium text-info dark:text-accent-light">Data Diri</h3>
-                        </div>
-                    </a>
-                </li>
-                <li id="" class="step space-x-4 pb-12 before:bg-slate-200 dark:before:bg-navy-500">
-                    <a href="#step-2">
-                        <div
-                            class="step-header mask is-hexagon bg-slate-200 text-slate-500 dark:bg-navy-500 dark:text-navy-100">
-                            <i class="fa-solid fa-user text-base"></i>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-xs text-slate-400 dark:text-navy-300">Step 2</p>
-                            <h3 class="text-base font-medium">Data Diri</h3>
-                        </div>
-                    </a>
-                </li>
-                <li id="" class="step space-x-4 pb-12 before:bg-slate-200 dark:before:bg-navy-500">
-                    <a href="#step-3">
-                        <div
-                            class="step-header mask is-hexagon bg-slate-200 text-slate-500 dark:bg-navy-500 dark:text-navy-100">
-                            <i class="fa-solid fa-file-lines text-base"></i>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-xs text-slate-400 dark:text-navy-300">Step 3</p>
-                            <h3 class="text-base font-medium">Berkas</h3>
-                        </div>
-                    </a>
-                </li>
-                <li id="" class="step space-x-4 before:bg-slate-200 dark:before:bg-navy-500">
-                    <a href="#step-4">
-                        <div
-                            class="step-header mask is-hexagon bg-slate-200 text-slate-500 dark:bg-navy-500 dark:text-navy-100">
-                            <i class="fa-solid fa-check text-base"></i>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-xs text-slate-400 dark:text-navy-300">Step 4</p>
-                            <h3 class="text-base font-medium">Konfirmasi</h3>
-                        </div>
-                    </a>
-                </li>
-            </ol> --}}
-        </div>
-        {{-- <div class="progress-bar">
-            <div class="progress"></div>
-        </div> --}}
+            <button type="button" id="prevStep2" class="mr-2 py-2 px-4 bg-blue-500 text-white rounded">Previous</button>
+            <button type="button" id="nextStep2" class="py-2 px-4 bg-blue-500 text-white rounded">Next</button>
+          </div>
 
-        <div class="col-span-12 grid lg:col-span-6 lg:place-items-center z-10">
+          <!-- Step 3 -->
+          <div class="step">
+            <h2 class="text-2xl mb-4">Step 3: Document Upload</h2>
+            <div class="mb-4">
+              <label for="photo" class="block font-bold mb-1">Foto Siswa :</label>
+              <input type="file" id="photo" name="photo" class="w-full px-4 py-2 border rounded" required>
+            </div>
+            <div class="mb-4">
+              <label for="self-statement" class="block font-bold mb-1">Pernyataan Diri Sendiri:</label>
+              <input type="file" id="self-statement" name="self-statement" class="w-full px-4 py-2 border rounded" required>
+            </div>
+            <div class="mb-4">
+              <label for="outu-statement" class="block font-bold mb-1">Pernyataan Orang Tua:</label>
+              <input type="file" id="outu-statement" name="outu-statement" class="w-full px-4 py-2 border rounded" required>
+            </div>
+            <div class="mb-4">
+              <label for="skck" class="block font-bold mb-1">SKCK:</label>
+              <input type="file" id="skck" name="skck" class="w-full px-4 py-2 border rounded">
+            </div>
+            <div class="mb-4">
+              <label for="cv" class="block font-bold mb-1">CV:</label>
+              <input type="file" id="cv" name="cv" class="w-full px-4 py-2 border rounded" required>
+            </div>
+            <button type="button" id="prevStep3" class="mr-2 py-2 px-4 bg-blue-500 text-white rounded">Previous</button>
+            <button type="button" id="nextStep3" class="py-2 px-4 bg-blue-500 text-white rounded">Next</button>
+          </div>
 
-        </div>
-        <main  id="" class="flex h-80% w-full flex-col items-center bg-white dark:bg-navy-700 lg:max-w-md">
-            <section class="cover bg-white">
-                <div class="w-full flex justify-center mt-5 mb-5 ">
-                    <img class="mx-auto h-16 w-16 lg:hidden" src="admin/asset/images/humma.jpeg" alt="logo" />
-                    <div>
-                        <p class="font-bold text-lg">SELAMAT DATANG</p>
-                        <P>Hummasoft Technology </P>
-                    </div>
-                </div>
-              <form action="{{ route('postregister') }}" method="post">
-                @csrf
-                    <div class="form active">
-                        <div class="field">
-                            <label for="name">Name</label>
-                            <input type="text" placeholder="name" name="name">
-                            <span></span>
-                        </div>
-                        <div class="flex justify-between">
-                            <div class="field">
-                                <label for="name">tempat</label>
-                                <input type="text" placeholder="name" name="tempat">
-                                <span></span>
-                            </div>
-                            <div class="field">
-                                <label for="name">tanggal lahir</label>
-                                <input type="date" placeholder="name" name="tanggal">
-                                <span></span>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label for="name">kelas</label>
-                            <input type="text" placeholder="name" name="kelas">
-                            <span></span>
-                        </div>
-                        <div class="field">
-                            <label for="email">nisn</label>
-                            <input type="number" placeholder="nisn" name="nisn">
-                            <span></span>
-                        </div>
-                        <div class="field">
-                            <label for="email">Jenis kelamin</label>
-                            <input type="file" placeholder="nisn" name="jeniskelamin">
-                            <span></span>
-                        </div>
-                    </div>
-                    <div class="form">
-                        <div class="field">
-                            <label for="username">alamat</label> <br>
-                            <textarea class="border border-gray-400" name="alamat" id="" cols="45" rows="3"></textarea>
-                            <span></span>
-                        </div>
-                        <div class="field">
-                            <label for="phone">Jurusan</label>
-                            <input type="text" placeholder="Jurusan" name="jurusan">
-                            <span></span>
-                        </div>
-                        <div class="field">
-                            <label for="phone">sekolah</label>
-                            <input type="text" placeholder="Jurusan" name="sekolah">
-                            <span></span>
-                        </div>
-                        <div class="field">
-                            <label for="phone">lama magang</label>
-                            <div class="flex justify-between">
-                                <input type="text" placeholder="awal" name="magang_awal">
-                                <input type="text" placeholder="akhir" name="magang_akhir">
-                            </div>
-                            <span></span>
-                        </div>
-
-                    </div>
-                    <div class="form">
-                        <div class="field">
-                            <label for="file">Foto Siswa</label>
-                            <input type="file" placeholder="file" name="foto_siswa">
-                            <span></span>
-                        </div>
-                        <div class="field">
-                            <label for="file">pernyataan diri sendiri</label>
-                            <input type="file" placeholder="file" name="sp_diri">
-                            <span></span>
-                        </div>
-                        <div class="field">
-                            <label for="file">pernyataan orang tua </label>
-                            <input type="file" placeholder="file" name="sp_ortu">
-                            <span></span>
-                        </div>
-                        <div class="field">
-                            <label for="file">SKCK</label>
-                            <input type="file" placeholder="file" name="skck">
-                            <span></span>
-                        </div>
-                        <div class="field">
-                            <label for="file">CV</label>
-                            <input type="file" placeholder="file" name="cv">
-                            <span></span>
-                        </div>
-
-
-                    </div>
-                    <div class="form">
-                        <div class="field">
-                            <label for="DOB">email</label>
-                            <input type="email">
-                            <span></span>
-                        </div>
-                        <div class="field">
-                            <label for="image">password</label>
-                            <input type="password" name="password">
-                            <span></span>
-                        </div>
-                        <div class="field ">
-                            <label for="image">konfirmasi password</label>
-                            <input type="password" name="password">
-                            <span></span>
-                        </div>
-                    </div>
-                    <br><br><br><br>
-                    <div class="w-full h-full">
-                        <div class="flex justify-center items-center mt-2 h-full gap-4 p-4 ">
-                            <button class="border w-full border-blue-400 bg-blue-400 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-400 hover:text-white">Previous</button>
-                            <button class="border w-full border-blue-400 bg-blue-400 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-400 hover:text-white">Next</button>
-                            <button class="border w-full border-blue-400 bg-blue-400 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-400 hover:text-white">submit</button>
-                        </div>
-                    </div>
-                </form>
-
-            </section>
-        </main>
+          <!-- Step 4 -->
+          <div class="step">
+            <h2 class="text-2xl mb-4">Step 4: Account Information</h2>
+            <div class="mb-4">
+              <label for="email" class="block font-bold mb-1">Email:</label>
+              <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded" required>
+            </div>
+            <div class="mb-4">
+              <label for="password" class="block font-bold mb-1">Password:</label>
+              <input type="password" id="password" name="password" class="w-full px-4 py-2 border rounded" required>
+            </div>
+            <div class="mb-4">
+              <label for="confirm-password" class="block font-bold mb-1">Confirm Password:</label>
+              <input type="password" id="confirm-password" name="confirm-password" class="w-full px-4 py-2 border rounded" required>
+            </div>
+            <button type="button" id="prevStep4" class="mr-2 py-2 px-4 bg-blue-500 text-white rounded">Previous</button>
+            <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded">Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
 
-
-
-    <script type="text/javascript" src="js/main.js"></script>
-
-
-    {{-- <div id="x-teleport-target"></div> --}}
     <script>
-        window.addEventListener("DOMContentLoaded", () => Alpine.start());
+      document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("wizardForm");
+        const steps = Array.from(form.getElementsByClassName("step"));
+        const nextButtons = Array.from(form.querySelectorAll("[id^=nextStep]"));
+        const prevButtons = Array.from(form.querySelectorAll("[id^=prevStep]"));
+
+        let currentStep = 0;
+
+        function showStep(stepIndex) {
+          steps.forEach(function(step, index) {
+            if (index === stepIndex) {
+              step.classList.add("active");
+            } else {
+              step.classList.remove("active");
+            }
+          });
+        }
+
+        function validateStep(stepIndex) {
+          const step = steps[stepIndex];
+          const inputs = Array.from(step.getElementsByTagName("input"));
+          const textareas = Array.from(step.getElementsByTagName("textarea"));
+
+          let isValid = true;
+
+          inputs.forEach(function(input) {
+            if (!input.checkValidity()) {
+              input.classList.add("border-red-500");
+              isValid = false;
+            } else {
+              input.classList.remove("border-red-500");
+            }
+          });
+
+          textareas.forEach(function(textarea) {
+            if (!textarea.checkValidity()) {
+              textarea.classList.add("border-red-500");
+              isValid = false;
+            } else {
+              textarea.classList.remove("border-red-500");
+            }
+          });
+
+          return isValid;
+        }
+
+        nextButtons.forEach(function(button) {
+          button.addEventListener("click", function() {
+            if (validateStep(currentStep)) {
+              currentStep++;
+              showStep(currentStep);
+            }
+          });
+        });
+
+        prevButtons.forEach(function(button) {
+          button.addEventListener("click", function() {
+            currentStep--;
+            showStep(currentStep);
+          });
+        });
+
+        // form.addEventListener("submit", function(event) {
+        //   event.preventDefault();
+        //   if (validateStep(currentStep)) {
+        //     // Menggunakan fetch API untuk mengirim data ke controller
+        //     fetch("/your-controller-route", {
+        //       method: "POST",
+        //       body: new FormData(form)
+        //     })
+        //     .then(function(response) {
+        //       if (response.ok) {
+        //         // Redirect ke controller setelah selesai
+        //         window.location.href = "/your-controller-route";
+        //       } else {
+        //         throw new Error("Error occurred while submitting the form.");
+        //       }
+        //     })
+        //     .catch(function(error) {
+        //       console.error(error);
+        //     });
+        //   }
+        // });
+      });
     </script>
-
-
-    <!-- JavaScript untuk mengatur tampilan dan navigasi antar langkah -->
-
-</body>
-
-<!-- Mirrored from lineone.piniastudio.com/pages-singup-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 May 2023 04:16:45 GMT -->
+  </body>
 
 </html>
