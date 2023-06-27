@@ -383,7 +383,7 @@
       chart: {
       type: 'bar',
       height: 400,
-      width:1500,
+      width:980,
 
     },
     plotOptions: {
