@@ -87,6 +87,7 @@ public function confirm(Aproval $aproval)
      */
     public function show(aproval $aproval)
     {
+        // $data = aproval::where('id', 'LIKE', $id);
         return view('aproval.view');
     }
 

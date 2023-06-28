@@ -68,3 +68,10 @@ Route::get('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin
 
 
 // end login
+
+
+
+
+Route::get('/detail', function () {
+    return view('aproval.view');
+});

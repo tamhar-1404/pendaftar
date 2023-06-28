@@ -62,6 +62,9 @@
                                                 @csrf
                                                 <button type="submit" class="btn btn-sm btn-primary">KONFIRMASI</button>
                                             </form>
+                                            <a href="{{route('aproval.show', $aproval->id)}}">
+                                            <button>lihat</button>
+                                            </a>
 
                                             <form id="reject-form-{{ $aproval->id }}" action="{{ route('aproval.reject', $aproval->id) }}" method="POST">
                                                 @csrf
