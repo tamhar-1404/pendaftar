@@ -38,10 +38,15 @@
 </head>
 
 <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
-    <!-- App preloader-->
-    <div class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900">
-        <div class="app-preloader-inner relative inline-block h-48 w-48"></div>
-    </div>
+    <!-- screen loader -->
+    {{-- <div
+        class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+        <div class="center">
+            <div class="ring">
+            </div>
+            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+        </div>
+    </div> --}}
 
     <!-- Page Wrapper -->
     <div id="root" class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900" x-cloak>
@@ -70,25 +75,36 @@
                         </h2>
                     </div>
                 </div>
-                <div class="mt-36">
-                    <label class="relative flex">
-                        <input
-                            class="form-input peer w-full rounded-lg bg-slate-150 px-3 py-2 pl-9 ring-primary/50 placeholder:text-slate-400 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:ring-accent/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
-                            placeholder="Email" type="email" />
-                        <span
-                            class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-colors duration-200"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                        </span>
-                    </label>
-                    <button
-                        class="btn mt-20 h-10 w-full bg-info font-medium text-white hover:bg-info-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
-                        Kirim
-                    </button>
-                </div>
+                <form action="" method="POST">
+                    @csrf
+                    @if (session('sukses'))
+                        <p class="alert alert-success">{{ session('sukses') }}</p>
+                    @endif
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $err)
+                            <p class="alert alert-danger">{{ $err }}</p>
+                        @endforeach
+                    @endif
+                    <div class="mt-36">
+                        <label class="relative flex">
+                            <input
+                                class="form-input peer w-full rounded-lg bg-slate-150 px-3 py-2 pl-9 ring-primary/50 placeholder:text-slate-400 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:ring-accent/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
+                                placeholder="Email" type="email" />
+                            <span
+                                class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-colors duration-200"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </span>
+                        </label>
+                        <button
+                            class="btn mt-20 h-10 w-full bg-info font-medium text-white hover:bg-info-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+                            Kirim
+                        </button>
+                    </div>
+                </form>
             </div>
         </main>
     </div>

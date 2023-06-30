@@ -40,6 +40,7 @@ Route::resource('/chat', App\Http\Controllers\ASiswaController::class);
 Route::resource('/piket', App\Http\Controllers\ASiswaController::class);
 Route::resource('/mou', App\Http\Controllers\ASiswaController::class);
 Route::resource('/tolak', App\Http\Controllers\ASiswaController::class);
+Route::resource('/tolak', App\Http\Controllers\ASiswaController::class);
 
 
 
@@ -61,5 +62,5 @@ Route::resource('/tolak', App\Http\Controllers\ASiswaController::class);
 Route::resource('/login', App\Http\Controllers\LoginController::class);
 Route::get('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 
-
+Route::resource('/lupapassword', App\Http\Controllers\LupaPasswordController::class);
 // end login
