@@ -7,40 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin - Detail Approval Pendaftaran</title>
     @vite('resources/css/app.css')
-    <link rel="stylesheet" href="load/load.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('load/load.cs')}}s">
+    {{-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" /> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
-    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                fontFamily: {
-                    sans: ["Roboto", "sans-serif"],
-                    body: ["Roboto", "sans-serif"],
-                    mono: ["ui-monospace", "monospace"],
-                },
-            },
-            corePlugins: {
-                preflight: false,
-            },
-        };
-    </script>
+
 </head>
 
 <body>
 
 
-    <!-- screen loader -->
-    <div
-        class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+
+     <!-- screen loader -->
+     <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
-            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img w-20">
+            <img src="{{asset('load/logo.png')}}" class="w-28" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
-
 
     <!-- Sidenav -->
     <nav id="sidenav-2"
@@ -477,6 +461,18 @@
             $('.spin_load').fadeOut();
         });
     </script>
+    <script>
+        document.getElementById("btnSimpan").addEventListener("click", function() {
+          // Tampilkan Sweet Alert
+          swal("Data berhasil disimpan!", {
+            icon: "success",
+          }).then(function() {
+            // Redirect ke halaman lain
+            window.location.href = "halaman-lain.html";
+          });
+        });
+      </script>
+
 </body>
 
 </html>

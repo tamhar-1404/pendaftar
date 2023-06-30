@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\aproval;
+use App\Models\User;
+use App\Models\Siswa;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreaprovalRequest;
 use App\Http\Requests\UpdateaprovalRequest;
 
@@ -15,8 +18,8 @@ class AprovalController extends Controller
      */
     public function index()
     {
-
-        return view('aproval.layout');
+        $aprovals = aproval::latest()->paginate(5);
+        return view('aproval.layout' , compact('aprovals'));
     }
 
     /**
@@ -26,7 +29,7 @@ class AprovalController extends Controller
      */
     public function create()
     {
-        //
+        return view('aproval.view');
     }
 
     /**
@@ -35,10 +38,46 @@ class AprovalController extends Controller
      * @param  \App\Http\Requests\StoreaprovalRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreaprovalRequest $request)
-    {
-        //
+    public function store(Request $request, Aproval $approval, Siswa $siswa)
+{
+    //
+}
+public function confirm(Aproval $aproval)
+{
+    if ($aproval->status === 'menunggu') {
+        $user = User::create([
+            'name' => $aproval->name,
+            'email' => $aproval->email,
+            'role' => 'siswa',
+            'password' => bcrypt($aproval->password)
+        ]);
+        Siswa::create([
+            'foto' => $aproval->foto,
+            'nama' => $aproval->nama,
+            'jurusan' => $aproval->jurusan,
+            'status_sp' => $aproval->status_sp,
+            'email' => $aproval->email,
+            'no' => $aproval->no,
+            'awal' => $aproval->awal,
+            'akhir' => $aproval->akhir,
+            'sekolah' => $aproval->sekolah,
+            'jk' => $aproval->jk,
+            'kelas' => $aproval->kelas,
+            'tempat_lahir' => $aproval->tempat_lahir,
+            'tanggal_lahir' => $aproval->tanggal_lahir,
+            'nisn' => $aproval->nisn,
+            'alamat' => $aproval->alamat
+        ]);
+
+        $aproval->delete();
+
+        return redirect()->route('aproval.index');
+    } else {
+        // Kondisi tidak memenuhi persyaratan
+        return redirect()->back()->with('error', 'Maaf, tidak dapat melakukan konfirmasi pada data');
     }
+}
+
 
     /**
      * Display the specified resource.
@@ -48,6 +87,7 @@ class AprovalController extends Controller
      */
     public function show(aproval $aproval)
     {
+        // $data = aproval::where('id', 'LIKE', $id);
         return view('aproval.view');
     }
 
@@ -69,9 +109,9 @@ class AprovalController extends Controller
      * @param  \App\Models\aproval  $aproval
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateaprovalRequest $request, aproval $aproval)
+    public function update(Request $request, aproval $aproval)
     {
-        //
+       //
     }
 
     /**
