@@ -33,66 +33,58 @@
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                           <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                             <div class="overflow-hidden">
-                                <table class="min-w-full text-left text-sm ">
-                                    <thead class="border-rounded bg-gray-200  dark:border-neutral-500">
-                                      <tr class="">
-                                        <th scope="col" class="px-6 py-2">#</th>
-                                        <th scope="col" class="px-6 py-2">Nama</th>
-                                        <th scope="col" class="px-6 py-2">Jurusan</th>
-                                        <th scope="col" class="px-6 py-2">Kelas</th>
-                                        <th scope="col" class="px-6 py-2">Masa Magang</th>
-                                        <th scope="col" class="px-6 py-2">Sekolah</th>
-                                        <th scope="col" class="px-6 py-2">Aksi</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      @php
-                                      $no=1;
-                                      @endphp
-                                      @forelse ($aprovals as $aproval)
-                                      <tr class="text-sm">
-                                        <td class="whitespace-nowrap px-6 py-2">{{ $no++ }}</td>
-                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->name }}</td>
-                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->jurusan }}</td>
-                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->kelas }}</td>
-                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->magang_awal }} -- {{ $aproval->magang_akhir }}</td>
-                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->sekolah }}</td>
-                                        <td class="whitespace-nowrap px-6 py-2">
-                                            <form id="confirm-form-{{ $aproval->id }}" action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="btn btn-sm btn-primary">KONFIRMASI</button>
-                                            </form>
-                                            <a href="{{route('aproval.show', $aproval->id)}}">
-                                            <button>lihat</button>
-                                            </a>
-
-                                            <form id="reject-form-{{ $aproval->id }}" action="{{ route('aproval.reject', $aproval->id) }}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="btn btn-sm btn-danger">TOLAK</button>
-                                            </form>
-
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                      @empty
-
-
-
-
-                                      <div class="bg-red-100 border mb-2  border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                                        <strong class="font-bold">Data </strong>
-                                        <span class="block sm:inline">Tidak tersedia.</span>
-                                        <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                                             </span>
-                                      </div>
-                                      @endforelse
-
+                              <table class="min-w-full text-left text-sm">
+                                <thead class="border-rounded bg-gray-200 dark:border-neutral-500">
+                                  <tr>
+                                    <th scope="col" class="px-6 py-2">#</th>
+                                    <th scope="col" class="px-6 py-2">Nama</th>
+                                    <th scope="col" class="px-6 py-2">Jurusan</th>
+                                    <th scope="col" class="px-6 py-2">Kelas</th>
+                                    <th scope="col" class="px-6 py-2">Masa Magang</th>
+                                    <th scope="col" class="px-6 py-2">Sekolah</th>
+                                    <th scope="col" class="px-6 py-2">Aksi</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  @php
+                                  $no=1;
+                                  @endphp
+                                  @forelse ($aprovals as $aproval)
+                                  <tr class="text-sm">
+                                    <td class="whitespace-nowrap px-6 py-2">{{ $no++ }}</td>
+                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->name }}</td>
+                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->jurusan }}</td>
+                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->kelas }}</td>
+                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->magang_awal }} -- {{ $aproval->magang_akhir }}</td>
+                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->sekolah }}</td>
+                                    <td class="whitespace-nowrap px-6 py-2">
+                                      <form id="confirm-form-{{ $aproval->id }}" action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-primary">KONFIRMASI</button>
+                                      </form>
+                                      <a href="{{route('aproval.show', $aproval->id)}}">
+                                        <button>lihat</button>
+                                      </a>
+                                      <form id="reject-form-{{ $aproval->id }}" action="{{ route('aproval.reject', $aproval->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-danger">TOLAK</button>
+                                      </form>
+                                    </td>
+                                  </tr>
+                                  @empty
+                                  </tbody>
+                              </table>
+                              <div class="bg-red-100 border mb-2  border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                <strong class="font-bold">Data </strong>
+                                <span class="block sm:inline">Tidak tersedia.</span>
+                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
+                              </div>
+                              @endforelse
                             </div>
                           </div>
                         </div>
                       </div>
-                    {{-- end tabel --}}
+                          {{-- end tabel --}}
                     {{-- paginate --}}
                     {{--  <div class="flex justify-between mt-4">
                         <p class="text-sm">

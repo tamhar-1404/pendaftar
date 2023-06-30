@@ -8,6 +8,8 @@ use App\Models\Siswa;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreaprovalRequest;
 use App\Http\Requests\UpdateaprovalRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ConfirmationEmail;
 
 class AprovalController extends Controller
 {
@@ -45,40 +47,45 @@ class AprovalController extends Controller
 public function confirm(Aproval $aproval)
 {
     if ($aproval->status === 'menunggu') {
-        $user = User::create([
-            'name' => $aproval->name,
-            'email' => $aproval->email,
-            'role' => 'siswa',
-            'password' => bcrypt($aproval->password)
-        ]);
-        Siswa::create([
-            'foto' => $aproval->foto,
-            'nama' => $aproval->nama,
-            'jurusan' => $aproval->jurusan,
-            'status_sp' => $aproval->status_sp,
-            'email' => $aproval->email,
-            'no' => $aproval->no,
-            'awal' => $aproval->awal,
-            'akhir' => $aproval->akhir,
-            'sekolah' => $aproval->sekolah,
-            'jk' => $aproval->jk,
-            'kelas' => $aproval->kelas,
-            'tempat_lahir' => $aproval->tempat_lahir,
-            'tanggal_lahir' => $aproval->tanggal_lahir,
-            'nisn' => $aproval->nisn,
-            'alamat' => $aproval->alamat
-        ]);
+        try {
+            // Mengirim email konfirmasi
+            Mail::mailer('mailtrap')->to($aproval->email)->send(new ConfirmationEmail($aproval));
 
-        $aproval->delete();
+            $user = User::create([
+                'name' => $aproval->name,
+                'email' => $aproval->email,
+                'role' => 'siswa',
+                'password' => bcrypt($aproval->password)
+            ]);
+            Siswa::create([
+                'foto_siswa' => $aproval->foto_siswa,
+                'name' => $aproval->name,
+                'jurusan' => $aproval->jurusan,
+                'status_sp' => $aproval->status_sp,
+                'email' => $aproval->email,
+                'no' => $aproval->no,
+                'awal' => $aproval->awal,
+                'akhir' => $aproval->akhir,
+                'sekolah' => $aproval->sekolah,
+                'jk' => $aproval->jk,
+                'kelas' => $aproval->kelas,
+                'tempat_lahir' => $aproval->tempat_lahir,
+                'tanggal_lahir' => $aproval->tanggal_lahir,
+                'nisn' => $aproval->nisn,
+                'alamat' => $aproval->alamat
+            ]);
 
-        return redirect()->route('aproval.index');
+            $aproval->delete();
+
+            return redirect()->route('aproval.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal mengirim email konfirmasi: ' . $e->getMessage());
+        }
     } else {
         // Kondisi tidak memenuhi persyaratan
         return redirect()->back()->with('error', 'Maaf, tidak dapat melakukan konfirmasi pada data');
     }
 }
-
-
     /**
      * Display the specified resource.
      *
