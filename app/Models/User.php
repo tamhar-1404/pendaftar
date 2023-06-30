@@ -45,4 +45,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     // protected $primaryKey = 'userId';
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }

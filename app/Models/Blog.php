@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     use HasFactory;
-    protected $fillable=[
+    protected $fillable = [
         'name',
         'foto',
         'judul',
@@ -19,4 +19,14 @@ class Blog extends Model
         'foto_id',
         'kategori'
     ];
+
+    public function likedByUser($userId)
+    {
+        return $this->likes()->where('user_id', $userId)->exists();
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }
