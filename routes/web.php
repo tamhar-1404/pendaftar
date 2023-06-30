@@ -12,6 +12,8 @@ use App\Http\Controllers\TataTertibController;
 use App\Http\Controllers\JurnaladminControlle;
 use App\Http\Controllers\JurnalSiswaController;
 use App\Http\Controllers\AprovalController;
+use App\Http\Controllers\LupaPasswordController;
+use App\Models\LupaPassword;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -71,7 +73,15 @@ Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'download
 Route::resource('/login', App\Http\Controllers\LoginController::class);
 Route::get('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 
-Route::resource('/lupapassword', App\Http\Controllers\LupaPasswordController::class);
+// Rute untuk mengirim email reset password
+Route::get('/lupapassword', [LupaPasswordController::class, 'index'])->name('password.request');
+Route::post('/lupapassword', [LupaPasswordController::class, 'store'])->name('password.email');
+
+// Rute untuk menampilkan form reset password
+Route::get('/resetpassword/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
+Route::post('/resetpassword', [LupaPasswordController::class, 'update'])->name('password.update');
+
+// Route::resource('/resetpassword', App\Http\Controllers\UbahPasswordController::class);
 // end login
 
 

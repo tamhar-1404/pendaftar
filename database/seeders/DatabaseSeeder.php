@@ -36,5 +36,39 @@ class DatabaseSeeder extends Seeder
             ],
         ];
         User::insert($admindudi);
+
+        //User Siswa
+        $siswamagang = [
+            [
+                'name' => 'Dimas',
+                'email' => 'dimas@gmail.com',
+                'password' => Hash::make ('12345678'),
+                'role' => 'Siswa',
+                'remember_token' => Str::random (60),
+            ],
+        ];
+        User::insert($siswamagang);
+
+        $siswamagang2 = [
+            [
+                'name' => 'Agung',
+                'email' => 'agung@gmail.com',
+                'password' => Hash::make ('123456789'),
+                'role' => 'Siswa',
+                'remember_token' => Str::random (60),
+            ],
+        ];
+        User::insert($siswamagang2);
+
+        $siswamagang3 = [
+            [
+                'name' => 'Supri',
+                'email' => 'supri@gmail.com',
+                'password' => Hash::make ('1234567890'),
+                'role' => 'Siswa',
+                'remember_token' => Str::random (60),
+            ],
+        ];
+        User::insert($siswamagang3);
     }
 }
