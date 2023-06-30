@@ -72,6 +72,9 @@ Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'download
 
 Route::resource('/login', App\Http\Controllers\LoginController::class);
 Route::get('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
+Route::get('/percobaan', function () {
+    return view('login.iyah');
+});
 
 // Rute untuk mengirim email reset password
 Route::get('/lupapassword', [LupaPasswordController::class, 'index'])->name('password.request');
