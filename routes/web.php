@@ -44,7 +44,7 @@ Route::post('/Berita/like', [BlogController::class, 'like'])->name('Berita.like'
 Route::resource('/chat', App\Http\Controllers\ASiswaController::class);
 Route::resource('/piket', App\Http\Controllers\ASiswaController::class);
 Route::resource('/mou', App\Http\Controllers\ASiswaController::class);
-Route::resource('/tolak', App\Http\Controllers\ASiswaController::class);
+Route::resource('/tolak', App\Http\Controllers\TolakController::class);
 Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
 Route::post('/aproval/{aproval}/confirm', [App\Http\Controllers\AprovalController::class, 'confirm'])->name('aproval.confirm');
 Route::post('/aproval/{aproval}/reject', [App\Http\Controllers\AprovalController::class, 'reject'])->name('aproval.reject');

@@ -74,9 +74,9 @@ class ApprovalIzinController extends Controller
      * @param  \App\Models\ApprovalIzin  $approvalIzin
      * @return \Illuminate\Http\Response
      */
-    public function show(ApprovalIzin $approvalIzin)
+    public function detail(ApprovalIzin $izin)
     {
-        //
+        $this->load->view('approvalizin/detail',$izin);
     }
 
     /**
