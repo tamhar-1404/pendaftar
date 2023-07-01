@@ -95,6 +95,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
         // Route khusus untuk admin
         Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
+        Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
     });
 

@@ -43,7 +43,7 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Guru'])) {
             return redirect()->route('guru.index')->with('success','Berhasil Login Sebagai Guru');
         }
-            return redirect('login')->with('error','Password atau Email Salah');
+            return redirect('login');
     }
 
 
@@ -170,5 +170,12 @@ class LoginController extends Controller
     public function destroy(Login $login)
     {
         //
+    }
+    public function logout()
+    {
+        Auth::Logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect()->route('login.index');
     }
 }
