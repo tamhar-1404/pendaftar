@@ -50,8 +50,10 @@ class ApprovalIzinController extends Controller
             'sampai' => 'required',
             'keterangan'=> 'required',
             'deskripsi' => 'required',
-            'bukti' => 'required'
+            'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
         ]);
+        $image = $request->file('bukti');
+        $image->storeAs('public/bukti_izin', $image->hashName());
 
        ApprovalIzin::create([
             'nama' => $request->nama,
@@ -60,10 +62,10 @@ class ApprovalIzinController extends Controller
             'sampai' => $request->sampai,
             'keterangan' => $request->keterangan,
             'deskripsi' => $request->deskripsi,
-            'bukti' => $request->bukti,
+            'bukti' => $request->hashName(),
             'status' => $request->status
         ]);
-        return redirect()->route('approvalizin.index');
+        return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**

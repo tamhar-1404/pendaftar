@@ -3229,9 +3229,6 @@
                 </button>
             </div>
             <!-- Modal body -->
-               
-     
-            
             <div class="p-6 space-y-6">
                 <div>
                     <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
@@ -3285,9 +3282,9 @@
                     <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                         Bukti
                     </p>
-                    <img src="siswa/images/carousel2.jpeg" alt="">
+                    <img src="{{ asset('storage/bukti_izin' . $izin->bukti) }}" alt="image">
                 </div>
-            </>
+      
             <!-- Modal footer -->
             <div
                 class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
