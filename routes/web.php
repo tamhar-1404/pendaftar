@@ -13,6 +13,8 @@ use App\Http\Controllers\JurnaladminControlle;
 use App\Http\Controllers\JurnalSiswaController;
 use App\Http\Controllers\AprovalController;
 use App\Http\Controllers\LupaPasswordController;
+use App\Http\Controllers\RegisterController;
+
 use App\Models\LupaPassword;
 use Illuminate\Support\Facades\Route;
 /*
@@ -27,7 +29,6 @@ use Illuminate\Support\Facades\Route;
 */
 // Admin
 
-Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
@@ -63,6 +64,9 @@ Route::resource('/berita_guru', App\Http\Controllers\BeritaController::class);
 // akhir Pembimbing
 // Siswa
 Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
+Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
+Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
+
 Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'downloadPDF']);
 
 
@@ -71,10 +75,11 @@ Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'download
 // login
 
 Route::resource('/login', App\Http\Controllers\LoginController::class);
-Route::get('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
+Route::post('/register', [LoginController::class, 'login'])->name('register');
 Route::get('/percobaan', function () {
     return view('login.iyah');
 });
+
 
 // Rute untuk mengirim email reset password
 Route::get('/lupapassword', [LupaPasswordController::class, 'index'])->name('password.request');
@@ -86,6 +91,23 @@ Route::post('/resetpassword', [LupaPasswordController::class, 'update'])->name('
 
 // Route::resource('/resetpassword', App\Http\Controllers\UbahPasswordController::class);
 // end login
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['role:Admin'])->group(function () {
+        // Route khusus untuk admin
+        Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
+
+    });
+
+    Route::middleware(['role:murid'])->group(function () {
+        // Route khusus untuk murid
+
+    });
+
+    Route::middleware(['role:guru'])->group(function () {
+        // Route khusus untuk guru
+
+    });
+});
 
 
 
