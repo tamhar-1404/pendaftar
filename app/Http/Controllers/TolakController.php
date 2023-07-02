@@ -15,7 +15,7 @@ class TolakController extends Controller
      */
     public function index()
     {
-        return view('tolak.index');
+        return view('tolak.detail');
     }
 
     /**
