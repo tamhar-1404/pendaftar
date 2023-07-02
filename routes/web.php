@@ -17,6 +17,7 @@ use App\Http\Controllers\RegisterController;
 
 use App\Models\LupaPassword;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +30,8 @@ use Illuminate\Support\Facades\Route;
 */
 // Admin
 
+Route::get('send-email' , [MailController::class,'index']);
+Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
@@ -47,7 +50,7 @@ Route::resource('/mou', App\Http\Controllers\ASiswaController::class);
 Route::resource('/tolak', App\Http\Controllers\TolakController::class);
 Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
 Route::post('/aproval/{aproval}/confirm', [App\Http\Controllers\AprovalController::class, 'confirm'])->name('aproval.confirm');
-Route::post('/aproval/{aproval}/reject', [App\Http\Controllers\AprovalController::class, 'reject'])->name('aproval.reject');
+Route::post('/aproval/{aproval}/tolak', [App\Http\Controllers\AprovalController::class, 'tolak'])->name('aproval.tolak');
 
 // akhir admin
 

@@ -8,6 +8,10 @@ use App\Models\Siswa;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreaprovalRequest;
 use App\Http\Requests\UpdateaprovalRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DemoMail;
+use App\Mail\tolakEmail;
+use Illuminate\Support\Facades\Storage;
 
 class AprovalController extends Controller
 {
@@ -29,7 +33,7 @@ class AprovalController extends Controller
      */
     public function create()
     {
-        return view('aproval.view');
+        //
     }
 
     /**
@@ -42,9 +46,12 @@ class AprovalController extends Controller
 {
     //
 }
+
 public function confirm(Aproval $aproval)
 {
     if ($aproval->status === 'menunggu') {
+        Mail::to($aproval->email)->send(new DemoMail($aproval));
+
         $user = User::create([
             'name' => $aproval->name,
             'email' => $aproval->email,
@@ -52,33 +59,54 @@ public function confirm(Aproval $aproval)
             'password' => bcrypt($aproval->password)
         ]);
         Siswa::create([
-            'foto' => $aproval->foto,
-            'nama' => $aproval->nama,
+            'foto_siswa' => $aproval->foto_siswa,
+            'name' => $aproval->name,
             'jurusan' => $aproval->jurusan,
             'status_sp' => $aproval->status_sp,
             'email' => $aproval->email,
             'no' => $aproval->no,
-            'awal' => $aproval->awal,
-            'akhir' => $aproval->akhir,
+            'magang_awal' => $aproval->magang_awal,
+            'magang_akhir' => $aproval->magang_akhir,
             'sekolah' => $aproval->sekolah,
-            'jk' => $aproval->jk,
+            'jeniskelamin' => $aproval->jeniskelamin,
             'kelas' => $aproval->kelas,
-            'tempat_lahir' => $aproval->tempat_lahir,
-            'tanggal_lahir' => $aproval->tanggal_lahir,
+            'tempat' => $aproval->tempat,
+            'tanggal' => $aproval->tanggal,
             'nisn' => $aproval->nisn,
             'alamat' => $aproval->alamat
         ]);
-
+        Storage::delete('public/pendaftaran/'. $aproval->foto_siswa);
+        Storage::delete('public/pendaftaran/'. $aproval->skck);
+        Storage::delete('public/pendaftaran/'. $aproval->cv);
+        Storage::delete('public/pendaftaran/'. $aproval->sp_ortu);
+        Storage::delete('public/pendaftaran/'. $aproval->sp_diri);
         $aproval->delete();
 
         return redirect()->route('aproval.index');
     } else {
-        // Kondisi tidak memenuhi persyaratan
         return redirect()->back()->with('error', 'Maaf, tidak dapat melakukan konfirmasi pada data');
     }
 }
+public function tolak(Request $request, Aproval $aproval)
+{
+    $alasan = $request->input('alasan');
 
-
+    if ($alasan) {
+        $emailData = [
+            'content' => 'Data Anda telah ditolak dengan alasan: ' . $alasan,
+        ];
+        Mail::to($aproval->email)->send(new TolakEmail($emailData));
+         Storage::delete('public/pendaftaran/'. $aproval->foto_siswa);
+        Storage::delete('public/pendaftaran/'. $aproval->skck);
+        Storage::delete('public/pendaftaran/'. $aproval->cv);
+        Storage::delete('public/pendaftaran/'. $aproval->sp_ortu);
+        Storage::delete('public/pendaftaran/'. $aproval->sp_diri);
+        $aproval->delete();
+        return redirect()->route('aproval.index')->with('status', 'Data berhasil ditolak!');
+    } else {
+        return redirect()->back()->with('error', 'Masukkan alasan penolakan.');
+    }
+}
     /**
      * Display the specified resource.
      *
@@ -87,8 +115,7 @@ public function confirm(Aproval $aproval)
      */
     public function show(aproval $aproval)
     {
-        // $data = aproval::where('id', 'LIKE', $id);
-        return view('aproval.view');
+    //
     }
 
     /**
@@ -99,7 +126,7 @@ public function confirm(Aproval $aproval)
      */
     public function edit(aproval $aproval)
     {
-        //
+        return view('aproval.edit' , compact('aproval'));
     }
 
     /**
