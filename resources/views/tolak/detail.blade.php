@@ -516,256 +516,104 @@
             <div class="mb-5 font-semibold">
                 <span> lainnya / <span class="text-[#00B7FF]">Di Tolak</span></span>
             </div>
-            <div class="panel">
-                <div class="flex justify-between">
-                     {{-- serch dan filter --}}
-                    <div class="flex justify-start items-center">
-                        
-                    </div>
-                    <div class="mb-5 flex flex-wrap  mt-5 items-center">
-                       {{-- filter --}}
-                       <div class="border-2 rounded-full border-gray-400 flex items-center mr-2 ">
-                        <span class="mr-1 ml-3">
-                            filter
-                        </span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" mr-3 w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
-                        </svg>
-                    </div>
-                    {{-- serch --}}
-                    <div class="mr-4 ">
-                        <input class=" p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent" type="text" placeholder="cari">
-                    </div>
-                    </div>
-                </div>
+            <div class="flex justify-end items-center pr-16">
+             <div class="Button w-[116px] h-[37.33px] pl-[27.63px] pr-[27.37px] pt-[8.67px] pb-[8.66px] rounded-lg border border border border border-slate-300 justify-end items-end inline-flex">
+                <div class="Kembali text-center text-slate-700 text-[14px] font-medium leading-tight tracking-wide">Kembali</div>
+             </div>
+            </div>
 
-              {{-- tabel --}}
-
-              <div class="flex flex-col">
-                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                  <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                    <div class="overflow-hidden">
-                      <table class="min-w-full text-left text-sm font-light">
-                        <thead class="border-b font-medium dark:border-neutral-500 ">
-                          <tr class="">
-                            <th scope="col" class="px-6 py-4">#</th>
-                            <th scope="col" class="px-6 py-4">Nama</th>
-                            <th scope="col" class="px-6 py-4">Jurusan</th>
-                            <th scope="col" class="px-6 py-4">Sekolah</th>
-                            <th scope="col" class="px-6 py-4">Alasan</th>
-                            <th scope="col" class="px-6 py-4 ">Kelas</th>
-                            <th scope="col" class="px-6 py-4">Aksi</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr
-                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                            <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                            <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                            <td class="whitespace-nowrap px-4 py-4">RPL</td>
-                            <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                            <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                            <td class="whitespace-nowrap px-6 py-4">12</td>
-                            <td class="whitespace-nowrap px-4 py-4">
-                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent " data-te-toggle="modal"
-                                    data-te-target="#exampleModalCenteredScrollable">
-                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                    </div>
-                            </td>
-                          </tr>
-                          <tr
-                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                            <td class="whitespace-nowrap px-4 py-4 font-medium">2</td>
-                            <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                            <td class="whitespace-nowrap px-4 py-4">RPL</td>
-                            <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                            <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                            <td class="whitespace-nowrap px-6 py-4">12</td>
-                            <td class="whitespace-nowrap px-4 py-4">
-                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent " data-te-toggle="modal"
-                                    data-te-target="#exampleModalCenteredScrollable">
-                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                    </div>
-                            </td>
-                          </tr>
-                          <tr
-                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                            <td class="whitespace-nowrap px-4 py-4 font-medium">3   </td>
-                            <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                            <td class="whitespace-nowrap px-4 py-4">RPL</td>
-                            <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                            <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                            <td class="whitespace-nowrap px-6 py-4">12</td>
-                            <td class="whitespace-nowrap px-4 py-4">
-                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent " data-te-toggle="modal"
-                                    data-te-target="#exampleModalCenteredScrollable">
-                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                    </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+            <div class="DivGrid w-[1133px] h-[954px] pl-[20px] pt-[19.67px] pb-[93.33px] justify-start items-center inline-flex">
+                <div class="Group422 w-[1133px] h-[841px] relative">
+                  <div class="DivCard w-[1133px] h-[677px] left-[7px] top-[164px] absolute bg-white rounded-lg shadow"></div>
+                  <div class="Group421 w-[1133px] h-[794px] left-0 top-0 absolute">
+                    <div class="DivTabs w-[1133px] h-[630px] pb-[35.98px] left-[7px] top-[164px] absolute flex-col justify-start items-center gap-5 inline-flex">
+                      <div class="DivBorderB2 w-[1133px] border border-slate-200 justify-start items-start inline-flex">
+                        <div class="DivTabsList pr-[348.16px] justify-start items-start flex">
+                          <div class="Button pl-5 pr-[20.21px] pt-[17px] pb-[19px] border border-sky-500 justify-start items-center gap-[8.35px] flex">
+                            <div class="Detail text-center text-sky-500 text-[14px] font-medium leading-tight tracking-wide">Detail</div>
+                          </div>
+                          <div class="Button pl-[18px] pr-[19.83px] pt-[17px] pb-[19px] justify-start items-center gap-[6.36px] flex">
+                            <div class="BerkasBerkas text-center text-slate-500 text-[14px] font-medium leading-tight tracking-wide">Berkas - berkas</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="DivSpaceY5 w-[1133px] h-[564px] pl-10 flex-col justify-start items-start gap-[20.01px] flex">   
+                        <div class="Label flex-col justify-start items-start gap-1.5 flex">
+                          <div class="Nama text-slate-600 text-[14px] font-medium leading-tight">Nama</div>
+                          <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
+                            <div class="MuhamadDimasJuliansyah w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">Muhamad Dimas Juliansyah</div>
+                          </div>
+                        </div>
+                        <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                          <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                            <div class="JenisKelamin text-slate-600 text-[14px] font-medium leading-tight">Jenis Kelamin</div>
+                            <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
+                              <div class="LakiLaki w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">Laki - laki</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                          <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                            <div class="Nisn text-slate-600 text-[14px] font-medium leading-tight">NISN</div>
+                            <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
+                              <div class=" w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">008187281117</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                          <div class="KelasJurusan text-slate-600 text-[14px] font-medium leading-tight">Kelas/Jurusan</div>
+                          <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
+                            <div class="XiRpl2 w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">XI RPL 2</div>
+                          </div>
+                        </div>
+                        <div class="Label flex-col justify-start items-start gap-1.5 flex">
+                          <div class="AsalSekolah text-slate-600 text-[14px] font-medium leading-tight">Asal Sekolah</div>
+                          <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
+                            <div class="Smkn12Malang w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">SMKN 12 Malang</div>
+                          </div>
+                        </div>
+                        <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                          <div class="TempatTanggalLahir text-slate-600 text-[14px] font-medium leading-tight">Tempat, Tanggal Lahir</div>
+                          <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
+                            <div class="Malang21Juli2006 w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">Malang, 21 Juli 2006</div>
+                          </div>
+                        </div>
+                        <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                          <div class="Alamat text-slate-600 text-[14px] font-medium leading-tight">Alamat</div>
+                          <div class="Pseudo w-[682.22px] justify-center items-center inline-flex">
+                            <div class="GgMekkahJlArabMalang w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">Gg. Mekkah, Jl. Arab, Malang</div>
+                          </div>
+                        </div>
+                        <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                          <div class="LamaMagang text-slate-600 text-[14px] font-medium leading-tight">Lama Magang</div>
+                          <div class="Pseudo w-[682.22px] justify-center items-center inline-flex">
+                            <div class="Januari202530Juni2025 w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">2 Januari 2025 - 30 Juni 2025</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="DivCard w-[1133px] h-[123px] left-0 top-0 absolute bg-white rounded-lg shadow">
+                      <div class="DivBorderB2 w-[1133px] border border-slate-200 justify-start items-start inline-flex">
+                        <div class="DivBorderB2 w-[1133px] border border-slate-200 justify-start items-start inline-flex">
+                          <div class="DivTabsList pr-[348.16px] justify-start items-start flex">
+                            <div class="Button pl-5 pr-[20.21px] py-[18px] border border-red-600 justify-start items-center gap-[8.35px] flex">
+                              <div class="AlasanPenolakan text-center text-red-600 text-[14px] font-medium leading-tight tracking-wide">Alasan Penolakan</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="DivFlex w-[116px] h-[50px] left-[828px] top-[612px] absolute"></div>
+                      <div class="Label left-[40px] top-[66.68px] absolute flex-col justify-start items-start gap-1.5 inline-flex">
+                        <div class="Alasan text-slate-600 text-[14px] font-medium leading-tight">Alasan </div>
+                        <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
+                          <div class="KurangLengkapPadaBerkasBerkas w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">kurang lengkap pada berkas berkas</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            {{-- end tabel --}}
-                {{-- paginate --}}
-                <div class="flex justify-between">
-                    <p>
-                        menampilkan 1 sampai 10 dari 15 data
-                    </p>
-                    <nav aria-label="Page navigation example">
-                        <ul class="list-style-none flex">
-                          <li>
-                            <a
-                              class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400"
-                              >Previous</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
-                              href="#!"
-                              >1</a
-                            >
-
-                          </li>
-                          <li aria-current="page">
-                            <a
-                              class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                              href="#!"
-                              >2
-
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                              href="#!"
-                              >3</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                              href="#!"
-                              >Next</a
-                            >
-                          </li>
-                        </ul>
-                      </nav>
-                </div>
-            </div>
-        </div>
-        <!-- end main content section -->
-
-    </div>
-   {{-- modal --}}
-   <div
-   data-te-modal-init
-   class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
-   id="exampleModalCenteredScrollable"
-   tabindex="-1"
-   aria-labelledby="exampleModalCenteredScrollable"
-   aria-modal="true"
-   role="dialog">
-   <div
-       data-te-modal-dialog-ref
-       class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
-       <div
-       class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
-       <div
-           class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-           <!--Modal title-->
-           <h5
-           class="text-xl font-medium leading-normal text-neutral-900 dark:text-neutral-200"
-           id="exampleModalCenteredScrollableLabel">
-           Detail Siswa Ditolak
-           </h5>
-           <!--Close button-->
-           <button
-           type="button"
-           class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
-           data-te-modal-dismiss
-           aria-label="Close">
-           <svg
-               xmlns="http://www.w3.org/2000/svg"
-               fill="none"
-               viewBox="0 0 24 24"
-               stroke-width="1.5"
-               stroke="currentColor"
-               class="h-6 w-6">
-               <path
-               stroke-linecap="round"
-               stroke-linejoin="round"
-               d="M6 18L18 6M6 6l12 12" />
-           </svg>
-           </button>
-       </div>
-
-       <!--Modal body-->
-       <div class="relative p-4">
-           <p class=" text-md">
-           Nama :
-           </p >
-
-           <p class="ml-5 mt-2 text-md text-gray-400">
-               Mark
-           </p>
-
-           <p class=" text-md mt-4">
-               Jurusan :
-           </p >
-
-           <p class="ml-5 mt-2 text-md text-gray-400">
-               RPL
-           </p>
-
-           <p class=" text-md mt-4">
-               Sekolah :
-           </p >
-
-           <p class="ml-5 mt-2 text-md text-gray-400">
-               SMKN 1 KEPANJEN
-           </p>
-
-           <p class=" text-md mt-4">
-               Alasan :
-           </p >
-
-           <p class="ml-5 mt-2 text-md text-gray-400">
-               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?
-           </p>
-
-           <p class=" text-md mt-4">
-               Kelas :
-           </p >
-
-           <p class="ml-5 mt-2 text-md text-gray-400">
-              12
-           </p>
-
-
-       </div>
-
-       <!--Modal footer-->
-       <div
-           class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-           <button
-           type="button"
-           class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-           data-te-ripple-init
-           data-te-modal-dismiss
-           data-te-ripple-color="light">
-           Kembali
-           </button>
-       </div>
-       </div>
-   </div>
-   </div>
-{{-- end modal --}}
+            
 
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>

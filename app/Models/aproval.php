@@ -27,6 +27,7 @@ class aproval extends Model
         'cv',
         'email',
         'password',
+        'no',
         'role',
         'status',
     ];
