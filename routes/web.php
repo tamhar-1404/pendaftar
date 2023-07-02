@@ -14,6 +14,7 @@ use App\Http\Controllers\JurnalSiswaController;
 use App\Http\Controllers\AprovalController;
 use App\Http\Controllers\LupaPasswordController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PiketController;
 
 use App\Models\LupaPassword;
 use Illuminate\Support\Facades\Route;
@@ -45,7 +46,9 @@ Route::resource('/sp', App\Http\Controllers\ASiswaController::class);
 Route::resource('/Berita', App\Http\Controllers\BlogController::class);
 Route::post('/Berita/like', [BlogController::class, 'like'])->name('Berita.like');
 Route::resource('/chat', App\Http\Controllers\ASiswaController::class);
-Route::resource('/piket', App\Http\Controllers\ASiswaController::class);
+Route::resource('/piket', App\Http\Controllers\PiketController::class);
+Route::post('/rubah', [PiketController::class, 'rubah'])->name('rubah');
+Route::get('/sore', [PiketController::class, 'sore'])->name('sore');
 Route::resource('/mou', App\Http\Controllers\ASiswaController::class);
 Route::resource('/tolak', App\Http\Controllers\TolakController::class);
 Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
