@@ -3143,6 +3143,7 @@
     </script>
     <script>
       function detail(id){
+        alert(id);
         $.ajax({
           url:"{{ url('approvalizin/detail') }}",
           type:'POST',
