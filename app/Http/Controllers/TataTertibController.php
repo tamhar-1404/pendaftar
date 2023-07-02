@@ -6,7 +6,7 @@ use App\Models\TataTertib;
 use App\Http\Requests\StoreTataTertibRequest;
 use App\Http\Requests\UpdateTataTertibRequest;
 use Illuminate\Http\Request as HttpRequest;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class TataTertibController extends Controller
 {
@@ -17,8 +17,8 @@ class TataTertibController extends Controller
      */
     public function index()
     {
-        $data = TataTertib::paginate(5); // Mengambil 5 data per halaman
-        return view('tatatertib.index', compact('data'));
+        $tatatertib = TataTertib::paginate(5); // Mengambil 5 tatatertib per halaman
+        return view('tatatertib.index', compact('tatatertib'));
     }
 
     /**
@@ -31,35 +31,24 @@ class TataTertibController extends Controller
         return view('tatatertib.laycreate');
     }
 
-    public function inserttatib(HttpRequest $request)
-    {
-        $this->validate($request, [
-            'judul' => 'required',
-            'deskripsi' => 'required',
-
-        ], [
-            'judul.required' => 'Harus diisi',
-            'deskripsi.required' => 'Harus diisi',
-
-        ]);
-
-        $data = TataTertib::create([
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
-        ]);
-        $data->save();
-
-        return redirect()->route('tatatertib.index')->with('success', 'Data Berhasil Ditambahkan');
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreTataTertibRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTataTertibRequest $request)
+    public function store(Request $request, TataTertib  $tataTertib)
     {
+            $this->validate($request, [
+                'judul' => 'required',
+                'deskripsi'  => 'required'
+            ]);
+
+            TataTertib::create([
+                'judul' => $request->judul,
+                'deskripsi' => $request->deskripsi
+            ]);
+            return redirect()->route('tatatertib.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -81,36 +70,8 @@ class TataTertibController extends Controller
      */
     public function edit(TataTertib $tataTertib, $id)
     {
-
-    }
-
-    public function edittatib($id)
-    {
-        $data = TataTertib::find($id);
-        return view('tatatertib.layedit', compact('data'));
-    }
-
-    public function updatetatib(HttpRequest $request , TataTertib  $tataTertib, $id)
-    {
-        // dd($data);
-       $data = TataTertib::find($id);
-       $data->update([
-        'judul'=>$request->judul,
-        'deskripsi'=>$request->deskripsi,
-       ]);
-        return redirect()->route('tatatertib.index')->with('success', 'Data Berhasil Di Update');
-    }
-
-    public function deletetatib(TataTertib $tataTertib, $id)
-    {
-        // Temukan item berdasarkan ID
-        $data = TataTertib::findOrFail($id);
-
-        // Hapus item
-        $data->delete();
-
-        // Redirect atau berikan respons sesuai kebutuhan Anda
-        return redirect()->route('tatatertib.index')->with('success', 'Item berhasil dihapus');
+        $tataTertib = TataTertib::find($id);
+        return view('tatatertib.layedit', compact('tataTertib'));
     }
 
     /**
@@ -120,9 +81,19 @@ class TataTertibController extends Controller
      * @param  \App\Models\TataTertib  $tataTertib
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTataTertibRequest $request, TataTertib $tataTertib)
+    public function update(Request $request, TataTertib $tataTertib, $id)
     {
-        //
+        $tataTertib = TataTertib::findOrFail($id);
+        $this->validate($request , [
+            'judul' => 'required',
+            'deskripsi' => 'required'
+        ]);
+        $tataTertib->update([
+            'judul'=>$request->judul,
+            'deskripsi'=>$request->deskripsi
+        ]);
+        // dd($request);
+         return redirect()->route('tatatertib.index')->with('success', 'Data Berhasil Di Update');
     }
 
     /**
@@ -133,6 +104,15 @@ class TataTertibController extends Controller
      */
     public function destroy(TataTertib $tataTertib, $id)
     {
+        {
+            // Temukan item berdasarkan ID
+            $tataTertib = TataTertib::findOrFail($id);
 
+            // Hapus item
+            $tataTertib->delete();
+
+            // Redirect atau berikan respons sesuai kebutuhan Anda
+            return redirect()->route('tatatertib.index')->with('success', 'Item berhasil dihapus');
+        }
     }
 }

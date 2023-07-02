@@ -826,10 +826,15 @@
        var options = {
       series: [{
       name: 'Mengisi',
-      data: [25, 27, 27, 23, 24,26, 27, 29, 28, 27, 25, 23]
+      data: [{{$mengisi_jan}},{{$mengisi_feb}},{{$mengisi_mar}},{{$mengisi_apr}},{{$mengisi_mei}},
+        {{$mengisi_jun}},{{$mengisi_jul}},{{$mengisi_aug}},{{$mengisi_sep}},{{$mengisi_okt}},{{$mengisi_nov}},{{$mengisi_des}}
+      ]
     }, {
       name: 'Tidak Mengisi',
-      data: [6, 1, 4, 7, 7, 4, 4, 2, 2, 4, 5, 8]
+      data: [
+        {{$mengisi_jan}},{{$mengisi_feb}},{{$mengisi_mar}},{{$mengisi_apr}},{{$mengisi_mei}},
+        {{$mengisi_jun}},{{$mengisi_jul}},{{$mengisi_aug}},{{$mengisi_sep}},{{$mengisi_okt}},{{$mengisi_nov}},{{$mengisi_des}}
+      ]
     }],
       chart: {
       type: 'bar',

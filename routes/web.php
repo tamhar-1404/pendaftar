@@ -7,9 +7,15 @@ use App\Http\Controllers\BeritaGuruController;
 use App\Http\Controllers\AlumniGuruController;
 use App\Http\Controllers\BeritaSiswaController;
 use App\Http\Controllers\AbsensiGuruController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TataTertibController;
 use App\Http\Controllers\JurnaladminControlle;
+use App\Http\Controllers\JurnalSiswaController;
 use App\Http\Controllers\AprovalController;
+use App\Http\Controllers\LupaPasswordController;
+use App\Http\Controllers\RegisterController;
+
+use App\Models\LupaPassword;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
 /*
@@ -36,11 +42,13 @@ Route::resource('/tatatertib', App\Http\Controllers\ASiswaController::class);
 Route::resource('/laporansiswa', App\Http\Controllers\ASiswaController::class);
 Route::resource('/laporan_piket', App\Http\Controllers\ASiswaController::class);
 Route::resource('/sp', App\Http\Controllers\ASiswaController::class);
-Route::resource('/Berita', App\Http\Controllers\ASiswaController::class);
+Route::resource('/Berita', App\Http\Controllers\BlogController::class);
+Route::post('/Berita/like', [BlogController::class, 'like'])->name('Berita.like');
 Route::resource('/chat', App\Http\Controllers\ASiswaController::class);
 Route::resource('/piket', App\Http\Controllers\ASiswaController::class);
 Route::resource('/mou', App\Http\Controllers\ASiswaController::class);
-Route::resource('/tolak', App\Http\Controllers\ASiswaController::class);
+Route::resource('/tolak', App\Http\Controllers\TolakController::class);
+Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
 Route::post('/aproval/{aproval}/confirm', [App\Http\Controllers\AprovalController::class, 'confirm'])->name('aproval.confirm');
 Route::post('/aproval/{aproval}/tolak', [App\Http\Controllers\AprovalController::class, 'tolak'])->name('aproval.tolak');
 
@@ -58,7 +66,11 @@ Route::resource('/berita_guru', App\Http\Controllers\BeritaController::class);
 
 // akhir Pembimbing
 // Siswa
+Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
+Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
+Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
 
+Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'downloadPDF']);
 
 
 // akhir siswa
@@ -66,14 +78,42 @@ Route::resource('/berita_guru', App\Http\Controllers\BeritaController::class);
 // login
 
 Route::resource('/login', App\Http\Controllers\LoginController::class);
-Route::get('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
-
-
-// end login
-
-
-
-
-Route::get('/detail', function () {
-    return view('aproval.view');
+Route::post('/register', [LoginController::class, 'login'])->name('register');
+Route::get('/percobaan', function () {
+    return view('login.iyah');
 });
+
+
+// Rute untuk mengirim email reset password
+Route::get('/lupapassword', [LupaPasswordController::class, 'index'])->name('password.request');
+Route::post('/lupapassword', [LupaPasswordController::class, 'store'])->name('password.email');
+
+// Rute untuk menampilkan form reset password
+Route::get('/resetpassword/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
+Route::post('/resetpassword', [LupaPasswordController::class, 'update'])->name('password.update');
+
+// Route::resource('/resetpassword', App\Http\Controllers\UbahPasswordController::class);
+// end login
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['role:Admin'])->group(function () {
+        // Route khusus untuk admin
+        Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
+        Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+    });
+
+    Route::middleware(['role:murid'])->group(function () {
+        // Route khusus untuk murid
+
+    });
+
+    Route::middleware(['role:guru'])->group(function () {
+        // Route khusus untuk guru
+
+    });
+});
+
+
+
+
+

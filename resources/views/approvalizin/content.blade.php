@@ -2838,16 +2838,16 @@
                   </svg>
               </button>  
           </div>
-          <button id="detailbutton"
+          <a href=""
               class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium  hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90"   data-te-toggle="modal" data-modal-target="staticModal"
-              data-modal-toggle="staticModal">
+              data-modal-toggle="staticModal" onclick="detail({{ $izin->id }})">
               <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                   viewBox="0 0 576 512">
                   <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                   <path
                       d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z" />
               </svg>
-          </button>
+          </a>
         </div>
       </div>
         @empty
@@ -2899,12 +2899,6 @@
                             </li>
                         </ol>
                     </div>
-                    <button
-                                                            class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
-                                                            data-te-toggle="modal" data-modal-target="staticModal"
-                                                            data-modal-toggle="staticModal">
-                                                            <span class=" p-1  font-semibold ">Lihat</span>
-                                                        </button>
                     <div class="mt-4 sm:mt-5 lg:mt-6">
                         <div class="flex items-center justify-between">
                             <h2
@@ -3030,114 +3024,6 @@
                                                 Sakit
                                             </td>
                                         </tr>
-                                        <tr
-                                            class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                2
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                Lionel Messi
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                SMKN 12 Malang
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2030
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2031
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-red-500 dark:text-navy-100 sm:px-5">
-                                                Sakit
-                                            </td>
-                                        </tr>
-                                        <tr
-                                            class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                3
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                Lionel Messi
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                SMKN 12 Malang
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2030
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2031
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-red-500 dark:text-navy-100 sm:px-5">
-                                                Sakit
-                                            </td>
-                                        </tr>
-                                        <tr
-                                            class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                4
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                Lionel Messi
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                SMKN 12 Malang
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2030
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2031
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-yellow-300 dark:text-navy-100 sm:px-5">
-                                                Izin
-                                            </td>
-                                        </tr>
-                                        <tr
-                                            class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                5
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                Lionel Messi
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                SMKN 12 Malang
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2030
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2031
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-yellow-300 dark:text-navy-100 sm:px-5">
-                                                Izin
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
                                 <div
@@ -3229,66 +3115,9 @@
                 </button>
             </div>
             <!-- Modal body -->
-               
-        @foreach ($approvalizin as $izin)
-            
-       
-            <div class="p-6 space-y-6">
-                <div>
-                    <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
-                        Nama
-                    </p>
-                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        {{ $izin->nama }}
-                    </p>
-                </div>
-                <div>
-                  <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                      Sekolah
-                  </p>
-                  <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                      {{ $izin->sekolah }}
-                  </p>
-                </div>
-                <div>
-                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                        Tanggal awal
-                    </p>
-                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        {{ $izin->dari }}
-                    </p>
-                </div>
-                <div>
-                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                        Tanggal akhir
-                    </p>
-                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        {{ $izin->sampai }}
-                    </p>
-                </div>
-                <div>
-                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                        keterangan
-                    </p>
-                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        {{ $izin->keterangan }}
-                    </p>
-                </div>
-                <div>
-                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                        deskripsi
-                    </p>
-                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        {{ $izin->deskripsi }}
-                    </p>
-                </div>
-                <div>
-                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                        Bukti
-                    </p>
-                    <img src="siswa/images/carousel2.jpeg" alt="">
-                </div>
-            </>
+            <div class="p-6 space-y-6" id="data_detail">
+                
+      
             <!-- Modal footer -->
             <div
                 class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
@@ -3300,7 +3129,7 @@
 </div>
    
 
-        @endforeach ($approvalizin as $izin )
+  
         </main>
     </div>
     <!--
@@ -3311,6 +3140,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script>
         window.addEventListener("DOMContentLoaded", () => Alpine.start());
+    </script>
+    <script>
+      function detail(id){
+        $.ajax({
+          url:"{{ url('approvalizin/detail') }}",
+          type:'POST',
+          data:{id:id},
+          success:function(getreturn){
+              $('#data_detail').html(getreturn);
+          }
+        })
+      }
+
     </script>
 </body>
 

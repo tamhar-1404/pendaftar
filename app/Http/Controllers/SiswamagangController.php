@@ -15,7 +15,7 @@ class SiswamagangController extends Controller
      */
     public function index()
     {
-        return view('siswamagang_siswa.index');
+        return view('siswamagang.index');
     }
 
     /**

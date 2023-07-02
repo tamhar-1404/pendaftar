@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use App\Models\jurnalsiswa;
 use App\Http\Requests\StorejurnalsiswaRequest;
 use App\Http\Requests\UpdatejurnalsiswaRequest;
@@ -58,7 +59,7 @@ class JurnalsiswaController extends Controller
             'status' => $request -> status
 
         ]);
-        return redirect()->route('jurnalsiswa.index');
+        return redirect()->route('jurnal_siswa.index');
     }
     /**
      * Display the specified resource.
@@ -102,5 +103,19 @@ class JurnalsiswaController extends Controller
     public function destroy(jurnalsiswa $jurnalsiswa)
     {
         //
+    }
+
+    public function downloadPDF()
+    {
+        $data = JurnalSiswa::all();
+
+        $options = new Options();
+        $options->set('defaultFont', 'Arial'); // Atur font default sesuai preferensi Anda
+        $options->set('isRemoteEnabled', true); // Aktifkan opsi mengambil sumber daya jarak jauh jika diperlukan
+
+        $pdf = new Dompdf($options);
+        $pdf->loadView('pdf.data', compact('data'));
+
+        return $pdf->stream('data.pdf');
     }
 }

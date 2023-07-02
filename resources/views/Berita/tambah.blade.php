@@ -146,9 +146,10 @@
                         @enderror
                         <label>
                             <span class="font-medium text-slate-600 dark:text-navy-100">Foto</span>
+                            <img class="img-preview img-fluid mb-3 col-sm-5" alt="">
                             <span class="relative mt-1.5 flex">
                                 <div class="filepond fp-bordered">
-                                    <input id="foto" name="foto" type="file" >
+                                    <input id="foto" name="foto" type="file" onchange="previewImage()">
                                   </div>
                             </span>
                         </label>
@@ -191,5 +192,19 @@
         ]
     });
 </script>
+<script>
+    function previewImage() {
+        const image = document.querySelector('#foto');
+        const imgPreview = document.querySelector('.img-preview');
 
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>
 </html>
