@@ -19,18 +19,18 @@ return new class extends Migration
             $table->string('status_sp')->nullable();
             $table->string('foto_siswa')->nullable();
             $table->string('kelas')->nullable();
-            $table->string('tempat_lahir')->nullable();
-            $table->string('tanggal_lahir')->nullable();
+            $table->string('tempat')->nullable();
+            $table->string('tanggal')->nullable();
             $table->string('jurusan')->nullable();
             $table->string('sekolah')->nullable();
             $table->string('alamat')->nullable();
             $table->string('nisn')->nullable();
             $table->string('no')->nullable();
-            $table->string('jk')->nullable();
-            $table->string('awal')->nullable();
-            $table->string('akhir')->nullable();
+            $table->string('jeniskelamin')->nullable();
+            $table->string('magang_awal')->nullable();
+            $table->string('magang_akhir')->nullable();
             $table->string('email')->nullable();
-            $table->string('role')->nullable();
+            $table->string('role')->default('siswa');
             $table->timestamps();
         });
     }

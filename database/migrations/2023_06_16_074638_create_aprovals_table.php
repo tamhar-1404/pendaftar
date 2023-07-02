@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('tempat')->nullable();
             $table->string('tanggal')->nullable();
             $table->string('kelas')->nullable();
-            $table->string('nisn')->nullable();
+            $table->string('nisn')->unique();
             $table->enum('jeniskelamin', ['Laki-laki', 'Perempuan'])->nullable();
             $table->string('alamat')->nullable();
             $table->string('sekolah')->nullable();
