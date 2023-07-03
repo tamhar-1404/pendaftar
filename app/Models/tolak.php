@@ -30,6 +30,6 @@ class tolak extends Model
         'password',
         'no',
         'role',
-        'status',
+        'status'
     ];
 }

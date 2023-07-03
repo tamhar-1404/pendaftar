@@ -585,26 +585,86 @@
                                 @forelse ( $item  as $items)
                                 <tr
                                 class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                <td class="whitespace-nowrap px-4 py-4 font-medium">{{$items -> id}}</td>
-                                <td class="whitespace-nowrap px-4 py-4">{{$items -> nama}}</td>
-                                <td class="whitespace-nowrap px-4 py-4">{{$items -> tanggal}}</td>
-                                <td class="whitespace-nowrap px-4 py-4">{{$items -> sekolah}}</td>
-                                <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$items -> kegiatan}}</td>
+                                <td class="whitespace-nowrap px-4 py-4 font-medium">{{$items ->id}}</td>
+                                <td class="whitespace-nowrap px-4 py-4">{{$items->nama}}</td>
+                                <td class="whitespace-nowrap px-4 py-4">{{$items->tanggal}}</td>
+                                <td class="whitespace-nowrap px-4 py-4">{{$items->sekolah}}</td>
+                                <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$items->kegiatan}}</td>
                                 <td class="whitespace-nowrap px-6 pl-17 py-4"><img
                                     src="{{ asset('storage/image/' . $items->image) }}"
                                     width="100px" alt="">
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-4">
-                                    <a href="#">
-                                        <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent" data-te-toggle="modal"
-                                        data-modal-target="staticModal{{$items -> id}}" data-modal-toggle="staticModal{{$items -> id}}" ">
+                                        <button class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
+                                        data-modal-target="authentication-modal" data-modal-toggle="authentication-modal">
                                             <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                        </div>
-                                    </a>
+                                        </button>
                                 </td>
                               </tr>
 
                             {{-- end tabel --}}
+                             {{-- modal --}}
+                                <div id="authentication-modal"  tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                    <div class="relative w-full max-w-2xl max-h-full">
+                                        <!-- Modal content -->
+                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                            <!-- Modal header -->
+                                            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                Detail Jurnal
+                                                </h3>
+                                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="staticModal{{$items->id}}">
+                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                </button>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <div class="p-6 space-y-6">
+                                                <div>
+                                                    <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
+                                                        Nama
+                                                    </p>
+                                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                        {{$items->nama }}
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                        Tanggal
+                                                    </p>
+                                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                        {{$items->tanggal}}
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                        Sekolah
+                                                    </p>
+                                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                        {{$items->sekolah}}
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                        Kegiatan
+                                                    </p>
+                                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                        {{$items->kegiatan}}
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                        Bukti
+                                                    </p>
+                                                    <img src="{{ asset('storage/image/' . $items->image) }}" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- Modal footer -->
+                                            <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                                <button data-modal-hide="staticModal{{$items->id}}" type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             @empty
 
                             @endforelse
@@ -672,73 +732,7 @@
         <!-- end footer section -->
 
     </div>
-
-     @forelse ( $item as $modal)
-     {{-- modal --}}
-     <div id="staticModal{{$modal -> id}}"  tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative w-full max-w-2xl max-h-full">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <!-- Modal header -->
-                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                       Detail Jurnal
-                    </h3>
-                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="staticModal{{$modal -> id}}">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                    </button>
-                </div>
-                <!-- Modal body -->
-                <div class="p-6 space-y-6">
-                    <div>
-                        <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
-                            Nama
-                        </p>
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            {{$items-> nama }}
-                        </p>
-                    </div>
-                    <div>
-                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                            Tanggal
-                        </p>
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            {{$modal -> tanggal}}
-                        </p>
-                    </div>
-                    <div>
-                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                            Sekolah
-                        </p>
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            {{$modal -> sekolah}}
-                        </p>
-                    </div>
-                    <div>
-                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                            Kegiatan
-                        </p>
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            {{$modal -> kegiatan}}
-                        </p>
-                    </div>
-                    <div>
-                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                            Bukti
-                        </p>
-                        <img src="{{ asset('storage/image/' . $modal->image) }}" alt="">
-                    </div>
-                </div>
-                <!-- Modal footer -->
-                <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                    <button data-modal-hide="staticModal{{$modal -> id}}" type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    @empty
-
-    @endforelse
+    
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>

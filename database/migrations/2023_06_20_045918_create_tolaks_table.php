@@ -37,7 +37,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('no');
             $table->string('role')->default('siswa');
-            $table->string('status')->default('menunggu');
+            $table->string('status')->default('ditolak');
             $table->rememberToken();
             $table->timestamps();
         });

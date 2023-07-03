@@ -778,7 +778,10 @@
                                   </tr>
                                 @forelse ($siswas as $siswa )
                                 <tr  >
-                                    <td >#</td>
+                                    @php
+                                    $no=1;
+                                    @endphp
+                                    <td>{{ $no++ }}</td>
                                     <td>{{ $siswa->name }}</td>
                                     <td>{{ $siswa->jurusan }}</td>
                                     <td>{{ $siswa->email }}</td>
