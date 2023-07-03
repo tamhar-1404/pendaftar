@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\aproval;
 use App\Models\User;
 use App\Models\Siswa;
+use App\Models\tolak;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreaprovalRequest;
 use App\Http\Requests\UpdateaprovalRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DemoMail;
+use App\Mail\Guru_email;
 use App\Mail\tolakEmail;
 use Illuminate\Support\Facades\Storage;
 
@@ -46,20 +48,25 @@ class AprovalController extends Controller
 {
     //
 }
-
 public function confirm(Aproval $aproval)
 {
     if ($aproval->status === 'menunggu') {
         Mail::to($aproval->email)->send(new DemoMail($aproval));
 
+        $users = User::where('role', 'guru')->where('sekolah', $aproval->sekolah)->get();
+        foreach ($users as $user) {
+           Mail::to($user->email)->send(new Guru_email());
+        }
         $user = User::create([
             'name' => $aproval->name,
             'email' => $aproval->email,
+            'sekolah' => $aproval->sekolah,
             'role' => 'siswa',
             'password' => bcrypt($aproval->password)
         ]);
+        $foto_siswa = $aproval->foto_siswa;
         Siswa::create([
-            'foto_siswa' => $aproval->foto_siswa,
+            'foto_siswa' => $foto_siswa,
             'name' => $aproval->name,
             'jurusan' => $aproval->jurusan,
             'status_sp' => $aproval->status_sp,
@@ -75,6 +82,9 @@ public function confirm(Aproval $aproval)
             'nisn' => $aproval->nisn,
             'alamat' => $aproval->alamat
         ]);
+
+        Storage::move('public/pendaftaran/' . $foto_siswa, 'public/Siswa/' . $foto_siswa);
+
         Storage::delete('public/pendaftaran/'. $aproval->foto_siswa);
         Storage::delete('public/pendaftaran/'. $aproval->skck);
         Storage::delete('public/pendaftaran/'. $aproval->cv);
@@ -87,6 +97,7 @@ public function confirm(Aproval $aproval)
         return redirect()->back()->with('error', 'Maaf, tidak dapat melakukan konfirmasi pada data');
     }
 }
+
 public function tolak(Request $request, Aproval $aproval)
 {
     $alasan = $request->input('alasan');
@@ -95,18 +106,54 @@ public function tolak(Request $request, Aproval $aproval)
         $emailData = [
             'content' => 'Data Anda telah ditolak dengan alasan: ' . $alasan,
         ];
-        Mail::to($aproval->email)->send(new TolakEmail($emailData));
-         Storage::delete('public/pendaftaran/'. $aproval->foto_siswa);
-        Storage::delete('public/pendaftaran/'. $aproval->skck);
-        Storage::delete('public/pendaftaran/'. $aproval->cv);
-        Storage::delete('public/pendaftaran/'. $aproval->sp_ortu);
-        Storage::delete('public/pendaftaran/'. $aproval->sp_diri);
+
+        $foto_siswa = $aproval->foto_siswa;
+        $sp_diri = $aproval->sp_diri;
+        $sp_ortu = $aproval->sp_ortu;
+        $skck = $aproval->skck;
+        $cv = $aproval->cv;
+
+        tolak::create([
+            'name' => $aproval->name,
+            'alasan' => $alasan,
+            'tempat' => $aproval->tempat,
+            'tanggal' => $aproval->tanggal,
+            'kelas' => $aproval->kelas,
+            'nisn' => $aproval->nisn,
+            'jeniskelamin' => $aproval->jeniskelamin,
+            'alamat' => $aproval->alamat,
+            'sekolah' => $aproval->sekolah,
+            'jurusan' => $aproval->jurusan,
+            'magang_awal' => $aproval->magang_awal,
+            'magang_akhir' => $aproval->magang_akhir,
+            'foto_siswa' => $foto_siswa,
+            'sp_diri' => $sp_diri,
+            'sp_ortu' => $sp_ortu,
+            'skck' => $skck,
+            'cv' => $cv,
+            'email' => $aproval->email,
+            'no' => $aproval->no,
+            'password' => bcrypt($aproval->password)
+        ]);
+
+        Mail::to($aproval->email)->send(new TolakEmail($aproval));
+
+
+        Storage::move('public/pendaftaran/' . $foto_siswa, 'public/ditolak/' . $foto_siswa);
+        Storage::move('public/pendaftaran/' . $sp_diri, 'public/ditolak/' . $sp_diri);
+        Storage::move('public/pendaftaran/' . $sp_ortu, 'public/ditolak/' . $sp_ortu);
+        Storage::move('public/pendaftaran/' . $skck, 'public/ditolak/' . $skck);
+        Storage::move('public/pendaftaran/' . $cv, 'public/ditolak/' . $cv);
+
         $aproval->delete();
-        return redirect()->route('aproval.index')->with('status', 'Data berhasil ditolak!');
+
+        return redirect()->route('aproval.index');
     } else {
         return redirect()->back()->with('error', 'Masukkan alasan penolakan.');
     }
 }
+
+
     /**
      * Display the specified resource.
      *

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Guru_admin;
 use App\Models\User;
 use App\Models\Siswa;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AkunGuru;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreGuru_adminRequest;
 use App\Http\Requests\UpdateGuru_adminRequest;
@@ -44,39 +46,48 @@ class GuruAdminController extends Controller
      * @param  \App\Http\Requests\StoreGuru_adminRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'image' => 'required',
-            'nama' => 'required',
-            'sekolah' => 'required',
-            'email' => 'required|unique:guru_admins',
-            'alamat' => 'required',
-            'no' => 'required',
-            'password' => 'required'
-        ]);
 
-        $image = $request->file('image');
-        $image->storeAs('public/guru_image', $image->hashName());
 
-        $guruAdmin = Guru_admin::create([
-            'image' => $image->hashName(),
-            'nama' => $request->nama,
-            'sekolah' => $request->sekolah,
-            'email' => $request->email,
-            'alamat' => $request->alamat,
-            'no' => $request->no,
-            'password' => bcrypt($request->password)
-        ]);
+     public function store(Request $request)
+     {
+         $this->validate($request, [
+             'image' => 'required',
+             'name' => 'required',
+             'sekolah' => 'required',
+             'email' => 'required|unique:guru_admins',
+             'alamat' => 'required',
+             'no' => 'required',
+             'password' => 'required'
+         ]);
 
-        User::create([
-            'name' => $request->nama,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
+         $password = $request->password; // Simpan password yang belum di-hash
 
-        return redirect()->route('guru_admin.index');
-    }
+         $image = $request->file('image');
+         $image->storeAs('public/guru_image', $image->hashName());
+
+         $guruAdmin = Guru_admin::create([
+             'image' => $image->hashName(),
+             'name' => $request->name,
+             'sekolah' => $request->sekolah,
+             'email' => $request->email,
+             'alamat' => $request->alamat,
+             'no' => $request->no,
+             'password' => bcrypt($request->password)
+         ]);
+
+         User::create([
+             'name' => $request->name,
+             'email' => $request->email,
+             'sekolah' => $request->sekolah,
+             'role' => 'guru',
+             'password' => bcrypt($request->password),
+         ]);
+
+         // Mengirim email konfirmasi dengan password yang belum di-hash
+         Mail::to($request->email)->send(new AkunGuru($password));
+
+         return redirect()->route('guru_admin.index');
+     }
 
 
     /**
@@ -98,12 +109,8 @@ class GuruAdminController extends Controller
      */
     public function edit(Guru_admin $guru_admin )
     {
-
-
         $sekolah = $guru_admin->sekolah;
-
         $siswas = Siswa::where('sekolah', $sekolah)->latest()->paginate(5);
-
         return view('guru_admin.detail', compact('guru_admin', 'siswas'));
 
     }

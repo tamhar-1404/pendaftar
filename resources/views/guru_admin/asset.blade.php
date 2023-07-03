@@ -11,13 +11,10 @@
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
-
     <title>Lineone - User Grid v1</title>
     <link rel="icon" type="image/png" href="images/favicon.png" />
-
     <!-- CSS Assets -->
     <link rel="stylesheet" href="{{asset('admin/css/app.css')}}" />
-
     <!-- Javascript Assets -->
     <script src="{{asset('admin/js/app.js')}}" defer></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -3518,7 +3515,7 @@
                           </div>
                           <div class="mt-4">
                             <label for="Nama" class="block text-gray-700 font-medium mb-2">Nama</label>
-                            <input type="text" placeholder="Masukkan nama " id="sekolah" name="nama" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <input type="text" placeholder="Masukkan nama " id="sekolah" name="name" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                           </div>
                         <div class="mt-4">
                           <label for="Nama" class="block text-gray-700 font-medium mb-2">Sekolah</label>
@@ -3588,7 +3585,7 @@
         >
         @forelse ($guru_admin as $guru )
 
-        <div class="card">
+        <div class="card animate-bounce ">
           <div class="p-2 text-right">
             <div
               x-data="usePopper({placement:'bottom-end',offset:4})"

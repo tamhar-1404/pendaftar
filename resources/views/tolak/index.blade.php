@@ -520,7 +520,7 @@
                 <div class="flex justify-between">
                      {{-- serch dan filter --}}
                     <div class="flex justify-start items-center">
-                        
+
                     </div>
                     <div class="mb-5 flex flex-wrap  mt-5 items-center">
                        {{-- filter --}}
@@ -550,61 +550,40 @@
                           <tr class="">
                             <th scope="col" class="px-6 py-4">#</th>
                             <th scope="col" class="px-6 py-4">Nama</th>
+                            <th scope="col" class="px-6 py-4 ">Kelas</th>
                             <th scope="col" class="px-6 py-4">Jurusan</th>
                             <th scope="col" class="px-6 py-4">Sekolah</th>
                             <th scope="col" class="px-6 py-4">Alasan</th>
-                            <th scope="col" class="px-6 py-4 ">Kelas</th>
                             <th scope="col" class="px-6 py-4">Aksi</th>
 
                           </tr>
                         </thead>
+                        @forelse ($tolaks as $tolak )
+
                         <tbody>
+                            <?php
+                            $no=1;
+                            ?>
                           <tr
                             class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                            <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                            <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                            <td class="whitespace-nowrap px-4 py-4">RPL</td>
-                            <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                            <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                            <td class="whitespace-nowrap px-6 py-4">12</td>
+                            <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $no++ }}</td>
+                            <td class="whitespace-nowrap px-4 py-4">{{ $tolak->name }}</td>
+                            <td class="whitespace-nowrap px-6 py-4">{{ $tolak->kelas }}</td>
+                            <td class="whitespace-nowrap px-4 py-4">{{ $tolak->jurusan }}</td>
+                            <td class="whitespace-nowrap px-4 py-4">{{ $tolak->sekolah }}</td>
+                            <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{ $tolak->alasan }}</td>
                             <td class="whitespace-nowrap px-4 py-4">
                                     <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent " data-te-toggle="modal"
                                     data-te-target="#exampleModalCenteredScrollable">
-                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
+                                        <span class=" p-1  font-semibold dark:hover:text-black"><a href="{{ route('tolak.edit',$tolak->id) }}">Lihat</a></span>
                                     </div>
                             </td>
                           </tr>
-                          <tr
-                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                            <td class="whitespace-nowrap px-4 py-4 font-medium">2</td>
-                            <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                            <td class="whitespace-nowrap px-4 py-4">RPL</td>
-                            <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                            <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                            <td class="whitespace-nowrap px-6 py-4">12</td>
-                            <td class="whitespace-nowrap px-4 py-4">
-                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent " data-te-toggle="modal"
-                                    data-te-target="#exampleModalCenteredScrollable">
-                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                    </div>
-                            </td>
-                          </tr>
-                          <tr
-                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                            <td class="whitespace-nowrap px-4 py-4 font-medium">3   </td>
-                            <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                            <td class="whitespace-nowrap px-4 py-4">RPL</td>
-                            <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                            <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                            <td class="whitespace-nowrap px-6 py-4">12</td>
-                            <td class="whitespace-nowrap px-4 py-4">
-                                    <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent " data-te-toggle="modal"
-                                    data-te-target="#exampleModalCenteredScrollable">
-                                        <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                    </div>
-                            </td>
-                          </tr>
+
                         </tbody>
+                        @empty
+
+                        @endforelse
                       </table>
                     </div>
                   </div>
@@ -663,108 +642,7 @@
 
     </div>
    {{-- modal --}}
-   <div
-   data-te-modal-init
-   class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
-   id="exampleModalCenteredScrollable"
-   tabindex="-1"
-   aria-labelledby="exampleModalCenteredScrollable"
-   aria-modal="true"
-   role="dialog">
-   <div
-       data-te-modal-dialog-ref
-       class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
-       <div
-       class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
-       <div
-           class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-           <!--Modal title-->
-           <h5
-           class="text-xl font-medium leading-normal text-neutral-900 dark:text-neutral-200"
-           id="exampleModalCenteredScrollableLabel">
-           Detail Siswa Ditolak
-           </h5>
-           <!--Close button-->
-           <button
-           type="button"
-           class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
-           data-te-modal-dismiss
-           aria-label="Close">
-           <svg
-               xmlns="http://www.w3.org/2000/svg"
-               fill="none"
-               viewBox="0 0 24 24"
-               stroke-width="1.5"
-               stroke="currentColor"
-               class="h-6 w-6">
-               <path
-               stroke-linecap="round"
-               stroke-linejoin="round"
-               d="M6 18L18 6M6 6l12 12" />
-           </svg>
-           </button>
-       </div>
 
-       <!--Modal body-->
-       <div class="relative p-4">
-           <p class=" text-md">
-           Nama :
-           </p >
-
-           <p class="ml-5 mt-2 text-md text-gray-400">
-               Mark
-           </p>
-
-           <p class=" text-md mt-4">
-               Jurusan :
-           </p >
-
-           <p class="ml-5 mt-2 text-md text-gray-400">
-               RPL
-           </p>
-
-           <p class=" text-md mt-4">
-               Sekolah :
-           </p >
-
-           <p class="ml-5 mt-2 text-md text-gray-400">
-               SMKN 1 KEPANJEN
-           </p>
-
-           <p class=" text-md mt-4">
-               Alasan :
-           </p >
-
-           <p class="ml-5 mt-2 text-md text-gray-400">
-               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?
-           </p>
-
-           <p class=" text-md mt-4">
-               Kelas :
-           </p >
-
-           <p class="ml-5 mt-2 text-md text-gray-400">
-              12
-           </p>
-
-
-       </div>
-
-       <!--Modal footer-->
-       <div
-           class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-           <button
-           type="button"
-           class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-           data-te-ripple-init
-           data-te-modal-dismiss
-           data-te-ripple-color="light">
-           Kembali
-           </button>
-       </div>
-       </div>
-   </div>
-   </div>
 {{-- end modal --}}
 
 
