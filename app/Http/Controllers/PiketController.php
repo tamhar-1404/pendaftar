@@ -89,12 +89,14 @@ class PiketController extends Controller
         }
 
         $nama_siswa = $request->input('nama_siswa');
-        foreach ($nama_siswa as $item) {
-            piket::create([
-                'waktu' => $request->waktu,
-                'hari' => $request->hari,
-                'nama_siswa' => $item
-            ]);
+        if($nama_siswa !== null){
+            foreach ($nama_siswa as $item) {
+                piket::create([
+                    'waktu' => $request->waktu,
+                    'hari' => $request->hari,
+                    'nama_siswa' => $item
+                ]);
+            }
         }
 
 

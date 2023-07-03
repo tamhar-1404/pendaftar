@@ -11,4 +11,8 @@ class piket extends Model
     protected $fillable = [
         'waktu','hari','nama_siswa'
     ];
+    public function Siswa()
+    {
+        return $this->belongsTo(Siswa::class);
+    }
 }

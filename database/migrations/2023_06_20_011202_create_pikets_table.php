@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('waktu');
             $table->string('hari');
-            $table->string('nama_siswa');
+            $table->foreignId('id_siswa');
+            $table->foreign('id_siswa')->references('id')->on('siswas')->onDelete('cascade');
             $table->timestamps();
         });
     }
