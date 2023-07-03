@@ -19,8 +19,13 @@ class ApprovalIzinController extends Controller
      */
     public function index()
     {
-        $approvalizin = ApprovalIzin::latest()->paginate(5);
-        return view('approvalizin.index', compact('approvalizin'));
+        $menunggu = ApprovalIzin::where('status','menunggu')
+        ->get();
+
+
+        $terima = ApprovalIzin::where('status', 'terima')
+        ->get();
+        return view('approvalizin.index', compact('menunggu', 'terima'));
     }
 
     /**
@@ -40,7 +45,7 @@ class ApprovalIzinController extends Controller
      * @param  \App\Http\Requests\StoreApprovalIzinRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, ApprovalIzin $approvalIzin)
     {
         // dd($request);
         $this->validate($request, [
@@ -54,7 +59,7 @@ class ApprovalIzinController extends Controller
         ]);
         $image = $request->file('bukti');
         $image->storeAs('public/bukti_izin', $image->hashName());
-
+       
        ApprovalIzin::create([
             'nama' => $request->nama,
             'sekolah' => $request->sekolah,
@@ -62,8 +67,8 @@ class ApprovalIzinController extends Controller
             'sampai' => $request->sampai,
             'keterangan' => $request->keterangan,
             'deskripsi' => $request->deskripsi,
-            'bukti' => $request->hashName(),
-            'status' => $request->status
+            'status' => 'menunggu',
+            'bukti' => $image->hashName()
         ]);
         return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
@@ -74,9 +79,9 @@ class ApprovalIzinController extends Controller
      * @param  \App\Models\ApprovalIzin  $approvalIzin
      * @return \Illuminate\Http\Response
      */
-    public function detail(ApprovalIzin $izin)
+    public function confirm(ApprovalIzin $izin)
     {
-        $this->load->view('approvalizin/detail',$izin);
+      //
     }
 
     /**
@@ -85,7 +90,7 @@ class ApprovalIzinController extends Controller
      * @param  \App\Models\ApprovalIzin  $approvalIzin
      * @return \Illuminate\Http\Response
      */
-    public function edit(ApprovalIzin $approvalIzin)
+    public function edit(ApprovalIzin $approval)
     {
         //
     }
@@ -97,10 +102,19 @@ class ApprovalIzinController extends Controller
      * @param  \App\Models\ApprovalIzin  $approvalIzin
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateApprovalIzinRequest $request, ApprovalIzin $approvalIzin)
+    public function update(Request $request, $id)
     {
-        //
+        // Temukan data izin berdasarkan ID
+        $izin = ApprovalIzin::findOrFail($id);
+
+        // Ubah status menjadi 'Terima'
+        $izin->status = 'Terima';
+        $izin->save();
+
+        return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
+        
+    
 
     /**
      * Remove the specified resource from storage.

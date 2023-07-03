@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('approval_izins', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('sekolah');
-            $table->date('dari');
-            $table->date('sampai');
-            $table->string('keterangan');
-            $table->string('deskripsi');
-            $table->string('bukti');
-            $table->string('status');
+            $table->string('nama')->nullable();
+            $table->string('sekolah')->nullable();
+            $table->date('dari')->nullable();
+            $table->date('sampai')->nullable();
+            $table->string('keterangan')->nullable();
+            $table->string('deskripsi')->nullable();
+            $table->string('bukti')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
