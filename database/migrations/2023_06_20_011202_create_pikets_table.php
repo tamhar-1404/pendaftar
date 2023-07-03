@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('pikets', function (Blueprint $table) {
             $table->id();
+            $table->string('waktu');
+            $table->string('hari');
+            $table->foreignId('id_siswa');
+            $table->foreign('id_siswa')->references('id')->on('siswas')->onDelete('cascade');
             $table->timestamps();
         });
     }

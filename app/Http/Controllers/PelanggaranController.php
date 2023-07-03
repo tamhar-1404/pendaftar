@@ -14,7 +14,8 @@ class PelanggaranController extends Controller
      */
     public function index()
     {
-        return view('pelanggaran_admin.index');
+        $pelanggaran = pelanggaran::latest()->paginate(5);
+        return view('pelanggaran_admin.index', compact('pelanggaran')); 
     }
 
     /**
@@ -24,7 +25,7 @@ class PelanggaranController extends Controller
      */
     public function create()
     {
-        //
+        return view('pelanggaran_admin.index');
     }
 
     /**
@@ -33,9 +34,24 @@ class PelanggaranController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(Request $request)
     {
-        //
+     
+        $this->validate($request, [
+            'nama' => 'required',
+            'tanggal' => 'required',
+            'sekolah' => 'required',
+            'pelanggaran' => 'required'   
+        ]);
+    
+       pelanggaran::create([
+            'nama' => $request->nama,
+            'tanggal' => $request->tanggal,
+            'sekolah' => $request->sekolah,
+            'pelanggaran' => $request->pelanggaran
+        ]);
+        return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**

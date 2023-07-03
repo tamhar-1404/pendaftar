@@ -11,4 +11,8 @@ class Siswa extends Model
     protected $fillable = [
         'foto_siswa','name','jurusan','status_sp','email','no','role','magang_awal','magang_akhir','sekolah','jeniskelamin','tempat','tanggal','nisn','alamat','kelas'
     ];
+    public function pikets()
+    {
+        return $this->hasMany(piket::class);
+    }
 }
