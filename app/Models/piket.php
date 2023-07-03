@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class piket extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'waktu','hari','nama_siswa'
+    ];
 }

@@ -115,6 +115,7 @@ class LoginController extends Controller
             'skck' => $skck->hashName(),
             'cv' => $cv->hashName(),
             'email' => $request->email,
+            'no' => $request->no,
             'password' => bcrypt($request->password)
         ]);
 

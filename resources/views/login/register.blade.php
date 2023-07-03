@@ -109,7 +109,7 @@
                             </div>
                             <div class="mb-4">
                                 <label for="school" class="block font-bold text-sm mb-1">Nomer tlp :</label>
-                                <input type="number" id="nomor" name="nomer" class="w-full px-4 py-1 border rounded" required>
+                                <input type="number" id="nomor" name="no" class="w-full px-4 py-1 border rounded" required>
                             </div>
                             <div class="mb-4">
                               <label for="major" class="block font-bold mb-1 text-sm">Jurusan :</label>

@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('pikets', function (Blueprint $table) {
             $table->id();
+            $table->string('waktu');
+            $table->string('hari');
+            $table->string('nama_siswa');
             $table->timestamps();
         });
     }

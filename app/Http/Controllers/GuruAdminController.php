@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru_admin;
 use App\Models\User;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreGuru_adminRequest;
 use App\Http\Requests\UpdateGuru_adminRequest;
@@ -32,8 +33,9 @@ class GuruAdminController extends Controller
     }
     public function detail (Guru_admin $guru)
     {
+
         $guru = Guru_admin::latest()->get()->first();
-        return view('guru_admin.detail' , compact('guru'));
+        return view('guru_admin.detail' , compact('guru','siswas'));
     }
 
     /**
@@ -94,9 +96,16 @@ class GuruAdminController extends Controller
      * @param  \App\Models\Guru_admin  $guru_admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Guru_admin $guru_admin)
+    public function edit(Guru_admin $guru_admin )
     {
-        return view('guru_admin.detail' , compact('guru_admin'));
+
+
+        $sekolah = $guru_admin->sekolah;
+
+        $siswas = Siswa::where('sekolah', $sekolah)->latest()->paginate(5);
+
+        return view('guru_admin.detail', compact('guru_admin', 'siswas'));
+
     }
 
     /**
