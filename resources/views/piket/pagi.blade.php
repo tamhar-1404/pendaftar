@@ -111,9 +111,16 @@
                         @endif
 
 
+                        @php
+                            $currentDateTime = new DateTime();
+                            $day = $currentDateTime->format('l');
+                        @endphp
+                        {{$day}}
                         <div class="flex grid-cols-5 gap-4  w-lg " id="#pagi">
                             {{-- senin --}}
-                            <div class=" w-full h-full bg-[#EAF1FF] rounded-md"   >
+                            <div class=" w-full h-full bg-[#EAF1FF] rounded-md
+                                
+                            ">
                                 {{-- button edit --}}
                                 <div class="flex justify-end" data-modal-target="authentication-modal1" data-modal-toggle="authentication-modal1" >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">

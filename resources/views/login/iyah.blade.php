@@ -11,37 +11,36 @@
         <h1 class="text-2xl font-bold mb-2">Data Waktu Sekarang</h1>
         <div id="waktu-sekarang" class="text-xl font-semibold"></div>
         <div id="pesan-batas" class="text-red-500 font-semibold"></div>
-      </div>
+    </div>
 
 
   <script>
- const waktuSekarangElement = document.getElementById('waktu-sekarang');
-const pesanBatasElement = document.getElementById('pesan-batas');
+    const waktuSekarangElement = document.getElementById('waktu-sekarang');
+    const pesanBatasElement = document.getElementById('pesan-batas');
 
-function updateWaktuSekarang() {
-  const sekarang = new Date();
-  const hari = sekarang.toLocaleDateString('id-ID', { weekday: 'long' });
-  const tanggal = sekarang.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
-  const jam = sekarang.toLocaleTimeString('id-ID', { hour: 'numeric', minute: 'numeric', second: 'numeric' });
+    function updateWaktuSekarang() {
+    const sekarang = new Date();
+    const hari = sekarang.toLocaleDateString('id-ID', { weekday: 'long' });
+    const tanggal = sekarang.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+    const jam = sekarang.toLocaleTimeString('id-ID', { hour: 'numeric', minute: 'numeric', second: 'numeric' });
 
-  const waktuSekarang = `${hari}, ${tanggal} - ${jam}`;
-  waktuSekarangElement.innerText = waktuSekarang;
+    const waktuSekarang = `${hari}, ${tanggal} - ${jam}`;
+    waktuSekarangElement.innerText = waktuSekarang;
 
-  const batasJam = 14; // Batasan jam, dalam format 24 jam
-  const batasMenit = 07; // Batasan menit
-  const saatJam = sekarang.getHours(); // Jam saat ini
-  const saatMenit = sekarang.getMinutes(); // Menit saat ini
+    const batasJam = 20; // Batasan jam, dalam format 24 jam
+    const batasMenit = 27; // Batasan menit
+    const saatJam = sekarang.getHours(); // Jam saat ini
+    const saatMenit = sekarang.getMinutes(); // Menit saat ini
 
-  if (saatJam > batasJam || (saatJam === batasJam && saatMenit > batasMenit)) {
-    pesanBatasElement.innerText = "Waktu sudah melewati batas!";
-    // Atau Anda dapat menambahkan logika lain yang diinginkan
-  } else {
-    pesanBatasElement.innerText = ""; // Menghapus pesan jika waktu masih dalam batasan
-  }
-}
+    if (saatJam === batasJam || (saatJam === batasJam && saatMenit === batasMenit)) {
+        pesanBatasElement.innerText = "Waktu sudah melewati batas!";
+        // Atau Anda dapat menambahkan logika lain yang diinginkan
+    } else {
+        pesanBatasElement.innerText = ""; // Menghapus pesan jika waktu masih dalam batasan
+    }
+    }
 
-setInterval(updateWaktuSekarang, 1000);
-
+    setInterval(updateWaktuSekarang, 1000);
   </script>
 </body>
 </html>
