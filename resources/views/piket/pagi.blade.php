@@ -83,18 +83,14 @@
                                                                 <option value="jumat">jumat</option>
                                                             </select>
                                                         </div>
+                                                        @forelse ($data as $data )
                                                         <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
+                                                            <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}" id=""><p>{{$data->name}}</p>
                                                         </div>
-                                                        <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
-                                                        </div>
-                                                        <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
-                                                        </div>
-                                                        <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
-                                                        </div>
+                                                        @empty
+
+                                                        @endforelse
+
                                                         <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
                                                     </form>
                                                 </div>
@@ -113,9 +109,18 @@
                                 <strong>sukses:</strong> {{ session('sukses') }}
                             </div>
                         @endif
-                        <div class="flex grid-cols-5 gap-4  w-lg" id="#pagi">
+
+
+                        @php
+                            $currentDateTime = new DateTime();
+                            $day = $currentDateTime->format('l');
+                        @endphp
+                        {{$day}}
+                        <div class="flex grid-cols-5 gap-4  w-lg " id="#pagi">
                             {{-- senin --}}
-                            <div class=" w-full h-full bg-[#EAF1FF] rounded-md"  >
+                            <div class=" w-full h-full bg-[#EAF1FF] rounded-md
+                                
+                            ">
                                 {{-- button edit --}}
                                 <div class="flex justify-end" data-modal-target="authentication-modal1" data-modal-toggle="authentication-modal1" >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
@@ -128,7 +133,8 @@
                                 </div>
                                 {{-- nama --}}
                                 @forelse ( $senin as $item)
-                                <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+
+                                <div class="text-sm font-medium text-center mt-5">{{$item->siswa->email}}</div>
                                    <!-- Main modal -->
                                    <div id="authentication-modal1" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                     <div class="relative w-full max-w-md max-h-full">
@@ -148,7 +154,7 @@
                                                     <input type="hidden" name="hari" value="{{$item->hari}}">
                                                     @foreach ( $senin as $item)
                                                     <div class="flex gap-3 items-center">
-                                                        <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                        <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->siswa->name}}</p>
                                                     </div>
                                                     @endforeach
                                                     <h4>Centang yang ingin di tambahkan</h4>

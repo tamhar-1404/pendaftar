@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\piket;
+use App\Models\Siswa;
 use App\Http\Requests\StorepiketRequest;
 use App\Http\Requests\UpdatepiketRequest;
 use Illuminate\Http\Request;
@@ -17,14 +18,16 @@ class PiketController extends Controller
      */
     public function index()
     {
-        $senin=piket::where('hari','LIKE', 'senin')->where('waktu', 'LIKE','pagi')->get();
+        // $siswa = Siswa::where('piket_id', $piketId)->first();
+        $senin = piket::where('hari','LIKE', 'senin')->where('waktu', 'LIKE','pagi')->get();
         $selasa=piket::where('hari','LIKE', 'selasa')->where('waktu', 'LIKE','pagi')->get();
         $rabu=piket::where('hari','LIKE', 'rabu')->where('waktu', 'LIKE','pagi')->get();
         $kamis=piket::where('hari','LIKE', 'kamis')->where('waktu', 'LIKE','pagi')->get();
         $jumat=piket::where('hari','LIKE', 'jumat')->where('waktu', 'LIKE','pagi')->get();
-        $catat=piket::where('nama_siswa','LIKE', 'catatan')->where('waktu', 'LIKE','catatan')->get();
+        $catat=piket::where('id_siswa','LIKE', 'catatan')->where('waktu', 'LIKE','catatan')->get();
+        $data = Siswa::all();
 
-        return view('piket.index',compact('senin','selasa','rabu','kamis','jumat','catat'));
+        return view('piket.index',compact('senin','selasa','rabu','kamis','jumat','catat','data'));
     }
     public function sore()  {
         $senin=piket::where('hari','LIKE', 'senin')->where('waktu', 'LIKE','sore')->get();
@@ -71,12 +74,13 @@ class PiketController extends Controller
             piket::create([
                 'waktu' => $request->waktu,
                 'hari' => $request->hari,
-                'nama_siswa' => $item
+                'id_siswa' => $item
             ]);
         }
         return redirect()->route('piket.index');
 
     }
+    
     public function rubah(Request $request){
         $hari = $request->input('hari');
         $waktu = $request->input('waktu');

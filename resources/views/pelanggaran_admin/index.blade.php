@@ -652,17 +652,20 @@
                               </tr>
                             </thead>
                             <tbody>
+                                @php
+                                $no=1;
+                                @endphp
                                 @forelse ( $pelanggaran  as $items)
                               <tr
                                 class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $items->id }}</td>
+                                <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $no++ }}</td>
                                 <td class="whitespace-nowrap px-4 py-4">{{ $items->nama }}</td>
                                 <td class="whitespace-nowrap px-4 py-4">{{ $items->tanggal }}</td>
                                 <td class="whitespace-nowrap px-4 py-4">{{ $items->sekolah }}</td>
                                 <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{ $items->pelanggaran }}</td>
                                 <td class="whitespace-nowrap px-4 py-4">
                                         <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent " data-te-toggle="modal"
-                                        data-te-target="#exampleModalCenteredScrollable{{$items`     -> id}}">
+                                        data-te-target="#exampleModalCenteredScrollable{{$items->id}}">
                                             <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
                                         </div>
                                 </td>
@@ -726,12 +729,6 @@
             </div>
         </div>
         <!-- end main content section -->
-           <!-- start footer section -->
-           <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
-            © <span id="footer-year">2022</span>. Vristo All rights reserved.
-        </p>
-        <!-- end footer section -->
-
     </div>
     @forelse ( $pelanggaran  as $items)
     {{-- modal --}}
