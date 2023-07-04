@@ -30,7 +30,7 @@ class JurnaladminController extends Controller
      */
     public function create(Request $request)
     {
-        $item = jurnalsiswa::where('nama', 'LIKE', $request -> serch)->GET();
+        $item = jurnalsiswa::where('nama', 'LIKE', $request ->serch)->GET();
         $mengisi_jan = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 1)->count();
         $mengisi_feb = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 2)->count();
         $mengisi_mar = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 3)->count();

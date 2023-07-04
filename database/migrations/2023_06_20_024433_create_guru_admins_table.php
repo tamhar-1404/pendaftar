@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('guru_admins', function (Blueprint $table) {
             $table->id();
             $table->string('image');
-            $table->string('nama');
+            $table->string('name');
             $table->string('sekolah');
             $table->string('email')->unique();
             $table->string('alamat');

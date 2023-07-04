@@ -3,10 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=chrome">
-    <title>Admin - Jadwal Piket Sore</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin - Data Ditolak</title>
     @vite('resources/css/app.css')
-
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+    rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/perfect-scrollbar.min.css') }}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
+    <link rel="stylesheet" href="load/load.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    {{--  <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />  --}}
+    <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>
+    <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
+    <script defer src="{{ asset('admin/assets/js/tippy-bundle.umd.min.js') }}"></script>
+    <script defer src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
+    {{--  <!-- Javascript Assets -->  --}}
+    <script src="admin/js/app.js" defer></script>
     <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
@@ -28,13 +45,20 @@
       </script>
 </head>
 <body>
+    <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+        <div class="center">
+            <div class="ring">
+            </div>
+            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+        </div>
+    </div>
 
 
     <!-- Sidenav -->
     <nav id="sidenav-2"
-    class="fixed left-0 top-0 h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
-    data-te-sidenav-init data-te-sidenav-hidden="false" data-te-sidenav-mode="side" data-te-sidenav-accordion="true"
-    data-te-sidenav-content="#content">
+        class="fixed left-0 top-0 h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
+        data-te-sidenav-init data-te-sidenav-hidden="false" data-te-sidenav-mode="side" data-te-sidenav-accordion="true"
+        data-te-sidenav-content="#content">
 
         <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
             <li class="relative mt-2">
@@ -300,13 +324,13 @@
     </nav>
     <!-- Sidenav -->
 
-    <div class=" pl-[0px] " id="content">
+    <div class=" pl-[px] " id="content">
 
 
     <!-- Navbar -->
     <nav
     id="main-navbar"
-    class="sticky left-0   right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start "
+    class="sticky left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start "
     data-te-navbar-ref>
     <!-- Container wrapper -->
 
@@ -485,12 +509,120 @@
     <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
-    @include('piket.sore')
-    </div>
+    <div class="animate__animated p-6" :class="[$store.app.animation]">
+        <!-- start main content section -->
+        <div x-data="basic" class="mt-8">
+            {{-- judul --}}
+            <div class="mb-5 font-semibold">
+                <span> lainnya / <span class="text-[#00B7FF]">Di Tolak</span></span>
+            </div>
+            <div class="flex justify-end items-center pr-16">
+             <div class="Button w-[116px] h-[37.33px] pl-[27.63px] pr-[27.37px] pt-[8.67px] pb-[8.66px] rounded-lg border border border border border-slate-300 justify-end items-end inline-flex">
+                <div class="Kembali text-center text-slate-700 text-[14px] font-medium leading-tight tracking-wide">Kembali</div>
+             </div>
+            </div>
 
+            <div class="DivGrid w-[1133px] h-[954px] pl-[20px] pt-[19.67px] pb-[93.33px] justify-start items-center inline-flex">
+                <div class="Group422 w-[1133px] h-[841px] relative">
+                  <div class="DivCard w-[1133px] h-[677px] left-[7px] top-[164px] absolute bg-white rounded-lg shadow"></div>
+                  <div class="Group421 w-[1133px] h-[794px] left-0 top-0 absolute">
+                    <div class="DivTabs w-[1133px] h-[630px] pb-[35.98px] left-[7px] top-[164px] absolute flex-col justify-start items-center gap-5 inline-flex">
+                      <div class="DivBorderB2 w-[1133px] border border-slate-200 justify-start items-start inline-flex">
+                        <div class="DivTabsList pr-[348.16px] justify-start items-start flex">
+                          <div class="Button pl-5 pr-[20.21px] pt-[17px] pb-[19px] border border-sky-500 justify-start items-center gap-[8.35px] flex">
+                            <div class="Detail text-center text-sky-500 text-[14px] font-medium leading-tight tracking-wide">Detail</div>
+                          </div>
+                          <div class="Button pl-[18px] pr-[19.83px] pt-[17px] pb-[19px] justify-start items-center gap-[6.36px] flex">
+                            <div class="BerkasBerkas text-center text-slate-500 text-[14px] font-medium leading-tight tracking-wide">Berkas - berkas</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="DivSpaceY5 w-[1133px] h-[564px] pl-10 flex-col justify-start items-start gap-[20.01px] flex">   
+                        <div class="Label flex-col justify-start items-start gap-1.5 flex">
+                          <div class="Nama text-slate-600 text-[14px] font-medium leading-tight">Nama</div>
+                          <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
+                            <div class="MuhamadDimasJuliansyah w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">Muhamad Dimas Juliansyah</div>
+                          </div>
+                        </div>
+                        <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                          <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                            <div class="JenisKelamin text-slate-600 text-[14px] font-medium leading-tight">Jenis Kelamin</div>
+                            <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
+                              <div class="LakiLaki w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">Laki - laki</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                          <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                            <div class="Nisn text-slate-600 text-[14px] font-medium leading-tight">NISN</div>
+                            <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
+                              <div class=" w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">008187281117</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                          <div class="KelasJurusan text-slate-600 text-[14px] font-medium leading-tight">Kelas/Jurusan</div>
+                          <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
+                            <div class="XiRpl2 w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">XI RPL 2</div>
+                          </div>
+                        </div>
+                        <div class="Label flex-col justify-start items-start gap-1.5 flex">
+                          <div class="AsalSekolah text-slate-600 text-[14px] font-medium leading-tight">Asal Sekolah</div>
+                          <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
+                            <div class="Smkn12Malang w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">SMKN 12 Malang</div>
+                          </div>
+                        </div>
+                        <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                          <div class="TempatTanggalLahir text-slate-600 text-[14px] font-medium leading-tight">Tempat, Tanggal Lahir</div>
+                          <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
+                            <div class="Malang21Juli2006 w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">Malang, 21 Juli 2006</div>
+                          </div>
+                        </div>
+                        <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                          <div class="Alamat text-slate-600 text-[14px] font-medium leading-tight">Alamat</div>
+                          <div class="Pseudo w-[682.22px] justify-center items-center inline-flex">
+                            <div class="GgMekkahJlArabMalang w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">Gg. Mekkah, Jl. Arab, Malang</div>
+                          </div>
+                        </div>
+                        <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
+                          <div class="LamaMagang text-slate-600 text-[14px] font-medium leading-tight">Lama Magang</div>
+                          <div class="Pseudo w-[682.22px] justify-center items-center inline-flex">
+                            <div class="Januari202530Juni2025 w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">2 Januari 2025 - 30 Juni 2025</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="DivCard w-[1133px] h-[123px] left-0 top-0 absolute bg-white rounded-lg shadow">
+                      <div class="DivBorderB2 w-[1133px] border border-slate-200 justify-start items-start inline-flex">
+                        <div class="DivBorderB2 w-[1133px] border border-slate-200 justify-start items-start inline-flex">
+                          <div class="DivTabsList pr-[348.16px] justify-start items-start flex">
+                            <div class="Button pl-5 pr-[20.21px] py-[18px] border border-red-600 justify-start items-center gap-[8.35px] flex">
+                              <div class="AlasanPenolakan text-center text-red-600 text-[14px] font-medium leading-tight tracking-wide">Alasan Penolakan</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="DivFlex w-[116px] h-[50px] left-[828px] top-[612px] absolute"></div>
+                      <div class="Label left-[40px] top-[66.68px] absolute flex-col justify-start items-start gap-1.5 inline-flex">
+                        <div class="Alasan text-slate-600 text-[14px] font-medium leading-tight">Alasan </div>
+                        <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
+                          <div class="KurangLengkapPadaBerkasBerkas w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">kurang lengkap pada berkas berkas</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
 
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+      $(window).on('load', function() {
+          $('.spin_load').fadeOut();
+      });
+  </script>
     <script>
        const instanceMode = te.Sidenav.getInstance(
         document.getElementById("sidenav-2")
@@ -534,3 +666,4 @@
 </body>
 
 </html>
+

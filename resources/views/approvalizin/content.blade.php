@@ -2745,7 +2745,7 @@
                       
         <div class="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
       
-        @forelse ($approvalizin as $izin )
+        @forelse ($menunggu as $izin )
 
         <div class="card">
           <div class="p-2 text-right">
@@ -2820,15 +2820,17 @@
           </div> 
         </div>
         <div class="flex justify-around mb-2">
+         
           <div class="flex space-x-1 ">
-              <button
-                  class="btn h-7 w-7 rounded-full bg-success/10 p-0 text-success hover:bg-success/20 focus:bg-success/20 active:bg-success/25">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5"
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                          stroke-width="2" d="M5 13l4 4L19 7" />
+            <form action="{{ route('approvalizin.update', $izin->id) }}" method="post">
+              @csrf
+              @method('PUT')
+              <button type="submit" class="btn h-7 w-7 rounded-full bg-success/10 p-0 text-success hover:bg-success/20 focus:bg-success/20 active:bg-success/25">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                   </svg>
               </button>
+          </form>
               <button
                   class="btn h-7 w-7 rounded-full bg-error/10 p-0 text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5"
@@ -2838,16 +2840,16 @@
                   </svg>
               </button>  
           </div>
-          <button id="detailbutton"
-              class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium  hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90"   data-te-toggle="modal" data-modal-target="staticModal"
-              data-modal-toggle="staticModal">
+          <a href=""
+              class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium  hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90"  data-te-toggle="modal"
+              data-te-target="#staticModal{{ $izin->id }}">
               <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                   viewBox="0 0 576 512">
                   <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                   <path
                       d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z" />
               </svg>
-          </button>
+          </a>
         </div>
       </div>
         @empty
@@ -2899,12 +2901,6 @@
                             </li>
                         </ol>
                     </div>
-                    <button
-                                                            class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
-                                                            data-te-toggle="modal" data-modal-target="staticModal"
-                                                            data-modal-toggle="staticModal">
-                                                            <span class=" p-1  font-semibold ">Lihat</span>
-                                                        </button>
                     <div class="mt-4 sm:mt-5 lg:mt-6">
                         <div class="flex items-center justify-between">
                             <h2
@@ -3003,143 +2999,45 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr
-                                            class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                1
+                                     @php
+                                     $no=1;
+                                     @endphp
+                                      @forelse ($terima as $approval)
+                                        <tr class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
+                                            <td class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
+                                                {{ $no++ }}
                                             </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                Cristiano Ronaldo
+                                            <td class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
+                                                {{ $approval->nama }}
                                             </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                SMKN 12 Malang
+                                            <td class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
+                                                {{ $approval->sekolah }}
                                             </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2030
+                                            <td class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
+                                                {{ $approval->dari }}
                                             </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2031
+                                            <td class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
+                                                {{ $approval->sampai }}
                                             </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-red-500 dark:text-navy-100 sm:px-5">
-                                                Sakit
-                                            </td>
-                                        </tr>
-                                        <tr
-                                            class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                2
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                Lionel Messi
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                SMKN 12 Malang
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2030
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2031
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-red-500 dark:text-navy-100 sm:px-5">
-                                                Sakit
+                                            <td class="whitespace-nowrap px-4 py-3 font-mediumdark:text-navy-100 sm:px-5">
+                                              @if($approval->keterangan === 'izin')
+                                              <span class=" text-yellow-500">{{ $approval->keterangan }}</span>
+                                               @else
+                                              <span class=" text-red-500">{{ $approval->keterangan }}</span>
+                                               @endif
+                                          
                                             </td>
                                         </tr>
-                                        <tr
-                                            class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                3
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                Lionel Messi
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                SMKN 12 Malang
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2030
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2031
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-red-500 dark:text-navy-100 sm:px-5">
-                                                Sakit
-                                            </td>
-                                        </tr>
-                                        <tr
-                                            class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                4
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                Lionel Messi
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                SMKN 12 Malang
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2030
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2031
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-yellow-300 dark:text-navy-100 sm:px-5">
-                                                Izin
-                                            </td>
-                                        </tr>
-                                        <tr
-                                            class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                5
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                Lionel Messi
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                SMKN 12 Malang
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2030
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                10-8-2031
-                                            </td>
-                                            <td
-                                                class="whitespace-nowrap px-4 py-3 font-medium text-yellow-300 dark:text-navy-100 sm:px-5">
-                                                Izin
-                                            </td>
-                                        </tr>
+                                        @empty
+                                        <div class="bg-red-100 border mb-2 mt-2 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                          <strong class="font-bold">Data </strong>
+                                          <span class="block sm:inline">Tidak tersedia.</span>
+                                          <span class="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
+                                        </div>
+                                        @endforelse
                                     </tbody>
                                 </table>
+                                
                                 <div
                                     class="flex flex-col justify-between space-y-4 px-4 py-4 sm:flex-row sm:items-center sm:space-y-0 sm:px-5">
                                     <div class="flex items-center space-x-2 text-xs+">
@@ -3206,101 +3104,129 @@
                     </div>
                 </div>
             </div>
-                {{-- modal --}}
-    <div id="staticModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative w-full max-w-2xl max-h-full">
-        <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <!-- Modal header -->
-            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    Detail Jurnal
-                </h3>
-                <button type="button"
-                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="staticModal">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-            </div>
-            <!-- Modal body -->
-               
-        @foreach ($approvalizin as $izin)
-            
-       
-            <div class="p-6 space-y-6">
-                <div>
-                    <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
-                        Nama
-                    </p>
-                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        {{ $izin->nama }}
-                    </p>
-                </div>
-                <div>
-                  <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                      Sekolah
-                  </p>
-                  <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                      {{ $izin->sekolah }}
-                  </p>
-                </div>
-                <div>
-                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                        Tanggal awal
-                    </p>
-                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        {{ $izin->dari }}
-                    </p>
-                </div>
-                <div>
-                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                        Tanggal akhir
-                    </p>
-                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        {{ $izin->sampai }}
-                    </p>
-                </div>
-                <div>
-                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                        keterangan
-                    </p>
-                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        {{ $izin->keterangan }}
-                    </p>
-                </div>
-                <div>
-                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                        deskripsi
-                    </p>
-                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        {{ $izin->deskripsi }}
-                    </p>
-                </div>
-                <div>
-                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                        Bukti
-                    </p>
-                    <img src="siswa/images/carousel2.jpeg" alt="">
-                </div>
-            </>
-            <!-- Modal footer -->
+            @forelse ( $menunggu  as $izin)
+            {{-- modal --}}
             <div
-                class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button data-modal-hide="staticModal" type="button"
-                    class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                data-te-modal-init
+                class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+                id="staticModal{{ $izin->id }}"
+                tabindex="-1"
+                aria-labelledby="exampleModalCenteredScrollable"
+                aria-modal="true"
+                role="dialog">
+                <div
+                    data-te-modal-dialog-ref
+                    class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
+                    <div
+                    class="pointer-events-auto  relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+                    <div
+                        class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                        <!--Modal title-->
+                        <h5
+                        class="text-xl font-medium leading-normal text-neutral-900 dark:text-neutral-200"
+                        id="exampleModalCenteredScrollableLabel">
+                        Detail Izin Absensi
+                        </h5>
+                        <!--Close button-->
+                        <button
+                        type="button"
+                        class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                        data-te-modal-dismiss
+                        aria-label="Close">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="h-6 w-6">
+                            <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        </button>
+                    </div>
+                    
+                 
+                    <!--Modal body-->
+                    <div class="relative p-4">
+                      <p class=" text-md">
+                      Nama :
+                      </p >
+      
+                      <p class="ml-5 mt-2 text-md text-gray-400">
+                        {{ $izin->nama }}  
+                      </p>
+      
+                      <p class=" text-md mt-4">
+                          Sekolah :
+                      </p >
+      
+                      <p class="ml-5 mt-2 text-md text-gray-400">
+                          {{ $izin->sekolah }}
+                      </p>
+      
+                      <p class=" text-md mt-4">
+                          Tanggal Awal :
+                      </p >
+      
+                      <p class="ml-5 mt-2 text-md text-gray-400">
+                          {{ $izin->dari }}
+                      </p>
+      
+                      <p class=" text-md mt-4">
+                          Tanggal Akhir :
+                      </p >
+      
+                      <p class="ml-5 mt-2 text-md text-gray-400">
+                         {{ $izin->sampai }}
+                      </p>
+                      <p class=" text-md mt-4">
+                          Keterangan :
+                      </p >
+      
+                      <p class="ml-5 mt-2 text-md text-gray-400">
+                         {{ $izin->keterangan }}
+                      </p>
+                      <p class=" text-md mt-4">
+                          Deskripsi :
+                      </p >
+      
+                      <p class="ml-5 mt-2 text-md text-gray-400">
+                         {{ $izin->deskripsi }}
+                      </p>
+                      <p class=" text-md mt-4">
+                          Bukti :
+                      </p >
+      
+                      <p class="ml-5 mt-2 text-md text-gray-400">
+                        <img src="{{ asset('storage/bukti_izin/' . $izin->bukti) }}" alt="">
+                      </p>
+      
+      
+      
+                  </div>
+        
+                    <!--Modal footer-->
+                    <div
+                        class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                        <button
+                        type="button"
+                        class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                        data-te-ripple-init
+                        data-te-modal-dismiss
+                        data-te-ripple-color="light">
+                        Kembali
+                        </button>
+                    </div>
+                    </div>
+            {{-- end modal --}}
             </div>
-        </div>
-    </div>
-</div>
-   
-
-        @endforeach ($approvalizin as $izin )
+            </div>
+            @empty
+        
+            @endforelse
         </main>
     </div>
     <!--

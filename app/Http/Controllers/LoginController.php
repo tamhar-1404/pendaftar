@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreLoginRequest;
 use App\Http\Requests\UpdateLoginRequest;
 use App\Models\aproval;
-use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 
 class LoginController extends Controller
@@ -24,7 +23,7 @@ class LoginController extends Controller
         return view('login.login');
     }
 
-    public function postlogin(Request $request){
+    public function login(Request $request){
         $this->validate($request, [
             'email' => 'required|exists:users,email',
             'password' => 'required|min:6',
@@ -36,7 +35,7 @@ class LoginController extends Controller
         ]);
         // toastr()->success('Berhasil Login!');
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Admin'])) {
-            return redirect()->route('dudi.index')->with('success','Berhasil Login Sebagai Admin');
+            return redirect()->route('dudi.index');
         }
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Siswa'])) {
             return redirect()->route('siswamagang.index')->with('success','Berhasil Login Sebagai Siswa');
@@ -44,7 +43,7 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Guru'])) {
             return redirect()->route('guru.index')->with('success','Berhasil Login Sebagai Guru');
         }
-            return redirect('login')->with('error','Password atau Email Salah');
+            return redirect('login');
     }
 
 
@@ -86,27 +85,42 @@ class LoginController extends Controller
             'email'=>'required',
             'password'=>'required',
         ]);
+        $foto_siswa = $request->file('foto_siswa');
+        $sp_diri = $request->file('sp_diri');
+        $sp_ortu = $request->file('sp_ortu');
+        $skck = $request->file('skck');
+        $cv = $request->file('cv');
+
+        $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
+        $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
+        $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
+        $skck->storeAs('public/pendaftaran', $skck->hashName());
+        $cv->storeAs('public/pendaftaran', $cv->hashName());
+
         aproval::create([
-            'name'=>$request->name,
-            'tempat'=>$request->tempat,
-            'tanggal'=>$request->tanggal,
-            'kelas'=>$request->kelas,
-            'nisn'=>$request->nisn,
-            'jeniskelamin'=>$request->jeniskelamin,
-            'alamat'=>$request->alamat,
-            'sekolah'=>$request->sekolah,
-            'jurusan'=>$request->jurusan,
-            'magang_awal'=>$request->magang_awal,
-            'magang_akhir'=>$request->magang_akhir,
-            'foto_siswa'=>$request->foto_siswa,
-            'sp_diri'=>$request->sp_diri,
-            'sp_ortu'=>$request->sp_ortu,
-            'skck'=>$request->skck,
-            'cv'=>$request->cv,
-            'email'=>$request->email,
+            'name' => $request->name,
+            'tempat' => $request->tempat,
+            'tanggal' => $request->tanggal,
+            'kelas' => $request->kelas,
+            'nisn' => $request->nisn,
+            'jeniskelamin' => $request->jeniskelamin,
+            'alamat' => $request->alamat,
+            'sekolah' => $request->sekolah,
+            'jurusan' => $request->jurusan,
+            'magang_awal' => $request->magang_awal,
+            'magang_akhir' => $request->magang_akhir,
+            'foto_siswa' => $foto_siswa->hashName(),
+            'sp_diri' => $sp_diri->hashName(),
+            'sp_ortu' => $sp_ortu->hashName(),
+            'skck' => $skck->hashName(),
+            'cv' => $cv->hashName(),
+            'email' => $request->email,
+            'no' => $request->no,
             'password' => bcrypt($request->password)
         ]);
+
         return redirect()->route('login.index');
+
     }
 
     /**
@@ -115,9 +129,28 @@ class LoginController extends Controller
      * @param  \App\Models\Login  $login
      * @return \Illuminate\Http\Response
      */
-    public function show(Login $login)
+    public function show(Request $request)
     {
-        //
+        $this->validate($request, [
+            'email' => 'required|exists:users,email',
+            'password' => 'required|min:6',
+        ],[
+            'email.required' => 'Masukkan Email Anda !!',
+            'email.exists' => 'Email Yang Anda Masukkan Belum Terdaftar !!',
+            'password.required' => 'Masukkan Kata Sandi Anda !!',
+            'password.min' => 'Password Minimal 6 Huruf !!',
+        ]);
+        // toastr()->success('Berhasil Login!');
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Admin'])) {
+            return redirect()->route('dudi.index')->with('success','Berhasil Login Sebagai Admin');
+        }
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Siswa'])) {
+            return redirect()->route('siswamagang.index')->with('success','Berhasil Login Sebagai Siswa');
+        }
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Guru'])) {
+            return redirect()->route('guru.index')->with('success','Berhasil Login Sebagai Guru');
+        }
+            return redirect('login')->with('error','Password atau Email Salah');
     }
 
     /**
@@ -152,5 +185,12 @@ class LoginController extends Controller
     public function destroy(Login $login)
     {
         //
+    }
+    public function logout()
+    {
+        Auth::Logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect()->route('login.index');
     }
 }

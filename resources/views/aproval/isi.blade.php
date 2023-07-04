@@ -33,74 +33,126 @@
 
                     <div class="main">
                     <div class="flex justify-end mb-5 gap-3">
-                        <button class=" w-1/12 h-6 outline outline-1 outline-red-400 text-red-400 rounded-md flex gap-2" onclick="tolak()">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-1 w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                            Tolak</button>
-                        <button class=" w-1/12 h-6 outline outline-1 outline-green-400 text-green-400 rounded-md flex gap-2 " id="simpan">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" ml-1 w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
+                        <form id="reject-form-{{ $aproval->id }}" action="{{ route('aproval.tolak', $aproval->id) }}" method="POST" onsubmit="return confirmReject(event)">
+                            @csrf
+                            <input type="hidden" name="alasan" id="alasan-input-{{ $aproval->id }}">
+                            <button type="submit" class="border border-red-500 hover:bg-red-500 hover:text-white text-red-500 hover:border-red-700 text-sm font-semibold py-1 px-4 rounded-md outline-none focus:outline-none">
+                              Tolak
+                            </button>
+                          </form>
 
-                            Terima</button>
+                          <script>
+                            function confirmReject(event) {
+                              event.preventDefault();
 
+                              Swal.fire({
+                                title: 'Penolakan',
+                                input: 'text',
+                                inputLabel: 'Masukkan alasan penolakan:',
+                                showCancelButton: true,
+                                confirmButtonText: 'Kirim',
+                                cancelButtonText: 'Batal',
+                                confirmButtonColor: '#00B7FF',
+                                cancelButtonColor: '#FF0000',
+                                allowOutsideClick: false,
+                                inputValidator: (value) => {
+                                  if (!value || value.trim() === '') {
+                                    return 'Harap masukkan alasan penolakan.';
+                                  }
+                                },
+                              }).then((result) => {
+                                if (result.isConfirmed) {
+                                  document.getElementById("alasan-input-{{ $aproval->id }}").value = result.value;
+
+                                  Swal.fire({
+                                    title: 'Data berhasil ditolak',
+                                    icon: 'success',
+                                  }).then(() => {
+                                    event.target.submit();
+                                  });
+                                }
+                              });
+                            }
+                          </script>
+
+
+                        <form id="confirm-form-{{ $aproval->id }}" action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="border border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500 hover:border-blue-700 text-sm font-semibold py-1 px-4 rounded-md outline-none focus:outline-none">
+                              Terima
+                            </button>
+                          </form>
+                          <script>
+                            document.getElementById('confirm-form-{{ $aproval->id }}').addEventListener('submit', function(event) {
+                              event.preventDefault();
+                              Swal.fire({
+                                title: 'Sukses',
+                                text: 'Konfirmasi berhasil',
+                                icon: 'success',
+                                timer: 2000,
+                                showConfirmButton: false
+                              });
+                              setTimeout(() => {
+                                this.submit();
+                              }, 2000);
+                            });
+                          </script>
                     </div>
                     <div class="flex gap-5">
                         <div class="panel w-1/3 ">
                             <div class="flex justify-center">
-                                <img src="{{asset('admin/assets/images/profile-1.jpeg')}}" class=" rounded-full" alt="" srcset="">
+                                <img src="{{ asset('storage/pendaftaran/' . $aproval->foto_siswa) }}" class="rounded-full w-16" alt="" srcset="">
                             </div>
                             <div class="flex justify-center mt-8">
-                                <p class="text-lg">ferdinan alex sandro</p>
+                                <p class="text-lg">{{ $aproval->name }}</p>
                             </div>
                             <div class="flex justify-center mt-4">
-                                <p class="text-sm">ferdinan@gmail.com</p>
+                                <p class="text-sm">{{ $aproval->email }}</p>
                             </div>
                             <div class="flex justify-center mt-4">
-                                <p class="text-md">SMKN 1 KEPANJEN </p>
+                                <p class="text-md">{{ $aproval->sekolah }} </p>
                             </div>
                         </div>
                         <div class="panel w-2/3">
                             <div class="font-bold w-full border-b-2">Data Diri</div>
                             <div class="mt-3 flex w-full justify-between ">
-                               <span class="w-1/2"> jenis kelamin  </span> <span class="text-gray-400 w-full flex justify-start "> : laki - laki</span>
+                               <span class="w-1/2"> jenis kelamin  </span> <span class="text-gray-400 w-full flex justify-start "> : {{ $aproval->jeniskelamin }}</span>
                             </div>
                             <div class="mt-3 flex w-full justify-between">
-                                <span class="w-1/2"> NISN </span> <span class="text-gray-400 w-full flex justify-start">: 974934838439</span>
+                                <span class="w-1/2"> NISN </span> <span class="text-gray-400 w-full flex justify-start">: {{ $aproval->nisn }}</span>
                             </div>
                             <div class="mt-3 flex w-full justify-between">
-                               <span class="w-1/2"> Kelas / Jurusan </span>  <span class="text-gray-400 w-full flex justify-start">: 11/RPL</span>
+                               <span class="w-1/2"> Kelas / Jurusan </span>  <span class="text-gray-400 w-full flex justify-start">: {{ $aproval->kelas }}/{{ $aproval->jurusan }}</span>
                             </div>
                             <div class="mt-3 flex w-full justify-between">
-                              <span class="w-1/2">Tempat, tanggal lahir </span>   <span class="text-gray-400 w-full flex justify-start">: Malang, 12 juli 2005</span>
+                              <span class="w-1/2">Tempat, tanggal lahir </span>   <span class="text-gray-400 w-full flex justify-start">: {{ $aproval->tempat }}, {{ $aproval->tanggal }}</span>
                             </div>
                             <div class="mt-3 flex w-full justify-between">
-                                <span class="w-1/2">Alamat </span>   <span class="text-gray-400 w-full flex justify-start">: Malang Jawa Timur</span>
+                                <span class="w-1/2">Alamat </span>   <span class="text-gray-400 w-full flex justify-start">: {{ $aproval->alamat }}</span>
                             </div>
                             <div class="mt-3 flex w-full justify-between">
-                                <span class="w-1/2">  Masa Magang </span> <span class="text-gray-400 w-full flex justify-start">: 28 juni 2023 -> 28 Desember 2023</span>
+                                <span class="w-1/2">  Masa Magang </span> <span class="text-gray-400 w-full flex justify-start">: {{ $aproval->magang_awal }} -> {{ $aproval->magang_akhir }} </span>
                             </div>
                         </div>
                     </div>
                     <div class="panel mt-5">
                         <div class="font-bold w-full border-b-2">Berkas - Berkas</div>
-                        <div class="flex justify-around">
+                        <div class="flex justify-around mt-2">
                             <div>
                                 <p class="">Pernyataan Diri Sendiri : </p>
-                                <img  class="hover:scale-125  transition-all duration-200 mt-4 hover:opacity-80"  " src="{{asset('admin/assets/images/profile-2.jpeg')}}" alt="pernyataan diri sendiri">
+                                <img  class="hover:scale-125 w-11  transition-all duration-200 mt-4 hover:opacity-80"   src="{{ asset('storage/pendaftaran/' . $aproval->sp_diri) }}" alt="pernyataan diri sendiri">
                             </div>
                             <div>
-                                <p>Pernyataan Diri Sendiri : </p>
-                                <img class="hover:scale-125 transition-all duration-200 mt-4 hover:opacity-80" src="{{asset('admin/assets/images/profile-2.jpeg')}}" alt="">
+                                <p>Pernyataan orang tua : </p>
+                                <img class="hover:scale-125 w-11 transition-all duration-200 mt-4 hover:opacity-80" src="{{ asset('storage/pendaftaran/' . $aproval->sp_ortu) }}" alt="">
                             </div>
                             <div>
-                                <p>Pernyataan Diri Sendiri : </p>
-                                <img class="hover:scale-125 transition-all duration-200 mt-4 hover:opacity-80"  src="{{asset('admin/assets/images/profile-2.jpeg')}}" alt="">
+                                <p>SKCK : </p>
+                                <img class="hover:scale-125 w-11 transition-all duration-200 mt-4 hover:opacity-80"  src="{{ asset('storage/pendaftaran/' . $aproval->skck) }}" alt="">
                             </div>
                             <div>
-                                <p>Pernyataan Diri Sendiri : </p>
-                                <img class="hover:scale-125 transition-all duration-200 mt-4 hover:opacity-80" src="{{asset('admin/assets/images/profile-2.jpeg')}}" alt="">
+                                <p>CV : </p>
+                                <img class="hover:scale-125 w-11 transition-all duration-200 mt-4 hover:opacity-80" src="{{ asset('storage/pendaftaran/' . $aproval->cv) }}" alt="">
                             </div>
                         </div>
 

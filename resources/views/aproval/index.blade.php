@@ -18,14 +18,48 @@
 
                         </div>
                         {{-- filter --}}
-                        <div class="border-2 rounded-full border-gray-200 flex items-center mr-2 ">
-                            <span class="mr-1 ml-3 text-gray-320 text-sm">
-                                filter
-                            </span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" mr-3 w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
-                            </svg>
-                        </div>
+                        <ul class="relative flex items-center">
+                            <!-- Notification dropdown -->
+                            <li class="relative" data-te-dropdown-ref>
+                            <a
+                                class="mr-4 flex items-center text-gray-500 hover:text-gray-700 focus:text-gray-700"
+                                href="#"
+                                id="navbarDropdownMenuLink"
+                                role="button"
+                                data-te-dropdown-toggle-ref
+                                aria-expanded="false">
+                                <span class="dark:black-gray-200 [&>svg]:w-3.5">
+                                    <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      fill="currentColor"
+                                      d="M3 5.109C3 4.496 3.47 4 4.05 4h16.79c.58 0 1.049.496 1.049 1.109 0 .612-.47 1.108-1.05 1.108H4.05C3.47 6.217 3 5.721 3 5.11zM5.798 12.5c0-.612.47-1.109 1.05-1.109H18.04c.58 0 1.05.497 1.05 1.109s-.47 1.109-1.05 1.109H6.848c-.58 0-1.05-.497-1.05-1.109zM9.646 18.783c-.58 0-1.05.496-1.05 1.108 0 .613.47 1.109 1.05 1.109h5.597c.58 0 1.05-.496 1.05-1.109 0-.612-.47-1.108-1.05-1.108H9.646z"
+                                    />
+                                  </svg>
+                            </a>
+                            <ul class="absolute left-auto right-0 z-[1000] mt-3 hidden min-w-[12rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
+                            aria-labelledby="navbarDropdownMenuLink"
+                            data-te-dropdown-menu-ref>
+                            <li class="flex p-2 gap-2 mt-2 pb-2">
+                                <p>Filter</p>
+                            </li>
+                            <li class="flex p-2 gap-2">
+                                <input type="text" class="border border-gray-300 rounded"  placeholder="Alamat">
+                                <input type="text" class="border border-gray-300 rounded"  placeholder="Alamat">
+                            </li>
+                            <li class="flex p-2 gap-2">
+                                <input type="text" class="border border-gray-300 rounded"   placeholder="Alamat">
+                                <input type="text" class="border border-gray-300 rounded" placeholder="Alamat">
+                            </li>
+                            <li class="flex p-2 gap-2         ">
+                                <input type="text" class="border border-gray-300 rounded"  placeholder="Alamat">
+                                <input type="text" class="border border-gray-300 rounded" placeholder="Alamat">
+                            </li>
+                        </ul>
                     </div>
                     {{-- tabel --}}
 
@@ -33,66 +67,53 @@
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                           <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                             <div class="overflow-hidden">
-                                <table class="min-w-full text-left text-sm ">
-                                    <thead class="border-rounded bg-gray-200  dark:border-neutral-500">
-                                      <tr class="">
-                                        <th scope="col" class="px-6 py-2">#</th>
-                                        <th scope="col" class="px-6 py-2">Nama</th>
-                                        <th scope="col" class="px-6 py-2">Jurusan</th>
-                                        <th scope="col" class="px-6 py-2">Kelas</th>
-                                        <th scope="col" class="px-6 py-2">Masa Magang</th>
-                                        <th scope="col" class="px-6 py-2">Sekolah</th>
-                                        <th scope="col" class="px-6 py-2">Aksi</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      @php
-                                      $no=1;
-                                      @endphp
-                                      @forelse ($aprovals as $aproval)
-                                      <tr class="text-sm">
-                                        <td class="whitespace-nowrap px-6 py-2">{{ $no++ }}</td>
-                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->name }}</td>
-                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->jurusan }}</td>
-                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->kelas }}</td>
-                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->magang_awal }} -- {{ $aproval->magang_akhir }}</td>
-                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->sekolah }}</td>
-                                        <td class="whitespace-nowrap px-6 py-2">
-                                            <form id="confirm-form-{{ $aproval->id }}" action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="btn btn-sm btn-primary">KONFIRMASI</button>
-                                            </form>
-                                            <a href="{{route('aproval.show', $aproval->id)}}">
-                                            <button>lihat</button>
-                                            </a>
+                              <table class="min-w-full text-left text-sm">
+                                <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
+                                  <tr>
+                                    <th scope="col" class="px-6 py-2">#</th>
+                                    <th scope="col" class="px-6 py-2">Nama</th>
+                                    <th scope="col" class="px-6 py-2">Jurusan</th>
+                                    <th scope="col" class="px-6 py-2">Kelas</th>
+                                    <th scope="col" class="px-6 py-2">Masa Magang</th>
+                                    <th scope="col" class="px-6 py-2">Sekolah</th>
+                                    <th scope="col" class="px-6 py-2">Aksi</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  @php
+                                  $no=1;
+                                  @endphp
+                                  @forelse ($aprovals as $aproval)
+                                  <tr class="text-sm">
+                                    <td class="whitespace-nowrap px-6 py-2">{{ $no++ }}</td>
+                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->name }}</td>
+                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->jurusan }}</td>
+                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->kelas }}</td>
+                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->magang_awal }} -- {{ $aproval->magang_akhir }}</td>
+                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->sekolah }}</td>
+                                    <td class="whitespace-nowrap px-6 py-2">
 
-                                            <form id="reject-form-{{ $aproval->id }}" action="{{ route('aproval.reject', $aproval->id) }}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="btn btn-sm btn-danger">TOLAK</button>
-                                            </form>
-
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                      @empty
-
-
-
-
-                                      <div class="bg-red-100 border mb-2  border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                                        <strong class="font-bold">Data </strong>
-                                        <span class="block sm:inline">Tidak tersedia.</span>
-                                        <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                                             </span>
-                                      </div>
-                                      @endforelse
-
+                                        <a href="{{ route('aproval.edit', $aproval->id) }}">
+                                            <button class="border border-solid border-[#00B7FF;] rounded-md text-sm  hover:bg-[#00B7FF;] text-[#00B7FF;] hover:text-white font-bold py-2 px-4 outline-none focus:outline-none">
+                                              Lihat
+                                            </button>
+                                          </a>
+                                    </td>
+                                  </tr>
+                                  @empty
+                                  </tbody>
+                              </table>
+                              <div class="bg-red-100 border mb-2 mt-2 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                <strong class="font-bold">Data </strong>
+                                <span class="block sm:inline">Tidak tersedia.</span>
+                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
+                              </div>
+                              @endforelse
                             </div>
                           </div>
                         </div>
                       </div>
-                    {{-- end tabel --}}
+                          {{-- end tabel --}}
                     {{-- paginate --}}
                     {{--  <div class="flex justify-between mt-4">
                         <p class="text-sm">

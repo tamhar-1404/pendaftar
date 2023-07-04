@@ -8,7 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Siswa extends Model
 {
     use HasFactory;
+
+    // protected $table = 'siswa';
     protected $fillable = [
-        'foto','nama','jurusan','status_sp','email','no','role','awal','akhir','sekolah','jk','tempat_lahir','tanggal_lahir','nisn','alamat','kelas'
+        'foto_siswa','name','jurusan','status_sp','email','no','role','magang_awal','magang_akhir','sekolah','jeniskelamin','tempat','tanggal','nisn','alamat','kelas'
     ];
+    public function piket()
+    {
+        return $this->belongsTo(piket::class);
+    }
 }
