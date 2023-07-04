@@ -73,12 +73,12 @@ Route::resource('/berita_guru', App\Http\Controllers\BeritaController::class);
 // Siswa
 Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
 Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'downloadPDF']);
+Route::resource('/absensi_siswa', App\Http\Controllers\AbsensiSiswaController::class);
 
 
 // akhir siswa
 
 // login
-
 Route::resource('/login', App\Http\Controllers\LoginController::class);
 Route::post('/register', [LoginController::class, 'login'])->name('register');
 Route::get('/percobaan', function () {
@@ -113,6 +113,7 @@ Route::middleware(['auth'])->group(function () {
        Route::resource('chat_siswa', App\Http\AbsensiSiswaController::class);
        Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
        Route::resource('siswa_magang', App\Http\AbsensiSiswaController::class);
+       Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
 
 
     });
