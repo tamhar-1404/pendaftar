@@ -9,7 +9,7 @@ use App\Http\Requests\UpdatepiketRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\piket as pikets;
-
+use Carbon\Carbon;
 
 class PiketController extends Controller
 {
@@ -18,85 +18,79 @@ class PiketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        // $siswa = Siswa::where('piket_id', $piketId)->first();
-        $senin = piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'pagi')->get();
-        $selasa = piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'pagi')->get();
-        $rabu = piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
-        $kamis = piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
-        $jumat = piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
-        $catat = piket::where('id_siswa', 'LIKE', 'catatan')->where('waktu', 'LIKE', 'catatan')->get();
-        $data = Siswa::all();
 
-        set_time_limit(0);
-        // Menginisialisasi variabel flag
-        $emailSent = false;
+     public function index()
+     {
+         // Ambil hari saat ini
+         $today = Carbon::now()->format('l');
 
-        while (true) {
-            // Mendapatkan nomor hari dalam seminggu
-            $dayOfWeek = date('N');
+         // Cek apakah hari saat ini adalah hari kerja (Senin-Jumat)
+         if ($today != 'Saturday' && $today != 'Sunday') {
+             // Cek apakah email sudah dikirim hari ini
+             $isEmailSent = $this->isEmailSentToday();
 
-            // Cek apakah hari tersebut bukan Sabtu (6), Minggu (7), atau tanggal merah
-            if ($dayOfWeek < 6) {
-                // Cek apakah email belum dikirim pada hari tersebut
-                if (!$emailSent) {
-                    $dayName = $this->getDayNameIndonesian(date('N'));
-                    $mailData = [
-                        'title' => 'Anda piket pada hari ' . $dayName,
-                        'body' => 'Harap datang sebelum jam 8:00',
-                    ];
+             // Jika email belum dikirim hari ini, kirim email
+             if (!$isEmailSent) {
+                 // Lakukan pengiriman email
+                 $this->sendEmail();
 
-                    Mail::to('rahmatmahendra74@gmail.com')->send(new pikets($mailData));
+                 // Tandai bahwa email telah dikirim hari ini
+                 $this->markEmailAsSent();
+             }
+         }
 
-                    // Set flag emailSent menjadi true setelah mengirim email
-                    $emailSent = true;
-                }
-            } else {
-                // Set flag emailSent menjadi false pada hari Sabtu (6) dan Minggu (7)
-                $emailSent = false;
-            }
+         // Sisa kode yang ada sebelumnya
+         $senin = piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'pagi')->get();
+         $selasa = piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'pagi')->get();
+         $rabu = piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
+         $kamis = piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
+         $jumat = piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
+         $catat = piket::where('id_siswa', 'LIKE', 'catatan')->where('waktu', 'LIKE', 'catatan')->get();
+         $data = Siswa::all();
 
-            usleep(86400);
-        }
+         return view('piket.index', compact('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'catat', 'data'));
+     }
 
-        // Menginisialisasi variabel $mailData jika email belum dikirim pada hari ini
-        if (!$emailSent) {
-            $dayName = $this->getDayNameIndonesian(date('N'));
-            $mailData = [
-                'title' => 'Hari ini bukan hari kerja',
-                'body' => 'Tidak ada piket pada hari ' . $dayName,
-            ];
-        }
+     private function isEmailSentToday()
+     {
+         // Cek apakah sudah ada log pengiriman email hari ini
+         // Misalnya dengan menyimpan tanggal terakhir pengiriman email di database
+         $lastSentDate = piket::whereDate('created_at', Carbon::today())->first();
 
-        return view('piket.index', compact('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'catat', 'data', 'mailData'));
-    }
+         return $lastSentDate != null;
+     }
 
-    private function getDayNameIndonesian($dayNumber)
-    {
-        $dayNames = [
-            1 => 'Senin',
-            2 => 'Selasa',
-            3 => 'Rabu',
-            4 => 'Kamis',
-            5 => 'Jumat',
-            6 => 'Sabtu',
-            7 => 'Minggu',
-        ];
+     private function sendEmail()
+     {
+         $mailData = []; // Tambahkan data email yang diperlukan ke dalam array $mailData
 
-        return $dayNames[$dayNumber];
-    }
+         // Logika pengiriman email
+         // Gunakan library/email service yang tersedia di Laravel
+         // Contoh menggunakan Laravel Mail
+         Mail::to('kaderofficial33@gmail.com')->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
+     }
 
-    public function sore()  {
-        $senin=piket::where('hari','LIKE', 'senin')->where('waktu', 'LIKE','sore')->get();
-        $selasa=piket::where('hari','LIKE', 'selasa')->where('waktu', 'LIKE','sore')->get();
-        $rabu=piket::where('hari','LIKE', 'rabu')->where('waktu', 'LIKE','sore')->get();
-        $kamis=piket::where('hari','LIKE', 'kamis')->where('waktu', 'LIKE','sore')->get();
-        $jumat=piket::where('hari','LIKE', 'jumat')->where('waktu', 'LIKE','sore')->get();
-        $catat=piket::where('nama_siswa','LIKE', 'catatan')->where('waktu', 'LIKE','catatan')->get();
+     private function markEmailAsSent()
+     {
+         // Tandai bahwa email telah dikirim hari ini
+         // Misalnya dengan menyimpan tanggal terakhir pengiriman email di database
+         $log = new piket();
+         $log->created_at = Carbon::now();
+         $log->save();
+     }
 
-        return view('piket.sidebar_sore',compact('senin','selasa','rabu','kamis','jumat','catat'));
-    }
+     public function sore()
+     {
+         $senin = piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'sore')->get();
+         $selasa = piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'sore')->get();
+         $rabu = piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'sore')->get();
+         $kamis = piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'sore')->get();
+         $jumat = piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'sore')->get();
+         $catat = piket::where('nama_siswa', 'LIKE', 'catatan')->where('waktu', 'LIKE', 'catatan')->get();
+
+         return view('piket.sidebar_sore', compact('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'catat'));
+     }
+
 
     /**
      * Show the form for creating a new resource.

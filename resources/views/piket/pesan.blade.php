@@ -8,7 +8,6 @@
 </head>
 <body>
     <h1>hello</h1>
-    <h1>{{ $mailData['title'] }}</h1>
-    <h1>{{ $mailData['body'] }}</h1>
+   
 </body>
 </html>

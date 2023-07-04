@@ -48,7 +48,7 @@ Route::resource('/sp', App\Http\Controllers\ASiswaController::class);
 Route::resource('/Berita', App\Http\Controllers\BlogController::class);
 Route::post('/like', [LikeController::class, 'store'])->name('Berita.like');
 
-Route::resource('/chat', App\Http\Controllers\ASiswaController::class);
+Route::resource('/chat', App\Http\Controllers\ChatController::class);
 Route::resource('/piket', App\Http\Controllers\PiketController::class);
 Route::post('/rubah', [PiketController::class, 'rubah'])->name('rubah');
 Route::get('/sore', [PiketController::class, 'sore'])->name('sore');
@@ -69,14 +69,9 @@ Route::resource('/jurnal_guru', App\Http\Controllers\JurnalGuruController::class
 Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
 Route::resource('/chat_guru', App\Http\Controllers\ChatGuruController::class);
 Route::resource('/berita_guru', App\Http\Controllers\BeritaController::class);
-
-
 // akhir Pembimbing
 // Siswa
-Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
-Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
 Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
-
 Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'downloadPDF']);
 
 
@@ -116,6 +111,7 @@ Route::middleware(['auth'])->group(function () {
        Route::resource('tatib_siswa', App\Http\AbsensiSiswaController::class);
        Route::resource('piket_siswa', App\Http\AbsensiSiswaController::class);
        Route::resource('chat_siswa', App\Http\AbsensiSiswaController::class);
+       Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
        Route::resource('siswa_magang', App\Http\AbsensiSiswaController::class);
 
 

@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('pikets', function (Blueprint $table) {
             $table->id();
-            $table->string('waktu');
-            $table->string('hari');
-            $table->foreignId('id_siswa');
+            $table->string('waktu')->nullable();
+            $table->string('hari')->nullable();
+            $table->foreignId('id_siswa')->nullable();
             $table->foreign('id_siswa')->references('id')->on('siswas')->onDelete('cascade');
             $table->timestamps();
         });

@@ -24,10 +24,9 @@ class piket extends Mailable
     }
     public function build()
     {
-        return $this->from('rahmatmahendra888@gmail.com', 'Your Name')
-                    ->subject($this->mailData['title'])
-                    ->view('piket.pesan')
-                    ->with('mailData', $this->mailData);
+        return $this->view('piket.pesan')
+            ->subject('Subject Email')
+            ->with($this->mailData);
     }
     /**
      * Get the message envelope.
