@@ -9,18 +9,19 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class approvalizin extends Mailable
+class tolakdataEmail extends Mailable
 {
     use Queueable, SerializesModels;
+    public $mailData;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($mailData)
     {
-        //
+        $this->mailData = $mailData;
     }
 
     /**
@@ -31,7 +32,7 @@ class approvalizin extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Approvalizin',
+            subject: 'Tolakdata Email',
         );
     }
 
@@ -43,7 +44,7 @@ class approvalizin extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.tolakizin',
         );
     }
 
