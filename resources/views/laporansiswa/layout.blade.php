@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<!-- Mirrored from html.vristo.sbthemes.com/apps-notes.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:03 GMT -->
+{{--  <!-- Mirrored from html.vristo.sbthemes.com/apps-notes.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:03 GMT -->  --}}
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
@@ -28,8 +28,9 @@
 
 <body>
 
-     <!-- screen loader -->
-     <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+    <!-- screen loader -->
+    <div
+        class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
@@ -95,11 +96,9 @@
                 <div x-data="notes">
                     <div class="relative flex h-full gap-5 sm:h-[calc(100vh_-_150px)]">
                         <div class="absolute z-10 hidden h-full w-full rounded-md bg-black/60"
-                            :class="{ '!block xl:!hidden': isShowNoteMenu }"
-                            @click="isShowNoteMenu = !isShowNoteMenu">
+                            :class="{ '!block xl:!hidden': isShowNoteMenu }" @click="isShowNoteMenu = !isShowNoteMenu">
                         </div>
-                        <div class="panel absolute z-10 hidden h-full w-[240px] flex-none space-y-4 overflow-hidden p-4 ltr:rounded-r-none rtl:rounded-l-none ltr:lg:rounded-r-md rtl:lg:rounded-l-md xl:relative xl:block xl:h-auto"
-                            :class="{ 'hidden shadow': !isShowNoteMenu, 'h-full ltr:left-0 rtl:right-0': isShowNoteMenu }">
+                        <div class="panel absolute z-10 hidden h-full w-[240px] flex-none space-y-4 overflow-hidden p-4 ltr:rounded-r-none rtl:rounded-l-none ltr:lg:rounded-r-md rtl:lg:rounded-l-md xl:relative xl:block xl:h-auto">
                             <div class="flex h-full flex-col pb-16">
                                 <div class="flex items-center text-center">
                                     <div>
@@ -113,8 +112,8 @@
                                                 stroke="currentColor" stroke-width="1.5" />
                                             <path d="M11.7769 10L16.6065 11.2941" stroke="currentColor"
                                                 stroke-width="1.5" stroke-linecap="round" />
-                                            <path opacity="0.5" d="M11 12.8975L13.8978 13.6739"
-                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                            <path opacity="0.5" d="M11 12.8975L13.8978 13.6739" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" />
                                         </svg>
                                     </div>
                                     <h3 class="text-lg font-semibold ltr:ml-3 rtl:mr-3">Laporan</h3>
@@ -122,48 +121,33 @@
                                 <div class="my-4 h-px w-full border-b border-[#e0e6ed] dark:border-[#1b2e4b]"></div>
                                 <div class="perfect-scrollbar relative -mr-3.5 h-full grow pr-3.5">
                                     <div class="space-y-1">
-                                        <button type="button"
-                                            class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary"
-                                            :class="{
-                                                'bg-gray-100 dark:text-primary text-primary dark:bg-[#181F32]': selectedTab ===
-                                                    'all'
-                                            }"
-                                            @click="tabChanged('all')">
+                                        <button type="button" class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary" onclick="toggleContent('content1')">
                                             <div class="flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5A3.375 3.375 0 006.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0015 2.25h-1.5a2.251 2.251 0 00-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 00-9-9z" />
-                                                  </svg>
+                                                </svg>
                                                 <div class="ltr:ml-3 rtl:mr-3">Laporan Masuk</div>
                                             </div>
                                         </button>
-                                        <button type="button"
-                                            class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary"
-                                            :class="{
-                                                'bg-gray-100 dark:text-primary text-primary dark:bg-[#181F32]': selectedTab ===
-                                                    'acc'
-                                            }"
-                                            @click="tabChanged('acc')">
+
+                                        <button type="button" class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary" onclick="toggleContent('content2')">
                                             <div class="flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12" />
-                                                  </svg>
+                                                </svg>
                                                 <div class="ltr:ml-3 rtl:mr-3">Laporan Diterima</div>
                                             </div>
                                         </button>
-                                        <button type="button"
-                                            class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary"
-                                            :class="{
-                                                'bg-gray-100 dark:text-primary text-primary dark:bg-[#181F32]': selectedTab ===
-                                                    'dec'
-                                            }"
-                                            @click="tabChanged('dec')">
+
+                                        <button type="button" class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary" onclick="toggleContent('content3')">
                                             <div class="flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m6 4.125l2.25 2.25m0 0l2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-                                                  </svg>
+                                                </svg>
                                                 <div class="ltr:ml-3 rtl:mr-3">Laporan Ditolak</div>
                                             </div>
                                         </button>
+
                                     </div>
                                 </div>
                             </div>
@@ -190,107 +174,426 @@
                                     No data available
                                 </div>
                             </template>
-                            <template x-if="filterdNotesList.length">
-                                <div class="min-h-[400px] sm:min-h-[300px]">
-                                    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-                                        <template x-for="note in filterdNotesList" :key="note.id">
-                                            <div class="panel pb-12"
-                                                :class="{
-                                                    'bg-primary-light shadow-primary': note.tag === 'personal',
-                                                    'bg-warning-light shadow-warning': note.tag === 'work',
-                                                    'bg-info-light shadow-info': note.tag === 'social',
-                                                    'bg-danger-light shadow-danger': note.tag === 'important',
-                                                    'dark:shadow-dark': !note.tag
-                                                }">
-                                                <div class="min-h-[142px]">
-                                                    <div class="flex justify-between">
-                                                        <div class="flex w-max items-center">
-                                                            <div class="flex-none">
-                                                                <template x-if="note.thumb">
-                                                                    <div
-                                                                        class="rounded-full bg-gray-300 p-0.5 dark:bg-gray-700">
-                                                                        <img class="h-8 w-8 rounded-full object-cover"
-                                                                            :src="`assets/images/${note.thumb}`" />
-                                                                    </div>
-                                                                </template>
-                                                                <template x-if="!note.thumb && note.user">
-                                                                    <div class="grid h-8 w-8 place-content-center rounded-full bg-gray-300 text-sm font-semibold dark:bg-gray-700"
-                                                                        x-text="note.user.charAt(0) + '' + note.user.charAt(note.user.indexOf(' ') + 1)">
-                                                                    </div>
-                                                                </template>
-                                                                <template x-if="!note.thumb && !note.user">
-                                                                    <div
-                                                                        class="rounded-full bg-gray-300 p-2 dark:bg-gray-700">
-                                                                        <svg width="24" height="24"
-                                                                            viewBox="0 0 24 24" fill="none"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            class="h-4.5 w-4.5">
-                                                                            <circle cx="12" cy="6"
-                                                                                r="4" stroke="currentColor"
-                                                                                stroke-width="1.5"></circle>
-                                                                            <ellipse opacity="0.5" cx="12"
-                                                                                cy="17" rx="7"
-                                                                                ry="4" stroke="currentColor"
-                                                                                stroke-width="1.5"></ellipse>
-                                                                        </svg>
-                                                                    </div>
-                                                                </template>
-                                                            </div>
-                                                            <div class="ltr:ml-2 rtl:mr-2">
-                                                                <div class="font-semibold" x-text="note.user"></div>
-                                                                <div class="text-sx text-white-dark"
-                                                                    x-text="note.date">
-                                                                </div>
+                            <div id="content1" class="card-content" style="display: none" class="hidden min-h-[400px] sm:min-h-[300px]">
+                                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                                    <div class="panel pb-12">
+                                        <div class="min-h-[142px]">
+                                            <div class="flex justify-between">
+                                                <div class="flex w-max items-center">
+                                                    <div class="flex-none">
+                                                        <div>
+                                                            <div
+                                                                class="rounded-full bg-gray-300 p-0.5 dark:bg-gray-700">
+                                                                <img class="h-8 w-8 rounded-full object-cover"
+                                                                    src="{{ asset('admin/assets/images/profile-16.jpg') }}" />
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div>
-                                                        <h4 class="mt-4 font-semibold" x-text="note.title"></h4>
-                                                        <p class="mt-2 text-white-dark" x-text="note.description">
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="absolute bottom-4 left-0 w-full px-5">
-                                                    <div class="mt-5 flex items-center justify-between">
-                                                        <div class="flex items-center mt-5">
-                                                            <button type="button"
-                                                                class="group text-gray-600">
-                                                                <svg width="24" height="24" viewBox="0 0 24 24"
-                                                                            fill="none"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            class="h-4.5 w-4.5 ltr:mr-3 rtl:ml-3">
-                                                                            <path opacity="0.5"
-                                                                                d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="1.5" />
-                                                                            <path
-                                                                                d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="1.5" />
-                                                                        </svg>
-                                                            </button>
+                                                    <div class="ltr:ml-2 rtl:mr-2">
+                                                        <div class="font-semibold">
+                                                            <p>Cristiano Ronaldo</p>
                                                         </div>
-                                                        <div class="flex items-center mt-4">
-                                                            <button type="button" class="text-success">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                                  </svg>
-
-                                                            </button>
-                                                            <button type="button"
-                                                                class="group text-danger ltr:ml-1 rtl:mr-2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                                  </svg>
-                                                            </button>
+                                                        <div class="text-sx text-white-dark">
+                                                            <p>10/10/2010</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </template>
+                                            <div>
+                                                <h4 class="mt-4 font-semibold">Lionel Messi</h4>
+                                                <p class="mt-2 text-white-dark">Lorem ipsum dolor sit amet
+                                                    consectetur adipisicing elit. Dolore, autem!
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-4 left-0 w-full px-5">
+                                            <div class="mt-5 flex items-center justify-between">
+                                                <div class="flex items-center mt-5">
+                                                    <button type="button" class="group text-gray-600">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                            class="h-4.5 w-4.5 ltr:mr-3 rtl:ml-3">
+                                                            <path opacity="0.5"
+                                                                d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
+                                                                stroke="currentColor" stroke-width="1.5" />
+                                                            <path
+                                                                d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
+                                                                stroke="currentColor" stroke-width="1.5" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="flex items-center mt-4">
+                                                    <button type="button" class="text-success">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="group text-danger ltr:ml-1 rtl:mr-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel pb-12">
+                                        <div class="min-h-[142px]">
+                                            <div class="flex justify-between">
+                                                <div class="flex w-max items-center">
+                                                    <div class="flex-none">
+                                                        <div>
+                                                            <div
+                                                                class="rounded-full bg-gray-300 p-0.5 dark:bg-gray-700">
+                                                                <img class="h-8 w-8 rounded-full object-cover"
+                                                                    src="{{ asset('admin/assets/images/profile-16.jpg') }}" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ltr:ml-2 rtl:mr-2">
+                                                        <div class="font-semibold">
+                                                            <p>Cristiano Ronaldo</p>
+                                                        </div>
+                                                        <div class="text-sx text-white-dark">
+                                                            <p>10/10/2010</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h4 class="mt-4 font-semibold">Lionel Messi</h4>
+                                                <p class="mt-2 text-white-dark">Lorem ipsum dolor sit amet
+                                                    consectetur adipisicing elit. Dolore, autem!
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-4 left-0 w-full px-5">
+                                            <div class="mt-5 flex items-center justify-between">
+                                                <div class="flex items-center mt-5">
+                                                    <button type="button" class="group text-gray-600">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                            class="h-4.5 w-4.5 ltr:mr-3 rtl:ml-3">
+                                                            <path opacity="0.5"
+                                                                d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
+                                                                stroke="currentColor" stroke-width="1.5" />
+                                                            <path
+                                                                d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
+                                                                stroke="currentColor" stroke-width="1.5" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="flex items-center mt-4">
+                                                    <button type="button" class="text-success">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="group text-danger ltr:ml-1 rtl:mr-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel pb-12">
+                                        <div class="min-h-[142px]">
+                                            <div class="flex justify-between">
+                                                <div class="flex w-max items-center">
+                                                    <div class="flex-none">
+                                                        <div>
+                                                            <div
+                                                                class="rounded-full bg-gray-300 p-0.5 dark:bg-gray-700">
+                                                                <img class="h-8 w-8 rounded-full object-cover"
+                                                                    src="{{ asset('admin/assets/images/profile-16.jpg') }}" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ltr:ml-2 rtl:mr-2">
+                                                        <div class="font-semibold">
+                                                            <p>Chris Martin</p>
+                                                        </div>
+                                                        <div class="text-sx text-white-dark">
+                                                            <p>10/10/2010</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h4 class="mt-4 font-semibold">Alan Walker</h4>
+                                                <p class="mt-2 text-white-dark">Lorem ipsum dolor sit amet
+                                                    consectetur adipisicing elit. Dolore, autem!
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-4 left-0 w-full px-5">
+                                            <div class="mt-5 flex items-center justify-between">
+                                                <div class="flex items-center mt-5">
+                                                    <button type="button" class="group text-gray-600">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                            class="h-4.5 w-4.5 ltr:mr-3 rtl:ml-3">
+                                                            <path opacity="0.5"
+                                                                d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
+                                                                stroke="currentColor" stroke-width="1.5" />
+                                                            <path
+                                                                d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
+                                                                stroke="currentColor" stroke-width="1.5" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="flex items-center mt-4">
+                                                    <button type="button" class="text-success">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="group text-danger ltr:ml-1 rtl:mr-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </template>
+                            </div>
+                            <div id="content2" class="card-content" style="display: none" class="hidden min-h-[400px] sm:min-h-[300px]">
+                                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                                    <div class="panel pb-12">
+                                        <div class="min-h-[142px]">
+                                            <div class="flex justify-between">
+                                                <div class="flex w-max items-center">
+                                                    <div class="flex-none">
+                                                        <div>
+                                                            <div
+                                                                class="rounded-full bg-gray-300 p-0.5 dark:bg-gray-700">
+                                                                <img class="h-8 w-8 rounded-full object-cover"
+                                                                    src="{{ asset('admin/assets/images/profile-16.jpg') }}" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ltr:ml-2 rtl:mr-2">
+                                                        <div class="font-semibold">
+                                                            <p>Cristiano Ronaldo</p>
+                                                        </div>
+                                                        <div class="text-sx text-white-dark">
+                                                            <p>10/10/2010</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h4 class="mt-4 font-semibold">Lionel Messi</h4>
+                                                <p class="mt-2 text-white-dark">Lorem ipsum dolor sit amet
+                                                    consectetur adipisicing elit. Dolore, autem!
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-4 left-0 w-full px-5">
+                                            <div class="mt-5 flex items-center justify-between">
+                                                <div class="flex items-center mt-5">
+                                                    <button type="button" class="group text-gray-600">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                            class="h-4.5 w-4.5 ltr:mr-3 rtl:ml-3">
+                                                            <path opacity="0.5"
+                                                                d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
+                                                                stroke="currentColor" stroke-width="1.5" />
+                                                            <path
+                                                                d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
+                                                                stroke="currentColor" stroke-width="1.5" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="flex items-center mt-4">
+                                                    <button type="button" class="text-success">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="group text-danger ltr:ml-1 rtl:mr-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel pb-12">
+                                        <div class="min-h-[142px]">
+                                            <div class="flex justify-between">
+                                                <div class="flex w-max items-center">
+                                                    <div class="flex-none">
+                                                        <div>
+                                                            <div
+                                                                class="rounded-full bg-gray-300 p-0.5 dark:bg-gray-700">
+                                                                <img class="h-8 w-8 rounded-full object-cover"
+                                                                    src="{{ asset('admin/assets/images/profile-16.jpg') }}" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ltr:ml-2 rtl:mr-2">
+                                                        <div class="font-semibold">
+                                                            <p>Chris Martin</p>
+                                                        </div>
+                                                        <div class="text-sx text-white-dark">
+                                                            <p>10/10/2010</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h4 class="mt-4 font-semibold">Alan Walker</h4>
+                                                <p class="mt-2 text-white-dark">Lorem ipsum dolor sit amet
+                                                    consectetur adipisicing elit. Dolore, autem!
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-4 left-0 w-full px-5">
+                                            <div class="mt-5 flex items-center justify-between">
+                                                <div class="flex items-center mt-5">
+                                                    <button type="button" class="group text-gray-600">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                            class="h-4.5 w-4.5 ltr:mr-3 rtl:ml-3">
+                                                            <path opacity="0.5"
+                                                                d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
+                                                                stroke="currentColor" stroke-width="1.5" />
+                                                            <path
+                                                                d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
+                                                                stroke="currentColor" stroke-width="1.5" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="flex items-center mt-4">
+                                                    <button type="button" class="text-success">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="group text-danger ltr:ml-1 rtl:mr-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="content3" class="card-content" style="display: none" class="hidden min-h-[400px] sm:min-h-[300px]">
+                                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                                    <div class="panel pb-12">
+                                        <div class="min-h-[142px]">
+                                            <div class="flex justify-between">
+                                                <div class="flex w-max items-center">
+                                                    <div class="flex-none">
+                                                        <div>
+                                                            <div
+                                                                class="rounded-full bg-gray-300 p-0.5 dark:bg-gray-700">
+                                                                <img class="h-8 w-8 rounded-full object-cover"
+                                                                    src="{{ asset('admin/assets/images/profile-16.jpg') }}" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ltr:ml-2 rtl:mr-2">
+                                                        <div class="font-semibold">
+                                                            <p>Chris Martin</p>
+                                                        </div>
+                                                        <div class="text-sx text-white-dark">
+                                                            <p>10/10/2010</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h4 class="mt-4 font-semibold">Alan Walker</h4>
+                                                <p class="mt-2 text-white-dark">Lorem ipsum dolor sit amet
+                                                    consectetur adipisicing elit. Dolore, autem!
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-4 left-0 w-full px-5">
+                                            <div class="mt-5 flex items-center justify-between">
+                                                <div class="flex items-center mt-5">
+                                                    <button type="button" class="group text-gray-600">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                            class="h-4.5 w-4.5 ltr:mr-3 rtl:ml-3">
+                                                            <path opacity="0.5"
+                                                                d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
+                                                                stroke="currentColor" stroke-width="1.5" />
+                                                            <path
+                                                                d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
+                                                                stroke="currentColor" stroke-width="1.5" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="flex items-center mt-4">
+                                                    <button type="button" class="text-success">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="group text-danger ltr:ml-1 rtl:mr-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="fixed inset-0 z-[999] hidden overflow-y-auto bg-[black]/60 px-4"
                                 :class="isDeleteNoteModal && '!block'">
@@ -305,10 +608,10 @@
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                                                 class="h-6 w-6">
-                                                <line x1="18" y1="6" x2="6"
-                                                    y2="18"></line>
-                                                <line x1="6" y1="6" x2="18"
-                                                    y2="18"></line>
+                                                <line x1="18" y1="6" x2="6" y2="18">
+                                                </line>
+                                                <line x1="6" y1="6" x2="18" y2="18">
+                                                </line>
                                             </svg>
                                         </button>
                                         <div
@@ -321,8 +624,8 @@
                                                 <svg width="24" height="24" viewBox="0 0 24 24"
                                                     fill="none" xmlns="http://www.w3.org/2000/svg"
                                                     class="mx-auto h-7 w-7">
-                                                    <path d="M20.5001 6H3.5" stroke="currentColor"
-                                                        stroke-width="1.5" stroke-linecap="round"></path>
+                                                    <path d="M20.5001 6H3.5" stroke="currentColor" stroke-width="1.5"
+                                                        stroke-linecap="round"></path>
                                                     <path
                                                         d="M18.8334 8.5L18.3735 15.3991C18.1965 18.054 18.108 19.3815 17.243 20.1907C16.378 21 15.0476 21 12.3868 21H11.6134C8.9526 21 7.6222 21 6.75719 20.1907C5.89218 19.3815 5.80368 18.054 5.62669 15.3991L5.16675 8.5"
                                                         stroke="currentColor" stroke-width="1.5"
@@ -350,64 +653,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="fixed inset-0 z-[999] hidden overflow-y-auto bg-[black]/60 px-4"
-                                :class="isViewNoteModal && '!block'">
-                                <div class="flex min-h-screen items-center justify-center">
-                                    <div x-show="isViewNoteModal" x-transition x-transition.duration.300
-                                        @click.outside="isViewNoteModal = false"
-                                        class="panel my-8 w-[90%] max-w-lg overflow-hidden rounded-lg border-0 p-0 md:w-full">
-                                        <button type="button"
-                                            class="absolute top-4 text-white-dark hover:text-dark ltr:right-4 rtl:left-4"
-                                            @click="isViewNoteModal = false">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                                                class="h-6 w-6">
-                                                <line x1="18" y1="6" x2="6"
-                                                    y2="18"></line>
-                                                <line x1="6" y1="6" x2="18"
-                                                    y2="18"></line>
-                                            </svg>
-                                        </button>
-                                        <div
-                                            class="bg-[#fbfbfb] py-3 text-lg font-medium ltr:pl-5 ltr:pr-[50px] rtl:pr-5 rtl:pl-[50px] dark:bg-[#121c2c]">
-                                            <div class="flex flex-wrap items-center">
-                                                <div class="ltr:mr-3 rtl:ml-3" x-text="selectedNote.title"></div>
-                                                <div class="flex items-center">
-                                                    <button x-show="selectedNote.tag" type="button"
-                                                        class="badge badge-outline-primary rounded-3xl capitalize ltr:mr-3 rtl:ml-3"
-                                                        :class="{
-                                                            'shadow-primary': selectedNote.tag === 'personal',
-                                                            'shadow-warning': selectedNote.tag === 'work',
-                                                            'shadow-info': selectedNote.tag === 'social',
-                                                            'shadow-danger': selectedNote.tag === 'important',
-                                                        }"
-                                                        x-text="selectedNote.tag"></button>
-                                                    <button x-show="selectedNote.isFav" type="button"
-                                                        class="text-warning">
-                                                        <svg width="18" height="18" viewBox="0 0 24 24"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                            class="fill-warning">
-                                                            <path
-                                                                d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                                                stroke="currentColor" stroke-width="1.5"></path>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="p-5">
-                                            <div class="text-base" x-text="selectedNote.description"></div>
-
-                                            <div class="mt-8 ltr:text-right rtl:text-left">
-                                                <button type="button" class="btn btn-outline-danger"
-                                                    @click="isViewNoteModal = false">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -427,10 +672,10 @@
     <script src="siswa/js/custom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script>
-      $(window).on('load', function() {
-          $('.spin_load').fadeOut();
-      });
-  </script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
+        });
+    </script>
     <script>
         document.addEventListener('alpine:init', () => {
             // main section
@@ -658,68 +903,6 @@
                     user: '',
                     thumb: '',
                 },
-                isShowNoteMenu: false,
-                notesList: [{
-                        id: 1,
-                        user: 'Max Smith',
-                        thumb: 'profile-16.jpeg',
-                        title: 'Lionel Messi',
-                        description: 'Curabitur facilisis vel elit sed dapibus sodales purus rhoncus.',
-                        date: '11/01/2020',
-                        isFav: false,
-                        tag: '',
-                    },
-                    {
-                        id: 2,
-                        user: 'John Doe',
-                        thumb: 'profile-8.jpeg',
-                        title: 'C. Ronaldo',
-                        description: 'Facilisis curabitur facilisis vel elit sed dapibus sodales purus.',
-                        date: '11/02/2020',
-                        isFav: true,
-                        tag: '',
-                    },
-                    {
-                        id: 3,
-                        user: 'Kia Jain',
-                        thumb: 'profile-4.jpeg',
-                        title: 'Benzema',
-                        description: 'Proin a dui malesuada, laoreet mi vel, imperdiet diam quam laoreet.',
-                        date: '11/04/2020',
-                        isFav: false,
-                        tag: '',
-                    },
-                    {
-                        id: 4,
-                        user: 'Max Smith',
-                        thumb: 'profile-16.jpeg',
-                        title: 'Mbappe',
-                        description: 'Excepteur sint occaecat cupidatat non proident, anim id est laborum.',
-                        date: '11/08/2020',
-                        isFav: false,
-                        tag: '',
-                    },
-                    {
-                        id: 5,
-                        user: 'Gissele',
-                        thumb: 'profile-2.jpeg',
-                        title: 'Vinicius Jr.',
-                        description: 'Maecenas condimentum neque mollis, egestas leo ut, gravida.',
-                        date: '11/09/2020',
-                        isFav: false,
-                        tag: '',
-                    },
-                    {
-                        id: 6,
-                        user: 'Max Smith',
-                        thumb: 'profile-16.jpeg',
-                        title: 'Pesulap Merah',
-                        description: 'Suspendisse efficitur diam quis gravida. Nunc molestie est eros.',
-                        date: '11/09/2020',
-                        isFav: false,
-                        tag: '',
-                    },
-                ],
                 filterdNotesList: '',
                 selectedTab: 'all',
                 deletedNote: null,
@@ -870,6 +1053,86 @@
             }));
         });
     </script>
+    {{-- <script>
+        const laporanmasuk = document.getElementById('laporanmasuk');
+        const laporanditerima = document.getElementById('laporanditerima');
+        const laporanditolak = document.getElementById('laporanditolak');
+
+        laporanmasuk.addEventListener('click', function () {
+            // Logika yang akan dijalankan saat tombol Laporan Masuk diklik
+            console.log('Tombol Laporan Masuk diklik');
+        });
+
+        laporanditerima.addEventListener('click', function () {
+            // Logika yang akan dijalankan saat tombol Laporan Diterima diklik
+            console.log('Tombol Laporan Diterima diklik');
+        });
+
+        laporanditolak.addEventListener('click', function () {
+            // Logika yang akan dijalankan saat tombol Laporan Ditolak diklik
+            console.log('Tombol Laporan Ditolak diklik');
+        });
+    </script> --}}
+    {{-- <script>
+        function showCard(cardNumber) {
+            // Mendapatkan referensi ke elemen card
+            var card = document.getElementById("card" + cardNumber);
+
+            // Memeriksa apakah card sedang tersembunyi atau ditampilkan
+            if (card.style.display === "none") {
+                // Tampilkan card jika sedang tersembunyi
+                card.style.display = "block";
+            } else {
+                // Sembunyikan card jika sedang ditampilkan
+                card.style.display = "none";
+            }
+        }
+    </script> --}}
+    {{-- <script>
+        function toggleContent(contentId) {
+            var content = document.getElementById(contentId);
+            var button = document.querySelector(`button[onclick="toggleContent('${contentId}')]`);
+
+            if (content.style.display === "none") {
+                content.style.display = "block";
+                button.classList.add("active"); // Optional: add active class to the button
+            } else {
+                content.style.display = "none";
+                button.classList.remove("active"); // Optional: remove active class from the button
+            }
+        }
+    </script> --}}
+
+<script>
+    // JavaScript
+    const buttons = document.querySelectorAll('button');
+    const cardContents = document.querySelectorAll('.card-content');
+
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            // Semua konten disembunyikan
+            cardContents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            // Konten yang sesuai ditampilkan
+            cardContents[index].style.display = 'block';
+        });
+    });
+</script>
+
+<!-- Atau menggunakan jQuery -->
+<script>
+    $(document).ready(function () {
+        $('button').click(function () {
+            var index = $(this).index();
+
+            $('.card-content').hide();
+            $('.card-content').eq(index).show();
+        });
+    });
+</script>
+
 </body>
 
 <!-- Mirrored from html.vristo.sbthemes.com/apps-notes.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:03 GMT -->

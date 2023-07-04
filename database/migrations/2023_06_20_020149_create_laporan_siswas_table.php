@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('laporan_siswas', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('tanggal');
+            $table->string('nama');
+            $table->string('deskripsi');
             $table->timestamps();
         });
     }

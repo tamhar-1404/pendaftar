@@ -111,9 +111,14 @@
                         @endif
 
 
+                        @php
+                            $currentDateTime = new DateTime();
+                            $day = $currentDateTime->format('l');
+                        @endphp
+                        {{-- {{$day}} --}}
                         <div class="flex grid-cols-5 gap-4  w-lg " id="#pagi">
                             {{-- senin --}}
-                            <div class=" w-full h-full bg-[#EAF1FF] rounded-md"   >
+                            <div class=" w-full h-full  rounded-md {{ strtolower($day) === 'monday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }}">
                                 {{-- button edit --}}
                                 <div class="flex justify-end" data-modal-target="authentication-modal1" data-modal-toggle="authentication-modal1" >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
@@ -127,7 +132,7 @@
                                 {{-- nama --}}
                                 @forelse ( $senin as $item)
 
-                                <div class="text-sm font-medium text-center mt-5">{{$item->siswa->email}}</div>
+                                <div class="text-sm font-medium text-center mt-5">{{$item->siswa->name}}</div>
                                    <!-- Main modal -->
                                    <div id="authentication-modal1" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                     <div class="relative w-full max-w-md max-h-full">
@@ -181,7 +186,7 @@
 
                             </div>
                             {{-- selasa --}}
-                            <div class=" w-full h-full bg-[#EAF1FF] rounded-md" >
+                            <div class=" w-full h-full {{ strtolower($day) === 'tuesday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
                                 {{-- button edit --}}
                                 <div class="flex justify-end" data-modal-target="authentication-modal2" data-modal-toggle="authentication-modal2" >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
@@ -246,7 +251,7 @@
                                 </div>
                             </div>
                              {{-- rabu --}}
-                             <div class=" w-full h-full bg-[#EAF1FF] rounded-md" >
+                             <div class=" w-full h-full {{ strtolower($day) === 'wednesday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
                                 {{-- button edit --}}
                                 <div class="flex justify-end" data-modal-target="authentication-modal3" data-modal-toggle="authentication-modal3" >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
@@ -312,7 +317,7 @@
                                 </div>
                             </div>
                              {{-- kamis --}}
-                             <div class=" w-full h-full bg-[#EAF1FF] rounded-md " >
+                             <div class=" w-full h-full {{ strtolower($day) === 'thursday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md " >
                                 {{-- button edit --}}
                                 <div class="flex justify-end" data-modal-target="authentication-modal4" data-modal-toggle="authentication-modal4" >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
@@ -378,7 +383,7 @@
                                 </div>
                             </div>
                              {{-- jumat --}}
-                             <div class=" w-full h-full bg-[#EAF1FF] rounded-md" >
+                             <div class=" w-full h-full {{ strtolower($day) === 'friday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
                                 {{-- button edit --}}
                                 <div class="flex justify-end" data-modal-target="authentication-modal5" data-modal-toggle="authentication-modal5" >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">

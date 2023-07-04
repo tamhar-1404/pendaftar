@@ -36,9 +36,26 @@ class LikeController extends Controller
      * @param  \App\Http\Requests\StoreLikeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreLikeRequest $request)
-    {
-        //
+    public function store(Request $request)
+    { {
+            $userId = $request->user()->id;
+            $blogId = $request->input('blog_id');
+
+            $like = Like::where('user_id', $userId)
+                ->where('blog_id', $blogId)
+                ->first();
+
+            if ($like) {
+                $like->delete();
+                return response()->json(['liked' => false]);
+            } else {
+                Like::create([
+                    'user_id' => $userId,
+                    'blog_id' => $blogId
+                ]);
+                return response()->json(['liked' => true]);
+            }
+        }
     }
 
     /**
@@ -81,32 +98,13 @@ class LikeController extends Controller
      * @param  \App\Models\Like  $like
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Like $like)
+    public function destroy(Request $request, $id)
     {
-        //
-    }
+        // $blog = Blog::findOrFail($id);
 
-    public function like(Request $request, Blog $blog)
-    {
-        {
-            $user = $request->user();
+        // // Hapus "like" jika ditemukan
+        // $blog->likes()->where('user_id', auth()->id())->delete();
 
-            // Cek apakah pengguna telah memberikan "like" pada pos ini sebelumnya
-            $isLiked = $blog->likes()->where('user_id', $user->id)->exists();
-
-            if ($isLiked) {
-                // Jika sudah "like", hapus "like"
-                $blog->likes()->where('user_id', $user->id)->delete();
-                $message = 'Like removed.';
-            } else {
-                // Jika belum "like", tambahkan "like"
-                $like = new Like();
-                $like->user_id = $user->id;
-                $blog->likes()->save($like);
-                $message = 'Liked.';
-            }
-
-            return response()->json(['message' => $message]);
-        }
+        // return redirect()->back();
     }
 }
