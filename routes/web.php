@@ -73,7 +73,6 @@ Route::resource('/berita_guru', App\Http\Controllers\BeritaController::class);
 // Siswa
 
 Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'downloadPDF']);
-Route::resource('/absensi_siswa', App\Http\Controllers\AbsensiSiswaController::class);
 
 
 // akhir siswa
@@ -106,14 +105,15 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['role:Siswa'])->group(function () {
 
-       Route::resource('absensi_siswa', App\Http\AbsensiSiswaController::class);
-       Route::resource('berita_siswa', App\Http\AbsensiSiswaController::class);
-       Route::resource('tatib_siswa', App\Http\AbsensiSiswaController::class);
-       Route::resource('piket_siswa', App\Http\AbsensiSiswaController::class);
-       Route::resource('chat_siswa', App\Http\AbsensiSiswaController::class);
+       Route::resource('absensi_siswa', App\Http\Controllers\AbsensiSiswaController::class);
+       Route::resource('berita_siswa', App\Http\Controllers\BeritaSiswaController::class);
+       Route::resource('tatib_siswa', App\Http\Controllers\TatibSiswaController::class);
+       Route::resource('piket_siswa', App\Http\Controllers\PiketSiswaController::class);
+       Route::resource('chat_siswa', App\Http\Controllers\ChatSiswaController::class);
        Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
-       Route::resource('siswa_magang', App\Http\AbsensiSiswaController::class);
+       Route::resource('siswa_magang', App\Http\Controllers\SiswaController::class);
        Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
+
 
 
     });
