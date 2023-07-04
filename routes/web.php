@@ -71,7 +71,7 @@ Route::resource('/chat_guru', App\Http\Controllers\ChatGuruController::class);
 Route::resource('/berita_guru', App\Http\Controllers\BeritaController::class);
 // akhir Pembimbing
 // Siswa
-Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
+
 Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'downloadPDF']);
 
 
@@ -104,7 +104,7 @@ Route::middleware(['auth'])->group(function () {
 
     });
 
-    Route::middleware(['role:murid'])->group(function () {
+    Route::middleware(['role:Siswa'])->group(function () {
 
        Route::resource('absensi_siswa', App\Http\AbsensiSiswaController::class);
        Route::resource('berita_siswa', App\Http\AbsensiSiswaController::class);
@@ -113,6 +113,7 @@ Route::middleware(['auth'])->group(function () {
        Route::resource('chat_siswa', App\Http\AbsensiSiswaController::class);
        Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
        Route::resource('siswa_magang', App\Http\AbsensiSiswaController::class);
+       Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
 
 
     });

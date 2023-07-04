@@ -61,8 +61,8 @@ public function confirm(Aproval $aproval)
             'name' => $aproval->name,
             'email' => $aproval->email,
             'sekolah' => $aproval->sekolah,
-            'role' => 'siswa',
-            'password' => bcrypt($aproval->password)
+            'role' => 'Siswa',
+            'password' => Hash::make($aproval->password)
         ]);
         $foto_siswa = $aproval->foto_siswa;
         Siswa::create([

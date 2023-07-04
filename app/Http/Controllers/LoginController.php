@@ -25,7 +25,7 @@ class LoginController extends Controller
 
     public function login(Request $request){
         $this->validate($request, [
-            'email' => 'required|exists:users,email',
+            'email' => 'required',
             'password' => 'required|min:6',
         ],[
             'email.required' => 'Masukkan Email Anda !!',
@@ -33,17 +33,24 @@ class LoginController extends Controller
             'password.required' => 'Masukkan Kata Sandi Anda !!',
             'password.min' => 'Password Minimal 6 Huruf !!',
         ]);
-        // toastr()->success('Berhasil Login!');
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Admin'])) {
-            return redirect()->route('dudi.index');
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Autentikasi berhasil
+            $user = Auth::user();
+            // Periksa peran pengguna dan arahkan ke rute yang sesuai
+            if ($user->role == 'Admin') {
+                return redirect()->route('dudi.index');
+            } elseif ($user->role == 'Siswa') {
+                return redirect()->route('siswamagang.index');
+            } elseif ($user->role == 'Guru') {
+                return redirect()->route('guru.kelas');
+            }
         }
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Siswa'])) {
-            return redirect()->route('siswamagang.index')->with('success','Berhasil Login Sebagai Siswa');
-        }
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Guru'])) {
-            return redirect()->route('guru.index')->with('success','Berhasil Login Sebagai Guru');
-        }
-            return redirect('login');
+
+        // Autentikasi gagal
+        return redirect()->back()->withErrors('Login failed. Please check your credentials.');
     }
 
 
