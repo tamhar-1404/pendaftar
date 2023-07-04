@@ -40,8 +40,8 @@ Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
 Route::resource('/alumni_admin', App\Http\Controllers\SiswaController::class);
 Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
-Route::resource('/tatatertib', App\Http\Controllers\ASiswaController::class);
-Route::resource('/laporansiswa', App\Http\Controllers\ASiswaController::class);
+Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
+Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
 Route::resource('/laporan_piket', App\Http\Controllers\ASiswaController::class);
 Route::resource('/sp', App\Http\Controllers\ASiswaController::class);
 
@@ -110,7 +110,14 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::middleware(['role:murid'])->group(function () {
-        // Route khusus untuk murid
+
+       Route::resource('absensi_siswa', App\Http\AbsensiSiswaController::class);
+       Route::resource('berita_siswa', App\Http\AbsensiSiswaController::class);
+       Route::resource('tatib_siswa', App\Http\AbsensiSiswaController::class);
+       Route::resource('piket_siswa', App\Http\AbsensiSiswaController::class);
+       Route::resource('chat_siswa', App\Http\AbsensiSiswaController::class);
+       Route::resource('siswa_magang', App\Http\AbsensiSiswaController::class);
+
 
     });
 

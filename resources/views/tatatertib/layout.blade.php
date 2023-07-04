@@ -81,19 +81,19 @@
                         <thead class="">
                             <tr class="">
                                 <th
-                                    class="whitespace-nowrap rounded-tl-lg bg-slate-200 px-4 py-3 font-bold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                                    class="whitespace-nowrap rounded-tl-lg bg-slate-200 px-4 py-2 font-bold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                                     #
                                 </th>
                                 <th
-                                    class="whitespace-nowrap bg-slate-200 px-4 py-3 font-bold  uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                                    class="whitespace-nowrap bg-slate-200 px-4 py-2 font-bold  uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                                     Judul
                                 </th>
                                 <th
-                                    class="whitespace-nowrap bg-slate-200 px-4 py-3 font-bold  uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                                    class="whitespace-nowrap bg-slate-200 px-4 py-2 font-bold  uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                                     Deskripsi
                                 </th>
                                 <th
-                                    class="whitespace-nowrap rounded-tr-lg bg-slate-200 px-4 py-3 font-bold  uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
+                                    class="whitespace-nowrap rounded-tr-lg bg-slate-200 px-4 py-2 font-bold  uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                                     Action
                                 </th>
                             </tr>
@@ -105,16 +105,16 @@
                             @foreach ($tatatertib as $row)
                                 <tr class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
                                     <td
-                                        class="whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
+                                        class="whitespace-nowrap px-3 py-2 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
                                         {{ $no++ }}</td>
                                     <td
-                                        class="whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
+                                        class="whitespace-nowrap px-3 py-2 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
                                         {{ $row->judul }}</td>
-                                    <td class="whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5"
+                                    <td class="whitespace-nowrap px-3 py-2 font-medium text-slate-700 dark:text-navy-100 lg:px-5"
                                         style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">
                                         {!! $row->deskripsi !!}
                                     </td>
-                                    <td class="whitespace-nowrap px-3 py-3">
+                                    <td class="whitespace-nowrap px-3 py-2">
                                         <div class="flex items-center space-x-2">
                                             <a href="{{ route('tatatertib.edit', $row->id) }}">
                                                 <div
