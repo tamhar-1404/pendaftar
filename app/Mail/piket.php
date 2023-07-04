@@ -12,15 +12,15 @@ use Illuminate\Queue\SerializesModels;
 class piket extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $mailData;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($mailData)
     {
-        //
+        $this->mailData = $mailData;
     }
 
     /**
@@ -43,7 +43,7 @@ class piket extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'piket.pesan',
         );
     }
 
