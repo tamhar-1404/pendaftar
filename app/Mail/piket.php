@@ -22,7 +22,13 @@ class piket extends Mailable
     {
         $this->mailData = $mailData;
     }
-
+    public function build()
+    {
+        return $this->from('rahmatmahendra888@gmail.com', 'Your Name')
+                    ->subject($this->mailData['title'])
+                    ->view('piket.pesan')
+                    ->with('mailData', $this->mailData);
+    }
     /**
      * Get the message envelope.
      *
