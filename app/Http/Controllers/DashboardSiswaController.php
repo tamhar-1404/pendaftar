@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dashboard_siswa;
+use App\Models\x;
 use App\Http\Requests\StoreDashboard_siswaRequest;
 use App\Http\Requests\UpdateDashboard_siswaRequest;
 
@@ -15,7 +16,8 @@ class DashboardSiswaController extends Controller
      */
     public function index()
     {
-        return view('siswamagang.index');
+        $tatib = TataTertib::latest()->paginate(5);
+        return view('siswamagang.index', compact('tatib'));
     }
 
     /**
