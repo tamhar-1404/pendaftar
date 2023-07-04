@@ -65,7 +65,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         $this->validate($request , [
             'name'=>'required',
             'tempat'=>'required',

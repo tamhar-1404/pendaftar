@@ -3585,7 +3585,7 @@
         >
         @forelse ($guru_admin as $guru )
 
-        <div class="card animate-bounce ">
+        <div class="card">
           <div class="p-2 text-right">
             <div
               x-data="usePopper({placement:'bottom-end',offset:4})"

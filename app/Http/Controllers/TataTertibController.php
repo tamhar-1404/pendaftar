@@ -17,7 +17,7 @@ class TataTertibController extends Controller
      */
     public function index()
     {
-        $tatatertib = TataTertib::paginate(5); // Mengambil 5 tatatertib per halaman
+        $tatatertib = TataTertib::latest()->paginate(5); // Mengambil 5 tatatertib per halaman
         return view('tatatertib.index', compact('tatatertib'));
     }
 
