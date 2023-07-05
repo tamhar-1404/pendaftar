@@ -74,8 +74,7 @@
                     </div>
                 </div>
                 <div class="mt-16">
-                    <form method="POST" action="{{route('register')}}">
-                      
+                    <form method="POST" action="{{route('postlogin')}}">
                        @csrf
                         <label class="relative flex">
                             <input id="email" name="email"

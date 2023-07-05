@@ -7,6 +7,7 @@ use App\Models\jurnalsiswa;
 use App\Http\Requests\StorejurnalsiswaRequest;
 use App\Http\Requests\UpdatejurnalsiswaRequest;
 use Illuminate\Http\Request;
+use Auth;
 
 
 class JurnalsiswaController extends Controller
@@ -18,7 +19,8 @@ class JurnalsiswaController extends Controller
      */
     public function index()
     {
-        $item = jurnalsiswa::paginate(10);
+        $nama = Auth::user()->name;
+        $item = jurnalsiswa::where('nama',$nama)->get();
         return view('jurnal_siswa.index',compact('item'));
     }
 

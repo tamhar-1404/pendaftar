@@ -10,6 +10,7 @@ use App\Http\Requests\StoreLoginRequest;
 use App\Http\Requests\UpdateLoginRequest;
 use App\Models\aproval;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -87,11 +88,46 @@ class LoginController extends Controller
             'foto_siswa'=>'required',
             'sp_diri'=>'required',
             'sp_ortu'=>'required',
-            'skck'=>'required',
+            'skck'=>'',
             'cv'=>'required',
             'email'=>'required',
             'password'=>'required',
         ]);
+        if($request->file('skck') === null){
+            $foto_siswa = $request->file('foto_siswa');
+        $sp_diri = $request->file('sp_diri');
+        $sp_ortu = $request->file('sp_ortu');
+        $cv = $request->file('cv');
+
+        $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
+        $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
+        $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
+        $cv->storeAs('public/pendaftaran', $cv->hashName());
+
+        aproval::create([
+            'name' => $request->name,
+            'tempat' => $request->tempat,
+            'tanggal' => $request->tanggal,
+            'kelas' => $request->kelas,
+            'nisn' => $request->nisn,
+            'jeniskelamin' => $request->jeniskelamin,
+            'alamat' => $request->alamat,
+            'sekolah' => $request->sekolah,
+            'jurusan' => $request->jurusan,
+            'magang_awal' => $request->magang_awal,
+            'magang_akhir' => $request->magang_akhir,
+            'foto_siswa' => $foto_siswa->hashName(),
+            'sp_diri' => $sp_diri->hashName(),
+            'sp_ortu' => $sp_ortu->hashName(),
+            'cv' => $cv->hashName(),
+            'email' => $request->email,
+            'no' => $request->no,
+            'password' => Hash::make($request->password),
+            'remember_token' => Str::random(60)
+        ]);
+
+        return redirect()->route('login.index');
+        }
         $foto_siswa = $request->file('foto_siswa');
         $sp_diri = $request->file('sp_diri');
         $sp_ortu = $request->file('sp_ortu');
@@ -123,7 +159,8 @@ class LoginController extends Controller
             'cv' => $cv->hashName(),
             'email' => $request->email,
             'no' => $request->no,
-            'password' => bcrypt($request->password)
+            'password' => Hash::make($request->password),
+            'remember_token' => Str::random(60)
         ]);
 
         return redirect()->route('login.index');

@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreaprovalRequest;
 use App\Http\Requests\UpdateaprovalRequest;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use App\Mail\DemoMail;
 use App\Mail\Guru_email;
 use App\Mail\tolakEmail;
@@ -61,8 +63,9 @@ public function confirm(Aproval $aproval)
             'name' => $aproval->name,
             'email' => $aproval->email,
             'sekolah' => $aproval->sekolah,
+            'password' =>$aproval->password,
             'role' => 'Siswa',
-            'password' => Hash::make($aproval->password)
+            'remember_token' =>$aproval->remember_token
         ]);
         $foto_siswa = $aproval->foto_siswa;
         Siswa::create([

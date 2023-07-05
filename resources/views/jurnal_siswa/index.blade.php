@@ -119,7 +119,7 @@
         <div x-data="basic" class="mt-40">
             {{-- judul --}}
             <div class="mb-5 font-semibold">
-                <span>Jurnal / <span class="text-[#00B7FF]"></span></span>
+                <span>Jurnal /<span class="text-[#00B7FF]">  {{ Auth::user()->name }}</span></span>
             </div>
             <div class="panel">
 
@@ -148,13 +148,13 @@
                                     <form class="space-y-6" action="{{route('jurnal_siswa.store')}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div>
-                                            <input type="text" name="nama" class="border border-2" id="">
+                                            <input type="hidden" name="nama" class="" value=" {{ Auth::user()->name }}" id="">
                                         </div>
                                         <div>
-                                            <input type="date" name="tanggal" id="">
+                                            <input type="hidden" name="tanggal" id="" value=" {{ Auth::user()->created_at }}">
                                         </div>
                                         <div>
-                                            <input type="text" name="sekolah" id="">
+                                            <input type="hidden" name="sekolah" id="" value=" {{ Auth::user()->sekolah }}">
                                         </div>
                                         <div>
                                             <label for="kegiatan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
@@ -165,7 +165,9 @@
                                             <input type="file" name="image" id="" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                                         </div>
                                         <input type="hidden" name="status" value="mengisi">
-                                        <button type="submit">kirim</button>
+                                        <div class="flex justify-end">
+                                            <button type="submit" class="border text-blue-400 bg-white font-semibold border-blue-400  py-1.5 px-3 text-sm rounded-md hover:bg-blue-400 hover:text-white">Kirim</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -296,7 +298,7 @@
                                 @forelse ( $item as $items )
                                 <tr
                                 class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                <td class="whitespace-nowrap px-4 py-4 font-medium">{{$items -> id}}</td>
+                                <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $loop->iteration }}</td>
                                 <td class="whitespace-nowrap px-4 py-4">{{$items -> nama}}</td>
                                 <td class="whitespace-nowrap px-4 py-4">{{$items -> tanggal}}</td>
                                 <td class="whitespace-nowrap px-4 py-4">{{$items -> sekolah}}</td>

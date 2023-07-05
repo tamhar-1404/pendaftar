@@ -361,7 +361,7 @@
                             >
                         </li>
                         <li class="border-t border-white-light dark:border-white-light/10">
-                            <a href="{{route('logout')}}" class="py-3 text-danger" @click="toggle">
+                            <a href="{{route('logout')}}" class="py-3 text-danger">
                                 <svg
                                     class="h-4.5 w-4.5 rotate-90 ltr:mr-2 rtl:ml-2"
                                     width="18"
