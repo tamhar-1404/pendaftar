@@ -18,6 +18,8 @@ class ApprovalIzin extends Model
         'keterangan',
         'deskripsi',
         'bukti',
+        'tanggal',
+        'jam',
         'status'
         ];
 }

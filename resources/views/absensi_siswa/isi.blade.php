@@ -69,7 +69,13 @@
                 PRINT
             </button>
             <button data-modal-target="staticModal" data-modal-toggle="staticModal" class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400">Tambah</button>
-            <button class="border border-green-500 px-3 py-2 rounded-lg text-green-500 hover:bg-green-500 hover:text-white font-bold">Absen</button>
+            <form action="{{ route('absensi_siswa.store') }}" method="post">
+                <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
+                <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}" />
+                <input type="hidden" name="jam" value="{{ date('H:i') }}" />
+                <input type="hidden" name="keterangan" value="Hadir">
+                <button type="submit" class="border border-green-500 px-3 py-2 rounded-lg text-green-500 hover:bg-green-500 hover:text-white font-bold">Absen</button>
+            </form> 
         </div>
 
         {{-- serch dan filter --}}
@@ -89,6 +95,7 @@
             </div>
         </div>
     </div>
+
     <div class=" mt-3 col-span-2 p-2 flex gap-2">
         <div class="w-3/4 panel ">
             <div class="relative overflow-x-auto">
@@ -97,7 +104,7 @@
                         <tr>
 
                             <th scope="col" class="px-6 py-3">
-                               Id
+                               #
                             </th>
                             <th scope="col" class="px-6 py-3">
                                Nama
@@ -114,176 +121,34 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $no=1;
+                        @endphp
+                         @forelse ($approvalIzin as $absen)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                               1
+                               {{ $no++ }}
                             </th>
                             <td class="px-6 py-4">
-                                Tom
+                                {{ $absen->nama }}
                             </td>
                             <td class="px-6 py-4">
-                                21-3-2023
+                                {{ $absen->tanggal }}
                             </td>
                             <td class="px-6 py-4">
-                                07:35
+                                {{ $absen->jam }}
                             </td>
                             <td class="px-6 py-4 text-red-500">
-                                Sakit
+                                {{ $absen->keterangan }}
                             </td>
                         </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                               2
-                            </th>
-                            <td class="px-6 py-4">
-                                Tom
-                            </td>
-                            <td class="px-6 py-4">
-                                21-3-2023
-                            </td>
-                            <td class="px-6 py-4">
-                                07:35
-                            </td>
-                            <td class="px-6 py-4 text-green-500">
-                                Hadir
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                               3
-                            </th>
-                            <td class="px-6 py-4">
-                                Tom
-                            </td>
-                            <td class="px-6 py-4">
-                                21-3-2023
-                            </td>
-                            <td class="px-6 py-4">
-                                07:35
-                            </td>
-                            <td class="px-6 py-4 text-yellow-500">
-                                izin
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                               4
-                            </th>
-                            <td class="px-6 py-4">
-                                Tom
-                            </td>
-                            <td class="px-6 py-4">
-                                21-3-2023
-                            </td>
-                            <td class="px-6 py-4">
-                                07:35
-                            </td>
-                            <td class="px-6 py-4 text-yellow-500">
-                                izin
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                               5
-                            </th>
-                            <td class="px-6 py-4">
-                                Tom
-                            </td>
-                            <td class="px-6 py-4">
-                                21-3-2023
-                            </td>
-                            <td class="px-6 py-4">
-                                07:35
-                            </td>
-                            <td class="px-6 py-4 text-yellow-500">
-                                izin
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                               6
-                            </th>
-                            <td class="px-6 py-4">
-                                Tom
-                            </td>
-                            <td class="px-6 py-4">
-                                21-3-2023
-                            </td>
-                            <td class="px-6 py-4">
-                                07:35
-                            </td>
-                            <td class="px-6 py-4 text-yellow-500">
-                                izin
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                               7
-                            </th>
-                            <td class="px-6 py-4">
-                                Tom
-                            </td>
-                            <td class="px-6 py-4">
-                                21-3-2023
-                            </td>
-                            <td class="px-6 py-4">
-                                07:35
-                            </td>
-                            <td class="px-6 py-4 text-yellow-500">
-                                izin
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                               8
-                            </th>
-                            <td class="px-6 py-4">
-                                Tom
-                            </td>
-                            <td class="px-6 py-4">
-                                21-3-2023
-                            </td>
-                            <td class="px-6 py-4">
-                                07:35
-                            </td>
-                            <td class="px-6 py-4 text-yellow-500">
-                                izin
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                               9
-                            </th>
-                            <td class="px-6 py-4">
-                                Tom
-                            </td>
-                            <td class="px-6 py-4">
-                                21-3-2023
-                            </td>
-                            <td class="px-6 py-4">
-                                07:35
-                            </td>
-                            <td class="px-6 py-4 text-yellow-500">
-                                izin
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                               10
-                            </th>
-                            <td class="px-6 py-4">
-                                Tom
-                            </td>
-                            <td class="px-6 py-4">
-                                21-3-2023
-                            </td>
-                            <td class="px-6 py-4">
-                                07:35
-                            </td>
-                            <td class="px-6 py-4 text-yellow-500">
-                                izin
-                            </td>
-                        </tr>
+                        @empty
+                        <div class="bg-red-100 border mb-2 mt-2 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                          <strong class="font-bold">Data </strong>
+                          <span class="block sm:inline">Tidak tersedia.</span>
+                          <span class="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
+                        </div>
+                        @endforelse
                     </tbody>
                 </table>
                 <div class="mt-5 flex justify-between">
@@ -352,7 +217,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                         </svg>
                     </span>
-                    <span>total</span>
+                    <span>Hadir</span>
                 </div>
             </div>
             <div class="w-full p-2 flex justify-center">
@@ -363,7 +228,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                         </svg>
                     </span>
-                    <span>total</span>
+                    <span>Sakit</span>
                 </div>
             </div>
             <div class="w-full p-2 flex justify-center">
@@ -374,7 +239,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                         </svg>
                     </span>
-                    <span>total</span>
+                    <span>Izin</span>
                 </div>
             </div>
             <div class="w-full p-2 flex justify-center">
@@ -385,7 +250,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                         </svg>
                     </span>
-                    <span>total</span>
+                    <span>Telat</span>
                 </div>
             </div>
             <div class="w-full p-2 flex justify-center">
@@ -396,7 +261,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                         </svg>
                     </span>
-                    <span>total</span>
+                    <span>Alfa</span>
                 </div>
             </div>
 
