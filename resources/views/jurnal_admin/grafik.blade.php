@@ -665,7 +665,7 @@
                             @forelse ( $item  as $items)
                                 <tr
                                 class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                <td class="whitespace-nowrap px-4 py-4 font-medium">{{$items -> id}}</td>
+                                <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $loop->iteration }} </td>
                                 <td class="whitespace-nowrap px-4 py-4">{{$items -> nama}}</td>
                                 <td class="whitespace-nowrap px-4 py-4">{{$items -> tanggal}}</td>
                                 <td class="whitespace-nowrap px-4 py-4">{{$items -> sekolah}}</td>
@@ -832,8 +832,8 @@
     }, {
       name: 'Tidak Mengisi',
       data: [
-        {{$mengisi_jan}},{{$mengisi_feb}},{{$mengisi_mar}},{{$mengisi_apr}},{{$mengisi_mei}},
-        {{$mengisi_jun}},{{$mengisi_jul}},{{$mengisi_aug}},{{$mengisi_sep}},{{$mengisi_okt}},{{$mengisi_nov}},{{$mengisi_des}}
+        {{$tdk_mengisi_jan}},{{$tdk_mengisi_feb}},{{$tdk_mengisi_mar}},{{$tdk_mengisi_apr}},{{$tdk_mengisi_mei}},
+        {{$tdk_mengisi_jun}},{{$tdk_mengisi_jul}},{{$tdk_mengisi_aug}},{{$tdk_mengisi_sep}},{{$tdk_mengisi_okt}},{{$tdk_mengisi_nov}},{{$tdk_mengisi_des}}
       ]
     }],
       chart: {

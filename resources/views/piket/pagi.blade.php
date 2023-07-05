@@ -97,13 +97,12 @@
                                                                         <option value="jumat">jumat</option>
                                                                     </select>
                                                                 </div>
-                                                                @forelse ($data as $data )
+                                                                @foreach ($siswa as $data)
                                                                 <div class="flex gap-3 items-center">
                                                                     <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}" id=""><p>{{$data->name}}</p>
                                                                 </div>
-                                                                @empty
+                                                                @endforeach
 
-                                                                @endforelse
 
                                                                 <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
                                                             </form>
@@ -588,13 +587,11 @@
                                                                         <option value="jumat">jumat</option>
                                                                     </select>
                                                                 </div>
-                                                                @forelse ($data as $data )
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}" id=""><p>{{$data->name}}</p>
-                                                                </div>
-                                                                @empty
 
-                                                                @endforelse
+                                                                <div class="flex gap-3 items-center">
+                                                                     <input type="checkbox" name="nama_siswa[]" value="" id=""><p></p>
+                                                                </div>
+
 
                                                                 <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
                                                             </form>

@@ -585,7 +585,7 @@
                                 @forelse ( $item  as $items)
                                 <tr
                                 class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                <td class="whitespace-nowrap px-4 py-4 font-medium">{{$items ->id}}</td>
+                                <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $loop->iteration }}</td>
                                 <td class="whitespace-nowrap px-4 py-4">{{$items->nama}}</td>
                                 <td class="whitespace-nowrap px-4 py-4">{{$items->tanggal}}</td>
                                 <td class="whitespace-nowrap px-4 py-4">{{$items->sekolah}}</td>
@@ -732,7 +732,7 @@
         <!-- end footer section -->
 
     </div>
-    
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
