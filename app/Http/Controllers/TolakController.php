@@ -16,7 +16,7 @@ class TolakController extends Controller
     public function index()
     {
         $tolaks = tolak::latest()->paginate(5);
-        return view('tolak.index' , compact('tolaks'));
+        return view('tolak.detail' , compact('tolaks'));
     }
 
     /**

@@ -118,8 +118,6 @@ Route::middleware(['auth'])->group(function () {
        Route::resource('siswa_magang', App\Http\Controllers\SiswaController::class);
        Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
 
-
-
     });
 
     Route::middleware(['role:guru'])->group(function () {

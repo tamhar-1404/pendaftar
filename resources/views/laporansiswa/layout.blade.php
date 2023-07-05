@@ -98,7 +98,8 @@
                         <div class="absolute z-10 hidden h-full w-full rounded-md bg-black/60"
                             :class="{ '!block xl:!hidden': isShowNoteMenu }" @click="isShowNoteMenu = !isShowNoteMenu">
                         </div>
-                        <div class="panel absolute z-10 hidden h-full w-[240px] flex-none space-y-4 overflow-hidden p-4 ltr:rounded-r-none rtl:rounded-l-none ltr:lg:rounded-r-md rtl:lg:rounded-l-md xl:relative xl:block xl:h-auto">
+                        <div
+                            class="panel absolute z-10 hidden h-full w-[240px] flex-none space-y-4 overflow-hidden p-4 ltr:rounded-r-none rtl:rounded-l-none ltr:lg:rounded-r-md rtl:lg:rounded-l-md xl:relative xl:block xl:h-auto">
                             <div class="flex h-full flex-col pb-16">
                                 <div class="flex items-center text-center">
                                     <div>
@@ -121,28 +122,43 @@
                                 <div class="my-4 h-px w-full border-b border-[#e0e6ed] dark:border-[#1b2e4b]"></div>
                                 <div class="perfect-scrollbar relative -mr-3.5 h-full grow pr-3.5">
                                     <div class="space-y-1">
-                                        <button type="button" class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary" onclick="toggleContent('content1')">
+                                        <button type="button" id="button"
+                                            class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary"
+                                            onclick="toggleContent('content1')">
                                             <div class="flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5A3.375 3.375 0 006.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0015 2.25h-1.5a2.251 2.251 0 00-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 00-9-9z" />
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5A3.375 3.375 0 006.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0015 2.25h-1.5a2.251 2.251 0 00-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 00-9-9z" />
                                                 </svg>
                                                 <div class="ltr:ml-3 rtl:mr-3">Laporan Masuk</div>
                                             </div>
                                         </button>
 
-                                        <button type="button" class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary" onclick="toggleContent('content2')">
+                                        <button type="button" id="button"
+                                            class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary"
+                                            onclick="toggleContent('content2')">
                                             <div class="flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12" />
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12" />
                                                 </svg>
                                                 <div class="ltr:ml-3 rtl:mr-3">Laporan Diterima</div>
                                             </div>
                                         </button>
 
-                                        <button type="button" class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary" onclick="toggleContent('content3')">
+                                        <button type="button" id="button"
+                                            class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary"
+                                            onclick="toggleContent('content3')">
                                             <div class="flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m6 4.125l2.25 2.25m0 0l2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m6 4.125l2.25 2.25m0 0l2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
                                                 </svg>
                                                 <div class="ltr:ml-3 rtl:mr-3">Laporan Ditolak</div>
                                             </div>
@@ -174,7 +190,8 @@
                                     No data available
                                 </div>
                             </template>
-                            <div id="content1" class="card-content" style="display: none" class="hidden min-h-[400px] sm:min-h-[300px]">
+                            <div id="content1" class="card-content" style="display: none"
+                                class="hidden min-h-[400px] sm:min-h-[300px]">
                                 <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                                     <div class="panel pb-12">
                                         <div class="min-h-[142px]">
@@ -382,7 +399,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="content2" class="card-content" style="display: none" class="hidden min-h-[400px] sm:min-h-[300px]">
+                            <div id="content2" class="card-content" style="display: none"
+                                class="hidden min-h-[400px] sm:min-h-[300px]">
                                 <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                                     <div class="panel pb-12">
                                         <div class="min-h-[142px]">
@@ -415,106 +433,10 @@
                                             </div>
                                         </div>
                                         <div class="absolute bottom-4 left-0 w-full px-5">
-                                            <div class="mt-5 flex items-center justify-between">
+                                            <div class="mt-5 flex items-center justify-end">
                                                 <div class="flex items-center mt-5">
-                                                    <button type="button" class="group text-gray-600">
-                                                        <svg width="24" height="24" viewBox="0 0 24 24"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-4.5 w-4.5 ltr:mr-3 rtl:ml-3">
-                                                            <path opacity="0.5"
-                                                                d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
-                                                                stroke="currentColor" stroke-width="1.5" />
-                                                            <path
-                                                                d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
-                                                                stroke="currentColor" stroke-width="1.5" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                                <div class="flex items-center mt-4">
-                                                    <button type="button" class="text-success">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5"
-                                                            stroke="currentColor" class="w-6 h-6">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                        </svg>
-                                                    </button>
-                                                    <button type="button"
-                                                        class="group text-danger ltr:ml-1 rtl:mr-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5"
-                                                            stroke="currentColor" class="w-6 h-6">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel pb-12">
-                                        <div class="min-h-[142px]">
-                                            <div class="flex justify-between">
-                                                <div class="flex w-max items-center">
-                                                    <div class="flex-none">
-                                                        <div>
-                                                            <div
-                                                                class="rounded-full bg-gray-300 p-0.5 dark:bg-gray-700">
-                                                                <img class="h-8 w-8 rounded-full object-cover"
-                                                                    src="{{ asset('admin/assets/images/profile-16.jpg') }}" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ltr:ml-2 rtl:mr-2">
-                                                        <div class="font-semibold">
-                                                            <p>Chris Martin</p>
-                                                        </div>
-                                                        <div class="text-sx text-white-dark">
-                                                            <p>10/10/2010</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h4 class="mt-4 font-semibold">Alan Walker</h4>
-                                                <p class="mt-2 text-white-dark">Lorem ipsum dolor sit amet
-                                                    consectetur adipisicing elit. Dolore, autem!
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="absolute bottom-4 left-0 w-full px-5">
-                                            <div class="mt-5 flex items-center justify-between">
-                                                <div class="flex items-center mt-5">
-                                                    <button type="button" class="group text-gray-600">
-                                                        <svg width="24" height="24" viewBox="0 0 24 24"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-4.5 w-4.5 ltr:mr-3 rtl:ml-3">
-                                                            <path opacity="0.5"
-                                                                d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
-                                                                stroke="currentColor" stroke-width="1.5" />
-                                                            <path
-                                                                d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
-                                                                stroke="currentColor" stroke-width="1.5" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                                <div class="flex items-center mt-4">
-                                                    <button type="button" class="text-success">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5"
-                                                            stroke="currentColor" class="w-6 h-6">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                        </svg>
-                                                    </button>
-                                                    <button type="button"
-                                                        class="group text-danger ltr:ml-1 rtl:mr-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5"
-                                                            stroke="currentColor" class="w-6 h-6">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                        </svg>
+                                                    <button type="button" class="btn btn-outline-info">
+                                                        Lihat
                                                     </button>
                                                 </div>
                                             </div>
@@ -522,7 +444,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="content3" class="card-content" style="display: none" class="hidden min-h-[400px] sm:min-h-[300px]">
+                            <div id="content3" class="card-content" style="display: none"
+                                class="hidden min-h-[400px] sm:min-h-[300px]">
                                 <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                                     <div class="panel pb-12">
                                         <div class="min-h-[142px]">
@@ -539,7 +462,7 @@
                                                     </div>
                                                     <div class="ltr:ml-2 rtl:mr-2">
                                                         <div class="font-semibold">
-                                                            <p>Chris Martin</p>
+                                                            <p>Olivia Rodrigo</p>
                                                         </div>
                                                         <div class="text-sx text-white-dark">
                                                             <p>10/10/2010</p>
@@ -548,45 +471,17 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <h4 class="mt-4 font-semibold">Alan Walker</h4>
+                                                <h4 class="mt-4 font-semibold">Zayn Malik</h4>
                                                 <p class="mt-2 text-white-dark">Lorem ipsum dolor sit amet
                                                     consectetur adipisicing elit. Dolore, autem!
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="absolute bottom-4 left-0 w-full px-5">
-                                            <div class="mt-5 flex items-center justify-between">
+                                            <div class="mt-5 flex items-center justify-end">
                                                 <div class="flex items-center mt-5">
-                                                    <button type="button" class="group text-gray-600">
-                                                        <svg width="24" height="24" viewBox="0 0 24 24"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-4.5 w-4.5 ltr:mr-3 rtl:ml-3">
-                                                            <path opacity="0.5"
-                                                                d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
-                                                                stroke="currentColor" stroke-width="1.5" />
-                                                            <path
-                                                                d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
-                                                                stroke="currentColor" stroke-width="1.5" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                                <div class="flex items-center mt-4">
-                                                    <button type="button" class="text-success">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5"
-                                                            stroke="currentColor" class="w-6 h-6">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                        </svg>
-                                                    </button>
-                                                    <button type="button"
-                                                        class="group text-danger ltr:ml-1 rtl:mr-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5"
-                                                            stroke="currentColor" class="w-6 h-6">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                        </svg>
+                                                    <button type="button" class="btn btn-outline-info">
+                                                        Lihat
                                                     </button>
                                                 </div>
                                             </div>
@@ -594,7 +489,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="fixed inset-0 z-[999] hidden overflow-y-auto bg-[black]/60 px-4"
                                 :class="isDeleteNoteModal && '!block'">
                                 <div class="flex min-h-screen items-center justify-center">
@@ -1103,36 +997,61 @@
         }
     </script> --}}
 
-<script>
-    // JavaScript
-    const buttons = document.querySelectorAll('button');
-    const cardContents = document.querySelectorAll('.card-content');
+    <script>
+        // JavaScript
+        const buttons = document.querySelectorAll('#button');
+        const cardContents = document.querySelectorAll('.card-content');
 
-    buttons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            // Semua konten disembunyikan
-            cardContents.forEach(content => {
-                content.style.display = 'none';
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                // Semua konten disembunyikan
+                cardContents.forEach(content => {
+                    content.style.display = 'none';
+                });
+
+                // Konten yang sesuai ditampilkan
+                cardContents[index].style.display = 'block';
             });
-
-            // Konten yang sesuai ditampilkan
-            cardContents[index].style.display = 'block';
         });
-    });
-</script>
+    </script>
 
-<!-- Atau menggunakan jQuery -->
-<script>
-    $(document).ready(function () {
-        $('button').click(function () {
-            var index = $(this).index();
+    <!-- Atau menggunakan jQuery -->
+    <script>
+        $(document).ready(function() {
+            $('#button').click(function() {
+                var index = $(this).index();
 
-            $('.card-content').hide();
-            $('.card-content').eq(index).show();
+                $('.card-content').hide();
+                $('.card-content').eq(index).show();
+            });
         });
-    });
-</script>
+    </script>
 
+    {{-- <script>
+        const seeButton = document.querySelector("#seeButton");
+        const detailmodal = document.querySelector("#detailmodal");
+        const cancelButton = document.querySelector(".ml-auto button");
+
+        seeButton.addEventListener("click", () => {
+            detailmodal.classList.remove("hidden");
+        });
+
+        cancelButton.addEventListener("click", () => {
+            detailmodal.classList.add("hidden");
+        });
+    </script> --}}
+    <!-- script -->
+    <script>
+        document.addEventListener("alpine:init", () => {
+            Alpine.data("modal", (initialOpenState = false) => ({
+                open: initialOpenState,
+
+                toggle() {
+                    this.open = !this.open;
+                },
+            }));
+        });
+    </script>
 </body>
 
 <!-- Mirrored from html.vristo.sbthemes.com/apps-notes.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:03 GMT -->

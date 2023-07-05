@@ -587,6 +587,11 @@
                                                                         <option value="jumat">jumat</option>
                                                                     </select>
                                                                 </div>
+                                                                @forelse ($data as $data )
+                                                                <div class="flex gap-3 items-center">
+                                                                    <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}" ><p>{{$data->name}}</p>
+                                                                </div>
+                                                                @empty
 
                                                                 <div class="flex gap-3 items-center">
                                                                      <input type="checkbox" name="nama_siswa[]" value="" id=""><p></p>
