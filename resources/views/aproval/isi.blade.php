@@ -33,13 +33,13 @@
 
                     <div class="main">
                     <div class="flex justify-end mb-5 gap-3">
-                        <form id="reject-form-{{ $aproval->id }}" action="{{ route('aproval.tolak', $aproval->id) }}" method="POST" onsubmit="return confirmReject(event)">
-                            @csrf
-                            <input type="hidden" name="alasan" id="alasan-input-{{ $aproval->id }}">
-                            <button type="submit" class="border border-red-500 hover:bg-red-500 hover:text-white text-red-500 hover:border-red-700 text-sm font-semibold py-1 px-4 rounded-md outline-none focus:outline-none">
-                              Tolak
-                            </button>
-                          </form>
+                          <form id="reject-form-{{ $aproval->id }}" action="{{ route('aproval.tolak', $aproval->id) }}" method="POST" onsubmit="return confirmReject(event)">
+                              @csrf
+                              <input type="hidden" name="alasan" id="alasan-input-{{ $aproval->id }}">
+                              <button type="submit" class="border border-red-500 hover:bg-red-500 hover:text-white text-red-500 hover:border-red-700 text-sm font-semibold py-1 px-4 rounded-md outline-none focus:outline-none">
+                                Tolak
+                              </button>
+                            </form>
 
                           <script>
                             function confirmReject(event) {

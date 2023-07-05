@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\ApprovalIzin;
 use App\Http\Requests\StoreApprovalIzinRequest;
 use App\Http\Requests\UpdateApprovalIzinRequest;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\tolakdataEmail;
+use App\Mail\TerimaizinEmail;
+use App\Mail\dataizinEmail;
 
 
 
@@ -47,30 +51,39 @@ class ApprovalIzinController extends Controller
      */
     public function store(Request $request, ApprovalIzin $approvalIzin)
     {
-        // dd($request);
-        $this->validate($request, [
-            'nama' => 'required',
-            'sekolah' => 'required',
-            'dari' => 'required',
-            'sampai' => 'required',
-            'keterangan'=> 'required',
-            'deskripsi' => 'required',
-            'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
-        ]);
-        $image = $request->file('bukti');
-        $image->storeAs('public/bukti_izin', $image->hashName());
-       
-       ApprovalIzin::create([
-            'nama' => $request->nama,
-            'sekolah' => $request->sekolah,
-            'dari' => $request->dari,
-            'sampai' => $request->sampai,
-            'keterangan' => $request->keterangan,
-            'deskripsi' => $request->deskripsi,
-            'status' => 'menunggu',
-            'bukti' => $image->hashName()
-        ]);
-        return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        // if ($approvalIzin->status === 'menunggu') {
+        //     
+                 // dd($request);
+                $this->validate($request, [
+                    'nama' => 'required',       
+                    'sekolah' => 'required',
+                    'email' => 'required',
+                    'dari' => 'required',
+                    'sampai' => 'required',
+                    'keterangan'=> 'required',
+                    'deskripsi' => 'required',
+                    'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
+                ]);
+                $image = $request->file('bukti');
+                $image->storeAs('public/bukti_izin', $image->hashName());
+               
+            
+            ApprovalIzin::create([
+                    'nama' => $request->nama,   
+                    'sekolah' => $request->sekolah,
+                    'email' => $request->email,
+                    'dari' => $request->dari,
+                    'sampai' => $request->sampai,
+                    'keterangan' => $request->keterangan,
+                    'deskripsi' => $request->deskripsi,
+                    'status' => 'menunggu',
+                    'bukti' => $image->hashName()
+                ]);
+                Mail::to($request->email)->send(new dataizinEmail($approvalIzin));
+                return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        //  } else {
+        //         return redirect()->back()->with('error', 'Maaf, tidak dapat melakukan konfirmasi pada data');
+        //  }
     }
 
     /**
@@ -79,9 +92,9 @@ class ApprovalIzinController extends Controller
      * @param  \App\Models\ApprovalIzin  $approvalIzin
      * @return \Illuminate\Http\Response
      */
-    public function confirm(ApprovalIzin $izin)
+    public function tolak(Request $request, $id)
     {
-      //
+         // 
     }
 
     /**
@@ -102,18 +115,41 @@ class ApprovalIzinController extends Controller
      * @param  \App\Models\ApprovalIzin  $approvalIzin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        // Temukan data izin berdasarkan ID
+    public function update(Request $request, $id, ApprovalIzin $approvalIzin)
+{
+    $cek = $request->input('keterangan');
+    $email = $request->input('email');
+    $alasan = $request->input('alasan');
+
+    if ($cek === 'terima') {
         $izin = ApprovalIzin::findOrFail($id);
 
         // Ubah status menjadi 'Terima'
         $izin->status = 'Terima';
         $izin->save();
 
-        return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        Mail::to($email)->send(new TerimaizinEmail($approvalIzin));
     }
-        
+
+    if ($cek === 'tolak') {
+        $izin = ApprovalIzin::findOrFail($id);
+
+        if ($alasan) {
+            $mailData = [
+                'content' => 'Data Anda telah ditolak dengan alasan: ' . $alasan,
+            ];
+
+            Mail::to($email)->send(new tolakdataEmail($mailData));
+            $izin->delete();
+        } else {
+            // Tambahkan pesan error jika alasan tidak diisi
+            return redirect()->back()->with(['error' => 'Silakan masukkan alasan penolakan.']);
+        }
+    }
+
+    return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
+}
+   
     
 
     /**

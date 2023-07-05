@@ -10,7 +10,7 @@ class piket extends Model
     use HasFactory;
     // protected $table = 'piket';
     protected $fillable = [
-        'waktu','hari','id_siswa'
+        'waktu','hari','siswa_id'
     ];
 
     public function siswa()
