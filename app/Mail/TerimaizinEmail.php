@@ -9,25 +9,20 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class piket extends Mailable
+class TerimaizinEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $mailData;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($mailData)
+    public function __construct()
     {
-        $this->mailData = $mailData;
+        //
     }
-    public function build()
-    {
-        return $this->view('piket.pesan')
-            ->subject('Subject Email')
-            ->with($this->mailData);
-    }
+
     /**
      * Get the message envelope.
      *
@@ -36,7 +31,7 @@ class piket extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Piket',
+            subject: 'Terimaizin Email',
         );
     }
 
@@ -48,7 +43,7 @@ class piket extends Mailable
     public function content()
     {
         return new Content(
-            view: 'piket.pesan',
+            view: 'emails.terimaizin',
         );
     }
 

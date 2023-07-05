@@ -444,6 +444,7 @@
                             <label for="Nama" class="block text-gray-700 font-medium mb-2">sekolah</label>
                             <input type="text" placeholder="Masukkan kegiatan Anda " id="Kegiatan" name="sekolah" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                           </div>
+                          <input type="hidden" name="email" value="kaderofficial33@gmail.com">
                         <div class="mt-4">
                           <label for="Nama" class="block text-gray-700 font-medium mb-2">dari</label>
                           <input type="date" placeholder="Masukkan tanggal awal" id="sekolah" name="dari" class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">

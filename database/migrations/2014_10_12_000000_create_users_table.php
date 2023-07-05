@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            // $table->foreignId('siswa_id')->nullable();
+            // $table->foreign('siswa_id')->references('id')->on('siswas')->onDelete('cascade');
             $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('sekolah');
+            $table->string('sekolah')->nullable();
             $table->string('role')->nullable();
             $table->rememberToken();
             $table->timestamps();

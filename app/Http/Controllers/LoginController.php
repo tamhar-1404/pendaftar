@@ -10,6 +10,7 @@ use App\Http\Requests\StoreLoginRequest;
 use App\Http\Requests\UpdateLoginRequest;
 use App\Models\aproval;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -25,7 +26,7 @@ class LoginController extends Controller
 
     public function login(Request $request){
         $this->validate($request, [
-            'email' => 'required|exists:users,email',
+            'email' => 'required',
             'password' => 'required|min:6',
         ],[
             'email.required' => 'Masukkan Email Anda !!',
@@ -33,17 +34,24 @@ class LoginController extends Controller
             'password.required' => 'Masukkan Kata Sandi Anda !!',
             'password.min' => 'Password Minimal 6 Huruf !!',
         ]);
-        // toastr()->success('Berhasil Login!');
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Admin'])) {
-            return redirect()->route('dudi.index');
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Autentikasi berhasil
+            $user = Auth::user();
+            // Periksa peran pengguna dan arahkan ke rute yang sesuai
+            if ($user->role == 'Admin') {
+                return redirect()->route('dudi.index');
+            } elseif ($user->role == 'Siswa') {
+                return redirect()->route('siswamagang.index');
+            } elseif ($user->role == 'Guru') {
+                return redirect()->route('guru.kelas');
+            }
         }
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Siswa'])) {
-            return redirect()->route('siswamagang.index')->with('success','Berhasil Login Sebagai Siswa');
-        }
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Guru'])) {
-            return redirect()->route('guru.index')->with('success','Berhasil Login Sebagai Guru');
-        }
-            return redirect('login');
+
+        // Autentikasi gagal
+        return redirect()->back()->withErrors('Login failed. Please check your credentials.');
     }
 
 
@@ -80,11 +88,46 @@ class LoginController extends Controller
             'foto_siswa'=>'required',
             'sp_diri'=>'required',
             'sp_ortu'=>'required',
-            'skck'=>'required',
+            'skck'=>'',
             'cv'=>'required',
             'email'=>'required',
             'password'=>'required',
         ]);
+        if($request->file('skck') === null){
+            $foto_siswa = $request->file('foto_siswa');
+        $sp_diri = $request->file('sp_diri');
+        $sp_ortu = $request->file('sp_ortu');
+        $cv = $request->file('cv');
+
+        $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
+        $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
+        $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
+        $cv->storeAs('public/pendaftaran', $cv->hashName());
+
+        aproval::create([
+            'name' => $request->name,
+            'tempat' => $request->tempat,
+            'tanggal' => $request->tanggal,
+            'kelas' => $request->kelas,
+            'nisn' => $request->nisn,
+            'jeniskelamin' => $request->jeniskelamin,
+            'alamat' => $request->alamat,
+            'sekolah' => $request->sekolah,
+            'jurusan' => $request->jurusan,
+            'magang_awal' => $request->magang_awal,
+            'magang_akhir' => $request->magang_akhir,
+            'foto_siswa' => $foto_siswa->hashName(),
+            'sp_diri' => $sp_diri->hashName(),
+            'sp_ortu' => $sp_ortu->hashName(),
+            'cv' => $cv->hashName(),
+            'email' => $request->email,
+            'no' => $request->no,
+            'password' => Hash::make($request->password),
+            'remember_token' => Str::random(60)
+        ]);
+
+        return redirect()->route('login.index');
+        }
         $foto_siswa = $request->file('foto_siswa');
         $sp_diri = $request->file('sp_diri');
         $sp_ortu = $request->file('sp_ortu');
@@ -116,7 +159,8 @@ class LoginController extends Controller
             'cv' => $cv->hashName(),
             'email' => $request->email,
             'no' => $request->no,
-            'password' => bcrypt($request->password)
+            'password' => Hash::make($request->password),
+            'remember_token' => Str::random(60)
         ]);
 
         return redirect()->route('login.index');

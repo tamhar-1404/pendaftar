@@ -48,7 +48,7 @@ Route::resource('/sp', App\Http\Controllers\ASiswaController::class);
 Route::resource('/Berita', App\Http\Controllers\BlogController::class);
 Route::post('/like', [LikeController::class, 'store'])->name('Berita.like');
 
-Route::resource('/chat', App\Http\Controllers\ASiswaController::class);
+Route::resource('/chat', App\Http\Controllers\ChatController::class);
 Route::resource('/piket', App\Http\Controllers\PiketController::class);
 Route::post('/rubah', [PiketController::class, 'rubah'])->name('rubah');
 Route::get('/sore', [PiketController::class, 'sore'])->name('sore');
@@ -69,13 +69,8 @@ Route::resource('/jurnal_guru', App\Http\Controllers\JurnalGuruController::class
 Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
 Route::resource('/chat_guru', App\Http\Controllers\ChatGuruController::class);
 Route::resource('/berita_guru', App\Http\Controllers\BeritaController::class);
-
-
 // akhir Pembimbing
 // Siswa
-Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
-Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
-Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
 
 Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'downloadPDF']);
 
@@ -83,9 +78,8 @@ Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'download
 // akhir siswa
 
 // login
-
 Route::resource('/login', App\Http\Controllers\LoginController::class);
-Route::post('/register', [LoginController::class, 'login'])->name('register');
+Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
 Route::get('/percobaan', function () {
     return view('login.iyah');
 });
@@ -98,6 +92,7 @@ Route::post('/lupapassword', [LupaPasswordController::class, 'store'])->name('pa
 // Rute untuk menampilkan form reset password
 Route::get('/resetpassword/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
 Route::post('/resetpassword', [LupaPasswordController::class, 'update'])->name('password.update');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Route::resource('/resetpassword', App\Http\Controllers\UbahPasswordController::class);
 // end login
@@ -105,18 +100,20 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
         // Route khusus untuk admin
         Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
-        Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
     });
 
-    Route::middleware(['role:murid'])->group(function () {
+    Route::middleware(['role:Siswa'])->group(function () {
 
-       Route::resource('absensi_siswa', App\Http\AbsensiSiswaController::class);
-       Route::resource('berita_siswa', App\Http\AbsensiSiswaController::class);
-       Route::resource('tatib_siswa', App\Http\AbsensiSiswaController::class);
-       Route::resource('piket_siswa', App\Http\AbsensiSiswaController::class);
-       Route::resource('chat_siswa', App\Http\AbsensiSiswaController::class);
-       Route::resource('siswa_magang', App\Http\AbsensiSiswaController::class);
+       Route::resource('absensi_siswa', App\Http\Controllers\AbsensiSiswaController::class);
+       Route::resource('berita_siswa', App\Http\Controllers\BeritaSiswaController::class);
+       Route::resource('tatib_siswa', App\Http\Controllers\TatibSiswaController::class);
+       Route::resource('piket_siswa', App\Http\Controllers\PiketSiswaController::class);
+       Route::resource('chat_siswa', App\Http\Controllers\ChatSiswaController::class);
+       Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
+       Route::resource('siswa_magang', App\Http\Controllers\SiswaController::class);
+       Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
+
 
 
     });

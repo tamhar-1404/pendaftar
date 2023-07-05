@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
+    <style>
+        .step:not(.active) {
+          display: none;
+        }
+      </style>
 </head>
 <body>
 
@@ -28,33 +33,182 @@
                     {{-- judul --}}
 
 
-                    <div class="main">
-                    <div class="panel">
-                        <div class="mb-5 font-semibold">
-                            <span >Lainnya / <span class="text-[#00B7FF]">Jadwal Piket Harian</span></span>
-                        </div>
-                        <div class="flex gap-4 mb-3 justify-between" >
-                            <div class="flex gap-4 mb-3">
-                                <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white {{request()->routeIs('piket.index') ? 'bg-[#24AEE4] text-white' : ''}}">
-                                    Pagi
-                                </button>
-                                <a href="{{route('sore')}}">
-                                <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
-                                    Sore
-                                </button>
-                                </a>
-                                <a href="{{route('laporan_piket.index')}}">
-                                <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
-                                    Laporan
-                                </button>
-                                </a>
+                    <div class="main"id="wizardForm">
+                        <div class="panel">
+                            <div class="mb-5 font-semibold">
+                                <span >Lainnya / <span class="text-[#00B7FF]">Jadwal Piket Harian</span></span>
                             </div>
-                            <div>
-                                <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white">
-                                    Tambah
-                                </button>
-                                  <!-- Main modal -->
-                                    <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+
+
+
+                            @php
+                                $currentDateTime = new DateTime();
+                                $day = $currentDateTime->format('l');
+                            @endphp
+                            {{-- {{$day}} --}}
+                            <div class="step active " >
+                                <div class="flex gap-4 mb-3 justify-between" >
+                                    <div class="flex gap-4 mb-3">
+                                        <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white {{request()->routeIs('piket.index') ? 'bg-[#24AEE4] text-white' : ''}}">
+                                            Pagi
+                                        </button>
+
+                                        <button type="button" id="nextStep1" class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
+                                            Sore
+                                        </button>
+
+                                        <a href="{{route('laporan_piket.index')}}">
+                                        <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
+                                            Laporan
+                                        </button>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white">
+                                            Tambah
+                                        </button>
+                                        <!-- Main modal -->
+                                            <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                <div class="relative w-full max-w-md max-h-full">
+                                                    <!-- Modal content -->
+                                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                        <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
+                                                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                        <div class="px-6 py-6 lg:px-8">
+                                                            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
+                                                            <form class="space-y-6" action="{{route('piket.store')}}" method="post" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <div class="flex gap-4">
+                                                                    <div class="flex gap-2 items-center">
+                                                                        <input type="radio" name="waktu" value="pagi" class="border border-2" id=""><p>pagi</p>
+                                                                    </div>
+                                                                    <div class="flex gap-2 items-center">
+                                                                        <input type="radio" name="waktu" value="sore" class="border border-2" id=""><p>sore</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <select name="hari" id="">
+                                                                        <option value="senin">senin</option>
+                                                                        <option value="selasa">selasa</option>
+                                                                        <option value="rabu">rabu</option>
+                                                                        <option value="kamis">kamis</option>
+                                                                        <option value="jumat">jumat</option>
+                                                                    </select>
+                                                                </div>
+                                                                @forelse ($data as $data )
+                                                                <div class="flex gap-3 items-center">
+                                                                    <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}" id=""><p>{{$data->name}}</p>
+                                                                </div>
+                                                                @empty
+
+                                                                @endforelse
+
+                                                                <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- end modal --}}
+                                    </div>
+                                </div>
+                                @if (session('error'))
+                                    <div class="bg-red-500 text-white font-semibold rounded-md p-2 mb-4">
+                                        <strong>Error:</strong> {{ session('error') }}
+                                    </div>
+                                @elseif (session('sukses'))
+                                    <div class="bg-green-500 text-white font-semibold rounded-md p-2 mb-4">
+                                        <strong>sukses:</strong> {{ session('sukses') }}
+                                    </div>
+                                @endif
+                                <div class="flex grid-cols-5 gap-4  w-lg " id="#pagi">
+                                    {{-- senin --}}
+                                    <div class=" w-full h-full  rounded-md {{ strtolower($day) === 'monday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }}">
+                                        {{-- button edit --}}
+                                        <div class="flex justify-end" data-modal-target="authentication-modal1" data-modal-toggle="authentication-modal1" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                        </div>
+                                        {{-- hari --}}
+                                        <div class="text-center font-bold mt-3">
+                                            Senin
+                                        </div>
+                                        {{-- nama --}}
+                                        @forelse ( $senin as $item)
+
+                                        <div class="text-sm font-medium text-center mt-5">{{$item->siswa->name}}</div>
+                                        <!-- Main modal -->
+                                        <div id="authentication-modal1" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative w-full max-w-md max-h-full">
+                                                <!-- Modal content -->
+                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
+                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                        <span class="sr-only">Close modal</span>
+                                                    </button>
+                                                    <div class="px-6 py-6 lg:px-8">
+                                                        <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
+                                                        <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
+                                                            @csrf
+
+                                                            <h4>Centang yang ingin di hapus</h4>
+                                                            <input type="hidden" name="waktu" value="{{$item->waktu}}">
+                                                            <input type="hidden" name="hari" value="{{$item->hari}}">
+                                                            @foreach ( $senin as $item)
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->siswa->name}}</p>
+                                                            </div>
+                                                            @endforeach
+                                                            <h4>Centang yang ingin di tambahkan</h4>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
+                                                            </div>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
+                                                            </div>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
+                                                            </div>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
+                                                            </div>
+                                                            <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- end modal --}}
+                                        @empty
+
+                                        @endforelse
+                                        {{-- inspectur --}}
+                                        <div class="w-full flex justify-center mb-6">
+
+                                        </div>
+
+
+                                    </div>
+                                    {{-- selasa --}}
+                                    <div class=" w-full h-full {{ strtolower($day) === 'tuesday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
+                                        {{-- button edit --}}
+                                        <div class="flex justify-end" data-modal-target="authentication-modal2" data-modal-toggle="authentication-modal2" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                        </div>
+                                        {{-- hari --}}
+                                        <div class="text-center font-bold mt-3">
+                                            Selasa
+                                        </div>
+                                    {{-- nama --}}
+                                    @forelse ( $selasa as $item)
+                                    <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                        <!-- Main modal -->
+                                        <div id="authentication-modal2" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                         <div class="relative w-full max-w-md max-h-full">
                                             <!-- Modal content -->
                                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -64,33 +218,30 @@
                                                 </button>
                                                 <div class="px-6 py-6 lg:px-8">
                                                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
-                                                    <form class="space-y-6" action="{{route('piket.store')}}" method="post" enctype="multipart/form-data">
+                                                    <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
                                                         @csrf
-                                                        <div class="flex gap-4">
-                                                            <div class="flex gap-2 items-center">
-                                                                <input type="radio" name="waktu" value="pagi" class="border border-2" id=""><p>pagi</p>
-                                                            </div>
-                                                            <div class="flex gap-2 items-center">
-                                                                <input type="radio" name="waktu" value="sore" class="border border-2" id=""><p>sore</p>
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <select name="hari" id="">
-                                                                <option value="senin">senin</option>
-                                                                <option value="selasa">selasa</option>
-                                                                <option value="rabu">rabu</option>
-                                                                <option value="kamis">kamis</option>
-                                                                <option value="jumat">jumat</option>
-                                                            </select>
-                                                        </div>
-                                                        @forelse ($data as $data )
+
+                                                        <h4>Centang yang ingin di hapus</h4>
+                                                        <input type="hidden" name="waktu" value="{{$item->waktu}}">
+                                                        <input type="hidden" name="hari" value="{{$item->hari}}">
+                                                        @foreach ( $selasa as $item)
                                                         <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}" id=""><p>{{$data->name}}</p>
+                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
                                                         </div>
-                                                        @empty
-
-                                                        @endforelse
-
+                                                        @endforeach
+                                                        <h4>Centang yang ingin di tambahkan</h4>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
+                                                        </div>
                                                         <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
                                                     </form>
                                                 </div>
@@ -98,458 +249,905 @@
                                         </div>
                                     </div>
                                     {{-- end modal --}}
-                            </div>
-                        </div>
-                        @if (session('error'))
-                            <div class="bg-red-500 text-white font-semibold rounded-md p-2 mb-4">
-                                <strong>Error:</strong> {{ session('error') }}
-                            </div>
-                        @elseif (session('sukses'))
-                            <div class="bg-green-500 text-white font-semibold rounded-md p-2 mb-4">
-                                <strong>sukses:</strong> {{ session('sukses') }}
-                            </div>
-                        @endif
+                                    @empty
 
+                                    @endforelse
+                                        {{-- inspectur --}}
+                                        <div class="w-full flex justify-center mb-6">
 
-                        @php
-                            $currentDateTime = new DateTime();
-                            $day = $currentDateTime->format('l');
-                        @endphp
-                        {{$day}}
-                        <div class="flex grid-cols-5 gap-4  w-lg " id="#pagi">
-                            {{-- senin --}}
-                            <div class=" w-full h-full bg-[#EAF1FF] rounded-md
-                                
-                            ">
-                                {{-- button edit --}}
-                                <div class="flex justify-end" data-modal-target="authentication-modal1" data-modal-toggle="authentication-modal1" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                    </svg>
-                                </div>
-                                {{-- hari --}}
-                                <div class="text-center font-bold mt-3">
-                                    Senin
-                                </div>
-                                {{-- nama --}}
-                                @forelse ( $senin as $item)
-
-                                <div class="text-sm font-medium text-center mt-5">{{$item->siswa->email}}</div>
-                                   <!-- Main modal -->
-                                   <div id="authentication-modal1" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                    <div class="relative w-full max-w-md max-h-full">
-                                        <!-- Modal content -->
-                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
-                                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                                <span class="sr-only">Close modal</span>
-                                            </button>
-                                            <div class="px-6 py-6 lg:px-8">
-                                                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
-                                                <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
-                                                    @csrf
-
-                                                    <h4>Centang yang ingin di hapus</h4>
-                                                    <input type="hidden" name="waktu" value="{{$item->waktu}}">
-                                                    <input type="hidden" name="hari" value="{{$item->hari}}">
-                                                    @foreach ( $senin as $item)
-                                                    <div class="flex gap-3 items-center">
-                                                        <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->siswa->name}}</p>
-                                                    </div>
-                                                    @endforeach
-                                                    <h4>Centang yang ingin di tambahkan</h4>
-                                                    <div class="flex gap-3 items-center">
-                                                        <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
-                                                    </div>
-                                                    <div class="flex gap-3 items-center">
-                                                        <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
-                                                    </div>
-                                                    <div class="flex gap-3 items-center">
-                                                        <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
-                                                    </div>
-                                                    <div class="flex gap-3 items-center">
-                                                        <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
-                                                    </div>
-                                                    <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
-                                                </form>
-                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                {{-- end modal --}}
-                                @empty
+                                    {{-- rabu --}}
+                                    <div class=" w-full h-full {{ strtolower($day) === 'wednesday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
+                                        {{-- button edit --}}
+                                        <div class="flex justify-end" data-modal-target="authentication-modal3" data-modal-toggle="authentication-modal3" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                        </div>
+                                        {{-- hari --}}
+                                        <div class="text-center font-bold mt-3">
+                                            Rabu
+                                        </div>
+                                        {{-- nama --}}
+                                        @forelse ( $rabu as $item)
+                                        <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                        <!-- Main modal -->
+                                        <div id="authentication-modal3" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative w-full max-w-md max-h-full">
+                                                <!-- Modal content -->
+                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
+                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                        <span class="sr-only">Close modal</span>
+                                                    </button>
+                                                    <div class="px-6 py-6 lg:px-8">
+                                                        <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
+                                                        <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
+                                                            @csrf
 
-                                @endforelse
-                                {{-- inspectur --}}
-                                <div class="w-full flex justify-center mb-6">
-
-                                </div>
-
-
-                            </div>
-                            {{-- selasa --}}
-                            <div class=" w-full h-full bg-[#EAF1FF] rounded-md" >
-                                {{-- button edit --}}
-                                <div class="flex justify-end" data-modal-target="authentication-modal2" data-modal-toggle="authentication-modal2" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                    </svg>
-                                </div>
-                                {{-- hari --}}
-                                <div class="text-center font-bold mt-3">
-                                    Selasa
-                                </div>
-                               {{-- nama --}}
-                               @forelse ( $selasa as $item)
-                               <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
-                                  <!-- Main modal -->
-                                  <div id="authentication-modal2" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                   <div class="relative w-full max-w-md max-h-full">
-                                       <!-- Modal content -->
-                                       <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                           <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
-                                               <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                               <span class="sr-only">Close modal</span>
-                                           </button>
-                                           <div class="px-6 py-6 lg:px-8">
-                                               <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
-                                               <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
-                                                   @csrf
-
-                                                   <h4>Centang yang ingin di hapus</h4>
-                                                   <input type="hidden" name="waktu" value="{{$item->waktu}}">
-                                                   <input type="hidden" name="hari" value="{{$item->hari}}">
-                                                   @foreach ( $selasa as $item)
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
-                                                   </div>
-                                                   @endforeach
-                                                   <h4>Centang yang ingin di tambahkan</h4>
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
-                                                   </div>
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
-                                                   </div>
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
-                                                   </div>
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
-                                                   </div>
-                                                   <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
-                                               </form>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                               {{-- end modal --}}
-                               @empty
-
-                               @endforelse
-                                {{-- inspectur --}}
-                                <div class="w-full flex justify-center mb-6">
-
-                                </div>
-                            </div>
-                             {{-- rabu --}}
-                             <div class=" w-full h-full bg-[#EAF1FF] rounded-md" >
-                                {{-- button edit --}}
-                                <div class="flex justify-end" data-modal-target="authentication-modal3" data-modal-toggle="authentication-modal3" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                    </svg>
-                                </div>
-                                {{-- hari --}}
-                                <div class="text-center font-bold mt-3">
-                                    Rabu
-                                </div>
-                                {{-- nama --}}
-                                @forelse ( $rabu as $item)
-                                <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
-                                   <!-- Main modal -->
-                                   <div id="authentication-modal3" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                    <div class="relative w-full max-w-md max-h-full">
-                                        <!-- Modal content -->
-                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
-                                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                                <span class="sr-only">Close modal</span>
-                                            </button>
-                                            <div class="px-6 py-6 lg:px-8">
-                                                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
-                                                <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
-                                                    @csrf
-
-                                                    <h4>Centang yang ingin di hapus</h4>
-                                                    <input type="hidden" name="waktu" value="{{$item->waktu}}">
-                                                    <input type="hidden" name="hari" value="{{$item->hari}}">
-                                                    @foreach ( $rabu as $item)
-                                                    <div class="flex gap-3 items-center">
-                                                        <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                            <h4>Centang yang ingin di hapus</h4>
+                                                            <input type="hidden" name="waktu" value="{{$item->waktu}}">
+                                                            <input type="hidden" name="hari" value="{{$item->hari}}">
+                                                            @foreach ( $rabu as $item)
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                            </div>
+                                                            @endforeach
+                                                            <h4>Centang yang ingin di tambahkan</h4>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
+                                                            </div>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
+                                                            </div>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
+                                                            </div>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
+                                                            </div>
+                                                            <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
+                                                        </form>
                                                     </div>
-                                                    @endforeach
-                                                    <h4>Centang yang ingin di tambahkan</h4>
-                                                    <div class="flex gap-3 items-center">
-                                                        <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
-                                                    </div>
-                                                    <div class="flex gap-3 items-center">
-                                                        <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
-                                                    </div>
-                                                    <div class="flex gap-3 items-center">
-                                                        <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
-                                                    </div>
-                                                    <div class="flex gap-3 items-center">
-                                                        <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
-                                                    </div>
-                                                    <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
-                                                </form>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                {{-- end modal --}}
-                                @empty
+                                        {{-- end modal --}}
+                                        @empty
 
-                                @endforelse
+                                        @endforelse
 
-                                {{-- inspectur --}}
-                                <div class="w-full flex justify-center mb-6">
+                                        {{-- inspectur --}}
+                                        <div class="w-full flex justify-center mb-6">
 
-                                </div>
-                            </div>
-                             {{-- kamis --}}
-                             <div class=" w-full h-full bg-[#EAF1FF] rounded-md " >
-                                {{-- button edit --}}
-                                <div class="flex justify-end" data-modal-target="authentication-modal4" data-modal-toggle="authentication-modal4" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                    </svg>
-                                </div>
-                                {{-- hari --}}
-                                <div class="text-center font-bold mt-3">
-                                    Kamis
-                                </div>
-                                {{-- nama --}}
-                                @forelse ( $kamis as $item)
-                               <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
-                                  <!-- Main modal -->
-                                  <div id="authentication-modal4" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                   <div class="relative w-full max-w-md max-h-full">
-                                       <!-- Modal content -->
-                                       <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                           <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
-                                               <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                               <span class="sr-only">Close modal</span>
-                                           </button>
-                                           <div class="px-6 py-6 lg:px-8">
-                                               <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
-                                               <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
-                                                   @csrf
-
-                                                   <h4>Centang yang ingin di hapus</h4>
-                                                   <input type="hidden" name="waktu" value="{{$item->waktu}}">
-                                                   <input type="hidden" name="hari" value="{{$item->hari}}">
-                                                   @foreach ( $kamis as $item)
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
-                                                   </div>
-                                                   @endforeach
-                                                   <h4>Centang yang ingin di tambahkan</h4>
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
-                                                   </div>
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
-                                                   </div>
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
-                                                   </div>
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
-                                                   </div>
-                                                   <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
-                                               </form>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                               {{-- end modal --}}
-                               @empty
-
-                               @endforelse
-
-                                {{-- inspectur --}}
-                                <div class="w-full flex justify-center mb-6">
-
-                                </div>
-                            </div>
-                             {{-- jumat --}}
-                             <div class=" w-full h-full bg-[#EAF1FF] rounded-md" >
-                                {{-- button edit --}}
-                                <div class="flex justify-end" data-modal-target="authentication-modal5" data-modal-toggle="authentication-modal5" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                    </svg>
-                                </div>
-                                {{-- hari --}}
-                                <div class="text-center font-bold mt-3">
-                                    Jumat
-                                </div>
-                                {{-- nama --}}
-                                @forelse ( $jumat as $item)
-                               <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
-                                  <!-- Main modal -->
-                                  <div id="authentication-modal5" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                   <div class="relative w-full max-w-md max-h-full">
-                                       <!-- Modal content -->
-                                       <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                           <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
-                                               <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                               <span class="sr-only">Close modal</span>
-                                           </button>
-                                           <div class="px-6 py-6 lg:px-8">
-                                               <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
-                                               <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
-                                                   @csrf
-
-                                                   <h4>Centang yang ingin di hapus</h4>
-                                                   <input type="hidden" name="waktu" value="{{$item->waktu}}">
-                                                   <input type="hidden" name="hari" value="{{$item->hari}}">
-                                                   @foreach ( $jumat as $item)
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
-                                                   </div>
-                                                   @endforeach
-                                                   <h4>Centang yang ingin di tambahkan</h4>
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
-                                                   </div>
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
-                                                   </div>
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
-                                                   </div>
-                                                   <div class="flex gap-3 items-center">
-                                                       <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
-                                                   </div>
-                                                   <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
-                                               </form>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                               {{-- end modal --}}
-                               @empty
-
-                               @endforelse
-                                {{-- inspectur --}}
-                                <div class=" w-full flex justify-center mb-6">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex grid-cols-5 gap-1 w-lg mt-5" id="#pagi">
-                             {{-- catatan --}}
-                             <div class=" w-full h-30 bg-[#EAF1FF] rounded-md" >
-
-                                {{-- button edit --}}
-                                <div class="flex justify-between pt-1"  >
-                                    {{-- hari --}}
-                                <div class="text-left font-bold mt-0 ml-5">
-                                    Catatan
-                                </div>
-                                    <button data-modal-target="authentication-modalcatat" data-modal-toggle="authentication-modalcatat" class=" mr-1 text-sm py-1 px-2 border border-blue-400 bg-white font-medium text-blue-400 rounded-md">Tambah</button>
-                                    {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                    </svg> --}}
-                                </div>
-                                 <!-- Main modal -->
-                                 <div id="authentication-modalcatat" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                    <div class="relative w-full max-w-md max-h-full">
-                                        <!-- Modal content -->
-                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modalcatat">
-                                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                                <span class="sr-only">Close modal</span>
-                                            </button>
-                                            <div class="px-6 py-6 lg:px-8">
-                                                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Catatan</h3>
-                                                <form class="space-y-6" action="{{route('piket.store')}}" method="post" enctype="multipart/form-data">
-                                                    @csrf
-                                                    <input type="hidden" name="waktu" value="catatan">
-                                                    <textarea name="hari" id="" cols="40" rows="5"></textarea>
-                                                    <input type="hidden" name="nama_siswa[]" value="catatan">
-
-                                                    <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
-                                                </form>
-                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                {{-- end modal --}}
-
-
-                                {{-- nama --}}
-                                @forelse ($catat as $catat )
-                                <div class="text-sm font-medium text-left ml-5 mt-5 mb-3 flex items-center justify-between">
-                                    {{$catat->hari}}
-                                    <svg data-modal-target="authentication-modaledit" data-modal-toggle="authentication-modaledit" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                    </svg>
-                                     <!-- Main modal -->
-                                    <div id="authentication-modaledit" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                    {{-- kamis --}}
+                                    <div class=" w-full h-full {{ strtolower($day) === 'thursday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md " >
+                                        {{-- button edit --}}
+                                        <div class="flex justify-end" data-modal-target="authentication-modal4" data-modal-toggle="authentication-modal4" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                        </div>
+                                        {{-- hari --}}
+                                        <div class="text-center font-bold mt-3">
+                                            Kamis
+                                        </div>
+                                        {{-- nama --}}
+                                        @forelse ( $kamis as $item)
+                                    <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                        <!-- Main modal -->
+                                        <div id="authentication-modal4" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                         <div class="relative w-full max-w-md max-h-full">
                                             <!-- Modal content -->
                                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modaleditt">
+                                                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
                                                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                                     <span class="sr-only">Close modal</span>
                                                 </button>
                                                 <div class="px-6 py-6 lg:px-8">
-                                                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Catatan</h3>
-                                                    <form class="space-y-6" action="{{route('piket.update', $catat->id)}}" method="post" enctype="multipart/form-data">
+                                                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
+                                                    <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
                                                         @csrf
-                                                        @method('PUT')
-                                                        <input type="hidden" name="waktu" value="catatan">
-                                                        <textarea name="hari" id="" cols="40" rows="5">{{$catat->hari}}</textarea>
-                                                        <input type="hidden" name="nama_siswa[]" value="catatan">
 
+                                                        <h4>Centang yang ingin di hapus</h4>
+                                                        <input type="hidden" name="waktu" value="{{$item->waktu}}">
+                                                        <input type="hidden" name="hari" value="{{$item->hari}}">
+                                                        @foreach ( $kamis as $item)
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                        </div>
+                                                        @endforeach
+                                                        <h4>Centang yang ingin di tambahkan</h4>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
+                                                        </div>
                                                         <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                {{-- end modal --}}
+                                    {{-- end modal --}}
+                                    @empty
+
+                                    @endforelse
+
+                                        {{-- inspectur --}}
+                                        <div class="w-full flex justify-center mb-6">
+
+                                        </div>
+                                    </div>
+                                    {{-- jumat --}}
+                                    <div class=" w-full h-full {{ strtolower($day) === 'friday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
+                                        {{-- button edit --}}
+                                        <div class="flex justify-end" data-modal-target="authentication-modal5" data-modal-toggle="authentication-modal5" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                        </div>
+                                        {{-- hari --}}
+                                        <div class="text-center font-bold mt-3">
+                                            Jumat
+                                        </div>
+                                        {{-- nama --}}
+                                        @forelse ( $jumat as $item)
+                                    <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                        <!-- Main modal -->
+                                        <div id="authentication-modal5" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                        <div class="relative w-full max-w-md max-h-full">
+                                            <!-- Modal content -->
+                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
+                                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                    <span class="sr-only">Close modal</span>
+                                                </button>
+                                                <div class="px-6 py-6 lg:px-8">
+                                                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
+                                                    <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
+                                                        @csrf
+
+                                                        <h4>Centang yang ingin di hapus</h4>
+                                                        <input type="hidden" name="waktu" value="{{$item->waktu}}">
+                                                        <input type="hidden" name="hari" value="{{$item->hari}}">
+                                                        @foreach ( $jumat as $item)
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                        </div>
+                                                        @endforeach
+                                                        <h4>Centang yang ingin di tambahkan</h4>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
+                                                        </div>
+                                                        <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- end modal --}}
+                                    @empty
+
+                                    @endforelse
+                                        {{-- inspectur --}}
+                                        <div class=" w-full flex justify-center mb-6">
+
+                                        </div>
+                                    </div>
                                 </div>
-                                @empty
+                                <div class="flex grid-cols-5 gap-1 w-lg mt-5" id="#pagi">
+                                    {{-- catatan --}}
+                                    <div class=" w-full h-30 bg-[#EAF1FF] rounded-md" >
 
-                                @endforelse
+                                        {{-- button edit --}}
+                                        <div class="flex justify-between pt-1"  >
+                                            {{-- hari --}}
+                                        <div class="text-left font-bold mt-0 ml-5">
+                                            Catatan
+                                        </div>
+                                            <button data-modal-target="authentication-modalcatat" data-modal-toggle="authentication-modalcatat" class=" mr-1 text-sm py-1 px-2 border border-blue-400 bg-white font-medium text-blue-400 rounded-md">Tambah</button>
+                                            {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg> --}}
+                                        </div>
+                                        <!-- Main modal -->
+                                        <div id="authentication-modalcatat" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative w-full max-w-md max-h-full">
+                                                <!-- Modal content -->
+                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modalcatat">
+                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                        <span class="sr-only">Close modal</span>
+                                                    </button>
+                                                    <div class="px-6 py-6 lg:px-8">
+                                                        <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Catatan</h3>
+                                                        <form class="space-y-6" action="{{route('piket.store')}}" method="post" enctype="multipart/form-data">
+                                                            @csrf
+                                                            <input type="hidden" name="waktu" value="catatan">
+                                                            <textarea name="hari" id="" cols="40" rows="5"></textarea>
+                                                            {{-- <input type="hidden" name="nama_siswa[]" value="1"> --}}
+
+                                                            <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- end modal --}}
 
 
+                                        {{-- nama --}}
+                                        @forelse ($catat as $catat )
+                                        <div class="text-sm font-medium text-left ml-5 mt-5 mb-3 flex items-center justify-between">
+                                            {{$catat->hari}}
+                                            <svg data-modal-target="authentication-modaledit" data-modal-toggle="authentication-modaledit" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                            <!-- Main modal -->
+                                            <div id="authentication-modaledit" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                <div class="relative w-full max-w-md max-h-full">
+                                                    <!-- Modal content -->
+                                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                        <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modaleditt">
+                                                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                        <div class="px-6 py-6 lg:px-8">
+                                                            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Catatan</h3>
+                                                            <form class="space-y-6" action="{{route('piket.update', $catat->id)}}" method="post" enctype="multipart/form-data">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="waktu" value="catatan">
+                                                                <textarea name="hari" id="" cols="40" rows="5">{{$catat->hari}}</textarea>
+                                                                <input type="hidden" name="nama_siswa[]" value="catatan">
+
+                                                                <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {{-- end modal --}}
+                                        </div>
+                                        @empty
+
+                                        @endforelse
+
+
+                                    </div>
+                                </div>
                             </div>
+                            <div class="step" >
+                                <div class="flex gap-4 mb-3 justify-between" >
+                                    <div class="flex gap-4 mb-3">
+                                        <button type="button" id="prevStep2" class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
+                                            Pagi
+                                        </button>
+
+                                        <button class="outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold bg-[#24AEE4] text-white   ">
+                                            Sore
+                                        </button>
+
+                                        <a href="{{route('laporan_piket.index')}}">
+                                        <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
+                                            Laporan
+                                        </button>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white">
+                                            Tambah
+                                        </button>
+                                        <!-- Main modal -->
+                                            <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                <div class="relative w-full max-w-md max-h-full">
+                                                    <!-- Modal content -->
+                                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                        <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
+                                                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                        <div class="px-6 py-6 lg:px-8">
+                                                            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
+                                                            <form class="space-y-6" action="{{route('piket.store')}}" method="post" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <div class="flex gap-4">
+                                                                    <div class="flex gap-2 items-center">
+                                                                        <input type="radio" name="waktu" value="pagi" class="border border-2" id=""><p>pagi</p>
+                                                                    </div>
+                                                                    <div class="flex gap-2 items-center">
+                                                                        <input type="radio" name="waktu" value="sore" class="border border-2" id=""><p>sore</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <select name="hari" id="">
+                                                                        <option value="senin">senin</option>
+                                                                        <option value="selasa">selasa</option>
+                                                                        <option value="rabu">rabu</option>
+                                                                        <option value="kamis">kamis</option>
+                                                                        <option value="jumat">jumat</option>
+                                                                    </select>
+                                                                </div>
+                                                                @forelse ($data as $data )
+                                                                <div class="flex gap-3 items-center">
+                                                                    <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}" id=""><p>{{$data->name}}</p>
+                                                                </div>
+                                                                @empty
+
+                                                                @endforelse
+
+                                                                <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- end modal --}}
+                                    </div>
+                                </div>
+                                @if (session('error'))
+                                    <div class="bg-red-500 text-white font-semibold rounded-md p-2 mb-4">
+                                        <strong>Error:</strong> {{ session('error') }}
+                                    </div>
+                                @elseif (session('sukses'))
+                                    <div class="bg-green-500 text-white font-semibold rounded-md p-2 mb-4">
+                                        <strong>sukses:</strong> {{ session('sukses') }}
+                                    </div>
+                                @endif
+                                <div class="flex grid-cols-5 gap-4  w-lg " >
+                                    {{-- senin --}}
+                                    <div class=" w-full h-full  rounded-md {{ strtolower($day) === 'monday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }}">
+                                        {{-- button edit --}}
+                                        <div class="flex justify-end" data-modal-target="authentication-modal1" data-modal-toggle="authentication-modal1" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                        </div>
+                                        {{-- hari --}}
+                                        <div class="text-center font-bold mt-3">
+                                            dfghjkl
+                                        </div>
+                                        {{-- nama --}}
+                                        @forelse ( $senin_sore as $item)
+
+                                        <div class="text-sm font-medium text-center mt-5">{{$item->siswa->name}}</div>
+                                        <!-- Main modal -->
+                                        <div id="authentication-modal1" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative w-full max-w-md max-h-full">
+                                                <!-- Modal content -->
+                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
+                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                        <span class="sr-only">Close modal</span>
+                                                    </button>
+                                                    <div class="px-6 py-6 lg:px-8">
+                                                        <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
+                                                        <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
+                                                            @csrf
+
+                                                            <h4>Centang yang ingin di hapus</h4>
+                                                            <input type="hidden" name="waktu" value="{{$item->waktu}}">
+                                                            <input type="hidden" name="hari" value="{{$item->hari}}">
+                                                            @foreach ( $senin as $item)
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->siswa->name}}</p>
+                                                            </div>
+                                                            @endforeach
+                                                            <h4>Centang yang ingin di tambahkan</h4>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
+                                                            </div>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
+                                                            </div>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
+                                                            </div>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
+                                                            </div>
+                                                            <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- end modal --}}
+                                        @empty
+
+                                        @endforelse
+                                        {{-- inspectur --}}
+                                        <div class="w-full flex justify-center mb-6">
+
+                                        </div>
+
+
+                                    </div>
+                                    {{-- selasa --}}
+                                    <div class=" w-full h-full {{ strtolower($day) === 'tuesday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
+                                        {{-- button edit --}}
+                                        <div class="flex justify-end" data-modal-target="authentication-modal2" data-modal-toggle="authentication-modal2" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                        </div>
+                                        {{-- hari --}}
+                                        <div class="text-center font-bold mt-3">
+                                            Selasa
+                                        </div>
+                                    {{-- nama --}}
+                                    @forelse ( $selasa_sore as $item)
+                                    <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                        <!-- Main modal -->
+                                        <div id="authentication-modal2" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                        <div class="relative w-full max-w-md max-h-full">
+                                            <!-- Modal content -->
+                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
+                                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                    <span class="sr-only">Close modal</span>
+                                                </button>
+                                                <div class="px-6 py-6 lg:px-8">
+                                                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
+                                                    <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
+                                                        @csrf
+
+                                                        <h4>Centang yang ingin di hapus</h4>
+                                                        <input type="hidden" name="waktu" value="{{$item->waktu}}">
+                                                        <input type="hidden" name="hari" value="{{$item->hari}}">
+                                                        @foreach ( $selasa as $item)
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                        </div>
+                                                        @endforeach
+                                                        <h4>Centang yang ingin di tambahkan</h4>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
+                                                        </div>
+                                                        <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- end modal --}}
+                                    @empty
+
+                                    @endforelse
+                                        {{-- inspectur --}}
+                                        <div class="w-full flex justify-center mb-6">
+
+                                        </div>
+                                    </div>
+                                    {{-- rabu --}}
+                                    <div class=" w-full h-full {{ strtolower($day) === 'wednesday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
+                                        {{-- button edit --}}
+                                        <div class="flex justify-end" data-modal-target="authentication-modal3" data-modal-toggle="authentication-modal3" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                        </div>
+                                        {{-- hari --}}
+                                        <div class="text-center font-bold mt-3">
+                                            Rabu
+                                        </div>
+                                        {{-- nama --}}
+                                        @forelse ( $rabu_sore as $item)
+                                        <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                        <!-- Main modal -->
+                                        <div id="authentication-modal3" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative w-full max-w-md max-h-full">
+                                                <!-- Modal content -->
+                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
+                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                        <span class="sr-only">Close modal</span>
+                                                    </button>
+                                                    <div class="px-6 py-6 lg:px-8">
+                                                        <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
+                                                        <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
+                                                            @csrf
+
+                                                            <h4>Centang yang ingin di hapus</h4>
+                                                            <input type="hidden" name="waktu" value="{{$item->waktu}}">
+                                                            <input type="hidden" name="hari" value="{{$item->hari}}">
+                                                            @foreach ( $rabu as $item)
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                            </div>
+                                                            @endforeach
+                                                            <h4>Centang yang ingin di tambahkan</h4>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
+                                                            </div>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
+                                                            </div>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
+                                                            </div>
+                                                            <div class="flex gap-3 items-center">
+                                                                <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
+                                                            </div>
+                                                            <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- end modal --}}
+                                        @empty
+
+                                        @endforelse
+
+                                        {{-- inspectur --}}
+                                        <div class="w-full flex justify-center mb-6">
+
+                                        </div>
+                                    </div>
+                                    {{-- kamis --}}
+                                    <div class=" w-full h-full {{ strtolower($day) === 'thursday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md " >
+                                        {{-- button edit --}}
+                                        <div class="flex justify-end" data-modal-target="authentication-modal4" data-modal-toggle="authentication-modal4" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                        </div>
+                                        {{-- hari --}}
+                                        <div class="text-center font-bold mt-3">
+                                            Kamis
+                                        </div>
+                                        {{-- nama --}}
+                                        @forelse ( $kamis_sore as $item)
+                                    <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                        <!-- Main modal -->
+                                        <div id="authentication-modal4" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                        <div class="relative w-full max-w-md max-h-full">
+                                            <!-- Modal content -->
+                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
+                                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                    <span class="sr-only">Close modal</span>
+                                                </button>
+                                                <div class="px-6 py-6 lg:px-8">
+                                                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
+                                                    <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
+                                                        @csrf
+
+                                                        <h4>Centang yang ingin di hapus</h4>
+                                                        <input type="hidden" name="waktu" value="{{$item->waktu}}">
+                                                        <input type="hidden" name="hari" value="{{$item->hari}}">
+                                                        @foreach ( $kamis as $item)
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                        </div>
+                                                        @endforeach
+                                                        <h4>Centang yang ingin di tambahkan</h4>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
+                                                        </div>
+                                                        <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- end modal --}}
+                                    @empty
+
+                                    @endforelse
+
+                                        {{-- inspectur --}}
+                                        <div class="w-full flex justify-center mb-6">
+
+                                        </div>
+                                    </div>
+                                    {{-- jumat --}}
+                                    <div class=" w-full h-full {{ strtolower($day) === 'friday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
+                                        {{-- button edit --}}
+                                        <div class="flex justify-end" data-modal-target="authentication-modal5" data-modal-toggle="authentication-modal5" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                        </div>
+                                        {{-- hari --}}
+                                        <div class="text-center font-bold mt-3">
+                                            Jumat
+                                        </div>
+                                        {{-- nama --}}
+                                        @forelse ( $jumat_sore as $item)
+                                    <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                        <!-- Main modal -->
+                                        <div id="authentication-modal5" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                        <div class="relative w-full max-w-md max-h-full">
+                                            <!-- Modal content -->
+                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
+                                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                    <span class="sr-only">Close modal</span>
+                                                </button>
+                                                <div class="px-6 py-6 lg:px-8">
+                                                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
+                                                    <form class="space-y-6" action="{{route('rubah')}}" method="post" enctype="multipart/form-data">
+                                                        @csrf
+
+                                                        <h4>Centang yang ingin di hapus</h4>
+                                                        <input type="hidden" name="waktu" value="{{$item->waktu}}">
+                                                        <input type="hidden" name="hari" value="{{$item->hari}}">
+                                                        @foreach ( $jumat as $item)
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                        </div>
+                                                        @endforeach
+                                                        <h4>Centang yang ingin di tambahkan</h4>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
+                                                        </div>
+                                                        <div class="flex gap-3 items-center">
+                                                            <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
+                                                        </div>
+                                                        <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- end modal --}}
+                                    @empty
+
+                                    @endforelse
+                                        {{-- inspectur --}}
+                                        <div class=" w-full flex justify-center mb-6">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex grid-cols-5 gap-1 w-lg mt-5" >
+                                    {{-- catatan --}}
+                                    <div class=" w-full h-30 bg-[#EAF1FF] rounded-md" >
+
+                                        {{-- button edit --}}
+                                        <div class="flex justify-between pt-1"  >
+                                            {{-- hari --}}
+                                        <div class="text-left font-bold mt-0 ml-5">
+                                            Catatan
+                                        </div>
+                                            <button data-modal-target="authentication-modalcatat" data-modal-toggle="authentication-modalcatat" class=" mr-1 text-sm py-1 px-2 border border-blue-400 bg-white font-medium text-blue-400 rounded-md">Tambah</button>
+                                            {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg> --}}
+                                        </div>
+                                        <!-- Main modal -->
+                                        <div id="authentication-modalcatat" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative w-full max-w-md max-h-full">
+                                                <!-- Modal content -->
+                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modalcatat">
+                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                        <span class="sr-only">Close modal</span>
+                                                    </button>
+                                                    <div class="px-6 py-6 lg:px-8">
+                                                        <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Catatan</h3>
+                                                        <form class="space-y-6" action="{{route('piket.store')}}" method="post" enctype="multipart/form-data">
+                                                            @csrf
+                                                            <input type="hidden" name="waktu" value="catatan">
+                                                            <textarea name="hari" id="" cols="40" rows="5"></textarea>
+                                                            <input type="hidden" name="nama_siswa[]" value="catatan">
+
+                                                            <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- end modal --}}
+
+
+                                        {{-- nama --}}
+                                        @forelse ($catat as $catat )
+                                        <div class="text-sm font-medium text-left ml-5 mt-5 mb-3 flex items-center justify-between">
+                                            {{$catat->hari}}
+                                            <svg data-modal-target="authentication-modaledit" data-modal-toggle="authentication-modaledit" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                            <!-- Main modal -->
+                                            <div id="authentication-modaledit" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                <div class="relative w-full max-w-md max-h-full">
+                                                    <!-- Modal content -->
+                                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                        <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modaleditt">
+                                                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                        <div class="px-6 py-6 lg:px-8">
+                                                            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Catatan</h3>
+                                                            <form class="space-y-6" action="{{route('piket.update', $catat->id)}}" method="post" enctype="multipart/form-data">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="waktu" value="catatan">
+                                                                <textarea name="hari" id="" cols="40" rows="5">{{$catat->hari}}</textarea>
+                                                                <input type="hidden" name="nama_siswa[]" value="catatan">
+
+                                                                <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {{-- end modal --}}
+                                        </div>
+                                        @empty
+
+                                        @endforelse
+
+
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
-                    </div>
-
-
-                    </div>
                 </div>
-                <!-- end main content section -->
 
-                <!-- start footer section -->
-                <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
-                    © <span id="footer-year">2022</span>. Vristo All rights reserved.
-                </p>
-                <!-- end footer section -->
+
             </div>
         </div>
+        <!-- end main content section -->
+
+        <!-- start footer section -->
+        <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
+            © <span id="footer-year">2022</span>. Vristo All rights reserved.
+        </p>
+        <!-- end footer section -->
     </div>
+
     <!--Verically centered scrollable modal-->
 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const form = document.getElementById("wizardForm");
+          const steps = Array.from(form.getElementsByClassName("step"));
+          const nextButtons = Array.from(form.querySelectorAll("[id^=nextStep]"));
+          const prevButtons = Array.from(form.querySelectorAll("[id^=prevStep]"));
+
+          let currentStep = 0;
+
+          function showStep(stepIndex) {
+            steps.forEach(function(step, index) {
+              if (index === stepIndex) {
+                step.classList.add("active");
+              } else {
+                step.classList.remove("active");
+              }
+            });
+          }
+
+          function validateStep(stepIndex) {
+            const step = steps[stepIndex];
+            const inputs = Array.from(step.getElementsByTagName("input"));
+            const textareas = Array.from(step.getElementsByTagName("textarea"));
+
+            let isValid = true;
+
+            inputs.forEach(function(input) {
+              if (!input.checkValidity()) {
+                input.classList.add("border-red-500");
+                input.placeholder = "Masukan data ";
+                isValid = false;
+              } else {
+                input.classList.remove("border-red-500");
+                input.placeholder = "";
+
+              }
+
+            });
+
+            inputs.forEach(function(input) {
+            if (!input.checkValidity()) {
+                if (input.type === "radio") {
+                var radioGroup = input.parentNode;
+                var errorMessage = radioGroup.querySelector(".error-message");
+
+                if (!errorMessage) {
+                    errorMessage = document.createElement("span");
+                    errorMessage.className = "error-message text-red-500";
+                    radioGroup.appendChild(errorMessage);
+                }
+
+                errorMessage.textContent = "Pilih salah satu opsi.";
+                } else {
+                input.classList.add("border-red-500");
+                input.placeholder = "Masukan data";
+                }
+
+                isValid = false;
+            } else {
+                input.classList.remove("border-red-500");
+                input.placeholder = "";
+            }
+            });
+
+
+            textareas.forEach(function(textarea) {
+              if (!textarea.checkValidity()) {
+                textarea.classList.add("border-red-500");
+                textarea.placeholder = "jangan di kosongkan";
+                isValid = false;
+              } else {
+                textarea.classList.remove("border-red-500");
+                textarea.placeholder = "";
+
+              }
+            });
+
+            return isValid;
+          }
+
+          nextButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+              if (validateStep(currentStep)) {
+                currentStep++;
+                showStep(currentStep);
+              }
+            });
+          });
+
+          prevButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+              currentStep--;
+              showStep(currentStep);
+            });
+          });
+
+
+
+        });
+      </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
         <!-- Main modal -->
