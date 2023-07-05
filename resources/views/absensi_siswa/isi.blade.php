@@ -141,7 +141,7 @@
                             <td class="px-6 py-4 text-red-500">
                                 {{ $absen->keterangan }}
                             </td>
-                        </tr>
+                        </tr>                                                                                                    
                         @empty
                         <div class="bg-red-100 border mb-2 mt-2 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                           <strong class="font-bold">Data </strong>

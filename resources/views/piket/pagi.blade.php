@@ -590,7 +590,7 @@
                                                                 </div>
                                                                 @forelse ($data as $data )
                                                                 <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}" id=""><p>{{$data->name}}</p>
+                                                                    <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}" ><p>{{$data->name}}</p>
                                                                 </div>
                                                                 @empty
 
