@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\siswamagang;
 use App\Models\TataTertib;
+use App\Models\LaporanSiswa;
+use Auth;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoresiswamagangRequest;
 use App\Http\Requests\UpdatesiswamagangRequest;
 
@@ -36,9 +39,25 @@ class SiswamagangController extends Controller
      * @param  \App\Http\Requests\StoresiswamagangRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoresiswamagangRequest $request)
+    public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required',
+            'deskripsi' => 'required',
+            'bukti' => 'required',
+        ]);
+
+        $user = Auth::user();
+        $tanggal = date('Y-m-d');
+
+        LaporanSiswa::create([
+            'name' => $user->name,
+            'tanggal' => $tanggal,
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
+            'bukti' => $request->bukti,
+        ]);
+        return redirect()->route('siswa_magang.index');
     }
 
     /**
