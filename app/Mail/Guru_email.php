@@ -21,7 +21,7 @@ class Guru_email extends Mailable
      */
     public function __construct()
     {
-       //
+     //
     }
 
     /**
