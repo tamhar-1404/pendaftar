@@ -18,6 +18,7 @@ use App\Http\Controllers\LupaPasswordController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PiketController;
 use App\Http\Controllers\AbsensiSiswaController;
+use App\Http\Controllers\ApprovalIzinController;
 
 use App\Models\LupaPassword;
 use Illuminate\Support\Facades\Route;
@@ -79,6 +80,7 @@ Route::get('/print', [JurnalSiswaController::class, 'print']);
 Route::get('/getData', [JurnalSiswaController::class, 'getData']);
 Route::get('/txt', [JurnalSiswaController::class, 'printjurnal']);
 Route::get('/export-to-docx', [JurnalSiswaController::class, 'exportToDocx']);
+Route::get('/absensi_pdf', [ApprovalIzinController::class, 'absen_siswa_pdf']);
 
 
 // akhir siswa

@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\tolakdataEmail;
 use App\Mail\TerimaizinEmail;
 use App\Mail\dataizinEmail;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Auth;
 
 
 
@@ -162,5 +166,12 @@ class ApprovalIzinController extends Controller
     public function destroy(ApprovalIzin $approvalIzin)
     {
         //
+    }
+
+    public function absen_siswa_pdf(){
+        set_time_limit(0);
+        $data = ApprovalIzin::where('nama',Auth::user()->name)->get();
+        $pdf = Pdf::loadView('desain_pdf.absensi', ['data' => $data]);
+        return $pdf->download('absensi.pdf');
     }
 }
