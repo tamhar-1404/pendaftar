@@ -997,7 +997,7 @@
         }
     </script> --}}
 
-    <script>
+    {{-- <script>
         // JavaScript
         const buttons = document.querySelectorAll('#button');
         const cardContents = document.querySelectorAll('.card-content');
@@ -1025,7 +1025,36 @@
                 $('.card-content').eq(index).show();
             });
         });
+    </script> --}}
+
+    <script>
+        // JavaScript
+        document.addEventListener("DOMContentLoaded", function() {
+            const buttons = document.querySelectorAll('#button');
+            const cardContents = document.querySelectorAll('.card-content');
+
+            // Semua konten disembunyikan
+            cardContents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            // Konten pertama ditampilkan
+            cardContents[0].style.display = 'block';
+
+            buttons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    // Semua konten disembunyikan
+                    cardContents.forEach(content => {
+                        content.style.display = 'none';
+                    });
+
+                    // Konten yang sesuai ditampilkan
+                    cardContents[index].style.display = 'block';
+                });
+            });
+        });
     </script>
+
 
     {{-- <script>
         const seeButton = document.querySelector("#seeButton");

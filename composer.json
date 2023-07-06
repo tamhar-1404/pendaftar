@@ -13,7 +13,9 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "mailgun/mailgun-php": "*"
+        "maatwebsite/excel": "^1.1",
+        "mailgun/mailgun-php": "*",
+        "phpoffice/phpword": "^1.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -17,6 +17,11 @@ class SiswaController extends Controller
     public function index()
     {
         $siswas = Siswa::latest()->paginate(5);
+        return view('siswa_admin.index    ', compact('siswas'));
+    }
+    public function siswamagang_siswa()
+    {
+        $siswas = Siswa::all();
         return view('siswamagang_siswa.index    ', compact('siswas'));
     }
     public function view()
@@ -54,7 +59,7 @@ class SiswaController extends Controller
      */
     public function show(Siswa $siswa)
     {
-        return view('Siswa_admin.detail');
+       //
     }
 
     /**
@@ -63,9 +68,11 @@ class SiswaController extends Controller
      * @param  \App\Models\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Siswa $siswa)
+    public function edit(Siswa $siswa, $id)
     {
-        //
+        $siswa = Siswa::find($id);
+        // dd($siswa);
+        return view('Siswa_admin.detail',compact('siswa'));
     }
 
     /**

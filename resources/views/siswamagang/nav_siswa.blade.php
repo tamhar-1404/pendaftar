@@ -500,7 +500,7 @@
                         <a href="{{ route('chat_siswa.index') }}">Chat</a>
                     </li>
                     <li>
-                        <a href="{{ route('siswa_magang.index') }}">Siswa</a>
+                        <a href="http://127.0.0.1:8000/siswamagang_siswa">Siswa</a>
                     </li>
                 </ul>
             </li>
