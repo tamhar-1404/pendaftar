@@ -1625,7 +1625,7 @@
         </div>
 
         <!-- Right Sidebar -->
-        
+
 
         <!-- Main Content Wrapper -->
         <main class=" w-full px-6 pb-8">
@@ -1645,11 +1645,11 @@
                             Permintaan Izin
                           </h2>
                         </div>
-                        
-                        
-                      
+
+
+
         <div class="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
-      
+
         @forelse ($menunggu as $izin )
 
         <div class="card">
@@ -1722,7 +1722,7 @@
             <p class="text-xs+">{{ $izin->keterangan }}</p>
             <div class="flex justify-left items-left space-x-3">
               <p> {{ $izin->sampai }}</p>
-          </div> 
+          </div>
         </div>
         <div class="flex justify-around mb-2">
           <div class="flex space-x-1 ">
@@ -1737,14 +1737,14 @@
                 </svg>
               </button>
             </form>
-            
-          
+
+
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
             <script>
               document.getElementById('confirm-button').addEventListener('click', function(e) {
-                e.preventDefault(); 
-            
-               
+                e.preventDefault();
+
+
                 Swal.fire({
                   title: 'Apakah Anda yakin?',
                   text: 'Anda akan mengkonfirmasi izin ini.',
@@ -1772,13 +1772,13 @@
               </svg>
           </button>
       </form>
-      
+
       <!-- Tambahkan skrip Sweet Alert -->
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
       <script>
           document.getElementById('reject-button').addEventListener('click', function(event) {
               event.preventDefault(); // Mencegah refresh halaman
-      
+
               Swal.fire({
                   title: 'Input Alasan',
                   input: 'text',
@@ -1799,7 +1799,7 @@
               });
           });
       </script>
-      
+
           </div>
           <a href=""
               class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium  hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90"  data-te-toggle="modal"
@@ -1942,7 +1942,7 @@
                                                @else
                                               <span class=" text-red-500">{{ $approval->keterangan }}</span>
                                                @endif
-                                          
+
                                             </td>
                                         </tr>
                                         @empty
@@ -1954,7 +1954,7 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-                                
+
                                 <div
                                     class="flex flex-col justify-between space-y-4 px-4 py-4 sm:flex-row sm:items-center sm:space-y-0 sm:px-5">
                                     <div class="flex items-center space-x-2 text-xs+">
@@ -2064,74 +2064,74 @@
                         </svg>
                         </button>
                     </div>
-                    
-                 
+
+
                     <!--Modal body-->
                     <div class="relative p-4">
                       <p class=" text-md">
                       Nama :
                       </p >
-      
+
                       <p class="ml-5 mt-2 text-md text-gray-400">
-                        {{ $izin->nama }}  
+                        {{ $izin->nama }}
                       </p>
-      
+
                       <p class=" text-md mt-4">
                           Sekolah :
                       </p >
-      
+
                       <p class="ml-5 mt-2 text-md text-gray-400">
                           {{ $izin->sekolah }}
                       </p>
                       <p class=" text-md mt-4">
                           email :
                       </p >
-      
+
                       <p class="ml-5 mt-2 text-md text-gray-400">
                           {{ $izin->email }}
                       </p>
-      
+
                       <p class=" text-md mt-4">
                           Tanggal Awal :
                       </p >
-      
+
                       <p class="ml-5 mt-2 text-md text-gray-400">
                           {{ $izin->dari }}
                       </p>
-      
+
                       <p class=" text-md mt-4">
                           Tanggal Akhir :
                       </p >
-      
+
                       <p class="ml-5 mt-2 text-md text-gray-400">
                          {{ $izin->sampai }}
                       </p>
                       <p class=" text-md mt-4">
                           Keterangan :
                       </p >
-      
+
                       <p class="ml-5 mt-2 text-md text-gray-400">
                          {{ $izin->keterangan }}
                       </p>
                       <p class=" text-md mt-4">
                           Deskripsi :
                       </p >
-      
+
                       <p class="ml-5 mt-2 text-md text-gray-400">
                          {{ $izin->deskripsi }}
                       </p>
                       <p class=" text-md mt-4">
                           Bukti :
                       </p >
-      
+
                       <p class="ml-5 mt-2 text-md text-gray-400">
                         <img src="{{ asset('storage/bukti_izin/' . $izin->bukti) }}" alt="">
                       </p>
-      
-      
-      
+
+
+
                   </div>
-        
+
                     <!--Modal footer-->
                     <div
                         class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
@@ -2149,7 +2149,7 @@
             </div>
             </div>
             @empty
-        
+
             @endforelse
         </main>
     </div>

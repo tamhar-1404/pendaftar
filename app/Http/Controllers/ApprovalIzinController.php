@@ -23,12 +23,12 @@ class ApprovalIzinController extends Controller
      */
     public function index()
     {
-        $menunggu = ApprovalIzin::where('status','menunggu')
-        ->get();
+        $today = date('Y-m-d');
+        ApprovalIzin::whereDate('sampai', '<=', $today)->delete();
 
+        $menunggu = ApprovalIzin::where('status', 'menunggu')->get();
+        $terima = ApprovalIzin::where('status', 'terima')->get();
 
-        $terima = ApprovalIzin::where('status', 'terima')
-        ->get();
         return view('approvalizin.index', compact('menunggu', 'terima'));
     }
 
@@ -52,10 +52,10 @@ class ApprovalIzinController extends Controller
     public function store(Request $request, ApprovalIzin $approvalIzin)
     {
         // if ($approvalIzin->status === 'menunggu') {
-        //     
+        //
                  // dd($request);
                 $this->validate($request, [
-                    'nama' => 'required',       
+                    'nama' => 'required',
                     'sekolah' => 'required',
                     'email' => 'required',
                     'dari' => 'required',
@@ -66,10 +66,10 @@ class ApprovalIzinController extends Controller
                 ]);
                 $image = $request->file('bukti');
                 $image->storeAs('public/bukti_izin', $image->hashName());
-               
-            
+
+
             ApprovalIzin::create([
-                    'nama' => $request->nama,   
+                    'nama' => $request->nama,
                     'sekolah' => $request->sekolah,
                     'email' => $request->email,
                     'dari' => $request->dari,
@@ -94,7 +94,7 @@ class ApprovalIzinController extends Controller
      */
     public function tolak(Request $request, $id)
     {
-         // 
+         //
     }
 
     /**
@@ -149,8 +149,8 @@ class ApprovalIzinController extends Controller
 
     return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
 }
-   
-    
+
+
 
     /**
      * Remove the specified resource from storage.
