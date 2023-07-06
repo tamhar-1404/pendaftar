@@ -6,6 +6,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BeritaGuruController;
 use App\Http\Controllers\AlumniGuruController;
 use App\Http\Controllers\BeritaSiswaController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AbsensiGuruController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TataTertibController;
@@ -33,6 +34,7 @@ use App\Http\Controllers\MailController;
 // Admin
 
 Route::get('send-email' , [MailController::class,'index']);
+Route::get('siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa']);
 Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
@@ -55,7 +57,6 @@ Route::get('/sore', [PiketController::class, 'sore'])->name('sore');
 Route::resource('/mou', App\Http\Controllers\ASiswaController::class);
 Route::resource('/tolak', App\Http\Controllers\TolakController::class);
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
-Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
 Route::post('/aproval/{aproval}/confirm', [App\Http\Controllers\AprovalController::class, 'confirm'])->name('aproval.confirm');
 Route::post('/aproval/{aproval}/tolak', [App\Http\Controllers\AprovalController::class, 'tolak'])->name('aproval.tolak');
 
@@ -73,6 +74,10 @@ Route::resource('/berita_guru', App\Http\Controllers\BeritaController::class);
 // Siswa
 
 Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'downloadPDF']);
+Route::get('/print', [JurnalSiswaController::class, 'print']);
+Route::get('/getData', [JurnalSiswaController::class, 'getData']);
+Route::get('/txt', [JurnalSiswaController::class, 'printjurnal']);
+Route::get('/export-to-docx', [JurnalSiswaController::class, 'exportToDocx']);
 
 
 // akhir siswa
@@ -83,6 +88,7 @@ Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
 Route::get('/percobaan', function () {
     return view('login.iyah');
 });
+
 
 
 // Rute untuk mengirim email reset password
@@ -100,6 +106,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
         // Route khusus untuk admin
         Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
+        Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
 
     });
 
@@ -113,8 +120,6 @@ Route::middleware(['auth'])->group(function () {
        Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
        Route::resource('siswa_magang', App\Http\Controllers\SiswaController::class);
        Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
-
-
 
     });
 

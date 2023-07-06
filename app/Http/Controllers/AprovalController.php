@@ -59,16 +59,9 @@ public function confirm(Aproval $aproval)
         foreach ($users as $user) {
            Mail::to($user->email)->send(new Guru_email());
         }
-        $user = User::create([
-            'name' => $aproval->name,
-            'email' => $aproval->email,
-            'sekolah' => $aproval->sekolah,
-            'password' =>$aproval->password,
-            'role' => 'Siswa',
-            'remember_token' =>$aproval->remember_token
-        ]);
+
         $foto_siswa = $aproval->foto_siswa;
-        Siswa::create([
+         $data = Siswa::create([
             'foto_siswa' => $foto_siswa,
             'name' => $aproval->name,
             'jurusan' => $aproval->jurusan,
@@ -86,6 +79,10 @@ public function confirm(Aproval $aproval)
             'alamat' => $aproval->alamat
         ]);
 
+        $data->save();
+
+
+
         Storage::move('public/pendaftaran/' . $foto_siswa, 'public/Siswa/' . $foto_siswa);
 
         Storage::delete('public/pendaftaran/'. $aproval->foto_siswa);
@@ -94,6 +91,16 @@ public function confirm(Aproval $aproval)
         Storage::delete('public/pendaftaran/'. $aproval->sp_ortu);
         Storage::delete('public/pendaftaran/'. $aproval->sp_diri);
         $aproval->delete();
+
+        $user = User::create([
+            'name' => $aproval->name,
+            'email' => $aproval->email,
+            'sekolah' => $aproval->sekolah,
+            'password' =>$aproval->password,
+            'role' => 'Siswa',
+            'remember_token' =>$aproval->remember_token,
+            'siswa_id' => $data->id
+        ]);
 
         return redirect()->route('aproval.index');
     } else {

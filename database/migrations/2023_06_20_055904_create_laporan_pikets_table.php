@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('laporan_pikets', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('waktu');
+            $table->string('hari');
+            $table->string('deskripsi');
+            $table->string('bukti');
             $table->timestamps();
         });
     }

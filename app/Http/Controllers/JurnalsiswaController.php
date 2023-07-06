@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\jurnalsiswa;
 use App\Http\Requests\StorejurnalsiswaRequest;
 use App\Http\Requests\UpdatejurnalsiswaRequest;
 use Illuminate\Http\Request;
 use Auth;
-
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\IOFactory;
 
 class JurnalsiswaController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -109,15 +112,71 @@ class JurnalsiswaController extends Controller
 
     public function downloadPDF()
     {
+        set_time_limit(0);
+        $data = JurnalSiswa::all();
+        $pdf = Pdf::loadView('desain_pdf.jurnal', ['data' => $data]);
+        return $pdf->download('jurnal_siswa.pdf');
+
+    }
+    public function getData()
+    {
         $data = JurnalSiswa::all();
 
-        $options = new Options();
-        $options->set('defaultFont', 'Arial'); // Atur font default sesuai preferensi Anda
-        $options->set('isRemoteEnabled', true); // Aktifkan opsi mengambil sumber daya jarak jauh jika diperlukan
-
-        $pdf = new Dompdf($options);
-        $pdf->loadView('pdf.data', compact('data'));
-
-        return $pdf->stream('data.pdf');
+        return response()->json($data);
     }
+    public function print()
+    {
+        $data = JurnalSiswa::all();
+
+        return view('desain_pdf.jurnal',compact('data'));
+    }
+    public function printjurnal()
+{
+    $users = JurnalSiswa::all();
+    $txt = '';
+
+    foreach ($users as $user) {
+        $txt .= "Name: " . $user->name . "\n";
+        $txt .= "Tanggal: " . $user->Tanggal . "\n";
+        $txt .= "Sekolah: " . $user->Sekolah . "\n";
+        $txt .= "Kegiatan: " . $user->Kegiatan . "\n";
+        $txt .= "Bukti: " . $user->Bukti . "\n";
+        // Tambahkan kolom-kolom lain yang ingin Anda ambil datanya
+        $txt .= "\n"; // Tambahkan baris kosong antara setiap entri pengguna
+    }
+
+    $headers = [
+        'Content-Type' => 'text/plain',
+        'Content-Disposition' => 'attachment; filename="users.txt"',
+    ];
+
+    return response($txt, 200, $headers);
+}
+public function exportToDocx()
+{
+    // Mendapatkan data dari database (contoh menggunakan model User)
+    $users = JurnalSiswa::all();
+
+    // Membuat objek PhpWord
+    $phpWord = new PhpWord();
+
+    // Membuat halaman baru
+    $section = $phpWord->addSection();
+
+    // Menambahkan data dari database ke dokumen
+    foreach ($users as $user) {
+        $section->addText($user->name);
+        $section->addText($user->email);
+        // Tambahkan data lain yang Anda butuhkan
+        $section->addText("--------------------"); // Pemisah antara setiap entri
+    }
+
+    // Menyimpan dokumen sebagai file .docx
+    $filename = "database_export.docx";
+    $path = storage_path('app/public/image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
+    $phpWord->save($path);
+
+    // Mengembalikan file dokumen untuk diunduh
+    return response()->download($path, $filename);
+}
 }

@@ -541,7 +541,7 @@
                         <div class="mb-5">
                             <div class="flex flex-col items-center justify-center">
                                 <img src="{{ asset('admin/assets/images/profile-34.jpeg') }}" alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
-                                <p class="text-xl font-semibold text-info">Abdul kader</p>
+                                <p class="text-xl font-semibold text-info">{{ $siswa->name }}</p>
                             </div>
                             <ul class="m-auto mt-5 flex max-w-[160px] flex-col space-y-4 font-semibold text-white-dark">
                                 <li class="flex items-center gap-2">
@@ -580,7 +580,7 @@
                                             stroke-linejoin="round"
                                         />
                                     </svg>
-                                    Smkn 1 kraksaan
+                                    {{ $siswa->sekolah }}
                                 </li>
                                 <li class="flex items-center gap-2">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
@@ -593,7 +593,7 @@
                                         <path opacity="0.5" d="M17 4V2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                         <path opacity="0.5" d="M2 9H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                     </svg>
-                                    Jan , 01 , 2006
+                                    {{ $siswa->tanggal }}
                                 </li>
                                 <li class="flex items-center gap-2">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
@@ -605,7 +605,7 @@
                                         />
                                         <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5" />
                                     </svg>
-                                   Kraksaan jawa timur
+                                  {{ $siswa->tempat }}
                                 </li>
                                 <li>
                                     <a href="javascript:;" class="flex items-center gap-2">
@@ -630,7 +630,7 @@
                                                 stroke-linecap="round"
                                             />
                                         </svg>
-                                        <span class="text-info">Kader@gmail.com</span></a
+                                        <span class="text-info">{{ $siswa->email }}</span></a
                                     >
                                 </li>
                                 <li class="flex items-center gap-2">
@@ -654,7 +654,7 @@
                                             stroke-linecap="round"
                                         />
                                     </svg>
-                                    <span class="whitespace-nowrap" dir="ltr">0894 8736 9872</span>
+                                    <span class="whitespace-nowrap" dir="ltr">{{ $siswa->no }}</span>
                                 </li>
                             </ul>
                             <ul class="mt-7  justify-center gap-2">
