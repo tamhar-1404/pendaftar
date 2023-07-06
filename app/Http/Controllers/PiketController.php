@@ -70,48 +70,59 @@ class PiketController extends Controller
 
      private function sendEmail()
      {
-         $mailData = []; // Tambahkan data email yang diperlukan ke dalam array $mailData
          $today = Carbon::now()->format('l');
-         if($today === 'Monday'){
 
-            $data = anggota_piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'pagi')->get();
-            foreach($data as $datas){
-                $email = Siswa::find($datas->siswa_id);
-                Mail::to($email->email)->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
-            }         }
-         if($today === 'Tuesday'){
-            $data = anggota_piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'pagi')->get();
-            foreach($data as $datas){
-                $email = Siswa::find($datas->siswa_id);
-                Mail::to($email->email)->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
-            }         }
-         if($today === 'Wednesday'){
-            $data = anggota_piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
-            foreach($data as $datas){
-                $email = Siswa::find($datas->siswa_id);
-                Mail::to($email->email)->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
-            }         }
-         if($today === 'Thursday'){
-            $data = anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
-            foreach($data as $datas){
-                $email = Siswa::find($datas->siswa_id);
-                Mail::to($email->email)->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
-            }
+         if ($today === 'Monday') {
+             $data = anggota_piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'pagi')->get();
+             foreach ($data as $datas) {
+                 $email = Siswa::find($datas->siswa_id);
+                 $mailData = [
+                     'title' => 'Pengingat Piket Senin',
+                     'body' => 'Hari ini anda piket pada hari Senin. Mohon datang sebelum jam 7:45 .'
+                 ];
+                 Mail::to($email->email)->send(new pikets($mailData));
+             }
+         } elseif ($today === 'Tuesday') {
+             $data = anggota_piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'pagi')->get();
+             foreach ($data as $datas) {
+                 $email = Siswa::find($datas->siswa_id);
+                 $mailData = [
+                     'title' => 'Pengingat Piket Selasa',
+                     'body' => 'Hari ini anda piket pada hari Selasa. Mohon datang sebelum jam 7:45 .'
+                 ];
+                 Mail::to($email->email)->send(new pikets($mailData));
+             }
+         } elseif ($today === 'Wednesday') {
+             $data = anggota_piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
+             foreach ($data as $datas) {
+                 $email = Siswa::find($datas->siswa_id);
+                 $mailData = [
+                     'title' => 'Pengingat Piket Rabu',
+                     'body' => 'Hari ini anda piket pada hari Rabu. Mohon datang sebelum jam 7:45.'
+                 ];
+                 Mail::to($email->email)->send(new pikets($mailData));
+             }
+         } elseif ($today === 'Thursday') {
+             $data = anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
+             foreach ($data as $datas) {
+                 $email = Siswa::find($datas->siswa_id);
+                 $mailData = [
+                     'title' => 'Pengingat Piket Kamis',
+                     'body' => 'Hari ini anda piket pada hari Kamis. Mohon datang sebelum jam 7:45.'
+                 ];
+                 Mail::to($email->email)->send(new pikets($mailData));
+             }
+         } elseif ($today === 'Friday') {
+             $data = anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
+             foreach ($data as $datas) {
+                 $email = Siswa::find($datas->siswa_id);
+                 $mailData = [
+                     'title' => 'Pengingat Piket Jumat',
+                     'body' => 'Hari ini anda piket pada hari Jumat. Mohon datang sebelum jam 7:45.'
+                 ];
+                 Mail::to($email->email)->send(new pikets($mailData));
+             }
          }
-         if($today === 'Friday'){
-            $data = anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
-            foreach($data as $datas){
-                $email = Siswa::find($datas->siswa_id);
-                Mail::to($email->email)->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
-            }         }
-         if($today === 'Saturday'){
-         }
-         if($today === 'Sunday'){
-
-         }
-         // Logika pengiriman email
-         // Gunakan library/email service yang tersedia di Laravel
-         // Contoh menggunakan Laravel Mail
      }
 
      private function markEmailAsSent()
