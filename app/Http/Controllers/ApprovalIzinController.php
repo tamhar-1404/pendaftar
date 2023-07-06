@@ -26,6 +26,7 @@ class ApprovalIzinController extends Controller
         $today = date('Y-m-d');
         ApprovalIzin::whereDate('sampai', '<=', $today)->delete();
 
+
         $menunggu = ApprovalIzin::where('status', 'menunggu')->get();
         $terima = ApprovalIzin::where('status', 'terima')->get();
 
