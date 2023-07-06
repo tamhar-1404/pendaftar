@@ -40,12 +40,12 @@ Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
-Route::resource('/alumni_admin', App\Http\Controllers\SiswaController::class);
+Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::class);
 Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
 Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
 Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
-Route::resource('/laporan_piket', App\Http\Controllers\ASiswaController::class);
+Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
 Route::resource('/sp', App\Http\Controllers\ASiswaController::class);
 
 Route::resource('/Berita', App\Http\Controllers\BlogController::class);

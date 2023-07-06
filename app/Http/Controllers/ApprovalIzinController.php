@@ -23,12 +23,13 @@ class ApprovalIzinController extends Controller
      */
     public function index()
     {
-        $menunggu = ApprovalIzin::where('status','menunggu')
-        ->get();
+        $today = date('Y-m-d');
+        ApprovalIzin::whereDate('sampai', '<=', $today)->delete();
 
 
-        $terima = ApprovalIzin::where('status', 'terima')
-        ->get();
+        $menunggu = ApprovalIzin::where('status', 'menunggu')->get();
+        $terima = ApprovalIzin::where('status', 'terima')->get();
+
         return view('approvalizin.index', compact('menunggu', 'terima'));
     }
 
@@ -52,9 +53,35 @@ class ApprovalIzinController extends Controller
     public function store(Request $request, ApprovalIzin $approvalIzin)
     {
         // if ($approvalIzin->status === 'menunggu') {
-        //     
+        //
                  // dd($request);
-              
+                $this->validate($request, [
+                    'nama' => 'required',
+                    'sekolah' => 'required',
+                    'email' => 'required',
+                    'dari' => 'required',
+                    'sampai' => 'required',
+                    'keterangan'=> 'required',
+                    'deskripsi' => 'required',
+                    'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
+                ]);
+                $image = $request->file('bukti');
+                $image->storeAs('public/bukti_izin', $image->hashName());
+
+
+            ApprovalIzin::create([
+                    'nama' => $request->nama,
+                    'sekolah' => $request->sekolah,
+                    'email' => $request->email,
+                    'dari' => $request->dari,
+                    'sampai' => $request->sampai,
+                    'keterangan' => $request->keterangan,
+                    'deskripsi' => $request->deskripsi,
+                    'status' => 'menunggu',
+                    'bukti' => $image->hashName()
+                ]);
+                Mail::to($request->email)->send(new dataizinEmail($approvalIzin));
+                return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
         //  } else {
         //         return redirect()->back()->with('error', 'Maaf, tidak dapat melakukan konfirmasi pada data');
         //  }
@@ -68,7 +95,7 @@ class ApprovalIzinController extends Controller
      */
     public function tolak(Request $request, $id)
     {
-         // 
+         //
     }
 
     /**
@@ -123,8 +150,8 @@ class ApprovalIzinController extends Controller
 
     return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
 }
-   
-    
+
+
 
     /**
      * Remove the specified resource from storage.
