@@ -45,7 +45,7 @@ Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
 Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
 Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
-Route::resource('/laporan_piket', App\Http\Controllers\ASiswaController::class);
+Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
 Route::resource('/sp', App\Http\Controllers\ASiswaController::class);
 
 Route::resource('/Berita', App\Http\Controllers\BlogController::class);
