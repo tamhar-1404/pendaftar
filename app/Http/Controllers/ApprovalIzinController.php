@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\tolakdataEmail;
 use App\Mail\TerimaizinEmail;
 use App\Mail\dataizinEmail;
+use Auth;
 
 
 
@@ -56,9 +57,6 @@ class ApprovalIzinController extends Controller
         //
                  // dd($request);
                 $this->validate($request, [
-                    'nama' => 'required',
-                    'sekolah' => 'required',
-                    'email' => 'required',
                     'dari' => 'required',
                     'sampai' => 'required',
                     'keterangan'=> 'required',
@@ -81,7 +79,7 @@ class ApprovalIzinController extends Controller
                     'bukti' => $image->hashName()
                 ]);
                 Mail::to($request->email)->send(new dataizinEmail($approvalIzin));
-                return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
+                return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
         //  } else {
         //         return redirect()->back()->with('error', 'Maaf, tidak dapat melakukan konfirmasi pada data');
         //  }
@@ -137,7 +135,7 @@ class ApprovalIzinController extends Controller
 
         if ($alasan) {
             $mailData = [
-                'content' => 'Data Anda telah ditolak dengan alasan: ' . $alasan,
+                'content' => 'Absensi Anda telah ditolak dengan alasan: ' . $alasan,
             ];
 
             Mail::to($email)->send(new tolakdataEmail($mailData));
