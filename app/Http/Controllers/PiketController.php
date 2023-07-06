@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\piket;
 use App\Models\Siswa;
 use App\Models\anggota_piket;
+use App\Models\laporan_piket;
 use App\Http\Requests\StorepiketRequest;
 use App\Http\Requests\UpdatepiketRequest;
 use Illuminate\Http\Request;
@@ -54,9 +55,10 @@ class PiketController extends Controller
          $kamis_sore= anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'sore')->get();
          $jumat_sore= anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'sore')->get();
          $siswa = Siswa::all();
+         $laporan_piket = laporan_piket::all();
 
 
-         return view('piket.index', compact('senin', 'selasa', 'rabu', 'kamis', 'jumat','senin_sore', 'selasa_sore', 'rabu_sore', 'kamis_sore', 'jumat_sore', 'siswa', 'catat'));
+         return view('piket.index', compact('laporan_piket','senin', 'selasa', 'rabu', 'kamis', 'jumat','senin_sore', 'selasa_sore', 'rabu_sore', 'kamis_sore', 'jumat_sore', 'siswa', 'catat'));
      }
 
      private function isEmailSentToday()
