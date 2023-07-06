@@ -16,8 +16,9 @@ class AbsensiSiswaController extends Controller
      */
     public function index()
     {
-       $absensisiswa = ApprovalIzin::all();
-       return view('absensi_siswa.index' , compact('absensisiswa'));
+        $terima = ApprovalIzin::where('status', 'terima')
+        ->get();
+       return view('absensi_siswa.index' , compact('terima'));
     }
 
     /**
@@ -25,9 +26,36 @@ class AbsensiSiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, ApprovalIzin $approvalIzin)
     {
-        //
+        // dd($request);
+        $this->validate($request, [
+            'nama' => 'required',       
+            'sekolah' => 'required',
+            'email' => 'required',
+            'dari' => 'required',
+            'sampai' => 'required',
+            'deskripsi' => 'required',
+            'keterangan'=> 'required',
+            'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
+        ]);
+        $image = $request->file('bukti');
+        $image->storeAs('public/bukti_izin', $image->hashName());
+       
+    dd($request);
+    ApprovalIzin::create([
+            'bukti' => $image->hashName(),
+            'nama' => $request->nama,   
+            'sekolah' => $request->sekolah,
+            'email' => $request->email,
+            'dari' => $request->dari,
+            'sampai' => $request->sampai,
+            'keterangan' => $request->keterangan,
+            'deskripsi' => $request->deskripsi,
+            'status' => 'menunggu'
+        ]);
+        Mail::to($request->email)->send(new dataizinEmail($approvalIzin));
+        return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
@@ -58,7 +86,7 @@ class AbsensiSiswaController extends Controller
             'tanggal' => $request->tanggal,
             'jam' => $request->jam,
             'keterangan' => $keterangan,
-            'status' => 'Diterima'
+            'status' => 'terima'
         ]);
         return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
@@ -80,9 +108,36 @@ class AbsensiSiswaController extends Controller
      * @param  \App\Models\absensi_siswa  $absensi_siswa
      * @return \Illuminate\Http\Response
      */
-    public function edit(absensi_siswa $absensi_siswa)
+    public function edit(Request $request, ApprovalIzin $approvalIzin)
     {
-        //
+          // dd($request);
+          $this->validate($request, [
+            'nama' => 'required',       
+            'sekolah' => 'required',
+            'email' => 'required',
+            'dari' => 'required',
+            'sampai' => 'required',
+            'keterangan'=> 'required',
+            'deskripsi' => 'required',
+            'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
+        ]);
+        $image = $request->file('bukti');
+        $image->storeAs('public/bukti_izin', $image->hashName());
+       
+    
+    ApprovalIzin::create([
+            'nama' => $request->nama,   
+            'sekolah' => $request->sekolah,
+            'email' => $request->email,
+            'dari' => $request->dari,
+            'sampai' => $request->sampai,
+            'keterangan' => $request->keterangan,
+            'deskripsi' => $request->deskripsi,
+            'status' => 'menunggu',
+            'bukti' => $image->hashName()
+        ]);
+        Mail::to($request->email)->send(new dataizinEmail($approvalIzin));
+        return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**

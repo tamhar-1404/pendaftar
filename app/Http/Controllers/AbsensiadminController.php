@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Models\absensiadmin;
+use App\Models\ApprovalIzin;
 use App\Http\Requests\StoreabsensiadminRequest;
 use App\Http\Requests\UpdateabsensiadminRequest;
 
@@ -34,9 +35,35 @@ class AbsensiadminController extends Controller
      * @param  \App\Http\Requests\StoreabsensiadminRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreabsensiadminRequest $request)
+    public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+    
+ 
+        
+            'dari' => 'required',
+            'sampai' => 'required',
+            'keterangan'=> 'required',
+            'deskripsi' => 'required',
+            'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
+        ]);
+        $image = $request->file('bukti');
+        $image->storeAs('public/bukti_izin', $image->hashName());
+       
+    
+    ApprovalIzin::create([
+            'nama' => $request->nama,   
+            'sekolah' => $request->sekolah,
+            'email' => $request->email,
+            'dari' => $request->dari,
+            'sampai' => $request->sampai,
+            'keterangan' => $request->keterangan,
+            'deskripsi' => $request->deskripsi,
+            'status' => 'menunggu',
+            'bukti' => $image->hashName()
+        ]);
+        // Mail::to($request->email)->send(new dataizinEmail($approvalIzin));
+        return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
