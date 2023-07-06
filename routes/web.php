@@ -6,6 +6,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BeritaGuruController;
 use App\Http\Controllers\AlumniGuruController;
 use App\Http\Controllers\BeritaSiswaController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AbsensiGuruController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TataTertibController;
@@ -33,6 +34,7 @@ use App\Http\Controllers\MailController;
 // Admin
 
 Route::get('send-email' , [MailController::class,'index']);
+Route::get('siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa']);
 Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
