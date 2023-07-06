@@ -537,7 +537,7 @@
                           <div class="Button pl-5 pr-[20.21px] pt-[17px] pb-[19px] border border-sky-500 justify-start items-center gap-[8.35px] flex">
                             <button id="" class="Detail text-center text-sky-500 text-[14px] font-medium leading-tight tracking-wide">Detail</button>
                           </div>
-                          <div class="Button pl-[18px] pr-[19.83px] pt-[17px] pb-[19px] justify-start items-center gap-[6.36px] flex">
+                          <div class="Button pl-[18px] pr-[19.83px] pt-[17px] pb-[19px] justify-start items-center gap-[6.36px] flex">  
                             <button id="nextStep1" class="BerkasBerkas text-center text-slate-500 text-[14px] font-medium leading-tight tracking-wide">Berkas - berkas</button>
                           </div>
                         </div>

@@ -17,6 +17,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LupaPasswordController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PiketController;
+use App\Http\Controllers\AbsensiSiswaController;
 
 use App\Models\LupaPassword;
 use Illuminate\Support\Facades\Route;
@@ -84,6 +85,7 @@ Route::get('/export-to-docx', [JurnalSiswaController::class, 'exportToDocx']);
 
 // login
 Route::resource('/login', App\Http\Controllers\LoginController::class);
+
 Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
 Route::get('/percobaan', function () {
     return view('login.iyah');

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Guru_admin;
 use App\Models\User;
 use App\Models\Siswa;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AkunGuru;
+use Hash;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreGuru_adminRequest;
 use App\Http\Requests\UpdateGuru_adminRequest;
@@ -59,12 +61,9 @@ class GuruAdminController extends Controller
              'no' => 'required',
              'password' => 'required'
          ]);
-
          $password = $request->password; // Simpan password yang belum di-hash
-
          $image = $request->file('image');
          $image->storeAs('public/guru_image', $image->hashName());
-
          $guruAdmin = Guru_admin::create([
              'image' => $image->hashName(),
              'name' => $request->name,
@@ -72,7 +71,7 @@ class GuruAdminController extends Controller
              'email' => $request->email,
              'alamat' => $request->alamat,
              'no' => $request->no,
-             'password' => bcrypt($request->password)
+              'password' => Hash::make($request->password),
          ]);
 
          User::create([
@@ -80,9 +79,9 @@ class GuruAdminController extends Controller
              'email' => $request->email,
              'sekolah' => $request->sekolah,
              'role' => 'guru',
-             'password' => bcrypt($request->password),
+              'password' => Hash::make($request->password),
          ]);
-
+        
          // Mengirim email konfirmasi dengan password yang belum di-hash
          Mail::to($request->email)->send(new AkunGuru($password));
 
