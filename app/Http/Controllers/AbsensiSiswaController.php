@@ -17,7 +17,7 @@ class AbsensiSiswaController extends Controller
      */
     public function index()
     {
-        $terima = ApprovalIzin::where('status', 'terimaabsen')->where('name', )
+        $terima = ApprovalIzin::where('status', 'terimaabsen')->where('nama', Auth::user('name') )
         ->get();
        return view('absensi_siswa.index' , compact('terima'));
     }
