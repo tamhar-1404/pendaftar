@@ -17,6 +17,11 @@ class SiswaController extends Controller
     public function index()
     {
         $siswas = Siswa::latest()->paginate(5);
+        return view('siswa_admin.index    ', compact('siswas'));
+    }
+    public function siswamagang_siswa()
+    {
+        $siswas = Siswa::latest()->paginate(5);
         return view('siswamagang_siswa.index    ', compact('siswas'));
     }
     public function view()

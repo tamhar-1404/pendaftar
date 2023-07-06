@@ -406,18 +406,18 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                       </svg>
                     </div>
+                <div class="flex items-center justify-between">
                     <div class="Laporkan text-center text-white text-[14px] font-medium leading-tight tracking-wide">Laporkan</div>
-                  </button>
-                      <button class="Button w-[98.92px] self-stretch pl-[19.44px] pr-[22.48px] py-2 bg-slate-200 rounded-lg justify-center items-center gap-[5px] inline-flex">
-                          <div class="Svg w-20 h-20 p-[0px] justify-center items-center inline-flex">
-                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <button class="Button w-[98.92px] self-stretch pl-[19.44px] pr-[22.48px] py-2 bg-slate-200 rounded-lg justify-center items-center gap-[5px] inline-flex" data-modal-show="staticModal">
+                        <div class="Svg w-20 h-20 p-[0px] justify-center items-center inline-flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
                             </svg>
                             <div class="Frame w-4 h-4 relative flex-col justify-start items-start flex"></div>
                         </div>
                         <div class="Chat text-center text-slate-800 text-[14px] font-medium leading-tight tracking-wide">Chat</div>
                     </button>
-                </div>
+</div>
             </div>
             {{-- modal --}}
 <form action="{{ route('siswamagang.store') }}" method="post">
