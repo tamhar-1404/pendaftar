@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\laporan_piket;
 use App\Http\Requests\Storelaporan_piketRequest;
 use App\Http\Requests\Updatelaporan_piketRequest;
-
+use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Auth;
 class LaporanPiketController extends Controller
 {
     /**
@@ -37,9 +39,22 @@ class LaporanPiketController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'waktu' =>"required",
-            'hari' => "required"
+            'waktu' => "required",
+            'deskripsi' => "required",
+            'bukti' => "required"
         ]);
+        $image = $request->file('bukti');
+        $image->storeAs('public/image', $image->hashName());
+        $today = Carbon::now()->format('l');
+        laporan_piket::create([
+            'bukti' => $image->hashName(),
+            'name' => Auth::user()->name,
+            'waktu' => $request->waktu,
+            'hari' => $today,
+            'deskripsi' => $request->deskripsi
+
+        ]);
+    return redirect()->back();
     }
 
     /**
