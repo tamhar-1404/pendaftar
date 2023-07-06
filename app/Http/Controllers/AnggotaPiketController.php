@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\laporan_piket;
-use App\Http\Requests\Storelaporan_piketRequest;
-use App\Http\Requests\Updatelaporan_piketRequest;
+use App\Models\anggota_piket;
+use App\Http\Requests\Storeanggota_piketRequest;
+use App\Http\Requests\Updateanggota_piketRequest;
 
-class LaporanPiketController extends Controller
+class AnggotaPiketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class LaporanPiketController extends Controller
      */
     public function index()
     {
-        return view('laporan_piket.index');
+        //
     }
 
     /**
@@ -31,24 +31,21 @@ class LaporanPiketController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Storelaporan_piketRequest  $request
+     * @param  \App\Http\Requests\Storeanggota_piketRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Storeanggota_piketRequest $request)
     {
-        $this->validate($request, [
-            'waktu' =>"required",
-            'hari' => "required"
-        ]);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\laporan_piket  $laporan_piket
+     * @param  \App\Models\anggota_piket  $anggota_piket
      * @return \Illuminate\Http\Response
      */
-    public function show(laporan_piket $laporan_piket)
+    public function show(anggota_piket $anggota_piket)
     {
         //
     }
@@ -56,10 +53,10 @@ class LaporanPiketController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\laporan_piket  $laporan_piket
+     * @param  \App\Models\anggota_piket  $anggota_piket
      * @return \Illuminate\Http\Response
      */
-    public function edit(laporan_piket $laporan_piket)
+    public function edit(anggota_piket $anggota_piket)
     {
         //
     }
@@ -67,11 +64,11 @@ class LaporanPiketController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Updatelaporan_piketRequest  $request
-     * @param  \App\Models\laporan_piket  $laporan_piket
+     * @param  \App\Http\Requests\Updateanggota_piketRequest  $request
+     * @param  \App\Models\anggota_piket  $anggota_piket
      * @return \Illuminate\Http\Response
      */
-    public function update(Updatelaporan_piketRequest $request, laporan_piket $laporan_piket)
+    public function update(Updateanggota_piketRequest $request, anggota_piket $anggota_piket)
     {
         //
     }
@@ -79,10 +76,10 @@ class LaporanPiketController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\laporan_piket  $laporan_piket
+     * @param  \App\Models\anggota_piket  $anggota_piket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(laporan_piket $laporan_piket)
+    public function destroy(anggota_piket $anggota_piket)
     {
         //
     }
