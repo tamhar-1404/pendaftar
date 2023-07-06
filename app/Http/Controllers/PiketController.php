@@ -73,36 +73,44 @@ class PiketController extends Controller
          // Ambil hari saat ini
          $today = Carbon::now()->format('l');
 
-         if($today == 'monday'){
-            $data=piket::where('waktu','pagi')->where('hari','senin');
-            foreach($data as $isi){
-                
-            }
-            Mail::to($data->email)->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
+        //  if($today == 'monday'){
+        //     $data=piket::where('waktu','pagi')->where('hari','senin');
+        //     foreach($data as $isi){
+        //         Mail::to($isi->email)->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
+        //     }
 
-         }
-         if($today == 'tuesday'){
-            $data=piket::where('waktu','pagi')->where('hari','selasa');
-            Mail::to($data->email)->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
-         }
-         if($today == 'wednesday'){
-            $data=piket::where('waktu','pagi')->where('hari','rabu');
-            Mail::to($data->email)->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
-         }
-         if($today == 'thursday'){
-            $data=piket::where('waktu','pagi')->where('hari','kamis');
-            Mail::to($data->email)->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
-         }
-         if($today == 'friday'){
-            $data=piket::where('waktu','pagi')->where('hari','jumat');
+        //  }
+        //  if($today == 'tuesday'){
+        //     $data=piket::where('waktu','pagi')->where('hari','selasa');
+        //     foreach($data as $isi){
+        //         Mail::to($isi->email)->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
+        //     }
+        //  }
+        //  if($today == 'wednesday'){
+        //     $data=piket::where('waktu','pagi')->where('hari','rabu');
+        //     foreach($data as $isi){
+        //         Mail::to($isi->email)->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
+        //     }
+        //  }
+        //  if($today == 'thursday'){
+        //     $data=piket::where('waktu','pagi')->where('hari','kamis');
+        //     dd($data);
+        //     foreach($data as $isi){
+        //         Mail::to($isi->email)->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
+        //     }
+        //  }
+        //  if($today == 'friday'){
+        //     $data=piket::where('waktu','pagi')->where('hari','jumat');
+        //     foreach($data as $isi){
+        //     }
+            Mail::to('rahmatmahendra888@gmail.com')->send(new pikets($mailData)); // Ganti 'email@example.com' dengan alamat email tujuan
 
-         }
+        //  }
          if($today == 'saturday'){
-            $data=piket::where('waktu','pagi')->where('hari','sabtu');
 
          }
          if($today == 'sunday'){
-            $data=piket::where('waktu','pagi')->where('hari','minggu');
+
 
          }
          $mailData = []; // Tambahkan data email yang diperlukan ke dalam array $mailData
@@ -122,17 +130,17 @@ class PiketController extends Controller
          $log->save();
      }
 
-     public function sore()
-     {
-         $senin = piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'sore')->get();
-         $selasa = piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'sore')->get();
-         $rabu = piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'sore')->get();
-         $kamis = piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'sore')->get();
-         $jumat = piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'sore')->get();
-         $catat = piket::where('nama_siswa', 'LIKE', 'catatan')->where('waktu', 'LIKE', 'catatan')->get();
+    //  public function sore()
+    //  {
+    //      $senin = piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'sore')->get();
+    //      $selasa = piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'sore')->get();
+    //      $rabu = piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'sore')->get();
+    //      $kamis = piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'sore')->get();
+    //      $jumat = piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'sore')->get();
+    //      $catat = piket::where('nama_siswa', 'LIKE', 'catatan')->where('waktu', 'LIKE', 'catatan')->get();
 
-         return view('piket.sidebar_sore', compact('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'catat'));
-     }
+    //      return view('piket.sidebar_sore', compact('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'catat'));
+    //  }
 
 
     /**

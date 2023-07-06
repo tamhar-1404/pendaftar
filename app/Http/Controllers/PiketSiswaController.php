@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\piket_siswa;
+use App\Models\Piket;
 use App\Http\Requests\Storepiket_siswaRequest;
 use App\Http\Requests\Updatepiket_siswaRequest;
 
@@ -14,8 +15,22 @@ class PiketSiswaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {
-        return view('piket_siswa.index');
+        // Sisa kode yang ada sebelumnya
+        $senin = piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'pagi')->get();
+        $selasa = piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'pagi')->get();
+        $rabu = piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
+        $kamis = piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
+        $jumat = piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
+        $catat = piket::where('id_siswa', 'LIKE', 'catatan')->where('waktu', 'LIKE', 'catatan')->get();
+
+        $senin_sore= piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'sore')->get();
+        $selasa_sore = piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'sore')->get();
+        $rabu_sore = piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'sore')->get();
+        $kamis_sore= piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'sore')->get();
+        $jumat_sore= piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'sore')->get();
+        return view('piket_siswa.index', compact('senin', 'selasa', 'rabu', 'kamis', 'jumat','senin_sore', 'selasa_sore', 'rabu_sore', 'kamis_sore', 'jumat_sore', 'catat'));
     }
 
     /**

@@ -75,6 +75,7 @@ Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'download
 Route::get('/print', [JurnalSiswaController::class, 'print']);
 Route::get('/getData', [JurnalSiswaController::class, 'getData']);
 Route::get('/txt', [JurnalSiswaController::class, 'printjurnal']);
+Route::get('/export-to-docx', [JurnalSiswaController::class, 'exportToDocx']);
 
 
 // akhir siswa

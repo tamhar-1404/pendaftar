@@ -34,9 +34,9 @@ class LaporanPiketController extends Controller
      * @param  \App\Http\Requests\Storelaporan_piketRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Storelaporan_piketRequest $request)
+    public function store(Request $request)
     {
-        //
+        
     }
 
     /**

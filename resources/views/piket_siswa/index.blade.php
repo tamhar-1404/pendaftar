@@ -16,17 +16,22 @@
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" media="screen" href="siswa/css/style.css" />
-        <link rel="stylesheet" href="load/load.css">    
+        <link rel="stylesheet" href="load/load.css">
 
         <script src="siswa/js/perfect-scrollbar.min.js"></script>
         <script defer src="siswa/js/popper.min.js"></script>
         <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
         <script defer src="siswa/js/sweetalert.min.js"></script>
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
+        <style>
+            .step:not(.active) {
+              display: none;
+            }
+          </style>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
 
     </head>
     <body
-    
+
         x-data="main"
         class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased bg-[#F6F5FF]"
         :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout,$store.app.rtlClass]"
@@ -1446,7 +1451,7 @@
          <!-- Main modal -->
          <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-md max-h-full">
-                <!-- Modal content -->
+        <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
@@ -1455,9 +1460,9 @@
                     <div class="px-6 py-6 lg:px-8">
                         <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Laporan piket</h3>
                         <form class="space-y-6 mt-4" action="#">
-                           
+                            @csrf
                             <div>
-                                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select your country</label>
+                                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Hari : </label>
                                 <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                   <option>Senin</option>
                                   <option>Selasa</option>
@@ -1467,11 +1472,11 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">inspektur    </label>
+                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi :</label>
                                 <textarea name="" id="" cols="40" rows="5" class=" rounded-lg"></textarea>
                             </div>
                             <div>
-                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">inspektur    </label>
+                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">bukti :     </label>
                                <input type="file" name="" class=" rounded-lg outline outline-offset-0 outline-gray-400 w-full">
                             </div>
 
@@ -1492,6 +1497,105 @@
 
 
     </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const form = document.getElementById("wizardForm");
+          const steps = Array.from(form.getElementsByClassName("step"));
+          const nextButtons = Array.from(form.querySelectorAll("[id^=nextStep]"));
+          const prevButtons = Array.from(form.querySelectorAll("[id^=prevStep]"));
 
+          let currentStep = 0;
+
+          function showStep(stepIndex) {
+            steps.forEach(function(step, index) {
+              if (index === stepIndex) {
+                step.classList.add("active");
+              } else {
+                step.classList.remove("active");
+              }
+            });
+          }
+
+          function validateStep(stepIndex) {
+            const step = steps[stepIndex];
+            const inputs = Array.from(step.getElementsByTagName("input"));
+            const textareas = Array.from(step.getElementsByTagName("textarea"));
+
+            let isValid = true;
+
+            inputs.forEach(function(input) {
+              if (!input.checkValidity()) {
+                input.classList.add("border-red-500");
+                input.placeholder = "Masukan data ";
+                isValid = false;
+              } else {
+                input.classList.remove("border-red-500");
+                input.placeholder = "";
+
+              }
+
+            });
+
+            inputs.forEach(function(input) {
+            if (!input.checkValidity()) {
+                if (input.type === "radio") {
+                var radioGroup = input.parentNode;
+                var errorMessage = radioGroup.querySelector(".error-message");
+
+                if (!errorMessage) {
+                    errorMessage = document.createElement("span");
+                    errorMessage.className = "error-message text-red-500";
+                    radioGroup.appendChild(errorMessage);
+                }
+
+                errorMessage.textContent = "Pilih salah satu opsi.";
+                } else {
+                input.classList.add("border-red-500");
+                input.placeholder = "Masukan data";
+                }
+
+                isValid = false;
+            } else {
+                input.classList.remove("border-red-500");
+                input.placeholder = "";
+            }
+            });
+
+
+            textareas.forEach(function(textarea) {
+              if (!textarea.checkValidity()) {
+                textarea.classList.add("border-red-500");
+                textarea.placeholder = "jangan di kosongkan";
+                isValid = false;
+              } else {
+                textarea.classList.remove("border-red-500");
+                textarea.placeholder = "";
+
+              }
+            });
+
+            return isValid;
+          }
+
+          nextButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+              if (validateStep(currentStep)) {
+                currentStep++;
+                showStep(currentStep);
+              }
+            });
+          });
+
+          prevButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+              currentStep--;
+              showStep(currentStep);
+            });
+          });
+
+
+
+        });
+      </script>
 <!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:57 GMT -->
 </html>

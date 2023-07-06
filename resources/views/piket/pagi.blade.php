@@ -205,7 +205,7 @@
                                         </div>
                                     {{-- nama --}}
                                     @forelse ( $selasa as $item)
-                                    <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                    <div class="text-sm font-medium text-center mt-5">{{$item->siswa->name}}</div>
                                         <!-- Main modal -->
                                         <div id="authentication-modal2" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                         <div class="relative w-full max-w-md max-h-full">
@@ -225,7 +225,7 @@
                                                         <input type="hidden" name="hari" value="{{$item->hari}}">
                                                         @foreach ( $selasa as $item)
                                                         <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->siswa->name}}</p>
                                                         </div>
                                                         @endforeach
                                                         <h4>Centang yang ingin di tambahkan</h4>
@@ -270,7 +270,7 @@
                                         </div>
                                         {{-- nama --}}
                                         @forelse ( $rabu as $item)
-                                        <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                        <div class="text-sm font-medium text-center mt-5">{{$item->siswa->name}}</div>
                                         <!-- Main modal -->
                                         <div id="authentication-modal3" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                             <div class="relative w-full max-w-md max-h-full">
@@ -290,7 +290,7 @@
                                                             <input type="hidden" name="hari" value="{{$item->hari}}">
                                                             @foreach ( $rabu as $item)
                                                             <div class="flex gap-3 items-center">
-                                                                <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                                <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->siswa->name}}</p>
                                                             </div>
                                                             @endforeach
                                                             <h4>Centang yang ingin di tambahkan</h4>
@@ -336,7 +336,7 @@
                                         </div>
                                         {{-- nama --}}
                                         @forelse ( $kamis as $item)
-                                    <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                    <div class="text-sm font-medium text-center mt-5">{{$item->siswa->name}}</div>
                                         <!-- Main modal -->
                                         <div id="authentication-modal4" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                         <div class="relative w-full max-w-md max-h-full">
@@ -356,7 +356,7 @@
                                                         <input type="hidden" name="hari" value="{{$item->hari}}">
                                                         @foreach ( $kamis as $item)
                                                         <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->siswa->name}}</p>
                                                         </div>
                                                         @endforeach
                                                         <h4>Centang yang ingin di tambahkan</h4>
@@ -402,7 +402,7 @@
                                         </div>
                                         {{-- nama --}}
                                         @forelse ( $jumat as $item)
-                                    <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                    <div class="text-sm font-medium text-center mt-5">{{$item->siswa->name}}</div>
                                         <!-- Main modal -->
                                         <div id="authentication-modal5" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                         <div class="relative w-full max-w-md max-h-full">
@@ -422,7 +422,7 @@
                                                         <input type="hidden" name="hari" value="{{$item->hari}}">
                                                         @foreach ( $jumat as $item)
                                                         <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->siswa->name}}</p>
                                                         </div>
                                                         @endforeach
                                                         <h4>Centang yang ingin di tambahkan</h4>
@@ -587,15 +587,14 @@
                                                                         <option value="jumat">jumat</option>
                                                                     </select>
                                                                 </div>
-                                                                @forelse ($data as $data )
+                                                                @forelse ($siswa as $data )
                                                                 <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}" ><p>{{$data->name}}</p>
-                                                                </div>
+                                                                    <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}" id=""><p>{{$data->name}}</p>
+                                                               </div>
                                                                 @empty
+                                                                @endforelse
 
-                                                                <div class="flex gap-3 items-center">
-                                                                     <input type="checkbox" name="nama_siswa[]" value="" id=""><p></p>
-                                                                </div>
+
 
 
                                                                 <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
@@ -699,7 +698,7 @@
                                         </div>
                                     {{-- nama --}}
                                     @forelse ( $selasa_sore as $item)
-                                    <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                    <div class="text-sm font-medium text-center mt-5">{{$item->siswa->name}}</div>
                                         <!-- Main modal -->
                                         <div id="authentication-modal2" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                         <div class="relative w-full max-w-md max-h-full">
@@ -719,7 +718,7 @@
                                                         <input type="hidden" name="hari" value="{{$item->hari}}">
                                                         @foreach ( $selasa as $item)
                                                         <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->siswa->name}}</p>
                                                         </div>
                                                         @endforeach
                                                         <h4>Centang yang ingin di tambahkan</h4>
@@ -764,7 +763,7 @@
                                         </div>
                                         {{-- nama --}}
                                         @forelse ( $rabu_sore as $item)
-                                        <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                        <div class="text-sm font-medium text-center mt-5">{{$item->siswa->name}}</div>
                                         <!-- Main modal -->
                                         <div id="authentication-modal3" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                             <div class="relative w-full max-w-md max-h-full">
@@ -784,7 +783,7 @@
                                                             <input type="hidden" name="hari" value="{{$item->hari}}">
                                                             @foreach ( $rabu as $item)
                                                             <div class="flex gap-3 items-center">
-                                                                <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                                <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->siswa->name}}</p>
                                                             </div>
                                                             @endforeach
                                                             <h4>Centang yang ingin di tambahkan</h4>
@@ -830,7 +829,7 @@
                                         </div>
                                         {{-- nama --}}
                                         @forelse ( $kamis_sore as $item)
-                                    <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                    <div class="text-sm font-medium text-center mt-5">{{$item->siswa->name}}</div>
                                         <!-- Main modal -->
                                         <div id="authentication-modal4" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                         <div class="relative w-full max-w-md max-h-full">
@@ -850,7 +849,7 @@
                                                         <input type="hidden" name="hari" value="{{$item->hari}}">
                                                         @foreach ( $kamis as $item)
                                                         <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->siswa->name}}</p>
                                                         </div>
                                                         @endforeach
                                                         <h4>Centang yang ingin di tambahkan</h4>
@@ -896,7 +895,7 @@
                                         </div>
                                         {{-- nama --}}
                                         @forelse ( $jumat_sore as $item)
-                                    <div class="text-sm font-medium text-center mt-5">{{$item->nama_siswa}}</div>
+                                    <div class="text-sm font-medium text-center mt-5">{{$item->siswa->name}}</div>
                                         <!-- Main modal -->
                                         <div id="authentication-modal5" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                         <div class="relative w-full max-w-md max-h-full">
@@ -916,7 +915,7 @@
                                                         <input type="hidden" name="hari" value="{{$item->hari}}">
                                                         @foreach ( $jumat as $item)
                                                         <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->nama_siswa}}</p>
+                                                            <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->siswa->name}}</p>
                                                         </div>
                                                         @endforeach
                                                         <h4>Centang yang ingin di tambahkan</h4>
