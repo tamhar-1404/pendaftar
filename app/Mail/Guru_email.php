@@ -11,7 +11,7 @@ use Illuminate\Queue\SerializesModels;
 
 class Guru_email extends Mailable
 {
-    public $nama;
+
     use Queueable, SerializesModels;
 
     /**
@@ -19,9 +19,9 @@ class Guru_email extends Mailable
      *
      * @return void
      */
-    public function __construct($nama)
+    public function __construct()
     {
-        $this->nama = $nama;
+     //
     }
 
     /**

@@ -51,8 +51,8 @@
         <center>
             <h1 style="color: #00c3ff;">Humma<span class="soft">soft</span></h1>
         </center>
-        <h1 style="color: #0d47a1;">Selamat murid anda telah di terima atas nama {{ $nama }}</h1>
-        <p class="body">Terima kasih atas kerja keras dan prestasi yang telah ditunjukkan oleh murid Anda. Kami dengan senang hati mengumumkan bahwa murid Anda telah diterima.</p>
+        <h1 style="color: #0d47a1;">Selamat murid anda telah di terima</h1>
+        <p class="body">Terima kasih atas .</p>
     </div>
 </body>
 </html>
