@@ -25,6 +25,7 @@ class User extends Authenticatable
         'sekolah',
         'password',
         'role',
+        'siswa_id',
     ];
 
     /**
@@ -50,5 +51,10 @@ class User extends Authenticatable
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+    
+    public function Siswa()
+    {
+        return $this->belongsTo(Siswa::class, 'siswa_id');
     }
 }

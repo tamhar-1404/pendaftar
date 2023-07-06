@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\absensi_siswa;
+use App\Models\ApprovalIzin;
 use App\Http\Requests\Storeabsensi_siswaRequest;
 use App\Http\Requests\Updateabsensi_siswaRequest;
 
@@ -34,9 +34,20 @@ class AbsensiSiswaController extends Controller
      * @param  \App\Http\Requests\Storeabsensi_siswaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Storeabsensi_siswaRequest $request)
+    public function store(Request $request ,ApprovalIzin $approvalIzin)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required',       
+            'tanggal' => 'date',
+            'jam'=>'date_format:H:i',
+            'keterangan'=> 'required',
+        ]);
+        ApprovalIzin::create([
+            'nama' => $request->nama,   
+            'tanggal' => $request->tanggal,
+            'jam' => $request->jam,
+            'keterangan' => $request->keterangan
+        ]);
     }
 
     /**

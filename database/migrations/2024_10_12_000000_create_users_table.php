@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('sekolah')->nullable();
             $table->string('role')->nullable();
+            $table->foreignId('siswa_id')->nullable();
+            $table->foreign('siswa_id')->references('id')->on('siswas')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

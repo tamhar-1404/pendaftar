@@ -213,6 +213,7 @@
                                 PDF
                             </button>
                         </a>
+                        <a href="/txt">
                         <button  class="flex gap-2  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="exportTable('json')" @click="exportTable('txt')">
                             <svg
                                 width="24"
@@ -237,7 +238,9 @@
                             </svg>
                             TXT
                         </button>
-                        <button  class="flex gap-2  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="exportTable('json')" @click="printTable">
+                        </a>
+                        <a href="/print">
+                        <button  id="printButton" class="flex gap-2  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="exportTable('json')" @click="printTable">
                             <svg
                                 width="24"
                                 height="24"
@@ -271,6 +274,7 @@
                             </svg>
                             PRINT
                         </button>
+                        </a>
 
                     </div>
                 </div>
@@ -281,7 +285,7 @@
                     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                         <div class="overflow-hidden">
-                          <table class="min-w-full text-left text-sm font-light">
+                          <table id="data-table" class="min-w-full text-left text-sm font-light">
                             <thead class="border-b font-medium dark:border-neutral-500 ">
                               <tr class="">
                                 <th scope="col" class="px-6 py-4">#</th>
@@ -299,10 +303,10 @@
                                 <tr
                                 class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                 <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $loop->iteration }}</td>
-                                <td class="whitespace-nowrap px-4 py-4">{{$items -> nama}}</td>
-                                <td class="whitespace-nowrap px-4 py-4">{{$items -> tanggal}}</td>
-                                <td class="whitespace-nowrap px-4 py-4">{{$items -> sekolah}}</td>
-                                <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$items -> kegiatan}}</td>
+                                <td class="whitespace-nowrap px-4 py-4">{{$items->nama}}</td>
+                                <td class="whitespace-nowrap px-4 py-4">{{$items->tanggal}}</td>
+                                <td class="whitespace-nowrap px-4 py-4">{{$items->sekolah}}</td>
+                                <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$items->kegiatan}}</td>
                                 <td class="whitespace-nowrap px-6 pl-17 py-4"><img
                                     src="{{ asset('storage/image/' . $items->image) }}"
                                     width="100px" alt="">
@@ -515,6 +519,30 @@
           $('.spin_load').fadeOut();
       });
   </script>
+  {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+  {{-- <script>
+    $(document).ready(function() {
+            $('#printButton').click(function() {
+                var htmlContent = $('#data-table').html();
+                var printWindow = window.open('', '_blank');
+                printWindow.document.open();
+                printWindow.document.write('<html><head><title>Data Page</title><link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet"><style>.data-table {min-width: 100%;border-collapse: collapse;}.data-table th,.data-table td {border: 1px solid #e5e7eb;padding: 0.75rem;text-align: left;}</style></head><body>' + htmlContent + '</body></html>');
+                printWindow.document.close();
+                printWindow.onload = function() {
+                    printWindow.print();
+                    printWindow.close();
+                }
+            });
+        });
+  </script> --}}
+  {{-- <script>
+    $(document).ready(function() {
+        $('#printButton').click(function() {
+            window.print();
+        });
+    });
+</script> --}}
+
 
 </body>
 </html>

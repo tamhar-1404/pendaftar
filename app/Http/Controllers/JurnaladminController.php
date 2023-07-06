@@ -31,19 +31,34 @@ class JurnaladminController extends Controller
     public function create(Request $request)
     {
         $item = jurnalsiswa::where('nama', 'LIKE', $request ->serch)->GET();
-        $mengisi_jan = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 1)->count();
-        $mengisi_feb = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 2)->count();
-        $mengisi_mar = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 3)->count();
-        $mengisi_apr = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 4)->count();
-        $mengisi_mei = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 5)->count();
-        $mengisi_jun = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 6)->count();
-        $mengisi_jul = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 7)->count();
-        $mengisi_aug = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 8)->count();
-        $mengisi_sep = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 9)->count();
-        $mengisi_okt = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 10)->count();
-        $mengisi_nov = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 11)->count();
-        $mengisi_des = jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereMonth('tanggal', '=', 12)->count();
-        return view('jurnal_admin.grafik', compact('item'))->with('mengisi_jan', $mengisi_jan)->with('mengisi_feb', $mengisi_feb)->with('mengisi_mar', $mengisi_mar)->with('mengisi_apr', $mengisi_apr)->with('mengisi_mei', $mengisi_mei)->with('mengisi_jun', $mengisi_jun)->with('mengisi_jul', $mengisi_jul)->with('mengisi_aug', $mengisi_aug)->with('mengisi_sep', $mengisi_sep)->with('mengisi_okt', $mengisi_okt)->with('mengisi_nov', $mengisi_nov)->with('mengisi_des', $mengisi_des);
+        $mengisi_jan = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 1)->count();
+        $mengisi_feb = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 2)->count();
+        $mengisi_mar = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 3)->count();
+        $mengisi_apr = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 4)->count();
+        $mengisi_mei = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 5)->count();
+        $mengisi_jun = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 6)->count();
+        $mengisi_jul = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 7)->count();
+        $mengisi_aug = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 8)->count();
+        $mengisi_sep = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 9)->count();
+        $mengisi_okt = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 10)->count();
+        $mengisi_nov = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 11)->count();
+        $mengisi_des = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 12)->count();
+
+
+        $tdk_mengisi_jan = jurnalsiswa::where('status', 'LIKE', 'tidak mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 1)->count();
+        $tdk_mengisi_feb = jurnalsiswa::where('status', 'LIKE', 'tidak mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 2)->count();
+        $tdk_mengisi_mar = jurnalsiswa::where('status', 'LIKE', 'tidak mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 3)->count();
+        $tdk_mengisi_apr = jurnalsiswa::where('status', 'LIKE', 'tidak mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 4)->count();
+        $tdk_mengisi_mei = jurnalsiswa::where('status', 'LIKE', 'tidak mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 5)->count();
+        $tdk_mengisi_jun = jurnalsiswa::where('status', 'LIKE', 'tidak mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 6)->count();
+        $tdk_mengisi_jul = jurnalsiswa::where('status', 'LIKE', 'tidak mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 7)->count();
+        $tdk_mengisi_aug = jurnalsiswa::where('status', 'LIKE', 'tidak mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 8)->count();
+        $tdk_mengisi_sep = jurnalsiswa::where('status', 'LIKE', 'tidak mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 9)->count();
+        $tdk_mengisi_okt = jurnalsiswa::where('status', 'LIKE', 'tidak mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 10)->count();
+        $tdk_mengisi_nov = jurnalsiswa::where('status', 'LIKE', 'tidak mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 11)->count();
+        $tdk_mengisi_des = jurnalsiswa::where('status', 'LIKE', 'tidak mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 12)->count();
+
+        return view('jurnal_admin.grafik', compact('item','mengisi_jan','mengisi_feb','mengisi_mar','mengisi_apr','mengisi_mei','mengisi_jun','mengisi_jul','mengisi_aug','mengisi_sep','mengisi_okt','mengisi_nov','mengisi_des','tdk_mengisi_jan','tdk_mengisi_feb','tdk_mengisi_mar','tdk_mengisi_apr','tdk_mengisi_mei','tdk_mengisi_jun','tdk_mengisi_jul','tdk_mengisi_aug','tdk_mengisi_sep','tdk_mengisi_nov','tdk_mengisi_okt','tdk_mengisi_nov','tdk_mengisi_des'));
     }
 
     /**
