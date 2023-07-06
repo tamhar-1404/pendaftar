@@ -111,6 +111,7 @@ class JurnalsiswaController extends Controller
 
     public function downloadPDF()
     {
+        set_time_limit(0);
         $data = JurnalSiswa::all();
         $pdf = Pdf::loadView('desain_pdf.jurnal', ['data' => $data]);
         return $pdf->download('jurnal_siswa.pdf');
