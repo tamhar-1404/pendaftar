@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\ApprovalIzin;
 use App\Http\Requests\Storeabsensi_siswaRequest;
 use App\Http\Requests\Updateabsensi_siswaRequest;
@@ -15,7 +16,8 @@ class AbsensiSiswaController extends Controller
      */
     public function index()
     {
-       return view('absensi_siswa.index');
+       $absensisiswa = ApprovalIzin::all();
+       return view('absensi_siswa.index' , compact('absensisiswa'));
     }
 
     /**
@@ -36,18 +38,29 @@ class AbsensiSiswaController extends Controller
      */
     public function store(Request $request ,ApprovalIzin $approvalIzin)
     {
+        $telat='telat';
         $this->validate($request, [
             'nama' => 'required',       
             'tanggal' => 'date',
-            'jam'=>'date_format:H:i',
+            'jam'=>'date_format:H:i', 'Asia/Jakarta',
             'keterangan'=> 'required',
         ]);
+        // dd($request->jam);
+        $keterangan = $request->keterangan;
+        if($request->jam > '11:00' ){
+               $keterangan = $request->jam;
+                $keterangan = $telat;
+        }
+
+        // dd($keterangan);
         ApprovalIzin::create([
             'nama' => $request->nama,   
             'tanggal' => $request->tanggal,
             'jam' => $request->jam,
-            'keterangan' => $request->keterangan
+            'keterangan' => $keterangan,
+            'status' => 'Diterima'
         ]);
+        return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**

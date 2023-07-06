@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css"  rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
 
 </head>
 <body>
@@ -70,9 +73,10 @@
             </button>
             <button data-modal-target="staticModal" data-modal-toggle="staticModal" class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400">Tambah</button>
             <form action="{{ route('absensi_siswa.store') }}" method="post">
+                @csrf
                 <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
                 <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}" />
-                <input type="hidden" name="jam" value="{{ date('H:i') }}" />
+                <input type="hidden" id="waktu" name="jam" value="{{ date('H:i') }}" />
                 <input type="hidden" name="keterangan" value="Hadir">
                 <button type="submit" class="border border-green-500 px-3 py-2 rounded-lg text-green-500 hover:bg-green-500 hover:text-white font-bold">Absen</button>
             </form> 
@@ -124,7 +128,7 @@
                         @php
                         $no=1;
                         @endphp
-                         @forelse ($approvalIzin as $absen)
+                         @forelse ($absensisiswa as $absen)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                {{ $no++ }}
@@ -162,7 +166,7 @@
                             >
                           </li>
                           <li>
-                            <a
+                            <a  
                               class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
                               href="#!"
                               >1</a
@@ -337,6 +341,14 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-
+<script>
+    $(document).ready(function() {
+        $('#waktu').datetimepicker({
+            format: 'HH:mm',
+            timeZone: 'Asia/Jakarta',
+            useCurrent: false
+        });
+    });
+</script>
 </body>
 </html>

@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('keterangan')->nullable();
             $table->string('deskripsi')->nullable();
             $table->string('bukti')->nullable();
-            $table->date('tanggal')->nullable();
-            $table->dateTime('jam')->nullable();
+            $table->date('tanggal')->unique()->nullable();
+            $table->time('jam')->nullable();
             $table->string('status');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
