@@ -21,16 +21,21 @@ class AbsensiSiswaController extends Controller
         ->get();
         $currentHour = now()->format('h');
         $currentDateTime = date('Y-m-d');
-        if($currentHour > '10:00'){
-            ApprovalIzin::create([
-                'nama' => Auth::user()->name,
-                'sekolah'=> Auth::user()->sekolah ,   
-                'tanggal' =>$currentDateTime ,
-                'jam' => $currentHour,
-                'keterangan' => 'Alfa',
-                'status' => 'terimaabsen'
-            ]);
+        $data= ApprovalIzin::where('nama', Auth::user()->name)->where('tanggal',$currentDateTime)->get();
+        if($data->count() > 0){
+            if($currentHour > '10:00'){
+                ApprovalIzin::create([
+                    'nama' => Auth::user()->name,
+                    'sekolah'=> Auth::user()->sekolah ,
+                    'tanggal' =>$currentDateTime ,
+                    'jam' => $currentHour,
+                    'keterangan' => 'Alfa',
+                    'status' => 'terimaabsen'
+                ]);
+            }
+
         }
+
 
        return view('absensi_siswa.index' , compact('terima'));
     }
@@ -75,10 +80,7 @@ class AbsensiSiswaController extends Controller
         // dd($keterangan);
         ApprovalIzin::create([
             'nama' => $request->nama,
-<<<<<<< Updated upstream
-            'sekolah'=> $request->sekolah,   
-=======
->>>>>>> Stashed changes
+            'sekolah'=> $request->sekolah,
             'tanggal' => $request->tanggal,
             'jam' => $request->jam,
             'keterangan' => $keterangan,
