@@ -159,8 +159,12 @@
                             <td class="px-6 py-4">
                                 {{ $absen->jam }}
                             </td>
-                            <td class="px-6 py-4 text-red-500">
-                                {{ $absen->keterangan }}
+                            <td class="px-6 py-4 ">
+                                @if($absen->keterangan === 'Hadir')
+                                    <span class=" text-green-500">{{ $absen->keterangan }}</span>
+                                @else
+                                    <span class=" text-red-500">{{ $absen->keterangan }}</span>
+                                @endif
                             </td>
                         </tr>
                         @empty

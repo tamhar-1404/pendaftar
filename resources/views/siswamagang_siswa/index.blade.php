@@ -415,7 +415,7 @@
                             </svg>
                             <div class="Frame w-4 h-4 relative flex-col justify-start items-start flex"></div>
                         </div>
-                        <div class="Chat text-center text-slate-800 text-[14px] font-medium leading-tight tracking-wide">Chat</div>
+                  cw      <div class="Chat text-center text-slate-800 text-[14px] font-medium leading-tight tracking-wide">Chat</div>
                     </button>
 </div>
             </div>

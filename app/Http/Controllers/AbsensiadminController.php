@@ -45,20 +45,33 @@ class AbsensiadminController extends Controller
         $Hadir_des = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 12)->count();
 
 
-        $Alfa_jan = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 1)->count();
-        $Alfa_feb = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 2)->count();
-        $Alfa_mar = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 3)->count();
-        $Alfa_apr = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 4)->count();
-        $Alfa_mei = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 5)->count();
-        $Alfa_jun = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 6)->count();
-        $Alfa_jul = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 7)->count();
-        $Alfa_aug = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 8)->count();
-        $Alfa_sep = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 9)->count();
-        $Alfa_okt = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 10)->count();
-        $Alfa_nov = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 11)->count();
-        $Alfa_des = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 12)->count();
-
+        $Telat_jan = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 1)->count();
+        $Telat_feb = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 2)->count();
+        $Telat_mar = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 3)->count();
+        $Telat_apr = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 4)->count();
+        $Telat_mei = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 5)->count();
+        $Telat_jun = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 6)->count();
+        $Telat_jul = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 7)->count();
+        $Telat_aug = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 8)->count();
+        $Telat_sep = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 9)->count();
+        $Telat_okt = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 10)->count();
+        $Telat_nov = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 11)->count();
+        $Telat_des = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 12)->count();
         
+
+        $izin_jan = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 1)->count();
+        $izin_feb = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 2)->count();
+        $izin_mar = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 3)->count();
+        $izin_apr = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 4)->count();
+        $izin_mei = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 5)->count();
+        $izin_jun = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 6)->count();
+        $izin_jul = ApprovalIzin::where('keterangan', 'LIKE', 'sakit    ')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 7)->count();
+        $izin_aug = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 8)->count();
+        $izin_sep = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 9)->count();
+        $izin_okt = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 10)->count();
+        $izin_nov = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 11)->count();
+        $izin_des = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 12)->count();
+
         $Alfa_jan = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 1)->count();
         $Alfa_feb = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 2)->count();
         $Alfa_mar = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 3)->count();
@@ -72,7 +85,7 @@ class AbsensiadminController extends Controller
         $Alfa_nov = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 11)->count();
         $Alfa_des = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 12)->count();
 
-        return view('jurnal_admin.grafik', compact('item','Hadir_jan','Hadir_feb','Hadir_mar','Hadir_apr','Hadir_mei','Hadir_jun','Hadir_jul','Hadir_aug','Hadir_sep','Hadir_okt','Hadir_nov','Hadir_des','Alfa_jan','Alfa_feb','Alfa_mar','Alfa_apr','Alfa_mei','Alfa_jun','Alfa_jul','Alfa_aug','Alfa_sep','Alfa_nov','Alfa_okt','Alfa_nov','Alfa_des'));
+        return view('absensi_admin.grafik', compact('terima','Hadir_jan','Hadir_feb','Hadir_mar','Hadir_apr','Hadir_mei','Hadir_jun','Hadir_jul','Hadir_aug','Hadir_sep','Hadir_okt','Hadir_nov','Hadir_des','Telat_jan','Telat_feb','Telat_mar','Telat_apr','Telat_mei','Telat_jun','Telat_jul','Telat_aug','Telat_sep','Telat_nov','Telat_okt','Telat_nov','Telat_des','izin_jan','izin_feb','izin_mar','izin_apr','izin_mei','izin_jun','izin_jul','izin_aug','izin_sep','izin_nov','izin_okt','izin_nov','izin_des','Alfa_jan','Alfa_feb','Alfa_mar','Alfa_apr','Alfa_mei','Alfa_jun','Alfa_jul','Alfa_aug','Alfa_sep','Alfa_nov','Alfa_okt','Alfa_nov','Alfa_des'));
     }
 
     /**
