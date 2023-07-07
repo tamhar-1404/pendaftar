@@ -113,7 +113,7 @@ class JurnalsiswaController extends Controller
     public function downloadPDF()
     {
         set_time_limit(0);
-        $data = JurnalSiswa::all();
+        $data = JurnalSiswa::where('nama',Auth::user()->name)->get();
         $pdf = Pdf::loadView('desain_pdf.jurnal', ['data' => $data]);
         return $pdf->download('jurnal_siswa.pdf');
 
@@ -155,7 +155,7 @@ class JurnalsiswaController extends Controller
 public function exportToDocx()
 {
     // Mendapatkan data dari database (contoh menggunakan model User)
-    $users = JurnalSiswa::all();
+    $users = JurnalSiswa::where('nama', Auth::user()->name)->get();
 
     // Membuat objek PhpWord
     $phpWord = new PhpWord();
@@ -165,8 +165,10 @@ public function exportToDocx()
 
     // Menambahkan data dari database ke dokumen
     foreach ($users as $user) {
-        $section->addText($user->name);
-        $section->addText($user->email);
+        $section->addText($user->nama);
+        $section->addText($user->tanggal);
+        $section->addText($user->sekolah);
+        $section->addText($user->kegiatan);
         // Tambahkan data lain yang Anda butuhkan
         $section->addText("--------------------"); // Pemisah antara setiap entri
     }

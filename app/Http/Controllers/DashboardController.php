@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dashboard;
+use App\Models\Siswa;
+use App\Models\Guru_admin;
+use App\Models\MOU;
+use App\Models\Tolak;
+use App\Models\aproval;
 use App\Http\Requests\StoreDashboardRequest;
 use App\Http\Requests\UpdateDashboardRequest;
 
@@ -15,6 +20,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+            
         return view('dudi.index');
     }
 
