@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SiswaAlumni;
+use App\Models\Siswa;
 use App\Http\Requests\StoreSiswaAlumniRequest;
 use App\Http\Requests\UpdateSiswaAlumniRequest;
 
@@ -14,9 +15,11 @@ class SiswaAlumniController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('alumni_admin.index');
-    }
+{
+    $alumni = Siswa::where('role', 'alumni')->get();
+    return view('alumni_admin.index', ['alumni' => $alumni]);
+}
+
 
     /**
      * Show the form for creating a new resource.
