@@ -48,7 +48,6 @@ Route::resource('/laporan_piket', App\Http\Controllers\ASiswaController::class);
 Route::resource('/sp', App\Http\Controllers\ASiswaController::class);
 
 Route::resource('/Berita', App\Http\Controllers\BlogController::class);
-Route::post('/like', [LikeController::class, 'store'])->name('Berita.like');
 
 Route::resource('/chat', App\Http\Controllers\ChatController::class);
 Route::resource('/piket', App\Http\Controllers\PiketController::class);
@@ -129,7 +128,8 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-
+Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita.like');
+Route::delete('Berita/{post}/unlike', [BlogController::class, 'unlike'])->name('Berita.unlike');
 
 
 

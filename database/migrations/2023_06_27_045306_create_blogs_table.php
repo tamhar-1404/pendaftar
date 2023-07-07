@@ -24,7 +24,7 @@ return new class extends Migration
             $table->longText('files')->nullable();
             $table->string('foto_id')->nullable();
             $table->string('kategori');
-            $table->unsignedBigInteger('likes_count')->default(0);
+            $table->unsignedInteger('likes_count')->default(0); // Kolom untuk melacak jumlah suka
             $table->timestamps();
         });
     }
