@@ -57,7 +57,7 @@ class SiswamagangController extends Controller
             'deskripsi' => $request->deskripsi,
             'bukti' => $request->bukti,
         ]);
-        return redirect()->route('siswa_magang.index');
+        return redirect()->back();
     }
 
     /**

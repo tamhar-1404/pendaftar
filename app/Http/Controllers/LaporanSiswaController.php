@@ -15,7 +15,8 @@ class LaporanSiswaController extends Controller
      */
     public function index()
     {
-        return view('laporansiswa.index');
+        $siswa = laporansiswa::all();
+        return view('laporansiswa.index', compact('siswa'));
     }
 
     /**

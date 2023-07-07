@@ -115,15 +115,12 @@
             </div>
         </div>
         {{-- grafik --}}
-        <div id="grafik_admin" class=" w-auto h-35 mx-5 md:w-auto lg:w-auto bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
-               <div class="w-full px-4 mt-6">
-                  <div class=" w-auto bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
-                      Grafik Pendaftaran
-                  </div>
-           </div>
-       </div>
+        <div class="w-full bg-black h-2 px-4" >
+            <div id="grafik_admin" class="w-full mx-4  bg-white rounded-lg dark:bg-black mt-4" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px;">
+            </div>
+        </div>
 
-        {{-- end grafik --}}
+
         {{-- caraousel --}}
 
 
@@ -383,7 +380,7 @@
       chart: {
       type: 'bar',
       height: 400,
-      width:980,
+      width:'100%',
 
     },
     plotOptions: {
