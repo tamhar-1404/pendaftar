@@ -183,7 +183,25 @@
                             </div>
                             <div class="flex justify-between gap-2">
                             <button type="button" id="prevStep4" class="w-full mr-2 py-2 px-4 bg-blue-500 text-white rounded">Previous</button>
-                            <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white rounded">Submit</button>
+                            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                            <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white rounded" onclick="showSweetAlert()">Submit</button>
+
+                            <script>
+                                function showSweetAlert() {
+                                    Swal.fire({
+                                        title: "Data Anda berhasil dikirim",
+                                        text: "silangkan Tunggu proses selama paling lama 2 hari.",
+                                        icon: "info",
+                                        showCancelButton: false,
+                                        confirmButtonColor: "#3085d6",
+                                        confirmButtonText: "OK",
+                                        timer: 3000
+                                    });
+                                }
+                            </script>
+
+
                             </div>
                           </div>
                     </form>
