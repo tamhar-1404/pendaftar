@@ -466,11 +466,13 @@
                                 </svg>
                             </div>
                             {{-- serch --}}
+                         <form action="">
                             <div class="mr-4 ">
                                 <input
                                     class=" p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent"
                                     type="text" placeholder="cari">
                             </div>
+                         </form>
                         </div>
                         <div class="mb-5 flex flex-wrap  mt-5 items-center">
                             <button type="button"
@@ -546,7 +548,6 @@
                                             <tr class="">
                                                 <th scope="col" class="px-6 py-4">#</th>
                                                 <th scope="col" class="px-6 py-4">Nama</th>
-                                                <th scope="col" class="px-6 py-4">NISN</th>
                                                 <th scope="col" class="px-6 py-4">Sekolah</th>
                                                 <th scope="col" class="px-6 py-4">Tanggal</th>
                                                 <th scope="col" class="px-6 py-4 ">jam</th>
@@ -554,47 +555,31 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr
-                                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                                                <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                                <td class="whitespace-nowrap px-4 py-4">12543256</td>
-                                                <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                                <td class="whitespace-nowrap px-4 py-4">23-06-2023</td>
-                                                <td class="whitespace-nowrap px-6 py-4">07.45</td>
-                                                <td class="whitespace-nowrap px-4 py-4 text-green-500">hadir</td>
-                                            </tr>
-                                            <tr
-                                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                <td class="whitespace-nowrap px-4 py-4 font-medium">2</td>
-                                                <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                                <td class="whitespace-nowrap px-4 py-4">12543256</td>
-                                                <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                                <td class="whitespace-nowrap px-4 py-4">23-06-2023</td>
-                                                <td class="whitespace-nowrap px-6 py-4">07.45</td>
-                                                <td class="whitespace-nowrap px-4 py-4 text-red-500">alfa</td>
-                                            </tr>
-                                            <tr
-                                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                                                <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                                <td class="whitespace-nowrap px-4 py-4">12543256</td>
-                                                <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                                <td class="whitespace-nowrap px-4 py-4">23-06-2023</td>
-                                                <td class="whitespace-nowrap px-6 py-4">07.45</td>
-                                                <td class="whitespace-nowrap px-4 py-4 text-yellow-500">izin & sakir
+                                            @php
+                                            $no=1;
+                                            @endphp
+                                             @forelse ($terima as $absen)
+                                            <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                                <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $no++ }}</td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $absen->nama }}</td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $absen->sekolah }}</td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $absen->tanggal }}</td>
+                                                <td class="whitespace-nowrap px-6 py-4">{{ $absen->jam }}</td>
+                                                <td class="whitespace-nowrap px-4 py-4">
+                                                    @if($absen->keterangan === 'Hadir')
+                                              <span class=" text-green-500">{{ $absen->keterangan }}</span>
+                                               @else
+                                              <span class=" text-red-500">{{ $absen->keterangan }}</span>
+                                               @endif
                                                 </td>
-                                            </tr>
-                                            <tr
-                                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                                                <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                                <td class="whitespace-nowrap px-4 py-4">12543256</td>
-                                                <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                                <td class="whitespace-nowrap px-4 py-4">23-06-2023</td>
-                                                <td class="whitespace-nowrap px-6 py-4">07.45</td>
-                                                <td class="whitespace-nowrap px-4 py-4 text-orange-500">Telat</td>
-                                            </tr>
+                                            </tr> 
+                                            @empty
+                                             <div class="bg-red-100 border mb-2 mt-2 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                              <strong class="font-bold">Data </strong>
+                                              <span class="block sm:inline">Tidak tersedia.</span>
+                                              <span class="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
+                                             </div>
+                                            @endforelse 
                                         </tbody>
                                     </table>
                                 </div>

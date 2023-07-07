@@ -91,6 +91,7 @@
             <form action="{{ route('absensi_siswa.store') }}" method="post">
                 @csrf
                 <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
+                <input type="hidden" name="sekolah" value="{{ Auth::user()->sekolah }}">
                 <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}" />
                 <input type="hidden" id="waktu" name="jam" value="{{ date('H:i') }}" />
                 <input type="hidden" name="keterangan" value="Hadir">
