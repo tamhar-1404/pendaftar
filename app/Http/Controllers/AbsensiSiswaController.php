@@ -80,7 +80,7 @@ class AbsensiSiswaController extends Controller
         // dd($keterangan);
         ApprovalIzin::create([
             'nama' => $request->nama,
-            'sekolah'=> $request->sekolah,
+            'sekolah' => $request->sekolah,
             'tanggal' => $request->tanggal,
             'jam' => $request->jam,
             'keterangan' => $keterangan,
@@ -132,6 +132,7 @@ class AbsensiSiswaController extends Controller
             'keterangan' => $request->keterangan,
             'deskripsi' => $request->deskripsi,
             'status' => 'menunggu',
+            'status2' => 'menunggu',
             'bukti' => $image->hashName()
         ]);
         Mail::to($request->email)->send(new dataizinEmail($approvalIzin));

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->date('tanggal')->nullable();
             $table->time('jam')->nullable();
             $table->string('status');
+            $table->string('status2')->nullable();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });

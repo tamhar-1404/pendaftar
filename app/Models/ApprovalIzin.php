@@ -20,6 +20,7 @@ class ApprovalIzin extends Model
         'bukti',
         'tanggal',
         'jam',
-        'status'
+        'status',
+        'status2'
         ];
 }

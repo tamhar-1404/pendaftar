@@ -29,11 +29,11 @@ class ApprovalIzinController extends Controller
     public function index()
     {
         $today = date('Y-m-d');
-        ApprovalIzin::whereDate('sampai', '<=', $today)->delete();
-
+        ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status' => 'terimaabsen']);
+        ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status2' => '']);
 
         $menunggu = ApprovalIzin::where('status', 'menunggu')->get();
-        $terima = ApprovalIzin::where('status', 'terima')->get();
+        $terima = ApprovalIzin::where('status2', 'izin')->get();
 
         return view('approvalizin.index', compact('menunggu', 'terima'));
     }
@@ -80,6 +80,7 @@ class ApprovalIzinController extends Controller
                     'keterangan' => $request->keterangan,
                     'deskripsi' => $request->deskripsi,
                     'status' => 'menunggu',
+                    'status2' => 'menunggu',
                     'bukti' => $image->hashName()
                 ]);
                 // Mail::to($request->email)->send(new dataizinEmail($approvalIzin));
@@ -130,7 +131,8 @@ class ApprovalIzinController extends Controller
 
              // Ubah status menjadi 'Terima' jika izin menunggu
              if ($izin->status === 'menunggu') {
-                 $izin->status = 'terima';
+                 $izin->status = 'terimaabsen';
+                 $izin->status2 = 'izin';
                  $izin->save();
              }
 
@@ -163,10 +165,11 @@ class ApprovalIzinController extends Controller
                      ],
                      [
                          'status' => $izin->status,
+                         'status2' => $izin->status2,
                      ]
                  );
 
-                 $tanggalMulai->addDay(); // Tambahkan 1 hari ke tanggal mulai
+                 $tanggalMulai->addDay();
              }
 
              Mail::to($email)->send(new TerimaizinEmail($approvalIzin));
