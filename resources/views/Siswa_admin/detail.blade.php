@@ -540,7 +540,7 @@
                         </div>
                         <div class="mb-5">
                             <div class="flex flex-col items-center justify-center">
-                                <img src="{{ asset('admin/assets/images/profile-34.jpeg') }}" alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
+                                <img src="{{ asset('storage/siswa/' . $siswa->foto_siswa) }}" alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
                                 <p class="text-xl font-semibold text-info">{{ $siswa->name }}</p>
                             </div>
                             <ul class="m-auto mt-5 flex max-w-[160px] flex-col space-y-4 font-semibold text-white-dark">

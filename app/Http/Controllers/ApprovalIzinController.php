@@ -156,6 +156,7 @@ class ApprovalIzinController extends Controller
                          'dari' =>  $tanggalMulai->toDateString(),
                          'sampai' => $izin->sampai,
                          'keterangan' => $izin->keterangan,
+                         'bukti' => $izin->bukti,
                          'deskripsi' => $izin->deskripsi,
                          'tanggal' => $tanggalMulai->toDateString(),
                          'jam' => $izin->jam,

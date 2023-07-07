@@ -147,4 +147,20 @@ class BlogController extends Controller
         return redirect()->route('Berita.index')->with('success', 'Data berita berhasil dihapus');
     }
 
+
+    public function like(Blog $blog, $blogId)
+    {
+        $blog = Blog::find($blogId);
+        $isLikedByUser = $blog->isLikedByUser();
+        $blog->like();
+        return redirect()->back();
+    }
+
+    public function unlike(Blog $blog, $blogId)
+    {
+        $blog = Blog::find($blogId);
+        $isLikedByUser = $blog->isLikedByUser();
+        $blog->unlike();
+        return redirect()->back();
+    }
 }

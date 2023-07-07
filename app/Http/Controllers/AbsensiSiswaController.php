@@ -17,7 +17,7 @@ class AbsensiSiswaController extends Controller
      */
     public function index()
     {
-        $terima = ApprovalIzin::where('status', 'terimaabsen')->where('nama', Auth::user('name') )
+        $terima = ApprovalIzin::where('status', 'terimaabsen')->where('nama', Auth::user()->name )
         ->get();
        return view('absensi_siswa.index' , compact('terima'));
     }
@@ -61,7 +61,11 @@ class AbsensiSiswaController extends Controller
         }
         // dd($keterangan);
         ApprovalIzin::create([
-            'nama' => $request->nama,   
+            'nama' => $request->nama,
+<<<<<<< Updated upstream
+            'sekolah'=> $request->sekolah,   
+=======
+>>>>>>> Stashed changes
             'tanggal' => $request->tanggal,
             'jam' => $request->jam,
             'keterangan' => $keterangan,
@@ -91,7 +95,7 @@ class AbsensiSiswaController extends Controller
     {
           // dd($request);
           $this->validate($request, [
-            'nama' => 'required',       
+            'nama' => 'required',
             'sekolah' => 'required',
             'email' => 'required',
             'dari' => 'required',
@@ -102,10 +106,10 @@ class AbsensiSiswaController extends Controller
         ]);
         $image = $request->file('bukti');
         $image->storeAs('public/bukti_izin', $image->hashName());
-       
-    
+
+
     ApprovalIzin::create([
-            'nama' => $request->nama,   
+            'nama' => $request->nama,
             'sekolah' => $request->sekolah,
             'email' => $request->email,
             'dari' => $request->dari,

@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -48,11 +49,11 @@ class User extends Authenticatable
     ];
     // protected $primaryKey = 'userId';
 
-    public function likes()
+    public function likes(): BelongsToMany
     {
-        return $this->hasMany(Like::class);
+        return $this->belongsToMany(Post::class, 'likes', 'user_id', 'blog_id');
     }
-    
+
     public function Siswa()
     {
         return $this->belongsTo(Siswa::class, 'siswa_id');

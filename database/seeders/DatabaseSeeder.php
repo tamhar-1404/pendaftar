@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        
+
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
@@ -52,8 +52,8 @@ class DatabaseSeeder extends Seeder
 
         $siswamagang2 = [
             [
-                'name' => 'Agung',
-                'email' => 'agung@gmail.com',
+                'name' => 'Yanto',
+                'email' => 'yanto@gmail.com',
                 'password' => Hash::make ('123456789'),
                 'role' => 'Siswa',
                 'remember_token' => Str::random (60),

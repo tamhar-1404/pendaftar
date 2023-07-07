@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama')->nullable();
             $table->string('sekolah')->nullable();
-            $table->string('email')->unique()->nullable();
+            $table->string('email')->nullable();
             $table->date('dari')->nullable();
             $table->date('sampai')->nullable();
             $table->string('keterangan')->nullable();
