@@ -466,7 +466,8 @@
                                 </svg>
                             </div>
                             {{-- serch --}}
-                         <form action="">
+                         <form action="{{ route('absensi_admin.create')}}">
+                            @csrf
                             <div class="mr-4 ">
                                 <input
                                     class=" p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent"

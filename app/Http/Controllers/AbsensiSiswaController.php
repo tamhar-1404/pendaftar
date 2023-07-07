@@ -19,6 +19,19 @@ class AbsensiSiswaController extends Controller
     {
         $terima = ApprovalIzin::where('status', 'terimaabsen')->where('nama', Auth::user()->name )
         ->get();
+        $currentHour = now()->format('h');
+        $currentDateTime = date('Y-m-d');
+        if($currentHour > '10:00'){
+            ApprovalIzin::create([
+                'nama' => Auth::user()->name,
+                'sekolah'=> Auth::user()->sekolah ,   
+                'tanggal' =>$currentDateTime ,
+                'jam' => $currentHour,
+                'keterangan' => 'Alfa',
+                'status' => 'terimaabsen'
+            ]);
+        }
+
        return view('absensi_siswa.index' , compact('terima'));
     }
 
