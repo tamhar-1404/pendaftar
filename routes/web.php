@@ -10,7 +10,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AbsensiGuruController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TataTertibController;
-use App\Http\Controllers\JurnaladminControlle;
+use App\Http\Controllers\JurnaladminController;
 use App\Http\Controllers\JurnalSiswaController;
 use App\Http\Controllers\AprovalController;
 use App\Http\Controllers\LikeController;
@@ -81,6 +81,10 @@ Route::get('/getData', [JurnalSiswaController::class, 'getData']);
 Route::get('/txt', [JurnalSiswaController::class, 'printjurnal']);
 Route::get('/export-to-docx', [JurnalSiswaController::class, 'exportToDocx']);
 Route::get('/absensi_pdf', [ApprovalIzinController::class, 'absen_siswa_pdf']);
+Route::get('/jurnal_pdf', [JurnaladminController::class, 'jurnal_admin_pdf']);
+Route::get('/jurnal_docx', [JurnaladminController::class, 'admin_docx']);
+Route::get('/grafik_pdf', [JurnaladminController::class, 'jurnal_admin_pdf_grafik'])->name('grafik_pdf');
+Route::get('/grafik_docx', [JurnaladminController::class, 'grafik_docx'])->name('grafik_docx');
 
 
 // akhir siswa
