@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\tolakdataEmail;
 use App\Mail\TerimaizinEmail;
 use App\Mail\dataizinEmail;
+use Carbon\Carbon;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -60,9 +61,6 @@ class ApprovalIzinController extends Controller
         //
                  // dd($request);
                 $this->validate($request, [
-                    'nama' => 'required',
-                    'sekolah' => 'required',
-                    'email' => 'required',
                     'dari' => 'required',
                     'sampai' => 'required',
                     'keterangan'=> 'required',
@@ -84,8 +82,8 @@ class ApprovalIzinController extends Controller
                     'status' => 'menunggu',
                     'bukti' => $image->hashName()
                 ]);
-                Mail::to($request->email)->send(new dataizinEmail($approvalIzin));
-                return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
+                // Mail::to($request->email)->send(new dataizinEmail($approvalIzin));
+                return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
         //  } else {
         //         return redirect()->back()->with('error', 'Maaf, tidak dapat melakukan konfirmasi pada data');
         //  }
@@ -120,42 +118,77 @@ class ApprovalIzinController extends Controller
      * @param  \App\Models\ApprovalIzin  $approvalIzin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, ApprovalIzin $approvalIzin)
-{
-    $cek = $request->input('keterangan');
-    $email = $request->input('email');
-    $alasan = $request->input('alasan');
 
-    if ($cek === 'terima') {
-        $izin = ApprovalIzin::findOrFail($id);
+     public function update(Request $request, $id, ApprovalIzin $approvalIzin)
+     {
+         $cek = $request->input('keterangan');
+         $email = $request->input('email');
+         $alasan = $request->input('alasan');
 
-        // Ubah status menjadi 'Terima'
-        $izin->status = 'Terima';
-        $izin->save();
+         if ($cek === 'terima') {
+             $izin = ApprovalIzin::findOrFail($id);
 
-        Mail::to($email)->send(new TerimaizinEmail($approvalIzin));
-    }
+             // Ubah status menjadi 'Terima' jika izin menunggu
+             if ($izin->status === 'menunggu') {
+                 $izin->status = 'terima';
+                 $izin->save();
+             }
 
-    if ($cek === 'tolak') {
-        $izin = ApprovalIzin::findOrFail($id);
+             // Tanggal izin dimulai pada tanggal selanjutnya jika sudah ada
+             if ($izin->dari === Carbon::today()->toDateString()) {
+                 $izinDari = Carbon::tomorrow();
+             } else {
+                 $izinDari = Carbon::parse($izin->dari);
+             }
 
-        if ($alasan) {
-            $mailData = [
-                'content' => 'Data Anda telah ditolak dengan alasan: ' . $alasan,
-            ];
+             $izinSampai = Carbon::parse($izin->sampai);
 
-            Mail::to($email)->send(new tolakdataEmail($mailData));
-            $izin->delete();
-        } else {
-            // Tambahkan pesan error jika alasan tidak diisi
-            return redirect()->back()->with(['error' => 'Silakan masukkan alasan penolakan.']);
-        }
-    }
+             // Buat entri baru untuk setiap tanggal izin
+             $tanggalMulai = $izinDari;
+             $tanggalBerakhir = $izinSampai;
 
-    return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
-}
+             while ($tanggalMulai <= $tanggalBerakhir) {
+                 ApprovalIzin::updateOrCreate(
+                     [
+                         'nama' => $izin->nama,
+                         'sekolah' => $izin->sekolah,
+                         'email' => $izin->email,
+                         'dari' =>  $tanggalMulai->toDateString(),
+                         'sampai' => $izin->sampai,
+                         'keterangan' => $izin->keterangan,
+                         'deskripsi' => $izin->deskripsi,
+                         'tanggal' => $tanggalMulai->toDateString(),
+                         'jam' => $izin->jam,
+                     ],
+                     [
+                         'status' => $izin->status,
+                     ]
+                 );
 
+                 $tanggalMulai->addDay(); // Tambahkan 1 hari ke tanggal mulai
+             }
 
+             Mail::to($email)->send(new TerimaizinEmail($approvalIzin));
+         }
+
+         if ($cek === 'tolak') {
+             $izin = ApprovalIzin::findOrFail($id);
+
+             if ($alasan) {
+                 $mailData = [
+                     'content' => 'Absensi Anda telah ditolak dengan alasan: ' . $alasan,
+                 ];
+
+                 Mail::to($email)->send(new tolakdataEmail($mailData));
+                 $izin->delete();
+             } else {
+                 // Tambahkan pesan error jika alasan tidak diisi
+                 return redirect()->back()->with(['error' => 'Silakan masukkan alasan penolakan.']);
+             }
+         }
+
+         return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
+     }
 
     /**
      * Remove the specified resource from storage.

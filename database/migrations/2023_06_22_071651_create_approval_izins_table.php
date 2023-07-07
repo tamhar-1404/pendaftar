@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('nama')->nullable();
             $table->string('sekolah')->nullable();
-            $table->string('email')->nullable();
+            $table->string('email')->unique()->nullable();
             $table->date('dari')->nullable();
             $table->date('sampai')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('deskripsi')->nullable();
             $table->string('bukti')->nullable();
-            $table->date('tanggal')->unique()->nullable();
+            $table->date('tanggal')->nullable();
             $table->time('jam')->nullable();
             $table->string('status');
             $table->timestamp('deleted_at')->nullable();

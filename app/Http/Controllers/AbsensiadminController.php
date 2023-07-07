@@ -36,11 +36,8 @@ class AbsensiadminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         $this->validate($request, [
-    
- 
-        
             'dari' => 'required',
             'sampai' => 'required',
             'keterangan'=> 'required',
