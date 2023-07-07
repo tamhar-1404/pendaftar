@@ -17,6 +17,10 @@ class Siswa extends Model
     {
         return $this->belongsTo(piket::class);
     }
+    public function anggota_piket()
+    {
+        return $this->belongsTo(anggota_piket::class);
+    }
     public function user()
     {
         return $this->belongsTo(user::class);

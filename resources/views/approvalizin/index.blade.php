@@ -419,7 +419,7 @@
             <!-- Container wrapper -->
         </nav>
         <!-- Navbar -->
-        <button id="addButton" class="outline outline-offset-2 outline-1 bg-[#24AEE4] hover:bg-blue-700 text-white text-sm py-2 px-4 rounded">
+        {{-- <button id="addButton" class="outline outline-offset-2 outline-1 bg-[#24AEE4] hover:bg-blue-700 text-white text-sm py-2 px-4 rounded">
             Tambah data
           </button>
           <div id="registerModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
@@ -434,7 +434,7 @@
                       <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
                         Form Tambah absensi
                       </h3>
-                     <form action="{{ route('approvalizin.store')   }}" class="mt-4" method="post" enctype="multipart/form-data">
+                     <form action="{{ route('approvalizin.store') }}" class="mt-4" method="post" enctype="multipart/form-data">
                         @csrf
                           <div class="mt-4">
                             <label for="Nama" class="block text-gray-700 font-medium mb-2">nama</label>
@@ -499,7 +499,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> --}}
 
           <script>
             const addButton = document.querySelector("#addButton");

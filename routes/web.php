@@ -10,13 +10,15 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AbsensiGuruController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TataTertibController;
-use App\Http\Controllers\JurnaladminControlle;
+use App\Http\Controllers\JurnaladminController;
 use App\Http\Controllers\JurnalSiswaController;
 use App\Http\Controllers\AprovalController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LupaPasswordController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PiketController;
+use App\Http\Controllers\AbsensiSiswaController;
+use App\Http\Controllers\ApprovalIzinController;
 
 use App\Models\LupaPassword;
 use Illuminate\Support\Facades\Route;
@@ -39,12 +41,12 @@ Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
 Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
-Route::resource('/alumni_admin', App\Http\Controllers\SiswaController::class);
+Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::class);
 Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
 Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
 Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
 Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
-Route::resource('/laporan_piket', App\Http\Controllers\ASiswaController::class);
+Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
 Route::resource('/sp', App\Http\Controllers\ASiswaController::class);
 
 Route::resource('/Berita', App\Http\Controllers\BlogController::class);
@@ -77,12 +79,18 @@ Route::get('/print', [JurnalSiswaController::class, 'print']);
 Route::get('/getData', [JurnalSiswaController::class, 'getData']);
 Route::get('/txt', [JurnalSiswaController::class, 'printjurnal']);
 Route::get('/export-to-docx', [JurnalSiswaController::class, 'exportToDocx']);
+Route::get('/absensi_pdf', [ApprovalIzinController::class, 'absen_siswa_pdf']);
+Route::get('/jurnal_pdf', [JurnaladminController::class, 'jurnal_admin_pdf']);
+Route::get('/jurnal_docx', [JurnaladminController::class, 'admin_docx']);
+Route::get('/grafik_pdf', [JurnaladminController::class, 'jurnal_admin_pdf_grafik'])->name('grafik_pdf');
+Route::get('/grafik_docx', [JurnaladminController::class, 'grafik_docx'])->name('grafik_docx');
 
 
 // akhir siswa
 
 // login
 Route::resource('/login', App\Http\Controllers\LoginController::class);
+
 Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
 Route::get('/percobaan', function () {
     return view('login.iyah');

@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dashboard;
-use App\Models\Siswa;
-use App\Models\Guru_admin;
-use App\Models\MOU;
-use App\Models\Tolak;
-use App\Models\aproval;
-use App\Http\Requests\StoreDashboardRequest;
-use App\Http\Requests\UpdateDashboardRequest;
+use App\Models\anggota_piket;
+use App\Http\Requests\Storeanggota_piketRequest;
+use App\Http\Requests\Updateanggota_piketRequest;
 
-class DashboardController extends Controller
+class AnggotaPiketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +15,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-            
-        return view('dudi.index');
+        //
     }
 
     /**
@@ -37,10 +31,10 @@ class DashboardController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreDashboardRequest  $request
+     * @param  \App\Http\Requests\Storeanggota_piketRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDashboardRequest $request)
+    public function store(Storeanggota_piketRequest $request)
     {
         //
     }
@@ -48,10 +42,10 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Dashboard  $dashboard
+     * @param  \App\Models\anggota_piket  $anggota_piket
      * @return \Illuminate\Http\Response
      */
-    public function show(Dashboard $dashboard)
+    public function show(anggota_piket $anggota_piket)
     {
         //
     }
@@ -59,10 +53,10 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Dashboard  $dashboard
+     * @param  \App\Models\anggota_piket  $anggota_piket
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dashboard $dashboard)
+    public function edit(anggota_piket $anggota_piket)
     {
         //
     }
@@ -70,11 +64,11 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateDashboardRequest  $request
-     * @param  \App\Models\Dashboard  $dashboard
+     * @param  \App\Http\Requests\Updateanggota_piketRequest  $request
+     * @param  \App\Models\anggota_piket  $anggota_piket
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDashboardRequest $request, Dashboard $dashboard)
+    public function update(Updateanggota_piketRequest $request, anggota_piket $anggota_piket)
     {
         //
     }
@@ -82,10 +76,10 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Dashboard  $dashboard
+     * @param  \App\Models\anggota_piket  $anggota_piket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dashboard $dashboard)
+    public function destroy(anggota_piket $anggota_piket)
     {
         //
     }

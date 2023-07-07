@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\ApprovalIzin;
 use App\Http\Requests\Storeabsensi_siswaRequest;
 use App\Http\Requests\Updateabsensi_siswaRequest;
+use Auth;
 
 class AbsensiSiswaController extends Controller
 {
@@ -15,7 +17,9 @@ class AbsensiSiswaController extends Controller
      */
     public function index()
     {
-       return view('absensi_siswa.index');
+        $terima = ApprovalIzin::where('status', 'terimaabsen')->where('nama', Auth::user()->name )
+        ->get();
+       return view('absensi_siswa.index' , compact('terima'));
     }
 
     /**
@@ -23,9 +27,9 @@ class AbsensiSiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, ApprovalIzin $approvalIzin)
     {
-        //
+       //
     }
 
     /**
@@ -36,18 +40,38 @@ class AbsensiSiswaController extends Controller
      */
     public function store(Request $request ,ApprovalIzin $approvalIzin)
     {
+        $telat='telat';
         $this->validate($request, [
-            'nama' => 'required',       
             'tanggal' => 'date',
-            'jam'=>'date_format:H:i',
+            'jam'=>'date_format:H:i', 'Asia/Jakarta',
             'keterangan'=> 'required',
         ]);
+        // dd($request->jam);
+        $keterangan = $request->keterangan;
+        if($request->jam > '11:00' ){
+               $keterangan = $request->jam;
+                $keterangan = $telat;
+        }
+        $nama = Auth::user()->name;
+        $tanggal = $request->input('tanggal');
+
+        $cek = ApprovalIzin::where('nama', $nama)->where('tanggal', $tanggal)->get();
+        if($cek->count() > 0){
+            return redirect()->back()->with('error', 'Data yang anda masukan sudah ada');
+        }
+        // dd($keterangan);
         ApprovalIzin::create([
-            'nama' => $request->nama,   
+            'nama' => $request->nama,
+<<<<<<< Updated upstream
+            'sekolah'=> $request->sekolah,   
+=======
+>>>>>>> Stashed changes
             'tanggal' => $request->tanggal,
             'jam' => $request->jam,
-            'keterangan' => $request->keterangan
+            'keterangan' => $keterangan,
+            'status' => 'terimaabsen'
         ]);
+        return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
@@ -67,9 +91,36 @@ class AbsensiSiswaController extends Controller
      * @param  \App\Models\absensi_siswa  $absensi_siswa
      * @return \Illuminate\Http\Response
      */
-    public function edit(absensi_siswa $absensi_siswa)
+    public function edit(Request $request, ApprovalIzin $approvalIzin)
     {
-        //
+          // dd($request);
+          $this->validate($request, [
+            'nama' => 'required',
+            'sekolah' => 'required',
+            'email' => 'required',
+            'dari' => 'required',
+            'sampai' => 'required',
+            'keterangan'=> 'required',
+            'deskripsi' => 'required',
+            'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
+        ]);
+        $image = $request->file('bukti');
+        $image->storeAs('public/bukti_izin', $image->hashName());
+
+
+    ApprovalIzin::create([
+            'nama' => $request->nama,
+            'sekolah' => $request->sekolah,
+            'email' => $request->email,
+            'dari' => $request->dari,
+            'sampai' => $request->sampai,
+            'keterangan' => $request->keterangan,
+            'deskripsi' => $request->deskripsi,
+            'status' => 'menunggu',
+            'bukti' => $image->hashName()
+        ]);
+        Mail::to($request->email)->send(new dataizinEmail($approvalIzin));
+        return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**

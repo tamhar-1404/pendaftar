@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('magang_akhir')->nullable();
             $table->string('email')->nullable();
             $table->string('role')->default('Siswa');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
