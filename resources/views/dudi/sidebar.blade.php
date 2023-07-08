@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <div class="main-content">
+    <div class="">
         {{--  <!-- start header section -->  --}}
 
         {{--  <!-- end header section -->  --}}
@@ -115,46 +115,14 @@
             </div>
         </div>
         {{-- grafik --}}
-        <div class="card col-span-12 lg:col-span-8">
-            <div
-              class="mt-3 flex flex-col justify-between px-4 sm:flex-row sm:items-center sm:px-5"
-            >
-              <div
-                class="flex flex-1 items-center justify-between space-x-2 sm:flex-initial"
-              >
 
-                <div
-                  x-data="usePopper({placement:'bottom-start',offset:4})"
-                  @click.outside="isShowPopper && (isShowPopper = false)"
-                  class="inline-flex"
-                >
 
-                  <div
-                    x-ref="popperRoot"
-                    class="popper-root"
-                    :class="isShowPopper && 'show'"
-                  >
-
-                  </div>
-                </div>
-              </div>
-              <div
-                class="hidden space-x-2 sm:flex"
-                x-data="{activeTab:'tabYearly'}"
-              >
-               
-              </div>
+        <main>
+        <div class="lg:container lg:mx-auto">
+            <div id="grafik_admin" class="relative " >
             </div>
-
-
-            <div class="ax-transparent-gridline mt-2 px-2">
-              <div
-               id="grafik_admin"
-              ></div>
-            </div>
-          </div>
-
         </div>
+         </main>
 
 
         {{-- caraousel --}}
@@ -466,7 +434,6 @@
             chart: {
             type: 'bar',
             height: 400,
-            // width:'80%',
 
 
             },
