@@ -7,9 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=chrome">
     <title>Admin - Laporan Siswa</title>
     @vite('resources/css/app.css')
-
     <link rel="stylesheet" href="load/load.css">
-
 </head>
 
 <body>
