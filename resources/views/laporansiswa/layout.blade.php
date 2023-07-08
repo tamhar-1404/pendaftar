@@ -189,7 +189,8 @@
                                         <div class="absolute bottom-4 left-0 w-full px-5">
                                             <div class="mt-5 flex items-center justify-between">
                                                 <div class="flex items-center mt-5">
-                                                    <button type="button" class="group text-gray-600">
+                                                    <button type="button" class="group text-gray-600" data-te-toggle="modal"
+                                                    data-modal-target="staticModal{{$data->id}}" data-modal-toggle="staticModal{{$data->id}}">
                                                         <svg width="24" height="24" viewBox="0 0 24 24"
                                                             fill="none" xmlns="http://www.w3.org/2000/svg"
                                                             class="h-4.5 w-4.5 ltr:mr-3 rtl:ml-3">
@@ -408,7 +409,7 @@
                            Nama
                        </p>
                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                           {{$modal-> nama }}
+                           {{$modal->name }}
                        </p>
                    </div>
                    <div>
@@ -416,7 +417,7 @@
                            Tanggal
                        </p>
                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                           {{$modal -> tanggal}}
+                           {{$modal ->tanggal}}
                        </p>
                    </div>
                    <div>
@@ -424,7 +425,7 @@
                            Sekolah
                        </p>
                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                           {{$modal -> sekolah}}
+                           {{$modal ->nama}}
                        </p>
                    </div>
                    <div>
@@ -432,19 +433,14 @@
                            Kegiatan
                        </p>
                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                           {{$modal -> kegiatan}}
+                           {{$modal ->deskripsi}}
                        </p>
                    </div>
-                   <div>
-                       <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                           Bukti
-                       </p>
-                       <img src="{{ asset('storage/image/' . $modal->image) }}" alt="">
-                   </div>
+
                </div>
                <!-- Modal footer -->
                <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                   <button data-modal-hide="staticModal{{$modal -> id}}" type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                   <button data-modal-hide="staticModal{{$modal -> id}}" type="" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                </div>
            </div>
        </div>
@@ -453,7 +449,7 @@
 
    @endforelse
 
-
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="siswa/js/alpine-collaspe.min.js"></script>
     <script src="siswa/js/alpine-persist.min.js"></script>
     <script defer src="siswa/js/alpine-ui.min.js"></script>
