@@ -19,11 +19,11 @@ class AbsensiSiswaController extends Controller
     {
         $terima = ApprovalIzin::where('status', 'terimaabsen')->where('nama', Auth::user()->name )
         ->get();
-        $currentHour = now()->format('h');
+        $currentHour = now()->format('H:i');
         $currentDateTime = date('Y-m-d');
-        $data= ApprovalIzin::where('nama', Auth::user()->name)->where('tanggal',$currentDateTime)->get();
-        if($data->count() > 0){
-            if($currentHour > '10:00'){
+        $data= ApprovalIzin::where('nama', Auth::user()->name)->where('tanggal',$currentDateTime)->count();
+        if($data === 0){
+            if($currentHour > '16:00'){
                 ApprovalIzin::create([
                     'nama' => Auth::user()->name,
                     'sekolah'=> Auth::user()->sekolah ,
@@ -33,11 +33,15 @@ class AbsensiSiswaController extends Controller
                     'status' => 'terimaabsen'
                 ]);
             }
-
         }
-
-
-       return view('absensi_siswa.index' , compact('terima'));
+        $telat = ApprovalIzin::where('keterangan', 'telat')->count();
+        $hadir = ApprovalIzin::where('keterangan', 'hadir')->count() + $telat;
+        $izin = ApprovalIzin::where('keterangan', 'izin')->count();
+        $sakit = ApprovalIzin::where('keterangan', 'sakit')->count();
+        $alfa = ApprovalIzin::where('keterangan', 'alfa')->count();
+        $izinsakit = $izin + $sakit;
+        $all = ApprovalIzin::where('nama', Auth::user()->name)->count();
+       return view('absensi_siswa.index' , compact('terima','hadir','telat','all','alfa','izinsakit'));
     }
 
     /**

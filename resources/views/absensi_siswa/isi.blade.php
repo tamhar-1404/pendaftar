@@ -226,7 +226,7 @@
             <div class="w-full p-2 flex justify-center">
                 <div class="panel w-10/12">
                     <span class="font-bold flex justify-between" >
-                        <p>100</p>
+                        <p>{{$all}}</p>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                         </svg>
@@ -237,7 +237,7 @@
             <div class="w-full p-2 flex justify-center">
                 <div class="panel w-10/12">
                     <span class="font-bold flex justify-between" >
-                        <p>100</p>
+                        <p>{{$hadir}}</p>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                         </svg>
@@ -248,29 +248,19 @@
             <div class="w-full p-2 flex justify-center">
                 <div class="panel w-10/12">
                     <span class="font-bold flex justify-between" >
-                        <p>100</p>
+                        <p>{{$izinsakit}}</p>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                         </svg>
                     </span>
-                    <span>Sakit</span>
+                    <span>Sakit & Izin</span>
                 </div>
             </div>
+
             <div class="w-full p-2 flex justify-center">
                 <div class="panel w-10/12">
                     <span class="font-bold flex justify-between" >
-                        <p>100</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
-                        </svg>
-                    </span>
-                    <span>Izin</span>
-                </div>
-            </div>
-            <div class="w-full p-2 flex justify-center">
-                <div class="panel w-10/12">
-                    <span class="font-bold flex justify-between" >
-                        <p>100</p>
+                        <p>{{$telat}}</p>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                         </svg>
@@ -281,7 +271,7 @@
             <div class="w-full p-2 flex justify-center">
                 <div class="panel w-10/12">
                     <span class="font-bold flex justify-between" >
-                        <p>100</p>
+                        <p>{{$alfa}}</p>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                         </svg>

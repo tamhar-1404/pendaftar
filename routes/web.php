@@ -47,7 +47,7 @@ Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::c
 Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
 Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
 Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
-Route::resource('/sp', App\Http\Controllers\ASiswaController::class);
+Route::resource('/sp', App\Http\Controllers\SpController::class);
 
 Route::resource('/Berita', App\Http\Controllers\BlogController::class);
 
@@ -94,6 +94,9 @@ Route::resource('/login', App\Http\Controllers\LoginController::class);
 Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
 Route::get('/percobaan', function () {
     return view('login.iyah');
+});
+Route::get('/', function () {
+    return view('welcome');
 });
 
 

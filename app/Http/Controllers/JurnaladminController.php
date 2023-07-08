@@ -12,7 +12,7 @@ use Dompdf\Options;
 use Barryvdh\DomPDF\Facade\Pdf;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\IOFactory;
-
+use DB;
 class JurnaladminController extends Controller
 {
     /**
@@ -22,7 +22,7 @@ class JurnaladminController extends Controller
      */
     public function index()
     {
-        $item = jurnalsiswa::all();
+        $item = jurnalSiswa::all();
         return view('jurnal_admin.index',compact('item'));
 
     }
@@ -35,8 +35,9 @@ class JurnaladminController extends Controller
      */
     public function create(Request $request)
     {
-        $item = jurnalsiswa::where('nama', 'LIKE', $request ->serch)->GET();
+        $item = jurnalSiswa::where('nama', 'LIKE', $request ->serch)->GET();
         $siswa = $request->serch;
+
         $mengisi_jan = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 1)->count();
         $mengisi_feb = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 2)->count();
         $mengisi_mar = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 3)->count();
