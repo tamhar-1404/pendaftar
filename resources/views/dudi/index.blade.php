@@ -428,8 +428,8 @@
         </nav>
         <!-- Navbar -->
 
+        @include('dudi.sidebar')
     </div>
-    @include('dudi.sidebar')
 
 
 
