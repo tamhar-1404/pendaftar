@@ -55,7 +55,7 @@
             </li>
             {{-- dashboard --}}
             <li class="relative mt-5">
-                <a
+                <a href="{{ route('dudi.index') }}"
                     class="flex h-12 cursor-pointer items-center   rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 {{ request()->routeIs('dudi.index') ? 'bg-blue-500 text-white' : '' }} hover:text-white hover:outline-none focus:bg-blue-500 focus:text-white focus:outline-none active:bg-blue-500 active:text-white active:outline-none data-[te-sidenav-state-active]:text-white data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10">
                     <span class="mr-4 [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-white dark:[&>svg]:text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
@@ -105,12 +105,12 @@
                     data-te-sidenav-collapse-ref>
                     <li class="relative">
                         <a href="{{ route('aproval.index') }}"
-                            class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                            class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] "
                             data-te-sidenav-link-ref>pendaftaran</a>
                     </li>
                     <li class="relative">
                         <a href="{{ route('approvalizin.index') }}"
-                            class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                            class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-blue-400"
                             data-te-sidenav-link-ref>izin & sakit</a>
                     </li>
 
@@ -304,6 +304,7 @@
                 </ul>
             </li>
         </ul>
+
     </nav>
     <!-- Sidenav -->
     <div class=" pl-[px] " id="content">
@@ -474,7 +475,7 @@
                             <label for="Nama" class="block text-gray-700 font-medium mb-2">bukti</label>
                             <input type="file" name="bukti" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
                           </div>
-                      
+
                         <div class="flex items-center justify-end mt-4">
                           <div class="ml-auto">
                             <button type="button" class="bg-transparent border border-gray-300 text-gray-800 hover:bg-gray-300 hover:text-gray-800 font-bold py-2 px-4 rounded">
@@ -564,6 +565,6 @@
             sidenav - 2
         });
     </script>
-    
+
 </body>
 </html>

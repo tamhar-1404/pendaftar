@@ -116,10 +116,12 @@
         </div>
         {{-- grafik --}}
 
+                <div class="hidden space-x-2 sm:flex" x-data="{activeTab:'tabYearly'}">
+                </div>
+            </div>
 
-        <main>
-        <div class="lg:container lg:mx-auto">
-            <div id="grafik_admin" class="relative " >
+            <div class="ax-transparent-gridline mt-2 px-2">
+                <div id="grafik_admin" style="width: 100%; "></div>
             </div>
         </div>
          </main>
@@ -434,6 +436,8 @@
             chart: {
             type: 'bar',
             height: 400,
+            width:1150
+
 
 
             },
