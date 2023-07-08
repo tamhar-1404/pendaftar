@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SiswaAlumni;
 use App\Models\Siswa;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreSiswaAlumniRequest;
 use App\Http\Requests\UpdateSiswaAlumniRequest;
 
@@ -50,7 +51,7 @@ class SiswaAlumniController extends Controller
      */
     public function show(SiswaAlumni $siswaAlumni)
     {
-        return view('alumni_admin.detail');
+      //
     }
 
     /**
@@ -61,8 +62,10 @@ class SiswaAlumniController extends Controller
      */
     public function edit(SiswaAlumni $siswaAlumni)
     {
-        //
+        $alumni = Siswa::where('role', 'alumni')->get();
+        return view('alumni_admin.detail', compact('alumni'));
     }
+
 
     /**
      * Update the specified resource in storage.

@@ -2292,7 +2292,7 @@
                         <p class="text-xs+ mt-1">{{ $alumni->status }}</p>
 
                         <div class="mt-6 grid w-full grid-cols-2 gap-2">
-                            <a href="http://127.0.0.1:8000/alumni_admin/detail"
+                            <a href="{{ route('alumni_admin.edit',$alumni->id) }}"
                                 class="btn space-x-2 bg-info px-0 font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none"
                                     viewBox="0 0 24 24">
