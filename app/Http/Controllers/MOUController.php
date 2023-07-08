@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\MOU;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreMOURequest;
 use App\Http\Requests\UpdateMOURequest;
 
@@ -15,7 +17,8 @@ class MOUController extends Controller
      */
     public function index()
     {
-        return view('mou.index');
+        $mous = MOU::latest()->paginate(5);
+        return view('mou.index' ,compact('mous')) ;
     }
 
     /**
@@ -34,9 +37,27 @@ class MOUController extends Controller
      * @param  \App\Http\Requests\StoreMOURequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMOURequest $request)
+    public function store(Request $request)
     {
-        //
+        $this->validate($request ,[
+            'logo'=>'required',
+            'nama'=>'required',
+            'email'=>'required',
+            'no'=>'required',
+            'alamat'=>'required'
+        ]);
+
+        $image = $request->file('logo');
+        $image->storeAs('public/mou', $image->hashName());
+
+        MOU::create([
+            'logo'=>$image->hashName(),
+            'nama'=>$request->nama,
+            'email'=>$request->email,
+            'no'=>$request->no,
+            'alamat'=>$request->alamat
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -79,8 +100,11 @@ class MOUController extends Controller
      * @param  \App\Models\MOU  $mOU
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MOU $mOU)
+    public function destroy(MOU $mou)
     {
-        //
+        Storage::delete('public/mou/'. $mou->logo);
+        //delete post
+        $mou->delete();
+        return redirect()->back();
     }
 }

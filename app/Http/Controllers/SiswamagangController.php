@@ -54,6 +54,7 @@ class SiswamagangController extends Controller
             'name' => $user->name,
             'tanggal' => $tanggal,
             'nama' => $request->nama,
+            'status' => 'menunggu',
             'deskripsi' => $request->deskripsi,
             'bukti' => $request->bukti,
         ]);

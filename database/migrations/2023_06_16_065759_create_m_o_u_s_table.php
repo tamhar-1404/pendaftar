@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('m_o_u_s', function (Blueprint $table) {
             $table->id();
+            $table->string('logo');
+            $table->string('nama');
+            $table->string('email');
+            $table->string('no');
+            $table->string('alamat');
             $table->timestamps();
         });
     }

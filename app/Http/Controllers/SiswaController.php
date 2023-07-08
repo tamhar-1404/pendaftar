@@ -18,7 +18,7 @@ class SiswaController extends Controller
     {
         $today = date('Y-m-d');
         Siswa::whereDate('magang_akhir', '<=', $today)->update(['role' => 'alumni', 'status' => 'lulus']);
-        $siswas = Siswa::latest()->paginate(5);
+        $siswas = Siswa::where('role', 'siswa')->get();
         return view('siswa_admin.index', compact('siswas'));
     }
 

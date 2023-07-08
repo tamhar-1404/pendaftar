@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MOU extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'logo','nama','email','no','alamat'
+    ];
 }

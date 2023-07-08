@@ -30,11 +30,12 @@
                                         <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
                                             Tambah Data MOU
                                         </h3>
-                                        <form class="mt-4">
+                                       <form action="{{ route('mou.store') }}" method="post" enctype="multipart/form-data">
+                                        @csrf
                                             <div class="mt-4">
                                                 <label for="logo"
                                                     class="block text-gray-700 font-medium mb-2">Logo</label>
-                                                <input id="ctnFile" type="file"
+                                                <input id="ctnFile" type="file" name="logo"
                                                     class="block w-full h-9 rounded-md file:py-2 file:px-4 file:border-0 file:font-semibold p-0  bg-white border focus:outline-none focus:ring  focus:ring-indigo-200 focus:ring-opacity-50 file:bg-[#24AEE4] ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-[#24AEE4]"
                                                     required />
                                             </div>
@@ -55,8 +56,8 @@
                                             <div class="mt-4">
                                                 <label for="notelepon"
                                                     class="block text-gray-700 font-medium mb-2">No.Telepon</label>
-                                                <input type="number" placeholder="Masukkan no.telepon" id="notelepon"
-                                                    name="notelepon"
+                                                <input type="number"  placeholder="Masukkan no.telepon" id="notelepon"
+                                                    name="no"
                                                     class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                             </div>
                                             <div class="mt-4">
@@ -71,7 +72,7 @@
                                                         class="bg-transparent border border-gray-300 text-gray-800 hover:bg-gray-300 hover:text-gray-800 font-semibold py-2 px-4 rounded">
                                                         Batal
                                                     </button>
-                                                    <button
+                                                    <button type="submit"
                                                         class="bg-blue-500 text-white hover:bg-blue-700 font-semibold py-2 px-4 rounded"
                                                         @click="showAlert()">
                                                         Simpan
@@ -203,27 +204,34 @@
                                 </th>
                             </tr>
                         </thead>
+                        @forelse ($mous as $mou)
+                        <?php
+                            $no = 1;
+                        ?>
                         <tbody>
                             <tr class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
-                                <td class="whitespace-nowrap px-4 py-3 sm:px-5">1</td>
+                                <td class="whitespace-nowrap px-4 py-3 sm:px-5">{{ $no++ }}</td>
                                 <td class="whitespace-nowrap px-4 py-3 sm:px-5">
                                     <div class="avatar flex h-10 w-10">
-                                        <img class="mask is-squircle" src="{{ asset('admin/images/smk12.jpg') }}"
+                                        <img class="mask is-squircle" src="{{ asset('storage/mou/' . $mou->logo) }}"
                                             alt="avatar" />
                                     </div>
                                 </td>
                                 <td
                                     class="whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
-                                    SMKN 12 Malang</td>
+                                    {{ $mou->nama }}</td>
                                 <td
                                     class="whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
-                                    smkn12malang@gmail.com</td>
+                                    {{ $mou->email }}
+                                </td>
                                 <td
                                     class="whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
-                                    08527715793</td>
+                                {{ $mou->no }}
+                                </td>
                                 <td
                                     class="whitespace-nowrap px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
-                                    Balearjosari, Malang</td>
+                                {{ $mou->alamat }}
+                                </td>
                                 <td class="whitespace-nowrap px-3 py-3">
                                     <div class="flex items-center space-x-2">
                                         <button data-modal-target="defaultModal" data-modal-toggle="defaultModal">
@@ -325,16 +333,26 @@
                                                 editmodal.classList.add("hidden");
                                             });
                                         </script>
-                                        <a href="#">
-                                            <div
-                                                class="w-16 flex h-8 bg-white rounded-md border-2 border-red-500 justify-center items-center text-red-500 hover:bg-red-500 hover:text-white dark:bg-transparent ">
-                                                <span class=" p-1  font-semibold dark:hover:text-black">Hapus</span>
-                                            </div>
-                                        </a>
+                                        <form action="{{ route('mou.destroy',$mou->id) }}" method="post">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit">
+
+                                                <div
+                                                    class="w-16 flex h-8 bg-white rounded-md border-2 border-red-500 justify-center items-center text-red-500 hover:bg-red-500 hover:text-white dark:bg-transparent ">
+                                                    <span class=" p-1  font-semibold dark:hover:text-black">Hapus</span>
+                                                </div>
+                                            </button>
+                                        </form>
+
+
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
+                        @empty
+
+                        @endforelse
                     </table>
                 </div>
 

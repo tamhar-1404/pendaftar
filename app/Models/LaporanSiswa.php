@@ -9,6 +9,6 @@ class LaporanSiswa extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name','tanggal','nama','deskripsi','bukti'
+        'name','tanggal','nama','deskripsi','bukti','status'
     ];
 }

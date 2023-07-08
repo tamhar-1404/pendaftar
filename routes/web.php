@@ -55,7 +55,7 @@ Route::resource('/chat', App\Http\Controllers\ChatController::class);
 Route::resource('/piket', App\Http\Controllers\PiketController::class);
 Route::post('/rubah', [PiketController::class, 'rubah'])->name('rubah');
 Route::get('/sore', [PiketController::class, 'sore'])->name('sore');
-Route::resource('/mou', App\Http\Controllers\ASiswaController::class);
+Route::resource('/mou', App\Http\Controllers\MouController::class);
 Route::resource('/tolak', App\Http\Controllers\TolakController::class);
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
 Route::post('/aproval/{aproval}/confirm', [App\Http\Controllers\AprovalController::class, 'confirm'])->name('aproval.confirm');

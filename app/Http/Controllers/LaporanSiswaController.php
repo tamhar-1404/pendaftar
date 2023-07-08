@@ -15,7 +15,7 @@ class LaporanSiswaController extends Controller
      */
     public function index()
     {
-        $siswa = laporansiswa::all();
+        $siswa = LaporanSiswa::where('status', 'menunggu')->get();
         return view('laporansiswa.index', compact('siswa'));
     }
 
