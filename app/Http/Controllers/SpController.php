@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\sp;
 use App\Http\Requests\StorespRequest;
 use App\Http\Requests\UpdatespRequest;
+use Illuminate\Http\Request;
 
 class SpController extends Controller
 {
@@ -15,7 +16,8 @@ class SpController extends Controller
      */
     public function index()
     {
-        return view('sp.index');
+        $data = sp::all();
+        return view('sp.index', compact('data'));
     }
 
     /**
@@ -34,9 +36,23 @@ class SpController extends Controller
      * @param  \App\Http\Requests\StorespRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorespRequest $request)
+    public function store(Request $request)
     {
-        //
+
+        $this->validate($request, [
+
+
+        ]);
+        $image = $request->file('buktisp');
+        $image->storeAs('public/image', $image->hashName());
+        sp::create([
+            'bukti'=>$image->hashName(),
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
+            'sp' => $request->keterangan,
+
+        ]);
+        return redirect()->back();
     }
 
     /**

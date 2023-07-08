@@ -29,18 +29,26 @@
                                 <input class=" p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent" type="text" placeholder="cari">
                             </div>
                         </div>
+
+
                         {{-- keterangan --}}
-                        <div class="w-24 ">
-                            <div class="flex  w-full ">
-                                <div class=" w-14 mr-1  mt-2 mb-2 rounded-full border-2 border-[#FFE500]"></div>
-                                <span class="w-8 text-xs"> = Sp1</span>
-                            </div>
-                            <div class="flex  w-full ">
-                                <div class=" w-14 mr-1  mt-2 mb-2 rounded-full border-2 border-[#FF0000]"></div>
-                                <span class="w-8 text-xs"> = Sp2</span>
-                            </div>
+                        <div class="flex items-center gap-4">
+                            <button class="bg-blue-400 py-1 px-2 text-white font-semibold rounded-lg">
+                                Tambah
+                            </button>
+                            <div class="w-24 ">
+
+                                <div class="flex  w-full ">
+                                    <div class=" w-14 mr-1  mt-2 mb-2 rounded-full border-2 border-[#FFE500]"></div>
+                                    <span class="w-8 text-xs"> = Sp1</span>
+                                </div>
+                                <div class="flex  w-full ">
+                                    <div class=" w-14 mr-1  mt-2 mb-2 rounded-full border-2 border-[#FF0000]"></div>
+                                    <span class="w-8 text-xs"> = Sp2</span>
+                                </div>
 
 
+                            </div>
                         </div>
                     </div>
 
@@ -56,7 +64,7 @@
                                     <th scope="col" class="px-6 py-4">#</th>
                                     <th scope="col" class="px-6 py-4">Nama</th>
                                     <th scope="col" class="px-6 py-4">Tanggal</th>
-                                    <th scope="col" class="px-6 py-4">Sekolah</th>
+                                    {{-- <th scope="col" class="px-6 py-4">Sekolah</th> --}}
                                     <th scope="col" class="px-6 py-4">Deskripsi</th>
                                     <th scope="col" class="px-6 py-4">keterangan</th>
                                     <th scope="col" class="px-6 py-4">Aksi</th>
@@ -64,16 +72,24 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr
+                                    @forelse ($data as $datas )
+                                    <tr
                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                    <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                                    <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                    <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
-                                    <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                    <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
+                                    <td class="whitespace-nowrap px-4 py-4 font-medium">{{$loop->iteration}}</td>
+                                    <td class="whitespace-nowrap px-4 py-4">{{$datas->nama}}</td>
+                                    <td class="whitespace-nowrap px-4 py-4">{{$datas->created_at}}</td>
+                                    {{-- <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td> --}}
+                                    <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$datas->deskripsi}}</td>
+                                    @if ($datas->sp === 'Sp1')
                                     <td class="whitespace-nowrap px-4 py-4">
                                         <div class=" rounded-full border-2 border-[#FFE500]"></div>
                                     </td>
+                                    @elseif ($datas->keterangan == 'Sp2')
+                                    <td class="whitespace-nowrap px-4 py-4">
+                                        <div class=" rounded-full border-2 border-[#FF0000]"></div>
+                                    </td>
+                                    @endif
+
                                     <td class="whitespace-nowrap px-4 py-4">
                                             <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent " data-te-toggle="modal"
                                             data-te-target="#exampleModalCenteredScrollable">
@@ -81,38 +97,9 @@
                                             </div>
                                     </td>
                                   </tr>
-                                  <tr
-                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                    <td class="whitespace-nowrap px-4 py-4 font-medium">2</td>
-                                    <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                    <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
-                                    <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                    <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                                    <td class="whitespace-nowrap px-4 py-4"><div class=" rounded-full border-2 border-[#FFE500]"></div></td>
-                                    <td class="whitespace-nowrap px-4 py-4">
-                                        <a href="#">
-                                            <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
-                                                <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                  </tr>
-                                  <tr
-                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                    <td class="whitespace-nowrap px-4 py-4 font-medium">3</td>
-                                    <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                    <td class="whitespace-nowrap px-4 py-4">03-04-2023</td>
-                                    <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                    <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic unde excepturi velit quibusdam consequuntur et facilis, labore veritatis debitis vitae enim libero odio soluta at cumque asperiores ea. Autem, incidunt?</td>
-                                    <td class="whitespace-nowrap px-4 py-4"><div class=" rounded-full border-2 border-[#FF0000]"></div></td>
-                                    <td class="whitespace-nowrap px-4 py-4">
-                                        <a href="#">
-                                            <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
-                                                <span class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                            </div>
-                                        </a>
-                                    </td>
-                                  </tr>
+                                    @empty
+
+                                    @endforelse
                                 </tbody>
                               </table>
                             </div>
@@ -178,6 +165,110 @@
 
         </div>
         {{-- modal --}}
+        <div
+            data-te-modal-init
+            class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+            id="exampleModalCenteredScrollable"
+            tabindex="-1"
+            aria-labelledby="exampleModalCenteredScrollable"
+            aria-modal="true"
+            role="dialog">
+            <div
+                data-te-modal-dialog-ref
+                class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
+                <div
+                class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+                <div
+                    class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                    <!--Modal title-->
+                    <h5
+                    class="text-xl font-medium leading-normal text-neutral-900 dark:text-neutral-200"
+                    id="exampleModalCenteredScrollableLabel">
+                    Detail SP
+                    </h5>
+                    <!--Close button-->
+                    <button
+                    type="button"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="h-6 w-6">
+                        <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    </button>
+                </div>
+
+                <!--Modal body-->
+                <div class="relative p-4">
+                    <p class=" text-md">
+                    Nama :
+                    </p >
+
+                    <p class="ml-5 mt-2 text-md text-gray-400">
+                        Mark
+                    </p>
+
+                    <p class=" text-md mt-4">
+                        Tanggal :
+                    </p >
+
+                    <p class="ml-5 mt-2 text-md text-gray-400">
+                        03-04-2023
+                    </p>
+
+                    <p class=" text-md mt-4">
+                        Sekolah :
+                    </p >
+
+                    <p class="ml-5 mt-2 text-md text-gray-400">
+                        SMKN 1 KEPANJEN
+                    </p>
+
+                    <p class=" text-md mt-4">
+                        Status :
+                    </p >
+
+                    <p class="ml-5 mt-2 text-md text-gray-400">
+                        SP 1
+                    </p>
+
+                    <p class=" text-md mt-4">
+                        Dokumen :
+                    </p >
+
+                    <p class="ml-5 mt-2 text-md text-gray-400">
+                        Dokumen
+                    </p>
+
+
+                </div>
+
+                <!--Modal footer-->
+                <div
+                    class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                    <button
+                    type="button"
+                    class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                    data-te-ripple-init
+                    data-te-modal-dismiss
+                    data-te-ripple-color="light">
+                    Kembali
+                    </button>
+                </div>
+                </div>
+            </div>
+            </div>
+        {{-- end modal --}}
+        {{-- modal tambah--}}
         <div
             data-te-modal-init
             class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"

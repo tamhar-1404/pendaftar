@@ -2316,6 +2316,12 @@
                                                 class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Chat</a>
                                         </li>
                                         <li>
+                                            <button ata-modal-target="defaultModal{{$siswa->id}}" data-modal-toggle="defaultModal{{$siswa->id}}"
+                                            class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">SP
+                                            </button>
+
+                                        </li>
+                                        <li>
                                             <a href="#"
                                                 class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Hapus</a>
                                         </li>
@@ -2396,6 +2402,56 @@
             </div>
         </main>
     </div>
+    @forelse ( $siswas as $modal)
+    {{-- modal --}}
+    <div   id="defaultModal{{$modal->id}}"  tabindex="-1" aria-hidden="true" class="kamu-tak-diajak fixed top-0 left-0 right-0 z-[150] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+       <div class="relative w-full max-w-2xl max-h-full">
+           <!-- Modal content -->
+           <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+               <!-- Modal header -->
+               <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                   <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                      SP
+                   </h3>
+                   <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="staticModal{{$modal ->id}}">
+                       <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                   </button>
+               </div>
+               <form action="{{route('sp.store')}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <input type="text" name="nama" value="{{$modal->name}}">
+                <div class="w-full">
+                    <label class="text-md font-semibold ml-4 mt-4 ">deskrisi</label><br>
+                    <textarea name="deskripsi" class="w-[80%] border border-gray-200" id="" cols="" rows="10"></textarea>
+                </div>
+                <label for="">Jenis SP</label> <br>
+                <div class="flex" >
+
+                    <input type="radio" name="keterangan" value="Sp1" id=""> <p>Sp1</p> <br>
+                </div>
+                <div class="flex">
+
+                    <input type="radio" name="keterangan" value="Sp2" id=""> <p>Sp2</p> <br>
+                </div>
+                <label for="">Bukti SP</label> <br>
+                <input type="file" name="buktisp" id="">
+
+
+
+               <!-- Modal footer -->
+               <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                   <button  type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                   <button  type="submit" class="bg-blue-400">kirim</button>
+               </div>
+
+            </form>
+           </div>
+       </div>
+   </div>
+   @empty
+
+   @endforelse
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>

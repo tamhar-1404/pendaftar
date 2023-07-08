@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('sps', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('deskripsi');
+            $table->string('sp');
+            $table->string('bukti');
             $table->timestamps();
         });
     }
