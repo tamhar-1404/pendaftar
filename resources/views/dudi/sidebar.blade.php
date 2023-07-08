@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <div class="main-content">
+    <div class="">
         {{--  <!-- start header section -->  --}}
 
         {{--  <!-- end header section -->  --}}
@@ -115,7 +115,7 @@
             </div>
         </div>
         {{-- grafik --}}
-      
+
                 <div class="hidden space-x-2 sm:flex" x-data="{activeTab:'tabYearly'}">
                 </div>
             </div>
@@ -124,6 +124,7 @@
                 <div id="grafik_admin" style="width: 100%; "></div>
             </div>
         </div>
+         </main>
 
 
         {{-- caraousel --}}
