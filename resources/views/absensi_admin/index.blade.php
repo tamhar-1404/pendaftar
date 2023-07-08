@@ -75,7 +75,7 @@
         </li>
         {{-- dashboard --}}
         <li class="relative mt-5">
-            <a
+            <a href="{{ route('dudi.index') }}"
                 class="flex h-12 cursor-pointer items-center   rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 {{ request()->routeIs('dudi.index') ? 'bg-blue-500 text-white' : '' }} hover:text-white hover:outline-none focus:bg-blue-500 focus:text-white focus:outline-none active:bg-blue-500 active:text-white active:outline-none data-[te-sidenav-state-active]:text-white data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10">
                 <span class="mr-4 [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-white dark:[&>svg]:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
@@ -201,7 +201,7 @@
         {{-- absensi --}}
         <li class="relative">
             <a href="{{ route('absensi_admin.index') }}"
-                class="flex h-12 cursor-pointer items-center   rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-white hover:outline-none focus:bg-blue-500 focus:text-white focus:outline-none active:bg-blue-500 active:text-white active:outline-none data-[te-sidenav-state-active]:text-white data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10">
+                class="flex h-12 cursor-pointer items-center   rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-white hover:outline-none focus:bg-blue-500 focus:text-white focus:outline-none active:bg-blue-500 active:text-white active:outline-none data-[te-sidenav-state-active]:text-white data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10 {{ request()->routeIs('absensi_admin.index') ? 'bg-blue-500 text-white' : '' }}">
                 <span class="mr-4 [&>svg]:h-4 [&>svg]:w-5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
                         <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -573,14 +573,14 @@
                                               <span class=" text-red-500">{{ $absen->keterangan }}</span>
                                                @endif
                                                 </td>
-                                            </tr> 
+                                            </tr>
                                             @empty
                                              <div class="bg-red-100 border mb-2 mt-2 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                                               <strong class="font-bold">Data </strong>
                                               <span class="block sm:inline">Tidak tersedia.</span>
                                               <span class="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
                                              </div>
-                                            @endforelse 
+                                            @endforelse
                                         </tbody>
                                     </table>
                                 </div>
