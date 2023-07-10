@@ -43,15 +43,55 @@ class SpController extends Controller
 
 
         ]);
-        $image = $request->file('buktisp');
-        $image->storeAs('public/image', $image->hashName());
-        sp::create([
-            'bukti'=>$image->hashName(),
-            'nama' => $request->nama,
-            'deskripsi' => $request->deskripsi,
-            'sp' => $request->keterangan,
-
-        ]);
+        if (sp::where('nama', $request->nama)->exists()) {
+            if ($request->keterangan == 'Sp1') {
+                if (sp::where([['nama', $request->nama], ['sp_1', 'Sp1']])->exists()) {
+                    $image = $request->file('buktisp');
+                    $image->storeAs('public/image', $image->hashName());
+                    sp::where('nama', $request->nama)->update([
+                        'bukti_2' => $image->hashName(),
+                        'deskripsi_2' => $request->deskripsi,
+                        'sp_2' => 'Sp2',
+                    ]);
+                }
+                $image = $request->file('buktisp');
+                $image->storeAs('public/image', $image->hashName());
+                sp::where('nama', $request->nama)->update([
+                    'bukti_1' => $image->hashName(),
+                    'deskripsi_1' => $request->deskripsi,
+                    'sp_1' => $request->keterangan,
+                ]);
+            }
+            else {
+                $image = $request->file('buktisp');
+                $image->storeAs('public/image', $image->hashName());
+                sp::where('nama', $request->nama)->update([
+                    'bukti_2' => $image->hashName(),
+                    'deskripsi_2' => $request->deskripsi,
+                    'sp_2' => $request->keterangan,
+                ]);
+            }
+        } else {
+            if ($request->keterangan == 'Sp1') {
+                $image = $request->file('buktisp');
+                $image->storeAs('public/image', $image->hashName());
+                sp::create([
+                    'nama' => $request->nama,
+                    'bukti_1' => $image->hashName(),
+                    'deskripsi_1' => $request->deskripsi,
+                    'sp_1' => $request->keterangan,
+                ]);
+            } else {
+                $image = $request->file('buktisp');
+                $image->storeAs('public/image', $image->hashName());
+                sp::create([
+                    'nama' => $request->nama,
+                    'bukti_2' => $image->hashName(),
+                    'deskripsi_2' => $request->deskripsi,
+                    'sp_2' => $request->keterangan,
+                ]);
+            }
+        }
         return redirect()->back();
     }
 

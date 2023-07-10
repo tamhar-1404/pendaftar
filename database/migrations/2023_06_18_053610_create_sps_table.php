@@ -16,9 +16,12 @@ return new class extends Migration
         Schema::create('sps', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('deskripsi');
-            $table->string('sp');
-            $table->string('bukti');
+            $table->string('deskripsi_1')->nullable(true);
+            $table->string('deskripsi_2')->nullable(true);
+            $table->string('sp_1')->nullable(true);
+            $table->string('sp_2')->nullable(true);
+            $table->string('bukti_1')->nullable(true);
+            $table->string('bukti_2')->nullable(true);
             $table->timestamps();
         });
     }

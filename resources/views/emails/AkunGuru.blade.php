@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    @vite('resources/css/app.css')
     <style>
         /* Reset CSS */
         body, h1, p {
@@ -51,7 +52,7 @@
         <center>
             <h1 style="color: #00c3ff;">Humma<span class="soft">soft</span></h1>
         </center>
-        <h4 style="color: #0d47a1;">Akun anda sudah bisa digunakan dengan password {{ $password }}</h4>
+        <h4 style="color: #0d47a1;">Akun anda sudah bisa digunakan dengan password :</h4><h4 class="font-bold">{{ $password }}</h4>
     </div>
 </body>
 </html>
