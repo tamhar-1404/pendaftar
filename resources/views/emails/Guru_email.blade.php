@@ -51,7 +51,7 @@
         <center>
             <h1 style="color: #00c3ff;">Humma<span class="soft">soft</span></h1>
         </center>
-        <h1 style="color: #0d47a1;">Selamat murid anda telah di terima</h1>
+        <h1 style="color: #0d47a1;">Selamat murid anda telah di terima </h1>
         <p class="body">Terima kasih atas .</p>
     </div>
 </body>

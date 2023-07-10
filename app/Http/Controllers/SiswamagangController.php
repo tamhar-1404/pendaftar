@@ -41,24 +41,7 @@ class SiswamagangController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nama' => 'required',
-            'deskripsi' => 'required',
-            'bukti' => 'required',
-        ]);
-
-        $user = Auth::user();
-        $tanggal = date('Y-m-d');
-
-        LaporanSiswa::create([
-            'name' => $user->name,
-            'tanggal' => $tanggal,
-            'nama' => $request->nama,
-            'status' => 'menunggu',
-            'deskripsi' => $request->deskripsi,
-            'bukti' => $request->bukti,
-        ]);
-        return redirect()->back();
+     //
     }
 
     /**

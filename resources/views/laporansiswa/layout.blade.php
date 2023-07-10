@@ -203,8 +203,11 @@
                                                         </svg>
                                                     </button>
                                                 </div>
+                                                <form action="{{ route('laporansiswa.update' , $data->id) }}" method="post">
+                                                    @csrf
+                                                    @method('PUT')
                                                 <div class="flex items-center mt-4">
-                                                    <button type="button" class="text-success">
+                                                    <button type="submit" class="text-success">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="1.5"
                                                             stroke="currentColor" class="w-6 h-6">
@@ -212,8 +215,12 @@
                                                                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                         </svg>
                                                     </button>
-                                                    <button type="button"
-                                                        class="group text-danger ltr:ml-1 rtl:mr-2">
+                                                </form>
+                                                <form action="{{ route('laporansiswa.destroy' , $data->id) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="group text-danger ltr:ml-1 rtl:mr-2 mt-2">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="1.5"
                                                             stroke="currentColor" class="w-6 h-6">
@@ -221,17 +228,26 @@
                                                                 d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                         </svg>
                                                     </button>
+                                                </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     @empty
-                                    @endforelse
                                 </div>
                             </div>
+                                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                        <strong class="font-bold">Laporan siswa !</strong>
+                                        <span class="block sm:inline">Data laporan masih kosong.</span>
+                                        <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                                           </span>
+                                      </div>
+                                    @endforelse
                             <div id="content2" class="card-content" style="display: none"
                                 class="hidden min-h-[400px] sm:min-h-[300px]">
                                 <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                                    @forelse ($terima as $terima )
+
                                     <div class="panel pb-12">
                                         <div class="min-h-[142px]">
                                             <div class="flex justify-between">
@@ -247,18 +263,17 @@
                                                     </div>
                                                     <div class="ltr:ml-2 rtl:mr-2">
                                                         <div class="font-semibold">
-                                                            <p>Cristiano Ronaldo</p>
+                                                            <p>{{ $terima->name }}</p>
                                                         </div>
                                                         <div class="text-sx text-white-dark">
-                                                            <p>10/10/2010</p>
+                                                            <p>{{ $terima->tanggal }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div>
-                                                <h4 class="mt-4 font-semibold">Lionel Messi</h4>
-                                                <p class="mt-2 text-white-dark">Lorem ipsum dolor sit amet
-                                                    consectetur adipisicing elit. Dolore, autem!
+                                                <h4 class="mt-4 font-semibold">{{ $terima->nama }}</h4>
+                                                <p class="mt-2 text-white-dark">{{ $terima->deskripsi }}
                                                 </p>
                                             </div>
                                         </div>
@@ -272,11 +287,17 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @empty
+
+                                    @endforelse
                                 </div>
                             </div>
                             <div id="content3" class="card-content" style="display: none"
                                 class="hidden min-h-[400px] sm:min-h-[300px]">
+
                                 <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                                    @forelse ($tolak as $tolak )
+
                                     <div class="panel pb-12">
                                         <div class="min-h-[142px]">
                                             <div class="flex justify-between">
@@ -292,18 +313,17 @@
                                                     </div>
                                                     <div class="ltr:ml-2 rtl:mr-2">
                                                         <div class="font-semibold">
-                                                            <p>Olivia Rodrigo</p>
+                                                            <p>{{ $tolak->name }}</p>
                                                         </div>
                                                         <div class="text-sx text-white-dark">
-                                                            <p>10/10/2010</p>
+                                                            <p>{{ $tolak->tanggal }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div>
-                                                <h4 class="mt-4 font-semibold">Zayn Malik</h4>
-                                                <p class="mt-2 text-white-dark">Lorem ipsum dolor sit amet
-                                                    consectetur adipisicing elit. Dolore, autem!
+                                                <h4 class="mt-4 font-semibold">{{ $tolak->nama }}</h4>
+                                                <p class="mt-2 text-white-dark">{{ $tolak->deskripsi }}
                                                 </p>
                                             </div>
                                         </div>
@@ -317,6 +337,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @empty
+
+                                    @endforelse
                                 </div>
                             </div>
                             <div class="fixed inset-0 z-[999] hidden overflow-y-auto bg-[black]/60 px-4"
@@ -435,6 +458,12 @@
                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                            {{$modal ->deskripsi}}
                        </p>
+                   </div>
+                   <div>
+                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                        Bukti
+                    </p>
+                    <img src="{{ asset('storage/laporansiswa/' . $modal->bukti) }}" alt="" srcset="">
                    </div>
 
                </div>

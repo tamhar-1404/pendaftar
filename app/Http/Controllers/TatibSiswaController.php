@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TatibSiswa;
+use App\Models\TataTertib;
 use App\Http\Requests\StoreTatibSiswaRequest;
 use App\Http\Requests\UpdateTatibSiswaRequest;
 
@@ -15,7 +16,8 @@ class TatibSiswaController extends Controller
      */
     public function index()
     {
-        return view('tatib_siswa.index');
+        $tatib = TataTertib::latest()->paginate(5);
+        return view('tatib_siswa.index' , compact('tatib'));
     }
 
     /**

@@ -1706,13 +1706,13 @@
                                   <table id="data-table" class="min-w-full text-left text-sm font-light">
                                     <thead class="border-b font-medium dark:border-neutral-500 ">
                                       <tr class="">
-                                        <th scope="col" class="px-6 py-4">#</th>
-                                        <th scope="col" class="px-6 py-4">Nama</th>
-                                        <th scope="col" class="px-6 py-4">Tanggal</th>
-                                        <th scope="col" class="px-6 py-4">Sekolah</th>
-                                        <th scope="col" class="px-6 py-4">kegiatan</th>
-                                        <th scope="col" class="px-6 py-4 ">bukti</th>
-                                        <th scope="col" class="px-6 py-4">Aksi</th>
+                                        <th scope="col" class="px-6 py-2">#</th>
+                                        <th scope="col" class="px-6 py-2">Nama</th>
+                                        <th scope="col" class="px-6 py-2">Tanggal</th>
+                                        <th scope="col" class="px-6 py-2">Sekolah</th>
+                                        <th scope="col" class="px-6 py-2">kegiatan</th>
+                                        <th scope="col" class="px-6 py-2 ">bukti</th>
+                                        <th scope="col" class="px-6 py-2">Aksi</th>
 
                                       </tr>
                                     </thead>
@@ -1720,12 +1720,12 @@
                                         @forelse ( $item as $items )
                                         <tr
                                         class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                        <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $loop->iteration }}</td>
-                                        <td class="whitespace-nowrap px-4 py-4">{{$items->nama}}</td>
-                                        <td class="whitespace-nowrap px-4 py-4">{{$items->tanggal}}</td>
-                                        <td class="whitespace-nowrap px-4 py-4">{{$items->sekolah}}</td>
-                                        <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$items->kegiatan}}</td>
-                                        <td class="whitespace-nowrap px-6 pl-17 py-4"><img
+                                        <td class="whitespace-nowrap px-2 py-2 font-medium">{{ $loop->iteration }}</td>
+                                        <td class="whitespace-nowrap px-2 py-2">{{$items->nama}}</td>
+                                        <td class="whitespace-nowrap px-2 py-2">{{$items->tanggal}}</td>
+                                        <td class="whitespace-nowrap px-2 py-2">{{$items->sekolah}}</td>
+                                        <td class="whitespace-nowrap px-2 py-2 max-w-sm overflow-hidden truncate " >{{$items->kegiatan}}</td>
+                                        <td class="whitespace-nowrap px-2 pl-17 py-2"><img
                                             src="{{ asset('storage/image/' . $items->image) }}"
                                             width="100px" alt="">
                                         </td>
@@ -1797,13 +1797,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- end main content section -->
-
-                <!-- start footer section -->
-                <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
-                    © <span id="footer-year">2022</span>. Vristo All rights reserved.
-                </p>
-                <!-- end footer section -->
+             
 
             </div>
             @forelse ( $item as $modal)

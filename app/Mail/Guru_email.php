@@ -13,7 +13,7 @@ class Guru_email extends Mailable
 {
 
     use Queueable, SerializesModels;
-
+    
     /**
      * Create a new message instance.
      *
@@ -21,7 +21,7 @@ class Guru_email extends Mailable
      */
     public function __construct()
     {
-     //
+
     }
 
     /**

@@ -71,7 +71,7 @@ class TataTertibController extends Controller
     public function edit(TataTertib $tataTertib, $id)
     {
         $tataTertib = TataTertib::find($id);
-        return view('tatatertib.layedit', compact('tataTertib'));
+        return view('tatatertib.edit', compact('tataTertib'));
     }
 
     /**
