@@ -45,8 +45,8 @@ class LoginController extends Controller
                 return redirect()->route('dudi.index');
             } elseif ($user->role == 'Siswa') {
                 return redirect()->route('siswamagang.index');
-            } elseif ($user->role == 'Guru') {
-                return redirect()->route('guru.kelas');
+            } elseif ($user->role == 'guru') {
+                return redirect()->route('guru.index');
             }
         }
 
