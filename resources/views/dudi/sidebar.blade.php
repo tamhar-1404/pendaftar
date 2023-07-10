@@ -123,139 +123,36 @@
             <div class="ax-transparent-gridline mt-2 px-2">
                 <div id="grafik_admin" style="width: 100%; "></div>
             </div>
-        </div>
-         </main>
+
+
 
 
         {{-- caraousel --}}
 
 
-        <section>
-            <div class="swiper mySwiper container w-full">
-                <div class="swiper-wrapper content">
-                    @foreach ($blog as $row)
-
-                    <div class="swiper-slide card dark:bg-black">
-                        <div class="card-content ">
-
-                            <div class="card">
-                                <img class="h-72 w-full rounded-lg object-cover object-center max-w-xs transition duration-300 ease-in-out hover:scale-110"
-                                    src="{{ asset('storage/fotoberita/' . $row->foto) }}" alt="image" />
-                                <div class="absolute inset-0 flex h-full w-full flex-col justify-end">
-                                    <div class="absolute top-0 right-0 mt-2 mr-2">
-                                        <div x-data="{ isOpen: false }">
-                                            <button  @click="isOpen = !isOpen"
-                                                class="btn h-7 w-7 rounded-full p-0 text-black-light hover:bg-secondary/20 focus:bg-secondary/20 active:bg-secondary/25 dark:hover:bg-secondary-light/20 dark:focus:bg-secondary-light/20 dark:active:bg-secondary-light/25">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
-                                                </svg>
-                                            </button>
-                                            <div x-show="isOpen" @click.away="isOpen = false"
-                                                class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg"
-                                                x-cloak>
-                                                <ul>
-                                                    <li>
-                                                        <a href="{{ route('Berita.edit', $row->id) }}"
-                                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                                            @click="editItem()">Edit</a>
-                                                    </li>
-                                                    <li>
-                                                        <form action="{{ route('Berita.destroy', $row->id) }}" method="POST"
-                                                            enctype="multipart/form-data">
-                                                            @method('DELETE')
-                                                            @csrf
-                                                            <button type="submit"
-                                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Hapus</button>
-                                                        </form>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <script>
-                                        function editItem() {
-                                            // Logika atau perintah yang akan dijalankan saat tombol "Edit" ditekan
-                                            console.log("Tombol Edit ditekan");
-                                        }
-
-                                        function deleteItem() {
-                                            // Logika atau perintah yang akan dijalankan saat tombol "Hapus" ditekan
-                                            console.log("Tombol Hapus ditekan");
-                                        }
-                                    </script>
-
-                                    <div
-                                        class="space-y-1.5 rounded-lg bg-gradient-to-t from-[#19213299] via-[#19213266] to-transparent px-4 pb-3 pt-12">
-                                        <div class="line-clamp-2">
-                                            <a href="http://127.0.0.1:8000/Berita/detail" class="text-base font-medium text-white">
-                                                {{ $row->judul }}
-                                            </a>
-                                        </div>
-                                        <div class="flex items-center justify-between">
-                                            <div class="flex items-center text-xs text-slate-200">
-                                                <p class="flex items-center space-x-1">
-                                                    <span class="line-clamp-1 uppercase">{{ $row->kategori }}</span>
-                                                </p>
-                                                <div class="mx-3 my-0.5 w-px self-stretch bg-white/20"></div>
-                                                <p class="shrink-0 text-tiny+">{{ $row->created_at->diffForHumans() }}</p>
-                                            </div>
-                                            <div class="mr-1.5 flex">
-                                                {{-- @if ($blog->isLikedByUser())
-                                                    <form action="{{ route('Berita.unlike', $blog) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                                fill="red" width="24" height="24">
-                                                                <path d="M0 0h24v24H0z" fill="none" />
-                                                                <path
-                                                                    d="M11 2C6.029 2 2 6.029 2 11c0 4.97 4.029 9 9 9 4.97 0 9-4.03 9-9 0-4.971-4.03-9-9-9zm3 13H8v-2h6v2zm0-4H8V7h6v4z" />
-                                                            </svg>
-                                                        </button>
-                                                    </form>
-                                                @else
-                                                    <form action="{{ route('Berita.like', $blog) }}" method="POST">
-                                                        @csrf
-                                                        <button type="submit">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                                fill="none" width="24" height="24">
-                                                                <path d="M0 0h24v24H0z" fill="none" />
-                                                                <path
-                                                                    d="M11 2C6.029 2 2 6.029 2 11c0 4.97 4.029 9 9 9 4.97 0 9-4.03 9-9 0-4.971-4.03-9-9-9zm0 16l-4-4h8l-4 4z" />
-                                                            </svg>
-                                                        </button>
-                                                    </form>
-                                                @endif --}}
-
-                                                <button x-tooltip="'Save'"
-                                                    class="btn h-7 w-7 rounded-full p-0 text-navy-100 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+           <!-- end main content section -->
+            <section>
+                <div class="swiper mySwiper container w-full">
+                    <div class="swiper-wrapper content">
+                        @forelse ($mou1 as $data )
+                        <div class="swiper-slide card dark:bg-black">
+                            <div class="card-content ">
+                                <div class="image">
+                                    <img src="{{ asset('storage/mou/' . $data->logo) }}" alt="" width="180">
                                 </div>
                             </div>
-
-
                         </div>
+                        @empty
+
+                        @endforelse
+
                     </div>
-                    @endforeach
-
-
                 </div>
-            </div>
-            {{--  <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>  --}}
-            <div class="swiper-pagination"></div>
-        </section>
+                {{-- <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div> --}}
+                <div class="swiper-pagination"></div>
+            </section>
+
         {{--  <!-- Swiper JS -->  --}}
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         {{--  <!-- Initialize Swiper -->  --}}

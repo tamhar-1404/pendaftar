@@ -45,6 +45,8 @@
         @include('jurnal_admin.nav')
 
         @include('dudi.sidebar')
+
+        
     </div>
 
 

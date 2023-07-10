@@ -7,6 +7,12 @@ use App\Models\ApprovalIzin;
 use App\Http\Requests\StoreabsensiadminRequest;
 use App\Http\Requests\UpdateabsensiadminRequest;
 use Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\IOFactory;
+use DB;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class AbsensiadminController extends Controller
 {
@@ -29,8 +35,9 @@ class AbsensiadminController extends Controller
      */
     public function create(Request $request)
     {
-        
+
         $terima = ApprovalIzin::where('nama', 'LIKE', $request ->serch)->GET();
+        $siswa = $request->serch;
         $Hadir_jan = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 1)->count();
         $Hadir_feb = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 2)->count();
         $Hadir_mar = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 3)->count();
@@ -57,7 +64,7 @@ class AbsensiadminController extends Controller
         $Telat_okt = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 10)->count();
         $Telat_nov = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 11)->count();
         $Telat_des = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 12)->count();
-        
+
 
         $izin_jan = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 1)->count();
         $izin_feb = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 2)->count();
@@ -85,7 +92,7 @@ class AbsensiadminController extends Controller
         $Alfa_nov = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 11)->count();
         $Alfa_des = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 12)->count();
 
-        return view('absensi_admin.grafik', compact('terima','Hadir_jan','Hadir_feb','Hadir_mar','Hadir_apr','Hadir_mei','Hadir_jun','Hadir_jul','Hadir_aug','Hadir_sep','Hadir_okt','Hadir_nov','Hadir_des','Telat_jan','Telat_feb','Telat_mar','Telat_apr','Telat_mei','Telat_jun','Telat_jul','Telat_aug','Telat_sep','Telat_nov','Telat_okt','Telat_nov','Telat_des','izin_jan','izin_feb','izin_mar','izin_apr','izin_mei','izin_jun','izin_jul','izin_aug','izin_sep','izin_nov','izin_okt','izin_nov','izin_des','Alfa_jan','Alfa_feb','Alfa_mar','Alfa_apr','Alfa_mei','Alfa_jun','Alfa_jul','Alfa_aug','Alfa_sep','Alfa_nov','Alfa_okt','Alfa_nov','Alfa_des'));
+        return view('absensi_admin.grafik', compact('siswa','terima','Hadir_jan','Hadir_feb','Hadir_mar','Hadir_apr','Hadir_mei','Hadir_jun','Hadir_jul','Hadir_aug','Hadir_sep','Hadir_okt','Hadir_nov','Hadir_des','Telat_jan','Telat_feb','Telat_mar','Telat_apr','Telat_mei','Telat_jun','Telat_jul','Telat_aug','Telat_sep','Telat_nov','Telat_okt','Telat_nov','Telat_des','izin_jan','izin_feb','izin_mar','izin_apr','izin_mei','izin_jun','izin_jul','izin_aug','izin_sep','izin_nov','izin_okt','izin_nov','izin_des','Alfa_jan','Alfa_feb','Alfa_mar','Alfa_apr','Alfa_mei','Alfa_jun','Alfa_jul','Alfa_aug','Alfa_sep','Alfa_nov','Alfa_okt','Alfa_nov','Alfa_des'));
     }
 
     /**
@@ -95,7 +102,7 @@ class AbsensiadminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $this->validate($request, [
             'dari' => 'required',
             'sampai' => 'required',
@@ -105,10 +112,10 @@ class AbsensiadminController extends Controller
         ]);
         $image = $request->file('bukti');
         $image->storeAs('public/bukti_izin', $image->hashName());
-       
-    
+
+
     ApprovalIzin::create([
-            'nama' => $request->nama,   
+            'nama' => $request->nama,
             'sekolah' => $request->sekolah,
             'email' => $request->email,
             'dari' => $request->dari,
@@ -166,4 +173,83 @@ class AbsensiadminController extends Controller
     {
         //
     }
+    public function exportToDocxabsen()
+{
+    // Mendapatkan data dari database (contoh menggunakan model User)
+    $users = ApprovalIzin::all();
+
+    // Membuat objek PhpWord
+    $phpWord = new PhpWord();
+
+    // Membuat halaman baru
+    $section = $phpWord->addSection();
+
+    // Menambahkan data dari database ke dokumen
+    foreach ($users as $user) {
+        $section->addText($user->nama);
+        $section->addText($user->sekolah);
+        $section->addText($user->email);
+        $section->addText($user->dari);
+        $section->addText($user->sampai);
+        $section->addText($user->keterangan);
+        // Tambahkan data lain yang Anda butuhkan
+        $section->addText("--------------------"); // Pemisah antara setiap entri
+    }
+
+    // Menyimpan dokumen sebagai file .docx
+    $filename = "absensi_export.docx";
+    $path = storage_path('app/public/image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
+    $phpWord->save($path);
+
+    // Mengembalikan file dokumen untuk diunduh
+    return response()->download($path, $filename);
+}
+
+    public function grafik_absen_docx()
+{
+    // Mendapatkan data dari database (contoh menggunakan model User)
+    $users = ApprovalIzin::all();
+
+    // Membuat objek PhpWord
+    $phpWord = new PhpWord();
+
+    // Membuat halaman baru
+    $section = $phpWord->addSection();
+
+    // Menambahkan data dari database ke dokumen
+    foreach ($users as $user) {
+        $section->addText($user->nama);
+        $section->addText($user->sekolah);
+        $section->addText($user->email);
+        $section->addText($user->dari);
+        $section->addText($user->sampai);
+        $section->addText($user->keterangan);
+        // Tambahkan data lain yang Anda butuhkan
+        $section->addText("--------------------"); // Pemisah antara setiap entri
+    }
+
+    // Menyimpan dokumen sebagai file .docx
+    $filename = "absensi_export.docx";
+    $path = storage_path('app/public/image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
+    $phpWord->save($path);
+
+    // Mengembalikan file dokumen untuk diunduh
+    return response()->download($path, $filename);
+}
+
+public function absen_pdf()  {
+    set_time_limit(0);
+    $data = ApprovalIzin::all();
+    $pdf = Pdf::loadView('desain_pdf.absensi', ['data' => $data]);
+    return $pdf->download('absen_siswa.pdf');
+}
+
+public function absen_pdf1(Request $request)  {
+    dd('awokawok');
+    set_time_limit(0);
+    $data = ApprovalIzin::where('nama' , $request->serch)->get;
+    $pdf = Pdf::loadView('desain_pdf.absensi', ['data' => $data]);
+    return $pdf->download('absen_siswa.pdf');
+}
+
 }

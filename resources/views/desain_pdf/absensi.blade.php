@@ -12,7 +12,11 @@
 <body>
     {{-- @require ('vendor/autoload.php'); --}}
     <div class="flex justify-center mt-3 mb-5">
-        <h1 class=" text-2xl font-bold">Jurnal Siswa {{Auth::user()->name}}</h1>
+        <h1 class=" text-2xl font-bold">Jurnal Siswa
+        @if (Auth::user()->role == 'Siswa')
+        {{Auth::user()->name}}
+        @endif
+        </h1>
     </div>
     <div class="flex justify-center">
         <table class="table-auto bg-white ">

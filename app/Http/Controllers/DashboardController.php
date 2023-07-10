@@ -66,10 +66,10 @@ class DashboardController extends Controller
         $terima_nov = Siswa::where('role', 'siswa')->whereMonth('created_at', '=', 11)->count();
         $terima_des = Siswa::where('role', 'siswa')->whereMonth('created_at', '=', 12)->count();
 
-        $blog = Blog::paginate(6);
+        $mou1 = mou::all();
 
 
-        return view('dudi.index', compact('blog','siswa','guru','mou','tolak','menunggu','menunggu_jan','menunggu_feb','menunggu_mar','menunggu_apr','menunggu_mei','menunggu_jun','menunggu_jul','menunggu_aug','menunggu_sep','menunggu_okt','menunggu_nov','menunggu_des','Tolak_jan',
+        return view('dudi.index', compact('mou1','siswa','guru','mou','tolak','menunggu','menunggu_jan','menunggu_feb','menunggu_mar','menunggu_apr','menunggu_mei','menunggu_jun','menunggu_jul','menunggu_aug','menunggu_sep','menunggu_okt','menunggu_nov','menunggu_des','Tolak_jan',
         'Tolak_feb','Tolak_mar','Tolak_apr','Tolak_mei','Tolak_jun','Tolak_jul','Tolak_aug','Tolak_sep','Tolak_okt','Tolak_nov','Tolak_des',
         'terima_jan','terima_feb','terima_mar','terima_apr','terima_mei','terima_jun','terima_jul','terima_aug','terima_sep','terima_okt','terima_nov','terima_des',
     ));

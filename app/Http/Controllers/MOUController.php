@@ -89,9 +89,34 @@ class MOUController extends Controller
      * @param  \App\Models\MOU  $mOU
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMOURequest $request, MOU $mOU)
+    public function update(Request $request, MOU $mOU)
     {
-        //
+
+        $data = mou::find($request->id);
+        if ($request->logo != null) {
+            Storage::delete('public/mou' . $request->imageold);
+
+
+            $image = $request->file('logo');
+            $image->storeAs('public/mou', $image->hashName());
+
+           $data->update([
+                'logo'=>$image->hashName(),
+                'nama'=>$request->nama,
+                'email'=>$request->email,
+                'no'=>$request->notelepon,
+                'alamat'=>$request->alamat
+            ]);
+            return redirect()->back();
+        }
+
+        $data->update([
+            'nama'=>$request->nama,
+            'email'=>$request->email,
+            'no'=>$request->notelepon,
+            'alamat'=>$request->alamat
+        ]);
+        return redirect()->back();
     }
 
     /**

@@ -1,7 +1,7 @@
 
     <!-- Navbar -->
     <nav id="main-navbar"
-        class="kamu-tak-diajak relative left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start fixed"
+        class="kamu-tak-diajak sticky relative left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start fixed"
         data-te-navbar-ref>
         <!-- Container wrapper -->
 
@@ -108,7 +108,7 @@
                         </li>
                         <li>
                             <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
-                                href="#" data-te-dropdown-item-ref>Logout</a>
+                                href="{{route('logout')}}" data-te-dropdown-item-ref>Logout</a>
                         </li>
                     </ul>
                 </li>

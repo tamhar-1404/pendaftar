@@ -57,9 +57,10 @@ class TataTertibController extends Controller
      * @param  \App\Models\TataTertib  $tataTertib
      * @return \Illuminate\Http\Response
      */
-    public function show(TataTertib $tataTertib)
+    public function show(TataTertib $tataTertib, $id)
     {
-        return view('tatatertib.laydetail');
+        $data = TataTertib::where('id', $id)->get();
+        return view('tatatertib.laydetail', compact('data'));
     }
 
     /**

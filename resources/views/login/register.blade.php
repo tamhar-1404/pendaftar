@@ -38,11 +38,9 @@
         </div>
         <div class=" w-full h-1/2 flex ">
             <div class="w-full h-auto bg-gray-50 flex justify-center pt-5 ">
-                <img class="w-full h-3/4"
-                    src="{{asset('lineone/images/illustrations/login.svg')}}" alt="image" />
-                {{-- <div class="w-full h-auto flex justify-center items-center ">
-                </div> --}}
-            </div>
+             <div class="w-1/2 h-full">
+               @include('login.svg')
+             </div>
         </div>
         <main class="flex w-full flex-col  items-center bg-white dark:bg-navy-700 lg:max-w-md">
             <div class="w-full h-full flex-col p-5 gap-8   ">
@@ -57,7 +55,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="">
+                <div class="mt-[15%]">
                     <form id="wizardForm" action="{{ route('login.store') }}" class="relative"  method="post" enctype="multipart/form-data">
                         @csrf
                           <!-- Step 1 -->
@@ -207,9 +205,9 @@
                     </form>
                     <div class="mt-4 text-center text-xs+">
                         <p class="line-clamp-1">
-                            <span>Belum punya Akun?</span>
+                            <span>Sudah punya Akun?</span>
                             <a class="text-blue-400 transition-colors hover:text-info-focus dark:text-accent-light dark:hover:text-accent"
-                                href="{{ route('login.create') }}">Daftar</a>
+                                href="{{ route('login.index') }}">Login</a>
                         </p>
                     </div>
                 </div>

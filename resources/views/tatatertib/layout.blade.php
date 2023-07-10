@@ -122,6 +122,12 @@
                                                     <span class=" p-1  font-semibold dark:hover:text-black">Edit</span>
                                                 </div>
                                             </a>
+                                            <a href="{{ route('tatatertib.show', $row->id) }}">
+                                                <div
+                                                    class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
+                                                    <span class=" p-1  font-semibold dark:hover:text-black">Show</span>
+                                                </div>
+                                            </a>
                                             <form action="{{ route('tatatertib.destroy', $row->id) }}" method="POST"
                                                 enctype="multipart/form-data">
                                                 @method('DELETE')
