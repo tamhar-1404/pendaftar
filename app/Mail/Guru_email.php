@@ -13,15 +13,15 @@ class Guru_email extends Mailable
 {
 
     use Queueable, SerializesModels;
-
+    public $name;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($name)
     {
-     //
+        $this->name = $name;
     }
 
     /**

@@ -50,14 +50,14 @@ class AprovalController extends Controller
 {
     //
 }
-public function confirm(Aproval $aproval)
+    public function confirm(Aproval $aproval)
 {
     if ($aproval->status === 'menunggu') {
         Mail::to($aproval->email)->send(new DemoMail($aproval));
 
         $users = User::where('role', 'guru')->where('sekolah', $aproval->sekolah)->get();
         foreach ($users as $user) {
-           Mail::to($user->email)->send(new Guru_email());
+           Mail::to($user->email)->send(new Guru_email($aproval->name));
         }
 
         $foto_siswa = $aproval->foto_siswa;

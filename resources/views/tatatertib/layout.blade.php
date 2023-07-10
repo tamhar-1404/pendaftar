@@ -110,10 +110,11 @@
                                     <td
                                         class="whitespace-nowrap px-3 py-2 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
                                         {{ $row->judul }}</td>
-                                    <td class="whitespace-nowrap px-3 py-2 font-medium text-slate-700 dark:text-navy-100 lg:px-5"
-                                        style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">
-                                        {!! $row->deskripsi !!}
-                                    </td>
+                                        <td class="whitespace-nowrap px-3 py-2 font-medium text-slate-700 dark:text-navy-100 lg:px-5" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            {!! Str::limit($row->deskripsi, 40) !!}
+                                        </td>
+
+
                                     <td class="whitespace-nowrap px-3 py-2">
                                         <div class="flex items-center space-x-2">
                                             <a href="{{ route('tatatertib.edit', $row->id) }}">

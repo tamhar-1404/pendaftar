@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita_Siswa;
+use App\Models\Blog;
 use App\Http\Requests\StoreBerita_SiswaRequest;
 use App\Http\Requests\UpdateBerita_SiswaRequest;
 
@@ -15,7 +16,8 @@ class BeritaSiswaController extends Controller
      */
     public function index()
     {
-        return view('berita_siswa.index');
+        $Blog = Blog::latest()->paginate(5);
+        return view('berita_siswa.index', compact('Blog'));
     }
 
     /**

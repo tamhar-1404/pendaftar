@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<!-- Mirrored from html.vristo.sbthemes.com/components-accordions.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:09 GMT -->
+{{--  <!-- Mirrored from html.vristo.sbthemes.com/components-accordions.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:09 GMT -->  --}}
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
@@ -1222,52 +1222,17 @@
                                             type="text" placeholder="Cari...">
                                     </div>
                                 </div>
+                                @forelse ($tatib as $tatatertib)
+
                                 <div class="mb-5" x-data="{ active: 1 }">
                                     <div class="space-y-2 font-semibold">
-                                        <div class="rounded border border-[#d3d3d3] dark:border-[#1b2e4b]">
-                                            <button type="button"
-                                                class="flex w-full items-center p-4 text-white-dark dark:bg-[#1b2e4b]"
-                                                :class="{ '!text-primary': active === 1 }"
-                                                x-on:click="active === 1 ? active = null : active = 1">
-                                                Tata Tertib
-                                                <div class="ltr:ml-auto rtl:mr-auto"
-                                                    :class="{ 'rotate-180': active === 1 }">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-4 w-4">
-                                                        <path d="M19 9L12 15L5 9" stroke="currentColor"
-                                                            stroke-width="1.5" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-                                            </button>
-                                            <div x-cloak x-show="active === 1" x-collapse>
-                                                <div
-                                                    class="space-y-2 border-t border-[#d3d3d3] p-4 text-[13px] text-white-dark dark:border-[#1b2e4b]">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-                                                        mollitia sunt quas ea repudiandae nam itaque rem ducimus autem,
-                                                        iure iste dolorum, aut odio tempora dicta dolor eligendi,
-                                                        laudantium nobis deleniti molestiae! Animi nam quae veniam unde
-                                                        culpa libero, nobis repellat? Adipisci magnam harum voluptatibus
-                                                        beatae, dolorem alias, quaerat, labore aliquam qui veritatis
-                                                        incidunt! Cumque fugit at, consequuntur nobis repellat
-                                                        asperiores veritatis quidem deserunt, ratione sunt aspernatur
-                                                        totam eligendi nemo expedita reprehenderit? Animi, voluptatem
-                                                        laudantium! Exercitationem quas reiciendis quo reprehenderit,
-                                                        dolorum minus mollitia, maxime explicabo totam autem ratione, id
-                                                        natus rem veniam blanditiis ipsa. Dolor minus quasi animi
-                                                        placeat corrupti.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="rounded border border-[#d3d3d3] dark:border-[#1b2e4b]">
                                             <button type="button"
                                                 class="flex w-full items-center p-4 text-white-dark dark:bg-[#1b2e4b]"
                                                 :class="{ '!text-primary': active === 2 }"
                                                 x-on:click="active === 2 ? active = null : active = 2">
-                                                Peraturan Pada Saat Jam Kantor
+                                              {{ $tatatertib->judul }}
                                                 <div class="ltr:ml-auto rtl:mr-auto"
                                                     :class="{ 'rotate-180': active === 2 }">
                                                     <svg width="24" height="24" viewBox="0 0 24 24"
@@ -1283,249 +1248,17 @@
                                                 <div
                                                     class="border-t border-[#d3d3d3] p-4 text-[13px] dark:border-[#1b2e4b]">
                                                     <p>
-                                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis
-                                                        veniam laboriosam laborum culpa, eveniet vero minima doloribus
-                                                        possimus, quaerat libero labore ex, magni dolore! Dolorem
-                                                        excepturi culpa obcaecati voluptate qui animi alias, aspernatur
-                                                        amet necessitatibus mollitia quis corporis nesciunt soluta?
-                                                        Deserunt sint provident a magnam magni iste consectetur
-                                                        temporibus, ab in libero voluptatum soluta eius. Mollitia iste
-                                                        facere voluptatibus placeat vero nihil pariatur beatae? Velit
-                                                        sapiente maxime, corporis reiciendis dolore quisquam non! Sunt
-                                                        tenetur a fugiat quo laudantium ea, voluptates labore. Quos
-                                                        temporibus ab, vitae fugiat, rerum sapiente corrupti commodi
-                                                        cupiditate maxime eaque illum nesciunt eligendi aliquid
-                                                        repellendus distinctio officia illo quidem enim repellat ipsum
-                                                        eos tempore asperiores, tenetur dolorum? Unde.
+                                                        {!! $tatatertib->deskripsi !!}
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="rounded border border-[#d3d3d3] dark:border-[#1b2e4b]">
-                                            <button type="button"
-                                                class="flex w-full items-center p-4 text-white-dark dark:bg-[#1b2e4b]"
-                                                :class="{ '!text-primary': active === 3 }"
-                                                x-on:click="active === 3 ? active = null : active = 3">
-                                                Peraturan Sosial
-                                                <div class="ltr:ml-auto rtl:mr-auto"
-                                                    :class="{ 'rotate-180': active === 3 }">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-4 w-4">
-                                                        <path d="M19 9L12 15L5 9" stroke="currentColor"
-                                                            stroke-width="1.5" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-                                            </button>
-                                            <div x-cloak x-show="active === 3" x-collapse>
-                                                <div
-                                                    class="border-t border-[#d3d3d3] p-4 text-[13px] dark:border-[#1b2e4b]">
-                                                    <p>
-                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life
-                                                        accusamus terry richardson ad squid. 3
-                                                        wolf moon officia aute, non cupidatat skateboard dolor brunch.
-                                                        Food truck quinoa nesciunt laborum
-                                                        eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
-                                                        squid single-origin coffee nulla
-                                                        assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                                                        beer labore wes anderson cred nesciunt
-                                                        sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                                        Leggings occaecat craft beer
-                                                        farm-to-table, raw denim aesthetic synth nesciunt you probably
-                                                        haven't heard of them accusamus
-                                                        labore sustainable VHS.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="rounded border border-[#d3d3d3] dark:border-[#1b2e4b]">
-                                            <button type="button"
-                                                class="flex w-full items-center p-4 text-white-dark dark:bg-[#1b2e4b]"
-                                                :class="{ '!text-primary': active === 4 }"
-                                                x-on:click="active === 4 ? active = null : active = 4">
-                                                Peraturan Tata Busana
-                                                <div class="ltr:ml-auto rtl:mr-auto"
-                                                    :class="{ 'rotate-180': active === 4 }">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-4 w-4">
-                                                        <path d="M19 9L12 15L5 9" stroke="currentColor"
-                                                            stroke-width="1.5" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-                                            </button>
-                                            <div x-cloak x-show="active === 4" x-collapse>
-                                                <div
-                                                    class="border-t border-[#d3d3d3] p-4 text-[13px] dark:border-[#1b2e4b]">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
-                                                        numquam repellat eligendi ullam explicabo quas consequatur sit
-                                                        libero nobis at molestias dolorem distinctio dolore id voluptate
-                                                        laboriosam sapiente quaerat quam, quos maxime! Omnis quae nemo
-                                                        distinctio fugiat. Molestias praesentium, nostrum soluta
-                                                        accusantium minima laboriosam voluptatum placeat veniam.
-                                                        Quisquam, nam, vero quae porro, nesciunt mollitia sequi quaerat
-                                                        dolor ratione fugit reiciendis facilis adipisci amet consectetur
-                                                        molestiae! Eum nihil, rem cupiditate veritatis eos deserunt
-                                                        culpa itaque optio odit molestiae incidunt quisquam sint labore
-                                                        velit eaque praesentium maiores pariatur ab consectetur repellat
-                                                        similique omnis magnam nostrum? Laboriosam cum dolores fugiat
-                                                        eos libero et harum, pariatur voluptatem nam quam, sunt modi!
-                                                        Libero, natus mollitia nostrum quas, adipisci consectetur
-                                                        laborum eos aspernatur, reiciendis minima officiis!
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="rounded border border-[#d3d3d3] dark:border-[#1b2e4b]">
-                                            <button type="button"
-                                                class="flex w-full items-center p-4 text-white-dark dark:bg-[#1b2e4b]"
-                                                :class="{ '!text-primary': active === 5 }"
-                                                x-on:click="active === 5 ? active = null : active = 5">
-                                                Peraturan Piket
-                                                <div class="ltr:ml-auto rtl:mr-auto"
-                                                    :class="{ 'rotate-180': active === 5 }">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-4 w-4">
-                                                        <path d="M19 9L12 15L5 9" stroke="currentColor"
-                                                            stroke-width="1.5" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-                                            </button>
-                                            <div x-cloak x-show="active === 5" x-collapse>
-                                                <div
-                                                    class="border-t border-[#d3d3d3] p-4 text-[13px] dark:border-[#1b2e4b]">
-                                                    <p>
-                                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                                        Praesentium excepturi consequatur sed a laborum quisquam sequi
-                                                        ut perspiciatis id. Tempora voluptate optio, impedit praesentium
-                                                        cupiditate culpa ea atque delectus libero magni? At modi itaque
-                                                        unde nobis eum fuga corrupti minima, consequuntur perspiciatis
-                                                        impedit reiciendis omnis rem dolores ad in nemo ut temporibus
-                                                        aperiam animi est dolorum aut facilis aliquam magnam? Eos sequi
-                                                        consectetur impedit alias repellendus eaque soluta quae? Dolorum
-                                                        ratione cumque officia maxime, molestias tempore explicabo
-                                                        dignissimos harum totam error ut repellendus, sit eius expedita
-                                                        tenetur doloribus? Itaque, nesciunt illum. Distinctio
-                                                        consequuntur nemo excepturi quo minus earum, eum rerum!
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="rounded border border-[#d3d3d3] dark:border-[#1b2e4b]">
-                                            <button type="button"
-                                                class="flex w-full items-center p-4 text-white-dark dark:bg-[#1b2e4b]"
-                                                :class="{ '!text-primary': active === 6 }"
-                                                x-on:click="active === 6 ? active = null : active = 6">
-                                                Hukuman Bagi Siswa yang Melanggar Peraturan
-                                                <div class="ltr:ml-auto rtl:mr-auto"
-                                                    :class="{ 'rotate-180': active === 6 }">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-4 w-4">
-                                                        <path d="M19 9L12 15L5 9" stroke="currentColor"
-                                                            stroke-width="1.5" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-                                            </button>
-                                            <div x-cloak x-show="active === 6" x-collapse>
-                                                <div
-                                                    class="border-t border-[#d3d3d3] p-4 text-[13px] dark:border-[#1b2e4b]">
-                                                    <p>
-                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life
-                                                        accusamus terry richardson ad squid. 3
-                                                        wolf moon officia aute, non cupidatat skateboard dolor brunch.
-                                                        Food truck quinoa nesciunt laborum
-                                                        eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
-                                                        squid single-origin coffee nulla
-                                                        assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                                                        beer labore wes anderson cred nesciunt
-                                                        sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                                        Leggings occaecat craft beer
-                                                        farm-to-table, raw denim aesthetic synth nesciunt you probably
-                                                        haven't heard of them accusamus
-                                                        labore sustainable VHS.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="rounded border border-[#d3d3d3] dark:border-[#1b2e4b]">
-                                            <button type="button"
-                                                class="flex w-full items-center p-4 text-white-dark dark:bg-[#1b2e4b]"
-                                                :class="{ '!text-primary': active === 7 }"
-                                                x-on:click="active === 7 ? active = null : active = 7">
-                                                Selama Prakerin Berlangsung
-                                                <div class="ltr:ml-auto rtl:mr-auto"
-                                                    :class="{ 'rotate-180': active === 7 }">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-4 w-4">
-                                                        <path d="M19 9L12 15L5 9" stroke="currentColor"
-                                                            stroke-width="1.5" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-                                            </button>
-                                            <div x-cloak x-show="active === 7" x-collapse>
-                                                <div
-                                                    class="border-t border-[#d3d3d3] p-4 text-[13px] dark:border-[#1b2e4b]">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                        Exercitationem facere numquam optio ab a reiciendis incidunt
-                                                        veniam quibusdam, dolores autem recusandae animi natus placeat
-                                                        inventore sapiente architecto consequatur obcaecati porro? Ab
-                                                        voluptate dolor cumque, aliquam qui aperiam a voluptates,
-                                                        ducimus explicabo facilis corporis necessitatibus rem earum quis
-                                                        perferendis, recusandae nihil modi. Corporis nulla labore rerum
-                                                        reiciendis magni maxime sint accusantium?
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="rounded border border-[#d3d3d3] dark:border-[#1b2e4b]">
-                                            <button type="button"
-                                                class="flex w-full items-center p-4 text-white-dark dark:bg-[#1b2e4b]"
-                                                :class="{ '!text-primary': active === 8 }"
-                                                x-on:click="active === 8 ? active = null : active = 8">
-                                                Peraturan Setiap Project Kegiatan Magang
-                                                <div class="ltr:ml-auto rtl:mr-auto"
-                                                    :class="{ 'rotate-180': active === 8 }">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-4 w-4">
-                                                        <path d="M19 9L12 15L5 9" stroke="currentColor"
-                                                            stroke-width="1.5" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-                                            </button>
-                                            <div x-cloak x-show="active === 8" x-collapse>
-                                                <div
-                                                    class="border-t border-[#d3d3d3] p-4 text-[13px] dark:border-[#1b2e4b]">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                        Cupiditate consequuntur quasi ratione laboriosam repellendus
-                                                        assumenda placeat. Totam perspiciatis minima doloribus tempore
-                                                        vel placeat distinctio veniam qui, aliquid culpa deserunt
-                                                        mollitia natus fuga quaerat! Ratione dicta, veniam et culpa
-                                                        delectus voluptas cumque, officia voluptatum sit saepe veritatis
-                                                        eius omnis, earum iusto eum quod cum. Iure nisi minima beatae
-                                                        culpa labore dolore quasi repellat aperiam ad molestiae
-                                                        voluptatem alias aliquam distinctio soluta, expedita vel ab
-                                                        nihil quaerat, cum quas, assumenda sequi temporibus! Asperiores
-                                                        maiores velit, voluptates ex illum numquam harum molestias.
-                                                        Maiores.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
+                                @empty
+
+                                @endforelse
                                 <template x-if="codeArr.includes('code1')">
                                     <pre class="code overflow-auto rounded-md !bg-[#191e3a] p-4 text-white">
                                         &lt;!-- basic --&gt;

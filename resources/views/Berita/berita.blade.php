@@ -167,33 +167,19 @@
                                 <div class="mx-3 my-0.5 w-px self-stretch bg-white/20"></div>
                                 <p class="shrink-0 text-tiny+">{{ $row->created_at->diffForHumans() }}</p>
                             </div>
-                            <div class="mr-1.5 flex">
-                                {{-- @if ($blog->isLikedByUser())
-                                    <form action="{{ route('Berita.unlike', $blog) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                fill="red" width="24" height="24">
-                                                <path d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M11 2C6.029 2 2 6.029 2 11c0 4.97 4.029 9 9 9 4.97 0 9-4.03 9-9 0-4.971-4.03-9-9-9zm3 13H8v-2h6v2zm0-4H8V7h6v4z" />
-                                            </svg>
-                                        </button>
-                                    </form>
-                                @else
-                                    <form action="{{ route('Berita.like', $blog) }}" method="POST">
-                                        @csrf
-                                        <button type="submit">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                fill="none" width="24" height="24">
-                                                <path d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M11 2C6.029 2 2 6.029 2 11c0 4.97 4.029 9 9 9 4.97 0 9-4.03 9-9 0-4.971-4.03-9-9-9zm0 16l-4-4h8l-4 4z" />
-                                            </svg>
-                                        </button>
-                                    </form>
-                                @endif --}}
+                            <form action="{{ route('berita_siswa.update',$row->id) }}" method="post">
+                                @method('PUT')
+                                @csrf
+                                <div class="mr-1.5 flex">
+                                    <button type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            fill="none" width="24" height="24">
+                                            <path d="M0 0h24v24H0z" fill="none" />
+                                            <path
+                                                d="M11 2C6.029 2 2 6.029 2 11c0 4.97 4.029 9 9 9 4.97 0 9-4.03 9-9 0-4.971-4.03-9-9-9zm0 16l-4-4h8l-4 4z" />
+                                        </svg>
+                                    </button>
+                            </form>
 
                                 <button x-tooltip="'Save'"
                                     class="btn h-7 w-7 rounded-full p-0 text-navy-100 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">

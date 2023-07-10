@@ -39,6 +39,7 @@
                     Edit Tata Tertib
                 </h2>
             </div>
+
         </div>
         <div class="grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
             <div class="col-span-12 lg:col-span-12">
@@ -52,38 +53,40 @@
                                         <i class="fa-solid fa-layer-group text-base"></i>
                                         <span>Tata Tertib</span>
                                     </button>
-
                                 </div>
                             </div>
                         </div>
+
+
                         <form action="{{ route('tatatertib.update', $tataTertib->id) }}" method="post">
-                        @csrf
-                            @method('PUT')
-                            <div class="tab-content p-4 sm:p-5">
-                                <div class="space-y-5">
-                                    <label class="block">
-                                        <span class="font-medium text-slate-600 dark:text-navy-100">Judul</span>
-                                        <input id="judul" name="judul"
-                                            class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                            value="{{ $tataTertib->judul }}" type="text" />
-                                    </label>
-                                    <div>
-                                        <span class="font-medium text-slate-600 dark:text-navy-100">Deskripsi</span>
-                                        <div class="mt-1.5 w-full">
-                                            <div>
-                                                <textarea name="deskripsi" id="summernote">{!! $tataTertib->deskripsi !!}</textarea>
+                            @csrf
+                                @method('PUT')
+                                <div class="tab-content p-4 sm:p-5">
+                                    <div class="space-y-5">
+                                        <label class="block">
+                                            <span class="font-medium text-slate-600 dark:text-navy-100">Judul</span>
+                                            <input id="judul" name="judul"
+                                                class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                value="{{ $tataTertib->judul }}" type="text" />
+                                        </label>
+                                        <div>
+                                            <span class="font-medium text-slate-600 dark:text-navy-100">Deskripsi</span>
+                                            <div class="mt-1.5 w-full">
+                                                <div>
+                                                    <textarea name="deskripsi" id="summernote">{!! $tataTertib->deskripsi !!}</textarea>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="flex justify-end space-x-2">
-                                        <a href="{{ route('tatatertib.index') }}"
-                                            class="btn min-w-[7rem] border border-slate-300 font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90">Batal</a>
-                                        <button type="submit"
-                                            class="btn min-w-[7rem] bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">Simpan</button>
+                                        <div class="flex justify-end space-x-2">
+                                            <a href="{{ route('tatatertib.index') }}"
+                                                class="btn min-w-[7rem] border border-slate-300 font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90">Batal</a>
+                                            <button type="submit"
+                                                class="btn min-w-[7rem] bg-info font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">Simpan</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+
                     </div>
                 </div>
             </div>
@@ -92,7 +95,7 @@
 </body>
 <script>
     $('#summernote').summernote({
-        placeholder: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam sequi, quia sed nemo officiis ad labore rerum cumque nam tempora!',
+        placeholder: 'Deskripsi..',
         tabsize: 2,
         height: 120,
         toolbar: [
