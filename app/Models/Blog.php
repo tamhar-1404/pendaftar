@@ -19,7 +19,8 @@ class Blog extends Model
         'deskripsi',
         'files',
         'foto_id',
-        'kategori'
+        'kategori',
+        'likes_count',
     ];
 
     public function likedBy(): BelongsToMany
@@ -42,5 +43,9 @@ class Blog extends Model
     public function isLikedByUser()
     {
         return $this->likedBy->contains('id', auth()->user()->id);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
