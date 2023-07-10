@@ -57,7 +57,7 @@ class AprovalController extends Controller
 
         $users = User::where('role', 'guru')->where('sekolah', $aproval->sekolah)->get();
         foreach ($users as $user) {
-           Mail::to($user->email)->send(new Guru_email($approval->name));
+           Mail::to($user->email)->send(new Guru_email($aproval->name));
         }
 
         $foto_siswa = $aproval->foto_siswa;
