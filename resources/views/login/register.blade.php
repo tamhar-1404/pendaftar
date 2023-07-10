@@ -31,7 +31,7 @@
 
 
     <!-- Page Wrapper -->
-    <div  class="h-screen  flex w-full  bg-slate-50 dark:bg-navy-900" >
+    <div  class="h-screen   flex w-full  bg-slate-50 dark:bg-navy-900" id="wizardForm" >
         <div class="fixed top-0 hidden p-6 lg:block lg:px-12">
             <a href="#" class="flex items-center space-x-2">
                 <img class="h-8 w-100" src="{{asset('lineone/images/hummasoft2.png')}}" alt="logo" />
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="mt-[15%]">
-                    <form id="wizardForm" action="{{ route('login.store') }}" class="relative"  method="post" enctype="multipart/form-data">
+                    <form  action="{{ route('login.store') }}" class="relative"  method="post" enctype="multipart/form-data">
                         @csrf
                           <!-- Step 1 -->
                           <div class="step active ">
@@ -95,6 +95,7 @@
                               <div class="flex gap-2">
                                 <input class="text-sm" type="radio" name="jeniskelamin" id="radio" value="laki-laki"> <p>Laki-laki</p>
                                 <input class="text-sm" type="radio" name="jeniskelamin" id="radio" value="Perempuan"> <p>Perempuan </p>
+                                <span></span>
                               </div>
                             </div>
                             <div class="mt-19 "> <br>
@@ -242,45 +243,63 @@
             const inputs = Array.from(step.getElementsByTagName("input"));
             const textareas = Array.from(step.getElementsByTagName("textarea"));
 
-            let isValid = true;
+            var isValid = true;
 
-            inputs.forEach(function(input) {
-              if (!input.checkValidity()) {
-                input.classList.add("border-red-500");
-                input.placeholder = "Masukan data ";
-                isValid = false;
-              } else {
-                input.classList.remove("border-red-500");
-                input.placeholder = "";
-
-              }
-
-            });
+            var radio = {};
 
             inputs.forEach(function(input) {
             if (!input.checkValidity()) {
+                var errorMessage = input.parentNode.querySelector(".error-message");
+
+                if (!errorMessage) {
+                errorMessage = document.createElement("span");
+                errorMessage.className = "error-message text-red-500 text-sm";
+                input.parentNode.appendChild(errorMessage);
+                }
+
+                errorMessage.textContent = "Harap isi field ini.";
+
+                isValid = false;
+            } else {
+                input.classList.remove("border-red-500");
+                input.placeholder = "";
+                var errorMessage = input.parentNode.querySelector(".error-message");
+                if (errorMessage) {
+                errorMessage.remove();
+                }
+            }
+            });
+
+            inputs.forEach(function(input) {
+            if ( input.checkValidity()) {
                 if (input.type === "radio") {
                 var radioGroup = input.parentNode;
                 var errorMessage = radioGroup.querySelector(".error-message");
 
                 if (!errorMessage) {
-                    errorMessage = document.createElement("span");
-                    errorMessage.className = "error-message text-red-500";
-                    radioGroup.appendChild(errorMessage);
+                        errorMessage = document.createElement("span");
+                        errorMessage.className = "error-message text-red-500 text-sm";
+                        radioGroup.appendChild(errorMessage);
                 }
 
-                errorMessage.textContent = "Pilih salah satu opsi.";
+                  errorMessage.textContent = "Pilih salah satu opsi.";
                 } else {
-                input.classList.add("border-red-500");
-                input.placeholder = "Masukan data";
+                    input.classList.remove("border-red-500");
+                    input.placeholder = "";
                 }
-
                 isValid = false;
             } else {
                 input.classList.remove("border-red-500");
                 input.placeholder = "";
             }
             });
+
+
+
+
+
+
+
 
 
             textareas.forEach(function(textarea) {
