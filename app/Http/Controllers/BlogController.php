@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
@@ -48,10 +50,11 @@ class BlogController extends Controller
         $image->storeAs('public/fotoberita', $image->hashName());
 
         Blog::create([
+            'name' => auth()->user()->name,
             'foto' => $image->hashName(),
             'judul' => $request->judul,
             'keterangan' => $request->keterangan,
-            'tanggal' => $request->tanggal,
+            'tanggal' => Carbon::now()->format('Y-m-d'),
             'deskripsi' => $request->deskripsi,
             'kategori' => $request->kategori
         ]);
@@ -64,9 +67,10 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show($blog)
     {
-        return view('Berita.detail', compact('blog'));
+        $berita = Blog::find($blog);
+        return view('Berita.detail', compact('berita'));
     }
 
     /**

@@ -1797,7 +1797,7 @@
                         </div>
                     </div>
                 </div>
-             
+
 
             </div>
             @forelse ( $item as $modal)
@@ -1853,7 +1853,7 @@
                                 <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                                     Bukti
                                 </p>
-                                <img src="{{ asset('storage/image/' . $modal->image) }}" alt="">
+                                <img src="{{ asset('storage/image/' . $modal->image) }}" class="" alt="">
                             </div>
                         </div>
                         <!-- Modal footer -->

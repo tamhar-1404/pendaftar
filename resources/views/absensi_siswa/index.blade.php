@@ -19,6 +19,8 @@
         <link rel="stylesheet" type="text/css" media="screen" href="siswa/css/style.css" />
         <link rel="stylesheet" href="load/load.css">
         <link defer rel="stylesheet" type="text/css" media="screen" href="siswa/css/animate.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <link
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
             rel="stylesheet" />
@@ -78,7 +80,7 @@
                 @click="showCustomizer = false"
             ></div>
 
-            
+
         </div>
         <!-- end theme customizer section -->
 
