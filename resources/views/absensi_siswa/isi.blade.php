@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         /* Menyembunyikan tombol cetak saat mencetak */
         @media print {
@@ -87,7 +88,7 @@
                 </svg>
                 PRINT
             </button>
-            <button data-modal-target="staticModal" data-modal-toggle="staticModal" class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400">Tambah</button>
+            <button data-modal-target="staticModal" data-modal-toggle="staticModal" class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400">Tambah Izin</button>
             <form action="{{ route('absensi_siswa.store') }}" method="post">
                 @csrf
                 <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
@@ -133,12 +134,25 @@
                             <th scope="col" class="px-6 py-3">
                                Tanggal
                             </th>
+                           
                             <th scope="col" class="px-6 py-3">
-                                Jam
+                               Izin
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Keterangan
-                            </th>
+                                Hadir
+                             </th>
+                             <th scope="col" class="px-6 py-3">
+                                Sakit
+                             </th>
+                             <th scope="col" class="px-6 py-3">
+                                Telat
+                             </th>
+                             <th scope="col" class="px-6 py-3">
+                                Alfa
+                             </th>
+                             <th scope="col" class="px-6 py-3">
+                                Aksi
+                             </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -157,14 +171,32 @@
                                 {{ $absen->tanggal }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $absen->jam }}
-                            </td>
-                            <td class="px-6 py-4 ">
-                                @if($absen->keterangan === 'Hadir')
-                                    <span class=" text-green-500">{{ $absen->keterangan }}</span>
-                                @else
-                                    <span class=" text-red-500">{{ $absen->keterangan }}</span>
+                                @if($absen->keterangan === 'izin')
+                                <i class="fa fa-check px-1" style="font-size:20px"></i>
                                 @endif
+                            </td>
+                            <td class="px-6 py-4">
+                                @if($absen->keterangan === 'Hadir')
+                                <i class="fa fa-check px-1" style="font-size:20px"></i>
+                                @endif
+                            </td>
+                            <td class="px-6 py-4">
+                                @if($absen->keterangan === 'Sakit')
+                                <i class="fa fa-check px-1" style="font-size:20px"></i>
+                                @endif
+                            </td>
+                            <td class="px-6 py-4">
+                                @if($absen->keterangan === 'telat')
+                                <i class="fa fa-check px-1" style="font-size:20px"></i>
+                                @endif
+                            </td>
+                            <td class="px-6 py-4">
+                                @if($absen->keterangan === 'Alfa')
+                                <i class="fa fa-check px-1" style="font-size:20px"></i>
+                                @endif
+                            </td>
+                            <td>
+                                <button class="btn btn-outline-info w-1"><i class="fa fa-eye"></i></button>
                             </td>
                         </tr>
                         @empty

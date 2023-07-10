@@ -70,7 +70,7 @@ class AbsensiSiswaController extends Controller
         ]);
         // dd($request->jam);
         $keterangan = $request->keterangan;
-        if($request->jam > '11:00' ){
+        if($request->jam > '08:00' ){
                $keterangan = $request->jam;
                 $keterangan = $telat;
         }
