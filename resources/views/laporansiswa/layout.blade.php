@@ -236,12 +236,7 @@
                                     @empty
                                 </div>
                             </div>
-                                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                                        <strong class="font-bold">Laporan siswa !</strong>
-                                        <span class="block sm:inline">Data laporan masih kosong.</span>
-                                        <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                                           </span>
-                                      </div>
+                                  
                                     @endforelse
                             <div id="content2" class="card-content" style="display: none"
                                 class="hidden min-h-[400px] sm:min-h-[300px]">

@@ -51,7 +51,10 @@
         <center>
             <h1 style="color: #00c3ff;">Humma<span class="soft">soft</span></h1>
         </center>
-        <h1 style="color: #0d47a1;">Selamat murid anda telah di terima atas nama {{$name}}</h1>
+        <h2 style="color: #0d47a1;">Selamat murid anda telah di terima atas nama </h2>
+        <center>
+            <h1>{{ $name }}</h1>
+        </center>
     </div>
 </body>
 </html>
