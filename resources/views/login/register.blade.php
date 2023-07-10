@@ -257,65 +257,96 @@
                 input.parentNode.appendChild(errorMessage);
                 }
 
-                errorMessage.textContent = "Harap isi field ini.";
+                errorMessage.textContent = "Harap isi form ini.";
+
 
                 isValid = false;
             } else {
                 input.classList.remove("border-red-500");
-                input.placeholder = "";
+                input.placeholder = "Isi form ini";
                 var errorMessage = input.parentNode.querySelector(".error-message");
                 if (errorMessage) {
                 errorMessage.remove();
                 }
             }
             });
+            var radioGroups = {};
 
             inputs.forEach(function(input) {
-            if ( input.checkValidity()) {
+              if (input.checkValidity()) {
                 if (input.type === "radio") {
-                var radioGroup = input.parentNode;
-                var errorMessage = radioGroup.querySelector(".error-message");
-
-                if (!errorMessage) {
-                        errorMessage = document.createElement("span");
-                        errorMessage.className = "error-message text-red-500 text-sm";
-                        radioGroup.appendChild(errorMessage);
-                }
-
-                  errorMessage.textContent = "Pilih salah satu opsi.";
+                  var radioGroup = input.getAttribute("id");
+                  if (!radioGroups.hasOwnProperty(radioGroup)) {
+                    radioGroups[radioGroup] = [];
+                  }
+                  radioGroups[radioGroup].push(input);
                 } else {
-                    input.classList.remove("border-red-500");
-                    input.placeholder = "";
+
                 }
-                isValid = false;
-            } else {
+              } else {
                 input.classList.remove("border-red-500");
                 input.placeholder = "";
-            }
+              }
             });
 
+            // Cek radio button yang tidak dipilih
+            Object.keys(radioGroups).forEach(function(radioGroup) {
+              var radioInputs = radioGroups[radioGroup];
+              var isChecked = radioInputs.some(function(input) {
+                return input.checked;
+              });
 
+              if (!isChecked) {
+                var errorMessage = radioInputs[0].parentNode.querySelector(".error-message");
 
+                if (!errorMessage) {
+                  errorMessage = document.createElement("span");
+                  errorMessage.className = "error-message text-red-500 text-sm";
+                  radioInputs[0].parentNode.appendChild(errorMessage);
+                }
 
-
-
+                errorMessage.textContent = "Pilih salah satu opsi.";
+                isValid = false;
+              }
+            });
 
 
 
             textareas.forEach(function(textarea) {
               if (!textarea.checkValidity()) {
-                textarea.classList.add("border-red-500");
-                textarea.placeholder = "jangan di kosongkan";
+                var errorMessage = textarea.parentNode.querySelector(".error-message");
+
+                if (!errorMessage) {
+                errorMessage = document.createElement("span");
+                errorMessage.className = "error-message text-red-500 text-sm";
+                textarea.parentNode.appendChild(errorMessage);
+                }
+
+                errorMessage.textContent = "Harap isi form ini.";
+
                 isValid = false;
               } else {
                 textarea.classList.remove("border-red-500");
                 textarea.placeholder = "";
+                var errorMessage = textarea.parentNode.querySelector(".error-message");
+                if (errorMessage) {
+                errorMessage.remove();
+                }
 
               }
             });
 
+
+
             return isValid;
           }
+
+          function validateFileType(input) {
+          const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+          return allowedTypes.includes(input.files[0].type);
+        }
+
+
 
           nextButtons.forEach(function(button) {
             button.addEventListener("click", function() {
