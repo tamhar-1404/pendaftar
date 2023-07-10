@@ -1436,7 +1436,6 @@
         <main class="main mt-9 px-7 w-full pb-9  ">
             <div class="">
                 <div class="">
-                    @forelse ($berita as $row)
                     <div class="card lg:p-6">
                         <!-- Author -->
                         <div>
@@ -1452,7 +1451,7 @@
                                         @mouseenter="isShowPopper = true">
                                         <div x-ref="popperRef" class="avatar h-12 w-12">
                                             <img class="mask is-squircle"
-                                                src="{{ asset('admin/images/avatar/avatar-19.jpg') }}"
+                                                src="{{ asset('image/logo.png') }}"
                                                 alt="avatar" />
                                         </div>
                                         <div x-ref="popperRoot" class="popper-root" :class="isShowPopper && 'show'">
@@ -1464,8 +1463,11 @@
                                             class="font-medium text-slate-700 line-clamp-1 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light">
                                             Hummasoft technology
                                         </a>
+                                        @php
+                                            use Carbon\Carbon;
+                                        @endphp
                                         <div class="mt-1.5 flex items-center text-xs">
-                                            <span class="line-clamp-1">Jun 26</span>
+                                            <span class="line-clamp-1">{{ Carbon::parse($berita->tanggal)->format('d M') }}</span>
                                             <div class="mx-2 my-0.5 w-px self-stretch bg-white/20"></div>
                                             <p class="shrink-0">8 min</p>
                                         </div>
@@ -1473,33 +1475,6 @@
                                 </div>
 
                                 <div class="flex space-x-3">
-                                    <div class="hidden sm:flex">
-                                        <button
-                                            class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    stroke-width="2"
-                                                    d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
-                                            </svg>
-                                        </button>
-                                        <button
-                                            class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                                            <i class="fab fa-twitter text-base"></i>
-                                        </button>
-                                        <button
-                                            class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                                            <i class="fab fa-linkedin text-base"></i>
-                                        </button>
-                                        <button
-                                            class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                                            <i class="fab fa-instagram text-base"></i>
-                                        </button>
-                                        <button
-                                            class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                                            <i class="fab fa-facebook text-base"></i>
-                                        </button>
-                                    </div>
                                     <div x-data="usePopper({ placement: 'bottom-end', offset: 4 })"
                                         @click.outside="isShowPopper && (isShowPopper = false)" class="inline-flex">
                                         <button x-ref="popperRef" @click="isShowPopper = !isShowPopper"
@@ -1580,94 +1555,20 @@
                         <!-- Blog Post -->
                         <div class="mt-6 font-inter text-base text-slate-600 dark:text-navy-200">
                             <h1 class="text-xl font-medium text-slate-900 dark:text-navy-50 lg:text-2xl">
-                                313 Pattern and Color ideas
+                                {{ $berita->judul }}
                             </h1>
                             <h3 class="mt-1">
-                                Spurred on by my observations at work, I have come up with a
-                                list of things to avoid as a doctor in a hospital setting
-                                (especially for interns and medical students):
+                                {{ $berita->keterangan }}
                             </h3>
                             <img class="mt-5 h-80 w-full rounded-lg object-cover object-center"
-                                src="{{ asset('admin/images/object/magang.jpeg') }}" alt="image" />
+                                src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="image" />
                             <p class="mt-1 text-center text-xs+ text-slate-400 dark:text-navy-300">
                                 <span> Photo by </span>
-                                <a href="#" class="underline">Unsplash</a>
+                                <a href="#" class="underline">{{ $berita->name }}</a>
                             </p>
                             <br />
                             <p>
-                                Major changes have recently occured in my life, both
-                                personally and professionally. We're approaching five years
-                                since the inception of this blog, and going back to read the
-                                posts from May '04 is quite the experience. I suppose its what
-                                diaries and journals are for, the chance to go back and read
-                                out your thoughts and ideas from another time. Kind of like
-                                mental time travel.
-                            </p>
-                            <br />
-                            <p>
-                                One thing is for sure, I am not who I was then. In fact, I am
-                                not who I was last year or the year before that. I may have
-                                some (we shed and create a lot of cells frequently) of the
-                                bodily composition of that person but we are definitely on
-                                different wavelengths.
-                            </p>
-                            <br />
-                            <p>
-                                This whole blogging business started off as a documentation of
-                                odd and quirky ideas I might have. I had a lot of time on my
-                                hands back then, hence the frequency of the posts. With time,
-                                the posts have decreased in number but have also slightly
-                                sharpened in focus. They may still be random and don't
-                                generally adhere to one unified theme, but this thing was
-                                meant to be disjointed and arbitrary anyway.
-                            </p>
-                            <br />
-                            <div class="border-l-4 border-slate-300 pl-4 dark:border-navy-400">
-                                <p class="font-medium italic text-slate-800 dark:text-navy-100">
-                                    Why is Tailwind removing the default styles on my h1
-                                    elements? How do I disable this? What do you mean I lose all
-                                    the other base styles too?
-                                </p>
-                            </div>
-                            <br />
-                            <p>
-                                One thing is for sure, I am not who I was then. In fact, I am
-                                not who I was last year or the year before that. I may have
-                                some (we shed and create a lot of cells frequently) of the
-                                bodily composition of that person but we are definitely on
-                                different wavelengths.
-                            </p>
-                            <br />
-                            <p>
-                                This whole blogging business started off as a documentation of
-                                odd and quirky ideas I might have. I had a lot of time on my
-                                hands back then, hence the frequency of the posts. With time,
-                                the posts have decreased in number but have also slightly
-                                sharpened in focus. They may still be random and don't
-                                generally adhere to one unified theme, but this thing was
-                                meant to be disjointed and arbitrary anyway.
-                            </p>
-                            <br />
-                            <ul class="list-inside list-disc font-medium text-slate-800 dark:text-navy-100">
-                                <li>
-                                    Now this is a story all about how, my life got
-                                    flipped-turned upside down
-                                </li>
-                                <li>And I'd like to take a minute just sit right there</li>
-                                <li>
-                                    I'll tell you how I became the prince of a town called
-                                    Bel-Air
-                                </li>
-                            </ul>
-                            <br />
-                            <p>
-                                Major changes have recently occured in my life, both
-                                personally and professionally. We're approaching five years
-                                since the inception of this blog, and going back to read the
-                                posts from May '04 is quite the experience. I suppose its what
-                                diaries and journals are for, the chance to go back and read
-                                out your thoughts and ideas from another time. Kind of like
-                                mental time travel.
+                                {!! $berita->deskripsi !!}
                             </p>
                         </div>
 
@@ -1697,9 +1598,7 @@
                             </button>
                         </div>
                     </div>
-                    @empty
 
-                    @endforelse
                 </div>
 
 
