@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
     <!-- Meta tags  -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+
 
 
     <title>Login</title>
@@ -25,22 +27,23 @@
 
 </head>
 
-<body class="bg-black" >
+<body class="bg-black " >
 
 
     <!-- Page Wrapper -->
-    <div  class=" h-1/2 flex w-full  bg-slate-50 dark:bg-navy-900" >
+    <div  class="h-screen  flex w-full  bg-slate-50 dark:bg-navy-900" >
         <div class="fixed top-0 hidden p-6 lg:block lg:px-12">
             <a href="#" class="flex items-center space-x-2">
                 <img class="h-8 w-100" src="{{asset('lineone/images/hummasoft2.png')}}" alt="logo" />
 
             </a>
         </div>
-        <div class=" w-full h-1/2 flex ">
-            <div class="w-full h-auto bg-gray-50 flex justify-center pt-5 ">
-             <div class="w-1/2 h-full">
-               @include('login.svg')
-             </div>
+        <div class=" w-full  flex items-center" style="height: 100%">
+            <div class="w-full bg-gray-50 flex justify-center pt-5 ">
+                <div class="lg:w-1/2">
+                     @include('login.svg')
+                </div>
+            </div>
         </div>
         <main class="flex w-full flex-col  items-center bg-white dark:bg-navy-700 lg:max-w-md">
             <div class="w-full h-full flex-col p-5 gap-8   ">
