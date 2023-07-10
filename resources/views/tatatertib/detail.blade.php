@@ -17,9 +17,9 @@
                     TATA TERTIB SISWA MAGANG
                 </h2>
             </div>
-            <div class="pt-2">
-                <p>
-                    {!! $row->deskripsi !!}
+            <div class="pt-2 w-full text-center">
+                <p class="">
+                  {!!$row ->deskripsi!!}
                 </p>
             </div>
         </div>

@@ -234,90 +234,12 @@
                                 </td>
                                 <td class="whitespace-nowrap px-3 py-3">
                                     <div class="flex items-center space-x-2">
-                                        <button data-modal-target="defaultModal" data-modal-toggle="defaultModal">
+                                        <button data-modal-target="defaultModal{{$mou->id}}" data-modal-toggle="defaultModal{{$mou->id}}">
                                             <div
                                                 class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent ">
                                                 <span class=" p-1  font-semibold dark:hover:text-black">Edit</span>
                                             </div>
                                         </button>
-                                        <div id="editmodal" class="fixed z-10 inset-0 overflow-y-auto hidden">
-                                            <div class="flex justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                                                <div class="fixed inset-0 transition-opacity">
-                                                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-                                                </div>
-                                                <div
-                                                    class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                                                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                                        <div class="max-w-7xl mx-auto">
-                                                            <div class="flex flex-col">
-                                                                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-                                                                    Edit Data MOU
-                                                                </h3>
-                                                                <form class="mt-4">
-                                                                    <div class="mt-4">
-                                                                        <label for="logo"
-                                                                            class="block text-gray-700 font-medium mb-2">Logo</label>
-                                                                        <input id="ctnFile" type="file"
-                                                                            class="block w-full h-9 rounded-md file:py-2 file:px-4 file:border-0 file:font-semibold p-0  bg-white border focus:outline-none focus:ring  focus:ring-indigo-200 focus:ring-opacity-50 file:bg-[#24AEE4] ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-[#24AEE4]"
-                                                                            required />
-                                                                    </div>
-                                                                    <div class="mt-4">
-                                                                        <label for="nama"
-                                                                            class="block text-gray-700 font-medium mb-2">Nama</label>
-                                                                        <input type="text" id="nama" name="nama"
-                                                                            placeholder="Masukkan nama sekolah"
-                                                                            class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                                                    </div>
-                                                                    <div class="mt-4">
-                                                                        <label for="email"
-                                                                            class="block text-gray-700 font-medium mb-2">Email</label>
-                                                                        <input type="email" placeholder="Masukkan email" id="email"
-                                                                            name="email"
-                                                                            class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                                                    </div>
-                                                                    <div class="mt-4">
-                                                                        <label for="notelepon"
-                                                                            class="block text-gray-700 font-medium mb-2">No.Telepon</label>
-                                                                        <input type="number" placeholder="Masukkan no.telepon" id="notelepon"
-                                                                            name="notelepon"
-                                                                            class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                                                    </div>
-                                                                    <div class="mt-4">
-                                                                        <label for="alamat"
-                                                                            class="block text-gray-700 font-medium mb-2">Alamat</label>
-                                                                        <textarea name="alamat" id="alamat" placeholder="Masukkan alamat" id="alamat" name="alamat"
-                                                                            class="block w-full h-14 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
-                                                                    </div>
-                                                                    <div class="flex items-center justify-end mt-4">
-                                                                        <div class="ml-auto">
-                                                                            <button type="button"
-                                                                                class="bg-transparent border border-gray-300 text-gray-800 hover:bg-gray-300 hover:text-gray-800 font-semibold py-2 px-4 rounded">
-                                                                                Batal
-                                                                            </button>
-                                                                            <button
-                                                                                class="bg-blue-500 text-white hover:bg-blue-700 font-semibold py-2 px-4 rounded"
-                                                                                @click="showAlert()">
-                                                                                Simpan
-                                                                            </button>
-                                                                            <script>
-                                                                                async function showAlert() {
-                                                                                    new window.Swal({
-                                                                                        title: "Berhasil",
-                                                                                        text: "Data berhasil di tambahkan",
-                                                                                        icon: "success",
-                                                                                        button: "oke",
-                                                                                    });
-                                                                                }
-                                                                            </script>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
 
                                         <script>
@@ -418,11 +340,117 @@
         </div>
     </div>
 </main>
+@forelse ($mous as $mou)
+<div id="defaultModal{{$mou->id}}" class="fixed  z-50 inset-0 overflow-y-auto hidden">
+    <div class="flex justify-center min-h-screen w-[50%] pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+        <div
+            class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-col">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                            Edit Data MOU
+                        </h3>
+                        <form class="mt-4 form-class" action="{{route('mou.update',$mou->id)}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <div class="mt-4">
+                                <label for="logo"
+                                    class="block text-gray-700 font-medium mb-2">Logo</label>
+                                    <div class="avatar flex h-10 w-10">
+                                        <input type="hidden" name="oldimage" value="{{$mou->logo}}">
+                                        <input type="hidden" name="id" value="{{$mou->id}}">
+                                        <img class="mask is-squircle" src="{{ asset('storage/mou/' . $mou->logo) }}"
+                                            alt="avatar" />
+                                    </div>
+                                    <input id="ctnFile" type="file" name="logo"
+                                        class="block w-full h-9 rounded-md file:py-2 file:px-4 file:border-0 file:font-semibold p-0  bg-white border focus:outline-none focus:ring  focus:ring-indigo-200 focus:ring-opacity-50 file:bg-[#24AEE4] ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-[#24AEE4]"
+                                         />
+                            </div>
+                            <div class="mt-4">
+                                <label for="nama"
+                                    class="block text-gray-700 font-medium mb-2">Nama</label>
+                                <input type="text" id="nama" name="nama"
+                                    placeholder="Masukkan nama sekolah" value="{{$mou->nama}}"
+                                    class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            </div>
+                            <div class="mt-4">
+                                <label for="email"
+                                    class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" placeholder="Masukkan email" id="email"
+                                    name="email" value="{{ $mou->email }}"
+                                    class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            </div>
+                            <div class="mt-4">
+                                <label for="notelepon"
+                                    class="block text-gray-700 font-medium mb-2">No.Telepon</label>
+                                <input type="number" placeholder="Masukkan no.telepon" id="notelepon"
+                                    name="notelepon" value="{{ $mou->no }}"
+                                    class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            </div>
+                            <div class="mt-4">
+                                <label for="alamat"
+                                    class="block text-gray-700 font-medium mb-2">Alamat</label>
+                                <textarea name="alamat" id="alamat" placeholder=""  name="alamat"
+                                    class="block w-full h-14 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50"> {{ $mou->alamat }}</textarea>
+                            </div>
+                            <div class="flex items-center justify-end mt-4">
+                                <div class="ml-auto">
+                                    <button
+                                        class="bg-transparent border border-gray-300 text-gray-800 hover:bg-gray-300 hover:text-gray-800 font-semibold py-2 px-4 rounded">
+                                        Batal
+                                    </button>
+                                    <button type="submit"
+                                    id="submitButton"
+                                    class="bg-blue-500 text-white hover:bg-blue-700 font-semibold py-2 px-4 rounded">
+                                    Simpan
+                                </button>
+
+
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@empty
+
+@endforelse
+
+
 <!--
         This is a place for Alpine.js Teleport feature
         @see https://alpinejs.dev/directives/teleport
       -->
 <div id="x-teleport-target"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+
 <script>
     window.addEventListener("DOMContentLoaded", () => Alpine.start());
 </script>
+{{-- <script>
+    document.getElementById('submitButton').addEventListener('click', showAlert);
+
+    function showAlert(event) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: 'Berhasil',
+            text: 'Data berhasil ditambahkan',
+            icon: 'success',
+            confirmButtonText: 'Oke'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                event.target.closest('.form-class').submit();
+            }
+        });
+    }
+</script> --}}
