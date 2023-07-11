@@ -29,14 +29,12 @@ class ApprovalIzinController extends Controller
     public function index()
     {
         $today = date('Y-m-d');
-        ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status' => 'terimaabsen']);
-        ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status2' => '']);
-
+        ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status' => 'terimaabsen', 'status2' => '']);
         $menunggu = ApprovalIzin::where('status', 'menunggu')->get();
         $terima = ApprovalIzin::where('status2', 'izin')->get();
-
         return view('approvalizin.index', compact('menunggu', 'terima'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -57,37 +55,33 @@ class ApprovalIzinController extends Controller
      */
     public function store(Request $request, ApprovalIzin $approvalIzin)
     {
-        // if ($approvalIzin->status === 'menunggu') {
-        //
-                 // dd($request);
-                $this->validate($request, [
-                    'dari' => 'required',
-                    'sampai' => 'required',
-                    'keterangan'=> 'required',
-                    'deskripsi' => 'required',
-                    'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
-                ]);
-                $image = $request->file('bukti');
-                $image->storeAs('public/bukti_izin', $image->hashName());
+        $this->validate($request, [
+            'dari' => 'required',
+            'sampai' => 'required',
+            'keterangan' => 'required',
+            'deskripsi' => 'required',
+            'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
+        ]);
 
+        $image = $request->file('bukti');
+        $image->storeAs('public/bukti_izin', $image->hashName());
 
-            ApprovalIzin::create([
-                    'nama' => $request->nama,
-                    'sekolah' => $request->sekolah,
-                    'email' => $request->email,
-                    'dari' => $request->dari,
-                    'sampai' => $request->sampai,
-                    'keterangan' => $request->keterangan,
-                    'deskripsi' => $request->deskripsi,
-                    'status' => 'menunggu',
-                    'status2' => 'menunggu',
-                    'bukti' => $image->hashName()
-                ]);
-                // Mail::to($request->email)->send(new dataizinEmail($approvalIzin));
-                return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
-        //  } else {
-        //         return redirect()->back()->with('error', 'Maaf, tidak dapat melakukan konfirmasi pada data');
-        //  }
+        ApprovalIzin::create([
+            'nama' => $request->nama,
+            'sekolah' => $request->sekolah,
+            'email' => $request->email,
+            'dari' => $request->dari,
+            'sampai' => $request->sampai,
+            'keterangan' => $request->keterangan,
+            'deskripsi' => $request->deskripsi,
+            'status' => 'menunggu',
+            'status2' => 'menunggu',
+            'bukti' => $image->hashName(),
+            'tanggal' => $request->filled('tanggal') ? $request->tanggal : now()->format('Y-m-d'),
+            'jam' => $request->filled('jam') ? $request->jam : now()->format('H:i'),
+        ]);
+
+        return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
@@ -161,7 +155,7 @@ class ApprovalIzinController extends Controller
                          'bukti' => $izin->bukti,
                          'deskripsi' => $izin->deskripsi,
                          'tanggal' => $tanggalMulai->toDateString(),
-                         'jam' => $izin->jam,
+                         'jam' => $request->filled('jam') ? $request->jam : now()->format('H:i'),
                      ],
                      [
                          'status' => $izin->status,

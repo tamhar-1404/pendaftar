@@ -34,7 +34,7 @@ use App\Http\Controllers\MailController;
 |
 */
 // Admin
-
+Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
 Route::get('send-email' , [MailController::class,'index']);
 Route::get('siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa']);
 Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
