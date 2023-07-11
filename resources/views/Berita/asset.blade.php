@@ -1606,12 +1606,22 @@
                 </div>
                 <div class="bg-white rounded p-4 mt-4 shadow">
                     <form class="flex" method="POST" action="{{ route('comment.store') }}">
-                        @csrf
-                        <input type="hidden" name="blog_id" value="{{ $berita->id }}">
-                      <textarea class="w-full p-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Tulis komentar" name="comment"></textarea>
-                      <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2" type="submit">Kirim</button>
+                      @csrf
+                      <input type="hidden" name="blog_id" value="{{ $berita->id }}">
+                      <div class="flex flex-col w-full">
+                        <label for="txarea" class="font-medium text-gray-900 dark:text-white text-sm mb-2">Komentar</label>
+                        <div class="flex flex-row">
+                          <div class="flex flex-grow">
+                            <textarea class="w-full p-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Tulis komentar" name="comment" id="txarea"></textarea>
+                          </div>
+                          <div class="flex">
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2">Kirim</button>
+                          </div>
+                        </div>
+                      </div>
+
                     </form>
-                  </div>
+                </div>
 
 
 
@@ -1622,9 +1632,6 @@
         </div>
         <p class="text-gray-700 mb-2">{{ $comment->comment }}</p>
         <a href="#" class="text-blue-500">Balas</a>
-        @if (count($comment->reply_comments) != 0)
-            <span class="text-gray-500 ml-2">{{ count($comment->reply_comments) }} Balasan</span>
-        @endif
     </div>
 
     @if(count($comment->reply_comments) != 0)
