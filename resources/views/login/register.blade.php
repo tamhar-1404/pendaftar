@@ -31,7 +31,7 @@
 
 
     <!-- Page Wrapper -->
-    <div  class="h-screen  flex w-full  bg-slate-50 dark:bg-navy-900" >
+    <div  class="h-screen   flex w-full  bg-slate-50 dark:bg-navy-900" id="wizardForm" >
         <div class="fixed top-0 hidden p-6 lg:block lg:px-12">
             <a href="#" class="flex items-center space-x-2">
                 <img class="h-8 w-100" src="{{asset('lineone/images/hummasoft2.png')}}" alt="logo" />
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="mt-[15%]">
-                    <form id="wizardForm" action="{{ route('login.store') }}" class="relative"  method="post" enctype="multipart/form-data">
+                    <form  action="{{ route('login.store') }}" class="relative"  method="post" enctype="multipart/form-data">
                         @csrf
                           <!-- Step 1 -->
                           <div class="step active ">
@@ -95,6 +95,7 @@
                               <div class="flex gap-2">
                                 <input class="text-sm" type="radio" name="jeniskelamin" id="radio" value="laki-laki"> <p>Laki-laki</p>
                                 <input class="text-sm" type="radio" name="jeniskelamin" id="radio" value="Perempuan"> <p>Perempuan </p>
+                                <span></span>
                               </div>
                             </div>
                             <div class="mt-19 "> <br>
@@ -242,61 +243,110 @@
             const inputs = Array.from(step.getElementsByTagName("input"));
             const textareas = Array.from(step.getElementsByTagName("textarea"));
 
-            let isValid = true;
+            var isValid = true;
 
-            inputs.forEach(function(input) {
-              if (!input.checkValidity()) {
-                input.classList.add("border-red-500");
-                input.placeholder = "Masukan data ";
-                isValid = false;
-              } else {
-                input.classList.remove("border-red-500");
-                input.placeholder = "";
-
-              }
-
-            });
+            var radio = {};
 
             inputs.forEach(function(input) {
             if (!input.checkValidity()) {
-                if (input.type === "radio") {
-                var radioGroup = input.parentNode;
-                var errorMessage = radioGroup.querySelector(".error-message");
+                var errorMessage = input.parentNode.querySelector(".error-message");
 
                 if (!errorMessage) {
-                    errorMessage = document.createElement("span");
-                    errorMessage.className = "error-message text-red-500";
-                    radioGroup.appendChild(errorMessage);
+                errorMessage = document.createElement("span");
+                errorMessage.className = "error-message text-red-500 text-sm";
+                input.parentNode.appendChild(errorMessage);
                 }
 
-                errorMessage.textContent = "Pilih salah satu opsi.";
-                } else {
-                input.classList.add("border-red-500");
-                input.placeholder = "Masukan data";
-                }
+                errorMessage.textContent = "Harap isi form ini.";
+
 
                 isValid = false;
             } else {
                 input.classList.remove("border-red-500");
-                input.placeholder = "";
+                input.placeholder = "Isi form ini";
+                var errorMessage = input.parentNode.querySelector(".error-message");
+                if (errorMessage) {
+                errorMessage.remove();
+                }
             }
             });
+            var radioGroups = {};
+
+            inputs.forEach(function(input) {
+              if (input.checkValidity()) {
+                if (input.type === "radio") {
+                  var radioGroup = input.getAttribute("id");
+                  if (!radioGroups.hasOwnProperty(radioGroup)) {
+                    radioGroups[radioGroup] = [];
+                  }
+                  radioGroups[radioGroup].push(input);
+                } else {
+
+                }
+              } else {
+                input.classList.remove("border-red-500");
+                input.placeholder = "";
+              }
+            });
+
+            // Cek radio button yang tidak dipilih
+            Object.keys(radioGroups).forEach(function(radioGroup) {
+              var radioInputs = radioGroups[radioGroup];
+              var isChecked = radioInputs.some(function(input) {
+                return input.checked;
+              });
+
+              if (!isChecked) {
+                var errorMessage = radioInputs[0].parentNode.querySelector(".error-message");
+
+                if (!errorMessage) {
+                  errorMessage = document.createElement("span");
+                  errorMessage.className = "error-message text-red-500 text-sm";
+                  radioInputs[0].parentNode.appendChild(errorMessage);
+                }
+
+                errorMessage.textContent = "Pilih salah satu opsi.";
+                isValid = false;
+              }
+            });
+
 
 
             textareas.forEach(function(textarea) {
               if (!textarea.checkValidity()) {
-                textarea.classList.add("border-red-500");
-                textarea.placeholder = "jangan di kosongkan";
+                var errorMessage = textarea.parentNode.querySelector(".error-message");
+
+                if (!errorMessage) {
+                errorMessage = document.createElement("span");
+                errorMessage.className = "error-message text-red-500 text-sm";
+                textarea.parentNode.appendChild(errorMessage);
+                }
+
+                errorMessage.textContent = "Harap isi form ini.";
+
                 isValid = false;
               } else {
                 textarea.classList.remove("border-red-500");
                 textarea.placeholder = "";
+                var errorMessage = textarea.parentNode.querySelector(".error-message");
+                if (errorMessage) {
+                errorMessage.remove();
+                }
 
               }
             });
 
+
+
             return isValid;
           }
+
+          function validateFileType(input) {
+          const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+          return allowedTypes.includes(input.files[0].type);
+        }
+
+
 
           nextButtons.forEach(function(button) {
             button.addEventListener("click", function() {

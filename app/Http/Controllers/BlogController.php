@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\LikeBerita;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -152,12 +153,37 @@ class BlogController extends Controller
     }
 
 
-    public function like(Blog $blog, $blogId)
+    public function like($blogId)
     {
+        // dd($blogId);
         $blog = Blog::find($blogId);
-        $isLikedByUser = $blog->isLikedByUser();
-        $blog->like();
-        return redirect()->back();
+        // dd($blogId);
+        $cekLike = LikeBerita::where('user_id', Auth::user()->id)->where('berita_id', $blogId)->exists();
+        if ($cekLike) {
+            $blog->update([
+                'likes_count' =>  $blog->likes_count - 1,
+            ]);
+            LikeBerita::where('user_id', Auth::user()->id)->where('berita_id', $blogId)->delete();
+        }
+        else {
+            $a = [
+                'user_id' => Auth::user()->id,
+                'berita_id' => (integer) $blogId,
+            ];
+            // dd($a);
+            $blog->update([
+                'likes_count' =>  $blog->likes_count + 1,
+            ]);
+
+            // LikeBerita::create($a);
+            $model = new LikeBerita;
+            $model->user_id = Auth::user()->id;
+            $model->berita_id = (integer) $blogId;
+            $model->save();
+        }
+        // dd($currentLike);
+
+        return back()->with('success', 'Berhasil memberi like');
     }
 
     public function unlike(Blog $blog, $blogId)

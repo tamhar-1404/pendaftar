@@ -47,7 +47,7 @@ class PiketController extends Controller
          $rabu = anggota_piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
          $kamis = anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
          $jumat = anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
-         $catat = anggota_piket::where('siswa_id', 'LIKE', 'catatan')->where('waktu', 'LIKE', 'catatan')->get();
+         $catat = anggota_piket::where('siswa_id', '1')->where('waktu','catatan')->get();
 
          $senin_sore= anggota_piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'sore')->get();
          $selasa_sore = anggota_piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'sore')->get();
@@ -191,11 +191,13 @@ class PiketController extends Controller
         }
         $nama_siswa = $request->input('nama_siswa');
         foreach ($nama_siswa as $item) {
+            dd($item);
             anggota_piket::create([
                 'waktu' => $request->waktu,
                 'hari' => $request->hari,
                 'siswa_id' => $item
             ]);
+
         }
         return redirect()->route('piket.index');
 
