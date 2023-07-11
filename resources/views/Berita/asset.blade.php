@@ -1604,7 +1604,7 @@
                     </div>
 
                 </div>
-                <div class="bg-white rounded p-4 mt-4 shadow">
+                <div class="bg-white rounded p-4 mt-4 shadow mb-4">
                     <form class="flex" method="POST" action="{{ route('comment.store') }}">
                       @csrf
                       <input type="hidden" name="blog_id" value="{{ $berita->id }}">
@@ -1626,39 +1626,48 @@
 
 
                 @foreach ($berita->comments as $comment)
-    <div class="bg-white p-4 mb-4 mt-4 rounded shadow">
-        <div class="flex items-center mb-2">
-        <h4 class="text-lg font-bold">{{ $comment->user->name }}</h4>
-        </div>
-        <p class="text-gray-700 mb-2">{{ $comment->comment }}</p>
-        <a href="#" class="text-blue-500 reply-button">Balas</a>
-
-        <div class="reply-form hidden">
-            <form action="{{ route('comment.reply') }}" method="POST">
-            @csrf
-            <input type="hidden" name="comment_id" value="{{ $comment->id }}">
-            <div class="flex flex-row w-full">
-                <div class="flex flex-grow">
-                    <textarea class="w-full p-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Tulis balas" name="comment" id="txarea"></textarea>
-                </div>
-                <div class="flex">
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2">Balas</button>
+    <div class="bg-white p-4 mb-0 rounded shadow">
+            <div class="flex items-center mb-2">
+                <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('siswa/images/profile-10.jpeg') }}" alt="Profil Picture">
+                <div class="flex flex-col">
+                    <h4 class="text-lg font-bold">{{ $comment->user->name }}</h4>
+                    <p class="text-sm font-light">{{ Carbon::parse($comment->created_at)->format('d M Y') }}</p>
                 </div>
             </div>
-            </form>
+        <p class="text-gray-700 mb-2">{{ $comment->comment }}</p>
+        <span class="text-blue-500 reply-button">Balas</span>
+
+        <div class="reply-form hidden mt-2">
+            <div class="bg-white shadow-md border border-slate-200 rounded-md ">
+                <form action="{{ route('comment.reply') }}" method="POST">
+                @csrf
+                <input type="hidden" name="comment_id" value="{{ $comment->id }}">
+                <div class="flex w-full">
+                    <textarea class="w-full p-2 border-none rounded-t-md focus:outline-none mb-2" placeholder="Tulis balas" name="comment" id="txarea"></textarea>
+                </div>
+                <div class="flex flex-row-reverse mx-2 mb-2">
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2">Balas</button>
+                </div>
+                </form>
+            </div>
         </div>
     </div>
 
     @if(count($comment->reply_comments) != 0)
     @foreach ($comment->reply_comments as $reply)
-    <div class="bg-white p-4 ml-8 mb-4 rounded shadow">
+    <div class="bg-white p-4 ml-8 mt-2 shadow">
         <div class="flex items-center mb-2">
-        <h4 class="text-lg font-bold">{{ $reply->user->name }}</h4>
+            <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('siswa/images/profile-10.jpeg') }}" alt="Profil Picture">
+            <div class="flex flex-col">
+                <h4 class="text-lg font-bold">{{ $reply->user->name }}</h4>
+                <p class="text-sm font-light">{{ Carbon::parse($reply->created_at)->format('d M Y') }}</p>
+            </div>
         </div>
-        <p class="text-gray-700 mb-2">{{ $reply->comment }}</p>
+        <p class="text-gray-700 mb-2"><i class="fa-solid fa-reply text-gray-500"></i> <span class="text-blue-500">{{ $reply->komentar->user->name }}</span> {{ $reply->comment }}</p>
     </div>
     @endforeach
     @endif
+    <div class="mb-5"></div>
     @endforeach
             </div>
     </div>

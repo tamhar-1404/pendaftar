@@ -306,6 +306,7 @@
       @foreach ($berita->comments as $comment)
       <div class="bg-white p-4 mb-4 mt-4 rounded shadow">
           <div class="flex items-center mb-2">
+          <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('siswa/images/profile-10.jpeg') }}" alt="Profil Picture">
           <h4 class="text-lg font-bold">{{ $comment->user->name }}</h4>
           </div>
           <p class="text-gray-700 mb-2">{{ $comment->comment }}</p>
