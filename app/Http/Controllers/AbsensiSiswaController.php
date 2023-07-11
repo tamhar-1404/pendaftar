@@ -53,7 +53,10 @@ class AbsensiSiswaController extends Controller
     {
        //
     }
-
+    public function lihat()
+    {
+        return view('absensi_siswa.edit');
+    }
     /**
      * Store a newly created resource in storage.
      *
