@@ -51,8 +51,10 @@
         <center>
             <h1 style="color: #00c3ff;">Humma<span class="soft">soft</span></h1>
         </center>
+<center>
 
-        <p>Izin anda telah berakhir !</p>
+    <h2>Izin anda telah berakhir </h2>
+</center>
     </div>
 </body>
 </html>
