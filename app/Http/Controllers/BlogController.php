@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Comment;
 use App\Models\LikeBerita;
+use App\Models\ReplyComment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -192,5 +194,30 @@ class BlogController extends Controller
         $isLikedByUser = $blog->isLikedByUser();
         $blog->unlike();
         return redirect()->back();
+    }
+    public function comment_store(Request $request) {
+        // dd($request->all());
+        $user_id = Auth::user()->id;
+        $blog_id = $request->blog_id;
+
+        Comment::create([
+            'user_id' => $user_id,
+            'blog_id' => $blog_id,
+            'comment' => $request->comment,
+        ]);
+        return back()->with('success', 'Berhasil membuat komentar');
+    }
+
+    public function reply_comment(Request $request) {
+        $comment_id = $request->comment->id;
+        $user_id = Auth::user()->id;
+        $comment = $request->comment;
+
+        ReplyComment::create([
+            'comment_id' => $comment_id,
+            'user_id' => $user_id,
+            'comment' => $comment,
+        ]);
+        return back()->with('success', 'Berhsil membalas komentar');
     }
 }

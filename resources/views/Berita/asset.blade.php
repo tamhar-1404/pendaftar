@@ -1604,13 +1604,16 @@
                     </div>
 
                 </div>
-                  <div class="flex items-center space-x-4 mt-4">
-                    <img class="w-8 h-8 rounded-full" src="/image/logo.png" alt="Avatar">
-                    <div class="flex-grow">
-                      <textarea class="w-full p-2 border border-gray-300 rounded-md resize-none" placeholder="Tulis komentar"></textarea>
-                    </div>
-                    <button class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600">Kirim</button>
+                <div class="bg-white rounded p-4 mt-4 shadow">
+                    <form class="flex" method="POST" action="{{ route('comment.store') }}">
+                        @csrf
+                        <input type="hidden" name="blog_id" value="{{ $berita->id }}">
+                      <textarea class="w-full p-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Tulis komentar" name="comment"></textarea>
+                      <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2" type="submit">Kirim</button>
+                    </form>
                   </div>
+
+
 
                 @foreach ($berita->comments as $comment)
     <div class="bg-white p-4 mb-4 mt-4 rounded shadow">
