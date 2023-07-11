@@ -47,9 +47,11 @@ class BeritaSiswaController extends Controller
      * @param  \App\Models\Berita_Siswa  $berita_Siswa
      * @return \Illuminate\Http\Response
      */
-    public function show(Berita_Siswa $berita_Siswa)
+    public function show($berita_Siswa)
     {
-        return view('berita_siswa.detail');
+        // dd($berita_Siswa);
+        $berita = Blog::find($berita_Siswa);
+        return view('berita_siswa.detail', compact('berita'));
     }
 
     /**
