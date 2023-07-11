@@ -205,7 +205,7 @@
                                 @endif
                             </td>
                             <td>
-                                <button data-modal-target="staticModal1{{ $absen->id }}" data-modal-toggle="staticModal1{{ $absen->id }}" class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400">Tambah Izin</button>
+                                <button data-modal-target="staticModal1{{ $absen->id }}" data-modal-toggle="staticModal1{{ $absen->id }}" class="bg-blue-200 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400">Tambah Izin</button>
 
                             </td>
 

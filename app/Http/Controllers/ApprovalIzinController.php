@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\tolakdataEmail;
 use App\Mail\TerimaizinEmail;
 use App\Mail\dataizinEmail;
+use App\Mail\IzinBerakhir;
 use Carbon\Carbon;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -26,14 +27,24 @@ class ApprovalIzinController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $today = date('Y-m-d');
-        ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status' => 'terimaabsen', 'status2' => '']);
+        ApprovalIzin::whereDate('sampai', '>', $today)->update(['status' => 'terimaabsen', 'status2' => '']);
+
+        $expiredApprovals = ApprovalIzin::where('status', 'terimaabsen')->where('status2', '')->get();
+        if ($expiredApprovals->isNotEmpty()) {
+            $email = $expiredApprovals[0]->email;
+            Mail::to($email)->send(new IzinBerakhir());
+
+            }
+
         $menunggu = ApprovalIzin::where('status', 'menunggu')->get();
         $terima = ApprovalIzin::where('status2', 'izin')->get();
         return view('approvalizin.index', compact('menunggu', 'terima'));
     }
+
 
 
     /**
