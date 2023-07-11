@@ -143,6 +143,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita.like');
 Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
+Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');
 Route::delete('Berita/{post}/unlike', [BlogController::class, 'unlike'])->name('Berita.unlike');
 
 

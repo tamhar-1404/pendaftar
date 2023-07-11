@@ -209,7 +209,8 @@ class BlogController extends Controller
     }
 
     public function reply_comment(Request $request) {
-        $comment_id = $request->comment->id;
+        // dd($request->all());
+        $comment_id = $request->comment_id;
         $user_id = Auth::user()->id;
         $comment = $request->comment;
 

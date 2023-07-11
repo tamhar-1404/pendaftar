@@ -1631,7 +1631,22 @@
         <h4 class="text-lg font-bold">{{ $comment->user->name }}</h4>
         </div>
         <p class="text-gray-700 mb-2">{{ $comment->comment }}</p>
-        <a href="#" class="text-blue-500">Balas</a>
+        <a href="#" class="text-blue-500 reply-button">Balas</a>
+
+        <div class="reply-form hidden">
+            <form action="{{ route('comment.reply') }}" method="POST">
+            @csrf
+            <input type="hidden" name="comment_id" value="{{ $comment->id }}">
+            <div class="flex flex-row w-full">
+                <div class="flex flex-grow">
+                    <textarea class="w-full p-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Tulis balas" name="comment" id="txarea"></textarea>
+                </div>
+                <div class="flex">
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2">Balas</button>
+                </div>
+            </div>
+            </form>
+        </div>
     </div>
 
     @if(count($comment->reply_comments) != 0)
@@ -1656,8 +1671,25 @@
     <div id="x-teleport-target"></div>
     <script>
         window.addEventListener("DOMContentLoaded", () => Alpine.start());
-
     </script>
+    <script>
+        // Ambil semua elemen tombol balas
+        var replyButtons = document.getElementsByClassName('reply-button');
+
+        // Loop melalui setiap tombol balas
+        for (var i = 0; i < replyButtons.length; i++) {
+          // Tambahkan event listener pada setiap tombol balas
+          replyButtons[i].addEventListener('click', function() {
+            // Cari elemen form balasan terkait
+            var replyForm = this.nextElementSibling;
+
+            // Ubah visibilitas form balasan
+            replyForm.classList.toggle('hidden');
+          });
+        }
+
+      </script>
+
 </body>
 
 <!-- Mirrored from lineone.piniastudio.com/pages-blog-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 May 2023 04:16:41 GMT -->
