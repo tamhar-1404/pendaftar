@@ -27,6 +27,7 @@
     <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
     <script>
         tailwind.config = {
@@ -192,35 +193,84 @@
                         </div>
                       <table class="min-w-full text-left mt-5 text-sm font-light">
                         <thead class="border-b font-medium dark:border-neutral-500 ">
-                          <tr class="">
-                            <th scope="col" class="px-6 py-4">#</th>
-                            <th scope="col" class="px-6 py-4">Nama</th>
-                            <th scope="col" class="px-6 py-4">Sekolah</th>
-                            <th scope="col" class="px-6 py-4">Tanggal</th>
-                            <th scope="col" class="px-6 py-4 ">jam</th>
-                            <th scope="col" class="px-6 py-4">keterangan</th>
-                          </tr>
+                            <tr>
+
+                                <th scope="col" class="px-6 py-3">
+                                   #
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                   Nama
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                   Tanggal
+                                </th>
+
+                                <th scope="col" class="px-6 py-3">
+                                   Izin
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Hadir
+                                 </th>
+                                 <th scope="col" class="px-6 py-3">
+                                    Sakit
+                                 </th>
+                                 <th scope="col" class="px-6 py-3">
+                                    Telat
+                                 </th>
+                                 <th scope="col" class="px-6 py-3">
+                                    Alfa
+                                 </th>
+                                 <th scope="col" class="px-6 py-3">
+                                    Aksi
+                                 </th>
+                            </tr>
                         </thead>
                         <tbody>
                             @php
                             $no=1;
                             @endphp
                             @forelse ($terima as $absen)
-                          <tr
-                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                            <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $absen -> id }}</td>
-                            <td class="whitespace-nowrap px-4 py-4">{{ $absen->nama }}</td>
-                            <td class="whitespace-nowrap px-4 py-4">{{ $absen->sekolah }}</td>
-                            <td class="whitespace-nowrap px-4 py-4" >{{ $absen->tanggal }}</td>
-                            <td class="whitespace-nowrap px-6 py-4">{{ $absen->jam }}</td>
-                            <td class="whitespace-nowrap px-4 py-4 " >
-                                @if($absen->keterangan === 'Hadir')
-                                <span class=" text-green-500">{{ $absen->keterangan }}</span>
-                                 @else
-                                <span class=" text-red-500">{{ $absen->keterangan }}</span>
-                                 @endif
-                            </td>
-                          </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                   {{ $no++ }}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $absen->nama }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $absen->tanggal }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    @if($absen->keterangan === 'izin')
+                                    <i class="fa fa-check px-1" style="font-size:20px"></i>
+                                    @endif
+                                </td>
+                                <td class="px-6 py-4">
+                                    @if($absen->keterangan === 'Hadir')
+                                    <i class="fa fa-check px-1" style="font-size:20px"></i>
+                                    @endif
+                                </td>
+                                <td class="px-6 py-4">
+                                    @if($absen->keterangan === 'Sakit')
+                                    <i class="fa fa-check px-1" style="font-size:20px"></i>
+                                    @endif
+                                </td>
+                                <td class="px-6 py-4">
+                                    @if($absen->keterangan === 'telat')
+                                    <i class="fa fa-check px-1" style="font-size:20px"></i>
+                                    @endif
+                                </td>
+                                <td class="px-6 py-4">
+                                    @if($absen->keterangan === 'Alfa')
+                                    <i class="fa fa-check px-1" style="font-size:20px"></i>
+                                    @endif
+                                </td>
+                                <td>
+                                    <button data-modal-target="staticModal1{{ $absen->id }}" data-modal-toggle="staticModal1{{ $absen->id }}" class="btn btn-outline-info px-4"><i class="fa fa-eye"></i></button>
+
+                                </td>
+
+                            </tr>
                             @empty
                             <div class="bg-red-100 border mb-2 mt-2 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                                               <strong class="font-bold">Data </strong>

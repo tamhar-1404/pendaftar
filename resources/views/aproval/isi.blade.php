@@ -87,7 +87,7 @@
                               Swal.fire({
                                 title: 'Konfirmasi',
                                 text: 'Apakah Anda yakin ingin menerima siswa ini?',
-                                icon: 'warning',
+                                icon: 'danger',
                                 showCancelButton: true,
                                 confirmButtonColor: '#3085d6',
                                 cancelButtonColor: '#d33',
