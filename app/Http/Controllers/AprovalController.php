@@ -57,6 +57,7 @@ class AprovalController extends Controller
         Mail::to($aproval->email)->send(new DemoMail($aproval));
 
         $users = User::where('role', 'guru')->where('sekolah', $aproval->sekolah)->get();
+
         foreach ($users as $user) {
            Mail::to($user->email)->send(new Guru_email($aproval->name));
         }

@@ -7,6 +7,9 @@ use App\Models\Comment;
 use App\Models\LikeBerita;
 use App\Models\ReplyComment;
 use Carbon\Carbon;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BeritaTerkini;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -40,29 +43,38 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'foto' => 'required', // Aturan validasi untuk gambar
-            'judul' => 'required',
-            'keterangan' => 'required',
-            'deskripsi'  => 'required',
-            'kategori'  => 'required'
-        ]);
-        $image = $request->file('foto');
-        $image->storeAs('public/fotoberita', $image->hashName());
 
-        Blog::create([
-            'name' => auth()->user()->name,
-            'foto' => $image->hashName(),
-            'judul' => $request->judul,
-            'keterangan' => $request->keterangan,
-            'tanggal' => Carbon::now()->format('Y-m-d'),
-            'deskripsi' => $request->deskripsi,
-            'kategori' => $request->kategori
-        ]);
-        return redirect()->route('Berita.index')->with('success', 'Data berita berhasil Ditambah');
-    }
+     public function store(Request $request)
+     {
+         $this->validate($request, [
+             'foto' => 'required',
+             'judul' => 'required',
+             'keterangan' => 'required',
+             'deskripsi'  => 'required',
+             'kategori'  => 'required'
+         ]);
+
+         $image = $request->file('foto');
+         $image->storeAs('public/fotoberita', $image->hashName());
+
+         $berita = Blog::create([
+             'name' => auth()->user()->name,
+             'foto' => $image->hashName(),
+             'judul' => $request->judul,
+             'keterangan' => $request->keterangan,
+             'tanggal' => Carbon::now()->format('Y-m-d'),
+             'deskripsi' => $request->deskripsi,
+             'kategori' => $request->kategori
+         ]);
+
+         $emails = User::whereIn('role', ['siswa', 'guru'])->pluck('email')->toArray();
+         
+         foreach ($emails as $email) {
+             Mail::to($email)->send(new BeritaTerkini($berita));
+         }
+
+         return redirect()->route('Berita.index')->with('success', 'Data berita berhasil Ditambah');
+     }
 
     /**
      * Display the specified resource.
