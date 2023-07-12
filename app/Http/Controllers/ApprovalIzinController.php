@@ -28,24 +28,15 @@ class ApprovalIzinController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
-    {
+     public function index()
+     {
         $today = date('Y-m-d');
-        ApprovalIzin::whereDate('sampai', '>', $today)->update(['status' => 'terimaabsen', 'status2' => '']);
-
-        $expiredApprovals = ApprovalIzin::where('status', 'terimaabsen')->where('status2', '')->get();
-        if ($expiredApprovals->isNotEmpty()) {
-            $email = $expiredApprovals[0]->email;
-            Mail::to($email)->send(new IzinBerakhir());
-
-            }
+        ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status' => 'terimaabsen', 'status2' => '']);
 
         $menunggu = ApprovalIzin::where('status', 'menunggu')->get();
         $terima = ApprovalIzin::where('status2', 'izin')->get();
         return view('approvalizin.index', compact('menunggu', 'terima'));
-    }
-
-
+     }
 
     /**
      * Show the form for creating a new resource.

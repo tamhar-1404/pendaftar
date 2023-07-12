@@ -1598,14 +1598,77 @@
                                         d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
                                 </svg>
 
-                                <span> 49</span>
+                                <span> {{ count($berita->comments) }}</span>
                             </button>
                         </div>
                     </div>
 
                 </div>
+                <div class="bg-white rounded p-4 mt-4 shadow mb-4">
+                    <form class="flex" method="POST" action="{{ route('comment.store') }}">
+                      @csrf
+                      <input type="hidden" name="blog_id" value="{{ $berita->id }}">
+                      <div class="flex flex-col w-full">
+                        <label for="txarea" class="font-medium text-gray-900 dark:text-white text-sm mb-2">Komentar</label>
+                        <div class="flex flex-row">
+                          <div class="flex flex-grow">
+                            <textarea class="w-full p-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Tulis komentar" name="comment" id="txarea"></textarea>
+                          </div>
+                          <div class="flex">
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2">Kirim</button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </form>
+                </div>
 
 
+
+                @foreach ($berita->comments as $comment)
+    <div class="bg-white p-4 mb-0 rounded shadow">
+            <div class="flex items-center mb-2">
+                <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('siswa/images/profile-10.jpeg') }}" alt="Profil Picture">
+                <div class="flex flex-col">
+                    <h4 class="text-lg font-bold">{{ $comment->user->name }}</h4>
+                    <p class="text-sm font-light">{{ Carbon::parse($comment->created_at)->format('d M Y') }}</p>
+                </div>
+            </div>
+        <p class="text-gray-700 mb-2">{{ $comment->comment }}</p>
+        <span class="text-blue-500 reply-button">Balas</span>
+
+        <div class="reply-form hidden mt-2">
+            <div class="bg-white shadow-md border border-slate-200 rounded-md ">
+                <form action="{{ route('comment.reply') }}" method="POST">
+                @csrf
+                <input type="hidden" name="comment_id" value="{{ $comment->id }}">
+                <div class="flex w-full">
+                    <textarea class="w-full p-2 border-none rounded-t-md focus:outline-none mb-2" placeholder="Tulis balas" name="comment" id="txarea"></textarea>
+                </div>
+                <div class="flex flex-row-reverse mx-2 mb-2">
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2">Balas</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @if(count($comment->reply_comments) != 0)
+    @foreach ($comment->reply_comments as $reply)
+    <div class="bg-white p-4 ml-8 mt-2 shadow">
+        <div class="flex items-center mb-2">
+            <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('siswa/images/profile-10.jpeg') }}" alt="Profil Picture">
+            <div class="flex flex-col">
+                <h4 class="text-lg font-bold">{{ $reply->user->name }}</h4>
+                <p class="text-sm font-light">{{ Carbon::parse($reply->created_at)->format('d M Y') }}</p>
+            </div>
+        </div>
+        <p class="text-gray-700 mb-2"><i class="fa-solid fa-reply text-gray-500"></i> <span class="text-blue-500">{{ $reply->komentar->user->name }}</span> {{ $reply->comment }}</p>
+    </div>
+    @endforeach
+    @endif
+    <div class="mb-5"></div>
+    @endforeach
             </div>
     </div>
     </main>
@@ -1617,8 +1680,25 @@
     <div id="x-teleport-target"></div>
     <script>
         window.addEventListener("DOMContentLoaded", () => Alpine.start());
-
     </script>
+    <script>
+        // Ambil semua elemen tombol balas
+        var replyButtons = document.getElementsByClassName('reply-button');
+
+        // Loop melalui setiap tombol balas
+        for (var i = 0; i < replyButtons.length; i++) {
+          // Tambahkan event listener pada setiap tombol balas
+          replyButtons[i].addEventListener('click', function() {
+            // Cari elemen form balasan terkait
+            var replyForm = this.nextElementSibling;
+
+            // Ubah visibilitas form balasan
+            replyForm.classList.toggle('hidden');
+          });
+        }
+
+      </script>
+
 </body>
 
 <!-- Mirrored from lineone.piniastudio.com/pages-blog-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 May 2023 04:16:41 GMT -->

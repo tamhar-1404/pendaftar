@@ -1814,7 +1814,7 @@
         </div>
       </div>
         @empty
-
+      izin kosong
         @endforelse
    </div>
 </div>
