@@ -6,6 +6,8 @@ use App\Models\Siswa;
 use App\Models\LaporanSiswa;
 use App\Http\Requests\StoreSiswaRequest;
 use App\Http\Requests\UpdateSiswaRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class SiswaController extends Controller
 {
@@ -100,5 +102,12 @@ class SiswaController extends Controller
     public function destroy(Siswa $siswa)
     {
         //
+    }
+    public function banned($id) {
+        // dd($id);
+        Siswa::find($id)->update([
+            'role' => 'banned',
+        ]);
+        return back()->with('success', 'Berhasil banned');
     }
 }

@@ -7,6 +7,7 @@
 
 <head>
     <!-- Meta tags  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport"
@@ -2322,8 +2323,11 @@
 
                                         </li>
                                         <li>
-                                            <a href="#"
-                                                class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Hapus</a>
+                                            <form action="{{ route('siswa.banned', ['id' => $siswa->id]) }}" method="post" id="myForm" onsubmit="hapus(event)">
+                                                @csrf
+                                                @method('PUT')
+                                                <button class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Hapus</button>
+                                            </form>
                                         </li>
                                     </ul>
 
@@ -2462,6 +2466,23 @@
     </script>
     <script>
         window.addEventListener("DOMContentLoaded", () => Alpine.start());
+        function hapus(event) {
+            event.preventDefault();
+
+            Swal.fire({
+                title: 'Apakah kamu yakin?',
+                text: "Menghapus siswa ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('myForm').submit();
+                }
+            })
+        }
     </script>
 </body>
 
