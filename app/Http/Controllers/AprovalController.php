@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Mail\DemoMail;
+use App\Mail\Konfirmasi;
 use App\Mail\Guru_email;
 use App\Mail\tolakEmail;
 use Illuminate\Support\Facades\Storage;
