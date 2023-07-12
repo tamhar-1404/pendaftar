@@ -74,29 +74,94 @@
                               });
                             }
                           </script>
-
-
-                        <form id="confirm-form-{{ $aproval->id }}" action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">
+                          <form id="confirm-form-{{ $aproval->id }}" action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">
                             @csrf
                             <button type="submit" class="border border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500 hover:border-blue-700 text-sm font-semibold py-1 px-4 rounded-md outline-none focus:outline-none">
                               Terima
                             </button>
                           </form>
+
                           <script>
                             document.getElementById('confirm-form-{{ $aproval->id }}').addEventListener('submit', function(event) {
                               event.preventDefault();
                               Swal.fire({
-                                title: 'Sukses',
-                                text: 'Konfirmasi berhasil',
-                                icon: 'success',
-                                timer: 2000,
-                                showConfirmButton: false
+                                title: 'Konfirmasi',
+                                text: 'Apakah Anda yakin ingin menerima siswa ini?',
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Ya, terima!',
+                                cancelButtonText: 'Batal',
+                                background: '#f5f5f5',
+                                customClass: {
+                                  icon: 'swal-icon',
+                                  confirmButton: 'swal-button swal-button--confirm',
+                                  cancelButton: 'swal-button swal-button--cancel'
+                                },
+                                iconHtml: '<i class="fas fa-exclamation-triangle"></i>',
+                                animation: false
+                              }).then((result) => {
+                                if (result.isConfirmed) {
+                                  Swal.fire({
+                                    title: 'Sukses',
+                                    text: 'Siswa berhasil diterima',
+                                    icon: 'success',
+                                    timer: 2000,
+                                    showConfirmButton: false,
+                                    background: '#f5f5f5',
+                                    customClass: {
+                                      icon: 'swal-icon',
+                                      popup: 'swal-popup',
+                                      title: 'swal-title',
+                                      confirmButton: 'swal-button swal-button--confirm'
+                                    },
+                                    iconHtml: '<i class="fas fa-check-circle"></i>',
+                                    animation: false
+                                  });
+                                  setTimeout(() => {
+                                    this.submit();
+                                  }, 2000);
+                                }
                               });
-                              setTimeout(() => {
-                                this.submit();
-                              }, 2000);
                             });
                           </script>
+
+                          {{--  <form id="confirm-form-{{ $aproval->id }}" action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="border border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500 hover:border-blue-700 text-sm font-semibold py-1 px-4 rounded-md outline-none focus:outline-none">
+                              Terima
+                            </button>
+                          </form>
+
+                          <script>
+                            document.getElementById('confirm-form-{{ $aproval->id }}').addEventListener('submit', function(event) {
+                              event.preventDefault();
+                              Swal.fire({
+                                title: 'Konfirmasi',
+                                text: 'Apakah Anda yakin ingin menerima siswa ini?',
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Ya, terima!',
+                                cancelButtonText: 'Batal'
+                              }).then((result) => {
+                                if (result.isConfirmed) {
+                                  Swal.fire({
+                                    title: 'Sukses',
+                                    text: 'Siswa berhasil diterima',
+                                    icon: 'success',
+                                    timer: 2000,
+                                    showConfirmButton: false
+                                  });
+                                  setTimeout(() => {
+                                    this.submit();
+                                  }, 2000);
+                                }
+                              });
+                            });
+                          </script>  --}}
                     </div>
                     <div class="flex gap-5">
                         <div class="panel w-1/3 ">
