@@ -1604,36 +1604,70 @@
                     </div>
 
                 </div>
-                  <div class="flex items-center space-x-4 mt-4">
-                    <img class="w-8 h-8 rounded-full" src="/image/logo.png" alt="Avatar">
-                    <div class="flex-grow">
-                      <textarea class="w-full p-2 border border-gray-300 rounded-md resize-none" placeholder="Tulis komentar"></textarea>
-                    </div>
-                    <button class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600">Kirim</button>
-                  </div>
+                <div class="bg-white rounded p-4 mt-4 shadow mb-4">
+                    <form class="flex" method="POST" action="{{ route('comment.store') }}">
+                      @csrf
+                      <input type="hidden" name="blog_id" value="{{ $berita->id }}">
+                      <div class="flex flex-col w-full">
+                        <label for="txarea" class="font-medium text-gray-900 dark:text-white text-sm mb-2">Komentar</label>
+                        <div class="flex flex-row">
+                          <div class="flex flex-grow">
+                            <textarea class="w-full p-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Tulis komentar" name="comment" id="txarea"></textarea>
+                          </div>
+                          <div class="flex">
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2">Kirim</button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </form>
+                </div>
+
+
 
                 @foreach ($berita->comments as $comment)
-    <div class="bg-white p-4 mb-4 mt-4 rounded shadow">
-        <div class="flex items-center mb-2">
-        <h4 class="text-lg font-bold">{{ $comment->user->name }}</h4>
-        </div>
+    <div class="bg-white p-4 mb-0 rounded shadow">
+            <div class="flex items-center mb-2">
+                <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('siswa/images/profile-10.jpeg') }}" alt="Profil Picture">
+                <div class="flex flex-col">
+                    <h4 class="text-lg font-bold">{{ $comment->user->name }}</h4>
+                    <p class="text-sm font-light">{{ Carbon::parse($comment->created_at)->format('d M Y') }}</p>
+                </div>
+            </div>
         <p class="text-gray-700 mb-2">{{ $comment->comment }}</p>
-        <a href="#" class="text-blue-500">Balas</a>
-        @if (count($comment->reply_comments) != 0)
-            <span class="text-gray-500 ml-2">{{ count($comment->reply_comments) }} Balasan</span>
-        @endif
+        <span class="text-blue-500 reply-button">Balas</span>
+
+        <div class="reply-form hidden mt-2">
+            <div class="bg-white shadow-md border border-slate-200 rounded-md ">
+                <form action="{{ route('comment.reply') }}" method="POST">
+                @csrf
+                <input type="hidden" name="comment_id" value="{{ $comment->id }}">
+                <div class="flex w-full">
+                    <textarea class="w-full p-2 border-none rounded-t-md focus:outline-none mb-2" placeholder="Tulis balas" name="comment" id="txarea"></textarea>
+                </div>
+                <div class="flex flex-row-reverse mx-2 mb-2">
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2">Balas</button>
+                </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     @if(count($comment->reply_comments) != 0)
     @foreach ($comment->reply_comments as $reply)
-    <div class="bg-white p-4 ml-8 mb-4 rounded shadow">
+    <div class="bg-white p-4 ml-8 mt-2 shadow">
         <div class="flex items-center mb-2">
-        <h4 class="text-lg font-bold">{{ $reply->user->name }}</h4>
+            <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('siswa/images/profile-10.jpeg') }}" alt="Profil Picture">
+            <div class="flex flex-col">
+                <h4 class="text-lg font-bold">{{ $reply->user->name }}</h4>
+                <p class="text-sm font-light">{{ Carbon::parse($reply->created_at)->format('d M Y') }}</p>
+            </div>
         </div>
-        <p class="text-gray-700 mb-2">{{ $reply->comment }}</p>
+        <p class="text-gray-700 mb-2"><i class="fa-solid fa-reply text-gray-500"></i> <span class="text-blue-500">{{ $reply->komentar->user->name }}</span> {{ $reply->comment }}</p>
     </div>
     @endforeach
     @endif
+    <div class="mb-5"></div>
     @endforeach
             </div>
     </div>
@@ -1646,8 +1680,25 @@
     <div id="x-teleport-target"></div>
     <script>
         window.addEventListener("DOMContentLoaded", () => Alpine.start());
-
     </script>
+    <script>
+        // Ambil semua elemen tombol balas
+        var replyButtons = document.getElementsByClassName('reply-button');
+
+        // Loop melalui setiap tombol balas
+        for (var i = 0; i < replyButtons.length; i++) {
+          // Tambahkan event listener pada setiap tombol balas
+          replyButtons[i].addEventListener('click', function() {
+            // Cari elemen form balasan terkait
+            var replyForm = this.nextElementSibling;
+
+            // Ubah visibilitas form balasan
+            replyForm.classList.toggle('hidden');
+          });
+        }
+
+      </script>
+
 </body>
 
 <!-- Mirrored from lineone.piniastudio.com/pages-blog-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 May 2023 04:16:41 GMT -->
