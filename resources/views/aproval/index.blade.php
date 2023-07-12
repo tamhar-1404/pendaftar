@@ -95,7 +95,7 @@
 
                                         <a href="{{ route('aproval.edit', $aproval->id) }}">
                                             <button class="border border-solid border-[#00B7FF;] rounded-md text-sm  hover:bg-[#00B7FF;] text-[#00B7FF;] hover:text-white font-bold py-2 px-4 outline-none focus:outline-none">
-                                              Lihat
+                                              <i class="fa fa-eye"></i>
                                             </button>
                                           </a>
                                     </td>
