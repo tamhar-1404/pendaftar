@@ -72,21 +72,36 @@
                                   </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                        use Carbon\Carbon;
+                                    @endphp
                                     @forelse ($data as $datas )
                                     <tr
                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                     <td class="whitespace-nowrap px-4 py-4 font-medium">{{$loop->iteration}}</td>
                                     <td class="whitespace-nowrap px-4 py-4">{{$datas->nama}}</td>
-                                    <td class="whitespace-nowrap px-4 py-4">{{$datas->created_at}}</td>
+                                    <td class="whitespace-nowrap px-4 py-4">{{  Carbon::parse($datas->created_at)->format('d M Y')}}</td>
                                     {{-- <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td> --}}
-                                    <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$datas->deskripsi}}</td>
-                                    @if ($datas->sp === 'Sp1')
+                                    @if ($datas->deskripsi_2)
+                                    <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$datas->deskripsi_2}}</td>
+                                    @else
+                                        <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$datas->deskripsi_1}}</td>
+                                    @endif
+                                    @if ($datas->sp_2)
                                     <td class="whitespace-nowrap px-4 py-4">
-                                        <div class=" rounded-full border-2 border-[#FFE500]"></div>
+                                        <div class="flex h-1.5 w-full rounded-full bg-[#ebedf2] dark:bg-dark/40 relative">
+                                            <div class="w-full rounded-full" style="background-color: #FF0000;">
+                                                <span class="absolute inset-0 flex items-end justify-end opacity-0 hover:opacity-100 transition-opacity mb-2">SP 2</span>
+                                            </div>
+                                        </div>
                                     </td>
-                                    @elseif ($datas->keterangan == 'Sp2')
+                                    @elseif ($datas->sp_1)
                                     <td class="whitespace-nowrap px-4 py-4">
-                                        <div class=" rounded-full border-2 border-[#FF0000]"></div>
+                                        <div class="flex h-1.5 w-full rounded-full bg-[#ebedf2] dark:bg-dark/40 relative">
+                                            <div class="w-full rounded-full" style="background-color: #FFE500;">
+                                                <span class="absolute inset-0 flex items-end justify-end opacity-0 hover:opacity-100 transition-opacity mb-2">SP 1</span>
+                                            </div>
+                                        </div>
                                     </td>
                                     @endif
 
