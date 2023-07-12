@@ -155,8 +155,16 @@ public function tolak(Request $request, Aproval $aproval)
             'password' => bcrypt($aproval->password)
         ]);
 
-        Mail::to($aproval->email)->send(new TolakEmail($aproval));
+        Mail::to($aproval->email)->send(new TolakEmail($aproval)); // Mengirim email ke siswa yang ditolak
 
+        $guruList = User::where('role', 'guru')
+            ->where('sekolah', $aproval->sekolah)
+            ->get();
+
+        if ($guruList->isNotEmpty()) {
+            $guruEmails = $guruList->pluck('email')->toArray();
+            Mail::to($guruEmails)->send(new TolakEmail($aproval)); // Mengirim email ke guru dengan nama sekolah yang sama
+        }
 
         Storage::move('public/pendaftaran/' . $foto_siswa, 'public/ditolak/' . $foto_siswa);
         Storage::move('public/pendaftaran/' . $sp_diri, 'public/ditolak/' . $sp_diri);
