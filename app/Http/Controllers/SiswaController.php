@@ -6,6 +6,10 @@ use App\Models\Siswa;
 use App\Models\LaporanSiswa;
 use App\Http\Requests\StoreSiswaRequest;
 use App\Http\Requests\UpdateSiswaRequest;
+use App\Mail\Banned;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SiswaController extends Controller
 {
@@ -100,5 +104,23 @@ class SiswaController extends Controller
     public function destroy(Siswa $siswa)
     {
         //
+    }
+    public function banned(Request $request, $id) {
+        // dd($id);
+        // dd($request->all());
+        $alasan = $request->alasan;
+        $siswa = Siswa::find($id);
+        $email = $siswa->email;
+        $nama = $siswa->name;
+        $data = [
+            'alasan' => $alasan,
+            'nama' => $nama,
+        ];
+        Mail::to($email)->send(new Banned($data));
+        $siswa->update([
+            'role' => 'banned',
+        ]);
+        User::where('name', $siswa->name)->update(['role' => 'banned']);
+        return back()->with('success', 'Berhasil banned');
     }
 }

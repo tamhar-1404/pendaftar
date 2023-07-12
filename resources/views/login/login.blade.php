@@ -4,7 +4,7 @@
 {{--  <!-- Mirrored from lineone.piniastudio.com/pages-login-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 May 2023 04:16:44 GMT -->  --}}
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <head>
     <!-- Meta tags  -->
     <meta charset="UTF-8" />
@@ -38,6 +38,24 @@
 </head>
 
 <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
+    @if (session()->has('success'))
+        <script>
+            Swal.fire(
+                'Berhasil!',
+                "{{ session('success') }}",
+                'success'
+            )
+        </script>
+    @endif
+    @if (session()->has('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "{{ session('error') }}",
+            })
+        </script>
+    @endif
     <!-- App preloader-->
     <div class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900">
         <div class="app-preloader-inner relative inline-block h-48 w-48"></div>

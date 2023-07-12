@@ -191,7 +191,7 @@ class PiketController extends Controller
         }
         $nama_siswa = $request->input('nama_siswa');
         foreach ($nama_siswa as $item) {
-            dd($item);
+            // dd($item);
             anggota_piket::create([
                 'waktu' => $request->waktu,
                 'hari' => $request->hari,

@@ -1,5 +1,6 @@
 <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 
     <div class="main-content">
         {{-- @include('sp.layout') --}}
@@ -33,11 +34,62 @@
 
                         {{-- keterangan --}}
                         <div class="flex items-center gap-4">
-                            <button class="bg-blue-400 py-1 px-2 text-white font-semibold rounded-lg">
-                                Tambah
-                            </button>
+                            <button data-modal-target="staticModal1" data-modal-toggle="staticModal1" class="bg-blue-200 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400">Tambah </button>
+
                             <div class="w-24 ">
 
+                                <div id="staticModal1" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                    <div class="relative w-full max-w-2xl max-h-full">
+                                        <!-- Modal content -->
+                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                            <!-- Modal header -->
+                                            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                    Tambah SP
+                                                </h3>
+                                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="staticModal1">
+                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                </button>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <form action="{{ route('sp.store') }}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                             <div class="p-6 space-y-6">
+                                                <div class="relative z-0 w-full mb-6 group">
+                                                    <input type="text" name="nama" id="nm" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                                    <label for="nm" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama</label>
+                                                </div>
+                                                <div class="relative z-0 w-full mb-6 group">
+                                                    <input type="text" name="deskripsi" id="dskr" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                                    <label for="dskr" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Deskripsi</label>
+                                                </div>
+                                                <div class="mt-4">
+                                                            <label for="sekolah" class="block text-gray-700 font-medium mb-2">Keterangan</label>
+                                                        <div class="flex items-center mb-4">
+                                                            <input  id="disabled-radio-1" type="radio" name="keterangan" value="Sp1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                            <label for="disabled-radio-1" class="ml-2 text-sm font-medium text-gray-400 dark:text-gray-500">SP 1</label>
+                                                        </div>
+                                                        <div class="flex items-center">
+                                                            <input   id="disabled-radio-2" type="radio" name="keterangan" value="Sp2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                            <label for="disabled-radio-2" class="ml-2 text-sm font-medium text-gray-400 dark:text-gray-500">SP 2</label>
+                                                        </div>
+                                                </div>
+
+                                                  <div class="relative z-0 w-full mb-6 group">
+                                                    <input type="file" name="buktisp" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                                    <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Bukti</label>
+                                                </div>
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                                <button data-modal-hide="staticModal" type="button" class="text-gray-700  bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                                                <button data-modal-hide="staticModal" type="submit" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
+                                            </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="flex  w-full ">
                                     <div class=" w-14 mr-1  mt-2 mb-2 rounded-full border-2 border-[#FFE500]"></div>
                                     <span class="w-8 text-xs"> = Sp1</span>
@@ -72,21 +124,36 @@
                                   </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                        use Carbon\Carbon;
+                                    @endphp
                                     @forelse ($data as $datas )
                                     <tr
                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                     <td class="whitespace-nowrap px-4 py-4 font-medium">{{$loop->iteration}}</td>
                                     <td class="whitespace-nowrap px-4 py-4">{{$datas->nama}}</td>
-                                    <td class="whitespace-nowrap px-4 py-4">{{$datas->created_at}}</td>
+                                    <td class="whitespace-nowrap px-4 py-4">{{  Carbon::parse($datas->created_at)->format('d M Y')}}</td>
                                     {{-- <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td> --}}
-                                    <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$datas->deskripsi}}</td>
-                                    @if ($datas->sp === 'Sp1')
+                                    @if ($datas->deskripsi_2)
+                                    <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$datas->deskripsi_2}}</td>
+                                    @else
+                                        <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$datas->deskripsi_1}}</td>
+                                    @endif
+                                    @if ($datas->sp_2)
                                     <td class="whitespace-nowrap px-4 py-4">
-                                        <div class=" rounded-full border-2 border-[#FFE500]"></div>
+                                        <div class="flex h-1.5 w-full rounded-full bg-[#ebedf2] dark:bg-dark/40 relative">
+                                            <div class="w-full rounded-full" style="background-color: #FF0000;">
+                                                <span class="absolute inset-0 flex items-end justify-end opacity-0 hover:opacity-100 transition-opacity mb-2">SP 2</span>
+                                            </div>
+                                        </div>
                                     </td>
-                                    @elseif ($datas->keterangan == 'Sp2')
+                                    @elseif ($datas->sp_1)
                                     <td class="whitespace-nowrap px-4 py-4">
-                                        <div class=" rounded-full border-2 border-[#FF0000]"></div>
+                                        <div class="flex h-1.5 w-full rounded-full bg-[#ebedf2] dark:bg-dark/40 relative">
+                                            <div class="w-full rounded-full" style="background-color: #FFE500;">
+                                                <span class="absolute inset-0 flex items-end justify-end opacity-0 hover:opacity-100 transition-opacity mb-2">SP 1</span>
+                                            </div>
+                                        </div>
                                     </td>
                                     @endif
 

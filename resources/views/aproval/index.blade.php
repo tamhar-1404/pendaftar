@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
     <div class="main-content">
         {{-- @include('aproval.layout') --}}
@@ -95,7 +96,7 @@
 
                                         <a href="{{ route('aproval.edit', $aproval->id) }}">
                                             <button class="border border-solid border-[#00B7FF;] rounded-md text-sm  hover:bg-[#00B7FF;] text-[#00B7FF;] hover:text-white font-bold py-2 px-4 outline-none focus:outline-none">
-                                              Lihat
+                                              <i class="fa fa-eye"></i>
                                             </button>
                                           </a>
                                     </td>
