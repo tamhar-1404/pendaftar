@@ -27,7 +27,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
         rel="stylesheet" />
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         /**
          * THIS SCRIPT REQUIRED FOR PREVENT FLICKERING IN SOME BROWSERS
@@ -1641,191 +1641,183 @@
                     </ul>
                     <div class="mt-4 sm:mt-5 lg:mt-6">
                         <div class="flex h-8 items-center justify-between">
-                          <h2 class="text-base font-medium tracking-wide text-slate-700 dark:text-navy-100">
-                            Permintaan Izin
-                          </h2>
+                            <h2 class="text-base font-medium tracking-wide text-slate-700 dark:text-navy-100">
+                                Permintaan Izin
+                            </h2>
                         </div>
 
 
 
-        <div class="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
+                        <div
+                            class="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
 
-        @forelse ($menunggu as $izin )
-
-        <div class="card">
-          <div class="p-2 text-right">
-            <div
-              x-data="usePopper({placement:'bottom-end',offset:4})"
-              @click.outside="isShowPopper && (isShowPopper = false)"
-              class="inline-flex"
-            >
+                            @forelse ($menunggu as $izin)
+                                <div class="card">
+                                    <div class="p-2 text-right">
+                                        <div x-data="usePopper({ placement: 'bottom-end', offset: 4 })"
+                                            @click.outside="isShowPopper && (isShowPopper = false)"
+                                            class="inline-flex">
 
 
-              <div
-                x-ref="popperRoot"
-                class="popper-root"
-                :class="isShowPopper && 'show'"
-              >
-                <div
-                class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                >
-                  <ul>
-                    <li>
-                      <a
-                        href="#"
-                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                        >Action</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                        >Another Action</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                        >Something else</a
-                      >
-                    </li>
-                  </ul>
-                  <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
-                  <ul>
-                    <li>
-                      <a
-                        href="#"
-                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                        >Separated Link</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="flex grow flex-col items-center px-4 pb-4 sm:px-5">
-            <div class="avatar h-20 w-20">
-              <img
-                class="rounded-full"
-                src="{{ asset('lineone/images/avatar/avatar-19.jpg') }}"
-                alt="avatar"
-              />
-            </div>
-            <h3
-              class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100"
-            >
-             {{ $izin->nama }}
-            </h3>
-            <p class="text-xs+">{{ $izin->keterangan }}</p>
-            <div class="flex justify-left items-left space-x-3">
-              <p> {{ $izin->sampai }}</p>
-          </div>
-        </div>
-        <div class="flex justify-around mb-2">
-          <div class="flex space-x-1 ">
-            <form id="confirm-form" action="{{ route('approvalizin.update', $izin->id) }}" method="post">
-              @csrf
-              @method('PUT')
-              <input type="hidden" name="keterangan" value="terima">
-              <input type="hidden" name="email" value="{{ $izin->email }}">
-              <button type="submit" class="btn h-7 w-7 rounded-full bg-success/10 p-0 text-success hover:bg-success/20 focus:bg-success/20 active:bg-success/25" id="confirm-button">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-              </button>
-            </form>
+                                            <div x-ref="popperRoot" class="popper-root"
+                                                :class="isShowPopper && 'show'">
+                                                <div
+                                                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#"
+                                                                class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Action</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"
+                                                                class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Another
+                                                                Action</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"
+                                                                class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Something
+                                                                else</a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="my-1 h-px bg-slate-150 dark:bg-navy-500"></div>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#"
+                                                                class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Separated
+                                                                Link</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex grow flex-col items-center px-4 pb-4 sm:px-5">
+                                        <div class="avatar h-20 w-20">
+                                            <img class="rounded-full"
+                                                src="{{ asset('lineone/images/avatar/avatar-19.jpg') }}"
+                                                alt="avatar" />
+                                        </div>
+                                        <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
+                                            {{ $izin->nama }}
+                                        </h3>
+                                        <p class="text-xs+">{{ $izin->keterangan }}</p>
+                                        <div class="flex justify-left items-left space-x-3">
+                                            <p> {{ $izin->sampai }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-around mb-2">
+                                        <div class="flex space-x-1 ">
+                                            <form id="confirm-form"
+                                                action="{{ route('approvalizin.update', $izin->id) }}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="keterangan" value="terima">
+                                                <input type="hidden" name="email" value="{{ $izin->email }}">
+                                                <button type="submit"
+                                                    class="btn h-7 w-7 rounded-full bg-success/10 p-0 text-success hover:bg-success/20 focus:bg-success/20 active:bg-success/25"
+                                                    id="confirm-button">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5"
+                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </button>
+                                            </form>
 
 
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-            <script>
-              document.getElementById('confirm-button').addEventListener('click', function(e) {
-                e.preventDefault();
+                                            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                                            <script>
+                                                document.getElementById('confirm-button').addEventListener('click', function(e) {
+                                                    e.preventDefault();
 
 
-                Swal.fire({
-                  title: 'Apakah Anda yakin?',
-                  text: 'Anda akan mengkonfirmasi izin ini.',
-                  icon: 'warning',
-                  showCancelButton: true,
-                  confirmButtonColor: '#3085d6',
-                  cancelButtonColor: '#d33',
-                  confirmButtonText: 'Ya, konfirmasi!',
-                  cancelButtonText: 'Batal'
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    document.getElementById('confirm-form').submit();
-                  }
-                });
-              });
-            </script>
-         <form id="reject-form" action="{{ route('approvalizin.update', $izin->id) }}" method="post">
-          @csrf
-          @method('PUT')
-          <input type="hidden" name="email" value="{{ $izin->email }}">
-          <input type="hidden" name="keterangan" value="tolak">
-          <button class="btn h-7 w-7 rounded-full bg-error/10 p-0 text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25" id="reject-button">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-          </button>
-      </form>
+                                                    Swal.fire({
+                                                        title: 'Apakah Anda yakin?',
+                                                        text: 'Anda akan mengkonfirmasi izin ini.',
+                                                        icon: 'warning',
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: '#3085d6',
+                                                        cancelButtonColor: '#d33',
+                                                        confirmButtonText: 'Ya, konfirmasi!',
+                                                        cancelButtonText: 'Batal'
+                                                    }).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            document.getElementById('confirm-form').submit();
+                                                        }
+                                                    });
+                                                });
+                                            </script>
+                                            <form id="reject-form"
+                                                action="{{ route('approvalizin.update', $izin->id) }}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="email" value="{{ $izin->email }}">
+                                                <input type="hidden" name="keterangan" value="tolak">
+                                                <button
+                                                    class="btn h-7 w-7 rounded-full bg-error/10 p-0 text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25"
+                                                    id="reject-button">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5"
+                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                    </svg>
+                                                </button>
+                                            </form>
 
-      <!-- Tambahkan skrip Sweet Alert -->
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-      <script>
-          document.getElementById('reject-button').addEventListener('click', function(event) {
-              event.preventDefault(); // Mencegah refresh halaman
+                                            <!-- Tambahkan skrip Sweet Alert -->
+                                            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                                            <script>
+                                                document.getElementById('reject-button').addEventListener('click', function(event) {
+                                                    event.preventDefault(); // Mencegah refresh halaman
 
-              Swal.fire({
-                  title: 'Input Alasan',
-                  input: 'text',
-                  inputPlaceholder: 'Masukkan alasan penolakan',
-                  showCancelButton: true,
-                  confirmButtonText: 'Submit',
-                  cancelButtonText: 'Batal',
-                  showLoaderOnConfirm: true,
-                  preConfirm: (reason) => {
-                      if (reason.trim() === '') {
-                          Swal.showValidationMessage('Alasan harus diisi');
-                      } else {
-                          // Tambahkan input alasan ke form
-                          document.getElementById('reject-form').innerHTML += '<input type="hidden" name="alasan" value="' + reason + '">';
-                          document.getElementById('reject-form').submit();
-                      }
-                  }
-              });
-          });
-      </script>
+                                                    Swal.fire({
+                                                        title: 'Input Alasan',
+                                                        input: 'text',
+                                                        inputPlaceholder: 'Masukkan alasan penolakan',
+                                                        showCancelButton: true,
+                                                        confirmButtonText: 'Submit',
+                                                        cancelButtonText: 'Batal',
+                                                        showLoaderOnConfirm: true,
+                                                        preConfirm: (reason) => {
+                                                            if (reason.trim() === '') {
+                                                                Swal.showValidationMessage('Alasan harus diisi');
+                                                            } else {
+                                                                // Tambahkan input alasan ke form
+                                                                document.getElementById('reject-form').innerHTML +=
+                                                                    '<input type="hidden" name="alasan" value="' + reason + '">';
+                                                                document.getElementById('reject-form').submit();
+                                                            }
+                                                        }
+                                                    });
+                                                });
+                                            </script>
 
-          </div>
-          <a href=""
-              class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium  hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90"  data-te-toggle="modal"
-              data-te-target="#staticModal{{ $izin->id }}">
-              <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                  viewBox="0 0 576 512">
-                  <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                  <path
-                      d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z" />
-              </svg>
-          </a>
-        </div>
-      </div>
-        @empty
-      izin kosong
-        @endforelse
-   </div>
-</div>
-     <div class="mt-4 sm:mt-5 lg:mt-6">
-         <div class="flex items-center justify-between">
-            <h2
-               class="text-base font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100">
-               Izin Diterima
-            </h2>
-            <div class="flex">
-          <div class="flex items-center" x-data="{ isInputActive: false }">
+                                        </div>
+                                        <a href=""
+                                            class="btn h-7 w-7 rounded-full bg-slate-150 p-0 font-medium  hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-200/50 focus:bg-slate-200 focus:shadow-lg focus:shadow-slate-200/50 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:hover:shadow-navy-450/50 dark:focus:bg-navy-450 dark:focus:shadow-navy-450/50 dark:active:bg-navy-450/90"
+                                            data-te-toggle="modal" data-te-target="#staticModal{{ $izin->id }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                viewBox="0 0 576 512">
+                                                <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                                <path
+                                                    d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            @empty
+                                izin kosong
+                            @endforelse
+                        </div>
+                    </div>
+                    <div class="mt-4 sm:mt-5 lg:mt-6">
+                        <div class="flex items-center justify-between">
+                            <h2
+                                class="text-base font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100">
+                                Izin Diterima
+                            </h2>
+                            <div class="flex">
+                                <div class="flex items-center" x-data="{ isInputActive: false }">
                                     <label class="block">
                                         <input x-effect="isInputActive === true && $nextTick(() => { $el.focus()});"
                                             :class="isInputActive ? 'w-32 lg:w-48' : 'w-0'"
@@ -1836,8 +1828,7 @@
                                         class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="1.5"
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                         </svg>
                                     </button>
@@ -1916,41 +1907,50 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                     @php
-                                     $no=1;
-                                     @endphp
-                                      @forelse ($terima as $approval)
-                                        <tr class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
-                                            <td class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                {{ $no++ }}
-                                            </td>
-                                            <td class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                {{ $approval->nama }}
-                                            </td>
-                                            <td class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                {{ $approval->sekolah }}
-                                            </td>
-                                            <td class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                {{ $approval->dari }}
-                                            </td>
-                                            <td class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                {{ $approval->sampai }}
-                                            </td>
-                                            <td class="whitespace-nowrap px-4 py-3 font-mediumdark:text-navy-100 sm:px-5">
-                                              @if($approval->keterangan === 'izin')
-                                              <span class=" text-yellow-500">{{ $approval->keterangan }}</span>
-                                               @else
-                                              <span class=" text-red-500">{{ $approval->keterangan }}</span>
-                                               @endif
+                                        @php
+                                            $no = 1;
+                                        @endphp
+                                        @forelse ($terima as $approval)
+                                            <tr
+                                                class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
+                                                <td
+                                                    class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
+                                                    {{ $no++ }}
+                                                </td>
+                                                <td
+                                                    class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
+                                                    {{ $approval->nama }}
+                                                </td>
+                                                <td
+                                                    class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
+                                                    {{ $approval->sekolah }}
+                                                </td>
+                                                <td
+                                                    class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
+                                                    {{ $approval->dari }}
+                                                </td>
+                                                <td
+                                                    class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
+                                                    {{ $approval->sampai }}
+                                                </td>
+                                                <td
+                                                    class="whitespace-nowrap px-4 py-3 font-mediumdark:text-navy-100 sm:px-5">
+                                                    @if ($approval->keterangan === 'izin')
+                                                        <span
+                                                            class=" text-yellow-500">{{ $approval->keterangan }}</span>
+                                                    @else
+                                                        <span class=" text-red-500">{{ $approval->keterangan }}</span>
+                                                    @endif
 
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
                                         @empty
-                                        <div class="bg-red-100 border mb-2 mt-2 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                                          <strong class="font-bold">Data </strong>
-                                          <span class="block sm:inline">Tidak tersedia.</span>
-                                          <span class="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
-                                        </div>
+                                            <div class="bg-red-100 border mb-2 mt-2 border-red-400 text-red-700 px-4 py-3 rounded relative"
+                                                role="alert">
+                                                <strong class="font-bold">Data </strong>
+                                                <span class="block sm:inline">Tidak tersedia.</span>
+                                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
+                                            </div>
                                         @endforelse
                                     </tbody>
                                 </table>
@@ -2021,135 +2021,116 @@
                     </div>
                 </div>
             </div>
-            @forelse ( $menunggu  as $izin)
-            {{-- modal --}}
-            <div
-                data-te-modal-init
-                class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
-                id="staticModal{{ $izin->id }}"
-                tabindex="-1"
-                aria-labelledby="exampleModalCenteredScrollable"
-                aria-modal="true"
-                role="dialog">
-                <div
-                    data-te-modal-dialog-ref
-                    class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
-                    <div
-                    class="pointer-events-auto  relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
-                    <div
-                        class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                        <!--Modal title-->
-                        <h5
-                        class="text-xl font-medium leading-normal text-neutral-900 dark:text-neutral-200"
-                        id="exampleModalCenteredScrollableLabel">
-                        Detail Izin Absensi
-                        </h5>
-                        <!--Close button-->
-                        <button
-                        type="button"
-                        class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
-                        data-te-modal-dismiss
-                        aria-label="Close">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="h-6 w-6">
-                            <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                        </button>
+            @forelse ($menunggu  as $izin)
+                {{-- modal --}}
+                <div data-te-modal-init
+                    class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+                    id="staticModal{{ $izin->id }}" tabindex="-1"
+                    aria-labelledby="exampleModalCenteredScrollable" aria-modal="true" role="dialog">
+                    <div data-te-modal-dialog-ref
+                        class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
+                        <div
+                            class="pointer-events-auto  relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+                            <div
+                                class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                                <!--Modal title-->
+                                <h5 class="text-xl font-medium leading-normal text-neutral-900 dark:text-neutral-200"
+                                    id="exampleModalCenteredScrollableLabel">
+                                    Detail Izin Absensi
+                                </h5>
+                                <!--Close button-->
+                                <button type="button"
+                                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                                    data-te-modal-dismiss aria-label="Close">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+
+
+                            <!--Modal body-->
+                            <div class="relative p-4">
+                                <p class=" text-md">
+                                    Nama :
+                                </p>
+
+                                <p class="ml-5 mt-2 text-md text-gray-400">
+                                    {{ $izin->nama }}
+                                </p>
+
+                                <p class=" text-md mt-4">
+                                    Sekolah :
+                                </p>
+
+                                <p class="ml-5 mt-2 text-md text-gray-400">
+                                    {{ $izin->sekolah }}
+                                </p>
+                                <p class=" text-md mt-4">
+                                    email :
+                                </p>
+
+                                <p class="ml-5 mt-2 text-md text-gray-400">
+                                    {{ $izin->email }}
+                                </p>
+
+                                <p class=" text-md mt-4">
+                                    Tanggal Awal :
+                                </p>
+
+                                <p class="ml-5 mt-2 text-md text-gray-400">
+                                    {{ $izin->dari }}
+                                </p>
+
+                                <p class=" text-md mt-4">
+                                    Tanggal Akhir :
+                                </p>
+
+                                <p class="ml-5 mt-2 text-md text-gray-400">
+                                    {{ $izin->sampai }}
+                                </p>
+                                <p class=" text-md mt-4">
+                                    Keterangan :
+                                </p>
+
+                                <p class="ml-5 mt-2 text-md text-gray-400">
+                                    {{ $izin->keterangan }}
+                                </p>
+                                <p class=" text-md mt-4">
+                                    Deskripsi :
+                                </p>
+
+                                <p class="ml-5 mt-2 text-md text-gray-400">
+                                    {{ $izin->deskripsi }}
+                                </p>
+                                <p class=" text-md mt-4">
+                                    Bukti :
+                                </p>
+
+                                <p class="ml-5 mt-2 text-md text-gray-400">
+                                    <img src="{{ asset('storage/bukti_izin/' . $izin->bukti) }}" alt="">
+                                </p>
+
+
+
+                            </div>
+
+                            <!--Modal footer-->
+                            <div
+                                class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                                <button type="button"
+                                    class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                                    data-te-ripple-init data-te-modal-dismiss data-te-ripple-color="light">
+                                    Kembali
+                                </button>
+                            </div>
+                        </div>
+                        {{-- end modal --}}
                     </div>
-
-
-                    <!--Modal body-->
-                    <div class="relative p-4">
-                      <p class=" text-md">
-                      Nama :
-                      </p >
-
-                      <p class="ml-5 mt-2 text-md text-gray-400">
-                        {{ $izin->nama }}
-                      </p>
-
-                      <p class=" text-md mt-4">
-                          Sekolah :
-                      </p >
-
-                      <p class="ml-5 mt-2 text-md text-gray-400">
-                          {{ $izin->sekolah }}
-                      </p>
-                      <p class=" text-md mt-4">
-                          email :
-                      </p >
-
-                      <p class="ml-5 mt-2 text-md text-gray-400">
-                          {{ $izin->email }}
-                      </p>
-
-                      <p class=" text-md mt-4">
-                          Tanggal Awal :
-                      </p >
-
-                      <p class="ml-5 mt-2 text-md text-gray-400">
-                          {{ $izin->dari }}
-                      </p>
-
-                      <p class=" text-md mt-4">
-                          Tanggal Akhir :
-                      </p >
-
-                      <p class="ml-5 mt-2 text-md text-gray-400">
-                         {{ $izin->sampai }}
-                      </p>
-                      <p class=" text-md mt-4">
-                          Keterangan :
-                      </p >
-
-                      <p class="ml-5 mt-2 text-md text-gray-400">
-                         {{ $izin->keterangan }}
-                      </p>
-                      <p class=" text-md mt-4">
-                          Deskripsi :
-                      </p >
-
-                      <p class="ml-5 mt-2 text-md text-gray-400">
-                         {{ $izin->deskripsi }}
-                      </p>
-                      <p class=" text-md mt-4">
-                          Bukti :
-                      </p >
-
-                      <p class="ml-5 mt-2 text-md text-gray-400">
-                        <img src="{{ asset('storage/bukti_izin/' . $izin->bukti) }}" alt="">
-                      </p>
-
-
-
-                  </div>
-
-                    <!--Modal footer-->
-                    <div
-                        class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                        <button
-                        type="button"
-                        class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                        data-te-ripple-init
-                        data-te-modal-dismiss
-                        data-te-ripple-color="light">
-                        Kembali
-                        </button>
-                    </div>
-                    </div>
-            {{-- end modal --}}
-            </div>
-            </div>
+                </div>
             @empty
-
             @endforelse
         </main>
     </div>

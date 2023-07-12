@@ -25,10 +25,17 @@ class AprovalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $aprovals = aproval::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->get();
+            return view('aproval.layout', compact('aprovals'));
+        }
         $aprovals = aproval::latest()->paginate(5);
-        return view('aproval.layout' , compact('aprovals'));
+        return view('aproval.layout', compact('aprovals'));
+        
     }
 
     /**
