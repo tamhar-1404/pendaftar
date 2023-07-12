@@ -14,7 +14,7 @@
         <div>
             <div class="flex items-center justify-between">
                 <a href="{{ route('tatatertib.create') }}"
-                    class="outline outline-offset-2 outline-1 bg-[#24AEE4] hover:bg-blue-500 text-white text-sm py-2 px-4 rounded">
+                    class="outline outline-offset-2 outline-1 bg-[#24AEE4] hover:bg-blue-400 text-white text-sm py-2 px-4 rounded">
                     Tambah data
                 </a>
                 <div class="flex">
@@ -110,9 +110,10 @@
                                     <td
                                         class="whitespace-nowrap px-3 py-2 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
                                         {{ $row->judul }}</td>
-                                        <td class="whitespace-nowrap px-3 py-2 font-medium text-slate-700 dark:text-navy-100 lg:px-5" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                            {!! Str::limit($row->deskripsi, 40) !!}
-                                        </td>
+                                    <td class="whitespace-nowrap px-3 py-2 font-medium text-slate-700 dark:text-navy-100 lg:px-5"
+                                        style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                        {!! Str::limit($row->deskripsi, 40) !!}
+                                    </td>
 
 
                                     <td class="whitespace-nowrap px-3 py-2">
