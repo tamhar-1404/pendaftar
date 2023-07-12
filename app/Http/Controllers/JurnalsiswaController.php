@@ -9,6 +9,7 @@ use App\Http\Requests\StorejurnalsiswaRequest;
 use App\Http\Requests\UpdatejurnalsiswaRequest;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\IOFactory;
 
@@ -20,11 +21,12 @@ class JurnalsiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(jurnalsiswa $jurnalsiswa)
     {
+        $jurnalsiswa = jurnalsiswa::all();
         $nama = Auth::user()->name;
         $item = jurnalsiswa::where('nama',$nama)->get();
-        return view('jurnal_siswa.index',compact('item'));
+        return view('jurnal_siswa.index',compact('item' ,'jurnalsiswa'));
     }
 
 
@@ -51,7 +53,7 @@ class JurnalsiswaController extends Controller
             'tanggal' => "required",
             'sekolah' => "required",
             'kegiatan'  => "required",
-            'image'  => "required"
+
         ]);
         $image = $request->file('image');
         $image->storeAs('public/image', $image->hashName());
@@ -94,10 +96,23 @@ class JurnalsiswaController extends Controller
      * @param  \App\Models\jurnalsiswa  $jurnalsiswa
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatejurnalsiswaRequest $request, jurnalsiswa $jurnalsiswa)
+    public function update(Request $request, jurnalsiswa $jurnalsiswa)
     {
-        //
-    }
+        $this->validate($request ,[
+            'nama' =>"required",
+            'tanggal' => "required",
+            'sekolah' => "required",
+            'kegiatan'  => "required"
+        ]);
+        $jurnalsiswa->update([
+            'image'=>$request->image,
+            'nama' => $request->nama,
+            'tanggal' => $request->tanggal,
+            'sekolah' => $request->sekolah,
+            'kegiatan'=>$request->kegiatan,
+            'status' => $request -> status
+        ]);
+}
 
     /**
      * Remove the specified resource from storage.
