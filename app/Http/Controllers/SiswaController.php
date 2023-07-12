@@ -105,9 +105,11 @@ class SiswaController extends Controller
     }
     public function banned($id) {
         // dd($id);
-        Siswa::find($id)->update([
+        $siswa = Siswa::find($id);
+        $siswa->update([
             'role' => 'banned',
         ]);
+        User::where('name', $siswa->name)->update(['role' => 'banned']);
         return back()->with('success', 'Berhasil banned');
     }
 }

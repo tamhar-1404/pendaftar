@@ -49,7 +49,11 @@ class LoginController extends Controller
                 return redirect()->route('siswamagang.index');
             } elseif ($user->role == 'guru') {
                 return redirect()->route('guru.index');
+            } elseif ($user->role == 'banned') {
+                Auth::logout();
+                return back()->with('error', 'Akun anda telah di banned');
             }
+
         }
 
         // Autentikasi gagal
