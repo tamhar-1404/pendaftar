@@ -87,7 +87,7 @@
                               Swal.fire({
                                 title: 'Konfirmasi',
                                 text: 'Apakah Anda yakin ingin menerima siswa ini?',
-                                icon: 'danger',
+                                icon: 'warning',
                                 showCancelButton: true,
                                 confirmButtonColor: '#3085d6',
                                 cancelButtonColor: '#d33',
@@ -99,7 +99,6 @@
                                   confirmButton: 'swal-button swal-button--confirm',
                                   cancelButton: 'swal-button swal-button--cancel'
                                 },
-                                iconHtml: '<i class="fas fa-exclamation-triangle"></i>',
                                 animation: false
                               }).then((result) => {
                                 if (result.isConfirmed) {
@@ -116,7 +115,6 @@
                                       title: 'swal-title',
                                       confirmButton: 'swal-button swal-button--confirm'
                                     },
-                                    iconHtml: '<i class="fas fa-check-circle"></i>',
                                     animation: false
                                   });
                                   setTimeout(() => {

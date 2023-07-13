@@ -205,7 +205,11 @@
                                 @endif
                             </td>
                             <td>
-                                <button data-modal-target="staticModal1{{ $absen->id }}" data-modal-toggle="staticModal1{{ $absen->id }}" class="btn btn-outline-info px-4"><i class="fa fa-eye"></i></button>
+                                @if ($absen->keterangan === 'Sakit' OR $absen->keterangan === 'izin')
+                                    <button data-modal-target="staticModal3{{ $absen->id }}" data-modal-toggle="staticModal3{{ $absen->id }}" class="btn btn-outline-info px-4"><i class="fa fa-eye"></i></button>
+                                @else
+                                    <button data-modal-target="staticModal1{{ $absen->id }}" data-modal-toggle="staticModal1{{ $absen->id }}" class="btn btn-outline-info px-4"><i class="fa fa-eye"></i></button>
+                                @endif
 
                             </td>
 
@@ -390,6 +394,9 @@
 </div>
 
 {{--  modal2  --}}
+@php
+    use Carbon\Carbon;
+@endphp
 @forelse ($terima as  $absen)
 
 <div id="staticModal1{{ $absen->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -406,49 +413,33 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="{{ route('approvalizin.store') }}" method="post" enctype="multipart/form-data">
-            @csrf
              <div class="p-6 space-y-6">
-                <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
-                <input type="hidden" name="sekolah" value="{{ Auth::user()->sekolah }}">
-                <input type="hidden" name="email" value="{{ Auth::user()->email }}">
-                <div>
-                    <div class="relative z-0 w-full mb-6 group">
-                        <input type="date" name="dari" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                        <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Dari</label>
-                    </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <p class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">{{ $absen->nama }}</p>
+                    <label for="floating_email" class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">Nama</label>
                 </div>
                 <div class="relative z-0 w-full mb-6 group">
-                    <input type="date" name="sampai" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                    <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Sampai</label>
+                    <p class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">{{ $absen->sekolah }}</p>
+                    <label for="floating_email" class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">sekolah</label>
                 </div>
                 <div class="relative z-0 w-full mb-6 group">
-                    <input type="text" name="deskripsi" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                    <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Deskripsi</label>
+                    <p class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">{{ $absen->keterangan }}</p>
+                    <label for="floating_email" class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">keterangan</label>
                 </div>
-                <div class="mt-4">
-                            <label for="sekolah" class="block text-gray-700 font-medium mb-2">keterangan</label>
-                        <div class="flex items-center mb-4">
-                            <input  id="disabled-radio-1" type="radio" value="izin" name="keterangan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="disabled-radio-1" class="ml-2 text-sm font-medium text-gray-400 dark:text-gray-500">Izin</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input   id="disabled-radio-2" type="radio" value="sakit" name="keterangan" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="disabled-radio-2" class="ml-2 text-sm font-medium text-gray-400 dark:text-gray-500">Sakit</label>
-                        </div>
-                    </div>
-                  <div class="relative z-0 w-full mb-6 group">
-                    <input type="file" name="bukti" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                    <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Bukti</label>
+                <div class="relative z-0 w-full mb-6 group">
+                    <p class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500  uppercase">{{ Carbon::parse($absen->tanggal)->format('d M Y') }}</p>
+                    <label for="floating_email" class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">tanggal</label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <p class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">{{ $absen->jam }}</p>
+                    <label for="floating_email" class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">jam</label>
                 </div>
             </div>
 
             <!-- Modal footer -->
             <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button data-modal-hide="staticModal" type="button" class="text-gray-700  bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
-                <button data-modal-hide="staticModal" type="submit" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
+                <button data-modal-hide="staticModal" class="text-gray-700  bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
             </div>
-        </form>
         </div>
     </div>
 </div>
@@ -456,6 +447,117 @@
 
 @endforelse
 
+{{--  modal2  --}}
+@forelse ($terima as  $absen)
+
+<div id="staticModal3{{ $absen->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Detail Absen sakit
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="staticModal3{{ $absen->id }}">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+            </div>
+            <!-- Modal body -->
+             <div class="p-6 space-y-6">
+                <svg class="fill-black dark:fill-white" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z" data-modal-target="staticModal{{ $absen->id }}" data-modal-toggle="staticModal{{ $absen->id }}"></svg>
+                <div class="relative z-0 w-full mb-6 group">
+                    <p class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">{{ $absen->nama }}</p>
+                    <label for="floating_email" class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">Nama</label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <p class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">{{ $absen->sekolah }}</p>
+                    <label for="floating_email" class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">sekolah</label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <p class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">{{ $absen->dari }}</p>
+                    <label for="floating_email" class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">dari</label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <p class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">{{ $absen->sampai }}</p>
+                    <label for="floating_email" class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">sampai</label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <p class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">{{ $absen->keterangan }}</p>
+                    <label for="floating_email" class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">keterangan</label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <p class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">{{ $absen->deskripsi }}</p>
+                    <label for="floating_email" class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">deskripsi</label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <img src="{{ asset('storage/bukti_izin/' . $absen->bukti) }}" alt="" srcset="" class="w-full">
+                    <label for="floating_email" class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">Bukti</label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <p class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500  uppercase">{{ Carbon::parse($absen->tanggal)->format('d M Y') }}</p>
+                    <label for="floating_email" class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">tanggal</label>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                <button data-modal-hide="staticModal3{{ $absen->id }}" type="button" class="text-gray-700  bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:text-white">Kembali</button>
+            </div>
+        </div>
+    </div>
+</div>
+@empty
+
+@endforelse
+
+@forelse ($terima as $absen)
+<div id="staticModal{{ $absen->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full shadow">
+    <div class="relative w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Edit izin
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="staticModal{{ $absen->id }}">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <form action="{{ route('izin_update') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <input type="hidden" name="nama" value="{{ $absen->nama }}">
+            <input type="hidden" name="sekolah" value="{{ $absen->sekolah }}">
+            <input type="hidden" name="email" value="{{ $absen->email }}">
+            <input type="hidden" name="dari" value="{{ $absen->dari }}">
+            <input type="hidden" name="sampai" value="{{ $absen->sampai }}">
+            <input type="hidden" name="keterangan" value="{{ $absen->keterangan }}">
+             <div class="p-6 space-y-6">
+                <div class="relative z-0 w-full mb-6 group">
+                    <input type="text" name="deskripsi" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required value="{{ $absen->deskripsi }}" />
+                    <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Deskripsi</label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <input type="file" name="bukti" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
+                    <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Bukti</label>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                <button data-modal-hide="staticModal66" class="dark:text-white text-gray-700  bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                <button data-modal-hide="staticModal66" type="submit" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+@empty
+
+@endforelse
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

@@ -335,7 +335,7 @@
     <!-- Navbar -->
     <nav
     id="main-navbar"
-    class="sticky left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start "
+    class="sticky z-50 left-0  right-0 top-0 flex  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start "
     data-te-navbar-ref>
     <!-- Container wrapper -->
 
@@ -522,9 +522,9 @@
                 <span> lainnya / <span class="text-[#00B7FF]">Di Tolak</span></span>
             </div>
             <div class="flex justify-end items-center pr-16">
-             <button class="Button w-[116px] h-[37.33px] pl-[27.63px] pr-[27.37px] pt-[8.67px] pb-[8.66px] rounded-lg border border border border border-slate-300 justify-end items-end inline-flex">
+             <a href="{{ route('tolak.index') }}" class="Button w-[116px] h-[37.33px] pl-[27.63px] pr-[27.37px] pt-[8.67px] pb-[8.66px] rounded-lg border border border border border-slate-300 justify-end items-end inline-flex">
                 <div class="Kembali text-center text-slate-700 text-[14px] font-medium leading-tight tracking-wide">Kembali</div>
-             </button>
+             </a>
             </div>
 
             <div class="DivGrid w-[1133px] h-[954px] pl-[20px] pt-[19.67px] pb-[93.33px] justify-start items-center inline-flex">
@@ -537,23 +537,23 @@
                           <div class="Button pl-5 pr-[20.21px] pt-[17px] pb-[19px] border border-sky-500 justify-start items-center gap-[8.35px] flex">
                             <button id="" class="Detail text-center text-sky-500 text-[14px] font-medium leading-tight tracking-wide">Detail</button>
                           </div>
-                          <div class="Button pl-[18px] pr-[19.83px] pt-[17px] pb-[19px] justify-start items-center gap-[6.36px] flex">  
+                          <div class="Button pl-[18px] pr-[19.83px] pt-[17px] pb-[19px] justify-start items-center gap-[6.36px] flex">
                             <button id="nextStep1" class="BerkasBerkas text-center text-slate-500 text-[14px] font-medium leading-tight tracking-wide">Berkas - berkas</button>
                           </div>
                         </div>
-                      </div> 
-                      <div class="DivSpaceY5 w-[1133px] h-[564px] pl-10 flex-col justify-start items-start gap-[20.01px] flex">   
+                      </div>
+                      <div class="DivSpaceY5 w-[1133px] h-[564px] pl-10 flex-col justify-start items-start gap-[20.01px] flex">
                         <div class="Label flex-col justify-start items-start gap-1.5 flex">
                           <div class="Nama text-slate-600 text-[14px] font-medium leading-tight">Nama</div>
                           <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
-                            <div class="MuhamadDimasJuliansyah w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">Muhamad Dimas Juliansyah</div>
+                            <div class="MuhamadDimasJuliansyah w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">{{ $tolak->name }}</div>
                           </div>
                         </div>
                         <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
                           <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
                             <div class="JenisKelamin text-slate-600 text-[14px] font-medium leading-tight">Jenis Kelamin</div>
                             <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
-                              <div class="LakiLaki w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">Laki - laki</div>
+                              <div class="LakiLaki w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">{{ $tolak->jeniskelamin }}</div>
                             </div>
                           </div>
                         </div>
@@ -561,39 +561,42 @@
                           <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
                             <div class="Nisn text-slate-600 text-[14px] font-medium leading-tight">NISN</div>
                             <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
-                              <div class=" w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">008187281117</div>
+                              <div class=" w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">{{ $tolak->nisn }}</div>
                             </div>
                           </div>
                         </div>
                         <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
                           <div class="KelasJurusan text-slate-600 text-[14px] font-medium leading-tight">Kelas/Jurusan</div>
                           <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
-                            <div class="XiRpl2 w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">XI RPL 2</div>
+                            <div class="XiRpl2 w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">{{ $tolak->kelas }} / {{ $tolak->jurusan }}</div>
                           </div>
                         </div>
                         <div class="Label flex-col justify-start items-start gap-1.5 flex">
                           <div class="AsalSekolah text-slate-600 text-[14px] font-medium leading-tight">Asal Sekolah</div>
                           <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
-                            <div class="Smkn12Malang w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">SMKN 12 Malang</div>
+                            <div class="Smkn12Malang w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">{{ $tolak->sekolah }}</div>
                           </div>
                         </div>
                         <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
                           <div class="TempatTanggalLahir text-slate-600 text-[14px] font-medium leading-tight">Tempat, Tanggal Lahir</div>
                           <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
-                            <div class="Malang21Juli2006 w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">Malang, 21 Juli 2006</div>
+                            <div class="Malang21Juli2006 w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">{{ $tolak->tempat }}, {{ $tolak->tanggal }}</div>
                           </div>
                         </div>
                         <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
                           <div class="Alamat text-slate-600 text-[14px] font-medium leading-tight">Alamat</div>
                           <div class="Pseudo w-[682.22px] justify-center items-center inline-flex">
-                            <div class="GgMekkahJlArabMalang w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">Gg. Mekkah, Jl. Arab, Malang</div>
+                            <div class="GgMekkahJlArabMalang w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">{{ $tolak->alamat }}</div>
                           </div>
                         </div>
                         <div class="DivH2dD7a3866b h-[46.67px] flex-col justify-start items-start gap-1.5 flex">
                           <div class="LamaMagang text-slate-600 text-[14px] font-medium leading-tight">Lama Magang</div>
                           <div class="Pseudo w-[682.22px] justify-center items-center inline-flex">
-                            <div class="Januari202530Juni2025 w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">2 Januari 2025 - 30 Juni 2025</div>
-                          </div>
+                            <div class="Januari202530Juni2025 w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">
+                                {{ \Carbon\Carbon::parse($tolak->magang_awal)->format('d F Y') }} - {{ \Carbon\Carbon::parse($tolak->magang_akhir)->format('d F Y') }}
+                            </div>
+                        </div>
+
                         </div>
                       </div>
                     </div>
@@ -608,8 +611,8 @@
                             <button id="nextStep2" class="BerkasBerkas text-center text-slate-500 text-[14px] font-medium leading-tight tracking-wide">Berkas - berkas</button>
                           </div>
                         </div>
-                      </div> 
-                      <div class="DivSpaceY5 w-[1133px] h-[564px] pl-10 flex-col justify-start items-start gap-[20.01px] flex">   
+                      </div>
+                      <div class="DivSpaceY5 w-[1133px] h-[564px] pl-10 flex-col justify-start items-start gap-[20.01px] flex">
                         <div class="Label flex-col justify-start items-start gap-1.5 flex">
                           <div class="Nama text-slate-600 text-[14px] font-medium leading-tight">Nama</div>
                           <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
@@ -668,7 +671,7 @@
                     </div>
                   </div>
                 </div>
-                   
+
                     <div class="DivCard w-[1133px] h-[123px] left-0 top-0 absolute bg-white rounded-lg shadow">
                       <div class="DivBorderB2 w-[1133px] border border-slate-200 justify-start items-start inline-flex">
                         <div class="DivBorderB2 w-[1133px] border border-slate-200 justify-start items-start inline-flex">
@@ -683,14 +686,14 @@
                       <div class="Label left-[40px] top-[66.68px] absolute flex-col justify-start items-start gap-1.5 inline-flex">
                         <div class="Alasan text-slate-600 text-[14px] font-medium leading-tight">Alasan </div>
                         <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
-                          <div class="KurangLengkapPadaBerkasBerkas w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">kurang lengkap pada berkas berkas</div>
+                          <div class="KurangLengkapPadaBerkasBerkas w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">{{ $tolak->alasan }}</div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
@@ -746,9 +749,9 @@
               const steps = Array.from(form.getElementsByClassName("step"));
               const nextButtons = Array.from(form.querySelectorAll("[id^=nextStep]"));
               const prevButtons = Array.from(form.querySelectorAll("[id^=prevStep]"));
-    
+
               let currentStep = 0;
-    
+
               function showStep(stepIndex) {
                 steps.forEach(function(step, index) {
                   if (index === stepIndex) {
@@ -758,14 +761,14 @@
                   }
                 });
               }
-    
+
               function validateStep(stepIndex) {
                 const step = steps[stepIndex];
                 const inputs = Array.from(step.getElementsByTagName("input"));
                 const textareas = Array.from(step.getElementsByTagName("textarea"));
-    
+
                 let isValid = true;
-    
+
                 inputs.forEach(function(input) {
                   if (!input.checkValidity()) {
                     input.classList.add("border-red-500");
@@ -774,37 +777,37 @@
                   } else {
                     input.classList.remove("border-red-500");
                     input.placeholder = "";
-    
+
                   }
-    
+
                 });
-    
+
                 inputs.forEach(function(input) {
                 if (!input.checkValidity()) {
                     if (input.type === "radio") {
                     var radioGroup = input.parentNode;
                     var errorMessage = radioGroup.querySelector(".error-message");
-    
+
                     if (!errorMessage) {
                         errorMessage = document.createElement("span");
                         errorMessage.className = "error-message text-red-500";
                         radioGroup.appendChild(errorMessage);
                     }
-    
+
                     errorMessage.textContent = "Pilih salah satu opsi.";
                     } else {
                     input.classList.add("border-red-500");
                     input.placeholder = "Masukan data";
                     }
-    
+
                     isValid = false;
                 } else {
                     input.classList.remove("border-red-500");
                     input.placeholder = "";
                 }
                 });
-    
-    
+
+
                 textareas.forEach(function(textarea) {
                   if (!textarea.checkValidity()) {
                     textarea.classList.add("border-red-500");
@@ -813,13 +816,13 @@
                   } else {
                     textarea.classList.remove("border-red-500");
                     textarea.placeholder = "";
-    
+
                   }
                 });
-    
+
                 return isValid;
               }
-    
+
               nextButtons.forEach(function(button) {
                 button.addEventListener("click", function() {
                   if (validateStep(currentStep)) {
@@ -828,16 +831,16 @@
                   }
                 });
               });
-    
+
               prevButtons.forEach(function(button) {
                 button.addEventListener("click", function() {
                   currentStep--;
                   showStep(currentStep);
                 });
               });
-    
-    
-    
+
+
+
             });
           </script>
 </body>
