@@ -135,7 +135,6 @@
                                         </div>
                                         {{-- nama --}}
                                         @forelse ( $senin as $item)
-
                                         <div class="text-sm font-medium text-center mt-5">{{$item->siswa->name}}</div>
                                         <!-- Main modal -->
                                         <div id="authentication-modal1" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -160,18 +159,12 @@
                                                             </div>
                                                             @endforeach
                                                             <h4>Centang yang ingin di tambahkan</h4>
+                                                            @foreach ($siswa as $data)
                                                             <div class="flex gap-3 items-center">
-                                                                <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
+                                                                <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}" id=""><p>{{$data->name}}</p>
                                                             </div>
-                                                            <div class="flex gap-3 items-center">
-                                                                <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
-                                                            </div>
-                                                            <div class="flex gap-3 items-center">
-                                                                <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
-                                                            </div>
-                                                            <div class="flex gap-3 items-center">
-                                                                <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
-                                                            </div>
+                                                            @endforeach
+
                                                             <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
                                                         </form>
                                                     </div>

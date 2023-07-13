@@ -42,7 +42,7 @@ class PiketController extends Controller
          }
 
          // Sisa kode yang ada sebelumnya
-         $senin = anggota_piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'pagi')->get();
+         $senin = anggota_piket::where('hari',  'senin')->where('waktu', 'pagi')->get();
          $selasa = anggota_piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'pagi')->get();
          $rabu = anggota_piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
          $kamis = anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
@@ -191,7 +191,12 @@ class PiketController extends Controller
         }
         $nama_siswa = $request->input('nama_siswa');
         foreach ($nama_siswa as $item) {
-            // dd($item);
+            $mailData = [
+                'title' => 'Pemberitahuan jadwa piket',
+                'body' => 'Anda mandapatkan piket pada hari '. $hari . ' dan waktu anda piket adalah ' . $waktu
+            ];
+            $data = Siswa::find($item);
+            Mail::to($data->email)->send(new pikets($mailData));
             anggota_piket::create([
                 'waktu' => $request->waktu,
                 'hari' => $request->hari,
@@ -209,18 +214,33 @@ class PiketController extends Controller
         $rubah = $request->input('nama_siswa_rubah');
         if($rubah !== null){
             foreach ($rubah as $item){
+                $mailData = [
+                    'title' => 'Pemberitahuan jadwa piket',
+                    'body' => 'Anda dihapus dari piket pada hari '. $hari . ' pada waktu piket ' . $waktu . ' dan silakan tunggu kabar piket anda selanjutnya '
+                ];
+                $p = anggota_piket::where('id', $item)->first();
+
+                $siswa = $p->siswa_id;
+                $data = Siswa::find($p->siswa_id);
+                Mail::to($data->email)->send(new pikets($mailData));
                 $cek = anggota_piket::find($item);
-                $cek->delete();
+                $p->delete();
+
                 }
         }
-
         $nama_siswa = $request->input('nama_siswa');
         if($nama_siswa !== null){
             foreach ($nama_siswa as $item) {
+                $mailData = [
+                    'title' => 'Pemberitahuan jadwa piket',
+                    'body' => 'Anda mandapatkan piket pada hari '. $hari . ' dan waktu anda piket adalah ' . $waktu
+                ];
+                $data = Siswa::find($item);
+                Mail::to($data->email)->send(new pikets($mailData));
                 anggota_piket::create([
                     'waktu' => $request->waktu,
                     'hari' => $request->hari,
-                    'nama_siswa' => $item
+                    'siswa_id' => $item
                 ]);
             }
         }
