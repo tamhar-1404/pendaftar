@@ -77,6 +77,19 @@ class AbsensiSiswaController extends Controller
         // dd($request->jam);
         $keterangan = $request->keterangan;
 
+
+        $hari_ini = Carbon::now()->format('Y-m-d');
+        $cek_izin = ApprovalIzin::where([['tanggal', $hari_ini], ['keterangan', 'izin'], ['status2', 'izin']]);
+        $cek_izin_hari_ini = $cek_izin->exists();
+        if ($cek_izin_hari_ini) {
+            $tanggal_hari_ini = Carbon::parse($cek_izin->first()->tanggal);
+            $izin_sampai = Carbon::parse($cek_izin->first()->sampai);
+            while ($tanggal_hari_ini <= $izin_sampai) {
+                $tanggal_hapus_kedepan = $tanggal_hari_ini->addDay()->format('Y-m-d');
+                ApprovalIzin::where('nama', auth()->user()->name)->where('tanggal', $tanggal_hapus_kedepan)->delete();
+            }
+            ApprovalIzin::where('nama', auth()->user()->name)->where('tanggal', $hari_ini)->where('keterangan', 'izin')->delete();
+        }
         // dd(Auth::user()->siswa_id, Carbon::now()->locale('id')->dayName);
         $piket = anggota_piket::where([['siswa_id', Auth::user()->siswa_id], ['hari', Carbon::now()->locale('id')->dayName], ['waktu', 'pagi']])->exists();
         if ($piket) {
@@ -96,7 +109,7 @@ class AbsensiSiswaController extends Controller
 
         $cek = ApprovalIzin::where('nama', $nama)->where('tanggal', $tanggal)->get();
         if($cek->count() > 0){
-            return redirect()->back()->with('error', 'Data yang anda masukan sudah ada');
+            return redirect()->back()->with('error', 'Anda sudah absen');
         }
         // dd($keterangan);
         ApprovalIzin::create([

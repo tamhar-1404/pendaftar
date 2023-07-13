@@ -7,6 +7,7 @@
     <title>Document</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css"  rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -36,6 +37,7 @@
 
 </head>
 <body>
+
     <div class="mt-3 ml-4 font-bold">Data Absensi</div>
     <div class="kamu-tak-diajak flex justify-between  px-5 gap-2">
         <div class="mb-5 flex flex-wrap gap-1 mt-5 items-center">
@@ -108,7 +110,13 @@
                 <button type="submit" class="border border-green-500 px-3 py-2 rounded-lg text-green-500 hover:bg-green-500 hover:text-white font-bold">Absen</button>
             </form>
         </div>
-
+        <div>
+            @if (session()->has('error'))
+            <script>
+                toastr.error("{{ session('error') }}")
+            </script>
+            @endif
+        </div>
         {{-- serch dan filter --}}
         <div class="flex justify-end items-center ">
             {{-- serch --}}
