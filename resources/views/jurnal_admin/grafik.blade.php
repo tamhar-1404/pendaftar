@@ -506,8 +506,8 @@
       }
     },
     fill: {
-      opacity: 2,
-      colors: [ '#47EBB3', '#FFA726']
+      opacity: 5,
+      colors: [ '#008ffb', '#47EBB3']
     },
     tooltip: {
       y: {
