@@ -106,7 +106,7 @@
                                 <input
                                     name="serch"
                                     class=" p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent"
-                                    type="text" placeholder="cari">
+                                    type="text" placeholder="cari" required>
                             </div>
                          </form>
                         </div>

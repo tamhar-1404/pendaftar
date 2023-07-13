@@ -990,33 +990,15 @@
                                         </div>
                                     </div>
                                     @empty
-
                                     @endforelse
-
-
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
-        <!-- end main content section -->
-
-        <!-- start footer section -->
-        <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
-            © <span id="footer-year">2022</span>. Vristo All rights reserved.
-        </p>
-        <!-- end footer section -->
     </div>
-
-    <!--Verically centered scrollable modal-->
-
-
     {{-- <script>
         document.addEventListener("DOMContentLoaded", function() {
           const form = document.getElementById("wizardForm");
