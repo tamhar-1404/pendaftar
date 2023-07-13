@@ -67,6 +67,7 @@ class JurnalsiswaController extends Controller
         ],[
             'tanggal.unique' => 'jhvgghvb',
         ]);
+        
 
         $image = $request->file('image');
         $image->storeAs('public/image', $image->hashName());
