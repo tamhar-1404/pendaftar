@@ -42,7 +42,7 @@ class SpController extends Controller
      */
     public function store(Request $request)
     {
-
+        // dd($request->all());
         $this->validate($request, [
 
 
@@ -51,8 +51,8 @@ class SpController extends Controller
             if ($request->keterangan == 'Sp1') {
                 if (sp::where([['nama', $request->nama], ['sp_1', 'Sp1']])->exists()) {
                     $image = $request->file('buktisp');
-                    $image->storeAs('public/image', $image->hashName());
                     $iname = $image->hashName();
+                    $image->storeAs('public/image', $iname);
                     sp::where('nama', $request->nama)->update([
                         'bukti_2' => $iname,
                         'deskripsi_2' => $request->deskripsi,
@@ -71,8 +71,8 @@ class SpController extends Controller
                     Mail::to($email_guru)->send(new SpGuru($data));
                 }
                 $image = $request->file('buktisp');
-                $image->storeAs('public/image', $image->hashName());
                 $iname = $image->hashName();
+                $image->storeAs('public/image', $iname);
                 sp::where('nama', $request->nama)->update([
                     'bukti_1' => $iname,
                     'deskripsi_1' => $request->deskripsi,
@@ -92,8 +92,8 @@ class SpController extends Controller
             }
             else {
                 $image = $request->file('buktisp');
-                $image->storeAs('public/image', $image->hashName());
                 $iname = $image->hashName();
+                $image->storeAs('public/image', $iname);
 
                 sp::where('nama', $request->nama)->update([
                     'bukti_2' => $iname,
@@ -115,8 +115,8 @@ class SpController extends Controller
         } else {
             if ($request->keterangan == 'Sp1') {
                 $image = $request->file('buktisp');
-                $image->storeAs('public/image', $image->hashName());
                 $iname = $image->hashName();
+                $image->storeAs('public/image', $iname);
 
                 sp::create([
                     'nama' => $request->nama,
@@ -137,8 +137,8 @@ class SpController extends Controller
                 Mail::to($email_guru)->send(new SpGuru($data));
             } else {
                 $image = $request->file('buktisp');
-                $image->storeAs('public/image', $image->hashName());
                 $iname = $image->hashName();
+                $image->storeAs('public/image', $iname);
                 sp::create([
                     'nama' => $request->name,
                     'bukti_2' => $iname,

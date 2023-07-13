@@ -17,16 +17,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        return [
-
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'sekolah' => fake()->sentence(2),
-            'email_verified_at' => now(),
-            'role' => 'Siswa',
-            'password' => '$2a$12$4mKH/fWTT2xH2.UM8wC.z.S7zLYpHczIoXqV627PAWFn0l2xeJE8K', // password
-            'remember_token' => Str::random(10),
-        ];
+       //
     }
 
     /**
