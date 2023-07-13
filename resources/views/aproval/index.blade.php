@@ -67,24 +67,66 @@
                                         </div>
 
                                     </div>
-                                    <div class="modal-body mt-5">
-                                        <label class="flex flex-col mb-2">
-                                            <p class="text-base mb-3">Asal Sekolah</p>
-                                            <div class="w-full flex grid-cols-2">
-                                                @foreach ($aprovals as $aproval)
-                                                <div class="mt-2 w-full bg-black">
-                                                    <input type="checkbox" class="hidden" onclick="changeColor(this)" />
-                                                    <span id="checkboxLabel"
-                                                        class="border w-full border-gray-300 rounded px-2 py-1 bg-gray-100 text-gray-700 max-w-xs p-3"
-                                                       >{{ $aproval->sekolah }}</span>
+                                    <div class="max-h-[250px] overflow-scroll">
+                                        <div class="modal-body mt-5">
+                                            <label class="flex flex-col mb-2">
+                                                <p class="text-base mb-3">Asal Sekolah</p>
+                                                <div class="w-full grid grid-cols-2 gap-2">
+                                                    @foreach ($aprovals as $aproval)
+                                                        <input type="checkbox" class="hidden" onclick="changeColor(this)" />
+                                                        <span id="checkboxLabel"
+                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3"
+                                                           >{{ $aproval->sekolah }}</span>
+                                                    @endforeach
                                                 </div>
-                                                @endforeach
-                                            </div>
-                                        </label>
+                                            </label>
+                                        </div>
+                                        <div class="modal-body mt-5">
+                                            <label class="flex flex-col mb-2">
+                                                <p class="text-base mb-3">jurusan</p>
+                                                <div class="w-full grid grid-cols-2 gap-2">
+                                                    @foreach ($aprovals as $aproval)
+                                                        <input type="checkbox" class="hidden" onclick="changeColor(this)" />
+                                                        <span id="checkboxLabel"
+                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3"
+                                                           >{{ $aproval->jurusan }}</span>
+                                                    @endforeach
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="modal-body mt-5">
+                                            <label class="flex flex-col mb-2">
+                                                <p class="text-base mb-3">kelas</p>
+                                                <div class="w-full grid grid-cols-2 gap-2">
+                                                    @foreach ($aprovals as $aproval)
+                                                        <input type="checkbox" class="hidden" onclick="changeColor(this)" />
+                                                        <span id="checkboxLabel"
+                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3"
+                                                           >{{ $aproval->kelas }}</span>
+                                                    @endforeach
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="modal-body mt-5">
+                                            <label class="flex flex-col mb-2">
+                                                <p class="text-base mb-3">lama magang</p>
+                                                <div class="w-full grid grid-cols-2 gap-2">
+                                                    @foreach ($aprovals as $aproval)
+                                                        <input type="checkbox" class="hidden" onclick="changeColor(this)" />
+                                                        <span id="checkboxLabel"
+                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3"
+                                                           >{{ $aproval->sekolah }}</span>
+                                                    @endforeach
+                                                </div>
+                                            </label>
+                                        </div>
+
                                     </div>
 
-                                    <div class="modal-footer mt-4 flex justify-end">
 
+                                    <div class="modal-footer mt-4 flex justify-end gap-2">
+                                        <button class="bg-white py-1 px-3 rounded-lg border border-gray-200 text-gray-300" >Atur Ulang</button>
+                                        <button class="bg-blue-400 py-1 px-3 rounded-lg border border-gray-200 text-white" >Pakai</button>
                                     </div>
                                 </div>
                             </div>
@@ -101,11 +143,11 @@
                                 function changeColor(checkbox) {
                                     var label = document.getElementById("checkboxLabel");
                                     if (checkbox.checked) {
-                                        label.classList.add("bg-blue-500");
-                                        label.classList.remove("bg-gray-100");
+                                        label.classList.add("bg-gray-900 text-white");
+                                        label.classList.remove("bg-white");
 
                                     } else {
-                                        label.classList.add("bg-gray-100");
+                                        label.classList.add("bg-white");
                                         label.classList.remove("bg-blue-500");
                                     }
                                 }
