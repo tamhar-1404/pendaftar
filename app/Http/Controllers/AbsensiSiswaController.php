@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\ApprovalIzin;
 use App\Http\Requests\Storeabsensi_siswaRequest;
 use App\Http\Requests\Updateabsensi_siswaRequest;
+use App\Mail\IzinTenggat;
 use App\Models\anggota_piket;
+use App\Models\TenggatIzin;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\Mail;
 
 class AbsensiSiswaController extends Controller
 {
@@ -20,6 +23,25 @@ class AbsensiSiswaController extends Controller
      */
     public function index()
     {
+        //Kirim email tenggat
+        $izin_tenggat_sekarang = ApprovalIzin::where('sampai', Carbon::now()->format('Y-m-d'))->where('keterangan', 'izin');
+        if ($izin_tenggat_sekarang->exists()) {
+            $ambil_email_izin = $izin_tenggat_sekarang->get();
+            foreach ($ambil_email_izin as $user) {
+                if (!TenggatIzin::where('email', $user->email)->where('tanggal', Carbon::now()->format('Y-m-d'))->exists()) {
+                    $data = [
+                        'nama' => $user->nama,
+                    ];
+                    Mail::to($user->email)->send(new IzinTenggat($data));
+                    TenggatIzin::create([
+                        'email' => $user->email,
+                        'tanggal' => Carbon::now()->format('Y-m-d'),
+                    ]);
+                }
+            }
+        }
+
+
         $cek_sudah_absen = ApprovalIzin::where([['tanggal', Carbon::now()->format('Y-m-d')], ['nama', auth()->user()->name]])->whereNotIn('keterangan', ['sakit','izin'])->exists();
         // dd($cek_sudah_absen);
         $terima = ApprovalIzin::where('status', 'terimaabsen')->where('nama', Auth::user()->name )

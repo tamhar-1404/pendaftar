@@ -11,7 +11,7 @@ class Siswa extends Model
 
     // protected $table = 'siswa';
     protected $fillable = [
-        'foto_siswa','name','jurusan','status_sp','email','no','role','magang_awal','magang_akhir','sekolah','jeniskelamin','tempat','tanggal','nisn','alamat','kelas'
+        'foto_siswa','name','jurusan','status_sp','email','no','role','magang_awal','magang_akhir','sekolah','jeniskelamin','tempat','tanggal','nisn','alamat','kelas', 'status'
     ];
     public function piket()
     {
