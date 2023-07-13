@@ -38,6 +38,19 @@
 </head>
 
 <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
+    @if (session()->has('berhasil_daftar'))
+        <script>
+            Swal.fire({
+                title: "Data Anda berhasil dikirim",
+                text: "silangkan Tunggu proses selama paling lama 2 hari.",
+                icon: "info",
+                showCancelButton: false,
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "OK",
+                timer: 3000
+            });
+        </script>
+    @endif
     @if (session()->has('success'))
         <script>
             Swal.fire(
@@ -91,7 +104,7 @@
                         </p>
                     </div>
                 </div>
-              
+
                 <div class="mt-16">
                     <form method="POST" action="{{route('postlogin')}}">
                        @csrf
