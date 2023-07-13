@@ -126,6 +126,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Siswa'])->group(function () {
 
        Route::resource('absensi_siswa', App\Http\Controllers\AbsensiSiswaController::class);
+       Route::put('izin_update', [App\Http\Controllers\ApprovalIzinController::class, 'izin_update'])->name('izin_update');
        Route::resource('berita_siswa', App\Http\Controllers\BeritaSiswaController::class);
        Route::resource('tatib_siswa', App\Http\Controllers\TatibSiswaController::class);
        Route::resource('piket_siswa', App\Http\Controllers\PiketSiswaController::class);
