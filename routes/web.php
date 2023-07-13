@@ -108,13 +108,10 @@ Route::get('/', function () {
 Route::get('/lupapassword', [LupaPasswordController::class, 'index'])->name('password.request');
 Route::post('/lupapassword', [LupaPasswordController::class, 'store'])->name('password.email');
 
-// Rute untuk menampilkan form reset password
 Route::get('/resetpassword/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
 Route::post('/resetpassword', [LupaPasswordController::class, 'update'])->name('password.update');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Route::resource('/resetpassword', App\Http\Controllers\UbahPasswordController::class);
-// end login
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
         // Route khusus untuk admin
