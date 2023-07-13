@@ -57,6 +57,7 @@ class ApprovalIzinController extends Controller
      */
     public function store(Request $request, ApprovalIzin $approvalIzin)
     {
+        // dd($request->all());
         $this->validate($request, [
             'dari' => 'required',
             'sampai' => 'required',
@@ -206,5 +207,27 @@ class ApprovalIzinController extends Controller
         $data = ApprovalIzin::where('nama',Auth::user()->name)->get();
         $pdf = Pdf::loadView('desain_pdf.absensi', ['data' => $data]);
         return $pdf->download('absensi.pdf');
+    }
+    public function izin_update(Request $request) {
+        // dd($request->all());
+        if ($request->has('bukti')) {
+            $bukti_lama = ApprovalIzin::where('nama', $request->nama)->first()->bukti;
+            if (file_exists(asset('bukti_izin' . $bukti_lama))) {
+                unlink(asset('bukti_izin' . $bukti_lama));
+            }
+            $image = $request->file('bukti');
+            $iname = $image->hashName();
+            $image->storeAs('public/bukti_izin', $iname);
+            ApprovalIzin::where('nama', $request->nama)->where('keterangan', 'izin')->update([
+                'deskripsi' => $request->deskripsi,
+                'bukti' => $iname,
+            ]);
+            return back()->with(['success' => 'Berhasil mengedit izin']);
+        } else {
+            ApprovalIzin::where('nama', $request->nama)->where('keterangan', 'izin')->update([
+                'deskripsi' => $request->deskripsi,
+            ]);
+            return back()->with(['success' => 'Berhasil mengedit izin']);
+        }
     }
 }
