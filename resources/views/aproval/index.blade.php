@@ -70,12 +70,16 @@
                                     <div class="modal-body mt-5">
                                         <label class="flex flex-col mb-2">
                                             <p class="text-base mb-3">Asal Sekolah</p>
-                                            @foreach ($aprovals as $aproval)
-                                                <input type="checkbox" class="hidden" onclick="changeColor(this)" />
-                                                <span id="checkboxLabel"
-                                                    class="border border-gray-300 rounded px-2 py-1 bg-gray-100 text-gray-700 max-w-xs p-3"
-                                                    style="width: 180px;">{{ $aproval->sekolah }}</span>
-                                            @endforeach
+                                            <div class="w-full flex grid-cols-2">
+                                                @foreach ($aprovals as $aproval)
+                                                <div class="mt-2 w-full bg-black">
+                                                    <input type="checkbox" class="hidden" onclick="changeColor(this)" />
+                                                    <span id="checkboxLabel"
+                                                        class="border w-full border-gray-300 rounded px-2 py-1 bg-gray-100 text-gray-700 max-w-xs p-3"
+                                                       >{{ $aproval->sekolah }}</span>
+                                                </div>
+                                                @endforeach
+                                            </div>
                                         </label>
                                     </div>
 
@@ -99,6 +103,7 @@
                                     if (checkbox.checked) {
                                         label.classList.add("bg-blue-500");
                                         label.classList.remove("bg-gray-100");
+
                                     } else {
                                         label.classList.add("bg-gray-100");
                                         label.classList.remove("bg-blue-500");
