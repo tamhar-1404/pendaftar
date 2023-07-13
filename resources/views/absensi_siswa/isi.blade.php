@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css"  rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -100,14 +101,14 @@
                 PRINT
             </button>
             <button data-modal-target="staticModal" data-modal-toggle="staticModal" class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400">Tambah Izin</button>
-            <form action="{{ route('absensi_siswa.store') }}" method="post">
+            <form action="{{ route('absensi_siswa.store') }}" method="post" id="absenform">
                 @csrf
                 <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
                 <input type="hidden" name="sekolah" value="{{ Auth::user()->sekolah }}">
                 <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}" />
                 <input type="hidden" id="waktu" name="jam" value="{{ date('H:i') }}" />
                 <input type="hidden" name="keterangan" value="Hadir">
-                <button type="submit" class="border border-green-500 px-3 py-2 rounded-lg text-green-500 hover:bg-green-500 hover:text-white font-bold">Absen</button>
+                <button type="submit" class="border border-green-500 px-3 py-2 rounded-lg text-green-500 hover:bg-green-500 hover:text-white font-bold" id="btnabsen">Absen</button>
             </form>
         </div>
         <div>
@@ -592,6 +593,16 @@
             </script>
 <script>
     $(document).ready(function() {
+        console.log("Absen");
+        console.log("Absen : {{ $cek_sudah_absen }}")
+        if ('{{ $cek_sudah_absen }}' == 1) {
+            // alert('Anis')
+            $('#absenform').removeAttr('action');
+            $('#btnabsen').attr('type', 'button');
+            $('#btnabsen').click(function () {
+                toastr.error('Anda sudah absen');
+            })
+        }
         $('#waktu').datetimepicker({
             format: 'HH:mm',
             timeZone: 'Asia/Jakarta',
@@ -604,6 +615,8 @@
     function printPage() {
         window.print();
     }
+</script>
+<script>
 </script>
 </body>
 </html>

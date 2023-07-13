@@ -20,6 +20,8 @@ class AbsensiSiswaController extends Controller
      */
     public function index()
     {
+        $cek_sudah_absen = ApprovalIzin::where([['tanggal', Carbon::now()->format('Y-m-d')], ['nama', auth()->user()->name]])->whereNotIn('keterangan', ['sakit','izin'])->exists();
+        // dd($cek_sudah_absen);
         $terima = ApprovalIzin::where('status', 'terimaabsen')->where('nama', Auth::user()->name )
         ->get();
         $currentHour = now()->format('H:i');
@@ -44,7 +46,7 @@ class AbsensiSiswaController extends Controller
         $alfa = ApprovalIzin::where('keterangan', 'alfa')->count();
         $izinsakit = $izin + $sakit;
         $all = ApprovalIzin::where('nama', Auth::user()->name)->count();
-       return view('absensi_siswa.index' , compact('terima','hadir','telat','all','alfa','izinsakit'));
+       return view('absensi_siswa.index' , compact('terima','hadir','telat','all','alfa','izinsakit', 'cek_sudah_absen'));
     }
 
     /**
