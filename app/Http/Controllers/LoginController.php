@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreLoginRequest;
 use App\Http\Requests\UpdateLoginRequest;
 use App\Models\aproval;
+use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -113,6 +114,11 @@ public function store(Request $request)
         'password'=>'required',
     ]);
 
+    if (User::where('email', $request->email)->exists()) {
+        return back()->with('error', 'Email sudah digunakan');
+        // return "Duplikat";
+    }
+
     if($request->file('skck') === null){
         $foto_siswa = $request->file('foto_siswa');
         $sp_diri = $request->file('sp_diri');
@@ -149,7 +155,7 @@ public function store(Request $request)
         // Kirim email konfirmasi
         Mail::to($data->email)->send(new Konfimasi());
 
-        return redirect()->route('login.index');
+        return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
     }
     if($request->file('skck') !== null){
         $foto_siswa = $request->file('foto_siswa');
@@ -190,7 +196,7 @@ public function store(Request $request)
         // Kirim email konfirmasi
         Mail::to($data->email)->send(new Konfimasi());
 
-        return redirect()->route('login.index');
+        return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
     }
 }
     /**
