@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\ApprovalIzin;
 use App\Http\Requests\Storeabsensi_siswaRequest;
 use App\Http\Requests\Updateabsensi_siswaRequest;
+use App\Mail\EmailLulus as MailEmailLulus;
 use App\Mail\IzinTenggat;
 use App\Models\anggota_piket;
+use App\Models\EmailLulus;
+use App\Models\Siswa;
 use App\Models\TenggatIzin;
 use Auth;
 use Carbon\Carbon;
@@ -23,6 +26,21 @@ class AbsensiSiswaController extends Controller
      */
     public function index()
     {
+
+        //Email lulus
+        $siswa_lulus = Siswa::where('magang_akhir', Carbon::now()->format('Y-m-d'));
+        if ($siswa_lulus->exists()) {
+            foreach ($siswa_lulus->get() as $siswa) {
+                if (!EmailLulus::where('email', $siswa->email)->where('tanggal', Carbon::now()->format('Y-m-d'))->exists()) {
+                    EmailLulus::create([
+                        'email' => $siswa->email,
+                        'tanggal' => Carbon::now()->format('Y-m-d'),
+                    ]);
+                    Mail::to($siswa->email)->send(new MailEmailLulus());
+                }
+            }
+        }
+
         //Kirim email tenggat
         $izin_tenggat_sekarang = ApprovalIzin::where('sampai', Carbon::now()->format('Y-m-d'))->where('keterangan', 'izin');
         if ($izin_tenggat_sekarang->exists()) {
