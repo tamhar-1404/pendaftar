@@ -95,7 +95,6 @@ public function store(Request $request)
         'foto_siswa'=>'required',
         'sp_diri'=>'required',
         'sp_ortu'=>'required',
-        'skck'=>'',
         'cv'=>'required',
         'email'=>'required',
         'password'=>'required',
@@ -127,6 +126,47 @@ public function store(Request $request)
             'foto_siswa' => $foto_siswa->hashName(),
             'sp_diri' => $sp_diri->hashName(),
             'sp_ortu' => $sp_ortu->hashName(),
+            'cv' => $cv->hashName(),
+            'email' => $request->email,
+            'no' => $request->no,
+            'password' => Hash::make($request->password),
+            'remember_token' => Str::random(60)
+        ]);
+
+        // Kirim email konfirmasi
+        Mail::to($data->email)->send(new Konfimasi());
+
+        return redirect()->route('login.index');
+    }
+    if($request->file('skck') !== null){
+        $foto_siswa = $request->file('foto_siswa');
+        $sp_diri = $request->file('sp_diri');
+        $sp_ortu = $request->file('sp_ortu');
+        $skck = $request->file('skck');
+        $cv = $request->file('cv');
+
+        $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
+        $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
+        $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
+        $skck->storeAs('public/pendaftaran', $skck->hashName());
+        $cv->storeAs('public/pendaftaran', $cv->hashName());
+
+        $data = aproval::create([
+            'name' => $request->name,
+            'tempat' => $request->tempat,
+            'tanggal' => $request->tanggal,
+            'kelas' => $request->kelas,
+            'nisn' => $request->nisn,
+            'jeniskelamin' => $request->jeniskelamin,
+            'alamat' => $request->alamat,
+            'sekolah' => $request->sekolah,
+            'jurusan' => $request->jurusan,
+            'magang_awal' => $request->magang_awal,
+            'magang_akhir' => $request->magang_akhir,
+            'foto_siswa' => $foto_siswa->hashName(),
+            'sp_diri' => $sp_diri->hashName(),
+            'sp_ortu' => $sp_ortu->hashName(),
+            'skck' => $skck->hashName(),
             'cv' => $cv->hashName(),
             'email' => $request->email,
             'no' => $request->no,

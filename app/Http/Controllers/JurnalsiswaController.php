@@ -12,6 +12,8 @@ use Auth;
 use Illuminate\Support\Facades\Storage;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\IOFactory;
+use Exception;
+
 
 class JurnalsiswaController extends Controller
 {
@@ -48,13 +50,24 @@ class JurnalsiswaController extends Controller
      */
     public function store(Request $request)
     {
+        // $this->validate($request, [
+        //     'nama' =>"required",
+        //     'tanggal' => "required|unique:jurnalsiswas,tanggal",
+        //     'sekolah' => "required",
+        //     'kegiatan'  => "required",
+
+        // ]);
+
         $this->validate($request, [
             'nama' =>"required",
-            'tanggal' => "required",
+            'tanggal' => "required|unique:jurnalsiswas,tanggal",
             'sekolah' => "required",
             'kegiatan'  => "required",
 
+        ],[
+            'tanggal.unique' => 'jhvgghvb',
         ]);
+
         $image = $request->file('image');
         $image->storeAs('public/image', $image->hashName());
         jurnalsiswa::create([
