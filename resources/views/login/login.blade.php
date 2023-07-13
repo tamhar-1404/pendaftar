@@ -122,7 +122,7 @@
                             </span>
                         </label>
                         @error('email')
-                            <div class="alert alert-danger">{{ $message }}</div>
+                            <div class="text-sm text-red-500 font-medium">{{ $message }}</div>
                         @enderror
 
                         <label class="relative mt-4 flex">
