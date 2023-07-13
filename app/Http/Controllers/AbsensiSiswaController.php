@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\ApprovalIzin;
 use App\Http\Requests\Storeabsensi_siswaRequest;
 use App\Http\Requests\Updateabsensi_siswaRequest;
+use App\Models\anggota_piket;
 use Auth;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class AbsensiSiswaController extends Controller
 {
@@ -73,9 +76,20 @@ class AbsensiSiswaController extends Controller
         ]);
         // dd($request->jam);
         $keterangan = $request->keterangan;
-        if($request->jam > '08:00' ){
-               $keterangan = $request->jam;
+
+        // dd(Auth::user()->siswa_id, Carbon::now()->locale('id')->dayName);
+        $piket = anggota_piket::where([['siswa_id', Auth::user()->siswa_id], ['hari', Carbon::now()->locale('id')->dayName], ['waktu', 'pagi']])->exists();
+        if ($piket) {
+            if ($request->jam > '07:45') {
+                $keterangan = $request->jam;
                 $keterangan = $telat;
+            }
+        }
+        else {
+            if($request->jam > '08:00' ){
+                   $keterangan = $request->jam;
+                    $keterangan = $telat;
+            }
         }
         $nama = Auth::user()->name;
         $tanggal = $request->input('tanggal');
