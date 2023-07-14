@@ -101,6 +101,9 @@ Route::get('/percobaan', function () {
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/p', function () {
+    return view('aproval.p');
+});
 
 
 
@@ -117,6 +120,35 @@ Route::middleware(['auth'])->group(function () {
         // Route khusus untuk admin
         Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
         Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
+        // Admin
+        Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
+        Route::get('send-email' , [MailController::class,'index']);
+        Route::get('siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa']);
+        Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
+        Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
+        Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
+        Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
+        Route::put('/siswa_admin/banned/{id}', [App\Http\Controllers\SiswaController::class, 'banned'])->name('siswa.banned');
+        Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::class);
+        Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
+        Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
+        Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
+        Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
+        Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
+        Route::resource('/sp', App\Http\Controllers\SpController::class);
+
+        Route::resource('/Berita', App\Http\Controllers\BlogController::class);
+
+        Route::resource('/chat', App\Http\Controllers\ChatController::class);
+        Route::resource('/piket', App\Http\Controllers\PiketController::class);
+        Route::post('/rubah', [PiketController::class, 'rubah'])->name('rubah');
+        Route::get('/sore', [PiketController::class, 'sore'])->name('sore');
+        Route::resource('/mou', App\Http\Controllers\MouController::class);
+        Route::resource('/tolak', App\Http\Controllers\TolakController::class);
+        Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
+        Route::post('/aproval/{aproval}/confirm', [App\Http\Controllers\AprovalController::class, 'confirm'])->name('aproval.confirm');
+        Route::post('/aproval/{aproval}/tolak', [App\Http\Controllers\AprovalController::class, 'tolak'])->name('aproval.tolak');
+
 
     });
 
