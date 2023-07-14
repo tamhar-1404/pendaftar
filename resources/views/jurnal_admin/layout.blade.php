@@ -113,8 +113,8 @@
            {{-- jurnal --}}
            <li class="relative">
                <a href="{{ route('jurnal_admin.index') }}"
-                   class="flex h-12 cursor-pointer items-center mt-2 {{ request()->routeIs('jurnal_admin.index') ? 'text-blue-400' : 'text-gray-600' }} {{ request()->routeIs('jurnal_admin.create') ? 'text-blue-400' : 'text-gray-600' }} rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300  hover:bg-blue-400 hover:text-white">
-                   <span class="mr-4 [&>svg]:h-4 [&>svg]:w-5 ">
+                   class="flex h-12 cursor-pointer items-center mt-2 {{ request()->routeIs('jurnal_admin.*') ? 'text-blue-400' : 'text-gray-600' }} rounded-[5px] px-6 py-4 text-[0.875rem] outline-none transition duration-300 hover:bg-blue-400 hover:text-white">
+                   <span class="mr-4 h-4 w-5">
                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                            <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                            <style>
@@ -180,14 +180,16 @@
                    data-te-sidenav-collapse-ref>
                    <li class="relative">
                        <a href="{{ route('tatatertib.index') }}"
-                           class="flex h-6 {{ request()->routeIs('tatatertib.index') ? 'text-blue-400' : 'text-gray-400' }}  cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 mt-2 outline-none transition duration-300 ease-linear  hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none hover:bg-blue-400 hover:text-white"
+                           class="flex h-6 {{ request()->routeIs('tatatertib.index') ? 'text-blue-400' : 'text-gray-400' }} cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 mt-2 outline-none transition duration-300 ease-linear hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none hover:bg-blue-400 hover:text-white"
                            data-te-sidenav-link-ref>Tata tertib</a>
                    </li>
+
                    <li class="relative">
                        <a href="{{ route('laporansiswa.index') }}"
-                           class="flex h-6 {{ request()->routeIs('laporansiswa.index') ? 'text-blue-400' : 'text-gray-400' }} cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 mt-2 outline-none transition duration-300 ease-linear hover:bg-blue-400 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none hover:bg-blue-400 hover:text-white"
+                           class="flex h-6 {{ request()->routeIs('laporansiswa.index') ? 'text-blue-400' : 'text-gray-400' }} cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 mt-2 outline-none transition duration-300 ease-linear hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none hover:bg-blue-400 hover:text-white"
                            data-te-sidenav-link-ref>Laporan Siswa</a>
                    </li>
+
                    {{-- <li class="relative">
                    <a href="{{ route('laporan_piket.index') }}"
                        class="flex h-6 {{ request()->routeIs('laporan_piket.index') ? 'bg-blue-500 text-white' : '' }} cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
@@ -195,8 +197,8 @@
                </li> --}}
                    <li class="relative">
                        <a href="{{ route('sp.index') }}"
-                           class="flex h-6 {{ request()->routeIs('sp.index') ? 'bg-blue-400 text-white' : '' }} cursor-pointer mt-2 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-400 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-400 hover:text-white"
-                           data-te-sidenav-link-ref>Laporan SP</a>
+                           class="flex h-6 {{ request()->routeIs('sp.index') ? 'text-blue-400' : 'text-gray-400' }} cursor-pointer mt-2 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-400 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-400 hover:text-white"
+                           data-te-sidenav-link-ref><span>Laporan Sp</span></a>
                    </li>
 
                </ul>
@@ -229,28 +231,33 @@
                    data-te-sidenav-collapse-ref>
                    <li class="relative">
                        <a href="{{ route('Berita.index') }}"
-                           class="flex h-6 mt-2 {{ request()->routeIs('Berita.index') ? 'bg-blue-400 text-white' : '' }}  cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-400 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-400 hover:text-white"
+                           class="flex h-6 mt-2 {{ request()->routeIs('Berita.index') ? 'text-blue-400' : 'text-gray-400' }} cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] outline-none transition duration-300 ease-linear hover:bg-blue-400 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-400 hover:text-white"
                            data-te-sidenav-link-ref>Berita</a>
                    </li>
+
                    <li class="relative">
                        <a href="{{ route('chat.index') }}"
-                           class="flex h-6 cursor-pointer mt-2 {{ request()->routeIs('chat.index') ? 'bg-blue-400 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-400 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-400 hover:text-white"
+                           class="flex h-6 cursor-pointer mt-2 {{ request()->routeIs('chat.index') ? 'text-blue-400' : 'text-gray-400' }} items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-400 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-400 hover:text-white"
                            data-te-sidenav-link-ref>Chat</a>
                    </li>
+
                    <li class="relative">
                        <a href="{{ route('piket.index') }}"
-                           class="flex h-6 cursor-pointer mt-2 {{ request()->routeIs('piket.index') ? 'bg-blue-400 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-400 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-400 hover:text-white"
+                           class="flex h-6 cursor-pointer mt-2 {{ request()->is('piket*') ? 'text-blue-400' : 'text-gray-400' }} items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-400 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-400 hover:text-white"
                            data-te-sidenav-link-ref>Jadwal Piket</a>
                    </li>
+
+
                    <li class="relative">
                        <a href="{{ route('mou.index') }}"
-                           class="flex h-6 cursor-pointer mt-2 {{ request()->routeIs('mou.index') ? 'bg-blue-400 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-400 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-400 hover:text-white"
+                           class="flex h-6 cursor-pointer mt-2 {{ request()->routeIs('mou.index') ? 'text-blue-400' : 'text-gray-400' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-400 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-400 hover:text-white"
                            data-te-sidenav-link-ref>MOU</a>
+                   </li>
                    <li class="relative">
                        <a href="{{ route('tolak.index') }}"
-                           class="flex h-6 cursor-pointer mt-2 {{ request()->routeIs('tolak.index') ? 'bg-blue-400 text-white' : '' }} items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-400 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-400 hover:text-white"
+                           class="flex h-6 cursor-pointer mt-2 {{ request()->routeIs('tolak.index') ? 'text-blue-400' : 'text-gray-400' }} items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-400 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-400 hover:text-white"
                            data-te-sidenav-link-ref>Di Tolak</a>
-
+                   </li>
                </ul>
            </li>
        </ul>
