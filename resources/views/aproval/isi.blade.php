@@ -202,21 +202,70 @@
                         <div class="font-bold w-full border-b-2">Berkas - Berkas</div>
                         <div class="flex justify-around mt-2">
                             <div>
-                                <p class="">Pernyataan Diri Sendiri : </p>
-                                <img  class="hover:scale-125 w-11  transition-all duration-200 mt-4 hover:opacity-80"   src="{{ asset('storage/pendaftaran/' . $aproval->sp_diri) }}" alt="pernyataan diri sendiri">
-                            </div>
+                                <p class="">Pernyataan Diri Sendiri:</p>
+                                <img class="hover:scale-125 w-11 transition-all duration-200 mt-4 hover:opacity-80 cursor-pointer" src="{{ asset('storage/pendaftaran/' . $aproval->sp_diri) }}" alt="pernyataan diri sendiri" onclick="openModal(this)">
+                              </div>
+
+                              <div id="imageModal" class="modal hidden">
+                                <div class="modal-overlay"></div>
+                                <div class="modal-content">
+                                  <span class="close absolute top-2 right-2 text-gray-600 cursor-pointer" onclick="closeModal()">&times;</span>
+                                  <h3 class="modal-title" id="modalTitle"></h3>
+                                  <div class="modal-image-container">
+                                    <img class="modal-image" id="modalImage">
+                                    <div class="modal-button-container">
+                                      <a id="downloadLink" class="download-link hidden" href="#" download>
+                                        <button class="download-button">Download</button>
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div id="caption"></div>
+                                </div>
+                              </div>
+                              <div>
+                                <p>Pernyataan orang tua :</p>
+                                <img class="hover:scale-125 w-11 transition-all duration-200 mt-4 hover:opacity-80 cursor-pointer" src="{{ asset('storage/pendaftaran/' . $aproval->sp_ortu) }}" alt="" onclick="openModal(this)">
+                              </div>
+                              <div id="imageModal" class="modal hidden">
+                                <div class="modal-overlay"></div>
+                                <div class="modal-content">
+                                  <span class="close absolute top-2 right-2 text-gray-600 cursor-pointer" onclick="closeModal()">&times;</span>
+                                  <h3 class="modal-title" id="modalTitle"></h3>
+                                  <div class="modal-image-container">
+                                    <img class="modal-image" id="modalImage">
+                                    <div class="modal-button-container">
+                                      <a id="downloadLink" class="download-link hidden" href="#" download>
+                                        <button class="download-button">Download</button>
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div id="caption"></div>
+                                </div>
+                              </div>
+                              <div>
+                                <p>SKCK :</p>
+                                <img class="hover:scale-125 w-11 transition-all duration-200 mt-4 hover:opacity-80 cursor-pointer" src="{{ asset('storage/pendaftaran/' . $aproval->skck) }}" alt="" onclick="openModal(this)">
+                              </div>
                             <div>
-                                <p>Pernyataan orang tua : </p>
-                                <img class="hover:scale-125 w-11 transition-all duration-200 mt-4 hover:opacity-80" src="{{ asset('storage/pendaftaran/' . $aproval->sp_ortu) }}" alt="">
-                            </div>
-                            <div>
-                                <p>SKCK : </p>
-                                <img class="hover:scale-125 w-11 transition-all duration-200 mt-4 hover:opacity-80"  src="{{ asset('storage/pendaftaran/' . $aproval->skck) }}" alt="">
-                            </div>
-                            <div>
-                                <p>CV : </p>
-                                <img class="hover:scale-125 w-11 transition-all duration-200 mt-4 hover:opacity-80" src="{{ asset('storage/pendaftaran/' . $aproval->cv) }}" alt="">
-                            </div>
+                                <p>CV :</p>
+                                <img class="hover:scale-125 w-11 transition-all duration-200 mt-4 hover:opacity-80 cursor-pointer" src="{{ asset('storage/pendaftaran/' . $aproval->cv) }}" alt="" onclick="openModal(this)">
+                              </div>
+                              <div id="imageModal" class="modal hidden">
+                                <div class="modal-overlay"></div>
+                                <div class="modal-content">
+                                  <span class="close absolute top-2 right-2 text-gray-600 cursor-pointer" onclick="closeModal()">&times;</span>
+                                  <h3 class="modal-title" id="modalTitle"></h3>
+                                  <div class="modal-image-container">
+                                    <img class="modal-image" id="modalImage">
+                                    <div class="modal-button-container">
+                                      <a id="downloadLink" class="download-link hidden" href="#" download>
+                                        <button class="download-button">Download</button>
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div id="caption"></div>
+                                </div>
+                              </div>
                         </div>
 
                     </div>
@@ -252,6 +301,105 @@
       </script>
 
         <!-- Main modal -->
+
+        {{--  pernyataan diri sendiri  --}}
+        <style>
+            .modal-overlay {
+              z-index: 50;
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.5);
+              backdrop-filter: blur(10px);
+            }
+
+            .modal-content {
+              z-index: 60;
+              position: fixed;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              max-width: 90%;
+              max-height: 90%;
+              border-radius: 8px;
+              background: #FFF;
+              box-shadow: 0px 0px 2px -1px rgba(0, 0, 0, 0.10);
+              overflow-y: auto;
+              padding: 20px;
+            }
+
+            .modal-title {
+              font-size: 18px;
+              font-weight: bold;
+              text-align: center;
+              margin-bottom: 10px;
+            }
+
+            .modal-image-container {
+              text-align: center;
+              position: relative;
+            }
+
+            .modal-image {
+              max-width: 100%;
+              max-height: 100%;
+            }
+
+            .modal-button-container {
+              margin-top: 10px;
+              text-align: center;
+            }
+
+            .download-link {
+              display: inline-block;
+            }
+
+            .download-button {
+              padding: 10px 20px;
+              background-color: #11ace9;
+              color: #FFF;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+            }
+
+            .close {
+              top: 10px;
+              right: 10px;
+            }
+            </style>
+
+            <script>
+            function openModal(element) {
+              var modal = document.getElementById("imageModal");
+              var modalTitle = document.getElementById("modalTitle");
+              var modalImg = document.getElementById("modalImage");
+              var downloadLink = document.getElementById("downloadLink");
+              var captionText = document.getElementById("caption");
+
+              modal.classList.remove("hidden");
+              modalTitle.innerText = "Pernyataan Diri Sendiri";
+              modalImg.src = element.src;
+              downloadLink.href = element.src;
+
+              downloadLink.classList.remove("hidden");
+
+              document.body.style.overflow = "hidden";
+            }
+
+            function closeModal() {
+              var modal = document.getElementById("imageModal");
+              modal.classList.add("hidden");
+
+              document.body.style.overflow = "auto";
+            }
+            </script>
+            {{--  end pernyataan diri sendiri  --}}
+
+
+
 </body>
 
 </html>

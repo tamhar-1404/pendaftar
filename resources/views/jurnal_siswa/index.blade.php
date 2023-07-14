@@ -4,6 +4,8 @@
 {{--  <!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:26 GMT -->  --}}
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -1539,9 +1541,10 @@
                     <div class="mb-5 font-semibold kamu-tak-diajak">
                         <span>Jurnal /<span class="text-[#00B7FF]">  {{ Auth::user()->name }}</span></span>
                     </div>
-                    @error('tanggal')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                     @enderror
+                   @error('tanggal')
+                        <div class="text-danger">Anda telah mengisi jurnal pada hari ini</div>
+                   @enderror
+
                     <div class="panel">
                      {{-- <h2>{{ $e }}</h2> --}}
 
@@ -1729,7 +1732,12 @@
                                         <td class="whitespace-nowrap px-2 py-2">{{$items->nama}}</td>
                                         <td class="whitespace-nowrap px-2 py-2">{{$items->tanggal}}</td>
                                         <td class="whitespace-nowrap px-2 py-2">{{$items->sekolah}}</td>
-                                        <td class="whitespace-nowrap px-2 py-2 max-w-sm overflow-hidden truncate " >{{$items->kegiatan}}</td>
+                                        <td class="whitespace-nowrap px-2 py-2 overflow-hidden">
+                                            <div class="truncate">
+                                              {{ substr($items->kegiatan, 0, 10) }}..
+                                            </div>
+                                          </td>
+
                                         <td class="whitespace-nowrap px-2 pl-17 py-2"><img
                                             src="{{ asset('storage/image/' . $items->image) }}"
                                             width="100px" alt="">

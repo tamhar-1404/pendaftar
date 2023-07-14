@@ -49,9 +49,7 @@ Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class)
 Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
 Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
 Route::resource('/sp', App\Http\Controllers\SpController::class);
-
 Route::resource('/Berita', App\Http\Controllers\BlogController::class);
-
 Route::resource('/chat', App\Http\Controllers\ChatController::class);
 Route::resource('/piket', App\Http\Controllers\PiketController::class);
 Route::post('/rubah', [PiketController::class, 'rubah'])->name('rubah');
@@ -61,7 +59,6 @@ Route::resource('/tolak', App\Http\Controllers\TolakController::class);
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
 Route::post('/aproval/{aproval}/confirm', [App\Http\Controllers\AprovalController::class, 'confirm'])->name('aproval.confirm');
 Route::post('/aproval/{aproval}/tolak', [App\Http\Controllers\AprovalController::class, 'tolak'])->name('aproval.tolak');
-
 // akhir admin
 
 // Pembimbing
