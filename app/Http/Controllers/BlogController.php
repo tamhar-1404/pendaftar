@@ -68,7 +68,7 @@ class BlogController extends Controller
          ]);
 
          $emails = User::whereIn('role', ['siswa', 'guru'])->pluck('email')->toArray();
-         
+
          foreach ($emails as $email) {
              Mail::to($email)->send(new BeritaTerkini($berita));
          }

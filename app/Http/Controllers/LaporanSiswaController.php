@@ -101,7 +101,6 @@ class LaporanSiswaController extends Controller
                 $izin->status = 'terima';
                 $izin->save();
             }
-
             return redirect()->back();
      }
 
