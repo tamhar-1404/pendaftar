@@ -306,7 +306,7 @@
       @foreach ($berita->comments as $comment)
       <div class="bg-white p-4 mb-4 mt-4 rounded shadow">
           <div class="flex items-center mb-2">
-          <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('siswa/images/profile-10.jpeg') }}" alt="Profil Picture">
+          <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('storage/Siswa/' . $comment->user->Siswa?->foto_siswa) }}" alt="Profil Picture">
           <h4 class="text-lg font-bold">{{ $comment->user->name }}</h4>
           </div>
           <p class="text-gray-700 mb-2">{{ $comment->comment }}</p>
@@ -330,12 +330,16 @@
 
       @if(count($comment->reply_comments) != 0)
       @foreach ($comment->reply_comments as $reply)
-      <div class="bg-white p-4 ml-8 mb-4 rounded shadow">
-          <div class="flex items-center mb-2">
-          <h4 class="text-lg font-bold">{{ $reply->user->name }}</h4>
-          </div>
-          <p class="text-gray-700 mb-2">{{ $reply->comment }}</p>
-      </div>
+      <div class="bg-white p-4 ml-8 mt-2 shadow">
+        <div class="flex items-center mb-2">
+            <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('storage/Siswa/' . $comment->user->Siswa?->foto_siswa) }}" alt="Profil Picture">
+            <div class="flex flex-col">
+                <h4 class="text-lg font-bold">{{ $reply->user->name }}</h4>
+                <p class="text-sm font-light">{{ Carbon::parse($reply->created_at)->format('d M Y') }}</p>
+            </div>
+        </div>
+        <p class="text-gray-700 mb-2"><i class="fa-solid fa-reply text-gray-500"></i> <span class="text-blue-500">{{ $reply->komentar->user->name }}</span> {{ $reply->comment }}</p>
+    </div>
       @endforeach
       @endif
       @endforeach

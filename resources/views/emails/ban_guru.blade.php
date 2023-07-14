@@ -51,7 +51,7 @@
         <center>
             <h1 style="color: #00c3ff;">Humma<span class="soft">soft</span></h1>
         </center>
-        <p>Mohon maaf anda telah dikeluarkan dan akun anda sudah tidak bisa digunakan, dengan alasan : {{ $data['alasan'] }}</p>
+        <p>Mohon maaf siswa anda atas nama {{ $data['nama'] }} telah dikeluarkan dengan alasan : {{ $data['alasan'] }}</p>
     </div>
 </body>
 </html>

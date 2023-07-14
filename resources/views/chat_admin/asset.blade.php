@@ -136,46 +136,41 @@
                             </button>
                         </div>
                         <div class="h-px w-full border-b border-[#e0e6ed] dark:border-[#1b2e4b]"></div>
-                        <div class="!mt-0">
+                        <div class="mt-0">
                             <div
                                 class="chat-users perfect-scrollbar relative -mr-3.5 h-full min-h-[100px] space-y-0.5 pr-3.5 sm:h-[calc(100vh_-_357px)]">
-                                <template x-for="person in searchUsers">
+
                                     <button type="button"
                                         class="flex w-full items-center justify-between rounded-md p-2 hover:bg-gray-100 hover:text-primary dark:hover:bg-[#050b14] dark:hover:text-primary"
-                                        :class="{ 'bg-gray-100 dark:bg-[#050b14] dark:text-primary text-primary': selectedUser
-                                                .userId === person.userId }"
-                                        @click="selectUser(person)">
+                                       >
                                         <div class="flex-1">
                                             <div class="flex items-center">
                                                 <div class="relative flex-shrink-0">
-                                                    <img :src="`assets/images/${person.path}`"
-                                                        class="h-12 w-12 rounded-full object-cover" />
-                                                    <template x-if="person.active">
+                                                    <img src="assets/images/logo.png"
+                                                        class="h-12 w-12 rounded-full object-cover">
                                                         <div class="absolute bottom-0 ltr:right-0 rtl:left-0">
                                                             <div class="h-4 w-4 rounded-full bg-success"></div>
                                                         </div>
-                                                    </template>
                                                 </div>
                                                 <div class="mx-3 ltr:text-left rtl:text-right">
-                                                    <p class="mb-1 font-semibold" x-text="person.name"></p>
-                                                    <p class="max-w-[185px] truncate text-xs text-white-dark"
-                                                        x-text="person.preview"></p>
+                                                    <p class="mb-1 font-semibold">awokawok</p>
+                                                    <p class="max-w-[185px] truncate text-xs text-white-dark">Mesum</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="whitespace-nowrap text-xs font-semibold">
-                                            <p x-text="person.time"></p>
+                                            <p >09:00 am</p>
                                         </div>
                                     </button>
-                                </template>
+
                             </div>
                         </div>
                     </div>
-                    <div class="absolute z-[5] hidden h-full w-full rounded-md bg-black/60"
+                    {{-- <div class="absolute z-[5] hidden h-full w-full rounded-md bg-black/60"
                         :class="isShowChatMenu && '!block xl:!hidden'" @click="isShowChatMenu = !isShowChatMenu">
-                    </div>
+                    </div> --}}
                     <div class="panel flex-1 p-0 justify-between" >
-                        <template x-if="!isShowUserChat">
+                        <template>
                             <div class="relative flex h-full items-center justify-center p-4">
                                 <button type="button"
                                     class="absolute top-4 hover:text-primary ltr:left-4 rtl:right-4 xl:hidden"

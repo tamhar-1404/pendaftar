@@ -62,6 +62,10 @@ class AprovalController extends Controller
            Mail::to($user->email)->send(new Guru_email($aproval->name));
         }
 
+        $tolak = tolak::where('nisn', $aproval->nisn)->count();
+        if($tolak > 0){
+            tolak::where('nisn', $aproval->nisn)->delete();
+        }
         $foto_siswa = $aproval->foto_siswa;
          $data = Siswa::create([
             'foto_siswa' => $foto_siswa,
@@ -118,6 +122,9 @@ public function tolak(Request $request, Aproval $aproval)
         $emailData = [
             'content' => 'Data Anda telah ditolak dengan alasan: ' . $alasan,
         ];
+        $pesanguru = [
+            'content' => 'Siswa dengan nama : '. $aproval->name . ' Data Anda telah ditolak dengan alasan: ' . $alasan,
+        ];
 
         $foto_siswa = $aproval->foto_siswa;
         $sp_diri = $aproval->sp_diri;
@@ -148,7 +155,7 @@ public function tolak(Request $request, Aproval $aproval)
             'password' => bcrypt($aproval->password)
         ]);
 
-        Mail::to($aproval->email)->send(new TolakEmail($aproval)); // Mengirim email ke siswa yang ditolak
+        Mail::to($aproval->email)->send(new TolakEmail($emailData)); // Mengirim email ke siswa yang ditolak
 
         $guruList = User::where('role', 'guru')
             ->where('sekolah', $aproval->sekolah)
@@ -156,7 +163,7 @@ public function tolak(Request $request, Aproval $aproval)
 
         if ($guruList->isNotEmpty()) {
             $guruEmails = $guruList->pluck('email')->toArray();
-            Mail::to($guruEmails)->send(new TolakEmail($aproval)); // Mengirim email ke guru dengan nama sekolah yang sama
+            Mail::to($guruEmails)->send(new TolakEmail($pesanguru)); // Mengirim email ke guru dengan nama sekolah yang sama
         }
 
         Storage::move('public/pendaftaran/' . $foto_siswa, 'public/ditolak/' . $foto_siswa);

@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Konfimasi;
 use App\Models\Login;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreLoginRequest;
 use App\Http\Requests\UpdateLoginRequest;
 use App\Models\aproval;
+use App\Models\User;
 use Illuminate\Auth\Events\Registered;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -23,6 +26,9 @@ class LoginController extends Controller
      */
     public function index()
     {
+         // Ambil hari saat ini
+
+
         return view('login.login');
     }
 
@@ -36,6 +42,7 @@ class LoginController extends Controller
             'password.required' => 'Masukkan Kata Sandi Anda !!',
             'password.min' => 'Password Minimal 6 Huruf !!',
         ]);
+        $today = Carbon::now()->format('Y-m-d');
 
         $credentials = $request->only('email', 'password');
 
@@ -46,7 +53,14 @@ class LoginController extends Controller
             if ($user->role == 'Admin') {
                 return redirect()->route('dudi.index');
             } elseif ($user->role == 'Siswa') {
+                $data = $user->siswa_id;
+                $siswa = Siswa::where('id', $data)->first();
+                $tanggal = $siswa->magang_awal;
+                if($tanggal > now()){
+                    return redirect()->back()->with('error', 'anda masih belum masuk magang');;
+                }
                 return redirect()->route('siswamagang.index');
+
             } elseif ($user->role == 'guru') {
                 return redirect()->route('guru.index');
             } elseif ($user->role == 'banned') {
@@ -100,6 +114,11 @@ public function store(Request $request)
         'password'=>'required',
     ]);
 
+    if (User::where('email', $request->email)->exists()) {
+        return back()->with('error', 'Email sudah digunakan');
+        // return "Duplikat";
+    }
+
     if($request->file('skck') === null){
         $foto_siswa = $request->file('foto_siswa');
         $sp_diri = $request->file('sp_diri');
@@ -136,7 +155,7 @@ public function store(Request $request)
         // Kirim email konfirmasi
         Mail::to($data->email)->send(new Konfimasi());
 
-        return redirect()->route('login.index');
+        return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
     }
     if($request->file('skck') !== null){
         $foto_siswa = $request->file('foto_siswa');
@@ -177,7 +196,7 @@ public function store(Request $request)
         // Kirim email konfirmasi
         Mail::to($data->email)->send(new Konfimasi());
 
-        return redirect()->route('login.index');
+        return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
     }
 }
     /**

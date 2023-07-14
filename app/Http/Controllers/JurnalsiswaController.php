@@ -74,6 +74,10 @@ class JurnalsiswaController extends Controller
         } catch (\Illuminate\Database\QueryException $e) {
                 return redirect()->back()->withInput()->withErrors(['tanggal' => 'Tanggal sudah ada dalam database.']);
     }
+        // ],[
+        //     'tanggal.unique' => 'jhvgghvb',
+        // ]);
+
 
     }
     /**
