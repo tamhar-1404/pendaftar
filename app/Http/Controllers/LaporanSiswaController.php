@@ -41,6 +41,7 @@ class LaporanSiswaController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(auth()->user());
         $this->validate($request, [
             'nama' => 'required',
             'deskripsi' => 'required',
@@ -52,7 +53,7 @@ class LaporanSiswaController extends Controller
         $image = $request->file('bukti');
         $image->storeAs('public/laporansiswa', $image->hashName());
         LaporanSiswa::create([
-            'name' => $user->name,
+            'name' => auth()->user()->name,
             'tanggal' => $tanggal,
             'nama' => $request->nama,
             'status' => 'menunggu',
