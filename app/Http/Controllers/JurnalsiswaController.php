@@ -50,36 +50,31 @@ class JurnalsiswaController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'nama' =>"required",
-        //     'tanggal' => "required|unique:jurnalsiswas,tanggal",
-        //     'sekolah' => "required",
-        //     'kegiatan'  => "required",
+        try {
+            $this->validate($request, [
+                'nama' => "required",
+                'tanggal' => "required|unique:jurnalsiswas,tanggal",
+                'sekolah' => "required",
+                'kegiatan' => "required",
+            ]);
 
-        // ]);
+            $image = $request->file('image');
+            $image->storeAs('public/image', $image->hashName());
 
-        $this->validate($request, [
-            'nama' =>"required",
-            'tanggal' => "required|unique:jurnalsiswas,tanggal",
-            'sekolah' => "required",
-            'kegiatan'  => "required",
+            jurnalsiswa::create([
+                'image' => $image->hashName(),
+                'nama' => $request->nama,
+                'tanggal' => $request->tanggal,
+                'sekolah' => $request->sekolah,
+                'kegiatan' => $request->kegiatan,
+                'status' => $request->status,
+            ]);
 
-        ],[
-            'tanggal.unique' => 'jhvgghvb',
-        ]);
+            return redirect()->route('jurnal_siswa.index');
+        } catch (\Illuminate\Database\QueryException $e) {
+                return redirect()->back()->withInput()->withErrors(['tanggal' => 'Tanggal sudah ada dalam database.']);
+    }
 
-        $image = $request->file('image');
-        $image->storeAs('public/image', $image->hashName());
-        jurnalsiswa::create([
-            'image'=>$image->hashName(),
-            'nama' => $request->nama,
-            'tanggal' => $request->tanggal,
-            'sekolah' => $request->sekolah,
-            'kegiatan'=>$request->kegiatan,
-            'status' => $request -> status
-
-        ]);
-        return redirect()->route('jurnal_siswa.index');
     }
     /**
      * Display the specified resource.
