@@ -15,9 +15,15 @@ class TataTertibController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tatatertib = TataTertib::latest()->paginate(5); // Mengambil 5 tatatertib per halaman
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $tatatertib = TataTertib::where('judul', 'LIKE', '%' . $keyword . '%')->orWhere('deskripsi', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            return view('tatatertib.index', compact('tatatertib'));
+        }
+
+        $tatatertib = TataTertib::latest()->paginate(3); 
         return view('tatatertib.index', compact('tatatertib'));
     }
 

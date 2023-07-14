@@ -15,6 +15,7 @@ class BeritaGuruController extends Controller
      */
     public function index()
     {
+        
         return view('Berita_guru.index');
     }
 

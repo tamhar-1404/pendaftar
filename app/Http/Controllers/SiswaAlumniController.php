@@ -15,10 +15,18 @@ class SiswaAlumniController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
 {
     $alumni = Siswa::where('role', 'alumni')->get();
-    return view('alumni_admin.index', ['alumni' => $alumni]);
+
+    if ($request->has('cari')) {
+        $keyword = $request->cari;
+        $aprovals = Siswa::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(3);
+        return view('alumni_admin.index', compact('aprovals', 'alumni'));
+    }
+
+    $aprovals = Siswa::latest()->paginate(3);
+    return view('alumni_admin.index', ['alumni' => $alumni], compact('aprovals'));
 }
 
 

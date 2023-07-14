@@ -14,51 +14,98 @@
                     {{-- serch dan filter --}}
                     <div class="flex justify-end">
                         {{-- serch --}}
-                        <div class="mr-3 ">
+                        <div class="mr-3">
                             <form action="">
-                                <input
-                                    class="border-2 border-gray-200 rounded-xl outline-1 outline-gray-300 dark:bg-transparent text-sm px-2 py-1 tracking-wide"
-                                    type="text" placeholder="Cari..." name="cari" value="{{ request('cari') }}">
+                                <label class="relative hidden sm:flex">
+                                    <input
+                                        class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                        placeholder="Search users..." type="text" name="cari"
+                                        value="{{ request('cari') }}" />
+                                    <span
+                                        class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-4 w-4 transition-colors duration-200" fill="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path
+                                                d="M3.316 13.781l.73-.171-.73.171zm0-5.457l.73.171-.73-.171zm15.473 0l.73-.171-.73.171zm0 5.457l.73.171-.73-.171zm-5.008 5.008l-.171-.73.171.73zm-5.457 0l-.171.73.171-.73zm0-15.473l-.171-.73.171.73zm5.457 0l.171-.73-.171.73zM20.47 21.53a.75.75 0 101.06-1.06l-1.06 1.06zM4.046 13.61a11.198 11.198 0 010-5.115l-1.46-.342a12.698 12.698 0 000 5.8l1.46-.343zm14.013-5.115a11.196 11.196 0 010 5.115l1.46.342a12.698 12.698 0 000-5.8l-1.46.343zm-4.45 9.564a11.196 11.196 0 01-5.114 0l-.342 1.46c1.907.448 3.892.448 5.8 0l-.343-1.46zM8.496 4.046a11.198 11.198 0 015.115 0l.342-1.46a12.698 12.698 0 00-5.8 0l.343 1.46zm0 14.013a5.97 5.97 0 01-4.45-4.45l-1.46.343a7.47 7.47 0 005.568 5.568l.342-1.46zm5.457 1.46a7.47 7.47 0 005.568-5.567l-1.46-.342a5.97 5.97 0 01-4.45 4.45l.342 1.46zM13.61 4.046a5.97 5.97 0 014.45 4.45l1.46-.343a7.47 7.47 0 00-5.568-5.567l-.342 1.46zm-5.457-1.46a7.47 7.47 0 00-5.567 5.567l1.46.342a5.97 5.97 0 014.45-4.45l-.343-1.46zm8.652 15.28l3.665 3.664 1.06-1.06-3.665-3.665-1.06 1.06z" />
+                                        </svg>
+                                    </span>
+                                </label>
                             </form>
                         </div>
                         {{-- filter --}}
                         <ul class="relative flex items-center">
                             <!-- Notification dropdown -->
-                            <li class="relative" data-te-dropdown-ref>
+                            <div class="relative">
                                 <a class="mr-4 flex items-center text-gray-500 hover:text-gray-700 focus:text-gray-700"
-                                    href="#" id="navbarDropdownMenuLink" role="button"
-                                    data-te-dropdown-toggle-ref aria-expanded="false">
+                                    href="#" id="navbarDropdownMenuLink" role="button" onclick="openModal()">
                                     <span class="dark:black-gray-200 [&>svg]:w-3.5">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                                             viewBox="0 0 24 24">
                                             <path fill="currentColor"
                                                 d="M3 5.109C3 4.496 3.47 4 4.05 4h16.79c.58 0 1.049.496 1.049 1.109 0 .612-.47 1.108-1.05 1.108H4.05C3.47 6.217 3 5.721 3 5.11zM5.798 12.5c0-.612.47-1.109 1.05-1.109H18.04c.58 0 1.05.497 1.05 1.109s-.47 1.109-1.05 1.109H6.848c-.58 0-1.05-.497-1.05-1.109zM9.646 18.783c-.58 0-1.05.496-1.05 1.108 0 .613.47 1.109 1.05 1.109h5.597c.58 0 1.05-.496 1.05-1.109 0-.612-.47-1.108-1.05-1.108H9.646z" />
                                         </svg>
+                                    </span>
                                 </a>
-                                <ul class="absolute left-auto right-0 z-[1000] mt-3 hidden min-w-[12rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
-                                    aria-labelledby="navbarDropdownMenuLink" data-te-dropdown-menu-ref>
-                                    <li class="flex p-2 gap-2 mt-2 pb-2">
-                                        <p style="font-weight: bold" class="mb-5 text-lg">Filter Approval Sekolah</p>
-                                    </li>
-                                    <p class="order-last ms-2 text-sm font-bold">Asal Sekolah</p>
-                                    <li class="flex p-2 gap-2">
-                                        <input type="text"
-                                            class="border rounded-lg border-gray-300 rounded order-first"
-                                            placeholder="Alamat">
-                                    </li>
-                                    <li class="flex p-2 gap-2">
-                                        <input type="text" class="border border-gray-300 rounded"
-                                            placeholder="Alamat">
-                                        <input type="text" class="border border-gray-300 rounded"
-                                            placeholder="Alamat">
-                                    </li>
-                                    <li class="flex p-2 gap-2         ">
-                                        <input type="text" class="border border-gray-300 rounded"
-                                            placeholder="Alamat">
-                                        <input type="text" class="border border-gray-300 rounded"
-                                            placeholder="Alamat">
-                                    </li>
-                                </ul>
+                            </div>
+
+                            <!-- Modal -->
+                            <div id="modal"
+                                class="fixed right-48 mt-32 flex items-center justify-center z-50 hidden">
+                                <div class="absolute w-96 bg-white rounded-lg p-6 shadow-lg">
+                                    <div class="modal-header mb-4">
+                                        <div class="flex items-center justify-between mb-4">
+                                            <h5 class="text-xl font-bold">Filter Approval Siswa</h5>
+                                            <button onclick="closeModal()"
+                                                class="text-gray-500 ml-auto focus:outline-none">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-body mt-5">
+                                        <label class="flex flex-col mb-2">
+                                            <p class="text-base mb-3">Asal Sekolah</p>
+                                            @foreach ($aprovals as $aproval)
+                                                <input type="checkbox" class="hidden" onclick="changeColor(this)" />
+                                                <span id="checkboxLabel"
+                                                    class="border border-gray-300 rounded px-2 py-1 bg-gray-100 text-gray-700 max-w-xs p-3"
+                                                    style="width: 180px;">{{ $aproval->sekolah }}</span>
+                                            @endforeach
+                                        </label>
+                                    </div>
+
+                                    <div class="modal-footer mt-4 flex justify-end">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                                function openModal() {
+                                    document.getElementById("modal").classList.remove("hidden");
+                                }
+
+                                function closeModal() {
+                                    document.getElementById("modal").classList.add("hidden");
+                                }
+
+                                function changeColor(checkbox) {
+                                    var label = document.getElementById("checkboxLabel");
+                                    if (checkbox.checked) {
+                                        label.classList.add("bg-blue-500");
+                                        label.classList.remove("bg-gray-100");
+                                    } else {
+                                        label.classList.add("bg-gray-100");
+                                        label.classList.remove("bg-blue-500");
+                                    }
+                                }
+                            </script>
+                        </ul>
                     </div>
                     {{-- tabel --}}
 
@@ -66,7 +113,7 @@
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                 <div class="overflow-hidden">
-                                    <table class="min-w-full text-left text-sm">
+                                    <table class="min-w-full text-left text-sm mb-5">
                                         <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
                                             <tr>
                                                 <th scope="col" class="px-6 py-2">#</th>
@@ -86,11 +133,13 @@
                                                 <tr class="text-sm">
                                                     <td class="whitespace-nowrap px-6 py-2">{{ $no++ }}</td>
                                                     <td class="whitespace-nowrap px-6 py-2">{{ $aproval->name }}</td>
-                                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->jurusan }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->jurusan }}
+                                                    </td>
                                                     <td class="whitespace-nowrap px-6 py-2">{{ $aproval->kelas }}</td>
                                                     <td class="whitespace-nowrap px-6 py-2">{{ $aproval->magang_awal }}
                                                         -- {{ $aproval->magang_akhir }}</td>
-                                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->sekolah }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->sekolah }}
+                                                    </td>
                                                     <td class="whitespace-nowrap px-6 py-2">
 
                                                         <a href="{{ route('aproval.edit', $aproval->id) }}">
@@ -102,72 +151,80 @@
                                                     </td>
                                                 </tr>
                                             @empty
+                                                <tr>
+                                                    <td colspan="6" class="p-8 text-center">
+                                                        <div class="flex justify-center items-center">
+                                                            <img src="/admin/noData.png" alt=""
+                                                                width="280px">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
                                         </tbody>
                                     </table>
-                                    <div class="flex justify-center items-center">
-                                        <img src="/admin/noData.png" alt="" width="280px">
-                                    </div>
-                                    @endforelse
+                                    <nav aria-label="Page navigation example" class="flex justify-end">
+                                        <ul class="list-style-none flex">
+                                            <!-- Previous Page Link -->
+                                            @if ($aprovals->onFirstPage())
+                                                <li>
+                                                    <a
+                                                        class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
+                                                </li>
+                                            @else
+                                                <li>
+                                                    <a href="{{ $aprovals->previousPageUrl() }}"
+                                                        class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
+                                                </li>
+                                            @endif
+
+                                            <!-- Pagination Elements -->
+                                            @if ($aprovals->total() > $aprovals->perPage())
+                                                @foreach ($aprovals as $page => $url)
+                                                    @if ($page == 1)
+                                                        <li>
+                                                            <a href="{{ $url }}"
+                                                                class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300 dark:text-white dark:hover:text-white">{{ $page }}</a>
+                                                        </li>
+                                                    @elseif ($page == $aprovals->currentPage())
+                                                        <li aria-current="page">
+                                                            <a class="relative block rounded-full bg-blue-600 px-3 py-1.5 text-sm text-white transition-all duration-300"
+                                                                href="{{ $url }}">{{ $page }}</a>
+                                                        </li>
+                                                    @else
+                                                        <li>
+                                                            <a href="{{ $url }}"
+                                                                class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white">{{ $page }}</a>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+
+                                            <!-- Next Page Link -->
+                                            @if ($aprovals->hasMorePages())
+                                                <li>
+                                                    <a href="{{ $aprovals->nextPageUrl() }}"
+                                                        class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white">Next</a>
+                                                </li>
+                                            @else
+                                                <li>
+                                                    <a
+                                                        class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white">Next</a>
+                                                </li>
+                                            @endif
+                                        </ul>
+                                    </nav>
+
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {{-- end tabel --}}
-                    {{-- paginate --}}
-                    {{--  <div class="flex justify-between mt-4">
-                        <p class="text-sm">
-                            Showing 1 to 10 of 15 entries
-                        </p>
-                        <nav aria-label="Page navigation example">
-                            <ul class="list-style-none flex">
-                              <li>
-                                <a
-                                  class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400"
-                                  >Previous</a
-                                >
-                              </li>
-                              <li>
-                                <a
-                                  class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
-                                  href="#!"
-                                  >1</a
-                                >
 
-                              </li>
-                              <li aria-current="page">
-                                <a
-                                  class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                  href="#!"
-                                  >2
-
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                  href="#!"
-                                  >3</a
-                                >
-                              </li>
-                              <li>
-                                <a
-                                  class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                  href="#!"
-                                  >Next</a
-                                >
-                              </li>
-                            </ul>
-                          </nav>
-                    </div>  --}}
                 </div>
             </div>
-            <!-- end main content section -->
-
-            <!-- start footer section -->
-            {{-- <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
-                © <span id="footer-year">2022</span>. Vristo All rights reserved.
-            </p> --}}
-            <!-- end footer section -->
         </div>
     </div>
+
+
 </div>

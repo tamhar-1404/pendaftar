@@ -1805,9 +1805,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            @empty
-                                izin kosong
-                            @endforelse
+                            @endforeach
                         </div>
                     </div>
                     <div class="mt-4 sm:mt-5 lg:mt-6">
@@ -1817,22 +1815,23 @@
                                 Izin Diterima
                             </h2>
                             <div class="flex">
-                                <div class="flex items-center" x-data="{ isInputActive: false }">
-                                    <label class="block">
-                                        <input x-effect="isInputActive === true && $nextTick(() => { $el.focus()});"
-                                            :class="isInputActive ? 'w-32 lg:w-48' : 'w-0'"
-                                            class="form-input bg-transparent px-1 text-right transition-all duration-100 placeholder:text-slate-500 dark:placeholder:text-navy-200"
-                                            placeholder="Search here..." type="text" />
+                                <form action="">
+                                    <label class="relative hidden sm:flex">
+                                        <input
+                                            class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                            placeholder="Search users..." type="text" name="cari"
+                                            value="{{ request('cari') }}" />
+                                        <span
+                                            class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-4 w-4 transition-colors duration-200" fill="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M3.316 13.781l.73-.171-.73.171zm0-5.457l.73.171-.73-.171zm15.473 0l.73-.171-.73.171zm0 5.457l.73.171-.73-.171zm-5.008 5.008l-.171-.73.171.73zm-5.457 0l-.171.73.171-.73zm0-15.473l-.171-.73.171.73zm5.457 0l.171-.73-.171.73zM20.47 21.53a.75.75 0 101.06-1.06l-1.06 1.06zM4.046 13.61a11.198 11.198 0 010-5.115l-1.46-.342a12.698 12.698 0 000 5.8l1.46-.343zm14.013-5.115a11.196 11.196 0 010 5.115l1.46.342a12.698 12.698 0 000-5.8l-1.46.343zm-4.45 9.564a11.196 11.196 0 01-5.114 0l-.342 1.46c1.907.448 3.892.448 5.8 0l-.343-1.46zM8.496 4.046a11.198 11.198 0 015.115 0l.342-1.46a12.698 12.698 0 00-5.8 0l.343 1.46zm0 14.013a5.97 5.97 0 01-4.45-4.45l-1.46.343a7.47 7.47 0 005.568 5.568l.342-1.46zm5.457 1.46a7.47 7.47 0 005.568-5.567l-1.46-.342a5.97 5.97 0 01-4.45 4.45l.342 1.46zM13.61 4.046a5.97 5.97 0 014.45 4.45l1.46-.343a7.47 7.47 0 00-5.568-5.567l-.342 1.46zm-5.457-1.46a7.47 7.47 0 00-5.567 5.567l1.46.342a5.97 5.97 0 014.45-4.45l-.343-1.46zm8.652 15.28l3.665 3.664 1.06-1.06-3.665-3.665-1.06 1.06z" />
+                                            </svg>
+                                        </span>
                                     </label>
-                                    <button @click="isInputActive = !isInputActive"
-                                        class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                        </svg>
-                                    </button>
-                                </div>
+                                </form>
                                 <div x-data="usePopper({ placement: 'bottom-end', offset: 4 })" @click.outside="isShowPopper && (isShowPopper = false)"
                                     class="inline-flex">
                                     <button x-ref="popperRef" @click="isShowPopper = !isShowPopper"
@@ -1877,7 +1876,7 @@
                         </div>
                         <div class="card mt-3">
                             <div class="is-scrollbar-hidden min-w-full overflow-x-auto">
-                                <table class="is-hoverable w-full text-left">
+                                <table class="min-w-full text-left text-sm">
                                     <thead>
                                         <tr>
                                             <th
@@ -1934,204 +1933,141 @@
                                                     {{ $approval->sampai }}
                                                 </td>
                                                 <td
-                                                    class="whitespace-nowrap px-4 py-3 font-mediumdark:text-navy-100 sm:px-5">
+                                                    class="whitespace-nowrap px-4 py-3 font-medium dark:text-navy-100 sm:px-5">
                                                     @if ($approval->keterangan === 'izin')
                                                         <span
-                                                            class=" text-yellow-500">{{ $approval->keterangan }}</span>
+                                                            class="text-yellow-500">{{ $approval->keterangan }}</span>
                                                     @else
-                                                        <span class=" text-red-500">{{ $approval->keterangan }}</span>
+                                                        <span class="text-red-500">{{ $approval->keterangan }}</span>
                                                     @endif
-
                                                 </td>
                                             </tr>
                                         @empty
-                                            <div class="bg-red-100 border mb-2 mt-2 border-red-400 text-red-700 px-4 py-3 rounded relative"
-                                                role="alert">
-                                                <strong class="font-bold">Data </strong>
-                                                <span class="block sm:inline">Tidak tersedia.</span>
-                                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
-                                            </div>
+                                            <tr>
+                                                <td colspan="6" class="p-8 text-center">
+                                                    <div class="flex justify-center items-center">
+                                                        <img src="/admin/noData.png" alt="" width="280px">
+                                                    </div>
+                                                </td>
+                                            </tr>
                                         @endforelse
                                     </tbody>
                                 </table>
-
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @forelse ($menunggu  as $izin)
+                    {{-- modal --}}
+                    <div data-te-modal-init
+                        class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+                        id="staticModal{{ $izin->id }}" tabindex="-1"
+                        aria-labelledby="exampleModalCenteredScrollable" aria-modal="true" role="dialog">
+                        <div data-te-modal-dialog-ref
+                            class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
+                            <div
+                                class="pointer-events-auto  relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
                                 <div
-                                    class="flex flex-col justify-between space-y-4 px-4 py-4 sm:flex-row sm:items-center sm:space-y-0 sm:px-5">
-                                    <div class="flex items-center space-x-2 text-xs+">
-                                        <span>Show</span>
-                                        <label class="block">
-                                            <select
-                                                class="form-select rounded-full border border-slate-300 bg-white px-2 py-1 pr-6 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                                                <option>10</option>
-                                                <option>30</option>
-                                                <option>50</option>
-                                            </select>
-                                        </label>
-                                        <span>entries</span>
-                                    </div>
+                                    class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                                    <!--Modal title-->
+                                    <h5 class="text-xl font-medium leading-normal text-neutral-900 dark:text-neutral-200"
+                                        id="exampleModalCenteredScrollableLabel">
+                                        Detail Izin Absensi
+                                    </h5>
+                                    <!--Close button-->
+                                    <button type="button"
+                                        class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                                        data-te-modal-dismiss aria-label="Close">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
+                                </div>
 
-                                    <ol class="pagination">
-                                        <li class="rounded-l-lg bg-slate-150 dark:bg-navy-500">
-                                            <a href="#"
-                                                class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:text-navy-200 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                                    stroke-width="2">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M15 19l-7-7 7-7" />
-                                                </svg>
-                                            </a>
-                                        </li>
-                                        <li class="bg-slate-150 dark:bg-navy-500">
-                                            <a href="#"
-                                                class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">1</a>
-                                        </li>
-                                        <li class="bg-slate-150 dark:bg-navy-500">
-                                            <a href="#"
-                                                class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg bg-info px-3 leading-tight text-white transition-colors hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">2</a>
-                                        </li>
-                                        <li class="bg-slate-150 dark:bg-navy-500">
-                                            <a href="#"
-                                                class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">3</a>
-                                        </li>
-                                        <li class="bg-slate-150 dark:bg-navy-500">
-                                            <a href="#"
-                                                class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">4</a>
-                                        </li>
-                                        <li class="bg-slate-150 dark:bg-navy-500">
-                                            <a href="#"
-                                                class="flex h-8 min-w-[2rem] items-center justify-center rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">5</a>
-                                        </li>
-                                        <li class="rounded-r-lg bg-slate-150 dark:bg-navy-500">
-                                            <a href="#"
-                                                class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:text-navy-200 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M9 5l7 7-7 7" />
-                                                </svg>
-                                            </a>
-                                        </li>
-                                    </ol>
 
-                                    <div class="text-xs+">1 - 10 of 10 entries</div>
+                                <!--Modal body-->
+                                <div class="relative p-4">
+                                    <p class=" text-md">
+                                        Nama :
+                                    </p>
+
+                                    <p class="ml-5 mt-2 text-md text-gray-400">
+                                        {{ $izin->nama }}
+                                    </p>
+
+                                    <p class=" text-md mt-4">
+                                        Sekolah :
+                                    </p>
+
+                                    <p class="ml-5 mt-2 text-md text-gray-400">
+                                        {{ $izin->sekolah }}
+                                    </p>
+                                    <p class=" text-md mt-4">
+                                        email :
+                                    </p>
+
+                                    <p class="ml-5 mt-2 text-md text-gray-400">
+                                        {{ $izin->email }}
+                                    </p>
+
+                                    <p class=" text-md mt-4">
+                                        Tanggal Awal :
+                                    </p>
+
+                                    <p class="ml-5 mt-2 text-md text-gray-400">
+                                        {{ $izin->dari }}
+                                    </p>
+
+                                    <p class=" text-md mt-4">
+                                        Tanggal Akhir :
+                                    </p>
+
+                                    <p class="ml-5 mt-2 text-md text-gray-400">
+                                        {{ $izin->sampai }}
+                                    </p>
+                                    <p class=" text-md mt-4">
+                                        Keterangan :
+                                    </p>
+
+                                    <p class="ml-5 mt-2 text-md text-gray-400">
+                                        {{ $izin->keterangan }}
+                                    </p>
+                                    <p class=" text-md mt-4">
+                                        Deskripsi :
+                                    </p>
+
+                                    <p class="ml-5 mt-2 text-md text-gray-400">
+                                        {{ $izin->deskripsi }}
+                                    </p>
+                                    <p class=" text-md mt-4">
+                                        Bukti :
+                                    </p>
+
+                                    <p class="ml-5 mt-2 text-md text-gray-400">
+                                        <img src="{{ asset('storage/bukti_izin/' . $izin->bukti) }}" alt="">
+                                    </p>
+
+
+
+                                </div>
+
+                                <!--Modal footer-->
+                                <div
+                                    class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                                    <button type="button"
+                                        class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                                        data-te-ripple-init data-te-modal-dismiss data-te-ripple-color="light">
+                                        Kembali
+                                    </button>
                                 </div>
                             </div>
+                            {{-- end modal --}}
                         </div>
                     </div>
-                </div>
-            </div>
-            @forelse ($menunggu  as $izin)
-                {{-- modal --}}
-                <div data-te-modal-init
-                    class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
-                    id="staticModal{{ $izin->id }}" tabindex="-1"
-                    aria-labelledby="exampleModalCenteredScrollable" aria-modal="true" role="dialog">
-                    <div data-te-modal-dialog-ref
-                        class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
-                        <div
-                            class="pointer-events-auto  relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
-                            <div
-                                class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                                <!--Modal title-->
-                                <h5 class="text-xl font-medium leading-normal text-neutral-900 dark:text-neutral-200"
-                                    id="exampleModalCenteredScrollableLabel">
-                                    Detail Izin Absensi
-                                </h5>
-                                <!--Close button-->
-                                <button type="button"
-                                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
-                                    data-te-modal-dismiss aria-label="Close">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                            </div>
-
-
-                            <!--Modal body-->
-                            <div class="relative p-4">
-                                <p class=" text-md">
-                                    Nama :
-                                </p>
-
-                                <p class="ml-5 mt-2 text-md text-gray-400">
-                                    {{ $izin->nama }}
-                                </p>
-
-                                <p class=" text-md mt-4">
-                                    Sekolah :
-                                </p>
-
-                                <p class="ml-5 mt-2 text-md text-gray-400">
-                                    {{ $izin->sekolah }}
-                                </p>
-                                <p class=" text-md mt-4">
-                                    email :
-                                </p>
-
-                                <p class="ml-5 mt-2 text-md text-gray-400">
-                                    {{ $izin->email }}
-                                </p>
-
-                                <p class=" text-md mt-4">
-                                    Tanggal Awal :
-                                </p>
-
-                                <p class="ml-5 mt-2 text-md text-gray-400">
-                                    {{ $izin->dari }}
-                                </p>
-
-                                <p class=" text-md mt-4">
-                                    Tanggal Akhir :
-                                </p>
-
-                                <p class="ml-5 mt-2 text-md text-gray-400">
-                                    {{ $izin->sampai }}
-                                </p>
-                                <p class=" text-md mt-4">
-                                    Keterangan :
-                                </p>
-
-                                <p class="ml-5 mt-2 text-md text-gray-400">
-                                    {{ $izin->keterangan }}
-                                </p>
-                                <p class=" text-md mt-4">
-                                    Deskripsi :
-                                </p>
-
-                                <p class="ml-5 mt-2 text-md text-gray-400">
-                                    {{ $izin->deskripsi }}
-                                </p>
-                                <p class=" text-md mt-4">
-                                    Bukti :
-                                </p>
-
-                                <p class="ml-5 mt-2 text-md text-gray-400">
-                                    <img src="{{ asset('storage/bukti_izin/' . $izin->bukti) }}" alt="">
-                                </p>
-
-
-
-                            </div>
-
-                            <!--Modal footer-->
-                            <div
-                                class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                                <button type="button"
-                                    class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                                    data-te-ripple-init data-te-modal-dismiss data-te-ripple-color="light">
-                                    Kembali
-                                </button>
-                            </div>
-                        </div>
-                        {{-- end modal --}}
-                    </div>
-                </div>
-            @empty
-            @endforelse
+                @empty
+                @endforelse
         </main>
     </div>
     <!--
