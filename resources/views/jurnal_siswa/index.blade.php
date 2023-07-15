@@ -6,6 +6,8 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -1173,7 +1175,12 @@
                     <div class="mb-5 font-semibold kamu-tak-diajak">
                         <span>Jurnal /<span class="text-[#00B7FF]"> {{ Auth::user()->name }}</span></span>
                     </div>
+                   @error('tanggal')
+                        <div class="text-danger">Anda telah mengisi jurnal pada hari ini</div>
+                   @enderror
+
                     <div class="panel">
+                     {{-- <h2>{{ $e }}</h2> --}}
 
                         <div class="kamu-tak-diajak flex justify-between items-center">
                             <button data-modal-target="authentication-modal"
@@ -1356,6 +1363,7 @@
                                                     <th scope="col" class="px-6 py-2 ">bukti</th>
                                                     <th scope="col" class="px-6 py-2">Aksi</th>
 
+<<<<<<< HEAD
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -1388,6 +1396,36 @@
                                                                         <i class="fa fa-eye"></i> </span>
                                                                     </div>
                                                                 </a>
+=======
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ( $item as $items )
+                                        <tr
+                                        class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                        <td class="whitespace-nowrap px-2 py-2 font-medium">{{ $loop->iteration }}</td>
+                                        <td class="whitespace-nowrap px-2 py-2">{{$items->nama}}</td>
+                                        <td class="whitespace-nowrap px-2 py-2">{{$items->tanggal}}</td>
+                                        <td class="whitespace-nowrap px-2 py-2">{{$items->sekolah}}</td>
+                                        <td class="whitespace-nowrap px-2 py-2 overflow-hidden">
+                                            <div class="truncate">
+                                              {{ substr($items->kegiatan, 0, 10) }}..
+                                            </div>
+                                          </td>
+
+                                        <td class="whitespace-nowrap px-2 pl-17 py-2"><img
+                                            src="{{ asset('storage/image/' . $items->image) }}"
+                                            width="100px" alt="">
+                                        </td>
+                                        <td class="whitespace-nowrap px-4 py-4">
+                                            <div class="flex gap-2">
+                                               <a href="#">
+                                                        <div class="w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent" data-te-toggle="modal"
+                                                        data-modal-target="staticModal{{$items -> id}}" data-modal-toggle="staticModal{{$items -> id}}" ">
+                                                            <span class=" p-1  font-semibold dark:hover:"text-black"><i class="fa fa-eye"></i> </span>
+                                                        </div>
+                                                    </a>
+>>>>>>> 34382e7c6b176700470cf140b400c02155c62b64
 
 
 

@@ -38,6 +38,19 @@
 </head>
 
 <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
+    @if (session()->has('berhasil_daftar'))
+        <script>
+            Swal.fire({
+                title: "Data Anda berhasil dikirim",
+                text: "silangkan Tunggu proses selama paling lama 2 hari.",
+                icon: "info",
+                showCancelButton: false,
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "OK",
+                timer: 3000
+            });
+        </script>
+    @endif
     @if (session()->has('success'))
         <script>
             Swal.fire(
@@ -91,6 +104,7 @@
                         </p>
                     </div>
                 </div>
+
                 <div class="mt-16">
                     <form method="POST" action="{{route('postlogin')}}">
                        @csrf
@@ -108,7 +122,7 @@
                             </span>
                         </label>
                         @error('email')
-                            <div class="alert alert-danger">{{ $message }}</div>
+                            <div class="text-sm text-red-500 font-medium">{{ $message }}</div>
                         @enderror
 
                         <label class="relative mt-4 flex">
@@ -128,21 +142,127 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
 
-                        <div class="mt-4 flex items-center justify-between space-x-2">
-                            <label class="inline-flex items-center space-x-2">
+                            <div class="mt-4 flex items-center justify-between space-x-2">
+                                <label class="inline-flex items-center space-x-2">
                                 <input
+                                    id="remember-checkbox"
                                     class="form-checkbox is-outline h-5 w-5 rounded border-slate-400/70 bg-slate-100 before:bg-primary checked:border-primary hover:border-primary focus:border-primary dark:border-navy-500 dark:bg-navy-900 dark:before:bg-accent dark:checked:border-accent dark:hover:border-accent dark:focus:border-accent"
-                                    type="checkbox" />
-                                <span class="line-clamp-1">Ingat Saya</span>
-                            </label>
-                            <a href="#"
+                                    type="checkbox" 
+                                />
+
+                                <p class="line-clamp-1 cursor-pointer text-sm" onclick="showModal()">Kebijakan privasi</p>
+
+                                <div id="myModal" class="modal hidden">
+                                  <div class="modal-overlay"></div>
+                                  <div class="modal-content">
+                                    <span class="close absolute top-2 right-2 text-gray-600 cursor-pointer " onclick="closeModal()">&times;</span>
+                                    <div class="modal-inner-content">
+                                        <img src="http://127.0.0.1:8000/siswa/images/hummasoft.png" class="w-40" alt=""> <br><hr><br>
+                                    <h3 class="font-semibold">Privacy Policy untuk Hummasoft Technology
+                                    </h3>
+                                    <br>
+                                    <p>Di Magang Hummasoft, dapat diakses dari MagangHummasoft.com, salah satu
+                                        prioritas utama kami adalah privasi pengunjung kami. Dokumen Kebijakan Privasi
+                                        ini berisi jenis informasi yang dikumpulkan dan dicatat oleh MagangHummasoft.com
+                                        dan bagaimana kami menggunakannya.
+                                        </p><br>
+                                        <p>
+                                            Jika Anda memiliki pertanyaan tambahan atau memerlukan informasi lebih lanjut tentang Kebijakan Privasi kami, jangan ragu untuk menghubungi kami.
+
+                                        </p>
+                                        <br>
+                                        <p class="font-semibold">Informasi yang Kami Kumpulkan
+                                        </p>
+                                        <br>
+                                        <p>   MagangHummasoft.com mengikuti prosedur standar menggunakan file log.
+                                            File-file ini mencatat pengunjung ketika mereka mengunjungi situs web. Semua perusahaan hosting melakukan ini dan merupakanbagian dari analisis layanan hosting. Informasi yang dikumpulkan oleh file log termasuk alamat protokol internet (IP), jenis browser, Penyedia Layanan Internet (ISP), tanggal dan waktu,
+                                            halaman rujukan/keluar, dan mungkin jumlah klik.Ini tidak terkait dengan informasi apa pun yang dapat diidentifikasi secara pribadi. Tujuan informasi adalah untuk menganalisis jurnal sisiwa magang, mengelola siswa magang, dan pendataran siswa magang.
+                                            </p><br>
+                                            <p class="font-semibold">Cookies
+                                            </p>
+                                            <p>Seperti situs web lainnya,  MagangHummasoft.com menggunakan ‘cookie’. Cookie digunakan untuk menyimpan informasi seperti preferensi pengunjung dan halaman yang diakses atau dikunjungi pengunjung pada situs web ini. Informasi tersebut kami gunakan untuk mengoptimalkan pengalaman pengguna dengan menyesuaikan konten halaman web kami.
+                                            </p><br>
+                                            <p class="font-semibold">Kebijakan Privasi Pihak Ketiga
+                                            </p><br>
+                                            <p>Kebijakan Privasi  MagangHummasoft.com tidak berlaku untuk pengiklan atau situs web lain. Karena itu, kami menyarankan Anda untuk membaca seksama masing-masing Kebijakan Privasi dari pihak ketiga untuk informasi yang lebih rinci. Anda berhak untuk menonaktifkan cookies pada browser Anda.
+                                            </p><br>
+                                            <p class="font-semibold">Persetujuan</p> <br>
+                                            <p>Dengan menggunakan situs web kami, Anda dengan ini menyetujui Kebijakan Privasi kami dan menyetujui syarat dan ketentuannya.</p> <br><br>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <link href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css" rel="stylesheet">
+                                <style>
+                                .modal-overlay {
+                                  z-index: 50;
+                                  position: fixed;
+                                  top: 0;
+                                  left: 0;
+                                  width: 100%;
+                                  height: 100%;
+                                  background-color: rgba(0, 0, 0, 0.5);
+                                  backdrop-filter: blur(10px);
+                                }
+
+                                .modal-content {
+                                  z-index: 60;
+                                  position: fixed;
+                                  top: 50%;
+                                  left: 50%;
+                                  transform: translate(-50%, -50%);
+                                  width: 583px;
+                                  height: 505px;
+                                  border-radius: 8px;
+                                  background: #FFF;
+                                  box-shadow: 0px 0px 2px -1px rgba(0, 0, 0, 0.10);
+                                  overflow-y: auto;
+                                  padding: 20px;
+                                }
+
+                                .modal-inner-content {
+                                  max-height: 100%;
+                                }
+
+                                .close {
+                                  top: 10px;
+                                  right: 10px;
+                                }
+                                </style>
+
+
+                                <script>
+                                    function showModal() {
+                                        var modal = document.getElementById("myModal");
+                                        modal.classList.remove("hidden");
+                                        document.body.style.overflow = "hidden";
+                                      }
+
+                                      function closeModal() {
+                                        var modal = document.getElementById("myModal");
+                                        modal.classList.add("hidden");
+                                        document.body.style.overflow = "auto";
+                                      }
+
+                                </script>
+                                </label>
+                                <a href="#"
                                 class="text-xs text-slate-400 transition-colors line-clamp-1 hover:text-slate-800 focus:text-slate-800 dark:text-navy-300 dark:hover:text-navy-100 dark:focus:text-navy-100">Lupa
                                 Password?</a>
-                        </div>
-                        <button type="submit"
-                            class="btn mt-10 h-10 w-full bg-info font-medium text-white hover:bg-info-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
-                            Login
-                        </button>
+                            </div>
+                            <button id="login-button" type="submit"
+                                class="btn mt-10 h-10 w-full bg-info font-medium text-white hover:bg-info-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90"
+                                disabled>Login</button>
+
+                            <script>
+                                const rememberCheckbox = document.getElementById('remember-checkbox');
+                                const loginButton = document.getElementById('login-button');
+
+                                rememberCheckbox.addEventListener('change', function () {
+                                loginButton.disabled = !this.checked;
+                                });
+                            </script>
+
                     </form>
                     <div class="mt-4 text-center text-xs+">
                         <p class="line-clamp-1">

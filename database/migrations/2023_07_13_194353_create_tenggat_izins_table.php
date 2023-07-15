@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jurnalsiswas', function (Blueprint $table) {
+        Schema::create('tenggat_izins', function (Blueprint $table) {
             $table->id();
-            $table->String('nama');
-            $table->date('tanggal')->unique();
-            $table->String('sekolah');
-            $table->String('kegiatan');
-            $table->String('image');
-            $table->String('status');
+            $table->string('email');
+            $table->date('tanggal');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jurnalsiswas');
+        Schema::dropIfExists('tenggat_izins');
     }
 };

@@ -7,6 +7,8 @@ use App\Models\Siswa;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSiswaAlumniRequest;
 use App\Http\Requests\UpdateSiswaAlumniRequest;
+use App\Mail\Certificate;
+use Illuminate\Support\Facades\Mail;
 
 class SiswaAlumniController extends Controller
 {
@@ -18,6 +20,7 @@ class SiswaAlumniController extends Controller
     public function index(Request $request)
 {
     $alumni = Siswa::where('role', 'alumni')->get();
+<<<<<<< HEAD
 
     if ($request->has('cari')) {
         $keyword = $request->cari;
@@ -27,6 +30,10 @@ class SiswaAlumniController extends Controller
 
     $aprovals = Siswa::latest()->paginate(3);
     return view('alumni_admin.index', ['alumni' => $alumni], compact('aprovals'));
+=======
+    $list_alumni = Siswa::where('role', 'alumni')->get();
+    return view('alumni_admin.index', compact('alumni', 'list_alumni'));
+>>>>>>> 34382e7c6b176700470cf140b400c02155c62b64
 }
 
 
@@ -46,9 +53,19 @@ class SiswaAlumniController extends Controller
      * @param  \App\Http\Requests\StoreSiswaAlumniRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSiswaAlumniRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'sertifikat' => 'required',
+        ]);
+        $sertifikat = $request->file('sertifikat');
+        $sertifikat_name = $sertifikat->hashName();
+        $sertifikat->storeAs('public/certificate', $sertifikat_name);
+        $data = [
+            'sertifikat' => $sertifikat_name,
+        ];
+        Mail::to($request->email)->send(new Certificate($data));
+        return back()->with('success', 'Berhasil mengirim sertifikat',);
     }
 
     /**

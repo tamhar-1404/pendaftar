@@ -7,6 +7,7 @@ use App\Models\LaporanSiswa;
 use App\Http\Requests\StoreSiswaRequest;
 use App\Http\Requests\UpdateSiswaRequest;
 use App\Mail\Banned;
+use App\Mail\BannedGuru;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -120,15 +121,18 @@ class SiswaController extends Controller
         // dd($request->all());
         $alasan = $request->alasan;
         $siswa = Siswa::find($id);
+        $emailguru = User::where('role', 'Guru')->where('sekolah', $siswa->sekolah)->first()->email;
         $email = $siswa->email;
         $nama = $siswa->name;
         $data = [
             'alasan' => $alasan,
             'nama' => $nama,
         ];
+        Mail::to($emailguru)->send(new BannedGuru($data));
         Mail::to($email)->send(new Banned($data));
         $siswa->update([
-            'role' => 'banned',
+            'role' => 'Alumni',
+            'status' => 'Dikeluarkan',
         ]);
         User::where('name', $siswa->name)->update(['role' => 'banned']);
         return back()->with('success', 'Berhasil banned');

@@ -43,6 +43,7 @@ class AbsensiadminController extends Controller
     public function create(Request $request)
     {
 
+
         $terima = ApprovalIzin::where('nama', 'LIKE', $request ->serch)->GET();
         $siswa = $request->serch;
         $Hadir_jan = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 1)->count();
@@ -79,7 +80,7 @@ class AbsensiadminController extends Controller
         $izin_apr = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 4)->count();
         $izin_mei = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 5)->count();
         $izin_jun = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 6)->count();
-        $izin_jul = ApprovalIzin::where('keterangan', 'LIKE', 'sakit    ')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 7)->count();
+        $izin_jul = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 7)->count();
         $izin_aug = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 8)->count();
         $izin_sep = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 9)->count();
         $izin_okt = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 10)->count();

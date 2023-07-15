@@ -5,11 +5,12 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class Banned extends Mailable
+class Certificate extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -31,7 +32,7 @@ class Banned extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Ditendang',
+            subject: 'Sertifikat',
         );
     }
 
@@ -43,7 +44,7 @@ class Banned extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.ban',
+            view: 'emails.certificate',
         );
     }
 
@@ -54,6 +55,8 @@ class Banned extends Mailable
      */
     public function attachments()
     {
-        return [];
+        return [
+            Attachment::fromPath('/storage/certificate/' . $this->data['sertifikat']),
+        ];
     }
 }

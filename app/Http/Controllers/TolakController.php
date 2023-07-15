@@ -65,7 +65,7 @@ class TolakController extends Controller
      */
     public function edit(tolak $tolak)
     {
-        return view('tolak.detail');
+        return view('tolak.detail', compact('tolak'));
     }
 
     /**

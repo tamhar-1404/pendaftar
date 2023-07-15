@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class Banned extends Mailable
+class EmailLulus extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,7 +18,7 @@ class Banned extends Mailable
      *
      * @return void
      */
-    public function __construct(public $data)
+    public function __construct()
     {
         //
     }
@@ -31,7 +31,7 @@ class Banned extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Ditendang',
+            subject: 'Lulus',
         );
     }
 
@@ -43,7 +43,7 @@ class Banned extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.ban',
+            view: 'emails.lulus',
         );
     }
 

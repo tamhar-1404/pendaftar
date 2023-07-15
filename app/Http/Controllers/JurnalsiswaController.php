@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StorejurnalsiswaRequest;
 use App\Http\Requests\UpdatejurnalsiswaRequest;
+<<<<<<< HEAD
+=======
+use Illuminate\Http\Request;
+use Auth;
+use Illuminate\Support\Facades\Storage;
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\IOFactory;
+use Exception;
+
+>>>>>>> 34382e7c6b176700470cf140b400c02155c62b64
 
 class JurnalsiswaController extends Controller
 {
@@ -49,25 +59,35 @@ class JurnalsiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nama' =>"required",
-            'tanggal' => "required",
-            'sekolah' => "required",
-            'kegiatan'  => "required",
+        try {
+            $this->validate($request, [
+                'nama' => "required",
+                'tanggal' => "required|unique:jurnalsiswas,tanggal",
+                'sekolah' => "required",
+                'kegiatan' => "required",
+            ]);
 
-        ]);
-        $image = $request->file('image');
-        $image->storeAs('public/image', $image->hashName());
-        jurnalsiswa::create([
-            'image'=>$image->hashName(),
-            'nama' => $request->nama,
-            'tanggal' => $request->tanggal,
-            'sekolah' => $request->sekolah,
-            'kegiatan'=>$request->kegiatan,
-            'status' => $request -> status
+            $image = $request->file('image');
+            $image->storeAs('public/image', $image->hashName());
 
-        ]);
-        return redirect()->route('jurnal_siswa.index');
+            jurnalsiswa::create([
+                'image' => $image->hashName(),
+                'nama' => $request->nama,
+                'tanggal' => $request->tanggal,
+                'sekolah' => $request->sekolah,
+                'kegiatan' => $request->kegiatan,
+                'status' => $request->status,
+            ]);
+
+            return redirect()->route('jurnal_siswa.index');
+        } catch (\Illuminate\Database\QueryException $e) {
+                return redirect()->back()->withInput()->withErrors(['tanggal' => 'Tanggal sudah ada dalam database.']);
+    }
+        // ],[
+        //     'tanggal.unique' => 'jhvgghvb',
+        // ]);
+
+
     }
     /**
      * Display the specified resource.

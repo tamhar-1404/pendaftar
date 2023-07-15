@@ -67,20 +67,69 @@
                                         </div>
 
                                     </div>
-                                    <div class="modal-body mt-5">
-                                        <label class="flex flex-col mb-2">
-                                            <p class="text-base mb-3">Asal Sekolah</p>
-                                            @foreach ($aprovals as $aproval)
-                                                <input type="checkbox" class="hidden" onclick="changeColor(this)" />
-                                                <span id="checkboxLabel"
-                                                    class="border border-gray-300 rounded px-2 py-1 bg-gray-100 text-gray-700 max-w-xs p-3"
-                                                    style="width: 180px;">{{ $aproval->sekolah }}</span>
-                                            @endforeach
-                                        </label>
+                                    <div class="max-h-[250px] overflow-scroll">
+                                        <div class="modal-body mt-5">
+                                            <label class="flex flex-col mb-2">
+                                                <p class="text-base mb-3">Asal Sekolah</p>
+                                                <div class="w-full grid grid-cols-2 gap-2">
+                                                    @foreach ($aprovals as $aproval)
+                                                        <input type="checkbox" class="hidden"
+                                                            onclick="changeColor(this)" />
+                                                        <span id="checkboxLabel"
+                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3">{{ $aproval->sekolah }}</span>
+                                                    @endforeach
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="modal-body mt-5">
+                                            <label class="flex flex-col mb-2">
+                                                <p class="text-base mb-3">jurusan</p>
+                                                <div class="w-full grid grid-cols-2 gap-2">
+                                                    @foreach ($aprovals as $aproval)
+                                                        <input type="checkbox" class="hidden"
+                                                            onclick="changeColor(this)" />
+                                                        <span id="checkboxLabel"
+                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3">{{ $aproval->jurusan }}</span>
+                                                    @endforeach
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="modal-body mt-5">
+                                            <label class="flex flex-col mb-2">
+                                                <p class="text-base mb-3">kelas</p>
+                                                <div class="w-full grid grid-cols-2 gap-2">
+                                                    @foreach ($aprovals as $aproval)
+                                                        <input type="checkbox" class="hidden"
+                                                            onclick="changeColor(this)" />
+                                                        <span id="checkboxLabel"
+                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3">{{ $aproval->kelas }}</span>
+                                                    @endforeach
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="modal-body mt-5">
+                                            <label class="flex flex-col mb-2">
+                                                <p class="text-base mb-3">lama magang</p>
+                                                <div class="w-full grid grid-cols-2 gap-2">
+                                                    @foreach ($aprovals as $aproval)
+                                                        <input type="checkbox" class="hidden"
+                                                            onclick="changeColor(this)" />
+                                                        <span id="checkboxLabel"
+                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3">{{ $aproval->sekolah }}</span>
+                                                    @endforeach
+                                                </div>
+                                            </label>
+                                        </div>
+
                                     </div>
 
-                                    <div class="modal-footer mt-4 flex justify-end">
 
+                                    <div class="modal-footer mt-4 flex justify-end gap-2">
+                                        <button
+                                            class="bg-white py-1 px-3 rounded-lg border border-gray-200 text-gray-300">Atur
+                                            Ulang</button>
+                                        <button
+                                            class="bg-blue-400 py-1 px-3 rounded-lg border border-gray-200 text-white">Pakai</button>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +162,7 @@
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                 <div class="overflow-hidden">
-                                    <table class="min-w-full text-left text-sm mb-5">
+                                    <table class="min-w-full text-left text-sm ">
                                         <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
                                             <tr>
                                                 <th scope="col" class="px-6 py-2">#</th>

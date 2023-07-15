@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class Banned extends Mailable
+class BannedGuru extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -43,7 +43,7 @@ class Banned extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.ban',
+            view: 'emails.ban_guru',
         );
     }
 
