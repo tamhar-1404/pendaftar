@@ -181,7 +181,7 @@
                                     <path opacity="0.5" d="M13 19H9" stroke="currentColor" stroke-width="1.5"
                                         stroke-linecap="round" />
                                 </svg>
-                                PRINT
+                                PRINTT
                             </button>
                         </div>
                     </div>
