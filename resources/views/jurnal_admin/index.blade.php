@@ -70,7 +70,7 @@
     @include('jurnal_admin.layout')
 
     <div class=" pl-[px] " id="content">
-        
+
     @include('jurnal_admin.nav')
     <div class="animate__animated p-6" :class="[$store.app.animation]">
         <!-- start main content section -->

@@ -3,42 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.4/dist/tailwind.min.css" rel="stylesheet">
   <title>Chat</title>
-  <style>
-    .chat-container {
-      height: 400px;
-      overflow-y: auto;
-    }
-  </style>
+  @vite('resources/css/app.css')
 </head>
-<body class="bg-gray-100">
-  <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg">
-    <div class="chat-container p-4">
-      <div class="flex items-start mb-4">
-        <img src="user-avatar.jpg" alt="User Avatar" class="w-8 h-8 rounded-full">
-        <div class="ml-2">
-          <div class="bg-blue-100 p-2 rounded-lg">
-            <p class="text-sm text-gray-800">Hi, how can I help you?</p>
-          </div>
-          <p class="text-xs text-gray-500 mt-1">9:00 AM</p>
-        </div>
-      </div>
-      <div class="flex items-start mb-4">
-        <img src="agent-avatar.jpg" alt="Agent Avatar" class="w-8 h-8 rounded-full">
-        <div class="ml-2">
-          <div class="bg-gray-200 p-2 rounded-lg">
-            <p class="text-sm text-gray-800">I have a question about my order.</p>
-          </div>
-          <p class="text-xs text-gray-500 mt-1">9:05 AM</p>
-        </div>
-      </div>
-      <!-- More chat messages here -->
+<body class="w-screen h-screen mt-100 bg-gray-100 ">
+    <div class=" absolute top-0 hidden p-6 lg:block lg:px-12">
+        <a href="#" class="flex items-center space-x-2">
+            <img class="h-12 w-100" src="lineone/images/hummasoft2.png" alt="logo" />
+            <p class="text-xl font-semibold uppercase text-slate-700 dark:text-navy-100">
+            </p>
+        </a>
     </div>
-    <div class="p-4">
-      <input type="text" placeholder="Type your message" class="w-full border border-gray-300 rounded-lg py-2 px-4">
-      <button class="bg-blue-500 text-white rounded-lg px-4 py-2 mt-4">Send</button>
+    <div class="flex justify-center items-center w-screen h-screen">
+        <form class="bg-gray-900 opacity-75 w-3/4 shadow-lg px-12 rounded-lg">
+            <div class="mb-4 flex-col items-center">
+                <div class="flex justify-center">
+                    <h1 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
+                        Scan RFID
+                    </h1>
+                </div>
+              <input
+                class="shadow appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition "
+                id="emailaddress"
+                type="text"
+                placeholder=""
+              />
+            </div>
+
+            <div class="flex items-center justify-between pt-4">
+
+            </div>
+          </form>
+
     </div>
-  </div>
 </body>
 </html>
