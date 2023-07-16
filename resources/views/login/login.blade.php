@@ -69,10 +69,7 @@
             })
         </script>
     @endif
-    <!-- App preloader-->
-    <div class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900">
-        <div class="app-preloader-inner relative inline-block h-48 w-48"></div>
-    </div>
+    
 
     <!-- Page Wrapper -->
     <div id="root" class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900" x-cloak>
@@ -147,7 +144,7 @@
                                 <input
                                     id="remember-checkbox"
                                     class="form-checkbox is-outline h-5 w-5 rounded border-slate-400/70 bg-slate-100 before:bg-primary checked:border-primary hover:border-primary focus:border-primary dark:border-navy-500 dark:bg-navy-900 dark:before:bg-accent dark:checked:border-accent dark:hover:border-accent dark:focus:border-accent"
-                                    type="checkbox" 
+                                    type="checkbox"
                                 />
 
                                 <p class="line-clamp-1 cursor-pointer text-sm" onclick="showModal()">Kebijakan privasi</p>

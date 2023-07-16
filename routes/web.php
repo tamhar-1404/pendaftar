@@ -106,8 +106,11 @@ Route::get('/percobaan', function () {
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/p', function () {
-    return view('aproval.p');
+Route::get('/rfid', function () {
+    return view('transaksi.rfid');
+});
+Route::get('/data', function () {
+    return view('transaksi.data');
 });
 
 
