@@ -90,8 +90,9 @@ class SiswaController extends Controller
     public function edit(Siswa $siswa, $id)
     {
         $siswa = Siswa::find($id);
+        $user = User::find($id);
         // dd($siswa);
-        return view('Siswa_admin.detail',compact('siswa'));
+        return view('Siswa_admin.detail',compact('siswa','user'));
     }
 
     /**
@@ -101,10 +102,40 @@ class SiswaController extends Controller
      * @param  \App\Models\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSiswaRequest $request, Siswa $siswa)
+    public function update(Request $request, Siswa $siswa , User $user , $id)
     {
-        //
+        $user = User::find($id);
+        $this->validate($request,[
+            'RFID'=>'required'
+        ]);
+        $user->update([
+            'RFID'=>$request->RFID
+        ]);
+        return redirect()->back();
     }
+
+    public function rfid()
+    {
+        $users = User::where('role', 'Siswa')
+                    ->whereNull('RFID')
+                    ->get();
+
+        return view('rfid.index', compact('users'));
+    }
+
+    public function saldo(Request $request, Siswa $siswa, User $user, $id)
+    {
+        // $user = User::find($id);
+        // $this->validate($request, [
+        //     'saldo' => 'required'
+        // ]);
+        // $user->update([
+        //     'saldo' => $request->hashName()
+        // ]);
+        // return redirect()->back();
+    }
+
+
 
     /**
      * Remove the specified resource from storage.

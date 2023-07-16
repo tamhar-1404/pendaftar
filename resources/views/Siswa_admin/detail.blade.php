@@ -44,12 +44,38 @@
       </script>
 </head>
 <body>
+    <style>
+        /* CSS untuk tampilan modal */
+        .modal {
+          display: none;
+          position: fixed;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          overflow: auto;
+          backdrop-filter: blur(2px);
+          background-color: rgba(0, 0, 0, 0.4);
+        }
 
-
+        .modal-content {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          max-width: 500px;
+          width: 100%;
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+          padding: 2rem;
+        }
+      </style>
     <!-- Sidenav -->
     <nav
     id="sidenav-2"
-    class="fixed left-0 top-0 z-[1035] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
+    class="fixed left-0 top-0  h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
     data-te-sidenav-init
     data-te-sidenav-hidden="false"
     data-te-sidenav-mode="side"
@@ -673,7 +699,46 @@
                         <div class="flex items-center justify-between mb-5">
                           <h5 class="text-lg font-semibold dark:text-white-light">Pelanggaran</h5>
                           <div class="flex items-center space-x-2">
-                            <a href="http://127.0.0.1:8000/siswa_admin/create" class="btn btn-outline-info w-73 h-27">Detail</a>
+                            <button type="button" id="tambah-rfid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="tambahRFID(){{ $siswa->id }}">
+                                TAMBAH RFID
+                              </button>
+                              <form action="{{ route('siswa_admin.update', $user->id) }}" method="post">
+                                @method('PUT')
+                                @csrf
+                                  <div id="modal-tambah-rfid" class="modal fixed inset-0 flex items-center justify-center">
+                                    <div class="modal-content bg-white p-6">
+
+                                      <h2 class="text-2xl font-bold mb-4">Tambah RFID   {{ $siswa->name }}</h2>
+                                      <input type="text" name="RFID" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
+                                      <div class="mt-6 flex justify-end">
+                                        <button type="button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                          Simpan
+                                        </button>
+                                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">
+                                          Batal
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </form>
+
+                              <!-- Import script JavaScript -->
+                              <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                  // Mengaktifkan modal saat tombol diklik
+                                  document.getElementById('tambah-rfid').addEventListener('click', function() {
+                                    document.getElementById('modal-tambah-rfid').style.display = "flex";
+                                  });
+
+                                  // Menutup modal saat tombol Batal diklik atau saat mengklik area luar modal
+                                  document.getElementById('modal-tambah-rfid').addEventListener('click', function(event) {
+                                    if (event.target === this || event.target.classList.contains('bg-red-500')) {
+                                      this.style.display = "none";
+                                    }
+                                  });
+                                });
+                              </script>
+
                             <a href="{{ route('siswa_admin.index') }}" class="btn btn-outline-danger w-73 h-27">Kembali</a>
                           </div>
                         </div>

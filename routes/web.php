@@ -5,6 +5,7 @@ use App\Http\Controllers\GuruAdminController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BeritaGuruController;
 use App\Http\Controllers\AlumniGuruController;
+use App\Http\Controllers\SiswamagangController;
 use App\Http\Controllers\BeritaSiswaController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AbsensiGuruController;
@@ -34,11 +35,14 @@ use App\Http\Controllers\MailController;
 |
 */
 // Admin
-<<<<<<< HEAD
 
 
 
-=======
+Route::resource('/barang', App\Http\Controllers\BarangController::class);
+
+Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
+
+Route::get('rfid' , [SiswaController::class , 'rfid'])->name('rfid');
 Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
 Route::get('send-email' , [MailController::class,'index']);
 Route::get('siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa']);
@@ -64,7 +68,7 @@ Route::resource('/tolak', App\Http\Controllers\TolakController::class);
 Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
 Route::post('/aproval/{aproval}/confirm', [App\Http\Controllers\AprovalController::class, 'confirm'])->name('aproval.confirm');
 Route::post('/aproval/{aproval}/tolak', [App\Http\Controllers\AprovalController::class, 'tolak'])->name('aproval.tolak');
->>>>>>> 34382e7c6b176700470cf140b400c02155c62b64
+
 // akhir admin
 
 // Pembimbing
@@ -104,8 +108,11 @@ Route::get('/percobaan', function () {
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/p', function () {
-    return view('aproval.p');
+Route::get('/rfid', function () {
+    return view('transaksi.rfid');
+});
+Route::get('/data', function () {
+    return view('transaksi.data');
 });
 
 
@@ -117,7 +124,6 @@ Route::post('/lupapassword', [LupaPasswordController::class, 'store'])->name('pa
 Route::get('/resetpassword/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
 Route::post('/resetpassword', [LupaPasswordController::class, 'update'])->name('password.update');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
         // Route khusus untuk admin
