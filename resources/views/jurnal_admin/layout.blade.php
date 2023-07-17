@@ -70,173 +70,172 @@
 
                    </li>
 
-           </ul>
-       </li>
-       {{-- user --}}
-       <li class="relative">
-           <a class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-white hover:bg-blue-500 hover:text-white "
-               data-te-sidenav-link-ref>
-               <span class="mr-4 [&>svg]:h-5 [&>svg]:w-5 ">
-                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                       stroke="currentColor" class="w-6 h-6">
-                       <path stroke-linecap="round" stroke-linejoin="round"
-                           d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-                   </svg>
-               </span>
-               <span>User</span>
-               <span
-                   class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none "
-                   data-te-sidenav-rotate-icon-ref>
-                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"  class="h-5 w-5">
-                       <path fill-rule="evenodd" fill="currentColor"
-                           d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                           clip-rule="evenodd" />
-                   </svg>
-               </span>
-           </a>
-           <ul class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
-               data-te-sidenav-collapse-ref>
-               <li class="relative">
-                   <a href="{{ route('siswa_admin.index') }}"
-                       class="flex {{ request()->routeIs('siswa_admin.index') ? 'bg-blue-500 text-white' : '' }}  h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
-                       data-te-sidenav-link-ref>Siswa</a>
-               </li>
-               <li class="relative">
-                   <a href="{{ route('alumni_admin.index') }}"
-                       class="flex h-6 {{ request()->routeIs('alumni_admin.index') ? 'bg-blue-500 text-white' : '' }}  cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
-                       data-te-sidenav-link-ref>Alumni</a>
-               </li>
-               <li class="relative">
-                   <a href="{{ route('guru_admin.index') }}"
-                       class="flex h-6 cursor-pointer {{ request()->routeIs('guru_admin.index') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
-                       data-te-sidenav-link-ref>Penanggung jawab</a>
-               </li>
-               <li class="relative">
-                <a href="#"
-                    class="flex h-6 cursor-pointer {{ request()->routeIs('guru_admin.index') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
-                    data-te-sidenav-link-ref>RFID</a>
-            </li>
+               </ul>
+           </li>
+           {{-- user --}}
+           <li class="relative">
+               <a class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-white hover:bg-blue-500 hover:text-white "
+                   data-te-sidenav-link-ref>
+                   <span class="mr-4 [&>svg]:h-5 [&>svg]:w-5 ">
+                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                           stroke="currentColor" class="w-6 h-6">
+                           <path stroke-linecap="round" stroke-linejoin="round"
+                               d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                       </svg>
+                   </span>
+                   <span>User</span>
+                   <span
+                       class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none "
+                       data-te-sidenav-rotate-icon-ref>
+                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-5 w-5">
+                           <path fill-rule="evenodd" fill="currentColor"
+                               d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                               clip-rule="evenodd" />
+                       </svg>
+                   </span>
+               </a>
+               <ul class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+                   data-te-sidenav-collapse-ref>
+                   <li class="relative">
+                       <a href="{{ route('siswa_admin.index') }}"
+                           class="flex {{ request()->routeIs('siswa_admin.index') ? 'bg-blue-500 text-white' : '' }}  h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
+                           data-te-sidenav-link-ref>Siswa</a>
+                   </li>
+                   <li class="relative">
+                       <a href="{{ route('alumni_admin.index') }}"
+                           class="flex h-6 {{ request()->routeIs('alumni_admin.index') ? 'bg-blue-500 text-white' : '' }}  cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
+                           data-te-sidenav-link-ref>Alumni</a>
+                   </li>
+                   <li class="relative">
+                       <a href="{{ route('guru_admin.index') }}"
+                           class="flex h-6 cursor-pointer {{ request()->routeIs('guru_admin.index') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
+                           data-te-sidenav-link-ref>Penanggung jawab</a>
+                   </li>
+                   <li class="relative">
+                       <a href="#"
+                           class="flex h-6 cursor-pointer {{ request()->routeIs('guru_admin.index') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
+                           data-te-sidenav-link-ref>RFID</a>
+                   </li>
 
-           </ul>
-       </li>
-       <li class="relative">
-        <a class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-white hover:bg-blue-500 hover:text-white "
-            data-te-sidenav-link-ref>
-            <span class="mr-4 [&>svg]:h-5 [&>svg]:w-5 ">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-                </svg>
-            </span>
-            <span>Transaksi</span>
-            <span
-                class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none "
-                data-te-sidenav-rotate-icon-ref>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"  class="h-5 w-5">
-                    <path fill-rule="evenodd" fill="currentColor"
-                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                        clip-rule="evenodd" />
-                </svg>
-            </span>
-        </a>
-        <ul class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
-            data-te-sidenav-collapse-ref>
-            <li class="relative">
-                <a href="{{ route('siswa_admin.index') }}"
-                    class="flex {{ request()->routeIs('siswa_admin.index') ? 'bg-blue-500 text-white' : '' }}  h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
-                    data-te-sidenav-link-ref>Pendataan barang</a>
-            </li>
-            <li class="relative">
-                <a href="{{ route('alumni_admin.index') }}"
-                    class="flex h-6 {{ request()->routeIs('alumni_admin.index') ? 'bg-blue-500 text-white' : '' }}  cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
-                    data-te-sidenav-link-ref>Penjualan</a>
-            </li>
-            <li class="relative">
-                <a href="{{ route('guru_admin.index') }}"
-                    class="flex h-6 cursor-pointer {{ request()->routeIs('guru_admin.index') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
-                    data-te-sidenav-link-ref>Opname</a>
-            </li>
+               </ul>
+           </li>
+           <li class="relative">
+               <a class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-white hover:bg-blue-500 hover:text-white "
+                   data-te-sidenav-link-ref>
+                   <span class="mr-4 [&>svg]:h-5 [&>svg]:w-5 ">
+                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" height="1em" viewBox="0 0 640 512">
+                           <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                           <path
+                               d="M535 41c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l64 64c4.5 4.5 7 10.6 7 17s-2.5 12.5-7 17l-64 64c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l23-23L384 112c-13.3 0-24-10.7-24-24s10.7-24 24-24l174.1 0L535 41zM105 377l-23 23L256 400c13.3 0 24 10.7 24 24s-10.7 24-24 24L81.9 448l23 23c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L7 441c-4.5-4.5-7-10.6-7-17s2.5-12.5 7-17l64-64c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM96 64H337.9c-3.7 7.2-5.9 15.3-5.9 24c0 28.7 23.3 52 52 52l117.4 0c-4 17 .6 35.5 13.8 48.8c20.3 20.3 53.2 20.3 73.5 0L608 169.5V384c0 35.3-28.7 64-64 64H302.1c3.7-7.2 5.9-15.3 5.9-24c0-28.7-23.3-52-52-52l-117.4 0c4-17-.6-35.5-13.8-48.8c-20.3-20.3-53.2-20.3-73.5 0L32 342.5V128c0-35.3 28.7-64 64-64zm64 64H96v64c35.3 0 64-28.7 64-64zM544 320c-35.3 0-64 28.7-64 64h64V320zM320 352a96 96 0 1 0 0-192 96 96 0 1 0 0 192z" />
+                       </svg>
+                   </span>
+                   <span>Transaksi</span>
+                   <span
+                       class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none "
+                       data-te-sidenav-rotate-icon-ref>
+                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-5 w-5">
+                           <path fill-rule="evenodd" fill="currentColor"
+                               d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                               clip-rule="evenodd" />
+                       </svg>
+                   </span>
+               </a>
+               <ul class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+                   data-te-sidenav-collapse-ref>
+                   <li class="relative">
+                       <a href="{{ route('siswa_admin.index') }}"
+                           class="flex {{ request()->routeIs('siswa_admin.index') ? 'bg-blue-500 text-white' : '' }}  h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
+                           data-te-sidenav-link-ref>Pendataan barang</a>
+                   </li>
+                   <li class="relative">
+                       <a href="{{ route('alumni_admin.index') }}"
+                           class="flex h-6 {{ request()->routeIs('alumni_admin.index') ? 'bg-blue-500 text-white' : '' }}  cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
+                           data-te-sidenav-link-ref>Penjualan</a>
+                   </li>
+                   <li class="relative">
+                       <a href="{{ route('guru_admin.index') }}"
+                           class="flex h-6 cursor-pointer {{ request()->routeIs('guru_admin.index') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
+                           data-te-sidenav-link-ref>Opname</a>
+                   </li>
 
-        </ul>
-    </li>
-    <li class="relative">
-        <a class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-white hover:bg-blue-500 hover:text-white "
-            data-te-sidenav-link-ref>
-            <span class="mr-4 [&>svg]:h-5 [&>svg]:w-5 ">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-                </svg>
-            </span>
-            <span>History</span>
-            <span
-                class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none "
-                data-te-sidenav-rotate-icon-ref>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"  class="h-5 w-5">
-                    <path fill-rule="evenodd" fill="currentColor"
-                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                        clip-rule="evenodd" />
-                </svg>
-            </span>
-        </a>
-        <ul class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
-            data-te-sidenav-collapse-ref>
-            <li class="relative">
-                <a href="{{ route('siswa_admin.index') }}"
-                    class="flex {{ request()->routeIs('siswa_admin.index') ? 'bg-blue-500 text-white' : '' }}  h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
-                    data-te-sidenav-link-ref>Topup</a>
-            </li>
-            <li class="relative">
-                <a href="{{ route('alumni_admin.index') }}"
-                    class="flex h-6 {{ request()->routeIs('alumni_admin.index') ? 'bg-blue-500 text-white' : '' }}  cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
-                    data-te-sidenav-link-ref>Transaksi</a>
-            </li>
+               </ul>
+           </li>
+           <li class="relative">
+               <a class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-white hover:bg-blue-500 hover:text-white "
+                   data-te-sidenav-link-ref>
+                   <span class="mr-4 [&>svg]:h-5 [&>svg]:w-5 ">
+                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" height="1em" viewBox="0 0 512 512">
+                           <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                           <path
+                               d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z" />
+                       </svg>
+                   </span>
+                   <span>History</span>
+                   <span
+                       class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none "
+                       data-te-sidenav-rotate-icon-ref>
+                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-5 w-5">
+                           <path fill-rule="evenodd" fill="currentColor"
+                               d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                               clip-rule="evenodd" />
+                       </svg>
+                   </span>
+               </a>
+               <ul class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+                   data-te-sidenav-collapse-ref>
+                   <li class="relative">
+                       <a href="{{ route('siswa_admin.index') }}"
+                           class="flex {{ request()->routeIs('siswa_admin.index') ? 'bg-blue-500 text-white' : '' }}  h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
+                           data-te-sidenav-link-ref>Topup</a>
+                   </li>
+                   <li class="relative">
+                       <a href="{{ route('alumni_admin.index') }}"
+                           class="flex h-6 {{ request()->routeIs('alumni_admin.index') ? 'bg-blue-500 text-white' : '' }}  cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
+                           data-te-sidenav-link-ref>Transaksi</a>
+                   </li>
 
-        </ul>
-    </li>
+               </ul>
+           </li>
 
-       <li class="relative">
-           <a href="{{route('jurnal_admin.index')}}"
-               class="flex h-12 cursor-pointer items-center {{ request()->routeIs('jurnal_admin.index') ? 'bg-blue-500 text-white' : '' }} {{ request()->routeIs('jurnal_admin.create') ? 'bg-blue-500 text-white' : '' }} rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-blue-400ark:text-gray-300 hover:bg-blue-500 hover:text-white">
-               <span class="mr-4 [&>svg]:h-4 [&>svg]:w-5 ">
-                   <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                       <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                       <style>
-                           svg {
-                               fill: #8e98a9
-                           }
-                       </style>
-                       <path
-                       fill="currentColor"
-                           d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
-                   </svg>
-               </span>
-               <span>Jurnal</span>
-
-
-
-           {{-- absensi --}}
-         
-               <a href="{{ route('absensi_admin.index') }}"
-                   class="flex h-12 cursor-pointer items-center mt-2 {{ request()->routeIs('absensi_admin.index') ? 'text-blue-400' : 'text-gray-600' }}   rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-blue-400ark:text-gray-300 hover:bg-blue-400 hover:text-white">
+           <li class="relative">
+               <a href="{{ route('jurnal_admin.index') }}"
+                   class="flex h-12 cursor-pointer items-center {{ request()->routeIs('jurnal_admin.index') ? 'bg-blue-500 text-white' : '' }} {{ request()->routeIs('jurnal_admin.create') ? 'bg-blue-500 text-white' : '' }} rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-blue-400ark:text-gray-300 hover:bg-blue-500 hover:text-white">
                    <span class="mr-4 [&>svg]:h-4 [&>svg]:w-5 ">
-                       <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                       <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                            <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                            <style>
                                svg {
-                                   fill: #828997
+                                   fill: #8e98a9
                                }
                            </style>
                            <path fill="currentColor"
-                               d="M64 464c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H224v80c0 17.7 14.3 32 32 32h80V448c0 8.8-7.2 16-16 16H64zM64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V154.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0H64zm56 256c-13.3 0-24 10.7-24 24s10.7 24 24 24H264c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24H264c13.3 0 24-10.7 24-24s-10.7-24-24-24H120z" />
+                               d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
                        </svg>
                    </span>
-                   <span>Absensi</span>
-               </a>
+                   <span>Jurnal</span>
 
-           {{-- peraturan --}}
+
+
+                   {{-- absensi --}}
+
+                   <a href="{{ route('absensi_admin.index') }}"
+                       class="flex h-12 cursor-pointer items-center mt-2 {{ request()->routeIs('absensi_admin.index') ? 'text-blue-400' : 'text-gray-600' }}   rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-blue-400ark:text-gray-300 hover:bg-blue-400 hover:text-white">
+                       <span class="mr-4 [&>svg]:h-4 [&>svg]:w-5 ">
+                           <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                               <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                               <style>
+                                   svg {
+                                       fill: #828997
+                                   }
+                               </style>
+                               <path fill="currentColor"
+                                   d="M64 464c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H224v80c0 17.7 14.3 32 32 32h80V448c0 8.8-7.2 16-16 16H64zM64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V154.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0H64zm56 256c-13.3 0-24 10.7-24 24s10.7 24 24 24H264c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24H264c13.3 0 24-10.7 24-24s-10.7-24-24-24H120z" />
+                           </svg>
+                       </span>
+                       <span>Absensi</span>
+                   </a>
+
+                   {{-- peraturan --}}
            <li class="relative">
                <a class="flex h-12 cursor-pointer items-center truncate mt-2 rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300  dark:text-gray-300 hover:bg-blue-400 hover:text-white"
                    data-te-sidenav-link-ref>
