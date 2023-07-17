@@ -2386,6 +2386,12 @@
             console.log($(this).attr('data-email'));
             $('#modalSertifikat').modal('show');
         })
+        $('#openmodal').click(function() {
+            let id = $(this).data('id').toString();
+            console.log(id);
+            console.log($('#sertifikat' + id));
+            $('#sertifikat' + id).modal('show');
+        })
     </script>
 </body>
 
