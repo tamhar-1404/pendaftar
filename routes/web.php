@@ -37,7 +37,6 @@ use App\Http\Controllers\MailController;
 // Admin
 
 
-
 Route::resource('/barang', App\Http\Controllers\BarangController::class);
 
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
@@ -108,12 +107,12 @@ Route::get('/percobaan', function () {
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/kode_beli', function () {
-    return view('transaksi.rfid');
-})->name('kode_beli');
+// Route::get('/rfid', function () {
+//     return view('transaksi.rfid');
+// });
 Route::get('/data', function () {
     return view('transaksi.data');
-})->name('data');
+});
 
 
 
