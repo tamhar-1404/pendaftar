@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
 
-<!-- Mirrored from shreethemes.in/ovaxo/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jul 2023 01:19:36 GMT -->
+{{--  <!-- Mirrored from shreethemes.in/ovaxo/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jul 2023 01:19:36 GMT -->  --}}
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -92,7 +92,7 @@
                         <i class="mdi mdi-play inline-flex items-center justify-center text-3xl"></i>
                     </a>
 
-                    <h3 class="font-medium leading-normal text-4xl mb-5 mt-10 text-white">We're Helping to Achieve your Success.</h3>
+                    <h3 class="font-medium leading-normal text-4xl mb-5 mt-10 text-white">Were Helping to Achieve your Success.</h3>
 
                     <p class="text-slate-400 text-lg max-w-xl mx-auto">This is just a simple text made for this unique and awesome template, you can replace it with any text.</p>
 
@@ -116,7 +116,7 @@
                         <div class="lg:ms-7">
                             <h3 class="mb-4 md:text-2xl text-xl font-medium">About Us: Ovaxo</h3>
 
-                            <p class="text-slate-400 dark:text-slate-300 max-w-2xl mx-auto">Start working with Ovaxo that can provide everything you need to generate awareness, drive traffic, connect. Dummy text is text that is used in the publishing industry or by web designers to occupy the space which will later be filled with 'real' content. This is required when, for example, the final text is not yet available. Dummy texts have been in use by typesetters since the 16th century.</p>
+                            <p class="text-slate-400 dark:text-slate-300 max-w-2xl mx-auto">Start working with Ovaxo that can provide everything you need to generate awareness, drive traffic, connect. Dummy text is text that is used in the publishing industry or by web designers to occupy the space which will later be filled with  content. This is required when, for example, the final text is not yet available. Dummy texts have been in use by typesetters since the 16th century.</p>
 
                             <div class="relative mt-8">
                                 <a href="aboutus.html" class="py-2 px-5 inline-block font-normal tracking-wide border align-middle transition duration-500 ease-in-out text-base text-center bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white rounded-md">Read More <i class="uil uil-arrow-right"></i></a>

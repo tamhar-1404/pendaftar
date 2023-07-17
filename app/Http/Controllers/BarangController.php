@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Http\Requests\StoreBarangRequest;
 use App\Http\Requests\UpdateBarangRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -17,7 +18,8 @@ class BarangController extends Controller
     public function index()
     {
         $barang = Barang::all();
-        return view('barang.index',compact('barang'));
+        $barangs = Barang::all();
+        return view('barang.index',compact('barang','barangs'));
     }
 
     /**
@@ -88,9 +90,42 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBarangRequest $request, Barang $barang)
+    public function update(Request $request, Barang $barang )
     {
-        //
+        // dd($request);
+      $this->validate($request ,[
+        'nama'=>'required',
+        'kode'=>'required',
+        'harga'=>'required',
+        'kategori'=>'required',
+        'deskripsi'=>'required'
+      ]);
+      if ($request->hasFile('foto')) {
+
+        $image = $request->file('foto');
+        $image->storeAs('public/pendataanbarang', $image->hashName());
+
+        Storage::delete('public/pendataanbarang/'.$barang->image);
+
+    $barang->update([
+        'nama'=>$request->nama,
+        'kode'=>$request->kode,
+        'harga'=>$request->harga,
+        'kategori'=>$request->kategori,
+        'foto'=>$image->hashName(),
+        'deskripsi'=>$request->deskripsi
+    ]);
+}else{
+    $barang->update([
+        'nama'=>$request->nama,
+        'kode'=>$request->kode,
+        'harga'=>$request->harga,
+        'kategori'=>$request->kategori,
+        'deskripsi'=>$request->deskripsi
+    ]);
+    }
+    return redirect()->back();
+
     }
 
     /**
@@ -101,6 +136,8 @@ class BarangController extends Controller
      */
     public function destroy(Barang $barang)
     {
+
+        Storage::delete('public/pendataanbarang/'. $barang->foto);
         $barang->delete();
         return redirect()->back();
     }
