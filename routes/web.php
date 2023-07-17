@@ -43,6 +43,7 @@ use App\Http\Controllers\transaksirfidController;
 
 
 Route::resource('barang', App\Http\Controllers\BarangController::class);
+Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
 Route::resource('opname', App\Http\Controllers\OpnameController::class);
 
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
