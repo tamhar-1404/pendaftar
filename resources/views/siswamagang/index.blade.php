@@ -32,13 +32,23 @@
         <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
         <script defer src="siswa/js/sweetalert.min.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css"  rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css"  rel="stylesheet" />
     </head>
     <body
         x-data="main"
         class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased bg-[#F6F5FF]"
         :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout,$store.app.rtlClass]"
     >
+    @if (session()->has('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "{{ session('error') }}",
+            })
+        </script>
+    @endif
         <!-- sidebar menu overlay -->
         <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{'hidden' : !$store.app.sidebar}" @click="$store.app.toggleSidebar()"></div>
 
