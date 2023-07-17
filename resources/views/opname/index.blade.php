@@ -167,59 +167,59 @@
 @endforelse
 
     <script>
-    let currentStep = 1;
+        let currentStep = 1;
 
-    function showStep(idmodal) {
-        let kodeopname = document.getElementById('kodeopname').value;
-        let modal=document.getElementById(`${kodeopname}`);
-        if (modal) {
-            modal.classList.remove('hidden');
+        function showStep(idmodal) {
+            let kodeopname = document.getElementById('kodeopname').value;
+            let modal=document.getElementById(`${kodeopname}`);
+            if (modal) {
+                modal.classList.remove('hidden');
+            }
+            else {
+                alert('Barang tidak ditemukan');
+                document.getElementById('kodeopname').value = null;
+                document.getElementById('kodeopname').focus();
+            }
         }
-        else {
-            alert('Barang tidak ditemukan');
-            document.getElementById('kodeopname').value = null;
-            document.getElementById('kodeopname').focus();
-        }
-    }
 
-    function nextStep() {
-    if (currentStep === 1) {
-        const isValid = validateStep1();
-        if (isValid) {
+        function nextStep() {
+        if (currentStep === 1) {
+            const isValid = validateStep1();
+            if (isValid) {
+            document.getElementById('modal-step1').classList.add('hidden');
+            document.getElementById('modal-step2').classList.remove('hidden');
+            currentStep = 2;
+            }
+        }
+        }
+
+        function prevStep() {
+        if (currentStep === 2) {
+            document.getElementById('modal-step2').classList.add('hidden');
+            document.getElementById('modal-step1').classList.remove('hidden');
+            currentStep = 1;
+        }
+        }
+
+        function hideAllSteps() {
         document.getElementById('modal-step1').classList.add('hidden');
-        document.getElementById('modal-step2').classList.remove('hidden');
-        currentStep = 2;
-        }
-    }
-    }
-
-    function prevStep() {
-    if (currentStep === 2) {
         document.getElementById('modal-step2').classList.add('hidden');
-        document.getElementById('modal-step1').classList.remove('hidden');
-        currentStep = 1;
-    }
-    }
+        }
 
-    function hideAllSteps() {
-    document.getElementById('modal-step1').classList.add('hidden');
-    document.getElementById('modal-step2').classList.add('hidden');
-    }
+        function validateStep1() {
+        const nama = document.getElementById('name').value;
+        const foto = document.getElementById('name2').value;
+        const harga = document.getElementById('name3').value;
+        const kategori = document.getElementById('kategori').value;
+        const deskripsi = document.getElementById('name5').value;
 
-    function validateStep1() {
-    const nama = document.getElementById('name').value;
-    const foto = document.getElementById('name2').value;
-    const harga = document.getElementById('name3').value;
-    const kategori = document.getElementById('kategori').value;
-    const deskripsi = document.getElementById('name5').value;
+        if (nama.trim() === '' || foto.trim() === '' || harga.trim() === '' || kategori.trim() === '' || deskripsi.trim() === '') {
+            alert('Mohon lengkapi semua field pada langkah 1');
+            return false;
+        }
 
-    if (nama.trim() === '' || foto.trim() === '' || harga.trim() === '' || kategori.trim() === '' || deskripsi.trim() === '') {
-        alert('Mohon lengkapi semua field pada langkah 1');
-        return false;
-    }
-
-    return true;
-    }
+        return true;
+        }
     </script>
 
 
