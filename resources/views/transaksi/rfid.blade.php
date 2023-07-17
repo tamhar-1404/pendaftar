@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 
-<!-- Mirrored from template.hasthemes.com/sinp/sinp/shop-grid-4-column.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jul 2023 02:22:46 GMT -->
+{{--  <!-- Mirrored from template.hasthemes.com/sinp/sinp/shop-grid-4-column.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jul 2023 02:22:46 GMT -->  --}}
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />

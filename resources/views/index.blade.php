@@ -5,7 +5,7 @@
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Ovaxo - Tailwind CSS Multipurpose Landing Template</title>
+        <title>Hummasoft</title>
         <meta name="description" content="Responsive Tailwind CSS Template">
         <meta name="keywords" content="Onepage, creative, modern, Tailwind CSS, multipurpose, clean">
         <meta name="author" content="Shreethemes">
