@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\ApprovalIzin;
-use App\Http\Requests\StoreApprovalIzinRequest;
-use App\Http\Requests\UpdateApprovalIzinRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\tolakdataEmail;
-use App\Mail\TerimaizinEmail;
-use App\Mail\dataizinEmail;
-use App\Mail\IzinBerakhir;
 use Carbon\Carbon;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use App\Mail\IzinBerakhir;
+use App\Mail\dataizinEmail;
+use App\Mail\tolakdataEmail;
+use App\Models\ApprovalIzin;
+use Illuminate\Http\Request;
+use App\Mail\TerimaizinEmail;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\StoreApprovalIzinRequest;
+use App\Http\Requests\UpdateApprovalIzinRequest;
 
 
 
@@ -28,14 +28,23 @@ class ApprovalIzinController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function index()
+     public function index(Request $request)
      {
+  
         $today = date('Y-m-d');
         ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status' => 'terimaabsen', 'status2' => '']);
 
         $menunggu = ApprovalIzin::where('status', 'menunggu')->get();
         $terima = ApprovalIzin::where('status2', 'izin')->get();
-        return view('approvalizin.index', compact('menunggu', 'terima'));
+
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $aprovals = ApprovalIzin::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            return view('approvalizin.index', compact('menunggu', 'terima', 'aprovals'));
+        }
+
+        $aprovals = ApprovalIzin::latest()->paginate(3);
+        return view('approvalizin.index', compact('menunggu', 'terima', 'aprovals'));
      }
 
     /**

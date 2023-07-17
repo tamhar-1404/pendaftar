@@ -18,9 +18,15 @@ class SpController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = sp::all();
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $data = sp::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('deskripsi', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            return view('sp.index', compact('data'));
+        }
+
+        $data = sp::latest()->paginate(3); 
         return view('sp.index', compact('data'));
     }
 

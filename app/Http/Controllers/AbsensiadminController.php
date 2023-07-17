@@ -21,10 +21,17 @@ class AbsensiadminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $terima = ApprovalIzin::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            return view('absensi_admin.index', compact('terima'));
+        }
         $terima = ApprovalIzin::where('status', 'terimaabsen')
         ->get();
+        $terima = ApprovalIzin::latest()->paginate(3);
         return view('absensi_admin.index', compact('terima'));
     }
 

@@ -19,12 +19,21 @@ class SiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $today = date('Y-m-d');
         Siswa::whereDate('magang_akhir', '<=', $today)->update(['role' => 'alumni', 'status' => 'lulus']);
         $siswas = Siswa::where('role', 'siswa')->get();
+
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $siswas = Siswa::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            return view('siswa_admin.index', compact('siswas'));
+        }
+
+        $aprovals = Siswa::latest()->paginate(3);
+
         return view('siswa_admin.index', compact('siswas'));
     }
 

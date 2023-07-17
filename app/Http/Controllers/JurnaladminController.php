@@ -20,10 +20,17 @@ class JurnaladminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $item = jurnalSiswa::all();
-        return view('jurnal_admin.index',compact('item'));
+        $item = jurnalsiswa::all();
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $item = jurnalsiswa::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            return view('jurnal_admin.index', compact('item'));
+        }
+
+        $item = jurnalsiswa::latest()->paginate(3);
+        return view('jurnal_admin.index',compact( 'item'));
 
     }
 

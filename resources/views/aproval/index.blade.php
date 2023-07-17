@@ -73,10 +73,10 @@
                                                 <p class="text-base mb-3">Asal Sekolah</p>
                                                 <div class="w-full grid grid-cols-2 gap-2">
                                                     @foreach ($aprovals as $aproval)
-                                                        <input type="checkbox" class="hidden" onclick="changeColor(this)" />
+                                                        <input type="checkbox" class="hidden"
+                                                            onclick="changeColor(this)" />
                                                         <span id="checkboxLabel"
-                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3"
-                                                           >{{ $aproval->sekolah }}</span>
+                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3">{{ $aproval->sekolah }}</span>
                                                     @endforeach
                                                 </div>
                                             </label>
@@ -86,10 +86,10 @@
                                                 <p class="text-base mb-3">jurusan</p>
                                                 <div class="w-full grid grid-cols-2 gap-2">
                                                     @foreach ($aprovals as $aproval)
-                                                        <input type="checkbox" class="hidden" onclick="changeColor(this)" />
+                                                        <input type="checkbox" class="hidden"
+                                                            onclick="changeColor(this)" />
                                                         <span id="checkboxLabel"
-                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3"
-                                                           >{{ $aproval->jurusan }}</span>
+                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3">{{ $aproval->jurusan }}</span>
                                                     @endforeach
                                                 </div>
                                             </label>
@@ -99,10 +99,10 @@
                                                 <p class="text-base mb-3">kelas</p>
                                                 <div class="w-full grid grid-cols-2 gap-2">
                                                     @foreach ($aprovals as $aproval)
-                                                        <input type="checkbox" class="hidden" onclick="changeColor(this)" />
+                                                        <input type="checkbox" class="hidden"
+                                                            onclick="changeColor(this)" />
                                                         <span id="checkboxLabel"
-                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3"
-                                                           >{{ $aproval->kelas }}</span>
+                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3">{{ $aproval->kelas }}</span>
                                                     @endforeach
                                                 </div>
                                             </label>
@@ -112,10 +112,10 @@
                                                 <p class="text-base mb-3">lama magang</p>
                                                 <div class="w-full grid grid-cols-2 gap-2">
                                                     @foreach ($aprovals as $aproval)
-                                                        <input type="checkbox" class="hidden" onclick="changeColor(this)" />
+                                                        <input type="checkbox" class="hidden"
+                                                            onclick="changeColor(this)" />
                                                         <span id="checkboxLabel"
-                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3"
-                                                           >{{ $aproval->sekolah }}</span>
+                                                            class="border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3">{{ $aproval->sekolah }}</span>
                                                     @endforeach
                                                 </div>
                                             </label>
@@ -125,8 +125,11 @@
 
 
                                     <div class="modal-footer mt-4 flex justify-end gap-2">
-                                        <button class="bg-white py-1 px-3 rounded-lg border border-gray-200 text-gray-300" >Atur Ulang</button>
-                                        <button class="bg-blue-400 py-1 px-3 rounded-lg border border-gray-200 text-white" >Pakai</button>
+                                        <button
+                                            class="bg-white py-1 px-3 rounded-lg border border-gray-200 text-gray-300">Atur
+                                            Ulang</button>
+                                        <button
+                                            class="bg-blue-400 py-1 px-3 rounded-lg border border-gray-200 text-white">Pakai</button>
                                     </div>
                                 </div>
                             </div>
@@ -143,11 +146,10 @@
                                 function changeColor(checkbox) {
                                     var label = document.getElementById("checkboxLabel");
                                     if (checkbox.checked) {
-                                        label.classList.add("bg-gray-900 text-white");
-                                        label.classList.remove("bg-white");
-
+                                        label.classList.add("bg-blue-500");
+                                        label.classList.remove("bg-gray-100");
                                     } else {
-                                        label.classList.add("bg-white");
+                                        label.classList.add("bg-gray-100");
                                         label.classList.remove("bg-blue-500");
                                     }
                                 }
@@ -197,59 +199,71 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                @empty
-                                                <div class="flex justify-center items-center">
-                                                    <img src="/admin/noData.png" alt="" width="280px">
-                                                </div>
-                                                @endforelse
-                                            </tbody>
-                                        </table>
-                                        <nav>
-                                            <ul class="inline-flex -space-x-px text-sm">
-                                                <!-- Previous Page Link -->
-                                                @if ($aprovals->onFirstPage())
-                                                    <li>
-                                                        <a href="#"
-                                                            class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-                                                    </li>
-                                                @else
-                                                    <li>
-                                                        <a href="{{ $aprovals->previousPageUrl() }}"
-                                                            class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-                                                    </li>
-                                                @endif
+                                            @empty
+                                                <tr>
+                                                    <td colspan="6" class="p-8 text-center">
+                                                        <div class="flex justify-center items-center">
+                                                            <img src="/admin/noData.png" alt=""
+                                                                width="280px">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                    <nav aria-label="Page navigation example" class="flex justify-end">
+                                        <ul class="list-style-none flex">
+                                            <!-- Previous Page Link -->
+                                            @if ($aprovals->onFirstPage())
+                                                <li>
+                                                    <a
+                                                        class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
+                                                </li>
+                                            @else
+                                                <li>
+                                                    <a href="{{ $aprovals->previousPageUrl() }}"
+                                                        class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
+                                                </li>
+                                            @endif
 
-                                                <!-- Pagination Elements -->
+                                            <!-- Pagination Elements -->
+                                            @if ($aprovals->total() > $aprovals->perPage())
                                                 @foreach ($aprovals as $page => $url)
-                                                    @if (is_int($page))
-                                                        @if ($page == $aprovals->currentPage())
-                                                            <li>
-                                                                <a href="#" aria-current="page"
-                                                                    class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">{{ $page }}</a>
-                                                            </li>
-                                                        @else
-                                                            <li>
-                                                                <a href="{{ $url }}"
-                                                                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{{ $page }}</a>
-                                                            </li>
-                                                        @endif
+                                                    @if ($page == 1)
+                                                        <li>
+                                                            <a href="{{ $url }}"
+                                                                class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300 dark:text-white dark:hover:text-white">{{ $page }}</a>
+                                                        </li>
+                                                    @elseif ($page == $aprovals->currentPage())
+                                                        <li aria-current="page">
+                                                            <a class="relative block rounded-full bg-blue-600 px-3 py-1.5 text-sm text-white transition-all duration-300"
+                                                                href="{{ $url }}">{{ $page }}</a>
+                                                        </li>
+                                                    @else
+                                                        <li>
+                                                            <a href="{{ $url }}"
+                                                                class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white">{{ $page }}</a>
+                                                        </li>
                                                     @endif
                                                 @endforeach
+                                            @endif
 
-                                                <!-- Next Page Link -->
-                                                @if ($aprovals->hasMorePages())
-                                                    <li>
-                                                        <a href="{{ $aprovals->nextPageUrl() }}"
-                                                            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-                                                    </li>
-                                                @else
-                                                    <li>
-                                                        <a href="#"
-                                                            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-                                                    </li>
-                                                @endif
-                                            </ul>
-                                        </nav>
+                                            <!-- Next Page Link -->
+                                            @if ($aprovals->hasMorePages())
+                                                <li>
+                                                    <a href="{{ $aprovals->nextPageUrl() }}"
+                                                        class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white">Next</a>
+                                                </li>
+                                            @else
+                                                <li>
+                                                    <a
+                                                        class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white">Next</a>
+                                                </li>
+                                            @endif
+                                        </ul>
+                                    </nav>
+
+
 
                                 </div>
                             </div>

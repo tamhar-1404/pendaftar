@@ -1405,8 +1405,10 @@
                                     </div>
 
                                     <div class="ax-transparent-gridline">
-                                        <div x-init="$nextTick(() => { $el._x_chart = new ApexCharts($el, pages.charts.stockMarket1);
-                                            $el._x_chart.render() });"></div>
+                                        <div x-init="$nextTick(() => {
+                                            $el._x_chart = new ApexCharts($el, pages.charts.stockMarket1);
+                                            $el._x_chart.render()
+                                        });"></div>
                                     </div>
 
                                     <div class="mt-2 flex items-center justify-between">
@@ -1431,8 +1433,10 @@
                                     </div>
 
                                     <div class="ax-transparent-gridline">
-                                        <div x-init="$nextTick(() => { $el._x_chart = new ApexCharts($el, pages.charts.stockMarket2);
-                                            $el._x_chart.render() });"></div>
+                                        <div x-init="$nextTick(() => {
+                                            $el._x_chart = new ApexCharts($el, pages.charts.stockMarket2);
+                                            $el._x_chart.render()
+                                        });"></div>
                                     </div>
 
                                     <div class="mt-2 flex items-center justify-between">
@@ -2243,19 +2247,23 @@
 
                 <div class="flex items-center space-x-2" x-data="usePopper({ placement: 'bottom-end', offset: 4 })"
                     @click.outside="isShowPopper && (isShowPopper = false)">
-                    <label class="relative hidden sm:flex">
-                        <input
-                            class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                            placeholder="Search users..." type="text" />
-                        <span
-                            class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-colors duration-200"
-                                fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M3.316 13.781l.73-.171-.73.171zm0-5.457l.73.171-.73-.171zm15.473 0l.73-.171-.73.171zm0 5.457l.73.171-.73-.171zm-5.008 5.008l-.171-.73.171.73zm-5.457 0l-.171.73.171-.73zm0-15.473l-.171-.73.171.73zm5.457 0l.171-.73-.171.73zM20.47 21.53a.75.75 0 101.06-1.06l-1.06 1.06zM4.046 13.61a11.198 11.198 0 010-5.115l-1.46-.342a12.698 12.698 0 000 5.8l1.46-.343zm14.013-5.115a11.196 11.196 0 010 5.115l1.46.342a12.698 12.698 0 000-5.8l-1.46.343zm-4.45 9.564a11.196 11.196 0 01-5.114 0l-.342 1.46c1.907.448 3.892.448 5.8 0l-.343-1.46zM8.496 4.046a11.198 11.198 0 015.115 0l.342-1.46a12.698 12.698 0 00-5.8 0l.343 1.46zm0 14.013a5.97 5.97 0 01-4.45-4.45l-1.46.343a7.47 7.47 0 005.568 5.568l.342-1.46zm5.457 1.46a7.47 7.47 0 005.568-5.567l-1.46-.342a5.97 5.97 0 01-4.45 4.45l.342 1.46zM13.61 4.046a5.97 5.97 0 014.45 4.45l1.46-.343a7.47 7.47 0 00-5.568-5.567l-.342 1.46zm-5.457-1.46a7.47 7.47 0 00-5.567 5.567l1.46.342a5.97 5.97 0 014.45-4.45l-.343-1.46zm8.652 15.28l3.665 3.664 1.06-1.06-3.665-3.665-1.06 1.06z" />
-                            </svg>
-                        </span>
-                    </label>
+                    <form action="">
+                        <label class="relative hidden sm:flex">
+                            <input
+                                class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                placeholder="Search users..." type="text" name="cari"
+                                value="{{ request('cari') }}" />
+                            <span
+                                class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 transition-colors duration-200" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M3.316 13.781l.73-.171-.73.171zm0-5.457l.73.171-.73-.171zm15.473 0l.73-.171-.73.171zm0 5.457l.73.171-.73-.171zm-5.008 5.008l-.171-.73.171.73zm-5.457 0l-.171.73.171-.73zm0-15.473l-.171-.73.171.73zm5.457 0l.171-.73-.171.73zM20.47 21.53a.75.75 0 101.06-1.06l-1.06 1.06zM4.046 13.61a11.198 11.198 0 010-5.115l-1.46-.342a12.698 12.698 0 000 5.8l1.46-.343zm14.013-5.115a11.196 11.196 0 010 5.115l1.46.342a12.698 12.698 0 000-5.8l-1.46.343zm-4.45 9.564a11.196 11.196 0 01-5.114 0l-.342 1.46c1.907.448 3.892.448 5.8 0l-.343-1.46zM8.496 4.046a11.198 11.198 0 015.115 0l.342-1.46a12.698 12.698 0 00-5.8 0l.343 1.46zm0 14.013a5.97 5.97 0 01-4.45-4.45l-1.46.343a7.47 7.47 0 005.568 5.568l.342-1.46zm5.457 1.46a7.47 7.47 0 005.568-5.567l-1.46-.342a5.97 5.97 0 01-4.45 4.45l.342 1.46zM13.61 4.046a5.97 5.97 0 014.45 4.45l1.46-.343a7.47 7.47 0 00-5.568-5.567l-.342 1.46zm-5.457-1.46a7.47 7.47 0 00-5.567 5.567l1.46.342a5.97 5.97 0 014.45-4.45l-.343-1.46zm8.652 15.28l3.665 3.664 1.06-1.06-3.665-3.665-1.06 1.06z" />
+                                </svg>
+                            </span>
+                        </label>
+                    </form>
 
                     <div class="flex">
                         <button
@@ -2290,69 +2298,75 @@
             </div>
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
                 @forelse ($siswas as $siswa)
+                    <div class="card ">
+                        <div class="p-2 text-right">
+                            <div x-data="usePopper({ placement: 'bottom-end', offset: 4 })" @click.outside="isShowPopper && (isShowPopper = false)"
+                                class="inline-flex">
+                                <button x-ref="popperRef" @click="isShowPopper = !isShowPopper"
+                                    class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                                    </svg>
+                                </button>
 
-                <div class="card ">
-                    <div class="p-2 text-right">
-                        <div x-data="usePopper({ placement: 'bottom-end', offset: 4 })" @click.outside="isShowPopper && (isShowPopper = false)"
-                            class="inline-flex">
-                            <button x-ref="popperRef" @click="isShowPopper = !isShowPopper"
-                                class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                                </svg>
-                            </button>
+                                <div x-ref="popperRoot" class="popper-root" :class="isShowPopper && 'show'">
+                                    <div
+                                        class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700">
+                                        <ul>
+                                            <li>
+                                                <a href="{{ route('siswa_admin.edit', $siswa->id) }}"
+                                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Detail</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Chat</a>
+                                            </li>
+                                            <li>
+                                                <button ata-modal-target="defaultModal{{ $siswa->id }}"
+                                                    data-modal-toggle="defaultModal{{ $siswa->id }}"
+                                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">SP
+                                                </button>
 
-                            <div x-ref="popperRoot" class="popper-root" :class="isShowPopper && 'show'">
-                                <div
-                                    class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700">
-                                    <ul>
-                                        <li>
-                                            <a href="{{ route('siswa_admin.edit' , $siswa->id) }}"
-                                                class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Detail</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Chat</a>
-                                        </li>
-                                        <li>
-                                            <button ata-modal-target="defaultModal{{$siswa->id}}" data-modal-toggle="defaultModal{{$siswa->id}}"
-                                            class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">SP
-                                            </button>
+                                            </li>
+                                            <li>
+                                                <form action="{{ route('siswa.banned', ['id' => $siswa->id]) }}"
+                                                    method="post" id="myForm" onsubmit="hapus(event)">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="alasan" id="alasanPenolakan">
+                                                    <button
+                                                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Hapus</button>
+                                                </form>
+                                            </li>
+                                        </ul>
 
-                                        </li>
-                                        <li>
-                                            <form action="{{ route('siswa.banned', ['id' => $siswa->id]) }}" method="post" id="myForm" onsubmit="hapus(event)">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="alasan" id="alasanPenolakan">
-                                                <button class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Hapus</button>
-                                            </form>
-                                        </li>
-                                    </ul>
+                                        <ul>
 
-                                    <ul>
-
-                                    </ul>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
-                        <div class="avatar h-20 w-20">
-                            <img class="rounded-full" src="{{ asset('storage/Siswa/' . $siswa->foto_siswa) }}"
-                                alt="avatar" />
+                        <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
+                            <div class="avatar h-20 w-20">
+                                <img class="rounded-full" src="{{ asset('storage/Siswa/' . $siswa->foto_siswa) }}"
+                                    alt="avatar" />
+                            </div>
+                            <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
+                                {{ $siswa->name }}
+                            </h3>
+                            <p class="text-xs+ mt-2">{{ $siswa->sekolah }}</p>
+                            <p class="text-xs+ mt-2">{{ $siswa->jurusan }}</p>
                         </div>
-                        <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
-                            {{ $siswa->name }}
-                        </h3>
-                        <p class="text-xs+ mt-2">{{ $siswa->sekolah }}</p>
-                        <p class="text-xs+ mt-2">{{ $siswa->jurusan }}</p>
                     </div>
-                </div>
                 @empty
-
+                    <td colspan="6" class="p-8 text-center">
+                        <div class="flex justify-center items-center">
+                            <img src="/admin/noData.png" alt="" width="280px">
+                        </div>
+                    </td>
                 @endforelse
             </div>
             <div class="flex justify-center mt-10">
@@ -2407,56 +2421,69 @@
             </div>
         </main>
     </div>
-    @forelse ( $siswas as $modal)
-    {{-- modal --}}
-    <div   id="defaultModal{{$modal->id}}"  tabindex="-1" aria-hidden="true" class="kamu-tak-diajak fixed top-0 left-0 right-0 z-[150] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-       <div class="relative w-full max-w-2xl max-h-full">
-           <!-- Modal content -->
-           <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-               <!-- Modal header -->
-               <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                   <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                      SP
-                   </h3>
-                   <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="staticModal{{$modal ->id}}">
-                       <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                   </button>
-               </div>
-               <form action="{{route('sp.store')}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <input type="text" name="nama" value="{{$modal->name}}">
-                <div class="w-full">
-                    <label class="text-md font-semibold ml-4 mt-4 ">deskrisi</label><br>
-                    <textarea name="deskripsi" class="w-[80%] border border-gray-200" id="" cols="" rows="10"></textarea>
+    @forelse ($siswas as $modal)
+        {{-- modal --}}
+        <div id="defaultModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
+            class="kamu-tak-diajak fixed top-0 left-0 right-0 z-[150] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            SP
+                        </h3>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-hide="staticModal{{ $modal->id }}">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <form action="{{ route('sp.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <input type="text" name="nama" value="{{ $modal->name }}">
+                        <div class="w-full">
+                            <label class="text-md font-semibold ml-4 mt-4 ">deskrisi</label><br>
+                            <textarea name="deskripsi" class="w-[80%] border border-gray-200" id="" cols=""
+                                rows="10"></textarea>
+                        </div>
+                        <label for="">Jenis SP</label> <br>
+                        <div class="flex">
+
+                            <input type="radio" name="keterangan" value="Sp1" id="">
+                            <p>Sp1</p> <br>
+                        </div>
+                        <div class="flex">
+
+                            <input type="radio" name="keterangan" value="Sp2" id="">
+                            <p>Sp2</p> <br>
+                        </div>
+                        <label for="">Bukti SP</label> <br>
+                        <input type="file" name="buktisp" id="">
+
+
+
+                        <!-- Modal footer -->
+                        <div
+                            class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <button type="button"
+                                class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                            <button type="submit" class="bg-blue-400">kirim</button>
+                        </div>
+
+                    </form>
                 </div>
-                <label for="">Jenis SP</label> <br>
-                <div class="flex" >
-
-                    <input type="radio" name="keterangan" value="Sp1" id=""> <p>Sp1</p> <br>
-                </div>
-                <div class="flex">
-
-                    <input type="radio" name="keterangan" value="Sp2" id=""> <p>Sp2</p> <br>
-                </div>
-                <label for="">Bukti SP</label> <br>
-                <input type="file" name="buktisp" id="">
-
-
-
-               <!-- Modal footer -->
-               <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                   <button  type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
-                   <button  type="submit" class="bg-blue-400">kirim</button>
-               </div>
-
-            </form>
-           </div>
-       </div>
-   </div>
-   @empty
-
-   @endforelse
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+            </div>
+        </div>
+    @empty
+        okelah
+    @endforelse
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -2467,6 +2494,7 @@
     </script>
     <script>
         window.addEventListener("DOMContentLoaded", () => Alpine.start());
+
         function hapus(event) {
             event.preventDefault();
 
@@ -2482,10 +2510,10 @@
                 allowOutsideClick: false,
                 inputValidator: (value) => {
                     if (!value || value.trim() === '') {
-                    return 'Harap masukkan alasan.';
+                        return 'Harap masukkan alasan.';
                     }
                 },
-                }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
                     document.getElementById('alasanPenolakan').value = result.value;
                     // console.log(result.value)

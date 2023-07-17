@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 use Dompdf\Dompdf;
 use Dompdf\Options;
-use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\jurnalsiswa;
+use Illuminate\Http\Request;
+use PhpOffice\PhpWord\PhpWord;
+use Barryvdh\DomPDF\Facade\Pdf;
+use PhpOffice\PhpWord\IOFactory;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StorejurnalsiswaRequest;
 use App\Http\Requests\UpdatejurnalsiswaRequest;
+<<<<<<< HEAD
+=======
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Storage;
@@ -14,6 +22,7 @@ use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\IOFactory;
 use Exception;
 
+>>>>>>> 34382e7c6b176700470cf140b400c02155c62b64
 
 class JurnalsiswaController extends Controller
 {
@@ -108,23 +117,44 @@ class JurnalsiswaController extends Controller
      * @param  \App\Models\jurnalsiswa  $jurnalsiswa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, jurnalsiswa $jurnalsiswa)
-    {
-        $this->validate($request ,[
-            'nama' =>"required",
-            'tanggal' => "required",
-            'sekolah' => "required",
-            'kegiatan'  => "required"
-        ]);
-        $jurnalsiswa->update([
-            'image'=>$request->image,
-            'nama' => $request->nama,
-            'tanggal' => $request->tanggal,
-            'sekolah' => $request->sekolah,
-            'kegiatan'=>$request->kegiatan,
-            'status' => $request -> status
-        ]);
+   public function update(Request $request, $id)
+{
+    $jurnalsiswa = jurnalsiswa::find($id);
+    $oldImage = $jurnalsiswa->image;
+
+    $this->validate($request, [
+        'nama' => 'required',
+        'tanggal' => 'required',
+        'sekolah' => 'required',
+        'kegiatan' => 'required'
+    ]);
+
+    $jurnalsiswa->nama = $request->nama;
+    $jurnalsiswa->tanggal = $request->tanggal;
+    $jurnalsiswa->sekolah = $request->sekolah;
+    $jurnalsiswa->kegiatan = $request->kegiatan;
+    $jurnalsiswa->status = $request->status;
+
+    if ($request->hasFile('image')) {
+        // Hapus gambar lama
+        if ($oldImage != 'default.jpg') {
+            Storage::delete('public/image/' . $oldImage);
+        }
+
+        // Upload gambar baru
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->storeAs('public/image', $imageName);
+        $jurnalsiswa->image = $imageName;
+    } else {
+        $jurnalsiswa->image = $oldImage; // Menggunakan gambar lama jika tidak ada gambar yang diupload
+    }
+
+    $jurnalsiswa->save();
+
+    return redirect()->route('jurnal_siswa.index')->with('success', 'Data berhasil diubah');
 }
+  
 
     /**
      * Remove the specified resource from storage.
