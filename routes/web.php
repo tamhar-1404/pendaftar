@@ -42,6 +42,7 @@ use App\Http\Controllers\RestockController;
 
 
 Route::resource('barang', App\Http\Controllers\BarangController::class);
+Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
 Route::resource('opname', App\Http\Controllers\OpnameController::class);
 
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
@@ -83,6 +84,8 @@ Route::resource('/jurnal_guru', App\Http\Controllers\JurnalGuruController::class
 Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
 Route::resource('/chat_guru', App\Http\Controllers\ChatGuruController::class);
 Route::resource('/berita_guru', App\Http\Controllers\BeritaController::class);
+Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
+Route::resource('/data', App\Http\Controllers\TransaksiController::class);
 // akhir Pembimbing
 // Siswa
 Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'downloadPDF']);
@@ -115,9 +118,8 @@ Route::get('/', function () {
 Route::get('/kode_beli', function () {
     return view('transaksi.rfid');
 })->name('kode_beli');
-Route::get('/data', function () {
-    return view('transaksi.data');
-})->name('data');
+
+
 
 
 

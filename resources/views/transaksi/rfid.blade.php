@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 
-<!-- Mirrored from template.hasthemes.com/sinp/sinp/shop-grid-4-column.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jul 2023 02:22:46 GMT -->
+{{--  <!-- Mirrored from template.hasthemes.com/sinp/sinp/shop-grid-4-column.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jul 2023 02:22:46 GMT -->  --}}
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -73,10 +73,11 @@
         <div class="container">
             <div class="flex flex-wrap flex-col lg:flex-row">
                 <div id="shoptab" class="flex-1">
-                    <p class="text-center">scan kode barang</p>
+                    <p class="text-center">scan rfid </p>
                     <div class="flex flex-wrap justify-center items-center px-4">
-                        <form action="" class="flex items-center justify-center border border-gray-400">
-                            <input type="text" name="" id="">
+                        <form action="{{route('transaksi.create')}}" method="get" class="flex items-center justify-center border border-gray-400">
+                            @csrf
+                            <input autofocus class="active" type="text" name="rfid" id="">
                         </form>
 
                         </div>

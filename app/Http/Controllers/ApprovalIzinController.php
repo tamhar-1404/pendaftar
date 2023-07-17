@@ -30,7 +30,7 @@ class ApprovalIzinController extends Controller
 
      public function index(Request $request)
      {
-  
+
         $today = date('Y-m-d');
         ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status' => 'terimaabsen', 'status2' => '']);
 
@@ -135,23 +135,18 @@ class ApprovalIzinController extends Controller
          if ($cek === 'terima') {
              $izin = ApprovalIzin::findOrFail($id);
 
-             // Ubah status menjadi 'Terima' jika izin menunggu
              if ($izin->status === 'menunggu') {
                  $izin->status = 'terimaabsen';
                  $izin->status2 = 'izin';
                  $izin->save();
              }
 
-             // Tanggal izin dimulai pada tanggal selanjutnya jika sudah ada
              if ($izin->dari === Carbon::today()->toDateString()) {
                  $izinDari = Carbon::tomorrow();
              } else {
                  $izinDari = Carbon::parse($izin->dari);
              }
-
              $izinSampai = Carbon::parse($izin->sampai);
-
-             // Buat entri baru untuk setiap tanggal izin
              $tanggalMulai = $izinDari;
              $tanggalBerakhir = $izinSampai;
 
