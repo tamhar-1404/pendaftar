@@ -46,7 +46,7 @@ Route::resource('opname', App\Http\Controllers\OpnameController::class);
 
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
 
-Route::get('rfid' , [SiswaController::class , 'rfid'])->name('rfid');
+Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
 Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
 Route::get('send-email' , [MailController::class,'index']);
 Route::get('siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa']);
@@ -110,14 +110,14 @@ Route::get('/percobaan', function () {
     return view('login.iyah');
 });
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
-Route::get('/rfid', function () {
+Route::get('/kode_beli', function () {
     return view('transaksi.rfid');
-});
+})->name('kode_beli');
 Route::get('/data', function () {
     return view('transaksi.data');
-});
+})->name('data');
 
 
 
