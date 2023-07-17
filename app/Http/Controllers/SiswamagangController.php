@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use App\Http\Requests\StoresiswamagangRequest;
 use App\Http\Requests\UpdatesiswamagangRequest;
+use App\Models\TopUp;
+use Carbon\Carbon;
 
 class SiswamagangController extends Controller
 {
@@ -24,7 +26,8 @@ class SiswamagangController extends Controller
     {
         $user = auth()->user();
         $tatib = TataTertib::latest()->paginate(5);
-        return view('siswamagang.index', compact('tatib', 'user'));
+        $password_user = User::find(auth()->user()->id)->password;
+        return view('siswamagang.index', compact('tatib', 'user', 'password_user'));
     }
 
 
@@ -86,16 +89,25 @@ class SiswamagangController extends Controller
 
     public function saldo(Request $request, $id)
     {
-        $user = User::find($id);
+        // dd($request->all());
+        $user_id = auth()->user()->id;
         $this->validate($request, [
-            'saldo' => 'required'
+            'saldo' => 'required',
+            'password' => 'required'
         ]);
 
+        $user_password = User::find(auth()->user()->id)->password;
+        if (!Hash::check($request->password, $user_password)) {
+            return back()->with('error', 'Password salah');
+        }
         $hashedSaldo = Hash::make($request->saldo);
         $decryptedSaldo = $request->saldo;
 
-        $user->update([
-            'saldo' => $hashedSaldo,
+        TopUp::create([
+            'user_id' => $user_id,
+            'status' => 'menunggu',
+            'saldo' => $request->saldo,
+            'tanggal' => Carbon::now()->format('Y-m-d'),
         ]);
 
         return redirect()->back()->with('decryptedSaldo', $decryptedSaldo);
