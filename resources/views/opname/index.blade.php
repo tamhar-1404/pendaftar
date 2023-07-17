@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -52,13 +53,16 @@
 <br>
 <center>
 
-    <h4 class="font-bold">Pendataan barang</h4>
+    <h4 class="font-bold">Opname</h4>
 </center>
 &nbsp;
 &nbsp;&nbsp;
 <!-- Button to Trigger Wizard -->
-<button type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="showStep(1)">Tambah data</button>
+<center>
 
+    <input type="text" id="kodeopname" name="nama" onchange="showStep(1)" class="block w-1/2 py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600" placeholder="Kode barang" autofocus id="kodebarang">
+
+</center>
 <br>
 <hr class="mt-1">
 <div class="flex flex-col px-4">
@@ -74,7 +78,7 @@
                             <th scope="col" class="px-6 py-2">Kode</th>
                             <th scope="col" class="px-6 py-2">Harga</th>
                             <th scope="col" class="px-6 py-2">Kategori</th>
-                            <th scope="col" class="px-6 py-2">Deskripsi</th>
+                            <th scope="col" class="px-6 py-2">Tanggal</th>
                             <th scope="col" class="px-6 py-2">Stok</th>
                             <th scope="col" class="px-6 py-2">Aksi</th>
                         </tr>
@@ -83,44 +87,43 @@
                     $no = 1;
                 @endphp
                     <tbody>
-                        @forelse ($barang as $barang)
+                        @forelse ($opname as $oname)
 
                         <tr>
                             <td  class="whitespace-nowrap px-6 py-2">
                                 {{ $no++ }}
                             </td>
                             <td  class="whitespace-nowrap px-6 py-2">
-                                {{ $barang->nama }}
+                                {{ $oname->barang->nama }}
                             </td>
                             <td  class="whitespace-nowrap px-6 py-2">
-                               <img src="{{ asset('storage/pendataanbarang/' . $barang->foto) }}" class="w-10" alt="" srcset="">
+                               <img src="{{ asset('storage/pendataanbarang/' . $oname->barang->foto) }}" class="w-10" alt="" srcset="">
                             </td>
                             <td  class="whitespace-nowrap px-6 py-2">
-                                {{ $barang->kode }}
+                                {{ $oname->barang->kode }}
                             </td>
                             <td  class="whitespace-nowrap px-6 py-2">
-                                {{ $barang->harga }}
+                                {{ $oname->barang->harga }}
                             </td>
                             <td  class="whitespace-nowrap px-6 py-2">
-                                    {{ $barang->kategori }}
+                                    {{ $oname->barang->kategori }}
                             </td>
                             <td  class="whitespace-nowrap px-6 py-2">
-                                {{ $barang->deskripsi }}
+                                {{ $oname->tanggal }}
                             </td>
                             <td  class="whitespace-nowrap px-6 py-2">
-                                {{ $barang->stok }}
+                                {{ $oname->stok }}
                             </td>
                             <td  class="whitespace-nowrap px-6 py-2" >
-                                <form action="{{ route('barang.destroy' , $barang->id) }}" method="post">
+                                <form action="{{ route('barang.destroy' , $oname->barang?->id) }}" method="post">
                                     @method('DELETE')
                                     @csrf
-                                        <a href="{{ route('barang.edit' , $barang->id) }}" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a href="{{ route('barang.edit' , $oname->barang?->id) }}" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><i class="fa fa-pencil-square-o"></i></a>
                                         <button type="submit" class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"> <i class="animate-spin fa fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
                         @empty
-
                         @endforelse
                     </tbody>
                     </table>
@@ -128,75 +131,55 @@
         </div>
     </div>
 </div>
-<!-- Modal Wizard Step 1 -->
-<div id="modal-step1" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+<!-- Modal -->
+@forelse ($barang as $brg)
+<div id="{{ $brg->kode }}" class="fixed inset-0 flex items-center justify-center z-50 hidden">
   <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur"></div>
   <div class="modal bg-white dark:bg-gray-800 rounded-lg p-8 w-[max-content] md:w-2/3 lg:w-1/2 relative">
-    <h2 class="text-lg font-semibold mb-4">Pendataan barang</h2>
-    <form action="{{ route('barang.store') }}" method="post" onsubmit="return validateStep1()" enctype="multipart/form-data">
-      @csrf
-      <div class="mb-6">
-        <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
-        <input type="text" id="name" name="nama" class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600" placeholder="Masukkan Nama Barang" required>
-      </div>
-      <div class="mb-6">
-        <label for="name2" class="block text-sm font-medium text-gray-700">Foto</label>
-        <input type="file" id="name2" name="foto" class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600" placeholder="Masukkan Nama 2" required>
-      </div>
-      <div class="mb-6">
-        <label for="name3" class="block text-sm font-medium text-gray-700">Harga</label>
-        <input type="text" id="name3" name="harga" class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600" placeholder="Masukkan Harga Barang" required>
-      </div>
-      <div class="mb-6">
-        <label for="name4" class="block text-sm font-medium text-gray-700">Kategori</label>
-        <select name="kategori" id="kategori" class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600" placeholder="Masukkan Nama 3" required>
-          <option value="" disabled selected>Pilih kategori</option>
-          <option value="Makanan">Makanan</option>
-          <option value="Minuman">Minuman</option>
-        </select>
-      </div>
-      <div class="mb-6">
-        <label for="name5" class="block text-sm font-medium text-gray-700">Deskripsi</label>
-        <input type="text" id="name5" name="deskripsi" class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600" placeholder="Masukkan Deskripsi" required>
-      </div>
-      <div class="flex justify-end">
-        <button type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="nextStep()">Next</button>
-      </div>
-
+    <h2 class="text-lg font-semibold mb-4">Opname barang</h2>
+  <form action="{{ route('opname.update', $brg->id) }}" method="POST">
+        @method('PUT')
+        @csrf
+        <input type="hidden" name="kode_barang" value="{{ $brg->kode }}">
+        <input type="hidden" name="barang_id" value="{{ $brg->id }}">
+        <div class="grid grid-cols-4 gap-4">
+            <div class="mb-6">
+                <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
+                <h2 id="name" class="font-semibold">{{ $brg->nama }}</h2>
+            </div>
+            <div class="mb-6">
+                <label for="kategori" class="block text-sm font-medium text-gray-700">Kategori</label>
+                <h2 id="kategori" class="font-semibold">{{ $brg->kategori }}</h2>
+            </div>
+            <div class="mb-6">
+                <label for="stok" class="block text-sm font-medium text-gray-700">Stok</label>
+                <input type="text" id="stok" name="stok" class="block w-full text-sm bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600" placeholder="Stok barang" required autofocus>
+            </div>
+            <div class="">
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Submit</button>
+            </div>
+        </div>
+    </form>
   </div>
 </div>
+@empty
 
-<!-- Modal Wizard Step 2 -->
-<div id="modal-step2" class="fixed inset-0 flex items-center justify-center z-50 hidden">
-  <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur"></div>
-  <div class="modal bg-white dark:bg-gray-800 rounded-lg p-8 w-96 relative">
-    <center>
-
-        <h2 class="text-lg font-semibold mb-4">Scan code barang anda</h2>
-    </center>
-    <div class="mb-6">
-
-      <input type="text" id="email" name="kode" class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600" placeholder="Scan code barang" required>
-    </div>
-    <div class="flex justify-between">
-        <button type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="prevStep()">Previous</button>
-        <button type="submit" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-      </div>
-  </div>
-</div>
-</form>
+@endforelse
 
     <script>
     let currentStep = 1;
 
-    function showStep(step) {
-    hideAllSteps();
-    if (step === 1) {
-        document.getElementById('modal-step1').classList.remove('hidden');
-    } else if (step === 2) {
-        document.getElementById('modal-step2').classList.remove('hidden');
-    }
-    currentStep = step;
+    function showStep(idmodal) {
+        let kodeopname = document.getElementById('kodeopname').value;
+        let modal=document.getElementById(`${kodeopname}`);
+        if (modal) {
+            modal.classList.remove('hidden');
+        }
+        else {
+            alert('Barang tidak ditemukan');
+            document.getElementById('kodeopname').value = null;
+            document.getElementById('kodeopname').focus();
+        }
     }
 
     function nextStep() {
@@ -292,6 +275,16 @@
     <script>
         $(window).on('load', function() {
             $('.spin_load').fadeOut();
+        });
+    </script>
+    <script>
+        var input = document.getElementById("kodebarang");
+        input.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                // console.log(input.value);
+                alert(input.value);
+                showStep(1);
+            }
         });
     </script>
 </body>
