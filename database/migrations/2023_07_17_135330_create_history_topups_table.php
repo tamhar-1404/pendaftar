@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('history_topups', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('name');
             $table->string('sekolah');
             $table->string('email');
             $table->string('tanggal');

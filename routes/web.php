@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\OpnameController;
 use App\Http\Controllers\RestockController;
+use App\Http\Controllers\transaksirfidController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,11 +42,12 @@ use App\Http\Controllers\RestockController;
 
 
 
+Route::resource('TopUp', App\Http\Controllers\TopUpController::class);
 Route::resource('barang', App\Http\Controllers\BarangController::class);
+Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
 Route::resource('opname', App\Http\Controllers\OpnameController::class);
 
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
-
 Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
 Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
 Route::get('send-email' , [MailController::class,'index']);
@@ -114,12 +116,8 @@ Route::get('/percobaan', function () {
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/kode_beli', function () {
-    return view('transaksi.rfid');
-})->name('kode_beli');
 
-
-
+Route::get('/kode_beli', [transaksirfidController::class, 'index'])->name('kode_beli');
 
 
 // Rute untuk mengirim email reset password
