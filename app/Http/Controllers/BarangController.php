@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Http\Requests\StoreBarangRequest;
 use App\Http\Requests\UpdateBarangRequest;
+use Illuminate\Http\Request;
 
 class BarangController extends Controller
 {
@@ -15,7 +16,8 @@ class BarangController extends Controller
      */
     public function index()
     {
-        return view('barang.index');
+        $barang = Barang::all();
+        return view('barang.index',compact('barang'));
     }
 
     /**
@@ -34,9 +36,27 @@ class BarangController extends Controller
      * @param  \App\Http\Requests\StoreBarangRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBarangRequest $request)
+    public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nama'=>'required',
+            'harga'=>'required',
+            'deskripsi'=>'required',
+            'kategori'=>'required',
+            'foto'=>'required',
+            'kode'=>'required'
+        ]);
+        $image = $request->file('foto');
+        $image->storeAs('public/pendataanbarang', $image->hashName());
+        Barang::create([
+            'nama'=>$request->nama,
+            'harga'=>$request->harga,
+            'deskripsi'=>$request->deskripsi,
+            'kategori'=>$request->kategori,
+            'foto'=>$image->hashName(),
+            'kode'=>$request->kode,
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +101,7 @@ class BarangController extends Controller
      */
     public function destroy(Barang $barang)
     {
-        //
+        $barang->delete();
+        return redirect()->back();
     }
 }

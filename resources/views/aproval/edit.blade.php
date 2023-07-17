@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin - Detail Approval Pendaftaran</title>
     @vite('resources/css/app.css')
-    <link rel="stylesheet" href="{{asset('load/load.cs')}}s">
+    <link rel="stylesheet" href="{{ asset('load/load.cs') }}s">
     {{-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" /> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.min.js"></script>
@@ -19,12 +19,13 @@
 
 
 
-     <!-- screen loader -->
-     <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+    <!-- screen loader -->
+    <div
+        class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
-            <img src="{{asset('load/logo.png')}}" class="w-28" alt="Deskripsi gambar" class="my-img">
+            <img src="{{ asset('load/logo.png') }}" class="w-28" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
 
@@ -303,7 +304,7 @@
                         </a>
                     </div>
                     <button
-                        class="mt-0.5 inline-block rounded bg-info px-3 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+                        class="mt-0.5 inline-block rounded bg-blue-400 px-3 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-400 hover:shadow-lg focus:bg-blue-400 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue- active:shadow-lg"
                         data-te-sidenav-toggle-ref data-te-target="#sidenav-2" aria-controls="#sidenav-2"
                         aria-haspopup="true">
                         <span class="block [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-white">
@@ -465,15 +466,15 @@
     </script>
     <script>
         document.getElementById("btnSimpan").addEventListener("click", function() {
-          // Tampilkan Sweet Alert
-          swal("Data berhasil disimpan!", {
-            icon: "success",
-          }).then(function() {
-            // Redirect ke halaman lain
-            window.location.href = "halaman-lain.html";
-          });
+            // Tampilkan Sweet Alert
+            swal("Data berhasil disimpan!", {
+                icon: "success",
+            }).then(function() {
+                // Redirect ke halaman lain
+                window.location.href = "halaman-lain.html";
+            });
         });
-      </script>
+    </script>
 
 </body>
 

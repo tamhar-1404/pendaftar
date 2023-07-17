@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Berita_Siswa;
 use App\Models\Blog;
+use App\Models\Berita_Siswa;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreBerita_SiswaRequest;
 use App\Http\Requests\UpdateBerita_SiswaRequest;
 
@@ -14,9 +15,15 @@ class BeritaSiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $Blog = Blog::latest()->paginate(5);
+        
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $Blog = Blog::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('deskripsi', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            return view('berita_siswa.index', compact('Blog'));
+        }
+        $Blog = Blog::latest()->paginate(3);
         return view('berita_siswa.index', compact('Blog'));
     }
 

@@ -204,13 +204,13 @@
                                                 <td  class="whitespace-nowrap px-6 py-2">
                                                     {{ $user->name }}
                                                 </td>
-                                                <td>
+                                                <td  class="whitespace-nowrap px-6 py-2">
                                                     {{ $user->email }}
                                                 </td>
-                                                <td>
+                                                <td  class="whitespace-nowrap px-6 py-2">
                                                     {{ $user->sekolah }}
                                                 </td>
-                                                <td>
+                                                <td  class="whitespace-nowrap px-6 py-2">
                                                     <button type="button" id="tambah-rfid{{ $user->id }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="tambahRFID(){{ $user->id }}">
                                                         TAMBAH RFID
                                                       </button>

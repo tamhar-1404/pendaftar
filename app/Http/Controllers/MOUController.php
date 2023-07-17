@@ -15,9 +15,14 @@ class MOUController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $mous = MOU::latest()->paginate(5);
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $mous = MOU::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('alamat', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            return view('mou.index', compact('mous'));
+        }
+        $mous = MOU::latest()->paginate(3);
         return view('mou.index' ,compact('mous')) ;
     }
 

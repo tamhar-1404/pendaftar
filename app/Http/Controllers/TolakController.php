@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\tolak;
 use App\Http\Requests\StoretolakRequest;
 use App\Http\Requests\UpdatetolakRequest;
+use Illuminate\Http\Request;
 
 class TolakController extends Controller
 {
@@ -13,8 +14,13 @@ class TolakController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $tolaks = tolak::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            return view('tolak.index', compact('tolaks'));
+        }
         $tolaks = tolak::latest()->paginate(5);
         return view('tolak.index' , compact('tolaks'));
     }
