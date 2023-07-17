@@ -48,8 +48,8 @@
 
 
     <!-- Navbar Start -->
-    <section class="h-screen bg-no-repeat bg-center bg-cover"
-        style="background-image: url('admin/assets/images/tailwind.png')">
+    <section class="h-screen bg-no-repeat"
+        style="background-image: url('{{ asset('admin/assets/images/hitam.png') }}')">
         <nav class="navbar" id="navbar">
             <div class="px-5 flex items-center">
                 <a class="navbar-brand md:me-8" href="index.html">
@@ -83,7 +83,7 @@
                 <div class="navigation lg_992:order-1 lg_992:flex hidden ms-auto" id="menu-collapse">
                     <ul class="navbar-nav nav-light" id="navbar-navlist">
                         <li class="nav-item text-gray-400">
-                            <a href="#" target="_blank">
+                            <a href="{{ route('kode_beli') }}" target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
                                     <path stroke-linecap="round" stroke-linejoin="round"

@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\OpnameController;
 use App\Http\Controllers\RestockController;
+use App\Http\Controllers\transaksirfidController;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,12 +115,8 @@ Route::get('/percobaan', function () {
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/kode_beli', function () {
-    return view('transaksi.rfid');
-})->name('kode_beli');
 
-
-
+Route::get('/kode_beli', [transaksirfidController::class, 'index'])->name('kode_beli');
 
 
 // Rute untuk mengirim email reset password
