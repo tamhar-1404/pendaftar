@@ -584,8 +584,6 @@
 @empty
 
 @endforelse
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
             <script>
               document.getElementById('confirm-button').addEventListener('click', function(e) {

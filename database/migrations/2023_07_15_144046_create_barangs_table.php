@@ -20,8 +20,7 @@ return new class extends Migration
             $table->string('kode');
             $table->string('kategori');
             $table->string('harga');
-            $table->string('beli');
-            $table->string('stok');
+            $table->string('stok')->nullable();
             $table->string('deskripsi');
             $table->timestamps();
         });
