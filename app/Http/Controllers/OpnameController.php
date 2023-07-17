@@ -40,9 +40,21 @@ class OpnameController extends Controller
      * @param  \App\Http\Requests\StoreOpnameRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreOpnameRequest $request)
+    public function store(Request $request)
     {
-        //
+        $tanggal = Carbon::now()->format('Y-m-d');
+        $oldstok = (int) Barang::find($request->barang_id)->stok;
+        $stok = $oldstok + (int) $request->stok;
+        Barang::findOrFail($request->barang_id)->update([
+            'stok' => $stok,
+        ]);
+
+        Opname::create([
+            'barang_id' => $request->barang_id,
+            'tanggal' => $tanggal,
+            'stok' => (int) $request->stok,
+        ]);
+        return back()->with('success', 'Berhasil menambah stok');
     }
 
     /**
@@ -74,22 +86,21 @@ class OpnameController extends Controller
      * @param  \App\Models\Opname  $opname
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Opname $opname)
     {
-        // dd($request->all());
-        $tanggal = Carbon::now()->format('Y-m-d');
-        $oldstok = (int) Barang::find($id)->stok;
-        $stok = $oldstok + (int) $request->stok;
-        Barang::findOrFail($id)->update([
-            'stok' => $stok,
+        $old_stok = (int) $opname->stok;
+        $new_stok = (int) $request->stok;
+        $selisih_stok = $new_stok - $old_stok;
+        $stok_barang = (int) Barang::find($opname->barang_id)->stok;
+
+        $opname->update([
+            'stok' => $new_stok,
         ]);
 
-        Opname::create([
-            'barang_id' => $id,
-            'tanggal' => $tanggal,
-            'stok' => (int) $request->stok,
+        Barang::find($opname->barang_id)->update([
+            'stok' => $stok_barang + $selisih_stok,
         ]);
-        return back()->with('success', 'Berhasil menambah stok');
+        return back()->with('success', 'Berhasil mengedit barang');
     }
 
     /**
@@ -100,9 +111,13 @@ class OpnameController extends Controller
      */
     public function destroy(Opname $opname)
     {
-        //
-    }
-    public function perbarui(Request $request) {
-        dd($request->all());
+        // dd($opname->stok, $opname->barang_id);
+        $barang = Barang::find($opname->barang_id);
+        $stokBarang = (int) $barang->stok - (int) $opname->stok;
+        $barang->update([
+            'stok' => $stokBarang,
+        ]);
+        $opname->delete();
+        return back()->with('success', 'Berhasil menghapus data');
     }
 }

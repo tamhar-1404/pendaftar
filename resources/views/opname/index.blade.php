@@ -115,10 +115,10 @@
                                 {{ $oname->stok }}
                             </td>
                             <td  class="whitespace-nowrap px-6 py-2" >
-                                <form action="{{ route('barang.destroy' , $oname->barang?->id) }}" method="post">
+                                <form action="{{ route('opname.destroy' , $oname->id) }}" method="post">
                                     @method('DELETE')
                                     @csrf
-                                        <a href="{{ route('barang.edit' , $oname->barang?->id) }}" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a href="#" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="showModalEdit({{ $oname->id }})"><i class="fa fa-pencil-square-o"></i></a>
                                         <button type="submit" class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"> <i class="animate-spin fa fa-trash"></i></button>
                                 </form>
                             </td>
@@ -137,8 +137,8 @@
   <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur"></div>
   <div class="modal bg-white dark:bg-gray-800 rounded-lg p-8 w-[max-content] md:w-2/3 lg:w-1/2 relative">
     <h2 class="text-lg font-semibold mb-4">Opname barang</h2>
-  <form action="{{ route('opname.update', $brg->id) }}" method="POST">
-        @method('PUT')
+  <form action="{{ route('opname.store') }}" method="POST">
+        @method('POST')
         @csrf
         <input type="hidden" name="kode_barang" value="{{ $brg->kode }}">
         <input type="hidden" name="barang_id" value="{{ $brg->id }}">
@@ -165,21 +165,53 @@
 @empty
 
 @endforelse
+@forelse ($opname as $brg)
+<div id="edit{{ $brg->id }}" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+  <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur"></div>
+  <div class="modal bg-white dark:bg-gray-800 rounded-lg p-8 w-[max-content] md:w-2/3 lg:w-1/2 relative">
+    <h2 class="text-lg font-semibold mb-4">Edit opname barang</h2>
+  <form action="{{ route('opname.update', $brg->id) }}" method="POST">
+        @method('PUT')
+        @csrf
+        <div class="grid grid-cols-4 gap-4">
+            <div class="mb-6">
+                <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
+                <h2 id="name" class="font-semibold">{{ $brg->barang->nama }}</h2>
+            </div>
+            <div class="mb-6">
+                <label for="kategori" class="block text-sm font-medium text-gray-700">Kategori</label>
+                <h2 id="kategori" class="font-semibold">{{ $brg->barang->kategori }}</h2>
+            </div>
+            <div class="mb-6">
+                <label for="stok" class="block text-sm font-medium text-gray-700">Stok</label>
+                <input type="text" id="stok" name="stok" class="block w-full text-sm bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600" placeholder="Stok barang" required autofocus value="{{ $brg->stok }}">
+            </div>
+            <div class="">
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Submit</button>
+            </div>
+        </div>
+    </form>
+  </div>
+</div>
+@empty
+
+@endforelse
 
     <script>
         let currentStep = 1;
 
-        function showStep(idmodal) {
-            let kodeopname = document.getElementById('kodeopname').value;
-            let modal=document.getElementById(`${kodeopname}`);
-            if (modal) {
-                modal.classList.remove('hidden');
-            }
-            else {
-                alert('Barang tidak ditemukan');
-                document.getElementById('kodeopname').value = null;
-                document.getElementById('kodeopname').focus();
-            }
+    function showModalEdit(id) {
+        let id_opname = document.getElementById('edit' + id);
+        if (id_opname) {
+            id_opname.classList.remove('hidden');
+        }
+    }
+
+    function showStep(idmodal) {
+        let kodeopname = document.getElementById('kodeopname').value;
+        let modal=document.getElementById(`${kodeopname}`);
+        if (modal) {
+            modal.classList.remove('hidden');
         }
 
         function nextStep() {
