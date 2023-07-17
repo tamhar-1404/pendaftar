@@ -80,8 +80,7 @@ class SiswamagangController extends Controller
      */
     public function update(Request $request, siswamagang $siswamagang)
     {
-
-        dd('hello');
+        //
     }
 
     public function saldo(Request $request, $id)
