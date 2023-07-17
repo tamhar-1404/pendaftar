@@ -1578,8 +1578,8 @@
                                             <div class="p-6 space-y-6">
                                                 <div>
                                                     <div class="relative z-0 w-full mb-6 group">
-                                                        <input type="text" name="saldo" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-                                                        <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Masukkan saldo</label>
+                                                        <input type="text" name="saldo" id="saldo" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                                                        <label for="saldo" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Masukkan saldo</label>
                                                     </div>
                                                     <div class="grid gap-4 grid-cols-2 grid-rows-2">
                                                         <div>
@@ -1853,9 +1853,12 @@
 
             function nextStep() {
                 if (currentStep === 1) {
-                    document.getElementById('modal-step1').classList.add('hidden');
-                    document.getElementById('modal-step2').classList.remove('hidden');
-                    currentStep = 2;
+                    const isValid = validateStep1();
+                    if (isValid) {
+                        document.getElementById('modal-step1').classList.add('hidden');
+                        document.getElementById('modal-step2').classList.remove('hidden');
+                        currentStep = 2;
+                    }
 
                 }
             }
@@ -1874,14 +1877,10 @@
             }
 
             function validateStep1() {
-            const nama = document.getElementById('name').value;
-            const foto = document.getElementById('name2').value;
-            const harga = document.getElementById('name3').value;
-            const kategori = document.getElementById('kategori').value;
-            const deskripsi = document.getElementById('name5').value;
+            const saldo = document.getElementById('saldo').value;
 
-            if (nama.trim() === '' || foto.trim() === '' || harga.trim() === '' || kategori.trim() === '' || deskripsi.trim() === '') {
-                alert('Mohon lengkapi semua field pada langkah 1');
+            if (saldo.trim() === '') {
+                alert('Saldo tidak boleh kosong');
                 return false;
             }
 
