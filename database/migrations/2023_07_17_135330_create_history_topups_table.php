@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('barangs', function (Blueprint $table) {
+        Schema::create('history_topups', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('foto');
-            $table->string('kode');
-            $table->string('kategori');
-            $table->string('harga');
-            $table->integer('stok')->nullable()->default(0);
-            $table->string('deskripsi');
+            $table->string('sekolah');
+            $table->string('email');
+            $table->string('tanggal');
+            $table->string('rfid');
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('barangs');
+        Schema::dropIfExists('history_topups');
     }
 };

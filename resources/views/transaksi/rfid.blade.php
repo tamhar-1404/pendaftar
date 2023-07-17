@@ -73,10 +73,11 @@
         <div class="container">
             <div class="flex flex-wrap flex-col lg:flex-row">
                 <div id="shoptab" class="flex-1">
-                    <p class="text-center">scan kode barang</p>
+                    <p class="text-center">scan rfid </p>
                     <div class="flex flex-wrap justify-center items-center px-4">
-                        <form action="" class="flex items-center justify-center border border-gray-400">
-                            <input type="text" name="" id="">
+                        <form action="{{route('transaksi.create')}}" method="get" class="flex items-center justify-center border border-gray-400">
+                            @csrf
+                            <input autofocus class="active" type="text" name="rfid" id="">
                         </form>
 
                         </div>

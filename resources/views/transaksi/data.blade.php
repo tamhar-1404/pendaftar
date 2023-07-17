@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-
-
-<!-- Mirrored from template.hasthemes.com/sinp/sinp/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 Jul 2023 10:36:02 GMT -->
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -13,13 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="transaksi/images/favicon.webp" />
+    <link rel="shortcut icon" type="image/x-icon" href={{asset("transaksi/images/favicon.webp")}} />
 
     <!-- CSS (Font, Vendor, Icon, Plugins & Style CSS files) -->
 
-    <link rel="stylesheet" href="transaksi/css/vendor/icofont.min.css" />
-    <link rel="stylesheet" href="transaksi/css/vendor/line-awesome.min.css" />
-    <link rel="stylesheet" href="transaksi/css/vendor/simple-line-icons.css" />
+    <link rel="stylesheet" href={{asset("transaksi/css/vendor/icofont.min.css" )}}/>
+    <link rel="stylesheet" href={{asset("transaksi/css/vendor/line-awesome.min.css" )}}/>
+    <link rel="stylesheet" href={{asset("transaksi/css/vendor/simple-line-icons.css")}} />
     <!-- Font CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
@@ -29,21 +26,16 @@
 
     <!-- Plugins CSS (All Plugins Files) -->
 
-    <link rel="stylesheet" href="transaksi/css/plugins/swiper-bundle.min.css" />
+    <link rel="stylesheet" href={{asset("transaksi/css/plugins/swiper-bundle.min.css")}} />
 
-    <link rel="stylesheet" href="transaksi/css/plugins/magnific-popup.css" />
+    <link rel="stylesheet" href={{asset("transaksi/css/plugins/magnific-popup.css")}} />
 
 
     <!-- Style CSS -->
-    <link rel="stylesheet" href="transaksi/css/style.css" />
+    <link rel="stylesheet" href={{asset("transaksi/css/style.css")}} />
 
 </head>
-
-
 <body class="font-poppins text-dark text-sm leading-loose">
-    <!-- Header start -->
-
-
 
     <div class="search-form fixed top-0 left-0 w-full bg-black opacity-95 min-h-screen items-center justify-center py-8 px-10 transform  transition-transform translate-x-full ease-in-out duration-500 hidden lg:flex z-50">
         <button class="search-close absolute left-1/2 text-white text-xl top-12 translate-y-1/2" aria-label="close icon"><span class="icon-close"></span></button>
@@ -52,16 +44,7 @@
             <button class="absolute right-0 top-3 text-white text-md font-normal" type="submit" aria-label="submit button"><i class="icon-magnifier"></i></button>
         </form>
     </div>
-    <!-- offcanvas-overlay start -->
     <div class="offcanvas-overlay hidden fixed inset-0 bg-black opacity-50 z-50"></div>
-    <!-- offcanvas-overlay end -->
-
-
-
-    <!-- Header end -->
-
-
-    <!-- Breadcrumb section start -->
     <div class="py-9 bg-gray-light">
         <div class="container">
             <div class="grid grid-cols-12 gap-x-4">
@@ -76,23 +59,16 @@
             </div>
         </div>
     </div>
-
-
-    <!-- Breadcrumb section end -->
-
-
     <div class="py-24">
-
         <div class="container">
             <div class="grid grid-cols-1 gap-x-5">
                 <div class="w-full  h-7 mb-8 flex-col justify-center ">
                     <p class="text-center">scan kode barang</p>
-                    <form action="" class="flex w-full justify-center">
-                        <input class="border border-gray-300 w-[70%]" type="text" name="" id="">
-                    </form>
+
+                        <input autofocus onchange="showStep(1)" class="border border-gray-300 w-[70%]" type="text" name="kode" id="kodebarang">
+
                 </div><br>
                 <div class="overflow-x-auto">
-
                     <table class="w-full min-w-max">
                         <thead>
                             <tr>
@@ -105,37 +81,41 @@
                             </tr>
                         </thead>
                         <tbody>
-
-                            <tr>
+                            @forelse ( $barang as $data)
+                            <tr id="{{$data->kode}}" class=" hidden">
                                 <td class="w-32 p-3  text-center">
-                                    <a href="#">
-                                        <img src="transaksi/images/single-product/sm/product1.webp" alt="product image"></a>
-                                </td>
-                                <td class="p-3  text-center">
-                                    <a href="#" class="transition-all hover:text-orange">Birpod product unsde</a><span>m / gold</span>
-                                </td>
-                                <td class="p-3  text-center"><span><span>$80.00</span></span></td>
-                                <td class="p-3  text-center">
+                                    <img src="{{ asset('storage/pendataanbarang/' . $data->foto) }}" class="w-10" alt="" srcset="">
 
+                                </td>
+                                <td class="p-3  text-center">
+                                    <a href="#" class="transition-all hover:text-orange">{{$data->nama}}</a>
+                                </td>
+                                <td class="p-3  text-center"><span><span>{{$data->harga}}</span></span></td>
+                                <td class="p-3  text-center">
                                     <div class="flex count border border-solid border-gray-300 p-2 h-11">
                                         <button class="decrement flex-auto w-5 leading-none" aria-label="button">-</button>
                                         <input type="number" min="1" max="100" step="1" value="1" class="quantity__input flex-auto w-8 text-center focus:outline-none input-appearance-none">
                                         <button class="increment flex-auto w-5 leading-none" aria-label="button">+</button>
                                     </div>
                                 </td>
-                                <td class="p-3  text-center"><span>$80.00</span></td>
+                                <td class="p-3  text-center"><span>{{$data->harga}}</span></td>
                                 <td class="p-3  text-center">
                                     <a href="#" class="inline-block mx-1 hover:text-orange transition-all"><i class="icon-close"></i></a>
                                 </td>
                             </tr>
+                            @empty
+
+                            @endforelse
+
+
 
 
                         </tbody>
                     </table>
                 </div>
+
             </div>
         </div>
-
     </div>
 
 
@@ -146,23 +126,83 @@
     <!-- JS Vendor, Plugins & Activation Script Files -->
 
     <!-- Vendors JS -->
-    <script src="transaksi/js/vendor/modernizr-3.11.7.min.js"></script>
-    <script src="transaksi/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="transaksi/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <script src={{asset("transaksi/js/vendor/modernizr-3.11.7.min.js")}}></script>
+    <script src={{asset("transaksi/js/vendor/jquery-3.6.0.min.js")}}></script>
+    <script src={{asset("transaksi/js/vendor/jquery-migrate-3.3.2.min.js")}}></script>
     <!-- Plugins JS -->
-    <script src="transaksi/js/plugins/swiper-bundle.min.js"></script>
-    <script src="transaksi/js/plugins/popper.min.js"></script>
-    <script src="transaksi/js/plugins/tippy-bundle.umd.min.js"></script>
-    <script src="transaksi/js/plugins/jquery.magnific-popup.min.js"></script>
-    <script src="transaksi/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <script src={{asset("transaksi/js/plugins/swiper-bundle.min.js")}}></script>
+    <script src={{asset("transaksi/js/plugins/popper.min.js")}}></script>
+    <script src={{asset("transaksi/js/plugins/tippy-bundle.umd.min.js")}}></script>
+    <script src={{asset("transaksi/js/plugins/jquery.magnific-popup.min.js")}}></script>
+    <script src={{asset("transaksi/js/plugins/jquery.ajaxchimp.min.js")}}></script>
 
     <!-- Activation JS -->
-    <script src="transaksi/js/main.js"></script>
+    <script src={{asset("transaksi/js/main.js")}}></script>
+
+    <script>
+        let currentStep = 1;
+
+        function showStep() {
+            let kodebarang = document.getElementById('kodebarang').value;
+            let databarang=document.getElementById(`${kodebarang}`);
+
+            if (databarang && databarang.classList.contains('1')) {
+                document.getElementById('kodebarang').value = null;
+                document.getElementById('kodebarang').focus();
+            }else if(databarang){
+                databarang.classList.remove('hidden');
+                databarang.classList.add('1');
+                document.getElementById('kodebarang').value = null;
+                document.getElementById('kodebarang').focus();
+            }
+            else {
+                alert('Barang tidak ditemukan');
+                document.getElementById('kodebarang').value = null;
+                document.getElementById('kodebarang').focus();
+            }
+        }
+
+        function nextStep() {
+        if (currentStep === 1) {
+            const isValid = validateStep1();
+            if (isValid) {
+            document.getElementById('modal-step1').classList.add('hidden');
+            document.getElementById('modal-step2').classList.remove('hidden');
+            currentStep = 2;
+            }
+        }
+        }
+
+        function prevStep() {
+        if (currentStep === 2) {
+            document.getElementById('modal-step2').classList.add('hidden');
+            document.getElementById('modal-step1').classList.remove('hidden');
+            currentStep = 1;
+        }
+        }
+
+        function hideAllSteps() {
+        document.getElementById('modal-step1').classList.add('hidden');
+        document.getElementById('modal-step2').classList.add('hidden');
+        }
+
+        function validateStep1() {
+        const nama = document.getElementById('name').value;
+        const foto = document.getElementById('name2').value;
+        const harga = document.getElementById('name3').value;
+        const kategori = document.getElementById('kategori').value;
+        const deskripsi = document.getElementById('name5').value;
+
+        if (nama.trim() === '' || foto.trim() === '' || harga.trim() === '' || kategori.trim() === '' || deskripsi.trim() === '') {
+            alert('Mohon lengkapi semua field pada langkah 1');
+            return false;
+        }
+
+        return true;
+        }
+    </script>
 
 
 
 </body>
-
-
-<!-- Mirrored from template.hasthemes.com/sinp/sinp/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 Jul 2023 10:36:27 GMT -->
 </html>
