@@ -24,6 +24,9 @@ use App\Http\Controllers\ApprovalIzinController;
 use App\Models\LupaPassword;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\OpnameController;
+use App\Http\Controllers\RestockController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,7 +41,8 @@ use App\Http\Controllers\MailController;
 
 
 
-Route::resource('/barang', App\Http\Controllers\BarangController::class);
+Route::resource('barang', App\Http\Controllers\BarangController::class);
+Route::resource('opname', App\Http\Controllers\OpnameController::class);
 
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
 

@@ -75,6 +75,7 @@
                             <th scope="col" class="px-6 py-2">Harga</th>
                             <th scope="col" class="px-6 py-2">Kategori</th>
                             <th scope="col" class="px-6 py-2">Deskripsi</th>
+                            <th scope="col" class="px-6 py-2">Stok</th>
                             <th scope="col" class="px-6 py-2">Aksi</th>
                         </tr>
                     </thead>
@@ -105,6 +106,9 @@
                             </td>
                             <td  class="whitespace-nowrap px-6 py-2">
                                 {{ $barang->deskripsi }}
+                            </td>
+                            <td  class="whitespace-nowrap px-6 py-2">
+                                {{ $barang->stok }}
                             </td>
                             <td  class="whitespace-nowrap px-6 py-2" >
                                 <form action="{{ route('barang.destroy' , $barang->id) }}" method="post">
