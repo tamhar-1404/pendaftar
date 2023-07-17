@@ -84,7 +84,9 @@
 
         <!-- Hero Start -->
         <section class="py-36 lg:py-56 w-full table relative bg-[url('../../landing/images/bg/bg.html')] bg-top bg-no-repeat" id="home">
-            <div class="absolute inset-0 bg-gradient-to-t to-slate-950/50 via-slate-950/75 from-slate-950"></div>
+            <div class="absolute inset-0 bg-gradient-to-t to-slate-950/50 via-slate-950/75 from-slate-950" style="background-image: url('admin/images/travel/climber-man.jpg')">
+
+            </div>
 
             <div class="container">
                 <div class="grid grid-cols-1 pb-8 text-center mt-10">
@@ -246,7 +248,7 @@
                         <div class="grid lg:grid-cols-12 grid-cols-1 md:text-start text-center justify-center">
                             <div class="lg:col-start-2 lg:col-span-10">
                                 <div class="relative">
-                                    <img src="landing/images/cta.jpg" class="rounded-md shadow-lg" alt="">
+                                 <img src="" class="rounded-md shadow-lg" alt="">
                                     <div class="absolute bottom-2/4 translate-y-2/4 end-0 start-0 text-center">
                                         <a href="#!" data-type="youtube" data-id="yba7hPeTSjk" class="lightbox lg:h-20 h-16 lg:w-20 w-16 rounded-full shadow-lg dark:shadow-gray-800 inline-flex items-center justify-center bg-white hover:bg-violet-600 text-violet-600 hover:text-white duration-500 ease-in-out mx-auto">
                                             <i class="mdi mdi-play inline-flex items-center justify-center text-3xl"></i>
