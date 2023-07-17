@@ -1584,22 +1584,22 @@
                                                     <div class="grid gap-4 grid-cols-2 grid-rows-2">
                                                         <div>
                                                             <input type="radio" name="saldo" id="5000" class="hidden" value="5000">
-                                                            <label for="5000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white">5000</label>
+                                                            <label for="5000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white" onclick="document.getElementById('saldo').value = '5000'">5000</label>
                                                         </div>
 
                                                         <div>
                                                             <input type="radio" name="saldo" id="10000" class="hidden" value="10000">
-                                                            <label for="10000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white">10000</label>
+                                                            <label for="10000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white" onclick="document.getElementById('saldo').value = '10000'">10000</label>
                                                         </div>
 
                                                         <div>
                                                             <input type="radio" name="saldo" id="15000" class="hidden" value="15000">
-                                                            <label for="15000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white">15000</label>
+                                                            <label for="15000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white" onclick="document.getElementById('saldo').value = '15000'">15000</label>
                                                         </div>
 
                                                         <div>
                                                             <input type="radio" name="saldo" id="20000" class="hidden" value="20000">
-                                                            <label for="20000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white">20000</label>
+                                                            <label for="20000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white" onclick="document.getElementById('saldo').value = '20000'">20000</label>
                                                         </div>
 
                                                     </div>
@@ -1880,7 +1880,11 @@
             const saldo = document.getElementById('saldo').value;
 
             if (saldo.trim() === '') {
-                alert('Saldo tidak boleh kosong');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Saldo tidak boleh kosong!',
+                });
                 return false;
             }
 
