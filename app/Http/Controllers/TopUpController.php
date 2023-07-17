@@ -15,7 +15,7 @@ class TopUpController extends Controller
      */
     public function index()
     {
-        //
+        return view('TopUp.index');
     }
 
     /**

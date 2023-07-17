@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
 
-<!-- Mirrored from shreethemes.in/ovaxo/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jul 2023 01:19:36 GMT -->
+{{--  <!-- Mirrored from shreethemes.in/ovaxo/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jul 2023 01:19:36 GMT -->  --}}
 
 <head>
     <meta charset="UTF-8">
@@ -96,24 +96,16 @@
             </div>
         </nav>
         <!-- Navbar End -->
+        <div
+            class="relative flex items-center
+                  justify-center h-screen overflow-hidden">
+           <img src="{{ asset('admin/images/bg.jpg') }}"   class="absolute z-10 w-auto
+           min-w-full min-h-full max-w-none" alt="" srcset="">
+        </div>
 
         <!-- Hero Start -->
         <section class="relative md:py-24 py-16 bg-gray-50 dark:bg-slate-800" id="features" id="home">
             <div class="absolute bg-gradient-to-t to-slate-950/50 via-slate-950/75 from-slate-950"></div>
-
-            <div class="container">
-                <div class="grid grid-cols-1 pb-8 text-center mt-10">
-                    <div
-                        class="relative flex items-center 
-                              justify-center h-screen overflow-hidden">
-                        <video
-                            src="https://media.geeksforgeeks.org/wp-content/uploads/20221105184949/ezgif.com-gif-maker.mp4"
-                            autoplay="{true}" loop muted
-                            className="absolute z-10 w-auto 
-                                  min-w-full min-h-full max-w-none">
-                        </video>
-                    </div>
-
                     <h3 class="font-medium leading-normal text-4xl mb-5 mt-10 text-slate-800">We're Helping to Achieve
                         your
                         Success.</h3>

@@ -120,8 +120,8 @@
 
            </ul>
        </li>
-       
-    
+
+
            <li class="relative">
                <a class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-white hover:bg-blue-500 hover:text-white "
                    data-te-sidenav-link-ref>

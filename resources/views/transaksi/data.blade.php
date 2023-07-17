@@ -65,7 +65,7 @@
                 <div class="w-full  h-7 mb-8 flex-col justify-center ">
                     <p class="text-center">scan kode barang</p>
 
-                        <input autofocus onchange="showStep(1)" class="border border-gray-300 w-[70%]" type="text" name="kode" id="kodebarang">
+                        <input autofocus onchange="showStep(0)" class="border border-gray-300 w-[70%]" type="text" name="kodebarang" id="kodebarang">
 
                 </div><br>
                 <div class="overflow-x-auto">
@@ -94,13 +94,13 @@
                                 <td class="p-3  text-center">
                                     <div class="flex count border border-solid border-gray-300 p-2 h-11">
                                         <button class="decrement flex-auto w-5 leading-none" aria-label="button">-</button>
-                                        <input type="number" min="1" max="100" step="1" value="1" class="quantity__input flex-auto w-8 text-center focus:outline-none input-appearance-none">
+                                        <input id="quantity_{{$data->kode}}" type="number" min="1" max="100" step="1" value="1" class="quantity__input flex-auto w-8 text-center focus:outline-none ">
                                         <button class="increment flex-auto w-5 leading-none" aria-label="button">+</button>
                                     </div>
                                 </td>
                                 <td class="p-3  text-center"><span>{{$data->harga}}</span></td>
                                 <td class="p-3  text-center">
-                                    <a href="#" class="inline-block mx-1 hover:text-orange transition-all"><i class="icon-close"></i></a>
+                                    <button id="cancel"><i class="icon-close"></i></button>
                                 </td>
                             </tr>
                             @empty
@@ -126,15 +126,7 @@
     <!-- JS Vendor, Plugins & Activation Script Files -->
 
     <!-- Vendors JS -->
-    <script src={{asset("transaksi/js/vendor/modernizr-3.11.7.min.js")}}></script>
-    <script src={{asset("transaksi/js/vendor/jquery-3.6.0.min.js")}}></script>
-    <script src={{asset("transaksi/js/vendor/jquery-migrate-3.3.2.min.js")}}></script>
-    <!-- Plugins JS -->
-    <script src={{asset("transaksi/js/plugins/swiper-bundle.min.js")}}></script>
-    <script src={{asset("transaksi/js/plugins/popper.min.js")}}></script>
-    <script src={{asset("transaksi/js/plugins/tippy-bundle.umd.min.js")}}></script>
-    <script src={{asset("transaksi/js/plugins/jquery.magnific-popup.min.js")}}></script>
-    <script src={{asset("transaksi/js/plugins/jquery.ajaxchimp.min.js")}}></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Activation JS -->
     <script src={{asset("transaksi/js/main.js")}}></script>
@@ -144,9 +136,17 @@
 
         function showStep() {
             let kodebarang = document.getElementById('kodebarang').value;
+            console.log('kodebarang:', kodebarang);
             let databarang=document.getElementById(`${kodebarang}`);
+            console.log('databarang:', databarang);
+            
+
 
             if (databarang && databarang.classList.contains('1')) {
+                let kode = 'quantity_' + kodebarang;
+                let value_old = document.getElementById(kode).valueAsNumber;
+                let value_new = value_old + 1;
+                document.getElementById(kode).value = value_new;
                 document.getElementById('kodebarang').value = null;
                 document.getElementById('kodebarang').focus();
             }else if(databarang){
@@ -155,12 +155,17 @@
                 document.getElementById('kodebarang').value = null;
                 document.getElementById('kodebarang').focus();
             }
+
             else {
-                alert('Barang tidak ditemukan');
+
                 document.getElementById('kodebarang').value = null;
                 document.getElementById('kodebarang').focus();
+                alert('barang yang anda scan belum di data pada admin')
             }
+
+
         }
+
 
         function nextStep() {
         if (currentStep === 1) {
@@ -201,6 +206,7 @@
         return true;
         }
     </script>
+
 
 
 
