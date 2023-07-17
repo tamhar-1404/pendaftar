@@ -112,7 +112,7 @@
                        data-te-sidenav-link-ref>Penanggung jawab</a>
                </li>
                <li class="relative">
-                <a href="{{ route('rfid') }}"
+                <a href="#"
                     class="flex h-6 cursor-pointer {{ request()->routeIs('guru_admin.index') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
                     data-te-sidenav-link-ref>RFID</a>
             </li>
@@ -196,7 +196,7 @@
 
         </ul>
     </li>
-       {{-- jurnal --}}
+
        <li class="relative">
            <a href="{{route('jurnal_admin.index')}}"
                class="flex h-12 cursor-pointer items-center {{ request()->routeIs('jurnal_admin.index') ? 'bg-blue-500 text-white' : '' }} {{ request()->routeIs('jurnal_admin.create') ? 'bg-blue-500 text-white' : '' }} rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-blue-400ark:text-gray-300 hover:bg-blue-500 hover:text-white">
@@ -215,29 +215,10 @@
                </span>
                <span>Jurnal</span>
 
-               </ul>
-           </li>
-           {{-- jurnal --}}
-           <li class="relative">
-               <a href="{{ route('jurnal_admin.index') }}"
-                   class="flex h-12 cursor-pointer items-center mt-2 {{ request()->routeIs('jurnal_admin.*') ? 'text-blue-400' : 'text-gray-600' }} rounded-[5px] px-6 py-4 text-[0.875rem] outline-none transition duration-300 hover:bg-blue-400 hover:text-white">
-                   <span class="mr-4 h-4 w-5">
-                       <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                           <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                           <style>
-                               svg {
-                                   fill: #8e98a9
-                               }
-                           </style>
-                           <path fill="currentColor"
-                               d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
-                       </svg>
-                   </span>
-                   <span>Jurnal</span>
-               </a>
-           </li>
+
+
            {{-- absensi --}}
-           <li class="relative">
+         
                <a href="{{ route('absensi_admin.index') }}"
                    class="flex h-12 cursor-pointer items-center mt-2 {{ request()->routeIs('absensi_admin.index') ? 'text-blue-400' : 'text-gray-600' }}   rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-blue-400ark:text-gray-300 hover:bg-blue-400 hover:text-white">
                    <span class="mr-4 [&>svg]:h-4 [&>svg]:w-5 ">
@@ -254,7 +235,7 @@
                    </span>
                    <span>Absensi</span>
                </a>
-           </li>
+
            {{-- peraturan --}}
            <li class="relative">
                <a class="flex h-12 cursor-pointer items-center truncate mt-2 rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300  dark:text-gray-300 hover:bg-blue-400 hover:text-white"

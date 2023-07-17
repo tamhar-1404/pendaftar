@@ -42,7 +42,7 @@ Route::resource('/barang', App\Http\Controllers\BarangController::class);
 
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
 
-Route::get('rfid' , [SiswaController::class , 'rfid'])->name('rfid');
+Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
 Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
 Route::get('send-email' , [MailController::class,'index']);
 Route::get('siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa']);
@@ -108,9 +108,9 @@ Route::get('/percobaan', function () {
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/rfid', function () {
-    return view('transaksi.rfid');
-});
+// Route::get('/rfid', function () {
+//     return view('transaksi.rfid');
+// });
 Route::get('/data', function () {
     return view('transaksi.data');
 });
