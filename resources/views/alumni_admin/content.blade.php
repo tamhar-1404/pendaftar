@@ -2274,7 +2274,7 @@
             </div>
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
                 @forelse ($alumni as $alumni )
-                <div class="card" data-modal-target="sertifikat{{ $alumni }}" data-modal-toggle="sertifikat{{ $alumni }}">
+                <div class="card" data-modal-target="sertifikat{{ $alumni->id }}" data-modal-toggle="sertifikat{{ $alumni->id }}" id="openmodal" data-id="{{ $alumni->id }}">
                     <div class="p-2 text-right">
                         <div x-data="usePopper({ placement: 'bottom-end', offset: 4 })" @click.outside="isShowPopper && (isShowPopper = false)"
                             class="inline-flex">
@@ -2364,6 +2364,12 @@
         $('#card').click(function () {
             console.log($(this).attr('data-email'));
             $('#modalSertifikat').modal('show');
+        })
+        $('#openmodal').click(function() {
+            let id = $(this).data('id').toString();
+            console.log(id);
+            console.log($('#sertifikat' + id));
+            $('#sertifikat' + id).modal('show');
         })
     </script>
 </body>
