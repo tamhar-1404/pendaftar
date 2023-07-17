@@ -106,14 +106,14 @@ Route::get('/percobaan', function () {
     return view('login.iyah');
 });
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
-Route::get('/rfid', function () {
+Route::get('/kode_beli', function () {
     return view('transaksi.rfid');
-});
+})->name('kode_beli');
 Route::get('/data', function () {
     return view('transaksi.data');
-});
+})->name('data');
 
 
 
