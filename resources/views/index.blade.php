@@ -23,6 +23,9 @@
     <link href="landing/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="landing/css/tailwind.min.css">
     <link rel="stylesheet" href="load/load.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 
 </head>
@@ -82,43 +85,8 @@
                         <i class="mdi mdi-menu text-[24px]"></i>
                     </button>
                 </div>
-                <script>
-                    function confirmReject(event) {
-                      event.preventDefault();
 
-                      Swal.fire({
-                        title: 'Penolakan',
-                        input: 'text',
-                        inputLabel: 'Masukkan alasan penolakan:',
-                        showCancelButton: true,
-                        confirmButtonText: 'Kirim',
-                        cancelButtonText: 'Batal',
-                        confirmButtonColor: '#00B7FF',
-                        cancelButtonColor: '#FF0000',
-                        allowOutsideClick: false,
-                        inputValidator: (value) => {
-                          if (!value || value.trim() === '') {
-                            return 'Harap masukkan alasan penolakan.';
-                          }
-                        },
-                      }).then((result) => {
-                        if (result.isConfirmed) {
-                          const alasanInput = document.createElement("input");
-                          alasanInput.setAttribute("type", "hidden");
-                          alasanInput.setAttribute("name", "alasan");
-                          alasanInput.setAttribute("value", result.value);
-                          event.target.appendChild(alasanInput);
 
-                          Swal.fire({
-                            title: 'Data berhasil ditolak',
-                            icon: 'success',
-                          }).then(() => {
-                            event.target.submit();
-                          });
-                        }
-                      });
-                    }
-                  </script>
 
                 <!-- Navbar Manu -->
                 <div class="navigation lg_992:order-1 lg_992:flex hidden ms-auto" id="menu-collapse ">
@@ -127,6 +95,55 @@
                             <button class="border border-blue-400 px-4 rounded hover:bg-blue-500 hover:text-white" onclick="confirmReject(event)">Cek Saldo</button>
                         </li>
                     </ul>
+                    <script>
+                        function confirmReject(event) {
+                          event.preventDefault();
+
+                          Swal.fire({
+                            title: 'RFID',
+                            input: 'text',
+                            inputLabel: 'Masukan kode RFID :',
+                            showCancelButton: true,
+                            confirmButtonText: 'Kirim',
+                            cancelButtonText: 'Batal',
+                            confirmButtonColor: '#00B7FF',
+                            cancelButtonColor: '#FF0000',
+                            allowOutsideClick: false,
+                            inputValidator: (value) => {
+                              if (!value || value.trim() === '') {
+                                return 'Harap masukkan alasan penolakan.';
+                              }
+                            },
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                                const alasanPenolakan = result.value;
+                                // Gunakan variabel 'alasanPenolakan' untuk melakukan sesuatu dengan nilai input yang dimasukkan
+                                console.log("Alasan Penolakan: ", alasanPenolakan);
+                                Swal.fire({
+                                title: 'password',
+                                input: 'password',
+                                inputLabel: 'Masukan password :',
+                                showCancelButton: true,
+                                confirmButtonText: 'Kirim',
+                                cancelButtonText: 'Batal',
+                                confirmButtonColor: '#00B7FF',
+                                cancelButtonColor: '#FF0000',
+                                allowOutsideClick: false,
+                                inputValidator: (value) => {
+                                if (!value || value.trim() === '') {
+                                    return 'Harap masukkan alasan penolakan.';
+                                }
+                                },
+                              }).then(() => {
+                               if (result.isConfirmed) {
+                                    document.getElementById("password-user").value = result.value;
+                                    event.target.submit();
+                                }
+                              });
+                            }
+                          });
+                        }
+                    </script>
                     &nbsp; &nbsp;
                     <ul class="navbar-nav nav-light" id="navbar-navlist">
                         <li class="nav-item text-gray-400">
@@ -521,6 +538,7 @@
     <!-- Back to top -->
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 
     <!-- JAVASCRIPTS -->
     <script src="landing/libs/gumshoejs/gumshoe.polyfills.min.js"></script>

@@ -27,9 +27,16 @@ class LoginController extends Controller
     public function index()
     {
          // Ambil hari saat ini
+        $data = User::all();
+
+        return view('login.login', compact('data'));
+    }
+    public function halaman_awal()
+    {
+         // Ambil hari saat ini
 
 
-        return view('login.login');
+        return view('index');
     }
 
     public function login(Request $request){

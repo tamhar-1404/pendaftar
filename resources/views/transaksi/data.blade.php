@@ -115,7 +115,7 @@
                                     <img src="{{ asset('storage/pendataanbarang/' . $data->foto) }}" class="w-10" alt="" srcset="">
 
                                 </td>
-                                <td class="p-3  text-center">
+                                <td class="p-3 text-center">
                                     <a href="#" class="transition-all hover:text-orange">{{$data->nama}}</a>
                                 </td>
                                 <td class="p-3  text-center"><span><span id="harga{{$data->kode}}" data-harga="{{$data->harga}}">{{$data->harga}}</span></span></td>
