@@ -69,7 +69,91 @@
             </div>
         </div>
     </div>
-    <div class="py-24">
+    <div class="flex flex-row h-screen">
+        <div class=" top-0 left-0 h-screen w-1/4 bg-gray-light mt-4 ml-4">
+            <div class="h-full flex flex-col">
+              <div class="flex items-center">
+                <p class="text-lg font-semibold text-dark mt-2 ml-2">Menu</p>
+              </div>
+              <div class="w-full  h-7 mb-8 flex-col justify-center items-center">
+                <p class="ml-2 mt-4">cari barang</p>
+                <center>
+
+                    <input class="border border-gray-300 w-[95%]" type="text" name="kodebarang" id="kodebarang">
+                </cesnter>
+                <div class="w-full h-full bg-red-500 overflow-y-scroll">
+
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div><br>
+            </div>
+          </div>
         <div class="container">
             <div class="grid grid-cols-1 gap-x-5">
                 <div class="w-full  h-7 mb-8 flex-col justify-center items-center ">
@@ -102,7 +186,7 @@
                                     <img src="{{ asset('storage/pendataanbarang/' . $data->foto) }}" class="w-10" alt="" srcset="">
 
                                 </td>
-                                <td class="p-3  text-center">
+                                <td class="p-3 text-center">
                                     <a href="#" class="transition-all hover:text-orange">{{$data->nama}}</a>
                                 </td>
                                 <td class="p-3  text-center"><span><span id="harga{{$data->kode}}" data-harga="{{$data->harga}}">{{$data->harga}}</span></span></td>
