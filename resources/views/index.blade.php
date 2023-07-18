@@ -83,7 +83,7 @@
                 <div class="navigation lg_992:order-1 lg_992:flex hidden ms-auto" id="menu-collapse">
                     <ul class="navbar-nav nav-light" id="navbar-navlist">
                         <li class="nav-item text-gray-400">
-                            <a href="{{ route('kode_beli') }}" target="_blank">
+                            <a href="{{ route('kode_beli') }}" target="_blank" class="hover:text-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -98,18 +98,17 @@
 
         <!-- Navbar End -->
         <div class="relative flex items-center justify-center h-screen overflow-hidden">
-            <img src="{{ asset('admin/images/tangan.jpg') }}" class="absolute z-10 brightness-50" alt=""
+            <img src="{{ asset('admin/images/kamii.jpg') }}" class="absolute z-10 brightness-50" alt=""
                 srcset="">
 
-            <div class="absolute z-10">
-                <h3 class="font-medium leading-normal font-bold text-5xl mb-5 mt-10 text-white animate-fade-in">
+            <div class="absolute z-10 grid grid-cols-1 pb-8 text-center">
+                <h3 class="font-medium leading-normal font-bold text-5xl mb-5 mt-10 text-white animate-fade-in"
+                    style="font-weight: bold">
                     Selamat Datang di
                     Hummasoft
                 </h3>
-                <p class="text-slate-400 text-lg max-w-xl mx-auto justify-between">Website ini akan memberikan
-                    pengalaman anda
-                    yang
-                    berbeda coba perhatikan dan pelajari dengan cermat.</p>
+                <p class="text-white dark:text-slate-300 max-w-xl mx-auto">Disini terdapat berita yang bisa kamu
+                    baca, dan jangan lupa untuk share berita ini ketemen-temen kamu!</p>
             </div>
         </div>
 
