@@ -33,6 +33,8 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href={{asset("transaksi/css/style.css")}} />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
 </head>
 <body class="font-poppins text-dark text-sm leading-loose">
@@ -82,6 +84,7 @@
                         </thead>
                         <tbody>
                             @forelse ( $barang as $data)
+
                             <tr id="{{$data->kode}}" class=" hidden">
                                 <td class="w-32 p-3  text-center">
                                     <img src="{{ asset('storage/pendataanbarang/' . $data->foto) }}" class="w-10" alt="" srcset="">
@@ -90,7 +93,7 @@
                                 <td class="p-3  text-center">
                                     <a href="#" class="transition-all hover:text-orange">{{$data->nama}}</a>
                                 </td>
-                                <td class="p-3  text-center"><span><span>{{$data->harga}}</span></span></td>
+                                <td class="p-3  text-center"><span><span id="harga{{$data->kode}}" data-harga="{{$data->harga}}">{{$data->harga}}</span></span></td>
                                 <td class="p-3  text-center">
                                     <div class="flex count border border-solid border-gray-300 p-2 h-11">
                                         <button class="decrement flex-auto w-5 leading-none" aria-label="button">-</button>
@@ -98,16 +101,20 @@
                                         <button class="increment flex-auto w-5 leading-none" aria-label="button">+</button>
                                     </div>
                                 </td>
-                                <td class="p-3  text-center"><span>{{$data->harga}}</span></td>
                                 <td class="p-3  text-center">
+                                    <span><p class=" text-center bg-white" id="total_harga_{{$data->kode}}">{{$data->harga}}</p></span>
+                                </td>
+                                  <td class="p-3  text-center">
                                     <button id="cancel"><i class="icon-close"></i></button>
                                 </td>
                             </tr>
+
+
                             @empty
 
                             @endforelse
 
-
+                           
 
 
                         </tbody>
@@ -126,89 +133,52 @@
     <!-- JS Vendor, Plugins & Activation Script Files -->
 
     <!-- Vendors JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Activation JS -->
     <script src={{asset("transaksi/js/main.js")}}></script>
 
-    <script>
-        let currentStep = 1;
 
-        function showStep() {
-            let kodebarang = document.getElementById('kodebarang').value;
-            console.log('kodebarang:', kodebarang);
-            let databarang=document.getElementById(`${kodebarang}`);
-            console.log('databarang:', databarang);
-            
+<!-- Tambahkan id "kodebarang" pada input untuk memperbaiki script -->
 
+<script>
+    let currentStep = 1;
 
-            if (databarang && databarang.classList.contains('1')) {
-                let kode = 'quantity_' + kodebarang;
-                let value_old = document.getElementById(kode).valueAsNumber;
-                let value_new = value_old + 1;
-                document.getElementById(kode).value = value_new;
-                document.getElementById('kodebarang').value = null;
-                document.getElementById('kodebarang').focus();
-            }else if(databarang){
-                databarang.classList.remove('hidden');
-                databarang.classList.add('1');
-                document.getElementById('kodebarang').value = null;
-                document.getElementById('kodebarang').focus();
-            }
+    function showStep() {
+        let kodebarang = document.getElementById('kodebarang').value;
+        console.log('kodebarang:', kodebarang);
+        let databarang = document.getElementById(`${kodebarang}`);
+        console.log('databarang:', databarang);
 
-            else {
+        if (databarang && databarang.classList.contains('1')) {
+            let kode = 'quantity_' + kodebarang;
+            let value_old = document.getElementById(kode).valueAsNumber;
+            let value_new = value_old + 1;
+            document.getElementById(kode).value = value_new;
 
-                document.getElementById('kodebarang').value = null;
-                document.getElementById('kodebarang').focus();
-                alert('barang yang anda scan belum di data pada admin')
-            }
+            // Ubah cara mendapatkan harga menggunakan jQuery
+            var hargaValue = parseFloat($('#harga'+kodebarang).data('harga'));
+            console.log('Nilai harga:', hargaValue);
 
+            let total = hargaValue * value_new;
+            console.log('harga total: ', total.toString());
 
+            // Perbarui elemen "total_harga" dengan nilai total baru
+            document.getElementById('total_harga_' + kodebarang).innerText = total;
+
+            document.getElementById('kodebarang').value = null;
+            document.getElementById('kodebarang').focus();
+        } else if (databarang) {
+            databarang.classList.remove('hidden');
+            databarang.classList.add('1');
+            document.getElementById('kodebarang').value = null;
+            document.getElementById('kodebarang').focus();
+        } else {
+            document.getElementById('kodebarang').value = null;
+            document.getElementById('kodebarang').focus();
+            alert('barang yang anda scan belum di data pada admin');
         }
-
-
-        function nextStep() {
-        if (currentStep === 1) {
-            const isValid = validateStep1();
-            if (isValid) {
-            document.getElementById('modal-step1').classList.add('hidden');
-            document.getElementById('modal-step2').classList.remove('hidden');
-            currentStep = 2;
-            }
-        }
-        }
-
-        function prevStep() {
-        if (currentStep === 2) {
-            document.getElementById('modal-step2').classList.add('hidden');
-            document.getElementById('modal-step1').classList.remove('hidden');
-            currentStep = 1;
-        }
-        }
-
-        function hideAllSteps() {
-        document.getElementById('modal-step1').classList.add('hidden');
-        document.getElementById('modal-step2').classList.add('hidden');
-        }
-
-        function validateStep1() {
-        const nama = document.getElementById('name').value;
-        const foto = document.getElementById('name2').value;
-        const harga = document.getElementById('name3').value;
-        const kategori = document.getElementById('kategori').value;
-        const deskripsi = document.getElementById('name5').value;
-
-        if (nama.trim() === '' || foto.trim() === '' || harga.trim() === '' || kategori.trim() === '' || deskripsi.trim() === '') {
-            alert('Mohon lengkapi semua field pada langkah 1');
-            return false;
-        }
-
-        return true;
-        }
-    </script>
-
-
-
+    }
+</script>
 
 </body>
 </html>

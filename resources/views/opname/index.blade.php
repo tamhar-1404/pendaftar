@@ -200,12 +200,12 @@
     <script>
         let currentStep = 1;
 
-    function showModalEdit(id) {
-        let id_opname = document.getElementById('edit' + id);
-        if (id_opname) {
-            id_opname.classList.remove('hidden');
+        function showModalEdit(id) {
+            let id_opname = document.getElementById('edit' + id);
+            if (id_opname) {
+                id_opname.classList.remove('hidden');
+            }
         }
-    }
 
     function showStep(idmodal) {
         let kodeopname = document.getElementById('kodeopname').value;
