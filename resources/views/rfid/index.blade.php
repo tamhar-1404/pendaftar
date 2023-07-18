@@ -223,12 +223,7 @@
                                                               <h2 class="text-2xl font-bold mb-4">Tambah RFID   {{ $user->name }}</h2>
                                                               <input type="text" name="RFID" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
                                                               <div class="mt-6 flex justify-end">
-                                                                {{--  <button type="button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                                                                  Simpan
-                                                                </button>
-                                                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">
-                                                                  Batal
-                                                                </button>  --}}
+                                                               
                                                               </div>
                                                             </div>
                                                           </div>
