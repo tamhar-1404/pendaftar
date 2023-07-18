@@ -290,7 +290,6 @@
 
                             <button id="login-button" type="submit"
                                 class="btn mt-10 h-10 w-full bg-info font-medium text-white">Login</button>
-                        
                             <script>
                                 const rememberCheckbox = document.getElementById('remember-checkbox');
                                 const loginButton = document.getElementById('login-button');
