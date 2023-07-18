@@ -97,7 +97,7 @@ class SiswamagangController extends Controller
         ]);
         $data = $request -> saldo;
         if($data > 5000){
-            if (auth()->user()->rfid == null) {
+            if (auth()->user()->RFID == null) {
                 return back()->with('error', 'RFID tidak ada');
             }
             $user = User::find(auth()->user()->id);
