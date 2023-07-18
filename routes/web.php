@@ -137,7 +137,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('send-email' , [MailController::class,'index']);
         Route::get('siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa']);
         Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
-       
+
         Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
         Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
         Route::put('/siswa_admin/banned/{id}', [App\Http\Controllers\SiswaController::class, 'banned'])->name('siswa.banned');
