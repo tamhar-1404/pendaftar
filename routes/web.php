@@ -43,7 +43,6 @@ use App\Http\Controllers\transaksirfidController;
 
 Route::resource('/History_siswa', App\Http\Controllers\HistoryTopupController::class);
 
-Route::post('/topup/{id}', 'TopUpController@update')->name('TopUp.update');
 
 Route::resource('TopUp', App\Http\Controllers\TopUpController::class);
 Route::resource('barang', App\Http\Controllers\BarangController::class);
@@ -218,6 +217,3 @@ Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita
 Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
 Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');
 Route::delete('Berita/{post}/unlike', [BlogController::class, 'unlike'])->name('Berita.unlike');
-
-
-
