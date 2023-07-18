@@ -95,25 +95,29 @@ class SiswamagangController extends Controller
             'saldo' => 'required',
             'password' => 'required'
         ]);
+        $data = $request -> saldo;
+        if($data > 5000){
+            if (auth()->user()->rfid == null) {
+                return back()->with('error', 'RFID tidak ada');
+            }
+            $user = User::find(auth()->user()->id);
+            if (!Hash::check($request->password, $user->password)) {
+                return back()->with('error', 'Password salah');
+            }
 
-        if (auth()->user()->rfid == null) {
-            return back()->with('error', 'RFID tidak ada');
+            TopUp::create([
+                'user_id' => $user_id,
+                'status' => 'menunggu',
+                'saldo' => $request->saldo,
+                'tanggal' => Carbon::now()->format('Y-m-d'),
+            ]);
+
+            Mail::to($user->email)->send(new Top());
+
+            return redirect()->back()->with('success', 'Transaksi Anda sedang diproses');
+        }else{
+            return redirect()->back()->with('error', 'top up saldo minimal Rp.5000');
         }
-        $user = User::find(auth()->user()->id);
-        if (!Hash::check($request->password, $user->password)) {
-            return back()->with('error', 'Password salah');
-        }
-
-        TopUp::create([
-            'user_id' => $user_id,
-            'status' => 'menunggu',
-            'saldo' => $request->saldo,
-            'tanggal' => Carbon::now()->format('Y-m-d'),
-        ]);
-
-        Mail::to($user->email)->send(new Top());
-
-        return redirect()->back()->with('success', 'Transaksi Anda sedang diproses');
     }
 
 

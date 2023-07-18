@@ -117,7 +117,7 @@
                           <div class="step">
                             <div class="mb-4">
                               <label for="address" class="block font-bold text-sm mb-1">Alamat :</label>
-                              <textarea id="address" name="alamat" class="border items-center text-sm w-full h-8 rounded"  required></textarea>
+                              <textarea id="address" name="alamat" class=" px-2 border items-center text-sm w-full h-8 rounded"  required></textarea>
                             </div>
                             <div class="mb-4">
                                 <label for="school" class="block font-bold text-sm mb-1">Nomer tlp :</label>

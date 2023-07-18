@@ -22,10 +22,15 @@
     <link href="landing/libs/%40iconscout/unicons/css/line.css" type="text/css" rel="stylesheet">
     <link href="landing/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="landing/css/tailwind.min.css">
+    <link rel="stylesheet" href="load/load.css">
+
 
 </head>
 
+
 <body class="font-inter text-base text-slate-950 dark:text-white dark:bg-slate-900">
+       <!-- screen loader -->
+
     <!-- Loader Start -->
     <!-- <div id="preloader">
             <div id="status">
@@ -47,9 +52,9 @@
     </style>
 
 
+
     <!-- Navbar Start -->
-    <section class="h-screen bg-no-repeat"
-        style="background-image: url('{{ asset('admin/assets/images/hitam.png') }}')">
+    <div class="h-screen bg-no-repeat">
         <nav class="navbar" id="navbar">
             <div class="px-5 flex items-center">
                 <a class="navbar-brand md:me-8" href="index.html">
@@ -57,8 +62,7 @@
                         <img src="{{ asset('admin/assets/images/hitam.png') }}" class="l-dark w-28" alt="">
                         <img src="{{ asset('admin/assets/images/hitam.png') }}" class="l-light w-28" alt="">
                     </span>
-                    <img src="{{ asset('admin/assets/images/hitam.png') }}" class="hidden dark:inline-block w-"
-                        alt="">
+
                 </a>
 
                 <div class="nav-icons flex items-end lg_992:order-2 ms-auto lg:ms-4">
@@ -97,8 +101,8 @@
         </nav>
 
         <!-- Navbar End -->
-        <div class="relative flex items-center justify-center h-screen overflow-hidden">
-            <img src="{{ asset('admin/images/kamii.jpg') }}" class="absolute z-10 brightness-50" alt=""
+        <div class=" relative flex items-center justify-center h-screen overflow-hidden">
+            <img src="{{ asset('admin/images/kamii.jpg') }}" class="absolute z-10 brightness-50 blur-xs" alt=""
                 srcset="">
 
             <div class="absolute z-10 grid grid-cols-1 pb-8 text-center">
@@ -107,7 +111,8 @@
                     Selamat Datang di
                     Hummasoft
                 </h3>
-                <p class="text-white dark:text-slate-300 max-w-xl mx-auto">Disini terdapat berita yang bisa kamu
+
+                <p class="text-white  dark:text-slate-300 max-w-xl mx-auto">Disini terdapat berita yang bisa kamu
                     baca, dan jangan lupa untuk share berita ini ketemen-temen kamu!</p>
             </div>
         </div>
@@ -115,18 +120,28 @@
         <!--end grid-->
         </div>
         <!--end container-->
-    </section>
-    </section>
-    <!--end section-->
+    </div>
+
+    <!--end div-->
     <!-- Hero End -->
 
     <!-- Start -->
 
-    <!--end section-->
+    <!--end div-->
     <!-- End -->
+    <div  class="spin_load  screen_loader animate__animated fixed inset-1 z-[0] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+        <div class="center">
+            <div class="ring">
+            </div>
+            <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
+        </div>
+    </div>
+
+
 
     <!-- Start -->
-    <section class="relative md:py-24 py-16 bg-gray-50 dark:bg-slate-800" id="features">
+    <div class="relative md:py-24 py-16 bg-gray-50 dark:bg-slate-800" id="features">
+
         <div class="container lg mx-auto">
             <div class="grid grid-cols-1 pb-8 text-center">
                 <h3 class="mb-4 md:text-2xl text-xl font-medium mt-5">Teknologi dan Bahasa Pemrogaman Yang Kami Pakai
@@ -277,8 +292,8 @@
             <!--end grid-->
         </div>
         <!--end container-->
-    </section>
-    <!--end section-->
+    </div>
+    <!--end div-->
     <!-- End  -->
 
     <!-- Start -->
@@ -287,7 +302,7 @@
 
     <!-- Start -->
 
-    <!--end section-->
+    <!--end div-->
     <!-- End -->
 
     <!-- Start -->
@@ -295,7 +310,7 @@
     <!-- End -->
 
     <!-- Start -->
-    <section class="relative md:py-24 py-16 bg-gray-50 dark:bg-slate-800" id="testi">
+    <div class="relative md:py-24 py-16 bg-gray-50 dark:bg-slate-800" id="testi">
         <div class="container">
             <div class="grid grid-cols-1 pb-8 text-center">
                 <h3 class="mb-4 md:text-2xl text-xxl font-medium">Berita Terbaru</h3>
@@ -384,13 +399,13 @@
             <!--end grid-->
         </div>
         <!--end container-->
-    </section>
-    <!--end section-->
+    </div>
+    <!--end div-->
     <!-- End -->
 
     <!-- Start -->
 
-    <!--end section-->
+    <!--end div-->
     <!-- End -->
 
     <!-- Footer Start -->
@@ -459,32 +474,7 @@
             class="uil uil-arrow-up"></i></a>
     <!-- Back to top -->
 
-    <!-- Switcher -->
-    <div class="fixed top-1/4 -right-2 z-3">
-        <span class="relative inline-block rotate-90">
-            <input type="checkbox" class="checkbox opacity-0 absolute" id="chk">
-            <label
-                class="label bg-slate-900 dark:bg-white shadow dark:shadow-gray-800 cursor-pointer rounded-full flex justify-between items-center p-1 w-14 h-8"
-                for="chk">
-                <i class="uil uil-moon text-[20px] text-yellow-500"></i>
-                <i class="uil uil-sun text-[20px] text-yellow-500"></i>
-                <span
-                    class="ball bg-white dark:bg-slate-900 rounded-full absolute top-[2px] left-[2px] w-7 h-7"></span>
-            </label>
-        </span>
-    </div>
-    <!-- Switcher -->
 
-    <!-- LTR & RTL Mode Code -->
-    <div class="fixed top-[40%] -right-3 z-50">
-        <a href="#" id="switchRtl">
-            <span
-                class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-800 font-semibold rtl:block ltr:hidden">LTR</span>
-            <span
-                class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-800 font-semibold ltr:block rtl:hidden">RTL</span>
-        </a>
-    </div>
-    <!-- LTR & RTL Mode Code -->
 
     <!-- JAVASCRIPTS -->
     <script src="landing/libs/gumshoejs/gumshoe.polyfills.min.js"></script>
@@ -492,6 +482,13 @@
     <script src="landing/libs/feather-icons/feather.min.js"></script>
     <script src="landing/js/plugins.init.js"></script>
     <script src="landing/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
+        });
+    </script>
     <!-- JAVASCRIPTS -->
 </body>
 

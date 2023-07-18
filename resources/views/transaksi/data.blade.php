@@ -36,11 +36,17 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href={{asset("transaksi/css/style.css")}} />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="{{asset('load/load.css')}}">
 
 </head>
 <body class="font-poppins text-dark text-sm leading-loose">
-
+    <div  class="spin_load  screen_loader animate__animated fixed inset-1 z-[30] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+        <div class="center">
+            <div class="ring">
+            </div>
+            <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
+        </div>
+    </div>
     <div class="search-form fixed top-0 left-0 w-full bg-black opacity-95 min-h-screen items-center justify-center py-8 px-10 transform  transition-transform translate-x-full ease-in-out duration-500 hidden lg:flex z-50">
         <button class="search-close absolute left-1/2 text-white text-xl top-12 translate-y-1/2" aria-label="close icon"><span class="icon-close"></span></button>
         <form class="relative xl:w-1/3 lg:w-1/2" action="#" method="get">
@@ -269,6 +275,12 @@
             alert('barang yang anda scan belum di data pada admin');
         }
     }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+    $(window).on('load', function() {
+        $('.spin_load').fadeOut();
+    });
 </script>
 
 </body>

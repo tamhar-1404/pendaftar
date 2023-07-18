@@ -147,10 +147,7 @@
                                     type="checkbox" />
 
                                 <p class="line-clamp-1 cursor-pointer text-sm" onclick="showModal()">Kebijakan privasi</p>
-                                <a href="/rfid">
-
-                                    <p  class="line-clamp-1 cursor-pointer text-sm" >belanja</p>
-                                </a>
+                               
 
                                 <div id="myModal" class="modal hidden">
                                     <div class="modal-overlay"></div>

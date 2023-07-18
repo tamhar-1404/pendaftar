@@ -7,7 +7,11 @@ module.exports = {
   ],
 
   theme: {
-    extend: {},
+    extend: {
+        blur: {
+            xs: '3px',
+          }
+    },
   },
   plugins: [],
 

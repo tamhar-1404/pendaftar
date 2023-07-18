@@ -190,6 +190,7 @@ class PiketController extends Controller
             return redirect()->back()->with('error', 'Data yang anda masukan sudah ada');
         }
         $nama_siswa = $request->input('nama_siswa');
+        
         foreach ($nama_siswa as $item) {
             $mailData = [
                 'title' => 'Pemberitahuan jadwa piket',

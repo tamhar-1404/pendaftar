@@ -117,6 +117,9 @@ Route::get('/percobaan', function () {
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/q', function () {
+    return view('welcome');
+});
 
 Route::get('/kode_beli', [transaksirfidController::class, 'index'])->name('kode_beli');
 

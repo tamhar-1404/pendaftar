@@ -23,6 +23,7 @@
     <!-- Font CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link rel="stylesheet" href="load/load.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
         rel="stylesheet" />
@@ -66,7 +67,13 @@
 
 
     <!-- Hero section end -->
-
+    <div  class="spin_load  screen_loader animate__animated fixed inset-1 z-[30] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+        <div class="center">
+            <div class="ring">
+            </div>
+            <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
+        </div>
+    </div>
 
 
     <!-- blog grid section start -->
@@ -1423,7 +1430,7 @@
 
 
     <!-- Footer section start -->
-    <footer>
+    <footer class="mt-40">
 
         <!-- News Letter section start -->
 
@@ -1509,6 +1516,11 @@
     <!-- Activation JS -->
     <script src="kode/js/main.js"></script>
 
+    <script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
+        });
+    </script>
 
 
 </body>
