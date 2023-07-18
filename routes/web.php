@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GuruAdminController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\TopUpController;
 use App\Http\Controllers\BeritaGuruController;
 use App\Http\Controllers\AlumniGuruController;
 use App\Http\Controllers\SiswamagangController;
@@ -40,7 +41,7 @@ use App\Http\Controllers\transaksirfidController;
 */
 // Admin
 
-
+Route::post('/topup/{id}', 'TopUpController@update')->name('TopUp.update');
 
 Route::resource('TopUp', App\Http\Controllers\TopUpController::class);
 Route::resource('barang', App\Http\Controllers\BarangController::class);

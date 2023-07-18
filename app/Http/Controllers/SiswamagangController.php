@@ -81,7 +81,7 @@ class SiswamagangController extends Controller
      * @param  \App\Models\siswamagang  $siswamagang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, siswamagang $siswamagang)
+    public function update(Request $request,  $siswamagang)
     {
         //
     }

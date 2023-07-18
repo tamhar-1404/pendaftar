@@ -6,6 +6,7 @@ use App\Models\aproval;
 use App\Models\User;
 use App\Models\Siswa;
 use App\Models\tolak;
+use App\Models\TopUp;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreaprovalRequest;
 use App\Http\Requests\UpdateaprovalRequest;
@@ -16,6 +17,7 @@ use App\Mail\DemoMail;
 use App\Mail\Konfirmasi;
 use App\Mail\Guru_email;
 use App\Mail\tolakEmail;
+use App\Mail\TolakTopup;
 use Illuminate\Support\Facades\Storage;
 
 class AprovalController extends Controller
@@ -32,10 +34,10 @@ class AprovalController extends Controller
             $aprovals = aproval::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(3);
             return view('aproval.layout', compact('aprovals'));
         }
-        
+
         $aprovals = aproval::latest()->paginate(3);
         return view('aproval.layout', compact('aprovals'));
-          
+
     }
 
     /**
@@ -217,9 +219,20 @@ public function tolak(Request $request, Aproval $aproval)
      * @param  \App\Models\aproval  $aproval
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, aproval $aproval)
+    public function update(Request $request, TopUp $topup , $id)
     {
-       //
+        $topup = TopUp::find($id);
+        $user = $topup->user;
+        $this->validate($request, [
+            'status' => 'required',
+        ]);
+
+        $topup->update([
+            'status' => $request->status,
+        ]);
+        Mail::to($user->email)->send(new TolakTopup());
+
+        return redirect()->back();
     }
 
     /**
