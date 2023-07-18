@@ -101,7 +101,8 @@ class TopUpController extends Controller
         //     'topup' => $topup,
         //     'user' => $user
         // ];
-        Mail::to($user->email)->send(new TerimaTopup());
+        $saldo = ['saldo'=> $request->saldo, 'total_saldo'=>$user->saldo, 'name'=>$user->name];
+        Mail::to($user->email)->send(new TerimaTopup($saldo));
 
         return redirect()->back();
     }
