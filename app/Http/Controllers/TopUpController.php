@@ -81,6 +81,17 @@ class TopUpController extends Controller
         $this->validate($request, [
             'saldo' => 'required|numeric',
         ]);
+
+
+        $saldoLama = $user->saldo;
+
+        $saldoBaru = $request->saldo;
+
+        $saldoAkhir = $saldoLama + $saldoBaru;
+
+        $user->saldo = $saldoAkhir;
+        $user->save();
+
         $topup->update([
             'status' => $request->status
         ]);
@@ -93,6 +104,7 @@ class TopUpController extends Controller
 
         return redirect()->back();
     }
+
 
 
 
