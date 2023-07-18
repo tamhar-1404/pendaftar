@@ -153,11 +153,6 @@
                                                 var params = new URLSearchParams(window.location.href);
                                                 console.log(params.get('rfid'));
                                                 if (params.get('rfid') == result.value) {
-                                                    Swal.fire(
-                                                        'Berhasil!',
-                                                        'RFID sama',
-                                                        'success'
-                                                    )
                                                     event.target.submit();
                                                 }
                                                 else {
