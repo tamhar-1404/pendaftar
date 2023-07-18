@@ -41,39 +41,39 @@
                               </button>
                             </form>
 
-                          <script>
-                            function confirmReject(event) {
-                              event.preventDefault();
+                            <script>
+                                function confirmReject(event) {
+                                event.preventDefault();
 
-                              Swal.fire({
-                                title: 'Penolakan',
-                                input: 'text',
-                                inputLabel: 'Masukkan alasan penolakan:',
-                                showCancelButton: true,
-                                confirmButtonText: 'Kirim',
-                                cancelButtonText: 'Batal',
-                                confirmButtonColor: '#00B7FF',
-                                cancelButtonColor: '#FF0000',
-                                allowOutsideClick: false,
-                                inputValidator: (value) => {
-                                  if (!value || value.trim() === '') {
-                                    return 'Harap masukkan alasan penolakan.';
-                                  }
-                                },
-                              }).then((result) => {
-                                if (result.isConfirmed) {
-                                  document.getElementById("alasan-input-{{ $aproval->id }}").value = result.value;
+                                Swal.fire({
+                                    title: 'Penolakan',
+                                    input: 'text',
+                                    inputLabel: 'Masukkan alasan penolakan:',
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Kirim',
+                                    cancelButtonText: 'Batal',
+                                    confirmButtonColor: '#00B7FF',
+                                    cancelButtonColor: '#FF0000',
+                                    allowOutsideClick: false,
+                                    inputValidator: (value) => {
+                                    if (!value || value.trim() === '') {
+                                        return 'Harap masukkan alasan penolakan.';
+                                    }
+                                    },
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                    document.getElementById("alasan-input-{{ $aproval->id }}").value = result.value;
 
-                                  Swal.fire({
-                                    title: 'Data berhasil ditolak',
-                                    icon: 'success',
-                                  }).then(() => {
-                                    event.target.submit();
-                                  });
+                                    Swal.fire({
+                                        title: 'Data berhasil ditolak',
+                                        icon: 'success',
+                                    }).then(() => {
+                                        event.target.submit();
+                                    });
+                                    }
+                                });
                                 }
-                              });
-                            }
-                          </script>
+                            </script>
                           <form id="confirm-form-{{ $aproval->id }}" action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">
                             @csrf
                             <button type="submit" class="border border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500 hover:border-blue-700 text-sm font-semibold py-1 px-4 rounded-md outline-none focus:outline-none">

@@ -15,7 +15,8 @@ class HistoryTransaksiController extends Controller
      */
     public function index()
     {
-        //
+        $data = HistoryTransaksi::all();
+        return view('History_transaksi.index', compact('data'));
     }
 
     /**

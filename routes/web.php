@@ -27,6 +27,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\OpnameController;
 use App\Http\Controllers\RestockController;
 use App\Http\Controllers\transaksirfidController;
+use App\Http\Controllers\passwordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,7 @@ use App\Http\Controllers\transaksirfidController;
 |
 */
 // Admin
-
+Route::post('/validate_password',['passwordController@validatePassword']);
 Route::resource('/History_siswa', App\Http\Controllers\HistoryTopupController::class);
 Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::class);
 
@@ -112,12 +113,11 @@ Route::get('/grafik_docx', [JurnaladminController::class, 'grafik_docx'])->name(
 Route::resource('/login', App\Http\Controllers\LoginController::class);
 
 Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
+Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
 Route::get('/percobaan', function () {
     return view('login.iyah');
 });
-Route::get('/', function () {
-    return view('index');
-});
+
 Route::get('/q', function () {
     return view('welcome');
 });
