@@ -109,7 +109,7 @@ class SiswamagangController extends Controller
             'tanggal' => Carbon::now()->format('Y-m-d'),
         ]);
 
-        return redirect()->back()->with('decryptedSaldo', $decryptedSaldo);
+        return redirect()->back()->with('success', 'Transaksi anda sedang di proses');
     }
 
 
