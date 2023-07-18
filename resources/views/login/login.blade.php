@@ -147,7 +147,7 @@
                                     type="checkbox" />
 
                                 <p class="line-clamp-1 cursor-pointer text-sm" onclick="showModal()">Kebijakan privasi</p>
-                               
+
 
                                 <div id="myModal" class="modal hidden">
                                     <div class="modal-overlay"></div>
@@ -161,15 +161,18 @@
                                             <h3 class="font-semibold">Privacy Policy untuk Hummasoft Technology
                                             </h3>
                                             <br>
-                                            <p>Di Magang Hummasoft, dapat diakses dari MagangHummasoft.com, salah satu
-                                                prioritas utama kami adalah privasi pengunjung kami. Dokumen Kebijakan
+                                            <p>Di Magang Hummasoft, dapat diakses dari MagangHummasoft.com, salah
+                                                satu
+                                                prioritas utama kami adalah privasi pengunjung kami. Dokumen
+                                                Kebijakan
                                                 Privasi
                                                 ini berisi jenis informasi yang dikumpulkan dan dicatat oleh
                                                 MagangHummasoft.com
                                                 dan bagaimana kami menggunakannya.
                                             </p><br>
                                             <p>
-                                                Jika Anda memiliki pertanyaan tambahan atau memerlukan informasi lebih
+                                                Jika Anda memiliki pertanyaan tambahan atau memerlukan informasi
+                                                lebih
                                                 lanjut tentang Kebijakan Privasi kami, jangan ragu untuk menghubungi
                                                 kami.
 
@@ -179,12 +182,16 @@
                                             </p>
                                             <br>
                                             <p> MagangHummasoft.com mengikuti prosedur standar menggunakan file log.
-                                                File-file ini mencatat pengunjung ketika mereka mengunjungi situs web.
-                                                Semua perusahaan hosting melakukan ini dan merupakanbagian dari analisis
+                                                File-file ini mencatat pengunjung ketika mereka mengunjungi situs
+                                                web.
+                                                Semua perusahaan hosting melakukan ini dan merupakanbagian dari
+                                                analisis
                                                 layanan hosting. Informasi yang dikumpulkan oleh file log termasuk
-                                                alamat protokol internet (IP), jenis browser, Penyedia Layanan Internet
+                                                alamat protokol internet (IP), jenis browser, Penyedia Layanan
+                                                Internet
                                                 (ISP), tanggal dan waktu,
-                                                halaman rujukan/keluar, dan mungkin jumlah klik.Ini tidak terkait dengan
+                                                halaman rujukan/keluar, dan mungkin jumlah klik.Ini tidak terkait
+                                                dengan
                                                 informasi apa pun yang dapat diidentifikasi secara pribadi. Tujuan
                                                 informasi adalah untuk menganalisis jurnal sisiwa magang, mengelola
                                                 siswa magang, dan pendataran siswa magang.
@@ -192,20 +199,28 @@
                                             <p class="font-semibold">Cookies
                                             </p>
                                             <p>Seperti situs web lainnya, MagangHummasoft.com menggunakan ‘cookie’.
-                                                Cookie digunakan untuk menyimpan informasi seperti preferensi pengunjung
-                                                dan halaman yang diakses atau dikunjungi pengunjung pada situs web ini.
-                                                Informasi tersebut kami gunakan untuk mengoptimalkan pengalaman pengguna
+                                                Cookie digunakan untuk menyimpan informasi seperti preferensi
+                                                pengunjung
+                                                dan halaman yang diakses atau dikunjungi pengunjung pada situs web
+                                                ini.
+                                                Informasi tersebut kami gunakan untuk mengoptimalkan pengalaman
+                                                pengguna
                                                 dengan menyesuaikan konten halaman web kami.
                                             </p><br>
                                             <p class="font-semibold">Kebijakan Privasi Pihak Ketiga
                                             </p><br>
-                                            <p>Kebijakan Privasi MagangHummasoft.com tidak berlaku untuk pengiklan atau
-                                                situs web lain. Karena itu, kami menyarankan Anda untuk membaca seksama
-                                                masing-masing Kebijakan Privasi dari pihak ketiga untuk informasi yang
-                                                lebih rinci. Anda berhak untuk menonaktifkan cookies pada browser Anda.
+                                            <p>Kebijakan Privasi MagangHummasoft.com tidak berlaku untuk pengiklan
+                                                atau
+                                                situs web lain. Karena itu, kami menyarankan Anda untuk membaca
+                                                seksama
+                                                masing-masing Kebijakan Privasi dari pihak ketiga untuk informasi
+                                                yang
+                                                lebih rinci. Anda berhak untuk menonaktifkan cookies pada browser
+                                                Anda.
                                             </p><br>
                                             <p class="font-semibold">Persetujuan</p> <br>
-                                            <p>Dengan menggunakan situs web kami, Anda dengan ini menyetujui Kebijakan
+                                            <p>Dengan menggunakan situs web kami, Anda dengan ini menyetujui
+                                                Kebijakan
                                                 Privasi kami dan menyetujui syarat dan ketentuannya.</p> <br><br>
                                         </div>
                                     </div>
@@ -268,17 +283,32 @@
                                 class="text-xs text-slate-400 transition-colors line-clamp-1 hover:text-slate-800 focus:text-slate-800 dark:text-navy-300 dark:hover:text-navy-100 dark:focus:text-navy-100">Lupa
                                 Password?</a>
                         </div>
-                        <button id="login-button" type="submit"
-                            class="btn mt-10 h-10 w-full bg-info font-medium text-white" disabled>Login</button>
+                        <p id="privacy-warning" style="margin-bottom: -20px;"
+                            class="text-red-500 mt-3 text-xs hidden line-clamp-1 cursor-pointer text-sm">Anda harus
+                            menyetujui
+                            kebijakan privasi sebelum melanjutkan.</p>
+                        <a href="/rfid">
+                            <button id="login-button" type="submit"
+                                class="btn mt-10 h-10 w-full bg-info font-medium text-white">Login</button>
 
-                        <script>
-                            const rememberCheckbox = document.getElementById('remember-checkbox');
-                            const loginButton = document.getElementById('login-button');
+                            <script>
+                                const rememberCheckbox = document.getElementById('remember-checkbox');
+                                const loginButton = document.getElementById('login-button');
+                                const privacyWarning = document.getElementById('privacy-warning');
 
-                            rememberCheckbox.addEventListener('change', function() {
-                                loginButton.disabled = !this.checked;
-                            });
-                        </script>
+                                rememberCheckbox.addEventListener('change', function() {
+                                    loginButton = !this.checked;
+                                    privacyWarning.classList.add('hidden');
+                                });
+
+                                loginButton.addEventListener('click', function(event) {
+                                    if (!rememberCheckbox.checked) {
+                                        event.preventDefault();
+                                        privacyWarning.classList.remove('hidden');
+                                    }
+                                });
+                            </script>
+
 
                     </form>
                     <div class="mt-4 text-center text-xs+">

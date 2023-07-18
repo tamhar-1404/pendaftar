@@ -7,6 +7,10 @@ use App\Models\TopUp;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreHistory_AdminRequest;
 use App\Http\Requests\UpdateHistory_AdminRequest;
+use App\Models\Barang;
+use App\Models\HistoryTransaksi;
+use App\Models\User;
+use Carbon\Carbon;
 
 class HistoryAdminController extends Controller
 {
@@ -37,9 +41,53 @@ class HistoryAdminController extends Controller
      * @param  \App\Http\Requests\StoreHistory_AdminRequest  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
+        $kode = $request->kode;
+        // dd($kode);
+        $quantity = $request->quantity;
+        $siswa = User::where('rfid', $request->rfid_user)->first();
+        $i = 0;
+        $total_semua = 0;
+        foreach ($kode as $item) {
+            $data = Barang::where('kode', $item)->first();
+            $total_semua += (int) $quantity[$i] * (int) $data->harga;
+
+            if ($siswa->saldo > $total_semua) {
+                HistoryTransaksi::create([
+                    'nama' => $siswa->name,
+                    'rfid' => $request->rfid_user,
+                    'name' => $data->nama,
+                    'foto' => $data->foto,
+                    'harga' => $data->harga,
+                    'stok' => $quantity[$i],
+                    'total' => (int) $quantity[$i] * (int) $data->harga,
+                    'tanggal' => Carbon::now()->format('Y-m-d'),
+                ]);
+
+                $barang = Barang::where('kode', $item);
+                $stok_lama = (int) $barang->first()->stok;
+                $stok_baru = (int) $quantity[$i];
+                $barang->update([
+                    'stok' => $stok_lama - $stok_baru
+                ]);
+
+            }
+            else {
+                return redirect()->back()->with('error', 'Saldo anda kurang');
+            }
+
+            $i++;
+        }
+        $user = User::where('rfid', $request->rfid_user);
+        $user_saldo = $user->first()->saldo;
+
+        $user->update([
+            'saldo' => (int) $user_saldo - (int) $total_semua,
+        ]);
+        return redirect()->route('kode_beli');
     }
 
     /**

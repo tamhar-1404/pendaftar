@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-{{--  <!-- Mirrored from template.hasthemes.com/sinp/sinp/shop-grid-4-column.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jul 2023 02:22:46 GMT -->  --}}
+
+
+<!-- Mirrored from template.hasthemes.com/sinp/sinp/shop-grid-4-column.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jul 2023 02:22:46 GMT -->
 
 <head>
     <meta charset="utf-8" />
@@ -90,7 +92,7 @@
                             @csrf
                             <input id="mc-email" type="text" placeholder="Scan RFID anda"
                                 class="border border-solid border-primary mb-10  h-14 sm:h-16 rounded-full bg-transparent placeholder-primary placeholder-opacity-50 text-sm sm:text-base focus:outline-none py-1 pl-8 pr-14 sm:pr-36"
-                                name="rfid" style="height: 50px" />
+                                name="rfid" style="height: 50px" autofocus />
                         </form>
 
                     </div>
