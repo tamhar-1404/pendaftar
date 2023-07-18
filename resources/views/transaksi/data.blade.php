@@ -101,11 +101,11 @@
                                         <button class="increment flex-auto w-5 leading-none" aria-label="button">+</button>
                                     </div>
                                 </td>
-                                <td class="p-3  text-center">
+                                <td class="p-3  text-center" id="total_semua">
                                     <span><p class=" text-center bg-white" id="total_harga_{{$data->kode}}">{{$data->harga}}</p></span>
                                 </td>
                                   <td class="p-3  text-center">
-                                    <button id="cancel"><i class="icon-close"></i></button>
+                                    <button id="cancel" data-kode="{{$data->kode}}" class="close"><i class="icon-close"></i></button>
                                 </td>
                             </tr>
 
@@ -114,11 +114,14 @@
 
                             @endforelse
 
-                           
+
 
 
                         </tbody>
                     </table>
+                    <div>
+                        <p>Total keseluruhan Rp. <span id="jumlah_semua">0</span></p>
+                    </div>
                 </div>
 
             </div>
@@ -142,7 +145,29 @@
 
 <script>
     let currentStep = 1;
+    let total_semua = 0;
 
+    var closeButtons = document.querySelectorAll('.close');
+
+    closeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var kode = this.getAttribute('data-kode');
+            var element = document.getElementById(kode);
+            if (element) {
+                var hargaValue = parseFloat($('#harga' + kode).data('harga'));
+                total_semua -= parseInt(document.getElementById('total_harga_' + kode).innerText);
+                document.getElementById('jumlah_semua').innerHTML = total_semua;
+
+                element.classList.add('hidden');
+                element.classList.remove('1');
+                document.getElementById('quantity_' + kode).value = 1;
+                document.getElementById('total_harga_' + kode).innerText = hargaValue;
+                document.getElementById('kodebarang').focus();
+            }
+        });
+    });
+
+    document.getElementById('jumlah_semua').innerHTML = total_semua;
     function showStep() {
         let kodebarang = document.getElementById('kodebarang').value;
         console.log('kodebarang:', kodebarang);
@@ -164,14 +189,23 @@
 
             // Perbarui elemen "total_harga" dengan nilai total baru
             document.getElementById('total_harga_' + kodebarang).innerText = total;
+            total_semua += hargaValue;
+            console.log("Total semua : ", total_semua);
 
             document.getElementById('kodebarang').value = null;
             document.getElementById('kodebarang').focus();
+            document.getElementById('jumlah_semua').innerHTML = total_semua;
         } else if (databarang) {
             databarang.classList.remove('hidden');
             databarang.classList.add('1');
+
+            let hargaAwal = parseInt(document.getElementById('total_harga_' + kodebarang).innerText);
+            total_semua += hargaAwal;
+            console.log("Total semua : ", total_semua);
+
             document.getElementById('kodebarang').value = null;
             document.getElementById('kodebarang').focus();
+            document.getElementById('jumlah_semua').innerHTML = total_semua;
         } else {
             document.getElementById('kodebarang').value = null;
             document.getElementById('kodebarang').focus();
