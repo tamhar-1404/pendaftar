@@ -230,18 +230,42 @@
                                                                         class="modal fixed inset-0 flex items-center justify-center">
                                                                         <div class="modal-content bg-white p-6">
 
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="whitespace-nowrap px-6 py-2">
+                                                                {{ $no++ }}
+                                                            </td>
+                                                            <td class="whitespace-nowrap px-6 py-2">
+                                                                {{ $user->name }}
+                                                            </td>
+                                                            <td class="whitespace-nowrap px-6 py-2">
+                                                                {{ $user->email }}
+                                                            </td>
+                                                            <td class="whitespace-nowrap px-6 py-2">
+                                                                {{ $user->sekolah }}
+                                                            </td>
+                                                            <td class="whitespace-nowrap px-6 py-2">
+                                                                <button type="button"
+                                                                    id="tambah-rfid{{ $user->id }}"
+                                                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                                                                    onclick="tambahRFID(){{ $user->id }}">
+                                                                    TAMBAH RFID
+                                                                </button>
+                                                                <form
+                                                                    action="{{ route('siswa_admin.update', $user->id) }}"
+                                                                    method="post">
+                                                                    @method('PUT')
+                                                                    @csrf
+                                                                    <div id="modal-tambah-rfid{{ $user->id }}"
+                                                                        class="modal fixed inset-0 flex items-center justify-center">
+                                                                        <div class="modal-content bg-white p-6">
+
                                                                             <h2 class="text-2xl font-bold mb-4">Tambah
                                                                                 RFID {{ $user->name }}</h2>
                                                                             <input type="text" name="RFID"
-                                                                                class="border border-gray-300 rounded-md p-2 w-full"
-                                                                                autofocus>
+                                                                                class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
                                                                             <div class="mt-6 flex justify-end">
-                                                                                {{--  <button type="button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                                                                  Simpan
-                                                                </button>
-                                                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">
-                                                                  Batal
-                                                                </button>  --}}
+
                                                                             </div>
                                                                         </div>
                                                                     </div>

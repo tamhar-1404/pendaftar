@@ -37,9 +37,31 @@ class HistoryAdminController extends Controller
      * @param  \App\Http\Requests\StoreHistory_AdminRequest  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        dd($request->all());
+        dd($request);
+        $this->validate($request, [
+            'nama' => 'required',
+            'rfid' => 'required',
+            'name' => 'required',
+            'foto' => 'required',
+            'harga' => 'required',
+            'stok' => 'required',
+            'total' => 'required',
+            'tanggal' => 'required',
+        ]);
+
+        History_Admin::create([
+            'nama' => $request->input('nama'),
+            'rfid' => $request->input('rfid'),
+            'name' => $request->input('name'),
+            'foto' => $request->input('foto'),
+            'harga' => $request->input('harga'),
+            'stok' => $request->input('stok'),
+            'total' => $request->input('total'),
+            'tanggal' => $request->input('tanggal'),
+        ]);
     }
 
     /**

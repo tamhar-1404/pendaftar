@@ -43,6 +43,7 @@ use App\Http\Controllers\transaksirfidController;
 Route::resource('/History_siswa', App\Http\Controllers\HistoryTopupController::class);
 Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::class);
 
+Route::resource('/History_transaksi', App\Http\Controllers\HistoryTransaksiController::class);
 
 Route::resource('TopUp', App\Http\Controllers\TopUpController::class);
 Route::resource('barang', App\Http\Controllers\BarangController::class);
