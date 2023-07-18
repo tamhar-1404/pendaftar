@@ -252,6 +252,7 @@
 
         return true;
         }
+    }
     </script>
 
 

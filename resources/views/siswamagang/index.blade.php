@@ -32,13 +32,23 @@
         <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
         <script defer src="siswa/js/sweetalert.min.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css"  rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css"  rel="stylesheet" />
     </head>
     <body
         x-data="main"
         class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased bg-[#F6F5FF]"
         :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout,$store.app.rtlClass]"
     >
+    @if (session()->has('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "{{ session('error') }}",
+            })
+        </script>
+    @endif
         <!-- sidebar menu overlay -->
         <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{'hidden' : !$store.app.sidebar}" @click="$store.app.toggleSidebar()"></div>
 
@@ -1548,7 +1558,7 @@
                             </li>
                         </ul>
                             {{--  modal  --}}
-                            <div id="modal-step1" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="hidden kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div id="modal-step1" class="fixed inset-0 flex items-center justify-center z-50 hidden">
                                 <div class="relative w-full max-w-2xl max-h-full">
                                     <!-- Modal content -->
                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -1557,7 +1567,7 @@
                                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                                              Scan rfid anda
                                             </h3>
-                                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="staticModal">
+                                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="staticModal" onclick="hideAllSteps()">
                                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                             </button>
                                         </div>
@@ -1568,28 +1578,28 @@
                                             <div class="p-6 space-y-6">
                                                 <div>
                                                     <div class="relative z-0 w-full mb-6 group">
-                                                        <input type="text" name="saldo" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-                                                        <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Masukkan saldo</label>
+                                                        <input type="text" name="saldo" id="saldo" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                                                        <label for="saldo" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Masukkan saldo</label>
                                                     </div>
                                                     <div class="grid gap-4 grid-cols-2 grid-rows-2">
                                                         <div>
                                                             <input type="radio" name="saldo" id="5000" class="hidden" value="5000">
-                                                            <label for="5000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white">5000</label>
+                                                            <label for="5000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white" onclick="document.getElementById('saldo').value = '5000'">5000</label>
                                                         </div>
 
                                                         <div>
                                                             <input type="radio" name="saldo" id="10000" class="hidden" value="10000">
-                                                            <label for="10000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white">10000</label>
+                                                            <label for="10000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white" onclick="document.getElementById('saldo').value = '10000'">10000</label>
                                                         </div>
 
                                                         <div>
                                                             <input type="radio" name="saldo" id="15000" class="hidden" value="15000">
-                                                            <label for="15000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white">15000</label>
+                                                            <label for="15000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white" onclick="document.getElementById('saldo').value = '15000'">15000</label>
                                                         </div>
 
                                                         <div>
                                                             <input type="radio" name="saldo" id="20000" class="hidden" value="20000">
-                                                            <label for="20000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white">20000</label>
+                                                            <label for="20000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white" onclick="document.getElementById('saldo').value = '20000'">20000</label>
                                                         </div>
 
                                                     </div>
@@ -1598,7 +1608,7 @@
 
                                             <!-- Modal footer -->
                                             <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                                <button data-modal-hide="staticModal" type="button" class="text-gray-700 bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                                                <button data-modal-hide="staticModal" type="button" class="text-gray-700 bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="hideAllSteps()">Kembali</button>
                                                 <button data-modal-hide="staticModal" type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="nextStep()">Kirim</button>
                                             </div>
 
@@ -1606,7 +1616,7 @@
                                 </div>
                             </div>
 
-                            <div id="modal-step2" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="hidden kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div id="modal-step2"  class="fixed inset-0 flex items-center justify-center z-50 hidden">
                                 <div class="relative w-full max-w-2xl max-h-full">
                                     <!-- Modal content -->
                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -1615,7 +1625,7 @@
                                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                                              Scan rfid anda
                                             </h3>
-                                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="staticModal">
+                                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="staticModal" onclick="hideAllSteps()">
                                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                             </button>
                                         </div>
@@ -1843,9 +1853,12 @@
 
             function nextStep() {
                 if (currentStep === 1) {
-                    document.getElementById('modal-step1').classList.add('hidden');
-                    document.getElementById('modal-step2').classList.remove('hidden');
-                    currentStep = 2;
+                    const isValid = validateStep1();
+                    if (isValid) {
+                        document.getElementById('modal-step1').classList.add('hidden');
+                        document.getElementById('modal-step2').classList.remove('hidden');
+                        currentStep = 2;
+                    }
 
                 }
             }
@@ -1864,14 +1877,14 @@
             }
 
             function validateStep1() {
-            const nama = document.getElementById('name').value;
-            const foto = document.getElementById('name2').value;
-            const harga = document.getElementById('name3').value;
-            const kategori = document.getElementById('kategori').value;
-            const deskripsi = document.getElementById('name5').value;
+            const saldo = document.getElementById('saldo').value;
 
-            if (nama.trim() === '' || foto.trim() === '' || harga.trim() === '' || kategori.trim() === '' || deskripsi.trim() === '') {
-                alert('Mohon lengkapi semua field pada langkah 1');
+            if (saldo.trim() === '') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Saldo tidak boleh kosong!',
+                });
                 return false;
             }
 
