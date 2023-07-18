@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="{{asset('load/load.css')}}">
 
 </head>
-<body class="font-poppins text-dark  text-sm leading-loose">
+<body class="font-poppins text-dark text-sm leading-loose">
     <div  class="spin_load  screen_loader animate__animated fixed inset-1 z-[30] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
@@ -69,152 +69,205 @@
             </div>
         </div>
     </div>
-    <div class="">
+    <div class="flex flex-row h-screen">
+        <div class=" top-0 left-0 h-screen w-1/4 bg-gray-light mt-4 ml-4">
+            <div class="h-full flex flex-col">
+              <div class="flex items-center">
+                <p class="text-lg font-semibold text-dark mt-2 ml-2">Menu</p>
+              </div>
+              <div class="w-full  h-7 mb-8 flex-col justify-center items-center">
+                <p class="ml-2 mt-4">cari barang</p>
+                <center>
 
                     <input class="border border-gray-300 w-[95%]" type="text" name="kodebarang">
                 </cesnter>
                 <div class="w-full h-full bg-red-500 overflow-y-scroll">
 
-                    <center>
-
-                        <input class="border border-gray-300 w-[95%]" type="text" name="kodebarang" id="kodebarang">
-                    </center>
-                    <div class="w-full max-h-[600px] mt-8  overflow-y-scroll">
-
-                        <div class="w-[90%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
-                            <div class=" flex flex-col items-center justify-center">
-                                <div class="font-bold text-">Nama Produk</div>
-                                <p class="text-gray-700">12000</p>
-                            </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
                         </div>
-
                     </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div><br>
+            </div>
+          </div>
+        <div class="container">
+            <div class="grid grid-cols-1 gap-x-5">
+                <div class="w-full  h-7 mb-8 flex-col justify-center items-center ">
+                    <p class="">scan kode barang</p>
+
+                     <input autofocus onchange="showStep(0)" class="border border-gray-300 w-[40%]" type="text" name="kodebarang" id="kodebarang">
 
                 </div><br>
-                </div>
-            </div>
-            <div class="w-full">
-                <div class="grid grid-cols-1 gap-x-5">
-                    <div class="flex w-full justify-between  md:w-max-[50%]" >
-                        <div class="flex w-full justify-end font-semibold items-center  px-4 py-1 rounded">
-                            <div class=" flex text-white items-center py-1 rounded bg-blue-500 px-3">
-                                <p class="text-sm">Saldo anda sekarang : {{$user}}</p>
-                            </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-max">
+                        <thead>
+                            <tr>
+                                <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Image</th>
+                                <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Product</th>
+                                <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Price</th>
+                                <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Quantity</th>
+                                <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Total</th>
+                                <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <form action="{{ route('History_Admin.store') }}" method="POST" onsubmit="return konfirmasirfid(event)">
+                            @csrf
+                            @forelse ( $barang as $data)
+                            <tr id="{{$data->kode}}" class=" hidden">
+                                <input type="hidden" id="form-kode-{{ $data->kode }}" value="{{ $data->kode }}">
+                                {{-- <input type="hidden" name="nama" value="{{ $data->nama }}">
+                                <input type="hidden" name="foto" value="{{ $data->foto }}"> --}}
+                                <td class="w-32 p-3  text-center">
+                                    <img src="{{ asset('storage/pendataanbarang/' . $data->foto) }}" class="w-10" alt="" srcset="">
+
+                                </td>
+                                <td class="p-3 text-center">
+                                    <a href="#" class="transition-all hover:text-orange">{{$data->nama}}</a>
+                                </td>
+                                <td class="p-3  text-center"><span><span id="harga{{$data->kode}}" data-harga="{{$data->harga}}">{{$data->harga}}</span></span></td>
+                                <td class="p-3  text-center">
+                                    <div class="flex count border border-solid border-gray-300 p-2 h-11">
+                                        <button class="decrement flex-auto w-5 leading-none" aria-label="button">-</button>
+                                        <input id="quantity_{{$data->kode}}" type="number" min="1" max="100" step="1" value="1" class="quantity__input flex-auto w-8 text-center focus:outline-none ">
+                                        <button class="increment flex-auto w-5 leading-none" aria-label="button">+</button>
+                                    </div>
+                                </td>
+                                <td class="p-3  text-center" id="total_semua">
+                                    <input type="hidden" name="total_harga" id="form_total_{{ $data->kode }}">
+                                    <input type="hidden" name="harga" id="form_total_{{ $data->harga }}" value="{{ $data->harga }}">
+                                    <span><p class=" text-center bg-white" id="total_harga_{{$data->kode}}">{{$data->harga}}</p></span>
+                                </td>
+                                  <td class="p-3  text-center">
+                                    <a id="cancel" data-kode="{{$data->kode}}" class="close"><i class="icon-close"></i></a>
+                                </td>
+                            </tr>
+
+
+                            @empty
+
+                            @endforelse
+
+
+
+
+                        </tbody>
+                    </table>
+                        <input type="hidden" name="rfid_user" id="rfid-user">
+                        <div class="flex justify-between px-8 mt-4">
+                            <p>Total keseluruhan Rp. <span id="jumlah_semua">0</span></p>
+                            <input type="hidden" id="form_total_semua" value="0">
+                            <button type="submit" class="hidden bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="btn-bayar">Bayar</button>
                         </div>
-                    </div>
-                    <div class="w-full  h-7 mb-8 flex-col ">
-                        <p class="text-center">scan kode barang</p>
-                        <div class="flex justify-center">
-                            <input autofocus onchange="showStep(0)" class="border border-gray-300 w-[30%]" type="text" name="kodebarang" id="kodebarang">
-                        </div>
-                    </div><br>
-                    <div class="overflow-x-auto">
-                        <table class="w-full min-w-max">
-                            <thead>
-                                <tr>
-                                    <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Image</th>
-                                    <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Product</th>
-                                    <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Price</th>
-                                    <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Quantity</th>
-                                    <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Total</th>
-                                    <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Remove</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <form action="{{ route('History_Admin.store') }}" method="POST" onsubmit="return konfirmasirfid(event)">
-                                @csrf
-                                @forelse ( $barang as $data)
-                                <tr id="{{$data->kode}}" class=" hidden">
-                                    <input type="hidden" id="form-kode-{{ $data->kode }}" value="{{ $data->kode }}">
-                                    {{-- <input type="hidden" name="nama" value="{{ $data->nama }}">
-                                    <input type="hidden" name="foto" value="{{ $data->foto }}"> --}}
-                                    <td class="w-32 p-3  text-center">
-                                        <img src="{{ asset('storage/pendataanbarang/' . $data->foto) }}" class="w-10" alt="" srcset="">
+                    </form>
 
-                                    </td>
-                                    <td class="p-3 text-center">
-                                        <a href="#" class="transition-all hover:text-orange">{{$data->nama}}</a>
-                                    </td>
-                                    <td class="p-3  text-center"><span><span id="harga{{$data->kode}}" data-harga="{{$data->harga}}">{{$data->harga}}</span></span></td>
-                                    <td class="p-3  text-center">
-                                        <div class="flex count border border-solid border-gray-300 p-2 h-11">
-                                            <button class="decrement flex-auto w-5 leading-none" aria-label="button">-</button>
-                                            <input id="quantity_{{$data->kode}}" type="number" min="1" max="100" step="1" value="1" class="quantity__input flex-auto w-8 text-center focus:outline-none ">
-                                            <button class="increment flex-auto w-5 leading-none" aria-label="button">+</button>
-                                        </div>
-                                    </td>
-                                    <td class="p-3  text-center" id="total_semua">
-                                        <input type="hidden" name="total_harga" id="form_total_{{ $data->kode }}">
-                                        <input type="hidden" name="harga" id="form_total_{{ $data->harga }}" value="{{ $data->harga }}">
-                                        <span><p class=" text-center bg-white" id="total_harga_{{$data->kode}}">{{$data->harga}}</p></span>
-                                    </td>
-                                      <td class="p-3  text-center">
-                                        <a id="cancel" data-kode="{{$data->kode}}" class="close"><i class="icon-close"></i></a>
-                                    </td>
-                                </tr>
-
-
-                                @empty
-
-                                @endforelse
-
-
-
-
-                            </tbody>
-                        </table>
-                            <input type="hidden" name="rfid_user" id="rfid-user">
-                            <div class="flex justify-between px-8 mt-4">
-                                <p>Total keseluruhan Rp. <span id="jumlah_semua">0</span></p>
-                                <input type="hidden" id="form_total_semua" value="0">
-                                <button type="submit" class="hidden bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="btn-bayar">Bayar</button>
-                            </div>
-                        </form>
-
-                        <script>
-                            function konfirmasirfid(event) {
-                                event.preventDefault();
-                                Swal.fire({
-                                    title: 'Konfirmasi RFID',
-                                    input: 'text',
-                                    inputLabel: 'Masukkan RFID anda:',
-                                    showCancelButton: true,
-                                    confirmButtonText: 'Submit',
-                                    cancelButtonText: 'Batal',
-                                    confirmButtonColor: '#00B7FF',
-                                    cancelButtonColor: '#FF0000',
-                                    allowOutsideClick: false,
-                                    inputValidator: (value) => {
-                                        if (!value || value.trim() === '') {
-                                            return 'Harap masukkan password.';
-                                        }
-                                    },
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        document.getElementById("rfid-user").value = result.value;
-                                        var params = new URLSearchParams(window.location.href);
-                                        console.log(params.get('rfid'));
-                                        if (params.get('rfid') == result.value) {
-                                            event.target.submit();
-                                        } else {
-                                            Swal.fire({
-                                                icon: 'error',
-                                                title: 'Oops...',
-                                                text: 'RFID tidak sama',
-                                            });
-                                        }
+                    <script>
+                        function konfirmasirfid(event) {
+                            event.preventDefault();
+                            Swal.fire({
+                                title: 'Konfirmasi RFID',
+                                input: 'text',
+                                inputLabel: 'Masukkan RFID anda:',
+                                showCancelButton: true,
+                                confirmButtonText: 'Submit',
+                                cancelButtonText: 'Batal',
+                                confirmButtonColor: '#00B7FF',
+                                cancelButtonColor: '#FF0000',
+                                allowOutsideClick: false,
+                                inputValidator: (value) => {
+                                    if (!value || value.trim() === '') {
+                                        return 'Harap masukkan password.';
                                     }
-                                });
-                                return false;
-                            }
-                        </script>
-                            </div>
+                                },
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    document.getElementById("rfid-user").value = result.value;
+                                    var params = new URLSearchParams(window.location.href);
+                                    console.log(params.get('rfid'));
+                                    if (params.get('rfid') == result.value) {
+                                        event.target.submit();
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: 'RFID tidak sama',
+                                        });
+                                    }
+                                }
+                            });
+                            return false;
+                        }
+                    </script>
+                        </div>
 
 
-
-                    </div>
 
                 </div>
+
             </div>
         </div>
     </div>
