@@ -8,6 +8,7 @@
     <meta name="AdsBot-Google" content="noindex follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    @vite('resources/css/app.css')
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href={{asset("transaksi/images/favicon.webp")}} />
@@ -33,6 +34,8 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href={{asset("transaksi/css/style.css")}} />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
 </head>
 <body class="font-poppins text-dark text-sm leading-loose">
@@ -62,10 +65,10 @@
     <div class="py-24">
         <div class="container">
             <div class="grid grid-cols-1 gap-x-5">
-                <div class="w-full  h-7 mb-8 flex-col justify-center ">
-                    <p class="text-center">scan kode barang</p>
+                <div class="w-full  h-7 mb-8 flex-col justify-center items-center ">
+                    <p class="">scan kode barang</p>
 
-                        <input autofocus onchange="showStep(0)" class="border border-gray-300 w-[70%]" type="text" name="kodebarang" id="kodebarang">
+                     <input autofocus onchange="showStep(0)" class="border border-gray-300 w-[40%]" type="text" name="kodebarang" id="kodebarang">
 
                 </div><br>
                 <div class="overflow-x-auto">
@@ -82,6 +85,7 @@
                         </thead>
                         <tbody>
                             @forelse ( $barang as $data)
+
                             <tr id="{{$data->kode}}" class=" hidden">
                                 <td class="w-32 p-3  text-center">
                                     <img src="{{ asset('storage/pendataanbarang/' . $data->foto) }}" class="w-10" alt="" srcset="">
@@ -90,7 +94,7 @@
                                 <td class="p-3  text-center">
                                     <a href="#" class="transition-all hover:text-orange">{{$data->nama}}</a>
                                 </td>
-                                <td class="p-3  text-center"><span><span>{{$data->harga}}</span></span></td>
+                                <td class="p-3  text-center"><span><span id="harga{{$data->kode}}" data-harga="{{$data->harga}}">{{$data->harga}}</span></span></td>
                                 <td class="p-3  text-center">
                                     <div class="flex count border border-solid border-gray-300 p-2 h-11">
                                         <button class="decrement flex-auto w-5 leading-none" aria-label="button">-</button>
@@ -98,11 +102,15 @@
                                         <button class="increment flex-auto w-5 leading-none" aria-label="button">+</button>
                                     </div>
                                 </td>
-                                <td class="p-3  text-center"><span>{{$data->harga}}</span></td>
-                                <td class="p-3  text-center">
-                                    <button id="cancel"><i class="icon-close"></i></button>
+                                <td class="p-3  text-center" id="total_semua">
+                                    <span><p class=" text-center bg-white" id="total_harga_{{$data->kode}}">{{$data->harga}}</p></span>
+                                </td>
+                                  <td class="p-3  text-center">
+                                    <button id="cancel" data-kode="{{$data->kode}}" class="close"><i class="icon-close"></i></button>
                                 </td>
                             </tr>
+
+
                             @empty
 
                             @endforelse
@@ -112,6 +120,13 @@
 
                         </tbody>
                     </table>
+
+                        <div class="flex justify-between px-8 mt-4">
+                            <p>Total keseluruhan Rp. <span id="jumlah_semua">0</span></p>
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Bayar</button>
+                        </div>
+
+
                 </div>
 
             </div>
@@ -126,89 +141,83 @@
     <!-- JS Vendor, Plugins & Activation Script Files -->
 
     <!-- Vendors JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Activation JS -->
     <script src={{asset("transaksi/js/main.js")}}></script>
 
-    <script>
-        let currentStep = 1;
 
-        function showStep() {
-            let kodebarang = document.getElementById('kodebarang').value;
-            console.log('kodebarang:', kodebarang);
-            let databarang=document.getElementById(`${kodebarang}`);
-            console.log('databarang:', databarang);
-            
+<!-- Tambahkan id "kodebarang" pada input untuk memperbaiki script -->
 
+<script>
+    let currentStep = 1;
+    let total_semua = 0;
 
-            if (databarang && databarang.classList.contains('1')) {
-                let kode = 'quantity_' + kodebarang;
-                let value_old = document.getElementById(kode).valueAsNumber;
-                let value_new = value_old + 1;
-                document.getElementById(kode).value = value_new;
-                document.getElementById('kodebarang').value = null;
-                document.getElementById('kodebarang').focus();
-            }else if(databarang){
-                databarang.classList.remove('hidden');
-                databarang.classList.add('1');
-                document.getElementById('kodebarang').value = null;
+    var closeButtons = document.querySelectorAll('.close');
+
+    closeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var kode = this.getAttribute('data-kode');
+            var element = document.getElementById(kode);
+            if (element) {
+                var hargaValue = parseFloat($('#harga' + kode).data('harga'));
+                total_semua -= parseInt(document.getElementById('total_harga_' + kode).innerText);
+                document.getElementById('jumlah_semua').innerHTML = total_semua;
+
+                element.classList.add('hidden');
+                element.classList.remove('1');
+                document.getElementById('quantity_' + kode).value = 1;
+                document.getElementById('total_harga_' + kode).innerText = hargaValue;
                 document.getElementById('kodebarang').focus();
             }
+        });
+    });
 
-            else {
+    document.getElementById('jumlah_semua').innerHTML = total_semua;
+    function showStep() {
+        let kodebarang = document.getElementById('kodebarang').value;
+        console.log('kodebarang:', kodebarang);
+        let databarang = document.getElementById(`${kodebarang}`);
+        console.log('databarang:', databarang);
 
-                document.getElementById('kodebarang').value = null;
-                document.getElementById('kodebarang').focus();
-                alert('barang yang anda scan belum di data pada admin')
-            }
+        if (databarang && databarang.classList.contains('1')) {
+            let kode = 'quantity_' + kodebarang;
+            let value_old = document.getElementById(kode).valueAsNumber;
+            let value_new = value_old + 1;
+            document.getElementById(kode).value = value_new;
 
+            // Ubah cara mendapatkan harga menggunakan jQuery
+            var hargaValue = parseFloat($('#harga'+kodebarang).data('harga'));
+            console.log('Nilai harga:', hargaValue);
 
+            let total = hargaValue * value_new;
+            console.log('harga total: ', total.toString());
+
+            // Perbarui elemen "total_harga" dengan nilai total baru
+            document.getElementById('total_harga_' + kodebarang).innerText = total;
+            total_semua += hargaValue;
+            console.log("Total semua : ", total_semua);
+
+            document.getElementById('kodebarang').value = null;
+            document.getElementById('kodebarang').focus();
+            document.getElementById('jumlah_semua').innerHTML = total_semua;
+        } else if (databarang) {
+            databarang.classList.remove('hidden');
+            databarang.classList.add('1');
+
+            let hargaAwal = parseInt(document.getElementById('total_harga_' + kodebarang).innerText);
+            total_semua += hargaAwal;
+            console.log("Total semua : ", total_semua);
+
+            document.getElementById('kodebarang').value = null;
+            document.getElementById('kodebarang').focus();
+            document.getElementById('jumlah_semua').innerHTML = total_semua;
+        } else {
+            document.getElementById('kodebarang').value = null;
+            document.getElementById('kodebarang').focus();
+            alert('barang yang anda scan belum di data pada admin');
         }
-
-
-        function nextStep() {
-        if (currentStep === 1) {
-            const isValid = validateStep1();
-            if (isValid) {
-            document.getElementById('modal-step1').classList.add('hidden');
-            document.getElementById('modal-step2').classList.remove('hidden');
-            currentStep = 2;
-            }
-        }
-        }
-
-        function prevStep() {
-        if (currentStep === 2) {
-            document.getElementById('modal-step2').classList.add('hidden');
-            document.getElementById('modal-step1').classList.remove('hidden');
-            currentStep = 1;
-        }
-        }
-
-        function hideAllSteps() {
-        document.getElementById('modal-step1').classList.add('hidden');
-        document.getElementById('modal-step2').classList.add('hidden');
-        }
-
-        function validateStep1() {
-        const nama = document.getElementById('name').value;
-        const foto = document.getElementById('name2').value;
-        const harga = document.getElementById('name3').value;
-        const kategori = document.getElementById('kategori').value;
-        const deskripsi = document.getElementById('name5').value;
-
-        if (nama.trim() === '' || foto.trim() === '' || harga.trim() === '' || kategori.trim() === '' || deskripsi.trim() === '') {
-            alert('Mohon lengkapi semua field pada langkah 1');
-            return false;
-        }
-
-        return true;
-        }
-    </script>
-
-
-
+    }
+</script>
 
 </body>
 </html>

@@ -96,10 +96,11 @@ class SiswamagangController extends Controller
             'password' => 'required'
         ]);
 
-        $user = User::find($user_id);
-        $user_password = $user->password;
-
-        if (!Hash::check($request->password, $user_password)) {
+        if (auth()->user()->rfid == null) {
+            return back()->with('error', 'RFID tidak ada');
+        }
+        $user = User::find(auth()->user()->id);
+        if (!Hash::check($request->password, $user->password)) {
             return back()->with('error', 'Password salah');
         }
 

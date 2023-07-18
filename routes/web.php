@@ -21,7 +21,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PiketController;
 use App\Http\Controllers\AbsensiSiswaController;
 use App\Http\Controllers\ApprovalIzinController;
-
 use App\Models\LupaPassword;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
@@ -42,13 +41,13 @@ use App\Http\Controllers\transaksirfidController;
 // Admin
 
 Route::resource('/History_siswa', App\Http\Controllers\HistoryTopupController::class);
+Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::class);
 
 
 Route::resource('TopUp', App\Http\Controllers\TopUpController::class);
 Route::resource('barang', App\Http\Controllers\BarangController::class);
 Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
 Route::resource('opname', App\Http\Controllers\OpnameController::class);
-
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
 Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
 Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
@@ -136,7 +135,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('send-email' , [MailController::class,'index']);
         Route::get('siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa']);
         Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
-       
+
         Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
         Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
         Route::put('/siswa_admin/banned/{id}', [App\Http\Controllers\SiswaController::class, 'banned'])->name('siswa.banned');
