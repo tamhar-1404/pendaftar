@@ -7,6 +7,8 @@ use App\Models\TataTertib;
 use App\Models\User;
 use App\Models\LaporanSiswa;
 use Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Topup as Top;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -88,19 +90,19 @@ class SiswamagangController extends Controller
 
     public function saldo(Request $request, $id)
     {
-        // dd($request->all());
         $user_id = auth()->user()->id;
         $this->validate($request, [
             'saldo' => 'required',
             'password' => 'required'
         ]);
 
-        $user_password = User::find(auth()->user()->id)->password;
-        if (!Hash::check($request->password, $user_password)) {
+        if (auth()->user()->rfid == null) {
+            return back()->with('error', 'RFID tidak ada');
+        }
+        $user = User::find(auth()->user()->id);
+        if (!Hash::check($request->password, $user->password)) {
             return back()->with('error', 'Password salah');
         }
-        $hashedSaldo = Hash::make($request->saldo);
-        $decryptedSaldo = $request->saldo;
 
         TopUp::create([
             'user_id' => $user_id,
@@ -109,7 +111,9 @@ class SiswamagangController extends Controller
             'tanggal' => Carbon::now()->format('Y-m-d'),
         ]);
 
-        return redirect()->back()->with('success', 'Transaksi anda sedang di proses');
+        Mail::to($user->email)->send(new Top());
+
+        return redirect()->back()->with('success', 'Transaksi Anda sedang diproses');
     }
 
 

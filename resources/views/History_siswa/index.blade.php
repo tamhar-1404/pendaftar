@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="load/load.css">
     <script>
         tailwind.config = {
@@ -55,7 +54,7 @@
               registerModal.classList.add("hidden");
             });
           </script>
-          <h3 class="text-center mt-7 mb-2">Approval TopUp</h3>
+          <h3 class="text-center mt-7 mb-2">History TopUp</h3>
           <hr>
           <div class="flex flex-col px-4 mt-2">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -71,7 +70,7 @@
                                     <th scope="col" class="px-6 py-2">Sekolah</th>
                                     <th scope="col" class="px-6 py-2">Saldo</th>
                                     <th scope="col" class="px-6 py-2">Tanggal</th>
-                                    <th scope="col" class="px-6 py-2">Aksi</th>
+
                                 </tr>
                             </thead>
                                 @php
@@ -104,30 +103,6 @@
                                     </td>
                                     <td class="whitespace-nowrap px-6 py-2">
                                         {{ $topup->tanggal }}
-                                    </td>
-                                    <input type="hidden" value="Terima" name="status" id="">
-                                    <td class="whitespace-nowrap px-6 py-2">
-                                        <div class="flex justify-between">
-
-                                            <form action="{{ route('aproval.update', $topup->id) }}" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="saldo" placeholder="Saldo" value="{{ old('saldo' , $topup->saldo) }}" required>
-                                                <button type="submit" class="border border-blue-400 px-4 py-1 rounded hover:bg-blue-500 hover:text-white">
-                                                    <i class="fa fa-check-square-o" style="color:rgb(0, 204, 255);"></i>
-                                                </button>
-                                            </form>
-                                            <form action="{{ route('aproval.update', $topup->id) }}" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="status" value="Ditolak">
-                                                <div style="display: inline-block;">
-                                                    <button type="submit" class="border border-red-400 px-4 py-1 rounded hover:bg-red-500 hover:text-white">
-                                                        <i class="fa fa-close"></i>
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
                                     </td>
 
                             </tr>
