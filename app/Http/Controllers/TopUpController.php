@@ -19,9 +19,10 @@ class TopUpController extends Controller
      */
     public function index()
     {
-        $TopUp = TopUp::all();
-        return view('TopUp.index' , compact('TopUp'));
+        $TopUp = TopUp::where('status', 'menunggu')->get();
+        return view('TopUp.index', compact('TopUp'));
     }
+
 
     /**
      * Show the form for creating a new resource.
