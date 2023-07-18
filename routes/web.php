@@ -42,7 +42,6 @@ use App\Http\Controllers\transaksirfidController;
 // Admin
 
 Route::resource('/History_siswa', App\Http\Controllers\HistoryTopupController::class);
-
 Route::post('/topup/{id}', 'TopUpController@update')->name('TopUp.update');
 
 Route::resource('TopUp', App\Http\Controllers\TopUpController::class);
@@ -137,7 +136,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('send-email' , [MailController::class,'index']);
         Route::get('siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa']);
         Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
-       
+
         Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
         Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
         Route::put('/siswa_admin/banned/{id}', [App\Http\Controllers\SiswaController::class, 'banned'])->name('siswa.banned');
@@ -218,6 +217,3 @@ Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita
 Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
 Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');
 Route::delete('Berita/{post}/unlike', [BlogController::class, 'unlike'])->name('Berita.unlike');
-
-
-

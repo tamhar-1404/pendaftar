@@ -1479,7 +1479,7 @@
         <!-- News Letter section end -->
 
         <!-- Footer Bottom Section start -->
-        <div class="footer-bottom-section py-8 bg-gray-500">
+        <div class="footer-bottom-section py-8 bg-gray-500 justify-center">
             <div class="container">
                 <div class="grid md:grid-cols-2 gap-4">
                     <div class="flex order-last md:order-first flex-wrap items-center justify-center md:justify-start">
@@ -1488,12 +1488,6 @@
                                 class="ml-1 transition hover:text-orange">Codecarnival</a>.</p>
                     </div>
 
-                    <div class="flex flex-wrap items-center justify-center md:justify-end">
-                        <a href="#">
-                            <img class="w-full h-full" src="kode/images/logo/payment.webp" alt="payment logo"
-                                loading="lazy" width="286" height="23" />
-                        </a>
-                    </div>
                 </div>
 
             </div>
