@@ -70,62 +70,62 @@
 
                    </li>
                    <li class="relative">
-                    <a href="{{ route('TopUp.index') }}"
-                        class="flex h-6 cursor-pointer {{ request()->routeIs('approvalizin.index') ? 'text-blue-400' : 'text-gray-600' }} mt-2 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] outline-none transition duration-300 ease-linear hover:text-blue-400"
-                        data-te-sidenav-link-ref>TopUp</a>
+                       <a href="{{ route('TopUp.index') }}"
+                           class="flex h-6 cursor-pointer {{ request()->routeIs('approvalizin.index') ? 'text-blue-400' : 'text-gray-600' }} mt-2 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] outline-none transition duration-300 ease-linear hover:text-blue-400"
+                           data-te-sidenav-link-ref>TopUp</a>
 
-                </li>
+                   </li>
 
-           </ul>
-       </li>
-       {{-- user --}}
-       <li class="relative">
-           <a class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-white hover:bg-blue-500 hover:text-white "
-               data-te-sidenav-link-ref>
-               <span class="mr-4 [&>svg]:h-5 [&>svg]:w-5 ">
-                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                       stroke="currentColor" class="w-6 h-6">
-                       <path stroke-linecap="round" stroke-linejoin="round"
-                           d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-                   </svg>
-               </span>
-               <span>User</span>
-               <span
-                   class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none "
-                   data-te-sidenav-rotate-icon-ref>
-                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"  class="h-5 w-5">
-                       <path fill-rule="evenodd" fill="currentColor"
-                           d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                           clip-rule="evenodd" />
-                   </svg>
-               </span>
-           </a>
-           <ul class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
-               data-te-sidenav-collapse-ref>
-               <li class="relative">
-                   <a href="{{ route('siswa_admin.index') }}"
-                       class="flex {{ request()->routeIs('siswa_admin.index') ? 'bg-blue-500 text-white' : '' }}  h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
-                       data-te-sidenav-link-ref>Siswa</a>
-               </li>
-               <li class="relative">
-                   <a href="{{ route('alumni_admin.index') }}"
-                       class="flex h-6 {{ request()->routeIs('alumni_admin.index') ? 'bg-blue-500 text-white' : '' }}  cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
-                       data-te-sidenav-link-ref>Alumni</a>
-               </li>
-               <li class="relative">
-                   <a href="{{ route('guru_admin.index') }}"
-                       class="flex h-6 cursor-pointer {{ request()->routeIs('guru_admin.index') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
-                       data-te-sidenav-link-ref>Penanggung jawab</a>
-               </li>
-               <li class="relative">
-                {{-- <a href="{{ route('rfid') }}" --}}
-                <a href="{{ route('rfid') }}"
-                    class="flex h-6 cursor-pointer {{ request()->routeIs('guru_admin.index') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
-                    data-te-sidenav-link-ref>RFID</a>
-            </li>
+               </ul>
+           </li>
+           {{-- user --}}
+           <li class="relative">
+               <a class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-white hover:bg-blue-500 hover:text-white "
+                   data-te-sidenav-link-ref>
+                   <span class="mr-4 [&>svg]:h-5 [&>svg]:w-5 ">
+                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                           stroke="currentColor" class="w-6 h-6">
+                           <path stroke-linecap="round" stroke-linejoin="round"
+                               d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                       </svg>
+                   </span>
+                   <span>User</span>
+                   <span
+                       class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none "
+                       data-te-sidenav-rotate-icon-ref>
+                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-5 w-5">
+                           <path fill-rule="evenodd" fill="currentColor"
+                               d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                               clip-rule="evenodd" />
+                       </svg>
+                   </span>
+               </a>
+               <ul class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+                   data-te-sidenav-collapse-ref>
+                   <li class="relative">
+                       <a href="{{ route('siswa_admin.index') }}"
+                           class="flex {{ request()->routeIs('siswa_admin.index') ? 'bg-blue-500 text-white' : '' }}  h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
+                           data-te-sidenav-link-ref>Siswa</a>
+                   </li>
+                   <li class="relative">
+                       <a href="{{ route('alumni_admin.index') }}"
+                           class="flex h-6 {{ request()->routeIs('alumni_admin.index') ? 'bg-blue-500 text-white' : '' }}  cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
+                           data-te-sidenav-link-ref>Alumni</a>
+                   </li>
+                   <li class="relative">
+                       <a href="{{ route('guru_admin.index') }}"
+                           class="flex h-6 cursor-pointer {{ request()->routeIs('guru_admin.index') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
+                           data-te-sidenav-link-ref>Penanggung jawab</a>
+                   </li>
+                   <li class="relative">
+                       {{-- <a href="{{ route('rfid') }}" --}}
+                       <a href="{{ route('rfid') }}"
+                           class="flex h-6 cursor-pointer {{ request()->routeIs('guru_admin.index') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
+                           data-te-sidenav-link-ref>RFID</a>
+                   </li>
 
-           </ul>
-       </li>
+               </ul>
+           </li>
 
 
            <li class="relative">
@@ -152,8 +152,8 @@
                <ul class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
                    data-te-sidenav-collapse-ref>
                    <li class="relative">
-                       <a href="{{ route('siswa_admin.index') }}"
-                           class="flex {{ request()->routeIs('siswa_admin.index') ? 'bg-blue-500 text-white' : '' }}  h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
+                       <a href="{{ route('barang.index') }}"
+                           class="flex {{ request()->routeIs('barang.index') ? 'bg-blue-500 text-white' : '' }}  h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
                            data-te-sidenav-link-ref>Pendataan barang</a>
                    </li>
                    <li class="relative">
@@ -162,8 +162,8 @@
                            data-te-sidenav-link-ref>Penjualan</a>
                    </li>
                    <li class="relative">
-                       <a href="{{ route('guru_admin.index') }}"
-                           class="flex h-6 cursor-pointer {{ request()->routeIs('guru_admin.index') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
+                       <a href="{{ route('opname.index') }}"
+                           class="flex h-6 cursor-pointer {{ request()->routeIs('opname.index') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
                            data-te-sidenav-link-ref>Opname</a>
                    </li>
 
@@ -193,8 +193,8 @@
                <ul class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
                    data-te-sidenav-collapse-ref>
                    <li class="relative">
-                       <a href="{{ route('siswa_admin.index') }}"
-                           class="flex {{ request()->routeIs('siswa_admin.index') ? 'bg-blue-500 text-white' : '' }}  h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
+                       <a href="{{ route('History_Admin.index') }}"
+                           class="flex {{ request()->routeIs('History_Admin.index') ? 'bg-blue-500 text-white' : '' }}  h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300  hover:text-white"
                            data-te-sidenav-link-ref>Topup</a>
                    </li>
                    <li class="relative">
