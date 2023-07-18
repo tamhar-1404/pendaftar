@@ -1544,11 +1544,10 @@
                     </div>
                 </nav>
             </div>
-            <!-- end sidebar section -->
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
             <div class="main-content">
-               @include('siswamagang.nav_siswa')
+            @include('siswamagang.nav_siswa')
 
                 <div class="animate__animated p-6" :class="[$store.app.animation]">
                     <!-- start main content section -->
@@ -1595,27 +1594,21 @@
                                                             <input type="radio" name="saldo" id="5000" class="hidden" value="5000">
                                                             <label for="5000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white" onclick="document.getElementById('saldo').value = '5000'">5000</label>
                                                         </div>
-
                                                         <div>
                                                             <input type="radio" name="saldo" id="10000" class="hidden" value="10000">
                                                             <label for="10000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white" onclick="document.getElementById('saldo').value = '10000'">10000</label>
                                                         </div>
-
                                                         <div>
                                                             <input type="radio" name="saldo" id="15000" class="hidden" value="15000">
                                                             <label for="15000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white" onclick="document.getElementById('saldo').value = '15000'">15000</label>
                                                         </div>
-
                                                         <div>
                                                             <input type="radio" name="saldo" id="20000" class="hidden" value="20000">
                                                             <label for="20000" class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white" onclick="document.getElementById('saldo').value = '20000'">20000</label>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <!-- Modal footer -->
                                             <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                                                 <input type="hidden" name="password" id="password-user">
                                                 <button data-modal-hide="staticModal" type="button" class="text-gray-700 bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="hideAllSteps()">Kembali</button>
@@ -1625,7 +1618,6 @@
                                         <script>
                                             function konfirmpassword(event) {
                                                 event.preventDefault();
-
                                                 let saldo = document.getElementById('saldo');
                                                 console.log(saldo.value);
                                                 if (saldo.value == "") {
@@ -1636,7 +1628,6 @@
                                                     })
                                                     return;
                                                 }
-
                                                 Swal.fire({
                                                     title: 'Konfirmasi password',
                                                     input: 'text',
@@ -1660,16 +1651,13 @@
                                                 });
                                                 }
                                         </script>
-
                                     </div>
                                 </div>
                             </div>
-
                             <div id="modal-step2"  class="fixed inset-0 flex items-center justify-center z-50 hidden">
                                 <div class="relative w-full max-w-2xl max-h-full">
-                                    <!-- Modal content -->
+
                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                        <!-- Modal header -->
                                         <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                                              Scan rfid anda
@@ -1687,7 +1675,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Modal footer -->
                                             <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                                                 <button data-modal-hide="staticModal" type="button" class="text-gray-700 bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="prevStep()">Kembali</button>
                                                 <button data-modal-hide="staticModal" type="submit" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
