@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HistoryTopup;
+use App\Models\TopUp;
 use App\Http\Requests\StoreHistoryTopupRequest;
 use App\Http\Requests\UpdateHistoryTopupRequest;
 
@@ -15,7 +16,8 @@ class HistoryTopupController extends Controller
      */
     public function index()
     {
-        //
+        $TopUp = TopUp::where('status', 'Terima')->get();
+        return view('History_siswa.index', compact('TopUp'));
     }
 
     /**
