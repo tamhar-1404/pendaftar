@@ -61,28 +61,99 @@
                 <div class="col-span-12">
                     <nav>
                         <ul class="flex flex-wrap items-center justify-center">
-                            <img src="{{ asset('admin/images/hummashitam.png') }}" class="w-48" alt=""
-                            srcset="">
+                            <li class="mr-5"><a href="index.html" class="text-dark font-medium text-base uppercase transition-all hover:text-orange relative before:w-5 before:h-1px before:empty before:absolute before:top-3 before:bg-dark before:transform before:rotate-115 before:-right-5">Halaman</a></li>
+                            <li class="text-dark font-medium text-base uppercase mr-5">pembelian</li>
                         </ul>
                     </nav>
                 </div>
             </div>
         </div>
     </div>
+    <div class="flex flex-row h-screen">
+        <div class=" top-0 left-0 h-screen w-1/4 bg-gray-light mt-4 ml-4">
+            <div class="h-full flex flex-col">
+              <div class="flex items-center">
+                <p class="text-lg font-semibold text-dark mt-2 ml-2">Menu</p>
+              </div>
+              <div class="w-full  h-7 mb-8 flex-col justify-center items-center">
+                <p class="ml-2 mt-4">cari barang</p>
+                <center>
 
-    <div class="flex justify-end">
-        <p class="text-base font-semibold text-gray-700">
-            Saldo Anda:
-            @if ($user)
-                <span id="jumlah_semua" class="text-base font-bold text-blue-500">{{ $user->saldo }}</span>
-            @else
-                <span class="text-red-500">Data pengguna tidak ditemukan.</span>
-            @endif
-        </p>
-    </div>
-        
+                    <input class="border border-gray-300 w-[95%]" type="text" name="kodebarang" id="kodebarang">
+                </cesnter>
+                <div class="w-full h-full bg-red-500 overflow-y-scroll">
 
-    <div class="py-24">
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
+                        <div>
+                            <div class="font-bold text-">Nama Produk</div>
+                            <p class="text-gray-700">12000</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div><br>
+            </div>
+          </div>
         <div class="container">
             <div class="grid grid-cols-1 gap-x-5">
                 <div class="w-full  h-7 mb-8 flex-col justify-center items-center ">
@@ -148,11 +219,7 @@
                     </table>
                         <input type="hidden" name="rfid_user" id="rfid-user">
                         <div class="flex justify-between px-8 mt-4">
-                            <p class="text-base font-semibold text-gray-700">
-                                Total keseluruhan:
-                                <span id="jumlah_semua" class="text-base font-bold text-blue-500">Rp. 0</span>
-                            </p>
-
+                            <p>Total keseluruhan Rp. <span id="jumlah_semua">0</span></p>
                             <input type="hidden" id="form_total_semua" value="0">
                             <button type="submit" class="hidden bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="btn-bayar">Bayar</button>
                         </div>
