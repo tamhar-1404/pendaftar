@@ -1558,7 +1558,7 @@
                             </li>
                             <li class="before:content-['/'] ltr:before:mr-1 rtl:before:ml-1">
                             </li>
-                            <h1>{{ $user->saldo }}</h1>
+                            <h1>{{ $user->saldo }}</h1> 
 
                             <li>
                                 <button onclick="showStep(1)" class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400">Isi saldo</button>
