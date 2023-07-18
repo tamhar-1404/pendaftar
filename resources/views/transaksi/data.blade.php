@@ -79,7 +79,7 @@
                 <p class="ml-2 mt-4">cari barang</p>
                 <center>
 
-                    <input class="border border-gray-300 w-[95%]" type="text" name="kodebarang" id="kodebarang">
+                    <input class="border border-gray-300 w-[95%]" type="text" name="kodebarang">
                 </cesnter>
                 <div class="w-full h-full bg-red-500 overflow-y-scroll">
 

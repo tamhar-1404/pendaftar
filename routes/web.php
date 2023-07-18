@@ -43,6 +43,10 @@ use App\Http\Controllers\passwordController;
 Route::post('/validate_password',['passwordController@validatePassword']);
 Route::resource('/History_siswa', App\Http\Controllers\HistoryTopupController::class);
 Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::class);
+Route::post('/get_user', [App\Http\Controllers\GetuserController::class, 'get_user'])->name('get_user');
+Route::post('/find_rfid', [App\Http\Controllers\GetuserController::class, 'find_rfid'])->name('find_rfid');
+Route::post('/check_password', [App\Http\Controller\GetuserController::class, 'check_password'])->name('check_password');
+Route::post('/pw', [App\Http\Controller\SiswamagangController::class, 'check_password']);
 
 Route::resource('/History_transaksi', App\Http\Controllers\HistoryTransaksiController::class);
 

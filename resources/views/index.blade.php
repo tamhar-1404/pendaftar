@@ -4,6 +4,7 @@
 {{--  <!-- Mirrored from shreethemes.in/ovaxo/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jul 2023 01:19:36 GMT -->  --}}
 
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hummasoft | Halaman Utama</title>
@@ -17,6 +18,8 @@
     <link href="/admin/assets/images/logo.png" rel="shortcut icon">
     @vite('resources/css/app.css')
     <!-- Css -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="landing/libs/tobii/css/tobii.min.css" rel="stylesheet">
     <!-- Main Css -->
     <link href="landing/libs/%40iconscout/unicons/css/line.css" type="text/css" rel="stylesheet">
@@ -97,32 +100,12 @@
                     </ul>
                     <script>
                         function confirmReject(event) {
-                          event.preventDefault();
-
-                          Swal.fire({
-                            title: 'RFID',
-                            input: 'text',
-                            inputLabel: 'Masukan kode RFID :',
-                            showCancelButton: true,
-                            confirmButtonText: 'Kirim',
-                            cancelButtonText: 'Batal',
-                            confirmButtonColor: '#00B7FF',
-                            cancelButtonColor: '#FF0000',
-                            allowOutsideClick: false,
-                            inputValidator: (value) => {
-                              if (!value || value.trim() === '') {
-                                return 'Harap masukkan alasan penolakan.';
-                              }
-                            },
-                          }).then((result) => {
-                            if (result.isConfirmed) {
-                                const alasanPenolakan = result.value;
-                                // Gunakan variabel 'alasanPenolakan' untuk melakukan sesuatu dengan nilai input yang dimasukkan
-                                console.log("Alasan Penolakan: ", alasanPenolakan);
-                                Swal.fire({
-                                title: 'password',
-                                input: 'password',
-                                inputLabel: 'Masukan password :',
+                            let user_id;
+                            event.preventDefault();
+                            Swal.fire({
+                                title: 'RFID',
+                                input: 'text',
+                                inputLabel: 'Masukan kode RFID :',
                                 showCancelButton: true,
                                 confirmButtonText: 'Kirim',
                                 cancelButtonText: 'Batal',
@@ -130,19 +113,72 @@
                                 cancelButtonColor: '#FF0000',
                                 allowOutsideClick: false,
                                 inputValidator: (value) => {
-                                if (!value || value.trim() === '') {
-                                    return 'Harap masukkan alasan penolakan.';
-                                }
+                                    if (!value || value.trim() === '') {
+                                        return 'Harap masukkan RFID.';
+                                    }
                                 },
-                              }).then(() => {
-                               if (result.isConfirmed) {
-                                    document.getElementById("password-user").value = result.value;
-                                    event.target.submit();
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    const alasanPenolakan = result.value;
+                                    $.ajax({
+                                        url: "{{ route('find_rfid') }}",
+                                        method: 'POST',
+                                        data: {
+                                            rfid: result.value,
+                                        },
+                                        success: function (response) {
+                                            if (response == 'not found') {
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Oops...',
+                                                    text: 'RFID tidak ditemukan!',
+                                                });
+                                            }
+                                            else {
+                                                user_id = response;
+                                                Swal.fire({
+                                                    title: 'password',
+                                                    input: 'password',
+                                                    inputLabel: 'Masukan password :',
+                                                    showCancelButton: true,
+                                                    confirmButtonText: 'Kirim',
+                                                    cancelButtonText: 'Batal',
+                                                    confirmButtonColor: '#00B7FF',
+                                                    cancelButtonColor: '#FF0000',
+                                                    allowOutsideClick: false,
+                                                    inputValidator: (value) => {
+                                                        if (!value || value.trim() === '') {
+                                                            return 'Harap masukkan password';
+                                                        }
+                                                    },
+                                                }).then((a) => {
+                                                    console.log(a.value);
+                                                    if (a.isConfirmed) {
+                                                        // Awal
+                                                        console.log('id : ', parseInt(user_id));
+                                                        console.log('password : ', a.value);
+                                                        $.ajax({
+                                                            url: "/pw",
+                                                            method: 'POST',
+                                                            data: {
+                                                                user_id: parseInt(user_id),
+                                                                user_password: a.value.toString(),
+                                                            },
+                                                            success: function (response) {
+                                                                console.log(response);
+                                                            }
+                                                        });
+                                                        //Akhir
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    });
+
                                 }
-                              });
-                            }
-                          });
+                            });
                         }
+
                     </script>
                     &nbsp; &nbsp;
                     <ul class="navbar-nav nav-light" id="navbar-navlist">
@@ -549,6 +585,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
     <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        })
         $(window).on('load', function() {
             $('.spin_load').fadeOut();
         });

@@ -19,6 +19,9 @@ use Carbon\Carbon;
 
 class SiswamagangController extends Controller
 {
+    function check_password() {
+        return "Oke";
+    }
     /**
      * Display a listing of the resource.
      *
