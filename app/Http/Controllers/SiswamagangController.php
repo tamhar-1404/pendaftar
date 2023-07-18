@@ -19,9 +19,19 @@ use Carbon\Carbon;
 
 class SiswamagangController extends Controller
 {
-    function check_password() {
-        return "Oke";
+    function cek_password($user_id, $user_password) {
+        $user_pw = User::find($user_id)->password;
+        $password_input = $user_password;
+
+        // return $user_password;
+        if (Hash::check($password_input, $user_pw)) {
+            return User::find($user_id)->saldo;
+        }
+        else {
+            return "error";
+        }
     }
+
     /**
      * Display a listing of the resource.
      *

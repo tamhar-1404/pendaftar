@@ -46,7 +46,8 @@ Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::c
 Route::post('/get_user', [App\Http\Controllers\GetuserController::class, 'get_user'])->name('get_user');
 Route::post('/find_rfid', [App\Http\Controllers\GetuserController::class, 'find_rfid'])->name('find_rfid');
 Route::post('/check_password', [App\Http\Controller\GetuserController::class, 'check_password'])->name('check_password');
-Route::post('/pw', [App\Http\Controller\SiswamagangController::class, 'check_password']);
+
+Route::get('/pw/{user_id}/{user_password}', [SiswamagangController::class, 'cek_password']);
 
 Route::resource('/History_transaksi', App\Http\Controllers\HistoryTransaksiController::class);
 

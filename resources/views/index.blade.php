@@ -158,15 +158,25 @@
                                                         console.log('id : ', parseInt(user_id));
                                                         console.log('password : ', a.value);
                                                         $.ajax({
-                                                            url: "/pw",
-                                                            method: 'POST',
-                                                            data: {
-                                                                user_id: parseInt(user_id),
-                                                                user_password: a.value.toString(),
-                                                            },
+                                                            url: `/pw/${user_id}/${a.value}`,
+                                                            method: 'GET',
                                                             success: function (response) {
                                                                 console.log(response);
-                                                            }
+                                                                if (response == 'error') {
+                                                                    Swal.fire({
+                                                                        icon: 'error',
+                                                                        title: 'Oops...',
+                                                                        text: 'Password salah!',
+                                                                    });
+                                                                }
+                                                                else {
+                                                                    Swal.fire(
+                                                                        'Saldo anda!',
+                                                                        response.toString(),
+                                                                        'success'
+                                                                    )
+                                                                }
+                                                            },
                                                         });
                                                         //Akhir
                                                     }

@@ -25,6 +25,14 @@ class GetuserController extends Controller
     }
 
     public function check_password(Request $request) {
-        return "Oke";
+        $user_password = User::find($request->id)->password;
+        $password_input = $request->password;
+
+        if (Hash::check($password_input, $user_password)) {
+            return User::find($request->id)->saldo;
+        }
+        else {
+            return "error";
+        }
     }
 }
