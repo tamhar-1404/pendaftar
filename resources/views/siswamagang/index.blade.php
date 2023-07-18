@@ -49,6 +49,15 @@
             })
         </script>
     @endif
+    @if (session()->has('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil...',
+                text: "{{ session('success') }}",
+            })
+        </script>
+    @endif
         <!-- sidebar menu overlay -->
         <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{'hidden' : !$store.app.sidebar}" @click="$store.app.toggleSidebar()"></div>
 
@@ -1572,7 +1581,7 @@
                                             </button>
                                         </div>
                                         <!-- Modal body -->
-                                        <form action="{{ route('saldo', $user->id) }}" method="post">
+                                        <form action="{{ route('saldo', $user->id) }}" method="post" onsubmit="konfirmpassword(event)">
                                             @method('PUT')
                                             @csrf
                                             <div class="p-6 space-y-6">
@@ -1608,9 +1617,49 @@
 
                                             <!-- Modal footer -->
                                             <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                                <input type="hidden" name="password" id="password-user">
                                                 <button data-modal-hide="staticModal" type="button" class="text-gray-700 bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="hideAllSteps()">Kembali</button>
-                                                <button data-modal-hide="staticModal" type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="nextStep()">Kirim</button>
+                                                <button type="submit" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
                                             </div>
+                                        </form>
+                                        <script>
+                                            function konfirmpassword(event) {
+                                                event.preventDefault();
+
+                                                let saldo = document.getElementById('saldo');
+                                                console.log(saldo.value);
+                                                if (saldo.value == "") {
+                                                    Swal.fire({
+                                                        icon: 'error',
+                                                        title: 'Oops...',
+                                                        text: "Harap isi saldo",
+                                                    })
+                                                    return;
+                                                }
+
+                                                Swal.fire({
+                                                    title: 'Konfirmasi password',
+                                                    input: 'text',
+                                                    inputLabel: 'Masukkan password anda:',
+                                                    showCancelButton: true,
+                                                    confirmButtonText: 'Submit',
+                                                    cancelButtonText: 'Batal',
+                                                    confirmButtonColor: '#00B7FF',
+                                                    cancelButtonColor: '#FF0000',
+                                                    allowOutsideClick: false,
+                                                    inputValidator: (value) => {
+                                                    if (!value || value.trim() === '') {
+                                                        return 'Harap masukkan password.';
+                                                    }
+                                                    },
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        document.getElementById("password-user").value = result.value;
+                                                        event.target.submit();
+                                                    }
+                                                });
+                                                }
+                                        </script>
 
                                     </div>
                                 </div>
@@ -1643,7 +1692,6 @@
                                                 <button data-modal-hide="staticModal" type="button" class="text-gray-700 bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="prevStep()">Kembali</button>
                                                 <button data-modal-hide="staticModal" type="submit" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
                                             </div>
-                                        </form>
 
                                     </div>
                                 </div>
