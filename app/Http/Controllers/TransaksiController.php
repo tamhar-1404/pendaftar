@@ -8,6 +8,7 @@ use App\Models\barang;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoretransaksiRequest;
 use App\Http\Requests\UpdatetransaksiRequest;
+use App\Models\HistoryTransaksi;
 
 class TransaksiController extends Controller
 {
@@ -46,7 +47,7 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

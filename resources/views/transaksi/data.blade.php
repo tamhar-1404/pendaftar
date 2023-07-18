@@ -8,6 +8,7 @@
     <meta name="AdsBot-Google" content="noindex follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @vite('resources/css/app.css')
 
     <!-- Favicon -->
@@ -84,9 +85,13 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <form action="{{ route('transaksi.store') }}" method="POST" onsubmit="konfirmasirfid(event)">
+                            @csrf
+                            <input type="hidden" name="rfid_user" id="rfid-user">
                             @forelse ( $barang as $data)
 
                             <tr id="{{$data->kode}}" class=" hidden">
+                                <input type="text" name="kode" value="{{ $data->kode }}">
                                 <td class="w-32 p-3  text-center">
                                     <img src="{{ asset('storage/pendataanbarang/' . $data->foto) }}" class="w-10" alt="" srcset="">
 
@@ -98,7 +103,7 @@
                                 <td class="p-3  text-center">
                                     <div class="flex count border border-solid border-gray-300 p-2 h-11">
                                         <button class="decrement flex-auto w-5 leading-none" aria-label="button">-</button>
-                                        <input id="quantity_{{$data->kode}}" type="number" min="1" max="100" step="1" value="1" class="quantity__input flex-auto w-8 text-center focus:outline-none ">
+                                        <input id="quantity_{{$data->kode}}" type="number" min="1" max="100" step="1" value="1" class="quantity__input flex-auto w-8 text-center focus:outline-none " name="quantity">
                                         <button class="increment flex-auto w-5 leading-none" aria-label="button">+</button>
                                     </div>
                                 </td>
@@ -123,8 +128,52 @@
 
                         <div class="flex justify-between px-8 mt-4">
                             <p>Total keseluruhan Rp. <span id="jumlah_semua">0</span></p>
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Bayar</button>
+                                <button type="submit" class="hidden bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" onclick="konfirmasirfid(event)" id="btn-bayar">Bayar</button>
+                                <script>
+                                    function konfirmasirfid(event) {
+                                        event.preventDefault();
+                                        Swal.fire({
+                                            title: 'Konfirmasi RFID',
+                                            input: 'text',
+                                            inputLabel: 'Masukkan RFID anda:',
+                                            showCancelButton: true,
+                                            confirmButtonText: 'Submit',
+                                            cancelButtonText: 'Batal',
+                                            confirmButtonColor: '#00B7FF',
+                                            cancelButtonColor: '#FF0000',
+                                            allowOutsideClick: false,
+                                            inputValidator: (value) => {
+                                            if (!value || value.trim() === '') {
+                                                return 'Harap masukkan password.';
+                                            }
+                                            },
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                document.getElementById("rfid-user").value = result.value;
+                                                var params = new URLSearchParams(window.location.href);
+                                                console.log(params.get('rfid'));
+                                                if (params.get('rfid') == result.value) {
+                                                    Swal.fire(
+                                                        'Berhasil!',
+                                                        'RFID sama',
+                                                        'success'
+                                                    )
+                                                    event.target.submit();
+                                                }
+                                                else {
+                                                    Swal.fire({
+                                                        icon: 'error',
+                                                        title: 'Oops...',
+                                                        text: 'RFID tidak sama',
+                                                    });
+                                                }
+                                            }
+                                        });
+                                    }
+                                </script>
+                            </form>
                         </div>
+
 
 
                 </div>
@@ -168,12 +217,17 @@
                 document.getElementById('quantity_' + kode).value = 1;
                 document.getElementById('total_harga_' + kode).innerText = hargaValue;
                 document.getElementById('kodebarang').focus();
+                console.log(document.getElementById('jumlah_semua').innerText);
+                if (total_semua == 0 && document.getElementById('jumlah_semua').innerText == "0") {
+                    document.getElementById('btn-bayar').classList.add('hidden')
+                }
             }
         });
     });
 
     document.getElementById('jumlah_semua').innerHTML = total_semua;
     function showStep() {
+        document.getElementById('btn-bayar').classList.remove('hidden')
         let kodebarang = document.getElementById('kodebarang').value;
         console.log('kodebarang:', kodebarang);
         let databarang = document.getElementById(`${kodebarang}`);
