@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Banned;
+use App\Models\User;
 use App\Models\Siswa;
+use App\Mail\BannedGuru;
 use App\Models\LaporanSiswa;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreSiswaRequest;
 use App\Http\Requests\UpdateSiswaRequest;
-use App\Mail\Banned;
-use App\Mail\BannedGuru;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
 class SiswaController extends Controller
 {
@@ -106,13 +107,17 @@ class SiswaController extends Controller
     {
         $user = User::find($id);
         $this->validate($request,[
-            'RFID'=>'required'
+            'RFID' => [
+                'required',
+                Rule::exists(User::class, 'RFID')
+            ],
         ]);
         $user->update([
             'RFID'=>$request->RFID
         ]);
         return redirect()->back();
     }
+    
 
     public function rfid()
     {

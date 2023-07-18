@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('RFID')->nullable();
-            $table->string('saldo')->nullable();
+            $table->string('saldo')->nullable()->default('0');
             $table->string('sekolah')->nullable();
             $table->string('role')->nullable();
             $table->foreignId('siswa_id')->nullable();

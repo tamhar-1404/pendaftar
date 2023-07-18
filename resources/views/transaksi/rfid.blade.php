@@ -49,13 +49,13 @@
 
 
     <!-- Hero section start -->
-    <div class="py-9 bg-gray-light">
+    <div class="py-5 bg-gray-light">
         <div class="container">
             <div class="grid grid-cols-12 gap-x-4">
                 <div class="col-span-12">
                     <nav>
-                        <ul class="flex items-center justify-center">
-                            <img src="{{ asset('admin/assets/images/humma_store.png') }}" class="w-48" alt=""
+                        <ul class="flex items-start justify-start">
+                            <img src="{{ asset('admin/images/hummashitam.png') }}" class="w-48" alt=""
                                 srcset="">
                         </ul>
                     </nav>
@@ -75,12 +75,15 @@
         <div class="container">
             <div class="flex flex-wrap flex-col lg:flex-row">
                 <div id="shoptab" class="flex-1">
-                    <p class="text-center">scan rfid </p>
-                    <div class="flex flex-wrap justify-center items-center px-4">
+                    <p class="text-center mb-10 font-bold text-xl">SCAN RFID</p>
+                    <div
+                        class="flex flex-wrap justify-center items-center px-4 relative text-center md:max-w-xl mx-auto mb-10">
                         <form action="{{ route('transaksi.create') }}" method="get"
                             class="flex items-center justify-center border border-gray-400">
                             @csrf
-                            <input autofocus class="active" type="text" name="rfid" id="">
+                            <input id="mc-email" type="text" placeholder="Scan RFID anda"
+                                class="border border-solid border-primary mb-10  h-14 sm:h-16 rounded-full bg-transparent placeholder-primary placeholder-opacity-50 text-sm sm:text-base focus:outline-none py-1 pl-8 pr-14 sm:pr-36"
+                                name="rfid" style="height: 50px" />
                         </form>
 
                     </div>
@@ -89,8 +92,6 @@
                             <li class="active"><a href="#grid"
                                     class="text-base hover:text-orange inline-block py-2 px-2"><i
                                         class="icon-grid"></i></a></li>
-                            <li><a href="#list" class="text-base hover:text-orange inline-block py-2 px-2 ml-5"><i
-                                        class="icon-menu"></i></a></li>
                         </ul>
                     </div>
 
@@ -153,7 +154,7 @@
                                     <div class="w-full">
                                         <img class="w-full h-full"
                                             src="{{ asset('storage/pendataanbarang/' . $item->foto) }}"
-                                            alt="product image" loading="lazy" />
+                                            alt="product image" loading="lazy" width="50px" height="50px" />
                                     </div>
                                     <div>
                                         <button class="text-black text-lg absolute top-7 right-7 modal-close"><i
@@ -1425,69 +1426,19 @@
     <footer>
 
         <!-- News Letter section start -->
-        <div class="news-letter-section bg-gray-100 pt-24 pb-24">
-            <div class="container">
-                <div class="max-w-[600px] mx-auto">
-                    <div class="text-center">
-                        <a href="#" class="inline-block mb-11">
-                            <img src="kode/images/logo/logo.webp" alt="brand logo" loading="lazy" width="125"
-                                height="45" />
-                        </a>
 
-                        <p class="mb-10">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.aliqua. Ut enim ad
-                            minim. Lorem ipsum dolor sit amet.
-                        </p>
-
-                        <form id="mc-form" class="relative text-center md:max-w-xl mx-auto mb-10">
-                            <input id="mc-email" type="email" name="email" placeholder="email@example.com"
-                                class="border border-solid border-primary w-full h-14 sm:h-16 rounded-full bg-transparent placeholder-primary placeholder-opacity-50 text-sm sm:text-base focus:outline-none py-1 pl-8 pr-14 sm:pr-36" />
-                            <button id="mc-submit" type="submit"
-                                class="bg-dark transition-all hover:bg-orange hover:text-white px-10 sm:px-3 py-5 sm:py-1 rounded-l-full sm:rounded-l-none rounded-r-full text-white capitalize font-medium text-sm lg:text-md sm:absolute sm:top-0 sm:right-0 sm:h-full mt-3 sm:mt-0 leading-none w-full sm:w-auto">Subscribe</button>
-                        </form>
-                        <!-- mailchimp-alerts Start -->
-                        <div class="mailchimp-alerts text-centre">
-                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                            <div class="mailchimp-success text-green-400"></div><!-- mailchimp-success end -->
-                            <div class="mailchimp-error text-red-600"></div><!-- mailchimp-error end -->
-                        </div>
-                        <!-- mailchimp-alerts end -->
-                    </div>
-                    <div class="flex flex-wrap items-center justify-center">
-                        <a href="#" aria-label="social links"
-                            class="text-lg text-dark hover:text-orange mx-3 leading-none transition"><i
-                                class="icon-social-facebook"></i></a>
-                        <a href="#" aria-label="social links"
-                            class="text-lg text-dark hover:text-orange mx-3 leading-none transition"><i
-                                class="icon-social-twitter"></i></a>
-                        <a href="#" aria-label="social links"
-                            class="text-lg text-dark hover:text-orange mx-3 leading-none transition"><i
-                                class="icon-social-instagram"></i></a>
-                        <a href="#" aria-label="social links"
-                            class="text-lg text-dark hover:text-orange mx-3 leading-none transition"><i
-                                class="icon-social-youtube"></i></a>
-                        <a href="#" aria-label="social links"
-                            class="text-lg text-dark hover:text-orange mx-3 leading-none transition"><i
-                                class="icon-social-dribbble"></i></a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
         <!-- News Letter section end -->
 
         <!-- Footer Bottom Section start -->
-        <div class="footer-bottom-section py-8 bg-gray-500 justify-center">
+        <div class="footer-bottom-section py-5 bg-gray-500 justify-center">
             <div class="container">
                 <div class="grid md:grid-cols-2 gap-4">
                     <div class="flex order-last md:order-first flex-wrap items-center justify-center md:justify-start">
-                        <p class="text-white flex flex-wrap items-center text-sm lg:text-base">&copy; 2022 Sinp. Made
+                        <p class="text-white flex flex-wrap items-center text-sm lg:text-base">&copy; 2023. Made
                             with <i class="icon-heart mx-2 text-orange"></i> by<a href="#"
-                                class="ml-1 transition hover:text-orange">Codecarnival</a>.</p>
+                                class="ml-1 transition hover:text-orange">Team Yowis iki</a>.</p>
                     </div>
-
                 </div>
-
             </div>
         </div>
         <!-- Footer Bottom Section end -->
