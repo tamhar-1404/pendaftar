@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\History_Admin;
 use App\Models\TopUp;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreHistory_AdminRequest;
 use App\Http\Requests\UpdateHistory_AdminRequest;
 
@@ -36,9 +37,9 @@ class HistoryAdminController extends Controller
      * @param  \App\Http\Requests\StoreHistory_AdminRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreHistory_AdminRequest $request)
+    public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

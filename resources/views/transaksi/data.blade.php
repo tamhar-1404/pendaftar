@@ -85,9 +85,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <form action="{{ route('transaksi.store') }}" method="POST" onsubmit="konfirmasirfid(event)">
-                            @csrf
-                            <input type="hidden" name="rfid_user" id="rfid-user">
+
                             @forelse ( $barang as $data)
 
                             <tr id="{{$data->kode}}" class=" hidden">
@@ -125,48 +123,53 @@
 
                         </tbody>
                     </table>
-
+                    <form action="{{ route('History_Admin.store') }}" method="POST" onsubmit="return konfirmasirfid(event)">
+                        @csrf
+                        <input type="hidden" name="rfid_user" id="rfid-user">
                         <div class="flex justify-between px-8 mt-4">
                             <p>Total keseluruhan Rp. <span id="jumlah_semua">0</span></p>
-                                <button type="submit" class="hidden bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" onclick="konfirmasirfid(event)" id="btn-bayar">Bayar</button>
-                                <script>
-                                    function konfirmasirfid(event) {
-                                        event.preventDefault();
+                            <button type="submit" class="hidden bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="btn-bayar">Bayar</button>
+                        </div>
+                    </form>
+
+                    <script>
+                        function konfirmasirfid(event) {
+                            event.preventDefault();
+                            Swal.fire({
+                                title: 'Konfirmasi RFID',
+                                input: 'text',
+                                inputLabel: 'Masukkan RFID anda:',
+                                showCancelButton: true,
+                                confirmButtonText: 'Submit',
+                                cancelButtonText: 'Batal',
+                                confirmButtonColor: '#00B7FF',
+                                cancelButtonColor: '#FF0000',
+                                allowOutsideClick: false,
+                                inputValidator: (value) => {
+                                    if (!value || value.trim() === '') {
+                                        return 'Harap masukkan password.';
+                                    }
+                                },
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    document.getElementById("rfid-user").value = result.value;
+                                    var params = new URLSearchParams(window.location.href);
+                                    console.log(params.get('rfid'));
+                                    if (params.get('rfid') == result.value) {
+                                        event.target.submit();
+                                    } else {
                                         Swal.fire({
-                                            title: 'Konfirmasi RFID',
-                                            input: 'text',
-                                            inputLabel: 'Masukkan RFID anda:',
-                                            showCancelButton: true,
-                                            confirmButtonText: 'Submit',
-                                            cancelButtonText: 'Batal',
-                                            confirmButtonColor: '#00B7FF',
-                                            cancelButtonColor: '#FF0000',
-                                            allowOutsideClick: false,
-                                            inputValidator: (value) => {
-                                            if (!value || value.trim() === '') {
-                                                return 'Harap masukkan password.';
-                                            }
-                                            },
-                                        }).then((result) => {
-                                            if (result.isConfirmed) {
-                                                document.getElementById("rfid-user").value = result.value;
-                                                var params = new URLSearchParams(window.location.href);
-                                                console.log(params.get('rfid'));
-                                                if (params.get('rfid') == result.value) {
-                                                    event.target.submit();
-                                                }
-                                                else {
-                                                    Swal.fire({
-                                                        icon: 'error',
-                                                        title: 'Oops...',
-                                                        text: 'RFID tidak sama',
-                                                    });
-                                                }
-                                            }
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: 'RFID tidak sama',
                                         });
                                     }
-                                </script>
-                            </form>
+                                }
+                            });
+                            return false;
+                        }
+                    </script>
+
                         </div>
 
 
