@@ -20,7 +20,7 @@ class TransaksiController extends Controller
     public function index()
     {
         $barang = barang::all();
-        return view('transaksi.data', compact('barang'));
+        return view('transaksi.data', compact('barang' , 'user'));
     }
 
     /**
@@ -30,13 +30,14 @@ class TransaksiController extends Controller
      */
     public function create(Request $request)
     {
-        $data = User::where('RFID', $request->rfid)->get();
+        $data = User::where('RFID', $request->rfid)->first();
+        $user = User::where('saldo', $request->saldo)->where('RFID', $request->rfid)->first();
         $hasil = $data->count();
         if($hasil === 0){
             return redirect()->back();
         }
         $barang = barang::all();
-        return view('transaksi.data', compact('data','barang'));
+        return view('transaksi.data', compact('data','barang' , 'user'));
     }
 
     /**

@@ -61,14 +61,27 @@
                 <div class="col-span-12">
                     <nav>
                         <ul class="flex flex-wrap items-center justify-center">
-                            <li class="mr-5"><a href="index.html" class="text-dark font-medium text-base uppercase transition-all hover:text-orange relative before:w-5 before:h-1px before:empty before:absolute before:top-3 before:bg-dark before:transform before:rotate-115 before:-right-5">Halaman</a></li>
-                            <li class="text-dark font-medium text-base uppercase mr-5">pembelian</li>
+                            <img src="{{ asset('admin/images/hummashitam.png') }}" class="w-48" alt=""
+                            srcset="">
                         </ul>
                     </nav>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="flex justify-end">
+        <p class="text-base font-semibold text-gray-700">
+            Saldo Anda:
+            @if ($user)
+                <span id="jumlah_semua" class="text-base font-bold text-blue-500">{{ $user->saldo }}</span>
+            @else
+                <span class="text-red-500">Data pengguna tidak ditemukan.</span>
+            @endif
+        </p>
+    </div>
+        
+
     <div class="py-24">
         <div class="container">
             <div class="grid grid-cols-1 gap-x-5">
@@ -135,7 +148,11 @@
                     </table>
                         <input type="hidden" name="rfid_user" id="rfid-user">
                         <div class="flex justify-between px-8 mt-4">
-                            <p>Total keseluruhan Rp. <span id="jumlah_semua">0</span></p>
+                            <p class="text-base font-semibold text-gray-700">
+                                Total keseluruhan:
+                                <span id="jumlah_semua" class="text-base font-bold text-blue-500">Rp. 0</span>
+                            </p>
+
                             <input type="hidden" id="form_total_semua" value="0">
                             <button type="submit" class="hidden bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="btn-bayar">Bayar</button>
                         </div>

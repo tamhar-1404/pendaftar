@@ -43,9 +43,8 @@
     <link rel="stylesheet" href="kode/css/style.css" />
 
 </head>
+<body class="font-poppins text-dark text-sm leading-loose" style="background-image: url('{{ asset('admin/images/kamii.jpg') }}'); background-size: cover ; no-repeat;">
 
-
-<body class="font-poppins text-dark text-sm leading-loose">
     <!-- Header start -->
 
     <!-- Header end -->
@@ -96,7 +95,6 @@
                         </form>
 
                     </div>
-
 
 
 

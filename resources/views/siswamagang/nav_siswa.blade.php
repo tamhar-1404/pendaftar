@@ -557,8 +557,15 @@
                         <a href="">History Transaksi</a>
                     </li>
                 </ul>
+                <ul class="sub-menu">
+
+                </ul>
             </li>
-        </ul>
-    </div>
+            <li class="mt-1">
+                    <button onclick="showStep(1)" class="border border-blue-400 px-4 py-1 text-blue-400 hover:bg-blue-400 hover:text-white rounded">Isi saldo</button>
+
+            </li>
+        </div>
+    </ul>
 </header>
 <!-- end header section -->
