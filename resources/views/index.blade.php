@@ -82,12 +82,55 @@
                         <i class="mdi mdi-menu text-[24px]"></i>
                     </button>
                 </div>
+                <script>
+                    function confirmReject(event) {
+                      event.preventDefault();
+
+                      Swal.fire({
+                        title: 'Penolakan',
+                        input: 'text',
+                        inputLabel: 'Masukkan alasan penolakan:',
+                        showCancelButton: true,
+                        confirmButtonText: 'Kirim',
+                        cancelButtonText: 'Batal',
+                        confirmButtonColor: '#00B7FF',
+                        cancelButtonColor: '#FF0000',
+                        allowOutsideClick: false,
+                        inputValidator: (value) => {
+                          if (!value || value.trim() === '') {
+                            return 'Harap masukkan alasan penolakan.';
+                          }
+                        },
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          const alasanInput = document.createElement("input");
+                          alasanInput.setAttribute("type", "hidden");
+                          alasanInput.setAttribute("name", "alasan");
+                          alasanInput.setAttribute("value", result.value);
+                          event.target.appendChild(alasanInput);
+
+                          Swal.fire({
+                            title: 'Data berhasil ditolak',
+                            icon: 'success',
+                          }).then(() => {
+                            event.target.submit();
+                          });
+                        }
+                      });
+                    }
+                  </script>
 
                 <!-- Navbar Manu -->
-                <div class="navigation lg_992:order-1 lg_992:flex hidden ms-auto" id="menu-collapse">
+                <div class="navigation lg_992:order-1 lg_992:flex hidden ms-auto" id="menu-collapse ">
                     <ul class="navbar-nav nav-light" id="navbar-navlist">
                         <li class="nav-item text-gray-400">
-                            <a href="{{ route('kode_beli') }}" target="_blank" class="hover:text-white">
+                            <button class="border border-blue-400 px-4 rounded hover:bg-blue-500 hover:text-white" onclick="confirmReject(event)">Cek Saldo</button>
+                        </li>
+                    </ul>
+                    &nbsp; &nbsp;
+                    <ul class="navbar-nav nav-light" id="navbar-navlist">
+                        <li class="nav-item text-gray-400">
+                            <a href="{{ route('kode_beli') }}"  class="hover:text-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -96,10 +139,13 @@
                             </a>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </nav>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
         <!-- Navbar End -->
         <div class=" relative flex items-center justify-center h-screen overflow-hidden">
             <img src="{{ asset('admin/images/kamii.jpg') }}" class="absolute z-10 brightness-50 blur-xs" alt=""
