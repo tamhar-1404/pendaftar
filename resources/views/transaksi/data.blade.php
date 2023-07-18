@@ -119,7 +119,7 @@
                                     <span><p class=" text-center bg-white" id="total_harga_{{$data->kode}}">{{$data->harga}}</p></span>
                                 </td>
                                   <td class="p-3  text-center">
-                                    <button id="cancel" data-kode="{{$data->kode}}" class="close"><i class="icon-close"></i></button>
+                                    <a id="cancel" data-kode="{{$data->kode}}" class="close"><i class="icon-close"></i></a>
                                 </td>
                             </tr>
 
