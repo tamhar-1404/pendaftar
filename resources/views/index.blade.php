@@ -95,35 +95,28 @@
                 </div>
             </div>
         </nav>
+
         <!-- Navbar End -->
-        <div
-            class="relative flex items-center
-                  justify-center h-screen overflow-hidden">
-           <img src="{{ asset('admin/images/bg.jpg') }}"   class="absolute z-10 w-auto
-           min-w-full min-h-full max-w-none" alt="" srcset="">
+        <div class="relative flex items-center justify-center h-screen overflow-hidden">
+            <img src="{{ asset('admin/images/tangan.jpg') }}" class="absolute z-10 brightness-50" alt=""
+                srcset="">
+
+            <div class="absolute z-10">
+                <h3 class="font-medium leading-normal font-bold text-5xl mb-5 mt-10 text-white animate-fade-in">
+                    Selamat Datang di
+                    Hummasoft
+                </h3>
+                <p class="text-slate-400 text-lg max-w-xl mx-auto justify-between">Website ini akan memberikan
+                    pengalaman anda
+                    yang
+                    berbeda coba perhatikan dan pelajari dengan cermat.</p>
+            </div>
         </div>
 
-        <!-- Hero Start -->
-        <section class="relative md:py-24 py-16 bg-gray-50 dark:bg-slate-800" id="features" id="home">
-            <div class="absolute bg-gradient-to-t to-slate-950/50 via-slate-950/75 from-slate-950"></div>
-                    <h3 class="font-medium leading-normal text-4xl mb-5 mt-10 text-slate-800">We're Helping to Achieve
-                        your
-                        Success.</h3>
-
-                    <p class="text-slate-400 text-lg max-w-xl mx-auto">This is just a simple text made for this unique
-                        and
-                        awesome template, you can replace it with any text.</p>
-
-                    <div class="mt-8">
-                        <a href="#"
-                            class="py-2 px-5 mb-5 inline-block font-normal tracking-wide border align-middle transition duration-500 ease-in-out text-base text-center bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white rounded-md"><i
-                                class="uil uil-envelope"></i> Contact Now</a>
-                    </div>
-                </div>
-                <!--end grid-->
-            </div>
-            <!--end container-->
-        </section>
+        <!--end grid-->
+        </div>
+        <!--end container-->
+    </section>
     </section>
     <!--end section-->
     <!-- Hero End -->
@@ -154,7 +147,7 @@
                         <div
                             class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-violet-600 rounded-xl transition duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
                             <img src="/admin/assets/images/tailwind.png" alt=""
-                                class="w-12 h-12 hover:scale-125">
+                                class="w-12 h-12 hover:scale-125 animate-pulse">
                         </div>
                     </div>
 
@@ -177,7 +170,7 @@
                         <div
                             class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-violet-600 rounded-xl transition duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
                             <img src="/admin/assets/images/htmll.png" alt=""
-                                class="w-12 h-12 hover:scale-125">
+                                class="w-12 h-12 hover:scale-125 animate-pulse">
                         </div>
                     </div>
 
@@ -199,7 +192,7 @@
                         <div
                             class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-violet-600 rounded-xl transition duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
                             <img src="/admin/assets/images/nodee.png" alt=""
-                                class="w-10 h-10 hover:scale-125">
+                                class="w-10 h-10 hover:scale-125 animate-pulse">
                         </div>
                     </div>
 
@@ -221,7 +214,7 @@
                         <div
                             class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-violet-600 rounded-xl transition duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
                             <img src="/admin/assets/images/laravel.png" alt=""
-                                class="w-14 h-12 hover:scale-125">
+                                class="w-14 h-12 hover:scale-125 animate-pulse">
                         </div>
                     </div>
 
@@ -243,7 +236,8 @@
                         <i data-feather="hexagon" class="h-28 w-28 fill-violet-600/5 mx-auto rotate-[30deg]"></i>
                         <div
                             class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-violet-600 rounded-xl transition duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
-                            <img src="/admin/assets/images/js.png" alt="" class="w-20 h-12 hover:scale-125">
+                            <img src="/admin/assets/images/js.png" alt=""
+                                class="w-20 h-12 hover:scale-125 animate-pulse">
                         </div>
                     </div>
 
@@ -267,7 +261,7 @@
                         <div
                             class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-violet-600 rounded-xl transition duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
                             <img src="/admin/assets/images/alphine.svg" alt=""
-                                class="w-12 h-12 hover:scale-125">
+                                class="w-12 h-12 hover:scale-125 animate-pulse">
                         </div>
                     </div>
 

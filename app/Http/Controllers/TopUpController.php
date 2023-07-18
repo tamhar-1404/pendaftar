@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\TopUp;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TerimaTopup;
 use App\Http\Requests\StoreTopUpRequest;
 use App\Http\Requests\UpdateTopUpRequest;
 
@@ -15,8 +19,10 @@ class TopUpController extends Controller
      */
     public function index()
     {
-        return view('TopUp.index');
+        $TopUp = TopUp::where('status', 'menunggu')->get();
+        return view('TopUp.index', compact('TopUp'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -34,10 +40,11 @@ class TopUpController extends Controller
      * @param  \App\Http\Requests\StoreTopUpRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTopUpRequest $request)
+    public function store(Request $request, $id)
     {
-        //
+       //
     }
+
 
     /**
      * Display the specified resource.
@@ -47,7 +54,7 @@ class TopUpController extends Controller
      */
     public function show(TopUp $topUp)
     {
-        //
+        dd('succes');
     }
 
     /**
@@ -68,10 +75,40 @@ class TopUpController extends Controller
      * @param  \App\Models\TopUp  $topUp
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTopUpRequest $request, TopUp $topUp)
+    public function update(Request $request, TopUp $topUp, $id)
     {
-        //
+        $topup = TopUp::find($id);
+        $user = $topup->user;
+        $this->validate($request, [
+            'saldo' => 'required|numeric',
+        ]);
+
+
+        $saldoLama = $user->saldo;
+
+        $saldoBaru = $request->saldo;
+
+        $saldoAkhir = $saldoLama + $saldoBaru;
+
+        $user->saldo = $saldoAkhir;
+        $user->save();
+
+        $topup->update([
+            'status' => $request->status
+        ]);
+
+        // $emailData = [
+        //     'topup' => $topup,
+        //     'user' => $user
+        // ];
+        $saldo = ['saldo'=> $request->saldo, 'total_saldo'=>$user->saldo, 'name'=>$user->name];
+        Mail::to($user->email)->send(new TerimaTopup($saldo));
+
+        return redirect()->back();
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -79,8 +116,13 @@ class TopUpController extends Controller
      * @param  \App\Models\TopUp  $topUp
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TopUp $topUp)
+
+    public function tolaktopup (){
+        dd('succes');
+    }
+
+    public function destroy(Request $request, $topUp)
     {
-        //
+      //
     }
 }
