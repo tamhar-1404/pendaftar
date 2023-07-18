@@ -103,28 +103,23 @@ class SiswaController extends Controller
      * @param  \App\Models\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, Siswa $siswa , User $user , $id)
     {
         $user = User::find($id);
         $this->validate($request,[
-            'RFID' => [
-                'required',
-                Rule::exists(User::class, 'RFID')
-            ],
+          'RFID'=>'required'
         ]);
         $user->update([
             'RFID'=>$request->RFID
         ]);
         return redirect()->back();
     }
-    
-
     public function rfid()
     {
         $users = User::where('role', 'Siswa')
                     ->whereNull('RFID')
                     ->get();
-
         return view('rfid.index', compact('users'));
     }
 
@@ -139,9 +134,6 @@ class SiswaController extends Controller
         // ]);
         // return redirect()->back();
     }
-
-
-
     /**
      * Remove the specified resource from storage.
      *

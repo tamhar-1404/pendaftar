@@ -41,6 +41,7 @@ class HistoryAdminController extends Controller
      * @param  \App\Http\Requests\StoreHistory_AdminRequest  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         // dd($request->all());
