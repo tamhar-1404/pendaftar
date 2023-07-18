@@ -85,11 +85,13 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            <form action="{{ route('History_Admin.store') }}" method="POST" onsubmit="return konfirmasirfid(event)">
+                            @csrf
                             @forelse ( $barang as $data)
-
                             <tr id="{{$data->kode}}" class=" hidden">
-                                <input type="text" name="kode" value="{{ $data->kode }}">
+                                <input type="hidden" id="form-kode-{{ $data->kode }}" value="{{ $data->kode }}">
+                                {{-- <input type="hidden" name="nama" value="{{ $data->nama }}">
+                                <input type="hidden" name="foto" value="{{ $data->foto }}"> --}}
                                 <td class="w-32 p-3  text-center">
                                     <img src="{{ asset('storage/pendataanbarang/' . $data->foto) }}" class="w-10" alt="" srcset="">
 
@@ -101,11 +103,13 @@
                                 <td class="p-3  text-center">
                                     <div class="flex count border border-solid border-gray-300 p-2 h-11">
                                         <button class="decrement flex-auto w-5 leading-none" aria-label="button">-</button>
-                                        <input id="quantity_{{$data->kode}}" type="number" min="1" max="100" step="1" value="1" class="quantity__input flex-auto w-8 text-center focus:outline-none " name="quantity">
+                                        <input id="quantity_{{$data->kode}}" type="number" min="1" max="100" step="1" value="1" class="quantity__input flex-auto w-8 text-center focus:outline-none ">
                                         <button class="increment flex-auto w-5 leading-none" aria-label="button">+</button>
                                     </div>
                                 </td>
                                 <td class="p-3  text-center" id="total_semua">
+                                    <input type="hidden" name="total_harga" id="form_total_{{ $data->kode }}">
+                                    <input type="hidden" name="harga" id="form_total_{{ $data->harga }}" value="{{ $data->harga }}">
                                     <span><p class=" text-center bg-white" id="total_harga_{{$data->kode}}">{{$data->harga}}</p></span>
                                 </td>
                                   <td class="p-3  text-center">
@@ -123,11 +127,10 @@
 
                         </tbody>
                     </table>
-                    <form action="{{ route('History_Admin.store') }}" method="POST" onsubmit="return konfirmasirfid(event)">
-                        @csrf
                         <input type="hidden" name="rfid_user" id="rfid-user">
                         <div class="flex justify-between px-8 mt-4">
                             <p>Total keseluruhan Rp. <span id="jumlah_semua">0</span></p>
+                            <input type="hidden" id="form_total_semua" value="0">
                             <button type="submit" class="hidden bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="btn-bayar">Bayar</button>
                         </div>
                     </form>
@@ -169,7 +172,6 @@
                             return false;
                         }
                     </script>
-
                         </div>
 
 
@@ -209,11 +211,16 @@
                 var hargaValue = parseFloat($('#harga' + kode).data('harga'));
                 total_semua -= parseInt(document.getElementById('total_harga_' + kode).innerText);
                 document.getElementById('jumlah_semua').innerHTML = total_semua;
+                document.getElementById('form_total_semua').value = total_semua.toString();
 
                 element.classList.add('hidden');
                 element.classList.remove('1');
                 document.getElementById('quantity_' + kode).value = 1;
                 document.getElementById('total_harga_' + kode).innerText = hargaValue;
+                document.getElementById('form_total_' + kode).value = hargaValue;
+
+                $('#form-kode-' + kode).removeAttr('name');
+                $('#quantity_' + kode).removeAttr('name');
                 document.getElementById('kodebarang').focus();
                 console.log(document.getElementById('jumlah_semua').innerText);
                 if (total_semua == 0 && document.getElementById('jumlah_semua').innerText == "0") {
@@ -224,9 +231,12 @@
     });
 
     document.getElementById('jumlah_semua').innerHTML = total_semua;
+    document.getElementById('form_total_semua').value = total_semua.toString();
     function showStep() {
         document.getElementById('btn-bayar').classList.remove('hidden')
         let kodebarang = document.getElementById('kodebarang').value;
+        $('#form-kode-' + kodebarang).attr('name', 'kode[]');
+        $('#quantity_' + kodebarang).attr('name', 'quantity[]');
         console.log('kodebarang:', kodebarang);
         let databarang = document.getElementById(`${kodebarang}`);
         console.log('databarang:', databarang);
@@ -246,12 +256,14 @@
 
             // Perbarui elemen "total_harga" dengan nilai total baru
             document.getElementById('total_harga_' + kodebarang).innerText = total;
+            document.getElementById('form_total_' + kodebarang).value = hargaValue;
             total_semua += hargaValue;
             console.log("Total semua : ", total_semua);
 
             document.getElementById('kodebarang').value = null;
             document.getElementById('kodebarang').focus();
             document.getElementById('jumlah_semua').innerHTML = total_semua;
+            document.getElementById('form_total_semua').value = total_semua.toString();
         } else if (databarang) {
             databarang.classList.remove('hidden');
             databarang.classList.add('1');
@@ -263,6 +275,7 @@
             document.getElementById('kodebarang').value = null;
             document.getElementById('kodebarang').focus();
             document.getElementById('jumlah_semua').innerHTML = total_semua;
+            document.getElementById('form_total_semua').value = total_semua.toString();
         } else {
             document.getElementById('kodebarang').value = null;
             document.getElementById('kodebarang').focus();
