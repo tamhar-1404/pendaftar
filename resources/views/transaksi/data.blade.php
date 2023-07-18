@@ -8,6 +8,7 @@
     <meta name="AdsBot-Google" content="noindex follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    @vite('resources/css/app.css')
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href={{asset("transaksi/images/favicon.webp")}} />
@@ -64,10 +65,10 @@
     <div class="py-24">
         <div class="container">
             <div class="grid grid-cols-1 gap-x-5">
-                <div class="w-full  h-7 mb-8 flex-col justify-center ">
-                    <p class="text-center">scan kode barang</p>
+                <div class="w-full  h-7 mb-8 flex-col justify-center items-center ">
+                    <p class="">scan kode barang</p>
 
-                        <input autofocus onchange="showStep(0)" class="border border-gray-300 w-[70%]" type="text" name="kodebarang" id="kodebarang">
+                     <input autofocus onchange="showStep(0)" class="border border-gray-300 w-[40%]" type="text" name="kodebarang" id="kodebarang">
 
                 </div><br>
                 <div class="overflow-x-auto">
@@ -119,9 +120,13 @@
 
                         </tbody>
                     </table>
-                    <div>
-                        <p>Total keseluruhan Rp. <span id="jumlah_semua">0</span></p>
-                    </div>
+
+                        <div class="flex justify-between px-8 mt-4">
+                            <p>Total keseluruhan Rp. <span id="jumlah_semua">0</span></p>
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Bayar</button>
+                        </div>
+
+
                 </div>
 
             </div>
