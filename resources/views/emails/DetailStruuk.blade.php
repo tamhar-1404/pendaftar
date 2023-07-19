@@ -45,47 +45,96 @@
         th {
             background-color: #f2f2f2;
         }
+
+        /* Reset CSS */
+        body,
+        h1,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container Style */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Title Style */
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #0d47a1;
+            /* Blue color */
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Soft Style */
+        .soft {
+            color: #000;
+            /* Black color */
+        }
+
+        /* Body Style */
+        .body {
+            font-size: 16px;
+            color: #000;
+            /* Black color */
+            margin-top: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <center>
-            <h1>Humma<span class="soft">soft</span></h1>
+            <h1>Humma<span class="soft">store</span></h1>
         </center>
-        <h3>Struk Belanja Anda</h2>
-            <table>
+        <h3>Struk Belanja Anda</h3>
+        <h4>Tanggal Belanja :{{ date('d F Y') }}</h4>
+        </h3>
+        <table>
+            <tr>
+                <th>Nama Barang</th>
+                <th>Jumlah</th>
+                <th>Harga Barang (per item)</th>
+                <th>Total Harga</th>
+            </tr>
+            @php
+                $i = 0;
+            @endphp
+            @foreach ($saldo['name'] as $item)
                 <tr>
-                    <th>Nama Barang</th>
-                    <th>Jumlah</th>
-                    <th>Harga Barang (per item)</th>
-                    <th>Total Harga</th>
+                    <td>{{ $item }}</td>
+                    <td>{{ $saldo['quantity'][$i] }}</td>
+                    <td>{{ $saldo['harga'][$i] }}</td>
+                    <td>{{ (int) $saldo['quantity'][$i] * (int) $saldo['harga'][$i] }}</td>
                 </tr>
                 @php
-                    $i = 0;
+                    $i++;
                 @endphp
-                @foreach ($saldo['name'] as $item)
-                    <tr>
-                        <td>{{ $item }}</td>
-                        <td>{{ $saldo['quantity'][$i] }}</td>
-                        <td>{{ $saldo['harga'][$i] }}</td>
-                        <td>{{ (int) $saldo['quantity'][$i] * (int) $saldo['harga'][$i] }}</td>
-                    </tr>
-                @endforeach
-                <!-- Tambahkan baris sesuai dengan data barang yang dibeli -->
-                <tr>
-                    <td colspan="3" style="text-align: right">
-                        Total Belanja:
-                    </td>
-                    <td>{{ $saldo['total'] }}</td>
-                    <!-- Ganti nilai dengan total belanja -->
-                </tr>
-                <tr>
-                    <td colspan="3" style="text-align: right">Total Saldo:</td>
-                    <td>{{ $saldo['total_saldo'] }}</td>
-                    <!-- Ganti nilai dengan total saldo -->
-                </tr>
-            </table>
+            @endforeach
+            <!-- Tambahkan baris sesuai dengan data barang yang dibeli -->
+            <tr>
+                <td colspan="3" style="text-align: right">
+                    Total Belanja:
+                </td>
+                <td>{{ $saldo['total'] }}</td>
+                <!-- Ganti nilai dengan total belanja -->
+            </tr>
+            <tr>
+                <td colspan="3" style="text-align: right">Total Saldo:</td>
+                <td>{{ $saldo['total_saldo'] }}</td>
+                <!-- Ganti nilai dengan total saldo -->
+            </tr>
+        </table>
     </div>
 </body>
 
