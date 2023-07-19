@@ -61,7 +61,9 @@ class TransaksiController extends Controller
     {
         //
     }
-
+    public function nota(){
+        return view('nota.index');
+    }
     /**
      * Show the form for editing the specified resource.
      *

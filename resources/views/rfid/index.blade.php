@@ -141,32 +141,25 @@
                                                        </svg>
                                                    </button>
                                                </div>
-
                                            </div>
-
-
                                            <div class="modal-footer mt-4 flex justify-end gap-2">
                                                <button class="bg-white py-1 px-3 rounded-lg border border-gray-200 text-gray-300" >Atur Ulang</button>
                                                <button class="bg-blue-400 py-1 px-3 rounded-lg border border-gray-200 text-white" >Pakai</button>
                                            </div>
                                        </div>
                                    </div>
-
                                    <script>
                                        function openModal() {
                                            document.getElementById("modal").classList.remove("hidden");
                                        }
-
                                        function closeModal() {
                                            document.getElementById("modal").classList.add("hidden");
                                        }
-
                                        function changeColor(checkbox) {
                                            var label = document.getElementById("checkboxLabel");
                                            if (checkbox.checked) {
                                                label.classList.add("bg-gray-900 text-white");
                                                label.classList.remove("bg-white");
-
                                            } else {
                                                label.classList.add("bg-white");
                                                label.classList.remove("bg-blue-500");
@@ -176,7 +169,6 @@
                                </ul>
                            </div>
                            {{-- tabel --}}
-
                            <div class="flex flex-col">
                                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                                    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
