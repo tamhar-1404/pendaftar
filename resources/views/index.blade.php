@@ -141,7 +141,8 @@
                                                     text: 'RFID tidak ditemukan!',
                                                 });
                                             } else {
-                                                
+                                                console.log(response);
+
                                                 Swal.fire({
                                                     title: 'Data Pengguna',
                                                     html: `<table>

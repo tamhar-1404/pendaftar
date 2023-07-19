@@ -16,8 +16,15 @@ class GetuserController extends Controller
     public function find_rfid(Request $request)
     {
         $rfid = $request->rfid;
-        if (User::where('rfid', $rfid)->exists()) {
-            return User::where('rfid', $rfid)->first()->id;
+        $user = User::where('rfid', $rfid);
+        if ($user->exists()) {
+            $usr = $user->first();
+            return response()->json([
+                'nama' => $usr->name,
+                'email' => $usr->email,
+                'sekolah' => $usr->sekolah,
+                'saldo' => $usr->saldo,
+            ]);
         }
         else {
             return "not found";
