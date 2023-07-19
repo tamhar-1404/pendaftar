@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-
+<h
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -172,9 +172,7 @@
                                         <td class="p-3  text-center">
                                             <div class="flex count border border-solid border-gray-300 p-2 h-11">
 
-                                                <input id="quantity_{{ $data->kode }}" type="number"
-                                                    value="1"
-                                                    class="quantity__input flex-auto w-8 text-center focus:outline-none ">
+                                        <input id="quantity_{{$data->kode}}" type="number" data-sebelumnya="1" value="1" class="quantity__input flex-auto w-8 text-center focus:outline-none " onchange="inputquantity({{ $data->kode }})" min="1" oninvalid="this.setCustomValidity('Stok minimal 1')" oninput="setCustomValidity('')">
 
                                             </div>
                                         </td>
@@ -281,34 +279,31 @@
         let currentStep = 1;
         let total_semua = 0;
 
-        var closeButtons = document.querySelectorAll('.close');
-
-        closeButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                var kode = this.getAttribute('data-kode');
-                var element = document.getElementById(kode);
-                if (element) {
-                    Swal.fire({
-                        title: 'kamu yakin?',
-                        text: "kamu bisa scan kode lagi untuk membelinya",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Hapus'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            Swal.fire(
-                                'Terhapus',
-                                'list barang kamu sudah di hapus.',
-                                'success'
-                            )
-                            var hargaValue = parseFloat($('#harga' + kode).data('harga'));
-                            total_semua -= parseInt(document.getElementById('total_harga_' + kode)
-                                .innerText);
-                            document.getElementById('jumlah_semua').innerHTML = total_semua;
-                            document.getElementById('form_total_semua').value = total_semua
-                                .toString();
+    var closeButtons = document.querySelectorAll('.close');
+    closeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var kode = this.getAttribute('data-kode');
+            var element = document.getElementById(kode);
+            if (element) {
+                Swal.fire({
+                title: 'kamu yakin?',
+                text: "kamu bisa scan kode lagi untuk membelinya",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                    'Terhapus',
+                    'list barang kamu sudah di hapus.',
+                    'success'
+                    )
+                    var hargaValue = parseFloat($('#harga' + kode).data('harga'));
+                    total_semua -= parseInt(document.getElementById('total_harga_' + kode).innerText);
+                    document.getElementById('jumlah_semua').innerHTML = total_semua;
+                    document.getElementById('form_total_semua').value = total_semua.toString();
 
                             element.classList.add('hidden');
                             element.classList.remove('1');
@@ -331,45 +326,25 @@
             });
         });
 
+    function inputquantity(kode) {
+        let quantity = document.getElementById('quantity_' + kode).valueAsNumber;
+        let harga = parseInt(document.getElementById('harga' + kode).innerText) * quantity;
+        total_semua += parseInt(document.getElementById('harga' + kode).innerText);
         document.getElementById('jumlah_semua').innerHTML = total_semua;
-        document.getElementById('form_total_semua').value = total_semua.toString();
-
-        function showStep() {
-            let kodebarang = document.getElementById('kodebarang').value;
-            $('#form-kode-' + kodebarang).attr('name', 'kode[]');
-            $('#quantity_' + kodebarang).attr('name', 'quantity[]');
-            console.log('kodebarang:', kodebarang);
-            let databarang = document.getElementById(`${kodebarang}`);
-            console.log('databarang:', databarang);
-            document.getElementById('total_keseluruhan').classList.remove('hidden');
-            if (databarang && databarang.classList.contains('1')) {
-
-                document.getElementById('total_keseluruhan')
-                let kode = 'quantity_' + kodebarang;
-                let value_old = document.getElementById(kode).valueAsNumber;
-                console.log('Value old : ', value_old);
-                let maxStok = parseInt(databarang.getAttribute('data-max-stok'));
-                if (value_old > maxStok - 1) {
-                    alert("Stok habis");
-                    document.getElementById('kodebarang').value = null;
-                    document.getElementById('kodebarang').focus();
-                    return;
-                }
-                let value_new = value_old + 1;
-                document.getElementById(kode).value = value_new;
-
-                // Ubah cara mendapatkan harga menggunakan jQuery
-                var hargaValue = parseFloat($('#harga' + kodebarang).data('harga'));
-                console.log('Nilai harga:', hargaValue);
-
-                let total = hargaValue * value_new;
-                console.log('harga total: ', total.toString());
-
-                // Perbarui elemen "total_harga" dengan nilai total baru
-                document.getElementById('total_harga_' + kodebarang).innerText = total;
-                document.getElementById('form_total_' + kodebarang).value = hargaValue;
-                total_semua += hargaValue;
-                console.log("Total semua : ", total_semua);
+        document.getElementById('total_harga_' + kode).innerHTML = harga.toString();
+        document.getElementById('quantity_' + kode).setAttribute('data-sebelumnya', data_sekarang.toString());
+    }
+    document.getElementById('jumlah_semua').innerHTML = total_semua;
+    document.getElementById('form_total_semua').value = total_semua.toString();
+    function showStep() {
+        let kodebarang = document.getElementById('kodebarang').value;
+        $('#form-kode-' + kodebarang).attr('name', 'kode[]');
+        $('#quantity_' + kodebarang).attr('name', 'quantity[]');
+        console.log('kodebarang:', kodebarang);
+        let databarang = document.getElementById(`${kodebarang}`);
+        console.log('databarang:', databarang);
+        document.getElementById('total_keseluruhan').classList.remove('hidden');
+        if (databarang && databarang.classList.contains('1')) {
 
                 document.getElementById('kodebarang').value = null;
                 document.getElementById('kodebarang').focus();
@@ -411,4 +386,3 @@
 
 </body>
 
-</html>

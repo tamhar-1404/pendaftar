@@ -109,12 +109,11 @@
                     </style>
                     <script>
                         function confirmReject(event) {
-                            let user_id;
                             event.preventDefault();
                             Swal.fire({
                                 title: 'RFID',
                                 input: 'text',
-                                inputLabel: 'Masukan kode RFID :',
+                                inputLabel: 'Masukkan kode RFID:',
                                 showCancelButton: true,
                                 confirmButtonText: 'Kirim',
                                 cancelButtonText: 'Batal',
@@ -128,7 +127,6 @@
                                 },
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    const alasanPenolakan = result.value;
                                     $.ajax({
                                         url: "{{ route('find_rfid') }}",
                                         method: 'POST',
@@ -136,67 +134,43 @@
                                             rfid: result.value,
                                         },
                                         success: function(response) {
-                                            if (response == 'not found') {
+                                            if (response === 'not found') {
                                                 Swal.fire({
                                                     icon: 'error',
                                                     title: 'Oops...',
                                                     text: 'RFID tidak ditemukan!',
                                                 });
                                             } else {
-                                                user_id = response;
+                                                
                                                 Swal.fire({
-                                                    title: 'password',
-                                                    input: 'password',
-                                                    inputLabel: 'Masukan password :',
-                                                    showCancelButton: true,
-                                                    confirmButtonText: 'Kirim',
-                                                    cancelButtonText: 'Batal',
-                                                    confirmButtonColor: '#00B7FF',
-                                                    cancelButtonColor: '#FF0000',
-                                                    allowOutsideClick: false,
-                                                    inputValidator: (value) => {
-                                                        if (!value || value.trim() === '') {
-                                                            return 'Harap masukkan password';
-                                                        }
-                                                    },
-                                                }).then((a) => {
-                                                    console.log(a.value);
-                                                    if (a.isConfirmed) {
-                                                        // Awal
-                                                        console.log('id : ', parseInt(user_id));
-                                                        console.log('password : ', a.value);
-                                                        $.ajax({
-                                                            url: `/pw/${user_id}/${a.value}`,
-                                                            method: 'GET',
-                                                            success: function(response) {
-                                                                console.log(response);
-                                                                if (response == 'error') {
-                                                                    Swal.fire({
-                                                                        icon: 'error',
-                                                                        title: 'Oops...',
-                                                                        text: 'Password salah!',
-                                                                    });
-                                                                } else {
-                                                                    Swal.fire({
-                                                                        text: `Total saldo anda : Rp. ${response.toString()}!`,
-                                                                        customClass: {
-                                                                            content: 'text-black'
-                                                                        }
-                                                                    });
-                                                                }
-                                                            },
-                                                        });
-                                                        //Akhir
+                                                    title: 'Data Pengguna',
+                                                    html: `<table>
+                                                              <tr>
+                                                                <th>Nama</th>
+                                                                <th>Email</th>
+                                                                <th>Sekolah</th>
+                                                                <th>Saldo</th>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>${response.nama}</td>
+                                                                <td>${response.email}</td>
+                                                                <td>${response.sekolah}</td>
+                                                                <td>Rp. ${response.saldo}</td>
+                                                              </tr>
+                                                            </table>`,
+                                                    customClass: {
+                                                        content: 'text-black'
                                                     }
                                                 });
                                             }
                                         }
                                     });
-
                                 }
                             });
                         }
                     </script>
+
+
                     &nbsp; &nbsp;
                     <ul class="navbar-nav nav-light" id="navbar-navlist hover:text-white">
                         <li class="nav-item text-gray-400">
