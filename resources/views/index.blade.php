@@ -77,7 +77,7 @@
                     <ul class="list-none menu-social mb-0">
                         <li class="inline">
                             <a href="{{ route('login.index') }}"
-                                class="h-9 w-9 inline-flex items-center text-center justify-center text-base font-normal tracking-wide border align-middle transition duration-500 ease-in-out rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i
+                                class="h-9 w-9 inline-flex items-center text-center justify-center text-base font-normal tracking-wide border align-middle transition duration-500 ease-in-out rounded-full hover:text-white text-white"><i
                                     class="uil uil-user"></i></a>
                         </li>
                     </ul>
