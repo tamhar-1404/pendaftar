@@ -34,6 +34,10 @@ class TransaksiController extends Controller
         $a = $request->rfid;
 
         $data = User::where('RFID', $request->rfid)->first();
+        if (!$data) {
+            $message = 'RFID anda tidak ditemukan!';
+            return redirect()->back()->with('error', $message);
+        }
         $user = $data->saldo;
 
         $barang = barang::all();

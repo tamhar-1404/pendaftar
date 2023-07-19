@@ -77,7 +77,7 @@
                     <ul class="list-none menu-social mb-0">
                         <li class="inline">
                             <a href="{{ route('login.index') }}"
-                                class="h-9 w-9 inline-flex items-center text-center justify-center text-base font-normal tracking-wide border align-middle transition duration-500 ease-in-out rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i
+                                class="h-9 w-9 inline-flex items-center text-center justify-center text-base font-normal tracking-wide border align-middle transition duration-500 ease-in-out rounded-full hover:text-white text-white"><i
                                     class="uil uil-user"></i></a>
                         </li>
                     </ul>
@@ -109,12 +109,11 @@
                     </style>
                     <script>
                         function confirmReject(event) {
-                            let user_id;
                             event.preventDefault();
                             Swal.fire({
                                 title: 'RFID',
                                 input: 'text',
-                                inputLabel: 'Masukan kode RFID :',
+                                inputLabel: 'Masukkan kode RFID:',
                                 showCancelButton: true,
                                 confirmButtonText: 'Kirim',
                                 cancelButtonText: 'Batal',
@@ -128,7 +127,6 @@
                                 },
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    const alasanPenolakan = result.value;
                                     $.ajax({
                                         url: "{{ route('find_rfid') }}",
                                         method: 'POST',
@@ -136,56 +134,44 @@
                                             rfid: result.value,
                                         },
                                         success: function(response) {
-                                            if (response == 'not found') {
+                                            if (response === 'not found') {
                                                 Swal.fire({
                                                     icon: 'error',
                                                     title: 'Oops...',
                                                     text: 'RFID tidak ditemukan!',
                                                 });
                                             } else {
+                                                console.log(response);
+
                                                 Swal.fire({
-                                                text: `Total saldo anda : Rp. ${response.toString()}!`,
-                                                customClass: {
-                                                    content: 'text-black'
-                                                }
-                                            });.then((a) => {
-                                                    console.log(a.value);
-                                                    if (a.isConfirmed) {
-                                                        // Awal
-                                                        console.log('id : ', parseInt(user_id));
-                                                        console.log('password : ', a.value);
-                                                        $.ajax({
-                                                            url: `/pw/${user_id}/${a.value}`,
-                                                            method: 'GET',
-                                                            success: function(response) {
-                                                                console.log(response);
-                                                                if (response == 'error') {
-                                                                    Swal.fire({
-                                                                        icon: 'error',
-                                                                        title: 'Oops...',
-                                                                        text: 'Password salah!',
-                                                                    });
-                                                                } else {
-                                                                    Swal.fire({
-                                                                        text: `Total saldo anda : Rp. ${response.toString()}!`,
-                                                                        customClass: {
-                                                                            content: 'text-black'
-                                                                        }
-                                                                    });
-                                                                }
-                                                            },
-                                                        });
-                                                        //Akhir
+                                                    title: 'Data Pengguna',
+                                                    html: `<table>
+                                                              <tr>
+                                                                <th>Nama</th>
+                                                                <th>Email</th>
+                                                                <th>Sekolah</th>
+                                                                <th>Saldo</th>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>${response.nama}</td>
+                                                                <td>${response.email}</td>
+                                                                <td>${response.sekolah}</td>
+                                                                <td>Rp. ${response.saldo}</td>
+                                                              </tr>
+                                                            </table>`,
+                                                    customClass: {
+                                                        content: 'text-black'
                                                     }
                                                 });
                                             }
                                         }
                                     });
-
                                 }
                             });
                         }
                     </script>
+
+
                     &nbsp; &nbsp;
                     <ul class="navbar-nav nav-light" id="navbar-navlist hover:text-white">
                         <li class="nav-item text-gray-400">

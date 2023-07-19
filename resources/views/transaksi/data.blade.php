@@ -173,7 +173,7 @@
                                 <td class="p-3  text-center">
                                     <div class="flex count border border-solid border-gray-300 p-2 h-11">
 
-                                        <input id="quantity_{{$data->kode}}" type="number" value="1" class="quantity__input flex-auto w-8 text-center focus:outline-none ">
+                                        <input id="quantity_{{$data->kode}}" type="number" data-sebelumnya="1" value="1" class="quantity__input flex-auto w-8 text-center focus:outline-none " onchange="inputquantity({{ $data->kode }})" min="1" oninvalid="this.setCustomValidity('Stok minimal 1')" oninput="setCustomValidity('')">
 
                                     </div>
                                 </td>
@@ -272,7 +272,6 @@
     let total_semua = 0;
 
     var closeButtons = document.querySelectorAll('.close');
-
     closeButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             var kode = this.getAttribute('data-kode');
@@ -318,6 +317,15 @@
         });
     });
 
+    function inputquantity(kode) {
+        let quantity = document.getElementById('quantity_' + kode).valueAsNumber;
+        let harga = parseInt(document.getElementById('harga' + kode).innerText) * quantity;
+        total_semua += parseInt(document.getElementById('harga' + kode).innerText);
+        total_semua = harga;
+        document.getElementById('jumlah_semua').innerHTML = total_semua;
+        document.getElementById('total_harga_' + kode).innerHTML = harga.toString();
+        document.getElementById('quantity_' + kode).setAttribute('data-sebelumnya', data_sekarang.toString());
+    }
     document.getElementById('jumlah_semua').innerHTML = total_semua;
     document.getElementById('form_total_semua').value = total_semua.toString();
     function showStep() {
@@ -396,4 +404,4 @@
 </script>
 
 </body>
-</html>
+
