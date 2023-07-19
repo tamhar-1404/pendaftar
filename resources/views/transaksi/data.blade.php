@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Sinp- Single Product Ecommerce HTML Template</title>
+    <title>Hummasoft  | Pembelian</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <meta name="robots" content="noindex, follow" /> -->
     <meta name="AdsBot-Google" content="noindex follow" />
@@ -75,8 +75,8 @@
                 <div class="col-span-12">
                     <nav>
                         <ul class="flex flex-wrap items-center justify-center">
-                            <li class="mr-5"><a href="index.html" class="text-dark font-medium text-base uppercase transition-all hover:text-orange relative before:w-5 before:h-1px before:empty before:absolute before:top-3 before:bg-dark before:transform before:rotate-115 before:-right-5">Halaman</a></li>
-                            <li class="text-dark font-medium text-base uppercase mr-5">pembelian</li>
+                            <img src="{{ asset('admin/images/hummashitam.png') }}" class="w-48" alt=""
+                            srcset="">
                         </ul>
                     </nav>
                 </div>
@@ -93,7 +93,7 @@
                 <p class="ml-2 mt-4">cari barang</p>
                 <center>
 
-                    <input class="border border-gray-300 w-[95%]" type="text" name="kodebarang">
+                    <input class="border px-2 border-gray-300 w-[95%]" type="text" name="kodebarang">
                 </cesnter>
                 <div class="w-full h-full bg-red-500 overflow-y-scroll">
 
@@ -173,17 +173,17 @@
                 <div class="w-full  h-7 mb-8 flex-col justify-center items-center ">
                     <p class="">scan kode barang</p>
 
-                     <input autofocus onchange="showStep(0)" class="border border-gray-300 w-[40%]" type="text" name="kodebarang" id="kodebarang">
+                     <input autofocus onchange="showStep(0)" class="border px-2 border-gray-300 w-[40%]" type="text" name="kodebarang" id="kodebarang">
 
                 </div><br>
                 <div class="overflow-x-auto">
                     <table class="w-full min-w-max">
                         <thead>
                             <tr>
-                                <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Image</th>
-                                <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Product</th>
-                                <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Price</th>
-                                <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Quantity</th>
+                                <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Foto</th>
+                                <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Nama Barang</th>
+                                <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Harga</th>
+                                <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Stok</th>
                                 <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Total</th>
                                 <th class="bg-gray-300 p-3  text-center font-medium text-sm capitalize">Remove</th>
                             </tr>
@@ -203,9 +203,9 @@
                                 <td class="p-3  text-center"><span><span id="harga{{$data->kode}}" data-harga="{{$data->harga}}">{{$data->harga}}</span></span></td>
                                 <td class="p-3  text-center">
                                     <div class="flex count border border-solid border-gray-300 p-2 h-11">
-                                        <button class="decrement flex-auto w-5 leading-none" aria-label="button">-</button>
-                                        <input id="quantity_{{$data->kode}}" type="number" min="1" max="100" step="1" value="1" class="quantity__input flex-auto w-8 text-center focus:outline-none ">
-                                        <button class="increment flex-auto w-5 leading-none" aria-label="button">+</button>
+
+                                        <input id="quantity_{{$data->kode}}" type="number" value="1" class="quantity__input flex-auto w-8 text-center focus:outline-none ">
+
                                     </div>
                                 </td>
                                 <td class="p-3  text-center" id="total_semua">
@@ -230,7 +230,7 @@
                     </table>
                         <input type="hidden" name="rfid_user" id="rfid-user">
                         <div class="flex justify-between px-8 mt-4">
-                            <p id="total_keseluruhan" class="hidden">Total keseluruhan Rp. <span id="jumlah_semua">0</span></p>
+                            <p id="total_keseluruhan" class="hidden text-base font-semibold text-gray-700">Total keseluruhan Rp. <span id="jumlah_semua" class=" text-base font-semibold text-blue-400">0</span></p>
                             <input type="hidden" id="form_total_semua" value="0">
                             <button type="submit" class="hidden bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="btn-bayar">Bayar</button>
                         </div>
