@@ -178,7 +178,7 @@
                             <form action="{{ route('History_Admin.store') }}" method="POST" onsubmit="return konfirmasirfid(event)">
                             @csrf
                             @forelse ( $barang as $data)
-                            <tr id="{{$data->kode}}" class=" hidden">
+                            <tr id="{{$data->kode}}" class=" hidden" data-max-stok={{ $data->stok }}>
                                 <input type="hidden" id="form-kode-{{ $data->kode }}" value="{{ $data->kode }}">
                                 <td class="w-32 p-3  text-center">
                                     <img src="{{ asset('storage/pendataanbarang/' . $data->foto) }}" class="w-10" alt="" srcset="">
@@ -320,7 +320,6 @@
     document.getElementById('jumlah_semua').innerHTML = total_semua;
     document.getElementById('form_total_semua').value = total_semua.toString();
     function showStep() {
-        document.getElementById('btn-bayar').classList.remove('hidden')
         let kodebarang = document.getElementById('kodebarang').value;
         $('#form-kode-' + kodebarang).attr('name', 'kode[]');
         $('#quantity_' + kodebarang).attr('name', 'quantity[]');
@@ -329,8 +328,17 @@
         console.log('databarang:', databarang);
 
         if (databarang && databarang.classList.contains('1')) {
+
             let kode = 'quantity_' + kodebarang;
             let value_old = document.getElementById(kode).valueAsNumber;
+            console.log('Value old : ',value_old);
+            let maxStok = parseInt(databarang.getAttribute('data-max-stok'));
+            if (value_old > maxStok - 1) {
+                alert("Stok habis");
+                document.getElementById('kodebarang').value = null;
+                document.getElementById('kodebarang').focus();
+                return;
+            }
             let value_new = value_old + 1;
             document.getElementById(kode).value = value_new;
 
@@ -352,9 +360,17 @@
             document.getElementById('jumlah_semua').innerHTML = total_semua;
             document.getElementById('form_total_semua').value = total_semua.toString();
         } else if (databarang) {
+            let maxStok = parseInt(databarang.getAttribute('data-max-stok'));
+            console.log('Max stok : ',maxStok);
+            if (maxStok <= 0) {
+                alert("Stok habis");
+                document.getElementById('kodebarang').value = null;
+                document.getElementById('kodebarang').focus();
+                return;
+            }
+            document.getElementById('btn-bayar').classList.remove('hidden')
             databarang.classList.remove('hidden');
             databarang.classList.add('1');
-
             let hargaAwal = parseInt(document.getElementById('total_harga_' + kodebarang).innerText);
             total_semua += hargaAwal;
             console.log("Total semua : ", total_semua);

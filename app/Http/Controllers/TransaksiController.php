@@ -19,7 +19,7 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $barang = barang::all();
+        $barang = barang::whereNotIn('stok', 0)->get();
         return view('transaksi.data', compact('barang' , 'user'));
     }
 
