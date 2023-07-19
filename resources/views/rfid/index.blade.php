@@ -213,7 +213,7 @@
                                                             <div class="modal-content bg-white p-6">
 
                                                               <h2 class="text-2xl font-bold mb-4">Tambah RFID   {{ $user->name }}</h2>
-                                                              <input type="text" name="RFID" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
+                                                              <input autofocus type="text" name="RFID" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
                                                               <div class="mt-6 flex justify-end">
 
                                                               </div>

@@ -44,65 +44,82 @@ class HistoryAdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
-    {
-        $kode = $request->kode;
-        $quantity = $request->quantity;
-        $siswa = User::where('rfid', $request->rfid_user)->first();
-        $i = 0;
-        $total_semua = 0;
-        $name = [];
-        $harga = [];
-        foreach ($kode as $item) {
-            $data = Barang::where('kode', $item)->first();
-            $total_semua += (int) $quantity[$i] * (int) $data->harga;
+     public function store(Request $request)
+     {
+         $kode = $request->kode;
+         $quantity = $request->quantity;
+         $siswa = User::where('rfid', $request->rfid_user)->first();
+         $i = 0;
+         $total_semua = 0;
+         $name = [];
+         $harga = [];
 
-            if ($siswa->saldo > $total_semua) {
-                array_push($name, $data->nama);
-                array_push($harga, $data->harga);
+         // Simpan informasi stok yang tidak mencukupi ke dalam array
+         $stok_tidak_cukup = [];
 
-               HistoryTransaksi::create([
-                    'nama' => $siswa->name,
-                    'rfid' => $request->rfid_user,
-                    'name' => $data->nama,
-                    'foto' => $data->foto,
-                    'harga' => $data->harga,
-                    'stok' => $quantity[$i],
-                    'total' => (int) $quantity[$i] * (int) $data->harga,
-                    'tanggal' => Carbon::now()->format('Y-m-d'),
-                ]);
+         foreach ($kode as $item) {
+             $data = Barang::where('kode', $item)->first();
+             $total_semua += (int) $quantity[$i] * (int) $data->harga;
 
+             // Periksa apakah stok mencukupi untuk transaksi
+             if ((int) $data->stok >= (int) $quantity[$i]) {
+                 array_push($name, $data->nama);
+                 array_push($harga, $data->harga);
 
+                 HistoryTransaksi::create([
+                     'nama' => $siswa->name,
+                     'rfid' => $request->rfid_user,
+                     'name' => $data->nama,
+                     'foto' => $data->foto,
+                     'harga' => $data->harga,
+                     'stok' => $quantity[$i],
+                     'total' => (int) $quantity[$i] * (int) $data->harga,
+                     'tanggal' => Carbon::now()->format('Y-m-d'),
+                 ]);
 
-                $barang = Barang::where('kode', $item);
-                $stok_lama = (int) $barang->first()->stok;
-                $stok_baru = (int) $quantity[$i];
-                $barang->update([
-                    'stok' => $stok_lama - $stok_baru
-                ]);
+                 $barang = Barang::where('kode', $item);
+                 $stok_lama = (int) $barang->first()->stok;
+                 $stok_baru = (int) $quantity[$i];
+                 $barang->update([
+                     'stok' => $stok_lama - $stok_baru
+                 ]);
+             } else {
+                 // Jika stok tidak mencukupi, tambahkan informasi ke array
+                 $stok_tidak_cukup[] = $data->nama;
+             }
 
-            }
-            else {
-                return redirect()->back()->with('error', 'Saldo anda tidak cukup');
-            }
+             $i++;
+         }
 
-            $i++;
-        }
-        $user = User::where('rfid', $request->rfid_user);
-        $user_saldo = $user->first()->saldo;
+         // Jika ada stok yang tidak mencukupi, kembalikan dengan pesan error
+         if (!empty($stok_tidak_cukup)) {
+             $message = 'Stok tidak mencukupi untuk barang: ' . implode(', ', $stok_tidak_cukup);
+             return redirect()->back()->with('error', $message);
+         }
 
-        $saldo = ['name'=> $name,'quantity' => $request->quantity, 'harga'=>$harga, 'total'=>$total_semua, 'total_saldo'=>(int) $user_saldo - (int) $total_semua];
-        $list =$saldo;
-        // dd($list);
-        $user->update([
-            'saldo' => (int) $user_saldo - (int) $total_semua,
-        ]);
-        // dd($user->first()->email);
-        Mail::to($user->first()->email)->send(new stukEmail($saldo));
-        $hasil = (int) $user_saldo - (int) $total_semua;
-        // dd($historiArray);
-        return view('nota.index', compact('total_semua', 'user','list', 'hasil'));
-    }
+         // Proses transaksi dan pengurangan saldo
+         $user = User::where('rfid', $request->rfid_user);
+         $user_saldo = $user->first()->saldo;
+
+         $saldo = [
+             'name' => $name,
+             'quantity' => $request->quantity,
+             'harga' => $harga,
+             'total' => $total_semua,
+             'total_saldo' => (int) $user_saldo - (int) $total_semua
+         ];
+         $list = $saldo;
+
+         $user->update([
+             'saldo' => (int) $user_saldo - (int) $total_semua,
+         ]);
+
+         Mail::to($user->first()->email)->send(new stukEmail($saldo));
+         $hasil = (int) $user_saldo - (int) $total_semua;
+
+         return view('nota.index', compact('total_semua', 'user', 'list', 'hasil'));
+     }
+
 
     /**
      * Display the specified resource.
