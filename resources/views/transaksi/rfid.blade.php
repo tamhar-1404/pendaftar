@@ -31,7 +31,7 @@
         rel="stylesheet" />
 
     <!-- Vendor CSS (Bootstrap & Icon Font) -->
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Plugins CSS (All Plugins Files) -->
 
     <link rel="stylesheet" href="kode/css/plugins/swiper-bundle.min.css" />
@@ -50,6 +50,16 @@
 
     <!-- Header end -->
 
+    @if (session()->has('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                confirmButtonColor: '#3b82f6',
+                text: "{{ session('error') }}",
+            });
+        </script>
+    @endif
 
     <!-- Hero section start -->
     <div class="py-5 bg-gray-light">
@@ -69,11 +79,12 @@
 
 
     <!-- Hero section end -->
-    <div  class="spin_load  screen_loader animate__animated fixed inset-1 z-[30] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+    <div
+        class="spin_load  screen_loader animate__animated fixed inset-1 z-[30] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
-            <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
+            <img src="{{ asset('load/logo.png') }}" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
 
@@ -100,27 +111,27 @@
 
 
 
-    <!-- JS Vendor, Plugins & Activation Script Files -->
+                    <!-- JS Vendor, Plugins & Activation Script Files -->
 
-    <!-- Vendors JS -->
-    <script src="kode/js/vendor/modernizr-3.11.7.min.js"></script>
-    <script src="kode/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="kode/js/vendor/jquery-migrate-3.3.2.min.js"></script>
-    <!-- Plugins JS -->
-    <script src="kode/js/plugins/swiper-bundle.min.js"></script>
-    <script src="kode/js/plugins/popper.min.js"></script>
-    <script src="kode/js/plugins/tippy-bundle.umd.min.js"></script>
-    <script src="kode/js/plugins/jquery.magnific-popup.min.js"></script>
-    <script src="kode/js/plugins/jquery.ajaxchimp.min.js"></script>
+                    <!-- Vendors JS -->
+                    <script src="kode/js/vendor/modernizr-3.11.7.min.js"></script>
+                    <script src="kode/js/vendor/jquery-3.6.0.min.js"></script>
+                    <script src="kode/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+                    <!-- Plugins JS -->
+                    <script src="kode/js/plugins/swiper-bundle.min.js"></script>
+                    <script src="kode/js/plugins/popper.min.js"></script>
+                    <script src="kode/js/plugins/tippy-bundle.umd.min.js"></script>
+                    <script src="kode/js/plugins/jquery.magnific-popup.min.js"></script>
+                    <script src="kode/js/plugins/jquery.ajaxchimp.min.js"></script>
 
-    <!-- Activation JS -->
-    <script src="kode/js/main.js"></script>
+                    <!-- Activation JS -->
+                    <script src="kode/js/main.js"></script>
 
-    <script>
-        $(window).on('load', function() {
-            $('.spin_load').fadeOut();
-        });
-    </script>
+                    <script>
+                        $(window).on('load', function() {
+                            $('.spin_load').fadeOut();
+                        });
+                    </script>
 
 
 </body>
