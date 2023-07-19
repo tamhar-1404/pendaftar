@@ -61,35 +61,28 @@
                     <th>Harga Barang (per item)</th>
                     <th>Total Harga</th>
                 </tr>
-                <tr>
-                    <td>Barang 1</td>
-                    <td>3</td>
-                    <td>10.000</td>
-                    <td>30.000</td>
-                </tr>
-                <tr>
-                    <td>Barang 2</td>
-                    <td>2</td>
-                    <td>20.000</td>
-                    <td>40.000</td>
-                </tr>
-                <tr>
-                    <td>Barang 3</td>
-                    <td>1</td>
-                    <td>50.000</td>
-                    <td>50.000</td>
-                </tr>
+                @php
+                    $i = 0;
+                @endphp
+                @foreach ($saldo['name'] as $item)
+                    <tr>
+                        <td>{{ $item }}</td>
+                        <td>{{ $saldo['quantity'][$i] }}</td>
+                        <td>{{ $saldo['harga'][$i] }}</td>
+                        <td>{{ (int) $saldo['quantity'][$i] * (int) $saldo['harga'][$i] }}</td>
+                    </tr>
+                @endforeach
                 <!-- Tambahkan baris sesuai dengan data barang yang dibeli -->
                 <tr>
                     <td colspan="3" style="text-align: right">
                         Total Belanja:
                     </td>
-                    <td>120.000</td>
+                    <td>{{ $saldo['total'] }}</td>
                     <!-- Ganti nilai dengan total belanja -->
                 </tr>
                 <tr>
                     <td colspan="3" style="text-align: right">Total Saldo:</td>
-                    <td>200.000</td>
+                    <td>{{ $saldo['total_saldo'] }}</td>
                     <!-- Ganti nilai dengan total saldo -->
                 </tr>
             </table>

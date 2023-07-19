@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\History_Admin;
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\TopUp;
+use App\Models\Barang;
 use Illuminate\Http\Request;
+use App\Models\History_Admin;
+use App\Models\HistoryTransaksi;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreHistory_AdminRequest;
 use App\Http\Requests\UpdateHistory_AdminRequest;
-use App\Models\Barang;
-use App\Models\HistoryTransaksi;
-use App\Models\User;
-use Carbon\Carbon;
+use App\Mail\stukEmail;
 
 class HistoryAdminController extends Controller
 {
@@ -44,16 +46,21 @@ class HistoryAdminController extends Controller
 
     public function store(Request $request)
     {
+        
         $kode = $request->kode;
         $quantity = $request->quantity;
         $siswa = User::where('rfid', $request->rfid_user)->first();
         $i = 0;
         $total_semua = 0;
+        $name = [];
+        $harga = [];
         foreach ($kode as $item) {
             $data = Barang::where('kode', $item)->first();
             $total_semua += (int) $quantity[$i] * (int) $data->harga;
 
             if ($siswa->saldo > $total_semua) {
+                array_push($name, $data->nama);
+                array_push($harga, $data->harga);
                 HistoryTransaksi::create([
                     'nama' => $siswa->name,
                     'rfid' => $request->rfid_user,
@@ -82,9 +89,12 @@ class HistoryAdminController extends Controller
         $user = User::where('rfid', $request->rfid_user);
         $user_saldo = $user->first()->saldo;
 
+        $saldo = ['name'=> $name,'quantity' => $request->quantity, 'harga'=>$harga, 'total'=>$total_semua, 'total_saldo'=>(int) $user_saldo - (int) $total_semua];
         $user->update([
             'saldo' => (int) $user_saldo - (int) $total_semua,
         ]);
+        // dd($user->first()->email);
+        Mail::to($user->first()->email)->send(new stukEmail($saldo));
         return redirect()->route('kode_beli');
     }
 

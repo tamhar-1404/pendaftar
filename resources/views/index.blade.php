@@ -18,7 +18,8 @@
     <link href="/admin/assets/images/logo.png" rel="shortcut icon">
     @vite('resources/css/app.css')
     <!-- Css -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="landing/libs/tobii/css/tobii.min.css" rel="stylesheet">
     <!-- Main Css -->
@@ -35,7 +36,7 @@
 
 
 <body class="font-inter text-base text-slate-950 dark:text-white dark:bg-slate-900">
-       <!-- screen loader -->
+    <!-- screen loader -->
 
     <!-- Loader Start -->
     <!-- <div id="preloader">
@@ -95,19 +96,16 @@
                 <div class="navigation lg_992:order-1 lg_992:flex hidden ms-auto" id="menu-collapse ">
                     <ul class="navbar-nav nav-light" id="navbar-navlist">
                         <li class="nav-item text-gray-400">
-<<<<<<< Updated upstream
-                            <button class="bg-blue-500 px-4 py-1 text-gray-200 rounded hover:bg-blue-600 hover:text-gray-50 font-semibold" onclick="confirmReject(event)">Cek Saldo</button>
-=======
-                            <button class="border bg-blue-400 px-4 py-1 rounded text-white hover:bg-blue-500 hover:text-white" onclick="confirmReject(event)">Cek Saldo</button>
->>>>>>> Stashed changes
+                            <button
+                                class="bg-blue-500 px-4 py-1 text-gray-200 rounded hover:bg-blue-600 hover:text-gray-50 font-semibold"
+                                onclick="confirmReject(event)">Cek Saldo</button>
                         </li>
                     </ul>
                     <style>
-                    .text-black {
-                        color: black;
-                        font-weight: bold;
-                    }
-
+                        .text-black {
+                            color: black;
+                            font-weight: bold;
+                        }
                     </style>
                     <script>
                         function confirmReject(event) {
@@ -137,15 +135,14 @@
                                         data: {
                                             rfid: result.value,
                                         },
-                                        success: function (response) {
+                                        success: function(response) {
                                             if (response == 'not found') {
                                                 Swal.fire({
                                                     icon: 'error',
                                                     title: 'Oops...',
                                                     text: 'RFID tidak ditemukan!',
                                                 });
-                                            }
-                                            else {
+                                            } else {
                                                 user_id = response;
                                                 Swal.fire({
                                                     title: 'password',
@@ -171,7 +168,7 @@
                                                         $.ajax({
                                                             url: `/pw/${user_id}/${a.value}`,
                                                             method: 'GET',
-                                                            success: function (response) {
+                                                            success: function(response) {
                                                                 console.log(response);
                                                                 if (response == 'error') {
                                                                     Swal.fire({
@@ -179,8 +176,7 @@
                                                                         title: 'Oops...',
                                                                         text: 'Password salah!',
                                                                     });
-                                                                }
-                                                                else {
+                                                                } else {
                                                                     Swal.fire({
                                                                         text: `Total saldo anda : Rp. ${response.toString()}!`,
                                                                         customClass: {
@@ -200,19 +196,24 @@
                                 }
                             });
                         }
-
                     </script>
                     &nbsp; &nbsp;
                     <ul class="navbar-nav nav-light" id="navbar-navlist hover:text-white">
                         <li class="nav-item text-gray-400">
                             <a href="{{ route('kode_beli') }}" class="hover:text-white">
-                              <svg class="w-7 h-7 hover:fill-white" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                                <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                <style>svg { fill: #e6e6e6; }</style>
-                                <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
-                              </svg>
+                                <svg class="w-7 h-7 hover:fill-white" xmlns="http://www.w3.org/2000/svg" height="1em"
+                                    viewBox="0 0 576 512">
+                                    <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                    <style>
+                                        svg {
+                                            fill: #e6e6e6;
+                                        }
+                                    </style>
+                                    <path
+                                        d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+                                </svg>
                             </a>
-                          </li>
+                        </li>
                     </ul>
 
                 </div>
@@ -220,7 +221,7 @@
         </nav>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
         <!-- Navbar End -->
         <div class=" relative flex items-center justify-center h-screen overflow-hidden">
             <img src="{{ asset('admin/images/kamii.jpg') }}" class="absolute z-10 brightness-50 blur-xs" alt=""
@@ -239,8 +240,8 @@
         </div>
 
         <!--end grid-->
-        </div>
-        <!--end container-->
+    </div>
+    <!--end container-->
     </div>
 
     <!--end div-->
@@ -250,11 +251,12 @@
 
     <!--end div-->
     <!-- End -->
-    <div  class="spin_load  screen_loader animate__animated fixed inset-1 z-[0] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+    <div
+        class="spin_load  screen_loader animate__animated fixed inset-1 z-[0] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
-            <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
+            <img src="{{ asset('load/logo.png') }}" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
 
@@ -607,7 +609,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
