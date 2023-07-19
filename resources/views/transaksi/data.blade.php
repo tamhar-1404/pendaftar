@@ -180,8 +180,6 @@
                             @forelse ( $barang as $data)
                             <tr id="{{$data->kode}}" class=" hidden">
                                 <input type="hidden" id="form-kode-{{ $data->kode }}" value="{{ $data->kode }}">
-                                {{-- <input type="hidden" name="nama" value="{{ $data->nama }}">
-                                <input type="hidden" name="foto" value="{{ $data->foto }}"> --}}
                                 <td class="w-32 p-3  text-center">
                                     <img src="{{ asset('storage/pendataanbarang/' . $data->foto) }}" class="w-10" alt="" srcset="">
 
