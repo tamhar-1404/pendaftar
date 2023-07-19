@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Sinp- Single Product Ecommerce HTML Template</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <meta name="robots" content="noindex, follow" /> -->
     <meta name="AdsBot-Google" content="noindex follow" />
     <meta name="description" content="">
@@ -40,6 +41,19 @@
 
 </head>
 <body class="font-poppins text-dark text-sm leading-loose">
+    @if(session()->has('error'))
+    <script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "{{ session('error')}}",
+    });
+    </script>
+    @endif
+    @if(session()->has('success'))
+        <script>
+        </script>
+    @endif
     <div  class="spin_load  screen_loader animate__animated fixed inset-1 z-[30] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
@@ -216,7 +230,7 @@
                     </table>
                         <input type="hidden" name="rfid_user" id="rfid-user">
                         <div class="flex justify-between px-8 mt-4">
-                            <p>Total keseluruhan Rp. <span id="jumlah_semua">0</span></p>
+                            <p id="total_keseluruhan" class="hidden">Total keseluruhan Rp. <span id="jumlah_semua">0</span></p>
                             <input type="hidden" id="form_total_semua" value="0">
                             <button type="submit" class="hidden bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="btn-bayar">Bayar</button>
                         </div>
@@ -312,6 +326,7 @@
                 console.log(document.getElementById('jumlah_semua').innerText);
                 if (total_semua == 0 && document.getElementById('jumlah_semua').innerText == "0") {
                     document.getElementById('btn-bayar').classList.add('hidden')
+                    document.getElementById('total_keseluruhan').classList.add('hidden');
                 }
             }
         });
@@ -326,9 +341,10 @@
         console.log('kodebarang:', kodebarang);
         let databarang = document.getElementById(`${kodebarang}`);
         console.log('databarang:', databarang);
-
+        document.getElementById('total_keseluruhan').classList.remove('hidden');
         if (databarang && databarang.classList.contains('1')) {
 
+            document.getElementById('total_keseluruhan')
             let kode = 'quantity_' + kodebarang;
             let value_old = document.getElementById(kode).valueAsNumber;
             console.log('Value old : ',value_old);

@@ -95,11 +95,7 @@
                 <div class="navigation lg_992:order-1 lg_992:flex hidden ms-auto" id="menu-collapse ">
                     <ul class="navbar-nav nav-light" id="navbar-navlist">
                         <li class="nav-item text-gray-400">
-<<<<<<< Updated upstream
-                            <button class="bg-blue-500 px-4 py-1 text-gray-200 rounded hover:bg-blue-600 hover:text-gray-50 font-semibold" onclick="confirmReject(event)">Cek Saldo</button>
-=======
                             <button class="border bg-blue-400 px-4 py-1 rounded text-white hover:bg-blue-500 hover:text-white" onclick="confirmReject(event)">Cek Saldo</button>
->>>>>>> Stashed changes
                         </li>
                     </ul>
                     <style>
