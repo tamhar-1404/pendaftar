@@ -109,7 +109,7 @@ class SiswamagangController extends Controller
             'password' => 'required'
         ]);
         $data = $request -> saldo;
-        if($data > 5000){
+        if($data >= 5000){
             if (auth()->user()->RFID == null) {
                 return back()->with('error', 'RFID tidak ada');
             }

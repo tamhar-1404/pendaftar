@@ -1558,7 +1558,7 @@
                                 <h1>Dashboard</h1>
                             </div>
                              <div class="flex justify-end font-semibold bg-blue-500 text-white px-4 py-1 rounded">
-                              <h1>Saldo anda : {{ $user->saldo }}</h1>
+                              <h1>Saldo anda : {{ ($user->saldo) ? $user->saldo : "0" }}</h1>
                              </div>
                         </div>
                             {{--  modal  --}}
