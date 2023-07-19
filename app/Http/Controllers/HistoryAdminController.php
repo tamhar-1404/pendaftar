@@ -44,9 +44,7 @@ class HistoryAdminController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
         $kode = $request->kode;
-        // dd($kode);
         $quantity = $request->quantity;
         $siswa = User::where('rfid', $request->rfid_user)->first();
         $i = 0;

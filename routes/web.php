@@ -27,6 +27,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\OpnameController;
 use App\Http\Controllers\RestockController;
 use App\Http\Controllers\transaksirfidController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\passwordController;
 
 /*
@@ -57,6 +58,7 @@ Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
 Route::resource('opname', App\Http\Controllers\OpnameController::class);
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
 Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
+Route::get('/nota' , [TransaksiController::class , 'nota'])->name('nota');
 Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
 Route::get('send-email' , [MailController::class,'index']);
 Route::get('siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa']);

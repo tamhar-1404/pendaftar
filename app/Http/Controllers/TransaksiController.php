@@ -19,7 +19,7 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $barang = barang::all();
+        $barang = barang::whereNotIn('stok', 0)->get();
         return view('transaksi.data', compact('barang' , 'user'));
     }
 
@@ -61,7 +61,9 @@ class TransaksiController extends Controller
     {
         //
     }
-
+    public function nota(){
+        return view('nota.index');
+    }
     /**
      * Show the form for editing the specified resource.
      *
