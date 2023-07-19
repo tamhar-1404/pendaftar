@@ -50,6 +50,7 @@
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
+                confirmButtonColor: '#3b82f6',
                 text: "{{ session('error') }}",
             });
         </script>
@@ -131,7 +132,7 @@
                     </div>
                 </div>
                 <div class="w-full  h-7 mb-8 flex-col ">
-                    <p class="text-center">scan kode barang</p>
+                    <p class="text-center font-bold uppercase">scan kode barang</p>
                     <div class="flex justify-center ">
                         <input autofocus onchange="showStep(0)" class="border px-2 border-gray-300 w-[30%]"
                             type="text" name="kodebarang" id="kodebarang">
@@ -224,7 +225,7 @@
                                 showCancelButton: true,
                                 confirmButtonText: 'Submit',
                                 cancelButtonText: 'Batal',
-                                confirmButtonColor: '#00B7FF',
+                                confirmButtonColor: '#3b82f6',
                                 cancelButtonColor: '#FF0000',
                                 allowOutsideClick: false,
                                 inputValidator: (value) => {
