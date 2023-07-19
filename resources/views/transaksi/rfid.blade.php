@@ -88,7 +88,7 @@
                     <div
                         class="flex flex-wrap justify-center items-center px-4 relative text-center md:max-w-xl mx-auto mb-10">
                         <form action="{{ route('transaksi.create') }}" method="get"
-                            class="flex items-center justify-center border border-gray-400">
+                            class="flex items-center justify-center ">
                             @csrf
                             <input id="mc-email" type="text" placeholder="Scan RFID anda"
                                 class="border border-solid border-primary mb-10  h-14 sm:h-16 rounded-full bg-transparent placeholder-primary placeholder-opacity-50 text-sm sm:text-base focus:outline-none py-1 pl-8 pr-14 sm:pr-36"
@@ -102,7 +102,10 @@
     </div>
 
     <div>
-        <img class="w-full h-1/2" src="{{asset("images/step.jpg")}}" alt="" srcset="">
+        <center>
+
+            <img class="w-2/2 h-full flex items-center " src="{{asset("images/step.jpg")}}" alt="" srcset="">
+        </center>
     </div>
 
 

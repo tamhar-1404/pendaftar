@@ -143,23 +143,12 @@
                                                     text: 'RFID tidak ditemukan!',
                                                 });
                                             } else {
-                                                user_id = response;
                                                 Swal.fire({
-                                                    title: 'password',
-                                                    input: 'password',
-                                                    inputLabel: 'Masukan password :',
-                                                    showCancelButton: true,
-                                                    confirmButtonText: 'Kirim',
-                                                    cancelButtonText: 'Batal',
-                                                    confirmButtonColor: '#00B7FF',
-                                                    cancelButtonColor: '#FF0000',
-                                                    allowOutsideClick: false,
-                                                    inputValidator: (value) => {
-                                                        if (!value || value.trim() === '') {
-                                                            return 'Harap masukkan password';
-                                                        }
-                                                    },
-                                                }).then((a) => {
+                                                text: `Total saldo anda : Rp. ${response.toString()}!`,
+                                                customClass: {
+                                                    content: 'text-black'
+                                                }
+                                            });.then((a) => {
                                                     console.log(a.value);
                                                     if (a.isConfirmed) {
                                                         // Awal

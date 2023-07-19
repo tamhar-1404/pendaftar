@@ -18,7 +18,7 @@ class GetuserController extends Controller
         $rfid = $request->rfid;
         if (User::where('rfid', $rfid)->exists()) {
             return User::where('rfid', $rfid)->first()->id;
-        }
+        }   
         else {
             return "not found";
         }
