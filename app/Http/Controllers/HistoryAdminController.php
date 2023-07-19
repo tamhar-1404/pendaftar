@@ -46,7 +46,6 @@ class HistoryAdminController extends Controller
 
     public function store(Request $request)
     {
-        
         $kode = $request->kode;
         $quantity = $request->quantity;
         $siswa = User::where('rfid', $request->rfid_user)->first();
@@ -61,7 +60,8 @@ class HistoryAdminController extends Controller
             if ($siswa->saldo > $total_semua) {
                 array_push($name, $data->nama);
                 array_push($harga, $data->harga);
-                HistoryTransaksi::create([
+
+               HistoryTransaksi::create([
                     'nama' => $siswa->name,
                     'rfid' => $request->rfid_user,
                     'name' => $data->nama,
@@ -71,6 +71,8 @@ class HistoryAdminController extends Controller
                     'total' => (int) $quantity[$i] * (int) $data->harga,
                     'tanggal' => Carbon::now()->format('Y-m-d'),
                 ]);
+
+
 
                 $barang = Barang::where('kode', $item);
                 $stok_lama = (int) $barang->first()->stok;
@@ -90,12 +92,16 @@ class HistoryAdminController extends Controller
         $user_saldo = $user->first()->saldo;
 
         $saldo = ['name'=> $name,'quantity' => $request->quantity, 'harga'=>$harga, 'total'=>$total_semua, 'total_saldo'=>(int) $user_saldo - (int) $total_semua];
+        $list =$saldo;
+        // dd($list);
         $user->update([
             'saldo' => (int) $user_saldo - (int) $total_semua,
         ]);
         // dd($user->first()->email);
         Mail::to($user->first()->email)->send(new stukEmail($saldo));
-        return redirect()->route('kode_beli');
+        $hasil = (int) $user_saldo - (int) $total_semua;
+        // dd($historiArray);
+        return view('nota.index', compact('total_semua', 'user','list', 'hasil'));
     }
 
     /**

@@ -83,99 +83,51 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-row h-screen">
-        <div class=" top-0 left-0 h-screen w-1/4 bg-gray-light mt-4 ml-4">
-            <div class="h-full flex flex-col">
-              <div class="flex items-center">
+    <div class="flex flex-row ">
+        <div class=" top-0 h-[700px] left-0  w-1/4 bg-gray-light mt-4 ml-4">
+            <div class="h-full flex flex-col  gap-5">
+              <div class="flex justify-center items-center">
                 <p class="text-lg font-semibold text-dark mt-2 ml-2">Menu</p>
               </div>
-              <div class="w-full  h-7 mb-8 flex-col justify-center items-center">
-                <p class="ml-2 mt-4">cari barang</p>
+              <div class="  h-7 mb-8 flex-col justify-center items-center">
+
                 <center>
 
                     <input class="border border-gray-300 w-[95%]" type="text" name="kodebarang">
                 </cesnter>
-                <div class="w-full h-full bg-red-500 overflow-y-scroll">
+                <div class="w-full max-h-[600px] mt-8  overflow-y-scroll">
+                    @forelse ($barang as $data )
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
+                        <div>
+                            <div class="font-bold text-">{{$data->nama}}</div>
+                            <p class="text-gray-700">{{$data->harga}}</p>
+                        </div>
+                    </div>
+                    @empty
 
-                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
-                        <div>
-                            <div class="font-bold text-">Nama Produk</div>
-                            <p class="text-gray-700">12000</p>
-                        </div>
-                    </div>
-                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
-                        <div>
-                            <div class="font-bold text-">Nama Produk</div>
-                            <p class="text-gray-700">12000</p>
-                        </div>
-                    </div>
-                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
-                        <div>
-                            <div class="font-bold text-">Nama Produk</div>
-                            <p class="text-gray-700">12000</p>
-                        </div>
-                    </div>
-                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
-                        <div>
-                            <div class="font-bold text-">Nama Produk</div>
-                            <p class="text-gray-700">12000</p>
-                        </div>
-                    </div>
-                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
-                        <div>
-                            <div class="font-bold text-">Nama Produk</div>
-                            <p class="text-gray-700">12000</p>
-                        </div>
-                    </div>
-                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
-                        <div>
-                            <div class="font-bold text-">Nama Produk</div>
-                            <p class="text-gray-700">12000</p>
-                        </div>
-                    </div>
-                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
-                        <div>
-                            <div class="font-bold text-">Nama Produk</div>
-                            <p class="text-gray-700">12000</p>
-                        </div>
-                    </div>
-                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
-                        <div>
-                            <div class="font-bold text-">Nama Produk</div>
-                            <p class="text-gray-700">12000</p>
-                        </div>
-                    </div>
-                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
-                        <div>
-                            <div class="font-bold text-">Nama Produk</div>
-                            <p class="text-gray-700">12000</p>
-                        </div>
-                    </div>
-                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
-                        <div>
-                            <div class="font-bold text-">Nama Produk</div>
-                            <p class="text-gray-700">12000</p>
-                        </div>
-                    </div>
-                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 ">
-                        <div>
-                            <div class="font-bold text-">Nama Produk</div>
-                            <p class="text-gray-700">12000</p>
-                        </div>
-                    </div>
+                    @endforelse
+
+
                 </div>
 
             </div><br>
             </div>
           </div>
         <div class="container">
-            <div class="grid grid-cols-1 gap-x-5">
-                <div class="w-full  h-7 mb-8 flex-col justify-center items-center ">
-                    <p class="">scan kode barang</p>
-
-                     <input autofocus onchange="showStep(0)" class="border border-gray-300 w-[40%]" type="text" name="kodebarang" id="kodebarang">
-
-                </div><br>
+            <div class="grid grid-cols-1 gap-5">
+                <div class="flex w-full justify-between  md:w-max-[50%]" >
+                    <div class="flex w-full justify-end font-semibold items-center  px-4 py-1 rounded">
+                        <div class=" flex text-white items-center py-1 rounded bg-blue-500 px-3">
+                            <p class="text-sm">Saldo anda sekarang : {{$user}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full  h-7 mb-8 flex-col ">
+                    <p class="text-center">scan kode barang</p>
+                    <div class="flex justify-center ">
+                        <input autofocus onchange="showStep(0)" class="border border-gray-300 w-[30%]" type="text" name="kodebarang" id="kodebarang">
+                    </div>
+                </div>
                 <div class="overflow-x-auto">
                     <table class="w-full min-w-max">
                         <thead>
@@ -309,25 +261,42 @@
             var kode = this.getAttribute('data-kode');
             var element = document.getElementById(kode);
             if (element) {
-                var hargaValue = parseFloat($('#harga' + kode).data('harga'));
-                total_semua -= parseInt(document.getElementById('total_harga_' + kode).innerText);
-                document.getElementById('jumlah_semua').innerHTML = total_semua;
-                document.getElementById('form_total_semua').value = total_semua.toString();
+                Swal.fire({
+                title: 'kamu yakin?',
+                text: "kamu bisa scan kode lagi untuk membelinya",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                    'Terhapus',
+                    'list barang kamu sudah di hapus.',
+                    'success'
+                    )
+                    var hargaValue = parseFloat($('#harga' + kode).data('harga'));
+                    total_semua -= parseInt(document.getElementById('total_harga_' + kode).innerText);
+                    document.getElementById('jumlah_semua').innerHTML = total_semua;
+                    document.getElementById('form_total_semua').value = total_semua.toString();
 
-                element.classList.add('hidden');
-                element.classList.remove('1');
-                document.getElementById('quantity_' + kode).value = 1;
-                document.getElementById('total_harga_' + kode).innerText = hargaValue;
-                document.getElementById('form_total_' + kode).value = hargaValue;
+                    element.classList.add('hidden');
+                    element.classList.remove('1');
+                    document.getElementById('quantity_' + kode).value = 1;
+                    document.getElementById('total_harga_' + kode).innerText = hargaValue;
+                    document.getElementById('form_total_' + kode).value = hargaValue;
 
-                $('#form-kode-' + kode).removeAttr('name');
-                $('#quantity_' + kode).removeAttr('name');
-                document.getElementById('kodebarang').focus();
-                console.log(document.getElementById('jumlah_semua').innerText);
-                if (total_semua == 0 && document.getElementById('jumlah_semua').innerText == "0") {
-                    document.getElementById('btn-bayar').classList.add('hidden')
-                    document.getElementById('total_keseluruhan').classList.add('hidden');
+                    $('#form-kode-' + kode).removeAttr('name');
+                    $('#quantity_' + kode).removeAttr('name');
+                    document.getElementById('kodebarang').focus();
+                    console.log(document.getElementById('jumlah_semua').innerText);
+                    if (total_semua == 0 && document.getElementById('jumlah_semua').innerText == "0") {
+                        document.getElementById('btn-bayar').classList.add('hidden')
+                    }
                 }
+                })
+
             }
         });
     });
