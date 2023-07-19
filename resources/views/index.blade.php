@@ -98,6 +98,13 @@
                             <button class="border border-blue-400 px-4 rounded hover:bg-blue-500 hover:text-white" onclick="confirmReject(event)">Cek Saldo</button>
                         </li>
                     </ul>
+                    <style>
+                    .text-black {
+                        color: black;
+                        font-weight: bold;
+                    }
+
+                    </style>
                     <script>
                         function confirmReject(event) {
                             let user_id;
@@ -170,11 +177,12 @@
                                                                     });
                                                                 }
                                                                 else {
-                                                                    Swal.fire(
-                                                                        'Saldo anda!',
-                                                                        response.toString(),
-                                                                        'success'
-                                                                    )
+                                                                    Swal.fire({
+                                                                        text: `Total saldo anda : Rp. ${response.toString()}!`,
+                                                                        customClass: {
+                                                                            content: 'text-black'
+                                                                        }
+                                                                    });
                                                                 }
                                                             },
                                                         });
