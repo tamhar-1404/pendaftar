@@ -98,7 +98,7 @@
                 <div class="w-full max-h-[600px] mt-8  overflow-y-scroll">
                     @forelse ($barang as $data )
                     <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
-                        <div>
+                        <div class="flex justify-between px-5">
                             <div class="font-bold text-">{{$data->nama}}</div>
                             <p class="text-gray-700">{{$data->harga}}</p>
                         </div>

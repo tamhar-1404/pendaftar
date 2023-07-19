@@ -80,7 +80,7 @@
 
     <!-- blog grid section start -->
 
-    <div class="py-24 mt-10">
+    <div class="pt-24 mt-10">
         <div class="container">
             <div class="flex flex-wrap flex-col lg:flex-row">
                 <div id="shoptab" class="flex-1">
@@ -96,6 +96,15 @@
                         </form>
 
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <img class="w-full h-1/2" src="{{asset("images/step.jpg")}}" alt="" srcset="">
+    </div>
+
 
 
 
