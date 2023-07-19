@@ -16,9 +16,9 @@
 
     <!-- CSS (Font, Vendor, Icon, Plugins & Style CSS files) -->
 
-    <link rel="stylesheet" href={{asset("transaksi/css/vendor/icofont.min.css" )}}/>
+    {{-- <link rel="stylesheet" href={{asset("transaksi/css/vendor/icofont.min.css" )}}/>
     <link rel="stylesheet" href={{asset("transaksi/css/vendor/line-awesome.min.css" )}}/>
-    <link rel="stylesheet" href={{asset("transaksi/css/vendor/simple-line-icons.css")}} />
+    <link rel="stylesheet" href={{asset("transaksi/css/vendor/simple-line-icons.css")}} /> --}}
     <!-- Font CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
@@ -28,9 +28,8 @@
 
     <!-- Plugins CSS (All Plugins Files) -->
 
-    <link rel="stylesheet" href={{asset("transaksi/css/plugins/swiper-bundle.min.css")}} />
+    {{-- <link rel="stylesheet" href={{asset("transaksi/css/plugins/swiper-bundle.min.css")}} /> --}}
 
-    <link rel="stylesheet" href={{asset("transaksi/css/plugins/magnific-popup.css")}} />
 
 
     <!-- Style CSS -->
@@ -55,78 +54,146 @@
         </form>
     </div>
     <style>
-        .w-full {
+        /* .w-full {
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
+        } */
       </style>
-      
+
     <div class="offcanvas-overlay hidden fixed inset-0 bg-black opacity-50 z-50"></div>
-    <div class="py-9 bg-gray-light">
+    <div class="py-3 bg-gray-light">
         <div class="container">
             <div class="grid grid-cols-12 gap-x-4">
                 <div class="col-span-12">
-                    <nav>
+                    <div>
                         <ul class="flex flex-wrap items-center justify-center">
-                              
-                <img src="{{ asset('admin/images/hummashitam.png') }}" class="flex w-48 justify-center mt-2" alt=""
-                srcset="">
+
+                        <img src="{{ asset('admin/images/hummashitam.png') }}" class="flex w-48 justify-center mt-1" alt=""
+                        srcset="">
                         </ul>
-                    </nav>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-   
-        <div class=" text-center px-5 font-semibold mt-6 text-base text-green-500">Transaksi berhasil</div>
 
-    <div class="flex justify-center items-start h-full mt-60 px-20">
+        <div class=" text-center px-5 font-semibold mt-3 text-base text-green-500">Transaksi berhasil</div>
+
+    <div class="flex shadow-gray-400 justify-center items-start h-full mt-60 px-20">
         <div class="w-full px-10 rounded overflow-hidden shadow-xl bg-white transform -translate-y-1/2">
+            <div>
+
+            </div>
             {{--  <div class="flex w-48 justify-center" >
-                
+
                 <img src="{{ asset('admin/images/hummashitam.png') }}" class="flex w-48 justify-center mt-2" alt=""
                 srcset="">
             </div>  --}}
-          <div class="px-6 py-4 ">
-            <div class="font-bold text-xl mb-2">Card Title</div>
+          <div class="px-6 py-1 ">
+            <p class="font-bold text-md  mb-1">Nota Pembelian</p>
             <p class="text-gray-700 text-base">
-              Some example text. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              list pembelian anda
             </p>
           </div>
-          <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Tag 1</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Tag 2</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Tag 3</span>
-          </div>
-          <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Tag 1</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Tag 2</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Tag 3</span>
-          </div>
-          <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Tag 1</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Tag 2</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Tag 3</span>
-          </div>
-          <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Tag 1</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Tag 2</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Tag 3</span>
-          </div>
-          <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Tag 1</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Tag 2</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Tag 3</span>
-          </div>
-          
+          <table class="min-w-full text-left text-sm">
+            <tr class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
+                <th scope="col" class="px-6 py-2">Nama Barang</th>
+                <th scope="col" class="px-6 py-2">Jumlah</th>
+                <th scope="col" class="px-6 py-2">Harga Barang (per item)</th>
+                <th scope="col" class="px-6 py-2">Total Harga</th>
+            </tr>
+            @php
+                $i = 0;
+            @endphp
+            @foreach ($list['name'] as $item)
+                <tr>
+                    <td class="whitespace-nowrap px-6 py-2">{{ $item }}</td>
+                    <td class="whitespace-nowrap px-6 py-2">{{ $list['quantity'][$i] }}</td>
+                    <td class="whitespace-nowrap px-6 py-2">{{ $list['harga'][$i] }}</td>
+                    <td class="whitespace-nowrap px-6 py-2">{{ (int) $list['quantity'][$i] * (int) $list['harga'][$i] }}</td>
+                </tr>
+            @endforeach
+        </table>
+        <div class="w-full flex justify-end">
+            <!-- Tambahkan baris sesuai dengan data barang yang dibeli -->
+            <div>
+                <td colspan="3" style="text-align: left">
+                    Total Belanja:
+                </td>
+                <td>{{$total_semua}}</td>
+                <!-- Ganti nilai dengan total belanja -->
+            </div> <br>
+
+        </div>
+        <div class="w-full flex justify-end">
+            <!-- Tambahkan baris sesuai dengan data barang yang dibeli -->
+
+            <div>
+                <td colspan="3" style="text-align: left">Total Saldo:</td>
+                <td>{{$hasil}} </td>
+                <!-- Ganti nilai dengan total saldo -->
+
+             </div>
+        </div>
+        <div class="w-full flex justify-end">
+            <!-- Tambahkan baris sesuai dengan data barang yang dibeli -->
+
+            <a href="/kode_beli">
+
+                <button class="bg-blue-400 py-1 px-3 text-white font-normal rounded">Selesai</button>
+            </a>
+        </div>
+
+          {{-- <div class="flex">
+            <div class="gap-3 w-8/12 border-r-2 border-gray-100 py-1 md:text-xs lg:text-sm">
+                @php
+                    $i = 0;
+                @endphp
+                @forelse ($list['name'] as $data )
+                <div class="px-6 py-1 flex justify-between ">
+                    <div>
+                        <div class=" text"> nama barang : {{$data}}</div>
+                        <div class=" text">jumlah barang : {{$list['quantity'][$i]}}</div>
+                    </div>
+                    <div class=" text">{{ (int)$list['harga'][$i] * (int)$list['quantity'][$i]}}</div>
+
+                  </div>
+                  @php
+                      $i++;
+                  @endphp
+                @empty
+
+                @endforelse
+
+
+
+
+            </div>
+            <div class="w-4/12  mx-2 md:text-xs lg:text-sm font-medium flex-col justify-between  ">
+                <div>
+                    <p class="mb-4">Terimakasih telah berbelanja di Hummmastore</p>
+                    <p class="mb-4">Total belanja anda : {{$total_semua}} </p>
+                    <p class="mb-4">Sisa saldo anda : {{$hasil}} </p>
+                </div>
+
+                <div class=" grid  mt-14    justify-end place-items-end ">
+                    <a href="/kode_beli">
+
+                        <button class="bg-blue-400 py-1 px-3 text-white font-normal rounded">Selesai</button>
+                    </a>
+                </div>
+            </div>
+          </div> --}}
+
+
         </div>
       </div>
-      
-                  
+
+
     <script src={{asset("transaksi/js/main.js")}}></script>
 
 
 <!-- Tambahkan id "kodebarang" pada input untuk memperbaiki script -->
-{{--  
+{{--
 <script>
     let currentStep = 1;
     let total_semua = 0;

@@ -1062,9 +1062,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 0.25rem;
 }
 
-.h-full {
-  height: 100%;
-}
+
 
 .h-8 {
   height: 2rem;
@@ -2691,9 +2689,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 2px;
 }
 
-.before\:h-full::before {
-  height: 100%;
-}
+
+
 
 .before\:h-5::before {
   height: 1.25rem;
@@ -2807,9 +2804,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: block;
 }
 
-.after\:h-full::after {
-  height: 100%;
-}
+
 
 .after\:w-full::after {
   width: 100%;
@@ -2864,9 +2859,7 @@ Ensure the default browser behavior of the `hidden` attribute.
     margin-top: 0px;
   }
 
-  .sm\:h-full {
-    height: 100%;
-  }
+
 
   .sm\:h-16 {
     height: 4rem;
@@ -3002,9 +2995,7 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: 500px;
   }
 
-  .md\:h-full {
-    height: 100%;
-  }
+
 
   .md\:w-1\/2 {
     width: 50%;
@@ -3254,9 +3245,7 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: 5rem;
   }
 
-  .lg\:h-full {
-    height: 100%;
-  }
+
 
   .lg\:h-700px {
     height: 700px;
