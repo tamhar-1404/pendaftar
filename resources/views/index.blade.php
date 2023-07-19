@@ -97,7 +97,7 @@
                     <ul class="navbar-nav nav-light" id="navbar-navlist">
                         <li class="nav-item text-gray-400">
                             <button
-                                class="bg-blue-500 px-4 py-1 text-gray-200 rounded hover:bg-blue-600 hover:text-gray-50 font-semibold"
+                                class="border bg-blue-400 px-4 py-1 rounded text-white hover:bg-blue-500 hover:text-white"
                                 onclick="confirmReject(event)">Cek Saldo</button>
                         </li>
                     </ul>

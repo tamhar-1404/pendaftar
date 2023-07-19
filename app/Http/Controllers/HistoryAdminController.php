@@ -81,7 +81,7 @@ class HistoryAdminController extends Controller
 
             }
             else {
-                return redirect()->back()->with('error', 'Saldo anda kurang');
+                return redirect()->back()->with('error', 'Saldo anda tidak cukup');
             }
 
             $i++;
