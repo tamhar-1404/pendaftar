@@ -27,11 +27,13 @@
             },
         };
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
-     <!-- screen loader -->
-     <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+    <!-- screen loader -->
+    <div
+        class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
@@ -40,24 +42,24 @@
     </div>
     @include('jurnal_admin.layout')
     <div class=" pl-[px] " id="content">
-      @include('jurnal_admin.nav')
+        @include('jurnal_admin.nav')
 
-          <script>
+        <script>
             const addButton = document.querySelector("#addButton");
             const registerModal = document.querySelector("#registerModal");
             const cancelButton = document.querySelector(".ml-auto button");
 
             addButton.addEventListener("click", () => {
-              registerModal.classList.remove("hidden");
+                registerModal.classList.remove("hidden");
             });
 
             cancelButton.addEventListener("click", () => {
-              registerModal.classList.add("hidden");
+                registerModal.classList.add("hidden");
             });
-          </script>
-          <h3 class="text-center mt-7 mb-2">Approval TopUp</h3>
-          <hr>
-          <div class="flex flex-col px-4 mt-2">
+        </script>
+        <h3 class="text-center mt-7 mb-2">Approval TopUp</h3>
+        <hr>
+        <div class="flex flex-col px-4 mt-2">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
@@ -74,82 +76,177 @@
                                     <th scope="col" class="px-6 py-2">Aksi</th>
                                 </tr>
                             </thead>
-                                @php
-                                 $no = 1;
+                            @php
+                                $no = 1;
                             @endphp
-                        <tbody>
-                            @forelse ($TopUp as $topup)
-                            <form action="{{ route('TopUp.update', $topup->id) }}" method="post">
-                                @method('PUT')
-                                @csrf
+                            <tbody>
+                                @forelse ($TopUp as $topup)
+                                    <form action="{{ route('TopUp.update', $topup->id) }}" method="post">
+                                        @method('PUT')
+                                        @csrf
 
-                                <tr>
-                                    <td class="whitespace-nowrap px-6 py-2">
-                                        {{ $no++ }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-2">
-                                        {{ $topup->user->name }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-2">
-                                        {{ $topup->user->email }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-2">
-                                        {{ $topup->user->RFID }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-2">
-                                        {{ $topup->user->sekolah }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-2">
-                                        {{ $topup->saldo }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-2">
-                                        {{ $topup->tanggal }}
-                                    </td>
-                                    <input type="hidden" value="Terima" name="status" id="">
-                                    <td class="whitespace-nowrap px-6 py-2">
-                                        <div class="flex justify-between">
+                                        <tr>
+                                            <td class="whitespace-nowrap px-6 py-2">
+                                                {{ $no++ }}
+                                            </td>
+                                            <td class="whitespace-nowrap px-6 py-2">
+                                                {{ $topup->user->name }}
+                                            </td>
+                                            <td class="whitespace-nowrap px-6 py-2">
+                                                {{ $topup->user->email }}
+                                            </td>
+                                            <td class="whitespace-nowrap px-6 py-2">
+                                                {{ $topup->user->RFID }}
+                                            </td>
+                                            <td class="whitespace-nowrap px-6 py-2">
+                                                {{ $topup->user->sekolah }}
+                                            </td>
+                                            <td class="whitespace-nowrap px-6 py-2">
+                                                {{ $topup->saldo }}
+                                            </td>
+                                            <td class="whitespace-nowrap px-6 py-2">
+                                                {{ $topup->tanggal }}
+                                            </td>
+                                            <input type="hidden" value="Terima" name="status" id="">
+                                            <td class="whitespace-nowrap px-6 py-2">
+                                                <div class="flex justify-between">
 
-                                            <form action="{{ route('aproval.update', $topup->id) }}" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="saldo" placeholder="Saldo" value="{{ old('saldo' , $topup->saldo) }}" required>
-                                                <button type="submit" class="border border-blue-400 px-4 py-1 rounded hover:bg-blue-500 hover:text-white">
-                                                    <i class="fa fa-check-square-o" style="color:rgb(0, 204, 255);"></i>
-                                                </button>
-                                            </form>
-                                            <form action="{{ route('aproval.update', $topup->id) }}" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="status" value="Ditolak">
-                                                <div style="display: inline-block;">
-                                                    <button type="submit" class="border border-red-400 px-4 py-1 rounded hover:bg-red-500 hover:text-white">
-                                                        <i class="fa fa-close"></i>
-                                                    </button>
+                                                    <form action="{{ route('aproval.update', $topup->id) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <input type="hidden" name="saldo" placeholder="Saldo"
+                                                            value="{{ old('saldo', $topup->saldo) }}" required>
+                                                        <button type="submit"
+                                                            class="border border-blue-400 px-4 py-1 rounded hover:bg-blue-500 hover:text-white">
+                                                            <i class="fa fa-check-square-o"
+                                                                style="color:rgb(0, 204, 255);"></i>
+                                                        </button>
+                                                    </form>
+                                                    <form action="{{ route('aproval.update', $topup->id) }}"
+                                                        method="post" id="confirm-form-{{ $topup->id }}">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <input type="hidden" name="status" value="Ditolak">
+                                                        <div style="display: inline-block;">
+                                                            <button type="submit" onclick="confirmDelete(event)"
+                                                                class="border border-red-400 px-4 py-1 rounded hover:bg-red-500 hover:text-white">
+                                                                <i class="fa fa-close"></i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                            </form>
-                                        </div>
-                                    </td>
+                                            </td>
 
-                            </tr>
-                            @empty
+                                        </tr>
+                                    @empty
+                                @endforelse
+                            </tbody>
 
-                            @endforelse
-                        </tbody>
+                        </table>
 
-                            </table>
+                        <script>
+                            function confirmSetuju(event) {
+                                event.preventDefault();
+
+                                Swal.fire({
+                                    title: 'Konfirmasi',
+                                    text: 'Apakah Anda yakin ingin menerima topup ini?',
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Ya, terima!',
+                                    cancelButtonText: 'Batal',
+                                    background: '#f5f5f5',
+                                    customClass: {
+                                        icon: 'swal-icon',
+                                        confirmButton: 'swal-button swal-button--confirm',
+                                        cancelButton: 'swal-button swal-button--cancel'
+                                    },
+                                    animation: false
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        Swal.fire({
+                                            title: 'Sukses',
+                                            text: 'Berhasil diterima!',
+                                            icon: 'success',
+                                            timer: 2000,
+                                            showConfirmButton: false,
+                                            background: '#f5f5f5',
+                                            customClass: {
+                                                icon: 'swal-icon',
+                                                popup: 'swal-popup',
+                                                title: 'swal-title',
+                                                confirmButton: 'swal-button swal-button--confirm'
+                                            },
+                                            animation: false
+                                        });
+                                        setTimeout(() => {
+                                            document.getElementById('confirm-form').submit();
+                                        }, 2000);
+                                    }
+                                });
+                            }
+                        </script>
+
+                        <script>
+                            function confirmDelete(event) {
+                                event.preventDefault();
+
+                                Swal.fire({
+                                    title: 'Konfirmasi',
+                                    text: 'Apakah Anda yakin ingin menghapus ini?',
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Ya, terima!',
+                                    cancelButtonText: 'Batal',
+                                    background: '#f5f5f5',
+                                    customClass: {
+                                        icon: 'swal-icon',
+                                        confirmButton: 'swal-button swal-button--confirm',
+                                        cancelButton: 'swal-button swal-button--cancel'
+                                    },
+                                    animation: false
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        Swal.fire({
+                                            title: 'Sukses',
+                                            text: 'Berhasil dihapus!',
+                                            icon: 'success',
+                                            timer: 2000,
+                                            showConfirmButton: false,
+                                            background: '#f5f5f5',
+                                            customClass: {
+                                                icon: 'swal-icon',
+                                                popup: 'swal-popup',
+                                                title: 'swal-title',
+                                                confirmButton: 'swal-button swal-button--confirm'
+                                            },
+                                            animation: false
+                                        });
+                                        setTimeout(() => {
+                                            event.target.closest('form').submit();
+                                        }, 2000);
+                                    }
+                                });
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
         </div>
-          {{--  isi  --}}
+        {{--  isi  --}}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script>
-      $(window).on('load', function() {
-          $('.spin_load').fadeOut();
-      });
-  </script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
+        });
+    </script>
     <script>
         const instanceMode = te.Sidenav.getInstance(
             document.getElementById("sidenav-2")
@@ -172,8 +269,7 @@
                     } else {
                         const node = document.getElementById(el);
                         node.className += " text-primary-600 border-primary-600";
-                        [
-                        ].forEach((item) => node.classList.remove(item));
+                        [].forEach((item) => node.classList.remove(item));
                     }
                 });
             });
@@ -191,4 +287,5 @@
     </script>
 
 </body>
+
 </html>
