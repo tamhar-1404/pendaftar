@@ -118,6 +118,6 @@ class OpnameController extends Controller
             'stok' => $stokBarang,
         ]);
         $opname->delete();
-        return back()->with('success', 'Berhasil menghapus data');
+        return back();
     }
 }
