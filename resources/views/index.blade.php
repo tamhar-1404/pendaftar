@@ -171,11 +171,7 @@
                                                                 <div class="flex w-full text-base">
                                                                     <p class="font-bold w-1/3 text-start">Saldo : </p>
                                                                     <div class="w-full text-start">
-<<<<<<< Updated upstream
-                                                                        <p class=" text-start">${formatRupiah(response.saldo, 'Rp. ')}</p>
-=======
                                                                         <p class="text-start">Rp ${response.saldo.toLocaleString("id-ID")}</p>
->>>>>>> Stashed changes
                                                                     </div>
                                                                 </div>
                                                             </div>`,

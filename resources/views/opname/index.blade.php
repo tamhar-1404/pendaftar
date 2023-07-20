@@ -126,7 +126,7 @@
                                             {{ $oname->barang->kode }}
                                         </td>
                                         <td class="whitespace-nowrap px-6 py-2">
-                                            {{ $oname->barang->harga }}
+                                            Rp. {{ number_format($oname->barang->harga, 0, ',', '.') }}
                                         </td>
                                         <td class="whitespace-nowrap px-6 py-2">
                                             {{ $oname->barang->kategori }}
