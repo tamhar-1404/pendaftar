@@ -36,20 +36,22 @@
             Swal.fire({
                 icon: 'success',
                 title: 'Selamat',
+                confirmButtonColor: '#3b82f6',
                 text: "{{ session('success') }}",
             });
         </script>
     @endif
     @if ($errors->any())
-    <script>
-        // SweetAlert to show the error message
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: '{{ $errors->first() }}',
-        });
-    </script>
-@endif
+        <script>
+            // SweetAlert to show the error message
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                confirmButtonColor: '#3b82f6',
+                text: '{{ $errors->first() }}',
+            });
+        </script>
+    @endif
 
     <!-- screen loader -->
     <div
@@ -295,156 +297,161 @@
                         </form>
                         <!-- barang footer -->
 
-                        <input autofocus type="text" id="email" name="kode" class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600" placeholder="Scan code barang" required>
-                        </div>
-                        <div class="flex justify-between">
-                            <button type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="prevStep()">Previous</button>
-                            <button type="submit" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-                        </div>
-                    </div>
-                    </div>
-                    </form>
-                    </div>
-                </div>
-            </div>
-        @empty
-        @endforelse
-
-        <!-- Modal Wizard Step 1 -->
-        <div id="modal-step1" class="fixed inset-0 flex items-center justify-center z-50 hidden">
-            <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur"></div>
-            <div class="modal bg-white dark:bg-gray-800 rounded-lg p-8 w-[max-content] md:w-2/3 lg:w-1/2 relative">
-                <h2 class="text-lg font-semibold mb-4">Pendataan barang</h2>
-                <form action="{{ route('barang.store') }}" method="post" onsubmit="return validateStep1()"
-                    enctype="multipart/form-data">
-                    @csrf
-                    <div class="mb-6">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
-                        <input type="text" id="name" name="nama"
+                        <input autofocus type="text" id="email" name="kode"
                             class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
-                            placeholder="Masukkan Nama Barang" required>
+                            placeholder="Scan code barang" required>
                     </div>
-                    <div class="mb-6">
-                        <label for="name2" class="block text-sm font-medium text-gray-700">Foto</label>
-                        <input type="file" id="name2" name="foto"
-                            class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
-                            placeholder="Masukkan Nama 2" required>
-                    </div>
-                    <div class="mb-6">
-                        <label for="name3" class="block text-sm font-medium text-gray-700">Harga</label>
-                        <input type="number" id="name3" name="harga"
-                            class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
-                            placeholder="Masukkan Harga Barang" required min="1">
-                        <div id="error_harga" class="text-sm text-red-600"></div>
-                    </div>
-                    <div class="mb-6">
-                        <label for="name4" class="block text-sm font-medium text-gray-700">Kategori</label>
-                        <select name="kategori" id="kategori"
-                            class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
-                            placeholder="Masukkan Nama 3" required>
-                            <option value="" disabled selected>Pilih kategori</option>
-                            <option value="Makanan">Makanan</option>
-                            <option value="Minuman">Minuman</option>
-                        </select>
-                    </div>
-                    <div class="mb-6">
-                        <label for="name5" class="block text-sm font-medium text-gray-700">Deskripsi</label>
-                        <input type="text" id="name5" name="deskripsi"
-                            class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
-                            placeholder="Masukkan Deskripsi" required>
-                    </div>
-                    <div class="flex justify-end">
+                    <div class="flex justify-between">
                         <button type="button"
                             class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                            onclick="nextStep()">Next</button>
+                            onclick="prevStep()">Previous</button>
+                        <button type="submit"
+                            class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                     </div>
-
-            </div>
-        </div>
-
-        <!-- Modal Wizard Step 2 -->
-        <div id="modal-step2" class="fixed inset-0 flex items-center justify-center z-50 hidden">
-            <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur"></div>
-            <div class="modal bg-white dark:bg-gray-800 rounded-lg p-8 w-96 relative">
-                <center>
-
-                    <h2 class="text-lg font-semibold mb-4">Scan code barang anda</h2>
-                </center>
-                <div class="mb-6">
-
-                    <input type="text" id="email" name="kode"
-                        class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
-                        placeholder="Scan code barang" required autofocus>
                 </div>
-                <div class="flex justify-between">
+            </div>
+            </form>
+    </div>
+    </div>
+    </div>
+@empty
+    @endforelse
+
+    <!-- Modal Wizard Step 1 -->
+    <div id="modal-step1" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+        <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur"></div>
+        <div class="modal bg-white dark:bg-gray-800 rounded-lg p-8 w-[max-content] md:w-2/3 lg:w-1/2 relative">
+            <h2 class="text-lg font-semibold mb-4">Pendataan barang</h2>
+            <form action="{{ route('barang.store') }}" method="post" onsubmit="return validateStep1()"
+                enctype="multipart/form-data">
+                @csrf
+                <div class="mb-6">
+                    <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
+                    <input type="text" id="name" name="nama"
+                        class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
+                        placeholder="Masukkan Nama Barang" required>
+                </div>
+                <div class="mb-6">
+                    <label for="name2" class="block text-sm font-medium text-gray-700">Foto</label>
+                    <input type="file" id="name2" name="foto"
+                        class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
+                        placeholder="Masukkan Nama 2" required>
+                </div>
+                <div class="mb-6">
+                    <label for="name3" class="block text-sm font-medium text-gray-700">Harga</label>
+                    <input type="number" id="name3" name="harga"
+                        class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
+                        placeholder="Masukkan Harga Barang" required min="1">
+                    <div id="error_harga" class="text-sm text-red-600"></div>
+                </div>
+                <div class="mb-6">
+                    <label for="name4" class="block text-sm font-medium text-gray-700">Kategori</label>
+                    <select name="kategori" id="kategori"
+                        class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
+                        placeholder="Masukkan Nama 3" required>
+                        <option value="" disabled selected>Pilih kategori</option>
+                        <option value="Makanan">Makanan</option>
+                        <option value="Minuman">Minuman</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label for="name5" class="block text-sm font-medium text-gray-700">Deskripsi</label>
+                    <input type="text" id="name5" name="deskripsi"
+                        class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
+                        placeholder="Masukkan Deskripsi" required>
+                </div>
+                <div class="flex justify-end">
                     <button type="button"
                         class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        onclick="prevStep()">Previous</button>
-                    <button type="submit"
-                        class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        onclick="nextStep()">Next</button>
                 </div>
+
+        </div>
+    </div>
+
+    <!-- Modal Wizard Step 2 -->
+    <div id="modal-step2" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+        <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur"></div>
+        <div class="modal bg-white dark:bg-gray-800 rounded-lg p-8 w-96 relative">
+            <center>
+
+                <h2 class="text-lg font-semibold mb-4">Scan code barang anda</h2>
+            </center>
+            <div class="mb-6">
+
+                <input type="text" id="email" name="kode"
+                    class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
+                    placeholder="Scan code barang" required autofocus>
+            </div>
+            <div class="flex justify-between">
+                <button type="button"
+                    class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    onclick="prevStep()">Previous</button>
+                <button type="submit"
+                    class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
             </div>
         </div>
-        </form>
+    </div>
+    </form>
 
-        <script>
-            let currentStep = 1;
+    <script>
+        let currentStep = 1;
 
-            function showStep(step) {
-                hideAllSteps();
-                if (step === 1) {
-                    document.getElementById('modal-step1').classList.remove('hidden');
-                } else if (step === 2) {
+        function showStep(step) {
+            hideAllSteps();
+            if (step === 1) {
+                document.getElementById('modal-step1').classList.remove('hidden');
+            } else if (step === 2) {
+                document.getElementById('modal-step2').classList.remove('hidden');
+            }
+            currentStep = step;
+        }
+
+        function nextStep() {
+            if (currentStep === 1) {
+                const isValid = validateStep1();
+                if (isValid) {
+
+                    document.getElementById('modal-step1').classList.add('hidden');
                     document.getElementById('modal-step2').classList.remove('hidden');
-                }
-                currentStep = step;
-            }
-
-            function nextStep() {
-                if (currentStep === 1) {
-                    const isValid = validateStep1();
-                    if (isValid) {
-
-                        document.getElementById('modal-step1').classList.add('hidden');
-                        document.getElementById('modal-step2').classList.remove('hidden');
-                        currentStep = 2;
-                    }
+                    currentStep = 2;
                 }
             }
+        }
 
-            function prevStep() {
-                if (currentStep === 2) {
-                    document.getElementById('modal-step2').classList.add('hidden');
-                    document.getElementById('modal-step1').classList.remove('hidden');
-                    currentStep = 1;
-                }
-            }
-
-            function hideAllSteps() {
-                document.getElementById('modal-step1').classList.add('hidden');
+        function prevStep() {
+            if (currentStep === 2) {
                 document.getElementById('modal-step2').classList.add('hidden');
+                document.getElementById('modal-step1').classList.remove('hidden');
+                currentStep = 1;
+            }
+        }
+
+        function hideAllSteps() {
+            document.getElementById('modal-step1').classList.add('hidden');
+            document.getElementById('modal-step2').classList.add('hidden');
+        }
+
+        function validateStep1() {
+            const nama = document.getElementById('name').value;
+            const foto = document.getElementById('name2').value;
+            const harga = document.getElementById('name3').value;
+            const kategori = document.getElementById('kategori').value;
+            const deskripsi = document.getElementById('name5').value;
+
+            if (nama.trim() === '' || foto.trim() === '' || harga.trim() === '' || kategori.trim() === '' || deskripsi
+                .trim() === '') {
+                alert('Mohon lengkapi semua field pada langkah 1');
+                return false;
+            } else if (harga.trim() < '0') {
+                document.getElementById('error_harga').innerHTML = "Masukan harga yang valid";
+                // alert('Mohon isi harga yang valid');
+                return false;
             }
 
-            function validateStep1() {
-                const nama = document.getElementById('name').value;
-                const foto = document.getElementById('name2').value;
-                const harga = document.getElementById('name3').value;
-                const kategori = document.getElementById('kategori').value;
-                const deskripsi = document.getElementById('name5').value;
-
-                if (nama.trim() === '' || foto.trim() === '' || harga.trim() === '' || kategori.trim() === '' || deskripsi
-                    .trim() === '') {
-                    alert('Mohon lengkapi semua field pada langkah 1');
-                    return false;
-                }else if( harga.trim() < '0' ){
-                    document.getElementById('error_harga').innerHTML = "Masukan harga yang valid";
-                        // alert('Mohon isi harga yang valid');
-                        return false;
-                }
-
-                return true;
-            }
-        </script>
+            return true;
+        }
+    </script>
 
 
     </div>

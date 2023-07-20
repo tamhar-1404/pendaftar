@@ -40,10 +40,11 @@ class TransaksiController extends Controller
         }
         $user = $data->saldo;
 
-        $barang = barang::all();
+        $barang = barang::where('kategori', 'makanan')->get();
+        $minuman = barang::where('kategori', 'minuman')->get();
         $saldo = User::where('rfid', $request->rfid)->first()->saldo;
         // dd($saldo);
-        return view('transaksi.data', compact('data','barang' , 'user', 'saldo'));
+        return view('transaksi.data', compact('data','barang','minuman' , 'user', 'saldo'));
     }
 
     /**
