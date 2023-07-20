@@ -1192,7 +1192,7 @@
                             <h1>Dashboard</h1>
                         </div>
                         <div class="flex justify-end font-semibold bg-blue-400 text-white px-4 py-1 rounded">
-                            <h1>Saldo anda : <span id="saldo">Rp {{ number_format($user->saldo ? $user->saldo : 0, 0, ',', '.') }}</span></h1>
+                            <h1>Saldo anda : <span id="a">Rp {{ number_format($user->saldo ? $user->saldo : 0, 0, ',', '.') }}</span></h1>
                         </div>
                     </div>
                     {{--  modal  --}}
