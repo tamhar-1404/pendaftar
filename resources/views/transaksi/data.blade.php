@@ -91,7 +91,6 @@
                 <p class="text-lg font-semibold text-dark mt-2 ml-2">Menu</p>
               </div>
               <div class="  h-7 mb-8 flex-col justify-center items-center">
-
                 <center>
 
                     <input class="border px-2 border-gray-300 w-[95%] placeholder:text-gray-600" id="searchInput" type="text" name="kodebarang" placeholder="cari menu" onchange="cari(this)">
