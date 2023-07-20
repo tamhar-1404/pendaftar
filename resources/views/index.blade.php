@@ -171,10 +171,13 @@
                                                                 <div class="flex w-full text-base">
                                                                     <p class="font-bold w-1/3 text-start">Saldo : </p>
                                                                     <div class="w-full text-start">
+<<<<<<< Updated upstream
                                                                         <p class=" text-start">${formatRupiah(response.saldo, 'Rp. ')}</p>
+=======
+                                                                        <p class="text-start">Rp ${response.saldo.toLocaleString("id-ID")}</p>
+>>>>>>> Stashed changes
                                                                     </div>
                                                                 </div>
-
                                                             </div>`,
                                                     customClass: {
                                                         content: 'text-black'
@@ -243,13 +246,7 @@
 
     <!--end div-->
     <!-- End -->
-    <div
-        class="spin_load  screen_loader animate__animated fixed inset-1 z-[0] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
-        <div class="center">
-            <div class="ring">
-            </div>
-            <img src="{{ asset('load/logo.png') }}" alt="Deskripsi gambar" class="my-img">
-        </div>
+
     </div>
 
 
