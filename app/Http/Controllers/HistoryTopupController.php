@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\HistoryTopup;
 use App\Models\TopUp;
+use App\Models\HistoryTransaksi;
 use App\Http\Requests\StoreHistoryTopupRequest;
 use App\Http\Requests\UpdateHistoryTopupRequest;
+use auth;
 
 class HistoryTopupController extends Controller
 {
@@ -16,7 +18,7 @@ class HistoryTopupController extends Controller
      */
     public function index()
     {
-        $TopUp = TopUp::where('status', 'Terima')->get();
+        $TopUp = HistoryTransaksi::where('nama',Auth()->user()->nama)->get();
         return view('History_siswa.index', compact('TopUp'));
     }
 
