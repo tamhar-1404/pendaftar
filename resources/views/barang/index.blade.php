@@ -315,7 +315,7 @@
                         <label for="name3" class="block text-sm font-medium text-gray-700">Harga</label>
                         <input type="number" id="name3" name="harga"
                             class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
-                            placeholder="Masukkan Harga Barang" required>
+                            placeholder="Masukkan Harga Barang" required min="1">
                     </div>
                     <div class="mb-6">
                         <label for="name4" class="block text-sm font-medium text-gray-700">Kategori</label>
