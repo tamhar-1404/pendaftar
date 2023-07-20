@@ -151,25 +151,25 @@
                                                                 </div>
                                                                 <div class="flex flex-col items-center gap-2">
                                                                 <div class="flex w-full text-base ">
-                                                                    <p class="font-bold w-full text-start">Nama : </p>
+                                                                    <p class="font-bold w-1/3 text-start">Nama : </p>
                                                                     <div class="w-full text-start">
                                                                         <p class=" text-start">${response.nama}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="flex w-full text-base">
-                                                                    <p class="font-bold w-full text-start">Email : </p>
+                                                                    <p class="font-bold w-1/3 text-start">Email : </p>
                                                                     <div class="w-full text-start">
                                                                         <p class=" text-start text-sm">${response.email}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="flex w-full text-base">
-                                                                    <p class="font-bold w-full text-start">Sekolah : </p>
+                                                                    <p class="font-bold w-1/3 text-start">Sekolah : </p>
                                                                     <div class="w-full text-start">
                                                                         <p class=" text-start">${response.sekolah}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="flex w-full text-base">
-                                                                    <p class="font-bold w-full text-start">Saldo : </p>
+                                                                    <p class="font-bold w-1/3 text-start">Saldo : </p>
                                                                     <div class="w-full text-start">
                                                                         <p class=" text-start">${response.saldo}</p>
                                                                     </div>
