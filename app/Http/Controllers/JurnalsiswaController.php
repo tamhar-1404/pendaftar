@@ -13,16 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StorejurnalsiswaRequest;
 use App\Http\Requests\UpdatejurnalsiswaRequest;
-<<<<<<< HEAD
-=======
-use Illuminate\Http\Request;
-use Auth;
-use Illuminate\Support\Facades\Storage;
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\IOFactory;
 use Exception;
 
->>>>>>> 34382e7c6b176700470cf140b400c02155c62b64
 
 class JurnalsiswaController extends Controller
 {
@@ -154,7 +146,7 @@ class JurnalsiswaController extends Controller
 
     return redirect()->route('jurnal_siswa.index')->with('success', 'Data berhasil diubah');
 }
-  
+
 
     /**
      * Remove the specified resource from storage.

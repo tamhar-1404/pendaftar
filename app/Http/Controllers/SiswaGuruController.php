@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\siswa_guru;
+use App\Models\Siswa;
 use App\Http\Requests\Storesiswa_guruRequest;
 use App\Http\Requests\Updatesiswa_guruRequest;
 
@@ -15,7 +16,8 @@ class SiswaGuruController extends Controller
      */
     public function index()
     {
-       return view('siswa_guru.index');
+        $siswas = Siswa::where('role', 'Siswa')->get();
+        return view('siswa_guru.index', compact('siswas'));
     }
 
     /**

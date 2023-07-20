@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumni_guru;
+use App\Models\Siswa;
 use App\Http\Requests\StoreAlumni_guruRequest;
 use App\Http\Requests\UpdateAlumni_guruRequest;
 
@@ -15,7 +16,8 @@ class AlumniGuruController extends Controller
      */
     public function index()
     {
-        return view('alumni_guru.index');
+        $siswas = Siswa::where('role', 'Alumni')->get();
+        return view('alumni_guru.index' , compact('siswas'));
     }
 
     /**
