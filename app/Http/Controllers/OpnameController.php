@@ -93,12 +93,16 @@ class OpnameController extends Controller
         $selisih_stok = $new_stok - $old_stok;
         $stok_barang = (int) Barang::find($opname->barang_id)->stok;
 
+        $stok_baru = $stok_barang + $selisih_stok;
+        if ($stok_baru < 0) {
+            return back()->with('error', 'Stok tidak valid');
+        }
         $opname->update([
             'stok' => $new_stok,
         ]);
 
         Barang::find($opname->barang_id)->update([
-            'stok' => $stok_barang + $selisih_stok,
+            'stok' => $stok_baru
         ]);
         return back()->with('success', 'Berhasil mengedit barang');
     }
@@ -114,6 +118,9 @@ class OpnameController extends Controller
         // dd($opname->stok, $opname->barang_id);
         $barang = Barang::find($opname->barang_id);
         $stokBarang = (int) $barang->stok - (int) $opname->stok;
+        if ($stokBarang < 0) {
+            return back()->with('error', 'Stok tidak valid');
+        }
         $barang->update([
             'stok' => $stokBarang,
         ]);
