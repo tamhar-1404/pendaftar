@@ -221,7 +221,7 @@
                                 <label for="stok" class="block text-sm font-medium text-gray-700">Stok</label>
                                 <input type="number" id="stok" name="stok"
                                     class="block w-full text-sm bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
-                                    placeholder="Stok barang" required autofocus>
+                                    placeholder="Stok barang" required autofocus min="1" oninvalid="this.setCustomValidity('Stok minimal 1')" oninput="setCustomValidity('')">
                             </div>
                             <div class="">
                                 <button type="submit"
@@ -254,7 +254,7 @@
                                 <label for="stok" class="block text-sm font-medium text-gray-700">Stok</label>
                                 <input type="number" id="stok" name="stok"
                                     class="block w-full text-sm bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
-                                    placeholder="Stok barang" required autofocus value="{{ $brg->stok }}">
+                                    placeholder="Stok barang" required autofocus value="{{ $brg->stok }}" min="1" oninvalid="this.setCustomValidity('Stok minimal 1')" oninput="setCustomValidity('')">
                             </div>
                             <div class="">
                                 <button type="submit"
