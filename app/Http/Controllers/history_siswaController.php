@@ -1,15 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\HistoryTopup;
-use App\Models\TopUp;
-use App\Models\HistoryTransaksi;
-use App\Http\Requests\StoreHistoryTopupRequest;
-use App\Http\Requests\UpdateHistoryTopupRequest;
+use Illuminate\Http\Request;
 use auth;
 
-class HistoryTopupController extends Controller
+class history_siswaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +14,7 @@ class HistoryTopupController extends Controller
      */
     public function index()
     {
-        $TopUp = Topup::where('siswa_id',Auth()->user()->id)->get();
-        return view('History_siswa.index', compact('TopUp'));
+        //
     }
 
     /**
@@ -35,10 +30,10 @@ class HistoryTopupController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreHistoryTopupRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreHistoryTopupRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -46,10 +41,10 @@ class HistoryTopupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\HistoryTopup  $historyTopup
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(HistoryTopup $historyTopup)
+    public function show($id)
     {
         //
     }
@@ -57,10 +52,10 @@ class HistoryTopupController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\HistoryTopup  $historyTopup
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(HistoryTopup $historyTopup)
+    public function edit($id)
     {
         //
     }
@@ -68,11 +63,11 @@ class HistoryTopupController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateHistoryTopupRequest  $request
-     * @param  \App\Models\HistoryTopup  $historyTopup
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateHistoryTopupRequest $request, HistoryTopup $historyTopup)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -80,10 +75,10 @@ class HistoryTopupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\HistoryTopup  $historyTopup
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HistoryTopup $historyTopup)
+    public function destroy($id)
     {
         //
     }
