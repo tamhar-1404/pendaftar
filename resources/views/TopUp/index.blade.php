@@ -110,11 +110,11 @@
                                             <input type="hidden" value="Terima" name="status" id="">
                                             <td class="whitespace-nowrap px-6 py-2">
                                                 <div class="flex justify-between">
-                                                    <form id="confirmation-form" action="{{ route('aproval.update', $topup->id) }}" method="post">
+                                                    <form id="confirmation-form-{{ $topup->id }}" action="{{ route('aproval.update', $topup->id) }}" method="post" >
                                                         @csrf
                                                         @method('PUT')
                                                         <input type="hidden" name="saldo" placeholder="Saldo" value="{{ old('saldo', $topup->saldo) }}" required>
-                                                        <button type="button" onclick="tambah()" id="submit-btn" class="border border-blue-400 px-4 py-1 rounded hover:bg-blue-500 hover:text-white">
+                                                        <button type="submit" id="submit-btn-{{ $topup->id }}" class="border border-blue-400 px-4 py-1 rounded hover:bg-blue-500 hover:text-white" onclick="tambah(event, {{ $topup->id }})">
                                                             <i class="fa fa-check-square-o" style="color:rgb(0, 204, 255);"></i>
                                                         </button>
                                                     </form>
@@ -141,23 +141,8 @@
                         </table>
                         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
                     <script>
-                        function tambah() {
-                            // Show a SweetAlert confirmation dialog
-                            Swal.fire({
-                                title: 'Konfirmasi',
-                                text: "Apakah anda yakin menerima Top up ini ?",
-                                icon: 'warning',
-                                showCancelButton: true,
-                                confirmButtonColor: '#3085d6',
-                                cancelButtonColor: '#d33',
-                                confirmButtonText: 'Yes',
-                                cancelButtonText: 'Batal'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    // If the user clicks 'Yes, proceed!', submit the form programmatically
-                                    document.getElementById("confirmation-form").submit();
-                                }
-                            });
+                        function tambah(event, id) {
+
                         }
                     </script>
                        <script>
@@ -167,7 +152,7 @@
                                 Swal.fire({
                                     title: 'Konfirmasi',
                                     text: 'Apakah Anda yakin ingin menerima topup ini?',
-                                    icon: 'warning',
+                                icon: 'warning',
                                     showCancelButton: true,
                                     confirmButtonColor: '#3085d6',
                                     cancelButtonColor: '#d33',

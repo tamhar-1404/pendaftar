@@ -99,7 +99,7 @@
                 <div id="wadah">
                     <div class="mt-1">Makanan</div>
                     <div class="w-full max-h-[270px] mt-1  overflow-y-scroll">
-                        @forelse ($barang as $data )
+                        @forelse ($makanan as $data )
                         <div id="{{$data->nama}}" class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
                             <div class="flex justify-between px-5">
                                 <div id="makanan" class="font-bold text-">{{$data->nama}}</div>
