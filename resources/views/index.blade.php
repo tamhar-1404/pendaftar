@@ -147,7 +147,7 @@
                                                     title: 'Data Pengguna',
                                                     html: `<div class="w-full">
                                                                 <div class="w-full flex justify-center mb-10">
-                                                                     <img class="w-[70px] h-[70px] rounded-full" src="{{asset('storage/Siswa/' . "")}}{${response.foto}}" alt="" srcset="">
+                                                                     <img class="w-[70px] h-[70px] rounded-full" src="{{asset('storage/Siswa/' . "")}}/${response.foto}" alt="" srcset="">
                                                                 </div>
                                                                 <div class="flex flex-col items-center gap-2">
                                                                 <div class="flex justify-between w-full text-base ">
