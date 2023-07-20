@@ -78,7 +78,7 @@ class LoginController extends Controller
         }
 
         // Autentikasi gagal
-        return redirect()->back()->withErrors('Login failed. Please check your credentials.');
+        return redirect()->back()->with('error', 'Email / password salah');
     }
 
 
