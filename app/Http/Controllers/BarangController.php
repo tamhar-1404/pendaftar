@@ -58,7 +58,7 @@ class BarangController extends Controller
             'foto'=>$image->hashName(),
             'kode'=>$request->kode,
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambahkan data');
     }
 
     /**
@@ -124,7 +124,7 @@ class BarangController extends Controller
         'deskripsi'=>$request->deskripsi
     ]);
     }
-    return redirect()->back();
+    return redirect()->back()->with('success', 'Berhasil mengedit data');
 
     }
 

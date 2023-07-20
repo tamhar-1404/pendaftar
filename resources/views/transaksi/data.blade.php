@@ -93,12 +93,13 @@
 
                 <center>
 
-                    <input class="border px-2 border-gray-300 w-[95%]" type="text" name="kodebarang">
+                    <input class="border px-2 border-gray-300 w-[95%]" type="text" name="kodebarang" placeholder="cari menu">
                 </cesnter>
-                <div class="w-full max-h-[600px] mt-8  overflow-y-scroll">
+                <div class="mt-1">Makanan</div>
+                <div class="w-full max-h-[270px] mt-1  overflow-y-scroll">
                     @forelse ($barang as $data )
                     <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
-                        <div>
+                        <div class="flex justify-between px-5">
                             <div class="font-bold text-">{{$data->nama}}</div>
                             <p class="text-gray-700">{{$data->harga}}</p>
                         </div>
@@ -106,6 +107,22 @@
                     @empty
 
                     @endforelse
+
+
+                </div>
+                <div class="mt-2">minuman</div>
+                <div class="w-full max-h-[260px] mt-1  overflow-y-scroll">
+                    @forelse ($barang as $data )
+                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
+                        <div class="flex justify-between px-5">
+                            <div class="font-bold text-">{{$data->nama}}</div>
+                            <p class="text-gray-700">{{$data->harga}}</p>
+                        </div>
+                    </div>
+                    @empty
+
+                    @endforelse
+
 
 
                 </div>
@@ -125,7 +142,7 @@
                 <div class="w-full  h-7 mb-8 flex-col ">
                     <p class="text-center">scan kode barang</p>
                     <div class="flex justify-center ">
-                        <input autofocus onchange="showStep(0)" class="border px-2 border-gray-300 w-[30%]" type="text" name="kodebarang" id="kodebarang">
+                        <input placeholder="masukan kode barang"  autofocus onchange="showStep(0)" class="border px-2 border-gray-300 w-[30%] text-black" type="text" name="kodebarang" id="kodebarang">
                     </div>
                 </div>
                 <div class="overflow-x-auto">

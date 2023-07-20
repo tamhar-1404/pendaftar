@@ -209,18 +209,16 @@
                                                       <form action="{{ route('siswa_admin.update', $user->id) }}" method="post">
                                                         @method('PUT')
                                                         @csrf
-                                                          <div id="modal-tambah-rfid{{ $user->id }}" class="modal fixed inset-0 flex items-center justify-center">
+                                                        <div id="modal-tambah-rfid{{ $user->id }}" class="modal fixed inset-0 flex items-center justify-center">
                                                             <div class="modal-content bg-white p-6">
-
-                                                              <h2 class="text-2xl font-bold mb-4">Tambah RFID   {{ $user->name }}</h2>
-                                                              <input autofocus type="text" name="RFID" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
-                                                              <div class="mt-6 flex justify-end">
-
-                                                              </div>
+                                                                <h2 class="text-2xl font-bold mb-4">Tambah RFID   {{ $user->name }}</h2>
+                                                                <input autofocus type="text" name="RFID" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
+                                                                <div class="mt-6 flex justify-end">
+                                                                    <!-- Your additional content here if needed -->
+                                                                </div>
                                                             </div>
-                                                          </div>
-                                                      </form>
-
+                                                        </div>
+                                                    </form>
                                                       <!-- Import script JavaScript -->
                                                       <script>
                                                         document.addEventListener("DOMContentLoaded", function() {

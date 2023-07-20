@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('role')->nullable();
             $table->foreignId('siswa_id')->nullable();
             $table->foreign('siswa_id')->references('id')->on('siswas')->onDelete('cascade');
-
             // $table->foreignId('like_id');
             // $table->foreign('like_id')->references('id')->on('likes')->onDelete('cascade');
             $table->rememberToken();
