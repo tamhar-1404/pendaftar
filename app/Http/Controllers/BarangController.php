@@ -7,6 +7,8 @@ use App\Http\Requests\StoreBarangRequest;
 use App\Http\Requests\UpdateBarangRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 
 class BarangController extends Controller
 {
@@ -46,8 +48,26 @@ class BarangController extends Controller
             'deskripsi'=>'required',
             'kategori'=>'required',
             'foto'=>'required',
-            'kode'=>'required'
+            'kode'=>'required|unique:barang'
         ]);
+        try {
+            $this->validate($request,[
+                'nama'=>'required',
+                'harga'=>'required',
+                'deskripsi'=>'required',
+                'kategori'=>'required',
+                'foto'=>'required',
+                'kode'=>'required|unique:barang'
+            ]);
+            // Code that may throw an exception
+            // For example, database operations, API calls, etc.
+        } catch (\Exception $e) {
+            // Exception handling code
+            // Here you can log the error, display a user-friendly message, or take other actions
+            // For example, you might use the following:
+            Log::error($e->getMessage());
+            // return response()->json(['error' => 'Something went wrong'], 500);
+        }
         $image = $request->file('foto');
         $image->storeAs('public/pendataanbarang', $image->hashName());
         Barang::create([
