@@ -685,13 +685,15 @@
                             </ul>
                             <ul class="mt-7  justify-center gap-2">
                                <li class="font-bold">Status</li>
+                               @if ($siswa->status_sp != null)
                                <li>
                                 <div class="flex h-1.5 w-full rounded-full bg-[#ebedf2] dark:bg-dark/40 relative">
                                     <div class="w-full rounded-full" style="background-color: #DAFE00;">
-                                        <span class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">SP 1</span>
+                                        <span class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">{{ $siswa->status_sp }}</span>
                                     </div>
                                 </div>
-                            </li>
+                                </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
