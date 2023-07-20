@@ -5,7 +5,7 @@ use App\Models\HistoryTopup;
 use Illuminate\Http\Request;
 use auth;
 
-class history_siswaController extends Controller
+class HistorySiswaController extends Controller
 {
     /**
      * Display a listing of the resource.
