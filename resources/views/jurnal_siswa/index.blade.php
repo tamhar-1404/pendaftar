@@ -1378,7 +1378,6 @@
                                               {{ substr($items->kegiatan, 0, 10) }}..
                                             </div>
                                           </td>
-
                                         <td class="whitespace-nowrap px-2 pl-17 py-2"><img
                                             src="{{ asset('storage/image/' . $items->image) }}"
                                             width="100px" alt="">
@@ -1391,9 +1390,6 @@
                                                             <span class=" p-1  font-semibold dark:hover:"text-black"><i class="fa fa-eye"></i> </span>
                                                         </div>
                                                     </a>
-
-
-
                                                                 <a href="#">
                                                                     <div class="w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
                                                                         data-te-toggle="modal"
@@ -1403,11 +1399,9 @@
                                                                         <i class="fa fa-pencil-square-o"></i> </span>
                                                                     </div>
                                                                 </a>
-
                                                             </div>
                                                         </td>
                                                     </tr>
-
                                                 @empty
                                                 @endforelse
                                             </tbody>
