@@ -17,12 +17,11 @@ class GetuserController extends Controller
     public function find_rfid(Request $request)
     {
         $rfid = $request->rfid;
-        $user = User::where('rfid', $rfid)->first();
-        $siswa = Siswa::where('id', $user->siswa_id)->first();
-        if ($user->exists()) {
+        if (User::where('rfid', $rfid)->exists()) {
+            $user = User::where('rfid', $rfid)->first();
             // $usr = $user->first();
             return response()->json([
-                'foto' => $siswa->siswa_id,
+                'foto' => $user->Siswa->foto_siswa,
                 'nama' => $user->name,
                 'email' => $user->email,
                 'sekolah' => $user->sekolah,
