@@ -130,7 +130,7 @@
                 <!-- Ganti nilai dengan total belanja -->
             </tr>
             <tr>
-                <td colspan="3" style="text-align: right">Total Saldo:</td>
+                <td colspan="3" style="text-align: right">Sisa Saldo:</td>
                 <td>{{ $saldo['total_saldo'] }}</td>
                 <!-- Ganti nilai dengan total saldo -->
             </tr>
