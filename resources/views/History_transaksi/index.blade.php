@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin - RFID</title>
+    <title>Admin - Transaksi</title>
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="load/load.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
@@ -181,6 +181,11 @@
                                 </ul>
                             </div>
                             {{-- tabel --}}
+                            <style>
+                                .pagination .active a {
+                                    color: blue !important;
+                                }
+                            </style>
 
                             <div class="flex flex-col">
                                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -191,13 +196,13 @@
                                                     <tr>
                                                         <th scope="col" class="px-6 py-2">#</th>
                                                         <th scope="col" class="px-6 py-2">Nama</th>
-                                                        <th scope="col" class="px-6 py-2">rfid</th>
-                                                        <th scope="col" class="px-6 py-2">name</th>
-                                                        <th scope="col" class="px-6 py-2">foto</th>
-                                                        <th scope="col" class="px-6 py-2">harga</th>
-                                                        <th scope="col" class="px-6 py-2">stok</th>
-                                                        <th scope="col" class="px-6 py-2">total</th>
-                                                        <th scope="col" class="px-6 py-2">tanggal</th>
+                                                        <th scope="col" class="px-6 py-2">RFID</th>
+                                                        <th scope="col" class="px-6 py-2">Barang</th>
+                                                        <th scope="col" class="px-6 py-2">Foto</th>
+                                                        <th scope="col" class="px-6 py-2">Harga</th>
+                                                        <th scope="col" class="px-6 py-2">Stok</th>
+                                                        <th scope="col" class="px-6 py-2">Total</th>
+                                                        <th scope="col" class="px-6 py-2">Tanggal</th>
                                                     </tr>
                                                 </thead>
                                                 @php
@@ -219,7 +224,8 @@
                                                                 {{ $items->name }}
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-2">
-                                                                <img src="{{ asset('storage/pendataanbarang/' . $items->foto) }}" width="50" height="50" alt="">
+                                                                <img src="{{ asset('storage/pendataanbarang/' . $items->foto) }}"
+                                                                    width="50" height="50" alt="">
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-2">
                                                                 {{ $items->harga }}
@@ -233,12 +239,21 @@
                                                             <td class="whitespace-nowrap px-6 py-2">
                                                                 {{ $items->tanggal }}
                                                             </td>
-                                                        <tbody>
+                                                    <tbody>
 
                                                     </tbody>
                                                 @empty
+                                                    <tr>
+                                                        <td colspan="6" class="p-8 text-center">
+                                                            <div class="flex justify-center items-center">
+                                                                <img src="/admin/noData.png" alt=""
+                                                                    width="280px">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                 @endforelse
                                             </table>
+                                            {{ $data->appends(['cari' => request('cari')])->links() }}
                                         </div>
                                     </div>
                                 </div>
