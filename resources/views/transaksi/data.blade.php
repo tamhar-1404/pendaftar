@@ -287,8 +287,10 @@
                 value: data.value,
             },
             success: function (response) {
-                console.log(response);
-                alert(response);
+                $.each(response, function (index, el) {
+                    console.log("Nama : ",el.nama);
+                    console.log("Harga : ",el.harga);
+                })
             }
         })
     }
