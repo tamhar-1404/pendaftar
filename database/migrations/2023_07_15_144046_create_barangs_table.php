@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('foto');
-            $table->string('kode');
+            $table->string('kode')->unique();
             $table->string('kategori');
             $table->string('harga');
             $table->integer('stok')->nullable()->default(0);

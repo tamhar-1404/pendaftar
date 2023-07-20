@@ -145,20 +145,37 @@
 
                                                 Swal.fire({
                                                     title: 'Data Pengguna',
-                                                    html: `<table>
-                                                              <tr>
-                                                                <th>Nama</th>
-                                                                <th>Email</th>
-                                                                <th>Sekolah</th>
-                                                                <th>Saldo</th>
-                                                              </tr>
-                                                              <tr>
-                                                                <td>${response.nama}</td>
-                                                                <td>${response.email}</td>
-                                                                <td>${response.sekolah}</td>
-                                                                <td>Rp. ${response.saldo}</td>
-                                                              </tr>
-                                                            </table>`,
+                                                    html: `<div class="w-full">
+                                                                <div class="w-full flex justify-center mb-10">
+                                                                     <img class="w-[70px] h-[70px] rounded-full" src="{{asset('storage/Siswa/' . "")}}{${response.foto}}" alt="" srcset="">
+                                                                </div>
+                                                                <div class="flex flex-col items-center gap-2">
+                                                                <div class="flex justify-between w-full text-base ">
+                                                                    <p class="font-bold w-full text-start">Nama : </p>
+                                                                    <div class="w-full text-start">
+                                                                        <p class=" text-start">${response.nama}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="flex justify-between w-full text-base">
+                                                                    <p class="font-bold w-full text-start">Email : </p>
+                                                                    <div class="w-full text-start">
+                                                                        <p class=" text-start text-sm">${response.email}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="flex justify-between w-full text-base">
+                                                                    <p class="font-bold w-full text-start">Sekolah : </p>
+                                                                    <div class="w-full text-start">
+                                                                        <p class=" text-start">${response.sekolah}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="flex justify-between w-full text-base">
+                                                                    <p class="font-bold w-full text-start">Saldo : </p>
+                                                                    <div class="w-full text-start">
+                                                                        <p class=" text-start">${response.saldo}</p>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>`,
                                                     customClass: {
                                                         content: 'text-black'
                                                     }

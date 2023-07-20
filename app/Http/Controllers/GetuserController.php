@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,14 +17,16 @@ class GetuserController extends Controller
     public function find_rfid(Request $request)
     {
         $rfid = $request->rfid;
-        $user = User::where('rfid', $rfid);
+        $user = User::where('rfid', $rfid)->first();
+        $siswa = Siswa::where('id', $user->siswa_id)->first();
         if ($user->exists()) {
-            $usr = $user->first();
+            // $usr = $user->first();
             return response()->json([
-                'nama' => $usr->name,
-                'email' => $usr->email,
-                'sekolah' => $usr->sekolah,
-                'saldo' => $usr->saldo,
+                'foto' => $siswa->siswa_id,
+                'nama' => $user->name,
+                'email' => $user->email,
+                'sekolah' => $user->sekolah,
+                'saldo' => $user->saldo,
             ]);
         }
         else {
