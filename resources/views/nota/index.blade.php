@@ -116,30 +116,28 @@
         <div class="w-full flex justify-end">
             <!-- Tambahkan baris sesuai dengan data barang yang dibeli -->
             <div>
-                <td colspan="3" style="text-align: left">
+                <td colspan="3" style="text-align: left" class="hidden text-base font-semibold text-gray-700">
                     Total Belanja:
                 </td>
                 <td>{{$total_semua}}</td>
-                <!-- Ganti nilai dengan total belanja -->
+
             </div> <br>
 
         </div>
         <div class="w-full flex justify-end">
-            <!-- Tambahkan baris sesuai dengan data barang yang dibeli -->
 
             <div>
                 <td colspan="3" style="text-align: left">Total Saldo:</td>
                 <td>{{$hasil}} </td>
-                <!-- Ganti nilai dengan total saldo -->
+
 
              </div>
         </div>
         <div class="w-full flex justify-end">
-            <!-- Tambahkan baris sesuai dengan data barang yang dibeli -->
 
             <a href="/kode_beli">
 
-                <button class="bg-blue-400 py-1 px-3 text-white font-normal rounded">Selesai</button>
+                <button class="bg-blue-400 py-1 px-3 text-white font-normal rounded mt-1 mb-2">Selesai</button>
             </a>
         </div>
 

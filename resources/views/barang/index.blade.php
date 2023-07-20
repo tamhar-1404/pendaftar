@@ -40,6 +40,16 @@
             });
         </script>
     @endif
+    @if ($errors->any())
+    <script>
+        // SweetAlert to show the error message
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '{{ $errors->first() }}',
+        });
+    </script>
+@endif
 
     <!-- screen loader -->
     <div
@@ -136,7 +146,7 @@
                                                 @csrf
                                                 <button type="submit" onclick="confirmDelete(event)"
                                                     class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                                                    <i class="animate-bounce fa fa-trash"></i></button>
+                                                    <i class=" fa fa-trash"></i></button>
                                             </form>
                                         </td>
                                     </tr>
@@ -285,15 +295,15 @@
                         </form>
                         <!-- barang footer -->
 
-      <input autofocus type="text" id="email" name="kode" class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600" placeholder="Scan code barang" required>
-    </div>
-    <div class="flex justify-between">
-        <button type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="prevStep()">Previous</button>
-        <button type="submit" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-      </div>
-  </div>
-</div>
-</form>
+                        <input autofocus type="text" id="email" name="kode" class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600" placeholder="Scan code barang" required>
+                        </div>
+                        <div class="flex justify-between">
+                            <button type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="prevStep()">Previous</button>
+                            <button type="submit" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        </div>
+                    </div>
+                    </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -325,6 +335,7 @@
                         <input type="number" id="name3" name="harga"
                             class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
                             placeholder="Masukkan Harga Barang" required min="1">
+                        <div id="error_harga" class="text-sm text-red-600"></div>
                     </div>
                     <div class="mb-6">
                         <label for="name4" class="block text-sm font-medium text-gray-700">Kategori</label>
@@ -363,7 +374,7 @@
 
                     <input type="text" id="email" name="kode"
                         class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
-                        placeholder="Scan code barang" required>
+                        placeholder="Scan code barang" required autofocus>
                 </div>
                 <div class="flex justify-between">
                     <button type="button"
@@ -393,6 +404,7 @@
                 if (currentStep === 1) {
                     const isValid = validateStep1();
                     if (isValid) {
+
                         document.getElementById('modal-step1').classList.add('hidden');
                         document.getElementById('modal-step2').classList.remove('hidden');
                         currentStep = 2;
@@ -424,6 +436,10 @@
                     .trim() === '') {
                     alert('Mohon lengkapi semua field pada langkah 1');
                     return false;
+                }else if( harga.trim() < '0' ){
+                    document.getElementById('error_harga').innerHTML = "Masukan harga yang valid";
+                        // alert('Mohon isi harga yang valid');
+                        return false;
                 }
 
                 return true;
