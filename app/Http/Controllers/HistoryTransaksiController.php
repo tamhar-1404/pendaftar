@@ -6,9 +6,21 @@ use Illuminate\Http\Request;
 use App\Models\HistoryTransaksi;
 use App\Http\Requests\StoreHistoryTransaksiRequest;
 use App\Http\Requests\UpdateHistoryTransaksiRequest;
+use Carbon\Carbon;
+
 
 class HistoryTransaksiController extends Controller
 {
+    // public function convertMonthToNumber( $monthName)
+    // {
+    //     // Buat instance Carbon dari string nama bulan
+    //     $date = Carbon::createFromFormat('F', $monthName);
+
+    //     // Ambil nomor bulan dari instance Carbon (1 untuk Januari, 2 untuk Februari, dst.)
+    //     $monthNumber = $date->month;
+
+    //     return $monthNumber;
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -18,15 +30,19 @@ class HistoryTransaksiController extends Controller
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
+            $bulan = HistoryTransaksi::whereMonth('tanggal' , $keyword)->get();
+            dd
+            $jumlah = $bulan->sum('total');
+            dd($jumlah);
             $data = HistoryTransaksi::where('nama', 'LIKE', '%' . $keyword . '%')
                                    ->orWhere('rfid', 'LIKE', '%' . $keyword . '%')
                                    ->paginate(10);
             $data->appends(['cari' => $keyword]);
-            return view('History_transaksi.index', compact('data'));
+            return view('History_transaksi.index', compact('data','jumlah'));
         }
-        
+        $jumlah = HistoryTransaksi::sum('total');
         $data = HistoryTransaksi::latest()->paginate(10);
-        return view('History_transaksi.index', compact('data'));        
+        return view('History_transaksi.index', compact('data', 'jumlah'));
     }
 
     /**

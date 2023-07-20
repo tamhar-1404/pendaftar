@@ -98,7 +98,7 @@
                 <div class="mt-1">Makanan</div>
                 <div class="w-full max-h-[270px] mt-1  overflow-y-scroll">
                     @forelse ($barang as $data )
-                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
+                    <div id="{{$data ->nama}}" class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
                         <div class="flex justify-between px-5">
                             <div id="makanan" class="font-bold text-">{{$data->nama}}</div>
                             <p class="text-gray-700">{{$data->harga}}</p>
@@ -113,7 +113,7 @@
                 <div class="mt-2">minuman</div>
                 <div class="w-full max-h-[260px] mt-1  overflow-y-scroll">
                     @forelse ($minuman as $data )
-                    <div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
+                    <div id="{{$data ->nama}}" class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
                         <div class="flex justify-between px-5">
                             <div id="makanan" class="font-bold text-">{{$data->nama}}</div>
                             <p class="text-gray-700">{{$data->harga}}</p>
@@ -288,6 +288,7 @@
             },
             success: function (response) {
                 $.each(response, function (index, el) {
+                    document.getElementById(!(el.nama)).classList.add('hidden');
                     console.log("Nama : ",el.nama);
                     console.log("Harga : ",el.harga);
                 })
@@ -422,9 +423,7 @@
             alert('barang yang anda scan belum di data pada admin');
         }
     }
-    function inputserch(serch){
 
-    }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script>

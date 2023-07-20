@@ -71,7 +71,7 @@ class HistoryAdminController extends Controller
                      'harga' => $data->harga,
                      'stok' => $quantity[$i],
                      'total' => (int) $quantity[$i] * (int) $data->harga,
-                     'tanggal' => Carbon::now()->format('Y-m-d'),
+                     'tanggal' => Carbon::now()->format('Y-F-d'),
                  ]);
 
                  $barang = Barang::where('kode', $item);
@@ -95,7 +95,7 @@ class HistoryAdminController extends Controller
          $user = User::where('rfid', $request->rfid_user);
          $user_saldo = $user->first()->saldo;
 
-       
+
          if ($user_saldo < $total_semua) {
              $message = 'Saldo tidak mencukupi untuk melakukan pembelian.';
              return redirect()->back()->with('error', $message);

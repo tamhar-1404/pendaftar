@@ -27,7 +27,25 @@
         <div class="w-full flex justify-center ">
             <img class="w-[100px] h-[100px] rounded-full" src="{{asset("admin/assets/images/humma.png")}}" alt="" srcset="">
         </div>
-        <div class="flex flex-col items-center gap-2 ">
+        <table class="w-full">
+            <tr class="w-full">
+                <td>nama :</td>
+                <td>${response.nama}</td>
+            </tr>
+            <tr>
+                <td>Email : </td>
+                <td>${response.email}</td>
+            </tr>
+            <tr>
+                <td>Sekolah : </td>
+                <td>${response.sekolah}</td>
+            </tr>
+            <tr>
+                <td>Saldo : </td>
+                <td>${response.nama}</td>
+            </tr>
+        </table>
+        {{-- <div class="flex flex-col items-center gap-2 ">
             <div class="flex justify-between w-full ">
                 <p class="font-bold w-full">nama : </p>
                 <div class="w-full text-start">
@@ -46,7 +64,7 @@
                 <p class="font-bold">saldo : </p>
                 <p>Rp.${response.saldo}</p>
             </div>
-        </div>
+        </div> --}}
     </div>
 </body>
 
