@@ -123,8 +123,9 @@
                                             {{ $barang->kode }}
                                         </td>
                                         <td class="whitespace-nowrap px-6 py-2">
-                                            Rp. {{ $barang->harga }}
+                                            Rp. {{ number_format($barang->harga, 0, ',', '.') }}
                                         </td>
+
                                         <td class="whitespace-nowrap px-6 py-2">
                                             {{ $barang->kategori }}
                                         </td>
@@ -379,9 +380,9 @@
             </center>
             <div class="mb-6">
 
-                <input type="text" id="email" name="kode"
+                <input type="text" id="kodebarang" name="kode"
                     class="block w-full py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
-                    placeholder="Scan code barang" required autofocus>
+                    placeholder="Scan code barang" required>
             </div>
             <div class="flex justify-between">
                 <button type="button"
@@ -411,7 +412,7 @@
             if (currentStep === 1) {
                 const isValid = validateStep1();
                 if (isValid) {
-
+                    document.getElementById('kodebarang').focus();
                     document.getElementById('modal-step1').classList.add('hidden');
                     document.getElementById('modal-step2').classList.remove('hidden');
                     currentStep = 2;

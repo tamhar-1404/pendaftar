@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<!-- Mirrored from html.vristo.sbthemes.com/datatables-export.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:33 GMT -->
+{{--  <!-- Mirrored from html.vristo.sbthemes.com/datatables-export.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:33 GMT -->  --}}
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
@@ -1326,6 +1326,8 @@
                                                     <th scope="col" class="px-6 py-4 ">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            @forelse ($jurnals as  $jurnal)
+
                                             <tbody>
                                                 <tr
                                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
@@ -1449,6 +1451,9 @@
                                                 </tr>
 
                                             </tbody>
+                                            @empty
+
+                                            @endforelse
                                         </table>
                                     </div>
                                 </div>

@@ -1192,7 +1192,7 @@
                             <h1>Dashboard</h1>
                         </div>
                         <div class="flex justify-end font-semibold bg-blue-400 text-white px-4 py-1 rounded">
-                            <h1>Saldo anda : {{ $user->saldo ? $user->saldo : '0' }}</h1>
+                            <h1>Saldo anda : <span id="saldo">Rp {{ number_format($user->saldo ? $user->saldo : 0, 0, ',', '.') }}</span></h1>
                         </div>
                     </div>
                     {{--  modal  --}}
@@ -1396,7 +1396,7 @@
 
                             <div class="panel h-full">
                                 <div class="mb-5 flex items-center">
-                                    <h5 class="text-lg font-semibold dark:text-white-light">Sales By Category</h5>
+                                    <h5 class="text-lg font-semibold dark:text-white-light">Absensi</h5>
                                 </div>
                                 <div>
                                     <div x-ref="salesByCategory" class="rounded-lg bg-white dark:bg-black">

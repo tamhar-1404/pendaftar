@@ -43,6 +43,15 @@
             });
         </script>
     @endif
+    @if (session()->has('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "{{ session('error') }}",
+            })
+        </script>
+    @endif
 
     <!-- screen loader -->
     <div
@@ -117,7 +126,7 @@
                                             {{ $oname->barang->kode }}
                                         </td>
                                         <td class="whitespace-nowrap px-6 py-2">
-                                            {{ $oname->barang->harga }}
+                                            Rp. {{ number_format($oname->barang->harga, 0, ',', '.') }}
                                         </td>
                                         <td class="whitespace-nowrap px-6 py-2">
                                             {{ $oname->barang->kategori }}
@@ -171,24 +180,7 @@
                                     animation: false
                                 }).then((result) => {
                                     if (result.isConfirmed) {
-                                        Swal.fire({
-                                            title: 'Sukses',
-                                            text: 'Berhasil dihapus!',
-                                            icon: 'success',
-                                            timer: 2000,
-                                            showConfirmButton: false,
-                                            background: '#f5f5f5',
-                                            customClass: {
-                                                icon: 'swal-icon',
-                                                popup: 'swal-popup',
-                                                title: 'swal-title',
-                                                confirmButton: 'swal-button swal-button--confirm'
-                                            },
-                                            animation: false
-                                        });
-                                        setTimeout(() => {
-                                            event.target.closest('form').submit();
-                                        }, 2000);
+                                        event.target.closest('form').submit();
                                     }
                                 });
                             }
