@@ -110,47 +110,33 @@
                                             <input type="hidden" value="Terima" name="status" id="">
                                             <td class="whitespace-nowrap px-6 py-2">
                                                 <div class="flex justify-between">
-                                                    <<<<<<< HEAD <form
+                                                    <form id="confirmation-form-{{ $topup->id }}"
                                                         action="{{ route('aproval.update', $topup->id) }}"
-                                                        method="post" id="confirm-form-{{ $topup->id }}">
+                                                        method="post">
                                                         @csrf
                                                         @method('PUT')
                                                         <input type="hidden" name="saldo" placeholder="Saldo"
                                                             value="{{ old('saldo', $topup->saldo) }}" required>
-                                                        <button type="submit" onclick="confirmSetuju(event)"
-                                                            class="border border-blue-400 px-4 py-1 rounded hover:bg-blue-500 hover:text-white">
+                                                        <button type="submit" id="submit-btn-{{ $topup->id }}"
+                                                            class="border border-blue-400 px-4 py-1 rounded hover:bg-blue-500 hover:text-white"
+                                                            onclick="tambah(event, {{ $topup->id }})">
                                                             <i class="fa fa-check-square-o"
                                                                 style="color:rgb(0, 204, 255);"></i>
-                                                            =======
-                                                            <form id="confirmation-form-{{ $topup->id }}"
-                                                                action="{{ route('aproval.update', $topup->id) }}"
-                                                                method="post">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <input type="hidden" name="saldo" placeholder="Saldo"
-                                                                    value="{{ old('saldo', $topup->saldo) }}" required>
-                                                                <button type="submit"
-                                                                    id="submit-btn-{{ $topup->id }}"
-                                                                    class="border border-blue-400 px-4 py-1 rounded hover:bg-blue-500 hover:text-white"
-                                                                    onclick="tambah(event, {{ $topup->id }})">
-                                                                    <i class="fa fa-check-square-o"
-                                                                        style="color:rgb(0, 204, 255);"></i>
-                                                                    >>>>>>> 235c594be4a5634671aeb3d6df670455c060c48a
-                                                                </button>
-                                                            </form>
-                                                            <form action="{{ route('aproval.update', $topup->id) }}"
-                                                                method="post" id="confirm-form-{{ $topup->id }}">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <input type="hidden" name="status" value="Ditolak">
-                                                                <div style="display: inline-block;">
-                                                                    <button type="submit"
-                                                                        onclick="confirmDelete(event)"
-                                                                        class="border border-red-400 px-4 py-1 rounded hover:bg-red-500 hover:text-white">
-                                                                        <i class="fa fa-close"></i>
-                                                                    </button>
-                                                                </div>
-                                                            </form>
+
+                                                        </button>
+                                                    </form>
+                                                    <form action="{{ route('aproval.update', $topup->id) }}"
+                                                        method="post" id="confirm-form-{{ $topup->id }}">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <input type="hidden" name="status" value="Ditolak">
+                                                        <div style="display: inline-block;">
+                                                            <button type="submit" onclick="confirmDelete(event)"
+                                                                class="border border-red-400 px-4 py-1 rounded hover:bg-red-500 hover:text-white">
+                                                                <i class="fa fa-close"></i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </td>
 
