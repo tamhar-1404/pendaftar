@@ -53,15 +53,12 @@ class HistoryAdminController extends Controller
          $total_semua = 0;
          $name = [];
          $harga = [];
-
-         // Simpan informasi stok yang tidak mencukupi ke dalam array
          $stok_tidak_cukup = [];
 
          foreach ($kode as $item) {
              $data = Barang::where('kode', $item)->first();
              $total_semua += (int) $quantity[$i] * (int) $data->harga;
 
-             // Periksa apakah stok mencukupi untuk transaksi
              if ((int) $data->stok >= (int) $quantity[$i]) {
                  array_push($name, $data->nama);
                  array_push($harga, $data->harga);
@@ -84,22 +81,25 @@ class HistoryAdminController extends Controller
                      'stok' => $stok_lama - $stok_baru
                  ]);
              } else {
-                 // Jika stok tidak mencukupi, tambahkan informasi ke array
                  $stok_tidak_cukup[] = $data->nama;
              }
 
              $i++;
          }
 
-         // Jika ada stok yang tidak mencukupi, kembalikan dengan pesan error
          if (!empty($stok_tidak_cukup)) {
              $message = 'Stok tidak mencukupi untuk barang: ' . implode(', ', $stok_tidak_cukup);
              return redirect()->back()->with('error', $message);
          }
 
-         // Proses transaksi dan pengurangan saldo
          $user = User::where('rfid', $request->rfid_user);
          $user_saldo = $user->first()->saldo;
+
+       
+         if ($user_saldo < $total_semua) {
+             $message = 'Saldo tidak mencukupi untuk melakukan pembelian.';
+             return redirect()->back()->with('error', $message);
+         }
 
          $saldo = [
              'name' => $name,

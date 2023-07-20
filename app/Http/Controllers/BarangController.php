@@ -42,44 +42,35 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'nama'=>'required',
-            'harga'=>'required',
-            'deskripsi'=>'required',
-            'kategori'=>'required',
-            'foto'=>'required',
-            'kode'=>'required|unique:barang'
+        $this->validate($request, [
+            'nama' => 'required',
+            'harga' => 'required',
+            'deskripsi' => 'required',
+            'kategori' => 'required',
+            'foto' => 'required',
+            'kode' => 'required'
         ]);
+
         try {
-            $this->validate($request,[
-                'nama'=>'required',
-                'harga'=>'required',
-                'deskripsi'=>'required',
-                'kategori'=>'required',
-                'foto'=>'required',
-                'kode'=>'required|unique:barang'
+            $image = $request->file('foto');
+            $image->storeAs('public/pendataanbarang', $image->hashName());
+
+            Barang::create([
+                'nama' => $request->nama,
+                'harga' => $request->harga,
+                'deskripsi' => $request->deskripsi,
+                'kategori' => $request->kategori,
+                'foto' => $image->hashName(),
+                'kode' => $request->kode,
             ]);
-            // Code that may throw an exception
-            // For example, database operations, API calls, etc.
-        } catch (\Exception $e) {
-            // Exception handling code
-            // Here you can log the error, display a user-friendly message, or take other actions
-            // For example, you might use the following:
-            Log::error($e->getMessage());
-            // return response()->json(['error' => 'Something went wrong'], 500);
+
+            return redirect()->back()->with('success', 'Berhasil menambahkan data');
+        } catch (\Illuminate\Database\QueryException $e) {
+
+            return redirect()->back()->withErrors('Kode barang sudah ada!');
         }
-        $image = $request->file('foto');
-        $image->storeAs('public/pendataanbarang', $image->hashName());
-        Barang::create([
-            'nama'=>$request->nama,
-            'harga'=>$request->harga,
-            'deskripsi'=>$request->deskripsi,
-            'kategori'=>$request->kategori,
-            'foto'=>$image->hashName(),
-            'kode'=>$request->kode,
-        ]);
-        return redirect()->back()->with('success', 'Berhasil menambahkan data');
     }
+
 
     /**
      * Display the specified resource.
@@ -110,43 +101,46 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Barang $barang )
+    public function update(Request $request, Barang $barang)
     {
-        // dd($request);
-      $this->validate($request ,[
-        'nama'=>'required',
-        'kode'=>'required',
-        'harga'=>'required',
-        'kategori'=>'required',
-        'deskripsi'=>'required'
-      ]);
-      if ($request->hasFile('foto')) {
+        $this->validate($request, [
+            'nama' => 'required',
+            'kode' => 'required',
+            'harga' => 'required',
+            'kategori' => 'required',
+            'deskripsi' => 'required'
+        ]);
 
-        $image = $request->file('foto');
-        $image->storeAs('public/pendataanbarang', $image->hashName());
+        try {
+            if ($request->hasFile('foto')) {
+                $image = $request->file('foto');
+                $image->storeAs('public/pendataanbarang', $image->hashName());
+                Storage::delete('public/pendataanbarang/' . $barang->foto);
 
-        Storage::delete('public/pendataanbarang/'.$barang->image);
+                $barang->update([
+                    'nama' => $request->nama,
+                    'kode' => $request->kode,
+                    'harga' => $request->harga,
+                    'kategori' => $request->kategori,
+                    'foto' => $image->hashName(),
+                    'deskripsi' => $request->deskripsi
+                ]);
+            } else {
+                $barang->update([
+                    'nama' => $request->nama,
+                    'kode' => $request->kode,
+                    'harga' => $request->harga,
+                    'kategori' => $request->kategori,
+                    'deskripsi' => $request->deskripsi
+                ]);
+            }
 
-    $barang->update([
-        'nama'=>$request->nama,
-        'kode'=>$request->kode,
-        'harga'=>$request->harga,
-        'kategori'=>$request->kategori,
-        'foto'=>$image->hashName(),
-        'deskripsi'=>$request->deskripsi
-    ]);
-}else{
-    $barang->update([
-        'nama'=>$request->nama,
-        'kode'=>$request->kode,
-        'harga'=>$request->harga,
-        'kategori'=>$request->kategori,
-        'deskripsi'=>$request->deskripsi
-    ]);
+            return redirect()->back()->with('success', 'Berhasil mengedit data');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors('Kode telah tersedia');
+        }
     }
-    return redirect()->back()->with('success', 'Berhasil mengedit data');
 
-    }
 
     /**
      * Remove the specified resource from storage.

@@ -133,7 +133,7 @@
         <div class="container">
             <div class="grid grid-cols-1 gap-5">
                 <div class="flex w-full justify-between  md:w-max-[50%]" >
-                    <div class="flex w-full justify-end font-semibold items-center  px-4 py-1 rounded">
+                    <div class="flex w-full justify-end mt-2 font-semibold items-center  px-4 py-1 rounded">
                         <div class=" flex text-white items-center py-1 rounded bg-blue-500 px-3">
                             <p class="text-sm">Saldo anda sekarang : {{$user}}</p>
                         </div>
@@ -142,7 +142,7 @@
                 <div class="w-full  h-7 mb-8 flex-col ">
                     <p class="text-center">scan kode barang</p>
                     <div class="flex justify-center ">
-                        <input placeholder="masukan kode barang"  autofocus onchange="showStep(0)" class="border px-2 border-gray-300 w-[30%] text-black" type="text" name="kodebarang" id="kodebarang">
+                        <input placeholder="masukan kode barang"  autofocus onchange="showStep(0)" class="border px-2 border-gray-300 w-[30%] text-black    " type="text" name="kodebarang" id="kodebarang">
                     </div>
                 </div>
                 <div class="overflow-x-auto">
@@ -198,11 +198,14 @@
                         </tbody>
                     </table>
                         <input type="hidden" name="rfid_user" id="rfid-user">
-                        <div class="flex justify-between px-8 mt-4">
-                            <p id="total_keseluruhan" class="hidden text-base font-semibold text-gray-700">Total keseluruhan Rp. <span id="jumlah_semua" class=" text-base font-semibold text-blue-400">0</span></p>
+                        <div class="flex justify-end px-8 mt-2">
+                            <p id="total_keseluruhan" class="hidden text-base font-semibold text-gray-700">Rp. <span id="jumlah_semua" class="text-base font-semibold text-blue-400">0</span></p>
                             <input type="hidden" id="form_total_semua" value="0">
+                        </div>
+                        <div class="flex justify-end px-8">
                             <button type="submit" class="hidden bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="btn-bayar">Bayar</button>
                         </div>
+
                     </form>
 
                     <script>
