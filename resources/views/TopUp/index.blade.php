@@ -110,8 +110,8 @@
                                             <input type="hidden" value="Terima" name="status" id="">
                                             <td class="whitespace-nowrap px-6 py-2">
                                                 <div class="flex justify-between">
-
-                                                    <form action="{{ route('aproval.update', $topup->id) }}"
+                                                    <<<<<<< HEAD <form
+                                                        action="{{ route('aproval.update', $topup->id) }}"
                                                         method="post" id="confirm-form-{{ $topup->id }}">
                                                         @csrf
                                                         @method('PUT')
@@ -121,20 +121,36 @@
                                                             class="border border-blue-400 px-4 py-1 rounded hover:bg-blue-500 hover:text-white">
                                                             <i class="fa fa-check-square-o"
                                                                 style="color:rgb(0, 204, 255);"></i>
-                                                        </button>
-                                                    </form>
-                                                    <form action="{{ route('aproval.update', $topup->id) }}"
-                                                        method="post" id="confirm-form-{{ $topup->id }}">
-                                                        @csrf
-                                                        @method('PUT')
-                                                        <input type="hidden" name="status" value="Ditolak">
-                                                        <div style="display: inline-block;">
-                                                            <button type="submit" onclick="confirmDelete(event)"
-                                                                class="border border-red-400 px-4 py-1 rounded hover:bg-red-500 hover:text-white">
-                                                                <i class="fa fa-close"></i>
-                                                            </button>
-                                                        </div>
-                                                    </form>
+                                                            =======
+                                                            <form id="confirmation-form-{{ $topup->id }}"
+                                                                action="{{ route('aproval.update', $topup->id) }}"
+                                                                method="post">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="saldo" placeholder="Saldo"
+                                                                    value="{{ old('saldo', $topup->saldo) }}" required>
+                                                                <button type="submit"
+                                                                    id="submit-btn-{{ $topup->id }}"
+                                                                    class="border border-blue-400 px-4 py-1 rounded hover:bg-blue-500 hover:text-white"
+                                                                    onclick="tambah(event, {{ $topup->id }})">
+                                                                    <i class="fa fa-check-square-o"
+                                                                        style="color:rgb(0, 204, 255);"></i>
+                                                                    >>>>>>> 235c594be4a5634671aeb3d6df670455c060c48a
+                                                                </button>
+                                                            </form>
+                                                            <form action="{{ route('aproval.update', $topup->id) }}"
+                                                                method="post" id="confirm-form-{{ $topup->id }}">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="status" value="Ditolak">
+                                                                <div style="display: inline-block;">
+                                                                    <button type="submit"
+                                                                        onclick="confirmDelete(event)"
+                                                                        class="border border-red-400 px-4 py-1 rounded hover:bg-red-500 hover:text-white">
+                                                                        <i class="fa fa-close"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </form>
                                                 </div>
                                             </td>
 
@@ -144,7 +160,51 @@
                             </tbody>
 
                         </table>
+                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                        <script>
+                            function tambah(event, id) {
+                                Swal.fire({
+                                    title: 'Konfirmasi',
+                                    text: 'Apakah Anda yakin ingin menerima topup ini?',
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Ya, terima!',
+                                    cancelButtonText: 'Batal',
+                                    background: '#f5f5f5',
+                                    customClass: {
+                                        icon: 'swal-icon',
+                                        confirmButton: 'swal-button swal-button--confirm',
+                                        cancelButton: 'swal-button swal-button--cancel'
+                                    },
+                                    animation: false
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        Swal.fire({
+                                            title: 'Sukses',
+                                            text: 'Berhasil diterima!',
+                                            icon: 'success',
+                                            timer: 2000,
+                                            showConfirmButton: false,
+                                            background: '#f5f5f5',
+                                            customClass: {
+                                                icon: 'swal-icon',
+                                                popup: 'swal-popup',
+                                                title: 'swal-title',
+                                                confirmButton: 'swal-button swal-button--confirm'
+                                            },
+                                            animation: false
+                                        });
+                                        setTimeout(() => {
+                                            document.getElementById('confirm-form').submit();
+                                        }, 2000);
+                                    }
+                                });
+                                x
 
+                            }
+                        </script>
                         <script>
                             function confirmSetuju(event) {
                                 event.preventDefault();
@@ -191,7 +251,7 @@
                         </script>
 
                         <script>
-                            function confirmDelete(event) {
+                            function confirmDelete(event, id) {
                                 event.preventDefault();
 
                                 Swal.fire({

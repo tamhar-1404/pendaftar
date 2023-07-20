@@ -71,7 +71,7 @@ class HistoryAdminController extends Controller
                      'harga' => $data->harga,
                      'stok' => $quantity[$i],
                      'total' => (int) $quantity[$i] * (int) $data->harga,
-                     'tanggal' => Carbon::now()->format('Y-F-d'),
+                     'tanggal' => Carbon::now()->format('Y-m-d'),
                  ]);
 
                  $barang = Barang::where('kode', $item);

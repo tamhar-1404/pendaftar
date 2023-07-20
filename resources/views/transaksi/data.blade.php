@@ -92,41 +92,43 @@
               </div>
               <div class="  h-7 mb-8 flex-col justify-center items-center">
                 <center>
-
                     <input class="border px-2 border-gray-300 w-[95%] placeholder:text-gray-600" id="searchInput" type="text" name="kodebarang" placeholder="cari menu" onchange="cari(this)">
                 </cesnter>
-                <div class="mt-1">Makanan</div>
-                <div class="w-full max-h-[270px] mt-1  overflow-y-scroll">
-                    @forelse ($barang as $data )
-                    <div id="{{$data ->nama}}" class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
-                        <div class="flex justify-between px-5">
-                            <div id="makanan" class="font-bold text-">{{$data->nama}}</div>
-                            <p class="text-gray-700">{{$data->harga}}</p>
-                        </div>
-                    </div>
-                    @empty
-
-                    @endforelse
-
-
+                <div id="listmenu">
                 </div>
-                <div class="mt-2">minuman</div>
-                <div class="w-full max-h-[260px] mt-1  overflow-y-scroll">
-                    @forelse ($minuman as $data )
-                    <div id="{{$data ->nama}}" class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
-                        <div class="flex justify-between px-5">
-                            <div id="makanan" class="font-bold text-">{{$data->nama}}</div>
-                            <p class="text-gray-700">{{$data->harga}}</p>
+                <div id="wadah">
+                    <div class="mt-1">Makanan</div>
+                    <div class="w-full max-h-[270px] mt-1  overflow-y-scroll">
+                        @forelse ($makanan as $data )
+                        <div id="{{$data->nama}}" class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
+                            <div class="flex justify-between px-5">
+                                <div id="makanan" class="font-bold text-">{{$data->nama}}</div>
+                                <p class="text-gray-700">{{$data->harga}}</p>
+                            </div>
                         </div>
+                        @empty
+
+                        @endforelse
+
+
                     </div>
-                    @empty
+                    <div class="mt-2">minuman</div>
+                    <div class="w-full max-h-[260px] mt-1  overflow-y-scroll">
+                        @forelse ($minuman as $data )
+                        <div id="{{$data ->nama}}" class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
+                            <div class="flex justify-between px-5">
+                                <div id="makanan" class="font-bold text-">{{$data->nama}}</div>
+                                <p class="text-gray-700">{{$data->harga}}</p>
+                            </div>
+                        </div>
+                        @empty
 
-                    @endforelse
+                        @endforelse
 
 
 
+                    </div>
                 </div>
-
             </div><br>
             </div>
           </div>
@@ -135,7 +137,7 @@
                 <div class="flex w-full justify-between  md:w-max-[50%]" >
                     <div class="flex w-full justify-end mt-2 font-semibold items-center  px-4 py-1 rounded">
                         <div class=" flex text-white items-center py-1 rounded bg-blue-500 px-3">
-                            <p class="text-sm">Saldo anda sekarang : {{$user}}</p>
+                            <p class="text-sm">Saldo anda sekarang : Rp. {{$user}}</p>
                         </div>
                     </div>
                 </div>
@@ -280,20 +282,36 @@
     });
 
     function cari(data) {
-        $.ajax({
-            url: "{{ route('cari_barang') }}",
-            method: 'POST',
-            data: {
-                value: data.value,
-            },
-            success: function (response) {
-                $.each(response, function (index, el) {
-                    document.getElementById(!(el.nama)).classList.add('hidden');
-                    console.log("Nama : ",el.nama);
-                    console.log("Harga : ",el.harga);
-                })
-            }
-        })
+        if (data.value == "") {
+            console.log("Kosong")
+            $('#listmenu').empty();
+            $('#wadah').removeClass('hidden');
+            return;
+        } else {
+            $.ajax({
+                url: "{{ route('cari_barang') }}",
+                method: 'POST',
+                data: {
+                    value: data.value,
+                },
+                success: function (response) {
+                    $('#wadah').addClass('hidden');
+                    $('#listmenu').empty();
+                    $.each(response, function (index, el) {
+                        let elemen = `<div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
+                            <div class="flex justify-between px-5">
+                                <div id="makanan" class="font-bold text-">${el.nama}</div>
+                                <p class="text-gray-700">${el.harga}</p>
+                            </div>
+                        </div>`
+                        $('#listmenu').append(elemen);
+
+                        console.log("Nama : ",el.nama);
+                        console.log("Harga : ",el.harga);
+                    });
+                }
+            })
+        }
     }
 
     let currentStep = 1;
@@ -421,6 +439,7 @@
             document.getElementById('kodebarang').value = null;
             document.getElementById('kodebarang').focus();
             alert('barang yang anda scan belum di data pada admin');
+            document.getElementById('total_keseluruhan').classList.add('hidden');
         }
     }
 
