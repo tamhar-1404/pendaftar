@@ -283,6 +283,15 @@
                 if (modal) {
                     modal.classList.remove('hidden');
                 }
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Kode barang tidak ditemukan!',
+                    })
+                    document.getElementById('kodeopname').value = "";
+                    document.getElementById('kodeopname').focus();
+                }
 
                 function nextStep() {
                     if (currentStep === 1) {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\HistoryTransaksi;
 use App\Http\Requests\StoreHistoryTransaksiRequest;
 use App\Http\Requests\UpdateHistoryTransaksiRequest;
@@ -13,10 +14,19 @@ class HistoryTransaksiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = HistoryTransaksi::all();
-        return view('History_transaksi.index', compact('data'));
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $data = HistoryTransaksi::where('nama', 'LIKE', '%' . $keyword . '%')
+                                   ->orWhere('rfid', 'LIKE', '%' . $keyword . '%')
+                                   ->paginate(10);
+            $data->appends(['cari' => $keyword]);
+            return view('History_transaksi.index', compact('data'));
+        }
+        
+        $data = HistoryTransaksi::latest()->paginate(10);
+        return view('History_transaksi.index', compact('data'));        
     }
 
     /**
