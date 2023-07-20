@@ -1147,14 +1147,13 @@
                                     <!-- Users Visit -->
                                     <div class="panel bg-gradient-to-r from-white-500 to-white-400">
                                         <div class="flex justify-between">
-                                            <div class="text-lg  text-black font-semibold ltr:mr-1 rtl:ml-1">Total
-                                                Jurnal</div>
+                                            <div class="text-lg  text-black font-semibold ltr:mr-1 rtl:ml-1">Total Jurnal</div>
                                             <div x-data="dropdown" @click.outside="open = false"
                                                 class="dropdown">
                                             </div>
                                         </div>
                                         <div class="mt-5 flex items-center">
-                                            <div class="text-1xl text-black  font-bold ltr:mr-3 rtl:ml-3">230</div>
+                                            <div class="text-1xl text-black  font-bold ltr:mr-3 rtl:ml-3">{{$jurnal}}</div>
                                         </div>
                                     </div>
 
@@ -1165,7 +1164,7 @@
                                                 Siswa</div>
                                         </div>
                                         <div class="mt-5 flex items-center">
-                                            <div class="text-1xl text-black  font-bold ltr:mr-3 rtl:ml-3">7</div>
+                                            <div class="text-1xl text-black  font-bold ltr:mr-3 rtl:ml-3">{{$siswa}}</div>
                                         </div>
                                     </div>
 
@@ -1179,7 +1178,7 @@
                                             </div>
                                         </div>
                                         <div class="mt-5 flex items-center">
-                                            <div class="text-1xl text-black font-bold ltr:mr-3 rtl:ml-3">380</div>
+                                            <div class="text-1xl text-black font-bold ltr:mr-3 rtl:ml-3">{{$absen}}</div>
                                         </div>
                                     </div>
 
@@ -1191,7 +1190,7 @@
 
                             {{-- judul grafik --}}
                             <div class="mb-5 flex items-center dark:text-white-light">
-                                <h5 class="text-lg font-semibold">Revenue</h5>
+                                <h5 class="text-lg font-semibold">Absensi siswa</h5>
                                 <div x-data="dropdown" @click.outside="open = false"
                                     class="dropdown ltr:ml-auto rtl:mr-auto">
                                     <a href="javascript:;" @click="toggle">
@@ -1215,18 +1214,17 @@
                             </div>
                             {{-- end judul grafik --}}
                             {{-- grafik --}}
-                            <p class="text-lg dark:text-white-light/90">Total Profit <span
-                                    class="ml-2 text-primary">$10,840</span></p>
-                            <div class="relative">
-                                <div x-ref="guruChart" class="rounded-lg bg-white dark:bg-black">
-                                    <!-- loader -->
-                                    <div
-                                        class="grid min-h-[325px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
-                                        <span
-                                            class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"></span>
-                                    </div>
-                                </div>
+                            <p class="text-lg dark:text-white-light/90"> <span
+                                    class="ml-2 text-primary"></span></p>
+                            {{-- grafik --}}
+                            <div class="" id="grafik_guru"
+                            class=" w-80% h-35 mx-3 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
+                            <div class="w-full px-4 mt-6">
+
                             </div>
+                        </div>
+
+                        {{-- end grafik --}}
                             {{-- end grafik --}}
                         </div>
 
@@ -1241,7 +1239,26 @@
                                 </div>
                                 <div x-data="basic">
                                     <div class="panel">
-                                        <table id="myTable" class="table-hover whitespace-nowrap"></table>
+                                        <table id="myTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Nama Siswa</th>
+                                                    <th>Kelas</th>
+                                                    <th>Jurusan</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($data_siswa as $siswa)
+                                                    <tr>
+                                                        <td>{{ $siswa->id }}</td>
+                                                        <td>{{ $siswa->nama }}</td>
+                                                        <td>{{ $siswa->kelas }}</td>
+                                                        <td>{{ $siswa->jurusan }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -1253,63 +1270,19 @@
             <section>
                 <div class="swiper mySwiper container w-full">
                     <div class="swiper-wrapper content">
+                        @forelse ($mou as $data )
                         <div class="swiper-slide card dark:bg-black">
                             <div class="card-content ">
                                 <div class="image">
-                                    <img src="admin/assets/images/1genteng.jpeg" alt="" width="180">
+                                    <img src="{{asset('storege/mou/. $logo')}}" alt="" width="180">
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide card dark:bg-black">
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                </div>
 
-                            </div>
-                        </div>
-                        <div class="swiper-slide card dark:bg-black">
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="admin/assets/images/rogojampi.png" alt="" width="185">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide card dark:bg-black">
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="admin/assets/images/smk1panjen.jpg" alt="" width="180">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide card dark:bg-black">
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="admin/assets/images/smk12.jpg" alt="" width="175">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide card dark:bg-black">
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide card dark:bg-black">
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide card dark:bg-black">
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
+                        @empty
+
+                        @endforelse
+
                     </div>
                 </div>
                 <div class="swiper-button-next"></div>
@@ -1477,21 +1450,40 @@
                 <div class="swiper bg-white p-1 dark:bg-dark dark:bg-opacity-[0.08]" id="slider5"
                     x-data="carousel()">
                     <div class="swiper-wrapper">
-                        <template x-for="item in items" :key="item">
-                            <div class="swiper-slide">
-                                <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
+                       @forelse ($berita as $row )
+                       <div class="card">
+                        <img class="h-72 w-full rounded-lg object-cover object-center max-w-xs transition duration-300 ease-in-out hover:scale-110"
+                            src="{{ asset('storage/fotoberita/' . $row->foto) }}" alt="image" />
+                        <div class="absolute inset-0 flex h-full w-full flex-col justify-end">
+
+
+
+
+                            <div
+                                class="space-y-1.5 rounded-lg bg-gradient-to-t from-[#19213299] via-[#19213266] to-transparent px-4 pb-3 pt-12">
+                                <div class="line-clamp-2">
+                                    <a href="{{ route('Berita.show', $row->id) }}" class="text-base font-medium text-white">
+                                        {{ $row->judul }}
+                                    </a>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center text-xs text-slate-200">
+                                        <p class="flex items-center space-x-1">
+                                            <span class="line-clamp-1 uppercase">{{ $row->kategori }}</span>
+                                        </p>
+                                        <div class="mx-3 my-0.5 w-px self-stretch bg-white/20"></div>
+                                        <p class="shrink-0 text-tiny+">{{ $row->created_at->diffForHumans() }}</p>
+                                    </div>
+
+                                   
+                                </div>
                             </div>
-                        </template>
-                        <template x-for="item in items" :key="item">
-                            <div class="swiper-slide">
-                                <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
-                            </div>
-                        </template>
-                        <template x-for="item in items" :key="item">
-                            <div class="swiper-slide">
-                                <img :src="`/assets/images/${item}`" class="w-full" alt="image" />
-                            </div>
-                        </template>
+                        </div>
+                    </div>
+
+                       @empty
+
+                       @endforelse
                     </div>
                     <a href="javascript:;"
                         class="swiper-button-prev-ex5 grid place-content-center ltr:left-2 rtl:right-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-transparent rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
@@ -1573,6 +1565,88 @@
     <script src="assets_guru/js/custom.js"></script>
     <script defer src="assets_guru/js/apexcharts.js"></script>
     <script src="assets/js/simple-datatables.js"></script>
+    <script>
+        var options = {
+            series: [{
+                name: 'Izin & Sakit',
+                data: [{{$izin_jan}},{{$izin_feb}},{{$izin_mar}},{{$izin_apr}},{{$izin_mei}},
+                {{$izin_jun}},{{$izin_jul}},{{$izin_aug}},{{$izin_sep}},{{$izin_okt}},{{$izin_nov}},{{$izin_des}}
+            ]
+            }, {
+                name: 'Hadir',
+                data: [{{$Hadir_jan}},{{$Hadir_feb}},{{$Hadir_mar}},{{$Hadir_apr}},{{$Hadir_mei}},
+                {{$Hadir_jun}},{{$Hadir_jul}},{{$Hadir_aug}},{{$Hadir_sep}},{{$Hadir_okt}},{{$Hadir_nov}},{{$Hadir_des}}
+            ]
+            },{
+                name: 'telat',
+                data: [{{$Telat_jan}},{{$Telat_feb}},{{$Telat_mar}},{{$Telat_apr}},{{$Telat_mei}},
+                {{$Telat_jun}},{{$Telat_jul}},{{$Telat_aug}},{{$Telat_sep}},{{$Telat_okt}},{{$Telat_nov}},{{$Telat_des}}
+            ]
+            },{
+                name: 'alfa',
+                data: [{{$Alfa_jan}},{{$Alfa_feb}},{{$Alfa_mar}},{{$Alfa_apr}},{{$Alfa_mei}},
+                {{$Alfa_jun}},{{$Alfa_jul}},{{$Alfa_aug}},{{$Alfa_sep}},{{$Alfa_okt}},{{$Alfa_nov}},{{$Alfa_des}}
+            ]
+            },],
+            chart: {
+                type: 'bar',
+                height: 400,
+                width: 840,
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded',
+                    borderRadius: 7,
+                },
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            animations: {
+                enabled: true,
+                easing: 'easeinout',
+                speed: 1200,
+                animateGradually: {
+                    enabled: true,
+                    delay: 200
+                },
+                dynamicAnimation: {
+                    enabled: true,
+                    speed: 450
+                }
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+
+            },
+            yaxis: {
+                title: {
+                    text: ''
+                }
+            },
+            fill: {
+                opacity: 2,
+                colors: ['#6769EB', '#47EBB3', '#FFA726']
+            },
+            tooltip: {
+                y: {
+                    // formatter: function (val) {
+                    //   return "$ " + val + " thousands"
+                    // }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#grafik_guru"), options);
+        chart.render();
+    </script>
     <script>
         document.addEventListener('alpine:init', () => {
             // main section
@@ -1912,420 +1986,31 @@
                     });
                 },
 
-                // revenue
-                get guruChartOptions() {
-                    return {
-                        series: [{
-                                name: 'Income',
-                                data: [16800, 16800, 15500, 17800, 15500, 17000, 19000, 16000,
-                                    15000, 17000, 14000, 17000
-                                ],
-                            },
-                            {
-                                name: 'Expenses',
-                                data: [16500, 17500, 16200, 17300, 16000, 19500, 16000, 17000,
-                                    16000, 19000, 18000, 19000
-                                ],
-                            },
-                        ],
-                        chart: {
-                            height: 325,
-                            type: 'area',
-                            fontFamily: 'Nunito, sans-serif',
-                            zoom: {
-                                enabled: false,
-                            },
-                            toolbar: {
-                                show: false,
-                            },
-                        },
-                        dataLabels: {
-                            enabled: false,
-                        },
-                        stroke: {
-                            show: true,
-                            curve: 'smooth',
-                            width: 2,
-                            lineCap: 'square',
-                        },
-                        dropShadow: {
-                            enabled: true,
-                            opacity: 0.2,
-                            blur: 10,
-                            left: -7,
-                            top: 22,
-                        },
-                        colors: isDark ? ['#2196f3', '#e7515a'] : ['#1b55e2', '#e7515a'],
-                        markers: {
-                            discrete: [{
-                                    seriesIndex: 0,
-                                    dataPointIndex: 6,
-                                    fillColor: '#1b55e2',
-                                    strokeColor: 'transparent',
-                                    size: 7,
-                                },
-                                {
-                                    seriesIndex: 1,
-                                    dataPointIndex: 5,
-                                    fillColor: '#e7515a',
-                                    strokeColor: 'transparent',
-                                    size: 7,
-                                },
-                            ],
-                        },
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
-                            'Oct', 'Nov', 'Dec'
-                        ],
-                        xaxis: {
-                            axisBorder: {
-                                show: false,
-                            },
-                            axisTicks: {
-                                show: false,
-                            },
-                            crosshairs: {
-                                show: true,
-                            },
-                            labels: {
-                                offsetX: isRtl ? 2 : 0,
-                                offsetY: 5,
-                                style: {
-                                    fontSize: '12px',
-                                    cssClass: 'apexcharts-xaxis-title',
-                                },
-                            },
-                        },
-                        yaxis: {
-                            tickAmount: 7,
-                            labels: {
-                                formatter: (value) => {
-                                    return value / 1000 + 'K';
-                                },
-                                offsetX: isRtl ? -30 : -10,
-                                offsetY: 0,
-                                style: {
-                                    fontSize: '12px',
-                                    cssClass: 'apexcharts-yaxis-title',
-                                },
-                            },
-                            opposite: isRtl ? true : false,
-                        },
-                        grid: {
-                            borderColor: isDark ? '#191e3a' : '#e0e6ed',
-                            strokeDashArray: 5,
-                            xaxis: {
-                                lines: {
-                                    show: true,
-                                },
-                            },
-                            yaxis: {
-                                lines: {
-                                    show: false,
-                                },
-                            },
-                            padding: {
-                                top: 0,
-                                right: 0,
-                                bottom: 0,
-                                left: 0,
-                            },
-                        },
-                        legend: {
-                            position: 'top',
-                            horizontalAlign: 'right',
-                            fontSize: '16px',
-                            markers: {
-                                width: 10,
-                                height: 10,
-                                offsetX: -2,
-                            },
-                            itemMargin: {
-                                horizontal: 10,
-                                vertical: 5,
-                            },
-                        },
-                        tooltip: {
-                            marker: {
-                                show: true,
-                            },
-                            x: {
-                                show: false,
-                            },
-                        },
-                        fill: {
-                            type: 'gradient',
-                            gradient: {
-                                shadeIntensity: 1,
-                                inverseColors: !1,
-                                opacityFrom: isDark ? 0.19 : 0.28,
-                                opacityTo: 0.05,
-                                stops: isDark ? [100, 100] : [45, 100],
-                            },
-                        },
-                    };
-                },
 
-                // sales by category
-                get salesByCategoryOptions() {
-                    return {
-                        series: [985, 737],
-                        chart: {
-                            type: 'donut',
-                            height: 460,
-                            fontFamily: 'Nunito, sans-serif',
-                        },
-                        dataLabels: {
-                            enabled: false,
-                        },
-                        stroke: {
-                            show: true,
-                            width: 25,
-                            colors: isDark ? '#0e1726' : '#fff',
-                        },
-                        colors: isDark ? ['#5c1ac3', '#e2a03f', '#e7515a', '#e2a03f'] : ['#e2a03f',
-                            '#5c1ac3', '#e7515a'
-                        ],
-                        legend: {
-                            position: 'bottom',
-                            horizontalAlign: 'center',
-                            fontSize: '14px',
-                            markers: {
-                                width: 10,
-                                height: 10,
-                                offsetX: -2,
-                            },
-                            height: 50,
-                            offsetY: 20,
-                        },
-                        plotOptions: {
-                            pie: {
-                                donut: {
-                                    size: '65%',
-                                    background: 'transparent',
-                                    labels: {
-                                        show: true,
-                                        name: {
-                                            show: true,
-                                            fontSize: '29px',
-                                            offsetY: -10,
-                                        },
-                                        value: {
-                                            show: true,
-                                            fontSize: '26px',
-                                            color: isDark ? '#bfc9d4' : undefined,
-                                            offsetY: 16,
-                                            formatter: (val) => {
-                                                return val;
-                                            },
-                                        },
-                                        total: {
-                                            show: true,
-                                            label: 'Total',
-                                            color: '#888ea8',
-                                            fontSize: '29px',
-                                            formatter: (w) => {
-                                                return w.globals.seriesTotals.reduce(function(a,
-                                                    b) {
-                                                    return a + b;
-                                                }, 0);
-                                            },
-                                        },
-                                    },
-                                },
-                            },
-                        },
-                        labels: ['Apparel', 'Sports'],
-                        states: {
-                            hover: {
-                                filter: {
-                                    type: 'none',
-                                    value: 0.15,
-                                },
-                            },
-                            active: {
-                                filter: {
-                                    type: 'none',
-                                    value: 0.15,
-                                },
-                            },
-                        },
-                    };
-                },
-
-                // daily sales
-                get dailySalesOptions() {
-                    return {
-                        series: [{
-                                name: 'Sales',
-                                data: [44, 55, 41, 67, 22, 43, 21],
-                            },
-                            {
-                                name: 'Last Week',
-                                data: [13, 23, 20, 8, 13, 27, 33],
-                            },
-                        ],
-                        chart: {
-                            height: 160,
-                            type: 'bar',
-                            fontFamily: 'Nunito, sans-serif',
-                            toolbar: {
-                                show: false,
-                            },
-                            stacked: true,
-                            stackType: '100%',
-                        },
-                        dataLabels: {
-                            enabled: false,
-                        },
-                        stroke: {
-                            show: true,
-                            width: 1,
-                        },
-                        colors: ['#e2a03f', '#e0e6ed'],
-                        responsive: [{
-                            breakpoint: 480,
-                            options: {
-                                legend: {
-                                    position: 'bottom',
-                                    offsetX: -10,
-                                    offsetY: 0,
-                                },
-                            },
-                        }, ],
-                        xaxis: {
-                            labels: {
-                                show: false,
-                            },
-                            categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'],
-                        },
-                        yaxis: {
-                            show: false,
-                        },
-                        fill: {
-                            opacity: 1,
-                        },
-                        plotOptions: {
-                            bar: {
-                                horizontal: false,
-                                columnWidth: '25%',
-                            },
-                        },
-                        legend: {
-                            show: false,
-                        },
-                        grid: {
-                            show: false,
-                            xaxis: {
-                                lines: {
-                                    show: false,
-                                },
-                            },
-                            padding: {
-                                top: 10,
-                                right: -20,
-                                bottom: -20,
-                                left: -20,
-                            },
-                        },
-                    };
-                },
-
-                // total orders
-                get totalOrdersOptions() {
-                    return {
-                        series: [{
-                            name: 'Sales',
-                            data: [28, 40, 36, 52, 38, 60, 38, 52, 36, 40],
-                        }, ],
-                        chart: {
-                            height: 290,
-                            type: 'area',
-                            fontFamily: 'Nunito, sans-serif',
-                            sparkline: {
-                                enabled: true,
-                            },
-                        },
-                        stroke: {
-                            curve: 'smooth',
-                            width: 2,
-                        },
-                        colors: isDark ? ['#00ab55'] : ['#00ab55'],
-                        labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-                        yaxis: {
-                            min: 0,
-                            show: false,
-                        },
-                        grid: {
-                            padding: {
-                                top: 125,
-                                right: 0,
-                                bottom: 0,
-                                left: 0,
-                            },
-                        },
-                        fill: {
-                            opacity: 1,
-                            type: 'gradient',
-                            gradient: {
-                                type: 'vertical',
-                                shadeIntensity: 1,
-                                inverseColors: !1,
-                                opacityFrom: 0.3,
-                                opacityTo: 0.05,
-                                stops: [100, 100],
-                            },
-                        },
-                        tooltip: {
-                            x: {
-                                show: false,
-                            },
-                        },
-                    };
-                },
             }));
             Alpine.data('basic', () => ({
-                datatable: null,
-                init() {
-                    this.datatable = new simpleDatatables.DataTable('#myTable', {
-                        data: {
-                            headings: ['ID', ' Nama Siswa', 'Kelas', 'Jurusan'],
-                            data: [
-                                [1, 'mamat', '11', 'RPL'],
-                                [2, 'mamat', '11', 'RPL'],
-                                [3, 'mamat', '11', 'RPL'],
-                                [4, 'mamat', '11', 'RPL'],
-                                [5, 'mamat', '11', 'RPL'],
-                                [6, 'mamat', '11', 'RPL'],
-                                [7, 'mamat', '11', 'RPL'],
-                                [8, 'mamat', '11', 'RPL'],
-                                [9, 'mamat', '11', 'RPL'],
-                                [10, 'mamat', '11', 'RPL'],
-                                [11, 'mamat', '11', 'RPL'],
-                                [12, 'mamat', '11', 'RPL'],
-                                [13, 'mamat', '11', 'RPL'],
-                                [14, 'mamat', '11', 'RPL'],
-                                [15, 'mamat', '11', 'RPL'],
-                            ],
-                        },
-                        sortable: true,
-                        searchable: false,
-                        perPage: 10,
-                        perPageSelect: [5, 10, 15, 20, 25, 30],
-                        firstLast: true,
-                        firstText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                        lastText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                        prevText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                        nextText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                        labels: {
-                            perPage: '{select}',
-                        },
-                        layout: {
-                            top: '{search}',
-                            bottom: '{info}{select}{pager}',
-                        },
-                    });
-                },
-            }));
+            datatable: null,
+            init() {
+                this.datatable = new simpleDatatables.DataTable('#myTable', {
+                    sortable: true,
+                    searchable: false,
+                    perPage: 10,
+                    perPageSelect: [5, 10, 15, 20, 25, 30],
+                    firstLast: true,
+                    firstText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                    lastText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                    prevText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                    nextText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                    labels: {
+                        perPage: '{select}',
+                    },
+                    layout: {
+                        top: '{search}',
+                        bottom: '{info}{select}{pager}',
+                    },
+                });
+            },
+        }));
 
         });
     </script>
