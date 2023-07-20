@@ -8,7 +8,7 @@ use App\Http\Requests\UpdateBarangRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-    
+
 
 class BarangController extends Controller
 {
@@ -78,7 +78,7 @@ class BarangController extends Controller
             'foto'=>$image->hashName(),
             'kode'=>$request->kode,
         ]);
-        return redirect()->back()->with('error','data tidak valid');
+        return redirect()->back()->with('success', 'Berhasil menambahkan data');
     }
 
     /**
@@ -144,7 +144,7 @@ class BarangController extends Controller
         'deskripsi'=>$request->deskripsi
     ]);
     }
-    return redirect()->back();
+    return redirect()->back()->with('success', 'Berhasil mengedit data');
 
     }
 
