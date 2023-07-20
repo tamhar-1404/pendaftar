@@ -142,7 +142,7 @@ Route::get('/resetpassword/{token}', [LupaPasswordController::class, 'reset'])->
 Route::post('/resetpassword', [LupaPasswordController::class, 'update'])->name('password.update');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
-    Route::middleware(['role:Admin'])->group(function () {
+    Route::middleware(['role:Admin,Siswa,Guru'])->group(function () {
         // Route khusus untuk admin
         Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
         Route::get('send-email' , [MailController::class,'index']);
@@ -205,7 +205,7 @@ Route::middleware(['auth'])->group(function () {
 
     });
 
-    Route::middleware(['role:Siswa'])->group(function () {
+    Route::middleware(['role:Admin,Siswa,Guru'])->group(function () {
 
        Route::resource('absensi_siswa', App\Http\Controllers\AbsensiSiswaController::class);
        Route::put('izin_update', [App\Http\Controllers\ApprovalIzinController::class, 'izin_update'])->name('izin_update');
@@ -219,7 +219,7 @@ Route::middleware(['auth'])->group(function () {
 
     });
 
-    Route::middleware(['role:guru'])->group(function () {
+    Route::middleware(['role:Admin,Siswa,Guru'])->group(function () {
         // Route khusus untuk guru
 
     });
