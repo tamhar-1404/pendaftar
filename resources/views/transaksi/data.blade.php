@@ -142,7 +142,7 @@
                 <div class="w-full  h-7 mb-8 flex-col ">
                     <p class="text-center">scan kode barang</p>
                     <div class="flex justify-center ">
-                        <input placeholder="masukan kode barang"  autofocus onchange="showStep(0)" class="border px-2 border-gray-300 w-[30%] text-black" type="text" name="kodebarang" id="kodebarang">
+                        <input placeholder="masukan kode barang"  autofocus onchange="showStep(0)" class="border px-2 border-gray-300 w-[30%] text-black    " type="text" name="kodebarang" id="kodebarang">
                     </div>
                 </div>
                 <div class="overflow-x-auto">
