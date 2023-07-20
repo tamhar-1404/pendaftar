@@ -142,6 +142,44 @@
                         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
                     <script>
                         function tambah(event, id) {
+                            Swal.fire({
+                                    title: 'Konfirmasi',
+                                    text: 'Apakah Anda yakin ingin menerima topup ini?',
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Ya, terima!',
+                                    cancelButtonText: 'Batal',
+                                    background: '#f5f5f5',
+                                    customClass: {
+                                        icon: 'swal-icon',
+                                        confirmButton: 'swal-button swal-button--confirm',
+                                        cancelButton: 'swal-button swal-button--cancel'
+                                    },
+                                    animation: false
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        Swal.fire({
+                                            title: 'Sukses',
+                                            text: 'Berhasil diterima!',
+                                            icon: 'success',
+                                            timer: 2000,
+                                            showConfirmButton: false,
+                                            background: '#f5f5f5',
+                                            customClass: {
+                                                icon: 'swal-icon',
+                                                popup: 'swal-popup',
+                                                title: 'swal-title',
+                                                confirmButton: 'swal-button swal-button--confirm'
+                                            },
+                                            animation: false
+                                        });
+                                        setTimeout(() => {
+                                            document.getElementById('confirm-form').submit();
+                                        }, 2000);
+                                    }
+                                });x
 
                         }
                     </script>
@@ -152,7 +190,7 @@
                                 Swal.fire({
                                     title: 'Konfirmasi',
                                     text: 'Apakah Anda yakin ingin menerima topup ini?',
-                                icon: 'warning',
+                                    icon: 'warning',
                                     showCancelButton: true,
                                     confirmButtonColor: '#3085d6',
                                     cancelButtonColor: '#d33',
@@ -191,7 +229,7 @@
                         </script>
 
                         <script>
-                            function confirmDelete(event) {
+                            function confirmDelete(event, id) {
                                 event.preventDefault();
 
                                 Swal.fire({

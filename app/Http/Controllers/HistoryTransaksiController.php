@@ -30,16 +30,24 @@ class HistoryTransaksiController extends Controller
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $bulan = HistoryTransaksi::whereMonth('tanggal' , $keyword)->get();
-            dd
-            $jumlah = $bulan->sum('total');
-            dd($jumlah);
-            $data = HistoryTransaksi::where('nama', 'LIKE', '%' . $keyword . '%')
-                                   ->orWhere('rfid', 'LIKE', '%' . $keyword . '%')
-                                   ->paginate(10);
+
+            // Mencari data berdasarkan nama atau rfid yang cocok dengan keyword
+            $data = HistoryTransaksi::where(function ($query) use ($keyword) {
+                $query->where('tanggal', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('rfid', 'LIKE', '%' . $keyword . '%');
+            })->paginate(10);
+
+            // Menghitung jumlah total dari data yang sesuai dengan keyword
+            $jumlah = HistoryTransaksi::where(function ($query) use ($keyword) {
+                $query->where('tanggal', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('rfid', 'LIKE', '%' . $keyword . '%');
+            })->sum('total');
+
             $data->appends(['cari' => $keyword]);
-            return view('History_transaksi.index', compact('data','jumlah'));
+            return view('History_transaksi.index', compact('data', 'jumlah'));
         }
+
+        // Jika tidak ada kata kunci pencarian, tampilkan semua data dan jumlah total
         $jumlah = HistoryTransaksi::sum('total');
         $data = HistoryTransaksi::latest()->paginate(10);
         return view('History_transaksi.index', compact('data', 'jumlah'));
