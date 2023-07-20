@@ -6,6 +6,9 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>siswa - Dashboad</title>
@@ -33,7 +36,6 @@
     <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     <script defer src="siswa/js/sweetalert.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
 </head>
 
@@ -42,24 +44,6 @@
     :class="[$store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout, $store.app
         .rtlClass
     ]">
-    @if (session()->has('error'))
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: "{{ session('error') }}",
-            })
-        </script>
-    @endif
-    @if (session()->has('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil...',
-                text: "{{ session('success') }}",
-            })
-        </script>
-    @endif
     <!-- sidebar menu overlay -->
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>
@@ -1178,39 +1162,119 @@
                 </div>
             </nav>
         </div>
+        <!-- end sidebar section -->
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
         <div class="main-content">
-            @include('siswamagang.nav_siswa')
+            @include('jurnal_siswa.nav')
 
             <div class="animate__animated p-6" :class="[$store.app.animation]">
                 <!-- start main content section -->
-                <div x-data="sales">
-                    <div class="flex justify-between">
-                        <div class="justify-start">
 
-                            <h1>Dashboard</h1>
+                <div x-data="basic" class="mt-0">
+                    {{-- judul --}}
+                    <div class="mb-5 font-semibold kamu-tak-diajak">
+                        <span>history top up /<span class="text-[#00B7FF]"> {{ Auth::user()->name }}</span></span>
+                    </div>
+                   @error('tanggal')
+                        <div class="text-danger">Anda telah mengisi jurnal pada hari ini</div>
+                   @enderror
+
+                    <div class="panel">
+                     {{-- <h2>{{ $e }}</h2> --}}
+
+
+
+                        {{-- tabel --}}
+
+                        <div class="print-container flex flex-col">
+                            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                    <div class="overflow-hidden">
+                                        <table id="data-table" class="min-w-full text-left text-sm font-light">
+                                            <thead class="border-b font-medium dark:border-neutral-500 ">
+                                                <tr class="">
+                                                    <th scope="col" class="px-6 py-2">#</th>
+                                                    {{-- <th scope="col" class="px-6 py-2"></th> --}}
+                                                    <th scope="col" class="px-6 py-2">Top up</th>
+                                                    <th scope="col" class="px-6 py-2">Tanggal</th>
+                                                    <th scope="col" class="px-6 py-2 ">Status</th>
+                                                    {{-- <th scope="col" class="px-6 py-2">tanggal</th> --}}
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($TopUp as $data )
+
+                                        <tr
+                                        class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                            <td class="whitespace-nowrap px-2 py-2 font-medium">
+                                                {{$data->id}}
+                                            </td>
+                                            <td class="whitespace-nowrap px-2 py-2">{{$data->saldo}}</td>
+                                            <td class="whitespace-nowrap px-2 py-2">{{$data->status}}</td>
+                                            <td class="whitespace-nowrap px-2 py-2">{{$data->tanggal}}</td>
+                                         </tr>
+                                        @empty
+
+                                        @endforelse
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex justify-end font-semibold bg-blue-400 text-white px-4 py-1 rounded">
-                            <h1>Saldo anda : <span id="a">Rp
-                                    {{ number_format($user->saldo ? $user->saldo : 0, 0, ',', '.') }}</span></h1>
+                        {{-- end tabel --}}
+                        {{-- paginate --}}
+                        <div class="kamu-tak-diajak flex justify-between">
+                            <p>
+                                menampilkan 1 sampai 10 dari 15 data
+                            </p>
+                            <nav aria-label="Page navigation example">
+                                <ul class="list-style-none flex">
+                                    <li>
+                                        <a
+                                            class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
+                                    </li>
+                                    <li>
+                                        <a class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
+                                            href="#!">1</a>
+
+                                    </li>
+                                    <li aria-current="page">
+                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
+                                            href="#!">2
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
+                                            href="#!">3</a>
+                                    </li>
+                                    <li>
+                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
+                                            href="#!">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
-                    {{--  modal  --}}
-                    <div id="modal-step1"
-                        class="fixed inset-0 flex items-center justify-center z-50 hidden backdrop-blur-sm">
-                        <div class="relative w-full max-w-2xl max-h-full ">
+                </div>
+
+                    {{-- modal --}}
+                    <div id="staticModal1" tabindex="-1" aria-hidden="true"
+                        class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative w-full max-w-2xl max-h-full">
                             <!-- Modal content -->
-                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 shadow-lg">
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                 <!-- Modal header -->
                                 <div
                                     class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                        Topup
+                                        Detail Jurnal 2
                                     </h3>
                                     <button type="button"
                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                        data-modal-hide="staticModal" onclick="hideAllSteps()">
+                                        data-modal-hide="staticModal1">
                                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
@@ -1220,430 +1284,150 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
-                                <form action="{{ route('saldo', $user->id) }}" method="post"
-                                    onsubmit="konfirmpassword(event)">
-                                    @method('PUT')
-                                    @csrf
-                                    <div class="p-6 space-y-6">
-                                        <div>
-                                            <div class="relative z-0 w-full mb-6 group">
-                                                <input type="number" name="saldo" id="saldo"
-                                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                                    placeholder=" " min="5000" max="100000"
-                                                    oninvalid="this.setCustomValidity('Topup minimal 5.000 dan maksimal 100.000')"
-                                                    oninput="setCustomValidity('')" />
-                                                <label for="saldo"
-                                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Masukkan
-                                                    saldo</label>
-                                            </div>
-                                            <div class="grid gap-4 grid-cols-2 grid-rows-2">
-                                                <div>
-                                                    <input type="radio" name="saldo" id="5000"
-                                                        class="hidden" value="5000">
-                                                    <label for="5000"
-                                                        class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white"
-                                                        onclick="document.getElementById('saldo').value = '5000'">5000</label>
-                                                </div>
-                                                <div>
-                                                    <input type="radio" name="saldo" id="10000"
-                                                        class="hidden" value="10000">
-                                                    <label for="10000"
-                                                        class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white"
-                                                        onclick="document.getElementById('saldo').value = '10000'">10000</label>
-                                                </div>
-                                                <div>
-                                                    <input type="radio" name="saldo" id="15000"
-                                                        class="hidden" value="15000">
-                                                    <label for="15000"
-                                                        class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white"
-                                                        onclick="document.getElementById('saldo').value = '15000'">15000</label>
-                                                </div>
-                                                <div>
-                                                    <input type="radio" name="saldo" id="20000"
-                                                        class="hidden" value="20000">
-                                                    <label for="20000"
-                                                        class="px-4 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-100 transition-colors checked:bg-blue-500 checked:text-white"
-                                                        onclick="document.getElementById('saldo').value = '20000'">20000</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                        <input type="hidden" name="password" id="password-user">
-                                        <button data-modal-hide="modal-step1" type="button"
-                                            class="text-gray-700 bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                            onclick="hideAllSteps()">Kembali</button>
-                                        <button type="submit" data-modal-hide="modal-step1"
-                                            class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
-                                    </div>
-                                </form>
-                                <script>
-                                    function konfirmpassword(event) {
-                                        event.preventDefault();
-                                        let saldo = document.getElementById('saldo');
-                                        console.log(saldo.value);
-                                        if (saldo.value == "") {
-                                            Swal.fire({
-                                                icon: 'error',
-                                                title: 'Oops...',
-                                                text: "Harap isi saldo",
-                                            })
-                                            return;
-                                        }
-                                        Swal.fire({
-                                            title: 'Konfirmasi password',
-                                            input: 'password',
-                                            inputLabel: 'Masukkan password anda:',
-                                            showCancelButton: true,
-                                            confirmButtonText: 'Submit',
-                                            cancelButtonText: 'Batal',
-                                            confirmButtonColor: '#00B7FF',
-                                            cancelButtonColor: '#FF0000',
-                                            allowOutsideClick: false,
-                                            inputValidator: (value) => {
-                                                if (!value || value.trim() === '') {
-                                                    return 'Harap masukkan password.';
-                                                }
-                                            },
-                                        }).then((result) => {
-                                            if (result.isConfirmed) {
-                                                document.getElementById("password-user").value = result.value;
-                                                event.target.submit();
-                                            }
-                                        });
-                                    }
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="modal-step2" class="fixed inset-0 flex items-center justify-center z-50 hidden">
-                        <div class="relative w-full max-w-2xl max-h-full">
-
-                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                <div
-                                    class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                        Scan rfid anda
-                                    </h3>
-                                    <button type="button"
-                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                        data-modal-hide="staticModal" onclick="hideAllSteps()">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd"
-                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </button>
-                                </div>
                                 <div class="p-6 space-y-6">
-                                    <div>
-                                        <div class="relative z-0 w-full mb-6 group">
-                                            <input type="text" name="password" id="floating_email"
-                                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                                placeholder=" " required />
-                                            <label for="floating_email"
-                                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Masukan
-                                                password anda</label>
+                                    <form action="" method="post"
+                                        enctype="multipart/form-data">
+                                        @method('PUT')
+                                        @csrf
+                                        <div>
+                                            <input type="hidden" name="nama" class=""
+                                                value=" " id="">
                                         </div>
-                                    </div>
-                                </div>
+                                        <div>
+                                            <input type="hidden" name="tanggal" id=""
+                                                value=" ">
+                                        </div>
+                                        <div>
+                                            <input type="hidden" name="sekolah" id=""
+                                                value="">
+                                        </div>
+                                        <div>
+                                            <label for="kegiatan"
+                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
+                                            <textarea name="kegiatan" class="w-full rounded-md" id="" cols="" rows="5"></textarea>
+                                        </div>
+                                        <div>
+                                            <label for="bukti"
+                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti</label>
+                                            <img id="preview-image"
+                                                src=""
+                                                class="w-64 h-64" alt="" srcset="">
+                                            <input type="file" name="image" id="image-input" placeholder=""
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                onchange="previewImage(event)">
+                                        </div>
 
+                                        <script>
+                                            function previewImage(event) {
+                                                var input = event.target;
+                                                var reader = new FileReader();
+
+                                                reader.onload = function() {
+                                                    var imgElement = document.getElementById("preview-image");
+                                                    imgElement.src = reader.result;
+                                                };
+
+                                                reader.readAsDataURL(input.files[0]);
+                                            }
+                                        </script>
+
+                                        <input type="hidden" name="status" value="mengisi">
+                                        <div class="flex justify-end">
+                                            <button type="submit"
+                                                class="border text-blue-400 bg-white font-semibold border-blue-400  py-1.5 px-3 text-sm rounded-md hover:bg-blue-400 hover:text-white">Kirim</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Modal footer -->
                                 <div
                                     class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                                     <button data-modal-hide="staticModal" type="button"
-                                        class="text-gray-700 bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                        onclick="prevStep()">Kembali</button>
-                                    <button data-modal-hide="staticModal" type="submit"
-                                        class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
+                                        class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-                    {{--  end modal  --}}
 
-                    <div class="pt-5 lg:w-full  md: sm:w-10/12">
-                        <div class="mb-6 grid gap-6 xl:grid-cols-3 lg:grid-cols-1">
-                            <div class="panel h-full xl:col-span-2">
-                                <div class="mb-5 flex items-center dark:text-white-light">
-                                    <h5 class="text-lg font-semibold">Jurnal</h5>
-                                    <div x-data="dropdown" @click.outside="open = false"
-                                        class="dropdown ltr:ml-auto rtl:mr-auto">
-                                        <a href="javascript:;" @click="toggle">
-                                            <svg class="h-5 w-5 text-black/70 hover:!text-primary dark:text-white/70"
-                                                viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="5" cy="12" r="2"
-                                                    stroke="currentColor" stroke-width="1.5" />
-                                                <circle opacity="0.5" cx="12" cy="12"
-                                                    r="2" stroke="currentColor" stroke-width="1.5" />
-                                                <circle cx="19" cy="12" r="2"
-                                                    stroke="currentColor" stroke-width="1.5" />
-                                            </svg>
-                                        </a>
-                                        <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
-                                            class="ltr:right-0 rtl:left-0">
-                                            <li><a href="javascript:;" @click="toggle">Weekly</a></li>
-                                            <li><a href="javascript:;" @click="toggle">Monthly</a></li>
-                                            <li><a href="javascript:;" @click="toggle">Yearly</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="relative w-full ">
-                                    {{-- grafik --}}
-                                    <div id="grafik_jurnal"
-                                    class=" w-80% h-35 mx-3 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
-                                    <div class="w-full px-4 mt-6">
-                                        <div class="w-80%  bg-white h-35 pb-5 text-same font-semibold dark:bg-transparent">
-                                            tabel jurnal
-                                        </div>
-                                    </div>
-                                </div>
 
-                                {{-- end grafik --}}
-                                </div>
+            </div>
+
+                {{-- modal --}}
+                <div id="staticModal" tabindex="-1" aria-hidden="true"
+                    class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative w-full max-w-2xl max-h-full">
+                        <!-- Modal content -->
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <!-- Modal header -->
+                            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                    Detail Jurnal
+                                </h3>
+                                <button type="button"
+                                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                    data-modal-hide="staticModal">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
                             </div>
+                            <!-- Modal body -->
+                            <div class="p-6 space-y-6">
+                                <div>
+                                    <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
+                                        Nama
+                                    </p>
+                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
 
-                            <div class="panel h-full">
-                                <div class="mb-5 flex items-center">
-                                    <h5 class="text-lg font-semibold dark:text-white-light">Absensi</h5>
+                                    </p>
                                 </div>
                                 <div>
-                                    <div x-ref="salesByCategory" class="rounded-lg bg-white dark:bg-black">
-                                        <!-- loader -->
-                                        <div
-                                            class="grid min-h-[353px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
-                                            <span
-                                                class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"></span>
-                                        </div>
-                                    </div>
+                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                        Tanggal
+                                    </p>
+                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                        Sekolah
+                                    </p>
+                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                        Kegiatan
+                                    </p>
+                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                        Bukti
+                                    </p>
+                                    <img id="preview-image" src="{{ asset('storage/image/p') }}"
+                                        class="w-64 h-64" alt="" srcset="">
                                 </div>
                             </div>
-                            <div class="panel h-full lg:col-span-3">
-                                <div class="mb-5 flex items-center">
-                                    <h5 class="text-lg font-semibold dark:text-white-light">Tata tertib</h5>
-                                </div>
-                                {{-- tata tertib  --}}
-                                <div class=" panel w-full flex justify-around gap-20 px-5">
-                                    @php $count = 0; @endphp
-                                    @forelse ($tatib as $tatatertib)
-                                        @if ($count % 3 == 0)
-                                            <div class="w-9/12">
-                                        @endif
-                                        {{-- pertama --}}
-                                        <div class=" w-9/12">
-                                            <div id="accordion-collapse" data-accordion="collapse">
-                                                <h2 id="accordion-collapse-heading-1">
-                                                    <button type="button"
-                                                        class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                                                        data-accordion-target="#accordion-collapse-body-1"
-                                                        aria-expanded="false"
-                                                        aria-controls="accordion-collapse-body-1">
-                                                        <span>{{ $tatatertib->judul }}</span>
-                                                        <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0"
-                                                            fill="currentColor" viewBox="0 0 20 20"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd"
-                                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                                clip-rule="evenodd"></path>
-                                                        </svg>
-                                                    </button>
-                                                </h2>
-                                                <div id="accordion-collapse-body-1" class="hidden"
-                                                    aria-labelledby="accordion-collapse-heading-1">
-                                                    <div
-                                                        class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
-                                                        <p class="mb-2 text-gray-500 dark:text-gray-400">
-                                                            {!! $tatatertib->deskripsi !!}</p>
-
-                                                    </div>
-                                                </div>
-
-
-                                                <div id="accordion-collapse-body-3" class="hidden"
-                                                    aria-labelledby="accordion-collapse-heading-3">
-                                                    <div
-                                                        class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
-                                                        <p class="mb-2 text-gray-500 dark:text-gray-400">The main
-                                                            difference is that the core components from Flowbite are
-                                                            open source under the MIT license, whereas Tailwind UI is a
-                                                            paid product. Another difference is that Flowbite relies on
-                                                            smaller and standalone components, whereas Tailwind UI
-                                                            offers sections of pages.</p>
-                                                        <p class="mb-2 text-gray-500 dark:text-gray-400">However, we
-                                                            actually recommend using both Flowbite, Flowbite Pro, and
-                                                            even Tailwind UI as there is no technical reason stopping
-                                                            you from using the best of two worlds.</p>
-                                                        <p class="mb-2 text-gray-500 dark:text-gray-400">Learn more
-                                                            about these technologies:</p>
-                                                        <ul class="pl-5 text-gray-500 list-disc dark:text-gray-400">
-                                                            <li><a href="https://flowbite.com/pro/"
-                                                                    class="text-blue-600 dark:text-blue-500 hover:underline">Flowbite
-                                                                    Pro</a></li>
-                                                            <li><a href="https://tailwindui.com/" rel="nofollow"
-                                                                    class="text-blue-600 dark:text-blue-500 hover:underline">Tailwind
-                                                                    UI</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @if (($count + 1) % 3 == 0 || $loop->last)
-                                </div>
-                                @endif
-                                @php $count++; @endphp
-                            @empty
-                                @endforelse
-
-
-
+                            <!-- Modal footer -->
+                            <div
+                                class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button data-modal-hide="staticModal" type="button"
+                                    class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                             </div>
-                            {{-- end tata tertib --}}
-                            {{-- caraousel --}}
-                            <section>
-                                <div class="swiper mySwiper container w-full">
-                                    <div class="swiper-wrapper content">
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content ">
-                                                <div class="image">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content">
-                                                <div class="image1">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content">
-                                                <div class="image">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content">
-                                                <div class="image">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content">
-                                                <div class="image">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content">
-                                                <div class="image">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content">
-                                                <div class="image">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content">
-                                                <div class="image">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
-                                <div class="swiper-pagination"></div>
-                            </section>
-
-
                         </div>
-
-
                     </div>
                 </div>
-            </div>
+
+
         </div>
-
-
-
-        <!-- start footer section -->
-        <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
-            © <span id="footer-year">2022</span>. Vristo All rights reserved.
-        </p>
-        <!-- end footer section -->
     </div>
-    </div>
-    </div>
-    <script>
-        let currentStep = 1;
-
-        function showStep(step) {
-            hideAllSteps();
-            if (step === 1) {
-                document.getElementById('modal-step1').classList.remove('hidden');
-            } else if (step === 2) {
-                document.getElementById('modal-step2').classList.remove('hidden');
-            }
-            currentStep = step;
-        }
-
-        function nextStep() {
-            if (currentStep === 1) {
-                const isValid = validateStep1();
-                if (isValid) {
-                    document.getElementById('modal-step1').classList.add('hidden');
-                    document.getElementById('modal-step2').classList.remove('hidden');
-                    currentStep = 2;
-                }
-
-            }
-        }
-
-        function prevStep() {
-            if (currentStep === 2) {
-                document.getElementById('modal-step2').classList.add('hidden');
-                document.getElementById('modal-step1').classList.remove('hidden');
-                currentStep = 1;
-            }
-        }
-
-        function hideAllSteps() {
-            document.getElementById('modal-step1').classList.add('hidden');
-            document.getElementById('modal-step2').classList.add('hidden');
-        }
-
-        function validateStep1() {
-            const saldo = document.getElementById('saldo').value;
-
-            if (saldo.trim() === '') {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Saldo tidak boleh kosong!',
-                });
-                return false;
-            }
-
-            return true;
-        }
-    </script>
 
     {{--  <!-- Swiper JS -->  --}}
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -1807,8 +1591,6 @@
     <script src="siswa/js/custom.js"></script>
     <script defer src="siswa/js/apexcharts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
     {{-- <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script> --}}
     <script>
         tailwind.config = {
@@ -1825,84 +1607,721 @@
             },
         };
     </script>
-        <script>
-            // Initialization for ES Users
-        var options = {
-        series: [{
-        name: 'Mengisi',
-        data: [{{$mengisi_jan}},{{$mengisi_feb}},{{$mengisi_mar}},{{$mengisi_apr}},{{$mengisi_mei}},
-            {{$mengisi_jun}},{{$mengisi_jul}},{{$mengisi_aug}},{{$mengisi_sep}},{{$mengisi_okt}},{{$mengisi_nov}},{{$mengisi_des}}
-        ]
-        }, {
-        name: 'Tidak Mengisi',
-        data: [
-            {{$tdk_mengisi_jan}},{{$tdk_mengisi_feb}},{{$tdk_mengisi_mar}},{{$tdk_mengisi_apr}},{{$tdk_mengisi_mei}},
-            {{$tdk_mengisi_jun}},{{$tdk_mengisi_jul}},{{$tdk_mengisi_aug}},{{$tdk_mengisi_sep}},{{$tdk_mengisi_okt}},{{$tdk_mengisi_nov}},{{$tdk_mengisi_des}}
-        ]
-        }],
-        chart: {
-        type: 'bar',
-        height: 350
-        },
-        plotOptions: {
-        bar: {
-            horizontal: false,
-            columnWidth: '55%',
-            endingShape: 'rounded',
-            borderRadius: 7,
-        },
-        },
-        dataLabels: {
-        enabled: false,
-        },
-        animations: {
-            enabled: true,
-            easing: 'easeinout',
-            speed: 1200,
-            animateGradually: {
-                enabled: true,
-                delay: 200
-            },
-            dynamicAnimation: {
-                enabled: true,
-                speed: 450
-            }
-        },
-        stroke: {
-        show: true,
-        width: 2,
-        colors: ['transparent']
-        },
-        xaxis: {
-        categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
 
-        },
-        yaxis: {
-        title: {
-            text: ''
-        }
-        },
-        fill: {
-        opacity: 5,
-        colors: [ '#008ffb', '#47EBB3']
-        },
-        tooltip: {
-        y: {
-            // formatter: function (val) {
-            //   return "$ " + val + " thousands"
-            // }
-        }
-        }
-        };
 
-        var chart = new ApexCharts(document.querySelector("#grafik_jurnal"), options);
-        chart.render();
+    <script>
+        document.addEventListener('alpine:init', () => {
+            //Carousel
+            Alpine.data('carousel', () => ({
+                items: ['carousel1.jpeg', 'carousel2.jpeg', 'carousel3.jpeg'],
 
+                init() {
+                    // basic
+                    const swiper1 = new Swiper('#slider1', {
+                        navigation: {
+                            nextEl: '.swiper-button-next-ex1',
+                            prevEl: '.swiper-button-prev-ex1',
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                    });
+                    // Autoplay
+                    const swiper2 = new Swiper('#slider2', {
+                        navigation: {
+                            nextEl: '.swiper-button-next-ex2',
+                            prevEl: '.swiper-button-prev-ex2',
+                        },
+                        autoplay: {
+                            delay: 2000,
+                        },
+                    });
+                    // vertical
+                    setTimeout(() => {
+                        const swiper3 = new Swiper('#slider3', {
+                            direction: 'vertical',
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                            },
+                            autoplay: {
+                                delay: 2000,
+                            },
+                        });
+                    });
+                    // Loop
+                    const swiper4 = new Swiper('#slider4', {
+                        slidesPerView: 1,
+                        spaceBetween: 30,
+                        loop: true,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                            type: 'fraction',
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next-ex4',
+                            prevEl: '.swiper-button-prev-ex4',
+                        },
+                    });
+                    // Multiple Slides
+                    const swiper5 = new Swiper('#slider5', {
+                        navigation: {
+                            nextEl: '.swiper-button-next-ex5',
+                            prevEl: '.swiper-button-prev-ex5',
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        breakpoints: {
+                            1024: {
+                                slidesPerView: 3,
+                                spaceBetween: 30,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                                spaceBetween: 40,
+                            },
+                            320: {
+                                slidesPerView: 1,
+                                spaceBetween: 20,
+                            },
+                        },
+                    });
+                },
+            }));
+            // main section
+            Alpine.data('scrollToTop', () => ({
+                showTopButton: false,
+                init() {
+                    window.onscroll = () => {
+                        this.scrollFunction();
+                    };
+                },
+
+                scrollFunction() {
+                    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                        this.showTopButton = true;
+                    } else {
+                        this.showTopButton = false;
+                    }
+                },
+
+                goToTop() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                },
+            }));
+
+            // theme customization
+            Alpine.data('customizer', () => ({
+                showCustomizer: false,
+            }));
+
+            // sidebar section
+            Alpine.data('sidebar', () => ({
+                init() {
+                    const selector = document.querySelector('.sidebar ul a[href="' + window.location
+                        .pathname + '"]');
+                    if (selector) {
+                        selector.classList.add('active');
+                        const ul = selector.closest('ul.sub-menu');
+                        if (ul) {
+                            let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
+                            if (ele) {
+                                ele = ele[0];
+                                setTimeout(() => {
+                                    ele.click();
+                                });
+                            }
+                        }
+                    }
+                },
+            }));
+
+            // header section
+            Alpine.data('header', () => ({
+                init() {
+                    const selector = document.querySelector('ul.horizontal-menu a[href="' + window
+                        .location.pathname + '"]');
+                    if (selector) {
+                        selector.classList.add('active');
+                        const ul = selector.closest('ul.sub-menu');
+                        if (ul) {
+                            let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
+                            if (ele) {
+                                ele = ele[0];
+                                setTimeout(() => {
+                                    ele.classList.add('active');
+                                });
+                            }
+                        }
+                    }
+                },
+
+                notifications: [{
+                        id: 1,
+                        profile: 'user-profile.jpeg',
+                        message: '<strong class="text-sm mr-1">John Doe</strong>invite you to <strong>Prototyping</strong>',
+                        time: '45 min ago',
+                    },
+                    {
+                        id: 2,
+                        profile: 'profile-34.jpeg',
+                        message: '<strong class="text-sm mr-1">Adam Nolan</strong>mentioned you to <strong>UX Basics</strong>',
+                        time: '9h Ago',
+                    },
+                    {
+                        id: 3,
+                        profile: 'profile-16.jpeg',
+                        message: '<strong class="text-sm mr-1">Anna Morgan</strong>Upload a file',
+                        time: '9h Ago',
+                    },
+                ],
+
+                messages: [{
+                        id: 1,
+                        image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-success-light dark:bg-success text-success dark:text-success-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>',
+                        title: 'Congratulations!',
+                        message: 'Your OS has been updated.',
+                        time: '1hr',
+                    },
+                    {
+                        id: 2,
+                        image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-info-light dark:bg-info text-info dark:text-info-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>',
+                        title: 'Did you know?',
+                        message: 'You can switch between artboards.',
+                        time: '2hr',
+                    },
+                    {
+                        id: 3,
+                        image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-danger-light dark:bg-danger text-danger dark:text-danger-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>',
+                        title: 'Something went wrong!',
+                        message: 'Send Reposrt',
+                        time: '2days',
+                    },
+                    {
+                        id: 4,
+                        image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-warning-light dark:bg-warning text-warning dark:text-warning-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">    <circle cx="12" cy="12" r="10"></circle>    <line x1="12" y1="8" x2="12" y2="12"></line>    <line x1="12" y1="16" x2="12.01" y2="16"></line></svg></span>',
+                        title: 'Warning',
+                        message: 'Your password strength is low.',
+                        time: '5days',
+                    },
+                ],
+
+                languages: [{
+                        id: 1,
+                        key: 'Chinese',
+                        value: 'zh',
+                    },
+                    {
+                        id: 2,
+                        key: 'Danish',
+                        value: 'da',
+                    },
+                    {
+                        id: 3,
+                        key: 'English',
+                        value: 'en',
+                    },
+                    {
+                        id: 4,
+                        key: 'French',
+                        value: 'fr',
+                    },
+                    {
+                        id: 5,
+                        key: 'German',
+                        value: 'de',
+                    },
+                    {
+                        id: 6,
+                        key: 'Greek',
+                        value: 'el',
+                    },
+                    {
+                        id: 7,
+                        key: 'Hungarian',
+                        value: 'hu',
+                    },
+                    {
+                        id: 8,
+                        key: 'Italian',
+                        value: 'it',
+                    },
+                    {
+                        id: 9,
+                        key: 'Japanese',
+                        value: 'ja',
+                    },
+                    {
+                        id: 10,
+                        key: 'Polish',
+                        value: 'pl',
+                    },
+                    {
+                        id: 11,
+                        key: 'Portuguese',
+                        value: 'pt',
+                    },
+                    {
+                        id: 12,
+                        key: 'Russian',
+                        value: 'ru',
+                    },
+                    {
+                        id: 13,
+                        key: 'Spanish',
+                        value: 'es',
+                    },
+                    {
+                        id: 14,
+                        key: 'Swedish',
+                        value: 'sv',
+                    },
+                    {
+                        id: 15,
+                        key: 'Turkish',
+                        value: 'tr',
+                    },
+                ],
+
+                removeNotification(value) {
+                    this.notifications = this.notifications.filter((d) => d.id !== value);
+                },
+
+                removeMessage(value) {
+                    this.messages = this.messages.filter((d) => d.id !== value);
+                },
+            }));
+
+            // content section
+            Alpine.data('sales', () => ({
+                init() {
+                    isDark = this.$store.app.theme === 'dark' ? true : false;
+                    isRtl = this.$store.app.rtlClass === 'rtl' ? true : false;
+
+                    const revenueChart = null;
+                    const salesByCategory = null;
+                    const dailySales = null;
+                    const totalOrders = null;
+
+                    // revenue
+                    setTimeout(() => {
+                        this.revenueChart = new ApexCharts(this.$refs.revenueChart, this
+                            .revenueChartOptions);
+                        this.$refs.revenueChart.innerHTML = '';
+                        this.revenueChart.render();
+
+                        // sales by category
+                        this.salesByCategory = new ApexCharts(this.$refs.salesByCategory, this
+                            .salesByCategoryOptions);
+                        this.$refs.salesByCategory.innerHTML = '';
+                        this.salesByCategory.render();
+
+                        // daily sales
+                        this.dailySales = new ApexCharts(this.$refs.dailySales, this
+                            .dailySalesOptions);
+                        this.$refs.dailySales.innerHTML = '';
+                        this.dailySales.render();
+
+                        // total orders
+                        this.totalOrders = new ApexCharts(this.$refs.totalOrders, this
+                            .totalOrdersOptions);
+                        this.$refs.totalOrders.innerHTML = '';
+                        this.totalOrders.render();
+                    }, 300);
+
+                    this.$watch('$store.app.theme', () => {
+                        isDark = this.$store.app.theme === 'dark' ? true : false;
+
+                        this.revenueChart.updateOptions(this.revenueChartOptions);
+                        this.salesByCategory.updateOptions(this.salesByCategoryOptions);
+                        this.dailySales.updateOptions(this.dailySalesOptions);
+                        this.totalOrders.updateOptions(this.totalOrdersOptions);
+                    });
+
+                    this.$watch('$store.app.rtlClass', () => {
+                        isRtl = this.$store.app.rtlClass === 'rtl' ? true : false;
+                        this.revenueChart.updateOptions(this.revenueChartOptions);
+                    });
+                },
+
+                // revenue
+                get revenueChartOptions() {
+                    return {
+                        series: [{
+                                name: 'Income',
+                                data: [16800, 16800, 15500, 17800, 15500, 17000, 19000, 16000,
+                                    15000, 17000, 14000, 17000
+                                ],
+                            },
+                            {
+                                name: 'Expenses',
+                                data: [16500, 17500, 16200, 17300, 16000, 19500, 16000, 17000,
+                                    16000, 19000, 18000, 19000
+                                ],
+                            },
+                        ],
+                        chart: {
+                            height: 325,
+                            type: 'area',
+                            fontFamily: 'Nunito, sans-serif',
+                            zoom: {
+                                enabled: false,
+                            },
+                            toolbar: {
+                                show: false,
+                            },
+                        },
+                        dataLabels: {
+                            enabled: false,
+                        },
+                        stroke: {
+                            show: true,
+                            curve: 'smooth',
+                            width: 2,
+                            lineCap: 'square',
+                        },
+                        dropShadow: {
+                            enabled: true,
+                            opacity: 0.2,
+                            blur: 10,
+                            left: -7,
+                            top: 22,
+                        },
+                        colors: isDark ? ['#2196f3', '#e7515a'] : ['#1b55e2', '#e7515a'],
+                        markers: {
+                            discrete: [{
+                                    seriesIndex: 0,
+                                    dataPointIndex: 6,
+                                    fillColor: '#1b55e2',
+                                    strokeColor: 'transparent',
+                                    size: 7,
+                                },
+                                {
+                                    seriesIndex: 1,
+                                    dataPointIndex: 5,
+                                    fillColor: '#e7515a',
+                                    strokeColor: 'transparent',
+                                    size: 7,
+                                },
+                            ],
+                        },
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+                            'Oct', 'Nov', 'Dec'
+                        ],
+                        xaxis: {
+                            axisBorder: {
+                                show: false,
+                            },
+                            axisTicks: {
+                                show: false,
+                            },
+                            crosshairs: {
+                                show: true,
+                            },
+                            labels: {
+                                offsetX: isRtl ? 2 : 0,
+                                offsetY: 5,
+                                style: {
+                                    fontSize: '12px',
+                                    cssClass: 'apexcharts-xaxis-title',
+                                },
+                            },
+                        },
+                        yaxis: {
+                            tickAmount: 7,
+                            labels: {
+                                formatter: (value) => {
+                                    return value / 1000 + 'K';
+                                },
+                                offsetX: isRtl ? -30 : -10,
+                                offsetY: 0,
+                                style: {
+                                    fontSize: '12px',
+                                    cssClass: 'apexcharts-yaxis-title',
+                                },
+                            },
+                            opposite: isRtl ? true : false,
+                        },
+                        grid: {
+                            borderColor: isDark ? '#191e3a' : '#e0e6ed',
+                            strokeDashArray: 5,
+                            xaxis: {
+                                lines: {
+                                    show: true,
+                                },
+                            },
+                            yaxis: {
+                                lines: {
+                                    show: false,
+                                },
+                            },
+                            padding: {
+                                top: 0,
+                                right: 0,
+                                bottom: 0,
+                                left: 0,
+                            },
+                        },
+                        legend: {
+                            position: 'top',
+                            horizontalAlign: 'right',
+                            fontSize: '16px',
+                            markers: {
+                                width: 10,
+                                height: 10,
+                                offsetX: -2,
+                            },
+                            itemMargin: {
+                                horizontal: 10,
+                                vertical: 5,
+                            },
+                        },
+                        tooltip: {
+                            marker: {
+                                show: true,
+                            },
+                            x: {
+                                show: false,
+                            },
+                        },
+                        fill: {
+                            type: 'gradient',
+                            gradient: {
+                                shadeIntensity: 1,
+                                inverseColors: !1,
+                                opacityFrom: isDark ? 0.19 : 0.28,
+                                opacityTo: 0.05,
+                                stops: isDark ? [100, 100] : [45, 100],
+                            },
+                        },
+                    };
+                },
+
+                // sales by category
+                get salesByCategoryOptions() {
+                    return {
+                        series: [985, 737, 270],
+                        chart: {
+                            type: 'donut',
+                            height: 460,
+                            fontFamily: 'Nunito, sans-serif',
+                        },
+                        dataLabels: {
+                            enabled: false,
+                        },
+                        stroke: {
+                            show: true,
+                            width: 25,
+                            colors: isDark ? '#0e1726' : '#fff',
+                        },
+                        colors: isDark ? ['#5c1ac3', '#e2a03f', '#e7515a', '#e2a03f'] : ['#e2a03f',
+                            '#5c1ac3', '#e7515a'
+                        ],
+                        legend: {
+                            position: 'bottom',
+                            horizontalAlign: 'center',
+                            fontSize: '14px',
+                            markers: {
+                                width: 10,
+                                height: 10,
+                                offsetX: -2,
+                            },
+                            height: 50,
+                            offsetY: 20,
+                        },
+                        plotOptions: {
+                            pie: {
+                                donut: {
+                                    size: '65%',
+                                    background: 'transparent',
+                                    labels: {
+                                        show: true,
+                                        name: {
+                                            show: true,
+                                            fontSize: '29px',
+                                            offsetY: -10,
+                                        },
+                                        value: {
+                                            show: true,
+                                            fontSize: '26px',
+                                            color: isDark ? '#bfc9d4' : undefined,
+                                            offsetY: 16,
+                                            formatter: (val) => {
+                                                return val;
+                                            },
+                                        },
+                                        total: {
+                                            show: true,
+                                            label: 'Total',
+                                            color: '#888ea8',
+                                            fontSize: '29px',
+                                            formatter: (w) => {
+                                                return w.globals.seriesTotals.reduce(function(a,
+                                                    b) {
+                                                    return a + b;
+                                                }, 0);
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                        labels: ['Apparel', 'Sports', 'Others'],
+                        states: {
+                            hover: {
+                                filter: {
+                                    type: 'none',
+                                    value: 0.15,
+                                },
+                            },
+                            active: {
+                                filter: {
+                                    type: 'none',
+                                    value: 0.15,
+                                },
+                            },
+                        },
+                    };
+                },
+
+                // daily sales
+                get dailySalesOptions() {
+                    return {
+                        series: [{
+                                name: 'Sales',
+                                data: [44, 55, 41, 67, 22, 43, 21],
+                            },
+                            {
+                                name: 'Last Week',
+                                data: [13, 23, 20, 8, 13, 27, 33],
+                            },
+                        ],
+                        chart: {
+                            height: 160,
+                            type: 'bar',
+                            fontFamily: 'Nunito, sans-serif',
+                            toolbar: {
+                                show: false,
+                            },
+                            stacked: true,
+                            stackType: '100%',
+                        },
+                        dataLabels: {
+                            enabled: false,
+                        },
+                        stroke: {
+                            show: true,
+                            width: 1,
+                        },
+                        colors: ['#e2a03f', '#e0e6ed'],
+                        responsive: [{
+                            breakpoint: 480,
+                            options: {
+                                legend: {
+                                    position: 'bottom',
+                                    offsetX: -10,
+                                    offsetY: 0,
+                                },
+                            },
+                        }, ],
+                        xaxis: {
+                            labels: {
+                                show: false,
+                            },
+                            categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'],
+                        },
+                        yaxis: {
+                            show: false,
+                        },
+                        fill: {
+                            opacity: 1,
+                        },
+                        plotOptions: {
+                            bar: {
+                                horizontal: false,
+                                columnWidth: '25%',
+                            },
+                        },
+                        legend: {
+                            show: false,
+                        },
+                        grid: {
+                            show: false,
+                            xaxis: {
+                                lines: {
+                                    show: false,
+                                },
+                            },
+                            padding: {
+                                top: 10,
+                                right: -20,
+                                bottom: -20,
+                                left: -20,
+                            },
+                        },
+                    };
+                },
+
+                // total orders
+                get totalOrdersOptions() {
+                    return {
+                        series: [{
+                            name: 'Sales',
+                            data: [28, 40, 36, 52, 38, 60, 38, 52, 36, 40],
+                        }, ],
+                        chart: {
+                            height: 290,
+                            type: 'area',
+                            fontFamily: 'Nunito, sans-serif',
+                            sparkline: {
+                                enabled: true,
+                            },
+                        },
+                        stroke: {
+                            curve: 'smooth',
+                            width: 2,
+                        },
+                        colors: isDark ? ['#00ab55'] : ['#00ab55'],
+                        labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                        yaxis: {
+                            min: 0,
+                            show: false,
+                        },
+                        grid: {
+                            padding: {
+                                top: 125,
+                                right: 0,
+                                bottom: 0,
+                                left: 0,
+                            },
+                        },
+                        fill: {
+                            opacity: 1,
+                            type: 'gradient',
+                            gradient: {
+                                type: 'vertical',
+                                shadeIntensity: 1,
+                                inverseColors: !1,
+                                opacityFrom: 0.3,
+                                opacityTo: 0.05,
+                                stops: [100, 100],
+                            },
+                        },
+                        tooltip: {
+                            x: {
+                                show: false,
+                            },
+                        },
+                    };
+                },
+            }));
+        });
     </script>
-
-
-
-
 </body>
 
 <!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:57 GMT -->

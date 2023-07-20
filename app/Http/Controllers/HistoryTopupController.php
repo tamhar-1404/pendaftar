@@ -18,8 +18,8 @@ class HistoryTopupController extends Controller
      */
     public function index()
     {
-        $TopUp = Topup::where('siswa_id',Auth()->user()->id)->get();
-        return view('History_siswa.index', compact('TopUp'));
+        $TopUp = Topup::where('user_id',Auth()->user()->id)->paginate(10);
+        return view('History_siswa.topup', compact('TopUp'));
     }
 
     /**

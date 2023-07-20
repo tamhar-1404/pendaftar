@@ -42,7 +42,7 @@ use App\Http\Controllers\passwordController;
 */
 // Admin
 Route::post('/validate_password',['passwordController@validatePassword']);
-Route::resource('/History_siswa', App\Http\Controllers\HistoryTopupController::class);
+Route::resource('/History_topup', App\Http\Controllers\HistoryTopupController::class);
 Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::class);
 Route::post('/get_user', [App\Http\Controllers\GetuserController::class, 'get_user'])->name('get_user');
 Route::post('/find_rfid', [App\Http\Controllers\GetuserController::class, 'find_rfid'])->name('find_rfid');
@@ -89,17 +89,6 @@ Route::post('/aproval/{aproval}/tolak', [App\Http\Controllers\AprovalController:
 
 // akhir admin
 
-// Pembimbing
-Route::resource('/guru', App\Http\Controllers\DashboardGuruController::class);
-Route::resource('/siswa_guru', App\Http\Controllers\SiswaGuruController::class);
-Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
-Route::resource('/jurnal_guru', App\Http\Controllers\JurnalGuruController::class);
-Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
-Route::resource('/chat_guru', App\Http\Controllers\ChatGuruController::class);
-Route::resource('/berita_guru', App\Http\Controllers\BeritaController::class);
-Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
-Route::resource('/data', App\Http\Controllers\TransaksiController::class);
-// akhir Pembimbing
 // Siswa
 Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'downloadPDF']);
 Route::get('/print', [JurnalSiswaController::class, 'print']);
@@ -142,7 +131,7 @@ Route::get('/resetpassword/{token}', [LupaPasswordController::class, 'reset'])->
 Route::post('/resetpassword', [LupaPasswordController::class, 'update'])->name('password.update');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
-    Route::middleware(['role:Admin,Siswa,Guru'])->group(function () {
+    Route::middleware(['role:Admin,Siswa,guru'])->group(function () {
         // Route khusus untuk admin
         Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
         Route::get('send-email' , [MailController::class,'index']);
@@ -205,7 +194,7 @@ Route::middleware(['auth'])->group(function () {
 
     });
 
-    Route::middleware(['role:Admin,Siswa,Guru'])->group(function () {
+    Route::middleware(['role:Admin,Siswa,guru'])->group(function () {
 
        Route::resource('absensi_siswa', App\Http\Controllers\AbsensiSiswaController::class);
        Route::put('izin_update', [App\Http\Controllers\ApprovalIzinController::class, 'izin_update'])->name('izin_update');
@@ -219,8 +208,20 @@ Route::middleware(['auth'])->group(function () {
 
     });
 
-    Route::middleware(['role:Admin,Siswa,Guru'])->group(function () {
+    Route::middleware(['role:Admin,Siswa,guru'])->group(function () {
         // Route khusus untuk guru
+
+// Pembimbing
+Route::resource('/guru', App\Http\Controllers\DashboardGuruController::class);
+Route::resource('/siswa_guru', App\Http\Controllers\SiswaGuruController::class);
+Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
+Route::resource('/jurnal_guru', App\Http\Controllers\JurnalGuruController::class);
+Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
+Route::resource('/chat_guru', App\Http\Controllers\ChatGuruController::class);
+Route::resource('/berita_guru', App\Http\Controllers\BeritaController::class);
+Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
+Route::resource('/data', App\Http\Controllers\TransaksiController::class);
+// akhir Pembimbing
 
     });
 });

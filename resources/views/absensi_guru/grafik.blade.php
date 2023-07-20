@@ -1310,7 +1310,7 @@
                             </div>
                         </div>
                         {{-- grafik --}}
-                        <div id="grafik_admin"
+                        <div id="grafik_guru"
                             class=" w-80% h-35 mx-3 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
                             <div class="w-full px-4 mt-6">
                                 <div class="w-80%  bg-white h-35 pb-5 text-same font-semibold dark:bg-transparent">
@@ -1539,7 +1539,7 @@
             }
         };
 
-        var chart = new ApexCharts(document.querySelector("#grafik_admin"), options);
+        var chart = new ApexCharts(document.querySelector("#grafik_guru"), options);
         chart.render();
     </script>
     <script>

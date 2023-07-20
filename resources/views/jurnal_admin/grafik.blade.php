@@ -449,77 +449,77 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script>
-        // Initialization for ES Users
-       var options = {
-      series: [{
-      name: 'Mengisi',
-      data: [{{$mengisi_jan}},{{$mengisi_feb}},{{$mengisi_mar}},{{$mengisi_apr}},{{$mengisi_mei}},
-        {{$mengisi_jun}},{{$mengisi_jul}},{{$mengisi_aug}},{{$mengisi_sep}},{{$mengisi_okt}},{{$mengisi_nov}},{{$mengisi_des}}
-      ]
-    }, {
-      name: 'Tidak Mengisi',
-      data: [
-        {{$tdk_mengisi_jan}},{{$tdk_mengisi_feb}},{{$tdk_mengisi_mar}},{{$tdk_mengisi_apr}},{{$tdk_mengisi_mei}},
-        {{$tdk_mengisi_jun}},{{$tdk_mengisi_jul}},{{$tdk_mengisi_aug}},{{$tdk_mengisi_sep}},{{$tdk_mengisi_okt}},{{$tdk_mengisi_nov}},{{$tdk_mengisi_des}}
-      ]
-    }],
-      chart: {
-      type: 'bar',
-      height: 350
-    },
-    plotOptions: {
-      bar: {
-        horizontal: false,
-        columnWidth: '55%',
-        endingShape: 'rounded',
-        borderRadius: 7,
-      },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    animations: {
-        enabled: true,
-        easing: 'easeinout',
-        speed: 1200,
-        animateGradually: {
-            enabled: true,
-            delay: 200
+            // Initialization for ES Users
+        var options = {
+        series: [{
+        name: 'Mengisi',
+        data: [{{$mengisi_jan}},{{$mengisi_feb}},{{$mengisi_mar}},{{$mengisi_apr}},{{$mengisi_mei}},
+            {{$mengisi_jun}},{{$mengisi_jul}},{{$mengisi_aug}},{{$mengisi_sep}},{{$mengisi_okt}},{{$mengisi_nov}},{{$mengisi_des}}
+        ]
+        }, {
+        name: 'Tidak Mengisi',
+        data: [
+            {{$tdk_mengisi_jan}},{{$tdk_mengisi_feb}},{{$tdk_mengisi_mar}},{{$tdk_mengisi_apr}},{{$tdk_mengisi_mei}},
+            {{$tdk_mengisi_jun}},{{$tdk_mengisi_jul}},{{$tdk_mengisi_aug}},{{$tdk_mengisi_sep}},{{$tdk_mengisi_okt}},{{$tdk_mengisi_nov}},{{$tdk_mengisi_des}}
+        ]
+        }],
+        chart: {
+        type: 'bar',
+        height: 350
         },
-        dynamicAnimation: {
+        plotOptions: {
+        bar: {
+            horizontal: false,
+            columnWidth: '55%',
+            endingShape: 'rounded',
+            borderRadius: 7,
+        },
+        },
+        dataLabels: {
+        enabled: false,
+        },
+        animations: {
             enabled: true,
-            speed: 450
+            easing: 'easeinout',
+            speed: 1200,
+            animateGradually: {
+                enabled: true,
+                delay: 200
+            },
+            dynamicAnimation: {
+                enabled: true,
+                speed: 450
+            }
+        },
+        stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent']
+        },
+        xaxis: {
+        categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+
+        },
+        yaxis: {
+        title: {
+            text: ''
         }
-    },
-    stroke: {
-      show: true,
-      width: 2,
-      colors: ['transparent']
-    },
-    xaxis: {
-      categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        },
+        fill: {
+        opacity: 5,
+        colors: [ '#008ffb', '#47EBB3']
+        },
+        tooltip: {
+        y: {
+            // formatter: function (val) {
+            //   return "$ " + val + " thousands"
+            // }
+        }
+        }
+        };
 
-    },
-    yaxis: {
-      title: {
-        text: ''
-      }
-    },
-    fill: {
-      opacity: 5,
-      colors: [ '#008ffb', '#47EBB3']
-    },
-    tooltip: {
-      y: {
-        // formatter: function (val) {
-        //   return "$ " + val + " thousands"
-        // }
-      }
-    }
-    };
-
-    var chart = new ApexCharts(document.querySelector("#grafik_admin"), options);
-    chart.render();
+        var chart = new ApexCharts(document.querySelector("#grafik_admin"), options);
+        chart.render();
 
     </script>
 
