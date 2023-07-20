@@ -137,7 +137,7 @@
                 <div class="flex w-full justify-between  md:w-max-[50%]" >
                     <div class="flex w-full justify-end mt-2 font-semibold items-center  px-4 py-1 rounded">
                         <div class=" flex text-white items-center py-1 rounded bg-blue-500 px-3">
-                            <p class="text-sm">Saldo anda sekarang : {{$user}}</p>
+                            <p class="text-sm">Saldo anda sekarang : Rp. {{$user}}</p>
                         </div>
                     </div>
                 </div>
@@ -439,6 +439,7 @@
             document.getElementById('kodebarang').value = null;
             document.getElementById('kodebarang').focus();
             alert('barang yang anda scan belum di data pada admin');
+            document.getElementById('total_keseluruhan').classList.add('hidden');
         }
     }
 
