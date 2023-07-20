@@ -10,6 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite('resources/css/app.css')
 
     <!-- Favicon -->
@@ -93,7 +94,7 @@
 
                 <center>
 
-                    <input class="border px-2 border-gray-300 w-[95%] placeholder:text-gray-600" id="searchInput" type="text" name="kodebarang" placeholder="cari menu">
+                    <input class="border px-2 border-gray-300 w-[95%] placeholder:text-gray-600" id="searchInput" type="text" name="kodebarang" placeholder="cari menu" onchange="cari(this)">
                 </cesnter>
                 <div class="mt-1">Makanan</div>
                 <div class="w-full max-h-[270px] mt-1  overflow-y-scroll">
@@ -271,6 +272,28 @@
 <!-- Tambahkan id "kodebarang" pada input untuk memperbaiki script -->
 
 <script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+
+    function cari(data) {
+        $.ajax({
+            url: "{{ route('cari_barang') }}",
+            method: 'POST',
+            data: {
+                value: data.value,
+            },
+            success: function (response) {
+                console.log(response);
+                alert(response);
+            }
+        })
+    }
+
     let currentStep = 1;
     let total_semua = 0;
 

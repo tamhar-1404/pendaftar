@@ -150,25 +150,25 @@
                                                                      <img class="w-[70px] h-[70px] rounded-full" src="{{asset('storage/Siswa/' . "")}}/${response.foto}" alt="" srcset="">
                                                                 </div>
                                                                 <div class="flex flex-col items-center gap-2">
-                                                                <div class="flex justify-between w-full text-base ">
+                                                                <div class="flex w-full text-base ">
                                                                     <p class="font-bold w-full text-start">Nama : </p>
                                                                     <div class="w-full text-start">
                                                                         <p class=" text-start">${response.nama}</p>
                                                                     </div>
                                                                 </div>
-                                                                <div class="flex justify-between w-full text-base">
+                                                                <div class="flex w-full text-base">
                                                                     <p class="font-bold w-full text-start">Email : </p>
                                                                     <div class="w-full text-start">
                                                                         <p class=" text-start text-sm">${response.email}</p>
                                                                     </div>
                                                                 </div>
-                                                                <div class="flex justify-between w-full text-base">
+                                                                <div class="flex w-full text-base">
                                                                     <p class="font-bold w-full text-start">Sekolah : </p>
                                                                     <div class="w-full text-start">
                                                                         <p class=" text-start">${response.sekolah}</p>
                                                                     </div>
                                                                 </div>
-                                                                <div class="flex justify-between w-full text-base">
+                                                                <div class="flex w-full text-base">
                                                                     <p class="font-bold w-full text-start">Saldo : </p>
                                                                     <div class="w-full text-start">
                                                                         <p class=" text-start">${response.saldo}</p>

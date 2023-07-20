@@ -12,6 +12,11 @@ use App\Models\HistoryTransaksi;
 
 class TransaksiController extends Controller
 {
+    public function cari(Request $request) {
+        $keyword = $request->value;
+        $barangs = Barang::where('nama', 'LIKE', '%'.$keyword.'%')->get()->toArray();
+        return $barangs;
+    }
     /**
      * Display a listing of the resource.
      *
