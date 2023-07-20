@@ -204,7 +204,7 @@
                                                         <th scope="col" class="px-6 py-2">Nama</th>
                                                         <th scope="col" class="px-6 py-2">RFID</th>
                                                         <th scope="col" class="px-6 py-2">Barang</th>
-                                                        <th scope="col" class="px-6 py-2">Foto</th>
+                                                        {{--  <th scope="col" class="px-6 py-2">Foto</th>  --}}
                                                         <th scope="col" class="px-6 py-2">Harga</th>
                                                         <th scope="col" class="px-6 py-2">Stok</th>
                                                         <th scope="col" class="px-6 py-2">Total</th>
@@ -229,10 +229,10 @@
                                                             <td class="whitespace-nowrap px-6 py-2">
                                                                 {{ $items->name }}
                                                             </td>
-                                                            <td class="whitespace-nowrap px-6 py-2">
+                                                            {{--  <td class="whitespace-nowrap px-6 py-2">
                                                                 <img src="{{ asset('storage/pendataanbarang/' . $items->foto) }}"
                                                                     width="50" height="50" alt="">
-                                                            </td>
+                                                            </td>  --}}
                                                             <td class="whitespace-nowrap px-6 py-2">
                                                                 {{ $items->harga }}
                                                             </td>

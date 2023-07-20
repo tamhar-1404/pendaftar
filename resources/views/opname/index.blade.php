@@ -43,6 +43,15 @@
             });
         </script>
     @endif
+    @if (session()->has('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "{{ session('error') }}",
+            })
+        </script>
+    @endif
 
     <!-- screen loader -->
     <div
@@ -171,24 +180,7 @@
                                     animation: false
                                 }).then((result) => {
                                     if (result.isConfirmed) {
-                                        Swal.fire({
-                                            title: 'Sukses',
-                                            text: 'Berhasil dihapus!',
-                                            icon: 'success',
-                                            timer: 2000,
-                                            showConfirmButton: false,
-                                            background: '#f5f5f5',
-                                            customClass: {
-                                                icon: 'swal-icon',
-                                                popup: 'swal-popup',
-                                                title: 'swal-title',
-                                                confirmButton: 'swal-button swal-button--confirm'
-                                            },
-                                            animation: false
-                                        });
-                                        setTimeout(() => {
-                                            event.target.closest('form').submit();
-                                        }, 2000);
+                                        event.target.closest('form').submit();
                                     }
                                 });
                             }

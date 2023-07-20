@@ -135,7 +135,7 @@
                 <div class="flex w-full justify-between  md:w-max-[50%]" >
                     <div class="flex w-full justify-end mt-2 font-semibold items-center  px-4 py-1 rounded">
                         <div class=" flex text-white items-center py-1 rounded bg-blue-500 px-3">
-                            <p class="text-sm">Saldo anda sekarang : {{$user}}</p>
+                            <p class="text-sm">Saldo anda sekarang : Rp. {{$user}}</p>
                         </div>
                     </div>
                 </div>
@@ -269,102 +269,145 @@
 
 
 <!-- Tambahkan id "kodebarang" pada input untuk memperbaiki script -->
+<!-- Make sure to include jQuery library before using it -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> <!-- Include SweetAlert2 library if not already included -->
 
 <script>
-    $(document).ready(function () {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+  $(document).ready(function() {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
     });
+  });
 
-    function cari(data) {
-        $.ajax({
-            url: "{{ route('cari_barang') }}",
-            method: 'POST',
-            data: {
-                value: data.value,
-            },
-            success: function (response) {
-                $.each(response, function (index, el) {
-                    document.getElementById(!(el.nama)).classList.add('hidden');
-                    console.log("Nama : ",el.nama);
-                    console.log("Harga : ",el.harga);
-                })
+  let currentStep = 1;
+  let total_semua = 0;
+
+  var closeButtons = document.querySelectorAll('.close');
+  closeButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      var kode = this.getAttribute('data-kode');
+      var element = document.getElementById(kode);
+      if (element) {
+        Swal.fire({
+          title: 'kamu yakin?',
+          text: "kamu bisa scan kode lagi untuk membelinya",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Hapus'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Terhapus',
+              'list barang kamu sudah di hapus.',
+              'success'
+            )
+            var hargaValue = parseFloat($('#harga' + kode).data('harga'));
+            total_semua -= parseFloat(document.getElementById('total_harga_' + kode).innerText);
+            document.getElementById('jumlah_semua').innerHTML = total_semua.toFixed(2);
+            document.getElementById('form_total_semua').value = total_semua.toFixed(2);
+
+            element.classList.add('hidden');
+            element.classList.remove('1');
+            document.getElementById('quantity_' + kode).value = 1;
+            document.getElementById('total_harga_' + kode).innerText = hargaValue.toFixed(2);
+            document.getElementById('form_total_' + kode).value = hargaValue.toFixed(2);
+
+            $('#form-kode-' + kode).removeAttr('name');
+            $('#quantity_' + kode).removeAttr('name');
+            document.getElementById('kodebarang').focus();
+            console.log(document.getElementById('jumlah_semua').innerText);
+            if (total_semua === 0 && document.getElementById('jumlah_semua').innerText === "0.00") {
+              document.getElementById('btn-bayar').classList.add('hidden')
             }
+          }
         })
-    }
-
-    let currentStep = 1;
-    let total_semua = 0;
-
-    var closeButtons = document.querySelectorAll('.close');
-    closeButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            var kode = this.getAttribute('data-kode');
-            var element = document.getElementById(kode);
-            if (element) {
-                Swal.fire({
-                title: 'kamu yakin?',
-                text: "kamu bisa scan kode lagi untuk membelinya",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Hapus'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                    'Terhapus',
-                    'list barang kamu sudah di hapus.',
-                    'success'
-                    )
-                    var hargaValue = parseFloat($('#harga' + kode).data('harga'));
-                    total_semua -= parseInt(document.getElementById('total_harga_' + kode).innerText);
-                    document.getElementById('jumlah_semua').innerHTML = total_semua;
-                    document.getElementById('form_total_semua').value = total_semua.toString();
-
-                    element.classList.add('hidden');
-                    element.classList.remove('1');
-                    document.getElementById('quantity_' + kode).value = 1;
-                    document.getElementById('total_harga_' + kode).innerText = hargaValue;
-                    document.getElementById('form_total_' + kode).value = hargaValue;
-
-                    $('#form-kode-' + kode).removeAttr('name');
-                    $('#quantity_' + kode).removeAttr('name');
-                    document.getElementById('kodebarang').focus();
-                    console.log(document.getElementById('jumlah_semua').innerText);
-                    if (total_semua == 0 && document.getElementById('jumlah_semua').innerText == "0") {
-                        document.getElementById('btn-bayar').classList.add('hidden')
-                    }
-                }
-                })
-
-            }
-        });
+      }
     });
+  });
 
-    function inputquantity(kode) {
-        let quantity = document.getElementById('quantity_' + kode).valueAsNumber;
-        let harga = parseInt(document.getElementById('harga' + kode).innerText) * quantity;
-        total_semua += parseInt(document.getElementById('harga' + kode).innerText);
-        total_semua = harga;
-        document.getElementById('jumlah_semua').innerHTML = total_semua;
-        document.getElementById('total_harga_' + kode).innerHTML = harga.toString();
-        document.getElementById('quantity_' + kode).setAttribute('data-sebelumnya', data_sekarang.toString());
+  function inputquantity(kode) {
+    let quantity = document.getElementById('quantity_' + kode).valueAsNumber;
+    let harga = parseFloat(document.getElementById('harga' + kode).innerText) * quantity;
+    total_semua += parseFloat(document.getElementById('harga' + kode).innerText);
+    document.getElementById('jumlah_semua').innerHTML = total_semua.toFixed(2);
+    document.getElementById('total_harga_' + kode).innerHTML = harga.toFixed(2);
+    document.getElementById('quantity_' + kode).setAttribute('data-sebelumnya', quantity.toString());
+  }
+
+  document.getElementById('jumlah_semua').innerHTML = total_semua.toFixed(2);
+  document.getElementById('form_total_semua').value = total_semua.toFixed(2);
+
+  function showStep() {
+    let kodebarang = document.getElementById('kodebarang').value;
+    $('#form-kode-' + kodebarang).attr('name', 'kode[]');
+    $('#quantity_' + kodebarang).attr('name', 'quantity[]');
+    console.log('kodebarang:', kodebarang);
+    let databarang = document.getElementById(`${kodebarang}`);
+    console.log('databarang:', databarang);
+    document.getElementById('total_keseluruhan').classList.remove('hidden');
+    if (databarang && databarang.classList.contains('1')) {
+      document.getElementById('total_keseluruhan')
+      let kode = 'quantity_' + kodebarang;
+      let value_old = document.getElementById(kode).valueAsNumber;
+      console.log('Value old : ', value_old);
+      let maxStok = parseInt(databarang.getAttribute('data-max-stok'));
+      if (value_old > maxStok - 1) {
+        alert("Stok habis");
+        document.getElementById('kodebarang').value = null;
+        document.getElementById('kodebarang').focus();
+        return;
+      }
+      let value_new = value_old + 1;
+      document.getElementById(kode).value = value_new;
+
+      // Ubah cara mendapatkan harga menggunakan jQuery
+      var hargaValue = parseFloat($('#harga' + kodebarang).data('harga'));
+      console.log('Nilai harga:', hargaValue);
+
+      let total = hargaValue * value_new;
+      console.log('harga total: ', total.toFixed(2));
+
+      // Perbarui elemen "total_harga" dengan nilai total baru
+      document.getElementById('total_harga_' + kodebarang).innerText = total.toFixed(2);
+      document.getElementById('form_total_' + kodebarang).value = total.toFixed(2);
+      total_semua += hargaValue;
+      console.log("Total semua : ", total_semua.toFixed(2));
+
+      document.getElementById('kodebarang').value = null;
+      document.getElementById('kodebarang').focus();
+      document.getElementById('jumlah_semua').innerHTML = total_semua.toFixed(2);
+      document.getElementById('form_total_semua').value = total_semua.toFixed(2);
+    } else if (databarang) {
+      let maxStok = parseInt(databarang.getAttribute('data-max-stok'));
+      console.log('Max stok : ', maxStok);
+      if (maxStok <= 0) {
+        alert("Stok habis");
+        document.getElementById('kodebarang').value = null;
+        document.getElementById('kodebarang').focus();
+        return;
+      }
+      document.getElementById('btn-bayar').classList.remove('hidden')
+      databarang.classList.remove('hidden');
+      databarang.classList.add('1');
+      let hargaAwal = parseFloat(document.getElementById('total_harga_' + kodebarang).innerText);
+      total_semua += hargaAwal;
+      console.log("Total semua : ", total_semua.toFixed(2));
+
+      document.getElementById('kodebarang').value = null;
+      document.getElementById('kodebarang').focus();
+      document.getElementById('jumlah_semua').innerHTML = total_semua.toFixed(2);
+      document.getElementById('form_total_semua').value = total_semua.toFixed(2);
+    } else {
+      document.getElementById('kodebarang').value = null;
+      document.getElementById('kodebarang').focus();
+      alert('barang yang anda scan belum di data pada admin');
     }
-    document.getElementById('jumlah_semua').innerHTML = total_semua;
-    document.getElementById('form_total_semua').value = total_semua.toString();
-    function showStep() {
-        let kodebarang = document.getElementById('kodebarang').value;
-        $('#form-kode-' + kodebarang).attr('name', 'kode[]');
-        $('#quantity_' + kodebarang).attr('name', 'quantity[]');
-        console.log('kodebarang:', kodebarang);
-        let databarang = document.getElementById(`${kodebarang}`);
-        console.log('databarang:', databarang);
-        document.getElementById('total_keseluruhan').classList.remove('hidden');
-        if (databarang && databarang.classList.contains('1')) {
+  }
 
             document.getElementById('total_keseluruhan')
             let kode = 'quantity_' + kodebarang;
@@ -425,6 +468,7 @@
     }
 
 </script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script>
     $(window).on('load', function() {

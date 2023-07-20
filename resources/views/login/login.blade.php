@@ -63,11 +63,11 @@
     @endif
     @if (session()->has('error'))
         <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: "{{ session('error') }}",
-            })
+            Swal.fire(
+                'Oops..!',
+                "{{ session('error') }}",
+                'error'
+            )
         </script>
     @endif
 

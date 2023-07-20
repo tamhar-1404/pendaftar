@@ -212,7 +212,7 @@
                                                         <div id="modal-tambah-rfid{{ $user->id }}" class="modal fixed inset-0 flex items-center justify-center">
                                                             <div class="modal-content bg-white p-6">
                                                                 <h2 class="text-2xl font-bold mb-4">Tambah RFID   {{ $user->name }}</h2>
-                                                                <input autofocus type="text" name="RFID" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
+                                                                <input id="inputrfid{{ $user->id }}" type="text" name="RFID" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
                                                                 <div class="mt-6 flex justify-end">
                                                                     <!-- Your additional content here if needed -->
                                                                 </div>
@@ -225,6 +225,7 @@
                                                           // Mengaktifkan modal saat tombol diklik
                                                           document.getElementById('tambah-rfid{{ $user->id }}').addEventListener('click', function() {
                                                             document.getElementById('modal-tambah-rfid{{ $user->id }}').style.display = "flex";
+                                                            document.getElementById('inputrfid{{ $user->id }}').focus();
                                                           });
 
                                                           // Menutup modal saat tombol Batal diklik atau saat mengklik area luar modal
