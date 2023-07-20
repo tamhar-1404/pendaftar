@@ -127,7 +127,7 @@
         <div class="w-full flex justify-end">
 
             <div>
-                <td colspan="3" style="text-align: left">Total Saldo:</td>
+                <td colspan="3" style="text-align: left">Sisa Saldo:</td>
                 <td>{{$hasil}} </td>
 
 
