@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class dataizinEmail extends Mailable
+class PendaftaranAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,7 +18,7 @@ class dataizinEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(public $data)
     {
         //
     }
@@ -31,7 +31,7 @@ class dataizinEmail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Dataizin Email',
+            subject: 'Pendaftaran siswa baru',
         );
     }
 
@@ -43,7 +43,7 @@ class dataizinEmail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.IzinEmail',
+            view: 'emails.pendaftaran_siswa',
         );
     }
 

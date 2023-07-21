@@ -28,7 +28,7 @@ use App\Http\Controllers\OpnameController;
 use App\Http\Controllers\RestockController;
 use App\Http\Controllers\transaksirfidController;
 use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\passwordController;
+use App\Http\Controllers\PasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,7 +122,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/chat', App\Http\Controllers\ChatController::class);
         Route::resource('/piket', App\Http\Controllers\PiketController::class);
         Route::post('/rubah', [PiketController::class, 'rubah'])->name('rubah');
-        Route::resource('/mou', App\Http\Controllers\MouController::class);
+        Route::resource('/mou', App\Http\Controllers\MOUController::class);
         Route::resource('/tolak', App\Http\Controllers\TolakController::class);
         Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
         Route::post('/aproval/{aproval}/confirm', [App\Http\Controllers\AprovalController::class, 'confirm'])->name('aproval.confirm');
@@ -176,7 +176,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
 Route::resource('/data', App\Http\Controllers\TransaksiController::class);
-Route::get('/nota' , [TransaksiController::class , 'nota'])->name('nota');
+Route::get('/nota', [TransaksiController::class , 'nota'])->name('nota');
 Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita.like');
 Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
 Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');

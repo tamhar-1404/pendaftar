@@ -95,6 +95,7 @@
                 </svg>
                 PRINT
             </button>
+            @if (auth()->user()->role != 'Alumni' AND auth()->user()->Siswa->role != 'Alumni')
             <button data-modal-target="staticModal" data-modal-toggle="staticModal"
                 class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400">Tambah
                 Izin</button>
@@ -109,6 +110,7 @@
                     class="border border-green-500 px-3 py-2 rounded-lg text-green-500 hover:bg-green-500 hover:text-white font-bold"
                     id="btnabsen">Absen</button>
             </form>
+            @endif
         </div>
         <div>
             @if (session()->has('error'))
