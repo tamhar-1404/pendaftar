@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-{{--  <!-- Mirrored from html.vristo.sbthemes.com/datatables-export.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:33 GMT -->  --}}
+{{--  <!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:26 GMT -->  --}}
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Guru - Jurnal</title>
-    @vite('resources/css/app.css')
+    <title>siswa - Dashboad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
+    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link rel="stylesheet" href="load/load.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/perfect-scrollbar.min.css" />
-    <link rel="stylesheet" href="assets_guru/css/highlight.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/style.css" />
-    <link defer rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/animate.css" />
-    <link rel="stylesheet" href="load/load.css">
-    <script src="assets_guru/js/perfect-scrollbar.min.js"></script>
-    <script defer src="assets_guru/js/popper.min.js"></script>
-    <script defer src="assets_guru/js/tippy-bundle.umd.min.js"></script>
-    <script defer src="assets_guru/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="siswa/css/perfect-scrollbar.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="siswa/css/style.css" />
+    <link defer rel="stylesheet" type="text/css" media="screen" href="siswa/css/animate.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    {{-- <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" /> --}}
+    <script src="siswa/js/perfect-scrollbar.min.js"></script>
+    <script defer src="siswa/js/popper.min.js"></script>
+    <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <script defer src="siswa/js/sweetalert.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
-
-
 </head>
 
-<body x-data="main" class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
+<body x-data="main"
+    class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased bg-[#F6F5FF]"
     :class="[$store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout, $store.app
         .rtlClass
     ]">
@@ -38,8 +48,9 @@
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>
 
-     <!-- screen loader -->
-     <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+    <!-- screen loader -->
+    <div
+        class="screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
@@ -73,6 +84,17 @@
 
         <nav class="fixed top-0 bottom-0 z-[51] w-full max-w-[400px] bg-white p-4 shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] transition-[right] duration-300 ltr:-right-[400px] rtl:-left-[400px] dark:bg-[#0e1726]"
             :class="{ 'ltr:!right-0 rtl:!left-0': showCustomizer }">
+            <a href="javascript:;"
+                class="absolute top-0 bottom-0 my-auto flex h-10 w-12 cursor-pointer items-center justify-center bg-primary text-white ltr:-left-12 ltr:rounded-tl-full ltr:rounded-bl-full rtl:-right-12 rtl:rounded-tr-full rtl:rounded-br-full"
+                @click="showCustomizer = !showCustomizer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 animate-[spin_3s_linear_infinite]">
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" />
+                    <path opacity="0.5"
+                        d="M13.7654 2.15224C13.3978 2 12.9319 2 12 2C11.0681 2 10.6022 2 10.2346 2.15224C9.74457 2.35523 9.35522 2.74458 9.15223 3.23463C9.05957 3.45834 9.0233 3.7185 9.00911 4.09799C8.98826 4.65568 8.70226 5.17189 8.21894 5.45093C7.73564 5.72996 7.14559 5.71954 6.65219 5.45876C6.31645 5.2813 6.07301 5.18262 5.83294 5.15102C5.30704 5.08178 4.77518 5.22429 4.35436 5.5472C4.03874 5.78938 3.80577 6.1929 3.33983 6.99993C2.87389 7.80697 2.64092 8.21048 2.58899 8.60491C2.51976 9.1308 2.66227 9.66266 2.98518 10.0835C3.13256 10.2756 3.3397 10.437 3.66119 10.639C4.1338 10.936 4.43789 11.4419 4.43786 12C4.43783 12.5581 4.13375 13.0639 3.66118 13.3608C3.33965 13.5629 3.13248 13.7244 2.98508 13.9165C2.66217 14.3373 2.51966 14.8691 2.5889 15.395C2.64082 15.7894 2.87379 16.193 3.33973 17C3.80568 17.807 4.03865 18.2106 4.35426 18.4527C4.77508 18.7756 5.30694 18.9181 5.83284 18.8489C6.07289 18.8173 6.31632 18.7186 6.65204 18.5412C7.14547 18.2804 7.73556 18.27 8.2189 18.549C8.70224 18.8281 8.98826 19.3443 9.00911 19.9021C9.02331 20.2815 9.05957 20.5417 9.15223 20.7654C9.35522 21.2554 9.74457 21.6448 10.2346 21.8478C10.6022 22 11.0681 22 12 22C12.9319 22 13.3978 22 13.7654 21.8478C14.2554 21.6448 14.6448 21.2554 14.8477 20.7654C14.9404 20.5417 14.9767 20.2815 14.9909 19.902C15.0117 19.3443 15.2977 18.8281 15.781 18.549C16.2643 18.2699 16.8544 18.2804 17.3479 18.5412C17.6836 18.7186 17.927 18.8172 18.167 18.8488C18.6929 18.9181 19.2248 18.7756 19.6456 18.4527C19.9612 18.2105 20.1942 17.807 20.6601 16.9999C21.1261 16.1929 21.3591 15.7894 21.411 15.395C21.4802 14.8691 21.3377 14.3372 21.0148 13.9164C20.8674 13.7243 20.6602 13.5628 20.3387 13.3608C19.8662 13.0639 19.5621 12.558 19.5621 11.9999C19.5621 11.4418 19.8662 10.9361 20.3387 10.6392C20.6603 10.4371 20.8675 10.2757 21.0149 10.0835C21.3378 9.66273 21.4803 9.13087 21.4111 8.60497C21.3592 8.21055 21.1262 7.80703 20.6602 7C20.1943 6.19297 19.9613 5.78945 19.6457 5.54727C19.2249 5.22436 18.693 5.08185 18.1671 5.15109C17.9271 5.18269 17.6837 5.28136 17.3479 5.4588C16.8545 5.71959 16.2644 5.73002 15.7811 5.45096C15.2977 5.17191 15.0117 4.65566 14.9909 4.09794C14.9767 3.71848 14.9404 3.45833 14.8477 3.23463C14.6448 2.74458 14.2554 2.35523 13.7654 2.15224Z"
+                        stroke="currentColor" stroke-width="1.5" />
+                </svg>
+            </a>
             <div class="perfect-scrollbar h-full overflow-y-auto overflow-x-hidden">
                 <div class="relative pb-5 text-center">
                     <a href="javascript:;"
@@ -147,12 +169,11 @@
                         </button>
                     </div>
                 </div>
-
                 <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
                     <h5 class="mb-1 text-base leading-none dark:text-white">Navigation Position</h5>
                     <p class="text-xs text-white-dark">Select the primary navigation paradigm for your app.</p>
-                    <div class="mt-3 grid grid-cols-3 gap-2">
-                        <button type="button" class="btn"
+                    <div class="mt-3">
+                        <button id="horizontalButton" type="button" class="btn"
                             :class="[$store.app.menu === 'horizontal' ? 'btn-primary' : 'btn-outline-primary']"
                             @click="$store.app.toggleMenu('horizontal')">
                             Horizontal
@@ -168,90 +189,99 @@
                             Collapsible
                         </button>
                     </div>
-                    <div class="mt-5 text-primary">
-                        <label class="mb-0 inline-flex">
-                            <input x-model="$store.app.semidark" type="checkbox" :value="true"
-                                class="form-checkbox" @change="$store.app.toggleSemidark()" />
-                            <span>Semi Dark (Sidebar & Header)</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
-                    <h5 class="mb-1 text-base leading-none dark:text-white">Layout Style</h5>
-                    <p class="text-xs text-white-dark">Select the primary layout style for your app.</p>
-                    <div class="mt-3 flex gap-2">
-                        <button type="button" class="btn flex-auto"
-                            :class="[$store.app.layout === 'boxed-layout' ? 'btn-primary' : 'btn-outline-primary']"
-                            @click="$store.app.toggleLayout('boxed-layout')">
-                            Box
-                        </button>
-                        <button type="button" class="btn flex-auto"
-                            :class="[$store.app.layout === 'full' ? 'btn-primary' : 'btn-outline-primary']"
-                            @click="$store.app.toggleLayout('full')">
-                            Full
-                        </button>
-                    </div>
-                </div>
-                <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
-                    <h5 class="mb-1 text-base leading-none dark:text-white">Direction</h5>
-                    <p class="text-xs text-white-dark">Select the direction for your app.</p>
-                    <div class="mt-3 flex gap-2">
-                        <button type="button" class="btn flex-auto"
-                            :class="[$store.app.rtlClass === 'ltr' ? 'btn-primary' : 'btn-outline-primary']"
-                            @click="$store.app.toggleRTL('ltr')">
-                            LTR
-                        </button>
-                        <button type="button" class="btn flex-auto"
-                            :class="[$store.app.rtlClass === 'rtl' ? 'btn-primary' : 'btn-outline-primary']"
-                            @click="$store.app.toggleRTL('rtl')">
-                            RTL
-                        </button>
-                    </div>
                 </div>
 
-                <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
-                    <h5 class="mb-1 text-base leading-none dark:text-white">Navbar Type</h5>
-                    <p class="text-xs text-white-dark">Sticky or Floating.</p>
-                    <div class="mt-3 flex items-center gap-3 text-primary">
-                        <label class="mb-0 inline-flex">
-                            <input x-model="$store.app.navbar" type="radio" value="navbar-sticky"
-                                class="form-radio" @change="$store.app.toggleNavbar()" />
-                            <span>Sticky</span>
-                        </label>
-                        <label class="mb-0 inline-flex">
-                            <input x-model="$store.app.navbar" type="radio" value="navbar-floating"
-                                class="form-radio" @change="$store.app.toggleNavbar()" />
-                            <span>Floating</span>
-                        </label>
-                        <label class="mb-0 inline-flex">
-                            <input x-model="$store.app.navbar" type="radio" value="navbar-static"
-                                class="form-radio" @change="$store.app.toggleNavbar()" />
-                            <span>Static</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
-                    <h5 class="mb-1 text-base leading-none dark:text-white">Router Transition</h5>
-                    <p class="text-xs text-white-dark">Animation of main content.</p>
-                    <div class="mt-3">
-                        <select x-model="$store.app.animation" class="form-select border-primary text-primary"
-                            @change="$store.app.toggleAnimation()">
-                            <option value="">Select Animation</option>
-                            <option value="animate__fadeIn">Fade</option>
-                            <option value="animate__fadeInDown">Fade Down</option>
-                            <option value="animate__fadeInUp">Fade Up</option>
-                            <option value="animate__fadeInLeft">Fade Left</option>
-                            <option value="animate__fadeInRight">Fade Right</option>
-                            <option value="animate__slideInDown">Slide Down</option>
-                            <option value="animate__slideInLeft">Slide Left</option>
-                            <option value="animate__slideInRight">Slide Right</option>
-                            <option value="animate__zoomIn">Zoom In</option>
-                        </select>
-                    </div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        const horizontalButton = document.getElementById("horizontalButton");
+                        horizontalButton.classList.add("btn-primary");
+                        horizontalButton.click();
+                    });
+                </script>
+                <div class="mt-5 text-primary">
+                    <label class="mb-0 inline-flex">
+                        <input x-model="$store.app.semidark" type="checkbox" :value="true"
+                            class="form-checkbox" @change="$store.app.toggleSemidark()" />
+                        <span>Semi Dark (Sidebar & Header)</span>
+                    </label>
                 </div>
             </div>
-        </nav>
+            <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
+                <h5 class="mb-1 text-base leading-none dark:text-white">Layout Style</h5>
+                <p class="text-xs text-white-dark">Select the primary layout style for your app.</p>
+                <div class="mt-3 flex gap-2">
+                    <button type="button" class="btn flex-auto"
+                        :class="[$store.app.layout === 'boxed-layout' ? 'btn-primary' : 'btn-outline-primary']"
+                        @click="$store.app.toggleLayout('boxed-layout')">
+                        Box
+                    </button>
+                    <button type="button" class="btn flex-auto"
+                        :class="[$store.app.layout === 'full' ? 'btn-primary' : 'btn-outline-primary']"
+                        @click="$store.app.toggleLayout('full')">
+                        Full
+                    </button>
+                </div>
+            </div>
+            <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
+                <h5 class="mb-1 text-base leading-none dark:text-white">Direction</h5>
+                <p class="text-xs text-white-dark">Select the direction for your app.</p>
+                <div class="mt-3 flex gap-2">
+                    <button type="button" class="btn flex-auto"
+                        :class="[$store.app.rtlClass === 'ltr' ? 'btn-primary' : 'btn-outline-primary']"
+                        @click="$store.app.toggleRTL('ltr')">
+                        LTR
+                    </button>
+                    <button type="button" class="btn flex-auto"
+                        :class="[$store.app.rtlClass === 'rtl' ? 'btn-primary' : 'btn-outline-primary']"
+                        @click="$store.app.toggleRTL('rtl')">
+                        RTL
+                    </button>
+                </div>
+            </div>
+
+            <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
+                <h5 class="mb-1 text-base leading-none dark:text-white">Navbar Type</h5>
+                <p class="text-xs text-white-dark">Sticky or Floating.</p>
+                <div class="mt-3 flex items-center gap-3 text-primary">
+                    <label class="mb-0 inline-flex">
+                        <input x-model="$store.app.navbar" type="radio" value="navbar-sticky" class="form-radio"
+                            @change="$store.app.toggleNavbar()" />
+                        <span>Sticky</span>
+                    </label>
+                    <label class="mb-0 inline-flex">
+                        <input x-model="$store.app.navbar" type="radio" value="navbar-floating" class="form-radio"
+                            @change="$store.app.toggleNavbar()" />
+                        <span>Floating</span>
+                    </label>
+                    <label class="mb-0 inline-flex">
+                        <input x-model="$store.app.navbar" type="radio" value="navbar-static" class="form-radio"
+                            @change="$store.app.toggleNavbar()" />
+                        <span>Static</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
+                <h5 class="mb-1 text-base leading-none dark:text-white">Router Transition</h5>
+                <p class="text-xs text-white-dark">Animation of main content.</p>
+                <div class="mt-3">
+                    <select x-model="$store.app.animation" class="form-select border-primary text-primary"
+                        @change="$store.app.toggleAnimation()">
+                        <option value="">Select Animation</option>
+                        <option value="animate__fadeIn">Fade</option>
+                        <option value="animate__fadeInDown">Fade Down</option>
+                        <option value="animate__fadeInUp">Fade Up</option>
+                        <option value="animate__fadeInLeft">Fade Left</option>
+                        <option value="animate__fadeInRight">Fade Right</option>
+                        <option value="animate__slideInDown">Slide Down</option>
+                        <option value="animate__slideInLeft">Slide Left</option>
+                        <option value="animate__slideInRight">Slide Right</option>
+                        <option value="animate__zoomIn">Zoom In</option>
+                    </select>
+                </div>
+            </div>
+    </div>
+    </nav>
     </div>
     <!-- end theme customizer section -->
 
@@ -262,10 +292,9 @@
                 class="sidebar fixed top-0 bottom-0 z-50 h-full min-h-screen w-[260px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] transition-all duration-300">
                 <div class="h-full bg-white dark:bg-[#0e1726]">
                     <div class="flex items-center justify-between px-4 py-3">
-                        <a href="index-2.html" class="main-logo flex shrink-0 items-center">
-                            <img class="ml-[5px] w-8 flex-none" src="assets_guru/images/logo.svg" alt="image" />
-                            <span
-                                class="align-middle text-2xl font-semibold ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light lg:inline">VRISTO</span>
+                        <a href="" class="main-logo flex shrink-0 items-center">
+                            <img class="ml-[5px] w-8 flex-none" src="" alt="image" />
+
                         </a>
                         <a href="javascript:;"
                             class="collapse-icon flex h-8 w-8 items-center rounded-full transition duration-300 hover:bg-gray-500/10 rtl:rotate-180 dark:text-white-light dark:hover:bg-dark-light/10"
@@ -280,7 +309,7 @@
                         </a>
                     </div>
                     <ul class="perfect-scrollbar relative h-[calc(100vh-80px)] space-y-0.5 overflow-y-auto overflow-x-hidden p-4 py-0 font-semibold"
-                        x-data="{ activeDropdown: 'datatables' }">
+                        x-data="{ activeDropdown: 'dashboard' }">
                         <li class="menu nav-item">
                             <button type="button" class="nav-link group"
                                 :class="{ 'active': activeDropdown === 'dashboard' }"
@@ -297,7 +326,7 @@
                                     </svg>
 
                                     <span
-                                        class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Dashboard</span>
+                                        class="text-white ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Dashboard</span>
                                 </div>
                                 <div class="rtl:rotate-180" :class="{ '!rotate-90': activeDropdown === 'dashboard' }">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -307,21 +336,6 @@
                                     </svg>
                                 </div>
                             </button>
-                            <ul x-cloak x-show="activeDropdown === 'dashboard'" x-collapse
-                                class="sub-menu text-gray-500">
-                                <li>
-                                    <a href="index-2.html">Sales</a>
-                                </li>
-                                <li>
-                                    <a href="analytics.html">Analytics</a>
-                                </li>
-                                <li>
-                                    <a href="finance.html">Finance</a>
-                                </li>
-                                <li>
-                                    <a href="crypto.html">Crypto</a>
-                                </li>
-                            </ul>
                         </li>
 
                         <h2
@@ -330,7 +344,7 @@
                                 stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg>
-                            <span>Apps</span>
+                            <span>Siswa</span>
                         </h2>
 
                         <li class="nav-item">
@@ -551,7 +565,7 @@
                                             fill="currentColor" />
                                     </svg>
                                     <span
-                                        class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Components</span>
+                                        class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Jurnal</span>
                                 </div>
                                 <div class="rtl:rotate-180"
                                     :class="{ '!rotate-90': activeDropdown === 'components' }">
@@ -562,51 +576,7 @@
                                     </svg>
                                 </div>
                             </button>
-                            <ul x-cloak x-show="activeDropdown === 'components'" x-collapse
-                                class="sub-menu text-gray-500">
-                                <li>
-                                    <a href="components-tabs.html">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="components-accordions.html">Accordions</a>
-                                </li>
-                                <li>
-                                    <a href="components-modals.html">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="components-cards.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="components-carousel.html">Carousel</a>
-                                </li>
-                                <li>
-                                    <a href="components-countdown.html">Countdown</a>
-                                </li>
-                                <li>
-                                    <a href="components-counter.html">Counter</a>
-                                </li>
-                                <li>
-                                    <a href="components-sweetalert.html">Sweet Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="components-timeline.html">Timeline</a>
-                                </li>
-                                <li>
-                                    <a href="components-notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="components-media-object.html">Media Object</a>
-                                </li>
-                                <li>
-                                    <a href="components-list-group.html">List Group</a>
-                                </li>
-                                <li>
-                                    <a href="components-pricing-table.html">Pricing Tables</a>
-                                </li>
-                                <li>
-                                    <a href="components-lightbox.html">Lightbox</a>
-                                </li>
-                            </ul>
+
                         </li>
 
                         <li class="menu nav-item">
@@ -879,7 +849,7 @@
                                     <a href="datatables-range-search.html">Range Search</a>
                                 </li>
                                 <li>
-                                    <a href="datatables-export.html" class="active">Export</a>
+                                    <a href="datatables-export.html">Export</a>
                                 </li>
                                 <li>
                                     <a href="datatables-sticky-header.html">Sticky Header</a>
@@ -1195,168 +1165,63 @@
         <!-- end sidebar section -->
 
         <div class="main-content">
-            <!-- start header section -->
-            @include('jurnal_guru.nav_jurnal')
-            <!-- end header section -->
+            @include('siswamagang.nav_siswa')
 
             <div class="animate__animated p-6" :class="[$store.app.animation]">
                 <!-- start main content section -->
-                <div x-data="basic" class="">
+
+                <div x-data="basic" class="mt-0">
                     {{-- judul --}}
-                    <div class="mb-5 font-semibold">
-                        <span>Jurnal<span class="text-[#00B7FF]"></span></span>
+                    <div class="mb-5 font-semibold kamu-tak-diajak">
+                        <span>history transaksi /<span class="text-[#00B7FF]"> {{ Auth::user()->name }}</span></span>
                     </div>
+                   @error('tanggal')
+                        <div class="text-danger">Anda telah mengisi jurnal pada hari ini</div>
+                   @enderror
+
                     <div class="panel">
-                        <div class="flex justify-between">
-                            {{-- serch dan filter --}}
-                            <div class="flex justify-start items-center">
-                                {{-- filter --}}
-                                <div class="border-2 rounded-full border-gray-300 flex items-center mr-2 ">
-                                    <span class="mr-1 ml-3">
-                                        Filter
-                                    </span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class=" mr-3 w-4 h-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
-                                    </svg>
-                                </div>
-                                {{-- serch --}}
-                                <div class="mr-4 ">
-                                    <input
-                                        class=" p-1 border-2 border-gray-300 rounded-xl outline-1 outline-gray-300 dark:bg-transparent"
-                                        type="text" placeholder="Cari...">
-                                </div>
-                            </div>
-                            <div class=" flex flex-wrap items-center">
-                                <button type="button"
-                                    class="bg-blue-500 border text-white flex px-3 py-2 rounded-md font-bold hover:bg-white hover:text-blue-500 hover:border-blue-500 "
-                                    @click="exportTable('csv')">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ltr:mr-2 rtl:ml-2">
-                                        <path
-                                            d="M15.3929 4.05365L14.8912 4.61112L15.3929 4.05365ZM19.3517 7.61654L18.85 8.17402L19.3517 7.61654ZM21.654 10.1541L20.9689 10.4592V10.4592L21.654 10.1541ZM3.17157 20.8284L3.7019 20.2981H3.7019L3.17157 20.8284ZM20.8284 20.8284L20.2981 20.2981L20.2981 20.2981L20.8284 20.8284ZM14 21.25H10V22.75H14V21.25ZM2.75 14V10H1.25V14H2.75ZM21.25 13.5629V14H22.75V13.5629H21.25ZM14.8912 4.61112L18.85 8.17402L19.8534 7.05907L15.8947 3.49618L14.8912 4.61112ZM22.75 13.5629C22.75 11.8745 22.7651 10.8055 22.3391 9.84897L20.9689 10.4592C21.2349 11.0565 21.25 11.742 21.25 13.5629H22.75ZM18.85 8.17402C20.2034 9.3921 20.7029 9.86199 20.9689 10.4592L22.3391 9.84897C21.9131 8.89241 21.1084 8.18853 19.8534 7.05907L18.85 8.17402ZM10.0298 2.75C11.6116 2.75 12.2085 2.76158 12.7405 2.96573L13.2779 1.5653C12.4261 1.23842 11.498 1.25 10.0298 1.25V2.75ZM15.8947 3.49618C14.8087 2.51878 14.1297 1.89214 13.2779 1.5653L12.7405 2.96573C13.2727 3.16993 13.7215 3.55836 14.8912 4.61112L15.8947 3.49618ZM10 21.25C8.09318 21.25 6.73851 21.2484 5.71085 21.1102C4.70476 20.975 4.12511 20.7213 3.7019 20.2981L2.64124 21.3588C3.38961 22.1071 4.33855 22.4392 5.51098 22.5969C6.66182 22.7516 8.13558 22.75 10 22.75V21.25ZM1.25 14C1.25 15.8644 1.24841 17.3382 1.40313 18.489C1.56076 19.6614 1.89288 20.6104 2.64124 21.3588L3.7019 20.2981C3.27869 19.8749 3.02502 19.2952 2.88976 18.2892C2.75159 17.2615 2.75 15.9068 2.75 14H1.25ZM14 22.75C15.8644 22.75 17.3382 22.7516 18.489 22.5969C19.6614 22.4392 20.6104 22.1071 21.3588 21.3588L20.2981 20.2981C19.8749 20.7213 19.2952 20.975 18.2892 21.1102C17.2615 21.2484 15.9068 21.25 14 21.25V22.75ZM21.25 14C21.25 15.9068 21.2484 17.2615 21.1102 18.2892C20.975 19.2952 20.7213 19.8749 20.2981 20.2981L21.3588 21.3588C22.1071 20.6104 22.4392 19.6614 22.5969 18.489C22.7516 17.3382 22.75 15.8644 22.75 14H21.25ZM2.75 10C2.75 8.09318 2.75159 6.73851 2.88976 5.71085C3.02502 4.70476 3.27869 4.12511 3.7019 3.7019L2.64124 2.64124C1.89288 3.38961 1.56076 4.33855 1.40313 5.51098C1.24841 6.66182 1.25 8.13558 1.25 10H2.75ZM10.0298 1.25C8.15538 1.25 6.67442 1.24842 5.51887 1.40307C4.34232 1.56054 3.39019 1.8923 2.64124 2.64124L3.7019 3.7019C4.12453 3.27928 4.70596 3.02525 5.71785 2.88982C6.75075 2.75158 8.11311 2.75 10.0298 2.75V1.25Z"
-                                            fill="currentColor" />
-                                        <path opacity="0.5"
-                                            d="M13 2.5V5C13 7.35702 13 8.53553 13.7322 9.26777C14.4645 10 15.643 10 18 10H22"
-                                            stroke="currentColor" stroke-width="1.5" />
-                                    </svg>
-                                    CSV
-                                </button>
-                                <button type="button"
-                                    class="bg-blue-500 border text-white flex px-3 py-2 rounded-md font-bold hover:bg-white hover:text-blue-500 hover:border-blue-500 "
-                                    @click="exportTable('txt')">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ltr:mr-2 rtl:ml-2">
-                                        <path
-                                            d="M15.3929 4.05365L14.8912 4.61112L15.3929 4.05365ZM19.3517 7.61654L18.85 8.17402L19.3517 7.61654ZM21.654 10.1541L20.9689 10.4592V10.4592L21.654 10.1541ZM3.17157 20.8284L3.7019 20.2981H3.7019L3.17157 20.8284ZM20.8284 20.8284L20.2981 20.2981L20.2981 20.2981L20.8284 20.8284ZM14 21.25H10V22.75H14V21.25ZM2.75 14V10H1.25V14H2.75ZM21.25 13.5629V14H22.75V13.5629H21.25ZM14.8912 4.61112L18.85 8.17402L19.8534 7.05907L15.8947 3.49618L14.8912 4.61112ZM22.75 13.5629C22.75 11.8745 22.7651 10.8055 22.3391 9.84897L20.9689 10.4592C21.2349 11.0565 21.25 11.742 21.25 13.5629H22.75ZM18.85 8.17402C20.2034 9.3921 20.7029 9.86199 20.9689 10.4592L22.3391 9.84897C21.9131 8.89241 21.1084 8.18853 19.8534 7.05907L18.85 8.17402ZM10.0298 2.75C11.6116 2.75 12.2085 2.76158 12.7405 2.96573L13.2779 1.5653C12.4261 1.23842 11.498 1.25 10.0298 1.25V2.75ZM15.8947 3.49618C14.8087 2.51878 14.1297 1.89214 13.2779 1.5653L12.7405 2.96573C13.2727 3.16993 13.7215 3.55836 14.8912 4.61112L15.8947 3.49618ZM10 21.25C8.09318 21.25 6.73851 21.2484 5.71085 21.1102C4.70476 20.975 4.12511 20.7213 3.7019 20.2981L2.64124 21.3588C3.38961 22.1071 4.33855 22.4392 5.51098 22.5969C6.66182 22.7516 8.13558 22.75 10 22.75V21.25ZM1.25 14C1.25 15.8644 1.24841 17.3382 1.40313 18.489C1.56076 19.6614 1.89288 20.6104 2.64124 21.3588L3.7019 20.2981C3.27869 19.8749 3.02502 19.2952 2.88976 18.2892C2.75159 17.2615 2.75 15.9068 2.75 14H1.25ZM14 22.75C15.8644 22.75 17.3382 22.7516 18.489 22.5969C19.6614 22.4392 20.6104 22.1071 21.3588 21.3588L20.2981 20.2981C19.8749 20.7213 19.2952 20.975 18.2892 21.1102C17.2615 21.2484 15.9068 21.25 14 21.25V22.75ZM21.25 14C21.25 15.9068 21.2484 17.2615 21.1102 18.2892C20.975 19.2952 20.7213 19.8749 20.2981 20.2981L21.3588 21.3588C22.1071 20.6104 22.4392 19.6614 22.5969 18.489C22.7516 17.3382 22.75 15.8644 22.75 14H21.25ZM2.75 10C2.75 8.09318 2.75159 6.73851 2.88976 5.71085C3.02502 4.70476 3.27869 4.12511 3.7019 3.7019L2.64124 2.64124C1.89288 3.38961 1.56076 4.33855 1.40313 5.51098C1.24841 6.66182 1.25 8.13558 1.25 10H2.75ZM10.0298 1.25C8.15538 1.25 6.67442 1.24842 5.51887 1.40307C4.34232 1.56054 3.39019 1.8923 2.64124 2.64124L3.7019 3.7019C4.12453 3.27928 4.70596 3.02525 5.71785 2.88982C6.75075 2.75158 8.11311 2.75 10.0298 2.75V1.25Z"
-                                            fill="currentColor" />
-                                        <path opacity="0.5" d="M6 14.5H14" stroke="currentColor"
-                                            stroke-width="1.5" stroke-linecap="round" />
-                                        <path opacity="0.5" d="M6 18H11.5" stroke="currentColor"
-                                            stroke-width="1.5" stroke-linecap="round" />
-                                        <path opacity="0.5"
-                                            d="M13 2.5V5C13 7.35702 13 8.53553 13.7322 9.26777C14.4645 10 15.643 10 18 10H22"
-                                            stroke="currentColor" stroke-width="1.5" />
-                                    </svg>
-                                    TXT
-                                </button>
-                                <button type="button"
-                                    class="bg-blue-500 border text-white flex px-3 py-2 rounded-md font-bold hover:bg-white hover:text-blue-500 hover:border-blue-500 "
-                                    @click="exportTable('json')">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ltr:mr-2 rtl:ml-2">
-                                        <path
-                                            d="M15.3929 4.05365L14.8912 4.61112L15.3929 4.05365ZM19.3517 7.61654L18.85 8.17402L19.3517 7.61654ZM21.654 10.1541L20.9689 10.4592V10.4592L21.654 10.1541ZM3.17157 20.8284L3.7019 20.2981H3.7019L3.17157 20.8284ZM20.8284 20.8284L20.2981 20.2981L20.2981 20.2981L20.8284 20.8284ZM14 21.25H10V22.75H14V21.25ZM2.75 14V10H1.25V14H2.75ZM21.25 13.5629V14H22.75V13.5629H21.25ZM14.8912 4.61112L18.85 8.17402L19.8534 7.05907L15.8947 3.49618L14.8912 4.61112ZM22.75 13.5629C22.75 11.8745 22.7651 10.8055 22.3391 9.84897L20.9689 10.4592C21.2349 11.0565 21.25 11.742 21.25 13.5629H22.75ZM18.85 8.17402C20.2034 9.3921 20.7029 9.86199 20.9689 10.4592L22.3391 9.84897C21.9131 8.89241 21.1084 8.18853 19.8534 7.05907L18.85 8.17402ZM10.0298 2.75C11.6116 2.75 12.2085 2.76158 12.7405 2.96573L13.2779 1.5653C12.4261 1.23842 11.498 1.25 10.0298 1.25V2.75ZM15.8947 3.49618C14.8087 2.51878 14.1297 1.89214 13.2779 1.5653L12.7405 2.96573C13.2727 3.16993 13.7215 3.55836 14.8912 4.61112L15.8947 3.49618ZM10 21.25C8.09318 21.25 6.73851 21.2484 5.71085 21.1102C4.70476 20.975 4.12511 20.7213 3.7019 20.2981L2.64124 21.3588C3.38961 22.1071 4.33855 22.4392 5.51098 22.5969C6.66182 22.7516 8.13558 22.75 10 22.75V21.25ZM1.25 14C1.25 15.8644 1.24841 17.3382 1.40313 18.489C1.56076 19.6614 1.89288 20.6104 2.64124 21.3588L3.7019 20.2981C3.27869 19.8749 3.02502 19.2952 2.88976 18.2892C2.75159 17.2615 2.75 15.9068 2.75 14H1.25ZM14 22.75C15.8644 22.75 17.3382 22.7516 18.489 22.5969C19.6614 22.4392 20.6104 22.1071 21.3588 21.3588L20.2981 20.2981C19.8749 20.7213 19.2952 20.975 18.2892 21.1102C17.2615 21.2484 15.9068 21.25 14 21.25V22.75ZM21.25 14C21.25 15.9068 21.2484 17.2615 21.1102 18.2892C20.975 19.2952 20.7213 19.8749 20.2981 20.2981L21.3588 21.3588C22.1071 20.6104 22.4392 19.6614 22.5969 18.489C22.7516 17.3382 22.75 15.8644 22.75 14H21.25ZM2.75 10C2.75 8.09318 2.75159 6.73851 2.88976 5.71085C3.02502 4.70476 3.27869 4.12511 3.7019 3.7019L2.64124 2.64124C1.89288 3.38961 1.56076 4.33855 1.40313 5.51098C1.24841 6.66182 1.25 8.13558 1.25 10H2.75ZM10.0298 1.25C8.15538 1.25 6.67442 1.24842 5.51887 1.40307C4.34232 1.56054 3.39019 1.8923 2.64124 2.64124L3.7019 3.7019C4.12453 3.27928 4.70596 3.02525 5.71785 2.88982C6.75075 2.75158 8.11311 2.75 10.0298 2.75V1.25Z"
-                                            fill="currentColor" />
-                                        <path opacity="0.5"
-                                            d="M13 2.5V5C13 7.35702 13 8.53553 13.7322 9.26777C14.4645 10 15.643 10 18 10H22"
-                                            stroke="currentColor" stroke-width="1.5" />
-                                        <path opacity="0.5"
-                                            d="M7 14L6 15L7 16M11.5 16L12.5 17L11.5 18M10 14L8.5 18"
-                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    JSON
-                                </button>
-                                <button type="button"
-                                    class="bg-blue-500 border text-white flex px-3 py-2 rounded-md font-bold hover:bg-white hover:text-blue-500 hover:border-blue-500 "
-                                    @click="printTable">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ltr:mr-2 rtl:ml-2">
-                                        <path
-                                            d="M6 17.9827C4.44655 17.9359 3.51998 17.7626 2.87868 17.1213C2 16.2426 2 14.8284 2 12C2 9.17157 2 7.75736 2.87868 6.87868C3.75736 6 5.17157 6 8 6H16C18.8284 6 20.2426 6 21.1213 6.87868C22 7.75736 22 9.17157 22 12C22 14.8284 22 16.2426 21.1213 17.1213C20.48 17.7626 19.5535 17.9359 18 17.9827"
-                                            stroke="currentColor" stroke-width="1.5" />
-                                        <path opacity="0.5" d="M9 10H6" stroke="currentColor"
-                                            stroke-width="1.5" stroke-linecap="round" />
-                                        <path d="M19 14L5 14" stroke="currentColor" stroke-width="1.5"
-                                            stroke-linecap="round" />
-                                        <path
-                                            d="M18 14V16C18 18.8284 18 20.2426 17.1213 21.1213C16.2426 22 14.8284 22 12 22C9.17157 22 7.75736 22 6.87868 21.1213C6 20.2426 6 18.8284 6 16V14"
-                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                        <path opacity="0.5"
-                                            d="M17.9827 6C17.9359 4.44655 17.7626 3.51998 17.1213 2.87868C16.2427 2 14.8284 2 12 2C9.17158 2 7.75737 2 6.87869 2.87868C6.23739 3.51998 6.06414 4.44655 6.01733 6"
-                                            stroke="currentColor" stroke-width="1.5" />
-                                        <circle opacity="0.5" cx="17" cy="10" r="1"
-                                            fill="currentColor" />
-                                        <path opacity="0.5" d="M15 16.5H9" stroke="currentColor"
-                                            stroke-width="1.5" stroke-linecap="round" />
-                                        <path opacity="0.5" d="M13 19H9" stroke="currentColor"
-                                            stroke-width="1.5" stroke-linecap="round" />
-                                    </svg>
-                                    PRINT
-                                </button>
-                            </div>
-                        </div>
+                     {{-- <h2>{{ $e }}</h2> --}}
+
+
 
                         {{-- tabel --}}
 
-                        <div class="flex flex-col">
-                            <div class="overflow-x-auto mt-5 sm:-mx-6 lg:-mx-8">
+                        <div class="print-container flex flex-col">
+                            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                     <div class="overflow-hidden">
-                                        <table class="min-w-full text-left text-sm font-light">
+                                        <table id="data-table" class="min-w-full text-left text-sm font-light">
                                             <thead class="border-b font-medium dark:border-neutral-500 ">
                                                 <tr class="">
-                                                    <th scope="col" class="px-6 py-4">#</th>
-                                                    <th scope="col" class="px-6 py-4">Nama</th>
-                                                    <th scope="col" class="px-6 py-4">Tanggal</th>
-                                                    <th scope="col" class="px-6 py-4">keterangan</th>
-                                                    <th scope="col" class="px-6 py-4 ">Bukti</th>
-                                                    <th scope="col" class="px-6 py-4 ">Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            @forelse ($jurnals as  $jurnal)
-                                            <?php
-                                            $no = 1;
-                                            ?>
-                                            <tbody>
-                                                <tr
-                                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $no++ }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $jurnal->nama }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $jurnal->tanggal }}</td>
-                                                    <td
-                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                      {{ $jurnal->kegiatan }}</td>
-                                                    <td class="whitespace-nowrap px-6 py-4">
-                                                        <img src="{{ asset('storage/image/' . $jurnal->image) }}"
-                                                            alt="" srcset="" class="w-20">
-                                                    </td>
-                                                    <td class="whitespace-nowrap px-4 py-4">
-                                                        <button
-                                                            class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
-                                                            data-te-toggle="modal" data-modal-target="staticModal{{ $jurnal->id }}"
-                                                            data-modal-toggle="staticModal{{ $jurnal->id }}">
-                                                            <span class=" p-1  font-semibold ">Lihat</span>
-                                                        </button>
-                                                    </td>
-                                                </tr>
+                                                    <th scope="col" class="px-6 py-2">#</th>
+                                                    {{-- <th scope="col" class="px-6 py-2"></th> --}}
+                                                    <th scope="col" class="px-6 py-2">Nama barang</th>
+
+                                                    <th scope="col" class="px-6 py-2 ">Harga</th>
+                                                    <th scope="col" class="px-6 py-2 ">Stok</th>
+                                                    <th scope="col" class="px-6 py-2 ">Tanggal</th>
+                                                    <th scope="col" class="px-6 py-2 ">Total</th>
+                                                    {{-- <th scope="col" class="px-6 py-2">tanggal</th> --}}
+                                      </tr>
+                                    </thead>
+                                    <?php
+                                    $no = 1 ;
+                                    ?>
+                                    <tbody>
+                                        @forelse ($siswas as $siswa)
+                                        <tr>
+                                            <td  class="whitespace-nowrap px-2 py-2">{{ $no++ }}</td>
+                                            <td  class="whitespace-nowrap px-2 py-2">{{ $siswa->name }}</td>
+                                            <td  class="whitespace-nowrap px-2 py-2">{{ $siswa->harga }}</td>
+                                            <td  class="whitespace-nowrap px-2 py-2">{{ $siswa->stok }}</td>
+                                            <td  class="whitespace-nowrap px-2 py-2">{{ $siswa->tanggal }}</td>
+                                            <td  class="whitespace-nowrap px-2 py-2">{{ $siswa->total }}</td>
+                                        </tr>
+                                        @empty
+
+                                        @endforelse
 
                                             </tbody>
-                                            @empty
-
-                                            @endforelse
                                         </table>
                                     </div>
                                 </div>
@@ -1364,9 +1229,9 @@
                         </div>
                         {{-- end tabel --}}
                         {{-- paginate --}}
-                        <div class="flex justify-between">
+                        <div class="kamu-tak-diajak flex justify-between">
                             <p>
-                                Show 1 of 10 to 15 entries
+                                menampilkan 1 sampai 10 dari 15 data
                             </p>
                             <nav aria-label="Page navigation example">
                                 <ul class="list-style-none flex">
@@ -1398,130 +1263,439 @@
                         </div>
                     </div>
                 </div>
-                <!-- end main content section -->
 
-                <!-- start footer section -->
-                {{-- <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
-                    © <span id="footer-year">2022</span>. Vristo All rights reserved.
-                </p> --}}
-                <!-- end footer section -->
+                    {{-- modal --}}
+                    <div id="staticModal1" tabindex="-1" aria-hidden="true"
+                        class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative w-full max-w-2xl max-h-full">
+                            <!-- Modal content -->
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <!-- Modal header -->
+                                <div
+                                    class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                        Detail Jurnal 2
+                                    </h3>
+                                    <button type="button"
+                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                        data-modal-hide="staticModal1">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="p-6 space-y-6">
+                                    <form action="" method="post"
+                                        enctype="multipart/form-data">
+                                        @method('PUT')
+                                        @csrf
+                                        <div>
+                                            <input type="hidden" name="nama" class=""
+                                                value=" " id="">
+                                        </div>
+                                        <div>
+                                            <input type="hidden" name="tanggal" id=""
+                                                value=" ">
+                                        </div>
+                                        <div>
+                                            <input type="hidden" name="sekolah" id=""
+                                                value="">
+                                        </div>
+                                        <div>
+                                            <label for="kegiatan"
+                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
+                                            <textarea name="kegiatan" class="w-full rounded-md" id="" cols="" rows="5"></textarea>
+                                        </div>
+                                        <div>
+                                            <label for="bukti"
+                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti</label>
+                                            <img id="preview-image"
+                                                src=""
+                                                class="w-64 h-64" alt="" srcset="">
+                                            <input type="file" name="image" id="image-input" placeholder=""
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                onchange="previewImage(event)">
+                                        </div>
+
+                                        <script>
+                                            function previewImage(event) {
+                                                var input = event.target;
+                                                var reader = new FileReader();
+
+                                                reader.onload = function() {
+                                                    var imgElement = document.getElementById("preview-image");
+                                                    imgElement.src = reader.result;
+                                                };
+
+                                                reader.readAsDataURL(input.files[0]);
+                                            }
+                                        </script>
+
+                                        <input type="hidden" name="status" value="mengisi">
+                                        <div class="flex justify-end">
+                                            <button type="submit"
+                                                class="border text-blue-400 bg-white font-semibold border-blue-400  py-1.5 px-3 text-sm rounded-md hover:bg-blue-400 hover:text-white">Kirim</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Modal footer -->
+                                <div
+                                    class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                    <button data-modal-hide="staticModal" type="button"
+                                        class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
             </div>
-            <!-- end footer section -->
+
+                {{-- modal --}}
+                <div id="staticModal" tabindex="-1" aria-hidden="true"
+                    class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative w-full max-w-2xl max-h-full">
+                        <!-- Modal content -->
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <!-- Modal header -->
+                            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                    Detail Jurnal
+                                </h3>
+                                <button type="button"
+                                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                    data-modal-hide="staticModal">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="p-6 space-y-6">
+                                <div>
+                                    <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
+                                        Nama
+                                    </p>
+                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                        Tanggal
+                                    </p>
+                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                        Sekolah
+                                    </p>
+                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                        Kegiatan
+                                    </p>
+                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                        Bukti
+                                    </p>
+                                    <img id="preview-image" src="{{ asset('storage/image/p') }}"
+                                        class="w-64 h-64" alt="" srcset="">
+                                </div>
+                            </div>
+                            <!-- Modal footer -->
+                            <div
+                                class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button data-modal-hide="staticModal" type="button"
+                                    class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
         </div>
     </div>
-    </div>
-    {{-- modal --}}
-    @foreach ($jurnals as $jurnal)
 
-    <div id="staticModal{{ $jurnal->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-        class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative w-full max-w-2xl max-h-full">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <!-- Modal header -->
-                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                        Detail Jurnal
-                    </h3>
-                    <button type="button"
-                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                        data-modal-hide="staticModal{{ $jurnal->id }}">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                </div>
-                <!-- Modal body -->
-                <div class="p-6 space-y-6">
-                    <div>
-                        <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
-                            Nama
-                        </p>
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            {{ $jurnal->nama }}
-                        </p>
-                    </div>
-                    <div>
-                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                            Tanggal
-                        </p>
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                           {{$jurnal->tanggal}}
-                        </p>
-                    </div>
-                    <div>
-                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                            Sekolah
-                        </p>
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                           {{$jurnal->sekolah}}
-                        </p>
-                    </div>
-                    <div>
-                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                            Kegiatan
-                        </p>
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                          {{$jurnal->kegiatan}}
-                        </p>
-                    </div>
-                    <div>
-                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                            Bukti
-                        </p>
-                        <img src="{{ asset('storage/image/' . $jurnal->image) }}" alt="">
-                    </div>
-                </div>
-                <!-- Modal footer -->
-                <div
-                    class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                    <button data-modal-hide="staticModal" type="button"
-                        class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endforeach
-
-    <script src="assets_guru/js/highlight.min.js"></script>
-    <script src="assets_guru/js/alpine-collaspe.min.js"></script>
-    <script src="assets_guru/js/alpine-persist.min.js"></script>
-    <script defer src="assets_guru/js/alpine-ui.min.js"></script>
-    <script defer src="assets_guru/js/alpine-focus.min.js"></script>
-    <script defer src="assets_guru/js/alpine.min.js"></script>
-    <script src="assets_guru/js/custom.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-    <!-- Main modal -->
-    <div id="exampleModalCenteredScrollable" tabindex="-1" aria-hidden="true"
-        class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative w-full max-w-md max-h-full">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <button type="button"
-                    class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                    data-modal-hide="authentication-modal">
-                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-                <div class="px-6 py-6 lg:px-8">
-                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Detail Jurnal </h3>
+    {{--  <!-- Swiper JS -->  --}}
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    {{--  <!-- Initialize Swiper -->  --}}
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            slidesPerGroup: 3,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+    <style>
+        /* === Google Font Import - Poppins === */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 
-                </div>
-            </div>
-        </div>
-    </div>
+
+        section {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .swiper {
+            flex: 1;
+        }
+
+        .card {
+            position: ;
+            background: #fff;
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        .card .card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            position: relative;
+            z-index: 100;
+        }
+
+
+
+        .card .media-icons i:hover {
+            opacity: 1;
+        }
+
+        .card .name-profession {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            color: black;
+        }
+
+        .name-profession .name {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .name-profession .profession {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+
+        .card .button {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .card .button button {
+            background: #278be1;
+            outline: none;
+            border: none;
+            color: #000000;
+            padding: 8px 22px;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card .button button:hover {
+            background: #278be1;
+        }
+
+        .swiper-pagination {
+            position: absolute;
+        }
+
+        .swiper-pagination-bullet {
+            height: 7px;
+            width: 26px;
+            border-radius: 25px;
+            background: #278be1;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            opacity: 0.7;
+            color: #278be1;
+            transition: all 0.3s ease;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            opacity: 1;
+            color: #278be1;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                flex-direction: column;
+            }
+
+            .swiper {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .card {
+                width: 100%;
+            }
+
+            .card::before {
+                border-radius: 20px;
+            }
+        }
+    </style>
+
+    {{--  <!-- Include necessary scripts, e.g., Font Awesome -->  --}}
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+    {{-- end carousel --}}
+
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="siswa/js/alpine-collaspe.min.js"></script>
+    <script src="siswa/js/alpine-persist.min.js"></script>
+    <script defer src="siswa/js/alpine-ui.min.js"></script>
+    <script defer src="siswa/js/alpine-focus.min.js"></script>
+    <script defer src="siswa/js/alpine.min.js"></script>
+    <script src="siswa/js/custom.js"></script>
+    <script defer src="siswa/js/apexcharts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script> --}}
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                fontFamily: {
+                    sans: ["Roboto", "sans-serif"],
+                    body: ["Roboto", "sans-serif"],
+                    mono: ["ui-monospace", "monospace"],
+                },
+            },
+            corePlugins: {
+                preflight: false,
+            },
+        };
+    </script>
+
+
     <script>
         document.addEventListener('alpine:init', () => {
+            //Carousel
+            Alpine.data('carousel', () => ({
+                items: ['carousel1.jpeg', 'carousel2.jpeg', 'carousel3.jpeg'],
+
+                init() {
+                    // basic
+                    const swiper1 = new Swiper('#slider1', {
+                        navigation: {
+                            nextEl: '.swiper-button-next-ex1',
+                            prevEl: '.swiper-button-prev-ex1',
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                    });
+                    // Autoplay
+                    const swiper2 = new Swiper('#slider2', {
+                        navigation: {
+                            nextEl: '.swiper-button-next-ex2',
+                            prevEl: '.swiper-button-prev-ex2',
+                        },
+                        autoplay: {
+                            delay: 2000,
+                        },
+                    });
+                    // vertical
+                    setTimeout(() => {
+                        const swiper3 = new Swiper('#slider3', {
+                            direction: 'vertical',
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                            },
+                            autoplay: {
+                                delay: 2000,
+                            },
+                        });
+                    });
+                    // Loop
+                    const swiper4 = new Swiper('#slider4', {
+                        slidesPerView: 1,
+                        spaceBetween: 30,
+                        loop: true,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                            type: 'fraction',
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next-ex4',
+                            prevEl: '.swiper-button-prev-ex4',
+                        },
+                    });
+                    // Multiple Slides
+                    const swiper5 = new Swiper('#slider5', {
+                        navigation: {
+                            nextEl: '.swiper-button-next-ex5',
+                            prevEl: '.swiper-button-prev-ex5',
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        breakpoints: {
+                            1024: {
+                                slidesPerView: 3,
+                                spaceBetween: 30,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                                spaceBetween: 40,
+                            },
+                            320: {
+                                slidesPerView: 1,
+                                spaceBetween: 20,
+                            },
+                        },
+                    });
+                },
+            }));
             // main section
             Alpine.data('scrollToTop', () => ({
                 showTopButton: false,
@@ -1727,16 +1901,433 @@
                 },
             }));
 
+            // content section
+            Alpine.data('sales', () => ({
+                init() {
+                    isDark = this.$store.app.theme === 'dark' ? true : false;
+                    isRtl = this.$store.app.rtlClass === 'rtl' ? true : false;
 
-        });
-    </script>
-     <script>
-        $(window).on('load', function() {
-            $('.spin_load').fadeOut();
+                    const revenueChart = null;
+                    const salesByCategory = null;
+                    const dailySales = null;
+                    const totalOrders = null;
+
+                    // revenue
+                    setTimeout(() => {
+                        this.revenueChart = new ApexCharts(this.$refs.revenueChart, this
+                            .revenueChartOptions);
+                        this.$refs.revenueChart.innerHTML = '';
+                        this.revenueChart.render();
+
+                        // sales by category
+                        this.salesByCategory = new ApexCharts(this.$refs.salesByCategory, this
+                            .salesByCategoryOptions);
+                        this.$refs.salesByCategory.innerHTML = '';
+                        this.salesByCategory.render();
+
+                        // daily sales
+                        this.dailySales = new ApexCharts(this.$refs.dailySales, this
+                            .dailySalesOptions);
+                        this.$refs.dailySales.innerHTML = '';
+                        this.dailySales.render();
+
+                        // total orders
+                        this.totalOrders = new ApexCharts(this.$refs.totalOrders, this
+                            .totalOrdersOptions);
+                        this.$refs.totalOrders.innerHTML = '';
+                        this.totalOrders.render();
+                    }, 300);
+
+                    this.$watch('$store.app.theme', () => {
+                        isDark = this.$store.app.theme === 'dark' ? true : false;
+
+                        this.revenueChart.updateOptions(this.revenueChartOptions);
+                        this.salesByCategory.updateOptions(this.salesByCategoryOptions);
+                        this.dailySales.updateOptions(this.dailySalesOptions);
+                        this.totalOrders.updateOptions(this.totalOrdersOptions);
+                    });
+
+                    this.$watch('$store.app.rtlClass', () => {
+                        isRtl = this.$store.app.rtlClass === 'rtl' ? true : false;
+                        this.revenueChart.updateOptions(this.revenueChartOptions);
+                    });
+                },
+
+                // revenue
+                get revenueChartOptions() {
+                    return {
+                        series: [{
+                                name: 'Income',
+                                data: [16800, 16800, 15500, 17800, 15500, 17000, 19000, 16000,
+                                    15000, 17000, 14000, 17000
+                                ],
+                            },
+                            {
+                                name: 'Expenses',
+                                data: [16500, 17500, 16200, 17300, 16000, 19500, 16000, 17000,
+                                    16000, 19000, 18000, 19000
+                                ],
+                            },
+                        ],
+                        chart: {
+                            height: 325,
+                            type: 'area',
+                            fontFamily: 'Nunito, sans-serif',
+                            zoom: {
+                                enabled: false,
+                            },
+                            toolbar: {
+                                show: false,
+                            },
+                        },
+                        dataLabels: {
+                            enabled: false,
+                        },
+                        stroke: {
+                            show: true,
+                            curve: 'smooth',
+                            width: 2,
+                            lineCap: 'square',
+                        },
+                        dropShadow: {
+                            enabled: true,
+                            opacity: 0.2,
+                            blur: 10,
+                            left: -7,
+                            top: 22,
+                        },
+                        colors: isDark ? ['#2196f3', '#e7515a'] : ['#1b55e2', '#e7515a'],
+                        markers: {
+                            discrete: [{
+                                    seriesIndex: 0,
+                                    dataPointIndex: 6,
+                                    fillColor: '#1b55e2',
+                                    strokeColor: 'transparent',
+                                    size: 7,
+                                },
+                                {
+                                    seriesIndex: 1,
+                                    dataPointIndex: 5,
+                                    fillColor: '#e7515a',
+                                    strokeColor: 'transparent',
+                                    size: 7,
+                                },
+                            ],
+                        },
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+                            'Oct', 'Nov', 'Dec'
+                        ],
+                        xaxis: {
+                            axisBorder: {
+                                show: false,
+                            },
+                            axisTicks: {
+                                show: false,
+                            },
+                            crosshairs: {
+                                show: true,
+                            },
+                            labels: {
+                                offsetX: isRtl ? 2 : 0,
+                                offsetY: 5,
+                                style: {
+                                    fontSize: '12px',
+                                    cssClass: 'apexcharts-xaxis-title',
+                                },
+                            },
+                        },
+                        yaxis: {
+                            tickAmount: 7,
+                            labels: {
+                                formatter: (value) => {
+                                    return value / 1000 + 'K';
+                                },
+                                offsetX: isRtl ? -30 : -10,
+                                offsetY: 0,
+                                style: {
+                                    fontSize: '12px',
+                                    cssClass: 'apexcharts-yaxis-title',
+                                },
+                            },
+                            opposite: isRtl ? true : false,
+                        },
+                        grid: {
+                            borderColor: isDark ? '#191e3a' : '#e0e6ed',
+                            strokeDashArray: 5,
+                            xaxis: {
+                                lines: {
+                                    show: true,
+                                },
+                            },
+                            yaxis: {
+                                lines: {
+                                    show: false,
+                                },
+                            },
+                            padding: {
+                                top: 0,
+                                right: 0,
+                                bottom: 0,
+                                left: 0,
+                            },
+                        },
+                        legend: {
+                            position: 'top',
+                            horizontalAlign: 'right',
+                            fontSize: '16px',
+                            markers: {
+                                width: 10,
+                                height: 10,
+                                offsetX: -2,
+                            },
+                            itemMargin: {
+                                horizontal: 10,
+                                vertical: 5,
+                            },
+                        },
+                        tooltip: {
+                            marker: {
+                                show: true,
+                            },
+                            x: {
+                                show: false,
+                            },
+                        },
+                        fill: {
+                            type: 'gradient',
+                            gradient: {
+                                shadeIntensity: 1,
+                                inverseColors: !1,
+                                opacityFrom: isDark ? 0.19 : 0.28,
+                                opacityTo: 0.05,
+                                stops: isDark ? [100, 100] : [45, 100],
+                            },
+                        },
+                    };
+                },
+
+                // sales by category
+                get salesByCategoryOptions() {
+                    return {
+                        series: [985, 737, 270],
+                        chart: {
+                            type: 'donut',
+                            height: 460,
+                            fontFamily: 'Nunito, sans-serif',
+                        },
+                        dataLabels: {
+                            enabled: false,
+                        },
+                        stroke: {
+                            show: true,
+                            width: 25,
+                            colors: isDark ? '#0e1726' : '#fff',
+                        },
+                        colors: isDark ? ['#5c1ac3', '#e2a03f', '#e7515a', '#e2a03f'] : ['#e2a03f',
+                            '#5c1ac3', '#e7515a'
+                        ],
+                        legend: {
+                            position: 'bottom',
+                            horizontalAlign: 'center',
+                            fontSize: '14px',
+                            markers: {
+                                width: 10,
+                                height: 10,
+                                offsetX: -2,
+                            },
+                            height: 50,
+                            offsetY: 20,
+                        },
+                        plotOptions: {
+                            pie: {
+                                donut: {
+                                    size: '65%',
+                                    background: 'transparent',
+                                    labels: {
+                                        show: true,
+                                        name: {
+                                            show: true,
+                                            fontSize: '29px',
+                                            offsetY: -10,
+                                        },
+                                        value: {
+                                            show: true,
+                                            fontSize: '26px',
+                                            color: isDark ? '#bfc9d4' : undefined,
+                                            offsetY: 16,
+                                            formatter: (val) => {
+                                                return val;
+                                            },
+                                        },
+                                        total: {
+                                            show: true,
+                                            label: 'Total',
+                                            color: '#888ea8',
+                                            fontSize: '29px',
+                                            formatter: (w) => {
+                                                return w.globals.seriesTotals.reduce(function(a,
+                                                    b) {
+                                                    return a + b;
+                                                }, 0);
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                        labels: ['Apparel', 'Sports', 'Others'],
+                        states: {
+                            hover: {
+                                filter: {
+                                    type: 'none',
+                                    value: 0.15,
+                                },
+                            },
+                            active: {
+                                filter: {
+                                    type: 'none',
+                                    value: 0.15,
+                                },
+                            },
+                        },
+                    };
+                },
+
+                // daily sales
+                get dailySalesOptions() {
+                    return {
+                        series: [{
+                                name: 'Sales',
+                                data: [44, 55, 41, 67, 22, 43, 21],
+                            },
+                            {
+                                name: 'Last Week',
+                                data: [13, 23, 20, 8, 13, 27, 33],
+                            },
+                        ],
+                        chart: {
+                            height: 160,
+                            type: 'bar',
+                            fontFamily: 'Nunito, sans-serif',
+                            toolbar: {
+                                show: false,
+                            },
+                            stacked: true,
+                            stackType: '100%',
+                        },
+                        dataLabels: {
+                            enabled: false,
+                        },
+                        stroke: {
+                            show: true,
+                            width: 1,
+                        },
+                        colors: ['#e2a03f', '#e0e6ed'],
+                        responsive: [{
+                            breakpoint: 480,
+                            options: {
+                                legend: {
+                                    position: 'bottom',
+                                    offsetX: -10,
+                                    offsetY: 0,
+                                },
+                            },
+                        }, ],
+                        xaxis: {
+                            labels: {
+                                show: false,
+                            },
+                            categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'],
+                        },
+                        yaxis: {
+                            show: false,
+                        },
+                        fill: {
+                            opacity: 1,
+                        },
+                        plotOptions: {
+                            bar: {
+                                horizontal: false,
+                                columnWidth: '25%',
+                            },
+                        },
+                        legend: {
+                            show: false,
+                        },
+                        grid: {
+                            show: false,
+                            xaxis: {
+                                lines: {
+                                    show: false,
+                                },
+                            },
+                            padding: {
+                                top: 10,
+                                right: -20,
+                                bottom: -20,
+                                left: -20,
+                            },
+                        },
+                    };
+                },
+
+                // total orders
+                get totalOrdersOptions() {
+                    return {
+                        series: [{
+                            name: 'Sales',
+                            data: [28, 40, 36, 52, 38, 60, 38, 52, 36, 40],
+                        }, ],
+                        chart: {
+                            height: 290,
+                            type: 'area',
+                            fontFamily: 'Nunito, sans-serif',
+                            sparkline: {
+                                enabled: true,
+                            },
+                        },
+                        stroke: {
+                            curve: 'smooth',
+                            width: 2,
+                        },
+                        colors: isDark ? ['#00ab55'] : ['#00ab55'],
+                        labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                        yaxis: {
+                            min: 0,
+                            show: false,
+                        },
+                        grid: {
+                            padding: {
+                                top: 125,
+                                right: 0,
+                                bottom: 0,
+                                left: 0,
+                            },
+                        },
+                        fill: {
+                            opacity: 1,
+                            type: 'gradient',
+                            gradient: {
+                                type: 'vertical',
+                                shadeIntensity: 1,
+                                inverseColors: !1,
+                                opacityFrom: 0.3,
+                                opacityTo: 0.05,
+                                stops: [100, 100],
+                            },
+                        },
+                        tooltip: {
+                            x: {
+                                show: false,
+                            },
+                        },
+                    };
+                },
+            }));
         });
     </script>
 </body>
 
-<!-- Mirrored from html.vristo.sbthemes.com/datatables-export.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:33 GMT -->
+<!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:57 GMT -->
 
 </html>
