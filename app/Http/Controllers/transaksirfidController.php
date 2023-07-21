@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 
-class transaksirfidController extends Controller
+class TransaksirfidController extends Controller
 {
     /**
      * Display a listing of the resource.
