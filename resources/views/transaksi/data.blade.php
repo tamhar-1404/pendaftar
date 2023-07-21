@@ -49,6 +49,11 @@
     <link rel="stylesheet" href={{asset("transaksi/css/style.css")}} />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="{{asset('load/load.css')}}">
+    <style>
+        ::placeholder{
+            color : black;
+        }
+    </style>
 
 </head>
 <body class="font-poppins text-dark text-sm leading-loose">
@@ -65,13 +70,13 @@
         <script>
         </script>
     @endif
-    <div  class="spin_load  screen_loader animate__animated fixed inset-1 z-[30] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+    {{-- <div  class="spin_load  screen_loader animate__animated fixed inset-1 z-[30] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
             <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
         </div>
-    </div>
+    </div> --}}
     <div class="search-form fixed top-0 left-0 w-full bg-black opacity-95 min-h-screen items-center justify-center py-8 px-10 transform  transition-transform translate-x-full ease-in-out duration-500 hidden lg:flex z-50">
         <button class="search-close absolute left-1/2 text-white text-xl top-12 translate-y-1/2" aria-label="close icon"><span class="icon-close"></span></button>
         <form class="relative xl:w-1/3 lg:w-1/2" action="#" method="get">
@@ -86,7 +91,7 @@
                 <div class="col-span-12">
                     <nav>
                         <ul class="flex flex-wrap items-center justify-center">
-                            <img src="{{ asset('admin/images/hummashitam.png') }}" class="w-48" alt=""
+                            <img src="{{ asset('admin/images/hummashitam.png') }}" class="w-48" style="width: 20% " alt=""
                             srcset="">
                         </ul>
                     </nav>
@@ -102,7 +107,7 @@
               </div>
               <div class="  h-7 mb-8 flex-col justify-center items-center">
                 <center>
-                    <input class="border px-2 border-gray-300 w-[95%] placeholder:text-gray-600" id="searchInput" type="text" name="kodebarang" placeholder="cari menu" onchange="cari(this)">
+                    <input  class="border px-2 border-gray-300 w-[95%] placeholder:text-gray-600" id="searchInput" type="text" name="kodebarang" placeholder="cari menu" onchange="cari(this)">
                 </cesnter>
                 <div id="listmenu">
                 </div>
