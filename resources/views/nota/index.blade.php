@@ -48,13 +48,13 @@
 
 </head>
 <body class="font-poppins text-dark text-sm leading-loose">
-    <div  class="spin_load  screen_loader animate__animated fixed inset-1 z-[30] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+    {{-- <div  class="spin_load  screen_loader animate__animated fixed inset-1 z-[30] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
             <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
         </div>
-    </div>
+    </div> --}}
     <div class="search-form fixed top-0 left-0 w-full bg-black opacity-95 min-h-screen items-center justify-center py-8 px-10 transform  transition-transform translate-x-full ease-in-out duration-500 hidden lg:flex z-50">
         <button class="search-close absolute left-1/2 text-white text-xl top-12 translate-y-1/2" aria-label="close icon"><span class="icon-close"></span></button>
         <form class="relative xl:w-1/3 lg:w-1/2" action="#" method="get">
@@ -76,7 +76,7 @@
                     <div>
                         <ul class="flex flex-wrap items-center justify-center">
 
-                        <img src="{{ asset('admin/images/hummashitam.png') }}" class="flex w-48 justify-center mt-1" alt=""
+                        <img src="{{ asset('admin/images/hummashitam.png') }}" class=" flex  justify-center mt-1" style=" width: 20%"
                         srcset="">
                         </ul>
                     </div>
@@ -88,7 +88,7 @@
         <div class=" text-center px-5 font-semibold mt-3 text-base text-green-500">Transaksi berhasil</div>
 
     <div class="flex shadow-gray-400 justify-center items-start h-full mt-60 px-20">
-        <div class="w-full px-10 rounded overflow-hidden shadow-xl bg-white transform -translate-y-1/2">
+        <div class="w-full px-10 rounded overflow-hidden shadow-xl mt-40 bg-white transform-translate-y-1/2">
             <div>
 
             </div>

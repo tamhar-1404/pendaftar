@@ -100,7 +100,7 @@
         </div>
     </div>
     <div class="flex flex-row ">
-        <div class=" top-0 h-[700px] left-0  w-1/4 bg-gray-light mt-4 ml-4">
+        <div class=" top-0 h-[700px] left-0  w-1/4 bg-gray-light mt-4 ml-4" style="height: 100%">
             <div class="h-full flex flex-col  gap-5">
               <div class="flex justify-center items-center">
                 <p class="text-lg font-semibold text-dark mt-2 ml-2">Menu</p>

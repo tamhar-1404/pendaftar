@@ -53,7 +53,6 @@ Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
 
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
 Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
-Route::get('/nota' , [TransaksiController::class , 'nota'])->name('nota');
 Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
 Route::get('send-email' , [MailController::class,'index']);
 
@@ -88,12 +87,13 @@ Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
 // });
 
 // Route::get('/q', function () {
-//     return view('welcome');
-// });
+    //     return view('welcome');
+    // });
 
-Route::get('/kode_beli', [transaksirfidController::class, 'index'])->name('kode_beli');
-Route::resource('/data', App\Http\Controllers\TransaksiController::class);
-Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
+    Route::get('/kode_beli', [transaksirfidController::class, 'index'])->name('kode_beli');
+    Route::resource('/data', App\Http\Controllers\TransaksiController::class);
+    Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
+    Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::class);
 
 
 
@@ -131,7 +131,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('send-email' , [MailController::class,'index']);
         Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
         // Admin
-        Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::class);
         Route::resource('/History_transaksi', App\Http\Controllers\HistoryTransaksiController::class);
         Route::resource('TopUp', App\Http\Controllers\TopUpController::class);
         Route::resource('barang', App\Http\Controllers\BarangController::class);
@@ -176,7 +175,8 @@ Route::middleware(['auth'])->group(function () {
         });
     });
 
-    Route::resource('/data', App\Http\Controllers\TransaksiController::class);
+Route::resource('/data', App\Http\Controllers\TransaksiController::class);
+Route::get('/nota' , [TransaksiController::class , 'nota'])->name('nota');
 Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita.like');
 Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
 Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');
