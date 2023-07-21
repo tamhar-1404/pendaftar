@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    @vite('resources/css/app.css')
     <link
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
     rel="stylesheet" />
@@ -627,7 +626,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                               </svg>
-                              
+
                             Tambah
                         </button>
                     </div>
@@ -773,8 +772,8 @@
                 </svg>
                 </button>
             </div>
-            
-         
+
+
             <!--Modal body-->
             <div class="relative p-4">
                 <p class=" text-md">
@@ -782,7 +781,7 @@
                 </p >
 
                 <p class="ml-5 mt-2 text-md text-gray-400">
-                  {{ $items->nama }}  
+                  {{ $items->nama }}
                 </p>
 
                 <p class=" text-md mt-4">

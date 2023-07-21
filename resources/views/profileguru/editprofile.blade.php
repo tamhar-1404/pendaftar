@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<!-- Mirrored from html.vristo.sbthemes.com/users-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:51 GMT -->
+{{--  <!-- Mirrored from html.vristo.sbthemes.com/users-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:51 GMT -->  --}}
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
@@ -9,7 +9,6 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Guru - Edit Profile</title>
-    @vite('resources/css/app.css')
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />

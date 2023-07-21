@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BeritaGuru;
 use App\Http\Requests\StoreBeritaGuruRequest;
 use App\Http\Requests\UpdateBeritaGuruRequest;
+use App\Models\Blog;
 
 class BeritaGuruController extends Controller
 {
@@ -15,7 +16,7 @@ class BeritaGuruController extends Controller
      */
     public function index()
     {
-        
+
         return view('guru.index');
     }
 
@@ -46,9 +47,10 @@ class BeritaGuruController extends Controller
      * @param  \App\Models\BeritaGuru  $beritaGuru
      * @return \Illuminate\Http\Response
      */
-    public function show(BeritaGuru $beritaGuru)
+    public function show($id)
     {
-       return view('berita_guru.detail');
+        $berita = Blog::find($id);
+       return view('berita_guru.detail', compact('berita'));
     }
 
     /**
