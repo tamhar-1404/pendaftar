@@ -22,6 +22,12 @@
         },
 
     </script>
+    <style>
+        .bayar{
+            background: #11a9f5;
+            text: white;
+        }
+    </style>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href={{asset("transaksi/images/favicon.webp")}} />
@@ -220,7 +226,7 @@
                             <input type="hidden" id="form_total_semua" value="0">
                         </div>
                         <div class="flex justify-end px-8">
-                            <button type="submit" class="hidden bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="btn-bayar">Bayar</button>
+                            <button type="submit" class=" bayar hidden bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" id="btn-bayar">Bayar</button>
                         </div>
 
                     </form>
