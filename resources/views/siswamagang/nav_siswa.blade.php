@@ -275,25 +275,25 @@
 
          <!-- horizontal menu -->
          <ul
-             class="horizontal-menu hidden border-t border-[#ebedf2] bg-white py-1.5 px-6 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-[#0e1726] dark:text-white-dark lg:space-x-1.5 xl:space-x-8">
+             class="horizontal-menu hidden border-t border-[#ebedf2] bg-white py-1 px-6 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-[#0e1726] dark:text-white-dark lg:space-x-1.5 xl:space-x-8">
              <li class="menu nav-item relative">
-                 <a href="javascript:;" class="nav-link active">
-                     <div class="flex items-center">
-                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                 <a href="{{ route('siswamagang.index') }}" class="nav-link {{ request()->routeIs('siswamagang.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }} ">
+                     <div class="flex items-center ">
+                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
                              xmlns="http://www.w3.org/2000/svg">
-                             <path opacity="0.5" color="white"
+                             <path opacity="0.3"
                                  d="M2 12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274C22 8.77128 22 9.91549 22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039Z"
                                  fill="currentColor" />
                              <path
                                  d="M9 17.25C8.58579 17.25 8.25 17.5858 8.25 18C8.25 18.4142 8.58579 18.75 9 18.75H15C15.4142 18.75 15.75 18.4142 15.75 18C15.75 17.5858 15.4142 17.25 15 17.25H9Z"
                                  fill="currentColor" class=" opacity-3" />
                          </svg>
-                         <span class="px-1 text-white font-bold">Dashboard</span>
+                         <span class="px-1 ">Dashboard</span>
                      </div>
                  </a>
              </li>
              <li class="menu nav-item relative">
-                 <a href="{{ route('jurnal_siswa.index') }}" class="nav-link">
+                 <a href="{{ route('jurnal_siswa.index') }}" class="nav-link {{ request()->routeIs('jurnal_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }}">
                      <div class="flex items-center">
                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                              stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -304,21 +304,24 @@
                      </div>
                  </a>
              </li>
-             <a href="{{ route('absensi_siswa.index') }}" class="nav-link">
-                 <div
-                     class="flex items-center {{ request()->routeIs('absensi.index') ? 'bg-blue-500 text-white' : '' }}">
-                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" class="w-6 h-6">
-                         <path stroke-linecap="round" stroke-linejoin="round"
-                             d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                     </svg>
-                     <span class="px-1">Absensi</span>
-                 </div>
-             </a>
+             <li class="menu nav-item relative">
+                <a href="{{ route('absensi_siswa.index') }}" class="nav-link {{ request()->routeIs('absensi_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }}">
+                    <div
+                        class="flex items-center ">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-3 h-3">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                        </svg>
+                        <span class="px-1">Absensi</span>
+                    </div>
+                </a>
+             </li>
+
              </li>
              <li class="menu nav-item relative">
-                 <a href="{{ route('berita_siswa.index') }}" class="nav-link">
-                     <div class="flex items-center">
+                 <a href="{{ route('berita_siswa.index') }}" class="nav-link {{ request()->routeIs('berita_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }}">
+                     <div class="flex items-center ">
                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                              stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                              <path stroke-linecap="round" stroke-linejoin="round"
@@ -329,9 +332,9 @@
                  </a>
              </li>
              <li class="menu nav-item relative">
-                 <a href="javascript:;" class="nav-link">
+                 <a href="javascript:;" class="nav-link {{ request()->routeIs('tatib_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }} {{ request()->routeIs('siswa_magang_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }} {{ request()->routeIs('piket_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }}">
                      <div class="flex items-center">
-                         <svg class="group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
+                         <svg class="group-hover:!text-primary" width="14" height="14" viewBox="0 0 20 20"
                              fill="none" xmlns="http://www.w3.org/2000/svg">
                              <path opacity="0.5"
                                  d="M13 15.4C13 13.3258 13 12.2887 13.659 11.6444C14.318 11 15.3787 11 17.5 11C19.6213 11 20.682 11 21.341 11.6444C22 12.2887 22 13.3258 22 15.4V17.6C22 19.6742 22 20.7113 21.341 21.3556C20.682 22 19.6213 22 17.5 22C15.3787 22 14.318 22 13.659 21.3556C13 20.7113 13 19.6742 13 17.6V15.4Z"
@@ -372,9 +375,9 @@
                  </ul>
              </li>
              <li class="menu nav-item relative">
-                 <a href="javascript:;" class="nav-link">
+                 <a href="javascript:;" class="nav-link {{ request()->routeIs('History_topup.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }}">
                      <div class="flex items-center">
-                         <svg class="group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
+                         <svg class="group-hover:!text-primary" width="14" height="14" viewBox="0 0 20 20"
                              fill="none" xmlns="http://www.w3.org/2000/svg">
                              <path opacity="0.5"
                                  d="M13 15.4C13 13.3258 13 12.2887 13.659 11.6444C14.318 11 15.3787 11 17.5 11C19.6213 11 20.682 11 21.341 11.6444C22 12.2887 22 13.3258 22 15.4V17.6C22 19.6742 22 20.7113 21.341 21.3556C20.682 22 19.6213 22 17.5 22C15.3787 22 14.318 22 13.659 21.3556C13 20.7113 13 19.6742 13 17.6V15.4Z"
@@ -401,17 +404,17 @@
                  </a>
                  <ul class="sub-menu">
                      <li>
-                         <a href="">History Topup</a>
+                         <a href="{{route('History_topup.index')}}">History Topup</a>
                      </li>
                      <li>
-                         <a href="">History Transaksi</a>
+                         <a href="{{route('History_transaksi.index')}}">History Transaksi</a>
                      </li>
                  </ul>
                  <ul class="sub-menu">
 
                  </ul>
              </li>
-             <li class="mt-1">
+             <li class="mt-1.5">
                  <button onclick="showStep(1)"
                      class="border border-blue-400 px-4 py-1 text-blue-400 hover:bg-blue-400 hover:text-white rounded">Isi
                      saldo</button>

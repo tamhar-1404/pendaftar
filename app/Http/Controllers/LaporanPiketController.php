@@ -17,7 +17,7 @@ class LaporanPiketController extends Controller
      */
     public function index()
     {
-        return view('laporan_piket.index');
+        return redirect()->back();
     }
 
     /**

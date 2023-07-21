@@ -1165,7 +1165,7 @@
         <!-- end sidebar section -->
 
         <div class="main-content">
-            @include('jurnal_siswa.nav')
+            @include('siswamagang.nav_siswa')
 
             <div class="animate__animated p-6" :class="[$store.app.animation]">
                 <!-- start main content section -->
