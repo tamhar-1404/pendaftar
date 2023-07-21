@@ -271,13 +271,13 @@
                    data-te-sidenav-collapse-ref>
                    <li class="relative">
                        <a href="{{ route('tatatertib.index') }}"
-                           class="flex h-6 {{ request()->routeIs('tatatertib.index') ? 'text-blue-400' : 'text-gray-400' }} cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 mt-2 outline-none transition duration-300 ease-linear hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none hover:bg-blue-400 hover:text-white"
+                           class="flex active:text-blue-400 h-6 {{ request()->routeIs('tatatertib.index') ? 'text-blue-400' : 'text-gray-400' }} cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 mt-2 outline-none transition duration-300 ease-linear hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none hover:bg-blue-400 hover:text-white"
                            data-te-sidenav-link-ref>Tata tertib</a>
                    </li>
 
                    <li class="relative">
                        <a href="{{ route('laporansiswa.index') }}"
-                           class="flex h-6 {{ request()->routeIs('laporansiswa.index') ? 'text-blue-400' : 'text-gray-400' }} cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 mt-2 outline-none transition duration-300 ease-linear hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none hover:bg-blue-400 hover:text-white"
+                           class="flex active:text-blue-400 h-6 {{ request()->routeIs('laporansiswa.index') ? 'text-blue-400' : 'text-gray-400' }} cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 mt-2 outline-none transition duration-300 ease-linear hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none hover:bg-blue-400 hover:text-white"
                            data-te-sidenav-link-ref>Laporan Siswa</a>
                    </li>
 
