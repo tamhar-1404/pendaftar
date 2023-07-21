@@ -9,7 +9,17 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        },
 
+    </script>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href={{asset("transaksi/images/favicon.webp")}} />
 
