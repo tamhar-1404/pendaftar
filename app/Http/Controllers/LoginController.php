@@ -15,6 +15,8 @@ use App\Models\aproval;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Carbon\Carbon;
+use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -126,84 +128,93 @@ public function store(Request $request)
         // return "Duplikat";
     }
 
-    if($request->file('skck') === null){
-        $foto_siswa = $request->file('foto_siswa');
-        $sp_diri = $request->file('sp_diri');
-        $sp_ortu = $request->file('sp_ortu');
-        $cv = $request->file('cv');
+    try {
+        if($request->file('skck') === null){
+            $foto_siswa = $request->file('foto_siswa');
+            $sp_diri = $request->file('sp_diri');
+            $sp_ortu = $request->file('sp_ortu');
+            $cv = $request->file('cv');
 
-        $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
-        $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
-        $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
-        $cv->storeAs('public/pendaftaran', $cv->hashName());
+            $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
+            $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
+            $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
+            $cv->storeAs('public/pendaftaran', $cv->hashName());
 
-        $data = aproval::create([
-            'name' => $request->name,
-            'tempat' => $request->tempat,
-            'tanggal' => $request->tanggal,
-            'kelas' => $request->kelas,
-            'nisn' => $request->nisn,
-            'jeniskelamin' => $request->jeniskelamin,
-            'alamat' => $request->alamat,
-            'sekolah' => $request->sekolah,
-            'jurusan' => $request->jurusan,
-            'magang_awal' => $request->magang_awal,
-            'magang_akhir' => $request->magang_akhir,
-            'foto_siswa' => $foto_siswa->hashName(),
-            'sp_diri' => $sp_diri->hashName(),
-            'sp_ortu' => $sp_ortu->hashName(),
-            'cv' => $cv->hashName(),
-            'email' => $request->email,
-            'no' => $request->no,
-            'password' => Hash::make($request->password),
-            'remember_token' => Str::random(60)
-        ]);
+            $data = aproval::create([
+                'name' => $request->name,
+                'tempat' => $request->tempat,
+                'tanggal' => $request->tanggal,
+                'kelas' => $request->kelas,
+                'nisn' => $request->nisn,
+                'jeniskelamin' => $request->jeniskelamin,
+                'alamat' => $request->alamat,
+                'sekolah' => $request->sekolah,
+                'jurusan' => $request->jurusan,
+                'magang_awal' => $request->magang_awal,
+                'magang_akhir' => $request->magang_akhir,
+                'foto_siswa' => $foto_siswa->hashName(),
+                'sp_diri' => $sp_diri->hashName(),
+                'sp_ortu' => $sp_ortu->hashName(),
+                'cv' => $cv->hashName(),
+                'email' => $request->email,
+                'no' => $request->no,
+                'password' => Hash::make($request->password),
+                'remember_token' => Str::random(60)
+            ]);
 
-        // Kirim email konfirmasi
-        Mail::to($data->email)->send(new Konfimasi());
+            // Kirim email konfirmasi
+            Mail::to($data->email)->send(new Konfimasi());
 
-        return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
+            return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
+        }
+    } catch (Exception $e) {
+        return back()->with('error', 'Email anda sudah terdaftar!');
     }
-    if($request->file('skck') !== null){
-        $foto_siswa = $request->file('foto_siswa');
-        $sp_diri = $request->file('sp_diri');
-        $sp_ortu = $request->file('sp_ortu');
-        $skck = $request->file('skck');
-        $cv = $request->file('cv');
 
-        $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
-        $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
-        $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
-        $skck->storeAs('public/pendaftaran', $skck->hashName());
-        $cv->storeAs('public/pendaftaran', $cv->hashName());
+    try {
+        if($request->file('skck') !== null){
+            $foto_siswa = $request->file('foto_siswa');
+            $sp_diri = $request->file('sp_diri');
+            $sp_ortu = $request->file('sp_ortu');
+            $skck = $request->file('skck');
+            $cv = $request->file('cv');
 
-        $data = aproval::create([
-            'name' => $request->name,
-            'tempat' => $request->tempat,
-            'tanggal' => $request->tanggal,
-            'kelas' => $request->kelas,
-            'nisn' => $request->nisn,
-            'jeniskelamin' => $request->jeniskelamin,
-            'alamat' => $request->alamat,
-            'sekolah' => $request->sekolah,
-            'jurusan' => $request->jurusan,
-            'magang_awal' => $request->magang_awal,
-            'magang_akhir' => $request->magang_akhir,
-            'foto_siswa' => $foto_siswa->hashName(),
-            'sp_diri' => $sp_diri->hashName(),
-            'sp_ortu' => $sp_ortu->hashName(),
-            'skck' => $skck->hashName(),
-            'cv' => $cv->hashName(),
-            'email' => $request->email,
-            'no' => $request->no,
-            'password' => Hash::make($request->password),
-            'remember_token' => Str::random(60)
-        ]);
+            $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
+            $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
+            $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
+            $skck->storeAs('public/pendaftaran', $skck->hashName());
+            $cv->storeAs('public/pendaftaran', $cv->hashName());
 
-        // Kirim email konfirmasi
-        Mail::to($data->email)->send(new Konfimasi());
+            $data = aproval::create([
+                'name' => $request->name,
+                'tempat' => $request->tempat,
+                'tanggal' => $request->tanggal,
+                'kelas' => $request->kelas,
+                'nisn' => $request->nisn,
+                'jeniskelamin' => $request->jeniskelamin,
+                'alamat' => $request->alamat,
+                'sekolah' => $request->sekolah,
+                'jurusan' => $request->jurusan,
+                'magang_awal' => $request->magang_awal,
+                'magang_akhir' => $request->magang_akhir,
+                'foto_siswa' => $foto_siswa->hashName(),
+                'sp_diri' => $sp_diri->hashName(),
+                'sp_ortu' => $sp_ortu->hashName(),
+                'skck' => $skck->hashName(),
+                'cv' => $cv->hashName(),
+                'email' => $request->email,
+                'no' => $request->no,
+                'password' => Hash::make($request->password),
+                'remember_token' => Str::random(60)
+            ]);
 
-        return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
+            // Kirim email konfirmasi
+            Mail::to($data->email)->send(new Konfimasi());
+
+            return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
+        }
+    } catch (Exception $e) {
+        return back()->with('error', "Email anda sudah digunakan!");
     }
 }
     /**
