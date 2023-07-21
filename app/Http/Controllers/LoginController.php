@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreLoginRequest;
 use App\Http\Requests\UpdateLoginRequest;
+use App\Mail\PendaftaranAdmin;
 use App\Models\Aproval;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -164,6 +165,11 @@ public function store(Request $request)
 
             // Kirim email konfirmasi
             Mail::to($data->email)->send(new Konfimasi());
+            $email_admin = User::where('role', 'Admin')->first()->email;
+            $data = [
+                'nama' => $request->name,
+            ];
+            Mail::to($email_admin)->send(new PendaftaranAdmin($data));
 
             return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
         }

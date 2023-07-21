@@ -8,6 +8,7 @@ use App\Http\Requests\Storeabsensi_siswaRequest;
 use App\Http\Requests\Updateabsensi_siswaRequest;
 use App\Mail\EmailLulus as MailEmailLulus;
 use App\Mail\IzinTenggat;
+use App\Mail\DataizinEmail;
 use App\Models\Absensi_siswa;
 use App\Models\Anggota_piket;
 use App\Models\EmailLulus;
@@ -194,7 +195,7 @@ class AbsensiSiswaController extends Controller
             'sampai' => 'required',
             'keterangan'=> 'required',
             'deskripsi' => 'required',
-            'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
+            'bukti' => 'required|image|mimes:jpeg,jpg,png'
         ]);
         $image = $request->file('bukti');
         $image->storeAs('public/bukti_izin', $image->hashName());
@@ -212,7 +213,7 @@ class AbsensiSiswaController extends Controller
             'status2' => 'menunggu',
             'bukti' => $image->hashName()
         ]);
-        Mail::to($request->email)->send(new dataizinEmail($approvalIzin));
+        Mail::to($request->email)->send(new DataizinEmail($approvalIzin));
         return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
