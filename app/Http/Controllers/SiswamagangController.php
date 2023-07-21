@@ -22,20 +22,6 @@ use Carbon\Carbon;
 
 class SiswamagangController extends Controller
 {
-
-function cek_password($user_id) {
-
-    $user = find_user_by_rfid($user_id);
-
-
-    if (!$user) {
-        return "not found";
-    }
-
-    return $user;
-}
-
-
     /**
      * Display a listing of the resource.
      *
