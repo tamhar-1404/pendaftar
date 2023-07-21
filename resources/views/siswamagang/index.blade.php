@@ -1780,102 +1780,15 @@
             },
         };
     </script>
-    <script>
-        // Initialization for ES Users
-        var options = {
-            series: [
-                {
-                    name: 'Izin & Sakit',
-                    data: [{{$izin_jan}}, {{$izin_feb}}, {{$izin_mar}}, {{$izin_apr}}, {{$izin_mei}},
-                    {{$izin_jun}}, {{$izin_jul}}, {{$izin_aug}}, {{$izin_sep}}, {{$izin_okt}}, {{$izin_nov}}, {{$izin_des}}
-                    ]
-                },
-                {
-                    name: 'Hadir',
-                    data: [{{$Hadir_jan}}, {{$Hadir_feb}}, {{$Hadir_mar}}, {{$Hadir_apr}}, {{$Hadir_mei}},
-                    {{$Hadir_jun}}, {{$Hadir_jul}}, {{$Hadir_aug}}, {{$Hadir_sep}}, {{$Hadir_okt}}, {{$Hadir_nov}}, {{$Hadir_des}}
-                    ]
-                },
-                {
-                    name: 'telat',
-                    data: [{{$Telat_jan}}, {{$Telat_feb}}, {{$Telat_mar}}, {{$Telat_apr}}, {{$Telat_mei}},
-                    {{$Telat_jun}}, {{$Telat_jul}}, {{$Telat_aug}}, {{$Telat_sep}}, {{$Telat_okt}}, {{$Telat_nov}}, {{$Telat_des}}
-                    ]
-                },
-                {
-                    name: 'alfa',
-                    data: [{{$Alfa_jan}}, {{$Alfa_feb}}, {{$Alfa_mar}}, {{$Alfa_apr}}, {{$Alfa_mei}},
-                    {{$Alfa_jun}}, {{$Alfa_jul}}, {{$Alfa_aug}}, {{$Alfa_sep}}, {{$Alfa_okt}}, {{$Alfa_nov}}, {{$Alfa_des}}
-                    ]
-                },
-            ],
-            chart: {
-                type: 'donut', // Changed from 'bar' to 'donut'
-                height: 350,
-            },
-            plotOptions: {
-                pie: {
-                    donut: {
-                        size: '65%' // Adjust the size of the donut hole
-                    }
-                }
-            },
-            stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
-            },
-            xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
-            },
-            yaxis: {
-                title: {
-                    text: ''
-                }
-            },
-            fill: {
-                opacity: 1,
-                colors: ['#008ffb', '#47EBB3', '#FF4560', '#FEB019']
-            },
-            tooltip: {
-                y: {
-                    // formatter: function (val) {
-                    //   return "$ " + val + " thousands"
-                    // }
-                }
-            }
-        };
 
-        var chart = new ApexCharts(document.querySelector("#"), options);
-        chart.render();
-    </script>
     <script>
         var options = {
             series:  [
                 {
-                    name: 'Izin & Sakit',
-                    data: [{{$izin_jan}}, {{$izin_feb}}, {{$izin_mar}}, {{$izin_apr}}, {{$izin_mei}},
-                    {{$izin_jun}}, {{$izin_jul}}, {{$izin_aug}}, {{$izin_sep}}, {{$izin_okt}}, {{$izin_nov}}, {{$izin_des}}
-                    ]
+
+                    data: [10, 10, 10, 10],
                 },
-                {
-                    name: 'Hadir',
-                    data: [{{$Hadir_jan}}, {{$Hadir_feb}}, {{$Hadir_mar}}, {{$Hadir_apr}}, {{$Hadir_mei}},
-                    {{$Hadir_jun}}, {{$Hadir_jul}}, {{$Hadir_aug}}, {{$Hadir_sep}}, {{$Hadir_okt}}, {{$Hadir_nov}}, {{$Hadir_des}}
-                    ]
-                },
-                {
-                    name: 'telat',
-                    data: [{{$Telat_jan}}, {{$Telat_feb}}, {{$Telat_mar}}, {{$Telat_apr}}, {{$Telat_mei}},
-                    {{$Telat_jun}}, {{$Telat_jul}}, {{$Telat_aug}}, {{$Telat_sep}}, {{$Telat_okt}}, {{$Telat_nov}}, {{$Telat_des}}
-                    ]
-                },
-                {
-                    name: 'alfa',
-                    data: [{{$Alfa_jan}}, {{$Alfa_feb}}, {{$Alfa_mar}}, {{$Alfa_apr}}, {{$Alfa_mei}},
-                    {{$Alfa_jun}}, {{$Alfa_jul}}, {{$Alfa_aug}}, {{$Alfa_sep}}, {{$Alfa_okt}}, {{$Alfa_nov}}, {{$Alfa_des}}
-                    ]
-                },
+
             ],
             chart: {
             width: 380,
@@ -1899,7 +1812,7 @@
             }
           },
           title: {
-            text: 'Gradient Donut with custom Start-angle'
+            text: ''
           },
           responsive: [{
             breakpoint: 480,
