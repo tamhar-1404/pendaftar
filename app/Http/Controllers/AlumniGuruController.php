@@ -6,7 +6,7 @@ use App\Models\Alumni_guru;
 use App\Models\Siswa;
 use App\Http\Requests\StoreAlumni_guruRequest;
 use App\Http\Requests\UpdateAlumni_guruRequest;
-
+use Illuminate\Support\Facades\Auth;
 class AlumniGuruController extends Controller
 {
     /**
@@ -17,8 +17,8 @@ class AlumniGuruController extends Controller
     public function index()
     {
         $siswaLogin = Auth::user();
-        $siswas = Siswa::where('role', 'Alumni')
-                       ->where('name', $siswaLogin->name)
+        $siswas = Siswa::where('role', 'alumni')
+                       ->where('sekolah', $siswaLogin->sekolah)
                        ->get();
         return view('alumni_guru.index' , compact('siswas'));
     }

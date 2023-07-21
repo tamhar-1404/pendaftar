@@ -407,7 +407,7 @@
                          <a href="{{route('History_topup.index')}}">History Topup</a>
                      </li>
                      <li>
-                         <a href="{{route('History_transaksi.index')}}">History Transaksi</a>
+                         <a href="{{ route('History.index') }}">History Transaksi</a>
                      </li>
                  </ul>
                  <ul class="sub-menu">
