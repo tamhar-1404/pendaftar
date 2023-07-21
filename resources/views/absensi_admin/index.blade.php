@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin - Absensi</title>
-    @vite('resources/css/app.css')
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="admin/hummasoft.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
@@ -101,7 +100,7 @@
                                 </svg>
                             </div>
                             {{-- serch --}}
-                            <form action="{{route('absensi_admin.create')}}">
+                            <form action="{{ route('absensi_admin.create') }}">
                                 <label class="relative hidden sm:flex">
                                     <input
                                         class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
