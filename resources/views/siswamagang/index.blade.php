@@ -1821,9 +1821,8 @@
                 preflight: false,
             },
         };
-    </script>
-        <script>
-            // Initialization for ES Users
+
+        // Initialization for ES Users
         var options = {
         series: [{
         name: 'Mengisi',
