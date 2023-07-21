@@ -16,7 +16,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
         <script>
             theme: {
                 extend: {
