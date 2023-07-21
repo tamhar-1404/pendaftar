@@ -16,7 +16,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
         <script>
             theme: {
                 extend: {
@@ -97,8 +97,8 @@
                                 </div>
                             </div>
                             <div class="mb-4">
-                              <label for="nisn" class="block font-bold mb-1 text-sm">NISN:</label>
-                              <input type="number" id="nisn" name="nisn"  placeholder="Masukkan nisn" class="w-full px-4 py-1 text-sm border rounded" required>
+                              <label for="nisn" class="block font-bold mb-1 text-sm">NISN / NIM:</label>
+                              <input type="number" id="nisn" name="nisn"  placeholder="Masukkan nisn / nim" class="w-full px-4 py-1 text-sm border rounded" required>
                             </div>
                             <div class="mb-4">
                               <label for="kelas" class="block font-bold mb-1 text-sm">Kelas:</label>
@@ -107,6 +107,7 @@
                                 <option class="text-sm" value="10">10</option>
                                 <option class="text-sm" value="11">11</option>
                                 <option class="text-sm" value="12">12</option>
+                                <option class="text-sm" value="Mahasiswa">Mahasiswa</option>
                               </select>
                             </div>
                             <label for="class" class="block font-bold mb-1 text-sm">Jenis Kelamin :</label>
