@@ -199,7 +199,7 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4">
-                                @if($absen->keterangan === 'Sakit')
+                                @if($absen->keterangan === 'sakit')
                                 <i class="fa fa-check px-1" style="font-size:20px"></i>
                                 @endif
                             </td>

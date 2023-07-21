@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\siswamagang;
 use App\Models\TataTertib;
+use App\Models\ApprovalIzin;
+use App\Models\jurnalsiswa;
 use App\Models\User;
 use App\Models\LaporanSiswa;
 use App\Models\ApprovalIzin;

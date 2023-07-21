@@ -1777,8 +1777,8 @@
             },
         };
     </script>
-        <script>
-            // Initialization for ES Users
+    <script>
+        // Initialization for ES Users
         var options = {
             series: [{
         name: 'Izin & Sakit',
@@ -1824,41 +1824,59 @@
                 enabled: true,
                 delay: 200
             },
-            dynamicAnimation: {
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded',
+                    borderRadius: 7,
+                },
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            animations: {
                 enabled: true,
-                speed: 450
-            }
-        },
-        stroke: {
-        show: true,
-        width: 2,
-        colors: ['transparent']
-        },
-        xaxis: {
-        categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+                easing: 'easeinout',
+                speed: 1200,
+                animateGradually: {
+                    enabled: true,
+                    delay: 200
+                },
+                dynamicAnimation: {
+                    enabled: true,
+                    speed: 450
+                }
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
 
-        },
-        yaxis: {
-        title: {
-            text: ''
-        }
-        },
-        fill: {
-        opacity: 5,
-        colors: [ '#008ffb', '#47EBB3']
-        },
-        tooltip: {
-        y: {
-            // formatter: function (val) {
-            //   return "$ " + val + " thousands"
-            // }
-        }
-        }
+            },
+            yaxis: {
+                title: {
+                    text: ''
+                }
+            },
+            fill: {
+                opacity: 5,
+                colors: ['#008ffb', '#47EBB3']
+            },
+            tooltip: {
+                y: {
+                    // formatter: function (val) {
+                    //   return "$ " + val + " thousands"
+                    // }
+                }
+            }
         };
 
         var chart = new ApexCharts(document.querySelector("#grafik_absensi"), options);
         chart.render();
-
     </script>
 
 
@@ -1867,6 +1885,6 @@
 
 </body>
 
-<!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:57 GMT -->
+// <!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:57 GMT -->
 
 </html>

@@ -16,7 +16,10 @@ class AlumniGuruController extends Controller
      */
     public function index()
     {
-        $siswas = Siswa::where('role', 'Alumni')->get();
+        $siswaLogin = Auth::user();
+        $siswas = Siswa::where('role', 'Alumni')
+                       ->where('name', $siswaLogin->name)
+                       ->get();
         return view('alumni_guru.index' , compact('siswas'));
     }
 
