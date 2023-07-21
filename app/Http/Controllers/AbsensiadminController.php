@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Absensiadmin;
 use App\Models\ApprovalIzin;
-use App\Http\Requests\StoreabsensiadminRequest;
-use App\Http\Requests\UpdateabsensiadminRequest;
+use App\Http\Requests\StoreAbsensiadminRequest;
+use App\Http\Requests\UpdateAbsensiadminRequest;
 use Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 use PhpOffice\PhpWord\PhpWord;
@@ -106,7 +106,7 @@ class AbsensiadminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreabsensiadminRequest  $request
+     * @param  \App\Http\Requests\StoreAbsensiadminRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -139,10 +139,10 @@ class AbsensiadminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\absensiadmin  $absensiadmin
+     * @param  \App\Models\Absensiadmin  $Absensiadmin
      * @return \Illuminate\Http\Response
      */
-    public function show(absensiadmin $absensiadmin)
+    public function show(Absensiadmin $Absensiadmin)
     {
         return view('absensi_admin.grafik');
     }
@@ -150,10 +150,10 @@ class AbsensiadminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\absensiadmin  $absensiadmin
+     * @param  \App\Models\Absensiadmin  $Absensiadmin
      * @return \Illuminate\Http\Response
      */
-    public function edit(absensiadmin $absensiadmin)
+    public function edit(Absensiadmin $Absensiadmin)
     {
         //
     }
@@ -161,11 +161,11 @@ class AbsensiadminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateabsensiadminRequest  $request
-     * @param  \App\Models\absensiadmin  $absensiadmin
+     * @param  \App\Http\Requests\UpdateAbsensiadminRequest  $request
+     * @param  \App\Models\Absensiadmin  $Absensiadmin
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateabsensiadminRequest $request, absensiadmin $absensiadmin)
+    public function update(UpdateAbsensiadminRequest $request, Absensiadmin $Absensiadmin)
     {
         //
     }
@@ -173,10 +173,10 @@ class AbsensiadminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\absensiadmin  $absensiadmin
+     * @param  \App\Models\Absensiadmin  $Absensiadmin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(absensiadmin $absensiadmin)
+    public function destroy(Absensiadmin $Absensiadmin)
     {
         //
     }

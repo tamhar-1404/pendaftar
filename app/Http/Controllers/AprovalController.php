@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\aproval;
+use App\Models\Aproval;
 use App\Models\User;
 use App\Models\Siswa;
-use App\Models\tolak;
+use App\Models\Tolak;
 use App\Models\TopUp;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreaprovalRequest;
@@ -31,11 +31,11 @@ class AprovalController extends Controller
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $aprovals = aproval::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $aprovals = Aproval::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(3);
             return view('aproval.layout', compact('aprovals'));
         }
 
-        $aprovals = aproval::latest()->paginate(3);
+        $aprovals = Aproval::latest()->paginate(3);
         return view('aproval.layout', compact('aprovals'));
 
     }
@@ -71,9 +71,9 @@ class AprovalController extends Controller
            Mail::to($user->email)->send(new Guru_email($aproval->name));
         }
 
-        $tolak = tolak::where('nisn', $aproval->nisn)->count();
+        $tolak = Tolak::where('nisn', $aproval->nisn)->count();
         if($tolak > 0){
-            tolak::where('nisn', $aproval->nisn)->delete();
+            Tolak::where('nisn', $aproval->nisn)->delete();
         }
         $foto_siswa = $aproval->foto_siswa;
          $data = Siswa::create([
@@ -98,13 +98,13 @@ class AprovalController extends Controller
 
 
 
-        Storage::move('public/pendaftaran/' . $foto_siswa, 'public/Siswa/' . $foto_siswa);
+        Storage::move('Public/Pendaftaran/' . $foto_siswa, 'Public/Siswa/' . $foto_siswa);
 
-        Storage::delete('public/pendaftaran/'. $aproval->foto_siswa);
-        Storage::delete('public/pendaftaran/'. $aproval->skck);
-        Storage::delete('public/pendaftaran/'. $aproval->cv);
-        Storage::delete('public/pendaftaran/'. $aproval->sp_ortu);
-        Storage::delete('public/pendaftaran/'. $aproval->sp_diri);
+        Storage::delete('Public/Pendaftaran/'. $aproval->foto_siswa);
+        Storage::delete('Public/Pendaftaran/'. $aproval->skck);
+        Storage::delete('Public/Pendaftaran/'. $aproval->cv);
+        Storage::delete('Public/Pendaftaran/'. $aproval->sp_ortu);
+        Storage::delete('Public/Pendaftaran/'. $aproval->sp_diri);
         $aproval->delete();
 
         $user = User::create([
@@ -123,7 +123,7 @@ class AprovalController extends Controller
     }
 }
 
-public function tolak(Request $request, Aproval $aproval)
+public function Tolak(Request $request, Aproval $aproval)
 {
     $alasan = $request->input('alasan');
 
@@ -141,7 +141,7 @@ public function tolak(Request $request, Aproval $aproval)
         $skck = $aproval->skck;
         $cv = $aproval->cv;
 
-        tolak::create([
+        Tolak::create([
             'name' => $aproval->name,
             'alasan' => $alasan,
             'tempat' => $aproval->tempat,
@@ -164,7 +164,7 @@ public function tolak(Request $request, Aproval $aproval)
             'password' => bcrypt($aproval->password)
         ]);
 
-        Mail::to($aproval->email)->send(new TolakEmail($emailData)); // Mengirim email ke siswa yang ditolak
+        Mail::to($aproval->email)->send(new TolakEmail($emailData)); // Mengirim email ke siswa yang diTolak
 
         $guruList = User::where('role', 'guru')
             ->where('sekolah', $aproval->sekolah)
@@ -175,11 +175,11 @@ public function tolak(Request $request, Aproval $aproval)
             Mail::to($guruEmails)->send(new TolakEmail($pesanguru)); // Mengirim email ke guru dengan nama sekolah yang sama
         }
 
-        Storage::move('public/pendaftaran/' . $foto_siswa, 'public/ditolak/' . $foto_siswa);
-        Storage::move('public/pendaftaran/' . $sp_diri, 'public/ditolak/' . $sp_diri);
-        Storage::move('public/pendaftaran/' . $sp_ortu, 'public/ditolak/' . $sp_ortu);
-        Storage::move('public/pendaftaran/' . $skck, 'public/ditolak/' . $skck);
-        Storage::move('public/pendaftaran/' . $cv, 'public/ditolak/' . $cv);
+        Storage::move('Public/Pendaftaran/' . $foto_siswa, 'Public/Ditolak/' . $foto_siswa);
+        Storage::move('Public/Pendaftaran/' . $sp_diri, 'Public/Ditolak/' . $sp_diri);
+        Storage::move('Public/Pendaftaran/' . $sp_ortu, 'Public/Ditolak/' . $sp_ortu);
+        Storage::move('Public/Pendaftaran/' . $skck, 'Public/Ditolak/' . $skck);
+        Storage::move('Public/Pendaftaran/' . $cv, 'Public/Ditolak/' . $cv);
 
         $aproval->delete();
 
@@ -196,7 +196,7 @@ public function tolak(Request $request, Aproval $aproval)
      * @param  \App\Models\aproval  $aproval
      * @return \Illuminate\Http\Response
      */
-    public function show(aproval $aproval)
+    public function show(Aproval $aproval)
     {
     //
     }
@@ -204,10 +204,10 @@ public function tolak(Request $request, Aproval $aproval)
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Models\Aproval  $aproval
      * @return \Illuminate\Http\Response
      */
-    public function edit(aproval $aproval)
+    public function edit(Aproval $aproval)
     {
         return view('aproval.edit' , compact('aproval'));
     }
@@ -238,10 +238,10 @@ public function tolak(Request $request, Aproval $aproval)
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Models\Aproval  $Aproval
      * @return \Illuminate\Http\Response
      */
-    public function destroy(aproval $aproval)
+    public function destroy(Aproval $aproval)
     {
         //
     }

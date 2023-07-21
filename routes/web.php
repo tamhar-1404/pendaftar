@@ -126,7 +126,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/tolak', App\Http\Controllers\TolakController::class);
         Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
         Route::post('/aproval/{aproval}/confirm', [App\Http\Controllers\AprovalController::class, 'confirm'])->name('aproval.confirm');
-        Route::post('/aproval/{aproval}/tolak', [App\Http\Controllers\AprovalController::class, 'tolak'])->name('aproval.tolak');
+        Route::post('/aproval/{aproval}/tolak', [App\Http\Controllers\AprovalController::class, 'Tolak'])->name('aproval.tolak');
         Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
         Route::get('send-email' , [MailController::class,'index']);
         Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
