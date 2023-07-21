@@ -30,7 +30,7 @@ class ApprovalIzinController extends Controller
 
      public function index(Request $request)
      {
-        if(auth()->user()->role == 'admin'){
+        if(auth()->user()->role == 'Admin'){
             $today = date('Y-m-d');
             ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status' => 'terimaabsen', 'status2' => '']);
 
