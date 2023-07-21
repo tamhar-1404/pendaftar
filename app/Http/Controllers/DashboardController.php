@@ -6,7 +6,7 @@ use App\Models\Dashboard;
 use App\Models\Siswa;
 use App\Models\Guru_admin;
 use App\Models\MOU;
-use App\Models\Tolak;
+use App\Models\tolak;
 use App\Models\Blog;
 use App\Models\aproval;
 use App\Http\Requests\StoreDashboardRequest;
@@ -24,7 +24,7 @@ class DashboardController extends Controller
         $siswa = Siswa::where('role', 'Siswa')->count();
         $guru = Guru_admin::all()->count();
         $mou = mou::all()->count();
-        $tolak = Tolak::all()->count();
+        $tolak = tolak::all()->count();
         $menunggu = Aproval::where('status', 'menunggu')->count();
 
         $menunggu_jan = Aproval::where('status', 'menunggu')->whereMonth('tanggal', '=', 1)->count();
