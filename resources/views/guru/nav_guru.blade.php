@@ -299,7 +299,7 @@
                 </a>
             </li>
             <li class="menu nav-item relative">
-                <a href="{{ route('guru.index') }}" class="nav-link">
+                <a href="{{ route('berita_guru.index') }}" class="nav-link">
                     <div class="flex items-center">
                         <svg class="group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
