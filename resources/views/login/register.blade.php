@@ -139,10 +139,11 @@
                                 <option value="" disabled selected>Pilih jurusan</option>
                                 <option value="RPL">RPL</option>
                                 <option value="Multimedia">Multimedia</option>
+                                <option value="TI">TI</option>
                              </select>
                             </div>
                             <div class="mb-4">
-                              <label for="school" class="block font-bold text-sm mb-1">Sekolah :</label>
+                              <label for="school" class="block font-bold text-sm mb-1">Sekolah / Universitas :</label>
                               <input type="text" id="school" name="sekolah" class="w-full px-4 py-1 text-sm border rounded" required>
                             </div>
                             <div class="flex justify-between gap-2 mb-4 ">
@@ -151,7 +152,7 @@
                                     <input type="date" id="internship-start" name="magang_awal" class="w-full px-4 text-sm py-1 border rounded" required>
                                   </div>
                                   <div class="">
-                                    <label for="internship-end" class="block font-bold text-sm mb-1">Selesai MAgang:</label>
+                                    <label for="internship-end" class="block font-bold text-sm mb-1">Selesai Magang:</label>
                                     <input type="date" id="internship-end" name="magang_akhir" class="w-full px-4 py-1 text-sm border rounded" required>
                                   </div>
                             </div>
