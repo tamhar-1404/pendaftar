@@ -8,8 +8,6 @@ use App\Models\ApprovalIzin;
 use App\Models\jurnalsiswa;
 use App\Models\User;
 use App\Models\LaporanSiswa;
-use App\Models\ApprovalIzin;
-use App\Models\jurnalsiswa;
 use App\Models\mou;
 use Auth;
 use Illuminate\Support\Facades\Mail;

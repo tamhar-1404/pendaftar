@@ -13,7 +13,12 @@ module.exports = {
           }
     },
   },
+
+  variants: {
+    extend: {
+      textColor: ['active'],
+    },
+  },
+
   plugins: [],
-
-}
-
+};

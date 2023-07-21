@@ -54,7 +54,7 @@
             </li>
             {{-- dashboard --}}
             <li class="relative mt-5">
-                <a href="{{route('dudi.index')}}"
+                <a href="{{ route('dudi.index') }}"
                     class="flex h-12 cursor-pointer items-center   rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 {{ request()->routeIs('dudi.index') ? 'bg-blue-500 text-white' : '' }} hover:text-white hover:outline-none focus:bg-blue-500 focus:text-white focus:outline-none active:bg-blue-500 active:text-white active:outline-none data-[te-sidenav-state-active]:text-white data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10">
                     <span class="mr-4 [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-white dark:[&>svg]:text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
@@ -159,7 +159,7 @@
             </li>
             {{-- jurnal --}}
             <li class="relative">
-                <a href="{{route('jurnal_admin.index')}}"
+                <a href="{{ route('jurnal_admin.index') }}"
                     class="flex h-12 cursor-pointer items-center   rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-white hover:outline-none focus:bg-blue-500 focus:text-white focus:outline-none active:bg-blue-500 active:text-white active:outline-none data-[te-sidenav-state-active]:text-white data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10">
                     <span class="mr-4 [&>svg]:h-4 [&>svg]:w-5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
@@ -229,7 +229,7 @@
                     data-te-sidenav-collapse-ref>
                     <li class="relative">
                         <a href="{{ route('tatatertib.index') }}"
-                            class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                            class="flex h-6 cursor-pointer active:text-blue-400 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
                             data-te-sidenav-link-ref>Tata tertib</a>
                     </li>
                     <li class="relative">

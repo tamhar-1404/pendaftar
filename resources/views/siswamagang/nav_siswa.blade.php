@@ -277,7 +277,8 @@
          <ul
              class="horizontal-menu hidden border-t border-[#ebedf2] bg-white py-1 px-6 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-[#0e1726] dark:text-white-dark lg:space-x-1.5 xl:space-x-8">
              <li class="menu nav-item relative">
-                 <a href="{{ route('siswamagang.index') }}" class="nav-link {{ request()->routeIs('siswamagang.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }} ">
+                 <a href="{{ route('siswamagang.index') }}"
+                     class="nav-link {{ request()->routeIs('siswamagang.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }} ">
                      <div class="flex items-center ">
                          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
                              xmlns="http://www.w3.org/2000/svg">
@@ -293,7 +294,8 @@
                  </a>
              </li>
              <li class="menu nav-item relative">
-                 <a href="{{ route('jurnal_siswa.index') }}" class="nav-link {{ request()->routeIs('jurnal_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }}">
+                 <a href="{{ route('jurnal_siswa.index') }}"
+                     class="nav-link {{ request()->routeIs('jurnal_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }}">
                      <div class="flex items-center">
                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                              stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -305,22 +307,23 @@
                  </a>
              </li>
              <li class="menu nav-item relative">
-                <a href="{{ route('absensi_siswa.index') }}" class="nav-link {{ request()->routeIs('absensi_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }}">
-                    <div
-                        class="flex items-center ">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-3 h-3">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                        </svg>
-                        <span class="px-1">Absensi</span>
-                    </div>
-                </a>
+                 <a href="{{ route('absensi_siswa.index') }}"
+                     class="nav-link {{ request()->routeIs('absensi_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }}">
+                     <div class="flex items-center ">
+                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             stroke-width="1.5" stroke="currentColor" class="w-3 h-3">
+                             <path stroke-linecap="round" stroke-linejoin="round"
+                                 d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                         </svg>
+                         <span class="px-1">Absensi</span>
+                     </div>
+                 </a>
              </li>
 
              </li>
              <li class="menu nav-item relative">
-                 <a href="{{ route('berita_siswa.index') }}" class="nav-link {{ request()->routeIs('berita_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }}">
+                 <a href="{{ route('berita_siswa.index') }}"
+                     class="nav-link {{ request()->routeIs('berita_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }}">
                      <div class="flex items-center ">
                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                              stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -332,7 +335,8 @@
                  </a>
              </li>
              <li class="menu nav-item relative">
-                 <a href="javascript:;" class="nav-link {{ request()->routeIs('tatib_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }} {{ request()->routeIs('siswa_magang_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }} {{ request()->routeIs('piket_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }}">
+                 <a href="javascript:;"
+                     class="nav-link {{ request()->routeIs('tatib_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }} {{ request()->routeIs('siswa_magang_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }} {{ request()->routeIs('piket_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }}">
                      <div class="flex items-center">
                          <svg class="group-hover:!text-primary" width="14" height="14" viewBox="0 0 20 20"
                              fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -369,13 +373,14 @@
                      {{-- <li>
                          <a href="{{ route('chat_siswa.index') }}">Chat</a>
                      </li> --}}
-                     <li>
+                     {{-- <li>
                          <a href="http://127.0.0.1:8000/siswamagang_siswa">Siswa</a>
-                     </li>
+                     </li> --}}
                  </ul>
              </li>
              <li class="menu nav-item relative">
-                 <a href="javascript:;" class="nav-link {{ request()->routeIs('History_topup.index') ? 'bg-blue-500 text-white hover:bg-blue-500'  : '' }}">
+                 <a href="javascript:;"
+                     class="nav-link {{ request()->routeIs('History_topup.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }}">
                      <div class="flex items-center">
                          <svg class="group-hover:!text-primary" width="14" height="14" viewBox="0 0 20 20"
                              fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -404,7 +409,7 @@
                  </a>
                  <ul class="sub-menu">
                      <li>
-                         <a href="{{route('History_topup.index')}}">History Topup</a>
+                         <a href="{{ route('History_topup.index') }}">History Topup</a>
                      </li>
                      <li>
                          <a href="{{ route('History.index') }}">History Transaksi</a>

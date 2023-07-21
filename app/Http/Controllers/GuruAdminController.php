@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Guru_admin;
 use App\Models\User;
 use App\Models\Siswa;
-use Illuminate\Support\Facades\Mail;
 use App\Mail\AkunGuru;
-use Hash;
+use App\Models\Guru_admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreGuru_adminRequest;
 use App\Http\Requests\UpdateGuru_adminRequest;
 
@@ -58,7 +58,7 @@ class GuruAdminController extends Controller
              'sekolah' => 'required',
              'email' => 'required|unique:guru_admins',
              'alamat' => 'required',
-             'no' => 'required',
+             'no' => 'required|unique:guru_admins|min:10|max:14',
              'password' => 'required'
          ]);
          $password = $request->password; // Simpan password yang belum di-hash
