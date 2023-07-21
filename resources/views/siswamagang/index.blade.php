@@ -1861,29 +1861,28 @@
     xaxis: {
     categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
 
-    },
-    yaxis: {
-    title: {
-        text: ''
+            },
+            yaxis: {
+                title: {
+                    text: ''
+                }
+            },
+            fill: {
+                opacity: 5,
+                colors: ['#008ffb', '#47EBB3']
+            },
+            tooltip: {
+                y: {
+                    // formatter: function (val) {
+                    //   return "$ " + val + " thousands"
+                    // }
+                }
+            }
+        };
     }
-    },
-    fill: {
-    opacity: 5,
-    colors: [ '#008ffb', '#47EBB3']
-    },
-    tooltip: {
-    y: {
-        // formatter: function (val) {
-        //   return "$ " + val + " thousands"
-        // }
-    }
-    }
-    };
-
-    var chart = new ApexCharts(document.querySelector("#grafik_jurnal"), options);
-    chart.render();
-
-</script>
+        var chart = new ApexCharts(document.querySelector("#grafik_absensi"), options);
+        chart.render();
+    </script>
 
 
 

@@ -373,9 +373,9 @@
                      {{-- <li>
                          <a href="{{ route('chat_siswa.index') }}">Chat</a>
                      </li> --}}
-                     {{-- <li>
-                         <a href="http://127.0.0.1:8000/siswamagang_siswa">Siswa</a>
-                     </li> --}}
+                     <li>
+                         <a href="{{route('siswamagang_siswa')}}">Siswa</a>
+                     </li>
                  </ul>
              </li>
              <li class="menu nav-item relative">

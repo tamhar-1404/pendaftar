@@ -141,7 +141,6 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('History', App\Http\Controllers\HistorySiswaController::class);
 
         Route::put('izin_update', [App\Http\Controllers\ApprovalIzinController::class, 'izin_update'])->name('izin_update');
-        Route::get('siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa']);
         Route::resource('absensi_siswa', App\Http\Controllers\AbsensiSiswaController::class);
         Route::resource('berita_siswa', App\Http\Controllers\BeritaSiswaController::class);
         Route::resource('tatib_siswa', App\Http\Controllers\TatibSiswaController::class);
@@ -150,7 +149,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
         Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
         Route::resource('/History_topup', App\Http\Controllers\HistoryTopupController::class);
-        Route::get('siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa']);
+        Route::get('/siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa'])->name('siswamagang_siswa');
     });
 
     Route::middleware(['role:guru'])->group(function () {

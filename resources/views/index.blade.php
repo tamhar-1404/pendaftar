@@ -16,7 +16,17 @@
     <meta name="version" content="1.1.0">
     <!-- favicon -->
     <link href="/admin/assets/images/logo.png" rel="shortcut icon">
-    @vite('resources/css/app.css')
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                  }
+            },
+          },
+
+    </script>
     <!-- Css -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
