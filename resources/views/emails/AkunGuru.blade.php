@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        }
+    </script>
     <style>
         /* Reset CSS */
         body, h1, p {
