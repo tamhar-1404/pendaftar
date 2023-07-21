@@ -12,10 +12,9 @@
             extend: {
                 blur: {
                     xs: '3px',
-                  }
+                }
             },
-          },
-
+        },
     </script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="admin/hummasoft.png" />
@@ -191,7 +190,7 @@
                                     <path opacity="0.5" d="M13 19H9" stroke="currentColor" stroke-width="1.5"
                                         stroke-linecap="round" />
                                 </svg>
-                                PRINTTt
+                                PRINT
                             </button>
                         </div>
                     </div>
