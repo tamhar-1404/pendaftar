@@ -19,6 +19,17 @@
         <script defer src="assets/js/popper.min.js"></script>
         <script defer src="assets/js/tippy-bundle.umd.min.js"></script>
         <script defer src="assets/js/sweetalert.min.js"></script>
+        <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+        <script>
+            theme: {
+                extend: {
+                    blur: {
+                        xs: '3px',
+                    }
+                },
+            },
+
+        </script>
     </head>
     <body
         x-data="main"

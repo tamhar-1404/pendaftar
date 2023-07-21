@@ -32,6 +32,17 @@
         localStorage.getItem("_x_darkMode_on") === "true" &&
             document.documentElement.classList.add("dark");
     </script>
+    <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+        <script>
+            theme: {
+                extend: {
+                    blur: {
+                        xs: '3px',
+                      }
+                },
+              },
+
+        </script>
 </head>
 
 <body x-data class="is-header-blur" x-bind="$store.global.documentBody">

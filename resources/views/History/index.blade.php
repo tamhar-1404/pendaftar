@@ -13,7 +13,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>siswa - Dashboad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    @vite('resources/css/app.css')
+    <script src="https://cdn.tailwindcss.com%22%3E/""></script>
+        <script>
+            theme: {
+                extend: {
+                    blur: {
+                        xs: '3px',
+                      }
+                },
+              },
+
+        </script>
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/x-icon" href="favicon.png" />

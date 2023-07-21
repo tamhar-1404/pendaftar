@@ -27,6 +27,17 @@
           },
         };
       </script>
+      <script src="https://cdn.tailwindcss.com%22%3E/""></script>
+      <script>
+          theme: {
+              extend: {
+                  blur: {
+                      xs: '3px',
+                    }
+              },
+            },
+
+      </script>
 </head>
 <body>
      <!-- screen loader -->

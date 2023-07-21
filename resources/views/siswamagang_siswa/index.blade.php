@@ -13,6 +13,17 @@
 
     <!-- Javascript Assets -->
     <script src="{{ asset('admin/js/app.js') }}" defer></script>
+    <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        },
+
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />

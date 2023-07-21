@@ -34,6 +34,17 @@
     <script defer src="siswa/js/popper.min.js"></script>
     <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <script src="https://cdn.tailwindcss.com%22%3E/""></script>
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                  }
+            },
+          },
+
+    </script>
     <script defer src="siswa/js/sweetalert.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
 </head>

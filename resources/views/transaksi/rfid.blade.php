@@ -12,7 +12,17 @@
     <meta name="AdsBot-Google" content="noindex follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    @vite('resources/css/app.css')
+    <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        },
+
+    </script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="kode/images/favicon.webp" />

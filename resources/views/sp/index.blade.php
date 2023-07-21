@@ -9,6 +9,17 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        },
+
+    </script>
     <link rel="stylesheet" href="load/load.css">
     <script>
         tailwind.config = {
