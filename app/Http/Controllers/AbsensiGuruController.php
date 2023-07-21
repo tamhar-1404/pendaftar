@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\absensi_guru;
 use App\Http\Requests\Storeabsensi_guruRequest;
 use App\Http\Requests\Updateabsensi_guruRequest;
+use App\Models\ApprovalIzin;
 
 class AbsensiGuruController extends Controller
 {
@@ -15,7 +16,8 @@ class AbsensiGuruController extends Controller
      */
     public function index()
     {
-        return view('absensi_guru.index');
+        $terimas = ApprovalIzin::where([['sekolah', auth()->user()->sekolah],['status', 'terimaabsen']])->get();
+        return view('absensi_guru.index', compact('terimas'));
     }
 
     /**
