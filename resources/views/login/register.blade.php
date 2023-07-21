@@ -16,6 +16,16 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+        <script>
+            theme: {
+                extend: {
+                    blur: {
+                        xs: '3px',
+                    }
+                },
+            }
+        </script>
     <style>
         .step:not(.active) {
           display: none;

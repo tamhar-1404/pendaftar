@@ -9,6 +9,16 @@
         <title>siswa - Dashboad</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/x-icon" href="favicon.png" />
+        <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+        <script>
+            theme: {
+                extend: {
+                    blur: {
+                        xs: '3px',
+                    }
+                },
+            }
+        </script>
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />

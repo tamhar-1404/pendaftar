@@ -4,6 +4,16 @@
     </head>
     <body>
         <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+        <script>
+            theme: {
+                extend: {
+                    blur: {
+                        xs: '3px',
+                    }
+                },
+            }
+        </script>
         <main class="main mt-9 px-7 w-full pb-9  ">
             <div class="">
                 <div class="">

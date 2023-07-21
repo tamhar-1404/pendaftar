@@ -14,6 +14,16 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
     <title>Login</title>
+    <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+        <script>
+            theme: {
+                extend: {
+                    blur: {
+                        xs: '3px',
+                    }
+                },
+            }
+        </script>
     <link href="/admin/assets/images/logo.png" rel="shortcut icon">>
 
     <!-- CSS Assets -->

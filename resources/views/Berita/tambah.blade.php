@@ -7,6 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- CSS Assets -->
+    <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+        <script>
+            theme: {
+                extend: {
+                    blur: {
+                        xs: '3px',
+                    }
+                },
+            }
+        </script>
     <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
 
     <!-- Javascript Assets -->
