@@ -142,7 +142,7 @@
                     <div
                         class="space-y-1.5 rounded-lg bg-gradient-to-t from-[#19213299] via-[#19213266] to-transparent px-4 pb-3 pt-12">
                         <div class="line-clamp-2">
-                            <a href="#" class="text-base font-medium text-white">
+                            <a href="{{ route('berita_guru.show', $row->id) }}" class="text-base font-medium text-white">
                                 {{ $row->judul }}
                             </a>
                         </div>
