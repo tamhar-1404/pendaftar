@@ -4,7 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat</title>
-  @vite('resources/css/app.css')
+  <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        },
+    </script>
 </head>
 <body class="w-screen h-screen mt-100 bg-gray-100 ">
     <div class=" absolute top-0 hidden p-6 lg:block lg:px-12">

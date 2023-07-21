@@ -204,7 +204,7 @@
                                     class="w-full text-sm px-4 py-1 border rounded" required>
                             </div>
                             <div class="mb-4">
-                              <label for="skck" class="block font-bold text-sm mb-1">SKCK :<span class="font-light italic"> - opsional</span></label>
+                              <label for="skck" class="block font-bold text-sm mb-1">SKCK <span class="font-light italic">(opsional)</span> :</label>
                               <input type="file" id="skck" name="skck" class="w-full text-sm px-4 py-1 border rounded" >
                             </div>
                             <div class="mb-4">
