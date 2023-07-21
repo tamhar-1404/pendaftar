@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    @if(auth()->user()->role == 'Admin')
     <!-- screen loader -->
     {{-- <div
         class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
@@ -84,6 +85,7 @@
             sidenav - 2
         });
     </script>
+    @endif
 </body>
 
 </html>

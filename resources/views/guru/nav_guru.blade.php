@@ -299,7 +299,7 @@
                 </a>
             </li>
             <li class="menu nav-item relative">
-                <a href="javascript:;" class="nav-link">
+                <a href="{{ route('guru.index') }}" class="nav-link">
                     <div class="flex items-center">
                         <svg class="group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -316,24 +316,9 @@
                                 d="M2 18.5C2 19.5872 2 20.1308 2.17127 20.5596C2.39963 21.1313 2.83765 21.5856 3.38896 21.8224C3.80245 22 4.32663 22 5.375 22H7.625C8.67337 22 9.19755 22 9.61104 21.8224C10.1624 21.5856 10.6004 21.1313 10.8287 20.5596C11 20.1308 11 19.5872 11 18.5C11 17.4128 11 16.8692 10.8287 16.4404C10.6004 15.8687 10.1624 15.4144 9.61104 15.1776C9.19755 15 8.67337 15 7.625 15H5.375C4.32663 15 3.80245 15 3.38896 15.1776C2.83765 15.4144 2.39963 15.8687 2.17127 16.4404C2 16.8692 2 17.4128 2 18.5Z"
                                 fill="currentColor" />
                         </svg>
-                        <span class="px-1">Lainnya</span>
-                    </div>
-                    <div class="right_arrow">
-                        <svg class="h-4 w-4 rotate-90" width="16" height="16" viewBox="0 0 24 24"
-                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                        <span class="px-1">Berita</span>
                     </div>
                 </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="{{ route('berita_guru.index') }}">Berita</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('chat_guru.index') }}">Chat</a>
-                    </li>
-                </ul>
             </li>
         </ul>
     </div>

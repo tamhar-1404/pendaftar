@@ -17,10 +17,15 @@ class LaporanSiswaController extends Controller
      */
     public function index()
     {
-        $siswa = LaporanSiswa::where('status', 'menunggu')->get();
-        $tolak = LaporanSiswa::where('status', 'tolak')->get();
-        $terima = LaporanSiswa::where('status', 'terima')->get();
-        return view('laporansiswa.index', compact('siswa','terima','tolak'));
+        if(auth()->user()->role == 'admin'){
+            $siswa = LaporanSiswa::where('status', 'menunggu')->get();
+            $tolak = LaporanSiswa::where('status', 'tolak')->get();
+            $terima = LaporanSiswa::where('status', 'terima')->get();
+            return view('laporansiswa.index', compact('siswa','terima','tolak'));
+
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**

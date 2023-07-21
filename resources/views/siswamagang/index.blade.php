@@ -1192,7 +1192,8 @@
                             <h1>Dashboard</h1>
                         </div>
                         <div class="flex justify-end font-semibold bg-blue-400 text-white px-4 py-1 rounded">
-                            <h1>Saldo anda : <span id="a">Rp {{ number_format($user->saldo ? $user->saldo : 0, 0, ',', '.') }}</span></h1>
+                            <h1>Saldo anda : <span id="a">Rp
+                                    {{ number_format($user->saldo ? $user->saldo : 0, 0, ',', '.') }}</span></h1>
                         </div>
                     </div>
                     {{--  modal  --}}
@@ -1228,7 +1229,9 @@
                                             <div class="relative z-0 w-full mb-6 group">
                                                 <input type="number" name="saldo" id="saldo"
                                                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                                    placeholder=" " min="5000" max="100000" oninvalid="this.setCustomValidity('Topup minimal 5.000 dan maksimal 100.000')" oninput="setCustomValidity('')"/>
+                                                    placeholder=" " min="5000" max="100000"
+                                                    oninvalid="this.setCustomValidity('Topup minimal 5.000 dan maksimal 100.000')"
+                                                    oninput="setCustomValidity('')" />
                                                 <label for="saldo"
                                                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Masukkan
                                                     saldo</label>
@@ -1821,83 +1824,80 @@
                 preflight: false,
             },
         };
-
+    </script>
+    <script>
         // Initialization for ES Users
         var options = {
-        series: [{
-        name: 'Mengisi',
-        data: [{{$mengisi_jan}},{{$mengisi_feb}},{{$mengisi_mar}},{{$mengisi_apr}},{{$mengisi_mei}},
-            {{$mengisi_jun}},{{$mengisi_jul}},{{$mengisi_aug}},{{$mengisi_sep}},{{$mengisi_okt}},{{$mengisi_nov}},{{$mengisi_des}}
-        ]
-        }, {
-        name: 'Tidak Mengisi',
-        data: [
-            {{$tdk_mengisi_jan}},{{$tdk_mengisi_feb}},{{$tdk_mengisi_mar}},{{$tdk_mengisi_apr}},{{$tdk_mengisi_mei}},
-            {{$tdk_mengisi_jun}},{{$tdk_mengisi_jul}},{{$tdk_mengisi_aug}},{{$tdk_mengisi_sep}},{{$tdk_mengisi_okt}},{{$tdk_mengisi_nov}},{{$tdk_mengisi_des}}
-        ]
-        }],
-        chart: {
-        type: 'bar',
-        height: 350
-        },
-        plotOptions: {
-        bar: {
-            horizontal: false,
-            columnWidth: '55%',
-            endingShape: 'rounded',
-            borderRadius: 7,
-        },
-        },
-        dataLabels: {
-        enabled: false,
-        },
-        animations: {
-            enabled: true,
-            easing: 'easeinout',
-            speed: 1200,
-            animateGradually: {
-                enabled: true,
-                delay: 200
+            series: [{
+                name: 'Mengisi',
+                data: [{{$mengisi_jan}},{{$mengisi_feb}},{{$mengisi_mar}},{{$mengisi_apr}},{{$mengisi_mei}},
+                    {{$mengisi_jun}},{{$mengisi_jul}},{{$mengisi_aug}},{{$mengisi_sep}},{{$mengisi_okt}},{{$mengisi_nov}},{{$mengisi_des}}
+                ]
+            }, {
+                name: 'Tidak Mengisi',
+                data: [
+                    {{$tdk_mengisi_jan}},{{$tdk_mengisi_feb}},{{$tdk_mengisi_mar}},{{$tdk_mengisi_apr}},{{$tdk_mengisi_mei}},
+                    {{$tdk_mengisi_jun}},{{$tdk_mengisi_jul}},{{$tdk_mengisi_aug}},{{$tdk_mengisi_sep}},{{$tdk_mengisi_okt}},{{$tdk_mengisi_nov}},{{$tdk_mengisi_des}}
+                ]
+            }],
+            chart: {
+                type: 'bar',
+                height: 350
             },
-            dynamicAnimation: {
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded',
+                    borderRadius: 7,
+                },
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            animations: {
                 enabled: true,
-                speed: 450
-            }
-        },
-        stroke: {
-        show: true,
-        width: 2,
-        colors: ['transparent']
-        },
-        xaxis: {
-        categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+                easing: 'easeinout',
+                speed: 1200,
+                animateGradually: {
+                    enabled: true,
+                    delay: 200
+                },
+                dynamicAnimation: {
+                    enabled: true,
+                    speed: 450
+                }
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
 
-        },
-        yaxis: {
-        title: {
-            text: ''
-        }
-        },
-        fill: {
-        opacity: 5,
-        colors: [ '#008ffb', '#47EBB3']
-        },
-        tooltip: {
-        y: {
-            // formatter: function (val) {
-            //   return "$ " + val + " thousands"
-            // }
-        }
-        }
+            },
+            yaxis: {
+                title: {
+                    text: ''
+                }
+            },
+            fill: {
+                opacity: 5,
+                colors: ['#008ffb', '#47EBB3']
+            },
+            tooltip: {
+                y: {
+                    // formatter: function (val) {
+                    //   return "$ " + val + " thousands"
+                    // }
+                }
+            }
         };
 
         var chart = new ApexCharts(document.querySelector("#grafik_jurnal"), options);
         chart.render();
-
     </script>
-
-
-
 
 </body>
 

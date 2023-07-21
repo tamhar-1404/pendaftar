@@ -1435,7 +1435,7 @@
             <!-- end sidebar section -->
 
             <div class="main-content">
-               @include('navbar.index')
+               @include('siswamagang.nav_siswa')
 
                @include('piket_siswa.isi')
             </div>

@@ -42,7 +42,7 @@ class SiswaController extends Controller
     public function siswamagang_siswa()
     {
         $siswas = Siswa::all();
-        return view('siswamagang_siswa.index    ', compact('siswas'));
+        return view('siswamagang_siswa.index ', compact('siswas'));
     }
     public function view()
     {

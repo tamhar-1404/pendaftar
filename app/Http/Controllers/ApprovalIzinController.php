@@ -30,21 +30,26 @@ class ApprovalIzinController extends Controller
 
      public function index(Request $request)
      {
+        if(auth()->user()->role == 'admin'){
+            $today = date('Y-m-d');
+            ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status' => 'terimaabsen', 'status2' => '']);
 
-        $today = date('Y-m-d');
-        ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status' => 'terimaabsen', 'status2' => '']);
+            $menunggu = ApprovalIzin::where('status', 'menunggu')->get();
+            $terima = ApprovalIzin::where('status2', 'izin')->get();
 
-        $menunggu = ApprovalIzin::where('status', 'menunggu')->get();
-        $terima = ApprovalIzin::where('status2', 'izin')->get();
+            if ($request->has('cari')) {
+                $keyword = $request->cari;
+                $aprovals = ApprovalIzin::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+                return view('approvalizin.index', compact('menunggu', 'terima', 'aprovals'));
+            }
 
-        if ($request->has('cari')) {
-            $keyword = $request->cari;
-            $aprovals = ApprovalIzin::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $aprovals = ApprovalIzin::latest()->paginate(3);
             return view('approvalizin.index', compact('menunggu', 'terima', 'aprovals'));
-        }
 
-        $aprovals = ApprovalIzin::latest()->paginate(3);
-        return view('approvalizin.index', compact('menunggu', 'terima', 'aprovals'));
+        }
+        else{
+            return redirect()->back();
+        }
      }
 
     /**
