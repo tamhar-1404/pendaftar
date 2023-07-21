@@ -22,10 +22,9 @@
             extend: {
                 blur: {
                     xs: '3px',
-                  }
+                }
             },
-          },
-
+        },
     </script>
     <!-- Css -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
@@ -87,8 +86,13 @@
                     <ul class="list-none menu-social mb-0">
                         <li class="inline">
                             <a href="{{ route('login.index') }}"
-                                class="h-9 w-9 inline-flex items-center text-center justify-center text-base font-normal tracking-wide border align-middle transition duration-500 ease-in-out rounded-full hover:text-white text-white"><i
-                                    class="uil uil-user"></i></a>
+                                class="h-9 w-9 inline-flex items-center text-center justify-center text-base font-normal tracking-wide border align-middle transition duration-500 ease-in-out rounded-full hover:text-white text-white"><i><svg
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                    </svg>
+                                </i></a>
                         </li>
                     </ul>
                     <!-- Navbar Collapse Manu Button -->
@@ -157,7 +161,7 @@
                                                     title: 'Data Pengguna',
                                                     html: `<div class="w-full">
                                                                 <div class="w-full flex justify-center mb-10">
-                                                                     <img class="w-[70px] h-[70px] rounded-full" src="{{asset('storage/Siswa/' . "")}}/${response.foto}" alt="" srcset="">
+                                                                     <img class="w-[70px] h-[70px] rounded-full" src="{{ asset('storage/Siswa/' . '') }}/${response.foto}" alt="" srcset="">
                                                                 </div>
                                                                 <div class="flex flex-col items-center gap-2">
                                                                 <div class="flex w-full text-base ">
@@ -614,22 +618,23 @@
         $(window).on('load', function() {
             $('.spin_load').fadeOut();
         });
-        function formatRupiah(angka, prefix){
-			var number_string = angka.replace(/[^,\d]/g, '').toString(),
-			split   		= number_string.split(','),
-			sisa     		= split[0].length % 3,
-			rupiah     		= split[0].substr(0, sisa),
-			ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
 
-			// tambahkan titik jika yang di input sudah menjadi angka ribuan
-			if(ribuan){
-				separator = sisa ? '.' : '';
-				rupiah += separator + ribuan.join('.');
-			}
+        function formatRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                split = number_string.split(','),
+                sisa = split[0].length % 3,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
-			rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-			return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
-		}
+            // tambahkan titik jika yang di input sudah menjadi angka ribuan
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+        }
     </script>
     <!-- JAVASCRIPTS -->
 </body>
