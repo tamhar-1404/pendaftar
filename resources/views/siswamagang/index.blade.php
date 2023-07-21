@@ -35,6 +35,9 @@
     <script defer src="siswa/js/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+    <!-- Add this line to include ApexCharts library -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts@3.28.0/dist/apexcharts.min.js"></script>
+
 </head>
 
 <body x-data="main"
@@ -1410,7 +1413,7 @@
                                 <div class="mb-5 flex items-center">
                                     <h5 class="text-lg font-semibold dark:text-white-light">Absensi</h5>
                                 </div>
-                                <div id="grafik_admin" class=" w-90% h-35 mx-4 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
+                                <div id="grafik_absensi" class=" w-90% h-35 mx-4 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
                                     <div class="w-full px-4 mt-6">
                                        <div class="w-80%  bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
                                            Grafik Absensi
@@ -1780,72 +1783,41 @@
     <script>
         // Initialization for ES Users
         var options = {
-            series: [{
-        name: 'Izin & Sakit',
-        data: [{{$izin_jan}},{{$izin_feb}},{{$izin_mar}},{{$izin_apr}},{{$izin_mei}},
-        {{$izin_jun}},{{$izin_jul}},{{$izin_aug}},{{$izin_sep}},{{$izin_okt}},{{$izin_nov}},{{$izin_des}}
-      ]
-      }, {
-        name: 'Hadir',
-        data: [{{$Hadir_jan}},{{$Hadir_feb}},{{$Hadir_mar}},{{$Hadir_apr}},{{$Hadir_mei}},
-        {{$Hadir_jun}},{{$Hadir_jul}},{{$Hadir_aug}},{{$Hadir_sep}},{{$Hadir_okt}},{{$Hadir_nov}},{{$Hadir_des}}
-      ]
-      },{
-        name: 'telat',
-        data: [{{$Telat_jan}},{{$Telat_feb}},{{$Telat_mar}},{{$Telat_apr}},{{$Telat_mei}},
-        {{$Telat_jun}},{{$Telat_jul}},{{$Telat_aug}},{{$Telat_sep}},{{$Telat_okt}},{{$Telat_nov}},{{$Telat_des}}
-      ]
-      },{
-        name: 'alfa',
-        data: [{{$Alfa_jan}},{{$Alfa_feb}},{{$Alfa_mar}},{{$Alfa_apr}},{{$Alfa_mei}},
-        {{$Alfa_jun}},{{$Alfa_jul}},{{$Alfa_aug}},{{$Alfa_sep}},{{$Alfa_okt}},{{$Alfa_nov}},{{$Alfa_des}}
-      ]
-      },],
-        chart: {
-        type: 'bar',
-        height: 350
-        },
-        plotOptions: {
-        bar: {
-            horizontal: false,
-            columnWidth: '55%',
-            endingShape: 'rounded',
-            borderRadius: 7,
-        },
-        },
-        dataLabels: {
-        enabled: false,
-        },
-        animations: {
-            enabled: true,
-            easing: 'easeinout',
-            speed: 1200,
-            animateGradually: {
-                enabled: true,
-                delay: 200
+            series: [
+                {
+                    name: 'Izin & Sakit',
+                    data: [{{$izin_jan}}, {{$izin_feb}}, {{$izin_mar}}, {{$izin_apr}}, {{$izin_mei}},
+                    {{$izin_jun}}, {{$izin_jul}}, {{$izin_aug}}, {{$izin_sep}}, {{$izin_okt}}, {{$izin_nov}}, {{$izin_des}}
+                    ]
+                },
+                {
+                    name: 'Hadir',
+                    data: [{{$Hadir_jan}}, {{$Hadir_feb}}, {{$Hadir_mar}}, {{$Hadir_apr}}, {{$Hadir_mei}},
+                    {{$Hadir_jun}}, {{$Hadir_jul}}, {{$Hadir_aug}}, {{$Hadir_sep}}, {{$Hadir_okt}}, {{$Hadir_nov}}, {{$Hadir_des}}
+                    ]
+                },
+                {
+                    name: 'telat',
+                    data: [{{$Telat_jan}}, {{$Telat_feb}}, {{$Telat_mar}}, {{$Telat_apr}}, {{$Telat_mei}},
+                    {{$Telat_jun}}, {{$Telat_jul}}, {{$Telat_aug}}, {{$Telat_sep}}, {{$Telat_okt}}, {{$Telat_nov}}, {{$Telat_des}}
+                    ]
+                },
+                {
+                    name: 'alfa',
+                    data: [{{$Alfa_jan}}, {{$Alfa_feb}}, {{$Alfa_mar}}, {{$Alfa_apr}}, {{$Alfa_mei}},
+                    {{$Alfa_jun}}, {{$Alfa_jul}}, {{$Alfa_aug}}, {{$Alfa_sep}}, {{$Alfa_okt}}, {{$Alfa_nov}}, {{$Alfa_des}}
+                    ]
+                },
+            ],
+            chart: {
+                type: 'donut', // Changed from 'bar' to 'donut'
+                height: 350,
             },
             plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: '55%',
-                    endingShape: 'rounded',
-                    borderRadius: 7,
-                },
-            },
-            dataLabels: {
-                enabled: false,
-            },
-            animations: {
-                enabled: true,
-                easing: 'easeinout',
-                speed: 1200,
-                animateGradually: {
-                    enabled: true,
-                    delay: 200
-                },
-                dynamicAnimation: {
-                    enabled: true,
-                    speed: 450
+                pie: {
+                    donut: {
+                        size: '65%' // Adjust the size of the donut hole
+                    }
                 }
             },
             stroke: {
@@ -1855,7 +1827,6 @@
             },
             xaxis: {
                 categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
-
             },
             yaxis: {
                 title: {
@@ -1863,8 +1834,8 @@
                 }
             },
             fill: {
-                opacity: 5,
-                colors: ['#008ffb', '#47EBB3']
+                opacity: 1,
+                colors: ['#008ffb', '#47EBB3', '#FF4560', '#FEB019']
             },
             tooltip: {
                 y: {
@@ -1875,9 +1846,152 @@
             }
         };
 
-        var chart = new ApexCharts(document.querySelector("#grafik_absensi"), options);
+        var chart = new ApexCharts(document.querySelector("#"), options);
         chart.render();
     </script>
+    <script>
+        var options = {
+            series:  [
+                {
+                    name: 'Izin & Sakit',
+                    data: [{{$izin_jan}}, {{$izin_feb}}, {{$izin_mar}}, {{$izin_apr}}, {{$izin_mei}},
+                    {{$izin_jun}}, {{$izin_jul}}, {{$izin_aug}}, {{$izin_sep}}, {{$izin_okt}}, {{$izin_nov}}, {{$izin_des}}
+                    ]
+                },
+                {
+                    name: 'Hadir',
+                    data: [{{$Hadir_jan}}, {{$Hadir_feb}}, {{$Hadir_mar}}, {{$Hadir_apr}}, {{$Hadir_mei}},
+                    {{$Hadir_jun}}, {{$Hadir_jul}}, {{$Hadir_aug}}, {{$Hadir_sep}}, {{$Hadir_okt}}, {{$Hadir_nov}}, {{$Hadir_des}}
+                    ]
+                },
+                {
+                    name: 'telat',
+                    data: [{{$Telat_jan}}, {{$Telat_feb}}, {{$Telat_mar}}, {{$Telat_apr}}, {{$Telat_mei}},
+                    {{$Telat_jun}}, {{$Telat_jul}}, {{$Telat_aug}}, {{$Telat_sep}}, {{$Telat_okt}}, {{$Telat_nov}}, {{$Telat_des}}
+                    ]
+                },
+                {
+                    name: 'alfa',
+                    data: [{{$Alfa_jan}}, {{$Alfa_feb}}, {{$Alfa_mar}}, {{$Alfa_apr}}, {{$Alfa_mei}},
+                    {{$Alfa_jun}}, {{$Alfa_jul}}, {{$Alfa_aug}}, {{$Alfa_sep}}, {{$Alfa_okt}}, {{$Alfa_nov}}, {{$Alfa_des}}
+                    ]
+                },
+            ],
+            chart: {
+            width: 380,
+            type: 'donut',
+          },
+          plotOptions: {
+            pie: {
+              startAngle: -90,
+              endAngle: 270
+            }
+          },
+          dataLabels: {
+            enabled: false
+          },
+          fill: {
+            type: 'gradient',
+          },
+          legend: {
+            formatter: function(val, opts) {
+              return val + " - " + opts.w.globals.series[opts.seriesIndex]
+            }
+          },
+          title: {
+            text: 'Gradient Donut with custom Start-angle'
+          },
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }]
+          };
+
+          var chart = new ApexCharts(document.querySelector("#grafik_absensi"), options);
+          chart.render();
+    </script>
+
+    <script>
+        // Initialization for ES Users
+    var options = {
+    series: [{
+    name: 'Mengisi',
+    data: [{{$mengisi_jan}},{{$mengisi_feb}},{{$mengisi_mar}},{{$mengisi_apr}},{{$mengisi_mei}},
+        {{$mengisi_jun}},{{$mengisi_jul}},{{$mengisi_aug}},{{$mengisi_sep}},{{$mengisi_okt}},{{$mengisi_nov}},{{$mengisi_des}}
+    ]
+    }, {
+    name: 'Tidak Mengisi',
+    data: [
+        {{$tdk_mengisi_jan}},{{$tdk_mengisi_feb}},{{$tdk_mengisi_mar}},{{$tdk_mengisi_apr}},{{$tdk_mengisi_mei}},
+        {{$tdk_mengisi_jun}},{{$tdk_mengisi_jul}},{{$tdk_mengisi_aug}},{{$tdk_mengisi_sep}},{{$tdk_mengisi_okt}},{{$tdk_mengisi_nov}},{{$tdk_mengisi_des}}
+    ]
+    }],
+    chart: {
+    type: 'bar',
+    height: 350,
+    },
+    plotOptions: {
+    bar: {
+        horizontal: false,
+        columnWidth: '55%',
+        endingShape: 'rounded',
+        borderRadius: 7,
+    },
+    },
+    dataLabels: {
+    enabled: false,
+    },
+    animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 1200,
+        animateGradually: {
+            enabled: true,
+            delay: 200
+        },
+        dynamicAnimation: {
+            enabled: true,
+            speed: 450
+        }
+    },
+    stroke: {
+    show: true,
+    width: 2,
+    colors: ['transparent']
+    },
+    xaxis: {
+    categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+
+    },
+    yaxis: {
+    title: {
+        text: ''
+    }
+    },
+    fill: {
+    opacity: 5,
+    colors: [ '#008ffb', '#47EBB3']
+    },
+    tooltip: {
+    y: {
+        // formatter: function (val) {
+        //   return "$ " + val + " thousands"
+        // }
+    }
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#grafik_jurnal"), options);
+    chart.render();
+
+</script>
 
 
 
