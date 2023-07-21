@@ -8,6 +8,7 @@ use App\Http\Requests\Storeabsensi_siswaRequest;
 use App\Http\Requests\Updateabsensi_siswaRequest;
 use App\Mail\EmailLulus as MailEmailLulus;
 use App\Mail\IzinTenggat;
+use App\Models\Absensi_siswa;
 use App\Models\Anggota_piket;
 use App\Models\EmailLulus;
 use App\Models\Siswa;
@@ -171,7 +172,7 @@ class AbsensiSiswaController extends Controller
      * @param  \App\Models\absensi_siswa  $absensi_siswa
      * @return \Illuminate\Http\Response
      */
-    public function show(absensi_siswa $absensi_siswa)
+    public function show(Absensi_siswa $absensi_siswa)
     {
         //
     }

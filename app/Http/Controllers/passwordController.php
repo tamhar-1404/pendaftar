@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class passwordController extends Controller
+class PasswordController extends Controller
 {
     public function validatePassword(Request $request)
     {

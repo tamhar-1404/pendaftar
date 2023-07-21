@@ -90,7 +90,7 @@ Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
     //     return view('welcome');
     // });
 
-    Route::get('/kode_beli', [transaksirfidController::class, 'index'])->name('kode_beli');
+    Route::get('/kode_beli', [TransaksirfidController::class, 'index'])->name('kode_beli');
     Route::resource('/data', App\Http\Controllers\TransaksiController::class);
     Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
     Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::class);
