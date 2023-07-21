@@ -22,7 +22,7 @@
             },
         },
     </script>
-    
+
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="kode/images/favicon.webp" />
@@ -77,9 +77,9 @@
             <div class="grid grid-cols-12 gap-x-4">
                 <div class="col-span-12">
                     <nav>
-                        <ul class="flex items-start justify-center">
-                            <img src="{{ asset('admin/images/hummashitam.png') }}" class="w-48" alt=""
-                                srcset="">
+                        <ul class="flex max-w-[100px] items-start justify-center">
+                            <img src="{{ asset('admin/images/hummashitam.png') }}" class="" alt=""
+                                srcset="" style="width: 20%">
                         </ul>
                     </nav>
                 </div>
@@ -89,14 +89,14 @@
 
 
     <!-- Hero section end -->
-    <div
+    {{-- <div
         class="spin_load  screen_loader animate__animated fixed inset-1 z-[30] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
             <img src="{{ asset('load/logo.png') }}" alt="Deskripsi gambar" class="my-img">
         </div>
-    </div>
+    </div> --}}
 
 
     <!-- blog grid section start -->

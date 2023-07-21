@@ -92,6 +92,10 @@ Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
 // });
 
 Route::get('/kode_beli', [transaksirfidController::class, 'index'])->name('kode_beli');
+Route::resource('/data', App\Http\Controllers\TransaksiController::class);
+Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
+
+
 
 
 // Rute untuk mengirim email reset password
@@ -162,13 +166,12 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/absensi_guru', App\Http\Controllers\AbsensiGuruController::class);
         Route::resource('/chat_guru', App\Http\Controllers\ChatGuruController::class);
         Route::resource('/berita_guru', App\Http\Controllers\BeritaController::class);
-        Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
         // akhir Pembimbing
     });
     Route::middleware(['role:Admin,Siswa'])->group(function () {
-            Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
-            Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
-            Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
+        Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
+        Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
+        Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
 
         });
     });
