@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\laporan_piket;
+use App\Models\Laporan_piket;
 use App\Http\Requests\Storelaporan_piketRequest;
 use App\Http\Requests\Updatelaporan_piketRequest;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+
 class LaporanPiketController extends Controller
 {
     /**
@@ -44,7 +45,7 @@ class LaporanPiketController extends Controller
             'bukti' => "required"
         ]);
         $image = $request->file('bukti');
-        $image->storeAs('public/image', $image->hashName());
+        $image->storeAs('public/Image', $image->hashName());
         $today = Carbon::now()->format('l');
         laporan_piket::create([
             'bukti' => $image->hashName(),

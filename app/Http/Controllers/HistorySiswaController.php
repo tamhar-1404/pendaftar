@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\HistoryTopup;
 use App\Models\HistoryTransaksi;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class HistorySiswaController extends Controller
 {

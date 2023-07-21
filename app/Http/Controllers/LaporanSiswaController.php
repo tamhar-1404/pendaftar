@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LaporanSiswa;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreLaporanSiswaRequest;
 use App\Http\Requests\UpdateLaporanSiswaRequest;
 
@@ -17,7 +17,7 @@ class LaporanSiswaController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->role == 'admin'){
+        if(Auth()->user()->role == 'Admin'){
             $siswa = LaporanSiswa::where('status', 'menunggu')->get();
             $tolak = LaporanSiswa::where('status', 'tolak')->get();
             $terima = LaporanSiswa::where('status', 'terima')->get();
@@ -56,7 +56,7 @@ class LaporanSiswaController extends Controller
         $user = Auth::user();
         $tanggal = date('d F Y'); // Ubah format tanggal menjadi "tanggal bulan tahun"
         $image = $request->file('bukti');
-        $image->storeAs('public/laporansiswa', $image->hashName());
+        $image->storeAs('public/Laporansiswa', $image->hashName());
         LaporanSiswa::create([
             'name' => auth()->user()->name,
             'tanggal' => $tanggal,

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\transaksi;
+use App\Models\Transaksi;
 use App\Models\User;
-use App\Models\barang;
+use App\Models\Barang;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoretransaksiRequest;
 use App\Http\Requests\UpdatetransaksiRequest;
@@ -24,7 +24,7 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $barang = barang::all();
+        $barang = Barang::all();
         return view('transaksi.data', compact('barang' , 'user'));
     }
 
@@ -43,9 +43,9 @@ class TransaksiController extends Controller
             return redirect()->back()->with('error', $message);
         }
         $user = $data->saldo;
-        $barang = barang::all();
-        $makanan = barang::where('kategori', 'makanan')->get();
-        $minuman = barang::where('kategori', 'minuman')->get();
+        $barang = Barang::all();
+        $makanan = Barang::where('kategori', 'makanan')->get();
+        $minuman = Barang::where('kategori', 'minuman')->get();
         $saldo = User::where('rfid', $request->rfid)->first()->saldo;
         // dd($saldo);
         return view('transaksi.data', compact('data','barang','minuman' , 'user', 'saldo', 'makanan'));
@@ -65,10 +65,10 @@ class TransaksiController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\transaksi  $transaksi
+     * @param  \App\Models\Transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function show(transaksi $transaksi)
+    public function show(Transaksi $transaksi)
     {
         //
     }
@@ -78,10 +78,10 @@ class TransaksiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\transaksi  $transaksi
+     * @param  \App\Models\Transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function edit(transaksi $transaksi)
+    public function edit(Transaksi $transaksi)
     {
         //
     }
@@ -90,10 +90,10 @@ class TransaksiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdatetransaksiRequest  $request
-     * @param  \App\Models\transaksi  $transaksi
+     * @param  \App\Models\Transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatetransaksiRequest $request, transaksi $transaksi)
+    public function update(UpdatetransaksiRequest $request, Transaksi $transaksi)
     {
         //
     }
@@ -101,10 +101,10 @@ class TransaksiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\transaksi  $transaksi
+     * @param  \App\Models\Transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(transaksi $transaksi)
+    public function destroy(Transaksi $transaksi)
     {
         //
     }

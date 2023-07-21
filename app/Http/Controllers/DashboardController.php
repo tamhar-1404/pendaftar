@@ -8,7 +8,7 @@ use App\Models\Guru_admin;
 use App\Models\MOU;
 use App\Models\Tolak;
 use App\Models\Blog;
-use App\Models\aproval;
+use App\Models\Aproval;
 use App\Http\Requests\StoreDashboardRequest;
 use App\Http\Requests\UpdateDashboardRequest;
 

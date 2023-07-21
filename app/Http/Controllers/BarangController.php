@@ -114,8 +114,8 @@ class BarangController extends Controller
         try {
             if ($request->hasFile('foto')) {
                 $image = $request->file('foto');
-                $image->storeAs('public/pendataanbarang', $image->hashName());
-                Storage::delete('public/pendataanbarang/' . $barang->foto);
+                $image->storeAs('public/Pendataanbarang/', $image->hashName());
+                Storage::delete('public/Pendataanbarang/' . $barang->foto);
 
                 $barang->update([
                     'nama' => $request->nama,
@@ -151,7 +151,7 @@ class BarangController extends Controller
     public function destroy(Barang $barang)
     {
 
-        Storage::delete('public/pendataanbarang/'. $barang->foto);
+        Storage::delete('public/Pendataanbarang/'. $barang->foto);
         $barang->delete();
         return redirect()->back();
     }

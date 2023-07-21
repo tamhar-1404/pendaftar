@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\sp;
+use App\Models\Sp;
 use App\Http\Requests\StorespRequest;
 use App\Http\Requests\UpdatespRequest;
 use App\Mail\Sp as MailSp;
@@ -22,11 +22,11 @@ class SpController extends Controller
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $data = sp::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('deskripsi', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $data = Sp::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('deskripsi', 'LIKE', '%' . $keyword . '%')->paginate(3);
             return view('sp.index', compact('data'));
         }
 
-        $data = sp::latest()->paginate(3); 
+        $data = Sp::latest()->paginate(3);
         return view('sp.index', compact('data'));
     }
 
@@ -53,13 +53,13 @@ class SpController extends Controller
 
 
         ]);
-        if (sp::where('nama', $request->nama)->exists()) {
+        if (Sp::where('nama', $request->nama)->exists()) {
             if ($request->keterangan == 'Sp1') {
-                if (sp::where([['nama', $request->nama], ['sp_1', 'Sp1']])->exists()) {
+                if (Sp::where([['nama', $request->nama], ['sp_1', 'Sp1']])->exists()) {
                     $image = $request->file('buktisp');
                     $iname = $image->hashName();
                     $image->storeAs('public/image', $iname);
-                    sp::where('nama', $request->nama)->update([
+                    Sp::where('nama', $request->nama)->update([
                         'bukti_2' => $iname,
                         'deskripsi_2' => $request->deskripsi,
                         'sp_2' => 'Sp2',
@@ -79,7 +79,7 @@ class SpController extends Controller
                 $image = $request->file('buktisp');
                 $iname = $image->hashName();
                 $image->storeAs('public/image', $iname);
-                sp::where('nama', $request->nama)->update([
+                Sp::where('nama', $request->nama)->update([
                     'bukti_1' => $iname,
                     'deskripsi_1' => $request->deskripsi,
                     'sp_1' => $request->keterangan,
@@ -101,7 +101,7 @@ class SpController extends Controller
                 $iname = $image->hashName();
                 $image->storeAs('public/image', $iname);
 
-                sp::where('nama', $request->nama)->update([
+                Sp::where('nama', $request->nama)->update([
                     'bukti_2' => $iname,
                     'deskripsi_2' => $request->deskripsi,
                     'sp_2' => $request->keterangan,
@@ -124,7 +124,7 @@ class SpController extends Controller
                 $iname = $image->hashName();
                 $image->storeAs('public/image', $iname);
 
-                sp::create([
+                Sp::create([
                     'nama' => $request->nama,
                     'bukti_1' => $iname,
                     'deskripsi_1' => $request->deskripsi,
@@ -145,7 +145,7 @@ class SpController extends Controller
                 $image = $request->file('buktisp');
                 $iname = $image->hashName();
                 $image->storeAs('public/image', $iname);
-                sp::create([
+                Sp::create([
                     'nama' => $request->name,
                     'bukti_2' => $iname,
                     'deskripsi_2' => $request->deskripsi,
@@ -171,10 +171,10 @@ class SpController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\sp  $sp
+     * @param  \App\Models\Sp  $sp
      * @return \Illuminate\Http\Response
      */
-    public function show(sp $sp)
+    public function show(Sp $sp)
     {
         //
     }
@@ -182,10 +182,10 @@ class SpController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\sp  $sp
+     * @param  \App\Models\Sp  $Sp
      * @return \Illuminate\Http\Response
      */
-    public function edit(sp $sp)
+    public function edit(Sp $Sp)
     {
         //
     }
@@ -194,10 +194,10 @@ class SpController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdatespRequest  $request
-     * @param  \App\Models\sp  $sp
+     * @param  \App\Models\Sp  $Sp
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatespRequest $request, sp $sp)
+    public function update(UpdatespRequest $request, Sp $Sp)
     {
         //
     }
@@ -205,10 +205,10 @@ class SpController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\sp  $sp
+     * @param  \App\Models\Sp  $Sp
      * @return \Illuminate\Http\Response
      */
-    public function destroy(sp $sp)
+    public function destroy(Sp $Sp)
     {
         //
     }

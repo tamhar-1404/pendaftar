@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JurnalGuru;
-use App\Models\jurnalsiswa;
+use App\Models\Jurnalsiswa;
 use App\Models\Siswa;
 use App\Http\Requests\StoreJurnalGuruRequest;
 use App\Http\Requests\UpdateJurnalGuruRequest;
@@ -18,7 +18,7 @@ class JurnalGuruController extends Controller
     public function index()
     {
         $guru = Auth::user();
-        $jurnals = jurnalsiswa::where('sekolah', $guru->sekolah)
+        $jurnals = Jurnalsiswa::where('sekolah', $guru->sekolah)
                        ->get();
         return view('jurnal_guru.index' , compact('jurnals'));
     }

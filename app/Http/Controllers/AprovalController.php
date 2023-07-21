@@ -98,13 +98,13 @@ class AprovalController extends Controller
 
 
 
-        Storage::move('Public/Pendaftaran/' . $foto_siswa, 'Public/Siswa/' . $foto_siswa);
+        Storage::move('public/Pendaftaran/' . $foto_siswa, 'public/Siswa/' . $foto_siswa);
 
-        Storage::delete('Public/Pendaftaran/'. $aproval->foto_siswa);
-        Storage::delete('Public/Pendaftaran/'. $aproval->skck);
-        Storage::delete('Public/Pendaftaran/'. $aproval->cv);
-        Storage::delete('Public/Pendaftaran/'. $aproval->sp_ortu);
-        Storage::delete('Public/Pendaftaran/'. $aproval->sp_diri);
+        Storage::delete('public/Pendaftaran/'. $aproval->foto_siswa);
+        Storage::delete('public/Pendaftaran/'. $aproval->skck);
+        Storage::delete('public/Pendaftaran/'. $aproval->cv);
+        Storage::delete('public/Pendaftaran/'. $aproval->sp_ortu);
+        Storage::delete('public/Pendaftaran/'. $aproval->sp_diri);
         $aproval->delete();
 
         $user = User::create([
@@ -175,11 +175,11 @@ public function Tolak(Request $request, Aproval $aproval)
             Mail::to($guruEmails)->send(new TolakEmail($pesanguru)); // Mengirim email ke guru dengan nama sekolah yang sama
         }
 
-        Storage::move('Public/Pendaftaran/' . $foto_siswa, 'Public/Ditolak/' . $foto_siswa);
-        Storage::move('Public/Pendaftaran/' . $sp_diri, 'Public/Ditolak/' . $sp_diri);
-        Storage::move('Public/Pendaftaran/' . $sp_ortu, 'Public/Ditolak/' . $sp_ortu);
-        Storage::move('Public/Pendaftaran/' . $skck, 'Public/Ditolak/' . $skck);
-        Storage::move('Public/Pendaftaran/' . $cv, 'Public/Ditolak/' . $cv);
+        Storage::move('public/Pendaftaran/' . $foto_siswa, 'public/Ditolak/' . $foto_siswa);
+        Storage::move('public/Pendaftaran/' . $sp_diri, 'public/Ditolak/' . $sp_diri);
+        Storage::move('public/Pendaftaran/' . $sp_ortu, 'public/Ditolak/' . $sp_ortu);
+        Storage::move('public/Pendaftaran/' . $skck, 'public/Ditolak/' . $skck);
+        Storage::move('public/Pendaftaran/' . $cv, 'public/Ditolak/' . $cv);
 
         $aproval->delete();
 
@@ -193,7 +193,7 @@ public function Tolak(Request $request, Aproval $aproval)
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Models\Aproval  $Aproval
      * @return \Illuminate\Http\Response
      */
     public function show(Aproval $aproval)
@@ -204,7 +204,7 @@ public function Tolak(Request $request, Aproval $aproval)
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Aproval  $aproval
+     * @param  \App\Models\Aproval  $Aproval
      * @return \Illuminate\Http\Response
      */
     public function edit(Aproval $aproval)
@@ -216,7 +216,7 @@ public function Tolak(Request $request, Aproval $aproval)
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateaprovalRequest  $request
-     * @param  \App\Models\aproval  $aproval
+     * @param  \App\Models\Aproval  $Aproval
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, TopUp $topup , $id)

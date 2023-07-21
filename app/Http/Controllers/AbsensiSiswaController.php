@@ -12,7 +12,7 @@ use App\Models\Anggota_piket;
 use App\Models\EmailLulus;
 use App\Models\Siswa;
 use App\Models\TenggatIzin;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Mail;

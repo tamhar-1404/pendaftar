@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tolak;
+use App\Models\Tolak;
 use App\Http\Requests\StoretolakRequest;
 use App\Http\Requests\UpdatetolakRequest;
 use Illuminate\Http\Request;
@@ -18,10 +18,10 @@ class TolakController extends Controller
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $tolaks = tolak::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $tolaks = Tolak::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
             return view('tolak.index', compact('tolaks'));
         }
-        $tolaks = tolak::latest()->paginate(5);
+        $tolaks = Tolak::latest()->paginate(5);
         return view('tolak.index' , compact('tolaks'));
     }
 
@@ -49,10 +49,10 @@ class TolakController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\tolak  $tolak
+     * @param  \App\Models\Tolak  $tolak
      * @return \Illuminate\Http\Response
      */
-    public function show(tolak $tolak)
+    public function show(Tolak $tolak)
     {
         //
     }
@@ -60,10 +60,10 @@ class TolakController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\tolak  $tolak
+     * @param  \App\Models\Tolak  $tolak
      * @return \Illuminate\Http\Response
      */
-    public function edit(tolak $tolak)
+    public function edit(Tolak $tolak)
     {
         return view('tolak.detail', compact('tolak'));
     }
@@ -72,10 +72,10 @@ class TolakController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdatetolakRequest  $request
-     * @param  \App\Models\tolak  $tolak
+     * @param  \App\Models\Tolak  $tolak
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatetolakRequest $request, tolak $tolak)
+    public function update(UpdatetolakRequest $request, Tolak $tolak)
     {
         //
     }
@@ -83,10 +83,10 @@ class TolakController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\tolak  $tolak
+     * @param  \App\Models\Tolak  $tolak
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tolak $tolak)
+    public function destroy(Tolak $tolak)
     {
         //
     }

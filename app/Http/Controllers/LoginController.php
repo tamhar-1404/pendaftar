@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreLoginRequest;
 use App\Http\Requests\UpdateLoginRequest;
-use App\Models\aproval;
+use App\Models\Aproval;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Carbon\Carbon;
@@ -135,10 +135,10 @@ public function store(Request $request)
             $sp_ortu = $request->file('sp_ortu');
             $cv = $request->file('cv');
 
-            $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
-            $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
-            $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
-            $cv->storeAs('public/pendaftaran', $cv->hashName());
+            $foto_siswa->storeAs('public/Pendaftaran', $foto_siswa->hashName());
+            $sp_diri->storeAs('public/Pendaftaran', $sp_diri->hashName());
+            $sp_ortu->storeAs('public/Pendaftaran', $sp_ortu->hashName());
+            $cv->storeAs('public/Pendaftaran', $cv->hashName());
 
             $data = aproval::create([
                 'name' => $request->name,
@@ -179,11 +179,11 @@ public function store(Request $request)
             $skck = $request->file('skck');
             $cv = $request->file('cv');
 
-            $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
-            $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
-            $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
-            $skck->storeAs('public/pendaftaran', $skck->hashName());
-            $cv->storeAs('public/pendaftaran', $cv->hashName());
+            $foto_siswa->storeAs('public/Pendaftaran', $foto_siswa->hashName());
+            $sp_diri->storeAs('public/Pendaftaran', $sp_diri->hashName());
+            $sp_ortu->storeAs('public/Pendaftaran', $sp_ortu->hashName());
+            $skck->storeAs('public/Pendaftaran', $skck->hashName());
+            $cv->storeAs('public/Pendaftaran', $cv->hashName());
 
             $data = aproval::create([
                 'name' => $request->name,

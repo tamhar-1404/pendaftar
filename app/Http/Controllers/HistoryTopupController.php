@@ -7,7 +7,7 @@ use App\Models\TopUp;
 use App\Models\HistoryTransaksi;
 use App\Http\Requests\StoreHistoryTopupRequest;
 use App\Http\Requests\UpdateHistoryTopupRequest;
-use auth;
+use Illuminate\Support\Facades\Auth;
 
 class HistoryTopupController extends Controller
 {
