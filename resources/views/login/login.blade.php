@@ -14,7 +14,6 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
     <title>Login</title>
-    @vite('resources/css/app.css')
     <link href="/admin/assets/images/logo.png" rel="shortcut icon">>
 
     <!-- CSS Assets -->
