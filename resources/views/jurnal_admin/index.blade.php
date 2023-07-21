@@ -98,11 +98,11 @@
                                 </svg>
                             </div>
                             {{-- serch --}}
-                            <form action="">
+                            <form action="{{route('jurnal_admin.create')}}">
                                 <label class="relative hidden sm:flex">
                                     <input
                                         class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Search here..." type="text" name="cari"
+                                        placeholder="Search here..." type="text" name="serch"
                                         value="{{ request('cari') }}" />
                                 </label>
                             </form>

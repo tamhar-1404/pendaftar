@@ -1410,14 +1410,11 @@
                                 <div class="mb-5 flex items-center">
                                     <h5 class="text-lg font-semibold dark:text-white-light">Absensi</h5>
                                 </div>
-                                <div>
-                                    <div x-ref="salesByCategory" class="rounded-lg bg-white dark:bg-black">
-                                        <!-- loader -->
-                                        <div
-                                            class="grid min-h-[353px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
-                                            <span
-                                                class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"></span>
-                                        </div>
+                                <div id="grafik_admin" class=" w-90% h-35 mx-4 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
+                                    <div class="w-full px-4 mt-6">
+                                       <div class="w-80%  bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
+                                           Grafik Absensi
+                                       </div>
                                     </div>
                                 </div>
                             </div>
@@ -1505,66 +1502,21 @@
                             <section>
                                 <div class="swiper mySwiper container w-full">
                                     <div class="swiper-wrapper content">
+                                        @forelse ( $mou as $data)
                                         <div class="swiper-slide card dark:bg-black">
                                             <div class="card-content ">
                                                 <div class="image">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
+                                                    <img src="{{asset('storage/mou/'. $data->logo)}}" alt="">
                                                 </div>
 
 
                                             </div>
                                         </div>
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content">
-                                                <div class="image1">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content">
-                                                <div class="image">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content">
-                                                <div class="image">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content">
-                                                <div class="image">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content">
-                                                <div class="image">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content">
-                                                <div class="image">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide card dark:bg-black">
-                                            <div class="card-content">
-                                                <div class="image">
-                                                    <img src="admin/assets/images/smkn1.jpg" alt="">
-                                                </div>
 
+                                        @empty
 
-                                            </div>
-                                        </div>
+                                        @endforelse
+
                                     </div>
                                 </div>
                                 <div class="swiper-button-next"></div>
@@ -1809,7 +1761,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
-    {{-- <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-e lements.umd.min.js"></script> --}}
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -1829,20 +1781,48 @@
         // Initialization for ES Users
         var options = {
             series: [{
-                name: 'Mengisi',
-                data: [{{$mengisi_jan}},{{$mengisi_feb}},{{$mengisi_mar}},{{$mengisi_apr}},{{$mengisi_mei}},
-                    {{$mengisi_jun}},{{$mengisi_jul}},{{$mengisi_aug}},{{$mengisi_sep}},{{$mengisi_okt}},{{$mengisi_nov}},{{$mengisi_des}}
-                ]
-            }, {
-                name: 'Tidak Mengisi',
-                data: [
-                    {{$tdk_mengisi_jan}},{{$tdk_mengisi_feb}},{{$tdk_mengisi_mar}},{{$tdk_mengisi_apr}},{{$tdk_mengisi_mei}},
-                    {{$tdk_mengisi_jun}},{{$tdk_mengisi_jul}},{{$tdk_mengisi_aug}},{{$tdk_mengisi_sep}},{{$tdk_mengisi_okt}},{{$tdk_mengisi_nov}},{{$tdk_mengisi_des}}
-                ]
-            }],
-            chart: {
-                type: 'bar',
-                height: 350
+        name: 'Izin & Sakit',
+        data: [{{$izin_jan}},{{$izin_feb}},{{$izin_mar}},{{$izin_apr}},{{$izin_mei}},
+        {{$izin_jun}},{{$izin_jul}},{{$izin_aug}},{{$izin_sep}},{{$izin_okt}},{{$izin_nov}},{{$izin_des}}
+      ]
+      }, {
+        name: 'Hadir',
+        data: [{{$Hadir_jan}},{{$Hadir_feb}},{{$Hadir_mar}},{{$Hadir_apr}},{{$Hadir_mei}},
+        {{$Hadir_jun}},{{$Hadir_jul}},{{$Hadir_aug}},{{$Hadir_sep}},{{$Hadir_okt}},{{$Hadir_nov}},{{$Hadir_des}}
+      ]
+      },{
+        name: 'telat',
+        data: [{{$Telat_jan}},{{$Telat_feb}},{{$Telat_mar}},{{$Telat_apr}},{{$Telat_mei}},
+        {{$Telat_jun}},{{$Telat_jul}},{{$Telat_aug}},{{$Telat_sep}},{{$Telat_okt}},{{$Telat_nov}},{{$Telat_des}}
+      ]
+      },{
+        name: 'alfa',
+        data: [{{$Alfa_jan}},{{$Alfa_feb}},{{$Alfa_mar}},{{$Alfa_apr}},{{$Alfa_mei}},
+        {{$Alfa_jun}},{{$Alfa_jul}},{{$Alfa_aug}},{{$Alfa_sep}},{{$Alfa_okt}},{{$Alfa_nov}},{{$Alfa_des}}
+      ]
+      },],
+        chart: {
+        type: 'bar',
+        height: 350
+        },
+        plotOptions: {
+        bar: {
+            horizontal: false,
+            columnWidth: '55%',
+            endingShape: 'rounded',
+            borderRadius: 7,
+        },
+        },
+        dataLabels: {
+        enabled: false,
+        },
+        animations: {
+            enabled: true,
+            easing: 'easeinout',
+            speed: 1200,
+            animateGradually: {
+                enabled: true,
+                delay: 200
             },
             plotOptions: {
                 bar: {
@@ -1895,12 +1875,16 @@
             }
         };
 
-        var chart = new ApexCharts(document.querySelector("#grafik_jurnal"), options);
+        var chart = new ApexCharts(document.querySelector("#grafik_absensi"), options);
         chart.render();
     </script>
 
+
+
+
+
 </body>
 
-<!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:57 GMT -->
+// <!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:57 GMT -->
 
 </html>
