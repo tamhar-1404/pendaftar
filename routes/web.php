@@ -163,7 +163,6 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/chat_guru', App\Http\Controllers\ChatGuruController::class);
         Route::resource('/berita_guru', App\Http\Controllers\BeritaController::class);
         Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
-        Route::resource('/data', App\Http\Controllers\TransaksiController::class);
         // akhir Pembimbing
     });
     Route::middleware(['role:Admin,Siswa'])->group(function () {
@@ -171,9 +170,10 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
             Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
 
+        });
     });
-});
 
+    Route::resource('/data', App\Http\Controllers\TransaksiController::class);
 Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita.like');
 Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
 Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');

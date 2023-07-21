@@ -24,7 +24,7 @@
                 },
             }
         </script>
-    <link href="/admin/assets/images/logo.png" rel="shortcut icon">>
+    <link href="/admin/assets/images/logo.png" rel="shortcut icon">
 
     <!-- CSS Assets -->
     <link rel="stylesheet" href="lineone/css/app.css" />
@@ -46,8 +46,8 @@
             document.documentElement.classList.add("dark");
     </script>
 </head>
-
 <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
+
     @if (session()->has('berhasil_daftar'))
         <script>
             Swal.fire({
@@ -81,7 +81,6 @@
     @endif
 
 
-    <!-- Page Wrapper -->
     <div id="root" class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900" x-cloak>
         <div class="fixed top-0 hidden p-6 lg:block lg:px-12">
             <a href="#" class="flex items-center space-x-2">
