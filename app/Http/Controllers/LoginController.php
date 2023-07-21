@@ -106,7 +106,7 @@ public function store(Request $request)
         'tempat'=>'required',
         'tanggal'=>'required',
         'kelas'=>'required',
-        'nisn'=>'required',
+        'nisn'=>'required:unique:users',
         'jeniskelamin'=>'required',
         'alamat'=>'required',
         'sekolah'=>'required',
@@ -117,7 +117,7 @@ public function store(Request $request)
         'sp_diri'=>'required',
         'sp_ortu'=>'required',
         'cv'=>'required',
-        'email'=>'required',
+        'email'=>'required|unique:users',
         'password'=>'required',
     ]);
 

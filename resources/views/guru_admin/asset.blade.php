@@ -2372,6 +2372,9 @@
                                                 placeholder="Masukkan no telephone anda" name="no"
                                                 class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                         </div>
+                                        @error('no')
+                                        <div class="text-sm text-red-500 font-medium">{{ $message }}</div>
+                                    @enderror
                                         <div class="mt-4">
                                             <label for="email"
                                                 class="block text-gray-700 font-medium mb-2">Password</label>
