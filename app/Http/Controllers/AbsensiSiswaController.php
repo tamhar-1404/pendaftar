@@ -8,7 +8,7 @@ use App\Http\Requests\Storeabsensi_siswaRequest;
 use App\Http\Requests\Updateabsensi_siswaRequest;
 use App\Mail\EmailLulus as MailEmailLulus;
 use App\Mail\IzinTenggat;
-use App\Models\anggota_piket;
+use App\Models\Anggota_piket;
 use App\Models\EmailLulus;
 use App\Models\Siswa;
 use App\Models\TenggatIzin;
@@ -133,7 +133,7 @@ class AbsensiSiswaController extends Controller
             ApprovalIzin::where('nama', auth()->user()->name)->where('tanggal', $hari_ini)->where('keterangan', 'izin')->delete();
         }
         // dd(Auth::user()->siswa_id, Carbon::now()->locale('id')->dayName);
-        $piket = anggota_piket::where([['siswa_id', Auth::user()->siswa_id], ['hari', Carbon::now()->locale('id')->dayName], ['waktu', 'pagi']])->exists();
+        $piket = Anggota_piket::where([['siswa_id', Auth::user()->siswa_id], ['hari', Carbon::now()->locale('id')->dayName], ['waktu', 'pagi']])->exists();
         if ($piket) {
             if ($request->jam > '07:45') {
                 $keterangan = $request->jam;

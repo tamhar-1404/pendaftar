@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dashboard_siswa;
 use App\Models\ApprovalIzin;
-use App\Models\jurnalsiswa;
+use App\Models\Jurnalsiswa;
 use Auth;
 use App\Http\Requests\StoreDashboard_siswaRequest;
 use App\Http\Requests\UpdateDashboard_siswaRequest;

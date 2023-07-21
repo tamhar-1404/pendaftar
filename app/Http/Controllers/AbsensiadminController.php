@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\absensiadmin;
+use App\Models\Absensiadmin;
 use App\Models\ApprovalIzin;
 use App\Http\Requests\StoreabsensiadminRequest;
 use App\Http\Requests\UpdateabsensiadminRequest;
@@ -23,7 +23,7 @@ class AbsensiadminController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         if ($request->has('cari')) {
             $keyword = $request->cari;
             $terima = ApprovalIzin::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
@@ -119,7 +119,7 @@ class AbsensiadminController extends Controller
             'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
         ]);
         $image = $request->file('bukti');
-        $image->storeAs('public/bukti_izin', $image->hashName());
+        $image->storeAs('public/Bukti_izin', $image->hashName());
 
 
     ApprovalIzin::create([
@@ -136,7 +136,6 @@ class AbsensiadminController extends Controller
         // Mail::to($request->email)->send(new dataizinEmail($approvalIzin));
         return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
-
     /**
      * Display the specified resource.
      *

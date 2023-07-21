@@ -23,7 +23,7 @@ class DashboardController extends Controller
     {
         $siswa = Siswa::where('role', 'Siswa')->count();
         $guru = Guru_admin::all()->count();
-        $mou = mou::all()->count();
+        $mou = MOU::all()->count();
         $tolak = Tolak::all()->count();
         $menunggu = Aproval::where('status', 'menunggu')->count();
 
@@ -66,7 +66,7 @@ class DashboardController extends Controller
         $terima_nov = Siswa::where('role', 'siswa')->whereMonth('created_at', '=', 11)->count();
         $terima_des = Siswa::where('role', 'siswa')->whereMonth('created_at', '=', 12)->count();
 
-        $mou1 = mou::all();
+        $mou1 = MOU::all();
 
 
         return view('dudi.index', compact('mou1','siswa','guru','mou','tolak','menunggu','menunggu_jan','menunggu_feb','menunggu_mar','menunggu_apr','menunggu_mei','menunggu_jun','menunggu_jul','menunggu_aug','menunggu_sep','menunggu_okt','menunggu_nov','menunggu_des','Tolak_jan',

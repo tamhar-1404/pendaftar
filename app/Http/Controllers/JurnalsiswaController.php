@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Dompdf\Dompdf;
 use Dompdf\Options;
-use App\Models\jurnalsiswa;
+use App\Models\Jurnalsiswa;
 use Illuminate\Http\Request;
 use PhpOffice\PhpWord\PhpWord;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -11,8 +11,8 @@ use PhpOffice\PhpWord\IOFactory;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\StorejurnalsiswaRequest;
-use App\Http\Requests\UpdatejurnalsiswaRequest;
+use App\Http\Requests\StoreJurnalsiswaRequest;
+use App\Http\Requests\UpdateJurnalsiswaRequest;
 use Exception;
 
 
@@ -24,12 +24,12 @@ class JurnalsiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(jurnalsiswa $jurnalsiswa)
+    public function index(Jurnalsiswa $Jurnalsiswa)
     {
-        $jurnalsiswa = jurnalsiswa::all();
+        $Jurnalsiswa = Jurnalsiswa::all();
         $nama = Auth::user()->name;
-        $item = jurnalsiswa::where('nama',$nama)->get();
-        return view('jurnal_siswa.index',compact('item' ,'jurnalsiswa'));
+        $item = Jurnalsiswa::where('nama',$nama)->get();
+        return view('jurnal_siswa.index',compact('item' ,'Jurnalsiswa'));
     }
 
 
@@ -46,7 +46,7 @@ class JurnalsiswaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorejurnalsiswaRequest  $request
+     * @param  \App\Http\Requests\StoreJurnalsiswaRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,15 +54,15 @@ class JurnalsiswaController extends Controller
         try {
             $this->validate($request, [
                 'nama' => "required",
-                'tanggal' => "required|unique:jurnalsiswas,tanggal",
+                'tanggal' => "required|unique:Jurnalsiswas,tanggal",
                 'sekolah' => "required",
                 'kegiatan' => "required",
             ]);
 
             $image = $request->file('image');
-            $image->storeAs('public/image', $image->hashName());
+            $image->storeAs('Public/Image', $image->hashName());
 
-            jurnalsiswa::create([
+            Jurnalsiswa::create([
                 'image' => $image->hashName(),
                 'nama' => $request->nama,
                 'tanggal' => $request->tanggal,
@@ -84,20 +84,20 @@ class JurnalsiswaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\jurnalsiswa  $jurnalsiswa
+     * @param  \App\Models\Jurnalsiswa  $Jurnalsiswa
      * @return \Illuminate\Http\Response
      */
-    public function show(jurnalsiswa $jurnalsiswa)
+    Public function show(Jurnalsiswa $Jurnalsiswa)
     {
         //
     }
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\jurnalsiswa  $jurnalsiswa
+     * @param  \App\Models\Jurnalsiswa  $Jurnalsiswa
      * @return \Illuminate\Http\Response
      */
-    public function edit(jurnalsiswa $jurnalsiswa)
+    Public function edit(Jurnalsiswa $Jurnalsiswa)
     {
         //
     }
@@ -105,14 +105,14 @@ class JurnalsiswaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatejurnalsiswaRequest  $request
-     * @param  \App\Models\jurnalsiswa  $jurnalsiswa
+     * @param  \App\Http\Requests\UpdateJurnalsiswaRequest  $request
+     * @param  \App\Models\Jurnalsiswa  $Jurnalsiswa
      * @return \Illuminate\Http\Response
      */
-   public function update(Request $request, $id)
+   Public function update(Request $request, $id)
 {
-    $jurnalsiswa = jurnalsiswa::find($id);
-    $oldImage = $jurnalsiswa->image;
+    $Jurnalsiswa = Jurnalsiswa::find($id);
+    $oldImage = $Jurnalsiswa->image;
 
     $this->validate($request, [
         'nama' => 'required',
@@ -121,28 +121,28 @@ class JurnalsiswaController extends Controller
         'kegiatan' => 'required'
     ]);
 
-    $jurnalsiswa->nama = $request->nama;
-    $jurnalsiswa->tanggal = $request->tanggal;
-    $jurnalsiswa->sekolah = $request->sekolah;
-    $jurnalsiswa->kegiatan = $request->kegiatan;
-    $jurnalsiswa->status = $request->status;
+    $Jurnalsiswa->nama = $request->nama;
+    $Jurnalsiswa->tanggal = $request->tanggal;
+    $Jurnalsiswa->sekolah = $request->sekolah;
+    $Jurnalsiswa->kegiatan = $request->kegiatan;
+    $Jurnalsiswa->status = $request->status;
 
     if ($request->hasFile('image')) {
         // Hapus gambar lama
         if ($oldImage != 'default.jpg') {
-            Storage::delete('public/image/' . $oldImage);
+            Storage::delete('Public/Image/' . $oldImage);
         }
 
         // Upload gambar baru
         $image = $request->file('image');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->storeAs('public/image', $imageName);
-        $jurnalsiswa->image = $imageName;
+        $image->storeAs('Public/Image', $imageName);
+        $Jurnalsiswa->image = $imageName;
     } else {
-        $jurnalsiswa->image = $oldImage; // Menggunakan gambar lama jika tidak ada gambar yang diupload
+        $Jurnalsiswa->image = $oldImage; // Menggunakan gambar lama jika tidak ada gambar yang diupload
     }
 
-    $jurnalsiswa->save();
+    $Jurnalsiswa->save();
 
     return redirect()->route('jurnal_siswa.index')->with('success', 'Data berhasil diubah');
 }
@@ -151,35 +151,35 @@ class JurnalsiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\jurnalsiswa  $jurnalsiswa
+     * @param  \App\Models\Jurnalsiswa  $Jurnalsiswa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(jurnalsiswa $jurnalsiswa)
+    Public function destroy(Jurnalsiswa $Jurnalsiswa)
     {
         //
     }
 
-    public function downloadPDF()
+    Public function downloadPDF()
     {
         set_time_limit(0);
-        $data = JurnalSiswa::where('nama',Auth::user()->name)->get();
+        $data = Jurnalsiswa::where('nama',Auth::user()->name)->get();
         $pdf = Pdf::loadView('desain_pdf.jurnal', ['data' => $data]);
         return $pdf->download('jurnal_siswa.pdf');
 
     }
-    public function getData()
+    Public function getData()
     {
         $data = JurnalSiswa::all();
 
         return response()->json($data);
     }
-    public function print()
+    Public function Print()
     {
         $data = JurnalSiswa::all();
 
         return view('desain_pdf.jurnal',compact('data'));
     }
-    public function printjurnal()
+    Public function Printjurnal()
 {
     $users = JurnalSiswa::all();
     $txt = '';
@@ -224,7 +224,7 @@ public function exportToDocx()
 
     // Menyimpan dokumen sebagai file .docx
     $filename = "database_export.docx";
-    $path = storage_path('app/public/image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
+    $path = storage_path('App/public/Image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
     $phpWord->save($path);
 
     // Mengembalikan file dokumen untuk diunduh

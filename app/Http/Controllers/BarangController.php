@@ -53,7 +53,7 @@ class BarangController extends Controller
 
         try {
             $image = $request->file('foto');
-            $image->storeAs('public/pendataanbarang', $image->hashName());
+            $image->storeAs('public/Pendataanbarang', $image->hashName());
 
             Barang::create([
                 'nama' => $request->nama,

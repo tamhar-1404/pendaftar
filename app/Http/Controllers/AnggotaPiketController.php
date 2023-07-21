@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\anggota_piket;
+use App\Models\Anggota_piket;
 use App\Http\Requests\Storeanggota_piketRequest;
 use App\Http\Requests\Updateanggota_piketRequest;
 
@@ -45,7 +45,7 @@ class AnggotaPiketController extends Controller
      * @param  \App\Models\anggota_piket  $anggota_piket
      * @return \Illuminate\Http\Response
      */
-    public function show(anggota_piket $anggota_piket)
+    public function show(Anggota_piket $Anggota_piket)
     {
         //
     }
@@ -53,10 +53,10 @@ class AnggotaPiketController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\anggota_piket  $anggota_piket
+     * @param  \App\Models\Anggota_piket  $Anggota_piket
      * @return \Illuminate\Http\Response
      */
-    public function edit(anggota_piket $anggota_piket)
+    public function edit(Anggota_piket $Anggota_piket)
     {
         //
     }
@@ -64,11 +64,11 @@ class AnggotaPiketController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Updateanggota_piketRequest  $request
-     * @param  \App\Models\anggota_piket  $anggota_piket
+     * @param  \App\Http\Requests\UpdateAnggota_piketRequest  $request
+     * @param  \App\Models\Anggota_piket  $Anggota_piket
      * @return \Illuminate\Http\Response
      */
-    public function update(Updateanggota_piketRequest $request, anggota_piket $anggota_piket)
+    public function update(UpdateAnggota_piketRequest $request, Anggota_piket $Anggota_piket)
     {
         //
     }
@@ -76,10 +76,10 @@ class AnggotaPiketController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\anggota_piket  $anggota_piket
+     * @param  \App\Models\Anggota_piket  $Anggota_piket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(anggota_piket $anggota_piket)
+    public function destroy(Anggota_piket $Anggota_piket)
     {
         //
     }

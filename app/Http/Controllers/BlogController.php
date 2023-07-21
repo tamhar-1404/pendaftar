@@ -55,7 +55,7 @@ class BlogController extends Controller
          ]);
 
          $image = $request->file('foto');
-         $image->storeAs('public/fotoberita', $image->hashName());
+         $image->storeAs('public/Fotoberita', $image->hashName());
 
          $berita = Blog::create([
              'name' => auth()->user()->name,
@@ -122,11 +122,11 @@ class BlogController extends Controller
         if ($request->hasFile('foto')) {
             // Unggah dan simpan gambar baru
             $image = $request->file('foto');
-            $image->storeAs('storage/fotoberita/', $image->hashName());
+            $image->storeAs('storage/Fotoberita/', $image->hashName());
 
             // Hapus gambar lama jika ada
             if ($blog->foto !== null) {
-                Storage::delete('storage/fotoberita/' . $blog->foto);
+                Storage::delete('storage/Fotoberita/' . $blog->foto);
             }
 
             // $blog->foto = $image->hashName();
@@ -157,7 +157,7 @@ class BlogController extends Controller
 
         // Hapus gambar terkait jika ada
         if ($blog->foto) {
-            Storage::delete('storage/fotoberita/' . $blog->foto);
+            Storage::delete('storage/Fotoberita/' . $blog->foto);
         }
 
         // Hapus data berita

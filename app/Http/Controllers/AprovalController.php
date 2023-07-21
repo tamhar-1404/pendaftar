@@ -16,7 +16,7 @@ use Illuminate\Support\Str;
 use App\Mail\DemoMail;
 use App\Mail\Konfirmasi;
 use App\Mail\Guru_email;
-use App\Mail\tolakEmail;
+use App\Mail\TolakEmail;
 use App\Mail\TolakTopup;
 use Illuminate\Support\Facades\Storage;
 

@@ -7,8 +7,8 @@ use Carbon\Carbon;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Mail\IzinBerakhir;
-use App\Mail\dataizinEmail;
-use App\Mail\tolakdataEmail;
+use App\Mail\DataizinEmail;
+use App\Mail\TolakdataEmail;
 use App\Models\ApprovalIzin;
 use Illuminate\Http\Request;
 use App\Mail\TerimaizinEmail;
@@ -81,7 +81,7 @@ class ApprovalIzinController extends Controller
         ]);
 
         $image = $request->file('bukti');
-        $image->storeAs('public/bukti_izin', $image->hashName());
+        $image->storeAs('public/Bukti_izin', $image->hashName());
 
         ApprovalIzin::create([
             'nama' => $request->nama,
@@ -189,7 +189,7 @@ class ApprovalIzinController extends Controller
                      'content' => 'Absensi Anda telah ditolak dengan alasan: ' . $alasan,
                  ];
 
-                 Mail::to($email)->send(new tolakdataEmail($mailData));
+                 Mail::to($email)->send(new TolakdataEmail($mailData));
                  $izin->delete();
              } else {
                  // Tambahkan pesan error jika alasan tidak diisi
