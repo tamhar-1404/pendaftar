@@ -15,7 +15,7 @@
 
     <title>Login</title>
     @vite('resources/css/app.css')
-    <link rel="icon" type="image/png" href="lineone/images/favicon.png" />
+    <link href="/admin/assets/images/logo.png" rel="shortcut icon">>
 
     <!-- CSS Assets -->
     <link rel="stylesheet" href="lineone/css/app.css" />
@@ -146,7 +146,8 @@
                                     class="form-checkbox is-outline h-5 w-5 rounded border-slate-400/70 bg-slate-100 before:bg-primary checked:border-primary hover:border-primary focus:border-primary dark:border-navy-500 dark:bg-navy-900 dark:before:bg-accent dark:checked:border-accent dark:hover:border-accent dark:focus:border-accent"
                                     type="checkbox" />
 
-                                <p class="line-clamp-1 cursor-pointer text-sm" onclick="showModal()">Kebijakan privasi</p>
+                                <p class="line-clamp-1 cursor-pointer text-sm" onclick="showModal()">Kebijakan privasi
+                                </p>
 
 
                                 <div id="myModal" class="modal hidden">
@@ -288,25 +289,25 @@
                             menyetujui
                             kebijakan privasi sebelum melanjutkan.</p>
 
-                            <button id="login-button" type="submit"
-                                class="btn mt-10 h-10 w-full bg-info font-medium text-white">Login</button>
-                            <script>
-                                const rememberCheckbox = document.getElementById('remember-checkbox');
-                                const loginButton = document.getElementById('login-button');
-                                const privacyWarning = document.getElementById('privacy-warning');
+                        <button id="login-button" type="submit"
+                            class="btn mt-10 h-10 w-full bg-info font-medium text-white">Login</button>
+                        <script>
+                            const rememberCheckbox = document.getElementById('remember-checkbox');
+                            const loginButton = document.getElementById('login-button');
+                            const privacyWarning = document.getElementById('privacy-warning');
 
-                                rememberCheckbox.addEventListener('change', function() {
-                                    loginButton = !this.checked;
-                                    privacyWarning.classList.add('hidden');
-                                });
+                            rememberCheckbox.addEventListener('change', function() {
+                                loginButton = !this.checked;
+                                privacyWarning.classList.add('hidden');
+                            });
 
-                                loginButton.addEventListener('click', function(event) {
-                                    if (!rememberCheckbox.checked) {
-                                        event.preventDefault();
-                                        privacyWarning.classList.remove('hidden');
-                                    }
-                                });
-                            </script>
+                            loginButton.addEventListener('click', function(event) {
+                                if (!rememberCheckbox.checked) {
+                                    event.preventDefault();
+                                    privacyWarning.classList.remove('hidden');
+                                }
+                            });
+                        </script>
 
 
                     </form>
