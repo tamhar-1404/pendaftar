@@ -104,12 +104,12 @@ Route::post('/lupapassword', [LupaPasswordController::class, 'store'])->name('pa
 Route::get('/resetpassword/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
 Route::post('/resetpassword', [LupaPasswordController::class, 'update'])->name('password.update');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
         // Route khusus untuk admin
         Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
-        Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
         Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
         Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
         Route::put('/siswa_admin/banned/{id}', [App\Http\Controllers\SiswaController::class, 'banned'])->name('siswa.banned');

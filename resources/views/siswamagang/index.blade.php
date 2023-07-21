@@ -1211,7 +1211,7 @@
                     </div>
                     {{--  modal  --}}
                     <div id="modal-step1"
-                        class="fixed inset-0 flex items-center justify-center z-50 hidden backdrop-blur-sm">
+                        class="fixed inset-0 flex items-center justify-center z-50 hidden " style="backdrop-filter: blur(6px);">
                         <div class="relative w-full max-w-2xl max-h-full ">
                             <!-- Modal content -->
                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 shadow-lg">
@@ -1406,10 +1406,10 @@
                                 </div>
                                 <div class="relative w-full ">
                                     {{-- grafik --}}
-                                    <div id="grafik_jurnal"
-                                    class=" w-80% h-35 mx-3 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
+                                    <div id="grafik_jurnal" style=""
+                                    class=" w-[100%] h-35 mx-3 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
                                     <div class="w-full px-4 mt-6">
-                                        <div class="w-80%  bg-white h-35 pb-5 text-same font-semibold dark:bg-transparent">
+                                        <div class="w-[100%]  bg-white h-35 pb-5 text-same font-semibold dark:bg-transparent">
                                             tabel jurnal
                                         </div>
                                     </div>
@@ -1828,6 +1828,7 @@
     chart: {
     type: 'bar',
     height: 350,
+    width: 850,
     },
     plotOptions: {
     bar: {
