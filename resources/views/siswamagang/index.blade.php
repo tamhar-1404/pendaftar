@@ -10,7 +10,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>siswa - Dashboad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    @vite('resources/css/app.css')
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/x-icon" href="favicon.png" />
@@ -1413,13 +1412,7 @@
                                 <div class="mb-5 flex items-center">
                                     <h5 class="text-lg font-semibold dark:text-white-light">Absensi</h5>
                                 </div>
-                                <div id="grafik_absensi" class=" w-90% h-35 mx-4 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
-                                    <div class="w-full px-4 mt-6">
-                                       <div class="w-80%  bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
-                                           Grafik Absensi
-                                       </div>
-                                    </div>
-                                </div>
+                                <canvas id="grafik_absensi"></canvas>
                             </div>
                             <div class="panel h-full lg:col-span-3">
                                 <div class="mb-5 flex items-center">
@@ -1781,54 +1774,29 @@
         };
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
-        var options = {
-            series:  [
-                {
+    const ctx = document.getElementById('grafik_absensi');
 
-                    data: [10, 10, 10, 10],
-                },
-
-            ],
-            chart: {
-            width: 380,
-            type: 'donut',
-          },
-          plotOptions: {
-            pie: {
-              startAngle: -90,
-              endAngle: 270
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+        labels: ['Hadir', 'Alfa', 'izin', 'telat'],
+        datasets: [{
+            label: '# of Votes',
+            data: [{{ $Hadir }},{{ $Alfa }}, {{ $izin }}, {{ $Telat }}],
+            borderWidth: 1
+        }]
+        },
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true
             }
-          },
-          dataLabels: {
-            enabled: false
-          },
-          fill: {
-            type: 'gradient',
-          },
-          legend: {
-            formatter: function(val, opts) {
-              return val + " - " + opts.w.globals.series[opts.seriesIndex]
-            }
-          },
-          title: {
-            text: ''
-          },
-          responsive: [{
-            breakpoint: 480,
-            options: {
-              chart: {
-                width: 200
-              },
-              legend: {
-                position: 'bottom'
-              }
-            }
-          }]
-          };
-
-          var chart = new ApexCharts(document.querySelector("#grafik_absensi"), options);
-          chart.render();
+        }
+        }
+    });
     </script>
 
     <script>
