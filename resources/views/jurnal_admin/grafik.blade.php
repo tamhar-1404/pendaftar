@@ -203,9 +203,14 @@
                             </svg>
                         </div>
                         {{-- serch --}}
-                        <div class="mr-4 ">
-                            <input class=" p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent" type="text" placeholder="cari">
-                        </div>
+                        <form action="{{route('jurnal_admin.create')}}">
+                            <label class="relative hidden sm:flex">
+                                <input
+                                    class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                    placeholder="Search here..." type="text" name="serch"
+                                    value="{{ request('serch') }}" />
+                            </label>
+                        </form>
                     </div>
                     <div class="mb-5 flex justify-between grid-cols-3  mt-5 items-center">
                         <form class="flex md:w-8/12 sm:5/12" action="{{route('grafik_pdf')}}" method="get">
@@ -297,10 +302,10 @@
 
                     </div>
                 </div>
-                <div id="grafik_admin" class=" w-90% h-35 mx-4 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
+                <div id="grafik_siswa" class=" w-90% h-35 mx-4 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
                     <div class="w-full px-4 mt-6">
                        <div class="w-80%  bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
-                           Grafik Absensi
+                           Grafik jurnal
                        </div>
                     </div>
                 </div>
@@ -465,7 +470,7 @@
         }],
         chart: {
         type: 'bar',
-        height: 350
+        height: 350,
         },
         plotOptions: {
         bar: {
@@ -518,10 +523,11 @@
         }
         };
 
-        var chart = new ApexCharts(document.querySelector("#grafik_admin"), options);
+        var chart = new ApexCharts(document.querySelector("#grafik_siswa"), options);
         chart.render();
 
     </script>
+
 
     <script>
        const instanceMode = te.Sidenav.getInstance(

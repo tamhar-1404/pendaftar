@@ -42,7 +42,7 @@ class JurnaladminController extends Controller
      */
     public function create(Request $request)
     {
-        $item = jurnalSiswa::where('nama', 'LIKE', $request ->serch)->GET();
+        $item = jurnalSiswa::where('nama', 'LIKE', $request->serch)->GET();
         $siswa = $request->serch;
 
         $mengisi_jan = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $request->serch)->whereMonth('tanggal', '=', 1)->count();

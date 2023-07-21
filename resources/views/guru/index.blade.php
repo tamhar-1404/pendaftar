@@ -1252,7 +1252,7 @@
                                                 @foreach($data_siswa as $siswa)
                                                     <tr>
                                                         <td>{{ $siswa->id }}</td>
-                                                        <td>{{ $siswa->nama }}</td>
+                                                        <td>{{ $siswa->name }}</td>
                                                         <td>{{ $siswa->kelas }}</td>
                                                         <td>{{ $siswa->jurusan }}</td>
                                                     </tr>
@@ -1475,7 +1475,7 @@
                                         <p class="shrink-0 text-tiny+">{{ $row->created_at->diffForHumans() }}</p>
                                     </div>
 
-                                   
+
                                 </div>
                             </div>
                         </div>

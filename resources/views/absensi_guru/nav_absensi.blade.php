@@ -330,9 +330,9 @@
                     <li>
                         <a href="{{ route('berita_guru.index') }}">Berita</a>
                     </li>
-                    <li>
+                    {{--  <li>
                         <a href="{{ route('chat_guru.index') }}">Chat</a>
-                    </li>
+                    </li>  --}}
                 </ul>
             </li>
         </ul>

@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\HistoryTopup;
-use App\Models\HistoryTransaksi;
-use Illuminate\Http\Request;
-use Auth;
 
-class HistorySiswaController extends Controller
+use App\Models\Blog;
+use Illuminate\Http\Request;
+
+class BeritaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,8 @@ class HistorySiswaController extends Controller
      */
     public function index()
     {
-        $siswaLogin = Auth::user();
-        $siswas = HistoryTransaksi::where('nama', $siswaLogin->name)
-                       ->get();
-      return view('History.index' , compact('siswas'));
+        $blogs = Blog::all();
+        return view('Berita_guru.index', compact('blogs'));
     }
 
     /**
@@ -50,7 +47,8 @@ class HistorySiswaController extends Controller
      */
     public function show($id)
     {
-        //
+        $berita = Blog::find($id);
+        return view('Berita_guru.detail', compact('berita'));
     }
 
     /**

@@ -138,6 +138,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['role:Siswa'])->group(function () {
 
+        Route::resource('History', App\Http\Controllers\HistorySiswaController::class);
+
         Route::put('izin_update', [App\Http\Controllers\ApprovalIzinController::class, 'izin_update'])->name('izin_update');
         Route::get('siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa']);
         Route::resource('absensi_siswa', App\Http\Controllers\AbsensiSiswaController::class);

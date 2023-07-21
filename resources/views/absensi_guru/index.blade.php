@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<!-- Mirrored from html.vristo.sbthemes.com/datatables-export.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:33 GMT -->
+{{--  <!-- Mirrored from html.vristo.sbthemes.com/datatables-export.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:33 GMT -->  --}}
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
@@ -377,7 +377,6 @@
                                                 <tr class="">
                                                     <th scope="col" class="px-6 py-4">#</th>
                                                     <th scope="col" class="px-6 py-4">Nama</th>
-                                                    <th scope="col" class="px-6 py-4">NISN</th>
                                                     <th scope="col" class="px-6 py-4">Sekolah</th>
                                                     <th scope="col" class="px-6 py-4">Tanggal</th>
                                                     <th scope="col" class="px-6 py-4 ">jam</th>
@@ -385,66 +384,25 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @php
+                                                    $i = 1;
+                                                @endphp
+                                                @foreach ($terimas as $terima)
                                                 <tr
                                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">12543256</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">23-06-2023</td>
-                                                    <td class="whitespace-nowrap px-6 py-4">07.45</td>
+                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $i }}</td>
+                                                    <td class="whitespace-nowrap px-4 py-4">{{ $terima->nama }}</td>
+                                                    <td class="whitespace-nowrap px-4 py-4">{{ $terima->sekolah }}</td>
+                                                    <td class="whitespace-nowrap px-4 py-4">{{ $terima->tanggal }}</td>
+                                                    <td class="whitespace-nowrap px-4 py-4">{{ $terima->jam }}</td>
                                                     <td
                                                         class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic
-                                                        unde excepturi velit quibusdam consequuntur et facilis, labore
-                                                        veritatis debitis vitae enim libero odio soluta at cumque
-                                                        asperiores ea. Autem, incidunt?</td>
+                                                        {{ $terima->keterangan }}</td>
                                                 </tr>
-                                                <tr
-                                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">2</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">12543256</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">23-06-2023</td>
-                                                    <td class="whitespace-nowrap px-6 py-4">07.45</td>
-                                                    <td
-                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic
-                                                        unde excepturi velit quibusdam consequuntur et facilis, labore
-                                                        veritatis debitis vitae enim libero odio soluta at cumque
-                                                        asperiores ea. Autem, incidunt?</td>
-                                                </tr>
-                                                <tr
-                                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">3</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">12543256</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">23-06-2023</td>
-                                                    <td class="whitespace-nowrap px-6 py-4">07.45</td>
-                                                    <td
-                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic
-                                                        unde excepturi velit quibusdam consequuntur et facilis, labore
-                                                        veritatis debitis vitae enim libero odio soluta at cumque
-                                                        asperiores ea. Autem, incidunt?</td>
-                                                </tr>
-                                                <tr
-                                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">4</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">12543256</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">SMKN 1 KEPANJEN</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">23-06-2023</td>
-                                                    <td class="whitespace-nowrap px-6 py-4">07.45</td>
-                                                    <td
-                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic
-                                                        unde excepturi velit quibusdam consequuntur et facilis, labore
-                                                        veritatis debitis vitae enim libero odio soluta at cumque
-                                                        asperiores ea. Autem, incidunt?</td>
-                                                </tr>
+                                                @php
+                                                    $i++;
+                                                @endphp
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

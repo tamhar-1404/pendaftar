@@ -1327,124 +1327,27 @@
                                                 </tr>
                                             </thead>
                                             @forelse ($jurnals as  $jurnal)
-
+                                            <?php
+                                            $no = 1;
+                                            ?>
                                             <tbody>
                                                 <tr
                                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">23-06-2023</td>
+                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $no++ }}</td>
+                                                    <td class="whitespace-nowrap px-4 py-4">{{ $jurnal->nama }}</td>
+                                                    <td class="whitespace-nowrap px-4 py-4">{{ $jurnal->tanggal }}</td>
                                                     <td
                                                         class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic
-                                                        unde excepturi velit quibusdam consequuntur et facilis, labore
-                                                        veritatis debitis vitae enim libero odio soluta at cumque
-                                                        asperiores ea. Autem, incidunt?</td>
+                                                      {{ $jurnal->kegiatan }}</td>
                                                     <td class="whitespace-nowrap px-6 py-4">
-                                                        <img src="admin/assets_guru/images/profile-1.jpeg"
-                                                            alt="" srcset="">
+                                                        <img src="{{ asset('storage/image/' . $jurnal->image) }}"
+                                                            alt="" srcset="" class="w-20">
                                                     </td>
                                                     <td class="whitespace-nowrap px-4 py-4">
                                                         <button
                                                             class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
-                                                            data-te-toggle="modal" data-modal-target="staticModal"
-                                                            data-modal-toggle="staticModal">
-                                                            <span class=" p-1  font-semibold ">Lihat</span>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr
-                                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">23-06-2023</td>
-                                                    <td
-                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic
-                                                        unde excepturi velit quibusdam consequuntur et facilis, labore
-                                                        veritatis debitis vitae enim libero odio soluta at cumque
-                                                        asperiores ea. Autem, incidunt?</td>
-                                                    <td class="whitespace-nowrap px-6 py-4">
-                                                        <img src="admin/assets_guru/images/profile-1.jpeg"
-                                                            alt="" srcset="">
-                                                    </td>
-                                                    <td class="whitespace-nowrap px-4 py-4">
-                                                        <button
-                                                            class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
-                                                            data-te-toggle="modal"
-                                                            data-te-target="#exampleModalCenteredScrollable">
-                                                            <span class=" p-1  font-semibold ">Lihat</span>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr
-                                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">23-06-2023</td>
-                                                    <td
-                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic
-                                                        unde excepturi velit quibusdam consequuntur et facilis, labore
-                                                        veritatis debitis vitae enim libero odio soluta at cumque
-                                                        asperiores ea. Autem, incidunt?</td>
-                                                    <td class="whitespace-nowrap px-6 py-4">
-                                                        <img src="admin/assets_guru/images/profile-1.jpeg"
-                                                            alt="" srcset="">
-                                                    </td>
-                                                    <td class="whitespace-nowrap px-4 py-4">
-                                                        <button
-                                                            class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
-                                                            data-te-toggle="modal"
-                                                            data-te-target="#exampleModalCenteredScrollable">
-                                                            <span class=" p-1  font-semibold ">Lihat</span>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr
-                                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">23-06-2023</td>
-                                                    <td
-                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic
-                                                        unde excepturi velit quibusdam consequuntur et facilis, labore
-                                                        veritatis debitis vitae enim libero odio soluta at cumque
-                                                        asperiores ea. Autem, incidunt?</td>
-                                                    <td class="whitespace-nowrap px-6 py-4">
-                                                        <img src="admin/assets_guru/images/profile-1.jpeg"
-                                                            alt="" srcset="">
-                                                    </td>
-                                                    <td class="whitespace-nowrap px-4 py-4">
-                                                        <button
-                                                            class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
-                                                            data-te-toggle="modal"
-                                                            data-te-target="#exampleModalCenteredScrollable">
-                                                            <span class=" p-1  font-semibold ">Lihat</span>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr
-                                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">1</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">Mark</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">23-06-2023</td>
-                                                    <td
-                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic
-                                                        unde excepturi velit quibusdam consequuntur et facilis, labore
-                                                        veritatis debitis vitae enim libero odio soluta at cumque
-                                                        asperiores ea. Autem, incidunt?</td>
-                                                    <td class="whitespace-nowrap px-6 py-4">
-                                                        <img src="admin/assets_guru/images/profile-1.jpeg"
-                                                            alt="" srcset="">
-                                                    </td>
-                                                    <td class="whitespace-nowrap px-4 py-4">
-                                                        <button
-                                                            class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
-                                                            data-te-toggle="modal"
-                                                            data-te-target="#exampleModalCenteredScrollable">
+                                                            data-te-toggle="modal" data-modal-target="staticModal{{ $jurnal->id }}"
+                                                            data-modal-toggle="staticModal{{ $jurnal->id }}">
                                                             <span class=" p-1  font-semibold ">Lihat</span>
                                                         </button>
                                                     </td>
@@ -1509,7 +1412,9 @@
     </div>
     </div>
     {{-- modal --}}
-    <div id="staticModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+    @foreach ($jurnals as $jurnal)
+
+    <div id="staticModal{{ $jurnal->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-2xl max-h-full">
             <!-- Modal content -->
@@ -1521,7 +1426,7 @@
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                        data-modal-hide="staticModal">
+                        data-modal-hide="staticModal{{ $jurnal->id }}">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -1537,7 +1442,7 @@
                             Nama
                         </p>
                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            Dimas
+                            {{ $jurnal->nama }}
                         </p>
                     </div>
                     <div>
@@ -1545,7 +1450,7 @@
                             Tanggal
                         </p>
                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            09-4-2023
+                           {{$jurnal->tanggal}}
                         </p>
                     </div>
                     <div>
@@ -1553,7 +1458,7 @@
                             Sekolah
                         </p>
                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            SMKN 12 MALANG
+                           {{$jurnal->sekolah}}
                         </p>
                     </div>
                     <div>
@@ -1561,16 +1466,14 @@
                             Kegiatan
                         </p>
                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum optio officiis provident
-                            eos amet, eius vel corporis nam delectus fuga eligendi fugit repellendus veniam repellat
-                            illo ipsam corrupti suscipit.
+                          {{$jurnal->kegiatan}}
                         </p>
                     </div>
                     <div>
                         <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                             Bukti
                         </p>
-                        <img src="siswa/images/carousel2.jpeg" alt="">
+                        <img src="{{ asset('storage/image/' . $jurnal->image) }}" alt="">
                     </div>
                 </div>
                 <!-- Modal footer -->
@@ -1582,6 +1485,7 @@
             </div>
         </div>
     </div>
+    @endforeach
 
     <script src="assets_guru/js/highlight.min.js"></script>
     <script src="assets_guru/js/alpine-collaspe.min.js"></script>
