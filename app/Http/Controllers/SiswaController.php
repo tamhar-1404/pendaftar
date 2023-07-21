@@ -35,7 +35,7 @@ class SiswaController extends Controller
 
         $aprovals = Siswa::latest()->paginate(3);
 
-        return view('siswa_admin.index', compact('siswas'));
+        return view('Siswa_admin.index', compact('siswas'));
     }
 
 
