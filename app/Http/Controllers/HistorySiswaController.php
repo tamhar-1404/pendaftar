@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\HistoryTopup;
+use App\Models\HistoryTransaksi;
 use Illuminate\Http\Request;
-use auth;
+use Auth;
 
 class HistorySiswaController extends Controller
 {
@@ -14,7 +15,10 @@ class HistorySiswaController extends Controller
      */
     public function index()
     {
-        //
+        $siswaLogin = Auth::user();
+        $siswas = HistoryTransaksi::where('nama', $siswaLogin->name)
+                       ->get();
+      return view('History.index' , compact('siswas'));
     }
 
     /**

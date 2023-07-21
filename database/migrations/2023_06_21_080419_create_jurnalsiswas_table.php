@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('jurnalsiswas', function (Blueprint $table) {
             $table->id();
             $table->String('nama');
-            $table->date('tanggal')->unique();
+            $table->date('tanggal');
             $table->String('sekolah');
             $table->String('kegiatan');
             $table->String('image');
