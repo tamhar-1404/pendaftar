@@ -101,7 +101,7 @@
 
     <!-- blog grid section start -->
 
-    <div class="pt-24 mt-10">
+    <div class="pt-24">
         <div class="container">
             <div class="flex flex-wrap flex-col lg:flex-row">
                 <div id="shoptab" class="flex-1">
