@@ -14,16 +14,15 @@
     <title>siswa - Dashboad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdn.tailwindcss.com%22%3E/""></script>
-        <script>
-            theme: {
-                extend: {
-                    blur: {
-                        xs: '3px',
-                      }
-                },
-              },
-
-        </script>
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        },
+    </script>
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/x-icon" href="favicon.png" />
@@ -1185,22 +1184,22 @@
                     <div class="mb-5 font-semibold kamu-tak-diajak">
                         <span>history transaksi /<span class="text-[#00B7FF]"> {{ Auth::user()->name }}</span></span>
                     </div>
-                   @error('tanggal')
+                    @error('tanggal')
                         <div class="text-danger">Anda telah mengisi jurnal pada hari ini</div>
-                   @enderror
+                    @enderror
 
                     <div class="panel">
-                     {{-- <h2>{{ $e }}</h2> --}}
+                        {{-- <h2>{{ $e }}</h2> --}}
 
 
 
                         {{-- tabel --}}
 
                         <div class="print-container flex flex-col">
-                            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                                    <div class="overflow-hidden">
-                                        <table id="data-table" class="min-w-full text-left text-sm font-light">
+                            <table id="data-table" class="min-w-full text-left text-sm font-light">
+                                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                        <div class="overflow-hidden">
                                             <thead class="border-b font-medium dark:border-neutral-500 ">
                                                 <tr class="">
                                                     <th scope="col" class="px-6 py-2">#</th>
@@ -1212,235 +1211,234 @@
                                                     <th scope="col" class="px-6 py-2 ">Tanggal</th>
                                                     <th scope="col" class="px-6 py-2 ">Total</th>
                                                     {{-- <th scope="col" class="px-6 py-2">tanggal</th> --}}
-                                      </tr>
-                                    </thead>
-                                    <?php
-                                    $no = 1 ;
-                                    ?>
-                                    <tbody>
-                                        @forelse ($siswas as $siswa)
-                                        <tr>
-                                            <td  class="whitespace-nowrap px-2 py-2">{{ $no++ }}</td>
-                                            <td  class="whitespace-nowrap px-2 py-2">{{ $siswa->name }}</td>
-                                            <td  class="whitespace-nowrap px-2 py-2">{{ $siswa->harga }}</td>
-                                            <td  class="whitespace-nowrap px-2 py-2">{{ $siswa->stok }}</td>
-                                            <td  class="whitespace-nowrap px-2 py-2">{{ $siswa->tanggal }}</td>
-                                            <td  class="whitespace-nowrap px-2 py-2">{{ $siswa->total }}</td>
-                                        </tr>
-                                        @empty
-
-                                        @endforelse
+                                                </tr>
+                                            </thead>
+                                            <?php
+                                            $no = 1;
+                                            ?>
+                                            <tbody>
+                                                @forelse ($siswas as $siswa)
+                                                    <tr>
+                                                        <td class="whitespace-nowrap px-2 py-2">{{ $no++ }}
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-2 py-2">{{ $siswa->name }}
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-2 py-2">{{ $siswa->harga }}
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-2 py-2">{{ $siswa->stok }}
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-2 py-2">{{ $siswa->tanggal }}
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-2 py-2">{{ $siswa->total }}
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                @endforelse
 
                                             </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- end tabel --}}
-                        {{-- paginate --}}
-                        <div class="kamu-tak-diajak flex justify-between">
-                            <p>
-                                menampilkan 1 sampai 10 dari 15 data
-                            </p>
-                            <nav aria-label="Page navigation example">
-                                <ul class="list-style-none flex">
-                                    <li>
-                                        <a
-                                            class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
-                                    </li>
-                                    <li>
-                                        <a class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
-                                            href="#!">1</a>
-
-                                    </li>
-                                    <li aria-current="page">
-                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                            href="#!">2
-
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                            href="#!">3</a>
-                                    </li>
-                                    <li>
-                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                            href="#!">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            </table>
                         </div>
                     </div>
                 </div>
-
-                    {{-- modal --}}
-                    <div id="staticModal1" tabindex="-1" aria-hidden="true"
-                        class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                        <div class="relative w-full max-w-2xl max-h-full">
-                            <!-- Modal content -->
-                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                <!-- Modal header -->
-                                <div
-                                    class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                        Detail Jurnal 2
-                                    </h3>
-                                    <button type="button"
-                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                        data-modal-hide="staticModal1">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd"
-                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                <!-- Modal body -->
-                                <div class="p-6 space-y-6">
-                                    <form action="" method="post"
-                                        enctype="multipart/form-data">
-                                        @method('PUT')
-                                        @csrf
-                                        <div>
-                                            <input type="hidden" name="nama" class=""
-                                                value=" " id="">
-                                        </div>
-                                        <div>
-                                            <input type="hidden" name="tanggal" id=""
-                                                value=" ">
-                                        </div>
-                                        <div>
-                                            <input type="hidden" name="sekolah" id=""
-                                                value="">
-                                        </div>
-                                        <div>
-                                            <label for="kegiatan"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
-                                            <textarea name="kegiatan" class="w-full rounded-md" id="" cols="" rows="5"></textarea>
-                                        </div>
-                                        <div>
-                                            <label for="bukti"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti</label>
-                                            <img id="preview-image"
-                                                src=""
-                                                class="w-64 h-64" alt="" srcset="">
-                                            <input type="file" name="image" id="image-input" placeholder=""
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                onchange="previewImage(event)">
-                                        </div>
-
-                                        <script>
-                                            function previewImage(event) {
-                                                var input = event.target;
-                                                var reader = new FileReader();
-
-                                                reader.onload = function() {
-                                                    var imgElement = document.getElementById("preview-image");
-                                                    imgElement.src = reader.result;
-                                                };
-
-                                                reader.readAsDataURL(input.files[0]);
-                                            }
-                                        </script>
-
-                                        <input type="hidden" name="status" value="mengisi">
-                                        <div class="flex justify-end">
-                                            <button type="submit"
-                                                class="border text-blue-400 bg-white font-semibold border-blue-400  py-1.5 px-3 text-sm rounded-md hover:bg-blue-400 hover:text-white">Kirim</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!-- Modal footer -->
-                                <div
-                                    class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                    <button data-modal-hide="staticModal" type="button"
-                                        class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
             </div>
+            {{-- end tabel --}}
+            {{-- paginate --}}
+            <div class="kamu-tak-diajak flex justify-between">
+                <p>
+                    menampilkan 1 sampai 10 dari 15 data
+                </p>
+                <nav aria-label="Page navigation example">
+                    <ul class="list-style-none flex">
+                        <li>
+                            <a
+                                class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
+                        </li>
+                        <li>
+                            <a class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
+                                href="#!">1</a>
 
-                {{-- modal --}}
-                <div id="staticModal" tabindex="-1" aria-hidden="true"
-                    class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                    <div class="relative w-full max-w-2xl max-h-full">
-                        <!-- Modal content -->
-                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                            <!-- Modal header -->
-                            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                    Detail Jurnal
-                                </h3>
-                                <button type="button"
-                                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                    data-modal-hide="staticModal">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                            <!-- Modal body -->
-                            <div class="p-6 space-y-6">
-                                <div>
-                                    <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
-                                        Nama
-                                    </p>
-                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                        </li>
+                        <li aria-current="page">
+                            <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
+                                href="#!">2
 
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                        Tanggal
-                                    </p>
-                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
+                                href="#!">3</a>
+                        </li>
+                        <li>
+                            <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
+                                href="#!">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
 
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                        Sekolah
-                                    </p>
-                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                        Kegiatan
-                                    </p>
-                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                        Bukti
-                                    </p>
-                                    <img id="preview-image" src="{{ asset('storage/image/p') }}"
-                                        class="w-64 h-64" alt="" srcset="">
-                                </div>
-                            </div>
-                            <!-- Modal footer -->
-                            <div
-                                class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                <button data-modal-hide="staticModal" type="button"
-                                    class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
-                            </div>
+    {{-- modal --}}
+    <div id="staticModal1" tabindex="-1" aria-hidden="true"
+        class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-2xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Detail Jurnal 2
+                    </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="staticModal1">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6 space-y-6">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        @method('PUT')
+                        @csrf
+                        <div>
+                            <input type="hidden" name="nama" class="" value=" " id="">
                         </div>
+                        <div>
+                            <input type="hidden" name="tanggal" id="" value=" ">
+                        </div>
+                        <div>
+                            <input type="hidden" name="sekolah" id="" value="">
+                        </div>
+                        <div>
+                            <label for="kegiatan"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
+                            <textarea name="kegiatan" class="w-full rounded-md" id="" cols="" rows="5"></textarea>
+                        </div>
+                        <div>
+                            <label for="bukti"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti</label>
+                            <img id="preview-image" src="" class="w-64 h-64" alt=""
+                                srcset="">
+                            <input type="file" name="image" id="image-input" placeholder=""
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                onchange="previewImage(event)">
+                        </div>
+
+                        <script>
+                            function previewImage(event) {
+                                var input = event.target;
+                                var reader = new FileReader();
+
+                                reader.onload = function() {
+                                    var imgElement = document.getElementById("preview-image");
+                                    imgElement.src = reader.result;
+                                };
+
+                                reader.readAsDataURL(input.files[0]);
+                            }
+                        </script>
+
+                        <input type="hidden" name="status" value="mengisi">
+                        <div class="flex justify-end">
+                            <button type="submit"
+                                class="border text-blue-400 bg-white font-semibold border-blue-400  py-1.5 px-3 text-sm rounded-md hover:bg-blue-400 hover:text-white">Kirim</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal footer -->
+                <div
+                    class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button data-modal-hide="staticModal" type="button"
+                        class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+    {{-- modal --}}
+    <div id="staticModal" tabindex="-1" aria-hidden="true"
+        class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-2xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Detail Jurnal
+                    </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="staticModal">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6 space-y-6">
+                    <div>
+                        <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
+                            Nama
+                        </p>
+                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                            Tanggal
+                        </p>
+                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                            Sekolah
+                        </p>
+                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                            Kegiatan
+                        </p>
+                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                            Bukti
+                        </p>
+                        <img id="preview-image" src="{{ asset('storage/image/p') }}" class="w-64 h-64"
+                            alt="" srcset="">
                     </div>
                 </div>
-
-
+                <!-- Modal footer -->
+                <div
+                    class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button data-modal-hide="staticModal" type="button"
+                        class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                </div>
+            </div>
         </div>
+    </div>
+
+
+    </div>
     </div>
 
     {{--  <!-- Swiper JS -->  --}}

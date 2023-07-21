@@ -33,16 +33,15 @@
             document.documentElement.classList.add("dark");
     </script>
     <script src="https://cdn.tailwindcss.com%22%3E/"></script>
-        <script>
-            theme: {
-                extend: {
-                    blur: {
-                        xs: '3px',
-                      }
-                },
-              },
-
-        </script>
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        },
+    </script>
 </head>
 
 <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
@@ -2384,8 +2383,8 @@
                                                 class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                         </div>
                                         @error('no')
-                                        <div class="text-sm text-red-500 font-medium">{{ $message }}</div>
-                                    @enderror
+                                            <div class="text-sm text-red-500 font-medium">{{ $message }}</div>
+                                        @enderror
                                         <div class="mt-4">
                                             <label for="email"
                                                 class="block text-gray-700 font-medium mb-2">Password</label>
@@ -2483,25 +2482,15 @@
                             </h3>
                             <p class="text-xs+">{{ $guru->sekolah }}</p>
 
-                            <div class="mt-6 grid w-full grid-cols-2 gap-2">
+                            <div class="mt-6 grid w-full grid-cols-2 gap-2" style="margin-right: -115px;">
                                 <button
-                                    class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+                                    class="btn space-x-2 bg-[#24AEE4] px-0 font-medium text-white hover:bg-blue-400 focus:bg-blue-400 active:bg-blue-400 dark:bg-accent dark:hover:bg-blue-400 dark:focus:bg-blue-400 dark:active:bg-accent/90">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0"
                                         fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-width="2"
                                             d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z" />
                                     </svg>
                                     <a href="{{ route('guru_admin.edit', $guru->id) }}">Profile</a>
-                                </button>
-                                <button
-                                    class="btn space-x-2 bg-slate-150 px-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0"
-                                        fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                        stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                                    </svg>
-                                    <span> Chat </span>
                                 </button>
                             </div>
                         </div>
