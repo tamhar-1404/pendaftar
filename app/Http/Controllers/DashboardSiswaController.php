@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dashboard_siswa;
 use App\Models\ApprovalIzin;
 use App\Models\jurnalsiswa;
-use auth;
+use Auth;
 use App\Http\Requests\StoreDashboard_siswaRequest;
 use App\Http\Requests\UpdateDashboard_siswaRequest;
 
@@ -18,88 +18,88 @@ class DashboardSiswaController extends Controller
      */
     public function index()
     {
-        $Hadir_jan = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 1)->count();
-        $Hadir_feb = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 2)->count();
-        $Hadir_mar = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 3)->count();
-        $Hadir_apr = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 4)->count();
-        $Hadir_mei = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 5)->count();
-        $Hadir_jun = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 6)->count();
-        $Hadir_jul = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 7)->count();
-        $Hadir_aug = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 8)->count();
-        $Hadir_sep = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 9)->count();
-        $Hadir_okt = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 10)->count();
-        $Hadir_nov = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
-        $Hadir_des = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
+        $Hadir_jan = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 1)->count();
+        $Hadir_feb = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 2)->count();
+        $Hadir_mar = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 3)->count();
+        $Hadir_apr = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 4)->count();
+        $Hadir_mei = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 5)->count();
+        $Hadir_jun = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 6)->count();
+        $Hadir_jul = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 7)->count();
+        $Hadir_aug = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 8)->count();
+        $Hadir_sep = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 9)->count();
+        $Hadir_okt = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 10)->count();
+        $Hadir_nov = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
+        $Hadir_des = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
 
 
-        $Telat_jan = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 1)->count();
-        $Telat_feb = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 2)->count();
-        $Telat_mar = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 3)->count();
-        $Telat_apr = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 4)->count();
-        $Telat_mei = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 5)->count();
-        $Telat_jun = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 6)->count();
-        $Telat_jul = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 7)->count();
-        $Telat_aug = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 8)->count();
-        $Telat_sep = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 9)->count();
-        $Telat_okt = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 10)->count();
-        $Telat_nov = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
-        $Telat_des = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
+        $Telat_jan = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 1)->count();
+        $Telat_feb = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 2)->count();
+        $Telat_mar = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 3)->count();
+        $Telat_apr = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 4)->count();
+        $Telat_mei = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 5)->count();
+        $Telat_jun = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 6)->count();
+        $Telat_jul = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 7)->count();
+        $Telat_aug = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 8)->count();
+        $Telat_sep = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 9)->count();
+        $Telat_okt = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 10)->count();
+        $Telat_nov = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
+        $Telat_des = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
 
 
-        $izin_jan = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 1)->count();
-        $izin_feb = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 2)->count();
-        $izin_mar = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 3)->count();
-        $izin_apr = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 4)->count();
-        $izin_mei = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 5)->count();
-        $izin_jun = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 6)->count();
-        $izin_jul = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 7)->count();
-        $izin_aug = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 8)->count();
-        $izin_sep = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 9)->count();
-        $izin_okt = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 10)->count();
-        $izin_nov = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
-        $izin_des = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
+        $izin_jan = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 1)->count();
+        $izin_feb = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 2)->count();
+        $izin_mar = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 3)->count();
+        $izin_apr = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 4)->count();
+        $izin_mei = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 5)->count();
+        $izin_jun = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 6)->count();
+        $izin_jul = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 7)->count();
+        $izin_aug = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 8)->count();
+        $izin_sep = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 9)->count();
+        $izin_okt = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 10)->count();
+        $izin_nov = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
+        $izin_des = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
 
-        $Alfa_jan = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 1)->count();
-        $Alfa_feb = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 2)->count();
-        $Alfa_mar = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 3)->count();
-        $Alfa_apr = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 4)->count();
-        $Alfa_mei = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 5)->count();
-        $Alfa_jun = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 6)->count();
-        $Alfa_jul = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 7)->count();
-        $Alfa_aug = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 8)->count();
-        $Alfa_sep = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 9)->count();
-        $Alfa_okt = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 10)->count();
-        $Alfa_nov = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
-        $Alfa_des = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
+        $Alfa_jan = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 1)->count();
+        $Alfa_feb = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 2)->count();
+        $Alfa_mar = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 3)->count();
+        $Alfa_apr = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 4)->count();
+        $Alfa_mei = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 5)->count();
+        $Alfa_jun = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 6)->count();
+        $Alfa_jul = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 7)->count();
+        $Alfa_aug = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 8)->count();
+        $Alfa_sep = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 9)->count();
+        $Alfa_okt = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 10)->count();
+        $Alfa_nov = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
+        $Alfa_des = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
 
         // jurnal
 
-        $mengisi_jan = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 1)->count();
-        $mengisi_feb = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 2)->count();
-        $mengisi_mar = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 3)->count();
-        $mengisi_apr = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 4)->count();
-        $mengisi_mei = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 5)->count();
-        $mengisi_jun = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 6)->count();
-        $mengisi_jul = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 7)->count();
-        $mengisi_aug = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 8)->count();
-        $mengisi_sep = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 9)->count();
-        $mengisi_okt = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 10)->count();
-        $mengisi_nov = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
-        $mengisi_des = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
+        $mengisi_jan = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 1)->count();
+        $mengisi_feb = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 2)->count();
+        $mengisi_mar = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 3)->count();
+        $mengisi_apr = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 4)->count();
+        $mengisi_mei = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 5)->count();
+        $mengisi_jun = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 6)->count();
+        $mengisi_jul = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 7)->count();
+        $mengisi_aug = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 8)->count();
+        $mengisi_sep = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 9)->count();
+        $mengisi_okt = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 10)->count();
+        $mengisi_nov = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
+        $mengisi_des = jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
 
 
-        $tdk_mengisi_jan = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 1)->count();
-        $tdk_mengisi_feb = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 2)->count();
-        $tdk_mengisi_mar = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 3)->count();
-        $tdk_mengisi_apr = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 4)->count();
-        $tdk_mengisi_mei = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 5)->count();
-        $tdk_mengisi_jun = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 6)->count();
-        $tdk_mengisi_jul = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 7)->count();
-        $tdk_mengisi_aug = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 8)->count();
-        $tdk_mengisi_sep = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 9)->count();
-        $tdk_mengisi_okt = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 10)->count();
-        $tdk_mengisi_nov = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
-        $tdk_mengisi_des = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
+        $tdk_mengisi_jan = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 1)->count();
+        $tdk_mengisi_feb = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 2)->count();
+        $tdk_mengisi_mar = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 3)->count();
+        $tdk_mengisi_apr = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 4)->count();
+        $tdk_mengisi_mei = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 5)->count();
+        $tdk_mengisi_jun = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 6)->count();
+        $tdk_mengisi_jul = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 7)->count();
+        $tdk_mengisi_aug = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 8)->count();
+        $tdk_mengisi_sep = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 9)->count();
+        $tdk_mengisi_okt = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 10)->count();
+        $tdk_mengisi_nov = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
+        $tdk_mengisi_des = jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
 
 
         $tatib = TataTertib::latest()->paginate(5);
