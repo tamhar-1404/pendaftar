@@ -13,8 +13,8 @@ use App\Http\Controllers\AbsensiGuruController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TataTertibController;
 use App\Http\Controllers\JurnaladminController;
-use App\Http\Controllers\JurnalSiswaController;
-use App\Http\Controllers\AprovalController;
+use App\Http\Controllers\JurnalsiswaController;
+use App\Http\Controllers\AprovalController;  
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LupaPasswordController;
 use App\Http\Controllers\RegisterController;
@@ -61,11 +61,11 @@ Route::get('send-email' , [MailController::class,'index']);
 // akhir admin
 
 // Siswa
-Route::get('/download-pdf-JurnalSiswa', [JurnalSiswaController::class, 'downloadPDF']);
-Route::get('/print', [JurnalSiswaController::class, 'print']);
-Route::get('/getData', [JurnalSiswaController::class, 'getData']);
-Route::get('/txt', [JurnalSiswaController::class, 'printjurnal']);
-Route::get('/export-to-docx', [JurnalSiswaController::class, 'exportToDocx']);
+Route::get('/download-pdf-JurnalSiswa', [JurnalsiswaController::class, 'downloadPDF']);
+Route::get('/print', [JurnalsiswaController::class, 'print']);
+Route::get('/getData', [JurnalsiswaController::class, 'getData']);
+Route::get('/txt', [JurnalsiswaController::class, 'printjurnal']);
+Route::get('/export-to-docx', [JurnalsiswaController::class, 'exportToDocx']);
 Route::get('/export-to-docx-absen', [AbsensiadminController::class, 'exportToDocxabsen'])->name('exportToDocxabsen');
 Route::get('/absensi_pdf', [ApprovalIzinController::class, 'absen_siswa_pdf']);
 Route::get('/absensi_pdf_admin', [AbsensiadminController::class, 'absen_pdf'])->name('absensi_pdf_admin');
@@ -149,7 +149,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('tatib_siswa', App\Http\Controllers\TatibSiswaController::class);
         Route::resource('piket_siswa', App\Http\Controllers\PiketSiswaController::class);
         Route::resource('chat_siswa', App\Http\Controllers\ChatSiswaController::class);
-        Route::resource('jurnal_siswa', App\Http\Controllers\JurnalSiswaController::class);
+        Route::resource('jurnal_siswa', App\Http\Controllers\JurnalsiswaController::class);
         Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
         Route::resource('/History_topup', App\Http\Controllers\HistoryTopupController::class);
         Route::get('/siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa'])->name('siswamagang_siswa');

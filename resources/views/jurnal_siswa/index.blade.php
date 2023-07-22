@@ -540,7 +540,7 @@
                                     <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                                         Bukti
                                     </p>
-                                    <img id="preview-image" src="{{ asset('Storage/Image/' . $modal->image) }}"
+                                    <img id="preview-image" src="{{ asset('storage/Image/' . $modal->image) }}"
                                         class="w-64 h-64" alt="" srcset="">
                                 </div>
                             </div>

@@ -126,7 +126,7 @@
                                             {{ $barang->nama }}
                                         </td>
                                         <td class="whitespace-nowrap px-6 py-2">
-                                            <img src="{{ asset('Storage/pendataanbarang/' . $barang->foto) }}"
+                                            <img src="{{ asset('storage/pendataanbarang/' . $barang->foto) }}"
                                                 class="w-10" alt="" srcset="">
                                         </td>
                                         <td class="whitespace-nowrap px-6 py-2">
@@ -258,7 +258,7 @@
                                     <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                                         Tanggal
                                     </p>
-                                    <img src="{{ asset('Storage/pendataanbarang/' . $barang->foto) }}" class="w-20"
+                                    <img src="{{ asset('storage/pendataanbarang/' . $barang->foto) }}" class="w-20"
                                         alt="" srcset="">
 
                                     <input type="file" name="foto" value="{{ $barang->foto }}"

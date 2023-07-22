@@ -149,7 +149,7 @@
                         <label>
                             <span class="font-medium text-slate-600 dark:text-navy-100">Foto</span>
                             @if ($blog->foto)
-                                <img src="{{ asset('Storage/fotoberita/' . $blog->foto) }}"
+                                <img src="{{ asset('storage/fotoberita/' . $blog->foto) }}"
                                     class="img-preview img-fluid mb-3 col-sm-5">
                             @else
                                 <img class="img-preview img-fluid mb-3 col-sm-5">

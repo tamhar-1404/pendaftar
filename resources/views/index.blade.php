@@ -82,7 +82,7 @@
                 </a>
 
                 <div class="nav-icons flex items-end lg_992:order-2 gap-1 ms-auto lg:ms-4">
-                  
+
                     <ul class="list-none menu-social mb-0">
                         <li class="inline">
                             <a href="{{ route('login.index') }}"
@@ -156,7 +156,7 @@
                                                     title: 'Data Pengguna',
                                                     html: `<div class="w-full">
                                                                 <div class="w-full flex justify-center mb-10">
-                                                                     <img class="w-[70px] h-[70px] rounded-full" src="{{ asset('Storage/Siswa/' . '') }}/${response.foto}" alt="" srcset="">
+                                                                     <img class="w-[70px] h-[70px] rounded-full" src="{{ asset('storage/Siswa/' . '') }}/${response.foto}" alt="" srcset="">
                                                                 </div>
                                                                 <div class="flex flex-col items-center gap-2">
                                                                 <div class="flex w-full text-base ">
