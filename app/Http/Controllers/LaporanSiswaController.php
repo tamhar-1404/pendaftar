@@ -56,7 +56,7 @@ class LaporanSiswaController extends Controller
         $user = Auth::user();
         $tanggal = date('d F Y'); // Ubah format tanggal menjadi "tanggal bulan tahun"
         $image = $request->file('bukti');
-        $image->storeAs('public/Laporansiswa', $image->hashName());
+        $image->storeAs('public/laporansiswa', $image->hashName());
         LaporanSiswa::create([
             'name' => auth()->user()->name,
             'tanggal' => $tanggal,
