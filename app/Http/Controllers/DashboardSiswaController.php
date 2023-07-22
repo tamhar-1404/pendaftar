@@ -36,7 +36,7 @@ class DashboardSiswaController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in Storage.
      *
      * @param  \App\Http\Requests\StoreDashboard_siswaRequest  $request
      * @return \Illuminate\Http\Response
@@ -69,7 +69,7 @@ class DashboardSiswaController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in Storage.
      *
      * @param  \App\Http\Requests\UpdateDashboard_siswaRequest  $request
      * @param  \App\Models\Dashboard_siswa  $dashboard_siswa
@@ -81,7 +81,7 @@ class DashboardSiswaController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from Storage.
      *
      * @param  \App\Models\Dashboard_siswa  $dashboard_siswa
      * @return \Illuminate\Http\Response

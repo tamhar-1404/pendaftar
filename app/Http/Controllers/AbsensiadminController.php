@@ -205,7 +205,7 @@ class AbsensiadminController extends Controller
 
     // Menyimpan dokumen sebagai file .docx
     $filename = "absensi_export.docx";
-    $path = storage_path('app/public/image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
+    $path = Storage_path('app/public/image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
     $phpWord->save($path);
 
     // Mengembalikan file dokumen untuk diunduh
@@ -237,7 +237,7 @@ class AbsensiadminController extends Controller
 
     // Menyimpan dokumen sebagai file .docx
     $filename = "absensi_export.docx";
-    $path = storage_path('app/public/image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
+    $path = Storage_path('app/public/image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
     $phpWord->save($path);
 
     // Mengembalikan file dokumen untuk diunduh

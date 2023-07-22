@@ -141,7 +141,7 @@
     </div>
 
     <div class=" mt-3 col-span-2 p-2 flex gap-2">
-        <div class="w-3/4 panel ">
+        <div class="w-full panel ">
             <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -611,7 +611,7 @@
                                 </div>
                             </div>
                             <div id="inputbuktiold{{ $absen->id }}" class="relative z-0 w-full mb-6 group">
-                                <img src="{{ asset('storage/bukti_izin/' . $absen->bukti) }}" alt=""
+                                <img src="{{ asset('Storage/bukti_izin/' . $absen->bukti) }}" alt=""
                                     srcset="" class="w-full">
                                 <label for="floating_email"
                                     class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">Bukti</label>

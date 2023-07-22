@@ -1513,7 +1513,7 @@
                                         <div class="swiper-slide card dark:bg-black">
                                             <div class="card-content ">
                                                 <div class="image">
-                                                    <img src="{{asset('storage/mou/'. $data->logo)}}" alt="">
+                                                    <img src="{{asset('Storage/mou/'. $data->logo)}}" alt="">
                                                 </div>
 
 

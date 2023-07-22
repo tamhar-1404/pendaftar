@@ -34,7 +34,7 @@ class AlumniGuruController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in Storage.
      *
      * @param  \App\Http\Requests\StoreAlumni_guruRequest  $request
      * @return \Illuminate\Http\Response
@@ -67,7 +67,7 @@ class AlumniGuruController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in Storage.
      *
      * @param  \App\Http\Requests\UpdateAlumni_guruRequest  $request
      * @param  \App\Models\Alumni_guru  $alumni_guru
@@ -79,7 +79,7 @@ class AlumniGuruController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from Storage.
      *
      * @param  \App\Models\Alumni_guru  $alumni_guru
      * @return \Illuminate\Http\Response

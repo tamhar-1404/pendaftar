@@ -13,7 +13,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>siswa - Dashboad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    @vite('resources/css/app.css')
+    <script src="https://cdn.tailwindcss.com">/</script>
+        <script>
+            theme: {
+                extend: {
+                    blur: {
+                        xs: '3px',
+                      }
+                },
+              },
+
+        </script>
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/x-icon" href="favicon.png" />
@@ -310,7 +320,7 @@
                                             </div>
                                           </td>
                                         <td class="whitespace-nowrap px-2 pl-17 py-2"><img
-                                            src="{{ asset('storage/image/' . $items->image) }}"
+                                            src="{{ asset('storage/Image/' . $items->image) }}"
                                             width="100px" alt="">
                                         </td>
                                         <td class="whitespace-nowrap px-4 py-4">
@@ -428,7 +438,7 @@
                                             <label for="bukti"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti</label>
                                             <img id="preview-image"
-                                                src="{{ asset('storage/image/' . $modal->image) }}"
+                                                src="{{ asset('storage/Image/' . $modal->image) }}"
                                                 class="w-64 h-64" alt="" srcset="">
                                             <input type="file" name="image" id="image-input" placeholder=""
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -530,7 +540,7 @@
                                     <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                                         Bukti
                                     </p>
-                                    <img id="preview-image" src="{{ asset('storage/image/' . $modal->image) }}"
+                                    <img id="preview-image" src="{{ asset('storage/Image/' . $modal->image) }}"
                                         class="w-64 h-64" alt="" srcset="">
                                 </div>
                             </div>

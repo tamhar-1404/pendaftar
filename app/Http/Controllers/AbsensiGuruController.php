@@ -32,7 +32,7 @@ class AbsensiGuruController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in Storage.
      *
      * @param  \App\Http\Requests\Storeabsensi_guruRequest  $request
      * @return \Illuminate\Http\Response
@@ -65,7 +65,7 @@ class AbsensiGuruController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in Storage.
      *
      * @param  \App\Http\Requests\Updateabsensi_guruRequest  $request
      * @param  \App\Models\absensi_guru  $absensi_guru
@@ -77,7 +77,7 @@ class AbsensiGuruController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from Storage.
      *
      * @param  \App\Models\absensi_guru  $absensi_guru
      * @return \Illuminate\Http\Response

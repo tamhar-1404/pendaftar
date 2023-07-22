@@ -2046,7 +2046,7 @@
                                     </p>
 
                                     <p class="ml-5 mt-2 text-md text-gray-400">
-                                        <img src="{{ asset('storage/bukti_izin/' . $izin->bukti) }}" alt="">
+                                        <img src="{{ asset('Storage/bukti_izin/' . $izin->bukti) }}" alt="">
                                     </p>
 
 

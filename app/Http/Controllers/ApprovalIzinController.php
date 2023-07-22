@@ -64,7 +64,7 @@ class ApprovalIzinController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in Storage.
      *
      * @param  \App\Http\Requests\StoreApprovalIzinRequest  $request
      * @return \Illuminate\Http\Response
@@ -124,7 +124,7 @@ class ApprovalIzinController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in Storage.
      *
      * @param  \App\Http\Requests\UpdateApprovalIzinRequest  $request
      * @param  \App\Models\ApprovalIzin  $approvalIzin
@@ -201,7 +201,7 @@ class ApprovalIzinController extends Controller
      }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from Storage.
      *
      * @param  \App\Models\ApprovalIzin  $approvalIzin
      * @return \Illuminate\Http\Response

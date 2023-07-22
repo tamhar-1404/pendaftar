@@ -17,7 +17,7 @@ class BeritaSiswaController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         if ($request->has('cari')) {
             $keyword = $request->cari;
             $Blog = Blog::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('deskripsi', 'LIKE', '%' . $keyword . '%')->paginate(3);
@@ -38,7 +38,7 @@ class BeritaSiswaController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in Storage.
      *
      * @param  \App\Http\Requests\StoreBerita_SiswaRequest  $request
      * @return \Illuminate\Http\Response
@@ -73,7 +73,7 @@ class BeritaSiswaController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in Storage.
      *
      * @param  \App\Http\Requests\UpdateBerita_SiswaRequest  $request
      * @param  \App\Models\Berita_Siswa  $berita_Siswa
@@ -85,7 +85,7 @@ class BeritaSiswaController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from Storage.
      *
      * @param  \App\Models\Berita_Siswa  $berita_Siswa
      * @return \Illuminate\Http\Response
