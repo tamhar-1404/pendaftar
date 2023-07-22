@@ -2474,7 +2474,7 @@
                         </div>
                         <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
                             <div class="avatar h-20 w-20">
-                                <img class="rounded-full" src="{{ asset('Storage/guru_image/' . $guru->image) }}"
+                                <img class="rounded-full" src="{{ asset('storage/guru_image/' . $guru->image) }}"
                                     alt="avatar" />
                             </div>
                             <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">

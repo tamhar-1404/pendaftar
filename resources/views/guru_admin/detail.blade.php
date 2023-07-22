@@ -619,7 +619,7 @@
                             </div>
                             <div class="mb-5">
                                 <div class="flex flex-col items-center justify-center">
-                                    <img src="{{ asset('Storage/guru_image/' . $guru_admin->image) }}" alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
+                                    <img src="{{ asset('storage/guru_image/' . $guru_admin->image) }}" alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
                                     <p class="text-xl font-semibold text-info">{{ $guru_admin->nama }}</p>
                                 </div>
                                 <ul class="m-auto mt-5 flex max-w-[160px] flex-col text-xs space-y-5 font-semibold text-white-dark">

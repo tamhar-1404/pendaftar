@@ -1694,7 +1694,7 @@
                                     <div class="flex grow flex-col items-center px-4 pb-4 sm:px-5">
                                         <div class="avatar h-20 w-20">
                                             <img class="rounded-full"
-                                                src="{{ asset('lineone/images/avatar/avatar-19.jpg') }}"
+                                                src="{{ asset('storage/Siswa/'. $izin->foto) }}"
                                                 alt="avatar" />
                                         </div>
                                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
@@ -2046,7 +2046,7 @@
                                     </p>
 
                                     <p class="ml-5 mt-2 text-md text-gray-400">
-                                        <img src="{{ asset('Storage/bukti_izin/' . $izin->bukti) }}" alt="">
+                                        <img src="{{ asset('storage/bukti_izin/' . $izin->bukti) }}" alt="">
                                     </p>
 
 

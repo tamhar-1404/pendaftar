@@ -52,7 +52,7 @@
                 <td class="whitespace-nowrap px-4 py-4">{{$items->sekolah}}</td>
                 <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$items->kegiatan}}</td>
                 <td class="whitespace-nowrap px-6 pl-17 py-4"><img
-                    src="{{ asset('Storage/image/' . $items->image) }}"
+                    src="{{ asset('storage/image/' . $items->image) }}"
                     width="100px" alt="">
                 </td>
 

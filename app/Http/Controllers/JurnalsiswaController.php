@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreJurnalsiswaRequest;
 use App\Http\Requests\UpdateJurnalsiswaRequest;
 use Exception;
+use Carbon\Carbon;
 
 
 class JurnalsiswaController extends Controller
@@ -51,30 +52,66 @@ class JurnalsiswaController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $this->validate($request, [
-                'nama' => 'required',
-                'tanggal' => 'required|unique:Jurnalsiswas,tanggal',
-                'sekolah' => 'required',
-                'kegiatan' => 'required',
-            ]);
+        $hari = Carbon::now()->format('Y-m-d');
+        $jam = Carbon::now()->format('H-i');
+        $data = Jurnalsiswa::Where('nama', Auth()->user()->name)->where('tanggal', $hari)->count();
+        if($data == '0'){
+            // dd('uhgfg');
+            if($jam < '16-00'){
+                try {
+                    $this->validate($request, [
+                        'kegiatan' => "required",
+                    ]);
 
-            $image = $request->file('image');
-            $image->storeAs('public/Image', $image->hashName());
+                    $image = $request->file('image');
+                    $image->storeAs('public/Image', $image->hashName());
 
-            Jurnalsiswa::create([
-                'image' => $image->hashName(),
-                'nama' => $request->nama,
-                'tanggal' => date('Y-m-d'),
-                'sekolah' => $request->sekolah,
-                'kegiatan' => $request->kegiatan,
-                'status' => $request->status,
-            ]);
+                    Jurnalsiswa::create([
+                        'image' => $image->hashName(),
+                        'nama' => Auth()->user()->name,
+                        'tanggal' => $hari,
+                        'sekolah' => Auth()->user()->sekolah,
+                        'kegiatan' => $request->kegiatan,
+                        'status' => 'mengisi'
+                    ]);
 
-            return redirect()->route('jurnal_siswa.index');
-        } catch (\Illuminate\Database\QueryException $e) {
+                    return redirect()->route('jurnal_siswa.index');
+                } catch (\Illuminate\Database\QueryException $e) {
+                        return redirect()->back()->withInput()->withErrors(['tanggal' => 'Tanggal sudah ada dalam database.']);
+            }
+            }else{
+                try {
+                    $this->validate($request, [
+                        'kegiatan' => "required",
+                    ]);
+
+                    $image = $request->file('image');
+                    $image->storeAs('public/Image', $image->hashName());
+
+                    Jurnalsiswa::create([
+                        'image' => $image->hashName(),
+                        'nama' => Auth()->user()->name,
+                        'tanggal' => $hari,
+                        'sekolah' => Auth()->user()->sekolah,
+                        'kegiatan' => $request->kegiatan,
+                        'status' => 'tidak_mengisi',
+                    ]);
+
+                    return redirect()->route('jurnal_siswa.index');
+                } catch (\Illuminate\Database\QueryException $e) {
+                    return redirect()->back()->withInput()->withErrors(['tanggal' => 'Tanggal sudah ada dalam database.']);
+            }
+            }
+
+        }else{
             return redirect()->back()->withInput()->withErrors(['tanggal' => 'Tanggal sudah ada dalam database.']);
         }
+
+        // ],[
+        //     'tanggal.unique' => 'jhvgghvb',
+        // ]);
+
+
     }
     /**
      * Display the specified resource.

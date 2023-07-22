@@ -11,6 +11,7 @@ class ApprovalIzin extends Model
     use SoftDeletes;
     protected $fillable = [
         'nama',
+        'foto',
         'sekolah',
         'email',
         'dari',

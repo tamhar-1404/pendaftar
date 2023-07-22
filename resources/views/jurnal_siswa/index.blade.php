@@ -162,7 +162,7 @@
                                             <form class="space-y-6" action="{{ route('jurnal_siswa.store') }}"
                                                 method="post" enctype="multipart/form-data">
                                                 @csrf
-                                                <div>
+                                                {{-- <div>
                                                     <input type="hidden" name="nama" class=""
                                                         value=" {{ Auth::user()->name }}" id="">
                                                 </div>
@@ -173,7 +173,7 @@
                                                 <div>
                                                     <input type="hidden" name="sekolah" id=""
                                                         value=" {{ Auth::user()->sekolah }}">
-                                                </div>
+                                                </div> --}}
                                                 <div>
                                                     <label for="kegiatan"
                                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
@@ -188,7 +188,7 @@
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                         required>
                                                 </div>
-                                                <input type="hidden" name="status" value="mengisi">
+
                                                 <div class="flex justify-end">
                                                     <button type="submit"
                                                         class="border text-blue-400 bg-white font-semibold border-blue-400  py-1.5 px-3 text-sm rounded-md hover:bg-blue-400 hover:text-white">Kirim</button>
@@ -540,7 +540,7 @@
                                     <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                                         Bukti
                                     </p>
-                                    <img id="preview-image" src="{{ asset('Storage/Image/' . $modal->image) }}"
+                                    <img id="preview-image" src="{{ asset('storage/Image/' . $modal->image) }}"
                                         class="w-64 h-64" alt="" srcset="">
                                 </div>
                             </div>
