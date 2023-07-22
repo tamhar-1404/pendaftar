@@ -66,8 +66,8 @@ class SiswamagangController extends Controller
         $user = auth()->user();
         $tatib = TataTertib::latest()->paginate(5);
         $password_user = User::find(auth()->user()->id)->password;
-        $MOU = MOU::all();
-        return view('siswamagang.index', compact('tatib','MOU', 'user', 'password_user', 'Hadir','Telat','izin','Alfa','mengisi_jan','mengisi_feb','mengisi_mar','mengisi_apr','mengisi_mei','mengisi_jun','mengisi_jul','mengisi_aug','mengisi_sep','mengisi_okt','mengisi_nov','mengisi_des','tdk_mengisi_jan','tdk_mengisi_feb','tdk_mengisi_mar','tdk_mengisi_apr','tdk_mengisi_mei','tdk_mengisi_jun','tdk_mengisi_jul','tdk_mengisi_aug','tdk_mengisi_sep','tdk_mengisi_nov','tdk_mengisi_okt','tdk_mengisi_nov','tdk_mengisi_des'));
+        $mou = MOU::all();
+        return view('siswamagang.index', compact('tatib','mou', 'user', 'password_user', 'Hadir','Telat','izin','Alfa','mengisi_jan','mengisi_feb','mengisi_mar','mengisi_apr','mengisi_mei','mengisi_jun','mengisi_jul','mengisi_aug','mengisi_sep','mengisi_okt','mengisi_nov','mengisi_des','tdk_mengisi_jan','tdk_mengisi_feb','tdk_mengisi_mar','tdk_mengisi_apr','tdk_mengisi_mei','tdk_mengisi_jun','tdk_mengisi_jul','tdk_mengisi_aug','tdk_mengisi_sep','tdk_mengisi_nov','tdk_mengisi_okt','tdk_mengisi_nov','tdk_mengisi_des'));
     }
 
 
