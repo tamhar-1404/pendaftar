@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
         <link rel="stylesheet" href="css/app.css" />
-        <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
         <script>
             theme: {
                 extend: {
