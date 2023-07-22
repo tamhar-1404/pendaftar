@@ -101,13 +101,13 @@ class AprovalController extends Controller
 
 
 
-        Storage::move('public/Pendaftaran/' . $foto_siswa, 'public/Siswa/' . $foto_siswa);
+        Storage::move('public/pendaftaran/' . $foto_siswa, 'public/Siswa/' . $foto_siswa);
 
-        Storage::delete('public/Pendaftaran/'. $aproval->foto_siswa);
-        Storage::delete('public/Pendaftaran/'. $aproval->skck);
-        Storage::delete('public/Pendaftaran/'. $aproval->cv);
-        Storage::delete('public/Pendaftaran/'. $aproval->sp_ortu);
-        Storage::delete('public/Pendaftaran/'. $aproval->sp_diri);
+        Storage::delete('public/pendaftaran/'. $aproval->foto_siswa);
+        Storage::delete('public/pendaftaran/'. $aproval->skck);
+        Storage::delete('public/pendaftaran/'. $aproval->cv);
+        Storage::delete('public/pendaftaran/'. $aproval->sp_ortu);
+        Storage::delete('public/pendaftaran/'. $aproval->sp_diri);
         $aproval->delete();
 
         $user = User::create([
@@ -178,11 +178,11 @@ public function Tolak(Request $request, Aproval $aproval)
             Mail::to($guruEmails)->send(new TolakEmail($pesanguru)); // Mengirim email ke guru dengan nama sekolah yang sama
         }
 
-        Storage::move('public/Pendaftaran/' . $foto_siswa, 'public/Ditolak/' . $foto_siswa);
-        Storage::move('public/Pendaftaran/' . $sp_diri, 'public/Ditolak/' . $sp_diri);
-        Storage::move('public/Pendaftaran/' . $sp_ortu, 'public/Ditolak/' . $sp_ortu);
-        Storage::move('public/Pendaftaran/' . $skck, 'public/Ditolak/' . $skck);
-        Storage::move('public/Pendaftaran/' . $cv, 'public/Ditolak/' . $cv);
+        Storage::move('public/pendaftaran/' . $foto_siswa, 'public/ditolak/' . $foto_siswa);
+        Storage::move('public/pendaftaran/' . $sp_diri, 'public/ditolak/' . $sp_diri);
+        Storage::move('public/pendaftaran/' . $sp_ortu, 'public/ditolak/' . $sp_ortu);
+        Storage::move('public/pendaftaran/' . $skck, 'public/ditolak/' . $skck);
+        Storage::move('public/pendaftaran/' . $cv, 'public/ditolak/' . $cv);
 
         $aproval->delete();
 
