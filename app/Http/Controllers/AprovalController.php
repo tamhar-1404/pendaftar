@@ -63,61 +63,55 @@ class AprovalController extends Controller
 {
     //
 }
-    public function confirm(Aproval $aproval)
+
+public function confirm(Aproval $aproval)
 {
     if ($aproval->status === 'menunggu') {
+        // Send DemoMail to the email associated with $aproval
         Mail::to($aproval->email)->send(new DemoMail($aproval));
 
+        // Get all users with role 'guru' and the same school as $aproval
         $users = User::where('role', 'guru')->where('sekolah', $aproval->sekolah)->get();
 
+        // Send Guru_email to each guru's email
         foreach ($users as $user) {
-           Mail::to($user->email)->send(new Guru_email($aproval->name));
+            Mail::to($user->email)->send(new Guru_email($aproval->name));
         }
 
+        // Check if there are any records in Tolak with the same nisn as $aproval, and delete them
         $tolak = Tolak::where('nisn', $aproval->nisn)->count();
-        if($tolak > 0){
+        if ($tolak > 0) {
             Tolak::where('nisn', $aproval->nisn)->delete();
         }
+
+        // Create a new Siswa record with the data from $aproval
+        $data = Siswa::create($aproval->toArray());
+
+        // Move the file from pendaftaran to Siswa folder
         $foto_siswa = $aproval->foto_siswa;
-         $data = Siswa::create([
-            'foto_siswa' => $foto_siswa,
-            'name' => $aproval->name,
-            'jurusan' => $aproval->jurusan,
-            'status_sp' => $aproval->status_sp,
-            'email' => $aproval->email,
-            'no' => $aproval->no,
-            'magang_awal' => $aproval->magang_awal,
-            'magang_akhir' => $aproval->magang_akhir,
-            'sekolah' => $aproval->sekolah,
-            'jeniskelamin' => $aproval->jeniskelamin,
-            'kelas' => $aproval->kelas,
-            'tempat' => $aproval->tempat,
-            'tanggal' => $aproval->tanggal,
-            'nisn' => $aproval->nisn,
-            'alamat' => $aproval->alamat
-        ]);
-
-        $data->save();
-
-
-
         Storage::move('public/pendaftaran/' . $foto_siswa, 'public/Siswa/' . $foto_siswa);
 
-        Storage::delete('public/pendaftaran/'. $aproval->foto_siswa);
-        Storage::delete('public/pendaftaran/'. $aproval->skck);
-        Storage::delete('public/pendaftaran/'. $aproval->cv);
-        Storage::delete('public/pendaftaran/'. $aproval->sp_ortu);
-        Storage::delete('public/pendaftaran/'. $aproval->sp_diri);
+        // Delete files from pendaftaran folder
+        Storage::delete([
+            'public/pendaftaran/' . $aproval->foto_siswa,
+            'public/pendaftaran/' . $aproval->skck,
+            'public/pendaftaran/' . $aproval->cv,
+            'public/pendaftaran/' . $aproval->sp_ortu,
+            'public/pendaftaran/' . $aproval->sp_diri,
+        ]);
+
+        // Delete the $aproval record
         $aproval->delete();
 
+        // Create a new User record associated with the Siswa record
         $user = User::create([
             'name' => $aproval->name,
             'email' => $aproval->email,
             'sekolah' => $aproval->sekolah,
-            'password' =>$aproval->password,
+            'password' => $aproval->password,
             'role' => 'Siswa',
-            'remember_token' =>$aproval->remember_token,
-            'siswa_id' => $data->id
+            'remember_token' => $aproval->remember_token,
+            'siswa_id' => $data->id,
         ]);
 
         return redirect()->route('aproval.index');
@@ -125,7 +119,6 @@ class AprovalController extends Controller
         return redirect()->back()->with('error', 'Maaf, tidak dapat melakukan konfirmasi pada data');
     }
 }
-
 public function Tolak(Request $request, Aproval $aproval)
 {
     $alasan = $request->input('alasan');
