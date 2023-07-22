@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" media="screen"
         href="{{ asset('admin/assets/css/perfect-scrollbar.min.css') }}" />
     <link rel="stylesheet" href="load/load.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('Admin/Assets/Css/Style.css') }}" />
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     {{--  <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />  --}}
     <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>

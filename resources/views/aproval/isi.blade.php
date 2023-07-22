@@ -183,7 +183,7 @@
                         <div class="flex gap-5">
                             <div class="panel w-1/3 ">
                                 <div class="flex justify-center">
-                                    <img src="{{ asset('storage/pendaftaran/' . $aproval->foto_siswa) }}"
+                                    <img src="{{ asset('Storage/Pendaftaran/' . $aproval->foto_siswa) }}"
                                         class="rounded-full w-16" alt="" srcset="">
                                 </div>
                                 <div class="flex justify-center mt-8">
@@ -234,7 +234,7 @@
                                 <div>
                                     <p class="">Pernyataan Diri Sendiri:</p>
                                     <img class="hover:scale-125 w-11 transition-all duration-200 mt-4 hover:opacity-80 cursor-pointer"
-                                        src="{{ asset('storage/pendaftaran/' . $aproval->sp_diri) }}"
+                                        src="{{ asset('Storage/Pendaftaran/' . $aproval->sp_diri) }}"
                                         alt="pernyataan diri sendiri" onclick="openModal(this)">
                                 </div>
 
@@ -259,7 +259,7 @@
                                 <div>
                                     <p>Pernyataan orang tua :</p>
                                     <img class="hover:scale-125 w-11 transition-all duration-200 mt-4 hover:opacity-80 cursor-pointer"
-                                        src="{{ asset('storage/pendaftaran/' . $aproval->sp_ortu) }}" alt=""
+                                        src="{{ asset('Storage/Pendaftaran/' . $aproval->sp_ortu) }}" alt=""
                                         onclick="openModal(this)">
                                 </div>
                                 <div id="imageModal" class="modal hidden">
@@ -283,13 +283,13 @@
                                 <div>
                                     <p>SKCK :</p>
                                     <img class="hover:scale-125 w-11 transition-all duration-200 mt-4 hover:opacity-80 cursor-pointer"
-                                        src="{{ asset('storage/pendaftaran/' . $aproval->skck) }}" alt=""
+                                        src="{{ asset('Storage/Pendaftaran/' . $aproval->skck) }}" alt=""
                                         onclick="openModal(this)">
                                 </div>
                                 <div>
                                     <p>CV :</p>
                                     <img class="hover:scale-125 w-11 transition-all duration-200 mt-4 hover:opacity-80 cursor-pointer"
-                                        src="{{ asset('storage/pendaftaran/' . $aproval->cv) }}" alt=""
+                                        src="{{ asset('Storage/Pendaftaran/' . $aproval->cv) }}" alt=""
                                         onclick="openModal(this)">
                                 </div>
                                 <div id="imageModal" class="modal hidden">
