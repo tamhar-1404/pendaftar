@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('approval_izins', function (Blueprint $table) {
             $table->id();
+            $table->string('foto')->nullable();
             $table->string('nama')->nullable();
             $table->string('sekolah')->nullable();
             $table->string('email')->nullable();

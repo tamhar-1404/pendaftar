@@ -376,6 +376,7 @@
                         <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
                         <input type="hidden" name="sekolah" value="{{ Auth::user()->sekolah }}">
                         <input type="hidden" name="email" value="{{ Auth::user()->email }}">
+                        <input type="hidden" name="foto" value="{{ Auth::user()->id }}">
                         <div>
                             <div class="relative z-0 w-full mb-6 group">
                                 <input type="date" name="dari" id="floating_email"

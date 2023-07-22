@@ -10,6 +10,8 @@ use App\Mail\IzinBerakhir;
 use App\Mail\DataizinEmail;
 use App\Mail\TolakdataEmail;
 use App\Models\ApprovalIzin;
+use App\Models\Siswa;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Mail\TerimaizinEmail;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -17,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreApprovalIzinRequest;
 use App\Http\Requests\UpdateApprovalIzinRequest;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -79,12 +82,17 @@ class ApprovalIzinController extends Controller
             'deskripsi' => 'required',
             'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
         ]);
+        $siswa = User::Where('id', $request->foto)->first();
 
+        $foto_siswa = Siswa::Where('id', $siswa->siswa_id)->first();
+
+        $foto = $foto_siswa->foto_siswa;
         $image = $request->file('bukti');
         $image->storeAs('public/Bukti_izin', $image->hashName());
 
         ApprovalIzin::create([
             'nama' => $request->nama,
+            'foto' => $foto,
             'sekolah' => $request->sekolah,
             'email' => $request->email,
             'dari' => $request->dari,
