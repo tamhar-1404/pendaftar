@@ -183,7 +183,7 @@
                         <div class="flex gap-5">
                             <div class="panel w-1/3 ">
                                 <div class="flex justify-center">
-                                    <img src="{{ asset('public/storage/pendaftaran/' . $aproval->foto_siswa) }}"
+                                    <img src="{{ asset('storage/pendaftaran/' . $aproval->foto_siswa) }}"
                                         class="rounded-full w-16" alt="" srcset="">
                                 </div>
                                 <div class="flex justify-center mt-8">
