@@ -64,7 +64,7 @@ class JurnalsiswaController extends Controller
                     ]);
 
                     $image = $request->file('image');
-                    $image->storeAs('public/Image', $image->hashName());
+                    $image->storeAs('public/image', $image->hashName());
 
                     Jurnalsiswa::create([
                         'image' => $image->hashName(),
@@ -86,7 +86,7 @@ class JurnalsiswaController extends Controller
                     ]);
 
                     $image = $request->file('image');
-                    $image->storeAs('public/Image', $image->hashName());
+                    $image->storeAs('public/image', $image->hashName());
 
                     Jurnalsiswa::create([
                         'image' => $image->hashName(),
@@ -168,7 +168,7 @@ class JurnalsiswaController extends Controller
         // Upload gambar baru
         $image = $request->file('image');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->storeAs('public/Image', $imageName);
+        $image->storeAs('public/image', $imageName);
         $Jurnalsiswa->image = $imageName;
     } else {
         $Jurnalsiswa->image = $oldImage; // Menggunakan gambar lama jika tidak ada gambar yang diupload

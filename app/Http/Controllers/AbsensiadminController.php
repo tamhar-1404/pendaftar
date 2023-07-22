@@ -119,7 +119,7 @@ class AbsensiadminController extends Controller
             'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
         ]);
         $image = $request->file('bukti');
-        $image->storeAs('public/Bukti_izin', $image->hashName());
+        $image->storeAs('public/bukti_izin', $image->hashName());
 
 
     ApprovalIzin::create([
