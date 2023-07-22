@@ -612,7 +612,7 @@
                                 </div>
                             </div>
                             <div id="inputbuktiold{{ $absen->id }}" class="relative z-0 w-full mb-6 group">
-                                <img src="{{ asset('Storage/bukti_izin/' . $absen->bukti) }}" alt=""
+                                <img src="{{ asset('storage/bukti_izin/' . $absen->bukti) }}" alt=""
                                     srcset="" class="w-full">
                                 <label for="floating_email"
                                     class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">Bukti</label>

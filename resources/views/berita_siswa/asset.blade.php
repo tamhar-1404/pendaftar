@@ -165,7 +165,7 @@
         <div class="card">
           <img
             class="h-72 w-full rounded-lg object-cover object-center"
-            src="{{ asset('Storage/fotoberita/' . $berita->foto) }}"
+            src="{{ asset('storage/fotoberita/' . $berita->foto) }}"
             alt="image"
           />
 
