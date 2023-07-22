@@ -171,11 +171,11 @@ public function Tolak(Request $request, Aproval $aproval)
             Mail::to($guruEmails)->send(new TolakEmail($pesanguru)); // Mengirim email ke guru dengan nama sekolah yang sama
         }
 
-        Storage::move('public/pendaftaran/' . $foto_siswa, 'public/Ditolak/' . $foto_siswa);
-        Storage::move('public/pendaftaran/' . $sp_diri, 'public/Ditolak/' . $sp_diri);
-        Storage::move('public/pendaftaran/' . $sp_ortu, 'public/Ditolak/' . $sp_ortu);
-        Storage::move('public/pendaftaran/' . $skck, 'public/Ditolak/' . $skck);
-        Storage::move('public/pendaftaran/' . $cv, 'public/Ditolak/' . $cv);
+        Storage::move('public/pendaftaran/' . $foto_siswa, 'public/ditolak/' . $foto_siswa);
+        Storage::move('public/pendaftaran/' . $sp_diri, 'public/ditolak/' . $sp_diri);
+        Storage::move('public/pendaftaran/' . $sp_ortu, 'public/ditolak/' . $sp_ortu);
+        Storage::move('public/pendaftaran/' . $skck, 'public/ditolak/' . $skck);
+        Storage::move('public/pendaftaran/' . $cv, 'public/ditolak/' . $cv);
 
         $aproval->delete();
 
