@@ -136,10 +136,10 @@ public function store(Request $request)
             $sp_ortu = $request->file('sp_ortu');
             $cv = $request->file('cv');
 
-            $foto_siswa->storeAs('public/Pendaftaran', $foto_siswa->hashName());
-            $sp_diri->storeAs('public/Pendaftaran', $sp_diri->hashName());
-            $sp_ortu->storeAs('public/Pendaftaran', $sp_ortu->hashName());
-            $cv->storeAs('public/Pendaftaran', $cv->hashName());
+            $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
+            $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
+            $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
+            $cv->storeAs('public/pendaftaran', $cv->hashName());
 
             $data = aproval::create([
                 'name' => $request->name,
@@ -185,11 +185,11 @@ public function store(Request $request)
             $skck = $request->file('skck');
             $cv = $request->file('cv');
 
-            $foto_siswa->storeAs('public/Pendaftaran', $foto_siswa->hashName());
-            $sp_diri->storeAs('public/Pendaftaran', $sp_diri->hashName());
-            $sp_ortu->storeAs('public/Pendaftaran', $sp_ortu->hashName());
-            $skck->storeAs('public/Pendaftaran', $skck->hashName());
-            $cv->storeAs('public/Pendaftaran', $cv->hashName());
+            $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
+            $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
+            $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
+            $skck->storeAs('public/pendaftaran', $skck->hashName());
+            $cv->storeAs('public/pendaftaran', $cv->hashName());
 
             $data = aproval::create([
                 'name' => $request->name,
