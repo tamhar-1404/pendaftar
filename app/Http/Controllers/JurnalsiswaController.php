@@ -53,10 +53,10 @@ class JurnalsiswaController extends Controller
     {
         try {
             $this->validate($request, [
-                'nama' => "required",
-                'tanggal' => "required|unique:Jurnalsiswas,tanggal",
-                'sekolah' => "required",
-                'kegiatan' => "required",
+                'nama' => 'required',
+                'tanggal' => 'required|unique:Jurnalsiswas,tanggal',
+                'sekolah' => 'required',
+                'kegiatan' => 'required',
             ]);
 
             $image = $request->file('image');
@@ -65,7 +65,7 @@ class JurnalsiswaController extends Controller
             Jurnalsiswa::create([
                 'image' => $image->hashName(),
                 'nama' => $request->nama,
-                'tanggal' => $request->tanggal,
+                'tanggal' => date('Y-m-d'),
                 'sekolah' => $request->sekolah,
                 'kegiatan' => $request->kegiatan,
                 'status' => $request->status,
@@ -73,13 +73,8 @@ class JurnalsiswaController extends Controller
 
             return redirect()->route('jurnal_siswa.index');
         } catch (\Illuminate\Database\QueryException $e) {
-                return redirect()->back()->withInput()->withErrors(['tanggal' => 'Tanggal sudah ada dalam database.']);
-    }
-        // ],[
-        //     'tanggal.unique' => 'jhvgghvb',
-        // ]);
-
-
+            return redirect()->back()->withInput()->withErrors(['tanggal' => 'Tanggal sudah ada dalam database.']);
+        }
     }
     /**
      * Display the specified resource.

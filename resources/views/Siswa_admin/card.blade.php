@@ -2328,7 +2328,6 @@
                                                     data-modal-toggle="defaultModal{{ $siswa->id }}"
                                                     class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">SP
                                                 </button>
-
                                             </li>
                                             <li>
                                                 <form action="{{ route('siswa.banned', ['id' => $siswa->id]) }}"
@@ -2341,7 +2340,6 @@
                                                 </form>
                                             </li>
                                         </ul>
-
                                         <ul>
 
                                         </ul>
