@@ -71,7 +71,7 @@
                    </li>
                    <li class="relative">
                        <a href="{{ route('TopUp.index') }}"
-                           class="flex h-6 cursor-pointer {{ request()->routeIs('approvalizin.index') ? 'text-blue-400' : 'text-gray-600' }} mt-2 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] outline-none transition duration-300 ease-linear hover:text-blue-400"
+                           class="flex h-6 cursor-pointer {{ request()->routeIs('TopUp.index') ? 'text-blue-400' : 'text-gray-600' }} mt-2 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] outline-none transition duration-300 ease-linear hover:text-blue-400"
                            data-te-sidenav-link-ref>TopUp</a>
 
                    </li>
