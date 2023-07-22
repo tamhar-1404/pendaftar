@@ -56,7 +56,7 @@ class JurnalsiswaController extends Controller
         $jam = Carbon::now()->format('H-i');
         $data = Jurnalsiswa::Where('nama', Auth()->user()->name)->where('tanggal', $hari)->count();
         if($data == '0'){
-            dd('uhgfg');
+            // dd('uhgfg');
             if($jam < '16-00'){
                 try {
                     $this->validate($request, [
@@ -72,7 +72,7 @@ class JurnalsiswaController extends Controller
                         'tanggal' => $hari,
                         'sekolah' => Auth()->user()->sekolah,
                         'kegiatan' => $request->kegiatan,
-                        'status' => 'mengisi',
+                        'status' => 'mengisi'
                     ]);
 
                     return redirect()->route('jurnal_siswa.index');
