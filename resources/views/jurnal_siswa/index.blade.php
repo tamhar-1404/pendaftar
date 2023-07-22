@@ -320,7 +320,7 @@
                                             </div>
                                           </td>
                                         <td class="whitespace-nowrap px-2 pl-17 py-2"><img
-                                            src="{{ asset('storage/Image/' . $items->image) }}"
+                                            src="{{ asset('storage/image/' . $items->image) }}"
                                             width="100px" alt="">
                                         </td>
                                         <td class="whitespace-nowrap px-4 py-4">

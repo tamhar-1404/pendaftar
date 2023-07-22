@@ -462,9 +462,7 @@
                     <li>
                         <a href="javascript:;" class="text-primary hover:underline">Siswa Alumni</a>
                     </li>
-                    <li class="before:content-['/'] ltr:before:mr-1 rtl:before:ml-1">
-                        <span>Detail</span>
-                    </li>
+
                 </ul>
                 <div class="pt-5">
                     <div class="mb-5 grid grid-cols-1 text-sm gap-5 lg:grid-cols-3 xl:grid-cols-4">
@@ -477,7 +475,7 @@
 
                         <div class="mb-5">
                             <div class="flex flex-col items-center justify-center">
-                                <img src="{{ asset('storage/siswa/' . $alumniItem->foto_siswa) }}" alt="image"
+                                <img src="{{ asset('storage/Siswa/' . $alumniItem->foto_siswa) }}" alt="image"
                                     class="mb-5 h-24 w-24 rounded-full object-cover" />
                                 <p class="text-xl font-semibold text-info">{{ $alumniItem->name }}</p>
                             </div>
