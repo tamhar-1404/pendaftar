@@ -224,7 +224,7 @@ public function exportToDocx()
 
     // Menyimpan dokumen sebagai file .docx
     $filename = "database_export.docx";
-    $path = storage_path('App/public/Image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
+    $path = Storage_path('App/public/Image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
     $phpWord->save($path);
 
     // Mengembalikan file dokumen untuk diunduh

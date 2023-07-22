@@ -38,7 +38,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in Storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -101,7 +101,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in Storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Blog  $blog
@@ -122,11 +122,11 @@ class BlogController extends Controller
         if ($request->hasFile('foto')) {
             // Unggah dan simpan gambar baru
             $image = $request->file('foto');
-            $image->storeAs('storage/Fotoberita/', $image->hashName());
+            $image->storeAs('Storage/Fotoberita/', $image->hashName());
 
             // Hapus gambar lama jika ada
             if ($blog->foto !== null) {
-                Storage::delete('storage/Fotoberita/' . $blog->foto);
+                Storage::delete('Storage/Fotoberita/' . $blog->foto);
             }
 
             // $blog->foto = $image->hashName();
@@ -144,7 +144,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from Storage.
      *
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
@@ -157,7 +157,7 @@ class BlogController extends Controller
 
         // Hapus gambar terkait jika ada
         if ($blog->foto) {
-            Storage::delete('storage/Fotoberita/' . $blog->foto);
+            Storage::delete('Storage/Fotoberita/' . $blog->foto);
         }
 
         // Hapus data berita

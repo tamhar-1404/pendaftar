@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Mail\Banned;
 use App\Models\User;
 use App\Models\Siswa;
+use App\Models\EmailLulus;
 use App\Mail\BannedGuru;
 use App\Models\LaporanSiswa;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreSiswaRequest;
+use Carbon\Carbon;
 use App\Http\Requests\UpdateSiswaRequest;
 
 class SiswaController extends Controller
@@ -24,7 +26,19 @@ class SiswaController extends Controller
     {
 
         $today = date('Y-m-d');
-        Siswa::whereDate('magang_akhir', '<=', $today)->update(['role' => 'alumni', 'status' => 'lulus']);
+        if (Siswa::whereDate('magang_akhir', '<=', $today)->exists()) {
+            $siswas = Siswa::whereDate('magang_akhir', '<=', $today)->get();
+            foreach ($siswa as $siswa) {
+                if (!EmailLulus::where('email', $siswa->email)->where('tanggal', Carbon::now()->format('Y-m-d'))->exists()) {
+                    Mail::to($siswa->email)->send(new EmailLulus);
+                    EmailLulus::create([
+                        'email' => $siswa->email,
+                        'tanggal' => Carbon::now()->format('Y-m-d'),
+                    ]);
+                }
+            }
+            Siswa::whereDate('magang_akhir', '<=', $today)->update(['role' => 'alumni', 'status' => 'lulus']);
+        }
         $siswas = Siswa::where('role', 'siswa')->get();
 
         if ($request->has('cari')) {

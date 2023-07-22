@@ -240,7 +240,7 @@
                                                                 {{ $items->name }}
                                                             </td>
                                                             {{--  <td class="whitespace-nowrap px-6 py-2">
-                                                                <img src="{{ asset('storage/pendataanbarang/' . $items->foto) }}"
+                                                                <img src="{{ asset('Storage/pendataanbarang/' . $items->foto) }}"
                                                                     width="50" height="50" alt="">
                                                             </td>  --}}
                                                             <td class="whitespace-nowrap px-6 py-2">

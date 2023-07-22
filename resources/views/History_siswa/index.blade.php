@@ -1225,7 +1225,7 @@
                                             </div>
                                           </td>
                                         <td class="whitespace-nowrap px-2 pl-17 py-2"><img
-                                            src="{{ asset('storage/image/' . "p") }}"
+                                            src="{{ asset('Storage/image/' . "p") }}"
                                             width="100px" alt="">
                                         </td>
 
@@ -1425,7 +1425,7 @@
                                     <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                                         Bukti
                                     </p>
-                                    <img id="preview-image" src="{{ asset('storage/image/p') }}"
+                                    <img id="preview-image" src="{{ asset('Storage/image/p') }}"
                                         class="w-64 h-64" alt="" srcset="">
                                 </div>
                             </div>

@@ -1453,7 +1453,7 @@
                        @forelse ($berita as $row )
                        <div class="card">
                         <img class="h-72 w-full rounded-lg object-cover object-center max-w-xs transition duration-300 ease-in-out hover:scale-110"
-                            src="{{ asset('storage/fotoberita/' . $row->foto) }}" alt="image" />
+                            src="{{ asset('Storage/fotoberita/' . $row->foto) }}" alt="image" />
                         <div class="absolute inset-0 flex h-full w-full flex-col justify-end">
 
 

@@ -35,7 +35,7 @@ class BarangController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in Storage.
      *
      * @param  \App\Http\Requests\StoreBarangRequest  $request
      * @return \Illuminate\Http\Response
@@ -95,7 +95,7 @@ class BarangController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in Storage.
      *
      * @param  \App\Http\Requests\UpdateBarangRequest  $request
      * @param  \App\Models\Barang  $barang
@@ -143,7 +143,7 @@ class BarangController extends Controller
 
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from Storage.
      *
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response

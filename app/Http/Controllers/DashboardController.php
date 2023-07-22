@@ -27,18 +27,18 @@ class DashboardController extends Controller
         $tolak = Tolak::all()->count();
         $menunggu = Aproval::where('status', 'menunggu')->count();
 
-        $menunggu_jan = Aproval::where('status', 'menunggu')->whereMonth('tanggal', '=', 1)->count();
-        $menunggu_feb = Aproval::where('status', 'menunggu')->whereMonth('tanggal', '=', 2)->count();
-        $menunggu_mar = Aproval::where('status', 'menunggu')->whereMonth('tanggal', '=', 3)->count();
-        $menunggu_apr = Aproval::where('status', 'menunggu')->whereMonth('tanggal', '=', 4)->count();
-        $menunggu_mei = Aproval::where('status', 'menunggu')->whereMonth('tanggal', '=', 5)->count();
-        $menunggu_jun = Aproval::where('status', 'menunggu')->whereMonth('tanggal', '=', 6)->count();
-        $menunggu_jul = Aproval::where('status', 'menunggu')->whereMonth('tanggal', '=', 7)->count();
-        $menunggu_aug = Aproval::where('status', 'menunggu')->whereMonth('tanggal', '=', 8)->count();
-        $menunggu_sep = Aproval::where('status', 'menunggu')->whereMonth('tanggal', '=', 9)->count();
-        $menunggu_okt = Aproval::where('status', 'menunggu')->whereMonth('tanggal', '=', 10)->count();
-        $menunggu_nov = Aproval::where('status', 'menunggu')->whereMonth('tanggal', '=', 11)->count();
-        $menunggu_des = Aproval::where('status', 'menunggu')->whereMonth('tanggal', '=', 12)->count();
+        $menunggu_jan = Aproval::where('status', 'menunggu')->whereMonth('created_at', '=', 1)->count();
+        $menunggu_feb = Aproval::where('status', 'menunggu')->whereMonth('created_at', '=', 2)->count();
+        $menunggu_mar = Aproval::where('status', 'menunggu')->whereMonth('created_at', '=', 3)->count();
+        $menunggu_apr = Aproval::where('status', 'menunggu')->whereMonth('created_at', '=', 4)->count();
+        $menunggu_mei = Aproval::where('status', 'menunggu')->whereMonth('created_at', '=', 5)->count();
+        $menunggu_jun = Aproval::where('status', 'menunggu')->whereMonth('created_at', '=', 6)->count();
+        $menunggu_jul = Aproval::where('status', 'menunggu')->whereMonth('created_at', '=', 7)->count();
+        $menunggu_aug = Aproval::where('status', 'menunggu')->whereMonth('created_at', '=', 8)->count();
+        $menunggu_sep = Aproval::where('status', 'menunggu')->whereMonth('created_at', '=', 9)->count();
+        $menunggu_okt = Aproval::where('status', 'menunggu')->whereMonth('created_at', '=', 10)->count();
+        $menunggu_nov = Aproval::where('status', 'menunggu')->whereMonth('created_at', '=', 11)->count();
+        $menunggu_des = Aproval::where('status', 'menunggu')->whereMonth('created_at', '=', 12)->count();
 
         $Tolak_jan = Tolak::where('status', 'ditolak')->whereMonth('created_at', '=', 1)->count();
         $Tolak_feb = Tolak::where('status', 'ditolak')->whereMonth('created_at', '=', 2)->count();

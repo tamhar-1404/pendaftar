@@ -105,7 +105,7 @@ class AbsensiSiswaController extends Controller
         return view('absensi_siswa.edit');
     }
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in Storage.
      *
      * @param  \App\Http\Requests\Storeabsensi_siswaRequest  $request
      * @return \Illuminate\Http\Response
@@ -218,7 +218,7 @@ class AbsensiSiswaController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in Storage.
      *
      * @param  \App\Http\Requests\Updateabsensi_siswaRequest  $request
      * @param  \App\Models\absensi_siswa  $absensi_siswa
@@ -230,7 +230,7 @@ class AbsensiSiswaController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from Storage.
      *
      * @param  \App\Models\absensi_siswa  $absensi_siswa
      * @return \Illuminate\Http\Response

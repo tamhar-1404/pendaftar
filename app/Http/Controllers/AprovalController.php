@@ -54,7 +54,7 @@ class AprovalController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in Storage.
      *
      * @param  \App\Http\Requests\StoreaprovalRequest  $request
      * @return \Illuminate\Http\Response
@@ -216,7 +216,7 @@ public function Tolak(Request $request, Aproval $aproval)
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in Storage.
      *
      * @param  \App\Http\Requests\UpdateaprovalRequest  $request
      * @param  \App\Models\Aproval  $Aproval
@@ -239,7 +239,7 @@ public function Tolak(Request $request, Aproval $aproval)
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from Storage.
      *
      * @param  \App\Models\Aproval  $Aproval
      * @return \Illuminate\Http\Response

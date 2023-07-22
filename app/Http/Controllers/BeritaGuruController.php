@@ -31,7 +31,7 @@ class BeritaGuruController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in Storage.
      *
      * @param  \App\Http\Requests\StoreBeritaGuruRequest  $request
      * @return \Illuminate\Http\Response
@@ -65,7 +65,7 @@ class BeritaGuruController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in Storage.
      *
      * @param  \App\Http\Requests\UpdateBeritaGuruRequest  $request
      * @param  \App\Models\BeritaGuru  $beritaGuru
@@ -77,7 +77,7 @@ class BeritaGuruController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from Storage.
      *
      * @param  \App\Models\BeritaGuru  $beritaGuru
      * @return \Illuminate\Http\Response

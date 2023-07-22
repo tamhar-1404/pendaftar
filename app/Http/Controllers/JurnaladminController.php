@@ -167,7 +167,7 @@ class JurnaladminController extends Controller
 
     // Menyimpan dokumen sebagai file .docx
     $filename = "jurnal_siswa.docx";
-    $path = storage_path('app/public/image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
+    $path = Storage_path('app/public/image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
     $phpWord->save($path);
 
     // Mengembalikan file dokumen untuk diunduh

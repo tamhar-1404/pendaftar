@@ -229,7 +229,7 @@
                                                         class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
                                                         {{ $items->kegiatan }}</td>
                                                     <td class="whitespace-nowrap px-6 pl-17 py-4"><img
-                                                            src="{{ asset('storage/image/' . $items->image) }}"
+                                                            src="{{ asset('Storage/image/' . $items->image) }}"
                                                             width="100px" alt="">
                                                     </td>
                                                     <td class="whitespace-nowrap px-4 py-4 kamu-tak-diajak">
@@ -370,7 +370,7 @@
                                 <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                                     Bukti
                                 </p>
-                                <img src="{{ asset('storage/image/' . $modal->image) }}" alt="">
+                                <img src="{{ asset('Storage/image/' . $modal->image) }}" alt="">
                             </div>
                         </div>
                         <!-- Modal footer -->

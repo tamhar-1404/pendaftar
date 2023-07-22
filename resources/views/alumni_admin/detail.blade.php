@@ -477,7 +477,7 @@
 
                         <div class="mb-5">
                             <div class="flex flex-col items-center justify-center">
-                                <img src="{{ asset('storage/siswa/' . $alumniItem->foto_siswa) }}" alt="image"
+                                <img src="{{ asset('sStorage/siswa/' . $alumniItem->foto_siswa) }}" alt="image"
                                     class="mb-5 h-24 w-24 rounded-full object-cover" />
                                 <p class="text-xl font-semibold text-info">{{ $alumniItem->name }}</p>
                             </div>

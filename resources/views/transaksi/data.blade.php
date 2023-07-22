@@ -187,7 +187,7 @@
                             <tr id="{{$data->kode}}" class=" hidden" data-max-stok={{ $data->stok }}>
                                 <input type="hidden" id="form-kode-{{ $data->kode }}" value="{{ $data->kode }}">
                                 <td class="w-32 p-3  text-center">
-                                    <img src="{{ asset('storage/pendataanbarang/' . $data->foto) }}" class="w-10" alt="" srcset="">
+                                    <img src="{{ asset('Storage/pendataanbarang/' . $data->foto) }}" class="w-10" alt="" srcset="">
                                 </td>
                                 <td class="p-3 text-center">
                                     <a href="#" class="transition-all hover:text-orange">{{$data->nama}}</a>

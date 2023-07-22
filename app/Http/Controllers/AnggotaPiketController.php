@@ -29,7 +29,7 @@ class AnggotaPiketController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in Storage.
      *
      * @param  \App\Http\Requests\Storeanggota_piketRequest  $request
      * @return \Illuminate\Http\Response
@@ -62,7 +62,7 @@ class AnggotaPiketController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in Storage.
      *
      * @param  \App\Http\Requests\UpdateAnggota_piketRequest  $request
      * @param  \App\Models\Anggota_piket  $Anggota_piket
@@ -74,7 +74,7 @@ class AnggotaPiketController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from Storage.
      *
      * @param  \App\Models\Anggota_piket  $Anggota_piket
      * @return \Illuminate\Http\Response
