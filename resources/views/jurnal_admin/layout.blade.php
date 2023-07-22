@@ -326,11 +326,11 @@
                            data-te-sidenav-link-ref>Berita</a>
                    </li>
 
-                   <li class="relative">
+                   {{-- <li class="relative">
                        <a href="{{ route('chat.index') }}"
                            class="flex h-6 cursor-pointer mt-2 {{ request()->routeIs('chat.index') ? 'text-blue-400' : 'text-gray-400' }} items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-400 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-400 hover:text-white"
                            data-te-sidenav-link-ref>Chat</a>
-                   </li>
+                   </li> --}}
 
                    <li class="relative">
                        <a href="{{ route('piket.index') }}"
