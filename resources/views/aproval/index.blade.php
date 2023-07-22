@@ -211,60 +211,7 @@
                                             @endforelse
                                         </tbody>
                                     </table>
-                                    <nav aria-label="Page navigation example" class="flex justify-end">
-                                        <ul class="list-style-none flex">
-                                            <!-- Previous Page Link -->
-                                            @if ($aprovals->onFirstPage())
-                                                <li>
-                                                    <a
-                                                        class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
-                                                </li>
-                                            @else
-                                                <li>
-                                                    <a href="{{ $aprovals->previousPageUrl() }}"
-                                                        class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
-                                                </li>
-                                            @endif
-
-                                            <!-- Pagination Elements -->
-                                            @if ($aprovals->total() > $aprovals->perPage())
-                                                @foreach ($aprovals as $page => $url)
-                                                    @if ($page == 1)
-                                                        <li>
-                                                            <a href="{{ $url }}"
-                                                                class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300 dark:text-white dark:hover:text-white">{{ $page }}</a>
-                                                        </li>
-                                                    @elseif ($page == $aprovals->currentPage())
-                                                        <li aria-current="page">
-                                                            <a class="relative block rounded-full bg-blue-600 px-3 py-1.5 text-sm text-white transition-all duration-300"
-                                                                href="{{ $url }}">{{ $page }}</a>
-                                                        </li>
-                                                    @else
-                                                        <li>
-                                                            <a href="{{ $url }}"
-                                                                class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white">{{ $page }}</a>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
-                                            @endif
-
-                                            <!-- Next Page Link -->
-                                            @if ($aprovals->hasMorePages())
-                                                <li>
-                                                    <a href="{{ $aprovals->nextPageUrl() }}"
-                                                        class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white">Next</a>
-                                                </li>
-                                            @else
-                                                <li>
-                                                    <a
-                                                        class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white">Next</a>
-                                                </li>
-                                            @endif
-                                        </ul>
-                                    </nav>
-
-
-
+                                    {{ $aprovals->appends(['cari' => request('cari')])->links() }}
                                 </div>
                             </div>
                         </div>

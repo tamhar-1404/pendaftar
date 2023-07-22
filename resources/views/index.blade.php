@@ -81,8 +81,8 @@
 
                 </a>
 
-                <div class="nav-icons flex items-end lg_992:order-2 ms-auto lg:ms-4">
-                    <!-- Navbar Button -->
+                <div class="nav-icons flex items-end lg_992:order-2 gap-1 ms-auto lg:ms-4">
+                  
                     <ul class="list-none menu-social mb-0">
                         <li class="inline">
                             <a href="{{ route('login.index') }}"
@@ -96,12 +96,7 @@
                         </li>
                     </ul>
                     <!-- Navbar Collapse Manu Button -->
-                    <button data-collapse="menu-collapse" type="button"
-                        class="collapse-btn inline-flex items-center ms-3 text-slate-950 dark:text-white lg_992:hidden"
-                        aria-controls="menu-collapse" aria-expanded="false">
-                        <span class="sr-only">Navigation Menu</span>
-                        <i class="mdi mdi-menu text-[24px]"></i>
-                    </button>
+
                 </div>
 
 
@@ -161,7 +156,7 @@
                                                     title: 'Data Pengguna',
                                                     html: `<div class="w-full">
                                                                 <div class="w-full flex justify-center mb-10">
-                                                                     <img class="w-[70px] h-[70px] rounded-full" src="{{ asset('storage/Siswa/' . '') }}/${response.foto}" alt="" srcset="">
+                                                                     <img class="w-[70px] h-[70px] rounded-full" src="{{ asset('Storage/Siswa/' . '') }}/${response.foto}" alt="" srcset="">
                                                                 </div>
                                                                 <div class="flex flex-col items-center gap-2">
                                                                 <div class="flex w-full text-base ">
