@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\piket;
 use App\Models\Siswa;
-use App\Models\anggota_piket;
+use App\Models\Anggota_piket;
 use App\Models\laporan_piket;
 use App\Http\Requests\StorepiketRequest;
 use App\Http\Requests\UpdatepiketRequest;
@@ -42,18 +42,18 @@ class PiketController extends Controller
          }
 
          // Sisa kode yang ada sebelumnya
-         $senin = anggota_piket::where('hari',  'senin')->where('waktu', 'pagi')->get();
-         $selasa = anggota_piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'pagi')->get();
-         $rabu = anggota_piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
-         $kamis = anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
-         $jumat = anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
-         $catat = anggota_piket::where('siswa_id', '1')->where('waktu','catatan')->get();
+         $senin = Anggota_piket::where('hari',  'senin')->where('waktu', 'pagi')->get();
+         $selasa = Anggota_piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'pagi')->get();
+         $rabu = Anggota_piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
+         $kamis = Anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
+         $jumat = Anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
+         $catat = Anggota_piket::where('siswa_id', '1')->where('waktu','catatan')->get();
 
-         $senin_sore= anggota_piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'sore')->get();
-         $selasa_sore = anggota_piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'sore')->get();
-         $rabu_sore = anggota_piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'sore')->get();
-         $kamis_sore= anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'sore')->get();
-         $jumat_sore= anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'sore')->get();
+         $senin_sore= Anggota_piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'sore')->get();
+         $selasa_sore = Anggota_piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'sore')->get();
+         $rabu_sore = Anggota_piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'sore')->get();
+         $kamis_sore= Anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'sore')->get();
+         $jumat_sore= Anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'sore')->get();
          $siswa = Siswa::all();
          $laporan_piket = laporan_piket::all();
 
@@ -75,7 +75,7 @@ class PiketController extends Controller
          $today = Carbon::now()->format('l');
 
          if ($today === 'Monday') {
-             $data = anggota_piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'pagi')->get();
+             $data = Anggota_piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'pagi')->get();
              foreach ($data as $datas) {
                  $email = Siswa::find($datas->siswa_id);
                  $mailData = [
@@ -85,7 +85,7 @@ class PiketController extends Controller
                  Mail::to($email->email)->send(new pikets($mailData));
              }
          } elseif ($today === 'Tuesday') {
-             $data = anggota_piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'pagi')->get();
+             $data = Anggota_piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'pagi')->get();
              foreach ($data as $datas) {
                  $email = Siswa::find($datas->siswa_id);
                  $mailData = [
@@ -95,7 +95,7 @@ class PiketController extends Controller
                  Mail::to($email->email)->send(new pikets($mailData));
              }
          } elseif ($today === 'Wednesday') {
-             $data = anggota_piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
+             $data = Anggota_piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
              foreach ($data as $datas) {
                  $email = Siswa::find($datas->siswa_id);
                  $mailData = [
@@ -105,7 +105,7 @@ class PiketController extends Controller
                  Mail::to($email->email)->send(new pikets($mailData));
              }
          } elseif ($today === 'Thursday') {
-             $data = anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
+             $data = Anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
              foreach ($data as $datas) {
                  $email = Siswa::find($datas->siswa_id);
                  $mailData = [
@@ -115,7 +115,7 @@ class PiketController extends Controller
                  Mail::to($email->email)->send(new pikets($mailData));
              }
          } elseif ($today === 'Friday') {
-             $data = anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
+             $data = Anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
              foreach ($data as $datas) {
                  $email = Siswa::find($datas->siswa_id);
                  $mailData = [
@@ -185,12 +185,12 @@ class PiketController extends Controller
         $hari = $request->input('hari');
         $waktu = $request->input('waktu');
 
-        $cek = anggota_piket::where('waktu', 'LIKE', $waktu)->where('hari', 'LIKE', $hari)->get();
+        $cek = Anggota_piket::where('waktu', 'LIKE', $waktu)->where('hari', 'LIKE', $hari)->get();
         if($cek->count() > 0){
             return redirect()->back()->with('error', 'Data yang anda masukan sudah ada');
         }
         $nama_siswa = $request->input('nama_siswa');
-        
+
         foreach ($nama_siswa as $item) {
             $mailData = [
                 'title' => 'Pemberitahuan jadwa piket',
@@ -198,7 +198,7 @@ class PiketController extends Controller
             ];
             $data = Siswa::find($item);
             Mail::to($data->email)->send(new pikets($mailData));
-            anggota_piket::create([
+            Anggota_piket::create([
                 'waktu' => $request->waktu,
                 'hari' => $request->hari,
                 'siswa_id' => $item
@@ -219,12 +219,12 @@ class PiketController extends Controller
                     'title' => 'Pemberitahuan jadwa piket',
                     'body' => 'Anda dihapus dari piket pada hari '. $hari . ' pada waktu piket ' . $waktu . ' dan silakan tunggu kabar piket anda selanjutnya '
                 ];
-                $p = anggota_piket::where('id', $item)->first();
+                $p = Anggota_piket::where('id', $item)->first();
 
                 $siswa = $p->siswa_id;
                 $data = Siswa::find($p->siswa_id);
                 Mail::to($data->email)->send(new pikets($mailData));
-                $cek = anggota_piket::find($item);
+                $cek = Anggota_piket::find($item);
                 $p->delete();
 
                 }
@@ -238,7 +238,7 @@ class PiketController extends Controller
                 ];
                 $data = Siswa::find($item);
                 Mail::to($data->email)->send(new pikets($mailData));
-                anggota_piket::create([
+                Anggota_piket::create([
                     'waktu' => $request->waktu,
                     'hari' => $request->hari,
                     'siswa_id' => $item
