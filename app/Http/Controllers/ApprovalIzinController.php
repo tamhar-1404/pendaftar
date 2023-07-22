@@ -88,7 +88,7 @@ class ApprovalIzinController extends Controller
 
         $foto = $foto_siswa->foto_siswa;
         $image = $request->file('bukti');
-        $image->storeAs('public/Bukti_izin', $image->hashName());
+        $image->storeAs('public/bukti_izin', $image->hashName());
 
         ApprovalIzin::create([
             'nama' => $request->nama,

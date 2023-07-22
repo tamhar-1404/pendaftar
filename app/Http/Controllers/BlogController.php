@@ -55,7 +55,7 @@ class BlogController extends Controller
          ]);
 
          $image = $request->file('foto');
-         $image->storeAs('public/Fotoberita', $image->hashName());
+         $image->storeAs('public/fotoberita', $image->hashName());
 
          $berita = Blog::create([
              'name' => auth()->user()->name,
@@ -122,11 +122,11 @@ class BlogController extends Controller
         if ($request->hasFile('foto')) {
             // Unggah dan simpan gambar baru
             $image = $request->file('foto');
-            $image->storeAs('Storage/Fotoberita/', $image->hashName());
+            $image->storeAs('Storage/fotoberita/', $image->hashName());
 
             // Hapus gambar lama jika ada
             if ($blog->foto !== null) {
-                Storage::delete('Storage/Fotoberita/' . $blog->foto);
+                Storage::delete('Storage/fotoberita/' . $blog->foto);
             }
 
             // $blog->foto = $image->hashName();
