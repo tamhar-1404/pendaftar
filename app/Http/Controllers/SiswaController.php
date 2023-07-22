@@ -28,7 +28,7 @@ class SiswaController extends Controller
         $today = date('Y-m-d');
         if (Siswa::whereDate('magang_akhir', '<=', $today)->exists()) {
             $siswas = Siswa::whereDate('magang_akhir', '<=', $today)->get();
-            foreach ($siswa as $siswa) {
+            foreach ($siswas as $siswa) {
                 if (!EmailLulus::where('email', $siswa->email)->where('tanggal', Carbon::now()->format('Y-m-d'))->exists()) {
                     Mail::to($siswa->email)->send(new EmailLulus);
                     EmailLulus::create([
