@@ -198,7 +198,7 @@
 
                                     {{-- hari --}}
                                     <div class="text-center font-bold mt-3">
-                                        dfghjkl
+                                        Senin
                                     </div>
                                     {{-- nama --}}
                                     @forelse ( $senin_sore as $item)

@@ -204,7 +204,7 @@
                                         {{ $aproval->jeniskelamin }}</span>
                                 </div>
                                 <div class="mt-3 flex w-full justify-between">
-                                    <span class="w-1/2"> NISN </span> <span
+                                    <span class="w-1/2"> NISN / NIM</span> <span
                                         class="text-gray-400 w-full flex justify-start">: {{ $aproval->nisn }}</span>
                                 </div>
                                 <div class="mt-3 flex w-full justify-between">
