@@ -9,7 +9,17 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Admin - Laporan Siswa</title>
-    @vite('resources/css/app.css')
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                  }
+            },
+          },
+
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
@@ -236,7 +246,7 @@
                                     @empty
                                 </div>
                             </div>
-                                  
+
                                     @endforelse
                             <div id="content2" class="card-content" style="display: none"
                                 class="hidden min-h-[400px] sm:min-h-[300px]">
