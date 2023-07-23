@@ -208,7 +208,7 @@
                                 Profile</a>
                         </li>
                         <li class="border-t border-white-light dark:border-white-light/10">
-                            <a href="auth-boxed-signin.html" class="!py-3 text-danger" @click="toggle">
+                            <a href="{{route('logout')}}" class="!py-3 text-danger" @click="toggle">
                                 <svg class="h-4.5 w-4.5 rotate-90 ltr:mr-2 rtl:ml-2" width="18" height="18"
                                     viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.5"

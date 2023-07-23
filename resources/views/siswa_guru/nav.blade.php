@@ -177,8 +177,10 @@
                 </div>
                 <div class="dropdown flex-shrink-0" x-data="dropdown" @click.outside="open = false">
                     <a href="javascript:;" class="group relative" @click="toggle()">
+                        @foreach ($guru as $guru)
+
                         <span><img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                src="assets_guru/images/user-profile.jpeg" alt="image" /></span>
+                                src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image" /></span>
                     </a>
                     <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
                         class="top-11 w-[230px] !py-0 font-semibold text-dark ltr:right-0 rtl:left-0 dark:text-white-dark dark:text-white-light/90">
@@ -186,20 +188,20 @@
                             <div class="flex items-center px-4 py-4">
                                 <div class="flex-none">
                                     <img class="h-10 w-10 rounded-md object-cover"
-                                        src="assets_guru/images/user-profile.jpeg" alt="image" />
+                                    src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image" />
                                 </div>
                                 <div class="ltr:pl-4 rtl:pr-4">
                                     <h4 class="text-base">
-                                        John Doe<span
-                                            class="rounded bg-success-light px-1 text-xs text-success ltr:ml-2 rtl:ml-2">Pro</span>
+                                        {{ $guru->name }}<span
+                                           ></span>
                                     </h4>
                                     <a class="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white"
-                                        href="javascript:;">johndoe@gmail.com</a>
+                                        href="javascript:;">{{ $guru->email }}</a>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <a href="users-profile.html" class="dark:hover:text-white" @click="toggle">
+                            <a href="{{ route('profileguru.index') }}" class="dark:hover:text-white" @click="toggle">
                                 <svg class="h-4.5 w-4.5 ltr:mr-2 rtl:ml-2" width="18" height="18"
                                     viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="12" cy="6" r="4" stroke="currentColor"
@@ -211,7 +213,7 @@
                                 Profile</a>
                         </li>
                         <li class="border-t border-white-light dark:border-white-light/10">
-                            <a href="auth-boxed-signin.html" class="!py-3 text-danger" @click="toggle">
+                            <a href="{{route('logout')}}" class="!py-3 text-danger" @click="toggle">
                                 <svg class="h-4.5 w-4.5 rotate-90 ltr:mr-2 rtl:ml-2" width="18" height="18"
                                     viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.5"
@@ -224,6 +226,7 @@
                             </a>
                         </li>
                     </ul>
+                        @endforeach
                 </div>
             </div>
         </div>

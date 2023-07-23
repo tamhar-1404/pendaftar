@@ -8,6 +8,7 @@ use App\Models\Siswa;
 use App\Models\MOU;
 use App\Models\Approvalizin;
 use App\Models\Blog;
+use App\Models\Guru_admin;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreDashboard_guruRequest;
 use App\Http\Requests\UpdateDashboard_guruRequest;
@@ -28,6 +29,7 @@ class DashboardGuruController extends Controller
         $absen = Approvalizin::where('sekolah', Auth()->user()->sekolah)->count();
         $mou = MOU::all();
         $berita = Blog::all();
+        $guru = Guru_admin::where('email' , Auth()->user()->email)->get();
 
 
 
@@ -85,7 +87,7 @@ class DashboardGuruController extends Controller
         $Alfa_nov =Approvalizin::where('keterangan', 'LIKE', 'Alfa')->where('sekolah' , Auth()->user()->sekolah)->whereMonth('tanggal', '=', 11)->count();
         $Alfa_des =Approvalizin::where('keterangan', 'LIKE', 'Alfa')->where('sekolah' , Auth()->user()->sekolah)->whereMonth('tanggal', '=', 12)->count();
 
-        return view('guru.index', compact('berita','mou','jurnal','data_siswa', 'siswa', 'absen', 'Hadir_jan','Hadir_feb','Hadir_mar','Hadir_apr','Hadir_mei','Hadir_jun','Hadir_jul','Hadir_aug','Hadir_sep','Hadir_okt','Hadir_nov','Hadir_des','Telat_jan','Telat_feb','Telat_mar','Telat_apr','Telat_mei','Telat_jun','Telat_jul','Telat_aug','Telat_sep','Telat_nov','Telat_okt','Telat_nov','Telat_des','izin_jan','izin_feb','izin_mar','izin_apr','izin_mei','izin_jun','izin_jul','izin_aug','izin_sep','izin_nov','izin_okt','izin_nov','izin_des','Alfa_jan','Alfa_feb','Alfa_mar','Alfa_apr','Alfa_mei','Alfa_jun','Alfa_jul','Alfa_aug','Alfa_sep','Alfa_nov','Alfa_okt','Alfa_nov','Alfa_des'));
+        return view('guru.index', compact('guru','berita','mou','jurnal','data_siswa', 'siswa', 'absen', 'Hadir_jan','Hadir_feb','Hadir_mar','Hadir_apr','Hadir_mei','Hadir_jun','Hadir_jul','Hadir_aug','Hadir_sep','Hadir_okt','Hadir_nov','Hadir_des','Telat_jan','Telat_feb','Telat_mar','Telat_apr','Telat_mei','Telat_jun','Telat_jul','Telat_aug','Telat_sep','Telat_nov','Telat_okt','Telat_nov','Telat_des','izin_jan','izin_feb','izin_mar','izin_apr','izin_mei','izin_jun','izin_jul','izin_aug','izin_sep','izin_nov','izin_okt','izin_nov','izin_des','Alfa_jan','Alfa_feb','Alfa_mar','Alfa_apr','Alfa_mei','Alfa_jun','Alfa_jul','Alfa_aug','Alfa_sep','Alfa_nov','Alfa_okt','Alfa_nov','Alfa_des'));
     }
 
     /**

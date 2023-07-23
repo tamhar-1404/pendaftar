@@ -14,7 +14,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TataTertibController;
 use App\Http\Controllers\JurnaladminController;
 use App\Http\Controllers\JurnalsiswaController;
-use App\Http\Controllers\AprovalController;  
+use App\Http\Controllers\AprovalController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LupaPasswordController;
 use App\Http\Controllers\RegisterController;
@@ -29,6 +29,7 @@ use App\Http\Controllers\RestockController;
 use App\Http\Controllers\transaksirfidController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\ProfilsiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -175,10 +176,14 @@ Route::middleware(['auth'])->group(function () {
         });
     });
 
+
+Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
 Route::resource('/data', App\Http\Controllers\TransaksiController::class);
 Route::get('/nota', [TransaksiController::class , 'nota'])->name('nota');
 Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita.like');
 Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
 Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');
 Route::delete('Berita/{post}/unlike', [BlogController::class, 'unlike'])->name('Berita.unlike');
+Route::get('profil_siswa', [ProfilsiswaController::class, 'index'])->name('profile_siswa');
+Route::get('Edit_profile_siswa', [ProfilsiswaController::class, 'edit'])->name('Edit_profile_siswa');
 

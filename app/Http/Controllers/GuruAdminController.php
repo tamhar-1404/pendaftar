@@ -61,6 +61,7 @@ class GuruAdminController extends Controller
              'no' => 'required|unique:guru_admins|min:10|max:14',
              'password' => 'required'
          ]);
+
          $password = $request->password; // Simpan password yang belum di-hash
          $image = $request->file('image');
          $image->storeAs('public/guru_image', $image->hashName());
@@ -79,9 +80,9 @@ class GuruAdminController extends Controller
              'email' => $request->email,
              'sekolah' => $request->sekolah,
              'role' => 'guru',
-              'password' => Hash::make($request->password),
+            'password' => Hash::make($request->password),
          ]);
-        
+
          // Mengirim email konfirmasi dengan password yang belum di-hash
          Mail::to($request->email)->send(new AkunGuru($password));
 

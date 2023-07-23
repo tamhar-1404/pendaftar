@@ -1215,7 +1215,7 @@
                             <div class="panel">
                                 <div class="mb-5 flex items-center justify-between">
                                     <h5 class="text-lg font-semibold dark:text-white-light">Profile</h5>
-                                    <a href="{{ route('editprofileguru.index') }}"
+                                    <a href="#"
                                         class="btn btn-info rounded-full p-2 ltr:ml-auto rtl:mr-auto">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
@@ -1230,11 +1230,13 @@
                                         </svg>
                                     </a>
                                 </div>
+                                @foreach ($guru as $guru)
+
                                 <div class="mb-5">
                                     <div class="flex flex-col items-center justify-center">
-                                        <img src="lineone/images/avatar/avatar-6.jpg" alt="image"
+                                        <img src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image"
                                             class="mb-5 h-24 w-24 rounded-full object-cover" />
-                                        <p class="text-xl font-semibold text-info">Jimmy Turner</p>
+                                        <p class="text-xl font-semibold text-info">{{ $guru->name }}</p>
                                     </div>
                                     <ul
                                         class="m-auto mt-5 flex max-w-[160px] flex-col space-y-4 font-semibold text-white-dark">
@@ -1245,7 +1247,7 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
                                             </svg>
-                                            SMKN 12 Malang
+                                            {{ $guru->sekolah }}
                                         </li>
                                         <li class="flex items-center gap-2">
                                             <svg width="24" height="24" viewBox="0 0 24 24"
@@ -1256,7 +1258,7 @@
                                                 <circle cx="12" cy="10" r="3"
                                                     stroke="currentColor" stroke-width="1.5" />
                                             </svg>
-                                            New York, USA
+                                            {{ $guru->alamat }}
                                         </li>
                                         <li>
                                             <a href="javascript:;" class="flex items-center gap-2">
@@ -1271,7 +1273,7 @@
                                                         stroke="currentColor" stroke-width="1.5"
                                                         stroke-linecap="round" />
                                                 </svg>
-                                                <span class="">jimmy@gmail.com</span></a>
+                                                <span class="">{{ $guru->email }}</span></a>
                                         </li>
                                         <li class="flex items-center gap-2">
                                             <svg width="24" height="24" viewBox="0 0 24 24"
@@ -1287,10 +1289,11 @@
                                                     stroke="currentColor" stroke-width="1.5"
                                                     stroke-linecap="round" />
                                             </svg>
-                                            <span class="whitespace-nowrap" dir="ltr">+1 (530) 555-12121</span>
+                                            <span class="whitespace-nowrap" dir="ltr">{{ $guru->no }}</span>
                                         </li>
                                     </ul>
                                 </div>
+                                @endforeach
                             </div>
                             <div class="panel lg:col-span-2 xl:col-span-3">
                                 <div class="mb-5">
@@ -1298,6 +1301,7 @@
                                 </div>
                                 <div class="mb-5">
                                     <div class="table-responsive font-semibold text-[#515365] dark:text-white-light">
+
                                         <table class="whitespace-nowrap">
                                             <thead>
                                                 <tr>
@@ -1309,55 +1313,16 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="dark:text-white-dark">
+                                            @foreach ($siswa as $siswa)
                                                 <tr>
                                                     <td>1</td>
-                                                    <td class="">Dimas Juliansyah</td>
-                                                    <td class="">RPL</td>
-                                                    <td class="">dimas@gmail.com</td>
-                                                    <td class="">Singosari, Malang</td>
+                                                    <td class="">{{ $siswa->name }}</td>
+                                                    <td class="">{{ $siswa->jurusan }}</td>
+                                                    <td class="">{{ $siswa->email }}</td>
+                                                    <td class="">{{ $siswa->tempat }}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td class="">Rahmat Tahalu</td>
-                                                    <td class="">Multimedia</td>
-                                                    <td class="">rahmat@gmail.com</td>
-                                                    <td class="">Singosari, Malang</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td class="">Dimas Juliansyah</td>
-                                                    <td class="">RPL</td>
-                                                    <td class="">dimas@gmail.com</td>
-                                                    <td class="">Singosari, Malang</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td class="">Dimas Juliansyah</td>
-                                                    <td class="">RPL</td>
-                                                    <td class="">dimas@gmail.com</td>
-                                                    <td class="">Singosari, Malang</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td class="">Dimas Juliansyah</td>
-                                                    <td class="">RPL</td>
-                                                    <td class="">dimas@gmail.com</td>
-                                                    <td class="">Singosari, Malang</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td class="">Dimas Juliansyah</td>
-                                                    <td class="">RPL</td>
-                                                    <td class="">dimas@gmail.com</td>
-                                                    <td class="">Singosari, Malang</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>7</td>
-                                                    <td class="">Dimas Juliansyah</td>
-                                                    <td class="">RPL</td>
-                                                    <td class="">dimas@gmail.com</td>
-                                                    <td class="">Singosari, Malang</td>
-                                                </tr>
+                                                @endforeach
+
                                             </tbody>
                                         </table>
                                     </div>
