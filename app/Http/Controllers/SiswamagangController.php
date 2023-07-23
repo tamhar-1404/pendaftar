@@ -7,6 +7,7 @@ use App\Models\TataTertib;
 use App\Models\ApprovalIzin;
 use App\Models\Jurnalsiswa;
 use App\Models\User;
+use App\Models\Siswa;
 use App\Models\LaporanSiswa;
 use App\Models\MOU;
 use Auth;
