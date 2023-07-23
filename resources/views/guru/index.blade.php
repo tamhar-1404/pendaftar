@@ -1454,32 +1454,26 @@
                        <div class="card">
                         <img class="h-72 w-full rounded-lg object-cover object-center max-w-xs transition duration-300 ease-in-out hover:scale-110"
                             src="{{ asset('storage/fotoberita/' . $row->foto) }}" alt="image" />
-                        <div class="absolute inset-0 flex h-full w-full flex-col justify-end">
-
-
-
-
-                            <div
+                            <div class="absolute inset-0 flex h-full w-full flex-col justify-end">
+                                <div
                                 class="space-y-1.5 rounded-lg bg-gradient-to-t from-[#19213299] via-[#19213266] to-transparent px-4 pb-3 pt-12">
-                                <div class="line-clamp-2">
-                                    <a href="{{ route('Berita.show', $row->id) }}" class="text-base font-medium text-white">
-                                        {{ $row->judul }}
-                                    </a>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center text-xs text-slate-200">
-                                        <p class="flex items-center space-x-1">
-                                            <span class="line-clamp-1 uppercase">{{ $row->kategori }}</span>
-                                        </p>
-                                        <div class="mx-3 my-0.5 w-px self-stretch bg-white/20"></div>
-                                        <p class="shrink-0 text-tiny+">{{ $row->created_at->diffForHumans() }}</p>
+                                    <div class="line-clamp-2">
+                                        <a href="{{ route('berita_guru.show', $row->id) }}" class="text-base font-medium text-white">
+                                            {{ $row->judul }}
+                                        </a>
                                     </div>
-
-
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center text-xs text-slate-200">
+                                            <p class="flex items-center space-x-1">
+                                                <span class="line-clamp-1 uppercase">{{ $row->kategori }}</span>
+                                            </p>
+                                            <div class="mx-3 my-0.5 w-px self-stretch bg-white/20"></div>
+                                            <p class="shrink-0 text-tiny+">{{ $row->created_at->diffForHumans() }}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                        @empty
 
