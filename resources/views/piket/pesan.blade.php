@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Hummasoft</title>
-    @vite('resources/css/app.css')
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        },
+    </script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <link rel="stylesheet" href="load/load.css">
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
     <script>
         tailwind.config = {
-          darkMode: "class",
-          theme: {
-            fontFamily: {
-              sans: ["Roboto", "sans-serif"],
-              body: ["Roboto", "sans-serif"],
-              mono: ["ui-monospace", "monospace"],
+            darkMode: "class",
+            theme: {
+                fontFamily: {
+                    sans: ["Roboto", "sans-serif"],
+                    body: ["Roboto", "sans-serif"],
+                    mono: ["ui-monospace", "monospace"],
+                },
             },
-          },
-          corePlugins: {
-            preflight: false,
-          },
+            corePlugins: {
+                preflight: false,
+            },
         };
     </script>
     <style>
         /* Reset CSS */
-        body, h1, p {
+        body,
+        h1,
+        p {
             margin: 0;
             padding: 0;
         }
@@ -52,20 +63,23 @@
         .title {
             font-size: 28px;
             font-weight: bold;
-            color: #1e2529; /* Blue color */
+            color: #1e2529;
+            /* Blue color */
             margin-top: 20px;
             text-align: center;
         }
 
         /* Soft Style */
         .soft {
-            color: #000; /* Black color */
+            color: #000;
+            /* Black color */
         }
 
         /* Body Style */
         .body {
             font-size: 16px;
-            color: #000; /* Black color */
+            color: #000;
+            /* Black color */
             margin-top: 20px;
             text-align: center;
         }
@@ -88,6 +102,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <center>
@@ -97,4 +112,5 @@
         <p class="body">{{ $body }}</p> <br>
     </div>
 </body>
+
 </html>

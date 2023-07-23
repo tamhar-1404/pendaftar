@@ -73,7 +73,7 @@
     <div class="h-screen bg-no-repeat">
         <nav class="navbar" id="navbar">
             <div class="px-5 flex items-center">
-                <a class="navbar-brand md:me-8" href="index.html">
+                <a class="navbar-brand md:me-8" href="{{ route('/') }}">
                     <span class="inline-block">
                         <img src="{{ asset('admin/assets/images/hitam.png') }}" class="l-dark w-28" alt="">
                         <img src="{{ asset('admin/assets/images/hitam.png') }}" class="l-light w-28" alt="">

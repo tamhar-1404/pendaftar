@@ -13,7 +13,15 @@
 
     <title>Ubah Password</title>
     <link rel="icon" type="image/png" href="{{ asset('lineone/images/favicon.png') }}" />
-    @vite('resources/css/app.css')
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        },
+    </script>
 
     <!-- CSS Assets -->
     <link rel="stylesheet" href="{{ asset('lineone/css/app.css') }}" />
