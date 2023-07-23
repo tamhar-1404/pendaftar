@@ -290,7 +290,7 @@
                                         type="text" placeholder="cari">
                                 </div>
                             </div>
-                            <div class="mb-5 flex flex-wrap  mt-5 items-center">
+                            {{-- <div class="mb-5 flex flex-wrap  mt-5 items-center">
                                 <button type="button" class="btn btn-primary btn-sm m-1"
                                     @click="exportTable('csv')">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -362,14 +362,14 @@
                                     </svg>
                                     PRINT
                                 </button>
-                            </div>
+                            </div> --}}
                         </div>
 
                         {{-- tabel --}}
 
-                        <div class="flex flex-col">
-                            <div class="overflow-x-auto mt-5 sm:-mx-6 lg:-mx-8">
-                                <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                        <div class="flex flex-col w-full">
+                            <div class="overflow-x-auto w-full mt-5 sm:-mx-6 lg:-mx-8">
+                                <div class="inline-block min-w-full w-full py-2 sm:px-6 lg:px-8">
                                     <div class="overflow-hidden">
                                         <table class="min-w-full text-left text-sm font-light">
                                             <thead class="border-b font-medium dark:border-neutral-500 ">

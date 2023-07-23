@@ -2245,8 +2245,7 @@
                     </div>
                 </div>
 
-                <div class="flex items-center space-x-2" x-data="usePopper({ placement: 'bottom-end', offset: 4 })"
-                    @click.outside="isShowPopper && (isShowPopper = false)">
+                <div class="flex items-center space-x-2" >
                     <form action="">
                         <label class="relative hidden sm:flex">
                             <input
@@ -2398,25 +2397,25 @@
                     </div>
                     <form action="{{ route('sp.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" name="nama" value="{{ $modal->name }}">
-                        <div class="w-full">
-                            <label class="text-md font-semibold ml-4 mt-4 ">deskrisi</label><br>
-                            <textarea name="deskripsi" class="w-[80%] border border-gray-200" id="" cols=""
+                        <input type="hidden" name="nama" value="{{ $modal->name }}">
+                        <div class="w-full p-4">
+                            <label class="text-md font-semibold ml-4 mt-4 ">Deskrisi</label><br>
+                            <textarea name="deskripsi" class="w-[70%] mx-20 border border-gray-200 rounded" id="" cols=""
                                 rows="10"></textarea>
                         </div>
-                        <label for="">Jenis SP</label> <br>
-                        <div class="flex">
-
-                            <input type="radio" name="keterangan" value="Sp1" id="">
-                            <p>Sp1</p> <br>
+                        <label class="text-md font-semibold ml-4 mt-4 " for="">Jenis SP</label> <br>
+                        <div class="flex gap-4 ml-10">
+                            <div class="flex">
+                                <input type="radio" name="keterangan" value="Sp1" id="">
+                                <p>Sp1</p> <br>
+                            </div>
+                            <div class="flex">
+                                <input type="radio" name="keterangan" value="Sp2" id="">
+                                <p>Sp2</p> <br>
+                            </div>
                         </div>
-                        <div class="flex">
-
-                            <input type="radio" name="keterangan" value="Sp2" id="">
-                            <p>Sp2</p> <br>
-                        </div>
-                        <label for="">Bukti SP</label> <br>
-                        <input type="file" name="buktisp" id="">
+                        <label class="text-md font-semibold ml-4 mt-4" for="">Bukti SP</label> <br>
+                        <input class="mr-10" type="file" name="buktisp" id="">
 
 
 
