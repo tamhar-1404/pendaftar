@@ -137,7 +137,7 @@
 
                                    <!-- Modal -->
                                    <div id="modal"
-                                       class="fixed right-48 mt-32 flex items-center justify-center z-50 hidden">
+                                       class="fixed right-48 mt-32 flex items-center justify-center z-[100]  hidden" >
                                        <div class="absolute w-96 bg-white rounded-lg p-6 shadow-lg">
                                            <div class="modal-header mb-4">
                                                <div class="flex items-center justify-between mb-4">

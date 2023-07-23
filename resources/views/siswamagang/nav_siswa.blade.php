@@ -336,7 +336,7 @@
              </li>
              <li class="menu nav-item relative">
                  <a href="javascript:;"
-                     class="nav-link {{ request()->routeIs('tatib_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }} {{ request()->routeIs('siswa_magang_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }} {{ request()->routeIs('piket_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }}">
+                     class="nav-link {{ request()->routeIs('siswa_magang_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }}  {{ request()->routeIs('piket_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }} {{ request()->routeIs('tatib_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }}" >
                      <div class="flex items-center">
                          <svg class="group-hover:!text-primary" width="14" height="14" viewBox="0 0 20 20"
                              fill="none" xmlns="http://www.w3.org/2000/svg">
