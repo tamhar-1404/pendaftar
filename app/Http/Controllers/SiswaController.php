@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreSiswaRequest;
 use Carbon\Carbon;
 use App\Http\Requests\UpdateSiswaRequest;
+use App\Mail\EmailLulus as MailEmailLulus;
 
 class SiswaController extends Controller
 {
@@ -30,7 +31,7 @@ class SiswaController extends Controller
             $siswas = Siswa::whereDate('magang_akhir', '<=', $today)->get();
             foreach ($siswas as $siswa) {
                 if (!EmailLulus::where('email', $siswa->email)->where('tanggal', Carbon::now()->format('Y-m-d'))->exists()) {
-                    Mail::to($siswa->email)->send(new EmailLulus);
+                    Mail::to($siswa->email)->send(new MailEmailLulus);
                     EmailLulus::create([
                         'email' => $siswa->email,
                         'tanggal' => Carbon::now()->format('Y-m-d'),
