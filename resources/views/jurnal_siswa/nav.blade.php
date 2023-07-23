@@ -245,7 +245,7 @@
                         <span
                             ><img
                                 class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                src="{{ asset('siswa/images/user-profile.jpeg') }}"
+                                src="{{ asset('storage/Siswa/'.Auth::user()->siswa->foto_siswa) }}"
                                 alt="image"
                         /></span>
                     </a>

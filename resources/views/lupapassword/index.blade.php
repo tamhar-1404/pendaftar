@@ -13,7 +13,15 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
     <title>Lupa Password</title>
-    @vite('resources/css/app.css')
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        },
+    </script>
     <link rel="icon" type="image/png" href="lineone/images/favicon.png" />
 
     <!-- CSS Assets -->
