@@ -93,7 +93,7 @@
                      <a href="javascript:;" class="group relative" @click="toggle()">
 
                         <span><img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                src="{{ asset('storage/Siswa/') }}" alt="image" /></span>
+                                src="{{ asset('storage/Siswa/'.Auth::user()->siswa->foto_siswa) }}" alt="image" /></span>
 
                      </a>
                      <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
@@ -102,14 +102,14 @@
                              <div class="flex items-center px-4 py-4">
                                  <div class="flex-none">
                                      <img class="h-10 w-10 rounded-md object-cover"
-                                         src="siswa/images/user-profile.jpeg" alt="image" />
+                                         src="{{ asset('storage/Siswa/'.Auth::user()->siswa->foto_siswa) }}" alt="image" />
                                  </div>
                                  <div class="ltr:pl-4 rtl:pr-4">
                                      <h4 class="text-base">
                                          {{Auth()->user()->name}}
                                      </h4>
                                      <a class="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white"
-                                         href="javascript:;">johndoe@gmail.com</a>
+                                         href="javascript:;">{{auth()->user()->email}}</a>
                                  </div>
                              </div>
                          </li>
