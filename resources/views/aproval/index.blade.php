@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFz2uJRJw1++wJ/E=" crossorigin="anonymous"></script>
 <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
     <div class="main-content">
         {{-- @include('aproval.layout') --}}
@@ -17,7 +19,7 @@
                         <div class="mr-3">
                             <form action="">
                                 <label class="relative hidden sm:flex">
-                                    <input
+                                    <input id="search"
                                         class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                         placeholder="Search users..." type="text" name="cari"
                                         value="{{ request('cari') }}" />
@@ -33,6 +35,38 @@
                                 </label>
                             </form>
                         </div>
+                        <!-- Letakkan script JavaScript di bawah form pencarian -->
+                        <script>
+                            $(document).ready(function() {
+                                // Tangkap form pencarian ketika disubmit
+                                $("form").on("submit", function(e) {
+                                    e.preventDefault(); // Hindari submit form biasa
+
+                                    // Ambil nilai dari input pencarian
+                                    var searchTerm = $("#search").val();
+
+                                    // Lakukan permintaan AJAX ke server
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "{{ route('aproval.index') }}", // Ganti dengan endpoint server Anda untuk menghandle pencarian
+                                        data: {
+                                            cari: searchTerm
+                                        },
+                                        dataType: "json",
+                                        success: function(response) {
+                                            // Handle data yang diterima dari server dan perbarui tampilan hasil pencarian
+                                            // Misalnya, jika Anda memiliki elemen dengan ID 'search-results', Anda dapat memperbarui isinya dengan:
+                                            // $('#search-results').html(response);
+                                            console.log(
+                                            response); // Cetak data respons dari server ke konsol untuk di-debug
+                                        },
+                                        error: function(error) {
+                                            console.error(error); // Tangani kesalahan jika terjadi
+                                        },
+                                    });
+                                });
+                            });
+                        </script>
                         {{-- filter --}}
                         <ul class="relative flex items-center">
                             <!-- Notification dropdown -->
@@ -185,7 +219,8 @@
                                                     <td class="whitespace-nowrap px-6 py-2">{{ $aproval->jurusan }}
                                                     </td>
                                                     <td class="whitespace-nowrap px-6 py-2">{{ $aproval->kelas }}</td>
-                                                    <td class="whitespace-nowrap px-6 py-2">{{ $aproval->magang_awal }}
+                                                    <td class="whitespace-nowrap px-6 py-2">
+                                                        {{ $aproval->magang_awal }}
                                                         -- {{ $aproval->magang_akhir }}</td>
                                                     <td class="whitespace-nowrap px-6 py-2">{{ $aproval->sekolah }}
                                                     </td>
