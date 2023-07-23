@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProfileGuru;
+use App\Models\Guru_admin;
+use App\Models\Siswa;
+use Auth;
 use App\Http\Requests\StoreProfileGuruRequest;
 use App\Http\Requests\UpdateProfileGuruRequest;
 
@@ -15,7 +18,9 @@ class ProfileGuruController extends Controller
      */
     public function index()
     {
-        return view('profileguru.index');
+        $siswa = Siswa::where('sekolah' , Auth()->user()->sekolah)->get();
+        $guru = Guru_admin::where('email' , Auth()->user()->email)->get();
+        return view('profileguru.index' , compact('guru' , 'siswa'));
     }
 
     /**
@@ -58,7 +63,7 @@ class ProfileGuruController extends Controller
      */
     public function edit(ProfileGuru $profileGuru)
     {
-        //
+        return view('profileguru.editprofile');
     }
 
     /**

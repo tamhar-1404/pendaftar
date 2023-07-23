@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\profilsiswa;
+use App\Models\User;
+use App\Models\Siswa;
 use App\Http\Requests\StoreprofilsiswaRequest;
 use App\Http\Requests\UpdateprofilsiswaRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProfilsiswaController extends Controller
 {
@@ -15,7 +18,9 @@ class ProfilsiswaController extends Controller
      */
     public function index()
     {
-        return view('profil_siswa.detail');
+        $Siswa = Siswa::Where('id', Auth()->user()->siswa_id)->get();
+        // dd($Siswa);
+        return view('profil_siswa.detail', compact('Siswa'));
     }
 
     /**
@@ -58,7 +63,7 @@ class ProfilsiswaController extends Controller
      */
     public function edit(profilsiswa $profilsiswa)
     {
-        //
+        return view('profil_siswa.edit');
     }
 
     /**

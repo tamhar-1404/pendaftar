@@ -251,10 +251,13 @@
 
                         </div>
                         <div class="mb-5">
+                            @foreach($Siswa as $Siswa)
+
                             <div class="flex flex-col items-center justify-center">
-                                <img src="{{ asset('admin/assets/images/profile-34.jpeg') }}" alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
-                                <p class="text-xl font-semibold text-info">Angga Maulana</p>
+                                <img src="{{ asset('storage/Siswa/'. $Siswa->foto_siswa) }}" alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
+                            <p class="text-xl font-semibold text-info">{{ $Siswa->name }}</p>
                             </div>
+                            @endforeach
                             <ul class="m-auto mt-5 flex max-w-[160px] flex-col space-y-4 font-semibold text-white-dark">
                                 <li class="flex items-center gap-2">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
@@ -292,7 +295,7 @@
                                             stroke-linejoin="round"
                                         />
                                     </svg>
-                                    Smkn 1 kepanjen
+                                    {{ $Siswa->sekolah }}
                                 </li>
                                 <li class="flex items-center gap-2">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
@@ -305,9 +308,9 @@
                                         <path opacity="0.5" d="M17 4V2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                         <path opacity="0.5" d="M2 9H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                     </svg>
-                                    maret , 14 , 2006
+                                   {{ $Siswa->tanggal }}
                                 </li>
-                                <li class="flex items-center gap-2">
+                                <li class="flex items-center gap-2 ">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
                                         <path
                                             opacity="0.5"
@@ -317,7 +320,9 @@
                                         />
                                         <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5" />
                                     </svg>
-                                   Pakisaji jawa timur
+                                    <p class="truncate">
+                                        {{ $Siswa->alamat }} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate magnam deleniti, veniam laboriosam doloribus nulla praesentium sunt iusto quia a minima debitis repellat impedit officiis id eaque. Ipsa, nostrum necessitatibus!
+                                    </p>
                                 </li>
                                 <li>
                                     <a href="javascript:;" class="flex items-center gap-2">
@@ -342,7 +347,7 @@
                                                 stroke-linecap="round"
                                             />
                                         </svg>
-                                        <span class="text-info">angga@gmail.com</span></a
+                                        <span class="text-info">{{ $Siswa->email }}</span></a
                                     >
                                 </li>
                                 <li class="flex items-center gap-2">
@@ -366,7 +371,7 @@
                                             stroke-linecap="round"
                                         />
                                     </svg>
-                                    <span class="whitespace-nowrap" dir="ltr">0654 7867 4656</span>
+                                    <span class="whitespace-nowrap" dir="ltr">{{ $Siswa->no }}</span>
                                 </li>
                             </ul>
                             <ul class="mt-7  justify-center gap-2">
@@ -398,90 +403,7 @@
                                 <td>Judul pelanggaran</td>
                                 <td>Deskripsi</td>
                             </tr>
-                            <tr class="text-sm">
-                                <td>1</td>
-                                <td>
-                                    11/11/2022
-                                </td>
-                                <td>
-                                    Peraturan tata tertib
-                                </td>
-                                <td>
-                                    Telat masuk jam magang
-                                </td>
-                            </tr>
-                            <tr  class="text-sm">
-                                <td>2</td>
-                                <td>
-                                    11/11/2022
-                                </td>
-                                <td>
-                                    Peraturan tata tertib
-                                </td>
-                                <td>
-                                    Telat masuk jam magang
-                                </td>
-                            </tr>
-                            <tr  class="text-sm">
-                                <td>3</td>
-                                <td>
-                                    11/11/2022
-                                </td>
-                                <td>
-                                    Peraturan tata tertib
-                                </td>
-                                <td>
-                                    Telat masuk jam magang
-                                </td>
-                            </tr>
-                            <tr  class="text-sm">
-                                <td>4</td>
-                                <td>
-                                    11/11/2022
-                                </td>
-                                <td>
-                                    Peraturan tata tertib
-                                </td>
-                                <td>
-                                    Telat masuk jam magang
-                                </td>
-                            </tr>
-                            <tr  class="text-sm">
-                                <td>5</td>
-                                <td>
-                                    11/11/2022
-                                </td>
-                                <td>
-                                    Peraturan tata tertib
-                                </td>
-                                <td>
-                                    Telat masuk jam magang
-                                </td>
-                            </tr>
-                            <tr  class="text-sm">
-                                <td>6</td>
-                                <td>
-                                    11/11/2022
-                                </td>
-                                <td>
-                                    Peraturan tata tertib
-                                </td>
-                                <td>
-                                    Telat masuk jam magang
-                                </td>
-                            </tr>
-                            <tr  class="text-sm">
-                                <td>7</td>
-                                <td>
-                                    11/11/2022
-                                </td>
-                                <td>
-                                    Peraturan tata tertib
-                                </td>
-                                <td>
-                                    Telat masuk jam magang
-                                </td>
-                            </tr>
+
                         </table>
                         </div>
                       </div>

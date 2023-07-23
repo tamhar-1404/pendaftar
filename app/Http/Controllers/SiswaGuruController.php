@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\siswa_guru;
 use App\Models\Siswa;
+use App\Models\Guru_admin;
 use App\Http\Requests\Storesiswa_guruRequest;
 use App\Http\Requests\Updatesiswa_guruRequest;
+use Auth;
 
 class SiswaGuruController extends Controller
 {
@@ -16,8 +18,9 @@ class SiswaGuruController extends Controller
      */
     public function index()
     {
+        $guru = Guru_admin::where('email' , Auth()->user()->email)->get();
         $siswas = Siswa::where('role', 'Siswa')->get();
-        return view('siswa_guru.index', compact('siswas'));
+        return view('siswa_guru.index', compact('siswas' , 'guru'));
     }
 
     /**

@@ -1721,7 +1721,7 @@
                 notifications: [{
                         id: 1,
                         profile: 'user-profile.jpeg',
-                        message: '<strong class="text-sm mr-1">John Doe</strong>invite you to <strong>Prototyping</strong>',
+                        message: '',
                         time: '45 min ago',
                     },
                     {
