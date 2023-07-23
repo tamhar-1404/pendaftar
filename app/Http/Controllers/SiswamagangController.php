@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\siswamagang;
+use App\Models\Siswamagang;
 use App\Models\TataTertib;
 use App\Models\ApprovalIzin;
 use App\Models\Jurnalsiswa;
@@ -10,14 +10,14 @@ use App\Models\User;
 use App\Models\Siswa;
 use App\Models\LaporanSiswa;
 use App\Models\MOU;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Topup as Top;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
-use App\Http\Requests\StoresiswamagangRequest;
-use App\Http\Requests\UpdatesiswamagangRequest;
+use App\Http\Requests\StoreSiswamagangRequest;
+use App\Http\Requests\UpdateSiswamagangRequest;
 use App\Models\TopUp;
 use Carbon\Carbon;
 
@@ -30,6 +30,7 @@ class SiswamagangController extends Controller
      */
     public function index()
     {
+
 
         $Hadir = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', Auth()->user()->name)->count();
         $Telat = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', Auth()->user()->name)->count();
@@ -64,11 +65,12 @@ class SiswamagangController extends Controller
         $tdk_mengisi_nov = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
         $tdk_mengisi_des = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
 
-        $user = auth()->user();
+        $user = Auth()->user();
         $tatib = TataTertib::latest()->paginate(5);
-        $password_user = User::find(auth()->user()->id)->password;
+        $password_user = User::find(Auth()->user()->id)->password;
         $mou = MOU::all();
-        return view('siswamagang.index', compact('tatib','mou', 'user', 'password_user', 'Hadir','Telat','izin','Alfa','mengisi_jan','mengisi_feb','mengisi_mar','mengisi_apr','mengisi_mei','mengisi_jun','mengisi_jul','mengisi_aug','mengisi_sep','mengisi_okt','mengisi_nov','mengisi_des','tdk_mengisi_jan','tdk_mengisi_feb','tdk_mengisi_mar','tdk_mengisi_apr','tdk_mengisi_mei','tdk_mengisi_jun','tdk_mengisi_jul','tdk_mengisi_aug','tdk_mengisi_sep','tdk_mengisi_nov','tdk_mengisi_okt','tdk_mengisi_nov','tdk_mengisi_des'));
+        $foto = Siswa::where('id', Auth()->user()->siswa_id)->get();
+        return view('Siswamagang.index', compact('foto', 'tatib','mou', 'user', 'password_user', 'Hadir','Telat','izin','Alfa','mengisi_jan','mengisi_feb','mengisi_mar','mengisi_apr','mengisi_mei','mengisi_jun','mengisi_jul','mengisi_aug','mengisi_sep','mengisi_okt','mengisi_nov','mengisi_des','tdk_mengisi_jan','tdk_mengisi_feb','tdk_mengisi_mar','tdk_mengisi_apr','tdk_mengisi_mei','tdk_mengisi_jun','tdk_mengisi_jul','tdk_mengisi_aug','tdk_mengisi_sep','tdk_mengisi_nov','tdk_mengisi_okt','tdk_mengisi_nov','tdk_mengisi_des'));
     }
 
 
@@ -85,7 +87,7 @@ class SiswamagangController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoresiswamagangRequest  $request
+     * @param  \App\Http\Requests\StoreSiswamagangRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -96,21 +98,24 @@ class SiswamagangController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\siswamagang  $siswamagang
+     * @param  \App\Models\Siswamagang  $Siswamagang
      * @return \Illuminate\Http\Response
      */
-    public function show(siswamagang $siswamagang)
+    public function show(Siswamagang $Siswamagang)
     {
-        //
+        $data = User::find(Auth()->user()->id);
+        $Siswa = Siswa::where('id', $data->id)->get();
+        dd('jsdjd');
+        return view('profil_siswa.detail');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\siswamagang  $siswamagang
+     * @param  \App\Models\Siswamagang  $Siswamagang
      * @return \Illuminate\Http\Response
      */
-    public function edit(siswamagang $siswamagang)
+    public function edit(Siswamagang $Siswamagang)
     {
         //
     }
@@ -118,11 +123,11 @@ class SiswamagangController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatesiswamagangRequest  $request
-     * @param  \App\Models\siswamagang  $siswamagang
+     * @param  \App\Http\Requests\UpdateSiswamagangRequest  $request
+     * @param  \App\Models\Siswamagang  $Siswamagang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  $siswamagang)
+    public function update(Request $request,  $Siswamagang)
     {
         //
     }
@@ -164,10 +169,10 @@ class SiswamagangController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\siswamagang  $siswamagang
+     * @param  \App\Models\Siswamagang  $Siswamagang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(siswamagang $siswamagang)
+    public function destroy(Siswamagang $Siswamagang)
     {
         //
     }

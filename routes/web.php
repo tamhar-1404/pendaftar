@@ -154,6 +154,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
         Route::resource('/History_topup', App\Http\Controllers\HistoryTopupController::class);
         Route::get('/siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa'])->name('siswamagang_siswa');
+        Route::get('profil_siswa', [ProfilsiswaController::class, 'index'])->name('profile_siswa');
+        Route::put('update_siswa', [ProfilsiswaController::class, 'update'])->name('update_siswa');
     });
 
     Route::middleware(['role:guru'])->group(function () {
@@ -184,6 +186,5 @@ Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita
 Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
 Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');
 Route::delete('Berita/{post}/unlike', [BlogController::class, 'unlike'])->name('Berita.unlike');
-Route::get('profil_siswa', [ProfilsiswaController::class, 'index'])->name('profile_siswa');
 Route::get('Edit_profile_siswa', [ProfilsiswaController::class, 'edit'])->name('Edit_profile_siswa');
 
