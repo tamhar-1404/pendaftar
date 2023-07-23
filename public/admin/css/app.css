@@ -718,7 +718,7 @@ code.inline-code {
   flex-direction: column;
   min-width: 1px;
   overflow-wrap: break-word;
-  position: relative;
+  position: ;
 }
 :is(.dark .card) {
   --tw-shadow: 0 0 #0000;

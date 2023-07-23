@@ -9,6 +9,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Guru - Jurnal</title>
+    <script src="https://cdn.tailwindcss.com73"></script>
     <script>
         theme: {
             extend: {
@@ -1237,7 +1238,7 @@
                                         type="text" placeholder="Cari...">
                                 </div>
                             </div>
-                            <div class=" flex flex-wrap items-center">
+                            {{-- <div class=" flex flex-wrap items-center">
                                 <button type="button"
                                     class="bg-blue-500 border text-white flex px-3 py-2 rounded-md font-bold hover:bg-white hover:text-blue-500 hover:border-blue-500 "
                                     @click="exportTable('csv')">
@@ -1315,14 +1316,14 @@
                                     </svg>
                                     PRINT
                                 </button>
-                            </div>
+                            </div> --}}
                         </div>
 
                         {{-- tabel --}}
 
-                        <div class="flex flex-col">
-                            <div class="overflow-x-auto mt-5 sm:-mx-6 lg:-mx-8">
-                                <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                        <div class="flex flex-col w-full">
+                            <div class="w-full">
+                                <div class="inline-block min-w-full py-2 w-full ">
                                     <div class="overflow-hidden">
                                         <table class="min-w-full text-left text-sm font-light">
                                             <thead class="border-b font-medium dark:border-neutral-500 ">
