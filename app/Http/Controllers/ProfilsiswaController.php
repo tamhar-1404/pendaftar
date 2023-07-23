@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\profilsiswa;
+use App\Models\Profilsiswa;
+use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Siswa;
-use App\Http\Requests\StoreprofilsiswaRequest;
-use App\Http\Requests\UpdateprofilsiswaRequest;
+use App\Http\Requests\StoreProfilsiswaRequest;
+use App\Http\Requests\UpdateProfilsiswaRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
 class ProfilsiswaController extends Controller
@@ -36,10 +38,10 @@ class ProfilsiswaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreprofilsiswaRequest  $request
+     * @param  \App\Http\Requests\StoreProfilsiswaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreprofilsiswaRequest $request)
+    public function store(StoreProfilsiswaRequest $request)
     {
         //
     }
@@ -47,10 +49,10 @@ class ProfilsiswaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\profilsiswa  $profilsiswa
+     * @param  \App\Models\Profilsiswa  $Profilsiswa
      * @return \Illuminate\Http\Response
      */
-    public function show(profilsiswa $profilsiswa)
+    public function show(Profilsiswa $Profilsiswa)
     {
         //
     }
@@ -58,33 +60,65 @@ class ProfilsiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\profilsiswa  $profilsiswa
+     * @param  \App\Models\Profilsiswa  $Profilsiswa
      * @return \Illuminate\Http\Response
      */
-    public function edit(profilsiswa $profilsiswa)
+    public function edit(Profilsiswa $Profilsiswa)
     {
-        return view('profil_siswa.edit');
+        $Siswa = Siswa::Where('id', Auth()->user()->siswa_id)->get();
+        return view('profil_siswa.edit', compact('Siswa'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateprofilsiswaRequest  $request
-     * @param  \App\Models\profilsiswa  $profilsiswa
+     * @param  \App\Http\Requests\UpdateProfilsiswaRequest  $request
+     * @param  \App\Models\Profilsiswa  $Profilsiswa
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateprofilsiswaRequest $request, profilsiswa $profilsiswa)
+    public function update(Request $request, Profilsiswa $Profilsiswa)
     {
-        //
+        $this->validate($request , [
+            'foto_siswa'=>'mimes:jpg,png',
+        ]);
+        $Siswa = Siswa::Where('id', Auth()->user()->id)->first();
+        $foto_old = $Siswa->foto_siswa;
+        // dd($foto_old);
+        if($request->foto == null){
+            $data = Siswa::find($Siswa->id);
+            $data->update([
+                'name'=>$request->nama,
+                'email'=>$request->email,
+                'no'=>$request->no,
+                'alamat'=>$request->alamat
+            ]);
+
+            return redirect()->route('profile_siswa');
+        }else{
+            $data = Siswa::find($Siswa->id);
+            Storage::delete([
+                'public/Siswa/' . $foto_old,
+            ]);
+            $image = $request->file('foto');
+            $image->storeAs('public/Siswa/', $image->hashName());
+            $data->update([
+                'foto_siswa'=>$image->hashName(),
+                'name'=>$request->nama,
+                'email' =>$request->email,
+                'no' => $request->no,
+                'alamat' => $request->alamat
+            ]);
+            return redirect()->route('profile_siswa');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\profilsiswa  $profilsiswa
+     * @param  \App\Models\Profilsiswa  $Profilsiswa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(profilsiswa $profilsiswa)
+    public function destroy(Profilsiswa $Profilsiswa)
     {
         //
     }

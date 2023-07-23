@@ -54,10 +54,11 @@ class JurnalsiswaController extends Controller
     {
         $hari = Carbon::now()->format('Y-m-d');
         $jam = Carbon::now()->format('H-i');
-        $data = Jurnalsiswa::Where('nama', Auth()->user()->name)->where('tanggal', $hari)->count();
-        if($data == '0'){
+        // dd($jam > '16-00');
+        $data = Jurnalsiswa::where('nama', Auth()->user()->name)->where('tanggal', $hari)->exists();
+        if($data){
             // dd('uhgfg');
-            if($jam < '16-00'){
+            if($jam < '23-59'){
                 try {
                     $this->validate($request, [
                         'kegiatan' => "required",
