@@ -20,9 +20,19 @@ class GuruAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $guru_admin =  Guru_admin::latest()->paginate(5);
+        $guru_admin = Guru_admin::all();
+    if ($request->has('cari')) {
+        $keyword = $request->cari;
+        $guru_admin = Guru_admin::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+        return view('guru_admin.index', compact('guru_admin'));
+
+        $guru_admin->appends(['cari' => $keyword]);
+        return view('guru_admin.index', compact('guru_admin'));
+
+    }
+        $guru_admin =  Guru_admin::latest()->paginate(3);
         return view('guru_admin.index' , compact('guru_admin'));
     }
 
