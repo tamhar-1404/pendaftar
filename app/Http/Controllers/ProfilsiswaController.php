@@ -81,12 +81,13 @@ class ProfilsiswaController extends Controller
         $this->validate($request , [
             'foto_siswa'=>'mimes:jpg,png',
         ]);
-        $Siswa = Siswa::Where('id', Auth()->user()->id)->first();
+        $Siswa = Siswa::where('id', Auth()->user()->id)->first();
+        $data = Siswa::find( Auth()->user()->id);
         $foto_old = $Siswa->foto_siswa;
         // dd($foto_old);
         if($request->foto == null){
-            $data = Siswa::find($Siswa->id);
-            $data->update([
+
+            $Siswa->update([
                 'name'=>$request->nama,
                 'email'=>$request->email,
                 'no'=>$request->no,

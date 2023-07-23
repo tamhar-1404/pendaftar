@@ -5,7 +5,17 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Guru - Dashboad</title>
-    @vite('resources/css/app.css')
+    <script src="https://cdn.tailwindcss.com72"></script>
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        },
+
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
