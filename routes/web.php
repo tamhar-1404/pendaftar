@@ -179,13 +179,14 @@ Route::middleware(['auth'])->group(function () {
     });
 
 
-Route::resource('/Lupapassword', App\Http\Controllers\LupaPasswordController::class);
+Route::resource('lupapassword', App\Http\Controllers\LupaPasswordController::class);
 
 Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
 Route::resource('/data', App\Http\Controllers\TransaksiController::class);
 Route::get('/nota', [TransaksiController::class , 'nota'])->name('nota');
 Route::get('/reset', [LupaPasswordController::class , 'reset'])->name('reset');
 Route::get('/kodek', [LupaPasswordController::class , 'kode'])->name('kodek');
+Route::get('/reset-password/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
 Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita.like');
 Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
 Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');

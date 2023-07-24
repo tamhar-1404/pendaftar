@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -21,7 +22,7 @@ class LupaPasswordController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'email' => 'required','email'
+            'email' => 'required|email'
         ]);
 
         $status = Password::sendResetLink(
@@ -34,8 +35,9 @@ class LupaPasswordController extends Controller
                     ->withErrors(['email'=>($status)]);
     }
 
-    public function reset(Request $request){
-        return view('Lupapassword.resetpassword',['request'=>$request]);
+    public function reset(string $token, Request $request){
+        $email = $request->email;
+        return view('Lupapassword.resetpassword', compact('token', 'email'));
     }
 
     public function update(Request $request){
@@ -46,13 +48,13 @@ class LupaPasswordController extends Controller
 
         ]);
         $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function($user) use ($request){
+            $request->only('email', 'password', 'token'),
+            function (User $user, string $password) {
                 $user->forceFill([
-                    'password' => Hash::make($request->password),
-                    'remember_token' =>Str::random(60),
+                    'password' => Hash::make($password)
+                ])->setRememberToken(Str::random(60));
 
-                ])->save();
+                $user->save();
 
                 event(new PasswordReset($user));
             }
