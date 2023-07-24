@@ -61,8 +61,8 @@ class LupaPasswordController extends Controller
         );
 
         return $status == Password::PASSWORD_RESET
-                ? redirect()->route('login.index')->with('success', ($status))
+                ? redirect()->route('login.index')->with('success', __($status))
                 : back()->withInput($request->only('email'))
-                        ->withErrors(['email' => ($status)]);
+                        ->withErrors(['email' => [__($status)]]);
     }
 }

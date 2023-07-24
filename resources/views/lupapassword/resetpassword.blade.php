@@ -79,7 +79,7 @@
                         </h2>
                     </div>
                 </div>
-                <form action="{{ route('password.update') }}" method="POST">
+                <form action="{{ route('lupapassword.update') }}" method="POST">
                     @csrf
                     <div class="mt-28">
                         @if (session('sukses'))
