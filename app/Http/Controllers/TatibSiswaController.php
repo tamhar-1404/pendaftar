@@ -16,6 +16,7 @@ class TatibSiswaController extends Controller
      */
     public function index()
     {
+    
         $tatib = TataTertib::latest()->paginate(5);
         return view('tatib_siswa.index' , compact('tatib'));
     }

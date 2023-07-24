@@ -56,7 +56,7 @@
         <div class="mb-5 flex flex-wrap gap-1 mt-5 items-center">
             <a href="/absensi_pdf">
                 <button
-                    class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400"
+                    class="bg-red-500 flex border hover:bg-red-500 p-2 text-white font-semibold rounded-lg hover:bg-red-500 "
                     @click="exportTable('pdf')">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ltr:mr-2 rtl:ml-2">
@@ -71,7 +71,7 @@
                 </button>
             </a>
             <button id="printButton" onclick="printPage()"
-                class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400"
+                class="bg-gray-500 flex border hover:bg-gray-500 p-2 text-white font-semibold rounded-lg hover:bg-red-500"
                 @click="printTable">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                     class="h-5 w-5 ltr:mr-2 rtl:ml-2">
@@ -95,21 +95,21 @@
                 </svg>
                 PRINT
             </button>
-            @if (auth()->user()->role != 'Alumni' AND auth()->user()->Siswa->role != 'Alumni')
-            <button data-modal-target="staticModal" data-modal-toggle="staticModal"
-                class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400">Tambah
-                Izin</button>
-            <form action="{{ route('absensi_siswa.store') }}" method="post" id="absenform">
-                @csrf
-                <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
-                <input type="hidden" name="sekolah" value="{{ Auth::user()->sekolah }}">
-                <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}" />
-                <input type="hidden" id="waktu" name="jam" value="{{ date('H:i') }}" />
-                <input type="hidden" name="keterangan" value="Hadir">
-                <button type="submit"
-                    class="border border-green-500 px-3 py-2 rounded-lg text-green-500 hover:bg-green-500 hover:text-white font-bold"
-                    id="btnabsen">Absen</button>
-            </form>
+            @if (auth()->user()->role != 'Alumni' and auth()->user()->Siswa->role != 'Alumni')
+                <button data-modal-target="staticModal" data-modal-toggle="staticModal"
+                    class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-blue-400 hover:text-blue-400">Tambah
+                    Izin</button>
+                <form action="{{ route('absensi_siswa.store') }}" method="post" id="absenform">
+                    @csrf
+                    <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
+                    <input type="hidden" name="sekolah" value="{{ Auth::user()->sekolah }}">
+                    <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}" />
+                    <input type="hidden" id="waktu" name="jam" value="{{ date('H:i') }}" />
+                    <input type="hidden" name="keterangan" value="Hadir">
+                    <button type="submit"
+                        class="border border-green-500 px-3 py-2 rounded-lg text-green-500 hover:bg-green-500 hover:bg-green-400  font-bold"
+                        id="btnabsen">Absen</button>
+                </form>
             @endif
         </div>
         <div>
@@ -123,8 +123,14 @@
         <div class="flex justify-end items-center ">
             {{-- serch --}}
             <div class="mr-4 ">
-                <input class=" p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent"
-                    type="text" placeholder="cari">
+                <form action="">
+                    <label class="relative hidden sm:flex">
+                        <input
+                            class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                            placeholder="Search users..." type="text" name="cari"
+                            value="{{ request('cari') }}" />
+                    </label>
+                </form>
             </div>
             {{-- filter --}}
             <div class="border-2 rounded-full border-gray-400 flex items-center mr-2 ">
@@ -233,46 +239,19 @@
 
                             </tr>
                         @empty
-                            <div class="bg-red-100 border mb-2 mt-2 border-red-400 text-red-700 px-4 py-3 rounded relative"
-                                role="alert">
-                                <strong class="font-bold">Data </strong>
-                                <span class="block sm:inline">Tidak tersedia.</span>
-                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
-                            </div>
+                            <tr>
+                                <td colspan="6" class="p-8 text-center">
+                                    <div class="flex justify-center items-center">
+                                        <img src="/admin/noData.png" alt="" width="280px">
+                                    </div>
+                                </td>
+                            </tr>
                         @endforelse
                     </tbody>
                 </table>
 
-                <div class="kamu-tak-diajak mt-5 flex justify-between">
-                    <p>lihat 1 sampai 10 dari 15 siswa</p>
-                    <nav aria-label="Page navigation example">
-                        <ul class="list-style-none flex">
-                            <li>
-                                <a
-                                    class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
-                            </li>
-                            <li>
-                                <a class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
-                                    href="#!">1</a>
+                {{ $terima->appends(['cari' => request('cari')])->links() }}
 
-                            </li>
-                            <li aria-current="page">
-                                <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                    href="#!">2
-
-                                </a>
-                            </li>
-                            <li>
-                                <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                    href="#!">3</a>
-                            </li>
-                            <li>
-                                <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                    href="#!">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
             </div>
 
         </div>

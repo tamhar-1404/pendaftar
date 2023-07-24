@@ -13,11 +13,21 @@ class HistorySiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $siswas = HistoryTransaksi::all();
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $siswas = HistoryTransaksi::where('harga', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->paginate(5);
+            return view('History.index', compact('siswas'));
+    
+            $siswas->appends(['cari' => $keyword]);
+            return view('History.index', compact('siswas'));
+    
+        }
         $siswaLogin = Auth::user();
         $siswas = HistoryTransaksi::where('nama', $siswaLogin->name)
-                       ->get();
+                       ->latest()->paginate(5);
       return view('History.index' , compact('siswas'));
     }
 

@@ -11,19 +11,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>siswa - Dashboad</title>
+    <title>siswa - Jurnal Siswa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-            theme: {
-                extend: {
-                    blur: {
-                        xs: '3px',
-                      }
-                },
-              },
-
-        </script>
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        },
+    </script>
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/x-icon" href="favicon.png" />
@@ -93,7 +92,7 @@
             :class="{ '!block': showCustomizer }" @click="showCustomizer = false"></div>
 
 
-        </div>
+    </div>
     </nav>
     </div>
     <!-- end theme customizer section -->
@@ -116,16 +115,15 @@
                     <div class="mb-5 font-semibold kamu-tak-diajak">
                         <span>Jurnal /<span class="text-[#00B7FF]"> {{ Auth::user()->name }}</span></span>
                     </div>
-                   @error('tanggal')
+                    @error('tanggal')
                         <div class="text-danger">Anda telah mengisi jurnal pada hari ini</div>
-                   @enderror
+                    @enderror
 
                     <div class="panel">
-                     {{-- <h2>{{ $e }}</h2> --}}
+                        {{-- <h2>{{ $e }}</h2> --}}
 
                         <div class="kamu-tak-diajak flex justify-between items-center">
-                            <button data-modal-target="authentication-modal"
-                                data-modal-toggle="authentication-modal"
+                            <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
                                 class="flex gap-2 h-10 items-center  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                                 @click="exportTable('json')">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -205,9 +203,23 @@
                                 <div class="kamu-tak-diajak flex justify-start items-center">
                                     {{-- serch --}}
                                     <div class="mr-4 ">
-                                        <input
-                                            class=" w-24 p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent"
-                                            type="text" placeholder="cari">
+                                        <form action="">
+                                            <label class="relative hidden sm:flex">
+                                                <input
+                                                    class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                    placeholder="Search users..." type="text" name="cari"
+                                                    value="{{ request('cari') }}" />
+                                                <span
+                                                    class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="h-4 w-4 transition-colors duration-200"
+                                                        fill="currentColor" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M3.316 13.781l.73-.171-.73.171zm0-5.457l.73.171-.73-.171zm15.473 0l.73-.171-.73.171zm0 5.457l.73.171-.73-.171zm-5.008 5.008l-.171-.73.171.73zm-5.457 0l-.171.73.171-.73zm0-15.473l-.171-.73.171.73zm5.457 0l.171-.73-.171.73zM20.47 21.53a.75.75 0 101.06-1.06l-1.06 1.06zM4.046 13.61a11.198 11.198 0 010-5.115l-1.46-.342a12.698 12.698 0 000 5.8l1.46-.343zm14.013-5.115a11.196 11.196 0 010 5.115l1.46.342a12.698 12.698 0 000-5.8l-1.46.343zm-4.45 9.564a11.196 11.196 0 01-5.114 0l-.342 1.46c1.907.448 3.892.448 5.8 0l-.343-1.46zM8.496 4.046a11.198 11.198 0 015.115 0l.342-1.46a12.698 12.698 0 00-5.8 0l.343 1.46zm0 14.013a5.97 5.97 0 01-4.45-4.45l-1.46.343a7.47 7.47 0 005.568 5.568l.342-1.46zm5.457 1.46a7.47 7.47 0 005.568-5.567l-1.46-.342a5.97 5.97 0 01-4.45 4.45l.342 1.46zM13.61 4.046a5.97 5.97 0 014.45 4.45l1.46-.343a7.47 7.47 0 00-5.568-5.567l-.342 1.46zm-5.457-1.46a7.47 7.47 0 00-5.567 5.567l1.46.342a5.97 5.97 0 014.45-4.45l-.343-1.46zm8.652 15.28l3.665 3.664 1.06-1.06-3.665-3.665-1.06 1.06z" />
+                                                    </svg>
+                                                </span>
+                                            </label>
+                                        </form>
                                     </div>
                                     {{-- filter --}}
                                     <div class="border-2 rounded-full border-gray-400 flex items-center p-1 mr-2 ">
@@ -241,7 +253,7 @@
 
                                 <a href="/download-pdf-JurnalSiswa">
                                     <button
-                                        class="flex gap-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                        class="flex gap-2 text-white bg-red-600 hover:bg-red-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ltr:mr-2 rtl:ml-2">
                                             <path
@@ -257,15 +269,15 @@
 
 
                                 <button id="printButton" onclick="printPage()"
-                                    class="flex gap-2  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                                    class="flex gap-2  text-white bg-gray-600 hover:bg-gray-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                                     @click="exportTable('json')" @click="printTable">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ltr:mr-2 rtl:ml-2">
                                         <path
                                             d="M6 17.9827C4.44655 17.9359 3.51998 17.7626 2.87868 17.1213C2 16.2426 2 14.8284 2 12C2 9.17157 2 7.75736 2.87868 6.87868C3.75736 6 5.17157 6 8 6H16C18.8284 6 20.2426 6 21.1213 6.87868C22 7.75736 22 9.17157 22 12C22 14.8284 22 16.2426 21.1213 17.1213C20.48 17.7626 19.5535 17.9359 18 17.9827"
                                             stroke="currentColor" stroke-width="1.5" />
-                                        <path opacity="0.5" d="M9 10H6" stroke="currentColor"
-                                            stroke-width="1.5" stroke-linecap="round" />
+                                        <path opacity="0.5" d="M9 10H6" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" />
                                         <path d="M19 14L5 14" stroke="currentColor" stroke-width="1.5"
                                             stroke-linecap="round" />
                                         <path
@@ -276,10 +288,10 @@
                                             stroke="currentColor" stroke-width="1.5" />
                                         <circle opacity="0.5" cx="17" cy="10" r="1"
                                             fill="currentColor" />
-                                        <path opacity="0.5" d="M15 16.5H9" stroke="currentColor"
-                                            stroke-width="1.5" stroke-linecap="round" />
-                                        <path opacity="0.5" d="M13 19H9" stroke="currentColor"
-                                            stroke-width="1.5" stroke-linecap="round" />
+                                        <path opacity="0.5" d="M15 16.5H9" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" />
+                                        <path opacity="0.5" d="M13 19H9" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" />
                                     </svg>
                                     PRINT
                                 </button>
@@ -297,40 +309,47 @@
                                             <thead class="border-b font-medium dark:border-neutral-500 ">
                                                 <tr class="">
                                                     <th scope="col" class="px-6 py-2">#</th>
-                                                    <th scope="col" class="px-6 py-2">Nama</th>
-                                                    <th scope="col" class="px-6 py-2">Tanggal</th>
-                                                    <th scope="col" class="px-6 py-2">Sekolah</th>
-                                                    <th scope="col" class="px-6 py-2">kegiatan</th>
-                                                    <th scope="col" class="px-6 py-2 ">bukti</th>
-                                                    <th scope="col" class="px-6 py-2">Aksi</th>
+                                                    <th scope="col" class="px-6 py-2">NAMA</th>
+                                                    <th scope="col" class="px-6 py-2">TANGGAL</th>
+                                                    <th scope="col" class="px-6 py-2">SEKOLAH</th>
+                                                    <th scope="col" class="px-6 py-2">KEGIATAN</th>
+                                                    <th scope="col" class="px-6 py-2 ">BUKTI</th>
+                                                    <th scope="col" class="px-6 py-2">AKSI</th>
 
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ( $item as $items )
-                                        <tr
-                                        class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                        <td class="whitespace-nowrap px-2 py-2 font-medium">{{ $loop->iteration }}</td>
-                                        <td class="whitespace-nowrap px-2 py-2">{{$items->nama}}</td>
-                                        <td class="whitespace-nowrap px-2 py-2">{{$items->tanggal}}</td>
-                                        <td class="whitespace-nowrap px-2 py-2">{{$items->sekolah}}</td>
-                                        <td class="whitespace-nowrap px-2 py-2 overflow-hidden">
-                                            <div class="truncate">
-                                              {{ substr($items->kegiatan, 0, 10) }}..
-                                            </div>
-                                          </td>
-                                        <td class="whitespace-nowrap px-2 pl-17 py-2"><img
-                                            src="{{ asset('storage/image/' . $items->image) }}"
-                                            width="100px" alt="">
-                                        </td>
-                                        <td class="whitespace-nowrap px-4 py-4">
-                                            <div class="flex gap-2">
-                                               <a href="#">
-                                                        <div class="w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent" data-te-toggle="modal"
-                                                        data-modal-target="staticModal{{$items -> id}}" data-modal-toggle="staticModal{{$items -> id}}" ">
-                                                            <span class=" p-1  font-semibold dark:hover:"text-black"><i class="fa fa-eye"></i> </span>
-                                                        </div>
-                                                    </a>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @forelse ($item as $items)
+                                                    <tr
+                                                        class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                                        <td class="whitespace-nowrap px-2 py-2 font-medium">
+                                                            {{ $loop->iteration }}</td>
+                                                        <td class="whitespace-nowrap px-2 py-2">{{ $items->nama }}
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-2 py-2">{{ $items->tanggal }}
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-2 py-2">{{ $items->sekolah }}
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-2 py-2 overflow-hidden">
+                                                            <div class="truncate">
+                                                                {{ substr($items->kegiatan, 0, 10) }}..
+                                                            </div>
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-2 pl-17 py-2"><img
+                                                                src="{{ asset('storage/image/' . $items->image) }}"
+                                                                width="100px" alt="">
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-4 py-4">
+                                                            <div class="flex gap-2">
+                                                                <a href="#">
+                                                                    <div class="w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
+                                                                        data-te-toggle="modal"
+                                                                        data-modal-target="staticModal{{ $items->id }}"
+                                                                        data-modal-toggle="staticModal{{ $items->id }}" ">
+                                                            <span class=" p-1  font-semibold dark:hover:"text-black">
+                                                                        <i class="fa fa-eye"></i> </span>
+                                                                    </div>
+                                                                </a>
                                                                 <a href="#">
                                                                     <div class="w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
                                                                         data-te-toggle="modal"
@@ -344,47 +363,23 @@
                                                         </td>
                                                     </tr>
                                                 @empty
+                                                    <td colspan="6" class="p-8 text-center">
+                                                        <div class="flex justify-center items-center">
+                                                            <img src="/admin/noData.png" alt=""
+                                                                width="280px">
+                                                        </div>
+                                                    </td>
                                                 @endforelse
                                             </tbody>
                                         </table>
+                                        {{ $item->appends(['cari' => request('cari')])->links() }}
                                     </div>
                                 </div>
                             </div>
                         </div>
                         {{-- end tabel --}}
                         {{-- paginate --}}
-                        <div class="kamu-tak-diajak flex justify-between">
-                            <p>
-                                menampilkan 1 sampai 10 dari 15 data
-                            </p>
-                            <nav aria-label="Page navigation example">
-                                <ul class="list-style-none flex">
-                                    <li>
-                                        <a
-                                            class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
-                                    </li>
-                                    <li>
-                                        <a class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
-                                            href="#!">1</a>
 
-                                    </li>
-                                    <li aria-current="page">
-                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                            href="#!">2
-
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                            href="#!">3</a>
-                                    </li>
-                                    <li>
-                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                            href="#!">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
                     </div>
                 </div>
                 @forelse ($item as $modal)
@@ -438,8 +433,8 @@
                                             <label for="bukti"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti</label>
                                             <img id="preview-image"
-                                                src="{{ asset('storage/image/' . $modal->image) }}"
-                                                class="w-64 h-64" alt="" srcset="">
+                                                src="{{ asset('storage/image/' . $modal->image) }}" class="w-64 h-64"
+                                                alt="" srcset="">
                                             <input type="file" name="image" id="image-input" placeholder=""
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                 onchange="previewImage(event)">
