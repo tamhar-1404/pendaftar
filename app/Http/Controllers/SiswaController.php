@@ -164,14 +164,16 @@ class SiswaController extends Controller
         // dd($request->all());
         $alasan = $request->alasan;
         $siswa = Siswa::find($id);
-        $emailguru = User::where('role', 'Guru')->where('sekolah', $siswa->sekolah)->first()->email;
         $email = $siswa->email;
         $nama = $siswa->name;
         $data = [
             'alasan' => $alasan,
             'nama' => $nama,
         ];
-        Mail::to($emailguru)->send(new BannedGuru($data));
+        if (User::where('role', 'Guru')->where('sekolah', $siswa->sekolah)->exists()) {
+            $emailguru = User::where('role', 'Guru')->where('sekolah', $siswa->sekolah)->first()->email;
+            Mail::to($emailguru)->send(new BannedGuru($data));
+        }
         Mail::to($email)->send(new Banned($data));
         $siswa->update([
             'role' => 'Alumni',
