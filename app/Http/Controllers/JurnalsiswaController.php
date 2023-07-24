@@ -65,7 +65,7 @@ class JurnalsiswaController extends Controller
         $jam = Carbon::now()->format('H-i');
         // dd($jam > '16-00');
         $data = Jurnalsiswa::where('nama', Auth()->user()->name)->where('tanggal', $hari)->exists();
-        if($data){
+        if(!$data){
             // dd('uhgfg');
             if($jam < '23-59'){
                 try {

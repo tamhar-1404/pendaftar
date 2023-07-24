@@ -1195,12 +1195,12 @@
                         </div>
                     </div>
                     <div
-                        class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
+                        class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-3">
+                        @forelse ($siswas as $siswa)
                         <div class="card pb-2 shadow-md rounded-lg">
                             <div class="p-2 text-right">
 
                             </div>
-                            @forelse ($siswas as $siswa)
 
                             <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
                                 <div class="avatar h-20 w-20">

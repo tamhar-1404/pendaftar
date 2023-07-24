@@ -11,8 +11,13 @@ use Illuminate\Support\Str;
 class LupaPasswordController extends Controller
 {
     public function index(){
-        return view('lupapassword.index');
+        return view('Lupapassword.index');
     }
+
+    public function kode(){
+        return view('Lupapassword.kode');
+    }
+
 
     public function store(Request $request){
         $request->validate([
@@ -30,7 +35,7 @@ class LupaPasswordController extends Controller
     }
 
     public function reset(Request $request){
-        return view('lupapassword.resetpassword',['request'=>$request]);
+        return view('Lupapassword.resetpassword',['request'=>$request]);
     }
 
     public function update(Request $request){
