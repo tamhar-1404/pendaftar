@@ -25,11 +25,20 @@ class JurnalsiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Jurnalsiswa $Jurnalsiswa)
+    public function index(Request $request)
     {
         $Jurnalsiswa = Jurnalsiswa::all();
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $item = Jurnalsiswa::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(5);
+            return view('jurnal_siswa.index', compact('item'));
+    
+            $item->appends(['cari' => $keyword]);
+            return view('jurnal_siswa.index', compact('item'));
+    
+        }
         $nama = Auth::user()->name;
-        $item = Jurnalsiswa::where('nama',$nama)->get();
+        $item = Jurnalsiswa::where('nama',$nama)->paginate(5);
         return view('jurnal_siswa.index',compact('item' ,'Jurnalsiswa'));
     }
 
