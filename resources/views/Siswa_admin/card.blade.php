@@ -2253,7 +2253,7 @@
                                 placeholder="Search users..." type="text" name="cari"
                                 value="{{ request('cari') }}" />
                             <span
-                                class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                                class="pointer-events-none abso lute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="h-4 w-4 transition-colors duration-200" fill="currentColor"
                                     viewBox="0 0 24 24">
@@ -2368,7 +2368,7 @@
             </div>
             {{ $siswas->appends(['cari' => request('cari')])->links() }}
             <div class="flex justify-center mt-10">
-                
+
             </div>
         </main>
     </div>

@@ -1181,8 +1181,21 @@
 
                 <div x-data="basic" class="mt-0">
                     {{-- judul --}}
-                    <div class="mb-5 font-semibold kamu-tak-diajak">
-                        <span>history transaksi /<span class="text-[#00B7FF]"> {{ Auth::user()->name }}</span></span>
+                    <div class="flex items-center justify-between">
+                        <div class="mb-5 font-semibold kamu-tak-diajak">
+                            <span>history transaksi /<span class="text-[#00B7FF]">
+                                    {{ Auth::user()->name }}</span></span>
+                        </div>
+                        <label class="relative hidden sm:flex">
+                            <form action="">
+                                <label class="relative hidden sm:flex">
+                                    <input
+                                        class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                        placeholder="Search users..." type="text" name="cari"
+                                        value="{{ request('cari') }}" />
+                                </label>
+                            </form>
+                        </label>
                     </div>
                     @error('tanggal')
                         <div class="text-danger">Anda telah mengisi jurnal pada hari ini</div>
@@ -1233,48 +1246,26 @@
                                                         </td>
                                                     </tr>
                                                 @empty
+                                                    <tr>
+                                                        <td colspan="6" class="p-8 text-center">
+                                                            <div class="flex justify-center items-center">
+                                                                <img src="/admin/noData.png" alt=""
+                                                                    width="280px">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                 @endforelse
 
                                             </tbody>
                             </table>
+                            {{ $siswas->appends(['cari' => request('cari')])->links() }}
                         </div>
                     </div>
                 </div>
             </div>
             {{-- end tabel --}}
             {{-- paginate --}}
-            <div class="kamu-tak-diajak flex justify-between">
-                <p>
-                    menampilkan 1 sampai 10 dari 15 data
-                </p>
-                <nav aria-label="Page navigation example">
-                    <ul class="list-style-none flex">
-                        <li>
-                            <a
-                                class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
-                        </li>
-                        <li>
-                            <a class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
-                                href="#!">1</a>
 
-                        </li>
-                        <li aria-current="page">
-                            <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                href="#!">2
-
-                            </a>
-                        </li>
-                        <li>
-                            <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                href="#!">3</a>
-                        </li>
-                        <li>
-                            <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                href="#!">Next</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
         </div>
     </div>
 

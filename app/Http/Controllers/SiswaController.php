@@ -15,6 +15,7 @@ use App\Http\Requests\StoreSiswaRequest;
 use Carbon\Carbon;
 use App\Http\Requests\UpdateSiswaRequest;
 use App\Mail\EmailLulus as MailEmailLulus;
+use Illuminate\Support\Facades\Auth;
 
 class SiswaController extends Controller
 {
@@ -45,7 +46,7 @@ class SiswaController extends Controller
         if ($request->has('cari')) {
             $keyword = $request->cari;
             $siswas = Siswa::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(3);
-            return view('siswa_admin.index', compact('siswas'));
+            return view('Siswa_admin.index', compact('siswas'));
 
             $siswas->appends(['cari' => $keyword]);
         return view('siswa_admin.index', compact('siswas'));
@@ -60,7 +61,7 @@ class SiswaController extends Controller
 
     public function siswamagang_siswa()
     {
-        $siswas = Siswa::where('id' , '!=', Auth()->user()->id)->get();
+        $siswas = Siswa::whereNot('email', Auth::user()->email)->get();
         return view('siswamagang_siswa.index ', compact('siswas'));
     }
     public function view()

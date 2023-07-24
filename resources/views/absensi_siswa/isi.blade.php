@@ -137,8 +137,14 @@
         <div class="flex justify-end items-center ">
             {{-- serch --}}
             <div class="mr-4 ">
-                <input class=" p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent"
-                    type="text" placeholder="cari">
+                <form action="">
+                    <label class="relative hidden sm:flex">
+                        <input
+                            class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                            placeholder="Search users..." type="text" name="cari"
+                            value="{{ request('cari') }}" />
+                    </label>
+                </form>
             </div>
             {{-- filter --}}
             <div class="border-2 rounded-full border-gray-400 flex items-center mr-2 ">
@@ -247,46 +253,19 @@
 
                             </tr>
                         @empty
-                            <div class="bg-red-100 border mb-2 mt-2 border-red-400 text-red-700 px-4 py-3 rounded relative"
-                                role="alert">
-                                <strong class="font-bold">Data </strong>
-                                <span class="block sm:inline">Tidak tersedia.</span>
-                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
-                            </div>
+                            <tr>
+                                <td colspan="6" class="p-8 text-center">
+                                    <div class="flex justify-center items-center">
+                                        <img src="/admin/noData.png" alt="" width="280px">
+                                    </div>
+                                </td>
+                            </tr>
                         @endforelse
                     </tbody>
                 </table>
 
-                <div class="kamu-tak-diajak mt-5 flex justify-between">
-                    <p>lihat 1 sampai 10 dari 15 siswa</p>
-                    <nav aria-label="Page navigation example">
-                        <ul class="list-style-none flex">
-                            <li>
-                                <a
-                                    class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
-                            </li>
-                            <li>
-                                <a class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
-                                    href="#!">1</a>
+                {{ $terima->appends(['cari' => request('cari')])->links() }}
 
-                            </li>
-                            <li aria-current="page">
-                                <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                    href="#!">2
-
-                                </a>
-                            </li>
-                            <li>
-                                <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                    href="#!">3</a>
-                            </li>
-                            <li>
-                                <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                    href="#!">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
             </div>
 
         </div>
@@ -517,11 +496,11 @@
                     </div>
 
                     <!-- Modal footer -->
-                    <div
+                    {{--  <div
                         class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                        <button data-modal-hide="staticModal"
-                            class="text-gray-700  bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
-                    </div>
+                        <a href="{{ route('absensi_siswa.index') }}" data-modal-hide="staticModal"
+                            class="text-gray-700  bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</a>
+                    </div>  --}}
                 </div>
             </div>
         </div>
@@ -642,8 +621,7 @@
                         <!-- Modal footer -->
                         <div
                             class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                            <button data-modal-hide="staticModal3{{ $absen->id }}" type="button"
-                                class="text-gray-700  bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:text-white">Kembali</button>
+
                             <button data-modal-hide="" id="btnsimpan{{ $absen->id }}" type="submit"
                                 class="hidden text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Simpan</button>
                         </div>
