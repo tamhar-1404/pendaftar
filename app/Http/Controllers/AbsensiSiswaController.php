@@ -40,7 +40,7 @@ class AbsensiSiswaController extends Controller
             $izinsakit = $izin + $sakit;
             $all = ApprovalIzin::where('nama', Auth::user()->name)->count();
             $cek_sudah_absen = ApprovalIzin::where([['tanggal', Carbon::now()->format('Y-m-d')], ['nama', auth()->user()->name]])->whereNotIn('keterangan', ['sakit','izin'])->exists();
-            $terima = ApprovalIzin::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(5);
+            $terima = ApprovalIzin::where('tanggal', 'LIKE', '%' . $keyword . '%')->orWhere('status', 'LIKE', '%' . $keyword . '%')->paginate(5);
             return view('absensi_siswa.index', compact('terima','hadir','telat','all','alfa','izinsakit', 'cek_sudah_absen'));
             $terima->appends(['cari' => $keyword]);
             return view('absensi_siswa.index', compact('terima','hadir','telat','all','alfa','izinsakit', 'cek_sudah_absen'));
