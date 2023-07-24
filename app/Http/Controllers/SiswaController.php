@@ -59,8 +59,17 @@ class SiswaController extends Controller
     }
 
 
-    public function siswamagang_siswa()
+    public function siswamagang_siswa(Request $request)
     {
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $siswas = Siswa::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            return view('siswamagang_siswa.index', compact('siswas'));
+
+            $siswas->appends(['cari' => $keyword]);
+        return view('siswamagang_siswa.index', compact('siswas'));
+
+        }
         $siswas = Siswa::whereNot('email', Auth::user()->email)->get();
         return view('siswamagang_siswa.index ', compact('siswas'));
     }

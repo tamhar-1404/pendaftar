@@ -105,7 +105,7 @@ class SiswamagangController extends Controller
     {
         $data = User::find(Auth()->user()->id);
         $Siswa = Siswa::where('id', $data->id)->get();
-        dd('jsdjd');
+       
         return view('profil_siswa.detail');
     }
 

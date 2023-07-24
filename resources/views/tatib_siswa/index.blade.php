@@ -1184,7 +1184,7 @@
 
 
         @include('siswamagang.nav_siswa')
-        <div class="animate__animated " :class="[$store.app.animation]">
+        <div class="animate__animated mt-5" :class="[$store.app.animation]">
             <!-- start main content section -->
             <div>
                 <ul class="flex space-x-2 rtl:space-x-reverse">

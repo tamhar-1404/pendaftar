@@ -113,7 +113,7 @@
 
         <nav class="fixed top-0 bottom-0 z-[51] w-full max-w-[400px] bg-white p-4 shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] transition-[right] duration-300 ltr:-right-[400px] rtl:-left-[400px] dark:bg-[#0e1726]"
             :class="{ 'ltr:!right-0 rtl:!left-0': showCustomizer }">
-           
+
             <div class="perfect-scrollbar h-full overflow-y-auto overflow-x-hidden">
                 <div class="relative pb-5 text-center">
                     <a href="javascript:;"
@@ -769,11 +769,7 @@
 
 
 
-        <!-- start footer section -->
-        <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
-            © <span id="footer-year">2022</span>. Vristo All rights reserved.
-        </p>
-        <!-- end footer section -->
+        
     </div>
     </div>
     </div>
@@ -1118,6 +1114,6 @@
 
 </body>
 
-// <!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:57 GMT -->
+
 
 </html>
