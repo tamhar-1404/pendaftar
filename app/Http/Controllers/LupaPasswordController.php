@@ -37,7 +37,7 @@ class LupaPasswordController extends Controller
 
     public function reset(string $token, Request $request){
         $email = $request->email;
-        return view('Lupapassword.resetpassword', compact('token', 'email'));
+        return view('lupapassword.resetpassword', compact('token', 'email'));
     }
 
     public function update(Request $request){
