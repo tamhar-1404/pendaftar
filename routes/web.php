@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AbsensiadminController;
 use App\Http\Controllers\GuruAdminController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\TopUpController;
@@ -46,7 +47,7 @@ use App\Http\Controllers\ProfilsiswaController;
 Route::post('/validate_password',['passwordController@validatePassword']);
 Route::post('/get_user', [App\Http\Controllers\GetuserController::class, 'get_user'])->name('get_user');
 Route::post('/find_rfid', [App\Http\Controllers\GetuserController::class, 'find_rfid'])->name('find_rfid');
-Route::post('/check_password', [App\Http\Controller\GetuserController::class, 'check_password'])->name('check_password');
+Route::post('/check_password', [App\Http\Controllers\GetuserController::class, 'check_password'])->name('check_password');
 Route::post('/cari_barang', [App\Http\Controllers\TransaksiController::class, 'cari'])->name('cari_barang');
 Route::get('/pw/{user_id}/{user_password}', [SiswamagangController::class, 'cek_password']);
 Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
