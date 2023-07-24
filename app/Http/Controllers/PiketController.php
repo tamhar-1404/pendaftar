@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\piket;
+use App\Models\Piket;
 use App\Models\Siswa;
 use App\Models\Anggota_piket;
 use App\Models\laporan_piket;
@@ -65,7 +65,7 @@ class PiketController extends Controller
      {
          // Cek apakah sudah ada log pengiriman email hari ini
          // Misalnya dengan menyimpan tanggal terakhir pengiriman email di database
-         $lastSentDate = piket::whereDate('created_at', Carbon::today())->first();
+         $lastSentDate = Piket::whereDate('created_at', Carbon::today())->first();
 
          return $lastSentDate != null;
      }

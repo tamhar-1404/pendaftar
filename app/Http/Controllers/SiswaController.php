@@ -46,9 +46,13 @@ class SiswaController extends Controller
             $keyword = $request->cari;
             $siswas = Siswa::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(3);
             return view('siswa_admin.index', compact('siswas'));
+
+            $siswas->appends(['cari' => $keyword]);
+        return view('siswa_admin.index', compact('siswas'));
+
         }
 
-        $aprovals = Siswa::latest()->paginate(3);
+        $siswas = Siswa::latest()->paginate(3);
 
         return view('Siswa_admin.index', compact('siswas'));
     }
@@ -130,11 +134,23 @@ class SiswaController extends Controller
         ]);
         return redirect()->back();
     }
-    public function rfid()
+    public function rfid(Request $request)
     {
+        
+    $users = User::all();
+    if ($request->has('cari')) {
+        $keyword = $request->cari;
+        $users = User::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+        return view('rfid.index', compact('users'));
+
+        $users->appends(['cari' => $keyword]);
+        return view('rfid.index', compact('users'));
+
+    }
         $users = User::where('role', 'Siswa')
                     ->whereNull('RFID')
                     ->get();
+        $users = User::latest()->paginate(3);
         return view('rfid.index', compact('users'));
     }
 
@@ -164,14 +180,16 @@ class SiswaController extends Controller
         // dd($request->all());
         $alasan = $request->alasan;
         $siswa = Siswa::find($id);
-        $emailguru = User::where('role', 'Guru')->where('sekolah', $siswa->sekolah)->first()->email;
         $email = $siswa->email;
         $nama = $siswa->name;
         $data = [
             'alasan' => $alasan,
             'nama' => $nama,
         ];
-        Mail::to($emailguru)->send(new BannedGuru($data));
+        if (User::where('role', 'Guru')->where('sekolah', $siswa->sekolah)->exists()) {
+            $emailguru = User::where('role', 'Guru')->where('sekolah', $siswa->sekolah)->first()->email;
+            Mail::to($emailguru)->send(new BannedGuru($data));
+        }
         Mail::to($email)->send(new Banned($data));
         $siswa->update([
             'role' => 'Alumni',

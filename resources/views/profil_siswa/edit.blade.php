@@ -1269,16 +1269,17 @@
                             </template>
                             <template x-if="tab === 'home'">
                                 <div>
-                                    @forelse ( $Siswa as $data )
 
-                                    <form action="update_siswa"
+
+                                    <form action="{{ route('Edit_profile_siswa.perbarui') }}"
                                         class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
                                         @method("PUT")
                                         @csrf
+                                        <input type="hidden" name="siswa_id" value="{{ $siswa->id }}">
                                         <h6 class="mb-5 text-lg font-bold">Informasi Pribadi</h6>
                                         <div class="flex flex-col sm:flex-row">
                                             <div class="mb-5 w-full sm:w-2/12 ltr:sm:mr-4 rtl:sm:ml-4">
-                                                <img src="{{ asset('storage/Siswa/'. $data->foto_siswa) }}" alt="image"
+                                                <img src="{{ asset('storage/Siswa/'. $siswa->foto_siswa) }}" alt="image"
                                                     class="mx-auto h-20 w-20 rounded-full object-cover md:h-32 md:w-32" />
                                             </div>
                                             <div class="grid flex-auto grid-cols-3 gap-5 sm:grid-cols-2">
@@ -1289,21 +1290,21 @@
                                                 <div>
                                                     <label for="name">Nama Lengkap</label>
                                                     <input id="name" type="text" name="nama"
-                                                        placeholder="Nama langkap" value="{{$data->name}}" class="form-input" />
+                                                        placeholder="Nama langkap" value="{{$siswa->name}}" class="form-input" />
                                                 </div>
                                                 <div>
                                                     <label for="email">Email</label>
                                                     <input id="email" type="email" name="email"
-                                                        placeholder="Email" value="{{$data->email}}" class="form-input" />
+                                                        placeholder="Email" value="{{$siswa->email}}" class="form-input" />
                                                 </div>
                                                 <div>
                                                     <label for="telepon">No.Telepon</label>
                                                     <input id="telepon" type="text" name="no"
-                                                        placeholder="nomor telpon" value="{{$data->no}}" class="form-input" />
+                                                        placeholder="nomor telpon" value="{{$siswa->no}}" class="form-input" />
                                                 </div>
                                             <div>
                                                 <label for="alamat">Alamat</label>
-                                                <textarea name="alamat" id="alamat" placeholder="Alamat" class="form-input">{{$data->alamat}}</textarea>
+                                                <textarea name="alamat" id="alamat" placeholder="Alamat" class="form-input">{{$siswa->alamat}}</textarea>
                                             </div>
                                             <div class="mt-3 sm:col-span-2 flex gap-4 justify-end">
                                                 <button type="button" class="btn btn-outline-danger">Batal</button>
@@ -1312,9 +1313,6 @@
                                         </div>
                                         </div>
                                     </form>
-                                    @empty
-
-                                    @endforelse
                                 </div>
                             </template>
                         </div>
