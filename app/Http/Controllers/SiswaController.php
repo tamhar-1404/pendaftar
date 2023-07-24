@@ -138,20 +138,19 @@ class SiswaController extends Controller
     public function rfid(Request $request)
     {
 
-    $users = User::all();
+    $users = User::Where('role', 'Siswa')->whereNull('RFID')->latest()->paginate(3);
     if ($request->has('cari')) {
+        if($request->cari == null){
+            return view('rfid.index', compact('users'));
+        }
         $keyword = $request->cari;
-        $users = User::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+        $users = User::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->whereNull('RFID')->paginate(3);
         return view('rfid.index', compact('users'));
-
-        $users->appends(['cari' => $keyword]);
-        return view('rfid.index', compact('users'));
+        // $users->appends(['cari' => $keyword]);
+        // return view('rfid.index', compact('users'));
 
     }
-        $users = User::where('role', 'Siswa')
-                    ->whereNull('RFID')
-                    ->get();
-        $users = User::latest()->paginate(3);
+
         return view('rfid.index', compact('users'));
     }
 

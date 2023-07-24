@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AbsensiadminController;
 use App\Http\Controllers\GuruAdminController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\TopUpController;
@@ -46,7 +47,7 @@ use App\Http\Controllers\ProfilsiswaController;
 Route::post('/validate_password',['passwordController@validatePassword']);
 Route::post('/get_user', [App\Http\Controllers\GetuserController::class, 'get_user'])->name('get_user');
 Route::post('/find_rfid', [App\Http\Controllers\GetuserController::class, 'find_rfid'])->name('find_rfid');
-Route::post('/check_password', [App\Http\Controller\GetuserController::class, 'check_password'])->name('check_password');
+Route::post('/check_password', [App\Http\Controllers\GetuserController::class, 'check_password'])->name('check_password');
 Route::post('/cari_barang', [App\Http\Controllers\TransaksiController::class, 'cari'])->name('cari_barang');
 Route::get('/pw/{user_id}/{user_password}', [SiswamagangController::class, 'cek_password']);
 Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
@@ -102,7 +103,7 @@ Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
 // Rute untuk mengirim email reset password
 Route::get('/lupapassword', [LupaPasswordController::class, 'index'])->name('password.request');
 Route::post('/lupapassword', [LupaPasswordController::class, 'store'])->name('password.email');
-Route::get('/resetpassword/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
+Route::get('/resetpassword/{token}', [LupaPasswordController::class, 'reset']);
 Route::post('/resetpassword', [LupaPasswordController::class, 'update'])->name('password.update');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
@@ -178,14 +179,15 @@ Route::middleware(['auth'])->group(function () {
         });
     });
 
-
-Route::resource('/Lupapassword', App\Http\Controllers\LupaPasswordController::class);
+//lupa password
+Route::resource('lupapassword', App\Http\Controllers\LupaPasswordController::class);
+Route::get('/reset', [LupaPasswordController::class , 'reset'])->name('reset');
+Route::get('/kodek', [LupaPasswordController::class , 'kode'])->name('kodek');
+Route::get('/reset-password/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
 
 Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
 Route::resource('/data', App\Http\Controllers\TransaksiController::class);
 Route::get('/nota', [TransaksiController::class , 'nota'])->name('nota');
-Route::get('/reset', [LupaPasswordController::class , 'reset'])->name('reset');
-Route::get('/kodek', [LupaPasswordController::class , 'kode'])->name('kodek');
 Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita.like');
 Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
 Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');
