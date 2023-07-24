@@ -56,7 +56,7 @@
         <div class="mb-5 flex flex-wrap gap-1 mt-5 items-center">
             <a href="/absensi_pdf">
                 <button
-                    class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400"
+                    class="bg-blue-400 flex border  p-2 text-white font-semibold rounded-lg "
                     @click="exportTable('pdf')">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ltr:mr-2 rtl:ml-2">
@@ -71,7 +71,7 @@
                 </button>
             </a>
             <button id="printButton" onclick="printPage()"
-                class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400"
+                class="bg-blue-400 flex border  p-2 text-white font-semibold rounded-lg "
                 @click="printTable">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                     class="h-5 w-5 ltr:mr-2 rtl:ml-2">
@@ -97,7 +97,7 @@
             </button>
             @if (auth()->user()->role != 'Alumni' AND auth()->user()->Siswa->role != 'Alumni')
             <button data-modal-target="staticModal" data-modal-toggle="staticModal"
-                class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-400">Tambah
+                class="bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg ">Tambah
                 Izin</button>
             <form action="{{ route('absensi_siswa.store') }}" method="post" id="absenform">
                 @csrf
@@ -107,7 +107,7 @@
                 <input type="hidden" id="waktu" name="jam" value="{{ date('H:i') }}" />
                 <input type="hidden" name="keterangan" value="Hadir">
                 <button type="submit"
-                    class="border border-green-500 px-3 py-2 rounded-lg text-green-500 hover:bg-green-500 hover:text-white font-bold"
+                    class="border border-green-500 px-3 py-2 rounded-lg text-green-500  font-bold"
                     id="btnabsen">Absen</button>
             </form>
             @endif
@@ -628,7 +628,7 @@
                         <!-- Modal footer -->
                         <div
                             class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                           
+
                             <button data-modal-hide="" id="btnsimpan{{ $absen->id }}" type="submit"
                                 class="hidden text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Simpan</button>
                         </div>
