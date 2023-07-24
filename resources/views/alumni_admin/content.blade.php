@@ -2324,6 +2324,7 @@
                         </div>
                 @endforelse
 
+                {{-- {{ $alumni->appends(['cari' => request('cari')])->links() }} --}}
             </div>
         </main>
     </div>
