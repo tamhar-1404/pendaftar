@@ -15,6 +15,7 @@ use App\Http\Requests\StoreSiswaRequest;
 use Carbon\Carbon;
 use App\Http\Requests\UpdateSiswaRequest;
 use App\Mail\EmailLulus as MailEmailLulus;
+use Illuminate\Support\Facades\Auth;
 
 class SiswaController extends Controller
 {
@@ -60,7 +61,7 @@ class SiswaController extends Controller
 
     public function siswamagang_siswa()
     {
-        $siswas = Siswa::all();
+        $siswas = Siswa::whereNot('email', Auth::user()->email)->get();
         return view('siswamagang_siswa.index ', compact('siswas'));
     }
     public function view()
@@ -136,7 +137,7 @@ class SiswaController extends Controller
     }
     public function rfid(Request $request)
     {
-        
+
     $users = User::all();
     if ($request->has('cari')) {
         $keyword = $request->cari;
