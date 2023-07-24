@@ -67,25 +67,30 @@ class AbsensiSiswaController extends Controller
         $terima = ApprovalIzin::where('status', 'terimaabsen')->where('nama', Auth::user()->name )
         ->get();
         $currentHour = now()->format('H:i');
+        $currentDay = now()->format('D');
+        // dd($currentDay);
+        $currentDay = 'Sunday';
         $currentDateTime = date('Y-m-d');
         $data= ApprovalIzin::where('nama', Auth::user()->name)->where('tanggal',$currentDateTime)->count();
-        if($data === 0){
-            if($currentHour > '16:00'){
-                ApprovalIzin::create([
-                    'nama' => Auth::user()->name,
-                    'sekolah'=> Auth::user()->sekolah ,
-                    'tanggal' =>$currentDateTime ,
-                    'jam' => $currentHour,
-                    'keterangan' => 'Alfa',
-                    'status' => 'terimaabsen'
-                ]);
+        if($currentDay !== 'Saturday' && $currentDay !== 'Sunday'){
+            if($data === 0){
+                if($currentHour > '16:00'){
+                    ApprovalIzin::create([
+                        'nama' => Auth::user()->name,
+                        'sekolah'=> Auth::user()->sekolah ,
+                        'tanggal' =>$currentDateTime ,
+                        'jam' => $currentHour,
+                        'keterangan' => 'Alfa',
+                        'status' => 'terimaabsen'
+                    ]);
+                }
             }
         }
-        $telat = ApprovalIzin::where('keterangan', 'telat')->count();
-        $hadir = ApprovalIzin::where('keterangan', 'hadir')->count() + $telat;
-        $izin = ApprovalIzin::where('keterangan', 'izin')->count();
-        $sakit = ApprovalIzin::where('keterangan', 'sakit')->count();
-        $alfa = ApprovalIzin::where('keterangan', 'alfa')->count();
+        $telat = ApprovalIzin::where('keterangan', 'telat')->Where('nama', Auth()->user()->name)->count();
+        $hadir = ApprovalIzin::where('keterangan', 'hadir')->Where('nama', Auth()->user()->name)->count() + $telat;
+        $izin = ApprovalIzin::where('keterangan', 'izin')->Where('nama', Auth()->user()->name)->count();
+        $sakit = ApprovalIzin::where('keterangan', 'sakit')->Where('nama', Auth()->user()->name)->count();
+        $alfa = ApprovalIzin::where('keterangan', 'alfa')->Where('nama', Auth()->user()->name)->count();
         $izinsakit = $izin + $sakit;
         $all = ApprovalIzin::where('nama', Auth::user()->name)->count();
        return view('absensi_siswa.index' , compact('terima','hadir','telat','all','alfa','izinsakit', 'cek_sudah_absen'));
@@ -123,6 +128,7 @@ class AbsensiSiswaController extends Controller
 
 
         $hari_ini = Carbon::now()->format('Y-m-d');
+        $currentDay = Carbon::now()->format('D');
         $cek_izin = ApprovalIzin::where([['tanggal', $hari_ini], ['keterangan', 'izin'], ['status2', 'izin']]);
         $cek_izin_hari_ini = $cek_izin->exists();
         if ($cek_izin_hari_ini) {
@@ -156,14 +162,20 @@ class AbsensiSiswaController extends Controller
             return redirect()->back()->with('error', 'Anda sudah absen');
         }
         // dd($keterangan);
-        ApprovalIzin::create([
-            'nama' => $request->nama,
-            'sekolah' => $request->sekolah,
-            'tanggal' => $request->tanggal,
-            'jam' => $request->jam,
-            'keterangan' => $keterangan,
-            'status' => 'terimaabsen'
-        ]);
+        // $currentDay = 'Sunday';
+        if($currentDay !== 'Saturday' && $currentDay !== 'Sunday'){
+            ApprovalIzin::create([
+                'nama' => $request->nama,
+                'sekolah' => $request->sekolah,
+                'tanggal' => $request->tanggal,
+                'jam' => $request->jam,
+                'keterangan' => $keterangan,
+                'status' => 'terimaabsen'
+            ]);
+        }elseif ($currentDay === 'Saturday' && $currentDay === 'Sunday'){
+            dd('awokawok');
+            return redirect()->back()->with('error', 'Anda tidak bisa absen pada hari Sabtu & Minggu');
+        }
         return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
