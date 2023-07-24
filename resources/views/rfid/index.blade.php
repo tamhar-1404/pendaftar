@@ -215,7 +215,7 @@
                                                                 {{ $user->email }}
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-2">
-                                                                {{ $user->sekolah }}
+                                                                {{ $user->sekolah }} / {{$user-}}
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-2">
                                                                 <button type="button"

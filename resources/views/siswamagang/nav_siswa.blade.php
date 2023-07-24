@@ -104,9 +104,9 @@
                                      <img class="h-10 w-10 rounded-md object-cover"
                                          src="{{ asset('storage/Siswa/'.Auth::user()->siswa->foto_siswa) }}" alt="image" />
                                  </div>
-                                 <div class="ltr:pl-4 rtl:pr-4">
-                                     <h4 class="text-base">
-                                         {{Auth()->user()->name}}
+                                 <div class="ltr:pl-4 rtl:pr-4 truncate">
+                                     <h4 class="text-base truncate">
+                                         {{Auth()->user()->name}} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae, aspernatur similique? Perspiciatis vel eligendi nisi amet doloremque necessitatibus ipsa. Dolorum ipsa doloremque nesciunt deleniti eligendi natus minus ad amet reprehenderit?
                                      </h4>
                                     </div>
                                 </div>
