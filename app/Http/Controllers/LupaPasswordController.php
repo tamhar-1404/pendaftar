@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
@@ -25,14 +26,18 @@ class LupaPasswordController extends Controller
             'email' => 'required|email'
         ]);
 
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
+        try {
+            $status = Password::sendResetLink(
+                $request->only('email')
+            );
 
-        return $status === Password::RESET_LINK_SENT
-            ? back()->with('success', __($status))
-            : back()->withInput($request->only('email'))
-                    ->withErrors(['email'=>__($status)]);
+            return $status === Password::RESET_LINK_SENT
+                ? back()->with('success', __($status))
+                : back()->withInput($request->only('email'))
+                        ->withErrors(['email'=>__($status)]);
+        } catch (\Exception $e) {
+            return back()->withErrors(['email'=> $e->getMessage()]);
+        }
     }
 
     public function reset(string $token, Request $request){
