@@ -15,6 +15,9 @@ use App\Http\Requests\StoreJurnalsiswaRequest;
 use App\Http\Requests\UpdateJurnalsiswaRequest;
 use Exception;
 use Carbon\Carbon;
+use PhpOffice\PhpWord\Style\Table;
+use PhpOffice\PhpWord\Style\Cell;
+use PhpOffice\PhpWord\Style\Color;
 
 
 class JurnalsiswaController extends Controller
@@ -32,10 +35,10 @@ class JurnalsiswaController extends Controller
             $keyword = $request->cari;
             $item = Jurnalsiswa::where('tanggal', 'LIKE', '%' . $keyword . '%')->orWhere('status', 'LIKE', '%' . $keyword . '%')->paginate(5);
             return view('jurnal_siswa.index', compact('item'));
-    
+
             $item->appends(['cari' => $keyword]);
             return view('jurnal_siswa.index', compact('item'));
-    
+
         }
         $nama = Auth::user()->name;
         $item = Jurnalsiswa::where('nama',$nama)->paginate(5);
@@ -243,9 +246,10 @@ class JurnalsiswaController extends Controller
 
     return response($txt, 200, $headers);
 }
+
 public function exportToDocx()
 {
-    // Mendapatkan data dari database (contoh menggunakan model User)
+    // Mendapatkan data dari database (contoh menggunakan model JurnalSiswa)
     $users = JurnalSiswa::where('nama', Auth::user()->name)->get();
 
     // Membuat objek PhpWord
@@ -254,20 +258,34 @@ public function exportToDocx()
     // Membuat halaman baru
     $section = $phpWord->addSection();
 
-    // Menambahkan data dari database ke dokumen
+    // Judul tabel dengan border dan background abu-abu
+    $section->addText("Daftar Jurnal Siswa", ['bold' => true, 'size' => 14, 'color' => '000000']);
+    $section->addTextBreak(1);
+    $titleStyle = array('borderSize' => 6, 'borderColor' => '000000', 'bgColor' => 'D3D3D3');
+    $section->addText(" ", $titleStyle);
+
+    // Membuat tabel
+    $table = $section->addTable();
+    $table->addRow();
+    $table->addCell(6000, $titleStyle)->addText("Nama", ['bold' => true, 'alignment' => 'center']);
+    $table->addCell(2000, $titleStyle)->addText("Tanggal", ['bold' => true, 'alignment' => 'center']);
+    $table->addCell(3000, $titleStyle)->addText("Sekolah", ['bold' => true, 'alignment' => 'center']);
+    $table->addCell(4000, $titleStyle)->addText("Kegiatan", ['bold' => true, 'alignment' => 'center']);
+
+    // Menambahkan data dari database ke tabel
     foreach ($users as $user) {
-        $section->addText($user->nama);
-        $section->addText($user->tanggal);
-        $section->addText($user->sekolah);
-        $section->addText($user->kegiatan);
-        // Tambahkan data lain yang Anda butuhkan
-        $section->addText("--------------------"); // Pemisah antara setiap entri
+        $table->addRow();
+        $table->addCell(6000, ['borderSize' => 6, 'borderColor' => '000000'])->addText($user->nama, ['alignment' => 'center']);
+        $table->addCell(2000, ['borderSize' => 6, 'borderColor' => '000000'])->addText($user->tanggal, ['alignment' => 'center']);
+        $table->addCell(3000, ['borderSize' => 6, 'borderColor' => '000000'])->addText($user->sekolah, ['alignment' => 'center']);
+        $table->addCell(4000, ['borderSize' => 6, 'borderColor' => '000000'])->addText($user->kegiatan, ['alignment' => 'center']);
     }
 
     // Menyimpan dokumen sebagai file .docx
     $filename = "database_export.docx";
-    $path = Storage_path('App/public/Image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
-    $phpWord->save($path);
+    $path = public_path('storage/Image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
+    $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
+    $objWriter->save($path);
 
     // Mengembalikan file dokumen untuk diunduh
     return response()->download($path, $filename);

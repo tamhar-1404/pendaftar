@@ -201,7 +201,7 @@
                                     </div>
                                     <div class="flex grow flex-col items-center px-2 pb-3 sm:px-5">
                                         <div class="avatar h-20 w-20">
-                                            <img class="rounded-full" src="{{ asset('admin/images/avatar/avatar-20.jpg') }}"
+                                            <img class="rounded-full" src="{{ asset('storage/Siswa/'.$siswa->foto_siswa) }}"
                                                 alt="avatar" />
                                         </div>
                                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
