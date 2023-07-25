@@ -89,25 +89,7 @@
 
 
                 <div class="dropdown" x-data="dropdown" @click.outside="open = false">
-                    <a href="javascript:;"
-                        class="relative block rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
-                        @click="toggle">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M19.0001 9.7041V9C19.0001 5.13401 15.8661 2 12.0001 2C8.13407 2 5.00006 5.13401 5.00006 9V9.7041C5.00006 10.5491 4.74995 11.3752 4.28123 12.0783L3.13263 13.8012C2.08349 15.3749 2.88442 17.5139 4.70913 18.0116C9.48258 19.3134 14.5175 19.3134 19.291 18.0116C21.1157 17.5139 21.9166 15.3749 20.8675 13.8012L19.7189 12.0783C19.2502 11.3752 19.0001 10.5491 19.0001 9.7041Z"
-                                stroke="currentColor" stroke-width="1.5" />
-                            <path d="M7.5 19C8.15503 20.7478 9.92246 22 12 22C14.0775 22 15.845 20.7478 16.5 19"
-                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                            <path d="M12 6V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
 
-                        <span class="absolute top-0 flex h-3 w-3 ltr:right-0 rtl:left-0">
-                            <span
-                                class="absolute -top-[3px] inline-flex h-full w-full animate-ping rounded-full bg-success/50 opacity-75 ltr:-left-[3px] rtl:-right-[3px]"></span>
-                            <span class="relative inline-flex h-[6px] w-[6px] rounded-full bg-success"></span>
-                        </span>
-                    </a>
                     <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
                         class="top-11 w-[300px] divide-y !py-0 text-dark ltr:-right-2 rtl:-left-2 dark:divide-white/10 dark:text-white-dark sm:w-[350px]">
                         <li>
@@ -178,9 +160,9 @@
                 <div class="dropdown flex-shrink-0" x-data="dropdown" @click.outside="open = false">
                     <a href="javascript:;" class="group relative" @click="toggle()">
 
-                        @foreach($guru as $guru)
-                        <span><img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image" /></span>
+                        @foreach ($guru as $guru)
+                            <span><img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
+                                    src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image" /></span>
 
                     </a>
                     <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
@@ -196,13 +178,14 @@
                                     <h4 class="text-base">
                                         {{ $guru->name }}
                                     </h4>
-                                    <span class="text-black/60 hover:text-primary dark:text-dark-light/60  dark:hover:text-white">
+                                    <span
+                                        class="text-black/60 hover:text-primary dark:text-dark-light/60  dark:hover:text-white">
 
                                         {{ $guru->email }}
                                     </span>
                                 </div>
                             </div>
-                                @endforeach
+                            @endforeach
                         </li>
                         <li>
                             <a href="{{ route('profileguru.index') }}" class="dark:hover:text-white" @click="toggle">
@@ -217,7 +200,7 @@
                                 Profile</a>
                         </li>
                         <li class="border-t border-white-light dark:border-white-light/10">
-                            <a href="{{route('logout')}}" class="!py-3 text-danger" @click="toggle">
+                            <a href="{{ route('logout') }}" class="!py-3 text-danger" @click="toggle">
                                 <svg class="h-4.5 w-4.5 rotate-90 ltr:mr-2 rtl:ml-2" width="18" height="18"
                                     viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.5"

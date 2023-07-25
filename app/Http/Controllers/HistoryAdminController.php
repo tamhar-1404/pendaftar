@@ -21,9 +21,20 @@ class HistoryAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+    
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $TopUp = TopUp::where('user_id', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->latest()->paginate(3);
+            return view('TopUp.index', compact('TopUp'));
+
+            $TopUp->appends(['cari' => $keyword]);
+            return view('TopUp.index', compact('TopUp'));
+        }
+
     $TopUp = TopUp::whereIn('status', ['Terima', 'Ditolak'])->get();
+    $TopUp = TopUp::latest()->paginate(3);
     return view('History_Admin.index', compact('TopUp'));
     }
 
