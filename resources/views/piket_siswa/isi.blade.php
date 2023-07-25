@@ -24,16 +24,16 @@
                         <div class="step active " >
                             <div class="flex gap-4 mb-3 justify-between" >
                                 <div class="flex gap-4 mb-3">
-                                    <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white {{request()->routeIs('piket.index') ? 'bg-[#24AEE4] text-white' : ''}}">
+                                    <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold  {{request()->routeIs('piket.index') ? 'bg-[#24AEE4] text-white' : ''}}">
                                         Pagi
                                     </button>
 
-                                    <button type="button" id="nextStep1" class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
+                                    <button type="button" id="nextStep1" class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold  ">
                                         Sore
                                     </button>
 
 
-                                    <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
+                                    <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold  ">
                                         Laporan
                                     </button>
 
@@ -43,7 +43,7 @@
 
                             <div class="flex grid-cols-5 gap-4  w-lg " id="#pagi">
                                 {{-- senin --}}
-                                <div class=" w-full h-full  rounded-md {{ strtolower($day) === 'monday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }}">
+                                <div class=" w-full h-full  rounded-md {{ strtolower($day) === 'monday' ? 'bg-blue-300' : 'bg-putih' }}">
 
                                     {{-- hari --}}
                                     <div class="text-center font-bold mt-3">
@@ -65,7 +65,7 @@
 
                                 </div>
                                 {{-- selasa --}}
-                                <div class=" w-full h-full {{ strtolower($day) === 'tuesday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
+                                <div class=" w-full h-full {{ strtolower($day) === 'tuesday' ? 'bg-blue-300' : 'bg-putih' }} rounded-md" >
 
                                     {{-- hari --}}
                                     <div class="text-center font-bold mt-3">
@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                                 {{-- rabu --}}
-                                <div class=" w-full h-full {{ strtolower($day) === 'wednesday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
+                                <div class=" w-full h-full {{ strtolower($day) === 'wednesday' ? 'bg-blue-300' : 'bg-putih' }} rounded-md" >
 
                                     {{-- hari --}}
                                     <div class="text-center font-bold mt-3">
@@ -104,7 +104,7 @@
                                     </div>
                                 </div>
                                 {{-- kamis --}}
-                                <div class=" w-full h-full {{ strtolower($day) === 'thursday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md " >
+                                <div class=" w-full h-full {{ strtolower($day) === 'thursday' ? 'bg-blue-300' : 'bg-putih' }} rounded-md " >
 
                                     {{-- hari --}}
                                     <div class="text-center font-bold mt-3">
@@ -124,7 +124,7 @@
                                     </div>
                                 </div>
                                 {{-- jumat --}}
-                                <div class=" w-full h-full {{ strtolower($day) === 'friday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
+                                <div class=" w-full h-full {{ strtolower($day) === 'friday' ? 'bg-blue-300' : 'bg-putih' }} rounded-md" >
 
                                     <div class="text-center font-bold mt-3">
                                         Jumat
@@ -144,7 +144,7 @@
                             </div>
                             <div class="flex grid-cols-5 gap-1 w-lg mt-5" id="#pagi">
                                 {{-- catatan --}}
-                                <div class=" w-full h-30 bg-[#EAF1FF] rounded-md" >
+                                <div class=" w-full h-30 bg-putih rounded-md" >
 
                                     {{-- button edit --}}
                                     <div class="flex justify-between pt-1"  >
@@ -194,7 +194,7 @@
 
                             <div class="flex grid-cols-5 gap-4  w-lg " >
                                 {{-- senin --}}
-                                <div class=" w-full h-full  rounded-md {{ strtolower($day) === 'monday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }}">
+                                <div class=" w-full h-full  rounded-md {{ strtolower($day) === 'monday' ? 'bg-blue-300' : 'bg-putih' }}">
 
                                     {{-- hari --}}
                                     <div class="text-center font-bold mt-3">
@@ -257,7 +257,7 @@
 
                                 </div>
                                 {{-- selasa --}}
-                                <div class=" w-full h-full {{ strtolower($day) === 'tuesday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
+                                <div class=" w-full h-full {{ strtolower($day) === 'tuesday' ? 'bg-blue-300' : 'bg-putih' }} rounded-md" >
 
                                     {{-- hari --}}
                                     <div class="text-center font-bold mt-3">
@@ -276,7 +276,7 @@
                                     </div>
                                 </div>
                                 {{-- rabu --}}
-                                <div class=" w-full h-full {{ strtolower($day) === 'wednesday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
+                                <div class=" w-full h-full {{ strtolower($day) === 'wednesday' ? 'bg-blue-300' : 'bg-putih' }} rounded-md" >
 
                                     {{-- hari --}}
                                     <div class="text-center font-bold mt-3">
@@ -337,7 +337,7 @@
                                     </div>
                                 </div>
                                 {{-- kamis --}}
-                                <div class=" w-full h-full {{ strtolower($day) === 'thursday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md " >
+                                <div class=" w-full h-full {{ strtolower($day) === 'thursday' ? 'bg-blue-300' : 'bg-putih' }} rounded-md " >
 
                                     {{-- hari --}}
                                     <div class="text-center font-bold mt-3">
@@ -357,7 +357,7 @@
                                     </div>
                                 </div>
                                 {{-- jumat --}}
-                                <div class=" w-full h-full {{ strtolower($day) === 'friday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md" >
+                                <div class=" w-full h-full {{ strtolower($day) === 'friday' ? 'bg-blue-300' : 'bg-putih' }} rounded-md" >
 
                                     {{-- hari --}}
                                     <div class="text-center font-bold mt-3">
@@ -380,7 +380,7 @@
                             </div>
                             <div class="flex grid-cols-5 gap-1 w-lg mt-5" >
                                 {{-- catatan --}}
-                                <div class=" w-full h-30 bg-[#EAF1FF] rounded-md" >
+                                <div class=" w-full h-30 bg-putih rounded-md" >
 
                                     {{-- button edit --}}
                                     <div class="flex justify-between pt-1"  >

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HistoryTopup;
 use App\Models\TopUp;
+use App\Models\HistoryTopup;
+use Illuminate\Http\Request;
+use App\Mail\Topup as MailTopup;
 use App\Models\HistoryTransaksi;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreHistoryTopupRequest;
 use App\Http\Requests\UpdateHistoryTopupRequest;
-use Illuminate\Support\Facades\Auth;
 
 class HistoryTopupController extends Controller
 {
@@ -16,9 +18,19 @@ class HistoryTopupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $TopUp = Topup::where('user_id',Auth()->user()->id)->paginate(10);
+        $TopUp = TopUp::all();
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $TopUp = TopUp::where('tanggal', 'LIKE', '%' . $keyword . '%')->orWhere('status', 'LIKE', '%' . $keyword . '%')->paginate(5);
+            return view('History_siswa.topup', compact('TopUp'));
+    
+            $TopUp->appends(['cari' => $keyword]);
+            return view('History_siswa.topup', compact('TopUp'));
+    
+        }
+        $TopUp = Topup::where('user_id',Auth()->user()->id)->latest()->paginate(5);
         return view('History_siswa.topup', compact('TopUp'));
     }
 

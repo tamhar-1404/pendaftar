@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Guru - Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
+    <link href="/admin/assets/images/logo.png" rel="shortcut icon">
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
@@ -33,8 +33,9 @@
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>
 
-     <!-- screen loader -->
-     <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+    <!-- screen loader -->
+    <div
+        class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
@@ -1215,8 +1216,7 @@
                             <div class="panel">
                                 <div class="mb-5 flex items-center justify-between">
                                     <h5 class="text-lg font-semibold dark:text-white-light">Profile</h5>
-                                    <a href="#"
-                                        class="btn btn-info rounded-full p-2 ltr:ml-auto rtl:mr-auto">
+                                    <a href="#" class="btn btn-info rounded-full p-2 ltr:ml-auto rtl:mr-auto">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
                                             <path opacity="0.5" d="M4 22H20" stroke="currentColor"
@@ -1231,68 +1231,70 @@
                                     </a>
                                 </div>
                                 @foreach ($guru as $guru)
-
-                                <div class="mb-5">
-                                    <div class="flex flex-col items-center justify-center">
-                                        <img src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image"
-                                            class="mb-5 h-24 w-24 rounded-full object-cover" />
-                                        <p class="text-xl font-semibold text-info">{{ $guru->name }}</p>
-                                    </div>
-                                    <ul
-                                        class="m-auto mt-5 flex max-w-[160px] flex-col space-y-4 font-semibold text-white-dark">
-                                        <li class="flex items-center gap-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
-                                            </svg>
-                                            {{ $guru->sekolah }}
-                                        </li>
-                                        <li class="flex items-center gap-2">
-                                            <svg width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
-                                                <path opacity="0.5"
-                                                    d="M4 10.1433C4 5.64588 7.58172 2 12 2C16.4183 2 20 5.64588 20 10.1433C20 14.6055 17.4467 19.8124 13.4629 21.6744C12.5343 22.1085 11.4657 22.1085 10.5371 21.6744C6.55332 19.8124 4 14.6055 4 10.1433Z"
-                                                    stroke="currentColor" stroke-width="1.5" />
-                                                <circle cx="12" cy="10" r="3"
-                                                    stroke="currentColor" stroke-width="1.5" />
-                                            </svg>
-                                            {{ $guru->alamat }}
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;" class="flex items-center gap-2">
+                                    <div class="mb-5">
+                                        <div class="flex flex-col items-center justify-center">
+                                            <img src="{{ asset('storage/guru_image/' . $guru->image) }}"
+                                                alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
+                                            <p class="text-xl font-semibold text-info">{{ $guru->name }}</p>
+                                        </div>
+                                        <ul
+                                            class="m-auto mt-5 flex max-w-[160px] flex-col space-y-4 font-semibold text-white-dark">
+                                            <li class="flex items-center gap-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+                                                </svg>
+                                                {{ $guru->sekolah }}
+                                            </li>
+                                            <li class="flex items-center gap-2">
                                                 <svg width="24" height="24" viewBox="0 0 24 24"
                                                     fill="none" xmlns="http://www.w3.org/2000/svg"
                                                     class="h-5 w-5">
                                                     <path opacity="0.5"
-                                                        d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12Z"
+                                                        d="M4 10.1433C4 5.64588 7.58172 2 12 2C16.4183 2 20 5.64588 20 10.1433C20 14.6055 17.4467 19.8124 13.4629 21.6744C12.5343 22.1085 11.4657 22.1085 10.5371 21.6744C6.55332 19.8124 4 14.6055 4 10.1433Z"
                                                         stroke="currentColor" stroke-width="1.5" />
+                                                    <circle cx="12" cy="10" r="3"
+                                                        stroke="currentColor" stroke-width="1.5" />
+                                                </svg>
+                                                {{ $guru->alamat }}
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="flex items-center gap-2">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                        class="h-5 w-5">
+                                                        <path opacity="0.5"
+                                                            d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12Z"
+                                                            stroke="currentColor" stroke-width="1.5" />
+                                                        <path
+                                                            d="M6 8L8.1589 9.79908C9.99553 11.3296 10.9139 12.0949 12 12.0949C13.0861 12.0949 14.0045 11.3296 15.8411 9.79908L18 8"
+                                                            stroke="currentColor" stroke-width="1.5"
+                                                            stroke-linecap="round" />
+                                                    </svg>
+                                                    <span class="">{{ $guru->email }}</span></a>
+                                            </li>
+                                            <li class="flex items-center gap-2">
+                                                <svg width="24" height="24" viewBox="0 0 24 24"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-5 w-5">
                                                     <path
-                                                        d="M6 8L8.1589 9.79908C9.99553 11.3296 10.9139 12.0949 12 12.0949C13.0861 12.0949 14.0045 11.3296 15.8411 9.79908L18 8"
+                                                        d="M16.1007 13.359L16.5562 12.9062C17.1858 12.2801 18.1672 12.1515 18.9728 12.5894L20.8833 13.628C22.1102 14.2949 22.3806 15.9295 21.4217 16.883L20.0011 18.2954C19.6399 18.6546 19.1917 18.9171 18.6763 18.9651M4.00289 5.74561C3.96765 5.12559 4.25823 4.56668 4.69185 4.13552L6.26145 2.57483C7.13596 1.70529 8.61028 1.83992 9.37326 2.85908L10.6342 4.54348C11.2507 5.36691 11.1841 6.49484 10.4775 7.19738L10.1907 7.48257"
+                                                        stroke="currentColor" stroke-width="1.5" />
+                                                    <path opacity="0.5"
+                                                        d="M18.6763 18.9651C17.0469 19.117 13.0622 18.9492 8.8154 14.7266C4.81076 10.7447 4.09308 7.33182 4.00293 5.74561"
+                                                        stroke="currentColor" stroke-width="1.5" />
+                                                    <path opacity="0.5"
+                                                        d="M16.1007 13.3589C16.1007 13.3589 15.0181 14.4353 12.0631 11.4971C9.10807 8.55886 10.1907 7.48242 10.1907 7.48242"
                                                         stroke="currentColor" stroke-width="1.5"
                                                         stroke-linecap="round" />
                                                 </svg>
-                                                <span class="">{{ $guru->email }}</span></a>
-                                        </li>
-                                        <li class="flex items-center gap-2">
-                                            <svg width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
-                                                <path
-                                                    d="M16.1007 13.359L16.5562 12.9062C17.1858 12.2801 18.1672 12.1515 18.9728 12.5894L20.8833 13.628C22.1102 14.2949 22.3806 15.9295 21.4217 16.883L20.0011 18.2954C19.6399 18.6546 19.1917 18.9171 18.6763 18.9651M4.00289 5.74561C3.96765 5.12559 4.25823 4.56668 4.69185 4.13552L6.26145 2.57483C7.13596 1.70529 8.61028 1.83992 9.37326 2.85908L10.6342 4.54348C11.2507 5.36691 11.1841 6.49484 10.4775 7.19738L10.1907 7.48257"
-                                                    stroke="currentColor" stroke-width="1.5" />
-                                                <path opacity="0.5"
-                                                    d="M18.6763 18.9651C17.0469 19.117 13.0622 18.9492 8.8154 14.7266C4.81076 10.7447 4.09308 7.33182 4.00293 5.74561"
-                                                    stroke="currentColor" stroke-width="1.5" />
-                                                <path opacity="0.5"
-                                                    d="M16.1007 13.3589C16.1007 13.3589 15.0181 14.4353 12.0631 11.4971C9.10807 8.55886 10.1907 7.48242 10.1907 7.48242"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" />
-                                            </svg>
-                                            <span class="whitespace-nowrap" dir="ltr">{{ $guru->no }}</span>
-                                        </li>
-                                    </ul>
-                                </div>
+                                                <span class="whitespace-nowrap"
+                                                    dir="ltr">{{ $guru->no }}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 @endforeach
                             </div>
                             <div class="panel lg:col-span-2 xl:col-span-3">
@@ -1313,14 +1315,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="dark:text-white-dark">
-                                            @foreach ($siswa as $siswa)
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="">{{ $siswa->name }}</td>
-                                                    <td class="">{{ $siswa->jurusan }}</td>
-                                                    <td class="">{{ $siswa->email }}</td>
-                                                    <td class="">{{ $siswa->tempat }}</td>
-                                                </tr>
+                                                @foreach ($siswa as $siswa)
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td class="">{{ $siswa->name }}</td>
+                                                        <td class="">{{ $siswa->jurusan }}</td>
+                                                        <td class="">{{ $siswa->email }}</td>
+                                                        <td class="">{{ $siswa->tempat }}</td>
+                                                    </tr>
                                                 @endforeach
 
                                             </tbody>
@@ -1587,7 +1589,7 @@
             }));
         });
     </script>
-     <script>
+    <script>
         $(window).on('load', function() {
             $('.spin_load').fadeOut();
         });

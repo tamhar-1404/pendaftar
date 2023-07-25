@@ -176,6 +176,16 @@
 
                     <div class="panel">
                      {{-- <h2>{{ $e }}</h2> --}}
+                     <div class="mr-4 flex justify-end " >
+                        <form action="" style="width: 20%">
+                            <label class=" hidden sm:flex">
+                                <input
+                                    class="form-input peer h-9 rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                    placeholder="Search users..." type="text" name="cari"
+                                    value="{{ request('cari') }}" />
+                            </label>
+                        </form>
+                    </div>
 
 
 
@@ -191,7 +201,7 @@
                                     </div>
                                     <div class="flex grow flex-col items-center px-2 pb-3 sm:px-5">
                                         <div class="avatar h-20 w-20">
-                                            <img class="rounded-full" src="{{ asset('admin/images/avatar/avatar-20.jpg') }}"
+                                            <img class="rounded-full" src="{{ asset('storage/Siswa/'.$siswa->foto_siswa) }}"
                                                 alt="avatar" />
                                         </div>
                                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
@@ -210,7 +220,7 @@
                                                 class="w-full h-[36px] pl-[6.50px] pr-[4.16px] justify-center items-start gap-[11.42px] inline-flex mt-8">
                                                 <button data-modal-target="staticModal{{ $siswa->id }}"
                                                     data-modal-toggle="staticModal{{ $siswa->id }}"
-                                                    class="Button w-[110px] self-stretch px-4 pl-[12.57px] pr-2 py-2 bg-red-500 rounded-lg justify-end items-center text-center gap-[5px] inline-flex">
+                                                    class="Button w-[110px] self-stretch px-4    pl-[12.57px] pr-2 py-2 bg-red-500 rounded-lg justify-end items-center text-center gap-[5px] inline-flex">
                                                     <div
                                                         class="Laporkan text-center text-white text-[14px] font-medium leading-tight tracking-wide">
                                                         Laporkan</div>
