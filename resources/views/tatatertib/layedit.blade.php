@@ -15,7 +15,6 @@
                 }
             },
         },
-
     </script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script>
@@ -335,7 +334,7 @@
                         </a>
                     </div>
                     <button
-                        class="mt-0.5 inline-block rounded bg-primary px-3 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+                        class="mt-0.5 inline-block rounded bg-blue-400 px-3 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-400 hover:shadow-lg focus:bg-blue-400 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg"
                         data-te-sidenav-toggle-ref data-te-target="#sidenav-2" aria-controls="#sidenav-2"
                         aria-haspopup="true">
                         <span class="block [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-white">

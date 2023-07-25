@@ -243,52 +243,20 @@
                                             @endforelse
                                         </tbody>
                                     </table>
+                                    {{ $data->appends(['cari' => request('cari')])->links() }}
                                 </div>
                             </div>
                         </div>
                     </div>
                     {{-- end tabel --}}
                     {{-- paginate --}}
-                    <div class="flex justify-between">
-                        <p>
-                            menampilkan 1 sampai 10 dari 15 data
-                        </p>
-                        <nav aria-label="Page navigation example">
-                            <ul class="list-style-none flex">
-                                <li>
-                                    <a
-                                        class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
-                                </li>
-                                <li>
-                                    <a class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
-                                        href="#!">1</a>
 
-                                </li>
-                                <li aria-current="page">
-                                    <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                        href="#!">2
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                        href="#!">3</a>
-                                </li>
-                                <li>
-                                    <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                        href="#!">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
                 </div>
             </div>
             <!-- end main content section -->
 
             <!-- start footer section -->
-            <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
-                © <span id="footer-year">2022</span>. Vristo All rights reserved.
-            </p>
+
             <!-- end footer section -->
 
         </div>
