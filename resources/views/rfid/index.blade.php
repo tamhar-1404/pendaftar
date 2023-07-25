@@ -215,7 +215,7 @@
                                                                 {{ $user->email }}
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-2">
-                                                                {{ $user->sekolah }} / {{$user-}}
+                                                                {{ $user->sekolah }}
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-2">
                                                                 <button type="button"
@@ -265,12 +265,14 @@
                                                         </tr>
                                                     </tbody>
                                                 @empty
-                                                    <div class="flex justify-center items-center">
+                                                    <tr>
                                                         <td>
-                                                            <img src="/admin/noData.png" alt=""
-                                                                class="m-auto">
+                                                            <div class="flex justify-center items-center">
+                                                                <img src="/admin/noData.png" alt=""
+                                                                    class="m-auto" width="280">
+                                                            </div>
                                                         </td>
-                                                    </div>
+                                                    </tr>
                                                 @endforelse
                                             </table>
                                             {{ $users->appends(['cari' => request('cari')])->links() }}

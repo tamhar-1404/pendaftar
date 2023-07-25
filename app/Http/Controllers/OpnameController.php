@@ -16,10 +16,19 @@ class OpnameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $barang = Barang::all();
-        $opname = Opname::all();
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $opname = Opname::where('barang_id', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            return view('opname.index', compact('opname','barang'));
+    
+            $opname->appends(['cari' => $keyword]);
+            return view('opname.index', compact('opname','barang'));
+    
+        }
+        $opname = Opname::latest()->paginate(3);
         // dd($opname);
         return view('opname.index', compact('barang', 'opname'));
     }

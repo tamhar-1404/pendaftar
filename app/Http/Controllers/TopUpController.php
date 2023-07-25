@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\TerimaTopup;
 use App\Http\Requests\StoreTopUpRequest;
 use App\Http\Requests\UpdateTopUpRequest;
+use App\Mail\Topup as MailTopup;
 
 class TopUpController extends Controller
 {
@@ -17,9 +18,19 @@ class TopUpController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $TopUp = TopUp::where('user_id', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->latest()->paginate(3);
+            return view('TopUp.index', compact('TopUp'));
+
+            $TopUp->appends(['cari' => $keyword]);
+            return view('TopUp.index', compact('TopUp'));
+        }
+
         $TopUp = TopUp::where('status', 'menunggu')->get();
+        $TopUp = TopUp::latest()->paginate(3);
         return view('TopUp.index', compact('TopUp'));
     }
 

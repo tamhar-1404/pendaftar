@@ -14,10 +14,9 @@
             extend: {
                 blur: {
                     xs: '3px',
-                  }
+                }
             },
-          },
-
+        },
     </script>
     <link rel="stylesheet" href="load/load.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
@@ -95,8 +94,16 @@
                 class="block w-1/2 py-2.5 px-3 mt-1 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
                 placeholder="Kode barang" autofocus id="kodebarang">
 
+
         </center>
         <br>
+        <form action="">
+            <label class="relative hidden sm:flex me-2">
+                <input id="search"
+                    class="form-input peer h-9 ml-auto rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                    placeholder="Search barang..." type="text" name="cari" value="{{ request('cari') }}" />
+            </label>
+        </form>
         <hr class="mt-1">
         <div class="flex flex-col px-4">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -165,9 +172,17 @@
                                         </td>
                                     </tr>
                                 @empty
+                                    <tr>
+                                        <td colspan="6" class="p-8 text-center">
+                                            <div class="flex justify-center items-center">
+                                                <img src="/admin/noData.png" alt="" width="280px">
+                                            </div>
+                                        </td>
+                                    </tr>
                                 @endforelse
                             </tbody>
                         </table>
+                        {{ $opname->appends(['cari' => request('cari')])->links() }}
                         <script>
                             function confirmDelete(event) {
                                 event.preventDefault();
@@ -223,7 +238,9 @@
                                 <label for="stok" class="block text-sm font-medium text-gray-700">Stok</label>
                                 <input type="number" id="stok" name="stok"
                                     class="block w-full text-sm bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
-                                    placeholder="Stok barang" required autofocus min="1" oninvalid="this.setCustomValidity('Stok minimal 1')" oninput="setCustomValidity('')">
+                                    placeholder="Stok barang" required autofocus min="1"
+                                    oninvalid="this.setCustomValidity('Stok minimal 1')"
+                                    oninput="setCustomValidity('')">
                             </div>
                             <div class="">
                                 <button type="submit"
@@ -256,7 +273,9 @@
                                 <label for="stok" class="block text-sm font-medium text-gray-700">Stok</label>
                                 <input type="number" id="stok" name="stok"
                                     class="block w-full text-sm bg-transparent border-b-2 border-gray-300 appearance-none focus:outline-none focus:border-blue-600"
-                                    placeholder="Stok barang" required autofocus value="{{ $brg->stok }}" min="1" oninvalid="this.setCustomValidity('Stok minimal 1')" oninput="setCustomValidity('')">
+                                    placeholder="Stok barang" required autofocus value="{{ $brg->stok }}"
+                                    min="1" oninvalid="this.setCustomValidity('Stok minimal 1')"
+                                    oninput="setCustomValidity('')">
                             </div>
                             <div class="">
                                 <button type="submit"
@@ -284,8 +303,7 @@
                 let modal = document.getElementById(`${kodeopname}`);
                 if (modal) {
                     modal.classList.remove('hidden');
-                }
-                else {
+                } else {
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',

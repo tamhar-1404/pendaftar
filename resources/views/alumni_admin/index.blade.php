@@ -12,10 +12,9 @@
             extend: {
                 blur: {
                     xs: '3px',
-                  }
+                }
             },
-          },
-
+        },
     </script>
     <link rel="stylesheet" href="load/load.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />

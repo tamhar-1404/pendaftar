@@ -5,17 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin - Approval Izin</title>
+    <title>Admin - Approval Topup</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         theme: {
             extend: {
                 blur: {
                     xs: '3px',
-                  }
+                }
             },
-          },
-
+        },
     </script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
@@ -70,6 +69,15 @@
         <h3 class="text-center mt-7 mb-2">Approval TopUp</h3>
         <hr>
         <div class="flex flex-col px-4 mt-2">
+            <label class="relative hidden sm:flex items-center justify-end">
+                <form action="">
+                    <label class="relative hidden sm:flex">
+                        <input
+                            class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                            placeholder="Search users..." type="text" name="cari" value="{{ request('cari') }}" />
+                    </label>
+                </form>
+            </label>
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
@@ -149,13 +157,18 @@
                                                     </form>
                                                 </div>
                                             </td>
-
                                         </tr>
                                     @empty
+
+                                        <td colspan="6" class="p-8 text-center">
+                                            <div class="flex justify-center items-center">
+                                                <img src="/admin/noData.png" alt="" width="280px">
+                                            </div>
+                                        </td>
                                 @endforelse
                             </tbody>
-
                         </table>
+                        {{ $TopUp->appends(['cari' => request('cari')])->links() }}
                         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
                         <script>
                             function tambah(event, id) {
