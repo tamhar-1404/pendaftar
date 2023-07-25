@@ -45,7 +45,7 @@ class SiswaController extends Controller
 
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $siswas = Siswa::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $siswas = Siswa::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(5);
             return view('Siswa_admin.index', compact('siswas'));
 
             $siswas->appends(['cari' => $keyword]);
@@ -53,7 +53,7 @@ class SiswaController extends Controller
 
         }
 
-        $siswas = Siswa::latest()->paginate(3);
+        $siswas = Siswa::latest()->paginate(5);
 
         return view('Siswa_admin.index', compact('siswas'));
     }

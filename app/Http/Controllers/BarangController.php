@@ -17,11 +17,20 @@ class BarangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $barang = Barang::all();
         $barangs = Barang::all();
-        return view('barang.index',compact('barang','barangs'));
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $barangs = Barang::where('nama', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            return view('barang.index', compact('barangs'));
+    
+            $barangs->appends(['cari' => $keyword]);
+            return view('barang.index', compact('barangs'));
+    
+        }
+        $barangs = Barang::latest()->paginate(3);
+        return view('barang.index',compact('barangs'));
     }
 
     /**

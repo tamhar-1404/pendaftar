@@ -26,7 +26,7 @@ class AbsensiadminController extends Controller
 
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $terima = ApprovalIzin::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $terima = ApprovalIzin::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->latest()->paginate(3);
             return view('absensi_admin.index', compact('terima'));
 
             $terima->appends(['cari' => $keyword]);
