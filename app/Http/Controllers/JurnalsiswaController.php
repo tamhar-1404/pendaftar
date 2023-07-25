@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreJurnalsiswaRequest;
 use App\Http\Requests\UpdateJurnalsiswaRequest;
+use Illuminate\Support\Facades\View;
 use Exception;
 use Carbon\Carbon;
 use PhpOffice\PhpWord\Style\Table;
@@ -267,18 +268,34 @@ public function exportToDocx()
     // Membuat tabel
     $table = $section->addTable();
     $table->addRow();
-    $table->addCell(6000, $titleStyle)->addText("Nama", ['bold' => true, 'alignment' => 'center']);
-    $table->addCell(2000, $titleStyle)->addText("Tanggal", ['bold' => true, 'alignment' => 'center']);
-    $table->addCell(3000, $titleStyle)->addText("Sekolah", ['bold' => true, 'alignment' => 'center']);
-    $table->addCell(4000, $titleStyle)->addText("Kegiatan", ['bold' => true, 'alignment' => 'center']);
+    $table->addCell(600, $titleStyle)->addText("No.", ['bold' => true, 'alignment' => 'center']);
+    $table->addCell(4000, $titleStyle)->addText("Nama", ['bold' => true, 'alignment' => 'center']);
+    $table->addCell(1500, $titleStyle)->addText("Tanggal", ['bold' => true, 'alignment' => 'center']);
+    $table->addCell(2500, $titleStyle)->addText("Sekolah", ['bold' => true, 'alignment' => 'center']);
+    $table->addCell(3000, $titleStyle)->addText("Kegiatan", ['bold' => true, 'alignment' => 'center']);
+    $table->addCell(2000, $titleStyle)->addText("Bukti", ['bold' => true, 'alignment' => 'center']);
 
     // Menambahkan data dari database ke tabel
+    $count = 1;
     foreach ($users as $user) {
         $table->addRow();
-        $table->addCell(6000, ['borderSize' => 6, 'borderColor' => '000000'])->addText($user->nama, ['alignment' => 'center']);
-        $table->addCell(2000, ['borderSize' => 6, 'borderColor' => '000000'])->addText($user->tanggal, ['alignment' => 'center']);
-        $table->addCell(3000, ['borderSize' => 6, 'borderColor' => '000000'])->addText($user->sekolah, ['alignment' => 'center']);
-        $table->addCell(4000, ['borderSize' => 6, 'borderColor' => '000000'])->addText($user->kegiatan, ['alignment' => 'center']);
+        $table->addCell(600)->addText($count++, ['alignment' => 'center']);
+
+         // Menambahkan gambar berdasarkan nama file yang ada di kolom 'image'
+
+        $imagePath = 'storage/image/'. $user->image;
+
+
+
+        $table->addCell(4000)->addText($user->nama, ['alignment' => 'center']);
+        $table->addCell(1500)->addText($user->tanggal, ['alignment' => 'center']);
+        $table->addCell(2500)->addText($user->sekolah, ['alignment' => 'center']);
+        $table->addCell(3000)->addText($user->kegiatan, ['alignment' => 'center']);
+        if($imagePath == "storage/image/". $user->image){
+            $table->addCell(2000)->addImage($imagePath, ['width' => 150, 'height' => 150, 'alignment' => 'center']);
+        }else{
+            $table->addCell(2000)->addText('Gambar Tidak Ditemukan', ['alignment' => 'center']);
+        }
     }
 
     // Menyimpan dokumen sebagai file .docx

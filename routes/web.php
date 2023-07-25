@@ -59,7 +59,6 @@ Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
 Route::get('send-email' , [MailController::class,'index']);
 
 
-
 // akhir admin
 
 // Siswa
@@ -84,9 +83,9 @@ Route::get('/grafik_docx', [JurnaladminController::class, 'grafik_docx'])->name(
 Route::resource('/login', App\Http\Controllers\LoginController::class);
 Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
 Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
-// Route::get('/percobaan', function () {
-//     return view('login.iyah');
-// });
+Route::get('/percobaan', function () {
+    return view('desain_pdf.percobaan');
+});
 
 // Route::get('/q', function () {
     //     return view('welcome');
