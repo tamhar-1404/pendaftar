@@ -82,7 +82,7 @@ Route::get('/grafik_docx', [JurnaladminController::class, 'grafik_docx'])->name(
 
 // login
 Route::resource('/login', App\Http\Controllers\LoginController::class);
-Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
+Route::post('/login', [LoginController::class, 'login'])->name('postlogin');
 Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
 // Route::get('/percobaan', function () {
 //     return view('login.iyah');
