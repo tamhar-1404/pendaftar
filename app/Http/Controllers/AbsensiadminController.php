@@ -31,6 +31,9 @@ class AbsensiadminController extends Controller
 
             $terima->appends(['cari' => $keyword]);
             return view('absensi_admin.index', compact('terima'));
+
+            $terima->appends(['cari' => $keyword]);
+            return view('absensi_admin.index', compact('item'));
         }
         $terima = ApprovalIzin::where('status', 'terimaabsen')
         ->get();

@@ -266,164 +266,168 @@
 
                     {{-- paginate --}}
 
-                </div>
-            </div>
-            <!-- end main content section -->
-            <!-- start footer section -->
-            {{-- <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
+                    <!-- end main content section -->
+                    <!-- start footer section -->
+                    {{-- <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
             © <span id="footer-year">2022</span>. Vristo All rights reserved.
         </p> --}}
-            <!-- end footer section -->
+                    <!-- end footer section -->
 
-        </div>
-        @forelse ($item as $modal)
-            {{-- modal --}}
-            <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
-                class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative w-full max-w-2xl max-h-full">
-                    <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <!-- Modal header -->
-                        <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                Detail Jurnal
-                            </h3>
-                            <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                data-modal-hide="staticModal{{ $modal->id }}">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="p-6 space-y-6">
-                            <div>
-                                <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
-                                    Nama
-                                </p>
-                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    {{ $modal->nama }}
-                                </p>
+                </div>
+                @forelse ($item as $modal)
+                    {{-- modal --}}
+                    <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
+                        class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative w-full max-w-2xl max-h-full">
+                            <!-- Modal content -->
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <!-- Modal header -->
+                                <div
+                                    class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                        Detail Jurnal
+                                    </h3>
+                                    <button type="button"
+                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                        data-modal-hide="staticModal{{ $modal->id }}">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="p-6 space-y-6">
+                                    <div>
+                                        <p
+                                            class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
+                                            Nama
+                                        </p>
+                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                            {{ $modal->nama }}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                            Tanggal
+                                        </p>
+                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                            {{ $modal->tanggal }}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                            Sekolah
+                                        </p>
+                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                            {{ $modal->sekolah }}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                            Kegiatan
+                                        </p>
+                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                            {{ $modal->kegiatan }}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                            Bukti
+                                        </p>
+                                        <img src="{{ asset('storage/image/' . $modal->image) }}" alt="">
+                                    </div>
+                                </div>
+                                <!-- Modal footer -->
+                                <div
+                                    class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                    <button data-modal-hide="staticModal{{ $modal->id }}" type="button"
+                                        class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                                </div>
                             </div>
-                            <div>
-                                <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                    Tanggal
-                                </p>
-                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    {{ $modal->tanggal }}
-                                </p>
-                            </div>
-                            <div>
-                                <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                    Sekolah
-                                </p>
-                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    {{ $modal->sekolah }}
-                                </p>
-                            </div>
-                            <div>
-                                <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                    Kegiatan
-                                </p>
-                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    {{ $modal->kegiatan }}
-                                </p>
-                            </div>
-                            <div>
-                                <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                    Bukti
-                                </p>
-                                <img src="{{ asset('storage/image/' . $modal->image) }}" alt="">
-                            </div>
-                        </div>
-                        <!-- Modal footer -->
-                        <div
-                            class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                            <button data-modal-hide="staticModal{{ $modal->id }}" type="button"
-                                class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                         </div>
                     </div>
-                </div>
-            </div>
-        @empty
-        @endforelse
+                @empty
+                @endforelse
 
 
 
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-        <script>
-            // Initialization for ES Users
-            import {
-                Modal,
-                Ripple,
-                initTE,
-            } from "tw-elements";
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+                <script>
+                    // Initialization for ES Users
+                    import {
+                        Modal,
+                        Ripple,
+                        initTE,
+                    } from "tw-elements";
 
-            initTE({
-                Modal,
-                Ripple
-            });
-        </script>
-        <script>
-            const instanceMode = te.Sidenav.getInstance(
-                document.getElementById("sidenav-2")
-            );
-            const modes = ["side"];
-
-            modes.forEach((mode) => {
-                const modeSwitch = document.getElementById(mode);
-                modeSwitch.addEventListener("click", () => {
-                    const instance = te.Sidenav.getInstance(
+                    initTE({
+                        Modal,
+                        Ripple
+                    });
+                </script>
+                <script>
+                    const instanceMode = te.Sidenav.getInstance(
                         document.getElementById("sidenav-2")
                     );
-                    instance.changeMode(mode);
-                    modes.forEach((el) => {
-                        if (el === mode) {
-                            ["text-primary-600", "border-primary-600"].forEach((item) =>
-                                modeSwitch.classList.remove(item)
+                    const modes = ["side"];
+
+                    modes.forEach((mode) => {
+                        const modeSwitch = document.getElementById(mode);
+                        modeSwitch.addEventListener("click", () => {
+                            const instance = te.Sidenav.getInstance(
+                                document.getElementById("sidenav-2")
                             );
-                            modeSwitch.className +=
-                                " bg-primary text-white hover:bg-primary-700 active:bg-primary-800 focus:bg-primary-700 border-transparent";
-                        } else {
-                            const node = document.getElementById(el);
-                            node.className += " text-primary-600 border-primary-600";
-                            [
+                            instance.changeMode(mode);
+                            modes.forEach((el) => {
+                                if (el === mode) {
+                                    ["text-primary-600", "border-primary-600"].forEach((item) =>
+                                        modeSwitch.classList.remove(item)
+                                    );
+                                    modeSwitch.className +=
+                                        " bg-primary text-white hover:bg-primary-700 active:bg-primary-800 focus:bg-primary-700 border-transparent";
+                                } else {
+                                    const node = document.getElementById(el);
+                                    node.className += " text-primary-600 border-primary-600";
+                                    [
 
-                            ].forEach((item) => node.classList.remove(item));
-                        }
+                                    ].forEach((item) => node.classList.remove(item));
+                                }
+                            });
+                        });
                     });
-                });
-            });
-        </script>
-        <script>
-            // Initialization for ES Users
-            import {
-                sidenav - 2,
-                initTE,
-            } from "tw-elements";
+                </script>
+                <script>
+                    // Initialization for ES Users
+                    import {
+                        sidenav - 2,
+                        initTE,
+                    } from "tw-elements";
 
-            initTE({
-                sidenav - 2
-            });
-        </script>
-        <script>
-            $(window).on('load', function() {
-                $('.spin_load').fadeOut();
-            });
-        </script>
-        <script>
-            // Fungsi untuk mencetak halaman
-            function printPage() {
-                window.print();
-            }
-        </script>
+                    initTE({
+                        sidenav - 2
+                    });
+                </script>
+                <script>
+                    $(window).on('load', function() {
+                        $('.spin_load').fadeOut();
+                    });
+                </script>
+                <script>
+                    // Fungsi untuk mencetak halaman
+                    function printPage() {
+                        window.print();
+                    }
+                </script>
 </body>
 
 </html>

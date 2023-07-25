@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Guru - Dashboad</title>
-    <script src="https://cdn.tailwindcss.com72"></script>
     <script>
         theme: {
             extend: {
@@ -14,10 +13,9 @@
                 }
             },
         },
-
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
+    <link href="/Admin/Assets/images/logo.png" rel="shortcut icon">
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
@@ -547,7 +545,8 @@
                                     <span
                                         class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Jurnal</span>
                                 </div>
-                                <div class="rtl:rotate-180" :class="{ '!rotate-90': activeDropdown === 'components' }">
+                                <div class="rtl:rotate-180"
+                                    :class="{ '!rotate-90': activeDropdown === 'components' }">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"
@@ -789,7 +788,8 @@
                                         class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Data
                                         Tables</span>
                                 </div>
-                                <div class="rtl:rotate-180" :class="{ '!rotate-90': activeDropdown === 'datatables' }">
+                                <div class="rtl:rotate-180"
+                                    :class="{ '!rotate-90': activeDropdown === 'datatables' }">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"
@@ -1112,8 +1112,7 @@
                         <h2
                             class="-mx-4 mb-1 flex items-center bg-white-light/30 py-3 px-7 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
                             <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor"
-                                stroke-width="1.5" fill="none" stroke-linecap="round"
-                                stroke-linejoin="round">
+                                stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg>
                             <span>SUPPORTS</span>
@@ -1157,13 +1156,15 @@
                                     <!-- Users Visit -->
                                     <div class="panel bg-gradient-to-r from-white-500 to-white-400">
                                         <div class="flex justify-between">
-                                            <div class="text-lg  text-black font-semibold ltr:mr-1 rtl:ml-1">Total Jurnal</div>
+                                            <div class="text-lg  text-black font-semibold ltr:mr-1 rtl:ml-1">Total
+                                                Jurnal</div>
                                             <div x-data="dropdown" @click.outside="open = false"
                                                 class="dropdown">
                                             </div>
                                         </div>
                                         <div class="mt-5 flex items-center">
-                                            <div class="text-1xl text-black  font-bold ltr:mr-3 rtl:ml-3">{{$jurnal}}</div>
+                                            <div class="text-1xl text-black  font-bold ltr:mr-3 rtl:ml-3">
+                                                {{ $jurnal }}</div>
                                         </div>
                                     </div>
 
@@ -1174,7 +1175,8 @@
                                                 Siswa</div>
                                         </div>
                                         <div class="mt-5 flex items-center">
-                                            <div class="text-1xl text-black  font-bold ltr:mr-3 rtl:ml-3">{{$siswa}}</div>
+                                            <div class="text-1xl text-black  font-bold ltr:mr-3 rtl:ml-3">
+                                                {{ $siswa }}</div>
                                         </div>
                                     </div>
 
@@ -1188,7 +1190,8 @@
                                             </div>
                                         </div>
                                         <div class="mt-5 flex items-center">
-                                            <div class="text-1xl text-black font-bold ltr:mr-3 rtl:ml-3">{{$absen}}</div>
+                                            <div class="text-1xl text-black font-bold ltr:mr-3 rtl:ml-3">
+                                                {{ $absen }}</div>
                                         </div>
                                     </div>
 
@@ -1224,17 +1227,16 @@
                             </div>
                             {{-- end judul grafik --}}
                             {{-- grafik --}}
-                            <p class="text-lg dark:text-white-light/90"> <span
-                                    class="ml-2 text-primary"></span></p>
+                            <p class="text-lg dark:text-white-light/90"> <span class="ml-2 text-primary"></span></p>
                             {{-- grafik --}}
                             <div class="" id="grafik_guru"
-                            class=" w-80% h-35 mx-3 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
-                            <div class="w-full px-4 mt-6">
+                                class=" w-80% h-35 mx-3 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
+                                <div class="w-full px-4 mt-6">
 
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- end grafik --}}
+                            {{-- end grafik --}}
                             {{-- end grafik --}}
                         </div>
 
@@ -1259,7 +1261,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($data_siswa as $siswa)
+                                                @foreach ($data_siswa as $siswa)
                                                     <tr>
                                                         <td>{{ $siswa->id }}</td>
                                                         <td>{{ $siswa->name }}</td>
@@ -1280,17 +1282,17 @@
             <section>
                 <div class="swiper mySwiper container w-full">
                     <div class="swiper-wrapper content">
-                        @forelse ($mou as $data )
-                        <div class="swiper-slide card dark:bg-black">
-                            <div class="card-content ">
-                                <div class="image">
-                                    <img src="{{asset('storege/mou/. $logo')}}" alt="" width="180">
+                        @forelse ($mou as $data)
+                            <div class="swiper-slide card dark:bg-black">
+                                <div class="card-content ">
+                                    <div class="image">
+                                        <img src="{{ asset('storege/mou/. $logo') }}" alt=""
+                                            width="180">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
                         @empty
-
                         @endforelse
 
                     </div>
@@ -1460,34 +1462,35 @@
                 <div class="swiper bg-white p-1 dark:bg-dark dark:bg-opacity-[0.08]" id="slider5"
                     x-data="carousel()">
                     <div class="swiper-wrapper">
-                       @forelse ($berita as $row )
-                       <div class="card">
-                        <img class="h-72 w-full rounded-lg object-cover object-center max-w-xs transition duration-300 ease-in-out hover:scale-110"
-                            src="{{ asset('storage/fotoberita/' . $row->foto) }}" alt="image" />
-                            <div class="absolute inset-0 flex h-full w-full flex-col justify-end">
-                                <div
-                                class="space-y-1.5 rounded-lg bg-gradient-to-t from-[#19213299] via-[#19213266] to-transparent px-4 pb-3 pt-12">
-                                    <div class="line-clamp-2">
-                                        <a href="{{ route('berita_guru.show', $row->id) }}" class="text-base font-medium text-white">
-                                            {{ $row->judul }}
-                                        </a>
-                                    </div>
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center text-xs text-slate-200">
-                                            <p class="flex items-center space-x-1">
-                                                <span class="line-clamp-1 uppercase">{{ $row->kategori }}</span>
-                                            </p>
-                                            <div class="mx-3 my-0.5 w-px self-stretch bg-white/20"></div>
-                                            <p class="shrink-0 text-tiny+">{{ $row->created_at->diffForHumans() }}</p>
+                        @forelse ($berita as $row)
+                            <div class="card">
+                                <img class="h-72 w-full rounded-lg object-cover object-center max-w-xs transition duration-300 ease-in-out hover:scale-110"
+                                    src="{{ asset('storage/fotoberita/' . $row->foto) }}" alt="image" />
+                                <div class="absolute inset-0 flex h-full w-full flex-col justify-end">
+                                    <div
+                                        class="space-y-1.5 rounded-lg bg-gradient-to-t from-[#19213299] via-[#19213266] to-transparent px-4 pb-3 pt-12">
+                                        <div class="line-clamp-2">
+                                            <a href="{{ route('berita_guru.show', $row->id) }}"
+                                                class="text-base font-medium text-white">
+                                                {{ $row->judul }}
+                                            </a>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center text-xs text-slate-200">
+                                                <p class="flex items-center space-x-1">
+                                                    <span class="line-clamp-1 uppercase">{{ $row->kategori }}</span>
+                                                </p>
+                                                <div class="mx-3 my-0.5 w-px self-stretch bg-white/20"></div>
+                                                <p class="shrink-0 text-tiny+">
+                                                    {{ $row->created_at->diffForHumans() }}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                       @empty
-
-                       @endforelse
+                        @empty
+                        @endforelse
                     </div>
                     <a href="javascript:;"
                         class="swiper-button-prev-ex5 grid place-content-center ltr:left-2 rtl:right-2 p-1 transition text-primary hover:text-white border border-primary hover:border-primary hover:bg-transparent rounded-full absolute z-[999] top-[44%] -translate-y-1/2">
@@ -1573,25 +1576,33 @@
         var options = {
             series: [{
                 name: 'Izin & Sakit',
-                data: [{{$izin_jan}},{{$izin_feb}},{{$izin_mar}},{{$izin_apr}},{{$izin_mei}},
-                {{$izin_jun}},{{$izin_jul}},{{$izin_aug}},{{$izin_sep}},{{$izin_okt}},{{$izin_nov}},{{$izin_des}}
-            ]
+                data: [{{ $izin_jan }}, {{ $izin_feb }}, {{ $izin_mar }}, {{ $izin_apr }},
+                    {{ $izin_mei }},
+                    {{ $izin_jun }}, {{ $izin_jul }}, {{ $izin_aug }}, {{ $izin_sep }},
+                    {{ $izin_okt }}, {{ $izin_nov }}, {{ $izin_des }}
+                ]
             }, {
                 name: 'Hadir',
-                data: [{{$Hadir_jan}},{{$Hadir_feb}},{{$Hadir_mar}},{{$Hadir_apr}},{{$Hadir_mei}},
-                {{$Hadir_jun}},{{$Hadir_jul}},{{$Hadir_aug}},{{$Hadir_sep}},{{$Hadir_okt}},{{$Hadir_nov}},{{$Hadir_des}}
-            ]
-            },{
+                data: [{{ $Hadir_jan }}, {{ $Hadir_feb }}, {{ $Hadir_mar }}, {{ $Hadir_apr }},
+                    {{ $Hadir_mei }},
+                    {{ $Hadir_jun }}, {{ $Hadir_jul }}, {{ $Hadir_aug }}, {{ $Hadir_sep }},
+                    {{ $Hadir_okt }}, {{ $Hadir_nov }}, {{ $Hadir_des }}
+                ]
+            }, {
                 name: 'telat',
-                data: [{{$Telat_jan}},{{$Telat_feb}},{{$Telat_mar}},{{$Telat_apr}},{{$Telat_mei}},
-                {{$Telat_jun}},{{$Telat_jul}},{{$Telat_aug}},{{$Telat_sep}},{{$Telat_okt}},{{$Telat_nov}},{{$Telat_des}}
-            ]
-            },{
+                data: [{{ $Telat_jan }}, {{ $Telat_feb }}, {{ $Telat_mar }}, {{ $Telat_apr }},
+                    {{ $Telat_mei }},
+                    {{ $Telat_jun }}, {{ $Telat_jul }}, {{ $Telat_aug }}, {{ $Telat_sep }},
+                    {{ $Telat_okt }}, {{ $Telat_nov }}, {{ $Telat_des }}
+                ]
+            }, {
                 name: 'alfa',
-                data: [{{$Alfa_jan}},{{$Alfa_feb}},{{$Alfa_mar}},{{$Alfa_apr}},{{$Alfa_mei}},
-                {{$Alfa_jun}},{{$Alfa_jul}},{{$Alfa_aug}},{{$Alfa_sep}},{{$Alfa_okt}},{{$Alfa_nov}},{{$Alfa_des}}
-            ]
-            },],
+                data: [{{ $Alfa_jan }}, {{ $Alfa_feb }}, {{ $Alfa_mar }}, {{ $Alfa_apr }},
+                    {{ $Alfa_mei }},
+                    {{ $Alfa_jun }}, {{ $Alfa_jul }}, {{ $Alfa_aug }}, {{ $Alfa_sep }},
+                    {{ $Alfa_okt }}, {{ $Alfa_nov }}, {{ $Alfa_des }}
+                ]
+            }, ],
             chart: {
                 type: 'bar',
                 height: 400,
@@ -1993,28 +2004,28 @@
 
             }));
             Alpine.data('basic', () => ({
-            datatable: null,
-            init() {
-                this.datatable = new simpleDatatables.DataTable('#myTable', {
-                    sortable: true,
-                    searchable: false,
-                    perPage: 10,
-                    perPageSelect: [5, 10, 15, 20, 25, 30],
-                    firstLast: true,
-                    firstText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                    lastText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                    prevText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                    nextText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                    labels: {
-                        perPage: '{select}',
-                    },
-                    layout: {
-                        top: '{search}',
-                        bottom: '{info}{select}{pager}',
-                    },
-                });
-            },
-        }));
+                datatable: null,
+                init() {
+                    this.datatable = new simpleDatatables.DataTable('#myTable', {
+                        sortable: true,
+                        searchable: false,
+                        perPage: 10,
+                        perPageSelect: [5, 10, 15, 20, 25, 30],
+                        firstLast: true,
+                        firstText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                        lastText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                        prevText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                        nextText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                        labels: {
+                            perPage: '{select}',
+                        },
+                        layout: {
+                            top: '{search}',
+                            bottom: '{info}{select}{pager}',
+                        },
+                    });
+                },
+            }));
 
         });
     </script>
