@@ -179,7 +179,7 @@
                                         Pagi
                                     </button>
 
-                                     <button type="button"  class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold  " style="background-color: blue; color:white">
+                                     <button type="button"  class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold  " style="background-color: rgb(147 197 253); color:white">
                                         Sore
                                     </button>
 
