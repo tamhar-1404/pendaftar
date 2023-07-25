@@ -79,7 +79,7 @@
                         </h2>
                     </div>
                 </div>
-                <form action="{{ route('lupapassword.update') }}" method="POST">
+                <form action="{{ route('password.update') }}" method="POST">
                     @csrf
                     <div class="mt-28">
                         @if (session('sukses'))
@@ -116,7 +116,7 @@
                         <span class="relative mt-1.5 flex">
                             <input id="email" name="email"
                                 class="form-input peer w-full rounded-lg bg-slate-150 px-3 py-2 ring-primary/50 placeholder:text-slate-400 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:ring-accent/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
-                                value="{{ $request->email }}" type="hidden" />
+                                value="{{ $email }}" type="hidden" />
                         </span>
                         <div class="mt-4 space-y-4">
                             <label class="block">

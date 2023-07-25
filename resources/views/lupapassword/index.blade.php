@@ -86,7 +86,7 @@
                 <form action="{{ route('lupapassword.store') }}" method="POST">
                     @csrf
                     <div class="mt-36">
-                        @if (session('sukses'))
+                        @if (session('success'))
                             <div class="alert flex overflow-hidden rounded-lg border border-info text-info">
                                 <div class="bg-info p-3 text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
@@ -95,7 +95,7 @@
                                             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </div>
-                                <div class="px-4 py-3 sm:px-5">{{ session('sukses') }}</div>
+                                <div class="px-4 py-3 sm:px-5">{{ session('success') }}</div>
                             </div>
                         @endif
                         @if ($errors->any())

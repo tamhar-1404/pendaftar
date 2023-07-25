@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 class LupaPasswordController extends Controller
 {
     public function index(){
-        return view('Lupapassword.index');
+        return view('lupapassword.index');
     }
 
     public function kode(){
@@ -30,7 +30,7 @@ class LupaPasswordController extends Controller
         );
 
         return $status === Password::RESET_LINK_SENT
-            ? back()->with(['status', __($status)])
+            ? back()->with('success', __($status))
             : back()->withInput($request->only('email'))
                     ->withErrors(['email'=>__($status)]);
     }
@@ -44,7 +44,7 @@ class LupaPasswordController extends Controller
         $request->validate([
             'token' => ['required'],
             'email' => ['required','email'],
-            'password' => ['required', 'confirmed'],
+            'password' => ['required', 'confirmed', 'min:6'],
 
         ]);
         $status = Password::reset(
