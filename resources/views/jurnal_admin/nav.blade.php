@@ -47,19 +47,12 @@
                 <a class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
                     href="#" id="navbarDropdownMenuLink" role="button" data-te-dropdown-toggle-ref
                     aria-expanded="false">
-                    <img src="https://tecdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-full"
-                        style="height: 22px; width: 22px" alt="Avatar" loading="lazy" />
+                    <img src="{{ asset('admin/assets/images/Logo.png') }}" class="rounded-full"
+                        style="height: 32px; width: 32px" alt="Avatar" loading="lazy" />
                 </a>
-                <ul class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
+                <ul class="absolute left-auto right-0 z-[1000] float-left m-0 mt-5 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
                     aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>
-                    <li>
-                        <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
-                            href="#" data-te-dropdown-item-ref>My profile</a>
-                    </li>
-                    <li>
-                        <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
-                            href="#" data-te-dropdown-item-ref>Settings</a>
-                    </li>
+
                     <li>
                         <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
                             href="{{ route('logout') }}" data-te-dropdown-item-ref>Logout</a>

@@ -24,6 +24,9 @@ class SpController extends Controller
             $keyword = $request->cari;
             $data = Sp::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('deskripsi', 'LIKE', '%' . $keyword . '%')->paginate(3);
             return view('sp.index', compact('data'));
+
+            $data->appends(['cari' => $keyword]);
+            return view('sp.index', compact('data'));
         }
 
         $data = Sp::latest()->paginate(3);

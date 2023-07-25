@@ -155,29 +155,10 @@
                             @endforelse
                         </tbody>
                     </table>
+                    {{ $tatatertib->appends(['cari' => request('cari')])->links() }}
                 </div>
 
-                <div
-                    class="flex flex-col justify-between space-y-4 px-4 py-4 sm:flex-row sm:items-center sm:space-y-0 sm:px-5">
-                    <div class="flex items-center space-x-2 text-xs+">
-                        <span>Show</span>
-                        <label class="block">
-                            <select
-                                class="form-select rounded-full border border-slate-300 bg-white px-2 py-1 pr-6 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                                <option>10</option>
-                                <option>30</option>
-                                <option>50</option>
-                            </select>
-                        </label>
-                        <span>entries</span>
-                    </div>
 
-                    <div class="pagination">
-                        <div
-                            class="flex h-8 min-w-[2rem] rounded-lg px-3 leading-tight transition-colors hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300/80 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-                            {{ $tatatertib->links() }}</div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
