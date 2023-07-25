@@ -30,7 +30,7 @@ class JurnalsiswaController extends Controller
         $Jurnalsiswa = Jurnalsiswa::all();
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $item = Jurnalsiswa::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(5);
+            $item = Jurnalsiswa::where('tanggal', 'LIKE', '%' . $keyword . '%')->orWhere('status', 'LIKE', '%' . $keyword . '%')->paginate(5);
             return view('jurnal_siswa.index', compact('item'));
     
             $item->appends(['cari' => $keyword]);
