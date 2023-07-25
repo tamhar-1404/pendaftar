@@ -2277,7 +2277,7 @@
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
+            <div class="grid grid-cols-3 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
                 @forelse ($alumni as $alumni)
                     <div class="card">
                         <div class="p-2 text-right">
@@ -2309,6 +2309,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                     @empty
                         <div class="flex justify-center items-center">
                             <img src="/admin/noData.png" alt="" class="m-auto">

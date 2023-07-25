@@ -46,6 +46,36 @@
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     <script defer src="siswa/js/sweetalert.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+    <style>
+        /* Menyembunyikan tombol cetak saat mencetak */
+        @media print {
+            .kamu-tak-diajak {
+                display: none;
+                border: none;
+            }
+
+            .print-container {
+                position: absolute;
+                top: 20px;
+                left: 0;
+            }
+        }
+
+/*
+        .button_pdf:hover{
+            background-color: red;
+        }
+        .button_print:hover{
+            background-color: blue;
+        }
+        .button_izin:hover{
+            background-color: #f5e50c;
+        }
+        .button_absen:hover{
+            background-color: #02e802;
+            color: white;
+        } */
+    </style>
 </head>
 
 <body x-data="main"
@@ -131,8 +161,10 @@
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M12 4.5v15m7.5-7.5h-15" />
                                 </svg>
+                                <p class="kamu-tak-diajak">
 
-                                Tambah
+                                    Tambah
+                                </p>
                             </button>
 
                             {{-- modal --}}
@@ -202,19 +234,19 @@
                                 {{-- serch dan filter --}}
                                 <div class="kamu-tak-diajak flex justify-start items-center">
                                     {{-- serch --}}
-                                    <div class="mr-4 ">
-                                        <form action="">
-                                            <label class="relative hidden sm:flex">
+                                    <div class="mr-4 kamu-tak-diajak">
+                                        <form action="" class="kamu-tak-diajak">
+                                            <label class="relative hidden sm:flex kamu-tak-diajak">
                                                 <input
-                                                    class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                    class="kamu-tak-diajak form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                                     placeholder="Search users..." type="text" name="cari"
                                                     value="{{ request('cari') }}" />
                                                 <span
-                                                    class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                                                    class=" pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent kamu-tak-diajak">
                                                     <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-4 w-4 transition-colors duration-200"
+                                                        class="h-4 w-4 transition-colors duration-200 kamu-tak-diajak"
                                                         fill="currentColor" viewBox="0 0 24 24">
-                                                        <path
+                                                        <path class="kamu-tak-diajak"
                                                             d="M3.316 13.781l.73-.171-.73.171zm0-5.457l.73.171-.73-.171zm15.473 0l.73-.171-.73.171zm0 5.457l.73.171-.73-.171zm-5.008 5.008l-.171-.73.171.73zm-5.457 0l-.171.73.171-.73zm0-15.473l-.171-.73.171.73zm5.457 0l.171-.73-.171.73zM20.47 21.53a.75.75 0 101.06-1.06l-1.06 1.06zM4.046 13.61a11.198 11.198 0 010-5.115l-1.46-.342a12.698 12.698 0 000 5.8l1.46-.343zm14.013-5.115a11.196 11.196 0 010 5.115l1.46.342a12.698 12.698 0 000-5.8l-1.46.343zm-4.45 9.564a11.196 11.196 0 01-5.114 0l-.342 1.46c1.907.448 3.892.448 5.8 0l-.343-1.46zM8.496 4.046a11.198 11.198 0 015.115 0l.342-1.46a12.698 12.698 0 00-5.8 0l.343 1.46zm0 14.013a5.97 5.97 0 01-4.45-4.45l-1.46.343a7.47 7.47 0 005.568 5.568l.342-1.46zm5.457 1.46a7.47 7.47 0 005.568-5.567l-1.46-.342a5.97 5.97 0 01-4.45 4.45l.342 1.46zM13.61 4.046a5.97 5.97 0 014.45 4.45l1.46-.343a7.47 7.47 0 00-5.568-5.567l-.342 1.46zm-5.457-1.46a7.47 7.47 0 00-5.567 5.567l1.46.342a5.97 5.97 0 014.45-4.45l-.343-1.46zm8.652 15.28l3.665 3.664 1.06-1.06-3.665-3.665-1.06 1.06z" />
                                                     </svg>
                                                 </span>
@@ -222,10 +254,10 @@
                                         </form>
                                     </div>
                                     {{-- filter --}}
-                                    <div class="border-2 rounded-full border-gray-400 flex items-center p-1 mr-2 ">
+                                    <div class="kamu-tak-diajak border-2 rounded-full border-gray-400 flex items-center p-1 mr-2 ">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="  w-5 h-5">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5" stroke="currentColor" class="  w-5 h-5 kamu-tak-diajak">
+                                            <path stroke-linecap="round" stroke-linejoin="round" class="kamu-tak-diajak"
                                                 d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
                                         </svg>
                                     </div>
@@ -251,7 +283,7 @@
                                     </button>
                                 </a>
 
-                                <a href="/download-pdf-JurnalSiswa">
+                                <a href="/download-pdf-JurnalSiswa" class="kamu-tak-diajak">
                                     <button
                                         class="flex gap-2 text-white bg-red-600 hover:bg-red-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -269,7 +301,7 @@
 
 
                                 <button id="printButton" onclick="printPage()"
-                                    class="flex gap-2  text-white bg-gray-600 hover:bg-gray-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                                    class=" kamu-tak-diajak flex gap-2  text-white bg-gray-600 hover:bg-gray-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                                     @click="exportTable('json')" @click="printTable">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ltr:mr-2 rtl:ml-2">
@@ -293,7 +325,9 @@
                                         <path opacity="0.5" d="M13 19H9" stroke="currentColor" stroke-width="1.5"
                                             stroke-linecap="round" />
                                     </svg>
-                                    PRINT
+                                    <p class="kamu-tak-diajak">
+                                        PRINT
+                                    </p>
                                 </button>
 
                             </div>
@@ -305,7 +339,7 @@
                             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                     <div class="overflow-hidden">
-                                        <table id="data-table" class="min-w-full text-left text-sm font-light">
+                                        <table id="data-table" class="min-w-full text-left text-sm font-light print-container">
                                             <thead class="border-b font-medium dark:border-neutral-500 ">
                                                 <tr class="">
                                                     <th scope="col" class="px-6 py-2">#</th>
@@ -314,7 +348,7 @@
                                                     <th scope="col" class="px-6 py-2">SEKOLAH</th>
                                                     <th scope="col" class="px-6 py-2">KEGIATAN</th>
                                                     <th scope="col" class="px-6 py-2 ">BUKTI</th>
-                                                    <th scope="col" class="px-6 py-2">AKSI</th>
+                                                    <th scope="col" class="px-6 py-2 kamu-tak-diajak">AKSI</th>
 
                                                 </tr>
                                             </thead>
@@ -339,7 +373,7 @@
                                                                 src="{{ asset('storage/image/' . $items->image) }}"
                                                                 width="100px" alt="">
                                                         </td>
-                                                        <td class="whitespace-nowrap px-4 py-4">
+                                                        <td class="whitespace-nowrap px-4 py-4  kamu-tak-diajak">
                                                             <div class="flex gap-2">
                                                                 <a href="#">
                                                                     <div class="w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
@@ -351,7 +385,7 @@
                                                                     </div>
                                                                 </a>
                                                                 <a href="#">
-                                                                    <div class="w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
+                                                                    <div class=" w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
                                                                         data-te-toggle="modal"
                                                                         data-modal-target="staticModal1{{ $items->id }}"
                                                                         data-modal-toggle="staticModal1{{ $items->id }}" ">
@@ -731,6 +765,12 @@
                 preflight: false,
             },
         };
+    </script>
+    <script>
+          // Fungsi untuk mencetak halaman
+          function printPage() {
+            window.print();
+        }
     </script>
 
 

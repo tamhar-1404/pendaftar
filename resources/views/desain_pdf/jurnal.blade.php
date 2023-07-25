@@ -30,7 +30,7 @@
     <div class="flex justify-center mt-3 mb-5">
         <h1 class=" text-2xl font-bold">Jurnal Siswa {{Auth::user()->name}}</h1>
     </div>
-    <div class="flex justify-center">
+    <div class="flex justify-center" >
         <table class=" bg-white ">
             <thead class="bg-gray-400" style="background-color: gray">
                 <tr class="" style="background-color: gray; color:white;">
