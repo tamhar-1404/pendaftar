@@ -20,7 +20,6 @@ class LupaPasswordController extends Controller
         return view('Lupapassword.kode');
     }
 
-
     public function store(Request $request){
         $request->validate([
             'email' => 'required|email'
