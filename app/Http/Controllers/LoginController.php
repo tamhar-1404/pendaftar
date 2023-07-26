@@ -69,7 +69,7 @@ class LoginController extends Controller
                 if($tanggal > now()){
                     return redirect()->back()->with('error', 'anda masih belum masuk magang');;
                 }
-                return redirect()->route('siswamagang.index');
+                return redirect()->route('Siswamagang.index');
 
             } elseif ($user->role == 'guru') {
                 return redirect()->route('guru.index');
@@ -245,7 +245,7 @@ public function store(Request $request)
             return redirect()->route('dudi.index')->with('success','Berhasil Login Sebagai Admin');
         }
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Siswa'])) {
-            return redirect()->route('siswamagang.index')->with('success','Berhasil Login Sebagai Siswa');
+            return redirect()->route('Siswamagang.index')->with('success','Berhasil Login Sebagai Siswa');
         }
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'Guru'])) {
             return redirect()->route('guru.index')->with('success','Berhasil Login Sebagai Guru');
