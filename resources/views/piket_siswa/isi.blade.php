@@ -24,7 +24,7 @@
                         <div class="step active " >
                             <div class="flex gap-4 mb-3 justify-between" >
                                 <div class="flex gap-4 mb-3">
-                                    <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold  {{request()->routeIs('piket.index') ? 'bg-[#24AEE4] text-white' : ''}}">
+                                    <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold  " style="background-color: rgb(147 197 253); color:white;  ">
                                         Pagi
                                     </button>
 
@@ -175,19 +175,18 @@
                         <div class="step" >
                             <div class="flex gap-4 mb-3 justify-between" >
                                 <div class="flex gap-4 mb-3">
-                                    <button type="button" id="prevStep2" class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
+                                    <button type="button" id="prevStep2" class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold">
                                         Pagi
                                     </button>
 
-                                    <button class="outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold bg-[#24AEE4] text-white   ">
+                                     <button type="button"  class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold  " style="background-color: rgb(147 197 253); color:white">
                                         Sore
                                     </button>
 
-                                    <a href="{{route('laporan_piket.index')}}">
-                                    <button class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
+
+                                    <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold  ">
                                         Laporan
                                     </button>
-                                    </a>
                                 </div>
 
                             </div>
@@ -445,9 +444,7 @@
             <!-- end main content section -->
 
             <!-- start footer section -->
-            <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
-                © <span id="footer-year">2022</span>. Vristo All rights reserved.
-            </p>
+
             <!-- end footer section -->
               <!-- Main modal -->
          <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -482,11 +479,11 @@
                                 </select>
                             </div> --}}
                             <div>
-                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi    </label>
-                                <textarea name="deskripsi" id="" cols="40" rows="5" class=" rounded-lg"></textarea>
+                                <label for="desripsi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi    </label>
+                                <textarea name="deskripsi" id="" cols="" rows="5" class=" rounded-lg w-full"></textarea>
                             </div>
                             <div>
-                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti    </label>
+                                <label for="file" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti    </label>
                                <input type="file" name="bukti" class=" rounded-lg outline outline-offset-0 outline-gray-400 w-full">
                             </div>
 
@@ -507,4 +504,4 @@
         </div>
     </div>
 </div>
-<!--Verically centered scrollable modal-->
+

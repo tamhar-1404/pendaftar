@@ -97,18 +97,101 @@
                 <div class="panel">
                     <div class="flex justify-between ">
                         {{-- serch dan filter --}}
-                        <div class="flex justify-start items-center">
+                        <div class="flex justify-start items-center ">
                             {{-- filter --}}
-                            {{--  <div class="border-2 rounded-full border-gray-400 flex items-center mr-2 ">
-                                <span class="mr-1 ml-3">
-                                    filter
-                                </span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class=" mr-3 w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
-                                </svg>
-                            </div>  --}}
+                            <div id="buttonContainer" class="mb-4">
+                                <div id="openModalBtn" class="border-2 rounded-full text-white border-gray-400 flex items-center mr-2 py-2 px-2 mb-1" onclick="openModal()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <!-- Modal -->
+                                <div  id="modal" class="fixed left-4 top-4 flex items-center justify-center z-50 hidden">
+                                    <div class="w-96 bg-white rounded-lg p-6 shadow-lg">
+                                        <div class="modal-header mb-4">
+                                            <div class="flex items-center justify-between mb-4">
+                                                <h5 class="text-xl font-bold">Filter Approval Siswa</h5>
+                                                <button onclick="closeModal()" class="text-gray-500 ml-auto focus:outline-none">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="max-h-[250px] overflow-scroll">
+                                            <div class="modal-body mt-5">
+                                                <label class="flex flex-col mb-2">
+                                                    <p class="text-base mb-3">Status</p>
+                                                    <div class="w-full grid grid-cols-2 gap-2" id="statusOptions">
+                                                        <!-- Data status akan dimuat menggunakan AJAX -->
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="modal-footer mt-4 flex justify-end gap-2">
+                                                <button class="bg-white py-1 px-3 rounded-lg border border-gray-200 text-gray-300">Atur Ulang</button>
+                                                <button onclick="applyFilter()" class="bg-blue-400 py-1 px-3 rounded-lg border border-gray-200 text-white">Pakai</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{-- script filter --}}
+                            <script>
+                                function openModal() {
+                                    //  
+                                    fetch('/data-approval')
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            // Populate data ke dalam modal
+                                            const statusOptions = document.getElementById('statusOptions');
+                                            statusOptions.innerHTML = ''; // Hapus konten sebelumnya jika ada
+
+                                            data.forEach(approval => {
+                                                const checkbox = document.createElement('input');
+                                                checkbox.type = 'checkbox';
+                                                checkbox.className = 'hidden';
+                                                checkbox.onclick = () => changeColor(checkbox);
+
+                                                const checkboxLabel = document.createElement('span');
+                                                checkboxLabel.className = 'border text-sm font-thin w-full border-gray-300 rounded px-2 py-1 bg-white text-gray-700 max-w-xs p-3';
+                                                checkboxLabel.innerText = approval.status; // Ganti dengan kolom yang sesuai dengan status yang Anda inginkan
+
+                                                statusOptions.appendChild(checkbox);
+                                                statusOptions.appendChild(checkboxLabel);
+                                            });
+                                        });
+
+                                    // Tentukan posisi modal berdasarkan posisi tombol SVG
+                                    const buttonContainer = document.getElementById('buttonContainer');
+                                    const modal = document.getElementById('modal');
+                                    const modalWidth = 400; // Atur lebar modal sesuai kebutuhan Anda
+
+                                    const modalLeft = buttonContainer.offsetLeft - (modalWidth - buttonContainer.offsetWidth) / 2;
+                                    const modalTop = buttonContainer.offsetTop + buttonContainer.offsetHeight + 10; // Jarak vertikal antara tombol dan modal
+
+                                    modal.style.left = `${modalLeft}px`;
+                                    modal.style.top = `${modalTop}px`;
+
+                                    // Tampilkan modal
+                                    modal.classList.remove('hidden');
+                                }
+
+                                function closeModal() {
+                                    // Sembunyikan modal
+                                    const modal = document.getElementById('modal');
+                                    modal.classList.add('hidden');
+                                }
+
+                                function changeColor(checkbox) {
+                                    // Implementasikan fungsi untuk mengubah warna label checkbox sesuai dengan status checkbox
+                                    // Misalnya, jika checkbox terpilih, ubah warna label menjadi berbeda
+                                }
+
+                                function applyFilter() {
+                                    // Implementasikan fungsi untuk menerapkan filter dengan mengambil opsi-opsi yang dipilih oleh pengguna
+                                    // Lakukan AJAX untuk mengambil data sesuai filter dan tampilkan data yang sesuai di halaman
+                                }
+                            </script>
                             {{-- serch --}}
                             <form action="{{ route('absensi_admin.create') }}">
                                 <label class="relative hidden sm:flex">
