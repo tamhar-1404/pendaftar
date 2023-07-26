@@ -81,7 +81,7 @@ Route::get('/grafik_docx', [JurnaladminController::class, 'grafik_docx'])->name(
 
 // login
 Route::resource('/login', App\Http\Controllers\LoginController::class);
-Route::post('/login', [LoginController::class, 'login'])->name('postlogin');
+Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
 Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
 Route::get('/percobaan', function () {
     return view('desain_pdf.percobaan');
@@ -177,7 +177,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
 //lupa password
-Route::resource('Lupapassword', App\Http\Controllers\LupaPasswordController::class);
+Route::resource('lupapassword', App\Http\Controllers\LupaPasswordController::class);
 Route::get('/reset', [LupaPasswordController::class , 'reset'])->name('reset');
 Route::get('/kodek', [LupaPasswordController::class , 'kode'])->name('kodek');
 Route::post('/reset-password', [LupaPasswordController::class, 'update'])->name('password.update');
