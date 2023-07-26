@@ -149,7 +149,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('piket_siswa', App\Http\Controllers\PiketSiswaController::class);
         Route::resource('chat_siswa', App\Http\Controllers\ChatSiswaController::class);
         Route::resource('jurnal_siswa', App\Http\Controllers\JurnalsiswaController::class);
-        Route::resource('siswamagang', App\Http\Controllers\SiswamagangController::class);
+        Route::resource('Siswamagang', App\Http\Controllers\SiswamagangController::class);
         Route::resource('/History_topup', App\Http\Controllers\HistoryTopupController::class);
         Route::get('/siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa'])->name('siswamagang_siswa');
         Route::get('profil_siswa', [ProfilsiswaController::class, 'index'])->name('profile_siswa');
@@ -177,7 +177,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
 //lupa password
-Route::resource('lupapassword', App\Http\Controllers\LupaPasswordController::class);
+Route::resource('Lupapassword', App\Http\Controllers\LupaPasswordController::class);
 Route::get('/reset', [LupaPasswordController::class , 'reset'])->name('reset');
 Route::get('/kodek', [LupaPasswordController::class , 'kode'])->name('kodek');
 Route::post('/reset-password', [LupaPasswordController::class, 'update'])->name('password.update');

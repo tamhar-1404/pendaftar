@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 class LupaPasswordController extends Controller
 {
     public function index(){
-        return view('lupapassword.index');
+        return view('Lupapassword.index');
     }
 
     public function kode(){
@@ -42,7 +42,7 @@ class LupaPasswordController extends Controller
 
     public function reset(string $token, Request $request){
         $email = $request->email;
-        return view('lupapassword.resetpassword', compact('token', 'email'));
+        return view('Lupapassword.resetpassword', compact('token', 'email'));
     }
 
     public function update(Request $request){

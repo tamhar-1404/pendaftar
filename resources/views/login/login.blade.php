@@ -288,7 +288,7 @@
                                     }
                                 </script>
                             </label>
-                            <a href="{{ route('lupapassword.index') }}"
+                            <a href="{{ route('Lupapassword.index') }}"
                                 class="text-xs text-slate-400 transition-colors line-clamp-1 hover:text-slate-800 focus:text-slate-800 dark:text-navy-300 dark:hover:text-navy-100 dark:focus:text-navy-100">Lupa
                                 Password?</a>
                         </div>
