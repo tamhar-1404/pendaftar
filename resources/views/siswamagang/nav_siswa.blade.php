@@ -25,7 +25,7 @@
                  class="flex items-center space-x-1.5 ltr:ml-auto rtl:mr-auto rtl:space-x-reverse dark:text-[#d0d2d6] sm:flex-1 ltr:sm:ml-0 sm:rtl:mr-0 lg:space-x-2">
                  <div class="sm:ltr:mr-auto sm:rtl:ml-auto" x-data="{ search: false }" @click.outside="search = false">
 
-                    
+
                  </div>
                  <div>
                      <a href="javascript:;" x-cloak x-show="$store.app.theme === 'light'" href="javascript:;"

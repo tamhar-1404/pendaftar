@@ -34,7 +34,7 @@ class AbsensiSiswaController extends Controller
             $telat = ApprovalIzin::where('keterangan', 'telat')->count();
             $hadir = ApprovalIzin::where('keterangan', 'hadir')->count() + $telat;
             $izin = ApprovalIzin::where('keterangan', 'izin')->count();
-            
+
             $sakit = ApprovalIzin::where('keterangan', 'sakit')->count();
             $alfa = ApprovalIzin::where('keterangan', 'alfa')->count();
             $izinsakit = $izin + $sakit;
@@ -44,11 +44,11 @@ class AbsensiSiswaController extends Controller
             return view('absensi_siswa.index', compact('terima','hadir','telat','all','alfa','izinsakit', 'cek_sudah_absen'));
             $terima->appends(['cari' => $keyword]);
             return view('absensi_siswa.index', compact('terima','hadir','telat','all','alfa','izinsakit', 'cek_sudah_absen'));
-    
+
         }
 
         $terima = ApprovalIzin::latest()->paginate(5);
-        
+
 
         //Email lulus
         $siswa_lulus = Siswa::where('magang_akhir', Carbon::now()->format('Y-m-d'));
@@ -86,7 +86,7 @@ class AbsensiSiswaController extends Controller
         $cek_sudah_absen = ApprovalIzin::where([['tanggal', Carbon::now()->format('Y-m-d')], ['nama', auth()->user()->name]])->whereNotIn('keterangan', ['sakit','izin'])->exists();
         // dd($cek_sudah_absen);
         $terima = ApprovalIzin::where('status', 'terimaabsen')->where('nama', Auth::user()->name )
-        ->get();
+        ->latest()->paginate(5);
         $currentHour = now()->format('H:i');
         $currentDay = now()->format('D');
         // dd($currentDay);
@@ -114,7 +114,7 @@ class AbsensiSiswaController extends Controller
         $alfa = ApprovalIzin::where('keterangan', 'alfa')->Where('nama', Auth()->user()->name)->count();
         $izinsakit = $izin + $sakit;
         $all = ApprovalIzin::where('nama', Auth::user()->name)->count();
-        $terima = ApprovalIzin::latest()->paginate(5);
+        // $terima = ApprovalIzin::latest()->paginate(5);
        return view('absensi_siswa.index' , compact('terima','hadir','telat','all','alfa','izinsakit', 'cek_sudah_absen'));
     }
 
