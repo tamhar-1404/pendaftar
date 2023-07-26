@@ -143,7 +143,8 @@ class JurnaladminController extends Controller
     }
     public function jurnal_admin_pdf_grafik(Request $request)  {
         set_time_limit(0);
-        $data = JurnalSiswa::where('nama', $request->nama);
+        $data = JurnalSiswa::where('nama', $request->nama)->get();
+       
         $pdf = Pdf::loadView('desain_pdf.jurnal', ['data' => $data]);
         return $pdf->download('jurnal_siswa.pdf');
     }
@@ -178,31 +179,61 @@ class JurnaladminController extends Controller
 }
     public function grafik_docx(Request $request)
 {
-    // Mendapatkan data dari database (contoh menggunakan model User)
-    $users = JurnalSiswa::where('nama', $request->nama);
+       // Mendapatkan data dari database (contoh menggunakan model JurnalSiswa)
+       $users = JurnalSiswa::where('nama', $request->nama)->get();
 
-    // Membuat objek PhpWord
-    $phpWord = new PhpWord();
+       // Membuat objek PhpWord
+       $phpWord = new PhpWord();
 
-    // Membuat halaman baru
-    $section = $phpWord->addSection();
+       // Membuat halaman baru
+       $section = $phpWord->addSection();
 
-    // Menambahkan data dari database ke dokumen
-    foreach ($users as $user) {
-        $section->addText($user->nama);
-        $section->addText($user->tanggal);
-        $section->addText($user->sekolah);
-        $section->addText($user->kegiatan);
-        // Tambahkan data lain yang Anda butuhkan
-        $section->addText("--------------------"); // Pemisah antara setiap entri
-    }
+       // Judul tabel dengan border dan background abu-abu
+       $section->addText("Daftar Jurnal ". $request->nama, ['bold' => true, 'size' => 14, 'color' => '000000']);
+       $section->addTextBreak(1);
+       $titleStyle = array('borderSize' => 6, 'borderColor' => '000000', 'bgColor' => 'D3D3D3');
+       $section->addText(" ", $titleStyle);
 
-    // Menyimpan dokumen sebagai file .docx
-    $filename = "jurnal_siswa.docx";
-    $path = storage_path('app/public/image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
-    $phpWord->save($path);
+       // Membuat tabel
+       $table = $section->addTable();
+       $table->addRow();
+       $table->addCell(600, $titleStyle)->addText("No.", ['bold' => true, 'alignment' => 'center']);
+       $table->addCell(4000, $titleStyle)->addText("Nama", ['bold' => true, 'alignment' => 'center']);
+       $table->addCell(1500, $titleStyle)->addText("Tanggal", ['bold' => true, 'alignment' => 'center']);
+       $table->addCell(2500, $titleStyle)->addText("Sekolah", ['bold' => true, 'alignment' => 'center']);
+       $table->addCell(3000, $titleStyle)->addText("Kegiatan", ['bold' => true, 'alignment' => 'center']);
+       $table->addCell(2000, $titleStyle)->addText("Bukti", ['bold' => true, 'alignment' => 'center']);
 
-    // Mengembalikan file dokumen untuk diunduh
-    return response()->download($path, $filename);
+       // Menambahkan data dari database ke tabel
+       $count = 1;
+       foreach ($users as $user) {
+           $table->addRow();
+           $table->addCell(600)->addText($count++, ['alignment' => 'center']);
+
+            // Menambahkan gambar berdasarkan nama file yang ada di kolom 'image'
+
+           $imagePath = 'storage/image/'. $user->image;
+
+
+
+           $table->addCell(4000)->addText($user->nama, ['alignment' => 'center']);
+           $table->addCell(1500)->addText($user->tanggal, ['alignment' => 'center']);
+           $table->addCell(2500)->addText($user->sekolah, ['alignment' => 'center']);
+           $table->addCell(3000)->addText($user->kegiatan, ['alignment' => 'center']);
+           if($imagePath == "storage/image/". $user->image){
+               $table->addCell(2000)->addImage($imagePath, ['width' => 150, 'height' => 150, 'alignment' => 'center']);
+           }else{
+               $table->addCell(2000)->addText('Gambar Tidak Ditemukan', ['alignment' => 'center']);
+           }
+       }
+
+       // Menyimpan dokumen sebagai file .docx
+       $filename = "database_export.docx";
+       $path = public_path('storage/Image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
+       $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
+       $objWriter->save($path);
+
+       // Mengembalikan file dokumen untuk diunduh
+       return response()->download($path, $filename);
 }
 }
