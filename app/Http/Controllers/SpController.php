@@ -22,14 +22,14 @@ class SpController extends Controller
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $data = Sp::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('deskripsi', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $data = Sp::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('deskripsi', 'LIKE', '%' . $keyword . '%')->paginate(10);
             return view('sp.index', compact('data'));
 
             $data->appends(['cari' => $keyword]);
             return view('sp.index', compact('data'));
         }
 
-        $data = Sp::latest()->paginate(3);
+        $data = Sp::latest()->paginate(10);
         return view('sp.index', compact('data'));
     }
 

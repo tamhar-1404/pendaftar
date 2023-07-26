@@ -19,13 +19,13 @@ class MOUController extends Controller
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $mous = MOU::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('alamat', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $mous = MOU::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('alamat', 'LIKE', '%' . $keyword . '%')->paginate(10);
             return view('mou.index', compact('mous'));
 
             $mous->appends(['cari' => $keyword]);
             return view('mou.index', compact('mous'));
         }
-        $mous = MOU::latest()->paginate(3);
+        $mous = MOU::latest()->paginate(10);
         return view('mou.index' ,compact('mous')) ;
     }
 

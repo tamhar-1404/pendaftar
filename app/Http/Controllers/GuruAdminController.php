@@ -25,14 +25,14 @@ class GuruAdminController extends Controller
         $guru_admin = Guru_admin::all();
     if ($request->has('cari')) {
         $keyword = $request->cari;
-        $guru_admin = Guru_admin::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+        $guru_admin = Guru_admin::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(8);
         return view('guru_admin.index', compact('guru_admin'));
 
         $guru_admin->appends(['cari' => $keyword]);
         return view('guru_admin.index', compact('guru_admin'));
 
     }
-        $guru_admin =  Guru_admin::latest()->paginate(3);
+        $guru_admin =  Guru_admin::latest()->paginate(8);
         return view('guru_admin.index' , compact('guru_admin'));
     }
 

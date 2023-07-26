@@ -22,14 +22,14 @@ class BarangController extends Controller
         $barangs = Barang::all();
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $barangs = Barang::where('nama', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $barangs = Barang::where('nama', 'LIKE', '%' . $keyword . '%')->paginate(10);
             return view('barang.index', compact('barangs'));
     
             $barangs->appends(['cari' => $keyword]);
             return view('barang.index', compact('barangs'));
     
         }
-        $barangs = Barang::latest()->paginate(3);
+        $barangs = Barang::latest()->paginate(10);
         return view('barang.index',compact('barangs'));
     }
 

@@ -25,14 +25,14 @@ class JurnaladminController extends Controller
         $item = Jurnalsiswa::all();
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $item = Jurnalsiswa::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $item = Jurnalsiswa::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(10);
             return view('jurnal_admin.index', compact('item'));
 
             $item->appends(['cari' => $keyword]);
             return view('jurnal_admin.index', compact('item'));
         }
 
-        $item = Jurnalsiswa::latest()->paginate(3);
+        $item = Jurnalsiswa::latest()->paginate(10);
         return view('jurnal_admin.index',compact( 'item'));
 
     }

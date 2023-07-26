@@ -21,14 +21,14 @@ class OpnameController extends Controller
         $barang = Barang::all();
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $opname = Opname::where('barang_id', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $opname = Opname::where('barang_id', 'LIKE', '%' . $keyword . '%')->paginate(10);
             return view('opname.index', compact('opname','barang'));
     
             $opname->appends(['cari' => $keyword]);
             return view('opname.index', compact('opname','barang'));
     
         }
-        $opname = Opname::latest()->paginate(3);
+        $opname = Opname::latest()->paginate(10);
         // dd($opname);
         return view('opname.index', compact('barang', 'opname'));
     }

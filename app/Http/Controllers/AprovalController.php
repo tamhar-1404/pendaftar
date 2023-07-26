@@ -31,14 +31,14 @@ class AprovalController extends Controller
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $aprovals = Aproval::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(5);
+            $aprovals = Aproval::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(10);
             return view('aproval.layout', compact('aprovals'));
 
             $aprovals->appends(['cari' => $keyword]);
             return view('aproval.layout', compact('aprovals'));
         }
 
-        $aprovals = Aproval::latest()->paginate(5);
+        $aprovals = Aproval::latest()->paginate(10);
         return view('aproval.layout', compact('aprovals'));
 
     }

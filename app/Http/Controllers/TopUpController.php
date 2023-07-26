@@ -29,8 +29,7 @@ class TopUpController extends Controller
             return view('TopUp.index', compact('TopUp'));
         }
 
-        $TopUp = TopUp::where('status', 'menunggu')->get();
-        $TopUp = TopUp::latest()->paginate(3);
+        $TopUp = TopUp::where('status', 'menunggu')->latest()->paginate(10);
         return view('TopUp.index', compact('TopUp'));
     }
 
