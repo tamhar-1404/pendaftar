@@ -37,6 +37,10 @@ class JurnaladminController extends Controller
 
     }
 
+    public function Absenhariini()
+    {
+        return view('Absenhariini.index');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -144,7 +148,7 @@ class JurnaladminController extends Controller
     public function jurnal_admin_pdf_grafik(Request $request)  {
         set_time_limit(0);
         $data = JurnalSiswa::where('nama', $request->nama)->get();
-       
+
         $pdf = Pdf::loadView('desain_pdf.jurnal', ['data' => $data]);
         return $pdf->download('jurnal_siswa.pdf');
     }
