@@ -286,7 +286,7 @@ public function store(Request $request)
     {
         //
     }
-    public function logout()
+    public function Logout()
     {
         Auth::logout();
         request()->session()->invalidate();
