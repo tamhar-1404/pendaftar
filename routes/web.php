@@ -175,7 +175,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
 //lupa password
-Route::resource('lupapassword', App\Http\Controllers\LupaPasswordController::class);
+Route::resource('Lupapassword', App\Http\Controllers\LupaPasswordController::class);
 Route::post('/reset-password', [LupaPasswordController::class, 'update'])->name('password.update');
 Route::get('/reset-password/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
 

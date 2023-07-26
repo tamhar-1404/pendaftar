@@ -83,7 +83,7 @@
                         </h2>
                     </div>
                 </div>
-                <form action="{{ route('lupapassword.store') }}" method="POST">
+                <form action="{{ route('Lupapassword.store') }}" method="POST">
                     @csrf
                     <div class="mt-36">
                         @if (session('success'))
