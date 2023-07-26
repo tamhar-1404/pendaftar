@@ -19,14 +19,14 @@ class TataTertibController extends Controller
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $tatatertib = TataTertib::where('judul', 'LIKE', '%' . $keyword . '%')->orWhere('deskripsi', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $tatatertib = TataTertib::where('judul', 'LIKE', '%' . $keyword . '%')->orWhere('deskripsi', 'LIKE', '%' . $keyword . '%')->paginate(10);
             return view('tatatertib.index', compact('tatatertib'));
 
             $tatatertib->appends(['cari' => $keyword]);
             return view('tatatertib.index', compact('tatatertib'));
         }
 
-        $tatatertib = TataTertib::latest()->paginate(3); 
+        $tatatertib = TataTertib::latest()->paginate(10); 
         return view('tatatertib.index', compact('tatatertib'));
     }
 

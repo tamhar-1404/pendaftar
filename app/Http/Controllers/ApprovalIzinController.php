@@ -42,11 +42,11 @@ class ApprovalIzinController extends Controller
 
             if ($request->has('cari')) {
                 $keyword = $request->cari;
-                $aprovals = ApprovalIzin::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+                $aprovals = ApprovalIzin::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(10);
                 return view('approvalizin.index', compact('menunggu', 'terima', 'aprovals'));
             }
 
-            $aprovals = ApprovalIzin::latest()->paginate(3);
+            $aprovals = ApprovalIzin::latest()->paginate(10);
             return view('approvalizin.index', compact('menunggu', 'terima', 'aprovals'));
 
         }
