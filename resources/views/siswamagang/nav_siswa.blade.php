@@ -138,8 +138,8 @@
          <ul
              class="horizontal-menu hidden border-t border-[#ebedf2] bg-white py-1 px-6 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-[#0e1726] dark:text-white-dark lg:space-x-1.5 xl:space-x-8">
              <li class="menu nav-item relative">
-                 <a href="{{ route('siswamagang.index') }}"
-                     class="nav-link {{ request()->routeIs('siswamagang.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }} ">
+                 <a href="{{ route('Siswamagang.index') }}"
+                     class="nav-link {{ request()->routeIs('Siswamagang.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }} ">
                      <div class="flex items-center ">
                          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
                              xmlns="http://www.w3.org/2000/svg">
@@ -280,7 +280,7 @@
 
                  </ul>
              </li>
-             @if (request()->routeIs('siswamagang.index'))
+             @if (request()->routeIs('Siswamagang.index'))
              <li class="mt-1.5">
                  <button onclick="showStep(1)"
                      class="border border-blue-400 px-4 py-1 text-blue-400 hover:bg-blue-400 hover:text-blue-600 hover:border-blue-600 rounded">Isi
