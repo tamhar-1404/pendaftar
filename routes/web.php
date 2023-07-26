@@ -100,8 +100,6 @@ Route::get('/percobaan', function () {
 
 
 // Rute untuk mengirim email reset password
-Route::get('/lupapassword', [LupaPasswordController::class, 'index'])->name('password.request');
-Route::post('/lupapassword', [LupaPasswordController::class, 'store'])->name('password.email');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 
@@ -178,8 +176,6 @@ Route::middleware(['auth'])->group(function () {
 
 //lupa password
 Route::resource('lupapassword', App\Http\Controllers\LupaPasswordController::class);
-Route::get('/reset', [LupaPasswordController::class , 'reset'])->name('reset');
-Route::get('/kodek', [LupaPasswordController::class , 'kode'])->name('kodek');
 Route::post('/reset-password', [LupaPasswordController::class, 'update'])->name('password.update');
 Route::get('/reset-password/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
 
