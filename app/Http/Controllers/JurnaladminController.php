@@ -42,6 +42,12 @@ class JurnaladminController extends Controller
         return view('Absenhariini.index');
     }
 
+    public function Jurnalhariini(){
+        $today = (d-m-y);
+        $mengisi = Jurnalsiswa::where();
+        return view('Jurnalhariini.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
