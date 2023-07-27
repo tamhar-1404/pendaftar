@@ -421,7 +421,7 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
         <div class="main-content">
-            @include('siswamagang.nav_siswa')
+            @include('Siswamagang.nav_siswa')
 
             <div class="animate__animated p-6" :class="[$store.app.animation]">
                 <!-- start main content section -->
@@ -769,7 +769,7 @@
 
 
 
-        
+
     </div>
     </div>
     </div>
