@@ -12,6 +12,7 @@ use App\Models\Sp;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class ProfilsiswaController extends Controller
@@ -199,5 +200,23 @@ class ProfilsiswaController extends Controller
             'email' => $request->email,
         ]);
         return redirect()->route('profile_siswa')->with('success', 'Berhasil mengedit profil');
+    }
+
+    public function ganti_password(Request $request) {
+        $request->validate([
+            'old_password' => 'required',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        $user_id = Auth::user()->id;
+        if (Hash::check($request->old_password, User::find($user_id)->password)) {
+            User::find($user_id)->update([
+                'password' => Hash::make($request->password),
+            ]);
+            return redirect()->route('profile_siswa')->with('success', 'Berhasil mengedit password');
+        }
+        else {
+            return back()->with('error', 'Password lama tidak sama');
+        }
     }
 }
