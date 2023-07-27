@@ -135,7 +135,7 @@
         <!-- end sidebar section -->
 
         <div class="main-content">
-            @include('siswamagang.nav_siswa')
+            @include('Siswamagang.nav_siswa')
 
             <div class="animate__animated p-6" :class="[$store.app.animation]">
                 <!-- start main content section -->
@@ -495,7 +495,7 @@
                                     <!-- Modal footer -->
                                     <div
                                     class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                   
+
                                     <button type="submit"
                                         class="border text-blue-400 bg-white font-semibold border-blue-400  py-2.5 px-5 text-sm rounded-md hover:bg-blue-400 hover:text-white">Kirim</button>
                                     </div>

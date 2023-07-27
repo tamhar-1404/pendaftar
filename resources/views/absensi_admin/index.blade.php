@@ -138,7 +138,7 @@
                             {{-- script filter --}}
                             <script>
                                 function openModal() {
-                                    //  
+                                    //
                                     fetch('/data-approval')
                                         .then(response => response.json())
                                         .then(data => {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Piket;
 use App\Models\Siswa;
 use App\Models\Anggota_piket;
-use App\Models\laporan_piket;
+use App\Models\Laporan_piket;
 use App\Http\Requests\StorepiketRequest;
 use App\Http\Requests\UpdatepiketRequest;
 use Illuminate\Http\Request;
@@ -55,7 +55,7 @@ class PiketController extends Controller
          $kamis_sore= Anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'sore')->get();
          $jumat_sore= Anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'sore')->get();
          $siswa = Siswa::all();
-         $laporan_piket = laporan_piket::all();
+         $laporan_piket = Laporan_piket::all();
 
 
          return view('piket.index', compact('laporan_piket','senin', 'selasa', 'rabu', 'kamis', 'jumat','senin_sore', 'selasa_sore', 'rabu_sore', 'kamis_sore', 'jumat_sore', 'siswa', 'catat'));

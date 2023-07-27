@@ -1191,7 +1191,7 @@
 
         <div class="main-content">
             <!-- start header section -->
-            @include('siswamagang.nav_siswa')
+            @include('Siswamagang.nav_siswa')
             <!-- end header section -->
 
             <div class="animate__animated p-6" :class="[$store.app.animation]">
