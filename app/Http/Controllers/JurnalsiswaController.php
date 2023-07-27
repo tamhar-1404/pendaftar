@@ -289,6 +289,7 @@ public function exportToDocx()
          // Menambahkan gambar berdasarkan nama file yang ada di kolom 'image'
 
         $imagePath = 'storage/image/'. $user->image;
+        // dd($imagePath);
 
 
 
@@ -296,11 +297,12 @@ public function exportToDocx()
         $table->addCell(1500)->addText($user->tanggal, ['alignment' => 'center']);
         $table->addCell(2500)->addText($user->sekolah, ['alignment' => 'center']);
         $table->addCell(3000)->addText($user->kegiatan, ['alignment' => 'center']);
-        if($imagePath == "storage/image/". $user->image){
+        if (file_exists($imagePath)) {
             $table->addCell(2000)->addImage($imagePath, ['width' => 150, 'height' => 150, 'alignment' => 'center']);
-        }else{
+        } else {
             $table->addCell(2000)->addText('Gambar Tidak Ditemukan', ['alignment' => 'center']);
         }
+
     }
 
     // Menyimpan dokumen sebagai file .docx
