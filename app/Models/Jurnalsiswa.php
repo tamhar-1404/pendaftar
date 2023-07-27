@@ -11,4 +11,9 @@ class Jurnalsiswa extends Model
     protected $fillable = [
         'nama','tanggal','sekolah','kegiatan', 'image', 'status'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
