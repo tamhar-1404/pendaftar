@@ -1271,7 +1271,7 @@
                                                             placeholder="Konfirmasi Password" class="form-input" />
                                                     </div>
                                                     <div class="mt-3 sm:col-span-2 flex gap-4 justify-end">
-                                                        <button type="button" class="btn btn-outline-danger">Batal</button>
+                                                        <a href="{{ url()->previous() }}" class="btn btn-outline-danger">Batal</a>
                                                         <button type="button" class="btn btn-info">Simpan</button>
                                                     </div>
                                                 </div>
@@ -1320,7 +1320,7 @@
                                                 <textarea name="alamat" id="alamat" placeholder="Alamat" class="form-input">{{$siswa->alamat}}</textarea>
                                             </div>
                                             <div class="mt-3 sm:col-span-2 flex gap-4 justify-end">
-                                                <button type="button" class="btn btn-outline-danger">Batal</button>
+                                                <a href="{{ url()->previous() }}" class="btn btn-outline-danger">Batal</a>
                                                 <button  type="submit" class="btn btn-info">Simpan</button>
                                             </div>
                                         </div>
