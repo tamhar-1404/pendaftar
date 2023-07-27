@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jurnaladmin;
-use App\Models\Jurnalsiswa;
-use App\Http\Requests\StorejurnaladminRequest;
-use App\Http\Requests\UpdatejurnaladminRequest;
-use Illuminate\Http\Request;
+use DB;
 use Dompdf\Dompdf;
 use Dompdf\Options;
-use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\User;
+use App\Models\Jurnaladmin;
+use App\Models\Jurnalsiswa;
+use Illuminate\Http\Request;
 use PhpOffice\PhpWord\PhpWord;
+use Barryvdh\DomPDF\Facade\Pdf;
 use PhpOffice\PhpWord\IOFactory;
-use DB;
+use App\Http\Requests\StorejurnaladminRequest;
+use App\Http\Requests\UpdatejurnaladminRequest;
+use Carbon\Carbon; // Import Carbon untuk bekerja dengan tanggal
+
 class JurnaladminController extends Controller
 {
     /**
@@ -41,6 +44,36 @@ class JurnaladminController extends Controller
     {
         return view('Absenhariini.index');
     }
+
+
+    public function Jurnalhariini(Request $request) {
+        // Mendapatkan data siswa yang belum mengirim jurnal hari ini
+        $users = User::whereDoesntHave('jurnalsiswa', function ($query) {
+            $query->whereDate('created_at', Carbon::today());
+        })->get();
+    
+        // Jika ada pencarian, ambil data jurnal yang sesuai dengan pencarian pada hari ini
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $jurnalSudahKirim = Jurnalsiswa::where('status', 'mengisi')
+                ->whereDate('created_at', Carbon::today())
+                ->where(function ($query) use ($keyword) {
+                    $query->where('nama', 'LIKE', '%' . $keyword . '%')
+                        ->orWhere('sekolah', 'LIKE', '%' . $keyword . '%');
+                })
+                ->paginate(10);
+        } else {
+            // Mendapatkan data jurnal yang sudah dikirim pada hari ini
+            $jurnalSudahKirim = Jurnalsiswa::whereDate('created_at', Carbon::today())
+                ->where('status', 'mengisi')
+                ->paginate(10);
+        }
+    
+        return view('Jurnalhariini.index', compact('jurnalSudahKirim', 'users'));
+    }
+    
+
+    
 
     /**
      * Show the form for creating a new resource.
