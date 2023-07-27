@@ -129,15 +129,14 @@
                                                 <th scope="col" class="px-6 py-2">Nama</th>
                                                 <th scope="col" class="px-6 py-2">Tanggal</th>
                                                 <th scope="col" class="px-6 py-2">Keterangan</th>
-                                                <th scope="col" class="px-6 py-2">Aksi</th>
+
                                             </tr>
                                         </thead>
                                         @forelse ($users as $item)
                                             <tbody>
                                                 <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->name }}</td>
-                                                    <td></td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $loop->iteration }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $item->name }}</td>
                                                 </tr>
                                             </tbody>
 
