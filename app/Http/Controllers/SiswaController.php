@@ -41,19 +41,18 @@ class SiswaController extends Controller
             }
             Siswa::whereDate('magang_akhir', '<=', $today)->update(['role' => 'alumni', 'status' => 'lulus']);
         }
-        $siswas = Siswa::where('role', 'siswa')->get();
-
+        
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $siswas = Siswa::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $siswas = Siswa::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(8);
             return view('siswa_admin.index', compact('siswas'));
-
+            
             $siswas->appends(['cari' => $keyword]);
             return view('siswa_admin.index', compact('siswas'));
-
+            
         }
-
-        $siswas = Siswa::latest()->paginate(3);
+        
+        $siswas = Siswa::where('role', 'siswa')->latest()->paginate(8);
 
         return view('Siswa_admin.index', compact('siswas'));
     }
@@ -147,18 +146,18 @@ class SiswaController extends Controller
     public function rfid(Request $request)
     {
 
-    $users = User::Where('role', 'Siswa')->whereNull('RFID')->latest()->paginate(3);
-    if ($request->has('cari')) {
+        if ($request->has('cari')) {
         if($request->cari == null){
             return view('rfid.index', compact('users'));
         }
         $keyword = $request->cari;
-        $users = User::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->whereNull('RFID')->paginate(3);
+        $users = User::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->whereNull('RFID')->paginate(10);
         return view('rfid.index', compact('users'));
         // $users->appends(['cari' => $keyword]);
         // return view('rfid.index', compact('users'));
-
+        
     }
+    $users = User::Where('role', 'Siswa')->whereNull('RFID')->latest()->paginate(10);
 
         return view('rfid.index', compact('users'));
     }
