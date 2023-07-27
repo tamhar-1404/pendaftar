@@ -6,6 +6,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Siswa - Edit Profile</title>
@@ -29,6 +30,15 @@
     :class="[$store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout, $store.app
         .rtlClass
     ]">
+    {{-- Alert validasi --}}
+    @if ($errors->any())
+    @foreach ($errors->all() as $error)
+    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <span class="font-medium">{{ $error }}</span>
+    </div>
+    @endforeach
+    @endif
+    {{-- End Alert --}}
     <!-- sidebar menu overlay -->
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>
@@ -1261,7 +1271,7 @@
                                                             placeholder="Konfirmasi Password" class="form-input" />
                                                     </div>
                                                     <div class="mt-3 sm:col-span-2 flex gap-4 justify-end">
-                                                        <button type="button" class="btn btn-outline-danger">Batal</button>
+                                                        <a href="{{ url()->previous() }}" class="btn btn-outline-danger">Batal</a>
                                                         <button type="button" class="btn btn-info">Simpan</button>
                                                     </div>
                                                 </div>
@@ -1310,7 +1320,7 @@
                                                 <textarea name="alamat" id="alamat" placeholder="Alamat" class="form-input">{{$siswa->alamat}}</textarea>
                                             </div>
                                             <div class="mt-3 sm:col-span-2 flex gap-4 justify-end">
-                                                <button type="button" class="btn btn-outline-danger">Batal</button>
+                                                <a href="{{ url()->previous() }}" class="btn btn-outline-danger">Batal</a>
                                                 <button  type="submit" class="btn btn-info">Simpan</button>
                                             </div>
                                         </div>

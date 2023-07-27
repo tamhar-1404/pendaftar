@@ -11,6 +11,7 @@ use App\Http\Requests\UpdateProfilsiswaRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class ProfilsiswaController extends Controller
 {
@@ -140,6 +141,13 @@ class ProfilsiswaController extends Controller
         // dd($request->all());
         $siswa_id = $request->siswa_id;
         if ($request->has('foto')) {
+            $request->validate([
+                'foto' => 'required|image|mimes:png,jpg,jpeg',
+                'nama' => 'required',
+                'email' => 'required|unique:siswas,email,' . $siswa_id,
+                'no' => 'required',
+                'alamat' => 'required',
+            ]);
             $old_foto = Siswa::find($siswa_id)->foto_siswa;
             if (File::exists(public_path('storage/Siswa/'.$old_foto))) {
                 File::delete(public_path('storage/Siswa/'.$old_foto));
@@ -148,7 +156,7 @@ class ProfilsiswaController extends Controller
             $nama_foto = $foto->hashName();
             $foto->storeAs('public/Siswa', $nama_foto);
             Siswa::find($siswa_id)->update([
-                'nama' => $request->nama,
+                'name' => $request->nama,
                 'email' => $request->email,
                 'foto_siswa' => $nama_foto,
                 'no' => $request->no,
@@ -159,8 +167,15 @@ class ProfilsiswaController extends Controller
             ]);
             return redirect()->route('profile_siswa')->with('success', 'Berhasil mengedit profil');
         }
+        $request->validate([
+            'siswa_id' => 'required',
+            'nama' => 'required',
+            'email' => 'required|unique:siswas,email,' . $siswa_id,
+            'no' => 'required',
+            'alamat' => 'required',
+        ]);
         Siswa::find($siswa_id)->update([
-            'nama' => $request->nama,
+            'name' => $request->nama,
             'email' => $request->email,
             'no' => $request->no,
             'alamat' => $request->alamat,
