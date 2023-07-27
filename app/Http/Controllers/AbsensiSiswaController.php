@@ -31,19 +31,26 @@ class AbsensiSiswaController extends Controller
         $terima = ApprovalIzin::all();
         if ($request->has('cari')) {
             $keyword = $request->cari;
+            $userName = Auth::user()->name;
+
             $telat = ApprovalIzin::where('keterangan', 'telat')->count();
             $hadir = ApprovalIzin::where('keterangan', 'hadir')->count() + $telat;
             $izin = ApprovalIzin::where('keterangan', 'izin')->count();
-
             $sakit = ApprovalIzin::where('keterangan', 'sakit')->count();
             $alfa = ApprovalIzin::where('keterangan', 'alfa')->count();
             $izinsakit = $izin + $sakit;
-            $all = ApprovalIzin::where('nama', Auth::user()->name)->count();
-            $cek_sudah_absen = ApprovalIzin::where([['tanggal', Carbon::now()->format('Y-m-d')], ['nama', auth()->user()->name]])->whereNotIn('keterangan', ['sakit','izin'])->exists();
-            $terima = ApprovalIzin::where('tanggal', 'LIKE', '%' . $keyword . '%')->orWhere('status', 'LIKE', '%' . $keyword . '%')->paginate(5);
-            return view('absensi_siswa.index', compact('terima','hadir','telat','all','alfa','izinsakit', 'cek_sudah_absen'));
-            $terima->appends(['cari' => $keyword]);
-            return view('absensi_siswa.index', compact('terima','hadir','telat','all','alfa','izinsakit', 'cek_sudah_absen'));
+
+            $all = ApprovalIzin::where('nama', $userName)->count();
+            $cek_sudah_absen = ApprovalIzin::where([
+                ['tanggal', Carbon::now()->format('Y-m-d')],
+                ['nama', $userName]
+            ])->whereNotIn('keterangan', ['sakit', 'izin'])->exists();
+
+            $terima = ApprovalIzin::where('tanggal', 'LIKE', '%' . $keyword . '%')
+            ->where('nama', $userName)
+            ->paginate(5);
+
+            return view('absensi_siswa.index', compact('terima', 'hadir', 'telat', 'all', 'alfa', 'izinsakit', 'cek_sudah_absen'));
 
         }
 
