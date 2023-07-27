@@ -34,11 +34,16 @@ class JurnalsiswaController extends Controller
         $Jurnalsiswa = Jurnalsiswa::all();
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $item = Jurnalsiswa::where('tanggal', 'LIKE', '%' . $keyword . '%')->orWhere('status', 'LIKE', '%' . $keyword . '%')->paginate(5);
-            return view('jurnal_siswa.index', compact('item'));
+            $userName = Auth::user()->name;
 
-            $item->appends(['cari' => $keyword]);
+            $item = Jurnalsiswa::where(function ($query) use ($keyword, $userName) {
+                $query->where('tanggal', 'LIKE', '%' . $keyword . '%')
+                      ->where('nama', $userName)
+                      ->orWhere('status', 'LIKE', '%' . $keyword . '%');
+            })->paginate(5);
+
             return view('jurnal_siswa.index', compact('item'));
+            
 
         }
         $nama = Auth::user()->name;
