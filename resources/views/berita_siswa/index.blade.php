@@ -1554,7 +1554,7 @@
             </div>
             <!-- end sidebar section -->
 
-            @include('siswamagang.nav_siswa')
+            @include('Siswamagang.nav_siswa')
 
             @include('berita_siswa.asset')
             <div class="main-content">

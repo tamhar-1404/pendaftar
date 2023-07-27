@@ -95,7 +95,7 @@
         <!-- end sidebar section -->
 
         <div class="main-content">
-            @include('siswamagang.nav_siswa')
+            @include('Siswamagang.nav_siswa')
 
             @include('absensi_siswa.isi')
         </div>

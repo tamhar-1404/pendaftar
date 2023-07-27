@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\piket_siswa;
+use App\Models\Piket_siswa;
 use App\Models\Piket;
-use App\Http\Requests\Storepiket_siswaRequest;
-use App\Http\Requests\Updatepiket_siswaRequest;
+use App\Http\Requests\StorePiket_siswaRequest;
+use App\Http\Requests\UpdatePiket_siswaRequest;
 
 class PiketSiswaController extends Controller
 {
@@ -18,18 +18,18 @@ class PiketSiswaController extends Controller
 
     {
         // Sisa kode yang ada sebelumnya
-        $senin = piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'pagi')->get();
-        $selasa = piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'pagi')->get();
-        $rabu = piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
-        $kamis = piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
-        $jumat = piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
-        $catat = piket::where('id_siswa', 'LIKE', 'catatan')->where('waktu', 'LIKE', 'catatan')->get();
+        $senin = Piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'pagi')->get();
+        $selasa = Piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'pagi')->get();
+        $rabu = Piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
+        $kamis = Piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
+        $jumat = Piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
+        $catat = Piket::where('id_siswa', 'LIKE', 'catatan')->where('waktu', 'LIKE', 'catatan')->get();
 
-        $senin_sore= piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'sore')->get();
-        $selasa_sore = piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'sore')->get();
-        $rabu_sore = piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'sore')->get();
-        $kamis_sore= piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'sore')->get();
-        $jumat_sore= piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'sore')->get();
+        $senin_sore= Piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'sore')->get();
+        $selasa_sore = Piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'sore')->get();
+        $rabu_sore = Piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'sore')->get();
+        $kamis_sore= Piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'sore')->get();
+        $jumat_sore= Piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'sore')->get();
         return view('piket_siswa.index', compact('senin', 'selasa', 'rabu', 'kamis', 'jumat','senin_sore', 'selasa_sore', 'rabu_sore', 'kamis_sore', 'jumat_sore', 'catat'));
     }
 
@@ -46,10 +46,10 @@ class PiketSiswaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Storepiket_siswaRequest  $request
+     * @param  \App\Http\Requests\StorePiket_siswaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Storepiket_siswaRequest $request)
+    public function store(StorePiket_siswaRequest $request)
     {
         //
     }
@@ -57,10 +57,10 @@ class PiketSiswaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\piket_siswa  $piket_siswa
+     * @param  \App\Models\Piket_siswa  $Piket_siswa
      * @return \Illuminate\Http\Response
      */
-    public function show(piket_siswa $piket_siswa)
+    public function show(Piket_siswa $Piket_siswa)
     {
         //
     }
@@ -68,10 +68,10 @@ class PiketSiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\piket_siswa  $piket_siswa
+     * @param  \App\Models\Piket_siswa  $Piket_siswa
      * @return \Illuminate\Http\Response
      */
-    public function edit(piket_siswa $piket_siswa)
+    public function edit(Piket_siswa $Piket_siswa)
     {
         //
     }
@@ -79,11 +79,11 @@ class PiketSiswaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Updatepiket_siswaRequest  $request
-     * @param  \App\Models\piket_siswa  $piket_siswa
+     * @param  \App\Http\Requests\UpdatePiket_siswaRequest  $request
+     * @param  \App\Models\Piket_siswa  $Piket_siswa
      * @return \Illuminate\Http\Response
      */
-    public function update(Updatepiket_siswaRequest $request, piket_siswa $piket_siswa)
+    public function update(UpdatePiket_siswaRequest $request, Piket_siswa $Piket_siswa)
     {
         //
     }
@@ -91,10 +91,10 @@ class PiketSiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\piket_siswa  $piket_siswa
+     * @param  \App\Models\Piket_siswa  $Piket_siswa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(piket_siswa $piket_siswa)
+    public function destroy(Piket_siswa $Piket_siswa)
     {
         //
     }

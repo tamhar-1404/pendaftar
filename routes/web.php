@@ -188,5 +188,5 @@ Route::post('comment/store', [BlogController::class, 'comment_store'])->name('co
 Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');
 Route::delete('Berita/{post}/unlike', [BlogController::class, 'unlike'])->name('Berita.unlike');
 Route::get('Edit_profile_siswa', [ProfilsiswaController::class, 'edit'])->name('Edit_profile_siswa');
-Route::put('Edit_profile_siswa', [ProfilsiswaController::class, 'perbarui'])->name('Edit_profile_siswa.perbarui');
+Route::put('Edit_profile_siswa/perbarui', [ProfilsiswaController::class, 'perbarui'])->name('Edit_profile_siswa.perbarui');
 

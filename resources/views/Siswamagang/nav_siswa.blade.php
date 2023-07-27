@@ -96,7 +96,7 @@
                                  </div>
                                  <div class="ltr:pl-4 rtl:pr-4 truncate">
                                      <h4 class="text-base truncate">
-                                         {{Auth()->user()->name}} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae, aspernatur similique? Perspiciatis vel eligendi nisi amet doloremque necessitatibus ipsa. Dolorum ipsa doloremque nesciunt deleniti eligendi natus minus ad amet reprehenderit?
+                                         {{Auth()->user()->name}} 
                                      </h4>
                                     </div>
                                 </div>
