@@ -96,7 +96,19 @@ class ProfilsiswaController extends Controller
             ]);
 
             return redirect()->route('profile_siswa');
-        }else{
+        }elseif($foto_old == null){
+            // $image = $request->file('foto');
+            // $image->storeAs('public/Siswa/', $image->hashName());
+            // $data->update([
+            //     'foto_siswa'=>$image->hashName(),
+            //     'name'=>$request->nama,
+            //     'email' =>$request->email,
+            //     'no' => $request->no,
+            //     'alamat' => $request->alamat
+            // ]);
+            return redirect()->route('profile_siswa');
+        }
+        else{
             $data = Siswa::find($Siswa->id);
             Storage::delete([
                 'public/Siswa/' . $foto_old,
