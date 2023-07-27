@@ -78,6 +78,51 @@
 
                </ul>
            </li>
+           {{-- hari ini --}}
+           <li class="relative" id="hari_ini">
+               <a href=""
+                   class="flex h-12  cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ebg-blue-400 dark:text-gray-300 hover:bg-blue-400 hover:text-white"
+                   data-te-sidenav-link-ref>
+                   <span class="mr-4 [&>svg]:h-4 [&>svg]:w-4 ">
+                       <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                           <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                           <style>
+                               svg {
+                                   fill: #8d94a0
+                               }
+                           </style>
+                           <path fill="currentColor"
+                               d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H192c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+                       </svg>
+                   </span>
+                   <span>Hari ini</span>
+                   <span
+                       class="absolute  right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none "
+                       data-te-sidenav-rotate-icon-ref>
+                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 ">
+                           <path fill-rule="evenodd" fill="currentColor"
+                               d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                               clip-rule="evenodd" />
+                       </svg>
+                   </span>
+               </a>
+               <ul class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+                   data-te-sidenav-collapse-ref>
+                   <li class="relative">
+                       <a href="#"
+                           class="flex {{ request()->routeIs('#') ? 'text-blue-400' : 'text-gray-600' }} h-6 cursor-pointer mt-2 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] outline-none transition duration-300 ease-linear hover:text-blue-400"
+                           data-te-sidenav-link-ref>Jurnal</a>
+
+                   </li>
+                   <li class="relative">
+                       <a href="#"
+                           class="flex h-6 cursor-pointer {{ request()->routeIs('#') ? 'text-blue-400' : 'text-gray-600' }} mt-2 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] outline-none transition duration-300 ease-linear hover:text-blue-400"
+                           data-te-sidenav-link-ref>Absensi</a>
+
+                   </li>
+
+               </ul>
+           </li>
            {{-- user --}}
            <li class="relative">
                <a class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 bg-white hover:bg-blue-500 hover:text-white "
