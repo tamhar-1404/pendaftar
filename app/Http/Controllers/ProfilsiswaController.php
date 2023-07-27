@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Siswa;
 use App\Http\Requests\StoreProfilsiswaRequest;
 use App\Http\Requests\UpdateProfilsiswaRequest;
+use App\Models\Sp;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -23,8 +24,20 @@ class ProfilsiswaController extends Controller
     public function index()
     {
         $Siswa = Siswa::Where('id', Auth()->user()->siswa_id)->get();
+        $sp = "";
+        if (Sp::where('nama', Auth::user()->name)->exists()) {
+            if (!empty(Sp::where('nama', Auth::user()->nama)->first()->sp_2)) {
+                $sp = 'Sp2';
+            }
+            else {
+                $sp = 'Sp1';
+            }
+        }
+        else {
+            $sp = 'Aman';
+        }
         // dd($Siswa);
-        return view('profil_siswa.detail', compact('Siswa'));
+        return view('profil_siswa.detail', compact('Siswa', 'sp'));
     }
 
     /**
@@ -163,6 +176,7 @@ class ProfilsiswaController extends Controller
                 'alamat' => $request->alamat,
             ]);
             User::where('siswa_id', $siswa_id)->update([
+                'name' => $request->name,
                 'email' => $request->email,
             ]);
             return redirect()->route('profile_siswa')->with('success', 'Berhasil mengedit profil');
@@ -181,6 +195,7 @@ class ProfilsiswaController extends Controller
             'alamat' => $request->alamat,
         ]);
         User::where('siswa_id', $siswa_id)->update([
+            'name' => $request->nama,
             'email' => $request->email,
         ]);
         return redirect()->route('profile_siswa')->with('success', 'Berhasil mengedit profil');
