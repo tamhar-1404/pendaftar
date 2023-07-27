@@ -109,14 +109,14 @@
                <ul class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
                    data-te-sidenav-collapse-ref>
                    <li class="relative">
-                       <a href="#"
-                           class="flex {{ request()->routeIs('#') ? 'text-blue-400' : 'text-gray-600' }} h-6 cursor-pointer mt-2 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] outline-none transition duration-300 ease-linear hover:text-blue-400"
+                       <a href="{{ route('Jurnalhariini') }}"
+                           class="flex {{ request()->routeIs('Jurnalhariini') ? 'text-blue-400' : 'text-gray-600' }} h-6 cursor-pointer mt-2 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] outline-none transition duration-300 ease-linear hover:text-blue-400"
                            data-te-sidenav-link-ref>Jurnal</a>
 
                    </li>
                    <li class="relative">
-                       <a href="#"
-                           class="flex h-6 cursor-pointer {{ request()->routeIs('#') ? 'text-blue-400' : 'text-gray-600' }} mt-2 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] outline-none transition duration-300 ease-linear hover:text-blue-400"
+                       <a href="{{ route('Absenhariini') }}"
+                           class="flex h-6 cursor-pointer {{ request()->routeIs('Absenhariini') ? 'text-blue-400' : 'text-gray-600' }} mt-2 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] outline-none transition duration-300 ease-linear hover:text-blue-400"
                            data-te-sidenav-link-ref>Absensi</a>
 
                    </li>

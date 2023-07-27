@@ -43,8 +43,7 @@ class JurnaladminController extends Controller
     }
 
     public function Jurnalhariini(){
-        $today = (d-m-y);
-        $mengisi = Jurnalsiswa::where();
+    
         return view('Jurnalhariini.index');
     }
 
