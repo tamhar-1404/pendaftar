@@ -149,10 +149,13 @@
                         <span>Jurnal /<span class="text-[#00B7FF]"> {{ Auth::user()->name }}</span></span>
                     </div>
                     @error('tanggal')
-                        <div class="text-danger">Anda telah mengisi jurnal pada hari ini</div>
+                        <div class="text-danger"><b>Anda telah mengisi jurnal pada hari ini</b></div>
                     @enderror
                     @error('image')
                         <div class="text-danger"><b>Ekstensi gambar hanya: png,jpg, dan jpeg</b></div>
+                    @enderror
+                    @error('kegiatan')
+                        <div class="text-danger"><b>Kegiatan tidak boleh kosong</b></div>
                     @enderror
 
                     <div class="panel">
