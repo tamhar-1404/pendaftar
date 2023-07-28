@@ -89,19 +89,46 @@ class JurnaladminController extends Controller
 
     public function Jurnalhariini(Request $request) {
 
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $datesArray = explode('to', $keyword);
+            if(count($datesArray) > 1){
+                $tanggalAwal = trim($datesArray[0]);
+                $tanggalAkhir = trim($datesArray[1]);
+            }else{
+                $tanggalAwal = trim($datesArray[0]);
+                $tanggalAkhir = trim($datesArray[0]);
+            }
+            $Cek = Jurnalsiswa::whereBetween('created_at', [$tanggalAwal, $tanggalAkhir])
+            ->pluck('nama')
+            ->toArray();
+
+            $users = User::whereNotIn('name', $Cek)
+            ->where('role', 'siswa')
+            ->paginate(10);
+
+            $semuaSiswa = User::where('role', 'Siswa')->get();
+            $semuaJurnal = Jurnalsiswa::whereBetween('created_at', [$tanggalAwal, $tanggalAkhir])->get();
+            $jurnalSudahKirim = Jurnalsiswa::whereBetween('created_at', [$tanggalAwal, $tanggalAkhir])
+                                        ->where('status', 'mengisi')
+                                        ->paginate(10);
+            return view('Jurnalhariini.index', compact('jurnalSudahKirim', 'users', 'semuaJurnal', 'semuaSiswa'));
+            // $item->appends(['cari' => $keyword]);
+            // return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari'));
+        }
         $Cek = Jurnalsiswa::whereDate('created_at', Carbon::today())
         ->pluck('nama')
         ->toArray();
 
         $users = User::whereNotIn('name', $Cek)
         ->where('role', 'siswa')
-        ->paginate(1);
+        ->paginate(10);
 
         $semuaSiswa = User::where('role', 'Siswa')->get();
         $semuaJurnal = Jurnalsiswa::whereDate('created_at', Carbon::today())->get();
         $jurnalSudahKirim = Jurnalsiswa::whereDate('created_at', Carbon::today())
                                        ->where('status', 'mengisi')
-                                       ->paginate(1);
+                                       ->paginate(10);
 
         return view('Jurnalhariini.index', compact('jurnalSudahKirim', 'users', 'semuaJurnal', 'semuaSiswa'));
     }
