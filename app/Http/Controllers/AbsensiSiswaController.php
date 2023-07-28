@@ -33,11 +33,11 @@ class AbsensiSiswaController extends Controller
             $keyword = $request->cari;
             $userName = Auth::user()->name;
 
-            $telat = ApprovalIzin::where('keterangan', 'telat')->count();
-            $hadir = ApprovalIzin::where('keterangan', 'hadir')->count() + $telat;
-            $izin = ApprovalIzin::where('keterangan', 'izin')->count();
-            $sakit = ApprovalIzin::where('keterangan', 'sakit')->count();
-            $alfa = ApprovalIzin::where('keterangan', 'alfa')->count();
+            $telat = ApprovalIzin::where('keterangan', 'telat')->Where('nama', Auth()->user()->name)->count();
+            $hadir = ApprovalIzin::where('keterangan', 'hadir')->Where('nama', Auth()->user()->name)->count();
+            $izin = ApprovalIzin::where('keterangan', 'izin')->Where('nama', Auth()->user()->name)->count();
+            $sakit = ApprovalIzin::where('keterangan', 'sakit')->Where('nama', Auth()->user()->name)->count();
+            $alfa = ApprovalIzin::where('keterangan', 'alfa')->Where('nama', Auth()->user()->name)->count();
             $izinsakit = $izin + $sakit;
 
             $all = ApprovalIzin::where('nama', $userName)->count();
@@ -115,7 +115,7 @@ class AbsensiSiswaController extends Controller
             }
         }
         $telat = ApprovalIzin::where('keterangan', 'telat')->Where('nama', Auth()->user()->name)->count();
-        $hadir = ApprovalIzin::where('keterangan', 'hadir')->Where('nama', Auth()->user()->name)->count() + $telat;
+        $hadir = ApprovalIzin::where('keterangan', 'hadir')->Where('nama', Auth()->user()->name)->count();
         $izin = ApprovalIzin::where('keterangan', 'izin')->Where('nama', Auth()->user()->name)->count();
         $sakit = ApprovalIzin::where('keterangan', 'sakit')->Where('nama', Auth()->user()->name)->count();
         $alfa = ApprovalIzin::where('keterangan', 'alfa')->Where('nama', Auth()->user()->name)->count();
