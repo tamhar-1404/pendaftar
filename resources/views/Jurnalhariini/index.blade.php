@@ -115,8 +115,129 @@
                                     Tidak mengisi
                                 </a>
                             </li>
+                            <li class="inline-block justify-center items-center">
+                                <div class="flex items-center mb-4 justify-center gap-2 p-4 hover:border-primary">
+                                    <input id="tampil" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onchange="cekCheckbox()">
+                                    <label for="tampil" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 gap-2 items-center justify-center">Tampilkan semua</label>
+                                </div>
+                            </li>
 
                         </ul>
+                        <script>
+                            let mycheckbox = document.getElementById('tampil');
+                            let tabelsemua = document.getElementById('tabelsemua');
+
+                            function cekCheckbox() {
+                                let tabelsemua = document.getElementById('tabelsemua');
+                                let mycheckbox = document.getElementById('tampil');
+                                if (mycheckbox.checked) {
+                                    tabelsemua.classList.remove('hidden');
+                                } else {
+                                    tabelsemua.classList.add('hidden');
+                                }
+                            }
+                            mycheckbox.addEventListener('checked', function () {
+                                if (mycheckbox.checked) {
+                                    tabelsemua.classList.remove('hidden');
+                                } else {
+                                    tabelsemua.classList.add('hidden');
+                                }
+                            })
+                        </script>
+                        <template x-if="tab === 'home'">
+                            <div  id="tabelsemua" class="hidden">
+                                <form
+                                    class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
+                                    @php
+                                    $hari = date('N');
+                                    $daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                                @endphp
+
+                                <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $daftarHari[$hari] }}, {{ date('d F Y') }}</h6>
+                                    <table class="min-w-full text-left text-sm ">
+                                        <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
+                                            <tr>
+                                                <th scope="col" class="px-6 py-2">#</th>
+                                                <th scope="col" class="px-6 py-2">Nama</th>
+                                                <th scope="col" class="px-6 py-2">Sekolah</th>
+                                                <th scope="col" class="px-6 py-2">Status</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                @forelse ($semuaSiswa as $key => $user)
+                                                <tr>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ ++$key }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $user->name }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $user->sekolah }}</td>
+                                                    @php
+                                                        $status = "Tidak mengisi";
+                                                    @endphp
+                                                    @foreach ($semuaJurnal as $jurnal)
+                                                        @if($jurnal->nama == $user->name)
+                                                            @php
+                                                                $status = "Mengisi";
+                                                            @endphp
+                                                            @break
+                                                        @endif
+                                                    @endforeach
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $status }}</td>
+                                                </tr>
+                                            </tbody>
+
+                                        @empty
+                                        @endforelse
+
+                                    </form>
+                                </div>
+                            </template>
+                        <template x-if="tab === 'password'">
+                            <div  id="tabelsemua" class="hidden">
+                                <form
+                                    class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
+                                    @php
+                                    $hari = date('N');
+                                    $daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                                @endphp
+
+                                <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $daftarHari[$hari] }}, {{ date('d F Y') }}</h6>
+                                    <table class="min-w-full text-left text-sm ">
+                                        <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
+                                            <tr>
+                                                <th scope="col" class="px-6 py-2">#</th>
+                                                <th scope="col" class="px-6 py-2">Nama</th>
+                                                <th scope="col" class="px-6 py-2">Sekolah</th>
+                                                <th scope="col" class="px-6 py-2">Status</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                @forelse ($semuaSiswa as $key => $user)
+                                                <tr>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ ++$key }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $user->name }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $user->sekolah }}</td>
+                                                    @php
+                                                        $status = "Tidak mengisi";
+                                                    @endphp
+                                                    @foreach ($semuaJurnal as $jurnal)
+                                                        @if($jurnal->nama == $user->name)
+                                                            @php
+                                                                $status = "Mengisi";
+                                                            @endphp
+                                                            @break
+                                                        @endif
+                                                    @endforeach
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $status }}</td>
+                                                </tr>
+                                            </tbody>
+
+                                        @empty
+                                        @endforelse
+
+                                    </form>
+                                </div>
+                            </template>
                         <template x-if="tab === 'password'">
                             <div>
                                 <form
@@ -137,10 +258,10 @@
 
                                             </tr>
                                         </thead>
-                                        @forelse ($users as $item)
+                                        @forelse ($users as $key => $item)
                                             <tbody>
                                                 <tr>
-                                                    <td class="whitespace-nowrap px-6 py-2">{{ $loop->iteration }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ ($users->currentPage() - 1) * $users->perPage() + $key + 1 }}</td>
                                                     <td class="whitespace-nowrap px-6 py-2">{{ $item->name }}</td>
                                                     <td class="whitespace-nowrap px-6 py-2">{{ $item->sekolah }}</td>
                                                 </tr>
@@ -148,9 +269,11 @@
 
                                         @empty
                                         @endforelse
-                                </form>
-                            </div>
-                        </template>
+
+                                    </form>
+                                </div>
+                                <div id="paginateUsers" class="mb-4">{{ $users->links() }}</div>
+                            </template>
                         <template x-if="tab === 'home'">
                             <div>
 
@@ -176,10 +299,10 @@
                                                     <th scope="col" class="px-6 py-2">Aksi</th>
                                                 </tr>
                                             </thead>
-                                            @forelse ($jurnalSudahKirim as $item)
+                                            @forelse ($jurnalSudahKirim as $key => $item)
                                                 <tbody>
                                                     <tr>
-                                                        <td class="whitespace-nowrap px-6 py-2">{{ $loop->iteration }}</td>
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ ($jurnalSudahKirim->currentPage() - 1) * $jurnalSudahKirim->perPage() + $key + 1 }}</td>
                                                         <td class="whitespace-nowrap px-6 py-2">{{ $item->nama }}</td>
 
                                                         <td class="whitespace-nowrap px-6 py-2">
@@ -202,6 +325,7 @@
                                             @endforelse
                                     </div>
                                 </div>
+                                <div class="" class="mb-2">{{ $jurnalSudahKirim->links() }}</div>
                             </div>
                         </template>
                     </div>
