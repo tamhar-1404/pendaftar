@@ -68,7 +68,8 @@
         <main class="flex w-full flex-col  items-center bg-white dark:bg-navy-700 lg:max-w-md">
             <div class="w-full h-full flex-col p-5 gap-8   ">
                 <div class="text-center">
-                    <img class="mx-auto h-16 w-16 lg:hidden" src="{{ asset('admin/assets/images/logo.png') }}" alt="logo" />
+                    <img class="mx-auto h-16 w-16 lg:hidden" src="{{ asset('admin/assets/images/logo.png') }}"
+                        alt="logo" />
                     <div class="mt-4">
                         <h2 class="text-2xl font-semibold text-slate-600 dark:text-navy-100">
                             Selamat Datang
@@ -80,7 +81,7 @@
                 </div>
                 <div class="mt-[15%]">
                     <form action="{{ route('login.store') }}" class="relative" method="post"
-                        enctype="multipart/form-data">
+                        enctype="multipart/form-data" id="myForm">
                         @csrf
                         <!-- Step 1 -->
                         <div class="step active ">
@@ -108,7 +109,8 @@
                             </div>
                             <div class="mb-4">
                                 <label for="kelas" class="block font-bold mb-1 text-sm">Kelas:</label>
-                                <select name="kelas" id="class" class="w-full px-4 py-1 text-sm border rounded"
+                                <select name="kelas" id="class"
+                                    class="w-full px-4 py-1 text-sm border rounded @error('kelas') is-invalid @enderror"
                                     required>
                                     <option class="text-sm" value="" disabled selected>Pilih kelas</option>
                                     <option class="text-sm" value="10">10</option>
@@ -116,7 +118,29 @@
                                     <option class="text-sm" value="12">12</option>
                                     <option class="text-sm" value="Mahasiswa">Mahasiswa</option>
                                 </select>
+                                <div id="kelas-warning" class="text-red-500 text-sm mt-1"></div>
                             </div>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    const nextButton = document.getElementById("nextStep1");
+                                    const selectElement = document.getElementById("class");
+                                    const warningElement = document.getElementById("kelas-warning");
+
+                                    nextButton.addEventListener("click", function() {
+                                        const selectedValue = selectElement.value;
+
+                                        if (selectedValue === "") {
+                                            warningElement.textContent = "Pilih salah satu dari opsi ini.";
+                                        } else {
+                                            warningElement.textContent = ""; // Clear the warning if option is selected
+                                            // Perform any other actions here to proceed to the next step if needed
+                                        }
+                                    });
+                                });
+                            </script>
+
+
                             <label for="class" class="block font-bold mb-1 text-sm">Jenis Kelamin :</label>
                             <div class=" flex justify-between">
                                 <div class="flex gap-2">
@@ -148,14 +172,35 @@
                             </div>
                             <div class="mb-4">
                                 <label for="major" class="block font-bold mb-1 text-sm">Jurusan :</label>
-                                <select name="jurusan" class="w-full px-4 py-1 border rounded" id=""
+                                <select name="jurusan" class="w-full px-4 py-1 border rounded" id="jurusan"
                                     required>
                                     <option value="" disabled selected>Pilih jurusan</option>
                                     <option value="RPL">RPL</option>
                                     <option value="Multimedia">Multimedia</option>
                                     <option value="TI">TI</option>
                                 </select>
+                                <div id="kelas-warning2" class="text-red-500 text-sm mt-1"></div>
                             </div>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    const nextButton = document.getElementById("nextStep2");
+                                    const selectElement = document.getElementById("jurusan");
+                                    const warningElement = document.getElementById("kelas-warning2");
+
+                                    nextButton.addEventListener("click", function() {
+                                        const selectedValue = selectElement.value;
+
+                                        if (selectedValue === "") {
+                                            warningElement.textContent = "Pilih salah satu dari opsi ini.";
+                                        } else {
+                                            warningElement.textContent = ""; // Clear the warning if option is selected
+                                            // Perform any other actions here to proceed to the next step if needed
+                                        }
+                                    });
+                                });
+                            </script>
+
                             <div class="mb-4">
                                 <label for="school" class="block font-bold text-sm mb-1">Sekolah / Universitas
                                     :</label>
@@ -204,8 +249,10 @@
                                     class="w-full text-sm px-4 py-1 border rounded" required>
                             </div>
                             <div class="mb-4">
-                              <label for="skck" class="block font-bold text-sm mb-1">SKCK <span class="font-light italic">(opsional)</span> :</label>
-                              <input type="file" id="skck" name="skck" class="w-full text-sm px-4 py-1 border rounded" >
+                                <label for="skck" class="block font-bold text-sm mb-1">SKCK <span
+                                        class="font-light italic">(opsional)</span> :</label>
+                                <input type="file" id="skck" name="skck"
+                                    class="w-full text-sm px-4 py-1 border rounded">
                             </div>
                             <div class="mb-4">
                                 <label for="cv" class="block font-bold text-sm mb-1">CV:</label>
@@ -247,6 +294,24 @@
                             </div>
                         </div>
                     </form>
+                    <script>
+                        const passwordInput = document.getElementById("password");
+                        const confirmPasswordInput = document.getElementById("confirm-password");
+                        const myForm = document.getElementById("myForm");
+
+                        myForm.addEventListener('submit', function (event) {
+                            event.preventDefault();
+                            const password = passwordInput.value;
+                            const confirmPassword = confirmPasswordInput.value;
+
+                            if (password === confirmPassword) {
+                                myForm.submit();
+                            } else {
+                                alert("Password tidak sama");
+                                return;
+                            }
+                        })
+                    </script>
                     <div class="mt-4 text-center text-xs+">
                         <p class="line-clamp-1">
                             <span>Sudah punya Akun?</span>
