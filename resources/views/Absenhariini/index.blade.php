@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/style.css" />
     <link defer rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/animate.css" />
     <link rel="stylesheet" href="load/load.css">
+
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -49,6 +50,15 @@
     <script defer src="assets_guru/js/popper.min.js"></script>
     <script defer src="assets_guru/js/tippy-bundle.umd.min.js"></script>
     <script defer src="assets_guru/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <!-- CSS Assets -->
+        <link rel="stylesheet" href="admin/css/app.css" />
+
+        <!-- Javascript Assets -->
+        <script src="admin/js/app.js" defer></script>
 </head>
 
 <body>
@@ -76,6 +86,54 @@
                 <div class="pt-5">
                     <div class="mb-5 flex items-center justify-between">
                         <h5 class="text-sm font-semibold dark:text-white-light">Absensi Hari ini </h5>
+                        <!-- Date Range -->
+                        <div class="card px-4 pb-4 sm:px-5">
+
+                            <div class="max-w-xl">
+
+                            <div class="mt-5">
+                                <form action="" >
+                                    <label class="relative flex">
+                                        <input
+                                        x-init="$el._x_flatpickr = flatpickr($el,{mode: 'range',dateFormat: 'Y-m-d',defaultDate: [getCurrentDate(), getCurrentDate()] })"
+                                        class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                        placeholder="Choose date..."
+                                        type="text" name="cari" value="{{ request('cari') }}"
+                                    />
+                                </form>
+
+                                <script>
+                                    function getCurrentDate() {
+                                        const now = new Date();
+                                        const year = now.getFullYear();
+                                        const month = String(now.getMonth() + 1).padStart(2, '0');
+                                        const day = String(now.getDate()).padStart(2, '0');
+                                        return `${year}-${month}-${day}`;
+                                    }
+                                </script>
+                                <span
+                                    class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent"
+                                >
+                                    <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 transition-colors duration-200"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                    />
+                                    </svg>
+                                </span>
+                                </label>
+                            </div>
+                            </div>
+
+                        </div>
                     </div>
                     <div x-data="{ tab: 'home' }">
                         <ul
@@ -85,131 +143,56 @@
                                     class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
                                     :class="{ '!border-primary text-primary': tab == 'home' }"
                                     @click="tab='home'">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    {{-- <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
                                         <path opacity="0.5"
                                             d="M2 12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274C22 8.77128 22 9.91549 22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039Z"
                                             stroke="currentColor" stroke-width="1.5" />
                                         <path d="M12 15L12 18" stroke="currentColor" stroke-width="1.5"
                                             stroke-linecap="round" />
-                                    </svg>
+                                    </svg> --}}
                                     Hadir
                                 </a>
                             </li>
                             <li class="inline-block">
                                 <a href="javascript:;"
                                     class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
-                                    :class="{ '!border-primary text-primary': tab == 'password' }"
-                                    @click="tab='password'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    :class="{ '!border-primary text-primary': tab == 'izin&sakit' }"
+                                    @click="tab='izin&sakit'">
+                                    {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                                      </svg>
+                                      </svg> --}}
                                     Izin & Sakit
                                 </a>
                             </li>
                             <li class="inline-block">
                                 <a href="javascript:;"
                                     class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
-                                    :class="{ '!border-primary text-primary': tab == 'password' }"
-                                    @click="tab='password'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    :class="{ '!border-primary text-primary': tab == 'telat' }"
+                                    @click="tab='telat'">
+                                    {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                                      </svg>
+                                      </svg> --}}
                                     Telat
                                 </a>
                             </li>
                             <li class="inline-block">
                                 <a href="javascript:;"
                                     class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
-                                    :class="{ '!border-primary text-primary': tab == 'password' }"
-                                    @click="tab='password'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    :class="{ '!border-primary text-primary': tab == 'alfa' }"
+                                    @click="tab='alfa'">
+                                    {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                                      </svg>
+                                      </svg> --}}
                                     Alfa
                                 </a>
                             </li>
                             <li>
-                                <div x-data>
-  <label for="datePicker" class="relative flex">
-    <input
-      x-ref="datePicker"
-      id="datePicker"
-      class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-      placeholder="Choose date..."
-      type="text"
-    />
-    <span
-      class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-5 w-5 transition-colors duration-200"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="1.5"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-        />
-      </svg>
-    </span>
-  </label>
-</div>
-<script>
-  document.addEventListener('alpine:init', () => {
-    Alpine.data('datePicker', () => ({
-      initDatepicker() {
-        flatpickr(this.$refs.datePicker, {
-          mode: 'range',
-          dateFormat: 'Y-m-d',
-          defaultDate: ['2016-10-10', '2016-10-20'],
-        });
-      },
-    }));
-  });
-</script>
+
 
                             </li>
                         </ul>
-                        <template x-if="tab === 'password'">
-                            <div>
-                                <form
-                                    class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
-                                    <h6 class="mb-5 text-lg font-bold">Tanggal : </h6>
-                                    <form action="ganti_pass" method="post">
-                                        @csrf
-                                        <div class="flex flex-col sm:flex-row">
-                                            <div class="grid flex-auto grid-cols-3 gap-5 sm:grid-cols-2">
-                                                <div>
-                                                    <label for="lama">Password Lama</label>
-                                                    <input id="lama" type="text"
-                                                        placeholder="Masukan Password Lama" class="form-input" />
-                                                    <p class="text-info">Lupa Password?</p>
-                                                </div>
-                                                <div>
-                                                    <label for="baru">Password Baru</label>
-                                                    <input id="baru" type="text"
-                                                        placeholder="Masukkan Password Baru" class="form-input" />
-                                                </div>
-                                                <div>
-                                                    <label for="konfirmasi">Koirmasi Password</label>
-                                                    <input id="konfirmasi" type="text"
-                                                        placeholder="Konfirmasi Password" class="form-input" />
-                                                </div>
-                                                <div class="mt-3 sm:col-span-2 flex gap-4 justify-end">
-                                                    <button type="button" class="btn btn-outline-danger">Batal</button>
-                                                    <button type="button" class="btn btn-info">Simpan</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </form>
-                            </div>
-                        </template>
+
                         <template x-if="tab === 'home'">
                             <div>
 
@@ -218,7 +201,7 @@
                                     class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
 
                                     <input type="hidden" name="siswa_id" >
-                                    <h6 class="mb-5 text-lg font-bold">Tanggal :</h6>
+                                    <h6 class="mb-5 text-lg font-bold">Tanggal : {{$hari}}</h6>
                                     <div class="flex flex-col sm:flex-row">
                                         <table class="min-w-full text-left text-sm ">
                                             <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
@@ -230,6 +213,142 @@
                                                     <th scope="col" class="px-6 py-2">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            <tbody>
+                                                @forelse ($hadir as $item )
+                                                <tr
+                                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                                <td class="whitespace-nowrap px-4 py-4 font-medium"> </td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->nama }}</td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->tanggal }}</td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->keterangan }}</td>
+                                                <td class="whitespace-nowrap px-6 py-4">{{ $item->jam }}</td>
+
+                                            </tr>
+
+                                                @empty
+
+                                                @endforelse
+                                            </tbody>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        <template x-if="tab === 'izin&sakit'">
+                            <div>
+
+
+                                <div
+                                    class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
+
+                                    <input type="hidden" name="siswa_id" >
+                                    <h6 class="mb-5 text-lg font-bold">Tanggal : {{$hari}}</h6>
+                                    <div class="flex flex-col sm:flex-row">
+                                        <table class="min-w-full text-left text-sm ">
+                                            <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-2">#</th>
+                                                    <th scope="col" class="px-6 py-2">Nama</th>
+                                                    <th scope="col" class="px-6 py-2">Tanggal</th>
+                                                    <th scope="col" class="px-6 py-2">Keterangan</th>
+                                                    <th scope="col" class="px-6 py-2">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @forelse ($sakit as $item )
+                                                <tr
+                                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                                <td class="whitespace-nowrap px-4 py-4 font-medium"> </td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->nama }}</td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->tanggal }}</td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->keterangan }}</td>
+                                                <td class="whitespace-nowrap px-6 py-4">{{ $item->jam }}</td>
+
+                                            </tr>
+
+                                                @empty
+
+                                                @endforelse
+                                            </tbody>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        <template x-if="tab === 'telat'">
+                            <div>
+
+
+                                <div
+                                    class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
+
+                                    <input type="hidden" name="siswa_id" >
+                                    <h6 class="mb-5 text-lg font-bold">Tanggal : {{$hari}}</h6>
+                                    <div class="flex flex-col sm:flex-row">
+                                        <table class="min-w-full text-left text-sm ">
+                                            <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-2">#</th>
+                                                    <th scope="col" class="px-6 py-2">Nama</th>
+                                                    <th scope="col" class="px-6 py-2">Tanggal</th>
+                                                    <th scope="col" class="px-6 py-2">Keterangan</th>
+                                                    <th scope="col" class="px-6 py-2">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @forelse ($telat as $item )
+                                                <tr
+                                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                                <td class="whitespace-nowrap px-4 py-4 font-medium"> </td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->nama }}</td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->tanggal }}</td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->keterangan }}</td>
+                                                <td class="whitespace-nowrap px-6 py-4">{{ $item->jam }}</td>
+
+                                            </tr>
+
+                                                @empty
+
+                                                @endforelse
+                                            </tbody>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        <template x-if="tab === 'alfa'">
+                            <div>
+
+
+                                <div
+                                    class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
+
+                                    <input type="hidden" name="siswa_id" >
+                                    <h6 class="mb-5 text-lg font-bold">Tanggal : {{$hari}}</h6>
+                                    <div class="flex flex-col sm:flex-row">
+                                        <table class="min-w-full text-left text-sm ">
+                                            <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-2">#</th>
+                                                    <th scope="col" class="px-6 py-2">Nama</th>
+                                                    <th scope="col" class="px-6 py-2">Tanggal</th>
+                                                    <th scope="col" class="px-6 py-2">Keterangan</th>
+                                                    <th scope="col" class="px-6 py-2">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @forelse ($alfa as $item )
+                                                <tr
+                                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                                <td class="whitespace-nowrap px-4 py-4 font-medium"> </td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->nama }}</td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->tanggal }}</td>
+                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->keterangan }}</td>
+                                                <td class="whitespace-nowrap px-6 py-4">{{ $item->jam }}</td>
+
+                                            </tr>
+
+                                                @empty
+
+                                                @endforelse
+                                            </tbody>
                                     </div>
                                 </div>
                             </div>

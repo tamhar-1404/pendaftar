@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+use App\Models\Jurnaladmin;
+use App\Models\ApprovalIzin;
+use App\Models\Siswa;
+use App\Models\Jurnalsiswa;
+use App\Http\Requests\StorejurnaladminRequest;
+use App\Http\Requests\UpdatejurnaladminRequest;
+use Illuminate\Http\Request;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Models\User;
-use App\Models\Jurnaladmin;
-use App\Models\Jurnalsiswa;
-use Illuminate\Http\Request;
 use PhpOffice\PhpWord\PhpWord;
 use Barryvdh\DomPDF\Facade\Pdf;
 use PhpOffice\PhpWord\IOFactory;
-use App\Http\Requests\StorejurnaladminRequest;
-use App\Http\Requests\UpdatejurnaladminRequest;
+use DB;
 use Carbon\Carbon; // Import Carbon untuk bekerja dengan tanggal
 
 class JurnaladminController extends Controller
@@ -40,9 +42,50 @@ class JurnaladminController extends Controller
 
     }
 
-    public function Absenhariini()
+    public function Absenhariini(Request $request)
     {
-        return view('Absenhariini.index');
+        // dd($request);
+        $hari = Carbon::now()->format('Y-m-d');
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $datesArray = explode('to', $keyword);
+            if(count($datesArray) > 1){
+                $tanggalAwal = trim($datesArray[0]);
+                $tanggalAkhir = trim($datesArray[1]);
+            }else{
+                $tanggalAwal = trim($datesArray[0]);
+                $tanggalAkhir = trim($datesArray[0]);
+            }
+
+            // $tanggalAkhir = $hari;
+            $hari = $keyword;
+            $telat = ApprovalIzin::where('keterangan', 'telat')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->get();
+            $hadir = ApprovalIzin::where('keterangan', 'hadir')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->get();
+            $sakit = ApprovalIzin::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->Where('keterangan', 'sakit')->orWhere('keterangan', 'izin')->get();
+            $alfa = ApprovalIzin::where('keterangan', 'alfa')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->get();
+            return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari'));
+
+
+            // $item->appends(['cari' => $keyword]);
+            // return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari'));
+        }
+        // $siswa = Siswa::all();
+        // foreach($siswa as $data){
+        //     $namasiswa = $data->nama;
+        //     $absen = ApprovalIzin::where('nama', $namasiswa)->Where('tanggal', $hari)->get();
+        //     if($absen->count() == 0){
+        //         ApprovalIzin::create([
+
+        //         ])
+        //     }
+        // }
+
+        $hari = Carbon::now()->format('Y-m-d');
+        $telat = ApprovalIzin::where('keterangan', 'telat')->Where('tanggal', $hari)->get();
+        $hadir = ApprovalIzin::where('keterangan', 'hadir')->Where('tanggal', $hari)->get();
+        $sakit = ApprovalIzin::Where('tanggal', $hari)->Where('keterangan', 'sakit')->orWhere('keterangan', 'izin')->get();
+        $alfa = ApprovalIzin::where('keterangan', 'alfa')->Where('tanggal', $hari)->get();
+        return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari'));
     }
 
     public function Jurnalhariini(Request $request) {
