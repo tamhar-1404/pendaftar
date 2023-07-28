@@ -177,6 +177,7 @@ Route::middleware(['auth'])->group(function () {
 //lupa password
 Route::resource('Lupapassword', App\Http\Controllers\LupaPasswordController::class);
 Route::post('/reset-password', [LupaPasswordController::class, 'update'])->name('password.update');
+Route::post('/absensi_date', [JurnaladminController::class, 'Absenhariini'])->name('absensi_date');
 Route::get('/Absenhariini', [JurnaladminController::class, 'Absenhariini'])->name('Absenhariini');
 Route::get('/Jurnalhariini', [JurnaladminController::class, 'Jurnalhariini'])->name('Jurnalhariini');
 Route::get('/reset-password/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');

@@ -32,22 +32,22 @@ class JurnalsiswaController extends Controller
     public function index(Request $request)
 {
     $userName = Auth::user()->name;
-    
+
     if ($request->has('cari')) {
         $keyword = $request->cari;
-        
+
         $item = Jurnalsiswa::where('nama', $userName)
             ->where(function ($query) use ($keyword) {
                 $query->where('tanggal', 'LIKE', '%' . $keyword . '%')
                     ->orWhere('status', 'LIKE', '%' . $keyword . '%');
             })
             ->paginate(5);
-        
+
         $item->appends(['cari' => $keyword]);
     } else {
         $item = Jurnalsiswa::where('nama', $userName)->paginate(5);
     }
-    
+
     return view('jurnal_siswa.index', compact('item'));
 }
 
