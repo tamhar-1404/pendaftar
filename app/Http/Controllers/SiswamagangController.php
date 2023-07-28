@@ -66,7 +66,7 @@ class SiswamagangController extends Controller
         $tdk_mengisi_des = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
 
         $user = Auth()->user();
-        $tatib = TataTertib::latest()->paginate(5);
+        $tatib = TataTertib::limit(4)->get();
         $password_user = User::find(Auth()->user()->id)->password;
         $mou = MOU::all();
         $foto = Siswa::where('id', Auth()->user()->siswa_id)->get();
@@ -105,7 +105,7 @@ class SiswamagangController extends Controller
     {
         $data = User::find(Auth()->user()->id);
         $Siswa = Siswa::where('id', $data->id)->get();
-       
+
         return view('profil_siswa.detail');
     }
 

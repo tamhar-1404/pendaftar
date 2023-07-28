@@ -311,7 +311,7 @@
                                     <input type="hidden" name="siswa_id" >
                                     <h6 class="mb-5 text-lg font-bold">Tanggal : {{$hari}}</h6>
                                     <div class="flex flex-col sm:flex-row">
-                                        <table class="min-w-full text-left text-sm ">
+                                        {{--  <table class="min-w-full text-left text-sm ">
                                             <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
                                                 <tr>
                                                     <th scope="col" class="px-6 py-2">#</th>
@@ -330,7 +330,7 @@
                                                 <td class="whitespace-nowrap px-4 py-4">{{ $item->nama }}</td>
                                                 <td class="whitespace-nowrap px-4 py-4">{{ $item->tanggal }}</td>
                                                 <td class="whitespace-nowrap px-4 py-4">{{ $item->keterangan }}</td>
-                                                {{-- <td class="whitespace-nowrap px-6 py-4">{{ $item->jam }}</td> --}}
+                                              
                                                 <td class="whitespace-nowrap px-6 py-4" >
                                                     <button data-modal-target="staticModal1{{ $item->id }}"
                                                     data-modal-toggle="staticModal1{{ $item->id }}"
@@ -344,8 +344,293 @@
                                                 @empty
                                                 @endforelse
                                             </tbody>
-                                            </table>
+                                            </table>  --}}
+                                            <div class="w-full">
+
+                                                <div x-data="basic">
+                                                    <div class="panel">
+                                                        <h5 class="text-lg font-semibold dark:text-white-light">Basic</h5>
+                                                        <table id="myTable" class="table-hover whitespace-nowrap"></table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <script src="assets/js/highlight.min.js"></script>
+                                        <script src="assets/js/alpine-collaspe.min.js"></script>
+                                        <script src="assets/js/alpine-persist.min.js"></script>
+                                        <script defer src="assets/js/alpine-ui.min.js"></script>
+                                        <script defer src="assets/js/alpine-focus.min.js"></script>
+                                        <script defer src="assets/js/alpine.min.js"></script>
+                                        <script src="assets/js/custom.js"></script>
+                                        <script src="assets/js/simple-datatables.js"></script>
+                                        <script>
+                                            document.addEventListener('alpine:init', () => {
+                                                // main section
+                                                Alpine.data('scrollToTop', () => ({
+                                                    showTopButton: false,
+                                                    init() {
+                                                        window.onscroll = () => {
+                                                            this.scrollFunction();
+                                                        };
+                                                    },
+                                
+                                                    scrollFunction() {
+                                                        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                                                            this.showTopButton = true;
+                                                        } else {
+                                                            this.showTopButton = false;
+                                                        }
+                                                    },
+                                
+                                                    goToTop() {
+                                                        document.body.scrollTop = 0;
+                                                        document.documentElement.scrollTop = 0;
+                                                    },
+                                                }));
+                                
+                                                // theme customization
+                                                Alpine.data('customizer', () => ({
+                                                    showCustomizer: false,
+                                                }));
+                                
+                                                // sidebar section
+                                                Alpine.data('sidebar', () => ({
+                                                    init() {
+                                                        const selector = document.querySelector('.sidebar ul a[href="' + window.location.pathname + '"]');
+                                                        if (selector) {
+                                                            selector.classList.add('active');
+                                                            const ul = selector.closest('ul.sub-menu');
+                                                            if (ul) {
+                                                                let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
+                                                                if (ele) {
+                                                                    ele = ele[0];
+                                                                    setTimeout(() => {
+                                                                        ele.click();
+                                                                    });
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                }));
+                                
+                                                // header section
+                                                Alpine.data('header', () => ({
+                                                    init() {
+                                                        const selector = document.querySelector('ul.horizontal-menu a[href="' + window.location.pathname + '"]');
+                                                        if (selector) {
+                                                            selector.classList.add('active');
+                                                            const ul = selector.closest('ul.sub-menu');
+                                                            if (ul) {
+                                                                let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
+                                                                if (ele) {
+                                                                    ele = ele[0];
+                                                                    setTimeout(() => {
+                                                                        ele.classList.add('active');
+                                                                    });
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                
+                                                    notifications: [
+                                                        {
+                                                            id: 1,
+                                                            profile: 'user-profile.jpeg',
+                                                            message: '<strong class="text-sm mr-1">John Doe</strong>invite you to <strong>Prototyping</strong>',
+                                                            time: '45 min ago',
+                                                        },
+                                                        {
+                                                            id: 2,
+                                                            profile: 'profile-34.jpeg',
+                                                            message: '<strong class="text-sm mr-1">Adam Nolan</strong>mentioned you to <strong>UX Basics</strong>',
+                                                            time: '9h Ago',
+                                                        },
+                                                        {
+                                                            id: 3,
+                                                            profile: 'profile-16.jpeg',
+                                                            message: '<strong class="text-sm mr-1">Anna Morgan</strong>Upload a file',
+                                                            time: '9h Ago',
+                                                        },
+                                                    ],
+                                
+                                                    messages: [
+                                                        {
+                                                            id: 1,
+                                                            image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-success-light dark:bg-success text-success dark:text-success-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>',
+                                                            title: 'Congratulations!',
+                                                            message: 'Your OS has been updated.',
+                                                            time: '1hr',
+                                                        },
+                                                        {
+                                                            id: 2,
+                                                            image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-info-light dark:bg-info text-info dark:text-info-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>',
+                                                            title: 'Did you know?',
+                                                            message: 'You can switch between artboards.',
+                                                            time: '2hr',
+                                                        },
+                                                        {
+                                                            id: 3,
+                                                            image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-danger-light dark:bg-danger text-danger dark:text-danger-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>',
+                                                            title: 'Something went wrong!',
+                                                            message: 'Send Reposrt',
+                                                            time: '2days',
+                                                        },
+                                                        {
+                                                            id: 4,
+                                                            image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-warning-light dark:bg-warning text-warning dark:text-warning-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">    <circle cx="12" cy="12" r="10"></circle>    <line x1="12" y1="8" x2="12" y2="12"></line>    <line x1="12" y1="16" x2="12.01" y2="16"></line></svg></span>',
+                                                            title: 'Warning',
+                                                            message: 'Your password strength is low.',
+                                                            time: '5days',
+                                                        },
+                                                    ],
+                                
+                                                    languages: [
+                                                        {
+                                                            id: 1,
+                                                            key: 'Chinese',
+                                                            value: 'zh',
+                                                        },
+                                                        {
+                                                            id: 2,
+                                                            key: 'Danish',
+                                                            value: 'da',
+                                                        },
+                                                        {
+                                                            id: 3,
+                                                            key: 'English',
+                                                            value: 'en',
+                                                        },
+                                                        {
+                                                            id: 4,
+                                                            key: 'French',
+                                                            value: 'fr',
+                                                        },
+                                                        {
+                                                            id: 5,
+                                                            key: 'German',
+                                                            value: 'de',
+                                                        },
+                                                        {
+                                                            id: 6,
+                                                            key: 'Greek',
+                                                            value: 'el',
+                                                        },
+                                                        {
+                                                            id: 7,
+                                                            key: 'Hungarian',
+                                                            value: 'hu',
+                                                        },
+                                                        {
+                                                            id: 8,
+                                                            key: 'Italian',
+                                                            value: 'it',
+                                                        },
+                                                        {
+                                                            id: 9,
+                                                            key: 'Japanese',
+                                                            value: 'ja',
+                                                        },
+                                                        {
+                                                            id: 10,
+                                                            key: 'Polish',
+                                                            value: 'pl',
+                                                        },
+                                                        {
+                                                            id: 11,
+                                                            key: 'Portuguese',
+                                                            value: 'pt',
+                                                        },
+                                                        {
+                                                            id: 12,
+                                                            key: 'Russian',
+                                                            value: 'ru',
+                                                        },
+                                                        {
+                                                            id: 13,
+                                                            key: 'Spanish',
+                                                            value: 'es',
+                                                        },
+                                                        {
+                                                            id: 14,
+                                                            key: 'Swedish',
+                                                            value: 'sv',
+                                                        },
+                                                        {
+                                                            id: 15,
+                                                            key: 'Turkish',
+                                                            value: 'tr',
+                                                        },
+                                                    ],
+                                
+                                                    removeNotification(value) {
+                                                        this.notifications = this.notifications.filter((d) => d.id !== value);
+                                                    },
+                                
+                                                    removeMessage(value) {
+                                                        this.messages = this.messages.filter((d) => d.id !== value);
+                                                    },
+                                                }));
+                                
+                                                Alpine.data('basic', () => ({
+                                                    datatable: null,
+                                                    init() {
+                                                        this.datatable = new simpleDatatables.DataTable('#myTable', {
+                                                            data: {
+                                                                headings: ['ID', 'First Name', 'Last Name', 'Email', 'Phone'],
+                                                                data: [
+                                                                    [1, 'Caroline', 'Jensen', 'carolinejensen@zidant.com', '+1 (821) 447-3782'],
+                                                                    [2, 'Celeste', 'Grant', 'celestegrant@polarax.com', '+1 (838) 515-3408'],
+                                                                    [3, 'Tillman', 'Forbes', 'tillmanforbes@manglo.com', '+1 (969) 496-2892'],
+                                                                    [4, 'Daisy', 'Whitley', 'daisywhitley@applideck.com', '+1 (861) 564-2877'],
+                                                                    [5, 'Weber', 'Bowman', 'weberbowman@volax.com', '+1 (962) 466-3483'],
+                                                                    [6, 'Buckley', 'Townsend', 'buckleytownsend@orbaxter.com', '+1 (884) 595-2643'],
+                                                                    [7, 'Latoya', 'Bradshaw', 'latoyabradshaw@opportech.com', '+1 (906) 474-3155'],
+                                                                    [8, 'Kate', 'Lindsay', 'katelindsay@gorganic.com', '+1 (930) 546-2952'],
+                                                                    [9, 'Marva', 'Sandoval', 'marvasandoval@avit.com', '+1 (927) 566-3600'],
+                                                                    [10, 'Decker', 'Russell', 'deckerrussell@quilch.com', '+1 (846) 535-3283'],
+                                                                    [11, 'Odom', 'Mills', 'odommills@memora.com', '+1 (995) 525-3402'],
+                                                                    [12, 'Sellers', 'Walters', 'sellerswalters@zorromop.com', '+1 (830) 430-3157'],
+                                                                    [13, 'Wendi', 'Powers', 'wendipowers@orboid.com', '+1 (863) 457-2088'],
+                                                                    [14, 'Sophie', 'Horn', 'sophiehorn@snorus.com', '+1 (885) 418-3948'],
+                                                                    [15, 'Levine', 'Rodriquez', 'levinerodriquez@xth.com', '+1 (999) 565-3239'],
+                                                                    [16, 'Little', 'Hatfield', 'littlehatfield@comtract.com', '+1 (812) 488-3011'],
+                                                                    [17, 'Larson', 'Kelly', 'larsonkelly@zidant.com', '+1 (892) 484-2162'],
+                                                                    [18, 'Kendra', 'Molina', 'kendramolina@sureplex.com', '+1 (920) 528-3330'],
+                                                                    [19, 'Ebony', 'Livingston', 'ebonylivingston@danja.com', '+1 (970) 591-3039'],
+                                                                    [20, 'Kaufman', 'Rush', 'kaufmanrush@euron.com', '+1 (924) 463-2934'],
+                                                                    [21, 'Frank', 'Hays', 'frankhays@illumity.com', '+1 (930) 577-2670'],
+                                                                    [22, 'Carmella', 'Mccarty', 'carmellamccarty@sybixtex.com', '+1 (876) 456-3218'],
+                                                                    [23, 'Massey', 'Owen', 'masseyowen@zedalis.com', '+1 (917) 567-3786'],
+                                                                    [24, 'Lottie', 'Lowery', 'lottielowery@dyno.com', '+1 (912) 539-3498'],
+                                                                    [25, 'Addie', 'Luna', 'addieluna@multiflex.com', '+1 (962) 537-2981'],
+                                                                ],
+                                                            },
+                                                            sortable: false,
+                                                            searchable: false,
+                                                            perPage: 10,
+                                                            perPageSelect: [10, 20, 30, 50, 100],
+                                                            firstLast: true,
+                                                            firstText:
+                                                                '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                                                            lastText:
+                                                                '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                                                            prevText:
+                                                                '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                                                            nextText:
+                                                                '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
+                                                            labels: {
+                                                                perPage: '{select}',
+                                                            },
+                                                            layout: {
+                                                                top: '{search}',
+                                                                bottom: '{info}{select}{pager}',
+                                                            },
+                                                        });
+                                                    },
+                                                }));
+                                            });
+                                        </script>
+                                
                                         {{ $hadir->appends(['cari' => request('cari')])->links() }}
                                 </div>
                             </div>

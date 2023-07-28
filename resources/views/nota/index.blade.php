@@ -147,7 +147,7 @@
 
             <a href="/kode_beli">
 
-                <button class="bg-blue-400 py-1 px-3 text-white font-normal rounded mt-1 mb-2">Selesai</button>
+                <button  style="background-color: #0095ff; padding: 0.25rem 0.75rem; color: #FFFFFF; font-weight: normal; border-radius: 0.25rem; margin-top: 0.25rem; margin-bottom: 0.5rem;">Selesai</button>
             </a>
         </div>
 

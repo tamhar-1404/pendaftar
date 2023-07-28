@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/style.css" />
     <link defer rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/animate.css" />
     <link rel="stylesheet" href="load/load.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets_guru/js/perfect-scrollbar.min.js"></script>
     <script defer src="assets_guru/js/popper.min.js"></script>
     <script defer src="assets_guru/js/tippy-bundle.umd.min.js"></script>
@@ -29,6 +30,15 @@
     :class="[$store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout, $store.app
         .rtlClass
     ]">
+    @if (session()->has('success'))
+    <script>
+        Swal.fire(
+            'Berhasil!',
+            "{{ session('success') }}",
+            'success'
+        )
+    </script>
+    @endif
     <!-- sidebar menu overlay -->
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>

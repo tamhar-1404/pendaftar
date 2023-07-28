@@ -362,17 +362,30 @@
                 <div x-data="basic" class="mt-0">
                     {{-- judul --}}
                     <div class="mb-5 font-semibold kamu-tak-diajak">
-                        <span>Jurnal /<span class="text-[#00B7FF]"> {{ Auth::user()->name }}</span></span>
+                        <span class="text-xl font-bold mb-4">Jurnal /<span class="text-[#00B7FF]"> {{ Auth::user()->name }}</span></span>
                     </div>
                     @error('tanggal')
-                        <div class="text-danger">Anda telah mengisi jurnal pada hari ini</div>
+                        <div class="text-danger"><b>Anda telah mengisi jurnal pada hari ini</b></div>
                     @enderror
                     @error('image')
                         <div class="text-danger"><b>Ekstensi gambar hanya: png,jpg, dan jpeg</b></div>
                     @enderror
+                    @error('kegiatan')
+                        <div class="text-danger"><b>Kegiatan tidak boleh kosong</b></div>
+                    @enderror
 
                     <div class="panel">
                         {{-- <h2>{{ $e }}</h2> --}}
+                        @php
+                        $hari = date('N') + 1;
+                        $daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                        $namaHari = $daftarHari[$hari - 1];
+                        $tanggal = date('d');
+                        $bulan = date('n');
+                        $tahun = date('Y');
+                    @endphp
+
+                        <p class="text-xl font-semibold mb-4"><span class="text-red-600">Hari ini adalah : </span> {{ $namaHari }}, {{ $tanggal }}/{{ $bulan }}/{{ $tahun }}</p>
 
                         <div class="kamu-tak-diajak flex justify-between items-center">
                             <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
@@ -583,22 +596,22 @@
                                                         class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                                         <td class="whitespace-nowrap px-2 py-2 font-medium">
                                                             {{ $loop->iteration }}</td>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $items->nama }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $items->nama }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $items->tanggal }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $items->tanggal }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $items->sekolah }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $items->sekolah }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 py-2 overflow-hidden">
+                                                        <td class="whitespace-nowrap px-6 py-2 overflow-hidden">
                                                             <div class="truncate">
                                                                 {{ substr($items->kegiatan, 0, 10) }}..
                                                             </div>
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 pl-17 py-2"><img
+                                                        <td class="whitespace-nowrap px-6 pl-17 py-2"><img
                                                                 src="{{ asset('storage/image/' . $items->image) }}"
                                                                 width="100px" alt="">
                                                         </td>
-                                                        <td class="whitespace-nowrap px-4 py-4  kamu-tak-diajak">
+                                                        <td class="whitespace-nowrap px-6 py-2  kamu-tak-diajak">
                                                             <div class="flex gap-2">
                                                                 <a href="#">
                                                                     <div class="w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"

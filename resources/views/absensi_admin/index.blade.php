@@ -324,13 +324,13 @@
                                             @forelse ($terima as $absen)
                                                 <tr
                                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">
+                                                    <td class="whitespace-nowrap px-6 py-2 font-medium">
                                                         {{ $no++ }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $absen->nama }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $absen->sekolah }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $absen->tanggal }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $absen->nama }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $absen->sekolah }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $absen->tanggal }}</td>
                                                     <td class="whitespace-nowrap px-6 py-4">{{ $absen->jam }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">
+                                                    <td class="whitespace-nowrap px-6 py-2">
                                                         @if ($absen->keterangan === 'Hadir')
                                                             <span
                                                                 class=" text-green-500">{{ $absen->keterangan }}</span>

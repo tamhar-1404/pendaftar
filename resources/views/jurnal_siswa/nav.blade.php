@@ -245,7 +245,7 @@
                         <span
                             ><img
                                 class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                src="{{ asset('storage/Siswa/'.Auth::user()->siswa->foto_siswa) }}"
+                                src="{{ asset('storage/Siswa/'.$siswa->foto_siswa) }}"
                                 alt="image"
                         /></span>
                     </a>
@@ -361,7 +361,7 @@
                             >
                         </li>
                         <li class="border-t border-white-light dark:border-white-light/10">
-                            <a href="{{route('logout')}}" class="py-3 text-danger">
+                            <a href="{{route('keluar')}}" class="py-3 text-danger">
                                 <svg
                                     class="h-4.5 w-4.5 rotate-90 ltr:mr-2 rtl:ml-2"
                                     width="18"
