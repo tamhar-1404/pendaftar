@@ -6,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin - Jurnal Hari Ini</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script>
         theme: {
             extend: {
@@ -36,6 +41,11 @@
     <script defer src="{{ asset('admin/assets/js/tippy-bundle.umd.min.js') }}"></script>
     <script defer src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
     <link rel="stylesheet" href="load/load.css">
+      <!-- CSS Assets -->
+      <link rel="stylesheet" href="admin/css/app.css" />
+
+      <!-- Javascript Assets -->
+      <script src="admin/js/app.js" defer></script>
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -82,7 +92,55 @@
                 </ul>
                 <div class="pt-5">
                     <div class="mb-5 flex items-center justify-between">
-                        <h5 class="text-sm font-semibold dark:text-white-light">Jurnal Hari ini </h5>
+                        <h5 class="text-sm font-semibold dark:text-white-light">Absensi Hari ini </h5>
+                        <!-- Date Range -->
+                        <div class="card px-4 pb-4 sm:px-5">
+
+                            <div class="max-w-xl">
+
+                            <div class="mt-5">
+                                <form action="" >
+                                    <label class="relative flex">
+                                        <input
+                                        x-init="$el._x_flatpickr = flatpickr($el,{mode: 'range',dateFormat: 'Y-m-d',defaultDate: [getCurrentDate(), getCurrentDate()] })"
+                                        class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                        placeholder="Choose date..."
+                                        type="text" name="cari" value="{{ request('cari') }}"
+                                    />
+                                </form>
+
+                                <script>
+                                    function getCurrentDate() {
+                                        const now = new Date();
+                                        const year = now.getFullYear();
+                                        const month = String(now.getMonth() + 1).padStart(2, '0');
+                                        const day = String(now.getDate()).padStart(2, '0');
+                                        return `${year}-${month}-${day}`;
+                                    }
+                                </script>
+                                <span
+                                    class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent"
+                                >
+                                    <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 transition-colors duration-200"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                    />
+                                    </svg>
+                                </span>
+                                </label>
+                            </div>
+                            </div>
+
+                        </div>
                     </div>
                     <div x-data="{ tab: 'home' }">
                         <ul
