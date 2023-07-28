@@ -41,6 +41,11 @@
     <script defer src="{{ asset('admin/assets/js/tippy-bundle.umd.min.js') }}"></script>
     <script defer src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
     <link rel="stylesheet" href="load/load.css">
+      <!-- CSS Assets -->
+      <link rel="stylesheet" href="admin/css/app.css" />
+
+      <!-- Javascript Assets -->
+      <script src="admin/js/app.js" defer></script>
     <script>
         tailwind.config = {
             darkMode: "class",
