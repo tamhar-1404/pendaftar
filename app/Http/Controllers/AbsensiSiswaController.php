@@ -149,6 +149,10 @@ class AbsensiSiswaController extends Controller
      */
     public function store(Request $request ,ApprovalIzin $approvalIzin)
     {
+        $hariIni = Carbon::now()->format('l');
+        if ($hariIni == 'Saturday' OR $hariIni == 'Sunday') {
+            return back()->with('error', 'Hari ini libur');
+        }
         $telat='telat';
         $this->validate($request, [
             'tanggal' => 'date',
