@@ -80,6 +80,7 @@ class JurnalsiswaController extends Controller
                 try {
                     $this->validate($request, [
                         'kegiatan' => "required",
+                        'image' => 'required|mimes:png,jpg,jpeg',
                     ]);
 
                     $image = $request->file('image');
