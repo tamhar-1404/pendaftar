@@ -20,18 +20,24 @@ class HistoryTopupController extends Controller
      */
     public function index(Request $request)
     {
-        $TopUp = TopUp::all();
+        $userName = Auth::user()->name;
+
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $TopUp = TopUp::where('tanggal', 'LIKE', '%' . $keyword . '%')->orWhere('status', 'LIKE', '%' . $keyword . '%')->paginate(10);
-            return view('History_siswa.topup', compact('TopUp'));
+    
+            $TopUp = TopUp::where('user_id',Auth()->user()->id)
+                ->where(function ($query) use ($keyword) {
+                    $query->where('tanggal', 'LIKE', '%' . $keyword . '%')
+                        ->orWhere('status', 'LIKE', '%' . $keyword . '%');
+                })
+                ->paginate(5);
     
             $TopUp->appends(['cari' => $keyword]);
-            return view('History_siswa.topup', compact('TopUp'));
-    
+        } else {
+            $TopUp = Topup::where('user_id',Auth()->user()->id)->latest()->paginate(10);
         }
-        $TopUp = Topup::where('user_id',Auth()->user()->id)->latest()->paginate(10);
         return view('History_siswa.topup', compact('TopUp'));
+
     }
 
     /**
