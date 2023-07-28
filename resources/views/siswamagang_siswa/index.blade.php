@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <!-- CSS Assets -->
     <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
     <link rel="stylesheet" href="load/load.css">
@@ -22,7 +22,6 @@
                 }
             },
         },
-
     </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -33,7 +32,7 @@
 
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/app.css" />
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link rel="stylesheet" href="load/load.css">
@@ -147,7 +146,7 @@
             :class="{ '!block': showCustomizer }" @click="showCustomizer = false"></div>
 
 
-        </div>
+    </div>
     </nav>
     </div>
     <!-- end theme customizer section -->
@@ -170,30 +169,32 @@
                     <div class="mb-5 font-semibold kamu-tak-diajak">
                         <span>Jurnal /<span class="text-[#00B7FF]"> {{ Auth::user()->name }}</span></span>
                     </div>
-                   @error('tanggal')
+                    @error('tanggal')
                         <div class="text-danger">Anda telah mengisi jurnal pada hari ini</div>
-                   @enderror
+                    @enderror
 
                     <div class="panel">
-                     {{-- <h2>{{ $e }}</h2> --}}
-                     <div class="mr-4 flex justify-end " >
-                        <form action="" style="width: 20%">
-                            <label class=" hidden sm:flex">
-                                <input
-                                    class="form-input peer h-9 rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                    placeholder="Search users..." type="text" name="cari"
-                                    value="{{ request('cari') }}" />
-                            </label>
-                        </form>
-                    </div>
+                        {{-- <h2>{{ $e }}</h2> --}}
+                        <div class="mr-4 flex justify-end ">
+                            <form action="" style="width: 20%">
+                                <label class=" hidden sm:flex">
+                                    <input
+                                        class="form-input peer h-9 rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                        placeholder="Search users..." type="text" name="cari"
+                                        value="{{ request('cari') }}" />
+                                </label>
+                            </form>
+                        </div>
 
 
 
-                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
+                        <div
+                            class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
                             @forelse ($siswas as $siswa)
                                 <div class="card ">
                                     <div class="p-2 text-right">
-                                        <div x-data="usePopper({ placement: 'bottom-end', offset: 4 })" @click.outside="isShowPopper && (isShowPopper = false)"
+                                        <div x-data="usePopper({ placement: 'bottom-end', offset: 4 })"
+                                            @click.outside="isShowPopper && (isShowPopper = false)"
                                             class="inline-flex">
 
 
@@ -201,7 +202,8 @@
                                     </div>
                                     <div class="flex grow flex-col items-center px-2 pb-3 sm:px-5">
                                         <div class="avatar h-20 w-20">
-                                            <img class="rounded-full" src="{{ asset('storage/Siswa/'.$siswa->foto_siswa) }}"
+                                            <img class="rounded-full"
+                                                src="{{ asset('storage/Siswa/' . $siswa->foto_siswa) }}"
                                                 alt="avatar" />
                                         </div>
                                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
@@ -226,8 +228,9 @@
                                                         Laporkan</div>
                                                     <div
                                                         class="IconsaxBrokenWarning2 w- h- relative flex-col justify-start items-start flex text-white">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                                                         </svg>

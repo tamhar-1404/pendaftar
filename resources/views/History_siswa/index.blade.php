@@ -26,7 +26,7 @@
           },
 
     </script>
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link rel="stylesheet" href="load/load.css">

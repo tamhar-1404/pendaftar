@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
         integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -19,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         crossorigin="anonymous"></script>
-    
+
 
     <style>
         /* Menyembunyikan tombol cetak saat mencetak */
@@ -36,16 +37,19 @@
         }
 
 
-        .button_pdf:hover{
+        .button_pdf:hover {
             background-color: red;
         }
-        .button_print:hover{
+
+        .button_print:hover {
             background-color: blue;
         }
-        .button_izin:hover{
+
+        .button_izin:hover {
             background-color: #f5e50c;
         }
-        .button_absen:hover{
+
+        .button_absen:hover {
             background-color: #02e802;
             color: white;
         }
@@ -99,21 +103,21 @@
                 </svg>
                 PRINT
             </button>
-            @if (auth()->user()->role != 'Alumni' AND auth()->user()->Siswa->role != 'Alumni')
-            <button data-modal-target="staticModal" data-modal-toggle="staticModal"
-                class="button_izin bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg ">Tambah
-                Izin</button>
-            <form action="{{ route('absensi_siswa.store') }}" method="post" id="absenform">
-                @csrf
-                <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
-                <input type="hidden" name="sekolah" value="{{ Auth::user()->sekolah }}">
-                <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}" />
-                <input type="hidden" id="waktu" name="jam" value="{{ date('H:i') }}" />
-                <input type="hidden" name="keterangan" value="Hadir">
-                <button type="submit"
-                    class=" button_absen border border-green-500 px-3 py-2 rounded-lg text-green-500  font-bold"
-                    id="btnabsen">Absen</button>
-            </form>
+            @if (auth()->user()->role != 'Alumni' and auth()->user()->Siswa->role != 'Alumni')
+                <button data-modal-target="staticModal" data-modal-toggle="staticModal"
+                    class="button_izin bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg ">Tambah
+                    Izin</button>
+                <form action="{{ route('absensi_siswa.store') }}" method="post" id="absenform">
+                    @csrf
+                    <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
+                    <input type="hidden" name="sekolah" value="{{ Auth::user()->sekolah }}">
+                    <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}" />
+                    <input type="hidden" id="waktu" name="jam" value="{{ date('H:i') }}" />
+                    <input type="hidden" name="keterangan" value="Hadir">
+                    <button type="submit"
+                        class=" button_absen border border-green-500 px-3 py-2 rounded-lg text-green-500  font-bold"
+                        id="btnabsen">Absen</button>
+                </form>
             @endif
         </div>
         <div>

@@ -15,13 +15,12 @@
             extend: {
                 blur: {
                     xs: '3px',
-                  }
+                }
             },
-          },
-
+        },
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
@@ -166,93 +165,96 @@
                             <div id="content1" class="card-content" style="display: none"
                                 class="hidden min-h-[400px] sm:min-h-[300px]">
                                 <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-                                    @forelse ($siswa as $data )
-                                    <div class="panel pb-12">
-                                        <div class="min-h-[142px]">
-                                            <div class="flex justify-between">
-                                                <div class="flex w-max items-center">
-                                                    <div class="flex-none">
-                                                        <div>
-                                                            <div
-                                                                class="rounded-full bg-gray-300 p-0.5 dark:bg-gray-700">
-                                                                <img class="h-8 w-8 rounded-full object-cover"
-                                                                    src="{{ asset('admin/assets/images/profile-16.jpg') }}" />
+                                    @forelse ($siswa as $data)
+                                        <div class="panel pb-12">
+                                            <div class="min-h-[142px]">
+                                                <div class="flex justify-between">
+                                                    <div class="flex w-max items-center">
+                                                        <div class="flex-none">
+                                                            <div>
+                                                                <div
+                                                                    class="rounded-full bg-gray-300 p-0.5 dark:bg-gray-700">
+                                                                    <img class="h-8 w-8 rounded-full object-cover"
+                                                                        src="{{ asset('admin/assets/images/profile-16.jpg') }}" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ltr:ml-2 rtl:mr-2">
+                                                            <div class="font-semibold">
+                                                                <p>{{ $data->name }}</p>
+                                                            </div>
+                                                            <div class="text-sx text-white-dark">
+                                                                <p>{{ $data->tanggal }}</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="ltr:ml-2 rtl:mr-2">
-                                                        <div class="font-semibold">
-                                                            <p>{{$data->name}}</p>
-                                                        </div>
-                                                        <div class="text-sx text-white-dark">
-                                                            <p>{{$data->tanggal}}</p>
-                                                        </div>
+                                                </div>
+                                                <div>
+                                                    <h4 class="mt-4 font-semibold">{{ $data->nama }}</h4>
+                                                    <p class="mt-2 text-white-dark">{{ $data->deskripsi }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="absolute bottom-4 left-0 w-full px-5">
+                                                <div class="mt-5 flex items-center justify-between">
+                                                    <div class="flex items-center mt-5">
+                                                        <button type="button" class="group text-gray-600"
+                                                            data-te-toggle="modal"
+                                                            data-modal-target="staticModal{{ $data->id }}"
+                                                            data-modal-toggle="staticModal{{ $data->id }}">
+                                                            <svg width="24" height="24" viewBox="0 0 24 24"
+                                                                fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                                class="h-4.5 w-4.5 ltr:mr-3 rtl:ml-3">
+                                                                <path opacity="0.5"
+                                                                    d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
+                                                                    stroke="currentColor" stroke-width="1.5" />
+                                                                <path
+                                                                    d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
+                                                                    stroke="currentColor" stroke-width="1.5" />
+                                                            </svg>
+                                                        </button>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h4 class="mt-4 font-semibold">{{$data->nama}}</h4>
-                                                <p class="mt-2 text-white-dark">{{$data->deskripsi}}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="absolute bottom-4 left-0 w-full px-5">
-                                            <div class="mt-5 flex items-center justify-between">
-                                                <div class="flex items-center mt-5">
-                                                    <button type="button" class="group text-gray-600" data-te-toggle="modal"
-                                                    data-modal-target="staticModal{{$data->id}}" data-modal-toggle="staticModal{{$data->id}}">
-                                                        <svg width="24" height="24" viewBox="0 0 24 24"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-4.5 w-4.5 ltr:mr-3 rtl:ml-3">
-                                                            <path opacity="0.5"
-                                                                d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
-                                                                stroke="currentColor" stroke-width="1.5" />
-                                                            <path
-                                                                d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
-                                                                stroke="currentColor" stroke-width="1.5" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                                <form action="{{ route('laporansiswa.update' , $data->id) }}" method="post">
-                                                    @csrf
-                                                    @method('PUT')
-                                                <div class="flex items-center mt-4">
-                                                    <button type="submit" class="text-success">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5"
-                                                            stroke="currentColor" class="w-6 h-6">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                        </svg>
-                                                    </button>
-                                                </form>
-                                                <form action="{{ route('laporansiswa.destroy' , $data->id) }}" method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit"
-                                                        class="group text-danger ltr:ml-1 rtl:mr-2 mt-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5"
-                                                            stroke="currentColor" class="w-6 h-6">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                        </svg>
-                                                    </button>
-                                                </form>
+                                                    <form action="{{ route('laporansiswa.update', $data->id) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="flex items-center mt-4">
+                                                            <button type="submit" class="text-success">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                    viewBox="0 0 24 24" stroke-width="1.5"
+                                                                    stroke="currentColor" class="w-6 h-6">
+                                                                    <path stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                </svg>
+                                                            </button>
+                                                    </form>
+                                                    <form action="{{ route('laporansiswa.destroy', $data->id) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="group text-danger ltr:ml-1 rtl:mr-2 mt-2">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                viewBox="0 0 24 24" stroke-width="1.5"
+                                                                stroke="currentColor" class="w-6 h-6">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    @empty
                                 </div>
+                            @empty
                             </div>
-
-                                    @endforelse
-                            <div id="content2" class="card-content" style="display: none"
-                                class="hidden min-h-[400px] sm:min-h-[300px]">
-                                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-                                    @forelse ($terima as $terima )
-
+                        </div>
+                        @endforelse
+                        <div id="content2" class="card-content" style="display: none"
+                            class="hidden min-h-[400px] sm:min-h-[300px]">
+                            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                                @forelse ($terima as $terima)
                                     <div class="panel pb-12">
                                         <div class="min-h-[142px]">
                                             <div class="flex justify-between">
@@ -292,17 +294,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @empty
-
-                                    @endforelse
-                                </div>
+                                @empty
+                                @endforelse
                             </div>
-                            <div id="content3" class="card-content" style="display: none"
-                                class="hidden min-h-[400px] sm:min-h-[300px]">
+                        </div>
+                        <div id="content3" class="card-content" style="display: none"
+                            class="hidden min-h-[400px] sm:min-h-[300px]">
 
-                                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-                                    @forelse ($tolak as $tolak )
-
+                            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                                @forelse ($tolak as $tolak)
                                     <div class="panel pb-12">
                                         <div class="min-h-[142px]">
                                             <div class="flex justify-between">
@@ -342,65 +342,61 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @empty
-
-                                    @endforelse
-                                </div>
+                                @empty
+                                @endforelse
                             </div>
-                            <div class="fixed inset-0 z-[999] hidden overflow-y-auto bg-[black]/60 px-4"
-                                :class="isDeleteNoteModal && '!block'">
-                                <div class="flex min-h-screen items-center justify-center">
-                                    <div x-show="isDeleteNoteModal" x-transition x-transition.duration.300
-                                        @click.outside="isDeleteNoteModal = false"
-                                        class="panel my-8 w-[90%] max-w-lg overflow-hidden rounded-lg border-0 p-0 md:w-full">
-                                        <button type="button"
-                                            class="absolute top-4 text-white-dark hover:text-dark ltr:right-4 rtl:left-4"
-                                            @click="isDeleteNoteModal = false">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                                                class="h-6 w-6">
-                                                <line x1="18" y1="6" x2="6" y2="18">
-                                                </line>
-                                                <line x1="6" y1="6" x2="18" y2="18">
-                                                </line>
-                                            </svg>
-                                        </button>
+                        </div>
+                        <div class="fixed inset-0 z-[999] hidden overflow-y-auto bg-[black]/60 px-4"
+                            :class="isDeleteNoteModal && '!block'">
+                            <div class="flex min-h-screen items-center justify-center">
+                                <div x-show="isDeleteNoteModal" x-transition x-transition.duration.300
+                                    @click.outside="isDeleteNoteModal = false"
+                                    class="panel my-8 w-[90%] max-w-lg overflow-hidden rounded-lg border-0 p-0 md:w-full">
+                                    <button type="button"
+                                        class="absolute top-4 text-white-dark hover:text-dark ltr:right-4 rtl:left-4"
+                                        @click="isDeleteNoteModal = false">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                                            class="h-6 w-6">
+                                            <line x1="18" y1="6" x2="6" y2="18">
+                                            </line>
+                                            <line x1="6" y1="6" x2="18" y2="18">
+                                            </line>
+                                        </svg>
+                                    </button>
+                                    <div
+                                        class="bg-[#fbfbfb] py-3 text-lg font-medium ltr:pl-5 ltr:pr-[50px] rtl:pr-5 rtl:pl-[50px] dark:bg-[#121c2c]">
+                                        Delete Notes
+                                    </div>
+                                    <div class="p-5 text-center">
                                         <div
-                                            class="bg-[#fbfbfb] py-3 text-lg font-medium ltr:pl-5 ltr:pr-[50px] rtl:pr-5 rtl:pl-[50px] dark:bg-[#121c2c]">
-                                            Delete Notes
+                                            class="mx-auto w-fit rounded-full bg-danger p-4 text-white ring-4 ring-danger/30">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg" class="mx-auto h-7 w-7">
+                                                <path d="M20.5001 6H3.5" stroke="currentColor" stroke-width="1.5"
+                                                    stroke-linecap="round"></path>
+                                                <path
+                                                    d="M18.8334 8.5L18.3735 15.3991C18.1965 18.054 18.108 19.3815 17.243 20.1907C16.378 21 15.0476 21 12.3868 21H11.6134C8.9526 21 7.6222 21 6.75719 20.1907C5.89218 19.3815 5.80368 18.054 5.62669 15.3991L5.16675 8.5"
+                                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                                                </path>
+                                                <path opacity="0.5" d="M9.5 11L10 16" stroke="currentColor"
+                                                    stroke-width="1.5" stroke-linecap="round"></path>
+                                                <path opacity="0.5" d="M14.5 11L14 16" stroke="currentColor"
+                                                    stroke-width="1.5" stroke-linecap="round"></path>
+                                                <path opacity="0.5"
+                                                    d="M6.5 6C6.55588 6 6.58382 6 6.60915 5.99936C7.43259 5.97849 8.15902 5.45491 8.43922 4.68032C8.44784 4.65649 8.45667 4.62999 8.47434 4.57697L8.57143 4.28571C8.65431 4.03708 8.69575 3.91276 8.75071 3.8072C8.97001 3.38607 9.37574 3.09364 9.84461 3.01877C9.96213 3 10.0932 3 10.3553 3H13.6447C13.9068 3 14.0379 3 14.1554 3.01877C14.6243 3.09364 15.03 3.38607 15.2493 3.8072C15.3043 3.91276 15.3457 4.03708 15.4286 4.28571L15.5257 4.57697C15.5433 4.62992 15.5522 4.65651 15.5608 4.68032C15.841 5.45491 16.5674 5.97849 17.3909 5.99936C17.4162 6 17.4441 6 17.5 6"
+                                                    stroke="currentColor" stroke-width="1.5"></path>
+                                            </svg>
                                         </div>
-                                        <div class="p-5 text-center">
-                                            <div
-                                                class="mx-auto w-fit rounded-full bg-danger p-4 text-white ring-4 ring-danger/30">
-                                                <svg width="24" height="24" viewBox="0 0 24 24"
-                                                    fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                    class="mx-auto h-7 w-7">
-                                                    <path d="M20.5001 6H3.5" stroke="currentColor" stroke-width="1.5"
-                                                        stroke-linecap="round"></path>
-                                                    <path
-                                                        d="M18.8334 8.5L18.3735 15.3991C18.1965 18.054 18.108 19.3815 17.243 20.1907C16.378 21 15.0476 21 12.3868 21H11.6134C8.9526 21 7.6222 21 6.75719 20.1907C5.89218 19.3815 5.80368 18.054 5.62669 15.3991L5.16675 8.5"
-                                                        stroke="currentColor" stroke-width="1.5"
-                                                        stroke-linecap="round">
-                                                    </path>
-                                                    <path opacity="0.5" d="M9.5 11L10 16" stroke="currentColor"
-                                                        stroke-width="1.5" stroke-linecap="round"></path>
-                                                    <path opacity="0.5" d="M14.5 11L14 16" stroke="currentColor"
-                                                        stroke-width="1.5" stroke-linecap="round"></path>
-                                                    <path opacity="0.5"
-                                                        d="M6.5 6C6.55588 6 6.58382 6 6.60915 5.99936C7.43259 5.97849 8.15902 5.45491 8.43922 4.68032C8.44784 4.65649 8.45667 4.62999 8.47434 4.57697L8.57143 4.28571C8.65431 4.03708 8.69575 3.91276 8.75071 3.8072C8.97001 3.38607 9.37574 3.09364 9.84461 3.01877C9.96213 3 10.0932 3 10.3553 3H13.6447C13.9068 3 14.0379 3 14.1554 3.01877C14.6243 3.09364 15.03 3.38607 15.2493 3.8072C15.3043 3.91276 15.3457 4.03708 15.4286 4.28571L15.5257 4.57697C15.5433 4.62992 15.5522 4.65651 15.5608 4.68032C15.841 5.45491 16.5674 5.97849 17.3909 5.99936C17.4162 6 17.4441 6 17.5 6"
-                                                        stroke="currentColor" stroke-width="1.5"></path>
-                                                </svg>
-                                            </div>
-                                            <div class="mx-auto mt-5 sm:w-3/4">Are you sure you want to delete Notes?
-                                            </div>
+                                        <div class="mx-auto mt-5 sm:w-3/4">Are you sure you want to delete Notes?
+                                        </div>
 
-                                            <div class="mt-8 flex items-center justify-center">
-                                                <button type="button" class="btn btn-outline-danger"
-                                                    @click="isDeleteNoteModal = false">Cancel</button>
-                                                <button type="button" class="btn btn-primary ltr:ml-4 rtl:mr-4"
-                                                    @click="deleteNote">Delete</button>
-                                            </div>
+                                        <div class="mt-8 flex items-center justify-center">
+                                            <button type="button" class="btn btn-outline-danger"
+                                                @click="isDeleteNoteModal = false">Cancel</button>
+                                            <button type="button" class="btn btn-primary ltr:ml-4 rtl:mr-4"
+                                                @click="deleteNote">Delete</button>
                                         </div>
                                     </div>
                                 </div>
@@ -408,82 +404,93 @@
                         </div>
                     </div>
                 </div>
-                <!-- end main content section -->
-
-                <!-- start footer section -->
-                <!-- end footer section -->
             </div>
+            <!-- end main content section -->
+
+            <!-- start footer section -->
+            <!-- end footer section -->
         </div>
     </div>
-    @forelse ( $siswa as $modal)
-    {{-- modal --}}
-    <div id="staticModal{{$modal->id}}"  tabindex="-1" aria-hidden="true" class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-       <div class="relative w-full max-w-2xl max-h-full">
-           <!-- Modal content -->
-           <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-               <!-- Modal header -->
-               <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                   <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                     Detail laporan
-                   </h3>
-                   <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="staticModal{{$modal -> id}}">
-                       <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                   </button>
-               </div>
-               <!-- Modal body -->
-               <div class="p-6 space-y-6">
-                   <div>
-                       <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
-                           Nama
-                       </p>
-                       <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                           {{$modal->name }}
-                       </p>
-                   </div>
-                   <div>
-                       <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                           Tanggal
-                       </p>
-                       <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                           {{$modal ->tanggal}}
-                       </p>
-                   </div>
-                   <div>
-                       <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                           Sekolah
-                       </p>
-                       <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                           {{$modal ->nama}}
-                       </p>
-                   </div>
-                   <div>
-                       <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                           Kegiatan
-                       </p>
-                       <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                           {{$modal ->deskripsi}}
-                       </p>
-                   </div>
-                   <div>
-                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                        Bukti
-                    </p>
-                    <img src="{{ asset('storage/laporansiswa/' . $modal->bukti) }}" alt="" srcset="">
-                   </div>
+    </div>
+    @forelse ($siswa as $modal)
+        {{-- modal --}}
+        <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
+            class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            Detail laporan
+                        </h3>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-hide="staticModal{{ $modal->id }}">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="p-6 space-y-6">
+                        <div>
+                            <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
+                                Nama
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->name }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Tanggal
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->tanggal }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Sekolah
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->nama }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Kegiatan
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->deskripsi }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Bukti
+                            </p>
+                            <img src="{{ asset('storage/laporansiswa/' . $modal->bukti) }}" alt=""
+                                srcset="">
+                        </div>
 
-               </div>
-               <!-- Modal footer -->
-               <div class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                   <button data-modal-hide="staticModal{{$modal -> id}}" type="" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
-               </div>
-           </div>
-       </div>
-   </div>
-   @empty
+                    </div>
+                    <!-- Modal footer -->
+                    <div
+                        class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                        <button data-modal-hide="staticModal{{ $modal->id }}" type=""
+                            class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @empty
+    @endforelse
 
-   @endforelse
-
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="siswa/js/alpine-collaspe.min.js"></script>
     <script src="siswa/js/alpine-persist.min.js"></script>
     <script defer src="siswa/js/alpine-ui.min.js"></script>

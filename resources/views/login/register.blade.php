@@ -13,7 +13,7 @@
 
     <title>Register</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="/admin/assets/images/logo.png" rel="shortcut icon">
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />

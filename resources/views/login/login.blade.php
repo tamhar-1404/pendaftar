@@ -15,16 +15,16 @@
 
     <title>Login</title>
     <script src="https://cdn.tailwindcss.com%22%3E/"></script>
-        <script>
-            theme: {
-                extend: {
-                    blur: {
-                        xs: '3px',
-                    }
-                },
-            }
-        </script>
-    <link href="/admin/assets/images/logo.png" rel="shortcut icon">
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        }
+    </script>
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
 
     <!-- CSS Assets -->
     <link rel="stylesheet" href="lineone/css/app.css" />
@@ -46,6 +46,7 @@
             document.documentElement.classList.add("dark");
     </script>
 </head>
+
 <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
 
     @if (session()->has('berhasil_daftar'))
@@ -290,7 +291,8 @@
                                 Password?</a>
                         </div>
                         <p id="privacy-warning" style="margin-bottom: -20px;"
-                            class="text-red-500 mt-3 text-xs hidden line-clamp-1 cursor-pointer " style="text-red">Anda harus
+                            class="text-red-500 mt-3 text-xs hidden line-clamp-1 cursor-pointer " style="text-red">
+                            Anda harus
                             menyetujui
                             kebijakan privasi.</p>
 

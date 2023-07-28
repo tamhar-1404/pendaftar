@@ -15,7 +15,7 @@
     <meta name="email" content="support@shreethemes.in">
     <meta name="version" content="1.1.0">
     <!-- favicon -->
-    <link href="/admin/assets/images/logo.png" rel="shortcut icon">
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         theme: {

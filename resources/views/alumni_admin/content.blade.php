@@ -15,7 +15,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
     <title>Lineone - User Grid v1</title>
-    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
 
     <!-- CSS Assets -->
     <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
@@ -2310,10 +2310,10 @@
                             </div>
                         </div>
                     </div>
-                    @empty
-                        <div class="flex justify-center items-center">
-                            <img src="/admin/noData.png" alt="" class="m-auto">
-                        </div>
+                @empty
+                    <div class="flex justify-center items-center">
+                        <img src="/admin/noData.png" alt="" class="m-auto">
+                    </div>
                 @endforelse
 
                 {{-- {{ $alumni->appends(['cari' => request('cari')])->links() }} --}}
