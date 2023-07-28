@@ -130,7 +130,7 @@ class JurnaladminController extends Controller
             return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today'));
 
 
-            $item->appends(['cari' => $keyword]);
+            $siswa->appends(['cari' => $keyword]);
             return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today'));
         }
         // $siswa = Siswa::all();
