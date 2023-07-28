@@ -193,11 +193,11 @@
                                 }
                             </script>
                             {{-- serch --}}
-                            <form action="{{ route('absensi_admin.create') }}">
+                            <form action="">
                                 <label class="relative hidden sm:flex">
                                     <input
                                         class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Search users..." type="text" name="serch"
+                                        placeholder="Search users..." type="text" name="cari"
                                         value="{{ request('cari') }}" />
                                     <span
                                         class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
@@ -277,6 +277,15 @@
                             </button>
                         </div>
                     </div>
+                    <div id="grafik_admin"
+                        class=" w-90% h-35 mx-4 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
+                        <div class="w-full px-4 mt-6">
+                            <div class="w-80%  bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
+                                Grafik Absensi
+                            </div>
+                        </div>
+                    </div>
+
 
                     {{-- tabel --}}
 
@@ -435,11 +444,101 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script>
         $(window).on('load', function() {
             $('.spin_load').fadeOut();
         });
+    </script>
+    <script>
+        var options = {
+            series: [{
+                name: 'Izin & Sakit',
+                data: [{{ $izin_jan }}, {{ $izin_feb }}, {{ $izin_mar }}, {{ $izin_apr }},
+                    {{ $izin_mei }},
+                    {{ $izin_jun }}, {{ $izin_jul }}, {{ $izin_aug }}, {{ $izin_sep }},
+                    {{ $izin_okt }}, {{ $izin_nov }}, {{ $izin_des }}
+                ]
+            }, {
+                name: 'Hadir',
+                data: [{{ $Hadir_jan }}, {{ $Hadir_feb }}, {{ $Hadir_mar }}, {{ $Hadir_apr }},
+                    {{ $Hadir_mei }},
+                    {{ $Hadir_jun }}, {{ $Hadir_jul }}, {{ $Hadir_aug }}, {{ $Hadir_sep }},
+                    {{ $Hadir_okt }}, {{ $Hadir_nov }}, {{ $Hadir_des }}
+                ]
+            }, {
+                name: 'telat',
+                data: [{{ $Telat_jan }}, {{ $Telat_feb }}, {{ $Telat_mar }}, {{ $Telat_apr }},
+                    {{ $Telat_mei }},
+                    {{ $Telat_jun }}, {{ $Telat_jul }}, {{ $Telat_aug }}, {{ $Telat_sep }},
+                    {{ $Telat_okt }}, {{ $Telat_nov }}, {{ $Telat_des }}
+                ]
+            }, {
+                name: 'alfa',
+                data: [{{ $Alfa_jan }}, {{ $Alfa_feb }}, {{ $Alfa_mar }}, {{ $Alfa_apr }},
+                    {{ $Alfa_mei }},
+                    {{ $Alfa_jun }}, {{ $Alfa_jul }}, {{ $Alfa_aug }}, {{ $Alfa_sep }},
+                    {{ $Alfa_okt }}, {{ $Alfa_nov }}, {{ $Alfa_des }}
+                ]
+            }, ],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded',
+                    borderRadius: 7,
+                },
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            animations: {
+                enabled: true,
+                easing: 'easeinout',
+                speed: 1200,
+                animateGradually: {
+                    enabled: true,
+                    delay: 200
+                },
+                dynamicAnimation: {
+                    enabled: true,
+                    speed: 450
+                }
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+
+            },
+            yaxis: {
+                title: {
+                    text: ''
+                }
+            },
+            fill: {
+                opacity: 3,
+                colors: ['#6769EB', '#47EBB3', '#FFA726', '#D21312']
+            },
+            tooltip: {
+                y: {
+                    // formatter: function (val) {
+                    //   return "$ " + val + " thousands"
+                    // }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#grafik_admin"), options);
+        chart.render();
     </script>
     <script>
         const instanceMode = te.Sidenav.getInstance(
