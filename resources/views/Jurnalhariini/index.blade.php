@@ -5,17 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin - Dashboard</title>
+    <title>Admin - Jurnal Hari Ini</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         theme: {
             extend: {
                 blur: {
                     xs: '3px',
-                  }
+                }
             },
-          },
-
+        },
     </script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
@@ -28,7 +27,14 @@
         rel="stylesheet" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/perfect-scrollbar.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <link defer rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/animate.css" />
+    {{--  <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />  --}}
+    <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>
+    <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
+    <script defer src="{{ asset('admin/assets/js/tippy-bundle.umd.min.js') }}"></script>
+    <script defer src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
     <link rel="stylesheet" href="load/load.css">
     <script>
         tailwind.config = {
@@ -52,8 +58,9 @@
 </head>
 
 <body>
-      <!-- screen loader -->
-      <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+    <!-- screen loader -->
+    <div
+        class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
@@ -75,7 +82,7 @@
                 </ul>
                 <div class="pt-5">
                     <div class="mb-5 flex items-center justify-between">
-                        <h5 class="text-sm font-semibold dark:text-white-light">Absensi Hari ini </h5>
+                        <h5 class="text-sm font-semibold dark:text-white-light">Jurnal Hari ini </h5>
                     </div>
                     <div x-data="{ tab: 'home' }">
                         <ul
@@ -83,8 +90,7 @@
                             <li class="inline-block">
                                 <a href="javascript:;"
                                     class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
-                                    :class="{ '!border-primary text-primary': tab == 'home' }"
-                                    @click="tab='home'">
+                                    :class="{ '!border-primary text-primary': tab == 'home' }" @click="tab='home'">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
                                         <path opacity="0.5"
@@ -101,9 +107,11 @@
                                     class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
                                     :class="{ '!border-primary text-primary': tab == 'password' }"
                                     @click="tab='password'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                                      </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                                    </svg>
                                     Tidak mengisi
                                 </a>
                             </li>
@@ -113,17 +121,33 @@
                             <div>
                                 <form
                                     class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
-                                    <h6 class="mb-5 text-lg font-bold">Tanggal : </h6>
+                                    @php
+                                    $hari = date('N');
+                                    $daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                                @endphp
+
+                                <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $daftarHari[$hari] }}, {{ date('d F Y') }}</h6>
                                     <table class="min-w-full text-left text-sm ">
                                         <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
                                             <tr>
                                                 <th scope="col" class="px-6 py-2">#</th>
                                                 <th scope="col" class="px-6 py-2">Nama</th>
-                                                <th scope="col" class="px-6 py-2">Tanggal</th>
-                                                <th scope="col" class="px-6 py-2">Keterangan</th>
-                                                <th scope="col" class="px-6 py-2">Aksi</th>
+                                                <th scope="col" class="px-6 py-2">Sekolah</th>
+
+
                                             </tr>
                                         </thead>
+                                        @forelse ($users as $item)
+                                            <tbody>
+                                                <tr>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $loop->iteration }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $item->name }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $item->sekolah }}</td>
+                                                </tr>
+                                            </tbody>
+
+                                        @empty
+                                        @endforelse
                                 </form>
                             </div>
                         </template>
@@ -131,22 +155,51 @@
                             <div>
 
 
-                                <div
-                                    class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
+                                <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]"
+                                    enctype="multipart/form-data" method="POST">
 
-                                    <input type="hidden" name="siswa_id" >
-                                    <h6 class="mb-5 text-lg font-bold">Tanggal :</h6>
+                                    <input type="hidden" name="siswa_id">
+                                    @php
+                                    $hari = date('N');
+                                    $daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                                @endphp
+
+                                <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $daftarHari[$hari] }}, {{ date('d F Y') }}</h6>
                                     <div class="flex flex-col sm:flex-row">
                                         <table class="min-w-full text-left text-sm ">
                                             <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
                                                 <tr>
                                                     <th scope="col" class="px-6 py-2">#</th>
                                                     <th scope="col" class="px-6 py-2">Nama</th>
-                                                    <th scope="col" class="px-6 py-2">Tanggal</th>
-                                                    <th scope="col" class="px-6 py-2">Keterangan</th>
+
+                                                    <th scope="col" class="px-6 py-2">Deskripsi</th>
                                                     <th scope="col" class="px-6 py-2">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            @forelse ($jurnalSudahKirim as $item)
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $loop->iteration }}</td>
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $item->nama }}</td>
+
+                                                        <td class="whitespace-nowrap px-6 py-2">
+                                                            {{ Str::limit($item->kegiatan, 17) }}
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-4 py-4 kamu-tak-diajak">
+                                                            <button type="button"
+                                                                class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
+                                                                data-te-toggle="modal"
+                                                                data-modal-target="staticModal{{ $item->id }}"
+                                                                data-modal-toggle="staticModal{{ $item->id }}">
+                                                                <span
+                                                                    class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+
+                                            @empty
+                                            @endforelse
                                     </div>
                                 </div>
                             </div>
@@ -154,230 +207,308 @@
                     </div>
                 </div>
             </div>
+
+            @forelse ($jurnalSudahKirim as $modal)
+                <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
+                    class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative w-full max-w-2xl max-h-full">
+                        <!-- Modal content -->
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <!-- Modal header -->
+                            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                    Detail Jurnal
+                                </h3>
+                                <button type="button"
+                                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                    data-modal-hide="staticModal{{ $modal->id }}">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="p-6 space-y-6">
+                                <div>
+                                    <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
+                                        Nama
+                                    </p>
+                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                        {{ $modal->nama }}
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                        Tanggal
+                                    </p>
+                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                        {{ $modal->tanggal }}
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                        Sekolah
+                                    </p>
+                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                        {{ $modal->sekolah }}
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                        Kegiatan
+                                    </p>
+                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                        {{ $modal->kegiatan }}
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                        Bukti
+                                    </p>
+                                    <img src="{{ asset('storage/image/' . $modal->image) }}" alt="">
+                                </div>
+                            </div>
+                            <!-- Modal footer -->
+                            <div
+                                class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button data-modal-hide="staticModal{{ $modal->id }}" type="button"
+                                    class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @empty
+            @endforelse
+
             <!-- end main content section -->
 
             <!-- start footer section -->
             <!-- end footer section -->
         </div>
     </div>
-</div>
+    </div>
 
-<script src="assets_guru/js/alpine-collaspe.min.js"></script>
-<script src="assets_guru/js/alpine-persist.min.js"></script>
-<script defer src="assets_guru/js/alpine-ui.min.js"></script>
-<script defer src="assets_guru/js/alpine-focus.min.js"></script>
-<script defer src="assets_guru/js/alpine.min.js"></script>
-<script src="assets_guru/js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="assets_guru/js/alpine-collaspe.min.js"></script>
+    <script src="assets_guru/js/alpine-persist.min.js"></script>
+    <script defer src="assets_guru/js/alpine-ui.min.js"></script>
+    <script defer src="assets_guru/js/alpine-focus.min.js"></script>
+    <script defer src="assets_guru/js/alpine.min.js"></script>
+    <script src="assets_guru/js/custom.js"></script>
 
-<script>
-    document.addEventListener('alpine:init', () => {
-        // main section
-        Alpine.data('scrollToTop', () => ({
-            showTopButton: false,
-            init() {
-                window.onscroll = () => {
-                    this.scrollFunction();
-                };
-            },
 
-            scrollFunction() {
-                if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                    this.showTopButton = true;
-                } else {
-                    this.showTopButton = false;
-                }
-            },
+    <script>
+        document.addEventListener('alpine:init', () => {
+            // main section
+            Alpine.data('scrollToTop', () => ({
+                showTopButton: false,
+                init() {
+                    window.onscroll = () => {
+                        this.scrollFunction();
+                    };
+                },
 
-            goToTop() {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-            },
-        }));
+                scrollFunction() {
+                    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                        this.showTopButton = true;
+                    } else {
+                        this.showTopButton = false;
+                    }
+                },
 
-        // theme customization
-        Alpine.data('customizer', () => ({
-            showCustomizer: false,
-        }));
+                goToTop() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                },
+            }));
 
-        // sidebar section
-        Alpine.data('sidebar', () => ({
-            init() {
-                const selector = document.querySelector('.sidebar ul a[href="' + window.location
-                    .pathname + '"]');
-                if (selector) {
-                    selector.classList.add('active');
-                    const ul = selector.closest('ul.sub-menu');
-                    if (ul) {
-                        let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
-                        if (ele) {
-                            ele = ele[0];
-                            setTimeout(() => {
-                                ele.click();
-                            });
+            // theme customization
+            Alpine.data('customizer', () => ({
+                showCustomizer: false,
+            }));
+
+            // sidebar section
+            Alpine.data('sidebar', () => ({
+                init() {
+                    const selector = document.querySelector('.sidebar ul a[href="' + window.location
+                        .pathname + '"]');
+                    if (selector) {
+                        selector.classList.add('active');
+                        const ul = selector.closest('ul.sub-menu');
+                        if (ul) {
+                            let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
+                            if (ele) {
+                                ele = ele[0];
+                                setTimeout(() => {
+                                    ele.click();
+                                });
+                            }
                         }
                     }
-                }
-            },
-        }));
+                },
+            }));
 
-        // header section
-        Alpine.data('header', () => ({
-            init() {
-                const selector = document.querySelector('ul.horizontal-menu a[href="' + window
-                    .location.pathname + '"]');
-                if (selector) {
-                    selector.classList.add('active');
-                    const ul = selector.closest('ul.sub-menu');
-                    if (ul) {
-                        let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
-                        if (ele) {
-                            ele = ele[0];
-                            setTimeout(() => {
-                                ele.classList.add('active');
-                            });
+            // header section
+            Alpine.data('header', () => ({
+                init() {
+                    const selector = document.querySelector('ul.horizontal-menu a[href="' + window
+                        .location.pathname + '"]');
+                    if (selector) {
+                        selector.classList.add('active');
+                        const ul = selector.closest('ul.sub-menu');
+                        if (ul) {
+                            let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
+                            if (ele) {
+                                ele = ele[0];
+                                setTimeout(() => {
+                                    ele.classList.add('active');
+                                });
+                            }
                         }
                     }
-                }
-            },
+                },
 
-            notifications: [{
-                    id: 1,
-                    profile: 'user-profile.jpeg',
-                    message: '<strong class="text-sm mr-1">John Doe</strong>invite you to <strong>Prototyping</strong>',
-                    time: '45 min ago',
-                },
-                {
-                    id: 2,
-                    profile: 'profile-34.jpeg',
-                    message: '<strong class="text-sm mr-1">Adam Nolan</strong>mentioned you to <strong>UX Basics</strong>',
-                    time: '9h Ago',
-                },
-                {
-                    id: 3,
-                    profile: 'profile-16.jpeg',
-                    message: '<strong class="text-sm mr-1">Anna Morgan</strong>Upload a file',
-                    time: '9h Ago',
-                },
-            ],
+                notifications: [{
+                        id: 1,
+                        profile: 'user-profile.jpeg',
+                        message: '<strong class="text-sm mr-1">John Doe</strong>invite you to <strong>Prototyping</strong>',
+                        time: '45 min ago',
+                    },
+                    {
+                        id: 2,
+                        profile: 'profile-34.jpeg',
+                        message: '<strong class="text-sm mr-1">Adam Nolan</strong>mentioned you to <strong>UX Basics</strong>',
+                        time: '9h Ago',
+                    },
+                    {
+                        id: 3,
+                        profile: 'profile-16.jpeg',
+                        message: '<strong class="text-sm mr-1">Anna Morgan</strong>Upload a file',
+                        time: '9h Ago',
+                    },
+                ],
 
-            messages: [{
-                    id: 1,
-                    image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-success-light dark:bg-success text-success dark:text-success-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>',
-                    title: 'Congratulations!',
-                    message: 'Your OS has been updated.',
-                    time: '1hr',
-                },
-                {
-                    id: 2,
-                    image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-info-light dark:bg-info text-info dark:text-info-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>',
-                    title: 'Did you know?',
-                    message: 'You can switch between artboards.',
-                    time: '2hr',
-                },
-                {
-                    id: 3,
-                    image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-danger-light dark:bg-danger text-danger dark:text-danger-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>',
-                    title: 'Something went wrong!',
-                    message: 'Send Reposrt',
-                    time: '2days',
-                },
-                {
-                    id: 4,
-                    image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-warning-light dark:bg-warning text-warning dark:text-warning-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">    <circle cx="12" cy="12" r="10"></circle>    <line x1="12" y1="8" x2="12" y2="12"></line>    <line x1="12" y1="16" x2="12.01" y2="16"></line></svg></span>',
-                    title: 'Warning',
-                    message: 'Your password strength is low.',
-                    time: '5days',
-                },
-            ],
+                messages: [{
+                        id: 1,
+                        image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-success-light dark:bg-success text-success dark:text-success-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>',
+                        title: 'Congratulations!',
+                        message: 'Your OS has been updated.',
+                        time: '1hr',
+                    },
+                    {
+                        id: 2,
+                        image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-info-light dark:bg-info text-info dark:text-info-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>',
+                        title: 'Did you know?',
+                        message: 'You can switch between artboards.',
+                        time: '2hr',
+                    },
+                    {
+                        id: 3,
+                        image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-danger-light dark:bg-danger text-danger dark:text-danger-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>',
+                        title: 'Something went wrong!',
+                        message: 'Send Reposrt',
+                        time: '2days',
+                    },
+                    {
+                        id: 4,
+                        image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-warning-light dark:bg-warning text-warning dark:text-warning-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">    <circle cx="12" cy="12" r="10"></circle>    <line x1="12" y1="8" x2="12" y2="12"></line>    <line x1="12" y1="16" x2="12.01" y2="16"></line></svg></span>',
+                        title: 'Warning',
+                        message: 'Your password strength is low.',
+                        time: '5days',
+                    },
+                ],
 
-            languages: [{
-                    id: 1,
-                    key: 'Chinese',
-                    value: 'zh',
-                },
-                {
-                    id: 2,
-                    key: 'Danish',
-                    value: 'da',
-                },
-                {
-                    id: 3,
-                    key: 'English',
-                    value: 'en',
-                },
-                {
-                    id: 4,
-                    key: 'French',
-                    value: 'fr',
-                },
-                {
-                    id: 5,
-                    key: 'German',
-                    value: 'de',
-                },
-                {
-                    id: 6,
-                    key: 'Greek',
-                    value: 'el',
-                },
-                {
-                    id: 7,
-                    key: 'Hungarian',
-                    value: 'hu',
-                },
-                {
-                    id: 8,
-                    key: 'Italian',
-                    value: 'it',
-                },
-                {
-                    id: 9,
-                    key: 'Japanese',
-                    value: 'ja',
-                },
-                {
-                    id: 10,
-                    key: 'Polish',
-                    value: 'pl',
-                },
-                {
-                    id: 11,
-                    key: 'Portuguese',
-                    value: 'pt',
-                },
-                {
-                    id: 12,
-                    key: 'Russian',
-                    value: 'ru',
-                },
-                {
-                    id: 13,
-                    key: 'Spanish',
-                    value: 'es',
-                },
-                {
-                    id: 14,
-                    key: 'Swedish',
-                    value: 'sv',
-                },
-                {
-                    id: 15,
-                    key: 'Turkish',
-                    value: 'tr',
-                },
-            ],
+                languages: [{
+                        id: 1,
+                        key: 'Chinese',
+                        value: 'zh',
+                    },
+                    {
+                        id: 2,
+                        key: 'Danish',
+                        value: 'da',
+                    },
+                    {
+                        id: 3,
+                        key: 'English',
+                        value: 'en',
+                    },
+                    {
+                        id: 4,
+                        key: 'French',
+                        value: 'fr',
+                    },
+                    {
+                        id: 5,
+                        key: 'German',
+                        value: 'de',
+                    },
+                    {
+                        id: 6,
+                        key: 'Greek',
+                        value: 'el',
+                    },
+                    {
+                        id: 7,
+                        key: 'Hungarian',
+                        value: 'hu',
+                    },
+                    {
+                        id: 8,
+                        key: 'Italian',
+                        value: 'it',
+                    },
+                    {
+                        id: 9,
+                        key: 'Japanese',
+                        value: 'ja',
+                    },
+                    {
+                        id: 10,
+                        key: 'Polish',
+                        value: 'pl',
+                    },
+                    {
+                        id: 11,
+                        key: 'Portuguese',
+                        value: 'pt',
+                    },
+                    {
+                        id: 12,
+                        key: 'Russian',
+                        value: 'ru',
+                    },
+                    {
+                        id: 13,
+                        key: 'Spanish',
+                        value: 'es',
+                    },
+                    {
+                        id: 14,
+                        key: 'Swedish',
+                        value: 'sv',
+                    },
+                    {
+                        id: 15,
+                        key: 'Turkish',
+                        value: 'tr',
+                    },
+                ],
 
-            removeNotification(value) {
-                this.notifications = this.notifications.filter((d) => d.id !== value);
-            },
+                removeNotification(value) {
+                    this.notifications = this.notifications.filter((d) => d.id !== value);
+                },
 
-            removeMessage(value) {
-                this.messages = this.messages.filter((d) => d.id !== value);
-            },
-        }));
-    });
-</script>
-     <script>
+                removeMessage(value) {
+                    this.messages = this.messages.filter((d) => d.id !== value);
+                },
+            }));
+        });
+    </script>
+    <script>
         $(window).on('load', function() {
             $('.spin_load').fadeOut();
         });
@@ -391,10 +522,10 @@
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script>
-      $(window).on('load', function() {
-          $('.spin_load').fadeOut();
-      });
-  </script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
+        });
+    </script>
     <script>
         const instanceMode = te.Sidenav.getInstance(
             document.getElementById("sidenav-2")

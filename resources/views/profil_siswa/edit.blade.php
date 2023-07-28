@@ -1250,29 +1250,29 @@
                                     <form
                                         class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
                                         <h6 class="mb-5 text-lg font-bold">Informasi Pribadi</h6>
-                                        <form action="ganti_pass" method="post">
+                                        <form action="{{ route('ganti_password') }}" method="post">
                                             @csrf
                                             <div class="flex flex-col sm:flex-row">
                                                 <div class="grid flex-auto grid-cols-3 gap-5 sm:grid-cols-2">
                                                     <div>
                                                         <label for="lama">Password Lama</label>
-                                                        <input id="lama" type="text"
+                                                        <input id="lama" type="text" name="old_password"
                                                             placeholder="Masukan Password Lama" class="form-input" />
                                                         <p class="text-info">Lupa Password?</p>
                                                     </div>
                                                     <div>
                                                         <label for="baru">Password Baru</label>
-                                                        <input id="baru" type="text"
+                                                        <input id="baru" type="text" name="password"
                                                             placeholder="Masukkan Password Baru" class="form-input" />
                                                     </div>
                                                     <div>
                                                         <label for="konfirmasi">Koirmasi Password</label>
-                                                        <input id="konfirmasi" type="text"
+                                                        <input id="konfirmasi" type="text" name="password_confirmation"
                                                             placeholder="Konfirmasi Password" class="form-input" />
                                                     </div>
                                                     <div class="mt-3 sm:col-span-2 flex gap-4 justify-end">
                                                         <a href="{{ url()->previous() }}" class="btn btn-outline-danger">Batal</a>
-                                                        <button type="button" class="btn btn-info">Simpan</button>
+                                                        <button type="submit" class="btn btn-info">Simpan</button>
                                                     </div>
                                                 </div>
                                             </div>

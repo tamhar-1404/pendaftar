@@ -63,6 +63,7 @@ class User extends Authenticatable
 
     public function jurnalsiswa()
     {
-        return $this->hasMany(Jurnalsiswa::class, 'user_id');
+        // Ganti 'user_id' dengan nama kolom yang tepat di tabel 'jurnalsiswas'
+        return $this->hasMany(Jurnalsiswa::class, 'status');
     }
 }

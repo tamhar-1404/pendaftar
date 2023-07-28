@@ -1330,6 +1330,7 @@
                                     <span class="whitespace-nowrap" dir="ltr">{{ $Siswa->no }}</span>
                                 </li>
                             </ul>
+                            @if ($sp == 'Sp1')
                             <ul class="mt-7  justify-center gap-2">
                                <li class="font-bold">Status</li>
                                <li>
@@ -1338,8 +1339,21 @@
                                         <span class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">SP 1</span>
                                     </div>
                                 </div>
-                            </li>
+                                </li>
                             </ul>
+                            @endif
+                            @if ($sp == 'Sp2')
+                            <ul class="mt-7  justify-center gap-2">
+                                <li class="font-bold">Status</li>
+                                <li>
+                                 <div class="flex h-1.5 w-full rounded-full bg-[#ebedf2] dark:bg-dark/40 relative">
+                                     <div class="w-full rounded-full" style="background-color: #fe0000;">
+                                         <span class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">SP 2</span>
+                                     </div>
+                                 </div>
+                                 </li>
+                             </ul>
+                            @endif
                         </div>
                     </div>
                     <div class="panel lg:col-span-3 xl:col-span-3">

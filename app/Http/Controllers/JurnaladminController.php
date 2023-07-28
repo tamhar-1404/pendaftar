@@ -11,11 +11,16 @@ use App\Http\Requests\UpdatejurnaladminRequest;
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
 use Dompdf\Options;
-use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\User;
+use App\Models\Jurnaladmin;
+use App\Models\Jurnalsiswa;
+use Illuminate\Http\Request;
 use PhpOffice\PhpWord\PhpWord;
+use Barryvdh\DomPDF\Facade\Pdf;
 use PhpOffice\PhpWord\IOFactory;
-use Carbon\Carbon;
 use DB;
+use Carbon\Carbon; // Import Carbon untuk bekerja dengan tanggal
+
 class JurnaladminController extends Controller
 {
     /**
@@ -85,10 +90,22 @@ class JurnaladminController extends Controller
         return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari'));
     }
 
-    public function Jurnalhariini(){
-        return view('Jurnalhariini.index');
-    }
+    public function Jurnalhariini(Request $request) {
 
+        $Cek = Jurnalsiswa::whereDate('created_at', Carbon::today())
+        ->pluck('nama')
+        ->toArray();
+
+        $users = User::whereNotIn('name', $Cek)
+        ->where('role', 'siswa')
+        ->get();
+
+        $jurnalSudahKirim = Jurnalsiswa::whereDate('created_at', Carbon::today())
+                                       ->where('status', 'mengisi')
+                                       ->paginate(10);
+
+        return view('Jurnalhariini.index', compact('jurnalSudahKirim', 'users'));
+    }
     /**
      * Show the form for creating a new resource.
      *

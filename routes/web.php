@@ -152,6 +152,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa'])->name('siswamagang_siswa');
         Route::get('profil_siswa', [ProfilsiswaController::class, 'index'])->name('profile_siswa');
         Route::put('update_siswa', [ProfilsiswaController::class, 'update'])->name('update_siswa');
+        Route::post('ganti_password', [ProfilsiswaController::class, 'ganti_password'])->name('ganti_password');
     });
 
     Route::middleware(['role:guru'])->group(function () {

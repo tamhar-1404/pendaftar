@@ -120,7 +120,7 @@ public function store(Request $request)
         'sp_diri'=>'required|image|mimes:jpg,jpeg,png',
         'sp_ortu'=>'required|image|mimes:jpg,jpeg,png',
         'cv'=>'required|image|mimes:jpg,jpeg,png',
-        'email'=>'required|unique:users',
+        'email'=>'required|unique:users,email',
         'password'=>'required',
     ]);
 
@@ -174,7 +174,7 @@ public function store(Request $request)
             return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
         }
     } catch (Exception $e) {
-        return back()->with('error', 'Email anda sudah terdaftar!');
+        return back()->with('error', $e->getMessage());
     }
 
     try {
@@ -220,7 +220,7 @@ public function store(Request $request)
             return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
         }
     } catch (Exception $e) {
-        return back()->with('error', "Email anda sudah digunakan!");
+        return back()->with('error', $e->getMessage());
     }
 }
     /**
