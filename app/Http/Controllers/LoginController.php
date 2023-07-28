@@ -122,6 +122,8 @@ public function store(Request $request)
         'cv'=>'required|image|mimes:jpg,jpeg,png',
         'email'=>'required|unique:users,email',
         'password'=>'required',
+    ],[
+        'kelas.required' => 'pilih salah satu'
     ]);
 
     if (User::where('email', $request->email)->exists()) {
