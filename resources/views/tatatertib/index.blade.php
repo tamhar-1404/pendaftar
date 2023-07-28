@@ -15,12 +15,11 @@
                 }
             },
         },
-
     </script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="load/load.css">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script>
-    <link rel="icon" type="image/png" href="admin/favicon.png" />
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <!- - CSS Assets -->
         <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
         <!-- Javascript Assets -->
@@ -46,8 +45,9 @@
 
 <body>
 
-     <!-- screen loader -->
-     <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+    <!-- screen loader -->
+    <div
+        class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
@@ -71,10 +71,10 @@
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script>
-      $(window).on('load', function() {
-          $('.spin_load').fadeOut();
-      });
-  </script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
+        });
+    </script>
     <script>
         const instanceMode = te.Sidenav.getInstance(
             document.getElementById("sidenav-2")
