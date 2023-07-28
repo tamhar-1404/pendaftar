@@ -207,7 +207,6 @@ class ProfilsiswaController extends Controller
             'old_password' => 'required',
             'password' => 'required|min:6|confirmed',
         ]);
-
         $user_id = Auth::user()->id;
         if (Hash::check($request->old_password, User::find($user_id)->password)) {
             User::find($user_id)->update([
