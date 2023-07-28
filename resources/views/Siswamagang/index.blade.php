@@ -654,79 +654,42 @@
                                 <div class="mb-5 flex items-center">
                                     <h5 class="text-lg font-semibold dark:text-white-light">Tata tertib</h5>
                                 </div>
-                                {{-- tata tertib  --}}
-                                <div class=" panel w-full flex justify-around gap-20 px-5">
-                                    @php $count = 0; @endphp
-                                    @forelse ($tatib as $tatatertib)
-                                        @if ($count % 3 == 0)
-                                            <div class="w-9/12">
-                                        @endif
-                                        {{-- pertama --}}
-                                        <div class=" w-9/12">
-                                            <div id="accordion-collapse" data-accordion="collapse">
-                                                <h2 id="accordion-collapse-heading-1">
-                                                    <button type="button"
-                                                        class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                                                        data-accordion-target="#accordion-collapse-body-1"
-                                                        aria-expanded="false"
-                                                        aria-controls="accordion-collapse-body-1">
-                                                        <span>{{ $tatatertib->judul }}</span>
-                                                        <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0"
-                                                            fill="currentColor" viewBox="0 0 20 20"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd"
-                                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                                clip-rule="evenodd"></path>
-                                                        </svg>
-                                                    </button>
-                                                </h2>
-                                                <div id="accordion-collapse-body-1" class="hidden"
-                                                    aria-labelledby="accordion-collapse-heading-1">
-                                                    <div
-                                                        class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
-                                                        <p class="mb-2 text-gray-500 dark:text-gray-400">
-                                                            {!! $tatatertib->deskripsi !!}</p>
-
-                                                    </div>
-                                                </div>
-
-
-                                                <div id="accordion-collapse-body-3" class="hidden"
-                                                    aria-labelledby="accordion-collapse-heading-3">
-                                                    <div
-                                                        class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
-                                                        <p class="mb-2 text-gray-500 dark:text-gray-400">The main
-                                                            difference is that the core components from Flowbite are
-                                                            open source under the MIT license, whereas Tailwind UI is a
-                                                            paid product. Another difference is that Flowbite relies on
-                                                            smaller and standalone components, whereas Tailwind UI
-                                                            offers sections of pages.</p>
-                                                        <p class="mb-2 text-gray-500 dark:text-gray-400">However, we
-                                                            actually recommend using both Flowbite, Flowbite Pro, and
-                                                            even Tailwind UI as there is no technical reason stopping
-                                                            you from using the best of two worlds.</p>
-                                                        <p class="mb-2 text-gray-500 dark:text-gray-400">Learn more
-                                                            about these technologies:</p>
-                                                        <ul class="pl-5 text-gray-500 list-disc dark:text-gray-400">
-                                                            <li><a href="https://flowbite.com/pro/"
-                                                                    class="text-blue-600 dark:text-blue-500 hover:underline">Flowbite
-                                                                    Pro</a></li>
-                                                            <li><a href="https://tailwindui.com/" rel="nofollow"
-                                                                    class="text-blue-600 dark:text-blue-500 hover:underline">Tailwind
-                                                                    UI</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    @php
+                                        $i = 1;
+                                    @endphp
+                                    @forelse($tatib as $tata)
+                                        <div class="border p-4 cursor-pointer transition-transform transform hover:scale-105" onclick="toggleDescription('peraturan{{ $i++ }}')">
+                                            {{ $tata->judul }}
+                                            <span class="ml-2">&#x25BE;</span>
                                         </div>
-                                        @if (($count + 1) % 3 == 0 || $loop->last)
-                                </div>
-                                @endif
-                                @php $count++; @endphp
-                            @empty
-                                @endforelse
+                                    @empty
+                                    @endforelse
+                                  </div>
+                                  <div class="grid grid-cols-2 gap-4 mt-4" id="descriptions">
+                                    @php
+                                        $j = 1;
+                                    @endphp
+                                    @forelse($tatib as $tata)
+                                        <div class="col-span-2 p-2 bg-gray-100 hidden" id="peraturan{{ $j++ }}">{!! $tata->deskripsi !!}</div>
+                                    @empty
+                                    @endforelse
+                                  </div>
 
+                                  <script>
+                                    function toggleDescription(descriptionId) {
+                                      const descriptionDiv = document.getElementById(descriptionId);
+                                      const descriptions = document.querySelectorAll('#descriptions > div');
 
+                                      descriptions.forEach((div) => {
+                                        if (div.id === descriptionId) {
+                                          div.classList.toggle('hidden', !div.classList.contains('hidden'));
+                                        } else {
+                                          div.classList.add('hidden');
+                                        }
+                                      });
+                                    }
+                                  </script>
 
                             </div>
                             {{-- end tata tertib --}}
