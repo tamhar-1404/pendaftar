@@ -44,7 +44,7 @@
     <script defer src="siswa/js/popper.min.js"></script>
     <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-    <script defer src="siswa/js/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
     <style>
         /* Menyembunyikan tombol cetak saat mencetak */
@@ -83,16 +83,6 @@
     :class="[$store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout, $store.app
         .rtlClass
     ]">
-
-    @error('image')
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Bukti kegiatan harus format jpg, png, dan jpeg!',
-            })
-        </script>
-    @enderror
 
     <!-- sidebar menu overlay -->
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
@@ -158,6 +148,9 @@
                     </div>
                     @error('tanggal')
                         <div class="text-danger">Anda telah mengisi jurnal pada hari ini</div>
+                    @enderror
+                    @error('image')
+                        <div class="text-danger"><b>Ekstensi gambar hanya: png,jpg, dan jpeg</b></div>
                     @enderror
 
                     <div class="panel">
@@ -229,7 +222,6 @@
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                         required>
                                                 </div>
-
                                                 <div class="flex justify-end">
                                                     <button type="submit"
                                                         class="border text-blue-400 bg-white font-semibold border-blue-400  py-1.5 px-3 text-sm rounded-md hover:bg-blue-400 hover:text-white">Kirim</button>
