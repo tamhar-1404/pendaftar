@@ -169,8 +169,6 @@
                         $tahun = date('Y');
                     @endphp
 
-
-
                         <p class="text-xl font-semibold mb-4"><span class="text-red-600">Hari ini adalah : </span> {{ $namaHari }}, {{ $tanggal }}/{{ $bulan }}/{{ $tahun }}</p>
 
                         <div class="kamu-tak-diajak flex justify-between items-center">
