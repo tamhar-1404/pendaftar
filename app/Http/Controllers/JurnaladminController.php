@@ -12,9 +12,6 @@ use Illuminate\Http\Request;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Models\User;
-use App\Models\Jurnaladmin;
-use App\Models\Jurnalsiswa;
-use Illuminate\Http\Request;
 use PhpOffice\PhpWord\PhpWord;
 use Barryvdh\DomPDF\Facade\Pdf;
 use PhpOffice\PhpWord\IOFactory;
@@ -47,15 +44,20 @@ class JurnaladminController extends Controller
 
     public function Absenhariini(Request $request)
     {
+        // dd($request);
         $hari = Carbon::now()->format('Y-m-d');
         if ($request->has('cari')) {
             $keyword = $request->cari;
             $datesArray = explode('to', $keyword);
-            $tanggalAwal = trim($datesArray[0]);
-            if($tanggalAwal !== $hari){
+            if(count($datesArray) > 1){
+                $tanggalAwal = trim($datesArray[0]);
                 $tanggalAkhir = trim($datesArray[1]);
+            }else{
+                $tanggalAwal = trim($datesArray[0]);
+                $tanggalAkhir = trim($datesArray[0]);
             }
-            $tanggalAkhir = $hari;
+
+            // $tanggalAkhir = $hari;
             $hari = $keyword;
             $telat = ApprovalIzin::where('keterangan', 'telat')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->get();
             $hadir = ApprovalIzin::where('keterangan', 'hadir')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->get();
@@ -77,10 +79,6 @@ class JurnaladminController extends Controller
         //         ])
         //     }
         // }
-        $siswaTanpaAbsen = Siswa::leftJoin('jurnal', 'siswa.id', '=', 'jurnal.siswa_id')
-            ->whereNull('jurnal.siswa_id')
-            ->select('siswa.*')
-            ->get();
 
         $hari = Carbon::now()->format('Y-m-d');
         $telat = ApprovalIzin::where('keterangan', 'telat')->Where('tanggal', $hari)->get();

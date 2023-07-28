@@ -97,7 +97,7 @@ class AbsensiSiswaController extends Controller
         $currentHour = now()->format('H:i');
         $currentDay = now()->format('D');
         // dd($currentDay);
-        $currentDay = 'Sunday';
+        // $currentDay = 'Sunday';
         $currentDateTime = date('Y-m-d');
         $data= ApprovalIzin::where('nama', Auth::user()->name)->where('tanggal',$currentDateTime)->count();
         if($currentDay !== 'Saturday' && $currentDay !== 'Sunday'){
@@ -202,7 +202,6 @@ class AbsensiSiswaController extends Controller
                 'status' => 'terimaabsen'
             ]);
         }elseif ($currentDay === 'Saturday' && $currentDay === 'Sunday'){
-            dd('awokawok');
             return redirect()->back()->with('error', 'Anda tidak bisa absen pada hari Sabtu & Minggu');
         }
         return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
