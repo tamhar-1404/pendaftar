@@ -123,7 +123,11 @@ public function store(Request $request)
         'email'=>'required|unique:users,email',
         'password'=>'required',
     ],[
-        'kelas.required' => 'pilih salah satu'
+        'kelas.required' => 'pilih salah satu',
+        'foto_siswa.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
+        'sp_diri.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
+        'sp_ortu.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
+        'cv.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
     ]);
 
     if (User::where('email', $request->email)->exists()) {
