@@ -81,7 +81,7 @@
                 </div>
                 <div class="mt-[15%]">
                     <form action="{{ route('login.store') }}" class="relative" method="post"
-                        enctype="multipart/form-data">
+                        enctype="multipart/form-data" id="myForm">
                         @csrf
                         <!-- Step 1 -->
                         <div class="step active ">
@@ -294,6 +294,24 @@
                             </div>
                         </div>
                     </form>
+                    <script>
+                        const passwordInput = document.getElementById("password");
+                        const confirmPasswordInput = document.getElementById("confirm-password");
+                        const myForm = document.getElementById("myForm");
+
+                        myForm.addEventListener('submit', function (event) {
+                            event.preventDefault();
+                            const password = passwordInput.value;
+                            const confirmPassword = confirmPasswordInput.value;
+
+                            if (password === confirmPassword) {
+                                myForm.submit();
+                            } else {
+                                alert("Password tidak sama");
+                                return;
+                            }
+                        })
+                    </script>
                     <div class="mt-4 text-center text-xs+">
                         <p class="line-clamp-1">
                             <span>Sudah punya Akun?</span>
