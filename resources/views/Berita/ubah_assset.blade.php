@@ -8,8 +8,16 @@
     <title>Document</title>
     <!-- CSS Assets -->
     <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
-
-    <!-- Javascript Assets -->
+    <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+    <script>
+        theme: {
+            extend: {
+                blur: {
+                    xs: '3px',
+                }
+            },
+        }
+    </script>
     <script src="{{ asset('admin/js/app.js') }}" defer></script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

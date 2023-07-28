@@ -81,7 +81,6 @@
         </script>
     @endif
 
-
     <div id="root" class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900" x-cloak>
         <div class="fixed top-0 hidden p-6 lg:block lg:px-12">
             <a href="#" class="flex items-center space-x-2">
@@ -101,8 +100,7 @@
         <main class="flex w-full flex-col items-center bg-white dark:bg-navy-700 lg:max-w-md">
             <div class="flex w-full max-w-sm grow flex-col justify-center p-5">
                 <div class="text-center">
-                    <img class="mx-auto h-16 w-16 lg:hidden" src="{{ asset('admin/assets/images/logo.png') }}"
-                        alt="logo" />
+                    <img class="mx-auto h-16 w-16 lg:hidden" src="{{ asset('admin/assets/images/Logo.png') }}" alt="logo" />
                     <div class="mt-4">
                         <h2 class="text-2xl font-semibold text-slate-600 dark:text-navy-100">
                             Selamat Datang
@@ -158,7 +156,6 @@
 
                                 <p class="line-clamp-1 cursor-pointer text-sm" onclick="showModal()">Kebijakan privasi
                                 </p>
-
 
                                 <div id="myModal" class="modal hidden">
                                     <div class="modal-overlay"></div>
@@ -274,7 +271,6 @@
                                         right: 10px;
                                     }
                                 </style>
-
 
                                 <script>
                                     function showModal() {

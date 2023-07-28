@@ -136,7 +136,7 @@
                                             {{ $oname->barang->nama }}
                                         </td>
                                         <td class="whitespace-nowrap px-6 py-2">
-                                            <img src="{{ asset('Storage/pendataanbarang/' . $oname->barang->foto) }}"
+                                            <img src="{{ asset('storage/pendataanbarang/' . $oname->barang->foto) }}"
                                                 class="w-10" alt="" srcset="">
                                         </td>
                                         <td class="whitespace-nowrap px-6 py-2">

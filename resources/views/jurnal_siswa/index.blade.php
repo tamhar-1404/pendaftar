@@ -370,22 +370,22 @@
                                                         class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                                         <td class="whitespace-nowrap px-2 py-2 font-medium">
                                                             {{ $loop->iteration }}</td>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $items->nama }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $items->nama }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $items->tanggal }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $items->tanggal }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $items->sekolah }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $items->sekolah }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 py-2 overflow-hidden">
+                                                        <td class="whitespace-nowrap px-6 py-2 overflow-hidden">
                                                             <div class="truncate">
                                                                 {{ substr($items->kegiatan, 0, 10) }}..
                                                             </div>
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 pl-17 py-2"><img
+                                                        <td class="whitespace-nowrap px-6 pl-17 py-2"><img
                                                                 src="{{ asset('storage/image/' . $items->image) }}"
                                                                 width="100px" alt="">
                                                         </td>
-                                                        <td class="whitespace-nowrap px-4 py-4  kamu-tak-diajak">
+                                                        <td class="whitespace-nowrap px-6 py-2  kamu-tak-diajak">
                                                             <div class="flex gap-2">
                                                                 <a href="#">
                                                                     <div class="w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
