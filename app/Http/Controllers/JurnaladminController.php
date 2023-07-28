@@ -45,36 +45,22 @@ class JurnaladminController extends Controller
         return view('Absenhariini.index');
     }
 
-
     public function Jurnalhariini(Request $request) {
-        // Mendapatkan data siswa yang belum mengirim jurnal hari ini
-        $users = User::whereDoesntHave('jurnalsiswa', function ($query) {
-            $query->whereDate('created_at', Carbon::today());
-        })->get();
-    
-        // Jika ada pencarian, ambil data jurnal yang sesuai dengan pencarian pada hari ini
-        if ($request->has('cari')) {
-            $keyword = $request->cari;
-            $jurnalSudahKirim = Jurnalsiswa::where('status', 'mengisi')
-                ->whereDate('created_at', Carbon::today())
-                ->where(function ($query) use ($keyword) {
-                    $query->where('nama', 'LIKE', '%' . $keyword . '%')
-                        ->orWhere('sekolah', 'LIKE', '%' . $keyword . '%');
-                })
-                ->paginate(10);
-        } else {
-            // Mendapatkan data jurnal yang sudah dikirim pada hari ini
-            $jurnalSudahKirim = Jurnalsiswa::whereDate('created_at', Carbon::today())
-                ->where('status', 'mengisi')
-                ->paginate(10);
-        }
-    
+
+        $Cek = Jurnalsiswa::whereDate('created_at', Carbon::today())
+        ->pluck('nama')
+        ->toArray();
+
+        $users = User::whereNotIn('name', $Cek)
+        ->where('role', 'siswa')
+        ->get();
+
+        $jurnalSudahKirim = Jurnalsiswa::whereDate('created_at', Carbon::today())
+                                       ->where('status', 'mengisi')
+                                       ->paginate(10);
+
         return view('Jurnalhariini.index', compact('jurnalSudahKirim', 'users'));
     }
-    
-
-    
-
     /**
      * Show the form for creating a new resource.
      *

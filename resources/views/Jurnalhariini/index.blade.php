@@ -121,23 +121,28 @@
                             <div>
                                 <form
                                     class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
-                                    <h6 class="mb-5 text-lg font-bold">Tanggal : {{ date('d F Y') }}</h6>
+                                    @php
+                                    $hari = date('N');
+                                    $daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                                @endphp
+
+                                <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $daftarHari[$hari] }}, {{ date('d F Y') }}</h6>
                                     <table class="min-w-full text-left text-sm ">
                                         <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
                                             <tr>
                                                 <th scope="col" class="px-6 py-2">#</th>
                                                 <th scope="col" class="px-6 py-2">Nama</th>
-                                                <th scope="col" class="px-6 py-2">Tanggal</th>
-                                                <th scope="col" class="px-6 py-2">Keterangan</th>
-                                                <th scope="col" class="px-6 py-2">Aksi</th>
+                                                <th scope="col" class="px-6 py-2">Sekolah</th>
+
+
                                             </tr>
                                         </thead>
                                         @forelse ($users as $item)
                                             <tbody>
                                                 <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->name }}</td>
-                                                    <td></td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $loop->iteration }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $item->name }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $item->sekolah }}</td>
                                                 </tr>
                                             </tbody>
 
@@ -154,25 +159,32 @@
                                     enctype="multipart/form-data" method="POST">
 
                                     <input type="hidden" name="siswa_id">
-                                    <h6 class="mb-5 text-lg font-bold">Tanggal : {{ date('d F Y') }}</h6>
+                                    @php
+                                    $hari = date('N');
+                                    $daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                                @endphp
+
+                                <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $daftarHari[$hari] }}, {{ date('d F Y') }}</h6>
                                     <div class="flex flex-col sm:flex-row">
                                         <table class="min-w-full text-left text-sm ">
                                             <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
                                                 <tr>
                                                     <th scope="col" class="px-6 py-2">#</th>
-                                                    <th scope="col" class="px-6 py-2">Namma</th>
-                                                    <th scope="col" class="px-6 py-2">Tanggal</th>
-                                                    <th scope="col" class="px-6 py-2">Keterangan</th>
+                                                    <th scope="col" class="px-6 py-2">Nama</th>
+
+                                                    <th scope="col" class="px-6 py-2">Deskripsi</th>
                                                     <th scope="col" class="px-6 py-2">Aksi</th>
                                                 </tr>
                                             </thead>
                                             @forelse ($jurnalSudahKirim as $item)
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->nama }}</td>
-                                                        <td>{{ $item->tanggal }}</td>
-                                                        <td>{{ $item->status }}</td>
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $loop->iteration }}</td>
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $item->nama }}</td>
+
+                                                        <td class="whitespace-nowrap px-6 py-2">
+                                                            {{ Str::limit($item->kegiatan, 17) }}
+                                                        </td>
                                                         <td class="whitespace-nowrap px-4 py-4 kamu-tak-diajak">
                                                             <button type="button"
                                                                 class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
