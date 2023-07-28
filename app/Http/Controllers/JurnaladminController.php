@@ -119,7 +119,7 @@ class JurnaladminController extends Controller
             $hadir = ApprovalIzin::where('keterangan', 'hadir')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->latest()->paginate(10);
             $sakit = ApprovalIzin::Wherein('keterangan', ['sakit', 'izin'])->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->latest()->paginate(10);
             $alfa = ApprovalIzin::where('keterangan', 'alfa')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->latest()->paginate(10);
-
+            $semua = ApprovalIzin::Where('tanggal', $hari)->latest()->paginate(10);
             $Cek = ApprovalIzin::whereDate('created_at', $today )
             ->pluck('nama')
             ->toArray();
@@ -127,11 +127,11 @@ class JurnaladminController extends Controller
             $siswa = Siswa::whereNotIn('name', $Cek)
             ->where('role', 'siswa')
             ->latest()->paginate(10);
-            return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today'));
+            return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua'));
 
 
             $item->appends(['cari' => $keyword]);
-            return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today'));
+            return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua'));
         }
         // $siswa = Siswa::all();
         // foreach($siswa as $data){
