@@ -329,21 +329,50 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const nextButton = document.getElementById("nextStep3");
-            const fileInput = document.getElementById("sp_diri"); // Note: Changed 'fileInput' to 'photo'
-            const fileWarning = document.getElementById("file-warning-diri");
+            const nextButton1 = document.getElementById("nextStep3");
+            const fileInput1 = document.getElementById("sp_diri"); // Note: Changed 'fileInput' to 'photo'
+            const fileWarning1 = document.getElementById("file-warning-diri");
 
-            nextButton.addEventListener("click", function() {
-                if (fileInput.files.length === 0) {
+            nextButton1.addEventListener("click", function() {
+                if (fileInput1.files.length === 0) {
                     // File input is empty, no need to show the warning
-                    fileWarning.textContent = "";
+                    fileWarning1.textContent = "";
                     return;
                 }
 
-                if (!validateFileType(fileInput)) {
-                    fileWarning.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
+                if (!validateFileType(fileInput1)) {
+                    fileWarning1.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
                 } else {
-                    fileWarning.textContent = ""; // Clear the warning if the file is valid
+                    fileWarning1.textContent = ""; // Clear the warning if the file is valid
+                    // Perform any other actions here to proceekd to the next step if needed
+                }
+            });
+
+            function validateFileType(input) {
+                const allowedExtensions = ["jpg", "jpeg", "png"]; // Allowed file extensions
+                const fileName = input.value;
+                const fileExtension = fileName.split('.').pop().toLowerCase(); // Get the file extension
+
+                return allowedExtensions.includes(fileExtension);
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const nextButton2 = document.getElementById("nextStep3");
+            const fileInput2 = document.getElementById("sp_ortu"); // Note: Changed 'fileInput' to 'photo'
+            const fileWarning2 = document.getElementById("file-warning-ortu");
+
+            nextButton2.addEventListener("click", function() {
+                if (fileInput2.files.length === 0) {
+                    // File input is empty, no need to show the warning
+                    fileWarning2.textContent = "";
+                    return;
+                }
+
+                if (!validateFileType(fileInput2)) {
+                    fileWarning2.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
+                } else {
+                    fileWarning2.textContent = ""; // Clear the warning if the file is valid
                     // Perform any other actions here to proceed to the next step if needed
                 }
             });
@@ -356,25 +385,23 @@
                 return allowedExtensions.includes(fileExtension);
             }
         });
-    </script>
 
-    <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const nextButton = document.getElementById("nextStep3");
-            const fileInput = document.getElementById("sp_ortu"); // Note: Changed 'fileInput' to 'photo'
-            const fileWarning = document.getElementById("file-warning-ortu");
+            const nextButton3 = document.getElementById("nextStep3");
+            const fileInput3 = document.getElementById("cv"); // Note: Changed 'fileInput' to 'photo'
+            const fileWarning3 = document.getElementById("file-warning-cv");
 
-            nextButton.addEventListener("click", function() {
-                if (fileInput.files.length === 0) {
+            nextButton3.addEventListener("click", function() {
+                if (fileInput3.files.length === 0) {
                     // File input is empty, no need to show the warning
-                    fileWarning.textContent = "";
+                    fileWarning3.textContent = "";
                     return;
                 }
 
-                if (!validateFileType(fileInput)) {
-                    fileWarning.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
+                if (!validateFileType(fileInput3)) {
+                    fileWarning3.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
                 } else {
-                    fileWarning.textContent = ""; // Clear the warning if the file is valid
+                    fileWarning3.textContent = ""; // Clear the warning if the file is valid
                     // Perform any other actions here to proceed to the next step if needed
                 }
             });
@@ -387,56 +414,23 @@
                 return allowedExtensions.includes(fileExtension);
             }
         });
-    </script>
 
-    <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const nextButton = document.getElementById("nextStep3");
-            const fileInput = document.getElementById("cv"); // Note: Changed 'fileInput' to 'photo'
-            const fileWarning = document.getElementById("file-warning-cv");
+            const nextButton4 = document.getElementById("nextStep3");
+            const fileInput4 = document.getElementById("photo"); // Note: Changed 'fileInput' to 'photo'
+            const fileWarning4 = document.getElementById("file-warning-siswa");
 
-            nextButton.addEventListener("click", function() {
-                if (fileInput.files.length === 0) {
+            nextButton4.addEventListener("click", function() {
+                if (fileInput4.files.length === 0) {
                     // File input is empty, no need to show the warning
-                    fileWarning.textContent = "";
+                    fileWarning4.textContent = "";
                     return;
                 }
 
-                if (!validateFileType(fileInput)) {
-                    fileWarning.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
+                if (!validateFileType(fileInput4)) {
+                    fileWarning4.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
                 } else {
-                    fileWarning.textContent = ""; // Clear the warning if the file is valid
-                    // Perform any other actions here to proceed to the next step if needed
-                }
-            });
-
-            function validateFileType(input) {
-                const allowedExtensions = ["jpg", "jpeg", "png"]; // Allowed file extensions
-                const fileName = input.value;
-                const fileExtension = fileName.split('.').pop().toLowerCase(); // Get the file extension
-
-                return allowedExtensions.includes(fileExtension);
-            }
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const nextButton = document.getElementById("nextStep3");
-            const fileInput = document.getElementById("photo"); // Note: Changed 'fileInput' to 'photo'
-            const fileWarning = document.getElementById("file-warning-siswa");
-
-            nextButton.addEventListener("click", function() {
-                if (fileInput.files.length === 0) {
-                    // File input is empty, no need to show the warning
-                    fileWarning.textContent = "";
-                    return;
-                }
-
-                if (!validateFileType(fileInput)) {
-                    fileWarning.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
-                } else {
-                    fileWarning.textContent = ""; // Clear the warning if the file is valid
+                    fileWarning4.textContent = ""; // Clear the warning if the file is valid
                     // Perform any other actions here to proceed to the next step if needed
                 }
             });
