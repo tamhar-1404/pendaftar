@@ -13,7 +13,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
     <title>Lineone - Doctor Dashboard</title>
-    <link rel="icon" type="image/png" href="{{ asset('admin/favicon.png') }}" />
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
 
     <!-- CSS Assets -->
     <link rel="stylesheet" href="{{ asset('lineone/css/app.css') }}" />
@@ -1693,8 +1693,7 @@
                                     </div>
                                     <div class="flex grow flex-col items-center px-4 pb-4 sm:px-5">
                                         <div class="avatar h-20 w-20">
-                                            <img class="rounded-full"
-                                                src="{{ asset('storage/Siswa/'. $izin->foto) }}"
+                                            <img class="rounded-full" src="{{ asset('storage/Siswa/' . $izin->foto) }}"
                                                 alt="avatar" />
                                         </div>
                                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">

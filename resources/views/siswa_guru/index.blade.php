@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Guru - Dashboad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
@@ -31,13 +31,13 @@
         @click="$store.app.toggleSidebar()"></div>
     <!-- screen loader -->
     <div
-    class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
-    <div class="center">
-        <div class="ring">
+        class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+        <div class="center">
+            <div class="ring">
+            </div>
+            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
         </div>
-        <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
     </div>
-</div>
     <!-- scroll to top button -->
     <div class="fixed bottom-6 z-50 ltr:right-6 rtl:left-6" x-data="scrollToTop">
         <template x-if="showTopButton">
@@ -1103,8 +1103,7 @@
                         <h2
                             class="-mx-4 mb-1 flex items-center bg-white-light/30 py-3 px-7 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
                             <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor"
-                                stroke-width="1.5" fill="none" stroke-linecap="round"
-                                stroke-linejoin="round">
+                                stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg>
                             <span>SUPPORTS</span>
@@ -1197,48 +1196,49 @@
                     <div
                         class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-3">
                         @forelse ($siswas as $siswa)
-                        <div class="card pb-2 shadow-md rounded-lg">
-                            <div class="p-2 text-right">
+                            <div class="card pb-2 shadow-md rounded-lg">
+                                <div class="p-2 text-right">
 
-                            </div>
-
-                            <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
-                                <div class="avatar h-20 w-20">
-                                    <img class="rounded-full" src="{{ asset('admin/images/avatar/avatar-20.jpg') }}"
-                                        alt="avatar" />
                                 </div>
-                                <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
-                                   {{$siswa->name}}
-                                </h3>
-                                <p class="text-xs+ mt-2">{{ $siswa->jurusan }}</p>
-                                <p class="text-xs+ mt-2">{{ $siswa->sekolah }}</p>
-                            </div>
-                            <div>
-                                <div class="flex justify-around mb-2 w-full grid-cols-2 gap-2">
-                                    <button
-                                        class="flex bg-blue-400 px-3 items-center py-1 text-white gap-1 font-semibold rounded-md">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                                        </svg>
-                                        <p>Profil</p>
-                                    </button>
-                                    <button
-                                        class="flex bg-gray-400 items-center px-3 py-1 text-white gap-1 font-semibold rounded-md">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
-                                        </svg>
-                                        <p>Chat</p>
-                                    </button>
+
+                                <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
+                                    <div class="avatar h-20 w-20">
+                                        <img class="rounded-full"
+                                            src="{{ asset('admin/images/avatar/avatar-20.jpg') }}" alt="avatar" />
+                                    </div>
+                                    <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
+                                        {{ $siswa->name }}
+                                    </h3>
+                                    <p class="text-xs+ mt-2">{{ $siswa->jurusan }}</p>
+                                    <p class="text-xs+ mt-2">{{ $siswa->sekolah }}</p>
+                                </div>
+                                <div>
+                                    <div class="flex justify-around mb-2 w-full grid-cols-2 gap-2">
+                                        <button
+                                            class="flex bg-blue-400 px-3 items-center py-1 text-white gap-1 font-semibold rounded-md">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                class="w-4 h-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                            </svg>
+                                            <p>Profil</p>
+                                        </button>
+                                        <button
+                                            class="flex bg-gray-400 items-center px-3 py-1 text-white gap-1 font-semibold rounded-md">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+                                            </svg>
+                                            <p>Chat</p>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                            @empty
-
-                            @endforelse
+                        @empty
+                        @endforelse
                     </div>
 
 
@@ -2023,7 +2023,7 @@
 
         });
     </script>
-     <script>
+    <script>
         $(window).on('load', function() {
             $('.spin_load').fadeOut();
         });

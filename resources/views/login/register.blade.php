@@ -13,7 +13,7 @@
 
     <title>Register</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="/admin/assets/images/logo.png" rel="shortcut icon">
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
@@ -235,22 +235,25 @@
                                 <label for="photo" class="block font-bold text-sm mb-1">Foto Siswa :</label>
                                 <input type="file" id="photo" name="foto_siswa"
                                     class="w-full px-4 py-1 text-sm border rounded" required>
+                                <div id="file-warning-siswa" class="text-red-500 text-sm mt-1"></div>
                             </div>
                             <div class="mb-4">
                                 <label for="self-statement" class="block font-bold text-sm mb-1">Pernyataan Siswa
                                     :</label>
-                                <input type="file" ty id="self-statement" name="sp_diri"
+                                <input type="file" ty id="sp_diri" name="sp_diri"
                                     class="w-full text-sm px-4 py-1 border rounded" required>
+                                <div id="file-warning-diri" class="text-red-500 text-sm mt-1"></div>
                             </div>
                             <div class="mb-4">
                                 <label for="outu-statement" class="block font-bold text-sm mb-1">Pernyataan Orang Tua
                                     :</label>
-                                <input type="file" ty id="outu-statement" name="sp_ortu"
+                                <input type="file" ty id="sp_ortu" name="sp_ortu"
                                     class="w-full text-sm px-4 py-1 border rounded" required>
+                                <div id="file-warning-ortu" class="text-red-500 text-sm mt-1"></div>
                             </div>
                             <div class="mb-4">
                                 <label for="skck" class="block font-bold text-sm mb-1">SKCK <span
-                                        class="font-light italic">(opsional)</span> :</label>
+                                        class="font-light italic bg-red">(opsional)</span> :</label>
                                 <input type="file" id="skck" name="skck"
                                     class="w-full text-sm px-4 py-1 border rounded">
                             </div>
@@ -258,6 +261,7 @@
                                 <label for="cv" class="block font-bold text-sm mb-1">CV:</label>
                                 <input type="file" id="cv" name="cv"
                                     class="w-full text-sm px-4 py-1 border rounded" required>
+                                <div id="file-warning-cv" class="text-red-500 text-sm mt-1"></div>
                             </div>
                             <div class="flex justify-between gap-2">
                                 <button type="button" id="prevStep3"
@@ -266,7 +270,6 @@
                                     class="w-full py-2 px-4 bg-blue-500 text-white rounded">Next</button>
                             </div>
                         </div>
-
                         <!-- Step 4 -->
                         <div class="step">
                             <div class="mb-4">
@@ -299,7 +302,7 @@
                         const confirmPasswordInput = document.getElementById("confirm-password");
                         const myForm = document.getElementById("myForm");
 
-                        myForm.addEventListener('submit', function (event) {
+                        myForm.addEventListener('submit', function(event) {
                             event.preventDefault();
                             const password = passwordInput.value;
                             const confirmPassword = confirmPasswordInput.value;
@@ -325,6 +328,123 @@
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const nextButton1 = document.getElementById("nextStep3");
+            const fileInput1 = document.getElementById("sp_diri"); // Note: Changed 'fileInput' to 'photo'
+            const fileWarning1 = document.getElementById("file-warning-diri");
+
+            nextButton1.addEventListener("click", function() {
+                if (fileInput1.files.length === 0) {
+                    // File input is empty, no need to show the warning
+                    fileWarning1.textContent = "";
+                    return;
+                }
+
+                if (!validateFileType(fileInput1)) {
+                    fileWarning1.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
+                } else {
+                    fileWarning1.textContent = ""; // Clear the warning if the file is valid
+                    // Perform any other actions here to proceekd to the next step if needed
+                }
+            });
+
+            function validateFileType(input) {
+                const allowedExtensions = ["jpg", "jpeg", "png"]; // Allowed file extensions
+                const fileName = input.value;
+                const fileExtension = fileName.split('.').pop().toLowerCase(); // Get the file extension
+
+                return allowedExtensions.includes(fileExtension);
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const nextButton2 = document.getElementById("nextStep3");
+            const fileInput2 = document.getElementById("sp_ortu"); // Note: Changed 'fileInput' to 'photo'
+            const fileWarning2 = document.getElementById("file-warning-ortu");
+
+            nextButton2.addEventListener("click", function() {
+                if (fileInput2.files.length === 0) {
+                    // File input is empty, no need to show the warning
+                    fileWarning2.textContent = "";
+                    return;
+                }
+
+                if (!validateFileType(fileInput2)) {
+                    fileWarning2.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
+                } else {
+                    fileWarning2.textContent = ""; // Clear the warning if the file is valid
+                    // Perform any other actions here to proceed to the next step if needed
+                }
+            });
+
+            function validateFileType(input) {
+                const allowedExtensions = ["jpg", "jpeg", "png"]; // Allowed file extensions
+                const fileName = input.value;
+                const fileExtension = fileName.split('.').pop().toLowerCase(); // Get the file extension
+
+                return allowedExtensions.includes(fileExtension);
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const nextButton3 = document.getElementById("nextStep3");
+            const fileInput3 = document.getElementById("cv"); // Note: Changed 'fileInput' to 'photo'
+            const fileWarning3 = document.getElementById("file-warning-cv");
+
+            nextButton3.addEventListener("click", function() {
+                if (fileInput3.files.length === 0) {
+                    // File input is empty, no need to show the warning
+                    fileWarning3.textContent = "";
+                    return;
+                }
+
+                if (!validateFileType(fileInput3)) {
+                    fileWarning3.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
+                } else {
+                    fileWarning3.textContent = ""; // Clear the warning if the file is valid
+                    // Perform any other actions here to proceed to the next step if needed
+                }
+            });
+
+            function validateFileType(input) {
+                const allowedExtensions = ["jpg", "jpeg", "png"]; // Allowed file extensions
+                const fileName = input.value;
+                const fileExtension = fileName.split('.').pop().toLowerCase(); // Get the file extension
+
+                return allowedExtensions.includes(fileExtension);
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const nextButton4 = document.getElementById("nextStep3");
+            const fileInput4 = document.getElementById("photo"); // Note: Changed 'fileInput' to 'photo'
+            const fileWarning4 = document.getElementById("file-warning-siswa");
+
+            nextButton4.addEventListener("click", function() {
+                if (fileInput4.files.length === 0) {
+                    // File input is empty, no need to show the warning
+                    fileWarning4.textContent = "";
+                    return;
+                }
+
+                if (!validateFileType(fileInput4)) {
+                    fileWarning4.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
+                } else {
+                    fileWarning4.textContent = ""; // Clear the warning if the file is valid
+                    // Perform any other actions here to proceed to the next step if needed
+                }
+            });
+
+            function validateFileType(input) {
+                const allowedExtensions = ["jpg", "jpeg", "png"]; // Allowed file extensions
+                const fileName = input.value;
+                const fileExtension = fileName.split('.').pop().toLowerCase(); // Get the file extension
+
+                return allowedExtensions.includes(fileExtension);
+            }
+        });
+
+
         document.addEventListener("DOMContentLoaded", function() {
             const form = document.getElementById("wizardForm");
             const steps = Array.from(form.getElementsByClassName("step"));

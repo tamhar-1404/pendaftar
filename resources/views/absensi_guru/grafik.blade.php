@@ -20,7 +20,7 @@
         },
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
@@ -44,8 +44,9 @@
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>
 
-     <!-- screen loader -->
-     <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+    <!-- screen loader -->
+    <div
+        class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
             <div class="ring">
             </div>
@@ -570,7 +571,8 @@
                                     <span
                                         class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Components</span>
                                 </div>
-                                <div class="rtl:rotate-180" :class="{ '!rotate-90': activeDropdown === 'components' }">
+                                <div class="rtl:rotate-180"
+                                    :class="{ '!rotate-90': activeDropdown === 'components' }">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"
@@ -856,7 +858,8 @@
                                         class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Data
                                         Tables</span>
                                 </div>
-                                <div class="rtl:rotate-180" :class="{ '!rotate-90': activeDropdown === 'datatables' }">
+                                <div class="rtl:rotate-180"
+                                    :class="{ '!rotate-90': activeDropdown === 'datatables' }">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"
@@ -1768,23 +1771,32 @@
                             ],
                             data: [
                                 [1, 'mamat', 'Laki-Laki', '546478678', '2023-20-03',
-                                    'hadir'],
+                                    'hadir'
+                                ],
                                 [2, 'mamat', 'Laki-Laki', '546478678', '2023-20-03',
-                                    'hadir'],
+                                    'hadir'
+                                ],
                                 [3, 'mamat', 'Laki-Laki', '546478678', '2023-20-03',
-                                    'hadir'],
+                                    'hadir'
+                                ],
                                 [4, 'mamat', 'Laki-Laki', '546478678', '2023-20-03',
-                                    'hadir'],
+                                    'hadir'
+                                ],
                                 [5, 'mamat', 'Laki-Laki', '546478678', '2023-20-03',
-                                    'hadir'],
+                                    'hadir'
+                                ],
                                 [6, 'mamat', 'Laki-Laki', '546478678', '2023-20-03',
-                                    'hadir'],
+                                    'hadir'
+                                ],
                                 [7, 'mamat', 'Laki-Laki', '546478678', '2023-20-03',
-                                    'hadir'],
+                                    'hadir'
+                                ],
                                 [8, 'mamat', 'Laki-Laki', '546478678', '2023-20-03',
-                                    'hadir'],
+                                    'hadir'
+                                ],
                                 [9, 'mamat', 'Laki-Laki', '546478678', '2023-20-03',
-                                    'hadir'],
+                                    'hadir'
+                                ],
                                 [10, 'mamat', 'Laki-Laki', '546478678', '2023-20-03',
                                     'hadir'
                                 ],
@@ -1846,7 +1858,7 @@
                     if (date) {
                         const dt = new Date(date);
                         const month = dt.getMonth() + 1 < 10 ? '0' + (dt.getMonth() + 1) : dt
-                        .getMonth() + 1;
+                            .getMonth() + 1;
                         const day = dt.getDate() < 10 ? '0' + dt.getDate() : dt.getDate();
                         return day + '/' + month + '/' + dt.getFullYear();
                     }
@@ -1855,7 +1867,7 @@
             }));
         });
     </script>
-     <script>
+    <script>
         $(window).on('load', function() {
             $('.spin_load').fadeOut();
         });

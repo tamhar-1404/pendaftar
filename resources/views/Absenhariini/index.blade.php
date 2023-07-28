@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
     <link rel="stylesheet" href="load/load.css">
-    <link href="/admin/assets/images/logo.png" rel="shortcut icon">
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
@@ -175,9 +175,9 @@
                         <!-- Date Range -->
                         <div class=" px-4 pb-4 sm:px-5">
 
-                            <div class="max-w-xl">
-
-                            <div class="mt-5">
+                            <div class="mt-2 font-semibold max-w-xl">
+                                Tanggal
+                            <div class="mt-2">
                                 <form action="" >
                                     <label class="relative flex">
                                         <input
@@ -318,6 +318,7 @@
                                                     <th scope="col" class="px-6 py-2">Nama</th>
                                                     <th scope="col" class="px-6 py-2">Tanggal</th>
                                                     <th scope="col" class="px-6 py-2">Keterangan</th>
+                                                    <th scope="col" class="px-6 py-2">Jam</th>
                                                     <th scope="col" class="px-6 py-2">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -366,6 +367,7 @@
                                                     <th scope="col" class="px-6 py-2">Nama</th>
                                                     <th scope="col" class="px-6 py-2">Tanggal</th>
                                                     <th scope="col" class="px-6 py-2">Keterangan</th>
+                                                    <th scope="col" class="px-6 py-2">Jam</th>
                                                     <th scope="col" class="px-6 py-2">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -465,9 +467,14 @@
                                                     <th scope="col" class="px-6 py-2">Nama</th>
                                                     <th scope="col" class="px-6 py-2">Tanggal</th>
                                                     <th scope="col" class="px-6 py-2">Keterangan</th>
+                                                    <th scope="col" class="px-6 py-2">Jam</th>
                                                     <th scope="col" class="px-6 py-2">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            <?php
+
+                                                $no = 1 ;
+                                            ?>
                                             <tbody>
                                                 @forelse ($telat as $item )
                                                 <tr

@@ -25,7 +25,7 @@
     </script>
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/app.css" />
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link rel="stylesheet" href="load/load.css">
@@ -44,7 +44,9 @@
     <script defer src="siswa/js/popper.min.js"></script>
     <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-    <script defer src="siswa/js/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
     <style>
         /* Menyembunyikan tombol cetak saat mencetak */
@@ -61,7 +63,7 @@
             }
         }
 
-/*
+        /*
         .button_pdf:hover{
             background-color: red;
         }
@@ -83,16 +85,6 @@
     :class="[$store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout, $store.app
         .rtlClass
     ]">
-
-    @error('image')
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Bukti kegiatan harus format jpg, png, dan jpeg!',
-            })
-        </script>
-    @enderror
 
     <!-- sidebar menu overlay -->
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
@@ -158,6 +150,9 @@
                     </div>
                     @error('tanggal')
                         <div class="text-danger">Anda telah mengisi jurnal pada hari ini</div>
+                    @enderror
+                    @error('image')
+                        <div class="text-danger"><b>Ekstensi gambar hanya: png,jpg, dan jpeg</b></div>
                     @enderror
 
                     <div class="panel">
@@ -229,7 +224,6 @@
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                         required>
                                                 </div>
-
                                                 <div class="flex justify-end">
                                                     <button type="submit"
                                                         class="border text-blue-400 bg-white font-semibold border-blue-400  py-1.5 px-3 text-sm rounded-md hover:bg-blue-400 hover:text-white">Kirim</button>
@@ -265,10 +259,13 @@
                                         </form>
                                     </div>
                                     {{-- filter --}}
-                                    <div class="kamu-tak-diajak border-2 rounded-full border-gray-400 flex items-center p-1 mr-2 ">
+                                    <div
+                                        class="kamu-tak-diajak border-2 rounded-full border-gray-400 flex items-center p-1 mr-2 ">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="  w-5 h-5 kamu-tak-diajak">
-                                            <path stroke-linecap="round" stroke-linejoin="round" class="kamu-tak-diajak"
+                                            stroke-width="1.5" stroke="currentColor"
+                                            class="  w-5 h-5 kamu-tak-diajak">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                class="kamu-tak-diajak"
                                                 d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
                                         </svg>
                                     </div>
@@ -350,7 +347,8 @@
                             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                     <div class="overflow-hidden">
-                                        <table id="data-table" class="min-w-full text-left text-sm font-light print-container">
+                                        <table id="data-table"
+                                            class="min-w-full text-left text-sm font-light print-container">
                                             <thead class="border-b font-medium dark:border-neutral-500 ">
                                                 <tr class="">
                                                     <th scope="col" class="px-6 py-2">#</th>
@@ -502,14 +500,14 @@
                                         <input type="hidden" name="status" value="mengisi">
                                         <div class="flex justify-end">
                                         </div>
-                                    </div>
-                                    <!-- Modal footer -->
-                                    <div
+                                </div>
+                                <!-- Modal footer -->
+                                <div
                                     class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
 
                                     <button type="submit"
                                         class="border text-blue-400 bg-white font-semibold border-blue-400  py-2.5 px-5 text-sm rounded-md hover:bg-blue-400 hover:text-white">Kirim</button>
-                                    </div>
+                                </div>
                                 </form>
                             </div>
                         </div>
@@ -777,8 +775,8 @@
         };
     </script>
     <script>
-          // Fungsi untuk mencetak halaman
-          function printPage() {
+        // Fungsi untuk mencetak halaman
+        function printPage() {
             window.print();
         }
     </script>

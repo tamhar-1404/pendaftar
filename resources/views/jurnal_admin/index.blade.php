@@ -17,7 +17,7 @@
         },
     </script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
@@ -192,11 +192,12 @@
                             </button>
                         </div>
                     </div>
-                    <div id="grafik_siswa" class=" w-90% h-35 mx-4 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; " >
+                    <div id="grafik_siswa"
+                        class=" w-90% h-35 mx-4 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
                         <div class="w-full px-4 mt-6">
-                           <div class="w-80%  bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
-                               Grafik jurnal
-                           </div>
+                            <div class="w-80%  bg-white h-35 pt-5 text-same font-semibold dark:bg-transparent">
+                                Grafik jurnal
+                            </div>
                         </div>
                     </div>
 
@@ -370,80 +371,84 @@
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script>
-            // Initialization for ES Users
-        var options = {
-        series: [{
-        name: 'Mengisi',
-        data: [{{$mengisi_jan}},{{$mengisi_feb}},{{$mengisi_mar}},{{$mengisi_apr}},{{$mengisi_mei}},
-            {{$mengisi_jun}},{{$mengisi_jul}},{{$mengisi_aug}},{{$mengisi_sep}},{{$mengisi_okt}},{{$mengisi_nov}},{{$mengisi_des}}
-        ]
-        }, {
-        name: 'Tidak Mengisi',
-        data: [
-            {{$tdk_mengisi_jan}},{{$tdk_mengisi_feb}},{{$tdk_mengisi_mar}},{{$tdk_mengisi_apr}},{{$tdk_mengisi_mei}},
-            {{$tdk_mengisi_jun}},{{$tdk_mengisi_jul}},{{$tdk_mengisi_aug}},{{$tdk_mengisi_sep}},{{$tdk_mengisi_okt}},{{$tdk_mengisi_nov}},{{$tdk_mengisi_des}}
-        ]
-        }],
-        chart: {
-        type: 'bar',
-        height: 350,
-        },
-        plotOptions: {
-        bar: {
-            horizontal: false,
-            columnWidth: '55%',
-            endingShape: 'rounded',
-            borderRadius: 7,
-        },
-        },
-        dataLabels: {
-        enabled: false,
-        },
-        animations: {
-            enabled: true,
-            easing: 'easeinout',
-            speed: 1200,
-            animateGradually: {
-                enabled: true,
-                delay: 200
-            },
-            dynamicAnimation: {
-                enabled: true,
-                speed: 450
-            }
-        },
-        stroke: {
-        show: true,
-        width: 2,
-        colors: ['transparent']
-        },
-        xaxis: {
-        categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+                <script>
+                    // Initialization for ES Users
+                    var options = {
+                        series: [{
+                            name: 'Mengisi',
+                            data: [{{ $mengisi_jan }}, {{ $mengisi_feb }}, {{ $mengisi_mar }}, {{ $mengisi_apr }},
+                                {{ $mengisi_mei }},
+                                {{ $mengisi_jun }}, {{ $mengisi_jul }}, {{ $mengisi_aug }}, {{ $mengisi_sep }},
+                                {{ $mengisi_okt }}, {{ $mengisi_nov }}, {{ $mengisi_des }}
+                            ]
+                        }, {
+                            name: 'Tidak Mengisi',
+                            data: [
+                                {{ $tdk_mengisi_jan }}, {{ $tdk_mengisi_feb }}, {{ $tdk_mengisi_mar }},
+                                {{ $tdk_mengisi_apr }}, {{ $tdk_mengisi_mei }},
+                                {{ $tdk_mengisi_jun }}, {{ $tdk_mengisi_jul }}, {{ $tdk_mengisi_aug }},
+                                {{ $tdk_mengisi_sep }}, {{ $tdk_mengisi_okt }}, {{ $tdk_mengisi_nov }},
+                                {{ $tdk_mengisi_des }}
+                            ]
+                        }],
+                        chart: {
+                            type: 'bar',
+                            height: 350,
+                        },
+                        plotOptions: {
+                            bar: {
+                                horizontal: false,
+                                columnWidth: '55%',
+                                endingShape: 'rounded',
+                                borderRadius: 7,
+                            },
+                        },
+                        dataLabels: {
+                            enabled: false,
+                        },
+                        animations: {
+                            enabled: true,
+                            easing: 'easeinout',
+                            speed: 1200,
+                            animateGradually: {
+                                enabled: true,
+                                delay: 200
+                            },
+                            dynamicAnimation: {
+                                enabled: true,
+                                speed: 450
+                            }
+                        },
+                        stroke: {
+                            show: true,
+                            width: 2,
+                            colors: ['transparent']
+                        },
+                        xaxis: {
+                            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
 
-        },
-        yaxis: {
-        title: {
-            text: ''
-        }
-        },
-        fill: {
-        opacity: 5,
-        colors: [ '#008ffb', '#47EBB3']
-        },
-        tooltip: {
-        y: {
-            // formatter: function (val) {
-            //   return "$ " + val + " thousands"
-            // }
-        }
-        }
-        };
+                        },
+                        yaxis: {
+                            title: {
+                                text: ''
+                            }
+                        },
+                        fill: {
+                            opacity: 5,
+                            colors: ['#008ffb', '#47EBB3']
+                        },
+                        tooltip: {
+                            y: {
+                                // formatter: function (val) {
+                                //   return "$ " + val + " thousands"
+                                // }
+                            }
+                        }
+                    };
 
-        var chart = new ApexCharts(document.querySelector("#grafik_siswa"), options);
-        chart.render();
-
-    </script>
+                    var chart = new ApexCharts(document.querySelector("#grafik_siswa"), options);
+                    chart.render();
+                </script>
                 <script>
                     // Initialization for ES Users
                     import {
