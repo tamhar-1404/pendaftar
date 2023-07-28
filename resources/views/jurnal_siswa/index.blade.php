@@ -146,7 +146,7 @@
                 <div x-data="basic" class="mt-0">
                     {{-- judul --}}
                     <div class="mb-5 font-semibold kamu-tak-diajak">
-                        <span>Jurnal /<span class="text-[#00B7FF]"> {{ Auth::user()->name }}</span></span>
+                        <span class="text-xl font-bold mb-4">Jurnal /<span class="text-[#00B7FF]"> {{ Auth::user()->name }}</span></span>
                     </div>
                     @error('tanggal')
                         <div class="text-danger"><b>Anda telah mengisi jurnal pada hari ini</b></div>
@@ -171,7 +171,7 @@
 
 
 
-                        <p class="text-xl font-bold mb-4"><span class="text-red-600">Hari ini adalah : </span> {{ $namaHari }}, {{ $tanggal }}/{{ $bulan }}/{{ $tahun }}</p>
+                        <p class="text-xl font-semibold mb-4"><span class="text-red-600">Hari ini adalah : </span> {{ $namaHari }}, {{ $tanggal }}/{{ $bulan }}/{{ $tahun }}</p>
 
                         <div class="kamu-tak-diajak flex justify-between items-center">
                             <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
