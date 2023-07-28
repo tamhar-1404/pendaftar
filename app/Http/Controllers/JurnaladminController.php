@@ -43,12 +43,6 @@ class JurnaladminController extends Controller
 
     public function Absenhariini(Request $request)
     {
-        //cek tanggal
-        $hariIni = Carbon::now()->format('l');
-        if ($hariIni == 'Saturday' OR $hariIni == 'Sunday') {
-            return back()->with('error', 'Hari ini libur');
-        }
-
         // dd($request);
         $hari = Carbon::now()->format('Y-m-d');
         if ($request->has('cari')) {
@@ -95,10 +89,6 @@ class JurnaladminController extends Controller
 
     public function Jurnalhariini(Request $request) {
 
-        $hariIni = Carbon::now()->format('l');
-        if ($hariIni == 'Saturday' OR $hariIni == 'Sunday') {
-            return back()->with('error', 'Hari ini libur');
-        }
         $Cek = Jurnalsiswa::whereDate('created_at', Carbon::today())
         ->pluck('nama')
         ->toArray();
