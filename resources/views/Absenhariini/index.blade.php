@@ -89,9 +89,9 @@
                         <!-- Date Range -->
                         <div class="card px-4 pb-4 sm:px-5">
 
-                            <div class="max-w-xl">
-
-                            <div class="mt-5">
+                            <div class="mt-2 font-semibold max-w-xl">
+                                Tanggal
+                            <div class="mt-2">
                                 <form action="" >
                                     <label class="relative flex">
                                         <input
@@ -210,6 +210,7 @@
                                                     <th scope="col" class="px-6 py-2">Nama</th>
                                                     <th scope="col" class="px-6 py-2">Tanggal</th>
                                                     <th scope="col" class="px-6 py-2">Keterangan</th>
+                                                    <th scope="col" class="px-6 py-2">Jam</th>
                                                     <th scope="col" class="px-6 py-2">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -218,9 +219,9 @@
                                                 <tr
                                                 class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                                 <td class="whitespace-nowrap px-4 py-4 font-medium"> </td>
-                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->nama }}</td>
-                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->tanggal }}</td>
-                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->keterangan }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $item->nama }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $item->tanggal }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $item->keterangan }}</td>
                                                 <td class="whitespace-nowrap px-6 py-4">{{ $item->jam }}</td>
 
                                             </tr>
@@ -250,6 +251,7 @@
                                                     <th scope="col" class="px-6 py-2">Nama</th>
                                                     <th scope="col" class="px-6 py-2">Tanggal</th>
                                                     <th scope="col" class="px-6 py-2">Keterangan</th>
+                                                    <th scope="col" class="px-6 py-2">Jam</th>
                                                     <th scope="col" class="px-6 py-2">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -257,11 +259,11 @@
                                                 @forelse ($sakit as $item )
                                                 <tr
                                                 class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                <td class="whitespace-nowrap px-4 py-4 font-medium"> </td>
-                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->nama }}</td>
-                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->tanggal }}</td>
-                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->keterangan }}</td>
-                                                <td class="whitespace-nowrap px-6 py-4">{{ $item->jam }}</td>
+                                                <td class="whitespace-nowrap px-4 py-2 font-medium"> </td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $item->nama }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $item->tanggal }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $item->keterangan }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $item->jam }}</td>
 
                                             </tr>
 
@@ -290,17 +292,22 @@
                                                     <th scope="col" class="px-6 py-2">Nama</th>
                                                     <th scope="col" class="px-6 py-2">Tanggal</th>
                                                     <th scope="col" class="px-6 py-2">Keterangan</th>
+                                                    <th scope="col" class="px-6 py-2">Jam</th>
                                                     <th scope="col" class="px-6 py-2">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            <?php
+
+                                                $no = 1 ;
+                                            ?>
                                             <tbody>
                                                 @forelse ($telat as $item )
                                                 <tr
                                                 class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                <td class="whitespace-nowrap px-4 py-4 font-medium"> </td>
-                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->nama }}</td>
-                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->tanggal }}</td>
-                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->keterangan }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2"> {{ $no++ }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $item->nama }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $item->tanggal }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $item->keterangan }}</td>
                                                 <td class="whitespace-nowrap px-6 py-4">{{ $item->jam }}</td>
 
                                             </tr>
@@ -337,10 +344,10 @@
                                                 @forelse ($alfa as $item )
                                                 <tr
                                                 class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                <td class="whitespace-nowrap px-4 py-4 font-medium"> </td>
-                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->nama }}</td>
-                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->tanggal }}</td>
-                                                <td class="whitespace-nowrap px-4 py-4">{{ $item->keterangan }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2"> </td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $item->nama }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $item->tanggal }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $item->keterangan }}</td>
                                                 <td class="whitespace-nowrap px-6 py-4">{{ $item->jam }}</td>
 
                                             </tr>
