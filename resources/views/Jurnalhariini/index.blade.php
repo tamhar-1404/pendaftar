@@ -121,7 +121,7 @@
                 </ul>
                 <div class="pt-5">
                     <div class="mb-5 flex items-center justify-between">
-                        <h5 class="text-sm font-semibold dark:text-white-light">Absensi Hari ini </h5>
+                        <h5 class="text-sm font-semibold dark:text-white-light">Jurnal Hari ini </h5>
                         <!-- Date Range -->
                         <div class="card px-4 pb-4 sm:px-5">
 
@@ -669,13 +669,13 @@
                             <div class="flex flex-col sm:flex-row">
                                 <div class="w-full">
                                     <div class="w-full">
-                                        <div class="max-w-screen-lg mx-auto w-full h-full flex flex-col items-center justify-center">
+                                        <div >
                                             <div x-data="dataTable()"
                                                 x-init="
                                                 initData()
                                                 $watch('searchInput', value => {
                                                     search(value)
-                                                })" class="bg-white p-5 shadow-md w-full flex flex-col">
+                                                })" >
                                                 <div class="flex justify-between items-center">
                                                     <div class="flex space-x-2 items-center">
                                                         <p>Tampilkan</p>
