@@ -191,7 +191,7 @@
                             <ul>
                                 <li class="menu nav-item relative">
                                     <a href="{{ route('Siswamagang.index') }}"
-                                        class="nav-link {{ request()->routeIs('Siswamagang.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }} ">
+                                        class="nav-link {{ request()->routeIs('Siswamagang.index') ? 'bg-blue-400 text-white' : '' }} ">
                                         <div class="flex items-center ">
                                             <svg width="20" height="20" viewBox="0 0 24 24"
                                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">

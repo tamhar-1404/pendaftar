@@ -157,7 +157,7 @@ class SiswaController extends Controller
         // return view('rfid.index', compact('users'));
         
     }
-    $users = User::Where('role', 'Siswa')->whereNull('RFID')->latest()->paginate(10);
+    $users = User::Where('role', 'Siswa')->whereNull('RFID')->latest('created_at')->paginate(10);
 
         return view('rfid.index', compact('users'));
     }

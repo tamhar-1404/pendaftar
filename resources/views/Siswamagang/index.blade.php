@@ -769,37 +769,39 @@
                                         $i = 1;
                                     @endphp
                                     @forelse($tatib as $tata)
-                                        <div class="border p-4 cursor-pointer transition-transform transform hover:scale-105" onclick="toggleDescription('peraturan{{ $i++ }}')">
+                                        <div class="border p-4 cursor-pointer transition-transform transform hover:scale-105"
+                                            onclick="toggleDescription('peraturan{{ $i++ }}')">
                                             {{ $tata->judul }}
                                             <span class="ml-2">&#x25BE;</span>
                                         </div>
                                     @empty
                                     @endforelse
-                                  </div>
-                                  <div class="grid grid-cols-2 gap-4 mt-4" id="descriptions">
+                                </div>
+                                <div class="grid grid-cols-2 gap-4 mt-4" id="descriptions">
                                     @php
                                         $j = 1;
                                     @endphp
                                     @forelse($tatib as $tata)
-                                        <div class="col-span-2 p-2 bg-gray-100 hidden" id="peraturan{{ $j++ }}">{!! $tata->deskripsi !!}</div>
+                                        <div class="col-span-2 p-2 bg-gray-100 hidden"
+                                            id="peraturan{{ $j++ }}">{!! $tata->deskripsi !!}</div>
                                     @empty
                                     @endforelse
-                                  </div>
+                                </div>
 
-                                  <script>
+                                <script>
                                     function toggleDescription(descriptionId) {
-                                      const descriptionDiv = document.getElementById(descriptionId);
-                                      const descriptions = document.querySelectorAll('#descriptions > div');
+                                        const descriptionDiv = document.getElementById(descriptionId);
+                                        const descriptions = document.querySelectorAll('#descriptions > div');
 
-                                      descriptions.forEach((div) => {
-                                        if (div.id === descriptionId) {
-                                          div.classList.toggle('hidden', !div.classList.contains('hidden'));
-                                        } else {
-                                          div.classList.add('hidden');
-                                        }
-                                      });
+                                        descriptions.forEach((div) => {
+                                            if (div.id === descriptionId) {
+                                                div.classList.toggle('hidden', !div.classList.contains('hidden'));
+                                            } else {
+                                                div.classList.add('hidden');
+                                            }
+                                        });
                                     }
-                                  </script>
+                                </script>
 
                             </div>
                             {{-- end tata tertib --}}

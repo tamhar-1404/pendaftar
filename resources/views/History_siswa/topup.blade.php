@@ -568,17 +568,20 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @php
+                                                    $no = 1;
+                                                @endphp
                                                 @forelse ($TopUp as $data)
                                                     <tr
                                                         class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                        <td class="whitespace-nowrap px-2 py-2 font-medium">
-                                                            {{ $data->id }}
+                                                        <td class="whitespace-nowrap px-6 py-2 font-medium">
+                                                            {{ $no++ }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $data->saldo }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $data->saldo }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $data->tanggal }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $data->tanggal }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $data->status }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $data->status }}
                                                         </td>
                                                     </tr>
                                                 @empty

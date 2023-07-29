@@ -577,17 +577,17 @@
                                             <tbody>
                                                 @forelse ($siswas as $siswa)
                                                     <tr>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $no++ }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $no++ }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $siswa->name }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $siswa->name }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $siswa->harga }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $siswa->harga }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $siswa->stok }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $siswa->stok }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $siswa->tanggal }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $siswa->tanggal }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-2 py-2">{{ $siswa->total }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $siswa->total }}
                                                         </td>
                                                     </tr>
                                                 @empty
