@@ -187,7 +187,7 @@ class JurnaladminController extends Controller
 
             $users = User::whereNotIn('name', $Cek)
             ->where('role', 'siswa')
-            ->paginate(10);
+            ->select('name','sekolah')->get();
 
             $semuaSiswa = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'tidak mengisi')->get();
 
@@ -197,7 +197,7 @@ class JurnaladminController extends Controller
             $semuaJurnal = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->get();
             $jurnalSudahKirim = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])
                                         ->where('status', 'mengisi')
-                                        ->paginate(10);
+                                        ->select('nama','tanggal', 'kegiatan', 'image', 'id')->get();
 
             $tidakMengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->whereNot('status', 'mengisi')->paginate(10);
             $mengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'mengisi')->paginate(10);
@@ -215,8 +215,8 @@ class JurnaladminController extends Controller
         ->select('name','sekolah')->get();
 
         $semuaSiswa = User::where('role', 'Siswa')->get();
-        $semuaJurnal = Jurnalsiswa::whereDate('tanggal', Carbon::now()->format('Y-m-d'))->get();
-        $jurnalSudahKirim = Jurnalsiswa::whereDate('created_at', Carbon::today())
+        $semuaJurnal = Jurnalsiswa::whereDate('created_at', Carbon::today())->get();
+        $jurnalSudahKirim = Jurnalsiswa::whereDate('tanggal', Carbon::today())
                                        ->where('status', 'mengisi')
                                        ->select('nama','tanggal', 'kegiatan', 'image', 'id')->get();
         $tidakMengisi = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->whereNot('status', 'mengisi')->get();
