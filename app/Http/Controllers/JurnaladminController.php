@@ -202,13 +202,13 @@ class JurnaladminController extends Controller
 
         $users = User::whereNotIn('name', $Cek)
         ->where('role', 'siswa')
-        ->paginate(10);
+        ->select('name','sekolah')->get();
 
         $semuaSiswa = User::where('role', 'Siswa')->get();
         $semuaJurnal = Jurnalsiswa::whereDate('created_at', Carbon::today())->get();
         $jurnalSudahKirim = Jurnalsiswa::whereDate('created_at', Carbon::today())
                                        ->where('status', 'mengisi')
-                                       ->paginate(10);
+                                       ->select('nama','tanggal', 'kegiatan', 'image', 'id')->get();
 
         return view('Jurnalhariini.index', compact('jurnalSudahKirim', 'users', 'semuaJurnal', 'semuaSiswa'));
     }
