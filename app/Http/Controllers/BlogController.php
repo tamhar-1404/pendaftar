@@ -122,11 +122,11 @@ class BlogController extends Controller
         if ($request->hasFile('foto')) {
             // Unggah dan simpan gambar baru
             $image = $request->file('foto');
-            $image->storeAs('Storage/fotoberita/', $image->hashName());
+            $image->storeAs('public/fotoberita', $image->hashName());
 
             // Hapus gambar lama jika ada
             if ($blog->foto !== null) {
-                Storage::delete('Storage/fotoberita/' . $blog->foto);
+                Storage::delete('public/fotoberita/' . $blog->foto);
             }
 
             // $blog->foto = $image->hashName();

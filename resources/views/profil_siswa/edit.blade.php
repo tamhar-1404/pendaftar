@@ -1299,25 +1299,40 @@
                                                 <div>
                                                     <label for="ctnFile">Foto Profile</label>
                                                     <input id="ctnFile" name="foto" type="file" class="form-input file:py-2 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-primary"  />
+                                                    @error('foto')
+                                                        <small class="text-red-500">{{ $message }}</small>
+                                                    @enderror
                                                 </div>
                                                 <div>
                                                     <label for="name">Nama Lengkap</label>
                                                     <input id="name" type="text" name="nama"
                                                         placeholder="Nama langkap" value="{{$siswa->name}}" class="form-input" />
+                                                    @error('nama')
+                                                        <small class="text-red-500">{{ $message }}</small>
+                                                    @enderror
                                                 </div>
                                                 <div>
                                                     <label for="email">Email</label>
                                                     <input id="email" type="email" name="email"
                                                         placeholder="Email" value="{{$siswa->email}}" class="form-input" />
+                                                    @error('email')
+                                                        <small class="text-red-500">{{ $message }}</small>
+                                                    @enderror
                                                 </div>
                                                 <div>
                                                     <label for="telepon">No.Telepon</label>
                                                     <input id="telepon" type="text" name="no"
                                                         placeholder="nomor telpon" value="{{$siswa->no}}" class="form-input" />
+                                                    @error('no')
+                                                        <small class="text-red-500">{{ $message }}</small>
+                                                    @enderror
                                                 </div>
                                             <div>
                                                 <label for="alamat">Alamat</label>
                                                 <textarea name="alamat" id="alamat" placeholder="Alamat" class="form-input">{{$siswa->alamat}}</textarea>
+                                                @error('alamat')
+                                                    <small class="text-red-500">{{ $message }}</small>
+                                                @enderror
                                             </div>
                                             <div class="mt-3 sm:col-span-2 flex gap-4 justify-end">
                                                 <a href="{{ url()->previous() }}" class="btn btn-outline-danger">Batal</a>

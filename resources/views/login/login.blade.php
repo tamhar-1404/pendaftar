@@ -110,7 +110,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="mt-16">
                     <form method="POST" action="{{ route('postlogin') }}">
                         @csrf
@@ -130,7 +129,6 @@
                         @error('email')
                             <div class="text-sm text-red-500 font-medium">{{ $message }}</div>
                         @enderror
-
                         <label class="relative mt-4 flex">
                             <input id="password" name="password"
                                 class="form-input peer w-full rounded-lg bg-slate-150 px-3 py-2 pl-9 ring-primary/50 placeholder:text-slate-400 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:ring-accent/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
@@ -147,16 +145,13 @@
                         @error('password')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-
                         <div class="mt-4 flex items-center justify-between space-x-2">
                             <label class="inline-flex items-center space-x-2">
                                 <input id="remember-checkbox"
                                     class="form-checkbox is-outline h-5 w-5 rounded border-slate-400/70 bg-slate-100 before:bg-primary checked:border-primary hover:border-primary focus:border-primary dark:border-navy-500 dark:bg-navy-900 dark:before:bg-accent dark:checked:border-accent dark:hover:border-accent dark:focus:border-accent"
                                     type="checkbox" />
-
                                 <p class="line-clamp-1 cursor-pointer text-sm" onclick="showModal()">Kebijakan privasi
                                 </p>
-
                                 <div id="myModal" class="modal hidden">
                                     <div class="modal-overlay"></div>
                                     <div class="modal-content">
@@ -183,7 +178,6 @@
                                                 lebih
                                                 lanjut tentang Kebijakan Privasi kami, jangan ragu untuk menghubungi
                                                 kami.
-
                                             </p>
                                             <br>
                                             <p class="font-semibold">Informasi yang Kami Kumpulkan
@@ -233,7 +227,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <link href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css" rel="stylesheet">
                                 <style>
                                     .modal-overlay {
@@ -246,7 +239,6 @@
                                         background-color: rgba(0, 0, 0, 0.5);
                                         backdrop-filter: blur(10px);
                                     }
-
                                     .modal-content {
                                         z-index: 60;
                                         position: fixed;
@@ -261,24 +253,20 @@
                                         overflow-y: auto;
                                         padding: 20px;
                                     }
-
                                     .modal-inner-content {
                                         max-height: 100%;
                                     }
-
                                     .close {
                                         top: 10px;
                                         right: 10px;
                                     }
                                 </style>
-
                                 <script>
                                     function showModal() {
                                         var modal = document.getElementById("myModal");
                                         modal.classList.remove("hidden");
                                         document.body.style.overflow = "hidden";
                                     }
-
                                     function closeModal() {
                                         var modal = document.getElementById("myModal");
                                         modal.classList.add("hidden");
