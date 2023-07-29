@@ -97,6 +97,11 @@
 </head>
 
 <body>
+    <style>
+        .modal-backdrop {
+          background-color: rgba(0, 0, 255, 0.5); /* Blue color with 50% opacity */
+        }
+      </style>
     <!-- screen loader -->
     <div
         class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
@@ -695,7 +700,7 @@
                                                             <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
                                                             <th @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
                                                             <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
-                                                            <th @click="sort('image', sorted.rule === 'asc' ? 'desc' : 'asc')">image</th>
+                                                            <th @click="sort('image', sorted.rule === 'asc' ? 'desc' : 'asc')">Aksi</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -714,9 +719,12 @@
                                                                     <span x-text="item.kegiatan"></span>
                                                                 </td>
                                                                 <td class="py-3">
-                                                                    <button  >Show Popup</button>
+                                                                    <button type="button"
+                                                                    id="tambah-rfid"
+                                                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                                    TAMBAH RFID
+                                                            </button>
                                                                 </td>
-
                                                             </tr>
                                                             <tr x-show="showPopup" class="text-gray-900 text-xs">
                                                                 <td class="py-3" colspan="5">
@@ -734,6 +742,32 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
+                                                <div id="modal-tambah-rfid" class="modal fixed inset-0 flex items-center justify-center" style="display: none;">
+                                                    <div class="modal-content bg-white p-6">
+                                                        <h2 class="text-2xl font-bold mb-4">Tambah RFID</h2>
+                                                        <input id="inputrfid" type="text" name="RFID"
+                                                               class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
+                                                        <div class="mt-6 flex justify-end">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <script>
+                                                    document.addEventListener("DOMContentLoaded", function() {
+                                                        // Mengaktifkan modal saat tombol diklik
+                                                        document.getElementById('tambah-rfid').addEventListener('click', function() {
+                                                            document.getElementById('modal-tambah-rfid').style.display = "flex";
+                                                            document.getElementById('inputrfid').focus();
+                                                        });
+
+                                                        // Menutup modal saat tombol Batal diklik atau saat mengklik area luar modal
+                                                        document.getElementById('modal-tambah-rfid').addEventListener('click', function(event) {
+                                                            if (event.target === this || event.target.classList.contains('bg-red-500')) {
+                                                                this.style.display = "none";
+                                                            }
+                                                        });
+                                                    });
+                                                </script>
                                                 <div class="flex mt-5">
                                                     <div class="border px-2 cursor-pointer" @click.prevent="changePage(1)">
                                                         <span class="text-gray-700">Pertama</span>
