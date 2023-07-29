@@ -237,84 +237,78 @@
                                 <li class="menu nav-item relative" id="hari_ini1">
                                     <a class="flex h-12  cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ebg-blue-400 dark:text-gray-300 hover:bg-blue-400 hover:text-white"
                                         data-te-sidenav-link-ref>
-                                        <div class="flex items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 bg-gray"
-                                                height="1em" viewBox="0 0 640 512">
-                                                <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                                <path
-                                                    d="M535 41c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l64 64c4.5 4.5 7 10.6 7 17s-2.5 12.5-7 17l-64 64c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l23-23L384 112c-13.3 0-24-10.7-24-24s10.7-24 24-24l174.1 0L535 41zM105 377l-23 23L256 400c13.3 0 24 10.7 24 24s-10.7 24-24 24L81.9 448l23 23c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L7 441c-4.5-4.5-7-10.6-7-17s2.5-12.5 7-17l64-64c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM96 64H337.9c-3.7 7.2-5.9 15.3-5.9 24c0 28.7 23.3 52 52 52l117.4 0c-4 17 .6 35.5 13.8 48.8c20.3 20.3 53.2 20.3 73.5 0L608 169.5V384c0 35.3-28.7 64-64 64H302.1c3.7-7.2 5.9-15.3 5.9-24c0-28.7-23.3-52-52-52l-117.4 0c4-17-.6-35.5-13.8-48.8c-20.3-20.3-53.2-20.3-73.5 0L32 342.5V128c0-35.3 28.7-64 64-64zm64 64H96v64c35.3 0 64-28.7 64-64zM544 320c-35.3 0-64 28.7-64 64h64V320zM320 352a96 96 0 1 0 0-192 96 96 0 1 0 0 192z" />
+                                        <img src="/admin/Money.png" class="h-6 w-6" alt="">
+                                        <span class="px-1">Transaksi</span>
+                                        <span
+                                            class="absolute  right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none "
+                                            data-te-sidenav-rotate-icon-ref>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                fill="currentColor" class="h-5 w-5 ">
+                                                <path fill-rule="evenodd" fill="currentColor"
+                                                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                    clip-rule="evenodd" />
                                             </svg>
-                                            <span class="px-1">Transaksi</span>
-                                            <span
-                                                class="absolute  right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none "
-                                                data-te-sidenav-rotate-icon-ref>
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                    fill="currentColor" class="h-5 w-5 ">
-                                                    <path fill-rule="evenodd" fill="currentColor"
-                                                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                            </span>
-                                        </div>
-
-                                    </a>
-                                    <ul class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
-                                        data-te-sidenav-collapse-reff>
-                                        <li class="menu nav-item relative">
-                                            <a href="{{ route('History_topup.index') }}" class="px-1">History
-                                                Topup</a>
-
-                                        </li>
-                                        <li class="menu nav-item relative">
-                                            <a href="{{ route('History.index') }}" class="px-1">History
-                                                Transaksi</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                @if (request()->routeIs('Siswamagang.index'))
-                                    <li class="mt-10">
-                                        <button onclick="showStep(1)"
-                                            class="border border-blue-400 px-4 py-1 text-blue-400 hover:bg-blue-400 hover:text-blue-600 hover:border-blue-600 rounded">Isi
-                                            saldo</button>
-
-                                    </li>
-                                @endif
-                            </ul>
-                        </li>
-                    </ul>
+                                        </span>
                 </div>
-            </nav>
+
+                </a>
+                <ul class="show visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+                    data-te-sidenav-collapse-reff>
+                    <li class="menu nav-item relative">
+                        <a href="{{ route('History_topup.index') }}" class="px-1">History
+                            Topup</a>
+
+                    </li>
+                    <li class="menu nav-item relative">
+                        <a href="{{ route('History.index') }}" class="px-1">History
+                            Transaksi</a>
+                    </li>
+                </ul>
+                </li>
+                @if (request()->routeIs('Siswamagang.index'))
+                    <li class="mt-10">
+                        <button onclick="showStep(1)"
+                            class="border border-blue-400 px-4 py-1 text-blue-400 hover:bg-blue-400 hover:text-blue-600 hover:border-blue-600 rounded">Isi
+                            saldo</button>
+
+                    </li>
+                @endif
+                </ul>
+                </li>
+                </ul>
         </div>
+        </nav>
+    </div>
 
-        <!-- Sisipkan kode JavaScript berikut di akhir halaman HTML Anda -->
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const menuItem = document.getElementById("hari_ini");
-                const submenu = document.querySelector("[data-te-sidenav-collapse-ref]");
+    <!-- Sisipkan kode JavaScript berikut di akhir halaman HTML Anda -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuItem = document.getElementById("hari_ini");
+            const submenu = document.querySelector("[data-te-sidenav-collapse-ref]");
 
-                menuItem.addEventListener("click", function() {
-                    submenu.classList.toggle("hidden");
-                    submenu.classList.toggle("block");
-                });
+            menuItem.addEventListener("click", function() {
+                submenu.classList.toggle("hidden");
+                submenu.classList.toggle("block");
             });
+        });
 
-            document.addEventListener("DOMContentLoaded", function() {
-                const menuItem = document.getElementById("hari_ini1");
-                const submenu = document.querySelector("[data-te-sidenav-collapse-reff]");
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuItem = document.getElementById("hari_ini1");
+            const submenu = document.querySelector("[data-te-sidenav-collapse-reff]");
 
-                menuItem.addEventListener("click", function() {
-                    submenu.classList.toggle("hidden");
-                    submenu.classList.toggle("block");
-                });
+            menuItem.addEventListener("click", function() {
+                submenu.classList.toggle("hidden");
+                submenu.classList.toggle("block");
             });
-        </script>
-        <!-- end sidebar section -->
+        });
+    </script>
+    <!-- end sidebar section -->
 
-        <div class="main-content">
-            @include('Siswamagang.nav_siswa')
+    <div class="main-content">
+        @include('Siswamagang.nav_siswa')
 
-            @include('absensi_siswa.isi')
-        </div>
+        @include('absensi_siswa.isi')
+    </div>
     </div>
 
     <script src="siswa/js/alpine-collaspe.min.js"></script>

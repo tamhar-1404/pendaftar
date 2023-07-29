@@ -34,7 +34,7 @@ class HistoryTopupController extends Controller
     
             $TopUp->appends(['cari' => $keyword]);
         } else {
-            $TopUp = Topup::where('user_id',Auth()->user()->id)->latest()->paginate(10);
+            $TopUp = Topup::where('user_id',Auth()->user()->id)->latest('created_at')->paginate(10);
         }
         return view('History_siswa.topup', compact('TopUp'));
 

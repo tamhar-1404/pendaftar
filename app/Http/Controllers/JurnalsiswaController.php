@@ -40,8 +40,7 @@ class JurnalsiswaController extends Controller
             ->where(function ($query) use ($keyword) {
                 $query->where('tanggal', 'LIKE', '%' . $keyword . '%')
                     ->orWhere('status', 'LIKE', '%' . $keyword . '%');
-            })
-            ->paginate(5);
+            })->latest('created_at')->paginate(5);
 
         $item->appends(['cari' => $keyword]);
     } else {
