@@ -260,10 +260,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse ($semuaSiswa as $key => $user)
+                                            @forelse ($semuaJurnal as $key => $user)
                                                 <tr>
                                                     <td class="whitespace-nowrap px-6 py-2">{{ ++$key }}</td>
-                                                    <td class="whitespace-nowrap px-6 py-2">{{ $user->name }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $user->nama }}</td>
                                                     <td class="whitespace-nowrap px-6 py-2">{{ $user->sekolah }}</td>
                                                     <td class="whitespace-nowrap px-6 py-2">{{ $user->status }}</td>
                                                 </tr>
@@ -289,23 +289,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($semuaSiswa as $key => $user)
+                                        @forelse ($semuaJurnal as $key => $user)
                                             <tr>
                                                 <td class="whitespace-nowrap px-6 py-2">{{ ++$key }}</td>
-                                                <td class="whitespace-nowrap px-6 py-2">{{ $user->name }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $user->nama }}</td>
                                                 <td class="whitespace-nowrap px-6 py-2">{{ $user->sekolah }}</td>
-                                                @php
-                                                    $status = 'Tidak mengisi';
-                                                @endphp
-                                                @foreach ($semuaJurnal as $jurnal)
-                                                    @if ($jurnal->nama == $user->name)
-                                                        @php
-                                                            $status = 'Mengisi';
-                                                        @endphp
-                                                    @break
-                                                @endif
-                                            @endforeach
-                                            <td class="whitespace-nowrap px-6 py-2">{{ $status }}</td>
+                                                <td class="whitespace-nowrap px-6 py-2">{{ $user->status }}</td>
                                         </tr>
                                 </tbody>
 
@@ -665,6 +654,7 @@
                                                             <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
                                                             <th @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
                                                             <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
+                                                            <th @click="sort('aksi', sorted.rule === 'asc' ? 'desc' : 'asc')">Aksi</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -681,6 +671,12 @@
                                                                 </td>
                                                                 <td class="py-3">
                                                                     <span x-text="item.kegiatan"></span>
+                                                                </td>
+                                                                <td class="py-3">
+                                                                    <span>
+                                                                        <button onclick="openModal(document.getElementById('id').innerText)">Detail</button>
+                                                                        <span x-text="item.id" id="id" class="hidden"></span>
+                                                                    </span>
                                                                 </td>
 
                                                             </tr>
@@ -906,7 +902,7 @@
         @forelse ($jurnalSudahKirim as $modal)
         <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
             class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
-            x-data="{ showModal: false }"> <!-- Tambahkan atribut x-data dan variabel showModal -->
+            x-data="{ showModal: true }"> <!-- Tambahkan atribut x-data dan variabel showModal -->
             <div class="relative w-full max-w-2xl max-h-full">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700" x-show="showModal"> <!-- Tambahkan atribut x-show -->
@@ -917,7 +913,7 @@
                         </h3>
                         <button type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            @click="showModal = false"> <!-- Tambahkan atribut x-on:click -->
+                            onclick="closeModal('{{$modal->id}}')"> <!-- Tambahkan atribut x-on:click -->
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
@@ -933,7 +929,7 @@
                     <!-- Modal footer -->
                     <div
                         class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                        <button @click="showModal = false" type="button"
+                        <button type="button" onclick="closeModal('{{ $modal->id }}')"
                             class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                     </div>
                 </div>
@@ -1228,6 +1224,15 @@
     initTE({
         sidenav - 2
     });
+</script>
+<script>
+    function openModal(id) {
+        $(`#staticModal${id}`).show();
+    }
+
+    function closeModal(id) {
+        $(`#staticModal${id}`).hide();
+    }
 </script>
 
 </body>

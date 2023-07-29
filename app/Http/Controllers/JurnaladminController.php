@@ -215,12 +215,12 @@ class JurnaladminController extends Controller
         ->select('name','sekolah')->get();
 
         $semuaSiswa = User::where('role', 'Siswa')->get();
-        $semuaJurnal = Jurnalsiswa::whereDate('created_at', Carbon::today())->get();
+        $semuaJurnal = Jurnalsiswa::whereDate('tanggal', Carbon::now()->format('Y-m-d'))->get();
         $jurnalSudahKirim = Jurnalsiswa::whereDate('created_at', Carbon::today())
                                        ->where('status', 'mengisi')
                                        ->select('nama','tanggal', 'kegiatan', 'image', 'id')->get();
-        $tidakMengisi = Jurnalsiswa::where('created_at', Carbon::today())->whereNot('status', 'mengisi')->get();
-        $mengisi = Jurnalsiswa::where('created_at', Carbon::today())->where('status', 'mengisi')->get();
+        $tidakMengisi = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->whereNot('status', 'mengisi')->get();
+        $mengisi = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->where('status', 'mengisi')->get();
         return view('Jurnalhariini.index', compact('jurnalSudahKirim', 'users', 'semuaJurnal', 'semuaSiswa', 'hari', 'tidakMengisi', 'mengisi'));
     }
     /**

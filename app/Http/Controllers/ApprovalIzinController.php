@@ -84,7 +84,7 @@ class ApprovalIzinController extends Controller
         ]);
         $siswa = User::Where('id', $request->foto)->first();
 
-        $foto_siswa = Siswa::Where('id', $siswa->siswa_id)->first();
+        $foto_siswa = Siswa::where('id', $siswa->siswa_id)->first();
 
         $foto = $foto_siswa->foto_siswa;
         $image = $request->file('bukti');
@@ -92,7 +92,6 @@ class ApprovalIzinController extends Controller
 
         ApprovalIzin::create([
             'nama' => $request->nama,
-            'foto' => $foto,
             'sekolah' => $request->sekolah,
             'email' => $request->email,
             'dari' => $request->dari,
