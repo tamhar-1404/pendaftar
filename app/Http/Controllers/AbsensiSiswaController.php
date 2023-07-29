@@ -50,7 +50,7 @@ class AbsensiSiswaController extends Controller
             ->where(function ($query) use ($keyword) {
                 $query->where('tanggal', 'LIKE', '%' . $keyword . '%')
                     ->orWhere('keterangan', 'LIKE', '%' . $keyword . '%');
-            })
+            })->latest()
             ->paginate(5);
 
             return view('absensi_siswa.index', compact('terima', 'hadir', 'telat', 'all', 'alfa', 'izinsakit', 'cek_sudah_absen'));
