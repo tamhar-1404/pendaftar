@@ -123,10 +123,6 @@
                         </svg>
                     </a>
                 </div>
-
-
-
-
                 <div class="dropdown" x-data="dropdown" @click.outside="open = false">
                     <a
                         href="javascript:;"
