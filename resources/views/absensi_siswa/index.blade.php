@@ -158,7 +158,7 @@
                                 </li>
                                 <li class="menu nav-item relative">
                                     <a href="{{ route('absensi_siswa.index') }}"
-                                        class="nav-link {{ request()->routeIs('absensi_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }}">
+                                        class="nav-link {{ request()->routeIs('absensi_siswa.index') ? 'bg-blue-400 text-white' : '' }} mb-2 rounded-[5px] px-6 py-4 text-[0.875rem] outline-none transition duration-300 hover:bg-blue-400 hover:text-white">
                                         <div class="flex items-center ">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
