@@ -247,13 +247,8 @@
                             <div id="tabelsemua" class="hidden">
                                 <form
                                     class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
-                                    @php
-                                        $hari = date('N');
-                                        $daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-                                    @endphp
 
-                                    <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $daftarHari[$hari] }},
-                                        {{ date('d F Y') }}</h6>
+                                    <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
                                     <table class="min-w-full text-left text-sm ">
                                         <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
                                             <tr>
@@ -270,24 +265,12 @@
                                                     <td class="whitespace-nowrap px-6 py-2">{{ ++$key }}</td>
                                                     <td class="whitespace-nowrap px-6 py-2">{{ $user->name }}</td>
                                                     <td class="whitespace-nowrap px-6 py-2">{{ $user->sekolah }}</td>
-                                                    @php
-                                                        $status = 'Tidak mengisi';
-                                                    @endphp
-                                                    @foreach ($semuaJurnal as $jurnal)
-                                                        @if ($jurnal->nama == $user->name)
-                                                            @php
-                                                                $status = 'Mengisi';
-                                                            @endphp
-                                                        @break
-                                                    @endif
-                                                @endforeach
-                                                <td class="whitespace-nowrap px-6 py-2">{{ $status }}</td>
-                                            </tr>
-                                    </tbody>
+                                                    <td class="whitespace-nowrap px-6 py-2">{{ $user->status }}</td>
+                                                </tr>
 
-                                @empty
-                                    @endforelse
-
+                                            @empty
+                                            @endforelse
+                                        </tbody>
                                 </form>
                             </div>
                     </template>
@@ -295,13 +278,7 @@
                         <div id="tabelsemua" class="hidden">
                             <form
                                 class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
-                                @php
-                                    $hari = date('N');
-                                    $daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-                                @endphp
-
-                                <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $daftarHari[$hari] }},
-                                    {{ date('d F Y') }}</h6>
+                                <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
                                 <table class="min-w-full text-left text-sm ">
                                     <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
                                         <tr>
@@ -309,7 +286,6 @@
                                             <th scope="col" class="px-6 py-2">Nama</th>
                                             <th scope="col" class="px-6 py-2">Sekolah</th>
                                             <th scope="col" class="px-6 py-2">Status</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -381,13 +357,8 @@
                         <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
                             <input type="hidden" name="siswa_id">
                             <input type="hidden" name="siswa_id">
-                            @php
-                                $hari = date('N');
-                                $daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-                            @endphp
 
-                            <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $daftarHari[$hari] }},
-                                {{ date('d F Y') }}</h6>
+                            <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
                             <div class="flex flex-col sm:flex-row">
                                 <div class="w-full">
                                     <div class="w-full">
@@ -664,13 +635,7 @@
                         <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
                             <input type="hidden" name="siswa_id">
                             <input type="hidden" name="siswa_id">
-                            @php
-                                $hari = date('N');
-                                $daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-                            @endphp
-
-                            <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $daftarHari[$hari] }},
-                                {{ date('d F Y') }}</h6>
+                            <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
                             <div class="flex flex-col sm:flex-row">
                                 <div class="w-full">
                                     <div class="w-full">
@@ -700,7 +665,6 @@
                                                             <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
                                                             <th @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
                                                             <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
-                                                            <th @click="sort('image', sorted.rule === 'asc' ? 'desc' : 'asc')">Aksi</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -718,13 +682,7 @@
                                                                 <td class="py-3">
                                                                     <span x-text="item.kegiatan"></span>
                                                                 </td>
-                                                                <td class="py-3">
-                                                                    <button type="button"
-                                                                    id="tambah-rfid"
-                                                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                                                    TAMBAH RFID
-                                                            </button>
-                                                                </td>
+
                                                             </tr>
                                                             <tr x-show="showPopup" class="text-gray-900 text-xs">
                                                                 <td class="py-3" colspan="5">
@@ -793,7 +751,7 @@
                                 </div>
                             </div>
                             <script>
-                                let datamengisi = @json($jurnalSudahKirim);
+                                let datamengisi = @json($mengisi);
                             </script>
                             <script>
                                 window.dataTable = function () {
