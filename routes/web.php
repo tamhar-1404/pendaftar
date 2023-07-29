@@ -87,6 +87,8 @@ Route::get('/percobaan', function () {
     return view('desain_pdf.percobaan');
 });
 
+Route::get('/absen/sakit', [JurnaladminController::class, 'absensakit']);
+
 // Route::get('/q', function () {
     //     return view('welcome');
     // });

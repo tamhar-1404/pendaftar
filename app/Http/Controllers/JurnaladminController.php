@@ -96,6 +96,11 @@ class JurnaladminController extends Controller
         return view('jurnal_admin.index',compact( 'item','mengisi_jan','mengisi_feb','mengisi_mar','mengisi_apr','mengisi_mei','mengisi_jun','mengisi_jul','mengisi_aug','mengisi_sep','mengisi_okt','mengisi_nov','mengisi_des','tdk_mengisi_jan','tdk_mengisi_feb','tdk_mengisi_mar','tdk_mengisi_apr','tdk_mengisi_mei','tdk_mengisi_jun','tdk_mengisi_jul','tdk_mengisi_aug','tdk_mengisi_sep','tdk_mengisi_nov','tdk_mengisi_okt','tdk_mengisi_nov','tdk_mengisi_des'));
 
     }
+    // public function absensakit()
+    // {
+    //     $sakit = ApprovalIzin::Wherein('keterangan', ['sakit', 'izin'])->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->latest()->paginate(10);
+    //     return response()->json($sakit);
+    // }
 
     public function Absenhariini(Request $request)
     {
@@ -115,11 +120,11 @@ class JurnaladminController extends Controller
 
             // $tanggalAkhir = $hari;
             $hari = $keyword;
-            $telat = ApprovalIzin::where('keterangan', 'telat')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->latest()->paginate(10);
-            $hadir = ApprovalIzin::where('keterangan', 'hadir')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->latest()->paginate(10);
-            $sakit = ApprovalIzin::Wherein('keterangan', ['sakit', 'izin'])->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->latest()->paginate(10);
-            $alfa = ApprovalIzin::where('keterangan', 'alfa')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->latest()->paginate(10);
-            $semua = ApprovalIzin::Where('tanggal', $hari)->latest()->paginate(10);
+            $telat = ApprovalIzin::where('keterangan', 'telat')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('jam','nama', 'tanggal', 'keterangan')->get();
+            $hadir = ApprovalIzin::where('keterangan', 'hadir')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('jam','nama', 'tanggal', 'keterangan')->get();
+            $sakit = ApprovalIzin::Wherein('keterangan', ['sakit', 'izin'])->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('nama', 'tanggal', 'keterangan')->get();
+            $alfa = ApprovalIzin::where('keterangan', 'alfa')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('nama', 'tanggal', 'keterangan')->get();
+            $semua = ApprovalIzin::Where('tanggal', $hari)->select('jam','nama', 'tanggal', 'keterangan')->get();
             $Cek = ApprovalIzin::whereDate('created_at', $today )
             ->pluck('nama')
             ->toArray();
@@ -149,15 +154,16 @@ class JurnaladminController extends Controller
 
         $siswa = Siswa::whereNotIn('name', $Cek)
         ->where('role', 'siswa')
-        ->latest()->paginate(10);
+        ->get();
 
 
         $hari = Carbon::now()->format('Y-m-d');
-        $telat = ApprovalIzin::where('keterangan', 'telat')->Where('tanggal', $hari)->latest()->paginate(10);
-        $hadir = ApprovalIzin::where('keterangan', 'hadir')->Where('tanggal', $hari)->latest()->paginate(10);
-        $sakit = ApprovalIzin::Wherein('keterangan', ['sakit', 'izin'])->Where('tanggal', $hari)->latest()->paginate(10);
-        $alfa = ApprovalIzin::where('keterangan', 'alfa')->Where('tanggal', $hari)->latest()->paginate(10);
-        $semua = ApprovalIzin::Where('tanggal', $hari)->latest()->paginate(10);
+        $telat = ApprovalIzin::where('keterangan', 'telat')->Where('tanggal', $hari)->select('jam','nama', 'tanggal', 'keterangan')->get();
+        $hadir = ApprovalIzin::where('keterangan', 'hadir')->Where('tanggal', $hari)->select('jam','nama', 'tanggal', 'keterangan')->get();
+        // dd($hadir);
+        $sakit = ApprovalIzin::Wherein('keterangan', ['sakit', 'izin'])->Where('tanggal', $hari)->select('nama', 'tanggal', 'keterangan')->get();
+        $alfa = ApprovalIzin::where('keterangan', 'alfa')->Where('tanggal', $hari)->select('nama', 'tanggal', 'keterangan')->get();
+        $semua = ApprovalIzin::Where('tanggal', $hari)->select('jam','nama', 'tanggal', 'keterangan')->get();
         return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua'));
     }
 
