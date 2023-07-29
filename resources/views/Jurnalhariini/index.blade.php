@@ -282,13 +282,13 @@
                                 <div class="flex flex-col sm:flex-row">
                                     <div class="w-full">
                                         <div class="w-full">
-                                            <div class="max-w-screen-lg mx-auto w-full h-full flex flex-col items-center justify-center">
+                                            <div class="">
                                                 <div x-data="dataTable2()"
                                                     x-init="
                                                     initData()
                                                     $watch('searchInput', value => {
                                                         search(value)
-                                                    })" class="bg-white p-5 shadow-md w-full flex flex-col">
+                                                    })" class="">
                                                     <div class="flex justify-between items-center">
                                                         <div class="flex space-x-2 items-center">
                                                             <p>Tampilkan</p>
