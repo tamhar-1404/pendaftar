@@ -33,11 +33,11 @@ class JurnalsiswaController extends Controller
     {
         $hariIni = Carbon::now()->format('l');
         if ($hariIni != 'Saturday' OR $hariIni != 'Sunday') {
-            $hari = Carbon::now()->format('Y-m-d');
-            $cek_sudah = Jurnalsiswa::where('nama', Auth()->user()->name)->where('tanggal', $hari)->exists();
-            if (!$cek_sudah) {
-                $jam = Carbon::now()->format('H-i');
-                if ($jam > '21-00') {
+            $jam = Carbon::now()->format('H-i');
+            if ($jam > '21-00') {
+                $hari = Carbon::now()->format('Y-m-d');
+                $cek_sudah = Jurnalsiswa::where('nama', Auth()->user()->name)->where('tanggal', $hari)->exists();
+                if (!$cek_sudah) {
                     Jurnalsiswa::create([
                         'image' => "kosong",
                         'nama' => Auth()->user()->name,
@@ -94,10 +94,9 @@ class JurnalsiswaController extends Controller
         $hari = Carbon::now()->format('Y-m-d');
         $jam = Carbon::now()->format('H-i');
         // dd($jam > '16-00');
-        $data = Jurnalsiswa::where('nama', Auth()->user()->name)->where('tanggal', $hari)->exists();
-        if(!$data){
-            // dd('uhgfg');
-            if($jam < '21-00'){
+        if($jam < '21-00'){
+            $data = Jurnalsiswa::where('nama', Auth()->user()->name)->where('tanggal', $hari)->exists();
+            if(!$data){
                 try {
                     $this->validate($request, [
                         'kegiatan' => "required",
@@ -118,14 +117,14 @@ class JurnalsiswaController extends Controller
 
                     return redirect()->route('jurnal_siswa.index');
                 } catch (\Illuminate\Database\QueryException $e) {
-                        return redirect()->back()->withInput()->withErrors(['tanggal' => 'Tanggal sudah ada dalam database.']);
+                        return redirect()->back()->withInput()->withErrors(['tanggal' => 'Anda sudah melakukan pengumpulan']);
             }
             }else{
-                return back()->with('error', 'Anda telat mengumpulkan jurnal');
+                return redirect()->back()->withInput()->withErrors(['tanggal' => 'Anda sudah melakukan pengumpulan']);
             }
 
         }else{
-            return redirect()->back()->withInput()->withErrors(['tanggal' => 'Tanggal sudah ada dalam database.']);
+            return back()->with('error', 'Anda telat mengumpulkan jurnal');
         }
 
         // ],[
