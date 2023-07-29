@@ -190,13 +190,17 @@ class JurnaladminController extends Controller
             ->paginate(10);
 
             $semuaSiswa = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'tidak mengisi')->get();
+
+
+
+
             $semuaJurnal = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->get();
             $jurnalSudahKirim = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])
                                         ->where('status', 'mengisi')
                                         ->paginate(10);
 
-            $tidakMengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->whereNot('status', 'mengisi')->get();
-            $mengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'mengisi')->get();
+            $tidakMengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->whereNot('status', 'mengisi')->paginate(10);
+            $mengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'mengisi')->paginate(10);
 
             return view('Jurnalhariini.index', compact('jurnalSudahKirim', 'users', 'semuaJurnal', 'semuaSiswa', 'hari', 'tidakMengisi', 'mengisi'));
             // $item->appends(['cari' => $keyword]);

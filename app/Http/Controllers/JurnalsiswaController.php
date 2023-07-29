@@ -30,7 +30,25 @@ class JurnalsiswaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-{
+    {
+        $hariIni = Carbon::now()->format('l');
+        if ($hariIni != 'Saturday' OR $hariIni != 'Sunday') {
+            $jam = Carbon::now()->format('H-i');
+            if ($jam > '21-00') {
+                $hari = Carbon::now()->format('Y-m-d');
+                $cek_sudah = Jurnalsiswa::where('nama', Auth()->user()->name)->where('tanggal', $hari)->exists();
+                if (!$cek_sudah) {
+                    Jurnalsiswa::create([
+                        'image' => "kosong",
+                        'nama' => Auth()->user()->name,
+                        'tanggal' => $hari,
+                        'sekolah' => Auth()->user()->sekolah,
+                        'kegiatan' => "kosong",
+                        'status' => 'tidak_mengisi'
+                    ]);
+                }
+            }
+        }
     $userName = Auth::user()->name;
 
     if ($request->has('cari')) {
@@ -76,10 +94,9 @@ class JurnalsiswaController extends Controller
         $hari = Carbon::now()->format('Y-m-d');
         $jam = Carbon::now()->format('H-i');
         // dd($jam > '16-00');
-        $data = Jurnalsiswa::where('nama', Auth()->user()->name)->where('tanggal', $hari)->exists();
-        if(!$data){
-            // dd('uhgfg');
-            if($jam < '23-59'){
+        if($jam < '21-00'){
+            $data = Jurnalsiswa::where('nama', Auth()->user()->name)->where('tanggal', $hari)->exists();
+            if(!$data){
                 try {
                     $this->validate($request, [
                         'kegiatan' => "required",
@@ -100,34 +117,14 @@ class JurnalsiswaController extends Controller
 
                     return redirect()->route('jurnal_siswa.index');
                 } catch (\Illuminate\Database\QueryException $e) {
-                        return redirect()->back()->withInput()->withErrors(['tanggal' => 'Tanggal sudah ada dalam database.']);
+                        return redirect()->back()->withInput()->withErrors(['tanggal' => 'Anda sudah melakukan pengumpulan']);
             }
             }else{
-                try {
-                    $this->validate($request, [
-                        'kegiatan' => "required",
-                    ]);
-
-                    $image = $request->file('image');
-                    $image->storeAs('public/image', $image->hashName());
-
-                    Jurnalsiswa::create([
-                        'image' => $image->hashName(),
-                        'nama' => Auth()->user()->name,
-                        'tanggal' => $hari,
-                        'sekolah' => Auth()->user()->sekolah,
-                        'kegiatan' => $request->kegiatan,
-                        'status' => 'tidak_mengisi',
-                    ]);
-
-                    return redirect()->route('jurnal_siswa.index');
-                } catch (\Illuminate\Database\QueryException $e) {
-                    return redirect()->back()->withInput()->withErrors(['tanggal' => 'Tanggal sudah ada dalam database.']);
-            }
+                return redirect()->back()->withInput()->withErrors(['tanggal' => 'Anda sudah melakukan pengumpulan']);
             }
 
         }else{
-            return redirect()->back()->withInput()->withErrors(['tanggal' => 'Tanggal sudah ada dalam database.']);
+            return back()->with('error', 'Anda telat mengumpulkan jurnal');
         }
 
         // ],[
