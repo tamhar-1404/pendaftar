@@ -70,6 +70,10 @@ class JurnalsiswaController extends Controller
      */
     public function store(Request $request)
     {
+        $hariIni = Carbon::now()->format('l');
+        if ($hariIni == 'Saturday' OR $hariIni == 'Sunday') {
+            return back()->with('error', 'Hari ini libur');
+        }
         $hari = Carbon::now()->format('Y-m-d');
         $jam = Carbon::now()->format('H-i');
         // dd($jam > '16-00');

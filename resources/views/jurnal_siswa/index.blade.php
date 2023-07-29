@@ -373,6 +373,9 @@
                     @error('kegiatan')
                         <div class="text-danger"><b>Kegiatan tidak boleh kosong</b></div>
                     @enderror
+                    @if (session()->has('error'))
+                        <div class="text-danger"><b>{{session('error')}}</b></div>
+                    @endif
 
                     <div class="panel">
                         {{-- <h2>{{ $e }}</h2> --}}
