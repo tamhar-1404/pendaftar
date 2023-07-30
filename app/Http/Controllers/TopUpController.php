@@ -22,10 +22,13 @@ class TopUpController extends Controller
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $TopUp = TopUp::where('user_id', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->latest()->paginate(3);
+            $TopUp = TopUp::Where('tanggal', 'LIKE', '%' . $keyword . '%')->
+            where('status', 'menunggu')->latest()->paginate(10);
             return view('TopUp.index', compact('TopUp'));
 
             $TopUp->appends(['cari' => $keyword]);
+
+
             return view('TopUp.index', compact('TopUp'));
         }
 

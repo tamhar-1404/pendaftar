@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script>
     <link rel="icon" type="image/png" href="lineone/images/favicon.png" />
-    <!- - CSS Assets -->
+    <link rel="stylesheet" href="{{asset('load/load.css')}}">
         <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
         <!-- Javascript Assets -->
         <script src="{{ asset('admin/js/app.js') }}" defer></script>
@@ -43,7 +43,14 @@
 </head>
 
 <body>
-
+    <div
+    class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+    <div class="center">
+        <div class="ring">
+        </div>
+        <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
+    </div>
+</div>
 
     <!-- Sidenav -->
     @include('jurnal_admin.layout')
@@ -101,6 +108,12 @@
 
         initTE({
             sidenav - 2
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
         });
     </script>
 </body>

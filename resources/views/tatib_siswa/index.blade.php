@@ -57,6 +57,8 @@
     <script defer src="siswa/js/popper.min.js"></script>
     <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
     <script defer src="siswa/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="{{asset('load/load.css')}}">
+
 </head>
 
 <body x-data="main"
@@ -74,7 +76,7 @@
         <div class="center">
             <div class="ring">
             </div>
-            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+            <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
 
@@ -295,7 +297,7 @@
     </div>
     <!-- end theme customizer section -->
 
-    <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
+    <div class="main-container min-h-screen p text-black dark:text-white-dark" :class="[$store.app.navbar]">
         <!-- start sidebar section -->
         <div :class="{ 'dark text-white-dark': $store.app.semidark }">
             <nav x-data="sidebar"
@@ -517,7 +519,7 @@
 
 
         @include('Siswamagang.nav_siswa')
-        <div class="animate__animated mt-5" :class="[$store.app.animation]">
+        <div class="animate__animated mt-5 px-8" :class="[$store.app.animation]">
             <!-- start main content section -->
             <div>
                 <ul class="flex space-x-2 rtl:space-x-reverse">
@@ -1347,6 +1349,7 @@
         });
     </script>
 </body>
+
 
 <!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:57 GMT -->
 

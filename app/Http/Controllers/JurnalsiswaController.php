@@ -44,7 +44,7 @@ class JurnalsiswaController extends Controller
                         'tanggal' => $hari,
                         'sekolah' => Auth()->user()->sekolah,
                         'kegiatan' => "kosong",
-                        'status' => 'tidak_mengisi'
+                        'status' => 'Tidak mengisi'
                     ]);
                 }
             }

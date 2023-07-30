@@ -21,8 +21,8 @@ class LaporanSiswaController extends Controller
             $siswa = LaporanSiswa::where('status', 'menunggu')->get();
             $tolak = LaporanSiswa::where('status', 'tolak')->get();
             $terima = LaporanSiswa::where('status', 'terima')->get();
-            return view('laporansiswa.index', compact('siswa','terima','tolak'));
-
+            $semua = LaporanSiswa::all();
+            return view('laporansiswa.index', compact('siswa','terima','tolak','semua'));
         }else{
             return redirect()->back();
         }

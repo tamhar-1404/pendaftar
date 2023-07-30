@@ -97,10 +97,10 @@
     <div class="flex justify-start mb-4">
         <a href="{{ route('Berita.create') }}"
             class="outline outline-offset-2 outline-1 bg-[#24AEE4] hover:bg-blue-700 text-white text-sm py-2 px-4 rounded">Tambah
-            Data</a>
+            Berita</a>
     </div>
     {{--  end  --}}
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         @forelse ($blog as $berita)
         <div class="bg-white shadow-md rounded-lg overflow-hidden relative" style="width: 65%; height: 100%;">
             <img src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="Gambar Berita 1" class="w-full h-48 object-cover object-center">

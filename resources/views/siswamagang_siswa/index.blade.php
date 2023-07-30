@@ -122,7 +122,7 @@
                         <!-- Modal footer -->
                         <div
                             class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                            <button data-modal-hide="staticModal" type="button"
+                            <button data-modal-hide="staticModal{{ $siswa->id }}" type="button"
                                 class="text-gray-700  bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                             <button data-modal-hide="staticModal" type="submit"
                                 class="text-gray-700  bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
@@ -379,7 +379,7 @@
                 <div x-data="basic" class="mt-0">
                     {{-- judul --}}
                     <div class="mb-5 font-semibold kamu-tak-diajak">
-                        <span>Jurnal /<span class="text-[#00B7FF]"> {{ Auth::user()->name }}</span></span>
+                        <span>Laporkan Siswa<span class="text-[#00B7FF]"></span></span>
                     </div>
                     @error('tanggal')
                         <div class="text-danger">Anda telah mengisi jurnal pada hari ini</div>
