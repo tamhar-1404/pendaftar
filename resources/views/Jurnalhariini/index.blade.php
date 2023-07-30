@@ -282,13 +282,13 @@
                                 <div class="flex flex-col sm:flex-row">
                                     <div class="w-full">
                                         <div class="w-full">
-                                            <div class="max-w-screen-lg mx-auto w-full h-full flex flex-col items-center justify-center">
+                                            <div class="">
                                                 <div x-data="dataTable2()"
                                                     x-init="
                                                     initData()
                                                     $watch('searchInput', value => {
                                                         search(value)
-                                                    })" class="bg-white p-5 shadow-md w-full flex flex-col">
+                                                    })" class="">
                                                     <div class="flex justify-between items-center">
                                                         <div class="flex space-x-2 items-center">
                                                             <p>Tampilkan</p>
@@ -575,13 +575,13 @@
                             <div class="flex flex-col sm:flex-row">
                                 <div class="w-full">
                                     <div class="w-full">
-                                        <div class="max-w-screen-lg mx-auto w-full h-full flex flex-col items-center justify-center">
+                                        <div class="">
                                             <div x-data="dataTable1()"
                                                 x-init="
                                                 initData()
                                                 $watch('searchInput', value => {
                                                     search(value)
-                                                })" class="bg-white p-5 shadow-md w-full flex flex-col">
+                                                })" class="">
                                                 <div class="flex justify-between items-center">
                                                     <div class="flex space-x-2 items-center">
                                                         <p>Tampilkan</p>
@@ -1121,23 +1121,88 @@
             </div>
         </div>
     </div>
+    <style>
+        /* CSS for background blur effect */
+/* CSS for background blur effect */
+.modal-tengah{
+    display:flex;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+}
+.modal-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    padding-top: 0%;
+    padding-left: 25%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust the alpha value to control the darkness of the background */
+    backdrop-filter: blur(8px); /* Adjust the blur amount if needed */
+    z-index: 9999;
+  }
 
-    <div>
+/* CSS for the modal itself */
+        .modal-content {
+        max-width: 600px; /* Adjust the width as needed */
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        }
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-header h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.modal-close {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+.modal-body {
+  /* Add styles for the modal body content */
+}
+
+.modal-footer {
+  /* Add styles for the modal footer content */
+}
+
+    </style>
         @forelse ($jurnalSudahKirim as $modal)
+        <div class="modal-tengah">
         <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
-            class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+            class="kamu-tak-diajak modal-container fixed  right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
             x-data="{ showModal: true }"> <!-- Tambahkan atribut x-data dan variabel showModal -->
             <div class="relative w-full max-w-2xl max-h-full">
                 <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700" x-show="showModal"> <!-- Tambahkan atribut x-show -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <!-- Modal header -->
-                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                    <div
+                        class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                         <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                             Detail Jurnal
                         </h3>
                         <button type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            onclick="closeModal('{{$modal->id}}')"> <!-- Tambahkan atribut x-on:click -->
+                            onclick="closeModal('{{$modal->id}}')">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
@@ -1148,20 +1213,63 @@
                     </div>
                     <!-- Modal body -->
                     <div class="p-6 space-y-6">
-                        <!-- ... (isi konten modal lainnya sesuai dengan contoh yang diberikan sebelumnya) ... -->
+                        <div>
+                            <p
+                                class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
+                                Nama
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->nama }}
+                            </p>
+                        </div>
+                        <div>
+                            <p
+                                class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Tanggal
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->tanggal }}
+                            </p>
+                        </div>
+                        <div>
+                            <p
+                                class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Sekolah
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->sekolah }}
+                            </p>
+                        </div>
+                        <div>
+                            <p
+                                class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Kegiatan
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->kegiatan }}
+                            </p>
+                        </div>
+                        <div>
+                            <p
+                                class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Bukti
+                            </p>
+                            <img src="{{ asset('storage/image/' . $modal->image) }}" alt="">
+                        </div>
                     </div>
                     <!-- Modal footer -->
                     <div
                         class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                        <button type="button" onclick="closeModal('{{ $modal->id }}')"
+                        <button type="button"  onclick="closeModal('{{$modal->id}}')"
                             class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
         @empty
         @endforelse
-    </div>
+
 
 
     <!-- end main content section -->

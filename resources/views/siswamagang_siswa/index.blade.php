@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Siswa Magang - Laporkan</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <!-- CSS Assets -->
     <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
@@ -466,6 +466,11 @@
                                 </div>
 
                             @empty
+                                <div class="flex items-center w-full">
+                                    <div class="flex justify-center items-center ms-20">
+                                        <img src="/admin/noData.png" alt="" width="280px">
+                                    </div>
+                                </div>
                             @endforelse
                         </div>
                     </div>

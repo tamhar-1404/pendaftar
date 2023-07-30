@@ -187,7 +187,7 @@ class JurnaladminController extends Controller
 
             $users = User::whereNotIn('name', $Cek)
             ->where('role', 'siswa')
-            ->paginate(10);
+            ->select('name','sekolah')->get();
 
             $semuaSiswa = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'tidak mengisi')->get();
 
@@ -197,7 +197,7 @@ class JurnaladminController extends Controller
             $semuaJurnal = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('nama','sekolah','status')->get();
             $jurnalSudahKirim = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])
                                         ->where('status', 'mengisi')
-                                        ->paginate(10);
+                                        ->select('nama','tanggal', 'kegiatan', 'image', 'id')->get();
 
             $tidakMengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->whereNot('status', 'mengisi')->get();
             $mengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'mengisi')->get();
