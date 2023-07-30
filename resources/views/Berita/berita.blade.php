@@ -102,16 +102,44 @@
     {{--  end  --}}
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         @forelse ($blog as $berita)
-        <div class="bg-white shadow-md rounded-lg overflow-hidden h-full">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden relative" style="width: 65%; height: 100%;">
             <img src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="Gambar Berita 1" class="w-full h-48 object-cover object-center">
             <div class="p-4">
               <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
-              <h2 class="text-xl font-semibold mt-2"><a href="{{ route('Berita.edit', $berita->id) }}">{{ $berita->judul }}</a></h2>
+            <h2 class="text-xl font-semibold mt-2"><a href="{{ route('Berita.show', $berita->id) }}">{{ Str::limit($berita->judul, 15) }}</a></h2>
+            </div>
+
+            <div class="absolute top-0 right-0 p-2 cursor-pointer" id="optionsDropdown">
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
+
+            <div class="absolute hidden top-8 right-0 bg-white shadow-md rounded-lg py-2 z-10" id="dropdownMenu">
+
+              <a href="{{ route('Berita.edit' , $berita->id) }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Edit</a>
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Hapus</a>
+
             </div>
           </div>
-        @empty
-        @endforelse
-    </div>
+
+
+          @empty
+          @endforelse
+          <script>
+            const dropdownIcon = document.getElementById('optionsDropdown');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+
+            dropdownIcon.addEventListener('click', function() {
+              dropdownMenu.classList.toggle('hidden');
+            });
+
+            // Close the dropdown when the user clicks outside of it
+            window.addEventListener('click', function(event) {
+              if (!dropdownIcon.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+              }
+            });
+          </script>
+        </div>
 </main>
 {{-- <script>
     document.addEventListener('DOMContentLoaded', function() {

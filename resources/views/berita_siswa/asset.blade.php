@@ -91,7 +91,7 @@
     {{--  end  --}}
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         @forelse ($Blog as $berita)
-        <div class="bg-white shadow-md rounded-lg overflow-hidden h-full">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden " style="width: 65%; height:100%;">
             <img src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="Gambar Berita 1" class="w-full h-48 object-cover object-center">
             <div class="p-4">
               <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
