@@ -898,7 +898,7 @@
                                                                 </td>
                                                                 <td class="py-3">
                                                                     <span>
-                                                                        <button onclick="openModal(document.getElementById('id').innerText)">Detail</button>
+                                                                        <button onclick="openModal(document.getElementById('id').innerText)" class="border border-blue-400 text-blue-400 px-4 py-1 hover:bg-blue-400 font-semibold hover:text-white rounded">Detail</button>
                                                                         <span x-text="item.id" id="id" class="hidden"></span>
                                                                     </span>
                                                                 </td>
