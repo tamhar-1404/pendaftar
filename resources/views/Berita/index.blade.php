@@ -26,6 +26,11 @@
         <!-- Javascript Assets -->
         <script src="{{ asset('admin/js/app.js') }}" defer></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
         <script src="https://cdn.tailwindcss.com/3.3.0"></script>
         <script>
             tailwind.config = {
