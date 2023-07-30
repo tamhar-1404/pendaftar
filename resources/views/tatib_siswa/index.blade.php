@@ -57,6 +57,8 @@
     <script defer src="siswa/js/popper.min.js"></script>
     <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
     <script defer src="siswa/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="{{asset('load/load.css')}}">
+
 </head>
 
 <body x-data="main"
@@ -74,7 +76,7 @@
         <div class="center">
             <div class="ring">
             </div>
-            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+            <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
 
@@ -1347,6 +1349,7 @@
         });
     </script>
 </body>
+
 
 <!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:57 GMT -->
 

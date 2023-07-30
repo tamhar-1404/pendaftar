@@ -29,13 +29,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
         rel="stylesheet" />
-    <script>
-        /**
-         * THIS SCRIPT REQUIRED FOR PREVENT FLICKERING IN SOME BROWSERS
-         */
-        localStorage.getItem("_x_darkMode_on") === "true" &&
-            document.documentElement.classList.add("dark");
-    </script>
+
 </head>
 
 <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
@@ -2425,7 +2419,7 @@
             </div>
         </div>
     @empty
-        okelah
+        
     @endforelse
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 

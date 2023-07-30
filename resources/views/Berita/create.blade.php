@@ -18,8 +18,8 @@
     </script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/png" href="images/favicon.png" />
-    <link rel="stylesheet" href="load/load.css">
-    <!- - CSS Assets -->
+    <link rel="stylesheet" href="{{asset('load/load.css')}}">
+
         <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
         <!-- Javascript Assets -->
         <script src="{{ asset('admin/js/app.js') }}" defer></script>
@@ -49,7 +49,7 @@
         <div class="center">
             <div class="ring">
             </div>
-            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+            <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
     <!-- Sidenav -->

@@ -183,27 +183,38 @@
                             <div class="mt-2">
                                 <form action="" id="tanggal">
                                     <label class="relative flex">
-                                        <input
-                                        x-init="$el._x_flatpickr = flatpickr($el,{mode: 'range',dateFormat: 'Y-m-d' })"
-                                        class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Choose date..."
-                                        type="text" name="cari" value="{{ $hari }}" onchange="filterTanggal(this.value)"
-                                    />
+                                        <input x-init="$el._x_flatpickr = flatpickr($el, { mode: 'range', dateFormat: 'Y-m-d'})"
+                                            class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                            placeholder="Choose date..." type="text" name="cari"
+                                            value="{{ $hari }}" onchange="filterTanggal(this.value)" />
+                                        <button type="submit" class="hidden">Submit</button>
                                 </form>
 
-                                <script>
-                                    function filterTanggal(data) {
-                                        const str = data;
-                                        const keyword = "to";
-                                        const regex = new RegExp(`\\b${keyword}\\b`, "i");
 
-                                        const result = str.match(regex);
+                                    <script>
+                                        let clickCounter = 0;
 
-                                        if (result) {
-                                            document.getElementById('tanggal').submit();
+                                        function filterTanggal(data) {
+                                            const str = data;
+                                            const keyword = "to";
+                                            const regex = new RegExp(`\\b${keyword}\\b`, "i");
+
+                                            const result = str.match(regex);
+                                            const selectedDate = parseDate(str);
+
+                                            if (result || (!result && clickCounter === 1)) {
+                                                document.getElementById('tanggal').submit();
+                                            } else {
+                                                clickCounter = 0; // Reset click counter if "to" keyword is not present and not auto-submitting
+                                                clickCounter++;
+                                            }
                                         }
-                                    }
-                                </script>
+
+                                        function parseDate(dateStr) {
+                                            const dates = dateStr.split(" to ");
+                                            return dates.length === 2 ? dates[0] : null;
+                                        }
+                                    </script>
                                 <script>
                                     function getCurrentDate() {
                                         const now = new Date();
@@ -324,7 +335,7 @@
                                                   <div class="flex justify-between items-center">
                                                     <div class="flex space-x-2 items-center">
                                                       <p>Tampilkan</p>
-                                                      <select x-model="view" @change="changeView()">
+                                                      <select class="border border-1" x-model="view" @change="changeView()">
                                                         <option value="5">5</option>
                                                         <option value="10">10</option>
                                                         <option value="25">25</option>
@@ -551,7 +562,7 @@
                                                             <div class="flex justify-between items-center">
                                                                 <div class="flex space-x-2 items-center">
                                                                   <p>Tampilkan</p>
-                                                                  <select x-model="view" @change="changeView()">
+                                                                  <select class="border border-1" x-model="view" @change="changeView()">
                                                                     <option value="5">5</option>
                                                                     <option value="10">10</option>
                                                                     <option value="25">25</option>
@@ -772,13 +783,13 @@
                                                         <div class="flex justify-between items-center">
                                                             <div class="flex space-x-2 items-center">
                                                                 <p>Tampilkan</p>
-                                                                <select x-model="view" @change="changeView()">
+                                                                <select class="border border-1" x-model="view" @change="changeView()">
                                                                     <option value="5">5</option>
                                                                     <option value="10">10</option>
                                                                     <option value="25">25</option>
                                                                     <option value="50">50</option>
                                                                     <option value="100">100</option>
-                                                                </select>
+                                                                  </select>
                                                             </div>
                                                         </div>
                                                         <table class="mt-5">
@@ -996,13 +1007,13 @@
                                                         <div class="flex justify-between items-center">
                                                             <div class="flex space-x-2 items-center">
                                                                 <p>Tampilkan</p>
-                                                                <select x-model="view" @change="changeView()">
+                                                                <select class="border border-1" x-model="view" @change="changeView()">
                                                                     <option value="5">5</option>
                                                                     <option value="10">10</option>
                                                                     <option value="25">25</option>
                                                                     <option value="50">50</option>
                                                                     <option value="100">100</option>
-                                                                </select>
+                                                                  </select>
                                                             </div>
                                                         </div>
                                                         <table class="mt-5">
@@ -1217,13 +1228,13 @@
                                                         <div class="flex justify-between items-center">
                                                             <div class="flex space-x-2 items-center">
                                                                 <p>Tampilkan</p>
-                                                                <select x-model="view" @change="changeView()">
+                                                                <select class="border border-1" x-model="view" @change="changeView()">
                                                                     <option value="5">5</option>
                                                                     <option value="10">10</option>
                                                                     <option value="25">25</option>
                                                                     <option value="50">50</option>
                                                                     <option value="100">100</option>
-                                                                </select>
+                                                                  </select>
                                                             </div>
                                                         </div>
                                                         <table class="mt-5">
@@ -1437,13 +1448,13 @@
                                                         <div class="flex justify-between items-center">
                                                             <div class="flex space-x-2 items-center">
                                                                 <p>Tampilkan</p>
-                                                                <select x-model="view" @change="changeView()">
+                                                                <select class="border border-1" x-model="view" @change="changeView()">
                                                                     <option value="5">5</option>
                                                                     <option value="10">10</option>
                                                                     <option value="25">25</option>
                                                                     <option value="50">50</option>
                                                                     <option value="100">100</option>
-                                                                </select>
+                                                                  </select>
                                                             </div>
                                                         </div>
                                                         <table class="mt-5">

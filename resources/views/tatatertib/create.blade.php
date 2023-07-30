@@ -20,6 +20,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link rel="stylesheet" href="{{asset('load/load.css')}}">
+
 
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
@@ -38,6 +40,14 @@
 </head>
 
 <body>
+    <div
+    class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+    <div class="center">
+        <div class="ring">
+        </div>
+        <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
+    </div>
+</div>
     <main class=" w-full px-4 pb-8">
         <div class="flex justify-between space-y-4 py-5 sm:flex-row  lg:py-6">
             <div class="flex items-center text-sm space-x-1">
@@ -140,6 +150,12 @@
             ['insert', ['link', 'picture', 'video']],
             ['view', ['fullscreen', 'codeview', 'help']]
         ]
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+    $(window).on('load', function() {
+        $('.spin_load').fadeOut();
     });
 </script>
 

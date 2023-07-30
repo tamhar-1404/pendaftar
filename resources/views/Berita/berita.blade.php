@@ -97,18 +97,101 @@
     <div class="flex justify-start mb-4">
         <a href="{{ route('Berita.create') }}"
             class="outline outline-offset-2 outline-1 bg-[#24AEE4] hover:bg-blue-700 text-white text-sm py-2 px-4 rounded">Tambah
-            Data</a>
+            Berita</a>
     </div>
     {{--  end  --}}
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         @forelse ($blog as $berita)
-        <div class="bg-white shadow-md rounded-lg overflow-hidden h-full">
-            <img src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="Gambar Berita 1" class="w-full h-48 object-cover object-center">
-            <div class="p-4">
-              <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
-              <h2 class="text-xl font-semibold mt-2"><a href="{{ route('Berita.edit', $berita->id) }}">{{ $berita->judul }}</a></h2>
+        <div class="relative">
+            <!-- The code you want to place above the image -->
+            <div class="absolute top-0 right-0 mt-2 mr-2 z-10">
+                <div class="bg-white shadow-md rounded-lg overflow-hidden h-full">
+                    <style>
+                        .popper-box {
+                            /* ... Your styles ... */
+                            display: none;
+                        }
+
+                        .dropdown-box {
+                        position: absolute;
+                        background-color: white;
+                        border: 1px solid #D1D5DB;
+                        border-radius: 0.375rem;
+                        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                        padding: 0.5rem;
+                        right: 0;
+                        margin-top: 0.5rem;
+                        display: none;
+                    }
+
+                    .show {
+                        display: block;
+                    }
+                    </style>
+
+
+                    <button id="dropdownButton{{$berita->id}}" class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                        </svg>
+                    </button>
+
+                    <div id="dropdownContent{{$berita->id}}" class="dropdown-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700">
+                        <ul>
+                            <li>
+                                <a href="{{ route('Berita.edit', $berita->id) }}" class="dropdown-item">Edit</a>
+                            </li>
+                            <li>
+                                <button class="dropdown-item">Hapus</button>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <script>
+                       // Dapatkan referensi tombol dan konten dropdown
+                        const button = document.getElementById('dropdownButton'+{{$berita->id}});
+                        const dropdownContent = document.getElementById('dropdownContent'+{{$berita->id}});
+
+                        // Fungsi untuk mengaktifkan atau menonaktifkan dropdown
+                        function toggleDropdown() {
+                            dropdownContent.classList.toggle('show');
+                        }
+
+                        // Tutup dropdown ketika mengklik di luar dropdown
+                        window.addEventListener('click', function(event) {
+                            if (!button.contains(event.target) && !dropdownContent.contains(event.target)) {
+                                dropdownContent.classList.remove('show');
+                            }
+                        });
+
+                        // Cegah menutup dropdown ketika mengklik di dalam dropdown
+                        dropdownContent.addEventListener('click', function(event) {
+                            event.stopPropagation();
+                        });
+
+                        // Tambahkan event listener ke tombol untuk mengaktifkan atau menonaktifkan dropdown saat diklik
+                        button.addEventListener('click', function(event) {
+                            event.stopPropagation();
+                            toggleDropdown();
+                        });
+
+
+                    </script>
+                </div>
             </div>
-          </div>
+
+            <!-- The image -->
+            <img src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="Gambar Berita 1" class="w-full h-48 object-cover object-center">
+
+            <!-- The rest of the content -->
+            <div class="p-4 border border-1 rounded-lg bg-white">
+                <div class="flex justify-between">
+                    <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
+                    <span class="text-sm text-gray-500">{{ $berita->tanggal }}</span>
+                </div>
+                <h2 class="text-xl font-semibold mt-2"><a href="{{ route('Berita.show', $berita->id) }}">{{ $berita->judul }}</a></h2>
+            </div>
+        </div>
         @empty
         @endforelse
     </div>

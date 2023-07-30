@@ -17,10 +17,10 @@
         },
     </script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="load/load.css">
+    <link rel="stylesheet" href="{{asset('load/load.css')}}">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script>
     <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
-    <!- - CSS Assets -->
+
         <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
         <!-- Javascript Assets -->
         <script src="{{ asset('admin/js/app.js') }}" defer></script>
@@ -51,7 +51,7 @@
         <div class="center">
             <div class="ring">
             </div>
-            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+            <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
 
