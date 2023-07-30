@@ -168,7 +168,6 @@ class JurnaladminController extends Controller
     }
 
     public function Jurnalhariini(Request $request) {
-
         $hari = Carbon::now()->format('Y-m-d');
         if ($request->has('cari')) {
             $keyword = $request->cari;
@@ -181,47 +180,15 @@ class JurnaladminController extends Controller
                 $tanggalAwal = trim($datesArray[0]);
                 $tanggalAkhir = trim($datesArray[0]);
             }
-            $Cek = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])
-            ->pluck('nama')
-            ->toArray();
-
-            $users = User::whereNotIn('name', $Cek)
-            ->where('role', 'siswa')
-            ->select('name','sekolah')->get();
-
-            $semuaSiswa = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'tidak mengisi')->get();
-
-
-
-
-            $semuaJurnal = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('nama','sekolah','status')->get();
-            $jurnalSudahKirim = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])
-                                        ->where('status', 'mengisi')
-                                        ->select('nama','tanggal', 'kegiatan', 'image', 'id')->get();
-
-            $tidakMengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->whereNot('status', 'mengisi')->get();
-            $mengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'mengisi')->get();
-
-            return view('Jurnalhariini.index', compact('jurnalSudahKirim', 'users', 'semuaJurnal', 'semuaSiswa', 'hari', 'tidakMengisi', 'mengisi'));
-            // $item->appends(['cari' => $keyword]);
-            // return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari'));
+            $semuaJurnal = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('nama','sekolah','tanggal','status')->get();
+            $tidakMengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->whereNot('status', 'mengisi')->select('nama','tanggal', 'sekolah')->get();
+            $mengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'mengisi')->select('nama','tanggal', 'kegiatan', 'image', 'id')->get();
+            return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi'));
         }
-        $Cek = Jurnalsiswa::whereDate('created_at', Carbon::today())
-        ->pluck('nama')
-        ->toArray();
-
-        $users = User::whereNotIn('name', $Cek)
-        ->where('role', 'siswa')
-        ->select('name','sekolah')->get();
-
-        $semuaSiswa = User::where('role', 'Siswa')->get();
-        $semuaJurnal = Jurnalsiswa::whereDate('tanggal', Carbon::now()->format('Y-m-d'))->select('nama','sekolah','status')->get();
-        $jurnalSudahKirim = Jurnalsiswa::whereDate('created_at', Carbon::today())
-                                       ->where('status', 'mengisi')
-                                       ->select('nama','tanggal', 'kegiatan', 'image', 'id')->get();
-        $tidakMengisi = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->whereNot('status', 'mengisi')->get();
-        $mengisi = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->where('status', 'mengisi')->get();
-        return view('Jurnalhariini.index', compact('jurnalSudahKirim', 'users', 'semuaJurnal', 'semuaSiswa', 'hari', 'tidakMengisi', 'mengisi'));
+        $semuaJurnal = Jurnalsiswa::whereDate('tanggal', Carbon::now()->format('Y-m-d'))->select('nama','sekolah','tanggal','status')->get();
+        $tidakMengisi = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->whereNot('status', 'mengisi')->select('nama','tanggal', 'sekolah')->get();
+        $mengisi = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->where('status', 'mengisi')->select('nama','tanggal', 'kegiatan', 'image', 'id')->get();
+        return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi'));
     }
     /**
      * Show the form for creating a new resource.

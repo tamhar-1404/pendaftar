@@ -241,37 +241,6 @@
                                 }
                             })
                         </script>
-                        <template x-if="tab === 'home'">
-                            <div id="tabelsemua" class="hidden">
-                                <form
-                                    class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
-
-                                    <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
-                                    <table class="min-w-full text-left text-sm ">
-                                        <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
-                                            <tr>
-                                                <th scope="col" class="px-6 py-2">#</th>
-                                                <th scope="col" class="px-6 py-2">Nama</th>
-                                                <th scope="col" class="px-6 py-2">Sekolah</th>
-                                                <th scope="col" class="px-6 py-2">Status</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @forelse ($semuaJurnal as $key => $user)
-                                                <tr>
-                                                    <td class="whitespace-nowrap px-6 py-2">{{ ++$key }}</td>
-                                                    <td class="whitespace-nowrap px-6 py-2">{{ $user->nama }}</td>
-                                                    <td class="whitespace-nowrap px-6 py-2">{{ $user->sekolah }}</td>
-                                                    <td class="whitespace-nowrap px-6 py-2">{{ $user->status }}</td>
-                                                </tr>
-
-                                            @empty
-                                            @endforelse
-                                        </tbody>
-                                </form>
-                            </div>
-                    </template>
                     <template x-if="tab === 'semua'">
                         <div>
                             <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
@@ -305,11 +274,9 @@
                                                         <thead class="border-b-2">
                                                             <tr>
                                                                 <th>#</th>
-                                                                <th @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
+                                                                <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
                                                                 <th @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">Sekolah</th>
                                                                 <th @click="sort('status', sorted.rule === 'asc' ? 'desc' : 'asc')">Status</th>
-                                                                {{-- <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
-                                                                <th @click="sort('image', sorted.rule === 'asc' ? 'desc' : 'asc')">image</th> --}}
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -498,74 +465,7 @@
                             </div>
                         </div>
                 </template>
-                    <template x-if="tab === 'password'">
-                        <div id="tabelsemua" class="hidden">
-                            <form
-                                class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
-                                <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
-                                <table class="min-w-full text-left text-sm ">
-                                    <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
-                                        <tr>
-                                            <th scope="col" class="px-6 py-2">#</th>
-                                            <th scope="col" class="px-6 py-2">Nama</th>
-                                            <th scope="col" class="px-6 py-2">Sekolah</th>
-                                            <th scope="col" class="px-6 py-2">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($semuaJurnal as $key => $user)
-                                            <tr>
-                                                <td class="whitespace-nowrap px-6 py-2">{{ ++$key }}</td>
-                                                <td class="whitespace-nowrap px-6 py-2">{{ $user->nama }}</td>
-                                                <td class="whitespace-nowrap px-6 py-2">{{ $user->sekolah }}</td>
-                                                <td class="whitespace-nowrap px-6 py-2">{{ $user->status }}</td>
-                                        </tr>
-                                </tbody>
-
-                            @empty
-                                @endforelse
-
-                            </form>
-                        </div>
-                </template>
                 <template x-if="tab === 'password'">
-                    {{-- <div>
-                        <form
-                            class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
-                            @php
-                                $hari = date('N');
-                                $daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-                            @endphp
-
-                            <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $daftarHari[$hari] }},
-                                {{ date('d F Y') }}</h6>
-                            <table class="min-w-full text-left text-sm ">
-                                <thead class="border-rounded bg-[#E2E8F0] dark:border-neutral-500">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-2">#</th>
-                                        <th scope="col" class="px-6 py-2">Nama</th>
-                                        <th scope="col" class="px-6 py-2">Sekolah</th>
-
-
-                                    </tr>
-                                </thead>
-                                @forelse ($users as $key => $item)
-                                    <tbody>
-                                        <tr>
-                                            <td class="whitespace-nowrap px-6 py-2">
-                                                {{ ($users->currentPage() - 1) * $users->perPage() + $key + 1 }}
-                                            </td>
-                                            <td class="whitespace-nowrap px-6 py-2">{{ $item->name }}</td>
-                                            <td class="whitespace-nowrap px-6 py-2">{{ $item->sekolah }}</td>
-                                        </tr>
-                                    </tbody>
-
-                                @empty
-                                @endforelse
-
-                        </form>
-                    </div>
-                    <div id="paginateUsers" class="mb-4">{{ $users->links() }}</div> --}}
                     <div>
                         <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
                             <input type="hidden" name="siswa_id">
@@ -598,7 +498,8 @@
                                                     <thead class="border-b-2">
                                                         <tr>
                                                             <th>#</th>
-                                                            <th @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
+                                                            <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
+                                                            <th @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
                                                             <th @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">Sekolah</th>
                                                             {{-- <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
                                                             <th @click="sort('image', sorted.rule === 'asc' ? 'desc' : 'asc')">image</th> --}}
@@ -611,7 +512,10 @@
                                                                     <span x-text="index + 1"></span>
                                                                 </td>
                                                                 <td class="py-3">
-                                                                    <span x-text="item.name"></span>
+                                                                    <span x-text="item.nama"></span>
+                                                                </td>
+                                                                <td class="py-3">
+                                                                    <span x-text="item.tanggal"></span>
                                                                 </td>
                                                                 <td class="py-3">
                                                                     <span x-text="item.sekolah"></span>
@@ -654,7 +558,7 @@
                                 </div>
                             </div>
                             <script>
-                                let datauser = @json($users);
+                                let dataTidakMengisi = @json($tidakMengisi);
                             </script>
                             <script>
                                 window.dataTable1 = function () {
@@ -665,8 +569,8 @@
                                         pages: [],
                                         offset: 5,
                                         pagination: {
-                                            total: datauser.length,
-                                            lastPage: Math.ceil(datauser.length / 5),
+                                            total: dataTidakMengisi.length,
+                                            lastPage: Math.ceil(dataTidakMengisi.length / 5),
                                             perPage: 5,
                                             currentPage: 1,
                                             from: 1,
@@ -678,7 +582,7 @@
                                             rule: 'asc'
                                         },
                                         initData() {
-                                            this.items = datauser.sort(this.compareOnKey('name', 'asc'))
+                                            this.items = dataTidakMengisi.sort(this.compareOnKey('name', 'asc'))
                                             this.showPages()
                                         },
                                         compareOnKey(key, rule) {
@@ -726,10 +630,10 @@
                                                     keys: ['name'],
                                                     threshold: 0
                                                 }
-                                                const fuse = new Fuse(datauser, options)
+                                                const fuse = new Fuse(dataTidakMengisi, options)
                                                 this.items = fuse.search(value).map(elem => elem.item)
                                             } else {
-                                                this.items = datauser
+                                                this.items = dataTidakMengisi
                                             }
                                             this.changePage(1)
                                             this.showPages()
@@ -885,7 +789,7 @@
                                                         <template x-for="(item, index) in items" :key="index">
                                                             <tr x-data="{ showPopup: false }" x-show="checkView(index + 1)" class="hover:bg-gray-200 text-gray-900 text-xs">
                                                                 <td class="py-3">
-                                                                    <span x-text="index + 1"></span>
+                                                                    <span id="i" x-text="index + 1"></span>
                                                                 </td>
                                                                 <td class="py-3">
                                                                     <span x-text="item.nama"></span>
@@ -898,8 +802,8 @@
                                                                 </td>
                                                                 <td class="py-3">
                                                                     <span>
-                                                                        <button onclick="openModal(document.getElementById('id').innerText)">Detail</button>
-                                                                        <span x-text="item.id" id="id" class="hidden"></span>
+                                                                        <button onclick="alert(this.closest('#detail'));openModal()">Detail</button>
+                                                                        <span x-text="item.id" id="detail" class="hidden"></span>
                                                                     </span>
                                                                 </td>
 
@@ -1186,7 +1090,7 @@
 }
 
     </style>
-        @forelse ($jurnalSudahKirim as $modal)
+        @forelse ($mengisi as $modal)
         <div class="modal-tengah">
         <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
             class="kamu-tak-diajak modal-container fixed  right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
