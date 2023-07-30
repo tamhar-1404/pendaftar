@@ -374,18 +374,12 @@
                     @endif
 
                     <div class="panel">
-                        {{-- <h2>{{ $e }}</h2> --}}
-                        @php
-                            $hari = date('N') + 1;
-                            $daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-                            $namaHari = $daftarHari[$hari - 1];
-                            $tanggal = date('d');
-                            $bulan = date('n');
-                            $tahun = date('Y');
-                        @endphp
 
+                        @php
+                            use Carbon\Carbon;
+                        @endphp
                         <p class="text-xl font-semibold mb-4"><span class="text-red-600">Hari ini adalah : </span>
-                            {{ $namaHari }}, {{ $tanggal }}/{{ $bulan }}/{{ $tahun }}</p>
+                            {{Carbon::now()->format('l')}}, {{Carbon::now()->format('d-M-Y')}}</p>
 
                         <div class="kamu-tak-diajak flex justify-between items-center">
                             <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
