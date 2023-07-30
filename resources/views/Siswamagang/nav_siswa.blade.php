@@ -263,9 +263,7 @@
                          <a href="{{ route('History.index') }}">History Transaksi</a>
                      </li>
                  </ul>
-                 <ul class="sub-menu">
-
-                 </ul>
+            
              </li>
              @if (request()->routeIs('Siswamagang.index'))
              <li class="mt-1.5">

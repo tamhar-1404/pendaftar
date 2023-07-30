@@ -297,7 +297,7 @@
     </div>
     <!-- end theme customizer section -->
 
-    <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
+    <div class="main-container min-h-screen p text-black dark:text-white-dark" :class="[$store.app.navbar]">
         <!-- start sidebar section -->
         <div :class="{ 'dark text-white-dark': $store.app.semidark }">
             <nav x-data="sidebar"
@@ -519,7 +519,7 @@
 
 
         @include('Siswamagang.nav_siswa')
-        <div class="animate__animated mt-5" :class="[$store.app.animation]">
+        <div class="animate__animated mt-5 px-8" :class="[$store.app.animation]">
             <!-- start main content section -->
             <div>
                 <ul class="flex space-x-2 rtl:space-x-reverse">

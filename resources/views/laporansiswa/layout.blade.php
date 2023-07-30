@@ -287,7 +287,10 @@
                                         <div class="absolute bottom-4 left-0 w-full px-5">
                                             <div class="mt-5 flex items-center justify-end">
                                                 <div class="flex items-center mt-5">
-                                                    <button type="button" class="btn btn-outline-info">
+                                                    <button type="button" class="btn btn-outline-info"
+                                                    data-te-toggle="modal"
+                                                    data-modal-target="staticModal{{ $terima->id }}"
+                                                    data-modal-toggle="staticModal{{ $terima->id }}">
                                                         Lihat
                                                     </button>
                                                 </div>
@@ -335,7 +338,10 @@
                                         <div class="absolute bottom-4 left-0 w-full px-5">
                                             <div class="mt-5 flex items-center justify-end">
                                                 <div class="flex items-center mt-5">
-                                                    <button type="button" class="btn btn-outline-info">
+                                                    <button type="button" class="btn btn-outline-info"
+                                                    data-te-toggle="modal"
+                                                    data-modal-target="staticModal{{ $tolak->id }}"
+                                                    data-modal-toggle="staticModal{{ $tolak->id }}">
                                                         Lihat
                                                     </button>
                                                 </div>
@@ -412,10 +418,10 @@
         </div>
     </div>
     </div>
-    @forelse ($siswa as $modal)
+    @forelse ($semua as $modal)
         {{-- modal --}}
         <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
-            class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            class="kamu-tak-diajak fixed top-0 left-0 right-0 z-[999] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-2xl max-h-full">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -489,6 +495,7 @@
         </div>
     @empty
     @endforelse
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="siswa/js/alpine-collaspe.min.js"></script>

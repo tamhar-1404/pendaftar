@@ -737,13 +737,9 @@
                                 </div>
                                 <div class="relative w-full ">
                                     {{-- grafik --}}
-                                    <div id="grafik_jurnal" style=""
-                                        class="  w-[10%] lg:w-[100%] h-35 mx-3 bg-white rounded-lg dark:bg-black mt-4 "style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; ">
-                                        <div class="w-full px-4 mt-6">
-                                            <div
-                                                class="w-[10%] lg-[100%] bg-white h-35 pb-5 text-same font-semibold dark:bg-transparent">
-                                                tabel jurnal
-                                            </div>
+                                    <div id="grafik_jurnal" class="w-[50%] lg:w-[100%] h-35 bg-white rounded-lg dark:bg-black shadow-md p-4">
+                                        <div class="w-full bg-white h-35 pb-5 text-same font-semibold dark:bg-transparent">
+                                            Tabel Jurnal 1
                                         </div>
                                     </div>
 
@@ -765,12 +761,39 @@
                                     @php
                                         $i = 1;
                                     @endphp
-                                    @forelse($tatib as $tata)
-                                        <div class="border p-4 cursor-pointer transition-transform transform hover:scale-105"
-                                            onclick="toggleDescription('peraturan{{ $i++ }}')">
-                                            {{ $tata->judul }}
-                                            <span class="ml-2">&#x25BE;</span>
+                                    @forelse($tatib as $tatatertib)
+                                    <div class="mb-5" x-data="{ active: 1 }">
+                                        <div class="space-y-2 font-semibold">
+
+                                            <div class="rounded border border-[#d3d3d3] dark:border-[#1b2e4b]">
+                                                <button type="button"
+                                                    class="flex w-full items-center p-4 text-white-dark dark:bg-[#1b2e4b]"
+                                                    :class="{ '!text-primary': active === 2 }"
+                                                    x-on:click="active === 2 ? active = null : active = 2">
+                                                    {{ $tatatertib->judul }}
+                                                    <div class="ltr:ml-auto rtl:mr-auto"
+                                                        :class="{ 'rotate-180': active === 2 }">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                            class="h-4 w-4">
+                                                            <path d="M19 9L12 15L5 9" stroke="currentColor"
+                                                                stroke-width="1.5" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                        </svg>
+                                                    </div>
+                                                </button>
+                                                <div x-cloak x-show="active === 2" x-collapse>
+                                                    <div
+                                                        class="border-t border-[#d3d3d3] p-4 text-[13px] dark:border-[#1b2e4b]">
+                                                        <p>
+                                                            {!! $tatatertib->deskripsi !!}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
+                                    </div>
                                     @empty
                                     @endforelse
                                 </div>
@@ -803,30 +826,6 @@
                             </div>
                             {{-- end tata tertib --}}
                             {{-- caraousel --}}
-                            <section>
-                                <div class="swiper mySwiper container w-full">
-                                    <div class="swiper-wrapper content">
-                                        @forelse ($mou as $data)
-                                            <div class="swiper-slide card dark:bg-black">
-                                                <div class="card-content ">
-                                                    <div class="image">
-                                                        <img src="{{ asset('storage/MOU/' . $data->logo) }}"
-                                                            alt="">
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-
-                                        @empty
-                                        @endforelse
-
-                                    </div>
-                                </div>
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
-                                <div class="swiper-pagination"></div>
-                            </section>
 
 
                         </div>
@@ -834,6 +833,30 @@
 
                     </div>
                 </div>
+                <section class="w-full">
+                    <div class="swiper mySwiper container w-full">
+                        <div class="swiper-wrapper content">
+                            @forelse ($mou as $data)
+                                <div class="swiper-slide card dark:bg-black">
+                                    <div class="card-content ">
+                                        <div class="image">
+                                            <img src="{{ asset('storage/MOU/' . $data->logo) }}"
+                                                alt="">
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            @empty
+                            @endforelse
+
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </section>
             </div>
         </div>
 
@@ -924,6 +947,7 @@
 
 
         section {
+            width: 100%;
             position: relative;
             display: flex;
             align-items: center;

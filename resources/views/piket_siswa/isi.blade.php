@@ -1,4 +1,4 @@
-<div class="main-container min-h-screen text-black dark:text-white-dark mt-20" :class="[$store.app.navbar]">
+<div class="main-container min-h-screen text-black dark:text-white-dark mt-10" :class="[$store.app.navbar]">
     <div class="">
         {{-- @include('.sidebar.layout') --}}
         <div class="animate__animated p-6" :class="[$store.app.animation]">
