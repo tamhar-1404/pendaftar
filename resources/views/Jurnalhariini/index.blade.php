@@ -802,7 +802,7 @@
                                                                 </td>
                                                                 <td class="py-3">
                                                                     <span>
-                                                                        <button onclick="alert(this.closest('#detail'));openModal()">Detail</button>
+                                                                        <button onclick="alert(this.closest('#detail'));openModal()" class="border border-blue-400 text-blue-400 px-4 py-1 hover:bg-blue-400 font-semibold hover:text-white rounded">Detail</button>
                                                                         <span x-text="item.id" id="detail" class="hidden"></span>
                                                                     </span>
                                                                 </td>
