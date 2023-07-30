@@ -21,9 +21,19 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $blog = Blog::paginate(6);
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $blog = Blog::Where('judul', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->latest()->paginate(6);
+            return view('Berita.index', compact('blog'));
+
+            $blog->appends(['cari' => $keyword]);
+
+            return view('Berita.index', compact('blog'));
+        }
+
+        $blog = Blog::latest()->paginate(6);
         return view('Berita.index', compact('blog'));
     }
 
