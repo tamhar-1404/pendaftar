@@ -184,10 +184,10 @@
                                 <form action="" id="tanggal">
                                     <label class="relative flex">
                                         <input
-                                        x-init="$el._x_flatpickr = flatpickr($el,{mode: 'range',dateFormat: 'Y-m-d',defaultDate: [getCurrentDate(), getCurrentDate()] })"
+                                        x-init="$el._x_flatpickr = flatpickr($el,{mode: 'range',dateFormat: 'Y-m-d' })"
                                         class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                         placeholder="Choose date..."
-                                        type="text" name="cari" value="{{ request('cari') }}" onchange="filterTanggal(this.value)"
+                                        type="text" name="cari" value="{{ $hari }}" onchange="filterTanggal(this.value)"
                                     />
                                 </form>
 
