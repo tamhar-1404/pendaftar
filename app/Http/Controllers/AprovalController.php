@@ -228,7 +228,7 @@ public function Tolak(Request $request, Aproval $aproval)
         ]);
         Mail::to($user->email)->send(new TolakTopup());
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menolak topup');
     }
 
     /**
