@@ -24,6 +24,7 @@
     <script defer src="assets_guru/js/popper.min.js"></script>
     <script defer src="assets_guru/js/tippy-bundle.umd.min.js"></script>
     <script defer src="assets_guru/js/sweetalert.min.js"></script>
+
     {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css"  rel="stylesheet" /> --}}
 </head>
 
@@ -1381,22 +1382,22 @@
                                 <td scope="col" class="px-6 py-4">No</td>
                                 <td scope="col" class="px-6 py-4">Tanggal pelanggaran</td>
                                 <td scope="col" class="px-6 py-4">Deskripsi pelanggaran</td>
-                                <td scope="col" class="px-6 py-4">bukti</td>
+                               
+                                <td scope="col" class="px-6 py-4">Aksi</td>
                             </tr>
                             @forelse ($data as $pelangaran )
                             <tr class="text-sm bg-[#E2E8F0] col-span-4">
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$pelangaran->tanggal}}</td>
-                                <td>{{$pelangaran->deskripsi}}</td>
-                                <td>
-                                    <button type="button"
-                                    class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] dark:bg-transparent"
-                                    data-te-toggle="modal"
-                                    data-modal-target="staticModal{{ $pelangaran->id }}"
-                                    data-modal-toggle="staticModal{{ $pelangaran->id }}">
-                                    <span
-                                        class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                    </button>
+                                <td class="px-6 py-4" >{{$loop->iteration}}</td>
+                                <td class="px-6 py-4">{{$pelangaran->tanggal}}</td>
+                                <td class="px-6 py-4">{{$pelangaran->deskripsi}}</td>
+
+                                <td class="px-6 py-4">
+                                    <button type="button" class="btn btn-outline-info"
+                                                    data-te-toggle="modal"
+                                                    data-modal-target="staticModal"
+                                                    data-modal-toggle="staticModal">
+                                                        Lihat
+                                                    </button>
                                 </td>
                                 {{-- <td><img src="{{asset('storage/laporansiswa/'. $pelangaran->bukti)}}" style="width: 10%; height:10%;" alt="" srcset=""></td> --}}
                             </tr>
@@ -1404,7 +1405,78 @@
 
                             @endforelse
 
+                            <div id="staticModal" tabindex="-1" aria-hidden="true"
+                                class="kamu-tak-diajak fixed top-0 left-0 right-0 z-[999] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                <div class="relative w-full max-w-2xl max-h-full">
+                                    <!-- Modal content -->
+                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                        <!-- Modal header -->
+                                        <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                Detail laporan
+                                            </h3>
+                                            <button type="button"
+                                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                                data-modal-hide="staticModal">
+                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="p-6 space-y-6">
+                                            <div>
+                                                <p class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
+                                                    Nama
+                                                </p>
+                                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
 
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                    Tanggal
+                                                </p>
+                                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                    Sekolah
+                                                </p>
+                                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                    Kegiatan
+                                                </p>
+                                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                    Bukti
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div
+                                            class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                            <button data-modal-hide="staticModal" type=""
+                                                class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </table>
                         </div>
                       </div>
@@ -1452,10 +1524,10 @@
 
 
     </style>
-
+{{--
 @forelse ($data as $modal)
 {{-- modal --}}
-<div class="modal-container">
+{{--  <div class="modal-container">
     <div class="modal">
       <div class="modal-padding">
         <div class="modal-content">
@@ -1540,7 +1612,7 @@
 
 
 @empty
-@endforelse
+@endforelse   --}}
 
     <script src="assets_guru/js/alpine-collaspe.min.js"></script>
     <script src="assets_guru/js/alpine-persist.min.js"></script>

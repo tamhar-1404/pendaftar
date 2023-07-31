@@ -24,6 +24,7 @@
     <script defer src="assets_guru/js/popper.min.js"></script>
     <script defer src="assets_guru/js/tippy-bundle.umd.min.js"></script>
     <script defer src="assets_guru/js/sweetalert.min.js"></script>
+
 </head>
 
 <body x-data="main" class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
@@ -1258,7 +1259,8 @@
                                                         <label for="lama">Password Lama</label>
                                                         <input id="lama" type="text" name="old_password"
                                                             placeholder="Masukan Password Lama" class="form-input" />
-                                                        <p class="text-info">Lupa Password?</p>
+
+                                                        <a href="{{ route('Lupapassword.index') }}" class="text-info">Lupa Password?</a>
                                                     </div>
                                                     <div>
                                                         <label for="baru">Password Baru</label>
