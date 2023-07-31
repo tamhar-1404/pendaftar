@@ -85,51 +85,30 @@
     {{--  button tambah  --}}
 
     {{--  end  --}}
-    <div class="container my-12 mx-auto px-4 md:px-12">
-        <div class="flex flex-wrap -mx-1 lg:-mx-4">
-
-            @forelse ($blogs as $item)
-            <!-- Column -->
-            <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-                <!-- Article -->
-                <article class="overflow-hidden rounded-lg shadow-lg">
-
-                    <a href="#">
-                        <img alt="Placeholder" class="object-cover h-48 w-96 block" src="{{asset('storage/fotoberita/' . $item->foto)}}">
-                    </a>
-
-                    <header class="flex items-center justify-between leading-tight p-2 md:p-4">
-                        <h1 class="text-lg">
-                            <a class="no-underline hover:underline text-black" href="{{route('berita_guru.show', $item->id)}}">
-                                {{ $item->judul }}
-                            </a>
-                        </h1>
-                        <p class="text-grey-darker text-sm">
-                            {{ $item->tanggal }}
-                        </p>
-                    </header>
-
-                    <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-                        <a class="flex items-center no-underline hover:underline text-black" href="#">
-                            <p class="ml-2 text-sm">
-                                {{ $item->kategori }}
-                            </p>
-                        </a>
-                        <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
-                            <span class="hidden">Like</span>
-                            <i class="fa fa-heart"></i>
-                        </a>
-                    </footer>
-
-                </article>
-                <!-- END Article -->
-
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        @forelse ($blogs as $berita)
+        <div class="bg-white shadow-md rounded-lg overflow-hidden " style="width: 100%; height:100%;">
+            <img src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="Gambar Berita 1" class="w-full h-48 object-cover object-center">
+            <div class="p-4">
+              <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
+              <h2 class="text-xl font-semibold mt-2"><a href="{{ route('berita_siswa.show', $berita->id) }}">{{ $berita->judul }}</a></h2>
+              <div class="flex items-center mt-2">
+                <form action="{{route('Berita.like', $berita->id)}}" method="POST">
+                @csrf
+                <button type="submit" class="flex items-center bg-gray-200 rounded-full px-3 py-1 mr-2">
+                    <i class="fas fa-thumbs-up mr-1"></i>
+                    Like
+                </button>
+                </form>
+                <!-- Jumlah like, misalnya dari data berita -->
+                <span class="text-gray-500">{{ $berita->likes_count }} Likes</span>
             </div>
-            <!-- END Column -->
-            @empty
-
-            @endforelse
+            </div>
         </div>
+        @empty
+            <div class="flex justify-center items-center" style="justify-items: center">
+                <img src="/admin/noData.png" alt="" width="300px">
+            </div>
+        @endforelse
     </div>
 </main>
