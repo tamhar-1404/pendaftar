@@ -1,5 +1,5 @@
 
-<div class="animate__animated p-6" :class="[$store.app.animation]">
+<div class="animate__animated " :class="[$store.app.animation]">
     <!-- start main content section -->
     <div>
         <ul class="flex space-x-2 rtl:space-x-reverse">
@@ -10,7 +10,7 @@
                 <span>Profile</span>
             </li>
         </ul>
-        <div class="pt-5">
+        <div class="pt-4">
             <div class="mb-5 grid grid-cols-1 gap-5 lg:grid-cols-3 xl:grid-cols-4">
                 <div class="panel">
                     <div class="mb-5 flex items-center justify-between">
