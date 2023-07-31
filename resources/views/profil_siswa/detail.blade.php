@@ -32,6 +32,7 @@
     :class="[$store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout, $store.app
         .rtlClass
     ]">
+
     @if (session()->has('success'))
         <script>
             Swal.fire(

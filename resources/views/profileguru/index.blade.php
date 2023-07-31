@@ -392,39 +392,6 @@
                                         </table>
                                     </div>
                                 </div>
-                                {{-- paginate --}}
-                                <div class="flex justify-between">
-                                    <p>
-                                        Show 1 to 10 of 15 entries
-                                    </p>
-                                    <nav aria-label="Page navigation example">
-                                        <ul class="list-style-none flex">
-                                            <li>
-                                                <a
-                                                    class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
-                                            </li>
-                                            <li>
-                                                <a class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
-                                                    href="#!">1</a>
-
-                                            </li>
-                                            <li aria-current="page">
-                                                <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                                    href="#!">2
-
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                                    href="#!">3</a>
-                                            </li>
-                                            <li>
-                                                <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                                    href="#!">Next</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
                             </div>
                         </div>
                     </div>
