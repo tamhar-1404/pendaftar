@@ -8,6 +8,7 @@ use App\Models\Siswa;
 use Auth;
 use App\Http\Requests\StoreProfileGuruRequest;
 use App\Http\Requests\UpdateProfileGuruRequest;
+use Illuminate\Http\Request;
 
 class ProfileGuruController extends Controller
 {
@@ -20,7 +21,7 @@ class ProfileGuruController extends Controller
     {
         $siswa = Siswa::where('sekolah' , Auth()->user()->sekolah)->get();
         $id_guru = Guru_admin::where('name', Auth()->user()->name)->first()->id;
-        $guru = Guru_admin::where('name' , Auth()->user()->name)->first();
+        $guru = Guru_admin::where('name' , Auth()->user()->name)->get();
         return view('profileguru.index' , compact('guru' , 'siswa', 'id_guru'));
     }
 
@@ -64,8 +65,9 @@ class ProfileGuruController extends Controller
      */
     public function edit($profileGuru)
     {
-        $guru = Guru_admin::find($profileGuru);
-        return view('profileguru.editprofile', compact('guru'));
+        $guru = Guru_admin::where('id', $profileGuru)->get();
+        $profil_guru = Guru_admin::find($profileGuru);
+        return view('profileguru.editprofile', compact('guru', 'profil_guru'));
     }
 
     /**
@@ -75,9 +77,15 @@ class ProfileGuruController extends Controller
      * @param  \App\Models\ProfileGuru  $profileGuru
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProfileGuruRequest $request, ProfileGuru $profileGuru)
+    public function update(Request $request, $profileGuru)
     {
-        //
+        $request->validate([
+
+        ]);
+
+        if ($request->has('image')) {
+            $file = $request->file('image');
+        }
     }
 
     /**

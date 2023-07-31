@@ -1277,37 +1277,37 @@
                             <template x-if="tab === 'home'">
                                 <div>
                                     <form
-                                        class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
+                                        class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST" action="{{ route('profileguru.update', $profil_guru->id) }}">
                                         @csrf
                                         @method('PUT')
                                         <h6 class="mb-5 text-lg font-bold">Informasi Pribadi</h6>
                                         <div class="flex flex-col sm:flex-row">
                                             <div class="mb-5 w-full sm:w-2/12 ltr:sm:mr-4 rtl:sm:ml-4">
-                                                <img src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image"
+                                                <img src="{{ asset('storage/guru_image/' . $profil_guru->image) }}" alt="image"
                                                     class="mx-auto h-20 w-20 rounded-full object-cover md:h-32 md:w-32" />
                                             </div>
                                             <div class="grid flex-auto grid-cols-3 gap-5 sm:grid-cols-2">
                                                 <div>
                                                     <label for="ctnFile">Foto Profile</label>
-                                                    <input id="ctnFile" type="file" class="form-input file:py-2 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-primary" required name="image" />
+                                                    <input id="ctnFile" type="file" class="form-input file:py-2 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-primary" name="image" />
                                                 </div>
                                                 <div>
                                                     <label for="email">Email</label>
                                                     <input id="email" type="email"
-                                                        placeholder="example@gmail.com" class="form-input" value="{{ $guru->email }}" name="email"/>
+                                                        placeholder="example@gmail.com" class="form-input" value="{{ $profil_guru->email }}" name="email"/>
                                                 </div>
                                                 <div>
                                                     <label for="telepon">No.Telepon</label>
                                                     <input id="telepon" type="text"
-                                                        placeholder="+62 xxx" class="form-input" value="{{ $guru->no }}" name="no"/>
+                                                        placeholder="+62 xxx" class="form-input" value="{{ $profil_guru->no }}" name="no"/>
                                                 </div>
                                             <div>
                                                 <label for="alamat">Alamat</label>
-                                                <textarea name="alamat" id="alamat" placeholder="New York" class="form-input">{{ $guru->alamat }}</textarea>
+                                                <textarea name="alamat" id="alamat" placeholder="New York" class="form-input">{{ $profil_guru->alamat }}</textarea>
                                             </div>
                                             <div class="mt-3 sm:col-span-2 flex gap-4 justify-end">
                                                 <button type="button" class="btn btn-outline-danger">Batal</button>
-                                                <button type="button" class="btn btn-info">Simpan</button>
+                                                <button type="submit" class="btn btn-info">Simpan</button>
                                             </div>
                                         </div>
                                         </div>
