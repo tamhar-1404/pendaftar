@@ -228,14 +228,25 @@
                             </ul>
                             <ul class="mt-7  justify-center gap-2">
                                <li class="font-bold">Status</li>
-                               @if ($siswa->status_sp != null)
+                                @if ($siswa->status_sp != null)
+                                @if ($siswa->status_sp == 'SP 1')
                                <li>
                                 <div class="flex h-1.5 w-full rounded-full bg-[#ebedf2] dark:bg-dark/40 relative">
-                                    <div class="w-full rounded-full" style="background-color: #DAFE00;">
+                                    <div class="w-full rounded-full" style="background-color: #c7fe00;">
                                         <span class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">{{ $siswa->status_sp }}</span>
                                     </div>
                                 </div>
                                 </li>
+                                @else
+                               <li>
+                                <div class="flex h-1.5 w-full rounded-full bg-[#ebedf2] dark:bg-dark/40 relative">
+                                    <div class="w-full rounded-full" style="background-color: #fe0000;">
+                                        <span class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">{{ $siswa->status_sp }}</span>
+                                    </div>
+                                </div>
+                                </li>
+
+                                @endif
                                 @endif
                             </ul>
                         </div>
@@ -244,46 +255,6 @@
                         <div class="flex items-center justify-between mb-5">
                           <h5 class="text-lg font-semibold dark:text-white-light">Pelanggaran</h5>
                           <div class="flex items-center space-x-2">
-                            <button type="button" id="tambah-rfid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="tambahRFID(){{ $siswa->id }}">
-                                TAMBAH RFID
-                              </button>
-                              <form action="{{ route('siswa_admin.update', $user->id) }}" method="post">
-                                @method('PUT')
-                                @csrf
-                                  <div id="modal-tambah-rfid" class="modal fixed inset-0 flex items-center justify-center">
-                                    <div class="modal-content bg-white p-6">
-
-                                      <h2 class="text-2xl font-bold mb-4">Tambah RFID   {{ $siswa->name }}</h2>
-                                      <input type="text" name="RFID" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
-                                      <div class="mt-6 flex justify-end">
-                                        <button type="button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                                          Simpan
-                                        </button>
-                                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">
-                                          Batal
-                                        </button>
-                                      </div>
-                                    </div>
-                                  </div>
-                              </form>
-
-                              <!-- Import script JavaScript -->
-                              <script>
-                                document.addEventListener("DOMContentLoaded", function() {
-                                  // Mengaktifkan modal saat tombol diklik
-                                  document.getElementById('tambah-rfid').addEventListener('click', function() {
-                                    document.getElementById('modal-tambah-rfid').style.display = "flex";
-                                  });
-
-                                  // Menutup modal saat tombol Batal diklik atau saat mengklik area luar modal
-                                  document.getElementById('modal-tambah-rfid').addEventListener('click', function(event) {
-                                    if (event.target === this || event.target.classList.contains('bg-red-500')) {
-                                      this.style.display = "none";
-                                    }
-                                  });
-                                });
-                              </script>
-
                             <a href="{{ route('siswa_admin.index') }}" class="btn btn-outline-danger w-73 h-27">Kembali</a>
                           </div>
                         </div>
