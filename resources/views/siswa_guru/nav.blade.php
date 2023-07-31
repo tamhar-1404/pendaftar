@@ -210,6 +210,7 @@
                             </a>
                         </li>
                     </ul>
+                        @endforeach
                 </div>
             </div>
         </div>

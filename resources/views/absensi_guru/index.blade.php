@@ -276,9 +276,14 @@
 
                                 {{-- serch --}}
                                 <div class="mr-4 ">
-                                    <input
-                                        class=" p-1 border-2 border-gray-400 rounded-xl outline-1 outline-gray-400 dark:bg-transparent"
-                                        type="text" placeholder="cari">
+                                    <form action="">
+                                        <label class="relative hidden px-4 mt-1 sm:flex">
+                                            <input
+                                                class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                placeholder="Search here..." type="text" name="cari"
+                                                value="{{ request('cari') }}" />
+                                        </label>
+                                    </form>
                                 </div>
                             </div>
                             {{-- <div class="mb-5 flex flex-wrap  mt-5 items-center">
@@ -369,19 +374,19 @@
                                                     <th scope="col" class="px-6 py-4">Nama</th>
                                                     <th scope="col" class="px-6 py-4">Sekolah</th>
                                                     <th scope="col" class="px-6 py-4">Tanggal</th>
-                                                    <th scope="col" class="px-6 py-4 ">jam</th>
-                                                    <th scope="col" class="px-6 py-4">keterangan</th>
+                                                    <th scope="col" class="px-6 py-4 ">Jam</th>
+                                                    <th scope="col" class="px-6 py-4">Keterangan</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @php
                                                     $i = 1;
                                                 @endphp
-                                                @foreach ($terimas as $terima)
+                                                @forelse ($terimas as $terima)
                                                     <tr
                                                         class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                                         <td class="whitespace-nowrap px-4 py-4 font-medium">
-                                                            {{ $i }}</td>
+                                                            {{ $i++ }}</td>
                                                         <td class="whitespace-nowrap px-4 py-4">{{ $terima->nama }}
                                                         </td>
                                                         <td class="whitespace-nowrap px-4 py-4">{{ $terima->sekolah }}
@@ -394,10 +399,17 @@
                                                             class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
                                                             {{ $terima->keterangan }}</td>
                                                     </tr>
-                                                    @php
-                                                        $i++;
-                                                    @endphp
-                                                @endforeach
+                                                @empty
+                                                    <tr>
+                                                        <td colspan="6" class="p-8 text-center">
+                                                            <div class="flex justify-center items-center"
+                                                                style="justify-items: center">
+                                                                <img src="/admin/noData.png" alt=""
+                                                                    width="300px">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
                                     </div>
@@ -406,43 +418,12 @@
                         </div>
                         {{-- end tabel --}}
                         {{-- paginate --}}
-                        <div class="flex justify-between">
-                            <p>
-                                menampilkan 1 sampai 10 dari 15 data
-                            </p>
-                            <nav aria-label="Page navigation example">
-                                <ul class="list-style-none flex">
-                                    <li>
-                                        <a
-                                            class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
-                                    </li>
-                                    <li>
-                                        <a class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
-                                            href="#!">1</a>
-
-                                    </li>
-                                    <li aria-current="page">
-                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                            href="#!">2
-
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                            href="#!">3</a>
-                                    </li>
-                                    <li>
-                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                            href="#!">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+                        {{ $terimas->appends(['cari' => request('cari')])->links() }}
                     </div>
                 </div>
                 <!-- end main content section -->
 
-                
+
             </div>
             <!-- end footer section -->
         </div>

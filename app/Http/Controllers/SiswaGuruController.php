@@ -28,8 +28,8 @@ class SiswaGuruController extends Controller
             $siswas = Siswa::where([['name', 'LIKE', '%'.$keyword.'%'],['role', 'Siswa'], ['sekolah', $sekolah]])->get();
             return view('siswa_guru.index', compact('siswas' , 'guru'));
         }
-        $guru = Guru_admin::where('email', Auth()->user()->email)->get();
-        $siswas = Siswa::where('role', 'siswa')->where('sekolah', Auth()->user()->sekolah)->get();
+        $guru = Guru_admin::where('name', Auth()->user()->name)->get();
+        $siswas = Siswa::where([['role', 'siswa'], ['sekolah', $sekolah]])->get();
         return view('siswa_guru.index', compact('siswas' , 'guru'));
     }
 

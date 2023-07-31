@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
+{{--  <!-- Mirrored from html.vristo.sbthemes.com/users-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:50 GMT -->  --}}
+<!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
 <head>
@@ -274,9 +277,10 @@
                     <div class="pt-5">
                         <div class="mb-5 grid grid-cols-1 gap-5 lg:grid-cols-3 xl:grid-cols-4">
                             <div class="panel">
+                                @foreach ($guru as $guru)
                                 <div class="mb-5 flex items-center justify-between">
                                     <h5 class="text-lg font-semibold dark:text-white-light">Profile</h5>
-                                    <a href="{{ route('profileguru.edit', $id_guru) }}" class="btn btn-info rounded-full p-2 ltr:ml-auto rtl:mr-auto">
+                                    <a href="{{ route('profileguru.edit', $guru->id) }}" class="btn btn-info rounded-full p-2 ltr:ml-auto rtl:mr-auto">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
                                             <path opacity="0.5" d="M4 22H20" stroke="currentColor"
@@ -354,6 +358,7 @@
                                             </li>
                                         </ul>
                                     </div>
+                                @endforeach
                             </div>
                             <div class="panel lg:col-span-2 xl:col-span-3">
                                 <div class="mb-5">
@@ -653,4 +658,7 @@
         });
     </script>
 </body>
+
+<!-- Mirrored from html.vristo.sbthemes.com/users-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:51 GMT -->
+
 </html>
