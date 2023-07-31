@@ -378,8 +378,8 @@
                         @php
                             use Carbon\Carbon;
                         @endphp
-                        <p class="text-xl font-semibold mb-4"><span class="text-red-600">Hari ini adalah : </span>
-                            {{Carbon::now()->format('l')}}, {{Carbon::now()->format('d-M-Y')}}</p>
+                        <p class="text-base font-semibold mb-4"><span class="text-red-600">Hari ini adalah : </span>
+                           {{Carbon::now()->format('d F Y')}}</p>
 
                         <div class="kamu-tak-diajak flex justify-between items-center">
                             <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
@@ -416,7 +416,7 @@
                                             <span class="sr-only">Close modal</span>
                                         </button>
                                         <div class="px-6 py-6 lg:px-8">
-                                            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Jurnal
+                                            <h3 class="mb-4 text-base font-medium text-gray-900 dark:text-white">Jurnal
                                             </h3>
                                             <form class="space-y-6" action="{{ route('jurnal_siswa.store') }}"
                                                 method="post" enctype="multipart/form-data">
@@ -579,7 +579,7 @@
                                                 @forelse ($item as $items)
                                                     <tr
                                                         class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                        <td class="whitespace-nowrap px-2 py-2 font-medium">
+                                                        <td class="whitespace-nowrap px-6 py-2 font-medium">
                                                             {{ $loop->iteration }}</td>
                                                         <td class="whitespace-nowrap px-6 py-2">{{ $items->nama }}
                                                         </td>
