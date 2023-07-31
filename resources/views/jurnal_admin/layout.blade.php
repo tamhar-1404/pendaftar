@@ -8,7 +8,7 @@
                <a class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
                    data-te-sidenav-link-ref>
                    <span class="mr-4 [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
-                       <img src="{{ asset('admin/assets/images/humma.png') }}" alt="">
+                       <img src="{{ asset('admin/assets/images/humma.png') }}" alt="" class="z-50">
                    </span>
 
                </a>

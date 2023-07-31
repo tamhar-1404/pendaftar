@@ -379,7 +379,7 @@
                             use Carbon\Carbon;
                         @endphp
                         <p class="text-base font-semibold mb-4"><span class="text-red-600">Hari ini adalah : </span>
-                           {{Carbon::now()->format('d F Y')}}</p>
+                            {{ Carbon::now()->format('d F Y') }}</p>
 
                         <div class="kamu-tak-diajak flex justify-between items-center">
                             <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
@@ -529,8 +529,8 @@
                                             <path
                                                 d="M6 17.9827C4.44655 17.9359 3.51998 17.7626 2.87868 17.1213C2 16.2426 2 14.8284 2 12C2 9.17157 2 7.75736 2.87868 6.87868C3.75736 6 5.17157 6 8 6H16C18.8284 6 20.2426 6 21.1213 6.87868C22 7.75736 22 9.17157 22 12C22 14.8284 22 16.2426 21.1213 17.1213C20.48 17.7626 19.5535 17.9359 18 17.9827"
                                                 stroke="currentColor" stroke-width="1.5" />
-                                            <path opacity="0.5" d="M9 10H6" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" />
+                                            <path opacity="0.5" d="M9 10H6" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" />
                                             <path d="M19 14L5 14" stroke="currentColor" stroke-width="1.5"
                                                 stroke-linecap="round" />
                                             <path
@@ -541,10 +541,10 @@
                                                 stroke="currentColor" stroke-width="1.5" />
                                             <circle opacity="0.5" cx="17" cy="10" r="1"
                                                 fill="currentColor" />
-                                            <path opacity="0.5" d="M15 16.5H9" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" />
-                                            <path opacity="0.5" d="M13 19H9" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" />
+                                            <path opacity="0.5" d="M15 16.5H9" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" />
+                                            <path opacity="0.5" d="M13 19H9" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" />
                                         </svg>
                                         <p class="kamu-tak-diajak">
                                             PRINT
@@ -594,7 +594,7 @@
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 pl-17 py-2"><img
                                                                 src="{{ asset('storage/image/' . $items->image) }}"
-                                                                width="100px" alt="">
+                                                                width="50px" height="50px" alt="">
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 py-2  kamu-tak-diajak">
                                                             <div class="flex gap-2">

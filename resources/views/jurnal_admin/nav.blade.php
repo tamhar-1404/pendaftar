@@ -7,7 +7,8 @@
     <div class="flex w-full flex-wrap items-center justify-between px-4 ">
         <div class="flex gap-4">
             <!-- Toggler -->
-            <div class="flex items-center justify-between ltr:mr-2 rtl:ml-2 ">
+            <div class="flex items-center justify-between ltr:mr-2 rtl:ml-2 " style="
+            position: fixed">
                 <a href="index-2.html" class="main-logo flex shrink-9 items-center">
                     <img class="inline w-40 ltr:-ml-1 rtl:-mr-1 hidden" src="{{ asset('admin/assets/images/humma.png') }}"
                         alt="image" />
