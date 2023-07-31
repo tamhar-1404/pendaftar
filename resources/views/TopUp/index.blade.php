@@ -148,12 +148,12 @@
                                                         </button>
                                                     </form>
                                                     <form action="{{ route('aproval.update', $topup->id) }}"
-                                                        method="post" id="confirm-form-{{ $topup->id }}">
+                                                        method="post" id="confirm-form-{{ $topup->id }}" onsubmit="confirmDelete(event, {{ $topup->id }})">
                                                         @csrf
                                                         @method('PUT')
                                                         <input type="hidden" name="status" value="Ditolak">
                                                         <div style="display: inline-block;">
-                                                            <button type="submit" onclick="confirmDelete(event)"
+                                                            <button type="submit"
                                                                 class="border border-red-400 px-4 py-1 rounded hover:bg-red-500 hover:text-white">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
@@ -202,51 +202,6 @@
                             }
                         </script>
                         <script>
-                            function confirmSetuju(event) {
-                                event.preventDefault();
-
-                                Swal.fire({
-                                    title: 'Konfirmasi',
-                                    text: 'Apakah Anda yakin ingin menerima topup ini?',
-                                    icon: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'Ya, terima!',
-                                    cancelButtonText: 'Batal',
-                                    background: '#f5f5f5',
-                                    customClass: {
-                                        icon: 'swal-icon',
-                                        confirmButton: 'swal-button swal-button--confirm',
-                                        cancelButton: 'swal-button swal-button--cancel'
-                                    },
-                                    animation: false
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        Swal.fire({
-                                            title: 'Sukses',
-                                            text: 'Berhasil diterima!',
-                                            icon: 'success',
-                                            timer: 2000,
-                                            showConfirmButton: false,
-                                            background: '#f5f5f5',
-                                            customClass: {
-                                                icon: 'swal-icon',
-                                                popup: 'swal-popup',
-                                                title: 'swal-title',
-                                                confirmButton: 'swal-button swal-button--confirm'
-                                            },
-                                            animation: false
-                                        });
-                                        setTimeout(() => {
-                                            document.getElementById('confirm-form').submit();
-                                        }, 2000);
-                                    }
-                                });
-                            }
-                        </script>
-
-                        <script>
                             function confirmDelete(event, id) {
                                 event.preventDefault();
 
@@ -257,7 +212,7 @@
                                     showCancelButton: true,
                                     confirmButtonColor: '#3085d6',
                                     cancelButtonColor: '#d33',
-                                    confirmButtonText: 'Ya, terima!',
+                                    confirmButtonText: 'Ya, Tolak!',
                                     cancelButtonText: 'Batal',
                                     background: '#f5f5f5',
                                     customClass: {
@@ -268,24 +223,7 @@
                                     animation: false
                                 }).then((result) => {
                                     if (result.isConfirmed) {
-                                        Swal.fire({
-                                            title: 'Sukses',
-                                            text: 'Berhasil dihapus!',
-                                            icon: 'success',
-                                            timer: 2000,
-                                            showConfirmButton: false,
-                                            background: '#f5f5f5',
-                                            customClass: {
-                                                icon: 'swal-icon',
-                                                popup: 'swal-popup',
-                                                title: 'swal-title',
-                                                confirmButton: 'swal-button swal-button--confirm'
-                                            },
-                                            animation: false
-                                        });
-                                        setTimeout(() => {
-                                            event.target.closest('form').submit();
-                                        }, 2000);
+                                        document.getElementById('confirm-form-' + id).submit();
                                     }
                                 });
                             }
