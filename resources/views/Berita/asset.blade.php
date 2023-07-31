@@ -1479,7 +1479,7 @@
                                         <div class="mt-1.5 flex items-center text-xs">
                                             <span class="line-clamp-1">{{ Carbon::parse($berita->tanggal)->format('d M') }}</span>
                                             <div class="mx-2 my-0.5 w-px self-stretch bg-white/20"></div>
-                                            <p class="shrink-0">8 min</p>
+                                            <p class="shrink-0">{{ $berita->created_at->diffForHumans() }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1487,14 +1487,6 @@
                                 <div class="flex space-x-3">
                                     <div x-data="usePopper({ placement: 'bottom-end', offset: 4 })"
                                         @click.outside="isShowPopper && (isShowPopper = false)" class="inline-flex">
-                                        <button x-ref="popperRef" @click="isShowPopper = !isShowPopper"
-                                            class="btn -mr-1.5 h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                                            </svg>
-                                        </button>
 
                                         <div x-ref="popperRoot" class="popper-root"
                                             :class="isShowPopper && 'show'">
@@ -1607,34 +1599,12 @@
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
                                 </svg>
-
                                 <span> {{ count($berita->comments) }}</span>
                             </button>
                         </div>
                     </div>
 
                 </div>
-                <div class="bg-white rounded p-4 mt-4 shadow mb-4">
-                    <form class="flex" method="POST" action="{{ route('comment.store') }}">
-                      @csrf
-                      <input type="hidden" name="blog_id" value="{{ $berita->id }}">
-                      <div class="flex flex-col w-full">
-                        <label for="txarea" class="font-medium text-gray-900 dark:text-white text-sm mb-2">Komentar</label>
-                        <div class="flex flex-row">
-                          <div class="flex flex-grow">
-                            <textarea class="w-full p-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Tulis komentar" name="comment" id="txarea"></textarea>
-                          </div>
-                          <div class="flex">
-                            <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2">Kirim</button>
-                          </div>
-                        </div>
-                      </div>
-
-                    </form>
-                </div>
-
-
-
                 @foreach ($berita->comments as $comment)
     <div class="bg-white p-4 mb-0 rounded shadow">
             <div class="flex items-center mb-2">
@@ -1667,7 +1637,11 @@
     @foreach ($comment->reply_comments as $reply)
     <div class="bg-white p-4 ml-8 mt-2 shadow">
         <div class="flex items-center mb-2">
-            <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('storage/Siswa/' . $comment->user->Siswa?->foto_siswa) }}" alt="Profil Picture">
+            @if ($reply->user->role == 'Admin')
+                <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('admin/assets/images/Logo.png') }}" alt="Profil Picture">
+            @else
+                <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('storage/Siswa/' . $reply->user->Siswa?->foto_siswa) }}" alt="Profil Picture">
+            @endif
             <div class="flex flex-col">
                 <h4 class="text-lg font-bold">{{ $reply->user->name }}</h4>
                 <p class="text-sm font-light">{{ Carbon::parse($reply->created_at)->format('d M Y') }}</p>
