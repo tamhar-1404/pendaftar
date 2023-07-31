@@ -1217,7 +1217,7 @@
                 </li>
             </ul>
             <div class="pt-5">
-                <div class="mb-5 grid grid-cols-1 text-sm gap-5 lg:grid-cols-3 xl:grid-cols-4">
+                <div class="mb-5 grid grid-cols-1 text-sm gap-5 lg:grid-cols-2 xl:grid-cols-4">
                     <div class="panel">
                         <div class="mb-5 flex items-center justify-between">
                             <h5 class="text-lg font-semibold dark:text-white-light">Profile</h5>
@@ -1382,7 +1382,7 @@
                                 <td scope="col" class="px-6 py-4">No</td>
                                 <td scope="col" class="px-6 py-4">Tanggal pelanggaran</td>
                                 <td scope="col" class="px-6 py-4">Deskripsi pelanggaran</td>
-                               
+
                                 <td scope="col" class="px-6 py-4">Aksi</td>
                             </tr>
                             @forelse ($data as $pelangaran )

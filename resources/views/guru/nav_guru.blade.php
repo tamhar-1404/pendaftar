@@ -61,7 +61,7 @@
                     </a>
                     <a href="javascript:;" x-cloak x-show="$store.app.theme === 'dark'" href="javascript:;"
                         class="flex items-center rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
-                        @click="$store.app.toggleTheme('system')">
+                        @click="$store.app.toggleTheme('light')">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -69,20 +69,7 @@
                                 fill="currentColor" />
                         </svg>
                     </a>
-                    <a href="javascript:;" x-cloak x-show="$store.app.theme === 'system'" href="javascript:;"
-                        class="flex items-center rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
-                        @click="$store.app.toggleTheme('light')">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M3 9C3 6.17157 3 4.75736 3.87868 3.87868C4.75736 3 6.17157 3 9 3H15C17.8284 3 19.2426 3 20.1213 3.87868C21 4.75736 21 6.17157 21 9V14C21 15.8856 21 16.8284 20.4142 17.4142C19.8284 18 18.8856 18 17 18H7C5.11438 18 4.17157 18 3.58579 17.4142C3 16.8284 3 15.8856 3 14V9Z"
-                                stroke="currentColor" stroke-width="1.5" />
-                            <path opacity="0.5" d="M22 21H2" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" />
-                            <path opacity="0.5" d="M15 15H9" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" />
-                        </svg>
-                    </a>
+                   
                 </div>
 
 

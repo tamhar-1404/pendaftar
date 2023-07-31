@@ -258,8 +258,7 @@
                     </tbody>
                 </table>
 
-                {{ $terima->appends(['cari' => request('cari')])->links() }}
-
+                {{ $terima->links() }}
             </div>
 
         </div>

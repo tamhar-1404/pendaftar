@@ -18,6 +18,7 @@ use App\Http\Controllers\JurnalsiswaController;
 use App\Http\Controllers\AprovalController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LupaPasswordController;
+use App\Http\Controllers\SiswaguruController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PiketController;
 use App\Http\Controllers\AbsensiSiswaController;
@@ -51,7 +52,6 @@ Route::post('/check_password', [App\Http\Controllers\GetuserController::class, '
 Route::post('/cari_barang', [App\Http\Controllers\TransaksiController::class, 'cari'])->name('cari_barang');
 Route::get('/pw/{user_id}/{user_password}', [SiswamagangController::class, 'cek_password']);
 Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
-
 
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
 Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
@@ -163,6 +163,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:guru'])->group(function () {
         // Route khusus untuk guru
         // Pembimbing
+        Route::get('profil/siswa/guru', [SiswaguruController::class, 'profilesiswa'])->name('profile/siswa/guru');
         Route::resource('/guru', App\Http\Controllers\DashboardGuruController::class);
         Route::resource('/siswa_guru', App\Http\Controllers\SiswaGuruController::class);
         Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
