@@ -1172,25 +1172,7 @@
               </span> --}}
                             </label>
 
-                            <div class="flex">
-                                <button
-                                    class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:hidden sm:h-9 sm:w-9">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" stroke="currentColor"
-                                        fill="none" viewBox="0 0 24 24">
-                                        <circle cx="10.2" cy="10.2" r="7.2" stroke-width="1.5">
-                                        </circle>
-                                        <path stroke-width="1.5" stroke-linecap="round" d="M21 21l-3.6-3.6" />
-                                    </svg>
-                                </button>
-                                <button
-                                    class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:h-9 sm:w-9">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                        viewBox="0 0 24 24">
-                                        <path fill="currentColor"
-                                            d="M3 5.109C3 4.496 3.47 4 4.05 4h16.79c.58 0 1.049.496 1.049 1.109 0 .612-.47 1.108-1.05 1.108H4.05C3.47 6.217 3 5.721 3 5.11zM5.798 12.5c0-.612.47-1.109 1.05-1.109H18.04c.58 0 1.05.497 1.05 1.109s-.47 1.109-1.05 1.109H6.848c-.58 0-1.05-.497-1.05-1.109zM9.646 18.783c-.58 0-1.05.496-1.05 1.108 0 .613.47 1.109 1.05 1.109h5.597c.58 0 1.05-.496 1.05-1.109 0-.612-.47-1.108-1.05-1.108H9.646z" />
-                                    </svg>
-                                </button>
-                            </div>
+
                         </div>
                     </div>
                     <div
@@ -1202,11 +1184,11 @@
                                 </div>
 
                                 <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
-                                    <div class="avatar h-20 w-20">
+                                    <div class="avatar h-20 w-20 rounded-full">
                                         <img class="rounded-full"
-                                            src="{{ asset('admin/images/avatar/avatar-20.jpg') }}" alt="avatar" />
+                                            src="{{ asset('storage/Siswa/' . $siswa->foto_siswa) }}" alt="avatar" />
                                     </div>
-                                    <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
+                                    <h3 class="pt-3 text-lg font-medium mt-2 text-slate-700 dark:text-navy-100">
                                         {{ $siswa->name }}
                                     </h3>
                                     <p class="text-xs+ mt-2">{{ $siswa->jurusan }}</p>

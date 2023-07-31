@@ -98,16 +98,16 @@ Route::get('/absen/sakit', [JurnaladminController::class, 'absensakit']);
     Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
     Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::class);
 
+    Route::get('/keluar', [LoginController::class, 'Logout'])->name('keluar');
 
 
 
 // Rute untuk mengirim email reset password
-Route::get('/keluar', [LoginController::class, 'Logout'])->name('keluar');
-Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
         // Route khusus untuk admin
+        Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
         Route::post('/absensi_date', [JurnaladminController::class, 'Absenhariini'])->name('absensi_date');
         Route::get('/Absenhariini', [JurnaladminController::class, 'Absenhariini'])->name('Absenhariini');
         Route::get('/Jurnalhariini', [JurnaladminController::class, 'Jurnalhariini'])->name('Jurnalhariini');

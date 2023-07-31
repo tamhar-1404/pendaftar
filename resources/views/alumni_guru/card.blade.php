@@ -71,25 +71,7 @@
                 </span>
             </label>
 
-            <div class="flex">
-                <button
-                    class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:hidden sm:h-9 sm:w-9">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" stroke="currentColor"
-                        fill="none" viewBox="0 0 24 24">
-                        <circle cx="10.2" cy="10.2" r="7.2" stroke-width="1.5">
-                        </circle>
-                        <path stroke-width="1.5" stroke-linecap="round" d="M21 21l-3.6-3.6" />
-                    </svg>
-                </button>
-                <button
-                    class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:h-9 sm:w-9">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                        viewBox="0 0 24 24">
-                        <path fill="currentColor"
-                            d="M3 5.109C3 4.496 3.47 4 4.05 4h16.79c.58 0 1.049.496 1.049 1.109 0 .612-.47 1.108-1.05 1.108H4.05C3.47 6.217 3 5.721 3 5.11zM5.798 12.5c0-.612.47-1.109 1.05-1.109H18.04c.58 0 1.05.497 1.05 1.109s-.47 1.109-1.05 1.109H6.848c-.58 0-1.05-.497-1.05-1.109zM9.646 18.783c-.58 0-1.05.496-1.05 1.108 0 .613.47 1.109 1.05 1.109h5.597c.58 0 1.05-.496 1.05-1.109 0-.612-.47-1.108-1.05-1.108H9.646z" />
-                    </svg>
-                </button>
-            </div>
+           
         </div>
     </div>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
@@ -103,7 +85,7 @@
             </div>
             <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
                 <div class="avatar h-20 w-20">
-                    <img class="rounded-full" src="{{ asset('admin/images/avatar/avatar-20.jpg') }}"
+                    <img class="rounded-full" src="{{ asset('storage/Siswa/' . $siswa->foto_siswa) }}"
                         alt="avatar" />
                 </div>
                 <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
@@ -122,15 +104,6 @@
                         </svg>
                         <span>Profile</span>
                     </a>
-                   <a href="{{ route('chat_siswa.index') }}"class="btn space-x-2 bg-slate-150 px-0 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
-                    <span> Chat </span>
-                </a>
 
                 </div>
             </div>
