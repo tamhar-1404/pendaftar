@@ -189,7 +189,7 @@
 
                         </div>
                     </div>
-                    <div x-data="{ tab: 'home' }">
+                    <div x-data="{ tab: 'semua' }">
                         <ul
                             class="mb-5 overflow-y-auto whitespace-nowrap border-b border-[#ebedf2] font-semibold dark:border-[#191e3a] sm:flex">
                             <li class="inline-block">
@@ -1034,152 +1034,88 @@
             </div>
         </div>
     </div>
-    <style>
-        /* CSS for background blur effect */
-/* CSS for background blur effect */
-.modal-tengah{
-    display:flex;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    justify-content: center;
-    align-items: center;
-}
-.modal-container {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    padding-top: 0%;
-    padding-left: 25%;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Adjust the alpha value to control the darkness of the background */
-    backdrop-filter: blur(8px); /* Adjust the blur amount if needed */
-    z-index: 9999;
-  }
 
-/* CSS for the modal itself */
-        .modal-content {
-        max-width: 600px; /* Adjust the width as needed */
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-        }
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-}
-
-.modal-header h3 {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.modal-close {
-  cursor: pointer;
-  background: none;
-  border: none;
-  outline: none;
-  padding: 0;
-}
-
-.modal-body {
-  /* Add styles for the modal body content */
-}
-
-.modal-footer {
-  /* Add styles for the modal footer content */
-}
-
-    </style>
         @forelse ($mengisi as $modal)
         <div class="modal-tengah">
-        <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
-            class="kamu-tak-diajak modal-container fixed  right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
-            x-data="{ showModal: true }"> <!-- Tambahkan atribut x-data dan variabel showModal -->
-            <div class="relative w-full max-w-2xl max-h-full">
-                <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <!-- Modal header -->
-                    <div
-                        class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                            Detail Jurnal
-                        </h3>
-                        <button type="button"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            onclick="closeModal('{{$modal->id}}')">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- Modal body -->
-                    <div class="p-6 space-y-6">
-                        <div>
-                            <p
-                                class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
-                                Nama
-                            </p>
-                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                {{ $modal->nama }}
-                            </p>
+            <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
+                class="kamu-tak-diajak modal-container fixed  right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+                x-data="{ showModal: true }"> <!-- Tambahkan atribut x-data dan variabel showModal -->
+                <div class="relative w-full max-w-2xl max-h-full">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div
+                            class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                Detail Jurnal
+                            </h3>
+                            <button type="button"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                onclick="closeModal('{{$modal->id}}')">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
                         </div>
-                        <div>
-                            <p
-                                class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                Tanggal
-                            </p>
-                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                {{ $modal->tanggal }}
-                            </p>
+                        <!-- Modal body -->
+                        <div class="p-6 space-y-6">
+                            <div>
+                                <p
+                                    class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
+                                    Nama
+                                </p>
+                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                    {{ $modal->nama }}
+                                </p>
+                            </div>
+                            <div>
+                                <p
+                                    class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                    Tanggal
+                                </p>
+                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                    {{ $modal->tanggal }}
+                                </p>
+                            </div>
+                            <div>
+                                <p
+                                    class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                    Sekolah
+                                </p>
+                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                    {{ $modal->sekolah }}
+                                </p>
+                            </div>
+                            <div>
+                                <p
+                                    class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                    Kegiatan
+                                </p>
+                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                    {{ $modal->kegiatan }}
+                                </p>
+                            </div>
+                            <div>
+                                <p
+                                    class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                    Bukti
+                                </p>
+                                <img src="{{ asset('storage/image/' . $modal->image) }}" alt="">
+                            </div>
                         </div>
-                        <div>
-                            <p
-                                class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                Sekolah
-                            </p>
-                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                {{ $modal->sekolah }}
-                            </p>
+                        <!-- Modal footer -->
+                        <div
+                            class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <button type="button"  onclick="closeModal('{{$modal->id}}')"
+                                class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                         </div>
-                        <div>
-                            <p
-                                class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                Kegiatan
-                            </p>
-                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                {{ $modal->kegiatan }}
-                            </p>
-                        </div>
-                        <div>
-                            <p
-                                class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                Bukti
-                            </p>
-                            <img src="{{ asset('storage/image/' . $modal->image) }}" alt="">
-                        </div>
-                    </div>
-                    <!-- Modal footer -->
-                    <div
-                        class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                        <button type="button"  onclick="closeModal('{{$modal->id}}')"
-                            class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
         @empty
         @endforelse
 

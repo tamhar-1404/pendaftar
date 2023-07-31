@@ -89,27 +89,17 @@
         <!-- Navbar -->
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <!-- start main content section -->
-            <div x-data="basic" class="mt-8">
+            <div x-data="basic">
                 {{-- judul --}}
                 <div class="mb-5 font-semibold">
-                    <span> Absensi / <span class="text-[#00B7FF]"></span></span>
+                   Absensi
                 </div>
                 <div class="panel">
                     <div class="flex justify-between ">
                         {{-- serch dan filter --}}
                         <div class="flex justify-start items-center ">
                             {{-- filter --}}
-                            <div id="buttonContainer" class="mb-4">
-                                <div id="openModalBtn"
-                                    class="border-2 rounded-full text-white border-gray-400 flex items-center mr-2 py-2 px-2 mb-1"
-                                    onclick="openModal()">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
-                                    </svg>
-                                </div>
-                            </div>
+
                             <!-- Modal -->
                             <div id="modal" class="fixed left-4 top-4 flex items-center justify-center z-50 hidden">
                                 <div class="w-96 bg-white rounded-lg p-6 shadow-lg">
@@ -299,8 +289,6 @@
                         </div>
                     </div>
 
-
-                    {{-- tabel --}}
 
                     <div class="flex flex-col  ">
                         <div class="overflow-x-auto mt-5 sm:-mx-6 lg:-mx-8">
