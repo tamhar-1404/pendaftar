@@ -33,20 +33,21 @@ class JurnalsiswaController extends Controller
     {
         $hariIni = Carbon::now()->format('l');
         if ($hariIni !== 'Saturday' && $hariIni !== 'Sunday') {
-            
-            $jam = Carbon::now()->format('H-i');
-            if ($jam > '21-00') {
-                $hari = Carbon::now()->format('Y-m-d');
-                $cek_sudah = Jurnalsiswa::where('nama', Auth()->user()->name)->where('tanggal', $hari)->exists();
-                if (!$cek_sudah) {
-                    Jurnalsiswa::create([
-                        'image' => "kosong",
-                        'nama' => Auth()->user()->name,
-                        'tanggal' => $hari,
-                        'sekolah' => Auth()->user()->sekolah,
-                        'kegiatan' => "kosong",
-                        'status' => 'Tidak mengisi'
-                    ]);
+            if (Auth::user()->Siswa->role == 'Siswa') {
+                $jam = Carbon::now()->format('H-i');
+                if ($jam > '21-00') {
+                    $hari = Carbon::now()->format('Y-m-d');
+                    $cek_sudah = Jurnalsiswa::where('nama', Auth()->user()->name)->where('tanggal', $hari)->exists();
+                    if (!$cek_sudah) {
+                        Jurnalsiswa::create([
+                            'image' => "kosong",
+                            'nama' => Auth()->user()->name,
+                            'tanggal' => $hari,
+                            'sekolah' => Auth()->user()->sekolah,
+                            'kegiatan' => "kosong",
+                            'status' => 'Tidak mengisi'
+                        ]);
+                    }
                 }
             }
         }

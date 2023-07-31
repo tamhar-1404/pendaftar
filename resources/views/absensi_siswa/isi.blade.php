@@ -103,7 +103,7 @@
                 </svg>
                 PRINT
             </button>
-            @if (auth()->user()->role != 'Alumni' and auth()->user()->Siswa->role != 'Alumni')
+            @if (auth()->user()->Siswa->role == 'siswa')
                 <button data-modal-target="staticModal" data-modal-toggle="staticModal"
                     class="button_izin bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg ">Tambah
                     Izin</button>
@@ -114,11 +114,9 @@
                     <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}" />
                     <input type="hidden" id="waktu" name="jam" value="{{ date('H:i') }}" />
                     <input type="hidden" name="keterangan" value="Hadir">
-                    @if(Auth::user()->role == 'Siswa')
                     <button type="submit"
                         class=" button_absen border border-green-500 px-3 py-2 rounded-lg text-green-500  font-bold"
                         id="btnabsen">Absen</button>
-                    @endif
                 </form>
             @endif
         </div>

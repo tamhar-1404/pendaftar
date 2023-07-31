@@ -24,7 +24,7 @@ class ProfilsiswaController extends Controller
      */
     public function index()
     {
-        $Siswa = Siswa::Where('id', Auth()->user()->siswa_id)->get();
+        $Siswa = Siswa::where('id', Auth()->user()->siswa_id)->get();
         $sp = "";
         if (Sp::where('nama', Auth::user()->name)->exists()) {
             if (!empty(Sp::where('nama', Auth::user()->nama)->first()->sp_2)) {
@@ -153,11 +153,10 @@ class ProfilsiswaController extends Controller
     }
     public function perbarui(Request $request) {
         // dd($request->all());
-        $siswa_id = $request->siswa_id;
+        $siswa_id = Auth::user()->Siswa->id;
         if ($request->has('foto')) {
             $request->validate([
                 'foto' => 'required|image|mimes:png,jpg,jpeg',
-                'nama' => 'required',
                 'email' => 'required|unique:siswas,email,' . $siswa_id,
                 'no' => 'required',
                 'alamat' => 'required',
@@ -170,33 +169,27 @@ class ProfilsiswaController extends Controller
             $nama_foto = $foto->hashName();
             $foto->storeAs('public/Siswa', $nama_foto);
             Siswa::find($siswa_id)->update([
-                'name' => $request->nama,
                 'email' => $request->email,
                 'foto_siswa' => $nama_foto,
                 'no' => $request->no,
                 'alamat' => $request->alamat,
             ]);
             User::where('siswa_id', $siswa_id)->update([
-                'name' => $request->name,
                 'email' => $request->email,
             ]);
             return redirect()->route('profile_siswa')->with('success', 'Berhasil mengedit profil');
         }
         $request->validate([
-            'siswa_id' => 'required',
-            'nama' => 'required',
             'email' => 'required|unique:siswas,email,' . $siswa_id,
             'no' => 'required',
             'alamat' => 'required',
         ]);
         Siswa::find($siswa_id)->update([
-            'name' => $request->nama,
             'email' => $request->email,
             'no' => $request->no,
             'alamat' => $request->alamat,
         ]);
         User::where('siswa_id', $siswa_id)->update([
-            'name' => $request->nama,
             'email' => $request->email,
         ]);
         return redirect()->route('profile_siswa')->with('success', 'Berhasil mengedit profil');
