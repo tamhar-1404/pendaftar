@@ -97,6 +97,8 @@ class AbsensiSiswaController extends Controller
         // dd($cek_sudah_absen);
         $terima = ApprovalIzin::where('status', 'terimaabsen')->where('nama', Auth::user()->name )
         ->latest()->paginate(5);
+        // Calculate the number of the last page you want to display
+
         $currentHour = now()->format('H:i');
         $currentDay = now()->format('l');
         // dd($currentDay);
@@ -104,7 +106,7 @@ class AbsensiSiswaController extends Controller
         $currentDateTime = date('Y-m-d');
         $data= ApprovalIzin::where('nama', Auth::user()->name)->where('tanggal',$currentDateTime)->count();
         if($currentDay !== 'Saturday' && $currentDay !== 'Sunday'){
-       
+
             if($data === 0){
                 if($currentHour > '16:00'){
                     ApprovalIzin::create([

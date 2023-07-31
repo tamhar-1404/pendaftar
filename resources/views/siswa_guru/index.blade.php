@@ -1179,16 +1179,14 @@
                         </div>
                     </div>
                     <div
-                        class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-3">
+                        class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 xl:grid-cols-4">
                         @forelse ($siswas as $siswa)
                             <div class="card pb-2 shadow-md rounded-lg">
-                                <div class="p-2 text-right">
 
-                                </div>
 
-                                <div class="flex grow flex-col items-center px-4 pb-5 sm:px-5">
+                                <div class="flex grow flex-col items-center px-4 pb-3 mt-3 sm:px-5">
                                     <div class="avatar h-20 w-20 rounded-full">
-                                        <img class="rounded-full"
+                                        <img class="rounded-full h-20 w-20 "
                                             src="{{ asset('storage/Siswa/' . $siswa->foto_siswa) }}" alt="avatar" />
                                     </div>
                                     <h3 class="pt-3 text-lg font-medium mt-2 text-slate-700 dark:text-navy-100">
@@ -1197,30 +1195,23 @@
                                     <p class="text-xs+ mt-2">{{ $siswa->jurusan }}</p>
                                     <p class="text-xs+ mt-2">{{ $siswa->sekolah }}</p>
                                 </div>
-                                <div>
-                                    <div class="flex justify-around mb-2 w-full grid-cols-2 gap-2">
-                                        <button
-                                            class="flex bg-blue-400 px-3 items-center py-1 text-white gap-1 font-semibold rounded-md">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                class="w-4 h-4">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                                            </svg>
-                                            <p>Profil</p>
+                                <div class="mt-6 grid w-full px-3 grid-cols-1 gap-2 ">
+                                    <form action="{{route('profile/siswa/guru','siswa')}}" method="get">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$siswa->id}}">
+                                        <button type="submit"
+                                        class="btn space-x-2 bg-info px-0 font-medium w-full text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90 cursor-pointer">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none"
+                                        viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-width="2"
+                                        d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z" />
+                                        </svg>
+                                        <span>Profile</span>
                                         </button>
-                                        <button
-                                            class="flex bg-gray-400 items-center px-3 py-1 text-white gap-1 font-semibold rounded-md">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
-                                            </svg>
-                                            <p>Chat</p>
-                                        </button>
-                                    </div>
+                                    </form>
+
                                 </div>
+
                             </div>
                         @empty
                         @endforelse
