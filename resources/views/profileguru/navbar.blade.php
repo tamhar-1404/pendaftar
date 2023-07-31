@@ -90,8 +90,7 @@
 
                 <div class="dropdown flex-shrink-0" x-data="dropdown" @click.outside="open = false">
                     <a href="javascript:;" class="group relative" @click="toggle()">
-
-
+                    @foreach ($guru as $guru)
                         <span><img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
                                 src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image" /></span>
                     </a>

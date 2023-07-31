@@ -24,12 +24,31 @@
     <script defer src="{{ asset('assets_guru/js/popper.min.js') }}"></script>
     <script defer src="{{ asset('assets_guru/js/tippy-bundle.umd.min.js') }}"></script>
     <script defer src="{{ asset('assets_guru/js/sweetalert.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body x-data="main" class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
     :class="[$store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout, $store.app
         .rtlClass
     ]">
+    @if (session()->has('success'))
+    <script>
+        Swal.fire(
+            'Berhasil!',
+            "{{ session('success') }}",
+            'success'
+        )
+    </script>
+    @endif
+    @if (session()->has('error'))
+        <script>
+            Swal.fire(
+                'Oops..!',
+                "{{ session('error') }}",
+                'error'
+            )
+        </script>
+    @endif
     <!-- sidebar menu overlay -->
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>
@@ -306,29 +325,31 @@
                             <template x-if="tab === 'password'">
                                 <div>
                                     <form
-                                        class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
+                                        class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" action="{{ route('guru.updatepassword') }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
                                         <h6 class="mb-5 text-lg font-bold">Informasi Pribadi</h6>
                                         <div class="flex flex-col sm:flex-row">
                                             <div class="grid flex-auto grid-cols-3 gap-5 sm:grid-cols-2">
                                                 <div>
                                                     <label for="lama">Password Lama</label>
-                                                    <input id="lama" type="text"
-                                                        placeholder="Masukan Password Lama" class="form-input" />
+                                                    <input id="lama" type="password"
+                                                        placeholder="Masukan Password Lama" class="form-input" name="old_password"/>
                                                     <p class="text-info">Lupa Password?</p>
                                                 </div>
                                                 <div>
                                                     <label for="baru">Password Baru</label>
-                                                    <input id="baru" type="text"
-                                                        placeholder="Masukkan Password Baru" class="form-input" />
+                                                    <input id="baru" type="password"
+                                                        placeholder="Masukkan Password Baru" class="form-input" name="password"/>
                                                 </div>
                                                 <div>
                                                     <label for="konfirmasi">Koirmasi Password</label>
-                                                    <input id="konfirmasi" type="text"
+                                                    <input id="konfirmasi" type="password" name="password_confirmation"
                                                         placeholder="Konfirmasi Password" class="form-input" />
                                                 </div>
                                             <div class="mt-3 sm:col-span-2 flex gap-4 justify-end">
-                                                <button type="button" class="btn btn-outline-danger">Batal</button>
-                                                <button type="button" class="btn btn-info">Simpan</button>
+                                                <a href="{{route('profileguru.index')}}" class="btn btn-outline-danger">Batal</a>
+                                                <button type="submit" class="btn btn-info">Simpan</button>
                                             </div>
                                         </div>
                                         </div>
