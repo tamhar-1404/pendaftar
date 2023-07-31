@@ -134,11 +134,13 @@
                                                     <span class=" p-1  font-semibold dark:hover:text-black">Show</span>
                                                 </div>
                                             </a>
-                                            <form action="{{ route('tatatertib.destroy', $row->id) }}" method="POST"
+                                            <form action="{{ route('tatatertib.destroy', $row->id) }}"
+                                                id="delete-form-{{ $row->id }}" method="POST"
                                                 enctype="multipart/form-data">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button type="submit" data-nama="judul"
+                                                <button type="button" onclick="confirmDelete({{ $row->id }})"
+                                                    data-nama="judul"
                                                     class="deletetatib w-16 flex h-8 bg-white rounded-md border-2 border-red-500 justify-center items-center text-red-500 hover:bg-red-500 hover:text-white dark:bg-transparent ">Hapus</button>
                                             </form>
                                         </div>
@@ -176,26 +178,25 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Tempatkan di bawah halaman HTML sebelum tag penutup </body> -->
 <script>
-    $('.deletetatib').click(function() {
-        var tatibid = $(this).attr('data-id');
-        var judul = $(this).attr('data-nama');
-        swal({
-                title: "Anda yakin?!",
-                text: "Ingin menghapus data dengan nama " + judul + " ",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    window.location = "/deletetatib/" + tatibid + ""
-                    swal("Data berhasil dihapus!", {
-                        icon: "success",
-                    });
-                } else {
-                    swal("Batal menghapus Data!");
-                }
-            });
-    });
+    // Fungsi untuk menampilkan SweetAlert konfirmasi hapus
+    function confirmDelete(beritaId) {
+        Swal.fire({
+            title: 'Konfirmasi Hapus',
+            text: 'Apakah Anda yakin ingin menghapus tatib ini?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, Hapus',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Jika pengguna mengonfirmasi untuk menghapus, kirimkan permintaan hapus ke server
+                document.getElementById('delete-form-' + beritaId).submit();
+            }
+        });
+    }
 </script>
