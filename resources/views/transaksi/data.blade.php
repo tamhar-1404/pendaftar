@@ -29,8 +29,7 @@
         }
     </style>
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href={{asset("transaksi/images/favicon.webp")}} />
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
 
     <!-- CSS (Font, Vendor, Icon, Plugins & Style CSS files) -->
 
@@ -105,6 +104,12 @@
             </div>
         </div>
     </div>
+    <style>
+        .placeholder-red::placeholder {
+          color: red;
+        }
+      </style>
+
     <div class="flex flex-row ">
         <div class=" top-0 h-[700px] left-0  w-1/4 bg-gray-light mt-4 ml-4" style="height: 100%">
             <div class="h-full flex flex-col  gap-5">
@@ -113,8 +118,8 @@
               </div>
               <div class="  h-7 mb-8 flex-col justify-center items-center">
                 <center>
-                    <input  class="border px-2 border-gray-300 w-[95%] placeholder:text-gray-600" id="searchInput" type="text" name="kodebarang" placeholder="cari menu" onchange="cari(this)">
-                </cesnter>
+                    <input class="border px-2 border-gray-900 w-[95%] placeholder-red" id="searchInput" type="text" name="kodebarang" onchange="cari(this)">
+  </center>
                 <div id="listmenu">
                 </div>
                 <div id="wadah">
@@ -124,7 +129,7 @@
                         <div id="{{$data->nama}}" class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
                             <div class="flex justify-between px-5">
                                 <div id="makanan" class="font-bold text-">{{$data->nama}}</div>
-                                <p class="text-gray-700">{{$data->harga}}</p>
+                                <p class="text-gray-700 px-2">Rp .{{ number_format($data->harga, 0, ',', '.') }}</p>
                             </div>
                         </div>
                         @empty
@@ -139,7 +144,7 @@
                         <div id="{{$data ->nama}}" class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
                             <div class="flex justify-between px-5">
                                 <div id="makanan" class="font-bold text-">{{$data->nama}}</div>
-                                <p class="text-gray-700">{{$data->harga}}</p>
+                                <p class="text-gray-700 px-2">Rp .{{ number_format($data->harga, 0, ',', '.') }}</p>
                             </div>
                         </div>
                         @empty

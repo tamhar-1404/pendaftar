@@ -1,8 +1,6 @@
-<!-- Navbar -->
 <nav id="main-navbar"
-    class="kamu-tak-diajak sticky relative left-0  right-0 top-0 flex z-10  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start fixed"
+    class="kamu-tak-diajak sticky relative left-0  right-0 top-0 flex z-9  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start fixed"
     data-te-navbar-ref>
-    <!-- Container wrapper -->
 
     <div class="flex w-full flex-wrap items-center justify-between px-4 ">
         <div class="flex gap-4">
@@ -25,24 +23,11 @@
                     </svg>
                 </span>
             </button>
-            <!-- Toggler -->
-
-            <!-- Search form -->
-
 
         </div>
 
-        <!-- Right links -->
         <ul class="relative flex items-center">
-            <!-- Notification dropdown -->
 
-
-
-
-
-
-
-            <!-- Avatar -->
             <li class="relative" data-te-dropdown-ref>
                 <a class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
                     href="#" id="navbarDropdownMenuLink" role="button" data-te-dropdown-toggle-ref
@@ -61,5 +46,4 @@
             </li>
         </ul>
     </div>
-    <!-- Container wrapper -->
 </nav>

@@ -33,7 +33,7 @@
 
         <div class="flex items-center space-x-1">
 
-            <h2 class=" text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl">
+            <h2 class="px-4 text-xl font-medium text-slate-700 line-clamp-1 dark:text-navy-50 lg:text-2xl">
                 Berita
             </h2>
 
@@ -61,7 +61,7 @@
         </div>
     </div>
     {{--  button tambah  --}}
-    <div class="flex justify-start mb-4">
+    <div class="flex justify-start mb-4 px-4">
         <a href="{{ route('Berita.create') }}"
             class="outline outline-offset-2 outline-1 bg-[#24AEE4] hover:bg-blue-700 text-white text-sm py-2 px-4 rounded">Tambah
             Berita</a>

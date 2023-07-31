@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Admin - Laporan Siswa</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <script>
         theme: {
             extend: {

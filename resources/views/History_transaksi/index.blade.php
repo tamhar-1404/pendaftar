@@ -17,6 +17,7 @@
           },
 
     </script>
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <link rel="stylesheet" href="load/load.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
@@ -108,7 +109,7 @@
                                     {{-- serch --}}
                                     <div class="mr-3">
                                         <form action="">
-                                            <label class="relative hidden sm:flex">
+                                            <label class="relative hidden sm:flex ">
                                                 <input
                                                     class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                                     placeholder="Search users..." type="text" name="cari"
@@ -125,22 +126,7 @@
                                             </label>
                                         </form>
                                     </div>
-                                    {{-- filter --}}
-                                    <ul class="relative flex items-center">
-                                        <!-- Notification dropdown -->
-                                        <div class="relative">
-                                            <a class="mr-4 flex items-center text-gray-500 hover:text-gray-700 focus:text-gray-700"
-                                                href="#" id="navbarDropdownMenuLink" role="button"
-                                                onclick="openModal()">
-                                                <span class="dark:black-gray-200 [&>svg]:w-3.5">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                                        viewBox="0 0 24 24">
-                                                        <path fill="currentColor"
-                                                            d="M3 5.109C3 4.496 3.47 4 4.05 4h16.79c.58 0 1.049.496 1.049 1.109 0 .612-.47 1.108-1.05 1.108H4.05C3.47 6.217 3 5.721 3 5.11zM5.798 12.5c0-.612.47-1.109 1.05-1.109H18.04c.58 0 1.05.497 1.05 1.109s-.47 1.109-1.05 1.109H6.848c-.58 0-1.05-.497-1.05-1.109zM9.646 18.783c-.58 0-1.05.496-1.05 1.108 0 .613.47 1.109 1.05 1.109h5.597c.58 0 1.05-.496 1.05-1.109 0-.612-.47-1.108-1.05-1.108H9.646z" />
-                                                    </svg>
-                                                </span>
-                                            </a>
-                                        </div>
+
 
                                         <!-- Modal -->
                                         <div id="modal"
