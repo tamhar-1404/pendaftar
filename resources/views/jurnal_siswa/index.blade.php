@@ -429,7 +429,7 @@
                                             <span class="sr-only">Close modal</span>
                                         </button>
                                         <div class="px-6 py-6 lg:px-8">
-                                            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Jurnal
+                                            <h3 class="mb-4 text-base font-medium text-gray-900 dark:text-white">Jurnal
                                             </h3>
                                             <form class="space-y-6" action="{{ route('jurnal_siswa.store') }}"
                                                 method="post" enctype="multipart/form-data">
