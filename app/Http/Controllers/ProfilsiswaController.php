@@ -6,6 +6,7 @@ use App\Models\Profilsiswa;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Siswa;
+use App\Models\LaporanSiswa;
 use App\Http\Requests\StoreProfilsiswaRequest;
 use App\Http\Requests\UpdateProfilsiswaRequest;
 use App\Models\Sp;
@@ -37,8 +38,10 @@ class ProfilsiswaController extends Controller
         else {
             $sp = 'Aman';
         }
+        $data = LaporanSiswa::Where('nama', Auth()->user()->name)->paginate(5);
+
         // dd($Siswa);
-        return view('profil_siswa.detail', compact('Siswa', 'sp'));
+        return view('profil_siswa.detail', compact('Siswa', 'sp','data'));
     }
 
     /**
