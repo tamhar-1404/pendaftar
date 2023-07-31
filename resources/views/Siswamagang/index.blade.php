@@ -527,11 +527,11 @@
         <div class="main-content">
             @include('Siswamagang.nav_siswa')
 
-            <div class="animate__animated p-6" :class="[$store.app.animation]">
+            <div class="animate__animated p-0" :class="[$store.app.animation]">
                 <!-- start main content section -->
                 <div x-data="sales">
-                    <div class="flex justify-between">
-                        <div class="justify-start">
+                    <div class="flex justify-between p-2 lg:p-6">
+                        <div class="justify-start ">
 
                             <h1>Dashboard</h1>
                         </div>
@@ -710,7 +710,7 @@
 
                     <div class="pt-5 lg:w-full  md: sm:w-10/12">
                         <div class="mb-6 grid gap-6 xl:grid-cols-3 lg:grid-cols-1">
-                            <div class="panel h-full xl:col-span-2">
+                            <div class="panel h-full xl:col-span-2 w-full ">
                                 <div class="mb-5 flex items-center dark:text-white-light">
                                     <h5 class="text-lg font-semibold">Jurnal</h5>
                                     <div x-data="dropdown" @click.outside="open = false"
@@ -735,11 +735,10 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="relative w-full ">
+                                <div class="relative w-full  ">
                                     {{-- grafik --}}
-                                    <div id="grafik_jurnal" class="w-[50%] lg:w-[100%] h-35 bg-white rounded-lg dark:bg-black shadow-md p-4">
+                                    <div id="grafik_jurnal" class="w-[100%] lg:w-[100%] h-35 bg-white rounded-lg dark:bg-black shadow-md p-4">
                                         <div class="w-full bg-white h-35 pb-5 text-same font-semibold dark:bg-transparent">
-                                            Tabel Jurnal 1
                                         </div>
                                     </div>
 
