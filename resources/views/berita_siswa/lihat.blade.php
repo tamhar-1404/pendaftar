@@ -1,7 +1,7 @@
 <main class="main mt-9 px-7 w-full pb-9  ">
     <div class="">
       <div class="">
-        <div class="card lg:p-6" >
+        <div class="card lg:p-6 md:p-5 p-4 " >
           <!-- Author -->
           <div>
             <div class="flex items-center justify-between">
@@ -106,50 +106,7 @@
                 </div>
               </div>
             </div>
-            <div class="mt-6 flex items-center space-x-3 sm:hidden">
-              <button
-                class="btn space-x-2 rounded-full border border-slate-300 px-4 text-xs+ font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4.5 w-4.5 text-slate-400 dark:text-navy-300"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                  />
-                </svg>
-
-                <span> Save</span>
-              </button>
-              <div class="flex">
-                <button
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <i class="fab fa-twitter text-base"></i>
-                </button>
-                <button
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <i class="fab fa-linkedin text-base"></i>
-                </button>
-                <button
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <i class="fab fa-instagram text-base"></i>
-                </button>
-                <button
-                  class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                >
-                  <i class="fab fa-facebook text-base"></i>
-                </button>
-              </div>
-            </div>
+           
           </div>
 
           <!-- Blog Post -->
