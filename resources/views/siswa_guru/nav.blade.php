@@ -162,8 +162,6 @@
                         @foreach ($guru as $guru )
                         <span><img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
                                 src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image" /></span>
-
-                        @endforeach
                     </a>
                     <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
                         class="top-11 w-[230px] !py-0 font-semibold text-dark ltr:right-0 rtl:left-0 dark:text-white-dark dark:text-white-light/90">
