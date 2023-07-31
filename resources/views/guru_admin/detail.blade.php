@@ -598,7 +598,6 @@
                                     @endforelse
 
                                 </table>
-                                {{ $guru_admin->appends(['cari' => request('cari')])->links() }}
                             </div>
                         </div>
 
