@@ -1367,12 +1367,20 @@
                                 </div>
                             </div>
 
-                            <div class="table-responsive font-semibold text-[#515365] dark:text-white-light">
-                                <table>
-                                    <tr class="text-sm bg-[#E2E8F0]">
-                                        <td scope="col" class="px-6 py-4">No</td>
-                                        <td scope="col" class="px-6 py-4">Tanggal pelanggaran</td>
-                                        <td scope="col" class="px-6 py-4">Deskripsi pelanggaran</td>
+                        <div class="table-responsive font-semibold text-[#515365] dark:text-white-light">
+                         <table>
+                            <tr class="text-sm bg-[#E2E8F0]">
+                                <td scope="col" class="px-6 py-4">No</td>
+                                <td scope="col" class="px-6 py-4">Tanggal pelanggaran</td>
+                                <td scope="col" class="px-6 py-4">Deskripsi pelanggaran</td>
+
+                                <td scope="col" class="px-6 py-4">Aksi</td>
+                            </tr>
+                            @forelse ($data as $pelangaran )
+                            <tr class="text-sm bg-[#E2E8F0] col-span-4">
+                                <td class="px-6 py-4" >{{$loop->iteration}}</td>
+                                <td class="px-6 py-4">{{$pelangaran->tanggal}}</td>
+                                <td class="px-6 py-4">{{$pelangaran->deskripsi}}</td>
 
                                         <td scope="col" class="px-6 py-4">Aksi</td>
                                     </tr>

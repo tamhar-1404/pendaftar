@@ -6,7 +6,7 @@
                 <a href="index-2.html" class="main-logo flex shrink-0 items-center">
                     <img class="inline w-20
                      ltr:-ml-1 rtl:-mr-1"
-                        src="{{ asset('assets_guru/images/LOGO HUMMASOFT 2.png') }}" alt="image" />
+                        src="assets_guru/images/LOGO HUMMASOFT 2.png" alt="image" />
                 </a>
 
                 <a href="javascript:;"
@@ -89,9 +89,13 @@
 
 
                 <div class="dropdown flex-shrink-0" x-data="dropdown" @click.outside="open = false">
+                    @foreach ($guru as $guru)
                     <a href="javascript:;" class="group relative" @click="toggle()">
-                            <span><img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                    src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image" /></span>
+                        @foreach ($guru as $guru )
+
+                        <span><img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
+                                src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image" /></span>
+                        @endforeach
                     </a>
                     <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
                         class="top-11 w-[230px] !py-0 font-semibold text-dark ltr:right-0 rtl:left-0 dark:text-white-dark dark:text-white-light/90">
@@ -137,6 +141,7 @@
                             </a>
                         </li>
                     </ul>
+                    @endforeach
                 </div>
             </div>
         </div>

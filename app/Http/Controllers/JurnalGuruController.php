@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Siswa;
 use App\Models\JurnalGuru;
 use App\Models\Jurnalsiswa;
-use App\Models\Siswa;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreJurnalGuruRequest;
 use App\Http\Requests\UpdateJurnalGuruRequest;
-use Auth;
+
 class JurnalGuruController extends Controller
 {
     /**
@@ -15,13 +17,25 @@ class JurnalGuruController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $guru = Auth::user();
+    public function index(Request $request)
+{
+    $guru = Auth::user();
+    if ($request->has('cari')) {
+        $keyword = $request->cari;
         $jurnals = Jurnalsiswa::where('sekolah', $guru->sekolah)
-                       ->get();
-        return view('jurnal_guru.index' , compact('jurnals'));
+            ->where(function($query) use ($keyword) {
+                $query->where('nama', 'LIKE', '%' . $keyword . '%')
+                      ->orWhere('tanggal', 'LIKE', '%' . $keyword . '%');
+            })
+            ->paginate(5);
+    } else {
+        $jurnals = Jurnalsiswa::where('sekolah', $guru->sekolah)
+            ->latest()
+            ->paginate(5);
     }
+
+    return view('jurnal_guru.index', compact('jurnals'));
+}
 
     /**
      * Show the form for creating a new resource.
