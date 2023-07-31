@@ -1221,12 +1221,17 @@
                             {{-- serch dan filter --}}
                             <div class="flex justify-start items-center">
                                 {{-- filter --}}
-                                
+
                                 {{-- serch --}}
                                 <div class="mr-4 ">
-                                    <input
-                                        class=" p-1 border-2 border-gray-300 rounded-xl outline-1 outline-gray-300 dark:bg-transparent"
-                                        type="text" placeholder="Cari...">
+                                    <form action="">
+                                        <label class="relative hidden px-4 mt-1 sm:flex">
+                                            <input
+                                                class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                placeholder="Search here..." type="text" name="cari"
+                                                value="{{ request('cari') }}" />
+                                        </label>
+                                    </form>
                                 </div>
                             </div>
                             {{-- <div class=" flex flex-wrap items-center">
@@ -1328,9 +1333,9 @@
                                                 </tr>
                                             </thead>
                                             @forelse ($jurnals as  $jurnal)
-                                                <?php
-                                                $no = 1;
-                                                ?>
+                                                @php
+                                                    $no = 1;
+                                                @endphp
                                                 <tbody>
                                                     <tr
                                                         class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
@@ -1360,6 +1365,15 @@
 
                                                 </tbody>
                                             @empty
+                                                <tr>
+                                                    <td colspan="6" class="p-8 text-center">
+                                                        <div class="flex justify-center items-center"
+                                                            style="justify-items: center">
+                                                            <img src="/admin/noData.png" alt=""
+                                                                width="300px">
+                                                        </div>
+                                                    </td>
+                                                </tr>
                                             @endforelse
                                         </table>
                                     </div>
@@ -1368,38 +1382,7 @@
                         </div>
                         {{-- end tabel --}}
                         {{-- paginate --}}
-                        <div class="flex justify-between">
-                            <p>
-                                Show 1 of 10 to 15 entries
-                            </p>
-                            <nav aria-label="Page navigation example">
-                                <ul class="list-style-none flex">
-                                    <li>
-                                        <a
-                                            class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
-                                    </li>
-                                    <li>
-                                        <a class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
-                                            href="#!">1</a>
-
-                                    </li>
-                                    <li aria-current="page">
-                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                            href="#!">2
-
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                            href="#!">3</a>
-                                    </li>
-                                    <li>
-                                        <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                            href="#!">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+                        {{ $jurnals->appends(['cari' => request('cari')])->links() }}
                     </div>
                 </div>
                 <!-- end main content section -->
@@ -1482,31 +1465,12 @@
                     <!-- Modal footer -->
                     <div
                         class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                        <button data-modal-hide="staticModal" type="button"
+                        <button data-modal-hide="staticModal{{ $jurnal->id }}" type="button"
                             class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                     </div>
-                    <div>
-                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                            Kegiatan
-                        </p>
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            {{ $jurnal->kegiatan }}
-                        </p>
-                    </div>
-                    <div>
-                        <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                            Bukti
-                        </p>
-                        <img src="{{ asset('storage/image/' . $jurnal->image) }}" alt="">
-                    </div>
+
                 </div>
-                <!-- Modal footer -->
-                <div
-                    class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                    <button type="button"
-                        class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        data-modal-hide="staticModal{{ $jurnal->id }}">Kembali</button>
-                </div>
+
             </div>
         </div>
     @endforeach

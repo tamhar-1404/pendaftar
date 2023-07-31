@@ -9,20 +9,21 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Guru - Edit Profile</title>
+    <link href="{{ asset('admin/assets/images/Logo.png') }}" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/perfect-scrollbar.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/style.css" />
-    <link defer rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/animate.css" />
-    <link rel="stylesheet" href="load/load.css">
-    <script src="assets_guru/js/perfect-scrollbar.min.js"></script>
-    <script defer src="assets_guru/js/popper.min.js"></script>
-    <script defer src="assets_guru/js/tippy-bundle.umd.min.js"></script>
-    <script defer src="assets_guru/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets_guru/css/perfect-scrollbar.min.css') }}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets_guru/css/style.css') }}" />
+    <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets_guru/css/animate.css') }}" />
+    <link rel="stylesheet" href="{{ asset('load/load.css') }}">
+    <script src="{{ asset('assets_guru/js/perfect-scrollbar.min.js') }}"></script>
+    <script defer src="{{ asset('assets_guru/js/popper.min.js') }}"></script>
+    <script defer src="{{ asset('assets_guru/js/tippy-bundle.umd.min.js') }}"></script>
+    <script defer src="{{ asset('assets_guru/js/sweetalert.min.js') }}"></script>
 </head>
 
 <body x-data="main" class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
@@ -38,7 +39,7 @@
         <div class="center">
             <div class="ring">
             </div>
-            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+            <img src="{{ asset('load/logo.png') }}" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
 
@@ -258,7 +259,7 @@
                 <div class="h-full bg-white dark:bg-[#0e1726]">
                     <div class="flex items-center justify-between px-4 py-3">
                         <a href="index-2.html" class="main-logo flex shrink-0 items-center">
-                            <img class="ml-[5px] w-8 flex-none" src="assets_guru/images/logo.svg" alt="image" />
+                            <img class="ml-[5px] w-8 flex-none" src="{{ asset('assets_guru/images/logo.svg') }}" alt="image" />
                             <span
                                 class="align-middle text-2xl font-semibold ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light lg:inline">VRISTO</span>
                         </a>
@@ -1272,39 +1273,37 @@
                                     </form>
                                 </div>
                             </template>
+
                             <template x-if="tab === 'home'">
                                 <div>
                                     <form
-                                        class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
+                                        class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
+                                        @csrf
+                                        @method('PUT')
                                         <h6 class="mb-5 text-lg font-bold">Informasi Pribadi</h6>
                                         <div class="flex flex-col sm:flex-row">
                                             <div class="mb-5 w-full sm:w-2/12 ltr:sm:mr-4 rtl:sm:ml-4">
-                                                <img src="{{ asset('lineone/images/avatar/avatar-5.jpg') }}" alt="image"
+                                                <img src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image"
                                                     class="mx-auto h-20 w-20 rounded-full object-cover md:h-32 md:w-32" />
                                             </div>
                                             <div class="grid flex-auto grid-cols-3 gap-5 sm:grid-cols-2">
                                                 <div>
                                                     <label for="ctnFile">Foto Profile</label>
-                                                    <input id="ctnFile" type="file" class="form-input file:py-2 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-primary" required />
-                                                </div>
-                                                <div>
-                                                    <label for="name">Nama Lengkap</label>
-                                                    <input id="name" type="text"
-                                                        placeholder="Jimmy Turner" class="form-input" />
+                                                    <input id="ctnFile" type="file" class="form-input file:py-2 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-primary" required name="image" />
                                                 </div>
                                                 <div>
                                                     <label for="email">Email</label>
                                                     <input id="email" type="email"
-                                                        placeholder="jimmy@gmail.com" class="form-input" />
+                                                        placeholder="example@gmail.com" class="form-input" value="{{ $guru->email }}" name="email"/>
                                                 </div>
                                                 <div>
                                                     <label for="telepon">No.Telepon</label>
                                                     <input id="telepon" type="text"
-                                                        placeholder="+1 (530) 555-12121" class="form-input" />
+                                                        placeholder="+62 xxx" class="form-input" value="{{ $guru->no }}" name="no"/>
                                                 </div>
                                             <div>
                                                 <label for="alamat">Alamat</label>
-                                                <textarea name="alamat" id="alamat" placeholder="New York" class="form-input"></textarea>
+                                                <textarea name="alamat" id="alamat" placeholder="New York" class="form-input">{{ $guru->alamat }}</textarea>
                                             </div>
                                             <div class="mt-3 sm:col-span-2 flex gap-4 justify-end">
                                                 <button type="button" class="btn btn-outline-danger">Batal</button>
@@ -1326,12 +1325,12 @@
         </div>
     </div>
 
-    <script src="assets_guru/js/alpine-collaspe.min.js"></script>
-    <script src="assets_guru/js/alpine-persist.min.js"></script>
-    <script defer src="assets_guru/js/alpine-ui.min.js"></script>
-    <script defer src="assets_guru/js/alpine-focus.min.js"></script>
-    <script defer src="assets_guru/js/alpine.min.js"></script>
-    <script src="assets_guru/js/custom.js"></script>
+    <script src="{{ asset('assets_guru/js/alpine-collaspe.min.js') }}"></script>
+    <script src="{{ asset('assets_guru/js/alpine-persist.min.js') }}"></script>
+    <script defer src="{{ asset('assets_guru/js/alpine-ui.min.js') }}"></script>
+    <script defer src="{{ asset('assets_guru/js/alpine-focus.min.js') }}"></script>
+    <script defer src="{{ asset('assets_guru/js/alpine.min.js') }}"></script>
+    <script src="{{ asset('assets_guru/js/custom.js') }}"></script>
 
     <script>
         document.addEventListener('alpine:init', () => {

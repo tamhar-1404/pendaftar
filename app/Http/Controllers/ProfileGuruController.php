@@ -19,8 +19,9 @@ class ProfileGuruController extends Controller
     public function index()
     {
         $siswa = Siswa::where('sekolah' , Auth()->user()->sekolah)->get();
-        $guru = Guru_admin::where('email' , Auth()->user()->email)->get();
-        return view('profileguru.index' , compact('guru' , 'siswa'));
+        $id_guru = Guru_admin::where('name', Auth()->user()->name)->first()->id;
+        $guru = Guru_admin::where('name' , Auth()->user()->name)->first();
+        return view('profileguru.index' , compact('guru' , 'siswa', 'id_guru'));
     }
 
     /**
@@ -61,9 +62,10 @@ class ProfileGuruController extends Controller
      * @param  \App\Models\ProfileGuru  $profileGuru
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProfileGuru $profileGuru)
+    public function edit($profileGuru)
     {
-        return view('profileguru.editprofile');
+        $guru = Guru_admin::find($profileGuru);
+        return view('profileguru.editprofile', compact('guru'));
     }
 
     /**

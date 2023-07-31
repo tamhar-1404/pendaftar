@@ -164,6 +164,7 @@ Route::middleware(['auth'])->group(function () {
         // Route khusus untuk guru
         // Pembimbing
         Route::get('profil/siswa/guru', [SiswaguruController::class, 'profilesiswa'])->name('profile/siswa/guru');
+        Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
         Route::resource('/guru', App\Http\Controllers\DashboardGuruController::class);
         Route::resource('/siswa_guru', App\Http\Controllers\SiswaGuruController::class);
         Route::resource('/alumni_guru', App\Http\Controllers\AlumniGuruController::class);
@@ -186,7 +187,6 @@ Route::resource('Lupapassword', App\Http\Controllers\LupaPasswordController::cla
 Route::post('/reset-password', [LupaPasswordController::class, 'update'])->name('password.update');
 Route::get('/reset-password/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
 
-Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
 Route::resource('/data', App\Http\Controllers\TransaksiController::class);
 Route::get('/nota', [TransaksiController::class , 'nota'])->name('nota');
 Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita.like');
