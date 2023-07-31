@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Storesiswa_guruRequest;
 use App\Http\Requests\Updatesiswa_guruRequest;
 use Auth;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class SiswaGuruController extends Controller
@@ -30,7 +29,7 @@ class SiswaGuruController extends Controller
             return view('siswa_guru.index', compact('siswas' , 'guru'));
         }
         $guru = Guru_admin::where('email', Auth()->user()->email)->get();
-        $siswas = Siswa::where([['role', 'Siswa'], ['sekolah', $sekolah]])->get();
+        $siswas = Siswa::where('role', 'siswa')->where('sekolah', Auth()->user()->sekolah)->get();
         return view('siswa_guru.index', compact('siswas' , 'guru'));
     }
 
@@ -67,7 +66,7 @@ class SiswaGuruController extends Controller
     }
     public function profilesiswa(Request $request)
     {
-        $Siswa=Siswa::find($request->id);   
+        $Siswa=Siswa::find($request->id);
         $pelanggaran = Laporansiswa::Where('name', $Siswa->name)->get();
         $sp = "Sp1";
         $guru = Guru_admin::where('email' , Auth()->user()->email)->get();
