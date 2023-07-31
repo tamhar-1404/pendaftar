@@ -395,7 +395,7 @@
                         @endphp
                         <p class="text-xl font-semibold mb-4 kamu-tak-diajak"><span class="text-red-600">Hari ini
                                 adalah : </span>
-                            {{ Carbon::now()->format('l') }}, {{ Carbon::now()->format('d-M-Y') }}</p>
+                             {{ Carbon::now()->format('d F Y') }}</p>
 
                         <div class="kamu-tak-diajak flex justify-between items-center">
                             @if (Auth::user()->Siswa->role == 'siswa')
@@ -409,7 +409,6 @@
                                             d="M12 4.5v15m7.5-7.5h-15" />
                                     </svg>
                                     <p class="kamu-tak-diajak">
-
                                         Tambah
                                     </p>
                                 </button>
