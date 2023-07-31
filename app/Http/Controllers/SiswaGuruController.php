@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Siswa_guru;
+use  App\Models\Siswa_guru;
 use App\Models\Siswa;
 use App\Models\Laporansiswa;
 use App\Models\Guru_admin;
@@ -100,3 +100,4 @@ class SiswaGuruController extends Controller
         //
     }
 }
+
