@@ -162,15 +162,12 @@ class BlogController extends Controller
 
     public function destroy($id)
     {
-        // Temukan data berita berdasarkan ID
         $blog = Blog::findOrFail($id);
-
-        // Hapus gambar terkait jika ada
         if ($blog->foto) {
             Storage::delete('Storage/Fotoberita/' . $blog->foto);
         }
-
-        // Hapus data berita
+        $relatedChildIds = $blog->comments->pluck('id');
+        Comment::whereIn('id', $relatedChildIds)->delete();
         $blog->delete();
 
         return redirect()->route('Berita.index')->with('success', 'Data berita berhasil dihapus');
