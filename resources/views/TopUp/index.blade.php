@@ -40,6 +40,15 @@
 </head>
 
 <body>
+    @if (session()->has('success'))
+        <script>
+            Swal.fire(
+                'Berhasil',
+                "{{ session('success') }}",
+                'success'
+            )
+        </script>
+    @endif
     <!-- screen loader -->
     <div
         class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
@@ -99,7 +108,7 @@
                             @endphp
                             <tbody>
                                 @forelse ($TopUp as $topup)
-                                    <form action="{{ route('TopUp.update', $topup->id) }}" method="post">
+                                    <form action="{{ route('TopUp.update', $topup->id) }}" method="post" id="submit-btn-terima-{{ $topup->id }}" onsubmit="tambah(event, {{ $topup->id }})">
                                         @method('PUT')
                                         @csrf
 
@@ -128,16 +137,11 @@
                                             <input type="hidden" value="Terima" name="status" id="">
                                             <td class="whitespace-nowrap px-6 py-2">
                                                 <div class="flex justify-between">
-                                                    <form id="confirmation-form-{{ $topup->id }}"
-                                                        action="{{ route('aproval.update', $topup->id) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        @method('PUT')
                                                         <input type="hidden" name="saldo" placeholder="Saldo"
                                                             value="{{ old('saldo', $topup->saldo) }}" required>
-                                                        <button type="submit" id="submit-btn-{{ $topup->id }}"
+                                                        <button type="submit" id="submit-btn-terima-{{ $topup->id }}"
                                                             class="border border-blue-400 px-4 py-1 rounded hover:bg-blue-500 hover:text-white"
-                                                            onclick="tambah(event, {{ $topup->id }})">
+                                                            onclick="">
                                                             <i class="fa fa-check-square-o"
                                                                 style="color:rgb(0, 204, 255);"></i>
 
@@ -172,6 +176,8 @@
                         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
                         <script>
                             function tambah(event, id) {
+                                event.preventDefault();
+
                                 Swal.fire({
                                     title: 'Konfirmasi',
                                     text: 'Apakah Anda yakin ingin menerima topup ini?',
@@ -190,28 +196,9 @@
                                     animation: false
                                 }).then((result) => {
                                     if (result.isConfirmed) {
-                                        Swal.fire({
-                                            title: 'Sukses',
-                                            text: 'Berhasil diterima!',
-                                            icon: 'success',
-                                            timer: 2000,
-                                            showConfirmButton: false,
-                                            background: '#f5f5f5',
-                                            customClass: {
-                                                icon: 'swal-icon',
-                                                popup: 'swal-popup',
-                                                title: 'swal-title',
-                                                confirmButton: 'swal-button swal-button--confirm'
-                                            },
-                                            animation: false
-                                        });
-                                        setTimeout(() => {
-                                            document.getElementById('confirm-form').submit();
-                                        }, 2000);
+                                        document.getElementById('submit-btn-terima-' + id).submit();
                                     }
                                 });
-                                x
-
                             }
                         </script>
                         <script>
