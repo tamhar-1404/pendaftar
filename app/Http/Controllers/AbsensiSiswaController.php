@@ -98,12 +98,13 @@ class AbsensiSiswaController extends Controller
         $terima = ApprovalIzin::where('status', 'terimaabsen')->where('nama', Auth::user()->name )
         ->latest()->paginate(5);
         $currentHour = now()->format('H:i');
-        $currentDay = now()->format('D');
+        $currentDay = now()->format('l');
         // dd($currentDay);
         // $currentDay = 'Sunday';
         $currentDateTime = date('Y-m-d');
         $data= ApprovalIzin::where('nama', Auth::user()->name)->where('tanggal',$currentDateTime)->count();
         if($currentDay !== 'Saturday' && $currentDay !== 'Sunday'){
+       
             if($data === 0){
                 if($currentHour > '16:00'){
                     ApprovalIzin::create([

@@ -114,18 +114,20 @@
                     <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}" />
                     <input type="hidden" id="waktu" name="jam" value="{{ date('H:i') }}" />
                     <input type="hidden" name="keterangan" value="Hadir">
+                    @if(Auth::user()->role == 'Siswa')
                     <button type="submit"
                         class=" button_absen border border-green-500 px-3 py-2 rounded-lg text-green-500  font-bold"
                         id="btnabsen">Absen</button>
+                    @endif
                 </form>
             @endif
         </div>
         <div>
-            @if (session()->has('error'))
-                <script>
-                    toastr.error("{{ session('error') }}")
-                </script>
-            @endif
+                @if (session()->has('error'))
+                    <script>
+                        toastr.error("{{ session('error') }}")
+                    </script>
+                @endif
         </div>
         {{-- serch dan filter --}}
         <div class="flex justify-end items-center ">

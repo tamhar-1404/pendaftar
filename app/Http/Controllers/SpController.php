@@ -7,6 +7,7 @@ use App\Http\Requests\StorespRequest;
 use App\Http\Requests\UpdatespRequest;
 use App\Mail\Sp as MailSp;
 use App\Mail\SpGuru;
+use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -51,7 +52,30 @@ class SpController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        if (Siswa::where('name', $request->nama)->first()->status_sp != null) {
+            if (Siswa::where('name', $request->nama)->first()->status_sp != 'SP 2') {
+                if ($request->keterangan == 'Sp1') {
+                    Siswa::where('name', $request->nama)->update([
+                        'status_sp' => 'SP 2',
+                    ]);
+                } else {
+                    Siswa::where('name', $request->nama)->update([
+                        'status_sp' => 'SP 2',
+                    ]);
+                }
+            }
+        }
+        else {
+            if ($request->keterangan == 'Sp1') {
+                Siswa::where('name', $request->nama)->update([
+                    'status_sp' => 'SP 1',
+                ]);
+            } else {
+                Siswa::where('name', $request->nama)->update([
+                    'status_sp' => 'SP 2',
+                ]);
+            }
+        }
         $this->validate($request, [
 
 
@@ -76,8 +100,10 @@ class SpController extends Controller
                     ];
                     Mail::to($user->email)->send(new MailSp($data));
                     $sekolah = $user->sekolah;
-                    $email_guru = User::where('sekolah', $sekolah)->where('role', 'guru')->first()->email;
-                    Mail::to($email_guru)->send(new SpGuru($data));
+                    if (User::where('sekolah', $sekolah)->where('role', 'guru')->exists()) {
+                        $email_guru = User::where('sekolah', $sekolah)->where('role', 'guru')->first()->email;
+                        Mail::to($email_guru)->send(new SpGuru($data));
+                    }
                 }
                 $image = $request->file('buktisp');
                 $iname = $image->hashName();
@@ -96,14 +122,15 @@ class SpController extends Controller
                 ];
                 Mail::to($user->email)->send(new MailSp($data));
                 $sekolah = $user->sekolah;
-                $email_guru = User::where('sekolah', $sekolah)->where('role', 'guru')->first()->email;
-                Mail::to($email_guru)->send(new SpGuru($data));
+                if (User::where('sekolah', $sekolah)->where('role', 'guru')->exists()) {
+                    $email_guru = User::where('sekolah', $sekolah)->where('role', 'guru')->first()->email;
+                    Mail::to($email_guru)->send(new SpGuru($data));
+                }
             }
             else {
                 $image = $request->file('buktisp');
                 $iname = $image->hashName();
                 $image->storeAs('public/image', $iname);
-
                 Sp::where('nama', $request->nama)->update([
                     'bukti_2' => $iname,
                     'deskripsi_2' => $request->deskripsi,
@@ -118,8 +145,10 @@ class SpController extends Controller
                 ];
                 Mail::to($user->email)->send(new MailSp($data));
                 $sekolah = $user->sekolah;
-                $email_guru = User::where('sekolah', $sekolah)->where('role', 'guru')->first()->email;
-                Mail::to($email_guru)->send(new SpGuru($data));
+                if (User::where('sekolah', $sekolah)->where('role', 'guru')->exists()) {
+                    $email_guru = User::where('sekolah', $sekolah)->where('role', 'guru')->first()->email;
+                    Mail::to($email_guru)->send(new SpGuru($data));
+                }
             }
         } else {
             if ($request->keterangan == 'Sp1') {
@@ -135,21 +164,23 @@ class SpController extends Controller
                 ]);
                 $user = User::where('name', $request->nama)->first();
                 $data = [
-                    'nama' => $user->name,
+                    'nama' => $user->nama,
                     'sp' => 'Sp 1',
                     'alasan' => $request->deskripsi,
                     'bukti' => $iname,
                 ];
                 Mail::to($user->email)->send(new MailSp($data));
                 $sekolah = $user->sekolah;
-                $email_guru = User::where('sekolah', $sekolah)->where('role', 'guru')->first()->email;
-                Mail::to($email_guru)->send(new SpGuru($data));
+                if (User::where('sekolah', $sekolah)->where('role', 'guru')->exists()) {
+                    $email_guru = User::where('sekolah', $sekolah)->where('role', 'guru')->first()->email;
+                    Mail::to($email_guru)->send(new SpGuru($data));
+                }
             } else {
                 $image = $request->file('buktisp');
                 $iname = $image->hashName();
                 $image->storeAs('public/image', $iname);
                 Sp::create([
-                    'nama' => $request->name,
+                    'nama' => $request->nama,
                     'bukti_2' => $iname,
                     'deskripsi_2' => $request->deskripsi,
                     'sp_2' => $request->keterangan,
@@ -157,15 +188,16 @@ class SpController extends Controller
                 $user = User::where('name', $request->nama)->first();
                 $sekolah = $user->sekolah;
                 $data = [
-                    'nama' => $user->name,
+                    'nama' => $user->nama,
                     'sp' => 'Sp 2',
                     'alasan' => $request->deskripsi,
                     'bukti' => $iname,
                 ];
                 Mail::to($user->email)->send(new MailSp($data));
-                $email_guru = User::where('sekolah', $sekolah)->where('role', 'guru')->first()->email;
-                Mail::to($email_guru)->send(new SpGuru($data));
-
+                if (User::where('sekolah', $sekolah)->where('role', 'guru')->exists()) {
+                    $email_guru = User::where('sekolah', $sekolah)->where('role', 'guru')->first()->email;
+                    Mail::to($email_guru)->send(new SpGuru($data));
+                }
             }
         }
         return redirect()->back();
