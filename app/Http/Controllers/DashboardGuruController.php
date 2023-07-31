@@ -29,7 +29,7 @@ class DashboardGuruController extends Controller
         $absen = Approvalizin::where('sekolah', Auth()->user()->sekolah)->count();
         $mou = MOU::all();
         $berita = Blog::all();
-        $guru = Guru_admin::where('email' , Auth()->user()->email)->get();
+        $guru = Guru_admin::where('name' , Auth()->user()->name)->first();
 
 
 

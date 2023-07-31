@@ -1216,7 +1216,7 @@
                             <div class="panel">
                                 <div class="mb-5 flex items-center justify-between">
                                     <h5 class="text-lg font-semibold dark:text-white-light">Profile</h5>
-                                    <a href="#" class="btn btn-info rounded-full p-2 ltr:ml-auto rtl:mr-auto">
+                                    <a href="{{ route('profileguru.edit', $id_guru) }}" class="btn btn-info rounded-full p-2 ltr:ml-auto rtl:mr-auto">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
                                             <path opacity="0.5" d="M4 22H20" stroke="currentColor"
