@@ -44,10 +44,17 @@
     <script defer src="siswa/js/popper.min.js"></script>
     <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
-        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
     <style>
         /* Menyembunyikan tombol cetak saat mencetak */
         @media print {
@@ -132,7 +139,7 @@
 
     <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
         <!-- start sidebar section -->
-        <div :class="{ 'dark text-white-dark': $store.app.semidark }">
+        <div :class="{ 'dark text-white-dark': $store.app.semidark }" class="kamu-tak-diajak">
             <nav x-data="sidebar"
                 class="sidebar fixed top-0 bottom-0 z-50 h-full min-h-screen w-[260px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] transition-all duration-300">
                 <div class="h-full bg-white dark:bg-[#0e1726]">
@@ -361,13 +368,19 @@
                                 {{ Auth::user()->name }}</span></span>
                     </div>
                     @error('tanggal')
-                        <div class="text-danger"><b>Anda telah mengisi jurnal pada hari ini</b></div>
+                        <script>
+                            toastr.error("Anda telah mengisi jurnal pada hari ini")
+                        </script>
                     @enderror
                     @error('image')
-                        <div class="text-danger"><b>Ekstensi gambar hanya: png,jpg, dan jpeg</b></div>
+                        <script>
+                            toastr.error("Ekstensi gambar hanya: png,jpg, dan jpeg")
+                        </script>
                     @enderror
                     @error('kegiatan')
-                        <div class="text-danger"><b>Kegiatan tidak boleh kosong</b></div>
+                        <script>
+                            toastr.error("Kegiatan tidak boleh kosong")
+                        </script>
                     @enderror
                     @if (session()->has('error'))
                         <div class="text-danger"><b>{{ session('error') }}</b></div>
@@ -378,8 +391,8 @@
                         @php
                             use Carbon\Carbon;
                         @endphp
-                        <p class="text-base font-semibold mb-4"><span class="text-red-600">Hari ini adalah : </span>
-                           {{Carbon::now()->format('d F Y')}}</p>
+                        <p class="text-xl font-semibold mb-4 kamu-tak-diajak"><span class="text-red-600">Hari ini adalah : </span>
+                            {{Carbon::now()->format('l')}}, {{Carbon::now()->format('d-M-Y')}}</p>
 
                         <div class="kamu-tak-diajak flex justify-between items-center">
                             <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
@@ -471,16 +484,6 @@
                                         </form>
                                     </div>
                                     {{-- filter --}}
-                                    <div
-                                        class="kamu-tak-diajak border-2 rounded-full border-gray-400 flex items-center p-1 mr-2 ">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor"
-                                            class="  w-5 h-5 kamu-tak-diajak">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                class="kamu-tak-diajak"
-                                                d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
-                                        </svg>
-                                    </div>
                                 </div>
                                 <div class=" lg:flex hidden">
                                     <a href="/export-to-docx" class="kamu-tak-diajak">
