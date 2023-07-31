@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFz2uJRJw1++wJ/E=" crossorigin="anonymous"></script>
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
 <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
     <div class="main-content">
         {{-- @include('aproval.layout') --}}

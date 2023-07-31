@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <script>
         theme: {
             extend: {
