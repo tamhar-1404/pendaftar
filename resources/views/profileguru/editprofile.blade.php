@@ -9,20 +9,21 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Guru - Edit Profile</title>
+    <link href="{{ asset('admin/assets/images/Logo.png') }}" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/perfect-scrollbar.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/style.css" />
-    <link defer rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/animate.css" />
-    <link rel="stylesheet" href="load/load.css">
-    <script src="assets_guru/js/perfect-scrollbar.min.js"></script>
-    <script defer src="assets_guru/js/popper.min.js"></script>
-    <script defer src="assets_guru/js/tippy-bundle.umd.min.js"></script>
-    <script defer src="assets_guru/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets_guru/css/perfect-scrollbar.min.css') }}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets_guru/css/style.css') }}" />
+    <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets_guru/css/animate.css') }}" />
+    <link rel="stylesheet" href="{{ asset('load/load.css') }}">
+    <script src="{{ asset('assets_guru/js/perfect-scrollbar.min.js') }}"></script>
+    <script defer src="{{ asset('assets_guru/js/popper.min.js') }}"></script>
+    <script defer src="{{ asset('assets_guru/js/tippy-bundle.umd.min.js') }}"></script>
+    <script defer src="{{ asset('assets_guru/js/sweetalert.min.js') }}"></script>
 </head>
 
 <body x-data="main" class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
@@ -38,7 +39,7 @@
         <div class="center">
             <div class="ring">
             </div>
-            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+            <img src="{{ asset('load/logo.png') }}" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
 
@@ -258,7 +259,7 @@
                 <div class="h-full bg-white dark:bg-[#0e1726]">
                     <div class="flex items-center justify-between px-4 py-3">
                         <a href="index-2.html" class="main-logo flex shrink-0 items-center">
-                            <img class="ml-[5px] w-8 flex-none" src="assets_guru/images/logo.svg" alt="image" />
+                            <img class="ml-[5px] w-8 flex-none" src="{{ asset('assets_guru/images/logo.svg') }}" alt="image" />
                             <span
                                 class="align-middle text-2xl font-semibold ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light lg:inline">VRISTO</span>
                         </a>
@@ -1272,6 +1273,7 @@
                                     </form>
                                 </div>
                             </template>
+
                             <template x-if="tab === 'home'">
                                 <div>
                                     <form
@@ -1323,12 +1325,12 @@
         </div>
     </div>
 
-    <script src="assets_guru/js/alpine-collaspe.min.js"></script>
-    <script src="assets_guru/js/alpine-persist.min.js"></script>
-    <script defer src="assets_guru/js/alpine-ui.min.js"></script>
-    <script defer src="assets_guru/js/alpine-focus.min.js"></script>
-    <script defer src="assets_guru/js/alpine.min.js"></script>
-    <script src="assets_guru/js/custom.js"></script>
+    <script src="{{ asset('assets_guru/js/alpine-collaspe.min.js') }}"></script>
+    <script src="{{ asset('assets_guru/js/alpine-persist.min.js') }}"></script>
+    <script defer src="{{ asset('assets_guru/js/alpine-ui.min.js') }}"></script>
+    <script defer src="{{ asset('assets_guru/js/alpine-focus.min.js') }}"></script>
+    <script defer src="{{ asset('assets_guru/js/alpine.min.js') }}"></script>
+    <script src="{{ asset('assets_guru/js/custom.js') }}"></script>
 
     <script>
         document.addEventListener('alpine:init', () => {
