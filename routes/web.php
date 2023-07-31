@@ -163,7 +163,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:guru'])->group(function () {
         // Route khusus untuk guru
         // Pembimbing
-        Route::get('profil/siswa/guru', [SiswaguruController::class, 'profilesiswa'])->name('profile/siswa/guru');
+        Route::get('profil/siswa/guru', [SiswaguruController::class, 'profilesiswa'])->name('profile.siswa.guru');
         Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
         Route::resource('/guru', App\Http\Controllers\DashboardGuruController::class);
         Route::resource('/siswa_guru', App\Http\Controllers\SiswaGuruController::class);

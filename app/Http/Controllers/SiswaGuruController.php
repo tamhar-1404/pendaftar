@@ -67,10 +67,11 @@ class SiswaGuruController extends Controller
     public function profilesiswa(Request $request)
     {
         $Siswa=Siswa::find($request->id);
-        $pelanggaran = Laporansiswa::Where('name', $Siswa->name)->get();
+        $pelanggaran = Laporansiswa::where('name', $Siswa->name)->get();
         $sp = "Sp1";
         $guru = Guru_admin::where('email' , Auth()->user()->email)->get();
-        return view ('profilesiswa_guru.index', compact('Siswa', 'guru', 'sp', 'pelanggaran'));}
+        return view ('profilesiswa_guru.index', compact('Siswa', 'guru', 'sp', 'pelanggaran'));
+    }
     /**
     * Update the specified resource in storage.
     *
