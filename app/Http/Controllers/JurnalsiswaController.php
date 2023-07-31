@@ -32,7 +32,8 @@ class JurnalsiswaController extends Controller
     public function index(Request $request)
     {
         $hariIni = Carbon::now()->format('l');
-        if ($hariIni != 'Saturday' OR $hariIni != 'Sunday') {
+        if ($hariIni !== 'Saturday' && $hariIni !== 'Sunday') {
+            
             $jam = Carbon::now()->format('H-i');
             if ($jam > '21-00') {
                 $hari = Carbon::now()->format('Y-m-d');
@@ -89,7 +90,7 @@ class JurnalsiswaController extends Controller
     {
         $hariIni = Carbon::now()->format('l');
         if ($hariIni == 'Saturday' OR $hariIni == 'Sunday') {
-            return back()->with('error', 'Hari ini libur');
+            return redirect()->back()->with('error', 'Hari ini libur');
         } else {
 
             $hari = Carbon::now()->format('Y-m-d');

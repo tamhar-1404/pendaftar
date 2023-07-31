@@ -58,9 +58,9 @@
 
             </a>
         </div>
-        <div class=" w-full  flex items-center" style="height: 100%">
+        <div class=" w-full   items-center hidden md:flex" style="height: 100%">
             <div class="w-full bg-gray-50 flex justify-center pt-5 ">
-                <div class="lg:w-1/2">
+                <div class="md:w-1/2 ">
                     @include('login.svg')
                 </div>
             </div>
@@ -256,6 +256,7 @@
                                         class="font-light italic bg-red">(opsional)</span> :</label>
                                 <input type="file" id="skck" name="skck"
                                     class="w-full text-sm px-4 py-1 border rounded">
+                                <div id="file-warning-skck" class="text-red-500 text-sm mt-1"></div>
                             </div>
                             <div class="mb-4">
                                 <label for="cv" class="block font-bold text-sm mb-1">CV:</label>
@@ -443,6 +444,38 @@
                 return allowedExtensions.includes(fileExtension);
             }
         });
+        document.addEventListener("DOMContentLoaded", function() {
+            const nextButton5 = document.getElementById("nextStep3");
+            const fileInput5 = document.getElementById("skck"); // Note: Changed 'fileInput' to 'photo'
+            const fileWarning5 = document.getElementById("file-warning-skck");
+
+            nextButton5.addEventListener("click", function() {
+                if (fileInput5.files.length === 0) {
+                    // File input is empty, no need to show the warning
+                    fileWarning5.textContent = "";
+                    return;
+                }
+
+                if (!validateFileType(fileInput5)) {
+                    fileWarning5.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
+                } else {
+                    fileWarning5.textContent = ""; // Clear the warning if the file is valid
+                    // Perform any other actions here to proceed to the next step if needed
+                }
+            });
+
+            function validateFileType(input) {
+                const allowedExtensions = ["jpg", "jpeg", "png"]; // Allowed file extensions
+                const fileName = input.value;
+                const fileExtension = fileName.split('.').pop().toLowerCase(); // Get the file extension
+                if (allowedExtensions.includes(fileExtension)) {
+                console.log("File extension is allowed.");
+                } else {
+                console.log("File extension is not allowed.");
+                }
+                return allowedExtensions.includes(fileExtension);
+            }
+        });
 
 
         document.addEventListener("DOMContentLoaded", function() {
@@ -560,6 +593,46 @@
 
                     }
                 });
+
+                inputs.forEach(function(input) {
+                if (input.type === "file") {
+                    if (input.files.length === 0) {
+                        var errorMessage = input.parentNode.querySelector(".error-message");
+
+                        if (!errorMessage) {
+                            errorMessage = document.createElement("span");
+                            errorMessage.className = "error-message text-red-500 text-sm";
+                            input.parentNode.appendChild(errorMessage);
+                        }
+
+                        errorMessage.textContent = "Please select a file.";
+
+                        isValid = false;
+                         }else if (!validateFileType(input)) {
+                            var errorMessage = input.parentNode.querySelector(".error-message");
+
+                            if (!errorMessage) {
+                                errorMessage = document.createElement("span");
+                                errorMessage.className = "error-message text-red-500 text-sm";
+                                input.parentNode.appendChild(errorMessage);
+                            }
+
+                            isValid = false;
+                        } else {
+                        var errorMessage = input.parentNode.querySelector(".error-message");
+                        if (errorMessage) {
+                            errorMessage.remove();
+                        }
+                    }
+                }
+            });
+
+
+
+
+
+
+
 
 
 
