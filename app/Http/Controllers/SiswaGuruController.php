@@ -8,6 +8,8 @@ use App\Models\Guru_admin;
 use App\Http\Requests\Storesiswa_guruRequest;
 use App\Http\Requests\Updatesiswa_guruRequest;
 use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class SiswaGuruController extends Controller
 {
@@ -16,10 +18,17 @@ class SiswaGuruController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $guru = Guru_admin::where('email' , Auth()->user()->email)->get();
-        $siswas = Siswa::where('role', 'Siswa')->get();
+        $sekolah = FacadesAuth::user()->sekolah;
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $guru = Guru_admin::where('email' , Auth()->user()->email)->get();
+            $siswas = Siswa::where([['name', 'LIKE', '%'.$keyword.'%'],['role', 'Siswa'], ['sekolah', $sekolah]])->get();
+            return view('siswa_guru.index', compact('siswas' , 'guru'));
+        }
+        $guru = Guru_admin::where('email', Auth()->user()->email)->get();
+        $siswas = Siswa::where([['role', 'Siswa'], ['sekolah', $sekolah]])->get();
         return view('siswa_guru.index', compact('siswas' , 'guru'));
     }
 
