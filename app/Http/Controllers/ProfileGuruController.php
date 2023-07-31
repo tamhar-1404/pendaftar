@@ -12,6 +12,7 @@ use App\Models\User;
 use Faker\Core\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileGuruController extends Controller
@@ -135,5 +136,21 @@ class ProfileGuruController extends Controller
     public function destroy(ProfileGuru $profileGuru)
     {
         //
+    }
+
+    public function updatePassword(Request $request) {
+        $request->validate([
+            'old_password' => 'required',
+            'password' => 'required|min:6|confirmed',
+        ]);
+        $user_id = auth()->user()->id;
+        if (Hash::check($request->old_password, User::find($user_id)->password)) {
+            User::find($user_id)->update([
+                'password' => Hash::make($request->password),
+            ]);
+            return redirect()->route('profileguru.index')->with('success', 'Berhasil mengganti password');
+        } else {
+            return back()->with('error', 'Password salah');
+        }
     }
 }
