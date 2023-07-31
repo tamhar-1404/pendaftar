@@ -117,7 +117,7 @@ class TopUpController extends Controller
         $saldo = ['saldo'=> $request->saldo, 'total_saldo'=>$user->saldo, 'name'=>$user->name];
         Mail::to($user->email)->send(new TerimaTopup($saldo));
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menerima top up');
     }
 
 

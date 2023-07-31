@@ -67,7 +67,6 @@
             padding: 2rem;
         }
     </style>
-    <!-- screen loader -->
     <div
         class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
