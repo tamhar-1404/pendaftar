@@ -89,7 +89,7 @@
 
 
                 <div class="dropdown" x-data="dropdown" @click.outside="open = false">
-                   
+
                     <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
                         class="top-11 w-[300px] divide-y !py-0 text-dark ltr:-right-2 rtl:-left-2 dark:divide-white/10 dark:text-white-dark sm:w-[350px]">
                         <li>
@@ -195,7 +195,7 @@
                                 Profile</a>
                         </li>
                         <li class="border-t border-white-light dark:border-white-light/10">
-                            <a href="{{ route('keluar') }}" class="!py-3 text-danger" @click="toggle">
+                            <a href="{{route('keluar')}}" class="!py-3 text-danger" @click="toggle">
                                 <svg class="h-4.5 w-4.5 rotate-90 ltr:mr-2 rtl:ml-2" width="18" height="18"
                                     viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.5"
