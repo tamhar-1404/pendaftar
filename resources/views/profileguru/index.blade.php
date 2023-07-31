@@ -1230,7 +1230,6 @@
                                         </svg>
                                     </a>
                                 </div>
-                                @foreach ($guru as $guru)
                                     <div class="mb-5">
                                         <div class="flex flex-col items-center justify-center">
                                             <img src="{{ asset('storage/guru_image/' . $guru->image) }}"
@@ -1295,7 +1294,6 @@
                                             </li>
                                         </ul>
                                     </div>
-                                @endforeach
                             </div>
                             <div class="panel lg:col-span-2 xl:col-span-3">
                                 <div class="mb-5">

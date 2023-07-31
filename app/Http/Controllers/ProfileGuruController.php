@@ -20,7 +20,7 @@ class ProfileGuruController extends Controller
     {
         $siswa = Siswa::where('sekolah' , Auth()->user()->sekolah)->get();
         $id_guru = Guru_admin::where('name', Auth()->user()->name)->first()->id;
-        $guru = Guru_admin::where('name' , Auth()->user()->name)->get();
+        $guru = Guru_admin::where('name' , Auth()->user()->name)->first();
         return view('profileguru.index' , compact('guru' , 'siswa', 'id_guru'));
     }
 
