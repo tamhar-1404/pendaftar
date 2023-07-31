@@ -199,6 +199,7 @@ class ProfilsiswaController extends Controller
     }
 
     public function ganti_password(Request $request) {
+        
         $request->validate([
             'old_password' => 'required',
             'password' => 'required|min:6|confirmed',
@@ -211,7 +212,7 @@ class ProfilsiswaController extends Controller
             return redirect()->route('profile_siswa')->with('success', 'Berhasil mengedit password');
         }
         else {
-            return back()->with('error', 'Password lama tidak sama');
+            return redirect()->back()->with('error', 'Password lama tidak sama');
         }
     }
 }

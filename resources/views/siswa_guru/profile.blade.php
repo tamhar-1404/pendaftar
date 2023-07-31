@@ -1,35 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
+{{--  <!-- Mirrored from html.vristo.sbthemes.com/users-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:50 GMT -->  --}}
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Guru - Dashboad</title>
+    <title>Guru - Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        theme: {
-            extend: {
-                blur: {
-                    xs: '3px',
-                }
-            },
-        },
-
-    </script>
-    <link rel="icon" type="image/x-icon" href="admin/favicon.png" />
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/perfect-scrollbar.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/style.css" />
-    <link defer rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-    <script src="assets_guru/js/perfect-scrollbar.min.js"></script>
-    <script defer src="assets_guru/js/popper.min.js"></script>
-    <script defer src="assets_guru/js/tippy-bundle.umd.min.js"></script>
-    <script defer src="assets_guru/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{asset('assets_guru/css/perfect-scrollbar.min.css')}}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{asset('assets_guru/css/style.css')}}" />
+    <link defer rel="stylesheet" type="text/css" media="screen" href="{{asset('assets_guru/css/animate.css')}}" />
+    <link rel="stylesheet" href="{{asset('load/load.css')}}">
+    <script src="{{asset('assets_guru/js/perfect-scrollbar.min.js')}}"></script>
+    <script defer src="{{asset('assets_guru/js/popper.min.js')}}"></script>
+    <script defer src="{{asset('assets_guru/js/tippy-bundle.umd.min.js')}}"></script>
+    <script defer src="{{asset('assets_guru/js/sweetalert.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body x-data="main" class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
@@ -39,22 +33,17 @@
     <!-- sidebar menu overlay -->
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>
+
     <!-- screen loader -->
     <div
-        class="screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
-        <svg width="64" height="64" viewBox="0 0 135 135" xmlns="http://www.w3.org/2000/svg" fill="#4361ee">
-            <path
-                d="M67.447 58c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zm9.448 9.447c0 5.523 4.477 10 10 10 5.522 0 10-4.477 10-10s-4.478-10-10-10c-5.523 0-10 4.477-10 10zm-9.448 9.448c-5.523 0-10 4.477-10 10 0 5.522 4.477 10 10 10s10-4.478 10-10c0-5.523-4.477-10-10-10zM58 67.447c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10z">
-                <animateTransform attributeName="transform" type="rotate" from="0 67 67" to="-360 67 67" dur="2.5s"
-                    repeatCount="indefinite" />
-            </path>
-            <path
-                d="M28.19 40.31c6.627 0 12-5.374 12-12 0-6.628-5.373-12-12-12-6.628 0-12 5.372-12 12 0 6.626 5.372 12 12 12zm30.72-19.825c4.686 4.687 12.284 4.687 16.97 0 4.686-4.686 4.686-12.284 0-16.97-4.686-4.687-12.284-4.687-16.97 0-4.687 4.686-4.687 12.284 0 16.97zm35.74 7.705c0 6.627 5.37 12 12 12 6.626 0 12-5.373 12-12 0-6.628-5.374-12-12-12-6.63 0-12 5.372-12 12zm19.822 30.72c-4.686 4.686-4.686 12.284 0 16.97 4.687 4.686 12.285 4.686 16.97 0 4.687-4.686 4.687-12.284 0-16.97-4.685-4.687-12.283-4.687-16.97 0zm-7.704 35.74c-6.627 0-12 5.37-12 12 0 6.626 5.373 12 12 12s12-5.374 12-12c0-6.63-5.373-12-12-12zm-30.72 19.822c-4.686-4.686-12.284-4.686-16.97 0-4.686 4.687-4.686 12.285 0 16.97 4.686 4.687 12.284 4.687 16.97 0 4.687-4.685 4.687-12.283 0-16.97zm-35.74-7.704c0-6.627-5.372-12-12-12-6.626 0-12 5.373-12 12s5.374 12 12 12c6.628 0 12-5.373 12-12zm-19.823-30.72c4.687-4.686 4.687-12.284 0-16.97-4.686-4.686-12.284-4.686-16.97 0-4.687 4.686-4.687 12.284 0 16.97 4.686 4.687 12.284 4.687 16.97 0z">
-                <animateTransform attributeName="transform" type="rotate" from="0 67 67" to="360 67 67" dur="8s"
-                    repeatCount="indefinite" />
-            </path>
-        </svg>
+        class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+        <div class="center">
+            <div class="ring">
+            </div>
+            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+        </div>
     </div>
+
     <!-- scroll to top button -->
     <div class="fixed bottom-6 z-50 ltr:right-6 rtl:left-6" x-data="scrollToTop">
         <template x-if="showTopButton">
@@ -95,7 +84,8 @@
                     </a>
                     <h4 class="mb-1 dark:text-white">TEMPLATE CUSTOMIZER</h4>
                     <p class="text-white-dark">Set preferences that will be cookied for your live preview
-                        demonstration.</p>
+                        demonstration.
+                    </p>
                 </div>
                 <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
                     <h5 class="mb-1 text-base leading-none dark:text-white">Color Scheme</h5>
@@ -109,13 +99,17 @@
                                 <circle cx="12" cy="12" r="5" stroke="currentColor"
                                     stroke-width="1.5"></circle>
                                 <path d="M12 2V4" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round"></path>
+                                    stroke-linecap="round">
+                                </path>
                                 <path d="M12 20V22" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round"></path>
+                                    stroke-linecap="round">
+                                </path>
                                 <path d="M4 12L2 12" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round"></path>
+                                    stroke-linecap="round">
+                                </path>
                                 <path d="M22 12L20 12" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round"></path>
+                                    stroke-linecap="round">
+                                </path>
                                 <path opacity="0.5" d="M19.7778 4.22266L17.5558 6.25424" stroke="currentColor"
                                     stroke-width="1.5" stroke-linecap="round"></path>
                                 <path opacity="0.5" d="M4.22217 4.22266L6.44418 6.25424" stroke="currentColor"
@@ -155,11 +149,12 @@
                         </button>
                     </div>
                 </div>
+
                 <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
                     <h5 class="mb-1 text-base leading-none dark:text-white">Navigation Position</h5>
                     <p class="text-xs text-white-dark">Select the primary navigation paradigm for your app.</p>
-                    <div class="mt-3">
-                        <button id="horizontalButton" type="button" class="btn"
+                    <div class="mt-3 grid grid-cols-3 gap-2">
+                        <button type="button" class="btn"
                             :class="[$store.app.menu === 'horizontal' ? 'btn-primary' : 'btn-outline-primary']"
                             @click="$store.app.toggleMenu('horizontal')">
                             Horizontal
@@ -175,99 +170,90 @@
                             Collapsible
                         </button>
                     </div>
+                    <div class="mt-5 text-primary">
+                        <label class="mb-0 inline-flex">
+                            <input x-model="$store.app.semidark" type="checkbox" :value="true"
+                                class="form-checkbox" @change="$store.app.toggleSemidark()" />
+                            <span>Semi Dark (Sidebar & Header)</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
+                    <h5 class="mb-1 text-base leading-none dark:text-white">Layout Style</h5>
+                    <p class="text-xs text-white-dark">Select the primary layout style for your app.</p>
+                    <div class="mt-3 flex gap-2">
+                        <button type="button" class="btn flex-auto"
+                            :class="[$store.app.layout === 'boxed-layout' ? 'btn-primary' : 'btn-outline-primary']"
+                            @click="$store.app.toggleLayout('boxed-layout')">
+                            Box
+                        </button>
+                        <button type="button" class="btn flex-auto"
+                            :class="[$store.app.layout === 'full' ? 'btn-primary' : 'btn-outline-primary']"
+                            @click="$store.app.toggleLayout('full')">
+                            Full
+                        </button>
+                    </div>
+                </div>
+                <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
+                    <h5 class="mb-1 text-base leading-none dark:text-white">Direction</h5>
+                    <p class="text-xs text-white-dark">Select the direction for your app.</p>
+                    <div class="mt-3 flex gap-2">
+                        <button type="button" class="btn flex-auto"
+                            :class="[$store.app.rtlClass === 'ltr' ? 'btn-primary' : 'btn-outline-primary']"
+                            @click="$store.app.toggleRTL('ltr')">
+                            LTR
+                        </button>
+                        <button type="button" class="btn flex-auto"
+                            :class="[$store.app.rtlClass === 'rtl' ? 'btn-primary' : 'btn-outline-primary']"
+                            @click="$store.app.toggleRTL('rtl')">
+                            RTL
+                        </button>
+                    </div>
                 </div>
 
-                <script>
-                    document.addEventListener("DOMContentLoaded", function() {
-                        const horizontalButton = document.getElementById("horizontalButton");
-                        horizontalButton.classList.add("btn-primary");
-                        horizontalButton.click();
-                    });
-                </script>
-                <div class="mt-5 text-primary">
-                    <label class="mb-0 inline-flex">
-                        <input x-model="$store.app.semidark" type="checkbox" :value="true"
-                            class="form-checkbox" @change="$store.app.toggleSemidark()" />
-                        <span>Semi Dark (Sidebar & Header)</span>
-                    </label>
+                <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
+                    <h5 class="mb-1 text-base leading-none dark:text-white">Navbar Type</h5>
+                    <p class="text-xs text-white-dark">Sticky or Floating.</p>
+                    <div class="mt-3 flex items-center gap-3 text-primary">
+                        <label class="mb-0 inline-flex">
+                            <input x-model="$store.app.navbar" type="radio" value="navbar-sticky"
+                                class="form-radio" @change="$store.app.toggleNavbar()" />
+                            <span>Sticky</span>
+                        </label>
+                        <label class="mb-0 inline-flex">
+                            <input x-model="$store.app.navbar" type="radio" value="navbar-floating"
+                                class="form-radio" @change="$store.app.toggleNavbar()" />
+                            <span>Floating</span>
+                        </label>
+                        <label class="mb-0 inline-flex">
+                            <input x-model="$store.app.navbar" type="radio" value="navbar-static"
+                                class="form-radio" @change="$store.app.toggleNavbar()" />
+                            <span>Static</span>
+                        </label>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
-                <h5 class="mb-1 text-base leading-none dark:text-white">Layout Style</h5>
-                <p class="text-xs text-white-dark">Select the primary layout style for your app.</p>
-                <div class="mt-3 flex gap-2">
-                    <button type="button" class="btn flex-auto"
-                        :class="[$store.app.layout === 'boxed-layout' ? 'btn-primary' : 'btn-outline-primary']"
-                        @click="$store.app.toggleLayout('boxed-layout')">
-                        Box
-                    </button>
-                    <button type="button" class="btn flex-auto"
-                        :class="[$store.app.layout === 'full' ? 'btn-primary' : 'btn-outline-primary']"
-                        @click="$store.app.toggleLayout('full')">
-                        Full
-                    </button>
-                </div>
-            </div>
-            <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
-                <h5 class="mb-1 text-base leading-none dark:text-white">Direction</h5>
-                <p class="text-xs text-white-dark">Select the direction for your app.</p>
-                <div class="mt-3 flex gap-2">
-                    <button type="button" class="btn flex-auto"
-                        :class="[$store.app.rtlClass === 'ltr' ? 'btn-primary' : 'btn-outline-primary']"
-                        @click="$store.app.toggleRTL('ltr')">
-                        LTR
-                    </button>
-                    <button type="button" class="btn flex-auto"
-                        :class="[$store.app.rtlClass === 'rtl' ? 'btn-primary' : 'btn-outline-primary']"
-                        @click="$store.app.toggleRTL('rtl')">
-                        RTL
-                    </button>
-                </div>
-            </div>
 
-            <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
-                <h5 class="mb-1 text-base leading-none dark:text-white">Navbar Type</h5>
-                <p class="text-xs text-white-dark">Sticky or Floating.</p>
-                <div class="mt-3 flex items-center gap-3 text-primary">
-                    <label class="mb-0 inline-flex">
-                        <input x-model="$store.app.navbar" type="radio" value="navbar-sticky" class="form-radio"
-                            @change="$store.app.toggleNavbar()" />
-                        <span>Sticky</span>
-                    </label>
-                    <label class="mb-0 inline-flex">
-                        <input x-model="$store.app.navbar" type="radio" value="navbar-floating" class="form-radio"
-                            @change="$store.app.toggleNavbar()" />
-                        <span>Floating</span>
-                    </label>
-                    <label class="mb-0 inline-flex">
-                        <input x-model="$store.app.navbar" type="radio" value="navbar-static" class="form-radio"
-                            @change="$store.app.toggleNavbar()" />
-                        <span>Static</span>
-                    </label>
+                <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
+                    <h5 class="mb-1 text-base leading-none dark:text-white">Router Transition</h5>
+                    <p class="text-xs text-white-dark">Animation of main content.</p>
+                    <div class="mt-3">
+                        <select x-model="$store.app.animation" class="form-select border-primary text-primary"
+                            @change="$store.app.toggleAnimation()">
+                            <option value="">Select Animation</option>
+                            <option value="animate__fadeIn">Fade</option>
+                            <option value="animate__fadeInDown">Fade Down</option>
+                            <option value="animate__fadeInUp">Fade Up</option>
+                            <option value="animate__fadeInLeft">Fade Left</option>
+                            <option value="animate__fadeInRight">Fade Right</option>
+                            <option value="animate__slideInDown">Slide Down</option>
+                            <option value="animate__slideInLeft">Slide Left</option>
+                            <option value="animate__slideInRight">Slide Right</option>
+                            <option value="animate__zoomIn">Zoom In</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-
-            <div class="mb-3 rounded-md border border-dashed border-[#e0e6ed] p-3 dark:border-[#1b2e4b]">
-                <h5 class="mb-1 text-base leading-none dark:text-white">Router Transition</h5>
-                <p class="text-xs text-white-dark">Animation of main content.</p>
-                <div class="mt-3">
-                    <select x-model="$store.app.animation" class="form-select border-primary text-primary"
-                        @change="$store.app.toggleAnimation()">
-                        <option value="">Select Animation</option>
-                        <option value="animate__fadeIn">Fade</option>
-                        <option value="animate__fadeInDown">Fade Down</option>
-                        <option value="animate__fadeInUp">Fade Up</option>
-                        <option value="animate__fadeInLeft">Fade Left</option>
-                        <option value="animate__fadeInRight">Fade Right</option>
-                        <option value="animate__slideInDown">Slide Down</option>
-                        <option value="animate__slideInLeft">Slide Left</option>
-                        <option value="animate__slideInRight">Slide Right</option>
-                        <option value="animate__zoomIn">Zoom In</option>
-                    </select>
-                </div>
-            </div>
-    </div>
-    </nav>
+        </nav>
     </div>
     <!-- end theme customizer section -->
 
@@ -278,9 +264,10 @@
                 class="sidebar fixed top-0 bottom-0 z-50 h-full min-h-screen w-[260px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] transition-all duration-300">
                 <div class="h-full bg-white dark:bg-[#0e1726]">
                     <div class="flex items-center justify-between px-4 py-3">
-                        <a href="" class="main-logo flex shrink-0 items-center">
-                            <img class="ml-[5px] w-8 flex-none" src="" alt="image" />
-
+                        <a href="index-2.html" class="main-logo flex shrink-0 items-center">
+                            <img class="ml-[5px] w-8 flex-none" src="assets_guru/images/logo.svg" alt="image" />
+                            <span
+                                class="align-middle text-2xl font-semibold ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light lg:inline">VRISTO</span>
                         </a>
                         <a href="javascript:;"
                             class="collapse-icon flex h-8 w-8 items-center rounded-full transition duration-300 hover:bg-gray-500/10 rtl:rotate-180 dark:text-white-light dark:hover:bg-dark-light/10"
@@ -295,7 +282,7 @@
                         </a>
                     </div>
                     <ul class="perfect-scrollbar relative h-[calc(100vh-80px)] space-y-0.5 overflow-y-auto overflow-x-hidden p-4 py-0 font-semibold"
-                        x-data="{ activeDropdown: 'dashboard' }">
+                        x-data="{ activeDropdown: 'users' }">
                         <li class="menu nav-item">
                             <button type="button" class="nav-link group"
                                 :class="{ 'active': activeDropdown === 'dashboard' }"
@@ -322,6 +309,21 @@
                                     </svg>
                                 </div>
                             </button>
+                            <ul x-cloak x-show="activeDropdown === 'dashboard'" x-collapse
+                                class="sub-menu text-gray-500">
+                                <li>
+                                    <a href="index-2.html">Sales</a>
+                                </li>
+                                <li>
+                                    <a href="analytics.html">Analytics</a>
+                                </li>
+                                <li>
+                                    <a href="finance.html">Finance</a>
+                                </li>
+                                <li>
+                                    <a href="crypto.html">Crypto</a>
+                                </li>
+                            </ul>
                         </li>
 
                         <h2
@@ -330,7 +332,7 @@
                                 stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg>
-                            <span>Siswa</span>
+                            <span>Apps</span>
                         </h2>
 
                         <li class="nav-item">
@@ -551,9 +553,10 @@
                                             fill="currentColor" />
                                     </svg>
                                     <span
-                                        class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Jurnal</span>
+                                        class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Components</span>
                                 </div>
-                                <div class="rtl:rotate-180" :class="{ '!rotate-90': activeDropdown === 'components' }">
+                                <div class="rtl:rotate-180"
+                                    :class="{ '!rotate-90': activeDropdown === 'components' }">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"
@@ -561,7 +564,51 @@
                                     </svg>
                                 </div>
                             </button>
-
+                            <ul x-cloak x-show="activeDropdown === 'components'" x-collapse
+                                class="sub-menu text-gray-500">
+                                <li>
+                                    <a href="components-tabs.html">Tabs</a>
+                                </li>
+                                <li>
+                                    <a href="components-accordions.html">Accordions</a>
+                                </li>
+                                <li>
+                                    <a href="components-modals.html">Modals</a>
+                                </li>
+                                <li>
+                                    <a href="components-cards.html">Cards</a>
+                                </li>
+                                <li>
+                                    <a href="components-carousel.html">Carousel</a>
+                                </li>
+                                <li>
+                                    <a href="components-countdown.html">Countdown</a>
+                                </li>
+                                <li>
+                                    <a href="components-counter.html">Counter</a>
+                                </li>
+                                <li>
+                                    <a href="components-sweetalert.html">Sweet Alerts</a>
+                                </li>
+                                <li>
+                                    <a href="components-timeline.html">Timeline</a>
+                                </li>
+                                <li>
+                                    <a href="components-notifications.html">Notifications</a>
+                                </li>
+                                <li>
+                                    <a href="components-media-object.html">Media Object</a>
+                                </li>
+                                <li>
+                                    <a href="components-list-group.html">List Group</a>
+                                </li>
+                                <li>
+                                    <a href="components-pricing-table.html">Pricing Tables</a>
+                                </li>
+                                <li>
+                                    <a href="components-lightbox.html">Lightbox</a>
+                                </li>
+                            </ul>
                         </li>
 
                         <li class="menu nav-item">
@@ -795,7 +842,8 @@
                                         class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Data
                                         Tables</span>
                                 </div>
-                                <div class="rtl:rotate-180" :class="{ '!rotate-90': activeDropdown === 'datatables' }">
+                                <div class="rtl:rotate-180"
+                                    :class="{ '!rotate-90': activeDropdown === 'datatables' }">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"
@@ -964,7 +1012,7 @@
                             </button>
                             <ul x-cloak x-show="activeDropdown === 'users'" x-collapse class="sub-menu text-gray-500">
                                 <li>
-                                    <a href="users-profile.html">Profile</a>
+                                    <a href="users-profile.html" class="active">Profile</a>
                                 </li>
                                 <li>
                                     <a href="users-account-settings.html">Account Settings</a>
@@ -1149,76 +1197,57 @@
         <!-- end sidebar section -->
 
         <div class="main-content">
-            @include('siswa_guru.nav')
-            <!-- end main content section -->
-            <div class="panel">
-                <!-- Main Content Wrapper -->
-                <div class="animate__animated p-6" :class="[$store.app.animation]">
-                    <!-- start main content section -->
-                    <div>
-                        <ul class="flex space-x-2 rtl:space-x-reverse">
-                            <li>
-                                <a href="javascript:;" class="text-primary hover:underline">Siswa</a>
-                            </li>
-                            <li class="before:content-['/'] ltr:before:mr-1 rtl:before:ml-1">
-                                <span>Detail Siswa</span>
-                            </li>
-                        </ul>
-                        <div class="pt-5">
-                            <div class="mb-5 grid grid-cols-1 text-sm gap-5 lg:grid-cols-3 xl:grid-cols-4">
-                                <div class="panel">
-                                    <div class="mb-5 flex items-center justify-between">
-                                        <h5 class="text-lg font-semibold dark:text-white-light">Profile</h5>
+            <!-- start header section -->
+            @include('profileguru.navbar')
+            <!-- end header section -->
 
-                                    </div>
+            <div class="animate__animated p-6" :class="[$store.app.animation]">
+                <!-- start main content section -->
+                <div>
+                    <ul class="flex space-x-2 rtl:space-x-reverse">
+                        <li>
+                            <a href="javascript:;" class="text-primary hover:underline"></a>
+                        </li>
+                        <li class="before:content-[''] ltr:before:mr-1 rtl:before:ml-1">
+                            <span>Profile</span>
+                        </li>
+                    </ul>
+                    <div class="pt-5">
+                        <div class="mb-5 grid grid-cols-1 gap-5 lg:grid-cols-3 xl:grid-cols-4">
+                            <div class="panel">
+                                <div class="mb-5 flex items-center justify-between">
+                                    <h5 class="text-lg font-semibold dark:text-white-light">Profile</h5>
+                                    <a href="#" class="btn btn-info rounded-full p-2 ltr:ml-auto rtl:mr-auto">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                            <path opacity="0.5" d="M4 22H20" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" />
+                                            <path
+                                                d="M14.6296 2.92142L13.8881 3.66293L7.07106 10.4799C6.60933 10.9416 6.37846 11.1725 6.17992 11.4271C5.94571 11.7273 5.74491 12.0522 5.58107 12.396C5.44219 12.6874 5.33894 12.9972 5.13245 13.6167L4.25745 16.2417L4.04356 16.8833C3.94194 17.1882 4.02128 17.5243 4.2485 17.7515C4.47573 17.9787 4.81182 18.0581 5.11667 17.9564L5.75834 17.7426L8.38334 16.8675L8.3834 16.8675C9.00284 16.6611 9.31256 16.5578 9.60398 16.4189C9.94775 16.2551 10.2727 16.0543 10.5729 15.8201C10.8275 15.6215 11.0583 15.3907 11.5201 14.929L11.5201 14.9289L18.3371 8.11195L19.0786 7.37044C20.3071 6.14188 20.3071 4.14999 19.0786 2.92142C17.85 1.69286 15.8581 1.69286 14.6296 2.92142Z"
+                                                stroke="currentColor" stroke-width="1.5" />
+                                            <path opacity="0.5"
+                                                d="M13.8879 3.66406C13.8879 3.66406 13.9806 5.23976 15.3709 6.63008C16.7613 8.0204 18.337 8.11308 18.337 8.11308M5.75821 17.7437L4.25732 16.2428"
+                                                stroke="currentColor" stroke-width="1.5" />
+                                        </svg>
+                                    </a>
+                                </div>
+
                                     <div class="mb-5">
                                         <div class="flex flex-col items-center justify-center">
-                                            <img src="{{ asset('admin/assets/images/profile-34.jpeg') }}"
+                                            <img src="{{ asset('storage/Siswa/' . $Siswa->foto_siswa) }}"
                                                 alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
-                                            <p class="text-xl font-semibold text-info">Abdul kader</p>
+                                            <p class="text-xl font-semibold text-info">{{ $Siswa->name }}</p>
                                         </div>
                                         <ul
                                             class="m-auto mt-5 flex max-w-[160px] flex-col space-y-4 font-semibold text-white-dark">
                                             <li class="flex items-center gap-2">
-                                                <svg width="24" height="24" viewBox="0 0 24 24"
-                                                    fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                    class="h-5 w-5">
-                                                    <path
-                                                        d="M2.3153 12.6978C2.26536 12.2706 2.2404 12.057 2.2509 11.8809C2.30599 10.9577 2.98677 10.1928 3.89725 10.0309C4.07094 10 4.286 10 4.71612 10H15.2838C15.7139 10 15.929 10 16.1027 10.0309C17.0132 10.1928 17.694 10.9577 17.749 11.8809C17.7595 12.057 17.7346 12.2706 17.6846 12.6978L17.284 16.1258C17.1031 17.6729 16.2764 19.0714 15.0081 19.9757C14.0736 20.6419 12.9546 21 11.8069 21H8.19303C7.04537 21 5.9263 20.6419 4.99182 19.9757C3.72352 19.0714 2.89681 17.6729 2.71598 16.1258L2.3153 12.6978Z"
-                                                        stroke="currentColor" stroke-width="1.5" />
-                                                    <path opacity="0.5"
-                                                        d="M17 17H19C20.6569 17 22 15.6569 22 14C22 12.3431 20.6569 11 19 11H17.5"
-                                                        stroke="currentColor" stroke-width="1.5" />
-                                                    <path opacity="0.5"
-                                                        d="M10.0002 2C9.44787 2.55228 9.44787 3.44772 10.0002 4C10.5524 4.55228 10.5524 5.44772 10.0002 6"
-                                                        stroke="currentColor" stroke-width="1.5"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path
-                                                        d="M4.99994 7.5L5.11605 7.38388C5.62322 6.87671 5.68028 6.0738 5.24994 5.5C4.81959 4.9262 4.87665 4.12329 5.38382 3.61612L5.49994 3.5"
-                                                        stroke="currentColor" stroke-width="1.5"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path
-                                                        d="M14.4999 7.5L14.6161 7.38388C15.1232 6.87671 15.1803 6.0738 14.7499 5.5C14.3196 4.9262 14.3767 4.12329 14.8838 3.61612L14.9999 3.5"
-                                                        stroke="currentColor" stroke-width="1.5"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
                                                 </svg>
-                                                Smkn 1 kraksaan
-                                            </li>
-                                            <li class="flex items-center gap-2">
-                                                <svg width="24" height="24" viewBox="0 0 24 24"
-                                                    fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                    class="h-5 w-5">
-                                                    <path
-                                                        d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12Z"
-                                                        stroke="currentColor" stroke-width="1.5" />
-                                                    <path opacity="0.5" d="M7 4V2.5" stroke="currentColor"
-                                                        stroke-width="1.5" stroke-linecap="round" />
-                                                    <path opacity="0.5" d="M17 4V2.5" stroke="currentColor"
-                                                        stroke-width="1.5" stroke-linecap="round" />
-                                                    <path opacity="0.5" d="M2 9H22" stroke="currentColor"
-                                                        stroke-width="1.5" stroke-linecap="round" />
-                                                </svg>
-                                                Jan , 01 , 2006
+                                                {{ $Siswa->sekolah }}
                                             </li>
                                             <li class="flex items-center gap-2">
                                                 <svg width="24" height="24" viewBox="0 0 24 24"
@@ -1230,7 +1259,7 @@
                                                     <circle cx="12" cy="10" r="3"
                                                         stroke="currentColor" stroke-width="1.5" />
                                                 </svg>
-                                                Kraksaan jawa timur
+                                                {{ $Siswa->alamat }}
                                             </li>
                                             <li>
                                                 <a href="javascript:;" class="flex items-center gap-2">
@@ -1245,7 +1274,7 @@
                                                             stroke="currentColor" stroke-width="1.5"
                                                             stroke-linecap="round" />
                                                     </svg>
-                                                    <span class="text-info">Kader@gmail.com</span></a>
+                                                    <span class="">{{ $Siswa->email }}</span></a>
                                             </li>
                                             <li class="flex items-center gap-2">
                                                 <svg width="24" height="24" viewBox="0 0 24 24"
@@ -1262,165 +1291,108 @@
                                                         stroke="currentColor" stroke-width="1.5"
                                                         stroke-linecap="round" />
                                                 </svg>
-                                                <span class="whitespace-nowrap" dir="ltr">0894 8736 9872</span>
+                                                <span class="whitespace-nowrap"
+                                                    dir="ltr">{{ $Siswa->no }}</span>
                                             </li>
                                         </ul>
-                                        <ul class="mt-7  justify-center gap-2">
-                                            <li class="font-bold">Status</li>
-                                            <li>
-                                                <div
-                                                    class="flex h-1.5 w-full rounded-full bg-[#ebedf2] dark:bg-dark/40 relative">
-                                                    <div class="w-full rounded-full"
-                                                        style="background-color: #DAFE00;">
-                                                        <span
-                                                            class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">SP
-                                                            1</span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="panel lg:col-span-3 xl:col-span-3">
-                                    <div class="flex items-center justify-between mb-5">
-                                        <h5 class="text-lg font-semibold dark:text-white-light">Pelanggaran</h5>
-                                        <div class="flex items-center space-x-2">
-                                            <a href="/detail_pelangaran_siwaguru"
-                                                class="btn btn-outline-info w-73 h-27">Detail</a>
-                                            <a href="{{ route('siswa_guru.index') }}"
-                                                class="btn btn-outline-danger w-73 h-27">Kembali</a>
-                                        </div>
                                     </div>
 
+                            </div>
+                            <div class="panel lg:col-span-2 xl:col-span-3">
+                                <div class="mb-5">
+                                    <h5 class="text-lg font-semibold dark:text-white-light">Siswa</h5>
+                                </div>
+                                <div class="mb-5">
                                     <div class="table-responsive font-semibold text-[#515365] dark:text-white-light">
-                                        <table>
-                                            <tr class="text-sm bg-[#E2E8F0]">
-                                                <td>No</td>
-                                                <td>Tanggal pelanggaran</td>
-                                                <td>Judul pelanggaran</td>
-                                                <td>Deskripsi</td>
-                                            </tr>
-                                            <tr class="text-sm">
-                                                <td>1</td>
-                                                <td>
-                                                    11/11/2022
-                                                </td>
-                                                <td>
-                                                    Peraturan tata tertib
-                                                </td>
-                                                <td>
-                                                    Telat masuk jam magang
-                                                </td>
-                                            </tr>
-                                            <tr class="text-sm">
-                                                <td>2</td>
-                                                <td>
-                                                    11/11/2022
-                                                </td>
-                                                <td>
-                                                    Peraturan tata tertib
-                                                </td>
-                                                <td>
-                                                    Telat masuk jam magang
-                                                </td>
-                                            </tr>
-                                            <tr class="text-sm">
-                                                <td>3</td>
-                                                <td>
-                                                    11/11/2022
-                                                </td>
-                                                <td>
-                                                    Peraturan tata tertib
-                                                </td>
-                                                <td>
-                                                    Telat masuk jam magang
-                                                </td>
-                                            </tr>
-                                            <tr class="text-sm">
-                                                <td>4</td>
-                                                <td>
-                                                    11/11/2022
-                                                </td>
-                                                <td>
-                                                    Peraturan tata tertib
-                                                </td>
-                                                <td>
-                                                    Telat masuk jam magang
-                                                </td>
-                                            </tr>
-                                            <tr class="text-sm">
-                                                <td>5</td>
-                                                <td>
-                                                    11/11/2022
-                                                </td>
-                                                <td>
-                                                    Peraturan tata tertib
-                                                </td>
-                                                <td>
-                                                    Telat masuk jam magang
-                                                </td>
-                                            </tr>
-                                            <tr class="text-sm">
-                                                <td>6</td>
-                                                <td>
-                                                    11/11/2022
-                                                </td>
-                                                <td>
-                                                    Peraturan tata tertib
-                                                </td>
-                                                <td>
-                                                    Telat masuk jam magang
-                                                </td>
-                                            </tr>
-                                            <tr class="text-sm">
-                                                <td>7</td>
-                                                <td>
-                                                    11/11/2022
-                                                </td>
-                                                <td>
-                                                    Peraturan tata tertib
-                                                </td>
-                                                <td>
-                                                    Telat masuk jam magang
-                                                </td>
-                                            </tr>
+
+                                        <table class="whitespace-nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Nama</th>
+                                                    <th>Jurusan</th>
+                                                    <th>Email</th>
+                                                    <th>Alamat</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="dark:text-white-dark">
+                                                @forelse ($pelanggaran as $pelangaran )
+                                                <tr class="text-sm bg-[#E2E8F0] col-span-4">
+                                                    <td class="px-6 py-4" >{{$loop->iteration}}</td>
+                                                    <td class="px-6 py-4">{{$pelangaran->tanggal}}</td>
+                                                    <td class="px-6 py-4">{{$pelangaran->deskripsi}}</td>
+
+                                                    <td class="px-6 py-4">
+                                                        <button type="button" class="btn btn-outline-info"
+                                                                        data-te-toggle="modal"
+                                                                        data-modal-target="staticModal"
+                                                                        data-modal-toggle="staticModal">
+                                                                            Lihat
+                                                                        </button>
+                                                    </td>
+                                                    {{-- <td><img src="{{asset('storage/laporansiswa/'. $pelangaran->bukti)}}" style="width: 10%; height:10%;" alt="" srcset=""></td> --}}
+                                                </tr>
+                                                @empty
+
+                                                @endforelse
+
+
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                {{-- paginate --}}
+                                <div class="flex justify-between">
+                                    <p>
+                                        Show 1 to 10 of 15 entries
+                                    </p>
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="list-style-none flex">
+                                            <li>
+                                                <a
+                                                    class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
+                                            </li>
+                                            <li>
+                                                <a class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
+                                                    href="#!">1</a>
 
+                                            </li>
+                                            <li aria-current="page">
+                                                <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
+                                                    href="#!">2
+
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
+                                                    href="#!">3</a>
+                                            </li>
+                                            <li>
+                                                <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
+                                                    href="#!">Next</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- end main content section -->
 
+                <!-- start footer section -->
+                <!-- end footer section -->
             </div>
         </div>
-        <!-- end main content section -->
-    </div>
     </div>
 
-    <!-- start footer section -e->
-                    <p class="pt-6 text-center dark:text-white-dark ltr:sm:text-left rtl:sm:text-right">
-                        © <span id="footer-year">2022</span>. Vristo All rights reserved.
-                    </p>
-                    <!-- end footer section -->
-    </div>
-    </div>
-    </div>
-
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="assets_guru/js/alpine-collaspe.min.js"></script>
     <script src="assets_guru/js/alpine-persist.min.js"></script>
     <script defer src="assets_guru/js/alpine-ui.min.js"></script>
     <script defer src="assets_guru/js/alpine-focus.min.js"></script>
     <script defer src="assets_guru/js/alpine.min.js"></script>
     <script src="assets_guru/js/custom.js"></script>
-    <script defer src="assets_guru/js/apexcharts.js"></script>
-    <script src="assets/js/simple-datatables.js"></script>
-    <script>
-        window.addEventListener("DOMContentLoaded", () => Alpine.start());
-    </script>
+
     <script>
         document.addEventListener('alpine:init', () => {
             // main section
@@ -1627,558 +1599,15 @@
                     this.messages = this.messages.filter((d) => d.id !== value);
                 },
             }));
-            Alpine.data('carousel', () => ({
-                items: ['carousel1.jpeg', 'carousel2.html', 'carousel3.jpeg'],
-
-                init() {
-                    // basic
-                    const swiper1 = new Swiper('#slider1', {
-                        navigation: {
-                            nextEl: '.swiper-button-next-ex1',
-                            prevEl: '.swiper-button-prev-ex1',
-                        },
-                        pagination: {
-                            el: '.swiper-pagination',
-                            clickable: true,
-                        },
-                    });
-                    // Autoplay
-                    const swiper2 = new Swiper('#slider2', {
-                        navigation: {
-                            nextEl: '.swiper-button-next-ex2',
-                            prevEl: '.swiper-button-prev-ex2',
-                        },
-                        autoplay: {
-                            delay: 2000,
-                        },
-                    });
-                    // vertical
-                    setTimeout(() => {
-                        const swiper3 = new Swiper('#slider3', {
-                            direction: 'vertical',
-                            pagination: {
-                                el: '.swiper-pagination',
-                                clickable: true,
-                            },
-                            autoplay: {
-                                delay: 2000,
-                            },
-                        });
-                    });
-                    // Loop
-                    const swiper4 = new Swiper('#slider4', {
-                        slidesPerView: 1,
-                        spaceBetween: 30,
-                        loop: true,
-                        pagination: {
-                            el: '.swiper-pagination',
-                            clickable: true,
-                            type: 'fraction',
-                        },
-                        navigation: {
-                            nextEl: '.swiper-button-next-ex4',
-                            prevEl: '.swiper-button-prev-ex4',
-                        },
-                    });
-                    // Multiple Slides
-                    const swiper5 = new Swiper('#slider5', {
-                        navigation: {
-                            nextEl: '.swiper-button-next-ex5',
-                            prevEl: '.swiper-button-prev-ex5',
-                        },
-                        pagination: {
-                            el: '.swiper-pagination',
-                            clickable: true,
-                        },
-                        breakpoints: {
-                            1024: {
-                                slidesPerView: 3,
-                                spaceBetween: 30,
-                            },
-                            768: {
-                                slidesPerView: 2,
-                                spaceBetween: 40,
-                            },
-                            320: {
-                                slidesPerView: 1,
-                                spaceBetween: 20,
-                            },
-                        },
-                    });
-                },
-            }));
-
-            // content section
-            Alpine.data('sales', () => ({
-                init() {
-                    isDark = this.$store.app.theme === 'dark' ? true : false;
-                    isRtl = this.$store.app.rtlClass === 'rtl' ? true : false;
-
-                    const revenueChart = null;
-                    const salesByCategory = null;
-                    const dailySales = null;
-                    const totalOrders = null;
-
-                    // revenue
-                    setTimeout(() => {
-                        this.revenueChart = new ApexCharts(this.$refs.revenueChart, this
-                            .revenueChartOptions);
-                        this.$refs.revenueChart.innerHTML = '';
-                        this.revenueChart.render();
-
-                        // sales by category
-                        this.salesByCategory = new ApexCharts(this.$refs.salesByCategory, this
-                            .salesByCategoryOptions);
-                        this.$refs.salesByCategory.innerHTML = '';
-                        this.salesByCategory.render();
-
-                        // daily sales
-                        this.dailySales = new ApexCharts(this.$refs.dailySales, this
-                            .dailySalesOptions);
-                        this.$refs.dailySales.innerHTML = '';
-                        this.dailySales.render();
-
-                        // total orders
-                        this.totalOrders = new ApexCharts(this.$refs.totalOrders, this
-                            .totalOrdersOptions);
-                        this.$refs.totalOrders.innerHTML = '';
-                        this.totalOrders.render();
-                    }, 300);
-
-                    this.$watch('$store.app.theme', () => {
-                        isDark = this.$store.app.theme === 'dark' ? true : false;
-
-                        this.revenueChart.updateOptions(this.revenueChartOptions);
-                        this.salesByCategory.updateOptions(this.salesByCategoryOptions);
-                        this.dailySales.updateOptions(this.dailySalesOptions);
-                        this.totalOrders.updateOptions(this.totalOrdersOptions);
-                    });
-
-                    this.$watch('$store.app.rtlClass', () => {
-                        isRtl = this.$store.app.rtlClass === 'rtl' ? true : false;
-                        this.revenueChart.updateOptions(this.revenueChartOptions);
-                    });
-                },
-
-                // revenue
-                get revenueChartOptions() {
-                    return {
-                        series: [{
-                                name: 'Income',
-                                data: [16800, 16800, 15500, 17800, 15500, 17000, 19000, 16000,
-                                    15000, 17000, 14000, 17000
-                                ],
-                            },
-                            {
-                                name: 'Expenses',
-                                data: [16500, 17500, 16200, 17300, 16000, 19500, 16000, 17000,
-                                    16000, 19000, 18000, 19000
-                                ],
-                            },
-                        ],
-                        chart: {
-                            height: 325,
-                            type: 'area',
-                            fontFamily: 'Nunito, sans-serif',
-                            zoom: {
-                                enabled: false,
-                            },
-                            toolbar: {
-                                show: false,
-                            },
-                        },
-                        dataLabels: {
-                            enabled: false,
-                        },
-                        stroke: {
-                            show: true,
-                            curve: 'smooth',
-                            width: 2,
-                            lineCap: 'square',
-                        },
-                        dropShadow: {
-                            enabled: true,
-                            opacity: 0.2,
-                            blur: 10,
-                            left: -7,
-                            top: 22,
-                        },
-                        colors: isDark ? ['#2196f3', '#e7515a'] : ['#1b55e2', '#e7515a'],
-                        markers: {
-                            discrete: [{
-                                    seriesIndex: 0,
-                                    dataPointIndex: 6,
-                                    fillColor: '#1b55e2',
-                                    strokeColor: 'transparent',
-                                    size: 7,
-                                },
-                                {
-                                    seriesIndex: 1,
-                                    dataPointIndex: 5,
-                                    fillColor: '#e7515a',
-                                    strokeColor: 'transparent',
-                                    size: 7,
-                                },
-                            ],
-                        },
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
-                            'Oct', 'Nov', 'Dec'
-                        ],
-                        xaxis: {
-                            axisBorder: {
-                                show: false,
-                            },
-                            axisTicks: {
-                                show: false,
-                            },
-                            crosshairs: {
-                                show: true,
-                            },
-                            labels: {
-                                offsetX: isRtl ? 2 : 0,
-                                offsetY: 5,
-                                style: {
-                                    fontSize: '12px',
-                                    cssClass: 'apexcharts-xaxis-title',
-                                },
-                            },
-                        },
-                        yaxis: {
-                            tickAmount: 7,
-                            labels: {
-                                formatter: (value) => {
-                                    return value / 1000 + 'K';
-                                },
-                                offsetX: isRtl ? -30 : -10,
-                                offsetY: 0,
-                                style: {
-                                    fontSize: '12px',
-                                    cssClass: 'apexcharts-yaxis-title',
-                                },
-                            },
-                            opposite: isRtl ? true : false,
-                        },
-                        grid: {
-                            borderColor: isDark ? '#191e3a' : '#e0e6ed',
-                            strokeDashArray: 5,
-                            xaxis: {
-                                lines: {
-                                    show: true,
-                                },
-                            },
-                            yaxis: {
-                                lines: {
-                                    show: false,
-                                },
-                            },
-                            padding: {
-                                top: 0,
-                                right: 0,
-                                bottom: 0,
-                                left: 0,
-                            },
-                        },
-                        legend: {
-                            position: 'top',
-                            horizontalAlign: 'right',
-                            fontSize: '16px',
-                            markers: {
-                                width: 10,
-                                height: 10,
-                                offsetX: -2,
-                            },
-                            itemMargin: {
-                                horizontal: 10,
-                                vertical: 5,
-                            },
-                        },
-                        tooltip: {
-                            marker: {
-                                show: true,
-                            },
-                            x: {
-                                show: false,
-                            },
-                        },
-                        fill: {
-                            type: 'gradient',
-                            gradient: {
-                                shadeIntensity: 1,
-                                inverseColors: !1,
-                                opacityFrom: isDark ? 0.19 : 0.28,
-                                opacityTo: 0.05,
-                                stops: isDark ? [100, 100] : [45, 100],
-                            },
-                        },
-                    };
-                },
-
-                // sales by category
-                get salesByCategoryOptions() {
-                    return {
-                        series: [985, 737],
-                        chart: {
-                            type: 'donut',
-                            height: 460,
-                            fontFamily: 'Nunito, sans-serif',
-                        },
-                        dataLabels: {
-                            enabled: false,
-                        },
-                        stroke: {
-                            show: true,
-                            width: 25,
-                            colors: isDark ? '#0e1726' : '#fff',
-                        },
-                        colors: isDark ? ['#5c1ac3', '#e2a03f', '#e7515a', '#e2a03f'] : ['#e2a03f',
-                            '#5c1ac3', '#e7515a'
-                        ],
-                        legend: {
-                            position: 'bottom',
-                            horizontalAlign: 'center',
-                            fontSize: '14px',
-                            markers: {
-                                width: 10,
-                                height: 10,
-                                offsetX: -2,
-                            },
-                            height: 50,
-                            offsetY: 20,
-                        },
-                        plotOptions: {
-                            pie: {
-                                donut: {
-                                    size: '65%',
-                                    background: 'transparent',
-                                    labels: {
-                                        show: true,
-                                        name: {
-                                            show: true,
-                                            fontSize: '29px',
-                                            offsetY: -10,
-                                        },
-                                        value: {
-                                            show: true,
-                                            fontSize: '26px',
-                                            color: isDark ? '#bfc9d4' : undefined,
-                                            offsetY: 16,
-                                            formatter: (val) => {
-                                                return val;
-                                            },
-                                        },
-                                        total: {
-                                            show: true,
-                                            label: 'Total',
-                                            color: '#888ea8',
-                                            fontSize: '29px',
-                                            formatter: (w) => {
-                                                return w.globals.seriesTotals.reduce(function(a,
-                                                    b) {
-                                                    return a + b;
-                                                }, 0);
-                                            },
-                                        },
-                                    },
-                                },
-                            },
-                        },
-                        labels: ['Apparel', 'Sports'],
-                        states: {
-                            hover: {
-                                filter: {
-                                    type: 'none',
-                                    value: 0.15,
-                                },
-                            },
-                            active: {
-                                filter: {
-                                    type: 'none',
-                                    value: 0.15,
-                                },
-                            },
-                        },
-                    };
-                },
-
-                // daily sales
-                get dailySalesOptions() {
-                    return {
-                        series: [{
-                                name: 'Sales',
-                                data: [44, 55, 41, 67, 22, 43, 21],
-                            },
-                            {
-                                name: 'Last Week',
-                                data: [13, 23, 20, 8, 13, 27, 33],
-                            },
-                        ],
-                        chart: {
-                            height: 160,
-                            type: 'bar',
-                            fontFamily: 'Nunito, sans-serif',
-                            toolbar: {
-                                show: false,
-                            },
-                            stacked: true,
-                            stackType: '100%',
-                        },
-                        dataLabels: {
-                            enabled: false,
-                        },
-                        stroke: {
-                            show: true,
-                            width: 1,
-                        },
-                        colors: ['#e2a03f', '#e0e6ed'],
-                        responsive: [{
-                            breakpoint: 480,
-                            options: {
-                                legend: {
-                                    position: 'bottom',
-                                    offsetX: -10,
-                                    offsetY: 0,
-                                },
-                            },
-                        }, ],
-                        xaxis: {
-                            labels: {
-                                show: false,
-                            },
-                            categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'],
-                        },
-                        yaxis: {
-                            show: false,
-                        },
-                        fill: {
-                            opacity: 1,
-                        },
-                        plotOptions: {
-                            bar: {
-                                horizontal: false,
-                                columnWidth: '25%',
-                            },
-                        },
-                        legend: {
-                            show: false,
-                        },
-                        grid: {
-                            show: false,
-                            xaxis: {
-                                lines: {
-                                    show: false,
-                                },
-                            },
-                            padding: {
-                                top: 10,
-                                right: -20,
-                                bottom: -20,
-                                left: -20,
-                            },
-                        },
-                    };
-                },
-
-                // total orders
-                get totalOrdersOptions() {
-                    return {
-                        series: [{
-                            name: 'Sales',
-                            data: [28, 40, 36, 52, 38, 60, 38, 52, 36, 40],
-                        }, ],
-                        chart: {
-                            height: 290,
-                            type: 'area',
-                            fontFamily: 'Nunito, sans-serif',
-                            sparkline: {
-                                enabled: true,
-                            },
-                        },
-                        stroke: {
-                            curve: 'smooth',
-                            width: 2,
-                        },
-                        colors: isDark ? ['#00ab55'] : ['#00ab55'],
-                        labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-                        yaxis: {
-                            min: 0,
-                            show: false,
-                        },
-                        grid: {
-                            padding: {
-                                top: 125,
-                                right: 0,
-                                bottom: 0,
-                                left: 0,
-                            },
-                        },
-                        fill: {
-                            opacity: 1,
-                            type: 'gradient',
-                            gradient: {
-                                type: 'vertical',
-                                shadeIntensity: 1,
-                                inverseColors: !1,
-                                opacityFrom: 0.3,
-                                opacityTo: 0.05,
-                                stops: [100, 100],
-                            },
-                        },
-                        tooltip: {
-                            x: {
-                                show: false,
-                            },
-                        },
-                    };
-                },
-            }));
-            Alpine.data('basic', () => ({
-                datatable: null,
-                init() {
-                    this.datatable = new simpleDatatables.DataTable('#myTable', {
-                        data: {
-                            headings: ['ID', ' Nama Siswa', 'Kelas', 'Jurusan'],
-                            data: [
-                                [1, 'mamat', '11', 'RPL'],
-                                [2, 'mamat', '11', 'RPL'],
-                                [3, 'mamat', '11', 'RPL'],
-                                [4, 'mamat', '11', 'RPL'],
-                                [5, 'mamat', '11', 'RPL'],
-                                [6, 'mamat', '11', 'RPL'],
-                                [7, 'mamat', '11', 'RPL'],
-                                [8, 'mamat', '11', 'RPL'],
-                                [9, 'mamat', '11', 'RPL'],
-                                [10, 'mamat', '11', 'RPL'],
-                                [11, 'mamat', '11', 'RPL'],
-                                [12, 'mamat', '11', 'RPL'],
-                                [13, 'mamat', '11', 'RPL'],
-                                [14, 'mamat', '11', 'RPL'],
-                                [15, 'mamat', '11', 'RPL'],
-                            ],
-                        },
-                        sortable: true,
-                        searchable: false,
-                        perPage: 10,
-                        perPageSelect: [5, 10, 15, 20, 25, 30],
-                        firstLast: true,
-                        firstText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                        lastText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                        prevText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                        nextText: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                        labels: {
-                            perPage: '{select}',
-                        },
-                        layout: {
-                            top: '{search}',
-                            bottom: '{info}{select}{pager}',
-                        },
-                    });
-                },
-            }));
-
+        });
+    </script>
+    <script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
         });
     </script>
 </body>
 
-<!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:57 GMT -->
+<!-- Mirrored from html.vristo.sbthemes.com/users-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:33:51 GMT -->
 
 </html>

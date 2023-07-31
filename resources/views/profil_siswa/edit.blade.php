@@ -24,6 +24,7 @@
     <script defer src="assets_guru/js/popper.min.js"></script>
     <script defer src="assets_guru/js/tippy-bundle.umd.min.js"></script>
     <script defer src="assets_guru/js/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
@@ -34,9 +35,27 @@
     {{-- Alert validasi --}}
     @if ($errors->any())
     @foreach ($errors->all() as $error)
-    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+    @if ($error == 'The password confirmation does not match.')
+    @php
+        $error = 'Konfirmasi Password Salah'
+    @endphp
+    @endif
+    @if ($error == 'The password must be at least 6 characters.')
+    @php
+        $error = 'Password Minimal 6 Huruf'
+    @endphp
+    @endif
+
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "{{ $error }}",
+        })
+    </script>
+    {{-- <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
         <span class="font-medium">{{ $error }}</span>
-    </div>
+    </div> --}}
     @endforeach
     @endif
     {{-- End Alert --}}

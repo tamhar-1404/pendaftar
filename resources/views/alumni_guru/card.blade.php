@@ -73,7 +73,7 @@
                 </span>
             </label>
 
-           
+
         </div>
     </div>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
@@ -96,16 +96,20 @@
                 <p class="text-xs+ mt-1">{{ $siswa->sekolah }}</p>
                 <p class="text-xs+ mt-1">{{ $siswa->status }}</p>
 
-                <div class="mt-6 grid w-full grid-cols-2 gap-2 ">
-                    <a href="#"
-                        class="btn space-x-2 bg-info px-0 font-medium text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+                <div class="mt-6 grid w-full px-3 grid-cols-1 gap-2 ">
+                    <form action="{{route('profile/siswa/guru','siswa')}}" method="get">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$siswa->id}}">
+                        <button type="submit"
+                        class="btn space-x-2 bg-info px-0 font-medium w-full text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90 cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none"
-                            viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-width="2"
-                                d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z" />
+                        viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-width="2"
+                        d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z" />
                         </svg>
                         <span>Profile</span>
-                    </a>
+                        </button>
+                    </form>
 
                 </div>
             </div>
