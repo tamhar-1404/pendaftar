@@ -1,33 +1,47 @@
 <!-- Main Content Wrapper -->
-    <style>
-        /* Tambahkan animasi untuk muncul */
-        @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
+<style>
+    /* Tambahkan animasi untuk muncul */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
         }
 
-        /* Tambahkan animasi untuk menghilang */
-        @keyframes fadeOut {
-        from { opacity: 1; transform: translateY(0); }
-        to { opacity: 0; transform: translateY(-10px); }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Tambahkan animasi untuk menghilang */
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Atur transisi untuk menu dropdown */
-        .dropdown-menu {
+        to {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+    }
+
+    /* Atur transisi untuk menu dropdown */
+    .dropdown-menu {
         animation-duration: 0.3s;
         animation-timing-function: ease-in-out;
-        }
+    }
 
-        /* Atur transisi untuk muncul */
-        .dropdown-menu.fade-in {
+    /* Atur transisi untuk muncul */
+    .dropdown-menu.fade-in {
         animation-name: fadeIn;
-        }
+    }
 
-        /* Atur transisi untuk menghilang */
-        .dropdown-menu.fade-out {
+    /* Atur transisi untuk menghilang */
+    .dropdown-menu.fade-out {
         animation-name: fadeOut;
-        }
-    </style>
+    }
+</style>
 <main class="main w-full px-4 pb-8">
     <div class="flex items-center justify-between py-5 lg:py-6">
 
@@ -69,65 +83,103 @@
     {{--  end  --}}
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mx-4">
         @forelse ($blog as $berita)
-        <div class="bg-white shadow-md rounded-lg overflow-hidden relative" style="width: 100%; height: 100%;">
-            <img src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="Gambar Berita 1" class="w-full h-48 object-cover object-center">
-            <div class="p-4">
-              <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
-            <h2 class="text-xl font-semibold mt-2"><a href="{{ route('Berita.show', $berita->id) }}">{{ Str::limit($berita->judul, 15) }}</a></h2>
-            </div>
-            <input type="hidden" name="id" id="id" value="{{$berita->id}}">
-            <div class="dropdown-wrapper" data-berita-id="{{ $berita->id }}">
-                <div class="absolute top-0 right-0 p-2 cursor-pointer options-dropdown" id="optionsDropdown{{$berita->id}}">
-                  <i class="fas fa-ellipsis-v"></i>
+            <div class="bg-white shadow-md rounded-lg overflow-hidden relative" style="width: 100%; height: 100%;">
+                <img src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="Gambar Berita 1"
+                    class="w-full h-48 object-cover object-center">
+                <div class="p-4">
+                    <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
+                    <h2 class="text-xl font-semibold mt-2"><a
+                            href="{{ route('Berita.show', $berita->id) }}">{{ Str::limit($berita->judul, 15) }}</a></h2>
                 </div>
+                <input type="hidden" name="id" id="id" value="{{ $berita->id }}">
+                <div class="dropdown-wrapper" data-berita-id="{{ $berita->id }}">
+                    <div class="absolute top-0 right-0 p-2 cursor-pointer options-dropdown"
+                        id="optionsDropdown{{ $berita->id }}">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
 
-                <div class="hidden absolute top-8 right-0 bg-white shadow-md rounded-lg py-2 z-10 dropdown-menu" id="dropdownMenu{{$berita->id}}">
-                  <a href="{{ route('Berita.edit', $berita->id) }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Edit</a>
-                  <form action="{{ route('Berita.destroy' , $berita->id) }}" method="post">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit"  class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Hapus</button>
-                  </form>
+                    <div class="hidden absolute top-8 right-0 bg-white shadow-md rounded-lg py-2 z-10 dropdown-menu"
+                        id="dropdownMenu{{ $berita->id }}">
+                        <a href="{{ route('Berita.edit', $berita->id) }}"
+                            class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Edit</a>
+                        <!-- Tambahkan id ke elemen form hapus untuk mengidentifikasinya -->
+                        <form id="delete-form-{{ $berita->id }}" action="{{ route('Berita.destroy', $berita->id) }}"
+                            method="post">
+                            @method('DELETE')
+                            @csrf
+                            <!-- Panggil fungsi confirmDelete() saat tombol "Hapus" ditekan -->
+                            <button type="button" onclick="confirmDelete({{ $berita->id }})"
+                                class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Hapus</button>
+                        </form>
+                    </div>
+
                 </div>
             </div>
-          </div>
-          <script>
-            // Dapatkan semua elemen pembungkus dropdown
-            var dropdownWrappers = document.querySelectorAll('.dropdown-wrapper');
 
-            // Fungsi untuk menyembunyikan semua dropdown terbuka
-            function hideAllDropdowns() {
-              dropdownWrappers.forEach(function (wrapper) {
-                var dropdownMenu = wrapper.querySelector('.dropdown-menu');
-                dropdownMenu.classList.add('hidden');
-              });
-            }
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <!-- Tempatkan di bawah halaman HTML sebelum tag penutup </body> -->
+            <script>
+                // Fungsi untuk menampilkan SweetAlert konfirmasi hapus
+                function confirmDelete(beritaId) {
+                    Swal.fire({
+                        title: 'Konfirmasi Hapus',
+                        text: 'Apakah Anda yakin ingin menghapus berita ini?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Ya, Hapus',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Jika pengguna mengonfirmasi untuk menghapus, kirimkan permintaan hapus ke server
+                            document.getElementById('delete-form-' + beritaId).submit();
+                        }
+                    });
+                }
+            </script>
 
-            // Tambahkan event listener pada setiap elemen pembungkus dropdown
-            dropdownWrappers.forEach(function (wrapper) {
-              var beritaId = wrapper.dataset.beritaId;
-              var dropdownIcon = wrapper.querySelector('.options-dropdown');
-              var dropdownMenu = wrapper.querySelector('.dropdown-menu');
 
-              dropdownIcon.addEventListener('click', function (event) {
-                event.stopPropagation(); // Mencegah klik menyebar ke jendela
+            <script>
+                // Dapatkan semua elemen pembungkus dropdown
+                var dropdownWrappers = document.querySelectorAll('.dropdown-wrapper');
 
-                // Sembunyikan semua dropdown terbuka
-                hideAllDropdowns();
+                // Fungsi untuk menyembunyikan semua dropdown terbuka
+                function hideAllDropdowns() {
+                    dropdownWrappers.forEach(function(wrapper) {
+                        var dropdownMenu = wrapper.querySelector('.dropdown-menu');
+                        dropdownMenu.classList.add('hidden');
+                    });
+                }
 
-                // Toggle kelas 'hidden' pada dropdownMenu berdasarkan $berita->id
-                dropdownMenu.classList.toggle('hidden');
-              });
-            });
+                // Tambahkan event listener pada setiap elemen pembungkus dropdown
+                dropdownWrappers.forEach(function(wrapper) {
+                    var beritaId = wrapper.dataset.beritaId;
+                    var dropdownIcon = wrapper.querySelector('.options-dropdown');
+                    var dropdownMenu = wrapper.querySelector('.dropdown-menu');
 
-            // Tutup dropdown ketika pengguna mengklik di luar setiap elemen pembungkus dropdown
-            window.addEventListener('click', function (event) {
-              hideAllDropdowns();
-            });
-          </script>
-          @empty
-          @endforelse
-        </div>
+                    dropdownIcon.addEventListener('click', function(event) {
+                        event.stopPropagation(); // Mencegah klik menyebar ke jendela
+
+                        // Sembunyikan semua dropdown terbuka
+                        hideAllDropdowns();
+
+                        // Toggle kelas 'hidden' pada dropdownMenu berdasarkan $berita->id
+                        dropdownMenu.classList.toggle('hidden');
+                    });
+                });
+
+                // Tutup dropdown ketika pengguna mengklik di luar setiap elemen pembungkus dropdown
+                window.addEventListener('click', function(event) {
+                    hideAllDropdowns();
+                });
+            </script>
+        @empty
+            <div class="flex justify-center items-center">
+                <img src="/admin/noData.png" alt="" width="280px">
+            </div>
+        @endforelse
+    </div>
 </main>
 {{-- <script>
     document.addEventListener('DOMContentLoaded', function() {

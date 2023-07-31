@@ -121,6 +121,9 @@
                     <td class="whitespace-nowrap px-6 py-2">{{ $list['harga'][$i] }}</td>
                     <td class="whitespace-nowrap px-6 py-2">{{ (int) $list['quantity'][$i] * (int) $list['harga'][$i] }}</td>
                 </tr>
+                @php
+                    $i++;
+                @endphp
             @endforeach
         </table>
         <div class="w-full flex justify-end">

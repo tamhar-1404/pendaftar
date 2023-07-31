@@ -20,7 +20,7 @@ class BeritaSiswaController extends Controller
 
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $Blog = Blog::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('deskripsi', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $Blog = Blog::where('judul', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->paginate(3);
             return view('berita_siswa.index', compact('Blog'));
         }
         $Blog = Blog::latest()->paginate(3);

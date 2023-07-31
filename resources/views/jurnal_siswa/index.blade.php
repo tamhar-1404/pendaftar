@@ -44,7 +44,9 @@
     <script defer src="siswa/js/popper.min.js"></script>
     <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
@@ -152,8 +154,8 @@
                         <a href="javascript:;"
                             class="collapse-icon flex h-8 w-8 items-center rounded-full transition duration-300 hover:bg-gray-500/10 rtl:rotate-180 dark:text-white-light dark:hover:bg-dark-light/10"
                             @click="$store.app.toggleSidebar()">
-                            <svg class="m-auto h-5 w-5" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            <svg class="m-auto h-5 w-5" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5"
                                     stroke-linecap="round" stroke-linejoin="round" />
                                 <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor"
@@ -391,24 +393,26 @@
                         @php
                             use Carbon\Carbon;
                         @endphp
-                        <p class="text-xl font-semibold mb-4 kamu-tak-diajak"><span class="text-red-600">Hari ini adalah : </span>
-                            {{Carbon::now()->format('l')}}, {{Carbon::now()->format('d-M-Y')}}</p>
+                        <p class="text-xl font-semibold mb-4 kamu-tak-diajak"><span class="text-red-600">Hari ini
+                                adalah : </span>
+                            {{ Carbon::now()->format('l') }}, {{ Carbon::now()->format('d-M-Y') }}</p>
 
                         <div class="kamu-tak-diajak flex justify-between items-center">
                             @if (Auth::user()->Siswa->role == 'siswa')
-                            <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
-                                class="flex gap-2 h-10 items-center  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                                @click="exportTable('json')">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M12 4.5v15m7.5-7.5h-15" />
-                                </svg>
-                                <p class="kamu-tak-diajak">
+                                <button data-modal-target="authentication-modal"
+                                    data-modal-toggle="authentication-modal"
+                                    class="flex gap-2 h-10 items-center  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                                    @click="exportTable('json')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                    <p class="kamu-tak-diajak">
 
-                                    Tambah
-                                </p>
-                            </button>
+                                        Tambah
+                                    </p>
+                                </button>
                             @endif
                             {{-- modal --}}
 
@@ -533,8 +537,8 @@
                                             <path
                                                 d="M6 17.9827C4.44655 17.9359 3.51998 17.7626 2.87868 17.1213C2 16.2426 2 14.8284 2 12C2 9.17157 2 7.75736 2.87868 6.87868C3.75736 6 5.17157 6 8 6H16C18.8284 6 20.2426 6 21.1213 6.87868C22 7.75736 22 9.17157 22 12C22 14.8284 22 16.2426 21.1213 17.1213C20.48 17.7626 19.5535 17.9359 18 17.9827"
                                                 stroke="currentColor" stroke-width="1.5" />
-                                            <path opacity="0.5" d="M9 10H6" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" />
+                                            <path opacity="0.5" d="M9 10H6" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" />
                                             <path d="M19 14L5 14" stroke="currentColor" stroke-width="1.5"
                                                 stroke-linecap="round" />
                                             <path
@@ -545,10 +549,10 @@
                                                 stroke="currentColor" stroke-width="1.5" />
                                             <circle opacity="0.5" cx="17" cy="10" r="1"
                                                 fill="currentColor" />
-                                            <path opacity="0.5" d="M15 16.5H9" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" />
-                                            <path opacity="0.5" d="M13 19H9" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" />
+                                            <path opacity="0.5" d="M15 16.5H9" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" />
+                                            <path opacity="0.5" d="M13 19H9" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" />
                                         </svg>
                                         <p class="kamu-tak-diajak">
                                             PRINT
@@ -598,7 +602,7 @@
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 pl-17 py-2"><img
                                                                 src="{{ asset('storage/image/' . $items->image) }}"
-                                                                width="100px" alt="">
+                                                                width="50px" height="50px" alt="">
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 py-2  kamu-tak-diajak">
                                                             <div class="flex gap-2">

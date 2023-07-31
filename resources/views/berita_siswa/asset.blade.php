@@ -79,8 +79,10 @@
               <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
               <h2 class="text-xl font-semibold mt-2"><a href="{{ route('berita_siswa.show', $berita->id) }}">{{ $berita->judul }}</a></h2>
             </div>
-          </div>
         @empty
+            <div class="flex justify-center items-center" style="justify-items: center">
+                <img src="/admin/noData.png" alt="" width="300px">
+            </div>
         @endforelse
     </div>
 </main>
