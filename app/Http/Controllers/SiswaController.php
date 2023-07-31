@@ -41,17 +41,17 @@ class SiswaController extends Controller
             }
             Siswa::whereDate('magang_akhir', '<=', $today)->update(['role' => 'alumni', 'status' => 'lulus']);
         }
-        
+
         if ($request->has('cari')) {
             $keyword = $request->cari;
             $siswas = Siswa::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(8);
             return view('siswa_admin.index', compact('siswas'));
-            
+
             $siswas->appends(['cari' => $keyword]);
             return view('siswa_admin.index', compact('siswas'));
-            
+
         }
-        
+
         $siswas = Siswa::where('role', 'siswa')->latest()->paginate(8);
 
         return view('Siswa_admin.index', compact('siswas'));
@@ -61,24 +61,26 @@ class SiswaController extends Controller
     public function siswamagang_siswa(Request $request)
     {
         $userEmail = Auth::user()->email;
-    
+
         if ($request->has('cari')) {
             $keyword = $request->cari;
             $siswas = Siswa::where(function ($query) use ($keyword) {
                 $query->where('name', 'LIKE', '%' . $keyword . '%')
                       ->orWhere('jurusan', 'LIKE', '%' . $keyword . '%');
             })
-            ->where('email', '!=', $userEmail) // Tambahkan kondisi ini untuk mengabaikan data Anda dari hasil pencarian
+            ->where('email', '!=', $userEmail)->where('role' , 'siswa')
             ->paginate(8);
-    
+
             $siswas->appends(['cari' => $keyword]);
         } else {
-            $siswas = Siswa::where('email', '!=', $userEmail)->paginate(8);
+            $siswas = Siswa::whereNot('email', $userEmail)
+            ->where('role', 'siswa')
+            ->paginate(8);
         }
-    
+
         return view('siswamagang_siswa.index', compact('siswas'));
     }
-    
+
     public function view()
     {
         //
@@ -162,7 +164,7 @@ class SiswaController extends Controller
         return view('rfid.index', compact('users'));
         // $users->appends(['cari' => $keyword]);
         // return view('rfid.index', compact('users'));
-        
+
     }
     $users = User::Where('role', 'Siswa')->whereNull('RFID')->latest('created_at')->paginate(10);
 

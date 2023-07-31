@@ -25,7 +25,7 @@ class DashboardGuruController extends Controller
     {
         $jurnal = Jurnalsiswa::where('sekolah', Auth()->user()->sekolah)->count();
         $siswa = Siswa::where('sekolah', Auth()->user()->sekolah)->count();
-        $data_siswa = Siswa::where('sekolah', Auth()->user()->sekolah)->get();
+        $data_siswa = Siswa::where('sekolah', Auth()->user()->sekolah)->where('role' , 'siswa')->get();
         $absen = Approvalizin::where('sekolah', Auth()->user()->sekolah)->count();
         $mou = MOU::all();
         $berita = Blog::all();
