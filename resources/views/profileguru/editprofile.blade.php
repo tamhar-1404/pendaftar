@@ -35,6 +35,21 @@
     :class="[$store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout, $store.app
         .rtlClass
     ]">
+    @error('email')
+        <script>
+            toastr.error("{{ $message }}")
+        </script>
+    @enderror
+    @error('image')
+        <script>
+            toastr.error("{{ $message }}")
+        </script>
+    @enderror
+    @error('no')
+        <script>
+            toastr.error("{{ $message }}")
+        </script>
+    @enderror
     @error('password')
         <script>
             toastr.error("{{ $message }}")
