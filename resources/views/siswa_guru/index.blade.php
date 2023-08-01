@@ -1156,8 +1156,9 @@
                                 <form action="">
 
                                     <input
-                                    class="form-input peer h-9 w-full  rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                    placeholder="Search users..." type="text" name="cari" value="{{ request('cari') }}"/>
+                                        class="form-input peer h-9 w-full  rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                        placeholder="Search users..." type="text" name="cari"
+                                        value="{{ request('cari') }}" />
                                 </form>
                                 {{-- <span
                 class="pointer-events-none absolute flex h-full w-10 items-center justify-end text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent"
@@ -1187,7 +1188,8 @@
                                 <div class="flex grow flex-col items-center px-4 pb-3 mt-3 sm:px-5">
                                     <div class="avatar h-20 w-20 rounded-full">
                                         <img class="rounded-full h-20 w-20 "
-                                            src="{{ asset('storage/Siswa/' . $siswa->foto_siswa) }}" alt="avatar" />
+                                            src="{{ asset('storage/Siswa/' . $siswa->foto_siswa) }}"
+                                            alt="avatar" />
                                     </div>
                                     <h3 class="pt-3 text-lg font-medium mt-2 text-slate-700 dark:text-navy-100">
                                         {{ $siswa->name }}
@@ -1198,15 +1200,15 @@
                                 <div class="mt-6 grid w-full px-3 grid-cols-1 gap-2 ">
                                     <form action="{{ route('profile.siswa.guru') }}" method="get">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{$siswa->id}}">
+                                        <input type="hidden" name="id" value="{{ $siswa->id }}">
                                         <button type="submit"
-                                        class="btn space-x-2 bg-info px-0 font-medium w-full text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90 cursor-pointer">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none"
-                                        viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-width="2"
-                                        d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z" />
-                                        </svg>
-                                        <span>Profile</span>
+                                            class="btn space-x-2 bg-info px-0 font-medium w-full text-white hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90 cursor-pointer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0"
+                                                fill="none" viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-width="2"
+                                                    d="M5 19.111c0-2.413 1.697-4.468 4.004-4.848l.208-.035a17.134 17.134 0 015.576 0l.208.035c2.307.38 4.004 2.435 4.004 4.848C19 20.154 18.181 21 17.172 21H6.828C5.818 21 5 20.154 5 19.111zM16.083 6.938c0 2.174-1.828 3.937-4.083 3.937S7.917 9.112 7.917 6.937C7.917 4.764 9.745 3 12 3s4.083 1.763 4.083 3.938z" />
+                                            </svg>
+                                            <span>Profile</span>
                                         </button>
                                     </form>
 
@@ -1214,6 +1216,9 @@
 
                             </div>
                         @empty
+                            <div class="flex justify-center items-center px-10" style="justify-items: center">
+                                <img src="/admin/noData.png" alt="" width="300px">
+                            </div>
                         @endforelse
                     </div>
 

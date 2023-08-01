@@ -17,17 +17,6 @@ class BeritaGuruController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->has('cari')) {
-            $keyword = $request->cari;
-            $berita = Blog::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->paginate(6);
-            return view('berita_guru.detail', compact('berita'));
-    
-            $berita->appends(['cari' => $keyword]);
-            return view('berita_guru.detail', compact('berita'));
-    
-        }
-        $berita = Blog::latest()->paginate(6);
-
         return view('berita_guru.detail', compact('berita'));
     }
 
@@ -58,10 +47,20 @@ class BeritaGuruController extends Controller
      * @param  \App\Models\BeritaGuru  $beritaGuru
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show(Request $request)
     {
+        $berita = Blog::all();
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $berita = Blog::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->paginate(6);
+            return view('berita_guru.detail', compact('berita'));
+    
+            $berita->appends(['cari' => $keyword]);
+            return view('berita_guru.detail', compact('berita'));
+    
+        }
+        $berita = Blog::latest()->paginate(6);
 
-        $berita = Blog::find($id);
        return view('berita_guru.detail', compact('berita'));
     }
 
