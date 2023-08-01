@@ -16,7 +16,7 @@
         href="{{ asset('admin/assets/css/perfect-scrollbar.min.css') }}" />
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="load/load.css">
+    <link rel="stylesheet" href="{{ asset('load/load.css') }}">
     {{--  <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />  --}}
     <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>
     <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
@@ -60,7 +60,7 @@
         <div class="center">
             <div class="ring">
             </div>
-            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+            <img src="{{ asset('load/logo.png') }}" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
 
