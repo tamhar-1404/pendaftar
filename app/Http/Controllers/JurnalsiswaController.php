@@ -118,7 +118,7 @@ class JurnalsiswaController extends Controller
                             'status' => 'mengisi'
                         ]);
 
-                        return redirect()->route('jurnal_siswa.index');
+                        return redirect()->route('jurnal_siswa.index')->with('success', 'Anda berhasil mengisi jurnal');
                     } catch (\Illuminate\Database\QueryException $e) {
                             return redirect()->back()->withInput()->withErrors(['tanggal' => 'Anda sudah melakukan pengumpulan']);
                 }
