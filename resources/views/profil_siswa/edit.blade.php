@@ -32,6 +32,24 @@
     :class="[$store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout, $store.app
         .rtlClass
     ]">
+    @if (session()->has('success'))
+    <script>
+        Swal.fire(
+            'Berhasil!',
+            "{{ session('success') }}",
+            'success'
+        )
+    </script>
+    @endif
+    @if (session()->has('error'))
+        <script>
+            Swal.fire(
+                'Oops..!',
+                "{{ session('error') }}",
+                'error'
+            )
+        </script>
+    @endif
     {{-- Alert validasi --}}
     @if ($errors->any())
     @foreach ($errors->all() as $error)
@@ -1276,19 +1294,19 @@
                                                 <div class="grid flex-auto grid-cols-3 gap-5 sm:grid-cols-2">
                                                     <div>
                                                         <label for="lama">Password Lama</label>
-                                                        <input id="lama" type="text" name="old_password"
+                                                        <input id="lama" type="password" name="old_password"
                                                             placeholder="Masukan Password Lama" class="form-input" />
 
                                                         <a href="{{ route('Lupapassword.index') }}" class="text-info">Lupa Password?</a>
                                                     </div>
                                                     <div>
                                                         <label for="baru">Password Baru</label>
-                                                        <input id="baru" type="text" name="password"
+                                                        <input id="baru" type="password" name="password"
                                                             placeholder="Masukkan Password Baru" class="form-input" />
                                                     </div>
                                                     <div>
                                                         <label for="konfirmasi">Koirmasi Password</label>
-                                                        <input id="konfirmasi" type="text" name="password_confirmation"
+                                                        <input id="konfirmasi" type="password" name="password_confirmation"
                                                             placeholder="Konfirmasi Password" class="form-input" />
                                                     </div>
                                                     <div class="mt-3 sm:col-span-2 flex gap-4 justify-end">
