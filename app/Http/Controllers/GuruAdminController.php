@@ -63,13 +63,13 @@ class GuruAdminController extends Controller
      public function store(Request $request)
      {
          $this->validate($request, [
-             'image' => 'required',
+             'image' => 'required|mimes:png,jpg,jpeg',
              'name' => 'required',
              'sekolah' => 'required',
-             'email' => 'required|unique:guru_admins',
+             'email' => 'required|unique:users,email',
              'alamat' => 'required',
-             'no' => 'required|unique:guru_admins|min:10|max:14',
-             'password' => 'required'
+             'no' => 'required|unique:guru_admins,no|min:10|max:14',
+             'password' => 'required|min:6',
          ]);
 
          $password = $request->password; // Simpan password yang belum di-hash
