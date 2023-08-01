@@ -8,7 +8,12 @@ use App\Models\Siswa;
 use Auth;
 use App\Http\Requests\StoreProfileGuruRequest;
 use App\Http\Requests\UpdateProfileGuruRequest;
+use App\Models\User;
+use Faker\Core\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileGuruController extends Controller
 {
@@ -79,12 +84,46 @@ class ProfileGuruController extends Controller
      */
     public function update(Request $request, $profileGuru)
     {
-        $request->validate([
-
-        ]);
-
         if ($request->has('image')) {
+            $request->validate([
+                'image' => 'required|image|mimes:png,jpg,jpeg',
+                'email' => 'required|email|unique:users,email,' . FacadesAuth::user()->id,
+                'no' => 'required',
+                'alamat' => 'required',
+            ]);
             $file = $request->file('image');
+            $fileName = $file->hashName();
+            if (Storage::exists('public/guru_image/' . $fileName)) {
+                Storage::delete('public/guru_image/' . $fileName);
+            }
+            $file->storeAs('public/guru_image/', $fileName);
+            User::where('name', FacadesAuth::user()->name)->update([
+                'email' => $request->email,
+            ]);
+            Guru_admin::where('name', FacadesAuth::user()->name)->update([
+                'email' => $request->email,
+                'alamat' => $request->alamat,
+                'no' => $request->no,
+                'image' => $fileName,
+            ]);
+            return redirect()->route('profileguru.index')->with('success', 'Berhasil memperbarui profil');
+        }
+        else {
+            $request->validate([
+                'email' => 'required|email|unique:users,email,' . FacadesAuth::user()->id,
+                'no' => 'required',
+                'alamat' => 'required',
+            ]);
+            User::where('name', FacadesAuth::user()->name)->update([
+                'email' => $request->email,
+            ]);
+            Guru_admin::where('name', FacadesAuth::user()->name)->update([
+                'email' => $request->email,
+                'alamat' => $request->alamat,
+                'no' => $request->no,
+            ]);
+
+            return redirect()->route('profileguru.index')->with('success', 'Berhasil memperbarui profil');
         }
     }
 
@@ -97,5 +136,21 @@ class ProfileGuruController extends Controller
     public function destroy(ProfileGuru $profileGuru)
     {
         //
+    }
+
+    public function updatePassword(Request $request) {
+        $request->validate([
+            'old_password' => 'required',
+            'password' => 'required|min:6|confirmed',
+        ]);
+        $user_id = auth()->user()->id;
+        if (Hash::check($request->old_password, User::find($user_id)->password)) {
+            User::find($user_id)->update([
+                'password' => Hash::make($request->password),
+            ]);
+            return redirect()->route('profileguru.index')->with('success', 'Berhasil mengganti password');
+        } else {
+            return back()->with('error', 'Password salah');
+        }
     }
 }

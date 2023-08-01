@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Siswa_guru;
+use  App\Models\Siswa_guru;
 use App\Models\Siswa;
 use App\Models\Laporansiswa;
 use App\Models\Guru_admin;
@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Storesiswa_guruRequest;
 use App\Http\Requests\Updatesiswa_guruRequest;
 use Auth;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class SiswaGuruController extends Controller
@@ -30,7 +29,7 @@ class SiswaGuruController extends Controller
             return view('siswa_guru.index', compact('siswas' , 'guru'));
         }
         $guru = Guru_admin::where('name', Auth()->user()->name)->get();
-        $siswas = Siswa::where([['role', 'Siswa'], ['sekolah', $sekolah]])->get();
+        $siswas = Siswa::where([['role', 'siswa'], ['sekolah', $sekolah]])->get();
         return view('siswa_guru.index', compact('siswas' , 'guru'));
     }
 
@@ -67,19 +66,12 @@ class SiswaGuruController extends Controller
     }
     public function profilesiswa(Request $request)
     {
-        $Siswa=Siswa::find($request->id);   
-        $pelanggaran = Laporansiswa::Where('name', $Siswa->name)->get();
+        $Siswa=Siswa::find($request->id);
+        $pelanggaran = Laporansiswa::where('name', $Siswa->name)->get();
         $sp = "Sp1";
         $guru = Guru_admin::where('email' , Auth()->user()->email)->get();
         return view ('profilesiswa_guru.index', compact('Siswa', 'guru', 'sp', 'pelanggaran'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\siswa_guru  $siswa_guru
-     * @return \Illuminate\Http\Response
-     */
     public function edit(siswa_guru $siswa_guru)
     {
         //
@@ -108,3 +100,4 @@ class SiswaGuruController extends Controller
         //
     }
 }
+
