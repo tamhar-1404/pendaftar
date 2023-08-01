@@ -313,7 +313,7 @@
                                 myForm.submit();
                             } else {
                                 fileWarning2.textContent = "password tidak sama ";
-                               
+                                alert("Password tidak sama");
                                 return;
                             }
                         })
