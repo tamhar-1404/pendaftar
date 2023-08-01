@@ -12,8 +12,13 @@ class BeritaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->has('cari')) {
+            $keyword = $request->cari;
+            $blogs = Blog::where('judul', 'LIKE', '%'.$keyword.'%')->get();
+            return view('Berita_guru.index', compact('blogs'));
+        }
         $blogs = Blog::all();
         return view('Berita_guru.index', compact('blogs'));
     }
