@@ -97,7 +97,7 @@
                 <p class="text-xs+ mt-1">{{ $siswa->status }}</p>
 
                 <div class="mt-6 grid w-full px-3 grid-cols-1 gap-2 ">
-                    <form action="{{route('profile/siswa/guru','siswa')}}" method="get">
+                    <form action="{{route('profile.siswa.guru')}}" method="get">
                         @csrf
                         <input type="hidden" name="id" value="{{$siswa->id}}">
                         <button type="submit"

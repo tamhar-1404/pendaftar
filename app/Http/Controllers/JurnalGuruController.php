@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreJurnalGuruRequest;
 use App\Http\Requests\UpdateJurnalGuruRequest;
+use App\Models\Guru_admin;
 
 class JurnalGuruController extends Controller
 {
@@ -19,7 +20,7 @@ class JurnalGuruController extends Controller
      */
     public function index(Request $request)
 {
-    $guru = Auth::user();
+    $guru = Guru_admin::where('name', Auth::user()->name)->first();
     if ($request->has('cari')) {
         $keyword = $request->cari;
         $jurnals = Jurnalsiswa::where('sekolah', $guru->sekolah)
@@ -34,7 +35,7 @@ class JurnalGuruController extends Controller
             ->paginate(5);
     }
 
-    return view('jurnal_guru.index', compact('jurnals'));
+    return view('jurnal_guru.index', compact('jurnals', 'guru'));
 }
 
     /**

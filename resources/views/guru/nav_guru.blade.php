@@ -69,7 +69,7 @@
                                 fill="currentColor" />
                         </svg>
                     </a>
-                   
+
                 </div>
 
 
@@ -206,8 +206,8 @@
         <ul
             class="horizontal-menu hidden border-t border-[#ebedf2] bg-white py-1.5 px-6 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-[#0e1726] dark:text-white-dark lg:space-x-1.5 xl:space-x-8">
             <li class="menu nav-item relative">
-                <a href="{{ route('guru.index') }}" class="nav-link active">
-                    <div class="flex items-center text-white">
+                <a href="{{ route('guru.index') }}" class="nav-link {{ Request::routeIs('guru.index') ? 'active' : ''}}">
+                    <div class="flex items-center">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.5"
@@ -217,7 +217,7 @@
                                 d="M9 17.25C8.58579 17.25 8.25 17.5858 8.25 18C8.25 18.4142 8.58579 18.75 9 18.75H15C15.4142 18.75 15.75 18.4142 15.75 18C15.75 17.5858 15.4142 17.25 15 17.25H9Z"
                                 fill="currentColor" />
                         </svg>
-                        <span class="px-1 text-white">Dashboard</span>
+                        <span class="px-1">Dashboard</span>
                     </div>
                 </a>
             </li>
@@ -249,7 +249,7 @@
                 </ul>
             </li>
             <li class="menu nav-item relative">
-                <a href="{{ route('jurnal_guru.index') }}" class="nav-link">
+                <a href="{{ route('jurnal_guru.index') }}" class="nav-link {{ Request::routeIs('jurnal_guru.index') ? 'active' : ''}}">
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -261,7 +261,7 @@
                 </a>
             </li>
             <li class="menu nav-item relative">
-                <a href="{{ route('absensi_guru.index') }}" class="nav-link">
+                <a href="{{ route('absensi_guru.index') }}" class="nav-link {{ Request::routeIs('absensi_guru.index') ? 'active' : ''}}">
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -273,7 +273,7 @@
                 </a>
             </li>
             <li class="menu nav-item relative">
-                <a href="{{ route('berita_guru.index') }}" class="nav-link">
+                <a href="{{ route('berita_guru.index') }}" class="nav-link {{ Request::routeIs('berita_guru.index') ? 'active' : ''}}">
                     <div class="flex items-center">
                         <svg class="group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
                             fill="none" xmlns="http://www.w3.org/2000/svg">

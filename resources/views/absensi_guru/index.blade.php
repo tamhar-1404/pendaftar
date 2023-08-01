@@ -258,7 +258,7 @@
 
         <div class="main-content">
             <!-- start header section -->
-            @include('absensi_guru.nav_absensi')
+            @include('guru.nav_guru')
             <!-- end header section -->
 
             <div class="animate__animated p-6" :class="[$store.app.animation]">
