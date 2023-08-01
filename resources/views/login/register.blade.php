@@ -105,8 +105,9 @@
                             <div class="mb-4">
                                 <label for="nisn" class="block font-bold mb-1 text-sm">NISN / NIM:</label>
                                 <input type="number" id="nisn" name="nisn" placeholder="Masukkan nisn / nim"
-                                    class="w-full px-4 py-1 text-sm border rounded" required>
+                                    class="w-full px-4 py-1 text-sm border rounded" min="0" required>
                             </div>
+
                             <div class="mb-4">
                                 <label for="kelas" class="block font-bold mb-1 text-sm">Kelas:</label>
                                 <select name="kelas" id="class"
@@ -167,7 +168,7 @@
                             </div>
                             <div class="mb-4">
                                 <label for="school" class="block font-bold text-sm mb-1">Nomer tlp :</label>
-                                <input type="number" id="nomor" name="no"
+                                <input type="number" id="nomor" name="no" min="0"
                                     class="w-full px-4 py-1 border rounded" required>
                             </div>
                             <div class="mb-4">
@@ -444,38 +445,38 @@
                 return allowedExtensions.includes(fileExtension);
             }
         });
-        document.addEventListener("DOMContentLoaded", function() {
-            const nextButton5 = document.getElementById("nextStep3");
-            const fileInput5 = document.getElementById("skck"); // Note: Changed 'fileInput' to 'photo'
-            const fileWarning5 = document.getElementById("file-warning-skck");
+        // document.addEventListener("DOMContentLoaded", function() {
+        //     const nextButton5 = document.getElementById("nextStep3");
+        //     const fileInput5 = document.getElementById("skck"); // Note: Changed 'fileInput' to 'photo'
+        //     const fileWarning5 = document.getElementById("file-warning-skck");
 
-            nextButton5.addEventListener("click", function() {
-                if (fileInput5.files.length === 0) {
-                    // File input is empty, no need to show the warning
-                    fileWarning5.textContent = "";
-                    return;
-                }
+        //     nextButton5.addEventListener("click", function() {
+        //         // if (fileInput5.files.length === 0) {
+        //         //     // File input is empty, no need to show the warning
+        //         //     fileWarning5.textContent = "";
+        //         //     return;
+        //         // }
 
-                if (!validateFileType(fileInput5)) {
-                    fileWarning5.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
-                } else {
-                    fileWarning5.textContent = ""; // Clear the warning if the file is valid
-                    // Perform any other actions here to proceed to the next step if needed
-                }
-            });
+        //         if (!validateFileType(fileInput5)) {
+        //             fileWarning5.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
+        //         } else {
+        //             fileWarning5.textContent = ""; // Clear the warning if the file is valid
+        //             // Perform any other actions here to proceed to the next step if needed
+        //         }
+        //     });
 
-            function validateFileType(input) {
-                const allowedExtensions = ["jpg", "jpeg", "png"]; // Allowed file extensions
-                const fileName = input.value;
-                const fileExtension = fileName.split('.').pop().toLowerCase(); // Get the file extension
-                if (allowedExtensions.includes(fileExtension)) {
-                console.log("File extension is allowed.");
-                } else {
-                console.log("File extension is not allowed.");
-                }
-                return allowedExtensions.includes(fileExtension);
-            }
-        });
+        //     function validateFileType(input) {
+        //         const allowedExtensions = ["jpg", "jpeg", "png"]; // Allowed file extensions
+        //         const fileName = input.value;
+        //         const fileExtension = fileName.split('.').pop().toLowerCase(); // Get the file extension
+        //         if (allowedExtensions.includes(fileExtension)) {
+        //         console.log("File extension is allowed.");
+        //         } else {
+        //         console.log("File extension is not allowed.");
+        //         }
+        //         return allowedExtensions.includes(fileExtension);
+        //     }
+        // });
 
 
         document.addEventListener("DOMContentLoaded", function() {
@@ -517,7 +518,6 @@
 
                         errorMessage.textContent = "Harap isi form ini.";
 
-
                         isValid = false;
                     } else {
                         input.classList.remove("border-red-500");
@@ -528,6 +528,8 @@
                         }
                     }
                 });
+
+
                 var radioGroups = {};
 
                 inputs.forEach(function(input) {
@@ -594,8 +596,8 @@
                     }
                 });
 
-                inputs.forEach(function(input) {
-                if (input.type === "file") {
+                inputs.forEach(function (input) {
+                if (input.type === "file" && input.id !== "skck") {
                     if (input.files.length === 0) {
                         var errorMessage = input.parentNode.querySelector(".error-message");
 
@@ -608,17 +610,19 @@
                         errorMessage.textContent = "Please select a file.";
 
                         isValid = false;
-                         }else if (!validateFileType(input)) {
-                            var errorMessage = input.parentNode.querySelector(".error-message");
+                    } else if (!validateFileType(input)) {
+                        var errorMessage = input.parentNode.querySelector(".error-message");
 
-                            if (!errorMessage) {
-                                errorMessage = document.createElement("span");
-                                errorMessage.className = "error-message text-red-500 text-sm";
-                                input.parentNode.appendChild(errorMessage);
-                            }
+                        if (!errorMessage) {
+                            errorMessage = document.createElement("span");
+                            errorMessage.className = "error-message text-red-500 text-sm";
+                            input.parentNode.appendChild(errorMessage);
+                        }
 
-                            isValid = false;
-                        } else {
+                        errorMessage.textContent = "Invalid file type.";
+
+                        isValid = false;
+                    } else {
                         var errorMessage = input.parentNode.querySelector(".error-message");
                         if (errorMessage) {
                             errorMessage.remove();
@@ -626,6 +630,33 @@
                     }
                 }
             });
+            inputs.forEach(function (input) {
+            if (input.type === "file" && input.id === "skck") {
+                if (input.files.length > 0) {
+                    // File is selected, run mime type validation
+                    if (!validateFileType(input)) {
+                        var errorMessage = input.parentNode.querySelector(".error-message");
+
+                        if (!errorMessage) {
+                            errorMessage = document.createElement("span");
+                            errorMessage.className = "error-message text-red-500 text-sm";
+                            input.parentNode.appendChild(errorMessage);
+                        }
+
+                        errorMessage.textContent = "Invalid file type.";
+
+                        isValid = false;
+                    } else {
+                        var errorMessage = input.parentNode.querySelector(".error-message");
+                        if (errorMessage) {
+                            errorMessage.remove();
+                        }
+                    }
+                }
+            }
+        });
+
+
 
 
 

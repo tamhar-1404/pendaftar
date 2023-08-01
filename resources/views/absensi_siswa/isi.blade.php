@@ -258,7 +258,7 @@
                     </tbody>
                 </table>
 
-                {{ $terima->links() }}
+                <div class="kamu-tak-diajak">{{ $terima->links() }}</div>
             </div>
 
         </div>
