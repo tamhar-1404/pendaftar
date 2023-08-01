@@ -128,7 +128,7 @@ class DashboardGuruController extends Controller
      * @param  \App\Models\dashbord_guru  $dashboard_guru
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dashboard_guru $dashboard_guru)
+    public function edit($dashboard_guru)
     {
         //
     }
@@ -140,7 +140,7 @@ class DashboardGuruController extends Controller
      * @param  \App\Models\dashbord_guru  $dashboard_guru
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDashboard_guruRequest $request, Dashboard_guru $dashboard_guru)
+    public function update(UpdateDashboard_guruRequest $request, $dashboard_guru)
     {
         //
     }
@@ -151,7 +151,7 @@ class DashboardGuruController extends Controller
      * @param  \App\Models\dashbord_guru  $dashboard_guru
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dashboard_guru $dashboard_guru)
+    public function destroy($dashboard_guru)
     {
         //
     }
