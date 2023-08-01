@@ -6,7 +6,7 @@
                 <a href="index-2.html" class="main-logo flex shrink-0 items-center">
                     <img class="inline w-20
                      ltr:-ml-1 rtl:-mr-1"
-                        src="assets_guru/images/LOGO HUMMASOFT 2.png" alt="image" />
+                        src="{{ asset('assets_guru/images/LOGO HUMMASOFT 2.png') }}" alt="image" />
                 </a>
 
                 <a href="javascript:;"
@@ -61,7 +61,7 @@
                     </a>
                     <a href="javascript:;" x-cloak x-show="$store.app.theme === 'dark'" href="javascript:;"
                         class="flex items-center rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
-                        @click="$store.app.toggleTheme('system')">
+                        @click="$store.app.toggleTheme('light')">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -69,51 +69,109 @@
                                 fill="currentColor" />
                         </svg>
                     </a>
-                    <a href="javascript:;" x-cloak x-show="$store.app.theme === 'system'" href="javascript:;"
-                        class="flex items-center rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
-                        @click="$store.app.toggleTheme('light')">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M3 9C3 6.17157 3 4.75736 3.87868 3.87868C4.75736 3 6.17157 3 9 3H15C17.8284 3 19.2426 3 20.1213 3.87868C21 4.75736 21 6.17157 21 9V14C21 15.8856 21 16.8284 20.4142 17.4142C19.8284 18 18.8856 18 17 18H7C5.11438 18 4.17157 18 3.58579 17.4142C3 16.8284 3 15.8856 3 14V9Z"
-                                stroke="currentColor" stroke-width="1.5" />
-                            <path opacity="0.5" d="M22 21H2" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" />
-                            <path opacity="0.5" d="M15 15H9" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" />
-                        </svg>
-                    </a>
+
                 </div>
 
 
 
 
+                <div class="dropdown" x-data="dropdown" @click.outside="open = false">
+
+                    <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
+                        class="top-11 w-[300px] divide-y !py-0 text-dark ltr:-right-2 rtl:-left-2 dark:divide-white/10 dark:text-white-dark sm:w-[350px]">
+                        <li>
+                            <div
+                                class="flex items-center justify-between px-4 py-2 font-semibold hover:!bg-transparent">
+                                <h4 class="text-lg">Notification</h4>
+                                <template x-if="notifications.length">
+                                    <span class="badge bg-primary/80" x-text="notifications.length + 'New'"></span>
+                                </template>
+                            </div>
+                        </li>
+                        <template x-for="notification in notifications">
+                            <li class="dark:text-white-light/90">
+                                <div class="group flex items-center px-4 py-2" @click.self="toggle">
+                                    <div class="grid place-content-center rounded">
+                                        <div class="relative h-12 w-12">
+                                            <img class="h-12 w-12 rounded-full object-cover"
+                                                :src="`assets_guru/images/${notification.profile}`" alt="image" />
+                                            <span
+                                                class="absolute right-[6px] bottom-0 block h-2 w-2 rounded-full bg-success"></span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-auto ltr:pl-3 rtl:pr-3">
+                                        <div class="ltr:pr-3 rtl:pl-3">
+                                            <h6 x-html="notification.message"></h6>
+                                            <span class="block text-xs font-normal dark:text-gray-500"
+                                                x-text="notification.time"></span>
+                                        </div>
+                                        <button type="button"
+                                            class="text-neutral-300 opacity-0 hover:text-danger group-hover:opacity-100 ltr:ml-auto rtl:mr-auto"
+                                            @click="removeNotification(notification.id)">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <circle opacity="0.5" cx="12" cy="12" r="10"
+                                                    stroke="currentColor" stroke-width="1.5" />
+                                                <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5"
+                                                    stroke="currentColor" stroke-width="1.5"
+                                                    stroke-linecap="round" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </template>
+                        <template x-if="!notifications.length">
+                            <li>
+                                <div class="!grid min-h-[200px] place-content-center text-lg hover:!bg-transparent">
+                                    <div class="mx-auto mb-4 rounded-full text-primary ring-4 ring-primary/30">
+                                        <svg width="40" height="40" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path opacity="0.5"
+                                                d="M20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20C15.5228 20 20 15.5228 20 10Z"
+                                                fill="currentColor" />
+                                            <path
+                                                d="M10 4.25C10.4142 4.25 10.75 4.58579 10.75 5V11C10.75 11.4142 10.4142 11.75 10 11.75C9.58579 11.75 9.25 11.4142 9.25 11V5C9.25 4.58579 9.58579 4.25 10 4.25Z"
+                                                fill="currentColor" />
+                                            <path
+                                                d="M10 15C10.5523 15 11 14.5523 11 14C11 13.4477 10.5523 13 10 13C9.44772 13 9 13.4477 9 14C9 14.5523 9.44772 15 10 15Z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </div>
+                                    No data available.
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
                 <div class="dropdown flex-shrink-0" x-data="dropdown" @click.outside="open = false">
                     <a href="javascript:;" class="group relative" @click="toggle()">
-                    @foreach ($guru as $guru)
-                        <span><img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image" /></span>
+
+
+
                     </a>
                     <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
                         class="top-11 w-[230px] !py-0 font-semibold text-dark ltr:right-0 rtl:left-0 dark:text-white-dark dark:text-white-light/90">
                         <li>
                             <div class="flex items-center px-4 py-4">
                                 <div class="flex-none">
-                                    <img class="h-10 w-10 rounded-md object-cover"
-                                        src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image" />
+
                                 </div>
+
                                 <div class="ltr:pl-4 rtl:pr-4">
                                     <h4 class="text-base">
-                                        {{ $guru->name }}<span
-                                            class="rounded  px-1 text-xs text-success ltr:ml-2 rtl:ml-2"></span>
+
                                     </h4>
-                                    <a class="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white"
-                                        href="javascript:;">{{ $guru->email }}</a>
+                                    <span
+                                        class="text-black/60 hover:text-primary dark:text-dark-light/60  dark:hover:text-white">
+
+
+                                    </span>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <a href="#" class="dark:hover:text-white" @click="toggle">
+                            <a href="{{ route('profileguru.index') }}" class="dark:hover:text-white" @click="toggle">
                                 <svg class="h-4.5 w-4.5 ltr:mr-2 rtl:ml-2" width="18" height="18"
                                     viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="12" cy="6" r="4" stroke="currentColor"
@@ -125,7 +183,7 @@
                                 Profile</a>
                         </li>
                         <li class="border-t border-white-light dark:border-white-light/10">
-                            <a href="{{route('keluar')}}" class="!py-3 text-danger" @click="toggle">
+                            <a href="{{ route('keluar') }}" class="!py-3 text-danger" @click="toggle">
                                 <svg class="h-4.5 w-4.5 rotate-90 ltr:mr-2 rtl:ml-2" width="18" height="18"
                                     viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.5"
@@ -138,7 +196,6 @@
                             </a>
                         </li>
                     </ul>
-                    @endforeach
                 </div>
             </div>
         </div>
@@ -147,8 +204,8 @@
         <ul
             class="horizontal-menu hidden border-t border-[#ebedf2] bg-white py-1.5 px-6 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-[#0e1726] dark:text-white-dark lg:space-x-1.5 xl:space-x-8">
             <li class="menu nav-item relative">
-                <a href="{{ route('guru.index') }}" class="nav-link">
-                    <div class="flex items-center ">
+                <a href="{{ route('guru.index') }}" class="nav-link active">
+                    <div class="flex items-center text-white">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.5"
@@ -158,7 +215,7 @@
                                 d="M9 17.25C8.58579 17.25 8.25 17.5858 8.25 18C8.25 18.4142 8.58579 18.75 9 18.75H15C15.4142 18.75 15.75 18.4142 15.75 18C15.75 17.5858 15.4142 17.25 15 17.25H9Z"
                                 fill="currentColor" />
                         </svg>
-                        <span class="px-1 ">Dashboard</span>
+                        <span class="px-1 text-white">Dashboard</span>
                     </div>
                 </a>
             </li>
@@ -170,7 +227,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                         </svg>
-                        <span class="px-1 ">Siswa</span>
+                        <span class="px-1">Siswa</span>
                     </div>
                     <div class="right_arrow">
                         <svg class="h-4 w-4 rotate-90" width="16" height="16" viewBox="0 0 24 24"
@@ -214,7 +271,7 @@
                 </a>
             </li>
             <li class="menu nav-item relative">
-                <a href="javascript:;" class="nav-link">
+                <a href="{{ route('berita_guru.index') }}" class="nav-link">
                     <div class="flex items-center">
                         <svg class="group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -231,24 +288,9 @@
                                 d="M2 18.5C2 19.5872 2 20.1308 2.17127 20.5596C2.39963 21.1313 2.83765 21.5856 3.38896 21.8224C3.80245 22 4.32663 22 5.375 22H7.625C8.67337 22 9.19755 22 9.61104 21.8224C10.1624 21.5856 10.6004 21.1313 10.8287 20.5596C11 20.1308 11 19.5872 11 18.5C11 17.4128 11 16.8692 10.8287 16.4404C10.6004 15.8687 10.1624 15.4144 9.61104 15.1776C9.19755 15 8.67337 15 7.625 15H5.375C4.32663 15 3.80245 15 3.38896 15.1776C2.83765 15.4144 2.39963 15.8687 2.17127 16.4404C2 16.8692 2 17.4128 2 18.5Z"
                                 fill="currentColor" />
                         </svg>
-                        <span class="px-1">Lainnya</span>
-                    </div>
-                    <div class="right_arrow">
-                        <svg class="h-4 w-4 rotate-90" width="16" height="16" viewBox="0 0 24 24"
-                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                        <span class="px-1">Berita</span>
                     </div>
                 </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="{{ route('berita_guru.index') }}">Berita</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('chat_guru.index') }}">Chat</a>
-                    </li>
-                </ul>
             </li>
         </ul>
     </div>

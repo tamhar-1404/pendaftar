@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Siswa_guru;
+use  App\Models\Siswa_guru;
 use App\Models\Siswa;
 use App\Models\Laporansiswa;
 use App\Models\Guru_admin;
@@ -72,13 +72,6 @@ class SiswaGuruController extends Controller
         $guru = Guru_admin::where('email' , Auth()->user()->email)->get();
         return view ('profilesiswa_guru.index', compact('Siswa', 'guru', 'sp', 'pelanggaran'));
     }
-    /**
-    * Update the specified resource in storage.
-    *
-    * @param  \App\Http\Requests\Updatesiswa_guruRequest  $request
-    * @param  \App\Models\siswa_guru  $siswa_guru
-    * @return \Illuminate\Http\Response
-    */
     public function edit(siswa_guru $siswa_guru)
     {
         //
@@ -107,3 +100,4 @@ class SiswaGuruController extends Controller
         //
     }
 }
+
