@@ -212,13 +212,13 @@
                                 <div class="">
                                     <label for="internship-start" class="block font-bold text-sm mb-1">Mulai Magang
                                         :</label>
-                                    <input type="date" id="internship-start" name="magang_awal"
+                                    <input type="date" id="mulai-magang" name="magang_awal"
                                         class="w-full px-4 text-sm py-1 border rounded" required>
                                 </div>
                                 <div class="">
                                     <label for="internship-end" class="block font-bold text-sm mb-1">Selesai
                                         Magang:</label>
-                                    <input type="date" id="internship-end" name="magang_akhir"
+                                    <input type="date" id="akhir-magang" name="magang_akhir"
                                         class="w-full px-4 py-1 text-sm border rounded" required>
                                 </div>
                             </div>
@@ -283,11 +283,13 @@
                                 <label for="password" class="block font-bold mb-1">Password:</label>
                                 <input type="password" id="password" name="password"
                                     class="w-full px-4 py-1 text-sm border rounded" required>
+                                <div id="file-warning-password" class="text-red-500 text-sm mt-1"></div>
                             </div>
                             <div class="mb-4">
                                 <label for="confirm-password" class="block font-bold mb-1">Confirm Password:</label>
                                 <input type="password" id="confirm-password" name="confirm-password"
                                     class="w-full px-4 py-1 text-sm border rounded" required>
+                                <div id="file-warning-konfrim" class="text-red-500 text-sm mt-1"></div>
                             </div>
                             <div class="flex justify-between gap-2">
                                 <button type="button" id="prevStep4"
@@ -303,19 +305,27 @@
                         const passwordInput = document.getElementById("password");
                         const confirmPasswordInput = document.getElementById("confirm-password");
                         const myForm = document.getElementById("myForm");
+                        const fileWarningpass = document.getElementById("file-warning-password");
+                        const fileWarningkonfrim = document.getElementById("file-warning-konfrim");
+
 
                         myForm.addEventListener('submit', function(event) {
                             event.preventDefault();
                             const password = passwordInput.value;
                             const confirmPassword = confirmPasswordInput.value;
-
+                            if(password.trim().length <= 6 ){
+                                fileWarningpass.textContent="password tidak boleh kurang dari 6 huruf";
+                                retrun;
+                            }else{
+                                fileWarningpass.textContent="";
+                            }
                             if (password === confirmPassword) {
                                 myForm.submit();
                             } else {
-                                fileWarning2.textContent = "password tidak sama ";
-                                alert("Password tidak sama");
+                                fileWarningkonfrim.textContent="password salah";
                                 return;
                             }
+                            retrun isValid;
                         })
                     </script>
                     <div class="mt-4 text-center text-xs+">
@@ -676,14 +686,34 @@
                 }
             }
         });
+        inputs.forEach(function(input){
+            if (!input.checkValidity()) {
+                if(input.type="date"){
 
 
+                    }
+                        var errorMessage = textarea.parentNode.querySelector(".error-message");
 
+                        if (!errorMessage) {
+                            errorMessage = document.createElement("span");
+                            errorMessage.className = "error-message text-red-500 text-sm";
+                            textarea.parentNode.appendChild(errorMessage);
+                        }
 
+                        errorMessage.textContent = "Harap isi form ini.";
 
+                        isValid = false;
+                    } else {
+                        textarea.classList.remove("border-red-500");
+                        textarea.placeholder = "";
+                        var errorMessage = textarea.parentNode.querySelector(".error-message");
+                        if (errorMessage) {
+                            errorMessage.remove();
+                        }
 
+                    }
 
-
+        })
 
 
 
