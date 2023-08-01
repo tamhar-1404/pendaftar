@@ -76,8 +76,8 @@ class ApprovalIzinController extends Controller
     {
         // dd($request->all());
         $this->validate($request, [
-            'dari' => 'required',
-            'sampai' => 'required',
+            'dari' => 'required|date|after_or_equal:today',
+            'sampai' => 'required|date|after:today',
             'keterangan' => 'required',
             'deskripsi' => 'required',
             'bukti' => 'required|image|mimes:jpeg,jpg,png'
