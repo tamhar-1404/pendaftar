@@ -81,7 +81,7 @@
               <div class="flex items-center mt-2">
                 <form action="{{route('Berita.like', $berita->id)}}" method="POST">
                 @csrf
-                <button type="submit" class="flex items-center bg-gray-200 rounded-full px-3 py-1 mr-2">
+                <button type="submit" class="flex items-center border border-gray-400 rounded-full px-3 py-1 mr-2">
                     <i class="fas fa-thumbs-up mr-1"></i>
                     Like
                 </button>
