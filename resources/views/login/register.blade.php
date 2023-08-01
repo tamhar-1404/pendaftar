@@ -312,7 +312,8 @@
                             if (password === confirmPassword) {
                                 myForm.submit();
                             } else {
-                                alert("Password tidak sama");
+                                fileWarning2.textContent = "password tidak sama ";
+                               
                                 return;
                             }
                         })
@@ -501,13 +502,14 @@
                 const step = steps[stepIndex];
                 const inputs = Array.from(step.getElementsByTagName("input"));
                 const textareas = Array.from(step.getElementsByTagName("textarea"));
-
+                var minValue = 10;
+                var minValuenomor = 11;
                 var isValid = true;
 
                 var radio = {};
 
                 inputs.forEach(function(input) {
-                    if (!input.checkValidity()) {
+                    if (!input.checkValidity() || (input.type === "number" && input.value.trim().length < minValue && input.id === 'nisn')) {
                         var errorMessage = input.parentNode.querySelector(".error-message");
 
                         if (!errorMessage) {
@@ -516,7 +518,27 @@
                             input.parentNode.appendChild(errorMessage);
                         }
 
-                        errorMessage.textContent = "Harap isi form ini.";
+                        if (input.type === "number") {
+                            errorMessage.textContent = "Harap isi form ini dengan nilai minimal " + minValue + ".";
+                        } else {
+                            errorMessage.textContent = "Harap isi form ini.";
+                        }
+
+                        isValid = false;
+                    }else if(input.value.trim().length < minValuenomor && input.id === 'nomor'){
+                        var errorMessage = input.parentNode.querySelector(".error-message");
+
+                        if (!errorMessage) {
+                            errorMessage = document.createElement("span");
+                            errorMessage.className = "error-message text-red-500 text-sm";
+                            input.parentNode.appendChild(errorMessage);
+                        }
+
+                        if (input.type === "number") {
+                            errorMessage.textContent = "Harap isi form ini dengan nilai minimal " + minValuenomor + ".";
+                        } else {
+                            errorMessage.textContent = "Harap isi form ini.";
+                        }
 
                         isValid = false;
                     } else {
@@ -619,7 +641,7 @@
                             input.parentNode.appendChild(errorMessage);
                         }
 
-                        errorMessage.textContent = "Invalid file type.";
+                        errorMessage.textContent = "";
 
                         isValid = false;
                     } else {
@@ -642,8 +664,7 @@
                             errorMessage.className = "error-message text-red-500 text-sm";
                             input.parentNode.appendChild(errorMessage);
                         }
-
-                        errorMessage.textContent = "Invalid file type.";
+                        errorMessage.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
 
                         isValid = false;
                     } else {
