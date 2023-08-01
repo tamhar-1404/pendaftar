@@ -50,13 +50,14 @@ class LaporanSiswaController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'deskripsi' => 'required',
-            'bukti' => 'required',
+            'bukti' => 'required|mimes:png,jpg',
         ]);
 
         $user = Auth::user();
-        $tanggal = date('d F Y'); // Ubah format tanggal menjadi "tanggal bulan tahun"
+        $tanggal = date('d F Y');
         $image = $request->file('bukti');
         $image->storeAs('public/laporansiswa', $image->hashName());
+
         LaporanSiswa::create([
             'name' => auth()->user()->name,
             'tanggal' => $tanggal,

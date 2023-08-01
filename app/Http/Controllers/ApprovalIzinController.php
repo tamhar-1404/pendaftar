@@ -80,12 +80,10 @@ class ApprovalIzinController extends Controller
             'sampai' => 'required',
             'keterangan' => 'required',
             'deskripsi' => 'required',
-            'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
+            'bukti' => 'required|image|mimes:jpeg,jpg,png'
         ]);
         $siswa = User::Where('id', $request->foto)->first();
-
         $foto_siswa = Siswa::where('id', $siswa->siswa_id)->first();
-
         $foto = $foto_siswa->foto_siswa;
         $image = $request->file('bukti');
         $image->storeAs('public/bukti_izin', $image->hashName());
