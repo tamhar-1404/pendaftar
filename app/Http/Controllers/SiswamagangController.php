@@ -136,8 +136,8 @@ class SiswamagangController extends Controller
     {
         $user_id = auth()->user()->id;
         $this->validate($request, [
-            'saldo' => 'required',
-            'password' => 'required'
+            'saldo' => 'required|min:5000|max:100000',
+            'password' => 'required|min:6'
         ]);
         $data = $request -> saldo;
         if($data >= 5000){

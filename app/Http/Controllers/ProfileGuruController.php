@@ -84,6 +84,7 @@ class ProfileGuruController extends Controller
      */
     public function update(Request $request, $profileGuru)
     {
+        $guru = Guru_admin::where('name', auth()->user()->name)->first();
         if ($request->has('image')) {
             $request->validate([
                 'image' => 'required|image|mimes:png,jpg,jpeg',

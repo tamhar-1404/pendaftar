@@ -26,7 +26,6 @@ class GuruAdminController extends Controller
     if ($request->has('cari')) {
         $keyword = $request->cari;
         $guru_admin = Guru_admin::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(8);
-        return view('guru_admin.index', compact('guru_admin'));
 
         $guru_admin->appends(['cari' => $keyword]);
         return view('guru_admin.index', compact('guru_admin'));
@@ -96,7 +95,7 @@ class GuruAdminController extends Controller
          // Mengirim email konfirmasi dengan password yang belum di-hash
          Mail::to($request->email)->send(new AkunGuru($password));
 
-         return redirect()->route('guru_admin.index');
+         return redirect()->route('guru_admin.index')->with('success', 'Berhasil membuat guru');
      }
 
 

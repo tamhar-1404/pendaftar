@@ -2388,6 +2388,9 @@
                                         </div>
                                         @error('no')
                                             <div class="text-sm text-red-500 font-medium">{{ $message }}</div>
+                                            <script>
+                                                toastr.error("{{ $message }}");
+                                            </script>
                                         @enderror
                                         <div class="mt-4">
                                             <label for="email"
