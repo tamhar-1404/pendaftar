@@ -23,18 +23,22 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->has('cari')) {
-            $keyword = $request->cari;
-            $blog = Blog::Where('judul', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->latest()->paginate(6);
-            return view('Berita.index', compact('blog'));
+        if(Auth()->user()->role == 'Admin'){
+            if ($request->has('cari')) {
+                $keyword = $request->cari;
+                $blog = Blog::Where('judul', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->latest()->paginate(6);
+                return view('Berita.index', compact('blog'));
 
-            $blog->appends(['cari' => $keyword]);
+                $blog->appends(['cari' => $keyword]);
 
+                return view('Berita.index', compact('blog'));
+            }
+
+            $blog = Blog::latest()->paginate(6);
             return view('Berita.index', compact('blog'));
+        }else{
+            return redirect()->back();
         }
-
-        $blog = Blog::latest()->paginate(6);
-        return view('Berita.index', compact('blog'));
     }
 
     /**
@@ -44,7 +48,11 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('Berita.create');
+        if(Auth()->user()->role == 'Admin'){
+            return view('Berita.create');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -56,34 +64,38 @@ class BlogController extends Controller
 
      public function store(Request $request)
      {
-         $this->validate($request, [
-             'foto' => 'required',
-             'judul' => 'required',
-             'keterangan' => 'required',
-             'deskripsi'  => 'required',
-             'kategori'  => 'required'
-         ]);
+        if(Auth()->user()->role == 'Admin'){
+            $this->validate($request, [
+                'foto' => 'required',
+                'judul' => 'required',
+                'keterangan' => 'required',
+                'deskripsi'  => 'required',
+                'kategori'  => 'required'
+            ]);
 
-         $image = $request->file('foto');
-         $image->storeAs('public/fotoberita', $image->hashName());
+            $image = $request->file('foto');
+            $image->storeAs('public/fotoberita', $image->hashName());
 
-         $berita = Blog::create([
-             'name' => auth()->user()->name,
-             'foto' => $image->hashName(),
-             'judul' => $request->judul,
-             'keterangan' => $request->keterangan,
-             'tanggal' => Carbon::now()->format('Y-m-d'),
-             'deskripsi' => $request->deskripsi,
-             'kategori' => $request->kategori
-         ]);
+            $berita = Blog::create([
+                'name' => auth()->user()->name,
+                'foto' => $image->hashName(),
+                'judul' => $request->judul,
+                'keterangan' => $request->keterangan,
+                'tanggal' => Carbon::now()->format('Y-m-d'),
+                'deskripsi' => $request->deskripsi,
+                'kategori' => $request->kategori
+            ]);
 
-         $emails = User::whereIn('role', ['siswa', 'guru'])->pluck('email')->toArray();
+            $emails = User::whereIn('role', ['siswa', 'guru'])->pluck('email')->toArray();
 
-         foreach ($emails as $email) {
-             Mail::to($email)->send(new BeritaTerkini($berita));
-         }
+            foreach ($emails as $email) {
+                Mail::to($email)->send(new BeritaTerkini($berita));
+            }
 
-         return redirect()->route('Berita.index')->with('success', 'Data berita berhasil Ditambah');
+            return redirect()->route('Berita.index')->with('success', 'Data berita berhasil Ditambah');
+        }else{
+            return redirect()->back();
+        }
      }
 
     /**
@@ -94,8 +106,12 @@ class BlogController extends Controller
      */
     public function show($blog)
     {
-        $berita = Blog::find($blog);
-        return view('Berita.detail', compact('berita'));
+        if(Auth()->user()->role == 'admin'){
+            $berita = Blog::find($blog);
+            return view('Berita.detail', compact('berita'));
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -106,8 +122,12 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog, $id)
     {
-        $blog = Blog::find($id);
-        return view('Berita.edit', compact('blog'));
+        if(Auth()->user()->role == 'admin') {
+            $blog = Blog::find($id);
+            return view('Berita.edit', compact('blog'));
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -119,38 +139,43 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog, $id)
     {
-        // Temukan data berita berdasarkan ID
-        $blog = Blog::find($id);
+        if(Auth()->user()->role == 'admin'){
+            $blog = Blog::find($id);
 
-        $this->validate($request, [
-            'judul' => 'required',
-            'keterangan' => 'required',
-            'deskripsi' => 'required',
-            'kategori' => 'required'
-        ]);
+            $this->validate($request, [
+                'judul' => 'required',
+                'keterangan' => 'required',
+                'deskripsi' => 'required',
+                'kategori' => 'required'
+            ]);
 
-        if ($request->hasFile('foto')) {
-            // Unggah dan simpan gambar baru
-            $image = $request->file('foto');
-            $image->storeAs('public/fotoberita', $image->hashName());
+            if ($request->hasFile('foto')) {
+                // Unggah dan simpan gambar baru
+                $image = $request->file('foto');
+                $image->storeAs('public/fotoberita', $image->hashName());
 
-            // Hapus gambar lama jika ada
-            if ($blog->foto !== null) {
-                Storage::delete('public/fotoberita/' . $blog->foto);
+                // Hapus gambar lama jika ada
+                if ($blog->foto !== null) {
+                    Storage::delete('public/fotoberita/' . $blog->foto);
+                }
+
+                // $blog->foto = $image->hashName();
+
+                $blog->update([
+                    'foto' => $image->hashName(),
+                    'judul' => $request->judul,
+                    'keterangan' => $request->keterangan,
+                    'tanggal' => $request->tanggal,
+                    'deskripsi' => $request->deskripsi,
+                    'kategori' => $request->kategori
+                ]);
+                return redirect()->route('Berita.index');
             }
 
-            // $blog->foto = $image->hashName();
-
-            $blog->update([
-                'foto' => $image->hashName(),
-                'judul' => $request->judul,
-                'keterangan' => $request->keterangan,
-                'tanggal' => $request->tanggal,
-                'deskripsi' => $request->deskripsi,
-                'kategori' => $request->kategori
-            ]);
-            return redirect()->route('Berita.index');
+        }else{
+            return redirect()->back();
         }
+        // Temukan data berita berdasarkan ID
     }
 
     /**
@@ -162,15 +187,19 @@ class BlogController extends Controller
 
     public function destroy($id)
     {
-        $blog = Blog::findOrFail($id);
-        if ($blog->foto) {
-            Storage::delete('Storage/Fotoberita/' . $blog->foto);
-        }
-        $relatedChildIds = $blog->comments->pluck('id');
-        Comment::whereIn('id', $relatedChildIds)->delete();
-        $blog->delete();
+        if(Auth()->user()->role == 'admin'){
+            $blog = Blog::findOrFail($id);
+            if ($blog->foto) {
+                Storage::delete('Storage/Fotoberita/' . $blog->foto);
+            }
+            $relatedChildIds = $blog->comments->pluck('id');
+            Comment::whereIn('id', $relatedChildIds)->delete();
+            $blog->delete();
 
-        return redirect()->route('Berita.index')->with('success', 'Data berita berhasil dihapus');
+            return redirect()->route('Berita.index')->with('success', 'Data berita berhasil dihapus');
+        }else{
+            return redirect()->back();
+        }
     }
 
 
