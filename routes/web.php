@@ -102,11 +102,12 @@ Route::get('/absen/sakit', [JurnaladminController::class, 'absensakit']);
 
 
 
-// Rute untuk mengirim email reset password
+    // Rute untuk mengirim email reset password
 
-Route::middleware(['auth'])->group(function () {
-    Route::middleware(['role:Admin'])->group(function () {
-        // Route khusus untuk admin
+    Route::middleware(['auth'])->group(function () {
+        Route::middleware(['role:Admin'])->group(function () {
+            // Route khusus untuk admin
+        Route::resource('/Berita', App\Http\Controllers\BlogController::class);
         Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
         Route::post('/absensi_date', [JurnaladminController::class, 'Absenhariini'])->name('absensi_date');
         Route::get('/Absenhariini', [JurnaladminController::class, 'Absenhariini'])->name('Absenhariini');
@@ -120,7 +121,6 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);
         Route::resource('/tatatertib', App\Http\Controllers\TataTertibController::class);
         Route::resource('/sp', App\Http\Controllers\SpController::class);
-        Route::resource('/Berita', App\Http\Controllers\BlogController::class);
         Route::resource('/chat', App\Http\Controllers\ChatController::class);
         Route::resource('/piket', App\Http\Controllers\PiketController::class);
         Route::post('/rubah', [PiketController::class, 'rubah'])->name('rubah');
