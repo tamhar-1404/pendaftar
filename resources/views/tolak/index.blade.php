@@ -84,16 +84,7 @@
                         </div>
                         <div class="mb-5 flex flex-wrap  mt-5 items-center">
                             {{-- filter --}}
-                            <div class="border-2 rounded-full border-gray-400 flex items-center mr-2 ">
-                                <span class="mr-1 ml-3">
-                                    filter
-                                </span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class=" mr-3 w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
-                                </svg>
-                            </div>
+
                             {{-- serch --}}
                             <div class="mr-4 ">
                                 <form action="">
@@ -173,44 +164,14 @@
                                             </tr>
                                         @endforelse
                                     </table>
+                                    {{ $tolaks->appends(['cari' => request('cari')])->links() }}
                                 </div>
                             </div>
                         </div>
                     </div>
                     {{-- end tabel --}}
                     {{-- paginate --}}
-                    <div class="flex justify-between">
-                        <p>
-                            menampilkan 1 sampai 10 dari 15 data
-                        </p>
-                        <nav aria-label="Page navigation example">
-                            <ul class="list-style-none flex">
-                                <li>
-                                    <a
-                                        class="pointer-events-none relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">Previous</a>
-                                </li>
-                                <li>
-                                    <a class="relative block rounded-full bg-[#00B7FF] px-3 py-1.5 text-sm text-white transition-all duration-300   dark:text-white dark: dark:hover:text-white"
-                                        href="#!">1</a>
 
-                                </li>
-                                <li aria-current="page">
-                                    <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                        href="#!">2
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                        href="#!">3</a>
-                                </li>
-                                <li>
-                                    <a class="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-black transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-                                        href="#!">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
                 </div>
             </div>
             <!-- end main content section -->
