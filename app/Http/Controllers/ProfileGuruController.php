@@ -140,7 +140,7 @@ class ProfileGuruController extends Controller
 
     public function updatePassword(Request $request) {
         $request->validate([
-            'old_password' => 'required',
+            'old_password' => 'required|min:6',
             'password' => 'required|min:6|confirmed',
         ]);
         $user_id = auth()->user()->id;

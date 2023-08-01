@@ -25,12 +25,26 @@
     <script defer src="{{ asset('assets_guru/js/tippy-bundle.umd.min.js') }}"></script>
     <script defer src="{{ asset('assets_guru/js/sweetalert.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 </head>
 
 <body x-data="main" class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
     :class="[$store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout, $store.app
         .rtlClass
     ]">
+    @error('password')
+        <script>
+            toastr.error("{{ $message }}")
+        </script>
+    @enderror
+    @error('old_password')
+        <script>
+            toastr.error("{{ $message }}")
+        </script>
+    @enderror
     @if (session()->has('success'))
     <script>
         Swal.fire(
