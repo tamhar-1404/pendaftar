@@ -1178,7 +1178,7 @@
 
 
         @include('guru.nav_guru')
-        @include('berita_guru.asset')
+        @include('Berita_guru.asset')
     </div>
     </div>
 
