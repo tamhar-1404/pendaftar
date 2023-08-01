@@ -71,7 +71,7 @@
                 </button>
                 <input x-effect="$store.global.isSearchbarActive && $nextTick(() => $el.focus() );"
                     class="form-input h-8 w-full bg-transparent placeholder-slate-400 dark:placeholder-navy-300"
-                    type="text" placeholder="Search here..." />
+                    type="text" placeholder="Search heree..." />
             </div>
             <div x-data="{ activeTab: 'tabAll' }"
                 class="is-scrollbar-hidden flex shrink-0 overflow-x-auto bg-slate-100 px-2 text-slate-600 dark:bg-navy-800 dark:text-navy-200">
@@ -404,9 +404,14 @@
                         x-transition:enter-end="opacity-100 [transform:translate3d(0,0,0)]"
                         class="is-scrollbar-hidden overflow-y-auto overscroll-contain pt-1">
                         <label class="relative flex px-3">
-                            <input
-                                class="form-input peer h-8 w-full rounded-lg bg-slate-150 px-3 py-2 pl-9 text-xs+ ring-primary/50 placeholder:text-slate-400 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:ring-accent/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
-                                placeholder="Search here..." type="text" />
+                            <form action="">
+                                <label class="relative hidden px-4 mt-1 sm:flex">
+                                    <input
+                                        class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                        placeholder="Search here..." type="text" name="cari"
+                                        value="{{ request('cari') }}" />
+                                </label>
+                            </form>
                             <span
                                 class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -664,8 +669,10 @@
                                     </div>
 
                                     <div class="ax-transparent-gridline">
-                                        <div x-init="$nextTick(() => { $el._x_chart = new ApexCharts($el, pages.charts.stockMarket1);
-                                            $el._x_chart.render() });"></div>
+                                        <div x-init="$nextTick(() => {
+                                            $el._x_chart = new ApexCharts($el, pages.charts.stockMarket1);
+                                            $el._x_chart.render()
+                                        });"></div>
                                     </div>
 
                                     <div class="mt-2 flex items-center justify-between">
@@ -690,8 +697,10 @@
                                     </div>
 
                                     <div class="ax-transparent-gridline">
-                                        <div x-init="$nextTick(() => { $el._x_chart = new ApexCharts($el, pages.charts.stockMarket2);
-                                            $el._x_chart.render() });"></div>
+                                        <div x-init="$nextTick(() => {
+                                            $el._x_chart = new ApexCharts($el, pages.charts.stockMarket2);
+                                            $el._x_chart.render()
+                                        });"></div>
                                     </div>
 
                                     <div class="mt-2 flex items-center justify-between">
@@ -1461,8 +1470,7 @@
                                     })" class="flex" @mouseleave="isShowPopper = false"
                                         @mouseenter="isShowPopper = true">
                                         <div x-ref="popperRef" class="avatar h-12 w-12">
-                                            <img class="mask is-squircle"
-                                                src="{{ asset('image/logo.png') }}"
+                                            <img class="mask is-squircle" src="{{ asset('image/logo.png') }}"
                                                 alt="avatar" />
                                         </div>
                                         <div x-ref="popperRoot" class="popper-root" :class="isShowPopper && 'show'">
@@ -1478,7 +1486,8 @@
                                             use Carbon\Carbon;
                                         @endphp
                                         <div class="mt-1.5 flex items-center text-xs">
-                                            <span class="line-clamp-1">{{ Carbon::parse($berita->tanggal)->format('d M') }}</span>
+                                            <span
+                                                class="line-clamp-1">{{ Carbon::parse($berita->tanggal)->format('d M') }}</span>
                                             <div class="mx-2 my-0.5 w-px self-stretch bg-white/20"></div>
                                             <p class="shrink-0">{{ $berita->created_at->diffForHumans() }}</p>
                                         </div>
@@ -1578,19 +1587,20 @@
                         <!-- Footer Blog Post -->
                         <div class="mt-5 flex space-x-3">
                             <form action="{{ route('Berita.like', ['post' => $berita->id]) }}" method="post">
-                            @csrf
+                                @csrf
 
-                            <button
-                                class="btn space-x-2 rounded-full border border-slate-300 px-4 text-xs+ font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90" onclick="like({{ $berita->id }})">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="h-4.5 w-4.5 text-slate-400 dark:text-navy-300" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" fill="currentColor"
-                                        d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z" />
-                                </svg>
+                                <button
+                                    class="btn space-x-2 rounded-full border border-slate-300 px-4 text-xs+ font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90"
+                                    onclick="like({{ $berita->id }})">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-4.5 w-4.5 text-slate-400 dark:text-navy-300" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" fill="currentColor"
+                                            d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z" />
+                                    </svg>
 
-                                <span> {{ $berita->likes_count }}</span>
-                            </button>
+                                    <span> {{ $berita->likes_count }}</span>
+                                </button>
                             </form>
                             <button
                                 class="btn space-x-2 rounded-full border border-slate-300 px-4 text-xs+ font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90">
@@ -1607,53 +1617,64 @@
 
                 </div>
                 @foreach ($berita->comments as $comment)
-    <div class="bg-white p-4 mb-0 rounded shadow">
-            <div class="flex items-center mb-2">
-                <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('storage/Siswa/' . $comment->user->Siswa?->foto_siswa) }}" alt="Profil Picture">
-                <div class="flex flex-col">
-                    <h4 class="text-lg font-bold">{{ $comment->user->name }}</h4>
-                    <p class="text-sm font-light">{{ Carbon::parse($comment->created_at)->format('d M Y') }}</p>
-                </div>
-            </div>
-        <p class="text-gray-700 mb-2">{{ $comment->comment }}</p>
-        <span class="text-blue-500 reply-button">Balas</span>
+                    <div class="bg-white p-4 mb-0 rounded shadow">
+                        <div class="flex items-center mb-2">
+                            <img class="w-8 h-8 rounded-full mr-2"
+                                src="{{ asset('storage/Siswa/' . $comment->user->Siswa?->foto_siswa) }}"
+                                alt="Profil Picture">
+                            <div class="flex flex-col">
+                                <h4 class="text-lg font-bold">{{ $comment->user->name }}</h4>
+                                <p class="text-sm font-light">
+                                    {{ Carbon::parse($comment->created_at)->format('d M Y') }}</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-2">{{ $comment->comment }}</p>
+                        <span class="text-blue-500 reply-button">Balas</span>
 
-        <div class="reply-form hidden mt-2">
-            <div class="bg-white shadow-md border border-slate-200 rounded-md ">
-                <form action="{{ route('comment.reply') }}" method="POST">
-                @csrf
-                <input type="hidden" name="comment_id" value="{{ $comment->id }}">
-                <div class="flex w-full">
-                    <textarea class="w-full p-2 border-none rounded-t-md focus:outline-none mb-2" placeholder="Tulis balas" name="comment" id="txarea"></textarea>
-                </div>
-                <div class="flex flex-row-reverse mx-2 mb-2">
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2">Balas</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
+                        <div class="reply-form hidden mt-2">
+                            <div class="bg-white shadow-md border border-slate-200 rounded-md ">
+                                <form action="{{ route('comment.reply') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="comment_id" value="{{ $comment->id }}">
+                                    <div class="flex w-full">
+                                        <textarea class="w-full p-2 border-none rounded-t-md focus:outline-none mb-2" placeholder="Tulis balas"
+                                            name="comment" id="txarea"></textarea>
+                                    </div>
+                                    <div class="flex flex-row-reverse mx-2 mb-2">
+                                        <button
+                                            class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2">Balas</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
-    @if(count($comment->reply_comments) != 0)
-    @foreach ($comment->reply_comments as $reply)
-    <div class="bg-white p-4 ml-8 mt-2 shadow">
-        <div class="flex items-center mb-2">
-            @if ($reply->user->role == 'Admin')
-                <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('admin/assets/images/Logo.png') }}" alt="Profil Picture">
-            @else
-                <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('storage/Siswa/' . $reply->user->Siswa?->foto_siswa) }}" alt="Profil Picture">
-            @endif
-            <div class="flex flex-col">
-                <h4 class="text-lg font-bold">{{ $reply->user->name }}</h4>
-                <p class="text-sm font-light">{{ Carbon::parse($reply->created_at)->format('d M Y') }}</p>
-            </div>
-        </div>
-        <p class="text-gray-700 mb-2"><i class="fa-solid fa-reply text-gray-500"></i> <span class="text-blue-500">{{ $reply->komentar->user->name }}</span> {{ $reply->comment }}</p>
-    </div>
-    @endforeach
-    @endif
-    <div class="mb-5"></div>
-    @endforeach
+                    @if (count($comment->reply_comments) != 0)
+                        @foreach ($comment->reply_comments as $reply)
+                            <div class="bg-white p-4 ml-8 mt-2 shadow">
+                                <div class="flex items-center mb-2">
+                                    @if ($reply->user->role == 'Admin')
+                                        <img class="w-8 h-8 rounded-full mr-2"
+                                            src="{{ asset('admin/assets/images/Logo.png') }}" alt="Profil Picture">
+                                    @else
+                                        <img class="w-8 h-8 rounded-full mr-2"
+                                            src="{{ asset('storage/Siswa/' . $reply->user->Siswa?->foto_siswa) }}"
+                                            alt="Profil Picture">
+                                    @endif
+                                    <div class="flex flex-col">
+                                        <h4 class="text-lg font-bold">{{ $reply->user->name }}</h4>
+                                        <p class="text-sm font-light">
+                                            {{ Carbon::parse($reply->created_at)->format('d M Y') }}</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-2"><i class="fa-solid fa-reply text-gray-500"></i> <span
+                                        class="text-blue-500">{{ $reply->komentar->user->name }}</span>
+                                    {{ $reply->comment }}</p>
+                            </div>
+                        @endforeach
+                    @endif
+                    <div class="mb-5"></div>
+                @endforeach
             </div>
     </div>
     </main>
@@ -1672,17 +1693,16 @@
 
         // Loop melalui setiap tombol balas
         for (var i = 0; i < replyButtons.length; i++) {
-          // Tambahkan event listener pada setiap tombol balas
-          replyButtons[i].addEventListener('click', function() {
-            // Cari elemen form balasan terkait
-            var replyForm = this.nextElementSibling;
+            // Tambahkan event listener pada setiap tombol balas
+            replyButtons[i].addEventListener('click', function() {
+                // Cari elemen form balasan terkait
+                var replyForm = this.nextElementSibling;
 
-            // Ubah visibilitas form balasan
-            replyForm.classList.toggle('hidden');
-          });
+                // Ubah visibilitas form balasan
+                replyForm.classList.toggle('hidden');
+            });
         }
-
-      </script>
+    </script>
 
 </body>
 
