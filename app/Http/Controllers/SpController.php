@@ -52,7 +52,7 @@ class SpController extends Controller
      */
     public function store(Request $request)
     {
-        if (Siswa::where('name', $request->nama)->first()->status_sp != null) {
+        if (!empty(Siswa::where('name', $request->nama)->first()->status_sp)) {
             if (Siswa::where('name', $request->nama)->first()->status_sp != 'SP 2') {
                 if ($request->keterangan == 'Sp1') {
                     Siswa::where('name', $request->nama)->update([
