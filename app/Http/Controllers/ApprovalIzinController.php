@@ -80,7 +80,7 @@ class ApprovalIzinController extends Controller
             'sampai' => 'required',
             'keterangan' => 'required',
             'deskripsi' => 'required',
-            'bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048'
+            'bukti' => 'required|image|mimes:jpeg,jpg,png'
         ]);
         $siswa = User::Where('id', $request->foto)->first();
 
