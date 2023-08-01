@@ -52,6 +52,9 @@ class SpController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Siswa::where('name', $request->nama)->exists()) {
+            return back()->with('error', 'Siswa tidak ditemukan');
+        }
         if (!empty(Siswa::where('name', $request->nama)->first()->status_sp)) {
             if (Siswa::where('name', $request->nama)->first()->status_sp != 'SP 2') {
                 if ($request->keterangan == 'Sp1') {
