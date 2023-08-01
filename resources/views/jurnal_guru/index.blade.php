@@ -1206,7 +1206,7 @@
 
         <div class="main-content">
             <!-- start header section -->
-            @include('jurnal_guru.nav_jurnal')
+            @include('guru.nav_guru')
             <!-- end header section -->
 
             <div class="animate__animated p-6" :class="[$store.app.animation]">
