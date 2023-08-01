@@ -18,7 +18,7 @@ class TolakController extends Controller
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $tolaks = Tolak::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(3);
+            $tolaks = Tolak::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(5);
             return view('tolak.index', compact('tolaks'));
         }
         $tolaks = Tolak::latest()->paginate(5);
