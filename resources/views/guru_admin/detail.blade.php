@@ -16,7 +16,7 @@
         href="{{ asset('admin/assets/css/perfect-scrollbar.min.css') }}" />
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="load/load.css">
+    <link rel="stylesheet" href="{{ asset('load/load.css') }}">
     {{--  <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />  --}}
     <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>
     <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
@@ -60,17 +60,17 @@
         <div class="center">
             <div class="ring">
             </div>
-            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+            <img src="{{ asset('load/logo.png') }}" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
 
 
     <!-- Sidenav -->
     @include('jurnal_admin.layout')
-    @include('jurnal_admin.nav')
     <!-- Sidenav -->
 
     <div class=" pl-[px] " id="content">
+        @include('jurnal_admin.nav')
         <div class="animate__animated p-6" :class="[$store.app.animation]">
 
             <div>
@@ -93,7 +93,7 @@
                                 <div class="flex flex-col items-center justify-center">
                                     <img src="{{ asset('storage/guru_image/' . $guru_admin->image) }}" alt="image"
                                         class="mb-5 h-24 w-24 rounded-full object-cover" />
-                                    <p class="text-xl font-semibold text-info">{{ $guru_admin->nama }}</p>
+                                    <p class="text-xl font-semibold text-info">{{ $guru_admin->name }}</p>
                                 </div>
                                 <ul
                                     class="m-auto mt-5 flex max-w-[160px] flex-col text-xs space-y-5 font-semibold text-white-dark">
