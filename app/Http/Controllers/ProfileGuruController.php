@@ -88,7 +88,7 @@ class ProfileGuruController extends Controller
         if ($request->has('image')) {
             $request->validate([
                 'image' => 'required|image|mimes:png,jpg,jpeg',
-                'email' => 'required|email|unique:users,email,' . auth()->user()->id,
+                'email' => 'required|email|unique:users,email,' . FacadesAuth::user()->id,
                 'no' => 'required',
                 'alamat' => 'required',
             ]);
@@ -111,7 +111,7 @@ class ProfileGuruController extends Controller
         }
         else {
             $request->validate([
-                'email' => 'required|email|unique:users,email,' . auth()->user()->id,
+                'email' => 'required|email|unique:users,email,' . FacadesAuth::user()->id,
                 'no' => 'required',
                 'alamat' => 'required',
             ]);
