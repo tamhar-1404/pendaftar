@@ -9,7 +9,8 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
-    <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         theme: {
             extend: {
@@ -38,6 +39,24 @@
       </script>
 </head>
 <body>
+    @if (session()->has('success'))
+        <script>
+            Swal.fire(
+                'Berhasil!',
+                "{{ session('success') }}",
+                'success'
+            )
+        </script>
+    @endif
+    @if (session()->has('error'))
+        <script>
+            Swal.fire(
+                'Oops..!',
+                "{{ session('error') }}",
+                'error'
+            )
+        </script>
+    @endif
      <!-- screen loader -->
      <div  class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">
