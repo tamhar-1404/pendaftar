@@ -51,6 +51,8 @@ class LaporanSiswaController extends Controller
             'nama' => 'required',
             'deskripsi' => 'required',
             'bukti' => 'required|mimes:png,jpg',
+        ],[
+            'bukti.mimes' => 'ekstensi gambar harus png,jpg,jpeg'
         ]);
 
         $user = Auth::user();
@@ -66,7 +68,7 @@ class LaporanSiswaController extends Controller
             'deskripsi' => $request->deskripsi,
             'bukti' => $image->hashName(),
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'anda berhasil melaporkan');
     }
 
 
