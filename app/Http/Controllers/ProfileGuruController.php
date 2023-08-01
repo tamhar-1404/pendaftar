@@ -98,9 +98,11 @@ class ProfileGuruController extends Controller
                 Storage::delete('public/guru_image/' . $fileName);
             }
             $file->storeAs('public/guru_image/', $fileName);
-            User::where('name', Auth::user()->name)->update([
-                'email' => $request->email,
-            ]);
+            if (Auth::user()->email != $request->email) {
+                User::where('name', Auth::user()->name)->update([
+                    'email' => $request->email,
+                ]);
+            }
             Guru_admin::where('name', Auth::user()->name)->update([
                 'email' => $request->email,
                 'alamat' => $request->alamat,
@@ -120,9 +122,11 @@ class ProfileGuruController extends Controller
                 'alamat' => $request->alamat,
                 'no' => $request->no,
             ]);
-            User::where('name', Auth::user()->name)->update([
-                'email' => $request->email,
-            ]);
+            if (Auth::user()->email != $request->email) {
+                User::where('name', Auth::user()->name)->update([
+                    'email' => $request->email,
+                ]);
+            }
 
             return redirect()->route('profileguru.index')->with('success', 'Berhasil memperbarui profil');
         }
