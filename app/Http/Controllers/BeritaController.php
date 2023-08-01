@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Guru_admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BeritaController extends Controller
 {
@@ -14,13 +16,14 @@ class BeritaController extends Controller
      */
     public function index(Request $request)
     {
+        $guru = Guru_admin::where('name', Auth::user()->name)->first();
         if ($request->has('cari')) {
             $keyword = $request->cari;
             $blogs = Blog::where('judul', 'LIKE', '%'.$keyword.'%')->get();
-            return view('Berita_guru.index', compact('blogs'));
+            return view('Berita_guru.index', compact('blogs', 'guru'));
         }
         $blogs = Blog::all();
-        return view('Berita_guru.index', compact('blogs'));
+        return view('Berita_guru.index', compact('blogs', 'guru'));
     }
 
     /**

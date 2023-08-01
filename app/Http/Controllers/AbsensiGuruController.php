@@ -6,6 +6,7 @@ use App\Models\Absensi_guru;
 use App\Http\Requests\Storeabsensi_guruRequest;
 use App\Http\Requests\Updateabsensi_guruRequest;
 use App\Models\ApprovalIzin;
+use App\Models\Guru_admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,7 @@ class AbsensiGuruController extends Controller
      */
     public function index(Request $request)
     {
+        $guru = Guru_admin::where('name', Auth::user()->name)->first();
         if ($request->has('cari')) {
             $keyword = $request->cari;
             $terimas = ApprovalIzin::where([['sekolah', Auth()->user()->sekolah],['status', 'terimaabsen']])
@@ -29,7 +31,7 @@ class AbsensiGuruController extends Controller
         } else {
             $terimas = ApprovalIzin::where([['sekolah', Auth()->user()->sekolah],['status', 'terimaabsen']])->latest()->paginate(5);
         }
-        return view('absensi_guru.index', compact('terimas'));
+        return view('absensi_guru.index', compact('terimas', 'guru'));
     }
 
     /**

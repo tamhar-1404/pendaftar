@@ -1177,7 +1177,7 @@
         <!-- end sidebar section -->
 
 
-        @include('Berita_guru.nav_beritaguru')
+        @include('guru.nav_guru')
         @include('berita_guru.asset')
     </div>
     </div>

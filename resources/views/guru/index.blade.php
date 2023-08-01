@@ -1247,7 +1247,7 @@
                             <div>
                                 <div class="mb-5 flex items-center justify-between">
                                     <h5 class="text-lg font-semibold dark:text-white-light">Siswa </h5>
-                                    <button type="submit" class="btn btn-info !mt-6">Detail</button>
+                                    <a href="{{ route('siswa_guru.index') }}" class="btn btn-info !mt-6">Detail</a>
                                 </div>
                                 <div x-data="basic">
                                     <div class="panel">
