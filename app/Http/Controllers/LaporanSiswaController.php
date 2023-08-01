@@ -59,6 +59,7 @@ class LaporanSiswaController extends Controller
         $tanggal = date('d F Y');
         $image = $request->file('bukti');
         $image->storeAs('public/laporansiswa', $image->hashName());
+
         LaporanSiswa::create([
             'name' => auth()->user()->name,
             'tanggal' => $tanggal,

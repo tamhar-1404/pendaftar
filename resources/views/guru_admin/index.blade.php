@@ -57,7 +57,7 @@
         <div class="center">
             <div class="ring">
             </div>
-            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+            <img src="{{ asset('load/logo.png') }}" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
 
