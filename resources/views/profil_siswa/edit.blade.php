@@ -1309,10 +1309,11 @@
                                                         <input id="konfirmasi" type="password" name="password_confirmation"
                                                             placeholder="Konfirmasi Password" class="form-input" />
                                                     </div>
-                                                    <div class="mt-3 sm:col-span-2 flex gap-4 justify-end">
+                                                    <div class="mt-3 sm:col-span-2 flex flex-col sm:flex-row gap-4 justify-end">
                                                         <a href="{{ url()->previous() }}" class="btn btn-outline-danger">Batal</a>
                                                         <button type="submit" class="btn btn-info">Simpan</button>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </form>
@@ -1334,44 +1335,41 @@
                                                 <img src="{{ asset('storage/Siswa/'. $siswa->foto_siswa) }}" alt="image"
                                                     class="mx-auto h-20 w-20 rounded-full object-cover md:h-32 md:w-32" />
                                             </div>
-                                            <div class="grid flex-auto grid-cols-3 gap-5 sm:grid-cols-2">
+                                            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                                                 <div>
                                                     <label for="ctnFile">Foto Profile</label>
-                                                    <input id="ctnFile" name="foto" type="file" class="form-input file:py-2 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-primary"  />
+                                                    <input id="ctnFile" name="foto" type="file" class="form-input file:py-2 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-primary" />
                                                     @error('foto')
-                                                        <small class="text-red-500">{{ $message }}</small>
+                                                    <small class="text-red-500">{{ $message }}</small>
                                                     @enderror
                                                 </div>
                                                 <div>
                                                     <label for="email">Email</label>
-                                                    <input id="email" type="email" name="email"
-                                                        placeholder="Email" value="{{$siswa->email}}" class="form-input" />
+                                                    <input id="email" type="email" name="email" placeholder="Email" value="{{$siswa->email}}" class="form-input" />
                                                     @error('email')
-                                                        <small class="text-red-500">{{ $message }}</small>
+                                                    <small class="text-red-500">{{ $message }}</small>
                                                     @enderror
                                                 </div>
                                                 <div>
                                                     <label for="telepon">No.Telepon</label>
-                                                    <input id="telepon" type="text" name="no"
-                                                        placeholder="nomor telpon" value="{{$siswa->no}}" class="form-input" />
+                                                    <input id="telepon" type="text" name="no" placeholder="nomor telpon" value="{{$siswa->no}}" class="form-input" />
                                                     @error('no')
-                                                        <small class="text-red-500">{{ $message }}</small>
+                                                    <small class="text-red-500">{{ $message }}</small>
                                                     @enderror
                                                 </div>
-                                            <div>
-                                                <label for="alamat">Alamat</label>
-                                                <textarea name="alamat" id="alamat" placeholder="Alamat" class="form-input">{{$siswa->alamat}}</textarea>
-                                                @error('alamat')
+                                                <div class="col-span-1 sm:col-span-2 lg:col-span-3">
+                                                    <label for="alamat">Alamat</label>
+                                                    <textarea name="alamat" id="alamat" placeholder="Alamat" class="form-input">{{$siswa->alamat}}</textarea>
+                                                    @error('alamat')
                                                     <small class="text-red-500">{{ $message }}</small>
-                                                @enderror
+                                                    @enderror
+                                                </div>
+                                                <div class="col-span-1 sm:col-span-2 lg:col-span-3 mt-3 flex flex-col sm:flex-row gap-4 justify-end">
+                                                    <a href="{{ url()->previous() }}" class="btn btn-outline-danger">Batal</a>
+                                                    <button type="submit" class="btn btn-info mt-3 sm:mt-0">Simpan</button>
+                                                </div>
                                             </div>
-                                            <div class="mt-3 sm:col-span-2 flex gap-4 justify-end">
-                                                <a href="{{ url()->previous() }}" class="btn btn-outline-danger">Batal</a>
-                                                <button  type="submit" class="btn btn-info">Simpan</button>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </form>
+                                        </form>
                                 </div>
                             </template>
                         </div>

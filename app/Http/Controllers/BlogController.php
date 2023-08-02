@@ -185,22 +185,28 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($id)
-    {
-        if(Auth()->user()->role == 'admin'){
-            $blog = Blog::findOrFail($id);
-            if ($blog->foto) {
-                Storage::delete('Storage/Fotoberita/' . $blog->foto);
-            }
-            $relatedChildIds = $blog->comments->pluck('id');
-            Comment::whereIn('id', $relatedChildIds)->delete();
-            $blog->delete();
+     public function destroy($id)
+     {
+         if (Auth::user()->role == 'admin') {
+             $blog = Blog::find($id);
 
-            return redirect()->route('Berita.index')->with('success', 'Data berita berhasil dihapus');
-        }else{
-            return redirect()->back();
-        }
-    }
+             if (!$blog) {
+                 return redirect()->route('Berita.index')->with('error', 'Data berita tidak ditemukan');
+             }
+
+             if ($blog->foto) {
+                 Storage::delete('Storage/Fotoberita/' . $blog->foto);
+             }
+
+             $relatedChildIds = $blog->comments->pluck('id');
+             Comment::whereIn('id', $relatedChildIds)->delete();
+             $blog->delete();
+
+             return redirect()->route('Berita.index')->with('success', 'Data berita berhasil dihapus');
+         } else {
+             return redirect()->back()->with('error', 'Anda tidak memiliki izin untuk menghapus berita');
+         }
+     }
 
 
     public function like($blogId)
