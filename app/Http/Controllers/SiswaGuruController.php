@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use  App\Models\Siswa_guru;
+use App\Models\Siswa_guru;
 use App\Models\Siswa;
-use App\Models\Laporansiswa;
+use App\Models\LaporanSiswa;
 use App\Models\Guru_admin;
 use Illuminate\Http\Request;
 use App\Http\Requests\Storesiswa_guruRequest;
@@ -67,10 +67,9 @@ class SiswaGuruController extends Controller
     public function profilesiswa(Request $request)
     {
         $Siswa=Siswa::find($request->id);
-        $pelanggaran = Laporansiswa::where('name', $Siswa->name)->get();
-        $sp = "Sp1";
-        $guru = Guru_admin::where('email' , Auth()->user()->email)->get();
-        return view ('profilesiswa_guru.index', compact('Siswa', 'guru', 'sp', 'pelanggaran'));
+        $pelanggaran = LaporanSiswa::where('name', $Siswa->name)->get();
+        $guru = Guru_admin::where('email' , Auth()->user()->email)->first();
+        return view ('profilesiswa_guru.index', compact('Siswa', 'guru', 'pelanggaran'));
     }
     public function edit(siswa_guru $siswa_guru)
     {

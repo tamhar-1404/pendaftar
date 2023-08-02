@@ -1146,7 +1146,7 @@
         <!-- end sidebar section -->
 
         <div class="main-content">
-            @include('profilesiswa_guru.nav')
+            @include('guru.nav_guru')
             <div class="animate__animated p-6" :class="[$store.app.animation]">
                 <!-- start main content section -->
                 @include('profilesiswa_guru.asset')
