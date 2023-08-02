@@ -664,8 +664,8 @@
                                     @forelse ($data as $pelangaran)
                                         <div class="w-full h-screen pt-[100px] overflow-y-auto">
                                             <div id="staticModal{{ $pelangaran->id }}" tabindex="-1"
-                                                aria-hidden="true" style="backdrop-filter: blur(4px);"
-                                                class="kamu-tak-diajak fixed top-3 left-0 right-0 z-[999] hidden w-120 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                aria-hidden="true" style="backdrop-filter: blur(4px); scroll-behavior: smooth;"
+                                                class="kamu-tak-diajak fixed top-0 overscroll-auto left-0 right-0 z-[999] hidden w-120 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 <div class="relative w-full max-w-xl max-h-full">
                                                     <!-- Modal content -->
                                                     <div

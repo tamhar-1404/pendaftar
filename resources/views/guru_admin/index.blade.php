@@ -61,7 +61,7 @@
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             <script>
-                toastr.error("cok femas");
+                toastr.error("{{ $error }}");
             </script>
 
         @endforeach

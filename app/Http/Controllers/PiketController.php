@@ -54,7 +54,13 @@ class PiketController extends Controller
          $rabu_sore = Anggota_piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'sore')->get();
          $kamis_sore= Anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'sore')->get();
          $jumat_sore= Anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'sore')->get();
-         $siswa = Siswa::all();
+         $Cek = Anggota_piket::pluck('siswa_id')
+         ->toArray();
+
+         $siswa = Siswa::whereNotIn('id', $Cek)
+         ->where('role', 'siswa')
+         ->latest()->paginate(10);
+        //  $siswa = Siswa::all();
          $laporan_piket = Laporan_piket::all();
 
 
@@ -180,7 +186,8 @@ class PiketController extends Controller
     {
         $this->validate($request, [
             'waktu' =>"required",
-            'hari' => "required"
+            'hari' => "required",
+            'nama_siswa' => "required"
         ]);
         $hari = $request->input('hari');
         $waktu = $request->input('waktu');
@@ -190,7 +197,9 @@ class PiketController extends Controller
             return redirect()->back()->with('error', 'Data yang anda masukan sudah ada');
         }
         $nama_siswa = $request->input('nama_siswa');
-
+        if($nama_siswa == null){
+            return redirect()->back();
+        }
         foreach ($nama_siswa as $item) {
             $mailData = [
                 'title' => 'Pemberitahuan jadwa piket',
