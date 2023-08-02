@@ -135,53 +135,56 @@ class ApprovalIzinController extends Controller
 
      public function update(Request $request, $id, ApprovalIzin $approvalIzin)
      {
-         $cek = $request->input('keterangan');
-         $email = $request->input('email');
-         $alasan = $request->input('alasan');
+        $cek = $request->input('keterangan');
+        $email = $request->input('email');
+        $alasan = $request->input('alasan');
 
-         if ($cek === 'terima') {
-             $izin = ApprovalIzin::findOrFail($id);
+        if ($cek === 'terima') {
+            $izin = ApprovalIzin::findOrFail($id);
 
-             if ($izin->status === 'menunggu') {
-                 $izin->status = 'terimaabsen';
-                 $izin->status2 = 'izin';
-                 $izin->save();
-             }
+            if ($izin->status === 'menunggu') {
+                $izin->status = 'terimaabsen';
+                $izin->status2 = 'izin';
+                $izin->save();
+            }
 
-             if ($izin->dari === Carbon::today()->toDateString()) {
-                 $izinDari = Carbon::tomorrow();
-             } else {
-                 $izinDari = Carbon::parse($izin->dari);
-             }
-             $izinSampai = Carbon::parse($izin->sampai);
-             $tanggalMulai = $izinDari;
-             $tanggalBerakhir = $izinSampai;
+            if ($izin->dari === Carbon::today()->toDateString()) {
+                $izinDari = Carbon::tomorrow();
+            } else {
+                $izinDari = Carbon::parse($izin->dari);
+            }
+            $izinSampai = Carbon::parse($izin->sampai);
+            $tanggalMulai = $izinDari;
+            $tanggalBerakhir = $izinSampai;
 
-             while ($tanggalMulai <= $tanggalBerakhir) {
-                 ApprovalIzin::updateOrCreate(
-                     [
-                         'nama' => $izin->nama,
-                         'sekolah' => $izin->sekolah,
-                         'email' => $izin->email,
-                         'dari' =>  $tanggalMulai->toDateString(),
-                         'sampai' => $izin->sampai,
-                         'keterangan' => $izin->keterangan,
-                         'bukti' => $izin->bukti,
-                         'deskripsi' => $izin->deskripsi,
-                         'tanggal' => $tanggalMulai->toDateString(),
-                         'jam' => $request->filled('jam') ? $request->jam : now()->format('H:i'),
-                     ],
-                     [
-                         'status' => $izin->status,
-                         'status2' => $izin->status2,
-                     ]
-                 );
+            while ($tanggalMulai <= $tanggalBerakhir) {
+                // Check if the record already exists for the given date
+                $existingRecord = ApprovalIzin::where([
+                    'nama' => $izin->nama,
+                    'sekolah' => $izin->sekolah,
+                    'email' => $izin->email,
+                    'dari' =>  $tanggalMulai->toDateString(),
+                ])->first();
 
-                 $tanggalMulai->addDay();
-             }
+                if (!$existingRecord) {
+                    ApprovalIzin::create([
+                        'nama' => $izin->nama,
+                        'sekolah' => $izin->sekolah,
+                        'email' => $izin->email,
+                        'dari' =>  $tanggalMulai->toDateString(),
+                        'sampai' => $izin->sampai,
+                        'keterangan' => $izin->keterangan,
+                        'bukti' => $izin->bukti,
+                        'deskripsi' => $izin->deskripsi,
+                        'tanggal' => $tanggalMulai->toDateString(),
+                        'jam' => $request->filled('jam') ? $request->jam : now()->format('H:i'),
+                        'status' => $izin->status,
+                        'status2' => $izin->status2,
+                    ]);
+                }
 
-             Mail::to($email)->send(new TerimaizinEmail($approvalIzin));
-         }
+                $tanggalMulai->addDay();
+            }
 
          if ($cek === 'tolak') {
              $izin = ApprovalIzin::findOrFail($id);
@@ -202,6 +205,7 @@ class ApprovalIzinController extends Controller
          return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
      }
 
+    }
     /**
      * Remove the specified resource from Storage.
      *
