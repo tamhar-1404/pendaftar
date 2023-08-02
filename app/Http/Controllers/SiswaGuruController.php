@@ -68,9 +68,8 @@ class SiswaGuruController extends Controller
     {
         $Siswa=Siswa::find($request->id);
         $pelanggaran = LaporanSiswa::where('name', $Siswa->name)->get();
-        $sp = "Sp1";
         $guru = Guru_admin::where('email' , Auth()->user()->email)->get();
-        return view ('profilesiswa_guru.index', compact('Siswa', 'guru', 'sp', 'pelanggaran'));
+        return view ('profilesiswa_guru.index', compact('Siswa', 'guru', 'pelanggaran'));
     }
     public function edit(siswa_guru $siswa_guru)
     {
