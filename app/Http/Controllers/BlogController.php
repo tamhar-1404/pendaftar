@@ -106,7 +106,7 @@ class BlogController extends Controller
      */
     public function show($blog)
     {
-        if(Auth()->user()->role == 'admin'){
+        if(Auth()->user()->role == 'Admin'){
             $berita = Blog::find($blog);
             return view('Berita.detail', compact('berita'));
         }else{
@@ -122,7 +122,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog, $id)
     {
-        if(Auth()->user()->role == 'admin') {
+        if(Auth()->user()->role == 'Admin') {
             $blog = Blog::find($id);
             return view('Berita.edit', compact('blog'));
         }else{
@@ -139,17 +139,16 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog, $id)
     {
-        if(Auth()->user()->role == 'admin'){
+        if(Auth()->user()->role == 'Admin'){
             $blog = Blog::find($id);
-
-            $this->validate($request, [
-                'judul' => 'required',
-                'keterangan' => 'required',
-                'deskripsi' => 'required',
-                'kategori' => 'required'
-            ]);
-
             if ($request->hasFile('foto')) {
+                $this->validate($request, [
+                    'judul' => 'required',
+                    'foto' => 'required|mimes:png,jpg,jpeg|image',
+                    'keterangan' => 'required',
+                    'deskripsi' => 'required',
+                    'kategori' => 'required'
+                ]);
                 // Unggah dan simpan gambar baru
                 $image = $request->file('foto');
                 $image->storeAs('public/fotoberita', $image->hashName());
@@ -169,9 +168,23 @@ class BlogController extends Controller
                     'deskripsi' => $request->deskripsi,
                     'kategori' => $request->kategori
                 ]);
-                return redirect()->route('Berita.index');
+                return redirect()->route('Berita.index')->with('success', 'Berhasil memperbarui berita');
+            } else {
+                $this->validate($request, [
+                    'judul' => 'required',
+                    'keterangan' => 'required',
+                    'deskripsi' => 'required',
+                    'kategori' => 'required'
+                ]);
+                $blog->update([
+                    'judul' => $request->judul,
+                    'keterangan' => $request->keterangan,
+                    'tanggal' => $request->tanggal,
+                    'deskripsi' => $request->deskripsi,
+                    'kategori' => $request->kategori,
+                ]);
+                return redirect()->route('Berita.index')->with('success', 'Berhasil memperbarui berita');
             }
-
         }else{
             return redirect()->back();
         }
