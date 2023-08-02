@@ -84,12 +84,11 @@ class ProfileGuruController extends Controller
      */
     public function update(Request $request, $profileGuru)
     {
-        $guru = Guru_admin::where('name', auth()->user()->name)->first();
         if ($request->has('image')) {
             $request->validate([
                 'image' => 'required|image|mimes:png,jpg,jpeg',
-                'email' => 'required|unique:users,email,' . Auth::user()->id,
-                'no' => 'required',
+                'email' => 'required|email|unique:users,email,' . Auth::user()->id,
+                'no' => 'required|min:11|max:12',
                 'alamat' => 'required',
             ]);
             $file = $request->file('image');
@@ -113,8 +112,8 @@ class ProfileGuruController extends Controller
         }
         else {
             $request->validate([
-                'email' => 'required|unique:users,email,' . Auth::user()->id,
-                'no' => 'required',
+                'email' => 'required|email|unique:users,email,' . Auth::user()->id,
+                'no' => 'required|min:11|max:12',
                 'alamat' => 'required',
             ]);
             Guru_admin::where('name', Auth::user()->name)->update([
