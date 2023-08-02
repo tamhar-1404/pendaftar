@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreLaporanSiswaRequest;
 use App\Http\Requests\UpdateLaporanSiswaRequest;
+use App\Models\Siswa;
 
 class LaporanSiswaController extends Controller
 {
@@ -19,10 +20,11 @@ class LaporanSiswaController extends Controller
     {
         if(Auth()->user()->role == 'Admin'){
             $siswa = LaporanSiswa::where('status', 'menunggu')->get();
+            $data_foto = Siswa::select('foto_siswa', 'name')->get();
             $tolak = LaporanSiswa::where('status', 'tolak')->get();
             $terima = LaporanSiswa::where('status', 'terima')->get();
             $semua = LaporanSiswa::all();
-            return view('laporansiswa.index', compact('siswa','terima','tolak','semua'));
+            return view('laporansiswa.index', compact('siswa','terima','tolak','semua', 'data_foto'));
         }else{
             return redirect()->back();
         }
