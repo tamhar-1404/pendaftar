@@ -225,7 +225,7 @@
                                                     <td class="whitespace-nowrap px-4 py-4">
                                                         <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
                                                             data-te-toggle="modal"
-                                                            data-te-target="#exampleModalCenteredScrollable">
+                                                            data-te-target="#exampleModalCenteredScrollable{{ $datas->id }}">
                                                             <span
                                                                 class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
                                                         </div>
@@ -261,9 +261,10 @@
 
         </div>
         {{-- modal --}}
+        @foreach ($data as $item)
         <div data-te-modal-init
             class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
-            id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollable"
+            id="exampleModalCenteredScrollable{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalCenteredScrollable"
             aria-modal="true" role="dialog">
             <div data-te-modal-dialog-ref
                 class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
@@ -294,42 +295,58 @@
                         </p>
 
                         <p class="ml-5 mt-2 text-md text-gray-400">
-                            Mark
+                            {{ $item->nama }}
                         </p>
 
                         <p class=" text-md mt-4">
                             Tanggal :
                         </p>
-
                         <p class="ml-5 mt-2 text-md text-gray-400">
-                            03-04-2023
+                            {{ Carbon::parse($item->created_at)->format('Y-m-d') }}
                         </p>
 
                         <p class=" text-md mt-4">
-                            Sekolah :
+                            Deskripsi :
                         </p>
 
+                        @if ($item->sp_2)
                         <p class="ml-5 mt-2 text-md text-gray-400">
-                            SMKN 1 KEPANJEN
+                            {{ $item->deskripsi_2 }}
+                        </p>
+                        @else
+
+                        @endif
+                        <p class="ml-5 mt-2 text-md text-gray-400">
+                            {{ $item->deskripsi_1 }}
                         </p>
 
                         <p class=" text-md mt-4">
                             Status :
                         </p>
 
+                        @if ($item->sp_2)
                         <p class="ml-5 mt-2 text-md text-gray-400">
-                            SP 1
+                            {{ $item->sp_2 }}
                         </p>
+                        @else
+                        <p class="ml-5 mt-2 text-md text-gray-400">
+                            {{ $item->sp_1 }}
+                        </p>
+                        @endif
 
                         <p class=" text-md mt-4">
-                            Dokumen :
+                            Bukti :
                         </p>
 
+                        @if ($item->sp_2)
                         <p class="ml-5 mt-2 text-md text-gray-400">
-                            Dokumen
+                            {{ $item->bukti_2 }}
                         </p>
-
-
+                        @else
+                        <p class="ml-5 mt-2 text-md text-gray-400">
+                            {{ $item->bukti_1 }}
+                        </p>
+                        @endif
                     </div>
 
                     <!--Modal footer-->
@@ -345,6 +362,7 @@
             </div>
         </div>
         {{-- end modal --}}
+        @endforeach
         {{-- modal tambah --}}
         <div data-te-modal-init
             class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
