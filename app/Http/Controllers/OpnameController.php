@@ -23,10 +23,10 @@ class OpnameController extends Controller
             $keyword = $request->cari;
             $opname = Opname::where('barang_id', 'LIKE', '%' . $keyword . '%')->paginate(10);
             return view('opname.index', compact('opname','barang'));
-    
+
             $opname->appends(['cari' => $keyword]);
             return view('opname.index', compact('opname','barang'));
-    
+
         }
         $opname = Opname::latest()->paginate(10);
         // dd($opname);
@@ -51,6 +51,11 @@ class OpnameController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'stok' => 'required',
+            'barang_id' => 'required',
+            'kode_barang' => 'required',
+        ]);
         $tanggal = Carbon::now()->format('Y-m-d');
         $oldstok = (int) Barang::find($request->barang_id)->stok;
         $stok = $oldstok + (int) $request->stok;
@@ -97,6 +102,9 @@ class OpnameController extends Controller
      */
     public function update(Request $request, Opname $opname)
     {
+        $request->validate([
+            'stok' => 'required',
+        ]);
         $old_stok = (int) $opname->stok;
         $new_stok = (int) $request->stok;
         $selisih_stok = $new_stok - $old_stok;

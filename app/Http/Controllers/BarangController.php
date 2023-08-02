@@ -24,10 +24,10 @@ class BarangController extends Controller
             $keyword = $request->cari;
             $barangs = Barang::where('nama', 'LIKE', '%' . $keyword . '%')->paginate(10);
             return view('barang.index', compact('barangs'));
-    
+
             $barangs->appends(['cari' => $keyword]);
             return view('barang.index', compact('barangs'));
-    
+
         }
         $barangs = Barang::latest()->paginate(10);
         return view('barang.index',compact('barangs'));
@@ -56,8 +56,8 @@ class BarangController extends Controller
             'harga' => 'required',
             'deskripsi' => 'required',
             'kategori' => 'required',
-            'foto' => 'required',
-            'kode' => 'required'
+            'foto' => 'required|image|mimes:png,jpg,jpeg',
+            'kode' => 'required|unique:barangs,kode',
         ]);
 
         try {
@@ -112,19 +112,21 @@ class BarangController extends Controller
      */
     public function update(Request $request, Barang $barang)
     {
-        $this->validate($request, [
-            'nama' => 'required',
-            'kode' => 'required',
-            'harga' => 'required',
-            'kategori' => 'required',
-            'deskripsi' => 'required'
-        ]);
-
         try {
             if ($request->hasFile('foto')) {
+                $this->validate($request, [
+                    'nama' => 'required',
+                    'foto' => 'required|image|mimes:png,jpg,jpeg',
+                    'kode' => 'required|unique:barangs,kode,' . $barang->id,
+                    'harga' => 'required',
+                    'kategori' => 'required',
+                    'deskripsi' => 'required'
+                ]);
                 $image = $request->file('foto');
                 $image->storeAs('public/pendataanbarang/', $image->hashName());
-                Storage::delete('public/pendataanbarang/' . $barang->foto);
+                if (Storage::exists('public/pendataanbarang/' . $barang->foto)) {
+                    Storage::delete('public/pendataanbarang/' . $barang->foto);
+                }
 
                 $barang->update([
                     'nama' => $request->nama,
@@ -135,6 +137,13 @@ class BarangController extends Controller
                     'deskripsi' => $request->deskripsi
                 ]);
             } else {
+                $this->validate($request, [
+                    'nama' => 'required',
+                    'kode' => 'required|unique:barangs,kode,' . $barang->id,
+                    'harga' => 'required',
+                    'kategori' => 'required',
+                    'deskripsi' => 'required'
+                ]);
                 $barang->update([
                     'nama' => $request->nama,
                     'kode' => $request->kode,
