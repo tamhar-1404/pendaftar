@@ -312,7 +312,7 @@ public function exportToDocx()
 
     // Menyimpan dokumen sebagai file .docx
     $filename = "database_export.docx";
-    $path = public_path('storage/Image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
+    $path = public_path('storage/image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
     $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
     $objWriter->save($path);
 
