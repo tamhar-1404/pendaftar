@@ -66,7 +66,7 @@ class BlogController extends Controller
      {
         if(Auth()->user()->role == 'Admin'){
             $this->validate($request, [
-                'foto' => 'required',
+                'foto' => 'required|image|mimes:png,jpg,jpeg',
                 'judul' => 'required',
                 'keterangan' => 'required',
                 'deskripsi'  => 'required',
