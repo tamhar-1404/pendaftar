@@ -187,10 +187,12 @@ class BlogController extends Controller
 
     public function destroy($id)
     {
-        if(Auth()->user()->role == 'admin'){
+        if(Auth()->user()->role == 'Admin'){
             $blog = Blog::findOrFail($id);
             if ($blog->foto) {
-                Storage::delete('Storage/Fotoberita/' . $blog->foto);
+                if (Storage::exists('storage/fotoberita')) {
+                    Storage::delete('storage/fotoberita/' . $blog->foto);
+                }
             }
             $relatedChildIds = $blog->comments->pluck('id');
             Comment::whereIn('id', $relatedChildIds)->delete();
