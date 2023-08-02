@@ -693,7 +693,7 @@
                     const tanggalwarning = document.getElementById("warning-tanggal-magang");
                     tanggalwarning.textContent = "Masukan tanggal magang yang valid";
                     isValid = false;
-                }else if{
+                }else{
 
                 }
                 // if (input.files.length > 0) {

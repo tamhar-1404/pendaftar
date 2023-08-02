@@ -271,7 +271,10 @@ class BlogController extends Controller
         return redirect()->back();
     }
     public function comment_store(Request $request) {
-        // dd($request->all());
+        $request->validate([
+            'blog_id' => 'required',
+            'comment' => 'required',
+        ]);
         $user_id = Auth::user()->id;
         $blog_id = $request->blog_id;
 
@@ -284,7 +287,10 @@ class BlogController extends Controller
     }
 
     public function reply_comment(Request $request) {
-        // dd($request->all());
+        $request->validate([
+            'comment_id' => 'required',
+            'comment' => 'required',
+        ]);
         $comment_id = $request->comment_id;
         $user_id = Auth::user()->id;
         $comment = $request->comment;
