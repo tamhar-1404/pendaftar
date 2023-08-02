@@ -2503,8 +2503,8 @@
                         </div>
                     </div>
                 @empty
-                    <div class="flex justify-center items-center">
-                        <img src="/admin/noData.png" alt="" class="m-auto">
+                    <div class="flex justify-center items-center col-span-3">
+                        <img src="/admin/noData.png" alt="" width="300px">
                     </div>
                 @endforelse
             </div>

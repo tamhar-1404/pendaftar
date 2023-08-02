@@ -69,12 +69,12 @@
     <!-- sidebar menu overlay -->
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>
-        @if(session('success'))
-            <script>
-                toastr.success("{{ session('success') }}");
-            </script>
-        @endif
-        @error('bukti')
+    @if (session('success'))
+        <script>
+            toastr.success("{{ session('success') }}");
+        </script>
+    @endif
+    @error('bukti')
         <script>
             toastr.error("Masukan ekstensi gambar dengan png, jpg")
         </script>
@@ -481,10 +481,8 @@
                                 </div>
 
                             @empty
-                                <div class="flex items-center w-full">
-                                    <div class="flex justify-center items-center ms-20">
-                                        <img src="/admin/noData.png" alt="" width="280px">
-                                    </div>
+                                <div class="flex justify-center items-center col-span-3">
+                                    <img src="/admin/noData.png" alt="" width="300px">
                                 </div>
                             @endforelse
                         </div>

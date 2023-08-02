@@ -2341,11 +2341,9 @@
                         </div>
                     </div>
                 @empty
-                    <td colspan="6" class="p-8 text-center">
-                        <div class="flex justify-center items-center">
-                            <img src="/admin/noData.png" alt="" width="280px">
-                        </div>
-                    </td>
+                    <div class="flex justify-center items-center col-span-3 mt-10">
+                        <img src="/admin/noData.png" alt="" width="300px">
+                    </div>
                 @endforelse
             </div>
             {{ $siswas->appends(['cari' => request('cari')])->links() }}
@@ -2419,7 +2417,6 @@
             </div>
         </div>
     @empty
-        
     @endforelse
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 
