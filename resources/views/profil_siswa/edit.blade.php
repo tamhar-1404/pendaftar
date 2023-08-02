@@ -1285,39 +1285,35 @@
                             </ul>
                             <template x-if="tab === 'password'">
                                 <div>
-                                    <form
-                                        class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
+                                    <form class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]">
                                         <h6 class="mb-5 text-lg font-bold">Informasi Pribadi</h6>
                                         <form action="{{ route('ganti_password') }}" method="post">
                                             @csrf
-                                            <div class="flex flex-col sm:flex-row">
-                                                <div class="grid flex-auto grid-cols-3 gap-5 sm:grid-cols-2">
-                                                    <div>
-                                                        <label for="lama">Password Lama</label>
-                                                        <input id="lama" type="password" name="old_password"
-                                                            placeholder="Masukan Password Lama" class="form-input" />
-
-                                                        <a href="{{ route('Lupapassword.index') }}" class="text-info">Lupa Password?</a>
-                                                    </div>
-                                                    <div>
-                                                        <label for="baru">Password Baru</label>
-                                                        <input id="baru" type="password" name="password"
-                                                            placeholder="Masukkan Password Baru" class="form-input" />
-                                                    </div>
-                                                    <div>
-                                                        <label for="konfirmasi">Koirmasi Password</label>
-                                                        <input id="konfirmasi" type="password" name="password_confirmation"
-                                                            placeholder="Konfirmasi Password" class="form-input" />
-                                                    </div>
-                                                    <div class="mt-3 sm:col-span-2 flex flex-col sm:flex-row gap-4 justify-end">
-                                                        <a href="{{ url()->previous() }}" class="btn btn-outline-danger">Batal</a>
-                                                        <button type="submit" class="btn btn-info">Simpan</button>
-                                                    </div>
-
+                                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                                <div>
+                                                    <label for="lama">Password Lama</label>
+                                                    <input id="lama" type="password" name="old_password" placeholder="Masukan Password Lama"
+                                                        class="form-input" />
+                                                    <a href="{{ route('Lupapassword.index') }}" class="text-info">Lupa Password?</a>
                                                 </div>
+                                                <div>
+                                                    <label for="baru">Password Baru</label>
+                                                    <input id="baru" type="password" name="password" placeholder="Masukkan Password Baru"
+                                                        class="form-input" />
+                                                </div>
+                                                <div>
+                                                    <label for="konfirmasi">Konfirmasi Password</label>
+                                                    <input id="konfirmasi" type="password" name="password_confirmation" placeholder="Konfirmasi Password"
+                                                        class="form-input" />
+                                                </div>
+                                            </div>
+                                            <div class="mt-3 flex flex-col sm:flex-row gap-4 justify-end">
+                                                <a href="{{ url()->previous() }}" class="btn btn-outline-danger">Batal</a>
+                                                <button type="submit" class="btn btn-info">Simpan</button>
                                             </div>
                                         </form>
                                     </form>
+
                                 </div>
                             </template>
                             <template x-if="tab === 'home'">
