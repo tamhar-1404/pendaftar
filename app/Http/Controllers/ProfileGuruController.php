@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\ProfileGuru;
 use App\Models\Guru_admin;
 use App\Models\Siswa;
-use Auth;
 use App\Http\Requests\StoreProfileGuruRequest;
 use App\Http\Requests\UpdateProfileGuruRequest;
 use App\Models\User;
 use Faker\Core\File;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileGuruController extends Controller
 {
@@ -88,7 +88,7 @@ class ProfileGuruController extends Controller
         if ($request->has('image')) {
             $request->validate([
                 'image' => 'required|image|mimes:png,jpg,jpeg',
-                'email' => 'required|email|unique:users,email,' . auth()->user()->id,
+                'email' => 'required|unique:users,email,' . Auth::user()->id,
                 'no' => 'required',
                 'alamat' => 'required',
             ]);
@@ -98,10 +98,12 @@ class ProfileGuruController extends Controller
                 Storage::delete('public/guru_image/' . $fileName);
             }
             $file->storeAs('public/guru_image/', $fileName);
-            User::where('name', FacadesAuth::user()->name)->update([
-                'email' => $request->email,
-            ]);
-            Guru_admin::where('name', FacadesAuth::user()->name)->update([
+            if (Auth::user()->email != $request->email) {
+                User::where('name', Auth::user()->name)->update([
+                    'email' => $request->email,
+                ]);
+            }
+            Guru_admin::where('name', Auth::user()->name)->update([
                 'email' => $request->email,
                 'alamat' => $request->alamat,
                 'no' => $request->no,
@@ -111,18 +113,20 @@ class ProfileGuruController extends Controller
         }
         else {
             $request->validate([
-                'email' => 'required|email|unique:users,email,' . auth()->user()->id,
+                'email' => 'required|unique:users,email,' . Auth::user()->id,
                 'no' => 'required',
                 'alamat' => 'required',
             ]);
-            User::where('name', FacadesAuth::user()->name)->update([
-                'email' => $request->email,
-            ]);
-            Guru_admin::where('name', FacadesAuth::user()->name)->update([
+            Guru_admin::where('name', Auth::user()->name)->update([
                 'email' => $request->email,
                 'alamat' => $request->alamat,
                 'no' => $request->no,
             ]);
+            if (Auth::user()->email != $request->email) {
+                User::where('name', Auth::user()->name)->update([
+                    'email' => $request->email,
+                ]);
+            }
 
             return redirect()->route('profileguru.index')->with('success', 'Berhasil memperbarui profil');
         }

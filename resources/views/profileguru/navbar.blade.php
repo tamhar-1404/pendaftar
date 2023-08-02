@@ -90,9 +90,9 @@
 
                 <div class="dropdown flex-shrink-0" x-data="dropdown" @click.outside="open = false">
                     <a href="javascript:;" class="group relative" @click="toggle()">
-                    @foreach ($guru as $guru)
-                        <span><img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image" /></span>
+                        @foreach ($guru as $guru)
+                            <span><img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
+                                    src="{{ asset('storage/guru_image/' . $guru->image) }}" alt="image" /></span>
                     </a>
                     <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
                         class="top-11 w-[230px] !py-0 font-semibold text-dark ltr:right-0 rtl:left-0 dark:text-white-dark dark:text-white-light/90">
@@ -125,7 +125,7 @@
                                 Profile</a>
                         </li>
                         <li class="border-t border-white-light dark:border-white-light/10">
-                            <a href="{{route('keluar')}}" class="!py-3 text-danger" @click="toggle">
+                            <a href="{{ route('keluar') }}" class="!py-3 text-danger" @click="toggle">
                                 <svg class="h-4.5 w-4.5 rotate-90 ltr:mr-2 rtl:ml-2" width="18" height="18"
                                     viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.5"
@@ -233,20 +233,10 @@
                         </svg>
                         <span class="px-1">Lainnya</span>
                     </div>
-                    <div class="right_arrow">
-                        <svg class="h-4 w-4 rotate-90" width="16" height="16" viewBox="0 0 24 24"
-                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </div>
                 </a>
                 <ul class="sub-menu">
                     <li>
                         <a href="{{ route('berita_guru.index') }}">Berita</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('chat_guru.index') }}">Chat</a>
                     </li>
                 </ul>
             </li>
