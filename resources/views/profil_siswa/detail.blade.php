@@ -719,7 +719,7 @@
 
                                                                     Bukti Pelanggaran : <span></p><img
                                                                     src="{{ asset('storage/laporansiswa/' . $pelangaran->bukti) }}"
-                                                                    width="50" /></span>
+                                                                    width="100" /></span>
 
                                                             </div>
                                                         </div>
@@ -735,6 +735,11 @@
                             </div>
                         </div>
 
+                        <style>
+                            body {
+                                overflow-y: auto;
+                            }
+                        </style>
                     </div>
                 </div>
             </div>

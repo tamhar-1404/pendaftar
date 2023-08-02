@@ -35,12 +35,12 @@ class AbsensiSiswaController extends Controller
 
             $telat = ApprovalIzin::where('keterangan', 'telat')->Where('nama', Auth()->user()->name)->count();
             $hadir = ApprovalIzin::where('keterangan', 'hadir')->Where('nama', Auth()->user()->name)->count();
-            $izin = ApprovalIzin::where('keterangan', 'izin')->Where('nama', Auth()->user()->name)->count();
-            $sakit = ApprovalIzin::where('keterangan', 'sakit')->Where('nama', Auth()->user()->name)->count();
+            $izin = ApprovalIzin::where('keterangan', 'izin')->where('nama', Auth()->user()->name)->where('status', 'terimaabsen')->where('status2', 'izin')->count();
+            $sakit = ApprovalIzin::where('keterangan', 'sakit')->where('nama', Auth()->user()->name)->where('status', 'terimaabsen')->where('status2', 'izin')->count();
             $alfa = ApprovalIzin::where('keterangan', 'alfa')->Where('nama', Auth()->user()->name)->count();
             $izinsakit = $izin + $sakit;
 
-            $all = ApprovalIzin::where('nama', $userName)->count();
+            $all = ApprovalIzin::where('nama', $userName)->where('status', 'terimaabsen')->where('status2', 'izin')->where('status', 'terimaabsen')->where('status2', 'izin')->count();
             $cek_sudah_absen = ApprovalIzin::where([
                 ['tanggal', Carbon::now()->format('Y-m-d')],
                 ['nama', $userName]
@@ -120,13 +120,13 @@ class AbsensiSiswaController extends Controller
                 }
             }
         }
-        $telat = ApprovalIzin::where('keterangan', 'telat')->Where('nama', Auth()->user()->name)->count();
-        $hadir = ApprovalIzin::where('keterangan', 'hadir')->Where('nama', Auth()->user()->name)->count();
-        $izin = ApprovalIzin::where('keterangan', 'izin')->Where('nama', Auth()->user()->name)->count();
-        $sakit = ApprovalIzin::where('keterangan', 'sakit')->Where('nama', Auth()->user()->name)->count();
-        $alfa = ApprovalIzin::where('keterangan', 'alfa')->Where('nama', Auth()->user()->name)->count();
+        $telat = ApprovalIzin::where('keterangan', 'telat')->where('nama', Auth()->user()->name)->count();
+        $hadir = ApprovalIzin::where('keterangan', 'hadir')->where('nama', Auth()->user()->name)->count();
+        $izin = ApprovalIzin::where('keterangan', 'izin')->where('nama', Auth()->user()->name)->where('status', 'terimaabsen')->where('status2', 'izin')->count();
+        $sakit = ApprovalIzin::where('keterangan', 'sakit')->where('nama', Auth()->user()->name)->where('status', 'terimaabsen')->where('status2', 'izin')->count();
+        $alfa = ApprovalIzin::where('keterangan', 'alfa')->where('nama', Auth()->user()->name)->count();
         $izinsakit = $izin + $sakit;
-        $all = ApprovalIzin::where('nama', Auth::user()->name)->count();
+        $all = ApprovalIzin::where('nama', Auth::user()->name)->where('status', 'terimaabsen')->where('status2', 'izin')->where('status', 'terimaabsen')->where('status2', 'izin')->count();
         // $terima = ApprovalIzin::latest()->paginate(5);
        return view('absensi_siswa.index' , compact('terima','hadir','telat','all','alfa','izinsakit', 'cek_sudah_absen'));
     }
