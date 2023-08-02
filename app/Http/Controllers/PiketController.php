@@ -15,6 +15,16 @@ use Carbon\Carbon;
 
 class PiketController extends Controller
 {
+    function cari(Request $request) {
+        $keyword = $request->value;
+        $Cek = Anggota_piket::pluck('siswa_id')
+         ->toArray();
+         $siswa = Siswa::whereNotIn('id', $Cek)
+         ->where('role', 'siswa')
+         ->get()->toArray();
+
+        return $siswa;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -59,7 +69,7 @@ class PiketController extends Controller
 
          $siswa = Siswa::whereNotIn('id', $Cek)
          ->where('role', 'siswa')
-         ->latest()->paginate(10);
+         ->latest()->paginate(4);
         //  $siswa = Siswa::all();
          $laporan_piket = Laporan_piket::all();
 

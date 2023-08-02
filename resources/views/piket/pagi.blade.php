@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         .step:not(.active) {
           display: none;
@@ -96,21 +98,21 @@
                                                                 </select>
                                                             </div>
                                                             <label class="mb-0" for="">Pilih siswa</label>
-                                                            <input class="border border-1 w-full h-3 rounded" type="text" name="" placeholder="cari nama siswa" type="search"
-                                                            name="nama_siswa" onchange="cari(this)">
+                                                            {{-- <input class="border border-1 w-full h-3 rounded" type="text" id="cari_siswa" placeholder="cari nama siswa" type="search"
+                                                            name="nama_siswa" > --}}
                                                             <div id="listsiswa">
-                                                                <div>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class=" grid grid-cols-2 w-full">
+                                                                <div id="wadah">
+                                                                    <div class=" grid grid-cols-2 ">
                                                                 @foreach ($siswa as $data)
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}"  id=""><p>{{$data->name}}</p>
+                                                                        <div class="flex gap-3 items-center">
+                                                                            <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}"  id=""><p>{{$data->name}}</p>
+                                                                        </div>
+                                                                        @endforeach
+                                                                    </div>
                                                                 </div>
-                                                                @endforeach
                                                             </div>
-
+                                                            <p class="text-blue-300 cursor-pointer " onclick="lihatsemua()" >lihat lainya </p>
+                                                            <p id="lihatsedikit" class="hidden" onclick="lihatsedikit()"></p>
 
                                                             <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
                                                         </form>
@@ -131,7 +133,7 @@
                                 </div>
                             @endif
                             <div id="content1" class="card-content" style="display: none">
-                                <div class="flex grid-cols-5 gap-4  w-lg " id="#pagi">
+                                <div class="flex grid-cols-1 mb:grid-cols-3 lg:grid-cols-5 gap-4  w-lg " id="#pagi">
                                     {{-- senin --}}
                                     <div class=" w-full h-full  rounded-md {{ strtolower($day) === 'monday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }}">
                                         {{-- button edit --}}
@@ -172,14 +174,17 @@
                                                                 @endforeach
                                                             </div>
                                                             <h4>Centang yang ingin di tambahkan</h4>
-                                                            <div class=" grid grid-cols-2 w-full">
+                                                            <div id="listsiswa">
+                                                                <div id="wadah">
+                                                                    <div class=" grid grid-cols-2 ">
                                                                 @foreach ($siswa as $data)
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}"  id=""><p>{{$data->name}}</p>
+                                                                        <div class="flex gap-3 items-center">
+                                                                            <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}"  id=""><p>{{$data->name}}</p>
+                                                                        </div>
+                                                                        @endforeach
+                                                                    </div>
                                                                 </div>
-                                                                @endforeach
                                                             </div>
-
 
                                                             <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
                                                         </form>
@@ -236,17 +241,16 @@
                                                         </div>
                                                         @endforeach
                                                         <h4>Centang yang ingin di tambahkan</h4>
-                                                        <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa[]" value="santoso" id=""><p>santoso</p>
-                                                        </div>
-                                                        <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa[]" value="abdul" id=""><p>abdul</p>
-                                                        </div>
-                                                        <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa[] " value="puniran" id=""><p>puniran</p>
-                                                        </div>
-                                                        <div class="flex gap-3 items-center">
-                                                            <input type="checkbox" name="nama_siswa[]" value="mamat" id=""><p>mamat</p>
+                                                        <div id="listsiswa">
+                                                            <div id="wadah">
+                                                                <div class=" grid grid-cols-2 ">
+                                                                    @foreach ($siswa as $data)
+                                                                    <div class="flex gap-3 items-center">
+                                                                        <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}"  id=""><p>{{$data->name}}</p>
+                                                                    </div>
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
                                                     </form>
@@ -461,7 +465,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex grid-cols-5 gap-1 w-lg mt-5" id="#pagi">
+                                <div class="flex grid-cols-1 mb:grid-cols-3 gap-1 w-lg mt-5" id="#pagi">
                                     {{-- catatan --}}
                                     <div class=" w-full h-30 bg-[#EAF1FF] rounded-md" >
 
@@ -1222,39 +1226,87 @@
                 });
             });
         </script>
-        <script>
-              function cari(data) {
-            if (data.value == "") {
-                console.log("Kosong")
-                $('#listsiswa').empty();
-                $('#wadah').removeClass('hidden');
-                return;
-            } else {
+        {{-- <script>
+            var cari = document.getElementById("cari_siswa");
+            cari.addEventListener("keyup", function() {
+                console.log(cari.value);
+                if (cari.value == "") {
+                    console.log("Kosong")
+                    // $('#listsiswa').empty();
+                    // $('#wadah').removeClass('hidden');
+                    return;
+                } else {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
                 $.ajax({
                     url: "{{ route('cari_siswa') }}",
                     method: 'POST',
                     data: {
-                        value: data.value,
+                        value: cari.value,
                     },
                     success: function(response) {
+                        console.log(response);
                         $('#wadah').addClass('hidden');
-                        $('#listmenu').empty();
+                        // document.getElementById(el.id).checked = false
+                        if (!$('#listsiswa input[type="checkbox"]:checked').length) {
+                            $('#listsiswa').empty();
+                        }else if(!$('#listsiswa input[type="checkbox"]:checked').length === 0){
+                            $('#listsiswa').empty();
+                        }
                         $.each(response, function(index, el) {
-                            let elemen = `<div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
-                            <div class="flex justify-between px-5">
-                                <div id="makanan" class="font-bold text-">${el.nama}</div>
-                                <p class="text-gray-700">${el.harga}</p>
-                            </div>
-                        </div>`
-                            $('#listmenu').append(elemen);
+                            let elemen =
+                            `<div class="flex gap-3 items-center">
+                                    <input type="checkbox" name="nama_siswa[]" value="${el.id}"   id="${el.id}"><p>${el.name}</p>
+                            </div>`
+                            $('#listsiswa').append(elemen);
 
-                            console.log("Nama : ", el.nama);
-                            console.log("Harga : ", el.harga);
+                            console.log("Nama : ", el.name);
+                            // console.log("Harga : ", el.harga);
                         });
                     }
                 })
             }
-        }
+        })
+        </script> --}}
+        <script>
+            function lihatsemua(){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "{{ route('cari_siswa') }}",
+                    method: 'POST',
+                    data: {
+                        // value: cari.value,
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        $('#wadah').addClass('hidden');
+                        // document.getElementById(el.id).checked = false
+                        if (!$('#listsiswa input[type="checkbox"]:checked').length) {
+                            $('#listsiswa').empty();
+                        }
+                        // $('#listsiswa').empty();
+                        $.each(response, function(index, el) {
+                            let elemen =
+                            `  <div class=" grid grid-cols-2 ">
+                                    <div class="flex gap-3 items-center">
+                                        <input type="checkbox" name="nama_siswa[]" value="${el.id}"  id=""><p>${el.name}</p>
+                                    </div>
+                                </div>`
+                            $('#listsiswa').append(elemen);
+
+                            console.log("Nama : ", el.name);
+                            // console.log("Harga : ", el.harga);
+                        });
+                    }
+                })
+            }
         </script>
 
 
