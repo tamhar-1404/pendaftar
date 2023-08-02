@@ -6,7 +6,7 @@
                 <a href="index-2.html" class="main-logo flex shrink-0 items-center">
                     <img class="inline w-20
                      ltr:-ml-1 rtl:-mr-1"
-                        src="assets_guru/images/LOGO HUMMASOFT 2.png" alt="image" />
+                        src="{{ asset('assets_guru/images/LOGO HUMMASOFT 2.png') }}" alt="image" />
                 </a>
 
                 <a href="javascript:;"
