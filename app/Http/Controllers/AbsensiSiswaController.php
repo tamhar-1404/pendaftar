@@ -158,13 +158,8 @@ class AbsensiSiswaController extends Controller
         }
         else {
             $telat='telat';
-            $this->validate($request, [
-                'tanggal' => 'date',
-                'jam'=>'date_format:H:i', 'Asia/Jakarta',
-                'keterangan'=> 'required',
-            ]);
             // dd($request->jam);
-            $keterangan = $request->keterangan;
+            $keterangan = "Hadir";
 
 
             $hari_ini = Carbon::now()->format('Y-m-d');
@@ -204,11 +199,13 @@ class AbsensiSiswaController extends Controller
             // dd($keterangan);
             // $currentDay = 'Sunday';
             if($currentDay !== 'Saturday' && $currentDay !== 'Sunday'){
+                $user = Auth::user();
+
                 ApprovalIzin::create([
-                    'nama' => $request->nama,
-                    'sekolah' => $request->sekolah,
-                    'tanggal' => $request->tanggal,
-                    'jam' => $request->jam,
+                    'nama' => $user->name,
+                    'sekolah' => $user->sekolah,
+                    'tanggal' => Carbon::now()->format('Y-m-d'),
+                    'jam' => Carbon::now()->format('H:i'),
                     'keterangan' => $keterangan,
                     'status' => 'terimaabsen'
                 ]);

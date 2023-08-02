@@ -276,6 +276,9 @@ class BlogController extends Controller
             'comment' => 'required',
         ]);
         $user_id = Auth::user()->id;
+        if (!Blog::where('id', $request->blog_id)->exists()) {
+            return back()->with('error', 'Berita tidak ditemukan');
+        }
         $blog_id = $request->blog_id;
 
         Comment::create([
@@ -291,7 +294,11 @@ class BlogController extends Controller
             'comment_id' => 'required',
             'comment' => 'required',
         ]);
+
         $comment_id = $request->comment_id;
+        if (!Comment::where('id', $comment_id)->exists()) {
+            return back()->with('error', 'Komentar tidak ditemukan');
+        }
         $user_id = Auth::user()->id;
         $comment = $request->comment;
 
