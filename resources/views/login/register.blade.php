@@ -713,7 +713,7 @@
             }
         });
             inputs.forEach(function (input) {
-            if (tanggallahir < todayFormatted ) {
+            if (tanggallahir > todayFormatted ) {
                     const tanggalerror = document.getElementById("warning-tanggal-lahir");
                     tanggalerror.textContent = "Masukan tanggal lahir yang valid";
                     isValid = false;
