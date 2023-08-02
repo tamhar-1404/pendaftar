@@ -145,7 +145,8 @@ Route::get('/absen/sakit', [JurnaladminController::class, 'absensakit']);
     Route::middleware(['role:Siswa'])->group(function () {
 
         Route::resource('History', App\Http\Controllers\HistorySiswaController::class);
-
+        Route::get('Edit_profile_siswa', [ProfilsiswaController::class, 'edit'])->name('Edit_profile_siswa');
+        Route::put('Edit_profile_siswa/perbarui', [ProfilsiswaController::class, 'perbarui'])->name('Edit_profile_siswa.perbarui');
         Route::put('izin_update', [App\Http\Controllers\ApprovalIzinController::class, 'izin_update'])->name('izin_update');
         Route::resource('absensi_siswa', App\Http\Controllers\AbsensiSiswaController::class);
         Route::resource('berita_siswa', App\Http\Controllers\BeritaSiswaController::class);
@@ -195,6 +196,4 @@ Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita
 Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
 Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');
 Route::delete('Berita/{post}/unlike', [BlogController::class, 'unlike'])->name('Berita.unlike');
-Route::get('Edit_profile_siswa', [ProfilsiswaController::class, 'edit'])->name('Edit_profile_siswa');
-Route::put('Edit_profile_siswa/perbarui', [ProfilsiswaController::class, 'perbarui'])->name('Edit_profile_siswa.perbarui');
 

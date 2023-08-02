@@ -73,26 +73,29 @@
     {{--  end  --}}
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         @forelse ($Blog as $berita)
-        <div class="bg-white shadow-md rounded-lg overflow-hidden " style="width: 100%; height:100%;">
-            <img src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="Gambar Berita 1" class="w-full h-48 object-cover object-center">
-            <div class="p-4">
-              <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
-              <h2 class="text-xl font-semibold mt-2"><a href="{{ route('berita_siswa.show', $berita->id) }}">{{ $berita->judul }}</a></h2>
-              <div class="flex items-center mt-2">
-                <form action="{{route('Berita.like', $berita->id)}}" method="POST">
-                @csrf
-                <button type="submit" class="flex items-center border border-gray-400 rounded-full px-3 py-1 mr-2">
-                    <i class="fas fa-thumbs-up mr-1"></i>
-                    Like
-                </button>
-                </form>
-                <!-- Jumlah like, misalnya dari data berita -->
-                <span class="text-gray-500">{{ $berita->likes_count }} Likes</span>
+            <div class="bg-white shadow-md rounded-lg overflow-hidden " style="width: 100%; height:100%;">
+                <img src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="Gambar Berita 1"
+                    class="w-full h-48 object-cover object-center">
+                <div class="p-4">
+                    <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
+                    <h2 class="text-xl font-semibold mt-2"><a
+                            href="{{ route('berita_siswa.show', $berita->id) }}">{{ $berita->judul }}</a></h2>
+                    <div class="flex items-center mt-2">
+                        <form action="{{ route('Berita.like', $berita->id) }}" method="POST">
+                            @csrf
+                            <button type="submit"
+                                class="flex items-center border border-gray-400 rounded-full px-3 py-1 mr-2">
+                                <i class="fas fa-thumbs-up mr-1"></i>
+                                Like
+                            </button>
+                        </form>
+                        <!-- Jumlah like, misalnya dari data berita -->
+                        <span class="text-gray-500">{{ $berita->likes_count }} Likes</span>
+                    </div>
+                </div>
             </div>
-            </div>
-        </div>
         @empty
-            <div class="flex justify-center items-center" style="justify-items: center">
+            <div class="flex justify-center items-center col-span-3">
                 <img src="/admin/noData.png" alt="" width="300px">
             </div>
         @endforelse

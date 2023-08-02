@@ -62,7 +62,7 @@ class GuruAdminController extends Controller
      public function store(Request $request)
      {
          $this->validate($request, [
-             'image' => 'required|mimes:png,jpg,jpeg',
+             'image' => 'required|image|mimes:png,jpg,jpeg',
              'name' => 'required',
              'sekolah' => 'required',
              'email' => 'required|unique:users,email',

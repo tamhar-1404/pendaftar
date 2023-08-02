@@ -111,14 +111,13 @@
 
                 <div class="hidden absolute top-8 right-0 bg-white shadow-md rounded-lg py-2 z-10 dropdown-menu"
                     id="dropdownMenu{{ $berita->id }}">
-                    <a href="{{ route('Berita.edit', $berita->id) }}"
+                    <a href="{{ route('Berita.edit' , $berita->id) }}"
                         class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Edit</a>
                     <!-- Tambahkan id ke elemen form hapus untuk mengidentifikasinya -->
-                    <form id="delete-form-{{ $berita->id }}" action="{{ route('Berita.destroy', $berita->id) }}" method="post">
+                    <form id="delete-form-{{ $berita->id }}" action="{{ route('Berita.destroy', $berita->id) }}" method="post" onsubmit="confirmDelete(event, {{ $berita->id }})">
                         @method('DELETE')
                         @csrf
-                        <!-- Panggil fungsi confirmDelete() saat tombol "Hapus" ditekan -->
-                        <button type="button" onclick="confirmDelete({{ $berita->id }})" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Hapus</button>
+                        <button type="submit" onclick="" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Hapus</button>
                     </form>
                 </div>
             </div>
@@ -129,7 +128,8 @@
             <!-- Tempatkan di bawah halaman HTML sebelum tag penutup </body> -->
             <script>
                 // Fungsi untuk menampilkan SweetAlert konfirmasi hapus
-                function confirmDelete(beritaId) {
+                function confirmDelete(event, beritaId) {
+                    event.preventDefault();
                     Swal.fire({
                         title: 'Konfirmasi Hapus',
                         text: 'Apakah Anda yakin ingin menghapus berita ini?',

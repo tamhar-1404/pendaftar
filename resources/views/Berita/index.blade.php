@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin - Berita</title>
     <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         theme: {
             extend: {
@@ -62,6 +63,24 @@
 </head>
 
 <body>
+    @if (session()->has('success'))
+        <script>
+            Swal.fire(
+                'Berhasil!',
+                "{{ session('success') }}",
+                'success'
+            )
+        </script>
+    @endif
+    @if (session()->has('error'))
+        <script>
+            Swal.fire(
+                'Oops..!',
+                "{{ session('error') }}",
+                'error'
+            )
+        </script>
+    @endif
     <!-- screen loader -->
     <div
         class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">

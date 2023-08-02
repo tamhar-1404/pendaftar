@@ -73,7 +73,7 @@
                                         <span class="font-medium text-slate-600 dark:text-navy-100">Judul</span>
                                         <input id="judul" name="judul"
                                             class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                            placeholder="Masukkan Judul" type="text" />
+                                            placeholder="Masukkan Judul" type="text" value="{{ old('judul') }}"/>
                                     </label>
                                     @error('judul')
                                         <div
@@ -91,7 +91,7 @@
                                         <span class="font-medium text-slate-600 dark:text-navy-100">Keterangan</span>
                                         <input id="keterangan" name="keterangan"
                                             class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                            placeholder="Masukkan Keterangan" type="text" />
+                                            placeholder="Masukkan Keterangan" type="text" value="{{ old('keterangan') }}"/>
                                     </label>
                                     @error('keterangan')
                                         <div
@@ -109,7 +109,7 @@
                                         <span class="font-medium text-slate-600 dark:text-navy-100">Deskripsi</span>
                                         <div class="mt-1.5 w-full">
                                             <div>
-                                                <textarea name="deskripsi" id="summernote"></textarea>
+                                                <textarea name="deskripsi" id="summernote">{!! old('deskripsi') !!}</textarea>
                                             </div>
                                         </div>
                                     </div>
