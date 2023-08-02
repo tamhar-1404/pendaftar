@@ -94,9 +94,10 @@ class TopUpController extends Controller
         $user = $topup->user;
         $this->validate($request, [
             'saldo' => 'required|numeric',
+        ], [
+            'saldo.required' => 'Saldo tidak boleh kosong',
+            'saldo.numeric' => 'Saldo hanya boleh angka',
         ]);
-
-
         $saldoLama = $user->saldo;
 
         $saldoBaru = $request->saldo;

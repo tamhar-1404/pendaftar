@@ -26,7 +26,7 @@ class TataTertibController extends Controller
             return view('tatatertib.index', compact('tatatertib'));
         }
 
-        $tatatertib = TataTertib::latest()->paginate(10); 
+        $tatatertib = TataTertib::latest()->paginate(10);
         return view('tatatertib.index', compact('tatatertib'));
     }
 
@@ -51,6 +51,9 @@ class TataTertibController extends Controller
             $this->validate($request, [
                 'judul' => 'required',
                 'deskripsi'  => 'required'
+            ], [
+                'judul.required' => 'Judul tidak boleh kosong',
+                'deskripsi.required' => 'Deskripsi tidak boleh kosong',
             ]);
 
             TataTertib::create([
@@ -97,6 +100,9 @@ class TataTertibController extends Controller
         $this->validate($request , [
             'judul' => 'required',
             'deskripsi' => 'required'
+        ], [
+            'judul.required' => 'Judul tidak boleh kosong',
+            'deskripsi.required' => 'Deskripsi tidak boleh kosong',
         ]);
         $tataTertib->update([
             'judul'=>$request->judul,

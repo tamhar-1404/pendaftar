@@ -56,6 +56,8 @@ class SiswaAlumniController extends Controller
     {
         $request->validate([
             'sertifikat' => 'required',
+        ], [
+            'sertifikat.required' => 'Sertifikat tidak boleh kosong',
         ]);
         $sertifikat = $request->file('sertifikat');
         $sertifikat_name = $sertifikat->hashName();

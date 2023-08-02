@@ -147,6 +147,10 @@ class ProfileGuruController extends Controller
         $request->validate([
             'old_password' => 'required|min:6',
             'password' => 'required|min:6|confirmed',
+        ], [
+            'old_password.required' => 'Password lama tidak boleh kosong',
+            'old_password.min' => 'Password minimal 6',
+            'password.min' => 'Password minimal 6',
         ]);
         $user_id = auth()->user()->id;
         if (Hash::check($request->old_password, User::find($user_id)->password)) {
