@@ -111,7 +111,7 @@
 
                 <div class="hidden absolute top-8 right-0 bg-white shadow-md rounded-lg py-2 z-10 dropdown-menu"
                     id="dropdownMenu{{ $berita->id }}">
-                    <a href="{{ route('Berita.edit', $berita->id) }}"
+                    <a href="{{ route('Berita.edit' , $berita->id) }}"
                         class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Edit</a>
                     <!-- Tambahkan id ke elemen form hapus untuk mengidentifikasinya -->
                     <form id="delete-form-{{ $berita->id }}" action="{{ route('Berita.destroy', $berita->id) }}" method="post" onsubmit="confirmDelete(event, {{ $berita->id }})">
