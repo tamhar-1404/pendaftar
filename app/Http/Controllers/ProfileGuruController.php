@@ -123,7 +123,8 @@ class ProfileGuruController extends Controller
                 'no' => $request->no,
             ]);
             if (Auth::user()->email != $request->email) {
-                User::where('name', Auth::user()->name)->update([
+                $user_id = Auth::user()->id;
+                User::find($user_id)->update([
                     'email' => $request->email,
                 ]);
             }
