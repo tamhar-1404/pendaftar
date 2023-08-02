@@ -133,21 +133,19 @@ class ApprovalIzinController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function update(Request $request, $id, ApprovalIzin $approvalIzin)
-     {
-        $cek = $request->input('keterangan');
+    public function update(Request $request, $id, ApprovalIzin $approvalIzin)
+    {
+        $cek = $request->keterangan;
         $email = $request->input('email');
         $alasan = $request->input('alasan');
 
-        if ($cek === 'terima') {
+        if ($cek == 'terima') {
             $izin = ApprovalIzin::findOrFail($id);
-
             if ($izin->status === 'menunggu') {
                 $izin->status = 'terimaabsen';
                 $izin->status2 = 'izin';
                 $izin->save();
             }
-
             if ($izin->dari === Carbon::today()->toDateString()) {
                 $izinDari = Carbon::tomorrow();
             } else {
@@ -182,28 +180,21 @@ class ApprovalIzinController extends Controller
                         'status2' => $izin->status2,
                     ]);
                 }
-
                 $tanggalMulai->addDay();
             }
+        }
 
-         if ($cek === 'tolak') {
-             $izin = ApprovalIzin::findOrFail($id);
-
-             if ($alasan) {
-                 $mailData = [
-                     'content' => 'Absensi Anda telah ditolak dengan alasan: ' . $alasan,
-                 ];
-
-                 Mail::to($email)->send(new tolakdataEmail($mailData));
-                 $izin->delete();
-             } else {
-                 // Tambahkan pesan error jika alasan tidak diisi
-                 return redirect()->back()->with(['error' => 'Silakan masukkan alasan penolakan.']);
-             }
+        if ($cek == 'tolak') {
+            $izin = ApprovalIzin::findOrFail($id);
+            $mailData = [
+                'content' => 'Absensi Anda telah ditolak dengan alasan: ' . $alasan,
+            ];
+            Mail::to($email)->send(new tolakdataEmail($mailData));
+            $izin->delete();
+            return back()->with("success", "Berhasil menolak izin");
          }
 
          return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
-     }
 
     }
     /**
