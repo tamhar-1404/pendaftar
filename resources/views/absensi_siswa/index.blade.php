@@ -73,6 +73,16 @@
         </script>
     @endif
 
+    @if (session()->has('error'))
+        <div class="text-danger"><b>{{ session('error') }}</b></div>
+    @endif
+
+    @if (session('success'))
+        <script>
+            toastr.success("{{ session('success') }}");
+        </script>
+    @endif
+
 
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>
@@ -130,8 +140,8 @@
                         <a href="javascript:;"
                             class="collapse-icon flex h-8 w-8 items-center rounded-full transition duration-300 hover:bg-gray-500/10 rtl:rotate-180 dark:text-white-light dark:hover:bg-dark-light/10"
                             @click="$store.app.toggleSidebar()">
-                            <svg class="m-auto h-5 w-5" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            <svg class="m-auto h-5 w-5" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5"
                                     stroke-linecap="round" stroke-linejoin="round" />
                                 <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor"

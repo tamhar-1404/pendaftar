@@ -257,10 +257,11 @@
                                                     editmodal.classList.add("hidden");
                                                 });
                                             </script>
-                                            <form action="{{ route('mou.destroy', $mou->id) }}" method="post">
+                                            <form action="{{ route('mou.destroy', $mou->id) }}" method="post"
+                                                id="confirm-form">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button type="submit">
+                                                <button type="submit" id="confirm-button">
 
                                                     <div
                                                         class="w-16 flex h-8 bg-white rounded-md border-2 border-red-500 justify-center items-center text-red-500 hover:bg-red-500 hover:text-white dark:bg-transparent ">
@@ -269,6 +270,28 @@
                                                     </div>
                                                 </button>
                                             </form>
+                                            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                                            <script>
+                                                document.getElementById('confirm-button').addEventListener('click', function(e) {
+                                                    e.preventDefault();
+
+
+                                                    Swal.fire({
+                                                        title: 'Apakah Anda yakin?',
+                                                        text: 'Anda akan mengkonfirmasi izin ini.',
+                                                        icon: 'warning',
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: '#3085d6',
+                                                        cancelButtonColor: '#d33',
+                                                        confirmButtonText: 'Ya, konfirmasi!',
+                                                        cancelButtonText: 'Batal'
+                                                    }).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            document.getElementById('confirm-form').submit();
+                                                        }
+                                                    });
+                                                });
+                                            </script>
                                         </div>
                                     </td>
                                 </tr>
@@ -336,7 +359,7 @@
                                     <label for="notelepon"
                                         class="block text-gray-700 font-medium mb-2">No.Telepon</label>
                                     <input type="number" placeholder="Masukkan no.telepon" id="notelepon"
-                                        name="notelepon" value="{{ $mou->no }}"
+                                        name="no" value="{{ $mou->no }}"
                                         class="block w-full h-9 px-4 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                 </div>
                                 <div class="mt-4">
