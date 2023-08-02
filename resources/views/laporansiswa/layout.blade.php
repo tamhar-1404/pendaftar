@@ -175,8 +175,12 @@
                                                             <div>
                                                                 <div
                                                                     class="rounded-full bg-gray-300 p-0.5 dark:bg-gray-700">
-                                                                    <img class="h-8 w-8 rounded-full object-cover"
-                                                                        src="{{ asset('admin/assets/images/profile-16.jpg') }}" />
+                                                                    @foreach ($data_foto as $foto)
+                                                                        @if ($foto->name == $data->nama)
+                                                                        <img class="h-8 w-8 rounded-full object-cover"
+                                                                            src="{{ asset('storage/siswa/' . $foto->foto_siswa) }}" />
+                                                                        @endif
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -264,8 +268,12 @@
                                                         <div>
                                                             <div
                                                                 class="rounded-full bg-gray-300 p-0.5 dark:bg-gray-700">
-                                                                <img class="h-8 w-8 rounded-full object-cover"
-                                                                    src="{{ asset('admin/assets/images/profile-16.jpg') }}" />
+                                                                @foreach ($data_foto as $foto)
+                                                                        @if ($foto->name == $terima->nama)
+                                                                        <img class="h-8 w-8 rounded-full object-cover"
+                                                                            src="{{ asset('storage/siswa/' . $foto->foto_siswa) }}" />
+                                                                        @endif
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     </div>
@@ -315,8 +323,12 @@
                                                         <div>
                                                             <div
                                                                 class="rounded-full bg-gray-300 p-0.5 dark:bg-gray-700">
-                                                                <img class="h-8 w-8 rounded-full object-cover"
-                                                                    src="{{ asset('admin/assets/images/profile-16.jpg') }}" />
+                                                                @foreach ($data_foto as $foto)
+                                                                        @if ($foto->name == $tolak->nama)
+                                                                        <img class="h-8 w-8 rounded-full object-cover"
+                                                                            src="{{ asset('storage/siswa/' . $foto->foto_siswa) }}" />
+                                                                        @endif
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     </div>

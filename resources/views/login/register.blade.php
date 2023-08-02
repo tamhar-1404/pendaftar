@@ -98,8 +98,10 @@
                                 </div>
                                 <div class="mb-4">
                                     <label for="birthdate" class="block font-bold text-sm mb-1">Tanggal Lahir :</label>
-                                    <input type="date" id="birthdate" name="tanggal"
+                                    <input type="date" id="tanggallahir" name="tanggal"
                                         class="w-full px-4 py-1 text-sm border rounded" required>
+                                    <div id="warning-tanggal-lahir" class="text-red-500 text-sm mt-1"></div>
+
                                 </div>
                             </div>
                             <div class="mb-4">
@@ -340,6 +342,10 @@
     </div>
 
     <script>
+
+
+    </script>
+    <script>
         document.addEventListener("DOMContentLoaded", function() {
             const nextButton1 = document.getElementById("nextStep3");
             const fileInput1 = document.getElementById("sp_diri"); // Note: Changed 'fileInput' to 'photo'
@@ -515,7 +521,15 @@
                 var minValuenomor = 11;
                 const awalmagang = document.getElementById('mulai-magang').value;
                 const akhirmagang = document.getElementById('akhir-magang').value;
+                const tanggallahir = document.getElementById('tanggallahir').value;
                 var isValid = true;
+                const today = new Date();
+                const day = String(today.getDate()).padStart(2, '0');
+                const month = String(today.getMonth() + 1).padStart(2, '0');
+                const year = today.getFullYear();
+
+                const todayFormatted = `${year}-${month}-${day}`;
+                console.log(todayFormatted);
 
                 var radio = {};
 
@@ -690,62 +704,25 @@
             inputs.forEach(function (input) {
             if (awalmagang !== "" && akhirmagang !== "") {
                 if(awalmagang > akhirmagang){
-                    const tanggalwarning = document.getElementById("warning-tanggal-magang");
+                    const tanggalwarning = document.getElementById("warning-tanggal-lahir");
                     tanggalwarning.textContent = "Masukan tanggal magang yang valid";
                     isValid = false;
                 }else{
 
                 }
-                // if (input.files.length > 0) {
-                //     // File is selected, run mime type validation
-                //     if (!validateFileType(input)) {
-                //         var errorMessage = input.parentNode.querySelector(".error-message");
-
-                //         if (!errorMessage) {
-                //             errorMessage = document.createElement("span");
-                //             errorMessage.className = "error-message text-red-500 text-sm";
-                //             input.parentNode.appendChild(errorMessage);
-                //         }
-                //         errorMessage.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
-
-
-                //     } else {
-                //         var errorMessage = input.parentNode.querySelector(".error-message");
-                //         if (errorMessage) {
-                //             errorMessage.remove();
-                //         }
-                //     }
-                // }
             }
         });
-        // inputs.forEach(function(input){
-        //     if (!input.checkValidity()) {
-        //         if(input.type="date"){
+            inputs.forEach(function (input) {
+            if (tanggallahir > todayFormatted ) {
+                    const tanggalerror = document.getElementById("warning-tanggal-lahir");
+                    tanggalerror.textContent = "Masukan tanggal lahir yang valid";
+                    isValid = false;
+            }else{
 
+            }
+        });
 
-        //             }
-        //                 var errorMessage = textarea.parentNode.querySelector(".error-message");
-
-        //                 if (!errorMessage) {
-        //                     errorMessage = document.createElement("span");
-        //                     errorMessage.className = "error-message text-red-500 text-sm";
-        //                     textarea.parentNode.appendChild(errorMessage);
-        //                 }
-
-        //                 errorMessage.textContent = "Harap isi form ini.";
-
-        //                 isValid = false;
-        //             } else {
-        //                 textarea.classList.remove("border-red-500");
-        //                 textarea.placeholder = "";
-        //                 var errorMessage = textarea.parentNode.querySelector(".error-message");
-        //                 if (errorMessage) {
-        //                     errorMessage.remove();
-        //                 }
-
-        //             }
-
-        // })
+            console.log(tanggallahir);
 
 
 

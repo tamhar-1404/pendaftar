@@ -138,6 +138,12 @@ class SiswamagangController extends Controller
         $this->validate($request, [
             'saldo' => 'required|numeric|between:5000,100000',
             'password' => 'required|min:6'
+        ], [
+            'saldo.required' => 'Saldo tidak boleh kosong',
+            'saldo.numeric' => 'Saldo hanya boleh angka',
+            'saldo.between' => 'Saldo hanya boleh 5000 sampai 100000',
+            'password.required' => 'Password tidak boleh kosong',
+            'password.min' => 'Password minimal 6',
         ]);
         $data = $request -> saldo;
         if($data >= 5000){
