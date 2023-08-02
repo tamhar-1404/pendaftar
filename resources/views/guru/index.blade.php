@@ -1263,7 +1263,7 @@
                                             <tbody>
                                                 @foreach ($data_siswa as $siswa)
                                                     <tr>
-                                                        <td>{{ $siswa->id }}</td>
+                                                        <td>{{ $loop->interation }}</td>
                                                         <td>{{ $siswa->name }}</td>
                                                         <td>{{ $siswa->kelas }}</td>
                                                         <td>{{ $siswa->jurusan }}</td>

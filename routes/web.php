@@ -163,7 +163,7 @@ Route::get('/absen/sakit', [JurnaladminController::class, 'absensakit']);
     Route::middleware(['role:guru'])->group(function () {
         // Route khusus untuk guru
         // Pembimbing
-        Route::get('profil/siswa/guru', [SiswaguruController::class, 'profilesiswa'])->name('profile.siswa.guru');
+        Route::get('profil/siswa/guru', [SiswaGuruController::class, 'profilesiswa'])->name('profile.siswa.guru');
         Route::put('/gantipasswordguru', [App\Http\Controllers\ProfileGuruController::class, 'updatePassword'])->name('guru.updatepassword');
         Route::resource('/profileguru', App\Http\Controllers\ProfileGuruController::class);
         Route::resource('/guru', App\Http\Controllers\DashboardGuruController::class);
