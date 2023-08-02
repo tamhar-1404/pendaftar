@@ -38,7 +38,7 @@ class ProfilsiswaController extends Controller
         else {
             $sp = 'Aman';
         }
-        $data = LaporanSiswa::Where('nama', Auth()->user()->name)->paginate(5);
+        $data = LaporanSiswa::where('nama', Auth()->user()->name)->paginate(5);
 
         // dd($Siswa);
         return view('profil_siswa.detail', compact('Siswa', 'sp','data'));
@@ -160,7 +160,7 @@ class ProfilsiswaController extends Controller
         if ($request->has('foto')) {
             $request->validate([
                 'foto' => 'required|image|mimes:png,jpg,jpeg',
-                'email' => 'required|unique:siswas,email,' . $siswa_id,
+                'email' => 'required|email|unique:siswas,email,' . $siswa_id,
                 'no' => 'required',
                 'alamat' => 'required',
             ]);
@@ -183,7 +183,7 @@ class ProfilsiswaController extends Controller
             return redirect()->route('profile_siswa')->with('success', 'Berhasil mengedit profil');
         }
         $request->validate([
-            'email' => 'required|unique:siswas,email,' . $siswa_id,
+            'email' => 'required|email|unique:siswas,email,' . $siswa_id,
             'no' => 'required',
             'alamat' => 'required',
         ]);
@@ -199,10 +199,15 @@ class ProfilsiswaController extends Controller
     }
 
     public function ganti_password(Request $request) {
-        
+
         $request->validate([
             'old_password' => 'required',
             'password' => 'required|min:6|confirmed',
+        ], [
+            'old_password.required' => 'Password lama tidak boleh kosong',
+            'password.required' => 'Password tidak boleh kosong',
+            'password.min' => 'Password minimal 6',
+            'password.confirmed' => 'Password tidak sama',
         ]);
         $user_id = Auth::user()->id;
         if (Hash::check($request->old_password, User::find($user_id)->password)) {

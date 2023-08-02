@@ -28,6 +28,10 @@
     <script defer src="assets_guru/js/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 </head>
 
 <body x-data="main" class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
@@ -55,27 +59,9 @@
     {{-- Alert validasi --}}
     @if ($errors->any())
         @foreach ($errors->all() as $error)
-            @if ($error == 'The password confirmation does not match.')
-                @php
-                    $error = 'Konfirmasi Password Salah';
-                @endphp
-            @endif
-            @if ($error == 'The password must be at least 6 characters.')
-                @php
-                    $error = 'Password Minimal 6 Huruf';
-                @endphp
-            @endif
-
             <script>
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: "{{ $error }}",
-                })
+                toastr.error("{{ $error }}");
             </script>
-            {{-- <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-        <span class="font-medium">{{ $error }}</span>
-    </div> --}}
         @endforeach
     @endif
     {{-- End Alert --}}
