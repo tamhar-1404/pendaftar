@@ -142,7 +142,7 @@
                                     @endforelse
 
                                     @forelse ($pelanggaran as $pelangaran)
-                                        <div class="w-full h-screen pt-[100px]">
+                                        <div class="w-full h-screen pt-[100px]" style="overflow: auto;">
                                             <div id="staticModal{{ $pelangaran->id }}" tabindex="-1"
                                                 aria-hidden="true" style="backdrop-filter: blur(4px);"
                                                 class="kamu-tak-diajak fixed top-3 left-0 right-0 z-[999] hidden w-120 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
