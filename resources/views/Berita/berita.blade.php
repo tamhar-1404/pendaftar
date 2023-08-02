@@ -83,45 +83,48 @@
     {{--  end  --}}
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mx-4">
         @forelse ($blog as $berita)
-        <div class="bg-white shadow-md rounded-lg overflow-hidden relative" style="width: 100%; height: 100%;">
-            <img src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="Gambar Berita 1"
-                class="w-full h-48 object-cover object-center">
-            <div class="p-4">
-                <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
-                <h2 class="text-xl font-semibold mt-2">
-                    <a href="{{ route('Berita.show', $berita->id) }}">{{ Str::limit($berita->judul, 15) }}</a>
-                </h2>
-                <div class="flex items-center mt-2">
-                    <form action="{{route('Berita.like', $berita->id)}}" method="POST">
-                    @csrf
-                    <button type="submit" class="flex items-center bg-gray-200 rounded-full px-3 py-1 mr-2">
-                        <i class="fas fa-thumbs-up mr-1"></i>
-                        Like
-                    </button>
-                    </form>
-                    <!-- Jumlah like, misalnya dari data berita -->
-                    <span class="text-gray-500">{{ $berita->likes_count }} Likes</span>
+            <div class="bg-white shadow-md rounded-lg overflow-hidden relative" style="width: 100%; height: 100%;">
+                <img src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="Gambar Berita 1"
+                    class="w-full h-48 object-cover object-center">
+                <div class="p-4">
+                    <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
+                    <h2 class="text-xl font-semibold mt-2">
+                        <a href="{{ route('Berita.show', $berita->id) }}">{{ Str::limit($berita->judul, 15) }}</a>
+                    </h2>
+                    <div class="flex items-center mt-2">
+                        <form action="{{ route('Berita.like', $berita->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="flex items-center bg-gray-200 rounded-full px-3 py-1 mr-2">
+                                <i class="fas fa-thumbs-up mr-1"></i>
+                                Like
+                            </button>
+                        </form>
+                        <!-- Jumlah like, misalnya dari data berita -->
+                        <span class="text-gray-500">{{ $berita->likes_count }} Likes</span>
+                    </div>
                 </div>
-            </div>
-            <input type="hidden" name="id" id="id" value="{{ $berita->id }}">
-            <div class="dropdown-wrapper" data-berita-id="{{ $berita->id }}">
-                <div class="absolute top-0 right-0 p-2 cursor-pointer options-dropdown" id="optionsDropdown{{ $berita->id }}">
-                    <i class="fas fa-ellipsis-v"></i>
-                </div>
+                <input type="hidden" name="id" id="id" value="{{ $berita->id }}">
+                <div class="dropdown-wrapper" data-berita-id="{{ $berita->id }}">
+                    <div class="absolute top-0 right-0 p-2 cursor-pointer options-dropdown"
+                        id="optionsDropdown{{ $berita->id }}">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
 
-                <div class="hidden absolute top-8 right-0 bg-white shadow-md rounded-lg py-2 z-10 dropdown-menu"
-                    id="dropdownMenu{{ $berita->id }}">
-                    <a href="{{ route('Berita.edit' , $berita->id) }}"
-                        class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Edit</a>
-                    <!-- Tambahkan id ke elemen form hapus untuk mengidentifikasinya -->
-                    <form id="delete-form-{{ $berita->id }}" action="{{ route('Berita.destroy', $berita->id) }}" method="post" onsubmit="confirmDelete(event, {{ $berita->id }})">
-                        @method('DELETE')
-                        @csrf
-                        <button type="submit" onclick="" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Hapus</button>
-                    </form>
+                    <div class="hidden absolute top-8 right-0 bg-white shadow-md rounded-lg py-2 z-10 dropdown-menu"
+                        id="dropdownMenu{{ $berita->id }}">
+                        <a href="{{ route('Berita.edit', $berita->id) }}"
+                            class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Edit</a>
+                        <!-- Tambahkan id ke elemen form hapus untuk mengidentifikasinya -->
+                        <form id="delete-form-{{ $berita->id }}" action="{{ route('Berita.destroy', $berita->id) }}"
+                            method="post" onsubmit="confirmDelete(event, {{ $berita->id }})">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" onclick=""
+                                class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Hapus</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -184,8 +187,8 @@
                 });
             </script>
         @empty
-            <div class="flex justify-center items-center">
-                <img src="/admin/noData.png" alt="" width="280px">
+            <div class="flex justify-center items-center col-span-3">
+                <img src="/admin/noData.png" alt="" width="300px">
             </div>
         @endforelse
     </div>
