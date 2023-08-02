@@ -509,7 +509,6 @@
                 document.getElementById('kodebarang').value = null;
                 document.getElementById('kodebarang').focus();
                 alert('barang yang anda scan belum di data pada admin');
-                document.getElementById('total_keseluruhan').classList.add('hidden');
             }
         }
     </script>
