@@ -155,7 +155,6 @@ class ProfilsiswaController extends Controller
         //
     }
     public function perbarui(Request $request) {
-        // dd($request->all());
         $siswa_id = Auth::user()->Siswa->id;
         if ($request->has('foto')) {
             $request->validate([
@@ -163,6 +162,10 @@ class ProfilsiswaController extends Controller
                 'email' => 'required|email|unique:siswas,email,' . $siswa_id,
                 'no' => 'required',
                 'alamat' => 'required',
+            ], [
+                'foto.required' => 'Foto tidak boleh kosong',
+                'foto.image' => 'Foto hanya boleh gambar',
+                'foto.mimes' => 'Foto hanya jpg,jpeg,png',
             ]);
             $old_foto = Siswa::find($siswa_id)->foto_siswa;
             if (File::exists(public_path('storage/Siswa/'.$old_foto))) {
