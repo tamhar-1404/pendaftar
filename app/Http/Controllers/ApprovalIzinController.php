@@ -8,7 +8,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Mail\IzinBerakhir;
 use App\Mail\DataizinEmail;
-use App\Mail\TolakdataEmail;
+use App\Mail\tolakdataEmail;
 use App\Models\ApprovalIzin;
 use App\Models\Siswa;
 use App\Models\User;
@@ -194,7 +194,7 @@ class ApprovalIzinController extends Controller
                      'content' => 'Absensi Anda telah ditolak dengan alasan: ' . $alasan,
                  ];
 
-                 Mail::to($email)->send(new TolakdataEmail($mailData));
+                 Mail::to($email)->send(new tolakdataEmail($mailData));
                  $izin->delete();
              } else {
                  // Tambahkan pesan error jika alasan tidak diisi

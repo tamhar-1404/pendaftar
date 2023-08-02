@@ -143,18 +143,20 @@ class SiswaController extends Controller
 
     public function update(Request $request, Siswa $siswa , User $user , $id)
     {
-        $user = User::find($id);
         $this->validate($request,[
-          'RFID'=>'required'
+            'RFID'=>'required|unique:users,RFID',
+        ], [
+            'RFID.required'=> 'RFID tidak boleh kosong',
+            'RFID.unique'=> 'RFID ini telah digunakan',
         ]);
+        $user = User::find($id);
         $user->update([
             'RFID'=>$request->RFID
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah rfid');
     }
     public function rfid(Request $request)
     {
-
         if ($request->has('cari')) {
         if($request->cari == null){
             return view('rfid.index', compact('users'));
