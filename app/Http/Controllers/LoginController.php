@@ -15,6 +15,7 @@ use App\Mail\PendaftaranAdmin;
 use App\Models\Aproval;
 use App\Models\Guru_admin;
 use App\Models\MOU;
+use App\Models\Tolak;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Carbon\Carbon;
@@ -106,7 +107,7 @@ class LoginController extends Controller
 
 public function store(Request $request)
 {
-    if (User::where('email', $request->email)->exists() || Siswa::where('email', $request->email)->exists() || Guru_admin::where('email', $request->email)->exists() || MOU::where('email', $request->email)->exists()) {
+    if (User::where('email', $request->email)->exists() || Siswa::where('email', $request->email)->exists() || Guru_admin::where('email', $request->email)->exists() || MOU::where('email', $request->email)->exists() || Tolak::where('email', $request->email)->exists() ) {
         return back()->with('error', 'Email sudah digunakan');
         // return "Duplikat";
     }
@@ -147,22 +148,6 @@ public function store(Request $request)
             $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
             $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
             $cv->storeAs('public/pendaftaran', $cv->hashName());
-
-            if (User::where('email', $request->email)->exists()) {
-                return back()->with('error', 'Email sudah digunakan');
-                // return "Duplikat";
-            }
-            if (Siswa::where('email', $request->email)->exists()); {
-                return back()->with('error', 'Email sudah digunakan');
-            }
-
-            if (Guru_admin::where('email', $request->email)->exists()) {
-                return back()->with('error', 'Email sudah digunakan');
-            }
-
-            if (MOU::where('email', $request->email)->exists()) {
-                return back()->with('error', 'Email sudah digunakan');
-            }
 
             $data = aproval::create([
                 'name' => $request->name,
