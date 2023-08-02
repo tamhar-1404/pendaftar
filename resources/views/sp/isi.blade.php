@@ -340,11 +340,11 @@
 
                         @if ($item->sp_2)
                         <p class="ml-5 mt-2 text-md text-gray-400">
-                            {{ $item->bukti_2 }}
+                            <img src="{{ asset('storage/image/'. $item->bukti_2) }}" alt="" srcset="">
                         </p>
                         @else
                         <p class="ml-5 mt-2 text-md text-gray-400">
-                            {{ $item->bukti_1 }}
+                            <img src="{{ asset('storage/image/'. $item->bukti_1) }}" alt="" srcset="">
                         </p>
                         @endif
                     </div>
