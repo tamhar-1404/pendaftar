@@ -26,7 +26,7 @@
     <link rel="stylesheet" type="text/css" media="screen"
         href="{{ asset('admin/assets/css/perfect-scrollbar.min.css') }}" />
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
-    <link rel="stylesheet" href="load/load.css">
+    <link rel="stylesheet" href="{{ asset('load/load.css') }}">
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     {{--  <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />  --}}
     <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>
@@ -65,7 +65,7 @@
         <div class="center">
             <div class="ring">
             </div>
-            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+            <img src="{{ asset('load/logo.png') }}" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
 
@@ -621,12 +621,7 @@
                             </div>
                         </div>
                       </div>
-                      <div class="DivFlex w-[116px] h-[50px] left-[828px] top-[612px] absolute"></div>
-                      <div class="Label left-[40px] top-[66.68px] absolute flex-col justify-start items-start gap-1.5 inline-flex">
-                        <div class="Alasan text-slate-600 text-[14px] font-medium leading-tight">Alasan </div>
-                        <div class="Pseudo w-[682.22px] h-[20.67px] justify-center items-center inline-flex">
-                          <div class="KurangLengkapPadaBerkasBerkas w-[682.42px] h-[20.67px] text-slate-400 text-opacity-70 text-[15px] font-light tracking-wide">{{ $tolak->alasan }}</div>
-                        </div>
+                     
                     </div>
                 </div>
               </div>
