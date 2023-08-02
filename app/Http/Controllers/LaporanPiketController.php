@@ -42,7 +42,7 @@ class LaporanPiketController extends Controller
         $this->validate($request, [
             'waktu' => "required",
             'deskripsi' => "required",
-            'bukti' => "required"
+            'bukti' => "required|image|mimes:png,jpg,jpeg"
         ]);
         $image = $request->file('bukti');
         $image->storeAs('public/image', $image->hashName());

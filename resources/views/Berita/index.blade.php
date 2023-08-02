@@ -23,7 +23,7 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('load/load.css') }}">
-    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <!- - CSS Assets -->
         <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
         <!-- Javascript Assets -->

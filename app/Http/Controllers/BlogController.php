@@ -271,8 +271,14 @@ class BlogController extends Controller
         return redirect()->back();
     }
     public function comment_store(Request $request) {
-        // dd($request->all());
+        $request->validate([
+            'blog_id' => 'required',
+            'comment' => 'required',
+        ]);
         $user_id = Auth::user()->id;
+        if (!Blog::where('id', $request->blog_id)->exists()) {
+            return back()->with('error', 'Berita tidak ditemukan');
+        }
         $blog_id = $request->blog_id;
 
         Comment::create([
@@ -284,8 +290,15 @@ class BlogController extends Controller
     }
 
     public function reply_comment(Request $request) {
-        // dd($request->all());
+        $request->validate([
+            'comment_id' => 'required',
+            'comment' => 'required',
+        ]);
+
         $comment_id = $request->comment_id;
+        if (!Comment::where('id', $comment_id)->exists()) {
+            return back()->with('error', 'Komentar tidak ditemukan');
+        }
         $user_id = Auth::user()->id;
         $comment = $request->comment;
 

@@ -52,6 +52,16 @@ class SpController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama' => 'required',
+            'deskripsi' => 'required',
+            'keterangan' => 'required',
+            'buktisp' => 'required|image|mimes:png,jpg,jpeg',
+        ], [
+            'deskripsi.required' => 'Deskripsi tidak boleh kosong',
+            'keterangan.required' => 'Keterangan harus dipilih',
+            'buktisp.image' => 'Bukti sp harus gambar',
+        ]);
         if (!Siswa::where('name', $request->nama)->exists()) {
             return back()->with('error', 'Siswa tidak ditemukan');
         }
@@ -79,10 +89,6 @@ class SpController extends Controller
                 ]);
             }
         }
-        $this->validate($request, [
-
-
-        ]);
         if (Sp::where('nama', $request->nama)->exists()) {
             if ($request->keterangan == 'Sp1') {
                 if (Sp::where([['nama', $request->nama], ['sp_1', 'Sp1']])->exists()) {

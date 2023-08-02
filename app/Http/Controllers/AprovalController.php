@@ -160,8 +160,7 @@ public function Tolak(Request $request, Aproval $aproval)
             'password' => bcrypt($aproval->password)
         ]);
 
-        Mail::to($aproval->email)->send(new TolakEmail($emailData)); // Mengirim email ke siswa yang diTolak
-
+        Mail::to($aproval->email)->send(new TolakEmail($emailData)); 
         $guruList = User::where('role', 'guru')
             ->where('sekolah', $aproval->sekolah)
             ->get();
