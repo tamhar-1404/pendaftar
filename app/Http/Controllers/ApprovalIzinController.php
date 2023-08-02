@@ -138,7 +138,6 @@ class ApprovalIzinController extends Controller
         $cek = $request->keterangan;
         $email = $request->input('email');
         $alasan = $request->input('alasan');
-
         if ($cek == 'terima') {
             $izin = ApprovalIzin::findOrFail($id);
             if ($izin->status === 'menunggu') {
@@ -154,16 +153,13 @@ class ApprovalIzinController extends Controller
             $izinSampai = Carbon::parse($izin->sampai);
             $tanggalMulai = $izinDari;
             $tanggalBerakhir = $izinSampai;
-
             while ($tanggalMulai <= $tanggalBerakhir) {
-                // Check if the record already exists for the given date
                 $existingRecord = ApprovalIzin::where([
                     'nama' => $izin->nama,
                     'sekolah' => $izin->sekolah,
                     'email' => $izin->email,
                     'dari' =>  $tanggalMulai->toDateString(),
                 ])->first();
-
                 if (!$existingRecord) {
                     ApprovalIzin::create([
                         'nama' => $izin->nama,
@@ -183,7 +179,6 @@ class ApprovalIzinController extends Controller
                 $tanggalMulai->addDay();
             }
         }
-
         if ($cek == 'tolak') {
             $izin = ApprovalIzin::findOrFail($id);
             $mailData = [
@@ -192,10 +187,8 @@ class ApprovalIzinController extends Controller
             Mail::to($email)->send(new tolakdataEmail($mailData));
             $izin->delete();
             return back()->with("success", "Berhasil menolak izin");
-         }
-
+        }
          return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
-
     }
     /**
      * Remove the specified resource from Storage.
