@@ -13,6 +13,8 @@ use App\Http\Requests\StoreLoginRequest;
 use App\Http\Requests\UpdateLoginRequest;
 use App\Mail\PendaftaranAdmin;
 use App\Models\Aproval;
+use App\Models\Guru_admin;
+use App\Models\MOU;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Carbon\Carbon;
@@ -104,39 +106,38 @@ class LoginController extends Controller
 
 public function store(Request $request)
 {
-    $this->validate($request , [
-        'name'=>'required',
-        'tempat'=>'required',
-        'tanggal'=>'required',
-        'kelas'=>'required',
-        'nisn'=>'required:unique:users',
-        'jeniskelamin'=>'required',
-        'alamat'=>'required',
-        'sekolah'=>'required',
-        'jurusan'=>'required',
-        'magang_awal'=>'required',
-        'magang_akhir'=>'required',
-        'foto_siswa'=>'required|image|mimes:jpg,jpeg,png',
-        'sp_diri'=>'required|image|mimes:jpg,jpeg,png',
-        'sp_ortu'=>'required|image|mimes:jpg,jpeg,png',
-        'cv'=>'required|image|mimes:jpg,jpeg,png',
-        'email'=>'required|unique:users,email',
-        'password'=>'required',
-    ],[
-        'kelas.required' => 'pilih salah satu',
-        'foto_siswa.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
-        'sp_diri.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
-        'sp_ortu.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
-        'cv.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
-    ]);
-
-    if (User::where('email', $request->email)->exists()) {
+    if (User::where('email', $request->email)->exists() || Siswa::where('email', $request->email)->exists() || Guru_admin::where('email', $request->email)->exists() || MOU::where('email', $request->email)->exists()) {
         return back()->with('error', 'Email sudah digunakan');
         // return "Duplikat";
     }
 
     try {
         if($request->file('skck') === null){
+            $this->validate($request , [
+                'name'=>'required',
+                'tempat'=>'required',
+                'tanggal'=>'required',
+                'kelas'=>'required',
+                'nisn'=>'required:unique:users',
+                'jeniskelamin'=>'required',
+                'alamat'=>'required',
+                'sekolah'=>'required',
+                'jurusan'=>'required',
+                'magang_awal'=>'required',
+                'magang_akhir'=>'required',
+                'foto_siswa'=>'required|image|mimes:jpg,jpeg,png',
+                'sp_diri'=>'required|image|mimes:jpg,jpeg,png',
+                'sp_ortu'=>'required|image|mimes:jpg,jpeg,png',
+                'cv'=>'required|image|mimes:jpg,jpeg,png',
+                'email'=>'required|unique:users,email',
+                'password'=>'required|min:6',
+            ],[
+                'kelas.required' => 'pilih salah satu',
+                'foto_siswa.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
+                'sp_diri.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
+                'sp_ortu.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
+                'cv.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
+            ]);
             $foto_siswa = $request->file('foto_siswa');
             $sp_diri = $request->file('sp_diri');
             $sp_ortu = $request->file('sp_ortu');
@@ -146,6 +147,22 @@ public function store(Request $request)
             $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
             $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
             $cv->storeAs('public/pendaftaran', $cv->hashName());
+
+            if (User::where('email', $request->email)->exists()) {
+                return back()->with('error', 'Email sudah digunakan');
+                // return "Duplikat";
+            }
+            if (Siswa::where('email', $request->email)->exists()); {
+                return back()->with('error', 'Email sudah digunakan');
+            }
+
+            if (Guru_admin::where('email', $request->email)->exists()) {
+                return back()->with('error', 'Email sudah digunakan');
+            }
+
+            if (MOU::where('email', $request->email)->exists()) {
+                return back()->with('error', 'Email sudah digunakan');
+            }
 
             $data = aproval::create([
                 'name' => $request->name,
@@ -184,6 +201,32 @@ public function store(Request $request)
     }
 
     try {
+        $this->validate($request , [
+            'name'=>'required',
+            'tempat'=>'required',
+            'tanggal'=>'required',
+            'kelas'=>'required',
+            'nisn'=>'required:unique:users',
+            'jeniskelamin'=>'required',
+            'alamat'=>'required',
+            'sekolah'=>'required',
+            'jurusan'=>'required',
+            'magang_awal'=>'required',
+            'magang_akhir'=>'required',
+            'foto_siswa'=>'required|image|mimes:jpg,jpeg,png',
+            'sp_diri'=>'required|image|mimes:jpg,jpeg,png',
+            'sp_ortu'=>'required|image|mimes:jpg,jpeg,png',
+            'cv'=>'required|image|mimes:jpg,jpeg,png',
+            'skck'=>'required|image|mimes:jpg,jpeg,png',
+            'email'=>'required|unique:users,email',
+            'password'=>'required|min:6',
+        ],[
+            'kelas.required' => 'pilih salah satu',
+            'foto_siswa.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
+            'sp_diri.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
+            'sp_ortu.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
+            'cv.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
+        ]);
         if($request->file('skck') !== null){
             $foto_siswa = $request->file('foto_siswa');
             $sp_diri = $request->file('sp_diri');
