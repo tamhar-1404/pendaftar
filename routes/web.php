@@ -50,6 +50,7 @@ Route::post('/get_user', [App\Http\Controllers\GetuserController::class, 'get_us
 Route::post('/find_rfid', [App\Http\Controllers\GetuserController::class, 'find_rfid'])->name('find_rfid');
 Route::post('/check_password', [App\Http\Controllers\GetuserController::class, 'check_password'])->name('check_password');
 Route::post('/cari_barang', [App\Http\Controllers\TransaksiController::class, 'cari'])->name('cari_barang');
+Route::post('/cari_siswa', [App\Http\Controllers\TransaksiController::class, 'cari'])->name('cari_siswa');
 Route::get('/pw/{user_id}/{user_password}', [SiswamagangController::class, 'cek_password']);
 Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
 

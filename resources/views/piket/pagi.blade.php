@@ -76,6 +76,7 @@
                                                         <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Jadwal Piket</h3>
                                                         <form class="space-y-6" action="{{route('piket.store')}}" method="post" enctype="multipart/form-data">
                                                             @csrf
+                                                            <label for="">Pilih waktu piket</label>
                                                             <div class="flex gap-4">
                                                                 <div class="flex gap-2 items-center">
                                                                     <input type="radio" name="waktu" value="pagi" class="border border-2" id=""><p>pagi</p>
@@ -84,8 +85,9 @@
                                                                     <input type="radio" name="waktu" value="sore" class="border border-2" id=""><p>sore</p>
                                                                 </div>
                                                             </div>
-                                                            <div>
-                                                                <select name="hari" id="">
+                                                            <label for="">Pilih hari</label>
+                                                            <div class="w-full">
+                                                                <select name="hari" id="" class="w-full">
                                                                     <option value="senin">senin</option>
                                                                     <option value="selasa">selasa</option>
                                                                     <option value="rabu">rabu</option>
@@ -93,11 +95,21 @@
                                                                     <option value="jumat">jumat</option>
                                                                 </select>
                                                             </div>
-                                                            @foreach ($siswa as $data)
-                                                            <div class="flex gap-3 items-center">
-                                                                <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}" id=""><p>{{$data->name}}</p>
+                                                            <label class="mb-0" for="">Pilih siswa</label>
+                                                            <input class="border border-1 w-full h-3 rounded" type="text" name="" placeholder="cari nama siswa" type="search"
+                                                            name="nama_siswa" onchange="cari(this)">
+                                                            <div id="listsiswa">
+                                                                <div>
+
+                                                                </div>
                                                             </div>
-                                                            @endforeach
+                                                            <div class=" grid grid-cols-2 w-full">
+                                                                @foreach ($siswa as $data)
+                                                                <div class="flex gap-3 items-center">
+                                                                    <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}"  id=""><p>{{$data->name}}</p>
+                                                                </div>
+                                                                @endforeach
+                                                            </div>
 
 
                                                             <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
@@ -152,17 +164,22 @@
                                                             <h4>Centang yang ingin di hapus</h4>
                                                             <input type="hidden" name="waktu" value="{{$item->waktu}}">
                                                             <input type="hidden" name="hari" value="{{$item->hari}}">
-                                                            @foreach ( $senin as $item)
-                                                            <div class="flex gap-3 items-center">
-                                                                <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->siswa->name}}</p>
+                                                            <div class="grid grid-cols-2 w-full">
+                                                                @foreach ( $senin as $item)
+                                                                <div class="flex gap-3 items-center">
+                                                                    <input type="checkbox" name="nama_siswa_rubah[]" value="{{$item->id}}"  id=""><p>{{$item->siswa->name}}</p>
+                                                                </div>
+                                                                @endforeach
                                                             </div>
-                                                            @endforeach
                                                             <h4>Centang yang ingin di tambahkan</h4>
-                                                            @foreach ($siswa as $data)
-                                                            <div class="flex gap-3 items-center">
-                                                                <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}" id=""><p>{{$data->name}}</p>
+                                                            <div class=" grid grid-cols-2 w-full">
+                                                                @foreach ($siswa as $data)
+                                                                <div class="flex gap-3 items-center">
+                                                                    <input type="checkbox" name="nama_siswa[]" value="{{$data->id}}"  id=""><p>{{$data->name}}</p>
+                                                                </div>
+                                                                @endforeach
                                                             </div>
-                                                            @endforeach
+
 
                                                             <button class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white" type="submit">kirim</button>
                                                         </form>
@@ -1205,7 +1222,40 @@
                 });
             });
         </script>
+        <script>
+              function cari(data) {
+            if (data.value == "") {
+                console.log("Kosong")
+                $('#listsiswa').empty();
+                $('#wadah').removeClass('hidden');
+                return;
+            } else {
+                $.ajax({
+                    url: "{{ route('cari_siswa') }}",
+                    method: 'POST',
+                    data: {
+                        value: data.value,
+                    },
+                    success: function(response) {
+                        $('#wadah').addClass('hidden');
+                        $('#listmenu').empty();
+                        $.each(response, function(index, el) {
+                            let elemen = `<div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
+                            <div class="flex justify-between px-5">
+                                <div id="makanan" class="font-bold text-">${el.nama}</div>
+                                <p class="text-gray-700">${el.harga}</p>
+                            </div>
+                        </div>`
+                            $('#listmenu').append(elemen);
 
+                            console.log("Nama : ", el.nama);
+                            console.log("Harga : ", el.harga);
+                        });
+                    }
+                })
+            }
+        }
+        </script>
 
 
 
