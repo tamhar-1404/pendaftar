@@ -34,6 +34,10 @@
     <!-- Add this line to include ApexCharts library -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.28.0/dist/apexcharts.min.js"></script>
     <script src="https://cdn.tailwindcss.com/"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"></script>
     <script>
         theme: {
             extend: {
@@ -68,6 +72,13 @@
                 text: "{{ session('success') }}",
             })
         </script>
+    @endif
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <script>
+                toastr.error("{{ $error }}");
+            </script>
+        @endforeach
     @endif
     <!-- sidebar menu overlay -->
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
@@ -575,6 +586,7 @@
                                                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Masukkan
                                                     saldo</label>
                                             </div>
+                                            <input type="hidden" name="password" id="password-user">
                                             <div class="grid gap-4 grid-cols-2 grid-rows-2">
                                                 <div>
                                                     <input type="radio" name="saldo" id="5000"

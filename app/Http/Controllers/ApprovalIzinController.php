@@ -74,7 +74,6 @@ class ApprovalIzinController extends Controller
      */
     public function store(Request $request, ApprovalIzin $approvalIzin)
     {
-        // dd($request->all());
         $this->validate($request, [
             'dari' => 'required|date|after_or_equal:today',
             'sampai' => 'required|date|after:today',
@@ -82,16 +81,14 @@ class ApprovalIzinController extends Controller
             'deskripsi' => 'required',
             'bukti' => 'required|image|mimes:jpeg,jpg,png'
         ]);
-        $siswa = User::Where('id', $request->foto)->first();
-        $foto_siswa = Siswa::where('id', $siswa->siswa_id)->first();
-        $foto = $foto_siswa->foto_siswa;
         $image = $request->file('bukti');
         $image->storeAs('public/bukti_izin', $image->hashName());
 
+        $user = Auth::user();
         ApprovalIzin::create([
-            'nama' => $request->nama,
-            'sekolah' => $request->sekolah,
-            'email' => $request->email,
+            'nama' => $user->name,
+            'sekolah' => $user->sekolah,
+            'email' => $user->email,
             'dari' => $request->dari,
             'sampai' => $request->sampai,
             'keterangan' => $request->keterangan,
@@ -99,11 +96,11 @@ class ApprovalIzinController extends Controller
             'status' => 'menunggu',
             'status2' => 'menunggu',
             'bukti' => $image->hashName(),
-            'tanggal' => $request->filled('tanggal') ? $request->tanggal : now()->format('Y-m-d'),
-            'jam' => $request->filled('jam') ? $request->jam : now()->format('H:i'),
+            'tanggal' => Carbon::now()->format('Y-m-d'),
+            'jam' => Carbon::now()->format('H:i'),
         ]);
 
-        return redirect()->route('absensi_siswa.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('absensi_siswa.index')->with('success', 'Data Berhasil Disimpan!');
     }
 
     /**

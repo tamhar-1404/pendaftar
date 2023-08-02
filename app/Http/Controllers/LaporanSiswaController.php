@@ -50,7 +50,7 @@ class LaporanSiswaController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'deskripsi' => 'required',
-            'bukti' => 'required|mimes:png,jpg',
+            'bukti' => 'required|image|mimes:png,jpg,jpeg',
         ],[
             'bukti.mimes' => 'ekstensi gambar harus png,jpg,jpeg'
         ]);
