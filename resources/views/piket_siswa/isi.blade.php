@@ -115,7 +115,6 @@
                                 <div class="text-sm font-medium text-center mt-5">{{$item->siswa->name}}</div>
 
                                 @empty
-
                                 @endforelse
 
                                     {{-- inspectur --}}
