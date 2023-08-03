@@ -24,7 +24,6 @@ class SpController extends Controller
         if ($request->has('cari')) {
             $keyword = $request->cari;
             $data = Sp::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('deskripsi_1', 'LIKE', '%' . $keyword . '%')->orWhere('deskripsi_2', 'LIKE', '%' . $keyword . '%')->paginate(10);
-            return view('sp.index', compact('data'));
 
             $data->appends(['cari' => $keyword]);
             return view('sp.index', compact('data'));
