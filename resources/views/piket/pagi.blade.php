@@ -424,26 +424,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -524,26 +520,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -624,26 +616,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -849,26 +837,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -950,26 +934,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -1049,26 +1029,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -1149,26 +1125,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -1249,26 +1221,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
