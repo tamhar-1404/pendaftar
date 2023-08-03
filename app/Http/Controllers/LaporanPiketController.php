@@ -57,7 +57,7 @@ class LaporanPiketController extends Controller
             'deskripsi' => $request->deskripsi
 
         ]);
-    return redirect()->back();
+    return redirect()->back()->with('success', 'berhasil mengirim laporan!');
     }
 
     /**

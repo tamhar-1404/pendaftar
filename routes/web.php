@@ -181,7 +181,6 @@ Route::get('/absen/sakit', [JurnaladminController::class, 'absensakit']);
         Route::resource('/laporansiswa', App\Http\Controllers\LaporanSiswaController::class);
         Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
         Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
-
         });
     });
 
