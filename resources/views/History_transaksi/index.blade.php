@@ -230,13 +230,13 @@
                                                                     width="50" height="50" alt="">
                                                             </td>  --}}
                                                             <td class="whitespace-nowrap px-6 py-2">
-                                                                {{ $items->harga }}
+                                                                {{ "Rp " . number_format($items->harga, 0, ',', '.') }}
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-2">
                                                                 {{ $items->stok }}
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-2">
-                                                                {{ $items->total }}
+                                                                {{ "Rp " . number_format($items->total, 0, ',', '.') }}
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-2">
                                                                 {{ $items->tanggal }}
@@ -261,7 +261,7 @@
                                 </div>
                             </div>
                             <div class="w-full flex justify-end">
-                                <p> Total : <span class="text">{{$jumlah}}</span></p>
+                                <p> Total : <span class="text">{{ "Rp " . number_format($jumlah, 0, ',', '.') }}</span></p>
                             </div>
                         </div>
                     </div>
