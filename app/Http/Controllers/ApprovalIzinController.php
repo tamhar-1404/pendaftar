@@ -81,6 +81,9 @@ class ApprovalIzinController extends Controller
             'deskripsi' => 'required',
             'bukti' => 'required|image|mimes:jpeg,jpg,png'
         ]);
+        if($request-> dari > $request->sampai ){
+            return redirect()->back()->with('error', 'tanggal izin tidak valid');
+        }
         $image = $request->file('bukti');
         $image->storeAs('public/bukti_izin', $image->hashName());
 
