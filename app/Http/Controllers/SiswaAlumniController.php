@@ -22,12 +22,11 @@ class SiswaAlumniController extends Controller
     $item = Siswa::all();
     if ($request->has('cari')) {
         $keyword = $request->cari;
-        $alumni = Siswa::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(8);
-        return view('Siswa_admin.index', compact('alumni'));
-
+        $alumni = Siswa::where([['role', 'alumni'], ['name', 'LIKE', '%' . $keyword . '%']])->orWhere([['role', 'alumni'], ['jurusan', 'LIKE', '%' .$keyword. '%']])->paginate(8);
         $alumni->appends(['cari' => $keyword]);
-        return view('Siswa_admin.index', compact('alumni'));
+        $list_alumni = Siswa::where([['role', 'alumni'], ['name', 'LIKE', '%' . $keyword . '%']])->orWhere([['role', 'alumni'], ['jurusan', 'LIKE', '%' .$keyword. '%']])->get();
 
+        return view('alumni_admin.index', compact('alumni', 'list_alumni'));
     }
 
     $alumni = Siswa::where('role', 'alumni')->latest()->paginate(8);

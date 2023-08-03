@@ -48,7 +48,7 @@ class MOUController extends Controller
     public function store(Request $request)
     {
         $this->validate($request ,[
-            'logo'=>'required|mimes:jpg,jpeg,png|image',
+            'logo'=>'required|mimes:jpg,jpeg,png',
             'nama'=>'required',
             'email'=>'required|unique:m_o_u_s,email',
             'no'=>'required||min:10|max:12|unique:m_o_u_s,no',
