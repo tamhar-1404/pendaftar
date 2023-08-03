@@ -1798,10 +1798,12 @@
                     // $('#listsiswa').empty();
                     $.each(response, function(index, el) {
                         let elemen =
-                            `  <div class=" grid grid-cols-2 ">
+                            `<div class="" style="max-height:20px">
+                             <div class=" grid grid-cols-2 ">
                                     <div class="flex gap-3 items-center">
                                         <input type="checkbox" name="nama_siswa[]" value="${el.id}"  id=""><p>${el.name}</p>
                                     </div>
+                                </div>
                                 </div>`
                         $('#listsiswa').append(elemen);
 
