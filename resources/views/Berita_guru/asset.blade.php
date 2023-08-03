@@ -72,7 +72,7 @@
                 <img src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="Gambar Berita 1" class="w-full h-48 object-cover object-center">
                 <div class="p-4">
                     <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
-                    <h2 class="text-xl font-semibold mt-2"><a href="{{ route('berita_siswa.show', $berita->id) }}">{{ $berita->judul }}</a></h2>
+                    <h2 class="text-xl font-semibold mt-2"><a href="{{ route('berita_guru.show', $berita->id) }}">{{ $berita->judul }}</a></h2>
                     <div class="flex items-center mt-2">
                         <form action="{{ route('Berita.like', $berita->id) }}" method="POST">
                             @csrf
