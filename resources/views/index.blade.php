@@ -105,6 +105,7 @@
                 <div class="navigation lg_992:order-1 lg_992:flex hidden ms-auto" id="menu-collapse ">
                     <ul class="navbar-nav nav-light" id="navbar-navlist">
                         <li class="nav-item text-gray-400">
+                            @csrf
                             <button
                                 class="border bg-blue-400 px-4 py-1 rounded text-white hover:bg-blue-500 hover:text-white"
                                 onclick="confirmReject(event)">Cek Saldo</button>
@@ -117,6 +118,13 @@
                         }
                     </style>
                     <script>
+                        $(document).ready(function() {
+                            $.ajaxSetup({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }
+                            });
+                        })
                         function confirmReject(event) {
                             event.preventDefault();
                             Swal.fire({
@@ -510,13 +518,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
     <script>
-        $(document).ready(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-        })
         $(window).on('load', function() {
             $('.spin_load').fadeOut();
         });
