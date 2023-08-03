@@ -198,7 +198,7 @@
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal">
+                                                            data-modal-hide="authentication-modal1">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -297,7 +297,7 @@
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal">
+                                                            data-modal-hide="authentication-modal2">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -391,7 +391,7 @@
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal">
+                                                            data-modal-hide="authentication-modal3">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -424,26 +424,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -491,7 +487,7 @@
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal">
+                                                            data-modal-hide="authentication-modal4">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -524,26 +520,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -591,7 +583,7 @@
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal">
+                                                            data-modal-hide="authentication-modal5">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -624,26 +616,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -790,8 +778,8 @@
                                     <div
                                         class=" w-full h-full  rounded-md {{ strtolower($day) === 'monday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }}">
                                         {{-- button edit --}}
-                                        <div class="flex justify-end" data-modal-target="authentication-modal1"
-                                            data-modal-toggle="authentication-modal1">
+                                        <div class="flex justify-end" data-modal-target="authentication-modal6"
+                                            data-modal-toggle="authentication-modal6">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                 class="w-6 h-6 pt-2 pr-2">
@@ -809,14 +797,14 @@
                                             <div class="text-sm font-medium text-center mt-5">{{ $item->siswa->name }}
                                             </div>
                                             <!-- Main modal -->
-                                            <div id="authentication-modal1" tabindex="-1" aria-hidden="true"
+                                            <div id="authentication-modal6" tabindex="-1" aria-hidden="true"
                                                 class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 <div class="relative w-full max-w-md max-h-full">
                                                     <!-- Modal content -->
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal">
+                                                            data-modal-hide="authentication-modal6">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -849,26 +837,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -892,8 +876,8 @@
                                     <div
                                         class=" w-full h-full {{ strtolower($day) === 'tuesday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md">
                                         {{-- button edit --}}
-                                        <div class="flex justify-end" data-modal-target="authentication-modal2"
-                                            data-modal-toggle="authentication-modal2">
+                                        <div class="flex justify-end" data-modal-target="authentication-modal7"
+                                            data-modal-toggle="authentication-modal7">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                 class="w-6 h-6 pt-2 pr-2">
@@ -910,14 +894,14 @@
                                             <div class="text-sm font-medium text-center mt-5">{{ $item->siswa->name }}
                                             </div>
                                             <!-- Main modal -->
-                                            <div id="authentication-modal2" tabindex="-1" aria-hidden="true"
+                                            <div id="authentication-modal7" tabindex="-1" aria-hidden="true"
                                                 class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 <div class="relative w-full max-w-md max-h-full">
                                                     <!-- Modal content -->
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal">
+                                                            data-modal-hide="authentication-modal7">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -950,26 +934,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -991,8 +971,8 @@
                                     <div
                                         class=" w-full h-full {{ strtolower($day) === 'wednesday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md">
                                         {{-- button edit --}}
-                                        <div class="flex justify-end" data-modal-target="authentication-modal3"
-                                            data-modal-toggle="authentication-modal3">
+                                        <div class="flex justify-end" data-modal-target="authentication-modal8"
+                                            data-modal-toggle="authentication-modal8">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                 class="w-6 h-6 pt-2 pr-2">
@@ -1009,14 +989,14 @@
                                             <div class="text-sm font-medium text-center mt-5">{{ $item->siswa->name }}
                                             </div>
                                             <!-- Main modal -->
-                                            <div id="authentication-modal3" tabindex="-1" aria-hidden="true"
+                                            <div id="authentication-modal8" tabindex="-1" aria-hidden="true"
                                                 class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 <div class="relative w-full max-w-md max-h-full">
                                                     <!-- Modal content -->
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal">
+                                                            data-modal-hide="authentication-modal8">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1049,26 +1029,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -1091,8 +1067,8 @@
                                     <div
                                         class=" w-full h-full {{ strtolower($day) === 'thursday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md ">
                                         {{-- button edit --}}
-                                        <div class="flex justify-end" data-modal-target="authentication-modal4"
-                                            data-modal-toggle="authentication-modal4">
+                                        <div class="flex justify-end" data-modal-target="authentication-modal9"
+                                            data-modal-toggle="authentication-modal9">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                 class="w-6 h-6 pt-2 pr-2">
@@ -1109,14 +1085,14 @@
                                             <div class="text-sm font-medium text-center mt-5">{{ $item->siswa->name }}
                                             </div>
                                             <!-- Main modal -->
-                                            <div id="authentication-modal4" tabindex="-1" aria-hidden="true"
+                                            <div id="authentication-modal9" tabindex="-1" aria-hidden="true"
                                                 class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 <div class="relative w-full max-w-md max-h-full">
                                                     <!-- Modal content -->
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal">
+                                                            data-modal-hide="authentication-modal9">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1149,26 +1125,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -1191,8 +1163,8 @@
                                     <div
                                         class=" w-full h-full {{ strtolower($day) === 'friday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md">
                                         {{-- button edit --}}
-                                        <div class="flex justify-end" data-modal-target="authentication-modal5"
-                                            data-modal-toggle="authentication-modal5">
+                                        <div class="flex justify-end" data-modal-target="authentication-modal10"
+                                            data-modal-toggle="authentication-modal10">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                 class="w-6 h-6 pt-2 pr-2">
@@ -1209,14 +1181,14 @@
                                             <div class="text-sm font-medium text-center mt-5">{{ $item->siswa->name }}
                                             </div>
                                             <!-- Main modal -->
-                                            <div id="authentication-modal5" tabindex="-1" aria-hidden="true"
+                                            <div id="authentication-modal10" tabindex="-1" aria-hidden="true"
                                                 class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 <div class="relative w-full max-w-md max-h-full">
                                                     <!-- Modal content -->
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal">
+                                                            data-modal-hide="authentication-modal10">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1249,26 +1221,22 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="santoso" id="">
-                                                                    <p>santoso</p>
+                                                                <div id="listsiswa">
+                                                                    <div id="wadah">
+                                                                        <div class=" grid grid-cols-2 ">
+                                                                            @foreach ($siswa as $data)
+                                                                                <div class="flex gap-3 items-center">
+                                                                                    <input type="checkbox"
+                                                                                        name="nama_siswa[]"
+                                                                                        value="{{ $data->id }}"
+                                                                                        id="">
+                                                                                    <p>{{ $data->name }}</p>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="abdul" id="">
-                                                                    <p>abdul</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[] "
-                                                                        value="puniran" id="">
-                                                                    <p>puniran</p>
-                                                                </div>
-                                                                <div class="flex gap-3 items-center">
-                                                                    <input type="checkbox" name="nama_siswa[]"
-                                                                        value="mamat" id="">
-                                                                    <p>mamat</p>
-                                                                </div>
+
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>

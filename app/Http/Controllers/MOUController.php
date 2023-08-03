@@ -48,7 +48,7 @@ class MOUController extends Controller
     public function store(Request $request)
     {
         $this->validate($request ,[
-            'logo'=>'required|mimes:jpg,jpeg.png|image',
+            'logo'=>'required|mimes:jpg,jpeg,png|image',
             'nama'=>'required',
             'email'=>'required|unique:m_o_u_s,email',
             'no'=>'required||min:10|max:12|unique:m_o_u_s,no',
@@ -105,7 +105,7 @@ class MOUController extends Controller
      */
     public function update(Request $request, MOU $mOU)
     {
-        
+
         $data = mou::find($request->id);
         if ($request->logo != null) {
             Storage::delete('public/mou' . $request->imageold);
@@ -113,7 +113,7 @@ class MOUController extends Controller
             $image->storeAs('public/mou', $image->hashName());
 
             $this->validate($request ,[
-                'logo'=>'required|mimes:jpg,jpeg.png|image',
+                'logo'=>'required|mimes:jpg,jpeg,png|image',
                 'nama'=>'required',
                 'email'=>'required|unique:m_o_u_s,email,' . $data->id,
                 'no'=>'required|min:10|max:12|unique:m_o_u_s,no,' . $data->id,
@@ -125,7 +125,7 @@ class MOUController extends Controller
                 'email.unique' => 'email sudah ada',
                 'no.unique' => 'no sudah ada'
             ]);
-    
+
 
            $data->update([
                 'logo'=>$image->hashName(),

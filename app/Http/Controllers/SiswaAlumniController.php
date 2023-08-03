@@ -23,10 +23,10 @@ class SiswaAlumniController extends Controller
     if ($request->has('cari')) {
         $keyword = $request->cari;
         $alumni = Siswa::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(8);
-        return view('siswa_admin.index', compact('alumni'));
+        return view('Siswa_admin.index', compact('alumni'));
 
         $alumni->appends(['cari' => $keyword]);
-        return view('siswa_admin.index', compact('alumni'));
+        return view('Siswa_admin.index', compact('alumni'));
 
     }
 

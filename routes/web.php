@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\OpnameController;
 use App\Http\Controllers\RestockController;
-use App\Http\Controllers\TransaksirfidController;
+use App\Http\Controllers\transaksirfidController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProfilsiswaController;
@@ -94,7 +94,7 @@ Route::get('/absen/sakit', [JurnaladminController::class, 'absensakit']);
     //     return view('welcome');
     // });
 
-    Route::get('/kode_beli', [TransaksirfidController::class, 'index'])->name('kode_beli');
+    Route::get('/kode_beli', [transaksirfidController::class, 'index'])->name('kode_beli');
     Route::resource('/data', App\Http\Controllers\TransaksiController::class);
     Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
     Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::class);
