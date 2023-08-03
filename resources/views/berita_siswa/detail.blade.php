@@ -1535,9 +1535,9 @@
                 </nav>
             </div>
 
-            @include('siswamagang.nav_siswa')
+            @include('Siswamagang.nav_siswa')
             @include('berita_siswa.lihat')
-           
+
         </div>
         <script src="{{ asset('vristo/assets/js/alpine-collaspe.min.js') }}"></script>
         <script src="{{ asset('vristo/assets/js/alpine-persist.min.js') }}"></script>
