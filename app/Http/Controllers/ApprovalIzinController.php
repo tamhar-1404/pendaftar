@@ -88,6 +88,7 @@ class ApprovalIzinController extends Controller
         ApprovalIzin::create([
             'nama' => $user->name,
             'sekolah' => $user->sekolah,
+            'foto' => $user->Siswa->foto_siswa,
             'email' => $user->email,
             'dari' => $request->dari,
             'sampai' => $request->sampai,
