@@ -129,7 +129,7 @@
                                                     {{ $topup->user->sekolah }}
                                                 </td>
                                                 <td class="whitespace-nowrap px-6 py-2">
-                                                    {{ $topup->saldo }}
+                                                    {{ "Rp " . number_format($topup->saldo, 0, ',', '.') }}
                                                 </td>
                                                 <td class="whitespace-nowrap px-6 py-2">
                                                     {{ $topup->tanggal }}
