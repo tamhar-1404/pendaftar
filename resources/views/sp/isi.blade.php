@@ -17,16 +17,7 @@
                         {{-- serch dan filter --}}
                         <div class="flex justify-start items-center">
                             {{-- filter --}}
-                            <div class="border-2 rounded-full border-gray-400 flex items-center mr-2 ">
-                                <span class="mr-1 ml-3">
-                                    filter
-                                </span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class=" mr-3 w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
-                                </svg>
-                            </div>
+
                             {{-- serch --}}
                             <div class="mr-4 ">
                                 <form action="">
@@ -225,7 +216,7 @@
                                                     <td class="whitespace-nowrap px-4 py-4">
                                                         <div class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
                                                             data-te-toggle="modal"
-                                                            data-te-target="#exampleModalCenteredScrollable">
+                                                            data-te-target="#exampleModalCenteredScrollable{{ $datas->id }}">
                                                             <span
                                                                 class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
                                                         </div>
@@ -261,6 +252,111 @@
 
         </div>
         {{-- modal --}}
+        @foreach ($data as $item)
+            <div data-te-modal-init
+                class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+                id="exampleModalCenteredScrollable{{ $item->id }}" tabindex="-1"
+                aria-labelledby="exampleModalCenteredScrollable" aria-modal="true" role="dialog">
+                <div data-te-modal-dialog-ref
+                    class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
+                    <div
+                        class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+                        <div
+                            class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                            <!--Modal title-->
+                            <h5 class="text-xl font-medium leading-normal text-neutral-900 dark:text-neutral-200"
+                                id="exampleModalCenteredScrollableLabel">
+                                Detail SP
+                            </h5>
+                            <!--Close button-->
+                            <button type="button"
+                                class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                                data-te-modal-dismiss aria-label="Close">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!--Modal body-->
+                        <div class="relative p-4">
+                            <p class=" text-md">
+                                Nama :
+                            </p>
+
+                            <p class="ml-5 mt-2 text-md text-gray-400">
+                                {{ $item->nama }}
+                            </p>
+
+                            <p class=" text-md mt-4">
+                                Tanggal :
+                            </p>
+                            <p class="ml-5 mt-2 text-md text-gray-400">
+                                {{ Carbon::parse($item->created_at)->format('Y-m-d') }}
+                            </p>
+
+                            <p class=" text-md mt-4">
+                                Deskripsi :
+                            </p>
+
+                            @if ($item->sp_2)
+                                <p class="ml-5 mt-2 text-md text-gray-400">
+                                    {{ $item->deskripsi_2 }}
+                                </p>
+                            @else
+                            @endif
+                            <p class="ml-5 mt-2 text-md text-gray-400">
+                                {{ $item->deskripsi_1 }}
+                            </p>
+
+                            <p class=" text-md mt-4">
+                                Status :
+                            </p>
+
+                            @if ($item->sp_2)
+                                <p class="ml-5 mt-2 text-md text-gray-400">
+                                    {{ $item->sp_2 }}
+                                </p>
+                            @else
+                                <p class="ml-5 mt-2 text-md text-gray-400">
+                                    {{ $item->sp_1 }}
+                                </p>
+                            @endif
+
+                            <p class=" text-md mt-4">
+                                Bukti :
+                            </p>
+
+                            @if ($item->sp_2)
+                                <p class="ml-5 mt-2 text-md text-gray-400">
+                                    <img src="{{ asset('storage/image/' . $item->bukti_2) }}" alt=""
+                                        srcset="">
+                                </p>
+                            @else
+                                <p class="ml-5 mt-2 text-md text-gray-400">
+                                    <img src="{{ asset('storage/image/' . $item->bukti_1) }}" alt=""
+                                        srcset="">
+                                </p>
+                            @endif
+                        </div>
+
+                        <!--Modal footer-->
+                        <div
+                            class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                            <button type="button"
+                                class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                                data-te-ripple-init data-te-modal-dismiss data-te-ripple-color="light">
+                                Kembali
+                            </button>
+                        </div>
+                        <!-- Modal footer -->
+                    </div>
+                </div>
+            </div>
+            {{-- end modal --}}
+        @endforeach
+        {{-- modal tambah --}}
         <div data-te-modal-init
             class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
             id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollable"
@@ -333,14 +429,6 @@
                     </div>
 
                     <!--Modal footer-->
-                    <div
-                        class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                        <button type="button"
-                            class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                            data-te-ripple-init data-te-modal-dismiss data-te-ripple-color="light">
-                            Kembali
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
