@@ -23,7 +23,7 @@ class HistoryAdminController extends Controller
      */
     public function index(Request $request)
     {
-    
+
         if ($request->has('cari')) {
             $keyword = $request->cari;
             $TopUp = TopUp::where('user_id', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->latest()->paginate(3);
@@ -67,8 +67,18 @@ class HistoryAdminController extends Controller
          $stok_tidak_cukup = [];
 
          foreach ($kode as $item) {
-             $data = Barang::where('kode', $item)->first();
+            $data = Barang::where('kode', $item)->first();
              $total_semua += (int) $quantity[$i] * (int) $data->harga;
+         }
+         $user = User::where('rfid', $request->rfid_user);
+         $user_saldo = $user->first()->saldo;
+
+         if ($user_saldo < $total_semua) {
+            $message = 'Saldo tidak mencukupi untuk melakukan pembelian.';
+            return redirect()->back()->with('error', $message);
+        }
+         foreach ($kode as $item) {
+
 
              if ((int) $data->stok >= (int) $quantity[$i]) {
                  array_push($name, $data->nama);
@@ -102,16 +112,6 @@ class HistoryAdminController extends Controller
              $message = 'Stok tidak mencukupi untuk barang: ' . implode(', ', $stok_tidak_cukup);
              return redirect()->back()->with('error', $message);
          }
-
-         $user = User::where('rfid', $request->rfid_user);
-         $user_saldo = $user->first()->saldo;
-
-
-         if ($user_saldo < $total_semua) {
-             $message = 'Saldo tidak mencukupi untuk melakukan pembelian.';
-             return redirect()->back()->with('error', $message);
-         }
-
          $saldo = [
              'name' => $name,
              'quantity' => $request->quantity,
