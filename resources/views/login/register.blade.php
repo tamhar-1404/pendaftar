@@ -704,7 +704,7 @@
             inputs.forEach(function (input) {
             if (awalmagang !== "" && akhirmagang !== "") {
                 if(awalmagang > akhirmagang){
-                    const tanggalwarning = document.getElementById("warning-tanggal-lahir");
+                    const tanggalwarning = document.getElementById("warning-tanggal-magang");
                     tanggalwarning.textContent = "Masukan tanggal magang yang valid";
                     isValid = false;
                 }else{
