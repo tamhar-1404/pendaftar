@@ -1747,15 +1747,15 @@
                                                     });
                                                 });
                                             </script>
-                                            <form id="reject-form"
-                                                action="{{ route('approvalizin.update', $izin->id) }}" method="post">
+                                            <form id="reject-form{{ $izin->id }}"
+                                                action="{{ route('approvalizin.update', $izin->id) }}" method="post" onsubmit="alasan(event, {{$izin->id}})">
                                                 @csrf
                                                 @method('PUT')
                                                 <input type="hidden" name="email" value="{{ $izin->email }}">
                                                 <input type="hidden" name="keterangan" value="tolak">
                                                 <button
                                                     class="btn h-7 w-7 rounded-full bg-error/10 p-0 text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25"
-                                                    id="reject-button">
+                                                    id="reject-button{{ $izin->id }}" onclick="alasan(event, {{$izin->id}})">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5"
                                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -1767,7 +1767,7 @@
                                             <!-- Tambahkan skrip Sweet Alert -->
                                             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
                                             <script>
-                                                document.getElementById('reject-button').addEventListener('click', function(event) {
+                                                function alasan(event, id) {
                                                     event.preventDefault(); // Mencegah refresh halaman
 
                                                     Swal.fire({
@@ -1783,13 +1783,13 @@
                                                                 Swal.showValidationMessage('Alasan harus diisi');
                                                             } else {
                                                                 // Tambahkan input alasan ke form
-                                                                document.getElementById('reject-form').innerHTML +=
+                                                                document.getElementById('reject-form' + id).innerHTML +=
                                                                     '<input type="hidden" name="alasan" value="' + reason + '">';
-                                                                document.getElementById('reject-form').submit();
+                                                                document.getElementById('reject-form' + id).submit();
                                                             }
                                                         }
                                                     });
-                                                });
+                                                }
                                             </script>
 
                                         </div>
@@ -1832,7 +1832,7 @@
                                         </span>
                                     </label>
                                 </form>
-                                
+
                             </div>
                         </div>
                         <div class="card mt-3">
