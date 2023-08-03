@@ -132,12 +132,17 @@ public function store(Request $request)
                 'cv'=>'required|image|mimes:jpg,jpeg,png',
                 'email'=>'required|unique:users,email',
                 'password'=>'required|min:6',
+                'confirm-password'=>'required|min:6',
             ],[
                 'kelas.required' => 'pilih salah satu',
                 'foto_siswa.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
                 'sp_diri.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
                 'sp_ortu.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
                 'cv.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
+                'password.required' => 'Password lama tidak boleh kosong',
+                'confirm-password.required' => 'Password tidak boleh kosong',
+                'password.min' => 'Password minimal 6',
+             
             ]);
             $foto_siswa = $request->file('foto_siswa');
             $sp_diri = $request->file('sp_diri');
@@ -182,7 +187,7 @@ public function store(Request $request)
             return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
         }
     } catch (Exception $e) {
-        return back()->with('error', $e->getMessage());
+        return back()->with('error', "Email sudah digunakan");
     }
 
     try {

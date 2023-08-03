@@ -2403,7 +2403,7 @@
                                             <div class="ml-auto">
                                                 <button type="button"
                                                     class="bg-transparent border border-gray-300 text-gray-800 hover:bg-gray-300 hover:text-gray-800 font-bold py-2 px-4 rounded">Batal</button>
-                                                <button type="submit" class="btn btn-primary">Tambah</button>
+                                                <button type="submit" class="bg-transparent border border-gray-300 text-gray-800 hover:bg-gray-300 hover:text-gray-800 font-bold py-2 px-4 rounded border border-1">Tambah</button>
                                                 <script>
                                                     async function showAlert() {
                                                         new window.Swal({

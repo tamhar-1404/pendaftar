@@ -35,7 +35,15 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
         rel="stylesheet" />
-
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+    integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 </head>
 
 <body class="bg-black ">
@@ -80,8 +88,7 @@
                     </div>
                 </div>
                 <div class="mt-[15%]">
-                    <form action="{{ route('login.store') }}" class="relative" method="post"
-                        enctype="multipart/form-data" id="myForm">
+                    <form action="{{ route('login.store') }}" class="relative" method="post" enctype="multipart/form-data" id="fff">
                         @csrf
                         <!-- Step 1 -->
                         <div class="step active ">
@@ -291,20 +298,60 @@
                             <div class="mb-4">
                                 <label for="confirm-password" class="block font-bold mb-1">Confirm Password:</label>
                                 <input type="password" id="confirm-password" name="confirm-password"
-                                    class="w-full px-4 py-1 text-sm border rounded" required>
+                                    class="w-full px-4 py-1 text-sm border rounded">
                                 <div id="file-warning-konfrim" class="text-red-500 text-sm mt-1"></div>
                             </div>
                             <div class="flex justify-between gap-2">
                                 <button type="button" id="prevStep4"
                                     class="w-full mr-2 py-2 px-4 bg-blue-500 text-white rounded">Previous</button>
-                                <button type="submit"
+                                <button type="submit" id="btnSubmit"
                                     class="w-full py-2 px-4 bg-blue-500 text-white rounded">Submit</button>
-
-
                             </div>
                         </div>
                     </form>
                     <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const form = document.getElementById("fff");
+                            const submitButton = document.getElementById("btnSubmit");
+
+                            form.addEventListener("submit", function(event) {
+                                event.preventDefault(); // Prevent the form from submitting by default
+                                const password = document.getElementById("confirm-password")
+                                const confirmpassword = document.getElementById("password");
+
+                                if(password.value == confirmpassword.value) {
+                                    if (password.value.trim().length >= 6) {
+                                        form.submit();
+                                    }
+                                    else {
+                                        const kurang = document.getElementById("file-warning-password");
+                                        kurang.textContent = "password tidak sama";
+                                        // alert("Password kurang dari 6")
+                                    }
+                                } else {
+                                    const sama = document.getElementById("file-warning-konfrim");
+                                    sama.textContent = "password tidak sama";
+                                    // alert("Password tidak sama")
+                                }
+
+                            });
+                        });
+                    </script>
+                    <script>
+
+                        function cekpassword() {
+                            const pw = document.getElementById("password").value;
+                            const cpw = document.getElementById("confirm-password").value;
+
+                            if (pw != cpw) {
+                                document.getElementById("btnSubmit").disabled = true;
+                                alert("Password tidak sama");
+                            }
+                            else {
+                                document.getElementById("btnSubmit").disabled = false;
+                            }
+                        }
+
                         const passwordInput = document.getElementById("password");
                         const confirmPasswordInput = document.getElementById("confirm-password");
                         const myForm = document.getElementById("myForm");
@@ -312,22 +359,14 @@
                         const fileWarningkonfrim = document.getElementById("file-warning-konfrim");
 
 
-
-                        myForm.addEventListener('submit', function(event) {
-                            event.preventDefault();
-                            const password = passwordInput.value;
-                            const confirmPassword = confirmPasswordInput.value;
-                            if(password.trim().length < 6 ){
-                                fileWarningpass.textContent="password tidak boleh kurang dari 6 huruf";
-                                retrun;
-                            }else if(password !== confirmPassword){
-                                fileWarningkonfrim.textContent="password salah";
-                            }else{
-                                myForm.submit();
-                                retrun isValid;
-                            }
-
-                        })
+                    </script>
+                     <script>
+                        $(document).ready(function () {
+                            $('btnSubmit').on('click', function (event) {
+                                event.preventDefault();
+                                alert(event);
+                            })
+                        });
                     </script>
                     <div class="mt-4 text-center text-xs+">
                         <p class="line-clamp-1">
@@ -704,7 +743,7 @@
             inputs.forEach(function (input) {
             if (awalmagang !== "" && akhirmagang !== "") {
                 if(awalmagang > akhirmagang){
-                    const tanggalwarning = document.getElementById("warning-tanggal-lahir");
+                    const tanggalwarning = document.getElementById("warning-tanggal-magang");
                     tanggalwarning.textContent = "Masukan tanggal magang yang valid";
                     isValid = false;
                 }else{

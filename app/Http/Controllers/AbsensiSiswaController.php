@@ -40,7 +40,7 @@ class AbsensiSiswaController extends Controller
             $alfa = ApprovalIzin::where('keterangan', 'alfa')->Where('nama', Auth()->user()->name)->count();
             $izinsakit = $izin + $sakit;
 
-            $all = ApprovalIzin::where('nama', $userName)->where('status', 'terimaabsen')->where('status2', 'izin')->where('status', 'terimaabsen')->where('status2', 'izin')->count();
+            $all = ApprovalIzin::where('nama', $userName)->whereNot('status', 'menunggu')->count();
             $cek_sudah_absen = ApprovalIzin::where([
                 ['tanggal', Carbon::now()->format('Y-m-d')],
                 ['nama', $userName]
@@ -126,7 +126,7 @@ class AbsensiSiswaController extends Controller
         $sakit = ApprovalIzin::where('keterangan', 'sakit')->where('nama', Auth()->user()->name)->where('status', 'terimaabsen')->where('status2', 'izin')->count();
         $alfa = ApprovalIzin::where('keterangan', 'alfa')->where('nama', Auth()->user()->name)->count();
         $izinsakit = $izin + $sakit;
-        $all = ApprovalIzin::where('nama', Auth::user()->name)->where('status', 'terimaabsen')->where('status2', 'izin')->where('status', 'terimaabsen')->where('status2', 'izin')->count();
+        $all = ApprovalIzin::where('nama', Auth::user()->name)->whereNot('status', 'menunggu')->count();
         // $terima = ApprovalIzin::latest()->paginate(5);
        return view('absensi_siswa.index' , compact('terima','hadir','telat','all','alfa','izinsakit', 'cek_sudah_absen'));
     }
@@ -138,7 +138,7 @@ class AbsensiSiswaController extends Controller
      */
     public function create(Request $request, ApprovalIzin $approvalIzin)
     {
-       //
+        //
     }
     public function lihat()
     {
@@ -152,13 +152,15 @@ class AbsensiSiswaController extends Controller
      */
     public function store(Request $request ,ApprovalIzin $approvalIzin)
     {
+        $request->validate([
+            'keterangan' => 'required',
+        ]);
         $hariIni = Carbon::now()->format('l');
         if ($hariIni == 'Saturday' OR $hariIni == 'Sunday') {
             return back()->with('error', 'Hari ini libur');
         }
         else {
             $telat='telat';
-            // dd($request->jam);
             $keterangan = "Hadir";
 
 
@@ -178,21 +180,18 @@ class AbsensiSiswaController extends Controller
             // dd(Auth::user()->siswa_id, Carbon::now()->locale('id')->dayName);
             $piket = Anggota_piket::where([['siswa_id', Auth::user()->siswa_id], ['hari', Carbon::now()->locale('id')->dayName], ['waktu', 'pagi']])->exists();
             if ($piket) {
-                if ($request->jam > '07:45') {
-                    $keterangan = $request->jam;
+                if (Carbon::now()->format('H:i') > '07:45') {
                     $keterangan = $telat;
                 }
             }
             else {
-                if($request->jam > '08:00' ){
-                       $keterangan = $request->jam;
-                        $keterangan = $telat;
+                if(Carbon::now()->format('H:i') > '08:00' ){
+                    $keterangan = $telat;
                 }
             }
             $nama = Auth::user()->name;
-            $tanggal = $request->input('tanggal');
-
-            $cek = ApprovalIzin::where('nama', $nama)->where('tanggal', $tanggal)->get();
+            $tanggal = Carbon::now()->format('Y-m-d');
+            $cek = ApprovalIzin::where('nama', $nama)->where('tanggal', $tanggal)->where('status', 'terimaabsen')->get();
             if($cek->count() > 0){
                 return redirect()->back()->with('error', 'Anda sudah absen');
             }

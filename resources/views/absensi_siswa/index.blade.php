@@ -72,10 +72,10 @@
             toastr.success("{{ session('success') }}");
         </script>
     @endif
-
+{{-- 
     @if (session()->has('error'))
         <div class="text-danger"><b>{{ session('error') }}</b></div>
-    @endif
+    @endif --}}
 
 
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
