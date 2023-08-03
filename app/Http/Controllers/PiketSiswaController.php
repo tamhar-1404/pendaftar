@@ -24,7 +24,7 @@ class PiketSiswaController extends Controller
         $rabu = Anggota_piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
         $kamis = Anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
         $jumat = Anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
-        $catat = Anggota_piket::where('siswa_id', 'LIKE', 'catatan')->where('waktu', 'LIKE', 'catatan')->get();
+        $catat = Anggota_piket::where('siswa_id', '1')->where('waktu','catatan')->get();
 
         $senin_sore= Anggota_piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'sore')->get();
         $selasa_sore = Anggota_piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'sore')->get();
