@@ -87,7 +87,7 @@
                         <div class="step active ">
                             <div class="mb-4">
                                 <label for="name" class="block font-bold mb-1 text-sm">Nama :</label>
-                                <input type="text" placeholder="Nama" id="name" name="name"
+                                <input type="text" placeholder="Nama" id="name" name="name" value=""
                                     class="w-full px-4 py-1 text-sm border rounded" required>
                             </div>
                             <div class="flex justify-between gap-0">
@@ -550,6 +550,8 @@
                 const awalmagang = document.getElementById('mulai-magang').value;
                 const akhirmagang = document.getElementById('akhir-magang').value;
                 const tanggallahir = document.getElementById('tanggallahir').value;
+                const password = document.getElementById('password').value;
+                const konfrimpass = document.getElementById('confirm-password').value;
                 var isValid = true;
                 const today = new Date();
                 const day = String(today.getDate()).padStart(2, '0');
@@ -744,6 +746,15 @@
             if (tanggallahir > todayFormatted ) {
                     const tanggalerror = document.getElementById("warning-tanggal-lahir");
                     tanggalerror.textContent = "Masukan tanggal lahir yang valid";
+                    isValid = false;
+            }else{
+
+            }
+        });
+            inputs.forEach(function (input) {
+            if (password !== konfrimpass ) {
+                    const pass = document.getElementById("warning-password");
+                    pass.textContent = "password tidak sama";
                     isValid = false;
             }else{
 
