@@ -125,13 +125,13 @@ class JurnaladminController extends Controller
             $sakit = ApprovalIzin::WhereIn('keterangan', ['sakit', 'izin'])->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('nama', 'tanggal', 'keterangan')->get();
             $alfa = ApprovalIzin::where('keterangan', 'alfa')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('nama', 'tanggal', 'keterangan')->get();
             $semua = ApprovalIzin::WhereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('jam','nama', 'tanggal', 'keterangan')->get();
-            $Cek = ApprovalIzin::whereDate('created_at', $today )
+            $Cek = ApprovalIzin::whereDate('created_at', Carbon::today())
             ->pluck('nama')
             ->toArray();
 
             $siswa = Siswa::whereNotIn('name', $Cek)
             ->where('role', 'siswa')
-            ->latest()->paginate(10);
+            ->get();
             return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua'));
 
 

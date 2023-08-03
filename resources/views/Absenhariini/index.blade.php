@@ -293,7 +293,7 @@
                                     :class="{ '!border-primary text-primary': tab == 'tidak_mengisi_absen' }"
                                     @click="tab='tidak_mengisi_absen'">
 
-                                    Tidak mengisi absen
+                                    Belum mengisi absen
                                 </a>
                             </li>
                             <li class="inline-block active">
@@ -1214,7 +1214,7 @@
                             <div>
                                 <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
                                     <input type="hidden" name="siswa_id">
-                                    <h6 class="mb-5 text-lg font-bold">Tanggal: {{$hari}}</h6>
+                                    <h6 class="mb-5 text-lg font-bold">Tanggal: {{$today}}</h6>
                                     <div class="flex flex-col sm:flex-row">
                                         <div class="w-full">
                                             <div class="w-full">
