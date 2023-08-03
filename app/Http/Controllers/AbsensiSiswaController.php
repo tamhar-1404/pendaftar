@@ -191,7 +191,7 @@ class AbsensiSiswaController extends Controller
             }
             $nama = Auth::user()->name;
             $tanggal = Carbon::now()->format('Y-m-d');
-            $cek = ApprovalIzin::where('nama', $nama)->where('tanggal', $tanggal)->get();
+            $cek = ApprovalIzin::where('nama', $nama)->where('tanggal', $tanggal)->where('status', 'terimaabsen')->get();
             if($cek->count() > 0){
                 return redirect()->back()->with('error', 'Anda sudah absen');
             }
