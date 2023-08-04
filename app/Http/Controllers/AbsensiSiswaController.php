@@ -46,12 +46,21 @@ class AbsensiSiswaController extends Controller
                 ['nama', $userName]
             ])->whereNotIn('keterangan', ['sakit', 'izin'])->exists();
 
-            $terima = ApprovalIzin::where('nama', $userName)
-            ->where(function ($query) use ($keyword) {
-                $query->where('tanggal', 'LIKE', '%' . $keyword . '%')
-                    ->orWhere('keterangan', 'LIKE', '%' . $keyword . '%');
-            })->latest()
-            ->paginate(5);
+
+        $terima = ApprovalIzin::where('status', 'terimaabsen')
+        ->where('nama', Auth::user()->name)
+        ->get();
+
+        $terima = ApprovalIzin::where('nama', $userName)
+        ->where('status', 'terimaabsen')
+        ->where(function ($query) use ($keyword) {
+            $query->where('tanggal', 'LIKE', '%' . $keyword . '%')
+                ->orWhere('keterangan', 'LIKE', '%' . $keyword . '%');
+        })
+        ->latest()
+        ->paginate(5);
+
+
 
             return view('absensi_siswa.index', compact('terima', 'hadir', 'telat', 'all', 'alfa', 'izinsakit', 'cek_sudah_absen'));
 
