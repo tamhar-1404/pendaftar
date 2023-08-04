@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class GetuserController extends Controller
 {
-    public function get_user(Request $request)
-    {
-        return "Oke";
-    }
-
     public function find_rfid(Request $request)
     {
         $rfid = $request->rfid;
