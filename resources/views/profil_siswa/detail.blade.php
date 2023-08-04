@@ -628,7 +628,7 @@
                             <div class="flex items-center justify-between mb-5">
                                 <h5 class="text-lg font-semibold dark:text-white-light">Pelanggaran</h5>
                                 <div class="flex items-center space-x-2">
-                                    <a href="{{ url()->previous() }}"
+                                    <a href="{{ route('Siswamagang.index') }}"
                                         class="btn btn-outline-danger w-73 h-27">Kembali</a>
                                 </div>
                             </div>
