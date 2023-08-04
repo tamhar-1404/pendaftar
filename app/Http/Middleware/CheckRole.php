@@ -18,7 +18,7 @@ class CheckRole
     {
           // Cek peran saat ini dengan peran yang diberikan
           if (!in_array($request->user()->role, $roles)) {
-            return redirect()->route('login.index');
+            return abort(403, "Forbidden");
         }
         return $next($request);
         // return redirect()->route('login.index');
