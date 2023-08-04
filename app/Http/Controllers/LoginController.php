@@ -142,7 +142,7 @@ public function store(Request $request)
                 'password.required' => 'Password lama tidak boleh kosong',
                 'confirm-password.required' => 'Password tidak boleh kosong',
                 'password.min' => 'Password minimal 6',
-             
+
             ]);
             $foto_siswa = $request->file('foto_siswa');
             $sp_diri = $request->file('sp_diri');
@@ -259,7 +259,7 @@ public function store(Request $request)
             return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
         }
     } catch (Exception $e) {
-        return back()->with('error', $e->getMessage());
+        return back()->with('error', "Email sudah digunakan");
     }
 }
     /**
