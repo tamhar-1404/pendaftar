@@ -20,9 +20,7 @@
         },
 
     </script>
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href={{asset("transaksi/images/favicon.webp")}} />
-
+    <link href="{{ asset('admin/assets/images/Logo.png') }}" rel="shortcut icon">
     <!-- CSS (Font, Vendor, Icon, Plugins & Style CSS files) -->
 
     {{-- <link rel="stylesheet" href={{asset("transaksi/css/vendor/icofont.min.css" )}}/>
