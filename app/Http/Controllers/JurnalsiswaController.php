@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreJurnalsiswaRequest;
 use App\Http\Requests\UpdateJurnalsiswaRequest;
+use App\Models\JurnalGuru;
+use App\Models\Siswa;
 use Illuminate\Support\Facades\View;
 use Exception;
 use Carbon\Carbon;
@@ -33,20 +35,23 @@ class JurnalsiswaController extends Controller
     {
         $hariIni = Carbon::now()->format('l');
         if ($hariIni !== 'Saturday' && $hariIni !== 'Sunday') {
-            if (Auth::user()->Siswa->role == 'Siswa') {
+            if (Auth::user()->Siswa->role == 'siswa') {
                 $jam = Carbon::now()->format('H-i');
-                if ($jam > '21-00') {
+                if ($jam > '22-00') {
                     $hari = Carbon::now()->format('Y-m-d');
-                    $cek_sudah = Jurnalsiswa::where('nama', Auth()->user()->name)->where('tanggal', $hari)->exists();
-                    if (!$cek_sudah) {
-                        Jurnalsiswa::create([
-                            'image' => "kosong",
-                            'nama' => Auth()->user()->name,
-                            'tanggal' => $hari,
-                            'sekolah' => Auth()->user()->sekolah,
-                            'kegiatan' => "kosong",
-                            'status' => 'Tidak mengisi'
-                        ]);
+                    $yang_sudah_hari_ini = Jurnalsiswa::where('tanggal', $hari)->pluck('nama')->toArray();
+                    $cek_semua_siswa_yang_belum = Siswa::where('role', 'siswa')->whereNotIn('name', $yang_sudah_hari_ini);
+                    if ($cek_semua_siswa_yang_belum->exists()) {
+                        foreach ($cek_semua_siswa_yang_belum->get() as $siswa) {
+                            Jurnalsiswa::create([
+                                'image' => "Tidak mengisi",
+                                'nama' => $siswa->name,
+                                'tanggal' => $hari,
+                                'sekolah' => $siswa->sekolah,
+                                'kegiatan' => "Tidak mengisi",
+                                'status' => 'Tidak mengisi'
+                            ]);
+                        }
                     }
                 }
             }
