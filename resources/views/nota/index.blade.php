@@ -18,11 +18,8 @@
                 }
             },
         },
-
     </script>
     <link href="{{ asset('admin/assets/images/Logo.png') }}" rel="shortcut icon">
-    <!-- CSS (Font, Vendor, Icon, Plugins & Style CSS files) -->
-
     {{-- <link rel="stylesheet" href={{asset("transaksi/css/vendor/icofont.min.css" )}}/>
     <link rel="stylesheet" href={{asset("transaksi/css/vendor/line-awesome.min.css" )}}/>
     <link rel="stylesheet" href={{asset("transaksi/css/vendor/simple-line-icons.css")}} /> --}}
@@ -36,15 +33,6 @@
             text: white;
         }
     </style>
-    <!-- Vendor CSS (Bootstrap & Icon Font) -->
-
-    <!-- Plugins CSS (All Plugins Files) -->
-
-    {{-- <link rel="stylesheet" href={{asset("transaksi/css/plugins/swiper-bundle.min.css")}} /> --}}
-
-
-
-    <!-- Style CSS -->
     <link rel="stylesheet" href={{asset("transaksi/css/style.css")}} />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="{{asset('load/load.css')}}">
