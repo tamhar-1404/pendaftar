@@ -24,8 +24,8 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $barang = Barang::all();    
-        return view('transaksi.data', compact('barang' , 'user'));
+        // $barang = Barang::all();
+        // return view('transaksi.data', compact('barang' , 'user'));
         return redirect()->back();
     }
 

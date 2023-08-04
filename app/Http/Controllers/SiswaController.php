@@ -26,7 +26,7 @@ class SiswaController extends Controller
      */
     public function index(Request $request)
     {
-
+        
         $today = date('Y-m-d');
         if (Siswa::whereDate('magang_akhir', '<=', $today)->exists()) {
             $siswas = Siswa::whereDate('magang_akhir', '<=', $today)->get();
@@ -168,7 +168,7 @@ class SiswaController extends Controller
                          ->paginate(10);
             return view('rfid.index', compact('users'));
         }
-        
+
         $users = User::where('role', 'Siswa')
         ->whereNull('RFID')
         ->latest('created_at')

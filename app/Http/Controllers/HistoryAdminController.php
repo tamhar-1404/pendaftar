@@ -29,9 +29,9 @@ class HistoryAdminController extends Controller
         if (Auth::check()) {
             // Pengguna telah login
             if (Auth()->user()->role === null) {
-                return redirect()->back();
+                return abort(403, 'forbidden');
             }else if(Auth()->user()->role !== 'Admin'){
-                return redirect()->back();
+                return abort(403, 'forbidden');
 
             } else{
                 if ($request->has('cari')) {

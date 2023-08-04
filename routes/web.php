@@ -54,17 +54,18 @@ Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
 Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
 
-Route::get('/download-pdf-JurnalSiswa', [JurnalsiswaController::class, 'downloadPDF']);
-Route::get('/export-to-docx', [JurnalsiswaController::class, 'exportToDocx']);
-Route::get('/absensi_pdf', [ApprovalIzinController::class, 'absen_siswa_pdf']);
+
+// akhir admin
+
+// Siswa
+// Route::get('/print', [JurnalsiswaController::class, 'print']);
+// Route::get('/getData', [JurnalsiswaController::class, 'getData']);
+// Route::get('/txt', [JurnalsiswaController::class, 'printjurnal']);
 
 Route::get('/export-to-docx-absen', [AbsensiadminController::class, 'exportToDocxabsen'])->name('exportToDocxabsen');
 Route::get('/absensi_pdf_admin', [AbsensiadminController::class, 'absen_pdf'])->name('absensi_pdf_admin');
-Route::get('/absen_pdf1', [AbsensiadminController::class, 'absen_pdf1'])->name('absen_pdf1');
-Route::get('/jurnal_pdf', [JurnaladminController::class, 'jurnal_admin_pdf']);
-Route::get('/jurnal_docx', [JurnaladminController::class, 'admin_docx']);
-Route::get('/grafik_pdf', [JurnaladminController::class, 'jurnal_admin_pdf_grafik'])->name('grafik_pdf');
-Route::get('/grafik_docx', [JurnaladminController::class, 'grafik_docx'])->name('grafik_docx');
+
+
 // akhir siswa
 
 Route::get('/grafik_absen_docx', [AbsensiadminController::class, 'grafik_absen_docx'])->name('grafik_absen_docx');
@@ -78,8 +79,6 @@ Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
     Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
 
     Route::get('/keluar', [LoginController::class, 'Logout'])->name('keluar');
-
-
 
     // Rute untuk mengirim email reset password
 
@@ -117,6 +116,10 @@ Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
         Route::resource('barang', App\Http\Controllers\BarangController::class);
         Route::resource('opname', App\Http\Controllers\OpnameController::class);
         Route::resource('siswa_magang', App\Http\Controllers\SiswaController::class);
+        Route::get('/jurnal_pdf', [JurnaladminController::class, 'jurnal_admin_pdf']);
+        Route::get('/jurnal_docx', [JurnaladminController::class, 'admin_docx']);
+        Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
+
 
     });
 
@@ -140,6 +143,8 @@ Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
         Route::post('ganti_password', [ProfilsiswaController::class, 'ganti_password'])->name('ganti_password');
         Route::get('/export-to-docx', [JurnalsiswaController::class, 'exportToDocx']);
         Route::get('/download-pdf-JurnalSiswa', [JurnalsiswaController::class, 'downloadPDF']);
+        Route::get('/absen_pdf1', [AbsensiadminController::class, 'absen_pdf1'])->name('absen_pdf1');
+        Route::get('/absensi_pdf', [ApprovalIzinController::class, 'absen_siswa_pdf']);
 
     });
 
@@ -164,7 +169,6 @@ Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
         Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
         });
     Route::middleware(['role:Admin,Siswa,guru'])->group(function () {
-        Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
     });
 });
 
@@ -176,7 +180,6 @@ Route::resource('Lupapassword', App\Http\Controllers\LupaPasswordController::cla
 Route::post('/reset-password', [LupaPasswordController::class, 'update'])->name('password.update');
 Route::get('/reset-password/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
 
-Route::resource('/data', App\Http\Controllers\TransaksiController::class);
 Route::middleware(['auth'])->group(function () {
     Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita.like');
     Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
