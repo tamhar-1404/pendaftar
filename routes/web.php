@@ -62,28 +62,29 @@ Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
 // Route::get('/getData', [JurnalsiswaController::class, 'getData']);
 // Route::get('/txt', [JurnalsiswaController::class, 'printjurnal']);
 
-Route::get('/export-to-docx-absen', [AbsensiadminController::class, 'exportToDocxabsen'])->name('exportToDocxabsen');
-Route::get('/absensi_pdf_admin', [AbsensiadminController::class, 'absen_pdf'])->name('absensi_pdf_admin');
+
 
 
 // akhir siswa
 
-Route::get('/grafik_absen_docx', [AbsensiadminController::class, 'grafik_absen_docx'])->name('grafik_absen_docx');
 // login
 Route::resource('/login', App\Http\Controllers\LoginController::class);
 Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
 Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
 
-    Route::get('/kode_beli', [transaksirfidController::class, 'index'])->name('kode_beli');
-    Route::resource('/data', App\Http\Controllers\TransaksiController::class);
-    Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
+Route::get('/kode_beli', [transaksirfidController::class, 'index'])->name('kode_beli');
+Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
 
-    Route::get('/keluar', [LoginController::class, 'Logout'])->name('keluar');
+Route::get('/keluar', [LoginController::class, 'Logout'])->name('keluar');
 
-    // Rute untuk mengirim email reset password
+// Rute untuk mengirim email reset password
 
-    Route::middleware(['auth'])->group(function () {
-        Route::middleware(['role:Admin'])->group(function () {
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['role:Admin'])->group(function () {
+
+        Route::get('/grafik_absen_docx', [AbsensiadminController::class, 'grafik_absen_docx'])->name('grafik_absen_docx');
+        Route::get('/export-to-docx-absen', [AbsensiadminController::class, 'exportToDocxabsen'])->name('exportToDocxabsen');
+        Route::get('/absensi_pdf_admin', [AbsensiadminController::class, 'absen_pdf'])->name('absensi_pdf_admin');
         Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::class);
             // Route khusus untuk admin
         Route::resource('/Berita', App\Http\Controllers\BlogController::class);
