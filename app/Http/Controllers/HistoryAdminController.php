@@ -25,14 +25,10 @@ class HistoryAdminController extends Controller
      */
     public function index(Request $request)
     {
-
         if (Auth::check()) {
             // Pengguna telah login
-            if (Auth()->user()->role === null) {
+            if (Auth()->user()->role === null || Auth()->user()->role !== 'Admin') {
                 return abort(403, 'forbidden');
-            }else if(Auth()->user()->role !== 'Admin'){
-                return abort(403, 'forbidden');
-
             } else{
                 if ($request->has('cari')) {
                     $keyword = $request->cari;
@@ -51,7 +47,7 @@ class HistoryAdminController extends Controller
         } else {
            return redirect()->back();
         }
-
+        //how to get all data from model user in laravel?
 
     }
 

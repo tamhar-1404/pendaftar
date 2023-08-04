@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error 404</title>
+    <title>Error 500</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
@@ -56,12 +56,12 @@
 </style>
 <body>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 118.9" role="img">
-        <title xml:lang="en">404 Error</title>
+        <title xml:lang="en">405 Error</title>
         <defs>
             <clipPath id="white-clip">
                 <circle id="white-eye" fill="#cacaca" cx="130" cy="65" r="20" />
             </clipPath>
-            <text id="text-s" class="error-text" y="106"> 404 </text>
+            <text id="text-s" class="error-text" y="106"> 405 </text>
         </defs>
         <path class="alarm" fill="#e62326" d="M120.9 19.6V9.1c0-5 4.1-9.1 9.1-9.1h0c5 0 9.1 4.1 9.1 9.1v10.6" />
         <use xlink:href="#text-s" x="-0.5px" y="-1px" fill="black"></use>
@@ -78,7 +78,7 @@
             <use xlink:href="#tornillo" y="60"></use>
         </g>
     </svg>
-    <h1>Halaman tidak ditemukan</h1>
+    <h1>Server error</h1>
     <h2> <a href="{{ url()->previous() }}">Kembali</a></h2>
 </body>
 </html>

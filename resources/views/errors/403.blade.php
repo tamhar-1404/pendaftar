@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Error 403</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
@@ -78,7 +78,7 @@
             <use xlink:href="#tornillo" y="60"></use>
         </g>
     </svg>
-    <h1>Halaman tidak tersedia</h1>
+    <h1>Halaman terlarang</h1>
     <h2> <a href="{{ url()->previous() }}">Kembali</a></h2>
 </body>
 </html>
