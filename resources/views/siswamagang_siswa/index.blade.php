@@ -485,6 +485,7 @@
                                     <img src="/admin/noData.png" alt="" width="300px">
                                 </div>
                             @endforelse
+                            {{ $siswas->links() }}
                         </div>
                     </div>
                 </div>

@@ -581,7 +581,7 @@
                                                 </div>
                                             </div>
                                             <div class="mt-3 flex flex-col sm:flex-row gap-4 justify-end">
-                                                <a href="{{ url()->previous() }}"
+                                                <a href="{{ route('profile_siswa') }}"
                                                     class="btn btn-outline-danger">Batal</a>
                                                 <button type="submit" class="btn btn-info">Simpan</button>
                                             </div>
