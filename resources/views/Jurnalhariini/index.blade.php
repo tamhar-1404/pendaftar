@@ -196,14 +196,7 @@
                                 <a href="javascript:;"
                                     class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
                                     :class="{ '!border-primary text-primary': tab == 'home' }" @click="tab='home'">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
-                                        <path opacity="0.5"
-                                            d="M2 12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274C22 8.77128 22 9.91549 22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039Z"
-                                            stroke="currentColor" stroke-width="1.5" />
-                                        <path d="M12 15L12 18" stroke="currentColor" stroke-width="1.5"
-                                            stroke-linecap="round" />
-                                    </svg>
+
                                     Mengisi
                                 </a>
                             </li>
@@ -212,11 +205,7 @@
                                     class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
                                     :class="{ '!border-primary text-primary': tab == 'password' }"
                                     @click="tab='password'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                                    </svg>
+                                   
                                     Tidak mengisi
                                 </a>
                             </li>
@@ -1106,7 +1095,7 @@
                                 <div class="w-full">
                                     <div class="w-full">
                                         <div >
-                                            <div x-data="dataTable()"
+                                            <div x-data="dataTable3()"
                                                 x-init="
                                                 initData()
                                                 $watch('searchInput', value => {
@@ -1129,10 +1118,8 @@
                                                         <tr>
                                                             <th>#</th>
                                                             <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
-                                                            <th @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
-                                                            <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
-                                                            <th @click="sort('aksi', sorted.rule === 'asc' ? 'desc' : 'asc')">Aksi</th>
-                                                        </tr>
+                                                            <th @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">Sekolah</th>
+
                                                     </thead>
                                                     <tbody>
                                                         <template x-for="(item, index) in items" :key="index">
@@ -1141,27 +1128,20 @@
                                                                     <span id="i" x-text="index + 1"></span>
                                                                 </td>
                                                                 <td class="py-3">
-                                                                    <span x-text="item.nama"></span>
+                                                                    <span x-text="item.name"></span>
                                                                 </td>
                                                                 <td class="py-3">
-                                                                    <span x-text="item.tanggal"></span>
+                                                                    <span x-text="item.sekolah"></span>
                                                                 </td>
-                                                                <td class="py-3">
-                                                                    <span x-text="item.kegiatan"></span>
-                                                                </td>
-                                                                <td class="py-3">
-                                                                    <span>
-                                                                        <button @click="openModal(item.id)" class="border border-blue-400 text-blue-400 px-4 py-1 hover:bg-blue-400 font-semibold hover:text-white rounded">Detail</button>
-                                                                    </span>
-                                                                </td>
+
 
                                                             </tr>
                                                             <tr x-show="showPopup" class="text-gray-900 text-xs">
                                                                 <td class="py-3" colspan="5">
                                                                     <div class="popup-content">
                                                                         <p>Name: <span x-text="item.nama"></span></p>
-                                                                        <p>Date: <span x-text="item.tanggal"></span></p>
-                                                                        <p>Activity: <span x-text="item.kegiatan"></span></p>
+                                                                        <p>Date: <span x-text="item.sekolah"></span></p>
+                                                                        {{-- <p>Activity: <span x-text="item.kegiatan"></span></p> --}}
                                                                         <!-- Add other data fields as needed -->
                                                                     </div>
                                                                 </td>
@@ -1223,10 +1203,10 @@
                                 </div>
                             </div>
                             <script>
-                                let datamengisi = @json($mengisi);
+                                let databelummengisi = @json($siswa);
                             </script>
                             <script>
-                                window.dataTable = function () {
+                                window.dataTable3 = function () {
                                     return {
                                         items: [],
                                         view: 5,
@@ -1234,8 +1214,8 @@
                                         pages: [],
                                         offset: 5,
                                         pagination: {
-                                            total: datamengisi.length,
-                                            lastPage: Math.ceil(datamengisi.length / 5),
+                                            total: databelummengisi.length,
+                                            lastPage: Math.ceil(databelummengisi.length / 5),
                                             perPage: 5,
                                             currentPage: 1,
                                             from: 1,
@@ -1243,16 +1223,16 @@
                                         },
                                         currentPage: 1,
                                         sorted: {
-                                            field: 'nama',
+                                            field: 'name',
                                             rule: 'asc'
                                         },
                                         initData() {
-                                            this.items = datamengisi.sort(this.compareOnKey('nama', 'asc'))
+                                            this.items = databelummengisi.sort(this.compareOnKey('name', 'asc'))
                                             this.showPages()
                                         },
                                         compareOnKey(key, rule) {
                                             return function (a, b) {
-                                                if (key === 'nama' || key === 'tanggal' || key === 'kegiatan' || key === 'image') {
+                                                if (key === 'name' || key === 'sekolah') {
                                                     let comparison = 0
                                                     const fieldA = a[key].toUpperCase()
                                                     const fieldB = b[key].toUpperCase()
@@ -1295,10 +1275,10 @@
                                                     keys: ['nama'],
                                                     threshold: 0
                                                 }
-                                                const fuse = new Fuse(datamengisi, options)
+                                                const fuse = new Fuse(databelummengisi, options)
                                                 this.items = fuse.search(value).map(elem => elem.item)
                                             } else {
-                                                this.items = datamengisi
+                                                this.items = databelummengisi
                                             }
                                             this.changePage(1)
                                             this.showPages()
