@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SiswaAlumni;
 use App\Models\Siswa;
+use App\Models\LaporanSiswa;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSiswaAlumniRequest;
 use App\Http\Requests\UpdateSiswaAlumniRequest;
@@ -85,10 +86,12 @@ class SiswaAlumniController extends Controller
      * @param  \App\Models\SiswaAlumni  $siswaAlumni
      * @return \Illuminate\Http\Response
      */
-    public function edit(SiswaAlumni $siswaAlumni)
+    public function edit(SiswaAlumni $siswaAlumni, $id)
     {
-        $alumni = Siswa::where('role', 'alumni')->get();
-        return view('alumni_admin.detail', compact('alumni'));
+        $alumni = Siswa::find($id);
+    $pelanggaran = LaporanSiswa::where('name', $alumni->name)->paginate(5);
+        // $alumni = Siswa::where('role', 'alumni')->get();
+        return view('alumni_admin.detail', compact('alumni', 'pelanggaran'));
     }
 
 
