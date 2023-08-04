@@ -55,7 +55,6 @@ Route::get('/pw/{user_id}/{user_password}', [SiswamagangController::class, 'cek_
 Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
 
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
-Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
 Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
 Route::get('send-email' , [MailController::class,'index']);
 
@@ -63,15 +62,13 @@ Route::get('send-email' , [MailController::class,'index']);
 // akhir admin
 
 // Siswa
-Route::get('/download-pdf-JurnalSiswa', [JurnalsiswaController::class, 'downloadPDF']);
 Route::get('/print', [JurnalsiswaController::class, 'print']);
 Route::get('/getData', [JurnalsiswaController::class, 'getData']);
 Route::get('/txt', [JurnalsiswaController::class, 'printjurnal']);
-Route::get('/export-to-docx', [JurnalsiswaController::class, 'exportToDocx']);
+
 Route::get('/export-to-docx-absen', [AbsensiadminController::class, 'exportToDocxabsen'])->name('exportToDocxabsen');
 Route::get('/absensi_pdf', [ApprovalIzinController::class, 'absen_siswa_pdf']);
 Route::get('/absensi_pdf_admin', [AbsensiadminController::class, 'absen_pdf'])->name('absensi_pdf_admin');
-Route::get('/grafik_absen_docx', [AbsensiadminController::class, 'grafik_absen_docx'])->name('grafik_absen_docx');
 Route::get('/absen_pdf1', [AbsensiadminController::class, 'absen_pdf1'])->name('absen_pdf1');
 Route::get('/jurnal_pdf', [JurnaladminController::class, 'jurnal_admin_pdf']);
 // Route::get('/', [AbsensiadminController::class, 'index']);
@@ -80,6 +77,7 @@ Route::get('/grafik_pdf', [JurnaladminController::class, 'jurnal_admin_pdf_grafi
 Route::get('/grafik_docx', [JurnaladminController::class, 'grafik_docx'])->name('grafik_docx');
 // akhir siswa
 
+Route::get('/grafik_absen_docx', [AbsensiadminController::class, 'grafik_absen_docx'])->name('grafik_absen_docx');
 // login
 Route::resource('/login', App\Http\Controllers\LoginController::class);
 Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
@@ -88,7 +86,7 @@ Route::get('/percobaan', function () {
     return view('desain_pdf.percobaan');
 });
 
-Route::get('/absen/sakit', [JurnaladminController::class, 'absensakit']);
+// Route::get('/absen/sakit', [JurnaladminController::class, 'absensakit']);
 
 // Route::get('/q', function () {
     //     return view('welcome');
@@ -97,7 +95,6 @@ Route::get('/absen/sakit', [JurnaladminController::class, 'absensakit']);
     Route::get('/kode_beli', [transaksirfidController::class, 'index'])->name('kode_beli');
     Route::resource('/data', App\Http\Controllers\TransaksiController::class);
     Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
-    Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::class);
 
     Route::get('/keluar', [LoginController::class, 'Logout'])->name('keluar');
 
@@ -160,6 +157,9 @@ Route::get('/absen/sakit', [JurnaladminController::class, 'absensakit']);
         Route::get('profil_siswa', [ProfilsiswaController::class, 'index'])->name('profile_siswa');
         Route::put('update_siswa', [ProfilsiswaController::class, 'update'])->name('update_siswa');
         Route::post('ganti_password', [ProfilsiswaController::class, 'ganti_password'])->name('ganti_password');
+        Route::get('/export-to-docx', [JurnalsiswaController::class, 'exportToDocx']);
+        Route::get('/download-pdf-JurnalSiswa', [JurnalsiswaController::class, 'downloadPDF']);
+
     });
 
     Route::middleware(['role:guru'])->group(function () {
@@ -182,7 +182,13 @@ Route::get('/absen/sakit', [JurnaladminController::class, 'absensakit']);
         Route::resource('/laporan_piket', App\Http\Controllers\LaporanPiketController::class);
         Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
         });
+    Route::middleware(['role:Admin,Siswa,guru'])->group(function () {
+        Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
     });
+});
+
+
+Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::class);
 
 //lupa password
 Route::resource('Lupapassword', App\Http\Controllers\LupaPasswordController::class);
@@ -190,7 +196,6 @@ Route::post('/reset-password', [LupaPasswordController::class, 'update'])->name(
 Route::get('/reset-password/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
 
 Route::resource('/data', App\Http\Controllers\TransaksiController::class);
-Route::get('/nota', [TransaksiController::class , 'nota'])->name('nota');
 Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita.like');
 Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
 Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');

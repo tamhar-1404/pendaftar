@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreHistory_AdminRequest;
 use App\Http\Requests\UpdateHistory_AdminRequest;
 use App\Mail\stukEmail;
+use Illuminate\Support\Facades\Auth;
+
 
 class HistoryAdminController extends Controller
 {
@@ -24,18 +26,33 @@ class HistoryAdminController extends Controller
     public function index(Request $request)
     {
 
-        if ($request->has('cari')) {
-            $keyword = $request->cari;
-            $TopUp = TopUp::where('user_id', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->latest()->paginate(3);
-            return view('TopUp.index', compact('TopUp'));
+        if (Auth::check()) {
+            // Pengguna telah login
+            if (Auth()->user()->role === null) {
+                return redirect()->back();
+            }else if(Auth()->user()->role !== 'Admin'){
+                return redirect()->back();
 
-            $TopUp->appends(['cari' => $keyword]);
-            return view('TopUp.index', compact('TopUp'));
+            } else{
+                if ($request->has('cari')) {
+                    $keyword = $request->cari;
+                    $TopUp = TopUp::where('user_id', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->latest()->paginate(3);
+                    return view('TopUp.index', compact('TopUp'));
+
+                    $TopUp->appends(['cari' => $keyword]);
+                    return view('TopUp.index', compact('TopUp'));
+                }
+
+            $TopUp = TopUp::whereIn('status', ['Terima', 'Ditolak'])->get();
+            $TopUp = TopUp::latest()->paginate(3);
+            return view('History_Admin.index', compact('TopUp'));
+
+            }
+        } else {
+           return redirect()->back();
         }
 
-    $TopUp = TopUp::whereIn('status', ['Terima', 'Ditolak'])->get();
-    $TopUp = TopUp::latest()->paginate(3);
-    return view('History_Admin.index', compact('TopUp'));
+
     }
 
     /**
