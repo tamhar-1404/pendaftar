@@ -79,6 +79,8 @@
         </g>
     </svg>
     <h1>service unavailable</h1>
-    <h2> <a href="{{ url()->previous() }}">Kembali</a></h2>
+    <h2> <a href="{{ url()->previous()
+
+    }}">Kembali</a></h2>
 </body>
 </html>
