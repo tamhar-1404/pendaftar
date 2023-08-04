@@ -159,7 +159,7 @@ class ProfilsiswaController extends Controller
         if ($request->has('foto')) {
             $request->validate([
                 'foto' => 'required|image|mimes:png,jpg,jpeg',
-                'email' => 'required|email|unique:siswas,email,' . $siswa_id,
+                'email' => 'required|email|unique:siswas,email,' . $siswa_id . '|ends_with:gmail.com',
                 'no' => 'required',
                 'alamat' => 'required',
             ], [
@@ -186,7 +186,7 @@ class ProfilsiswaController extends Controller
             return redirect()->route('profile_siswa')->with('success', 'Berhasil mengedit profil');
         }
         $request->validate([
-            'email' => 'required|email|unique:siswas,email,' . $siswa_id,
+            'email' => 'required|email|unique:siswas,email,' . $siswa_id . '|ends_with:gmail.com',
             'no' => 'required',
             'alamat' => 'required',
         ]);

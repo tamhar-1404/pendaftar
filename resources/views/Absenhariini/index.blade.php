@@ -1023,7 +1023,7 @@
                                                                     <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
                                                                     <th @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
                                                                     <th @click="sort('keterangan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
-                                                                    <th @click="sort('jam', sorted.rule === 'asc' ? 'desc' : 'asc')">Jam</th>
+                                                                    {{-- <th @click="sort('jam', sorted.rule === 'asc' ? 'desc' : 'asc')">Jam</th> --}}
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -1041,9 +1041,9 @@
                                                                         <td class="py-3">
                                                                             <span x-text="item.keterangan"></span>
                                                                         </td>
-                                                                        <td class="py-3">
+                                                                        {{-- <td class="py-3">
                                                                             <span x-text="item.jam"></span>
-                                                                        </td>
+                                                                        </td> --}}
                                                                     </tr>
                                                                 </template>
                                                                 <tr x-show="isEmpty()">

@@ -142,7 +142,7 @@ public function store(Request $request)
                 'password.required' => 'Password lama tidak boleh kosong',
                 'confirm-password.required' => 'Password tidak boleh kosong',
                 'password.min' => 'Password minimal 6',
-             
+             x
             ]);
             $foto_siswa = $request->file('foto_siswa');
             $sp_diri = $request->file('sp_diri');
