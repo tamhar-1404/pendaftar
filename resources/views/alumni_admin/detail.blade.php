@@ -26,7 +26,7 @@
         href="{{ asset('admin/assets/css/perfect-scrollbar.min.css') }}" />
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="load/load.css">
+    <link rel="stylesheet" href="{{asset('load/load.css')}}">
     {{--  <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />  --}}
     <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>
     <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
@@ -60,7 +60,7 @@
         <div class="center">
             <div class="ring">
             </div>
-            <img src="load/logo.png" alt="Deskripsi gambar" class="my-img">
+            <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
         </div>
     </div>
 
@@ -91,12 +91,11 @@
                                 <h5 class="text-lg font-semibold dark:text-white-light">Profile</h5>
 
                             </div>
-                            @forelse ($alumni as  $alumniItem)
                                 <div class="mb-5">
                                     <div class="flex flex-col items-center justify-center">
-                                        <img src="{{ asset('storage/Siswa/' . $alumniItem->foto_siswa) }}"
+                                        <img src="{{ asset('storage/Siswa/' . $alumni->foto_siswa) }}"
                                             alt="image" class="mb-5 h-24 w-24 rounded-full object-cover" />
-                                        <p class="text-xl font-semibold text-info">{{ $alumniItem->name }}</p>
+                                        <p class="text-xl font-semibold text-info">{{ $alumni->name }}</p>
                                     </div>
                                     <ul
                                         class="m-auto mt-5 flex max-w-[160px] flex-col space-y-4 font-semibold text-white-dark">
@@ -122,7 +121,7 @@
                                                     stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                                                     stroke-linejoin="round" />
                                             </svg>
-                                            {{ $alumniItem->sekolah }}
+                                            {{ $alumni->sekolah }}
                                         </li>
                                         <li class="flex items-center gap-2">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -137,7 +136,7 @@
                                                 <path opacity="0.5" d="M2 9H22" stroke="currentColor"
                                                     stroke-width="1.5" stroke-linecap="round" />
                                             </svg>
-                                            {{ $alumniItem->tanggal }}
+                                            {{ $alumni->tanggal }}
                                         </li>
                                         <li class="flex items-center gap-2">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -148,7 +147,7 @@
                                                 <circle cx="12" cy="10" r="3"
                                                     stroke="currentColor" stroke-width="1.5" />
                                             </svg>
-                                            {{ $alumniItem->tempat }}
+                                            {{ $alumni->tempat }}
                                         </li>
                                         <li>
                                             <a href="javascript:;" class="flex items-center gap-2">
@@ -163,7 +162,7 @@
                                                         stroke="currentColor" stroke-width="1.5"
                                                         stroke-linecap="round" />
                                                 </svg>
-                                                <span class="">{{ $alumniItem->email }}</span></a>
+                                                <span class="">{{ $alumni->email }}</span></a>
                                         </li>
                                         <li class="flex items-center gap-2">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -180,19 +179,18 @@
                                                     stroke-linecap="round" />
                                             </svg>
                                             <span class="whitespace-nowrap"
-                                                dir="ltr">{{ $alumniItem->no }}</span>
+                                                dir="ltr">{{ $alumni->no }}</span>
                                         </li>
                                     </ul>
                                     <ul class="m-auto mt-5 flex max-w-[160px] flex-col space-y-4 ">
                                         <li class="font-bold">Status</li>
                                         <li class="flex items-center gap-2">
                                             <span class="whitespace-nowrap font-semibold text-success"
-                                                dir="ltr">{{ $alumniItem->status }}</span>
+                                                dir="ltr">{{ $alumni->status }}</span>
                                         </li>
                                     </ul>
                                 </div>
-                            @empty
-                            @endforelse
+
                         </div>
 
                         <div class="panel lg:col-span-3 xl:col-span-3">
@@ -213,17 +211,37 @@
                                         <td>Judul pelanggaran</td>
                                         <td>Deskripsi</td>
                                     </tr>
+                                    @forelse ($pelanggaran as  $data)
+                                    <tr class="text-sm border-b-1">
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$data->tanggal}}</td>
+                                        <td>{{$data->deskripsi}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-info"
+                                                    data-te-toggle="modal"
+                                                    data-modal-target="staticModal{{ $data->id }}"
+                                                    data-modal-toggle="staticModal{{ $data->id }}">
+                                                    Lihat
+                                                </button>
+                                        </td>
+                                    </tr>
+                                    @empty
+
+                                    <div class="mt-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                                        role="alert">
+                                        <strong class="font-bold">Pelanggaran!</strong>
+                                        <span class="block sm:inline">Data pelanggaran masih kosong.</span>
+                                        <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                                        </span>
+                                    </div>
+                                    @endforelse
+
+
 
 
                                 </table>
                             </div>
-                            <div class="mt-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
-                                role="alert">
-                                <strong class="font-bold">Pelanggaran!</strong>
-                                <span class="block sm:inline">Data pelanggaran masih kosong.</span>
-                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                                </span>
-                            </div>
+
                         </div>
 
 
@@ -239,9 +257,78 @@
     </div>
 
     </div>
+    @forelse ($pelanggaran as $item)
+    <div class="w-full h-screen pt-[100px] overflow-y-auto">
+        <div id="staticModal{{ $item->id }}" tabindex="-1"
+            aria-hidden="true" style="backdrop-filter: blur(4px); scroll-behavior: smooth;"
+            class="kamu-tak-diajak fixed top-0 overscroll-auto left-0 right-0 z-[999] hidden w-120 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-xl max-h-full">
+                <!-- Modal content -->
+                <div
+                    class="relative bg-white rounded-lg shadow dark:bg-gray-700 bg-blue-500">
+                    <!-- Modal header -->
+                    <div
+                        class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                        <h3
+                            class="text-xl font-semibold text-gray-900 dark:text-white">
+                            Detail laporan
+                        </h3>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-hide="staticModal{{ $item->id }}">
+                            <svg class="w-5 h-5" fill="currentColor"
+                                viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="p-6 space-y-6">
+                        <div>
+                            <p
+                                class="text-base leading-relaxed font-semibold  text-gray-800 dark:text-gray-400">
+                                Tanggal Pelanggaran :
+                            </p>
+                            <span>{{ $item->tanggal }}</span>
+                            <p
+                                class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                            </p>
+                        </div>
+                        <div>
+                            <p
+                                class="text-base leading-relaxed font-semibold text-gray-800 dark:text-gray-400">
+                                Deskripsi Pelanggaran :
+                            </p>
+                            <span>{{ $item->deskripsi }}</span>
+                            <p
+                                class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+
+                            </p>
+                        </div>
+                        <div>
+                            <p
+                                class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+
+                                Bukti Pelanggaran : <span></p><img
+                                src="{{ asset('storage/laporansiswa/' . $item->bukti) }}"
+                                width="100" /></span>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+@empty
+@endforelse
 
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script>
