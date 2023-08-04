@@ -91,9 +91,14 @@ class ApprovalIzinController extends Controller
         $tanggal = Carbon::now()->format('Y-m-d');
         $cek = ApprovalIzin::where('nama', $nama)->where('tanggal', $tanggal)->where('status', 'menunggu')->get();
         if($cek->count() > 0){
-            return redirect()->back()->with('error', 'Anda sudah izn pada hari ini');
+            return redirect()->back()->with('error', 'Anda sudah izn');
         }
-
+        $datatersedia = ApprovalIzin::where('nama', $nama)
+        ->where('tanggal', $tanggal)
+        ->first();
+        if($datatersedia){
+            return redirect()->back()->with('error', 'tanggal tidak valid');
+        }
         $user = Auth::user();
         ApprovalIzin::create([
             'nama' => $user->name,
