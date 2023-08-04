@@ -87,6 +87,13 @@ class ApprovalIzinController extends Controller
         $image = $request->file('bukti');
         $image->storeAs('public/bukti_izin', $image->hashName());
 
+        $nama = Auth::user()->name;
+        $tanggal = Carbon::now()->format('Y-m-d');
+        $cek = ApprovalIzin::where('nama', $nama)->where('tanggal', $tanggal)->where('status', 'menunggu')->get();
+        if($cek->count() > 0){
+            return redirect()->back()->with('error', 'Anda sudah izn pada hari ini');
+        }
+
         $user = Auth::user();
         ApprovalIzin::create([
             'nama' => $user->name,
