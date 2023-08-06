@@ -100,7 +100,7 @@ class LoginController extends Controller
         // dd($limit->limit);
         if ($total_semua_siswa > $limit) {
             // dd("awokwok");
-            return view('login.register', ['alertMessage' => 'Maaf, Kuota siswa sudah habis.']);
+            return redirect()->route('login.index')->with('limitbang', "Kuota pendaftaran sudah habis");
         } else {
             return view('login.register');
         }
@@ -119,7 +119,7 @@ public function store(Request $request)
     $total_semua_siswa = Siswa::where('role', 'siswa')->count() + Aproval::count();
     $limit = Limit::pluck('limit');
     if ($total_semua_siswa > $limit) {
-        return back()->with('error', "Kuota pendaftaran sudah habis");
+        return back()->with('limitbang', "Kuota pendaftaran sudah habis");
     }
     if (User::where('email', $request->email)->exists() || Siswa::where('email', $request->email)->exists() || Guru_admin::where('email', $request->email)->exists() || MOU::where('email', $request->email)->exists() || Tolak::where('email', $request->email)->exists() ) {
         return back()->with('error', 'Email sudah digunakan');
