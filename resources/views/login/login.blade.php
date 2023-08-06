@@ -55,7 +55,7 @@
 
     @if(session()->has('limitbang'))
         <script>
-            toastr.error("session('limitbang')");
+            toastr.error("{{session('limitbang')}}");
         </script>
     @endif
     @if (session()->has('berhasil_daftar'))
