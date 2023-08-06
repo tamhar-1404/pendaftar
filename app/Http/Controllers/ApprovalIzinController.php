@@ -89,14 +89,8 @@ class ApprovalIzinController extends Controller
         $nama = Auth::user()->name;
         $dari = $request->dari;
         $tanggal_dari = Carbon::parse($dari)->format('Y-m-d');
-        $data = ApprovalIzin::where('nama', $nama)
-                            ->where(function ($query) use ($tanggal_dari) {
-                                $query->whereNotNull('created_at')
-                                      ->whereDate('created_at', $tanggal_dari);
-                            })
-                            ->orWhereNull('created_at')
-                            ->doesntExist();
-        if (!$data) {
+        $data = ApprovalIzin::where('nama', $nama)->where('tanggal', $dari)->exists();
+        if ($data) {
             return redirect()->back()->with('error', 'Anda sudah memiliki izin pada tanggal ini');
         }
         $image = $request->file('bukti');
