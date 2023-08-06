@@ -34,10 +34,13 @@ class AprovalController extends Controller
         if ($request->has('cari')) {
             $keyword = $request->cari;
             $siswa = Siswa::where('role', 'siswa')->count();
-            $limit= Limit::find(1);
-            $sisalimit = $limit->limit - $siswa;
+            $limit = 0;
+            $sisalimit = 0;
+            if (!empty(Limit::first())) {
+                $limit= Limit::first()->limit;
+                $sisalimit = $limit - $siswa;
+            }
             $aprovals = Aproval::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(10);
-            return view('aproval.layout', compact('aprovals', 'limit', 'sisalimit'));
 
             $aprovals->appends(['cari' => $keyword]);
             return view('aproval.layout', compact('aprovals', 'limit', 'sisalimit'));
@@ -64,9 +67,13 @@ class AprovalController extends Controller
             }
         }
         $siswa = Siswa::where('role', 'siswa')->count();
-        $limit= Limit::find(1);
-        $sisalimit = $limit->limit - $siswa;
-        
+        $limit = 0;
+        $sisalimit = 0;
+        if (!empty(Limit::find(1))) {
+            $limit= Limit::first()->limit;
+            $sisalimit = $limit - $siswa;
+        }
+
         $aprovals = Aproval::latest()->paginate(10);
         return view('aproval.layout', compact('aprovals', 'limit', 'sisalimit'));
 

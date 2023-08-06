@@ -141,7 +141,7 @@
                                                 onclick="tambahRFID()">
                                             Edit Limit
                                             </button>
-                                            <div class="limit">Jumlah limit {{$limit->limit}} dan sisa limit saat ini {{$sisalimit}}</div>
+                                            <div class="limit">Jumlah limit {{$limit}} dan sisa limit saat ini {{$sisalimit}}</div>
                                         </div>
                                         <div id="modal-tambah-rfid"
                                             class="modal fixed inset-0 flex items-center justify-center">

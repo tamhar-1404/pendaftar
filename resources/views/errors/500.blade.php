@@ -56,7 +56,7 @@
 </style>
 <body>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 118.9" role="img">
-        <title xml:lang="en">405 Error</title>
+        <title xml:lang="en">500 Error</title>
         <defs>
             <clipPath id="white-clip">
                 <circle id="white-eye" fill="#cacaca" cx="130" cy="65" r="20" />
