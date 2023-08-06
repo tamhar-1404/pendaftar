@@ -139,7 +139,7 @@
                                                 id="tambah-rfid" style="background-color: rgb(29 78 216)"
                                                 class=" text-white font-bold py-2 px-4 rounded"
                                                 onclick="tambahRFID()">
-                                            Masukan Limit
+                                            Edit Limit
                                             </button>
                                             <div class="limit">Jumlah limit {{$limit->limit}} dan sisa limit saat ini {{$sisalimit}}</div>
                                         </div>
