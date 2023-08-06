@@ -95,8 +95,8 @@ class LoginController extends Controller
     public function create()
     {
 
-        $total_semua_siswa = Siswa::where('role', 'siswa')->count() + Aproval::count();
-        $limit = Limit::pluck('limit');
+        $total_semua_siswa = (int) Siswa::where('role', 'siswa')->count() + (int) Aproval::count();
+        $limit = (int) Limit::pluck('limit');
         // dd($limit->limit);
         if ($total_semua_siswa > $limit) {
             // dd("awokwok");
@@ -116,8 +116,8 @@ class LoginController extends Controller
 
 public function store(Request $request)
 {
-    $total_semua_siswa = Siswa::where('role', 'siswa')->count() + Aproval::count();
-    $limit = Limit::pluck('limit');
+    $total_semua_siswa = (int) Siswa::where('role', 'siswa')->count() + (int) Aproval::count();
+    $limit = (int) Limit::pluck('limit');
     if ($total_semua_siswa > $limit) {
         return back()->with('limitbang', "Kuota pendaftaran sudah habis");
     }
