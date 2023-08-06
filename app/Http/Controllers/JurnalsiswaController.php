@@ -69,7 +69,7 @@ class JurnalsiswaController extends Controller
 
         $item->appends(['cari' => $keyword]);
     } else {
-        $item = Jurnalsiswa::where('nama', $userName)->latest('created_at')->paginate(5);
+        $item = Jurnalsiswa::where('nama', $userName)->where('status', 'mengisi')->latest('created_at')->paginate(5);
     }
 
     return view('jurnal_siswa.index', compact('item'));
@@ -223,7 +223,7 @@ class JurnalsiswaController extends Controller
     Public function downloadPDF()
     {
         set_time_limit(0);
-        $data = Jurnalsiswa::where('nama',Auth::user()->name)->get();
+        $data = Jurnalsiswa::where('nama',Auth::user()->name)->where('status', 'mengisi')->get();
         $pdf = Pdf::loadView('desain_pdf.jurnal', ['data' => $data]);
         return $pdf->download('jurnal_siswa.pdf');
 
@@ -266,7 +266,7 @@ class JurnalsiswaController extends Controller
 public function exportToDocx()
 {
     // Mendapatkan data dari database (contoh menggunakan model JurnalSiswa)
-    $users = JurnalSiswa::where('nama', Auth::user()->name)->get();
+    $users = JurnalSiswa::where('nama', Auth::user()->name)->where('status', 'mengisi')->get();
 
     // Membuat objek PhpWord
     $phpWord = new PhpWord();
