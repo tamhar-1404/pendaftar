@@ -143,7 +143,6 @@
                                             </button>
                                             <div class="limit">Jumlah limit {{$limit->limit}} dan sisa limit saat ini {{$sisalimit}}</div>
                                         </div>
-
                                         <div id="modal-tambah-rfid"
                                             class="modal fixed inset-0 flex items-center justify-center">
                                             <div class="modal-content bg-white p-6">
@@ -159,13 +158,10 @@
                                     <!-- Import script JavaScript -->
                                     <script>
                                         document.addEventListener("DOMContentLoaded", function() {
-                                            // Mengaktifkan modal saat tombol diklik
                                             document.getElementById('tambah-rfid').addEventListener('click', function() {
                                                 document.getElementById('modal-tambah-rfid').style.display = "flex";
                                                 document.getElementById('inputrfid').focus();
                                             });
-
-                                            // Menutup modal saat tombol Batal diklik atau saat mengklik area luar modal
                                             document.getElementById('modal-tambah-rfid').addEventListener('click', function(
                                                 event) {
                                                 if (event.target === this || event.target.classList.contains('bg-red-500')) {
