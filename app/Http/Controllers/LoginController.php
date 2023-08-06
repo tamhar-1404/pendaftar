@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\Konfimasi;
 use App\Models\Login;
 use App\Models\Siswa;
+use App\Models\Limit;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -94,10 +95,11 @@ class LoginController extends Controller
     public function create()
     {
 
-        $siswa = Siswa::where('role', 'siswa')->first();
-        $barang = Limit::where('stok')->first();
-
-        if ($siswa && $siswa->stok < $barang->stok) {
+       $siswa = Siswa::Where('role', 'siswa')->count();
+       $limit = limit::find(1);
+        // dd($limit->limit);
+        if ($siswa >= $limit->limit) {
+            // dd("awokwok");
             return view('login.register', ['alertMessage' => 'Maaf, Kuota siswa sudah habis.']);
         } else {
             return view('login.register');
