@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('limits', function (Blueprint $table) {
             $table->id();
-            $table->string('limit');
+            $table->string('limit')->default(10);
             $table->timestamps();
         });
     }
