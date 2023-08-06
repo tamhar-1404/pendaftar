@@ -85,6 +85,16 @@
                         <p class="text-slate-400 dark:text-navy-300">
                             di Hummasoft Technology
                         </p>
+
+                        @if(isset($alertMessage))
+                            <div class="bg-red-200 text-red-700 p-4 mb-4">
+                                <h1>
+                                    {{ $alertMessage }}
+                                </h1>
+                            </div>
+                        @endif
+
+
                     </div>
                 </div>
                 <div class="mt-[15%]">
