@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\Konfimasi;
 use App\Models\Login;
 use App\Models\Siswa;
+use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -34,14 +35,11 @@ class LoginController extends Controller
     {
          // Ambil hari saat ini
         $data = User::all();
-
         return view('login.login', compact('data'));
     }
     public function halaman_awal()
     {
          // Ambil hari saat ini
-
-
         return view('index');
     }
 
@@ -84,7 +82,7 @@ class LoginController extends Controller
         }
 
         // Autentikasi gagal
-        return redirect()->back()->with('error', 'Email / password salah');
+    return redirect()->back()->with('error', 'Email / password salah');
     }
 
 
@@ -95,6 +93,7 @@ class LoginController extends Controller
      */
     public function create()
     {
+
         return view('login.register');
     }
 
@@ -107,6 +106,9 @@ class LoginController extends Controller
 
 public function store(Request $request)
 {
+
+
+
     if (User::where('email', $request->email)->exists() || Siswa::where('email', $request->email)->exists() || Guru_admin::where('email', $request->email)->exists() || MOU::where('email', $request->email)->exists() || Tolak::where('email', $request->email)->exists() ) {
         return back()->with('error', 'Email sudah digunakan');
         // return "Duplikat";

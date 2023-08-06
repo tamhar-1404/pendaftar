@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Aproval;
 use App\Models\User;
+use App\Models\Barang;
+use App\Models\Limit;
 use App\Models\Siswa;
 use App\Models\Tolak;
 use App\Models\TopUp;
@@ -37,7 +39,23 @@ class AprovalController extends Controller
             $aprovals->appends(['cari' => $keyword]);
             return view('aproval.layout', compact('aprovals'));
         }
-
+        if($request->has('limit')){
+            $this->validate($request, [
+                'limit' => 'required',
+            ]);
+            $cek = Limit::find(1);
+            if($cek){
+                $cek->update([
+                  'limit' => $request->limit
+                ]);
+                return redirect()->back();
+            }else{
+                Limit::create([
+                  'limit' => $request->limit
+                ]);
+                return redirect()->back();
+            }
+        }
         $aprovals = Aproval::latest()->paginate(10);
         return view('aproval.layout', compact('aprovals'));
 
@@ -160,7 +178,7 @@ public function Tolak(Request $request, Aproval $aproval)
             'password' => bcrypt($aproval->password)
         ]);
 
-        Mail::to($aproval->email)->send(new TolakEmail($emailData)); 
+        Mail::to($aproval->email)->send(new TolakEmail($emailData));
         $guruList = User::where('role', 'guru')
             ->where('sekolah', $aproval->sekolah)
             ->get();
