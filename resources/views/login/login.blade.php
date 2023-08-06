@@ -44,7 +44,7 @@
 
     @if(session()->has('limitbang'))
         <script>
-            toastr.error("Kuota pendaftaran sudah habis");
+            toastr.error("{{ session('limitbang') }}");
         </script>
     @endif
     @if (session()->has('berhasil_daftar'))
