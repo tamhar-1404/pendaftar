@@ -98,7 +98,7 @@ class LoginController extends Controller
         $total_semua_siswa = Siswa::where('role', 'siswa')->count() + Aproval::count();
         if (!empty(Limit::first())) {
             $limit = (int) Limit::find(1)->limit;
-            if ($total_semua_siswa > $limit) {
+            if ($total_semua_siswa >= $limit) {
                 // dd("awokwok");
                 return redirect()->route('login.index')->with('limitbang', "Kuota pendaftaran sudah habis");
             }
