@@ -18,10 +18,14 @@
           },
 
     </script>
+
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
     <link rel="stylesheet" href="load/load.css">
+    <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.css" rel="stylesheet">
+    <link href="toastr.css" rel="stylesheet"/>
+    <script src="toastr.js"></script>
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -37,14 +41,14 @@
             },
         };
     </script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFz2uJRJw1++wJ/E=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
         <style>
             /* CSS untuk tampilan modal */
             .modal {
@@ -74,16 +78,37 @@
             }
         </style>
         <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
+
     </head>
     <body>
 
+        <div class="px-4 mt-2">
 
-        @if (session('error'))
-            <div>fghdjxs</div>
-            <script>
-                toastr.error("jumlah limit tidak valid");
-            </script>
-        @endif
+            @if (session('error'))
+            <div id="alertDiv" class="bg-red-100 border border-red-400 text-red-700 px-2 py-2 rounded relative" role="alert">
+                <strong class="font-bold">Peringatan</strong>
+                <span class="block sm:inline">Limit tidak valid</span>
+                <span id="closeBtn" class="absolute top-0 bottom-0 right-0 px-2 py-1">
+                  <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+                </span>
+
+            </div>
+                @endif
+        </div>
+        <script>
+            // Get references to the elements
+            const alertDiv = document.getElementById('alertDiv');
+            const closeBtn = document.getElementById('closeBtn');
+
+            // Function to close the alert
+            function closeAlert() {
+              alertDiv.style.display = 'none';
+            }
+
+            // Attach a click event listener to the close button
+            closeBtn.addEventListener('click', closeAlert);
+          </script>
+
     <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
         <div class="main-content">
             {{-- @include('aproval.layout') --}}
@@ -114,7 +139,7 @@
                                                 id="tambah-rfid" style="background-color: rgb(29 78 216)"
                                                 class=" text-white font-bold py-2 px-4 rounded"
                                                 onclick="tambahRFID()">
-                                            Masukan Limit
+                                            Edit Limit
                                             </button>
                                             <div class="limit">Jumlah limit {{$limit->limit}} dan sisa limit saat ini {{$sisalimit}}</div>
                                         </div>
