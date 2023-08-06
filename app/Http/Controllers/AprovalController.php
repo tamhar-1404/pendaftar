@@ -33,17 +33,24 @@ class AprovalController extends Controller
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
+            $siswa = Siswa::where('role', 'siswa')->count();
+            $limit= Limit::find(1);
+            $sisalimit = $limit->limit - $siswa;
             $aprovals = Aproval::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(10);
-            return view('aproval.layout', compact('aprovals'));
+            return view('aproval.layout', compact('aprovals', 'limit', 'sisalimit'));
 
             $aprovals->appends(['cari' => $keyword]);
-            return view('aproval.layout', compact('aprovals'));
+            return view('aproval.layout', compact('aprovals', 'limit', 'sisalimit'));
         }
         if($request->has('limit')){
             $this->validate($request, [
                 'limit' => 'required',
             ]);
+            $siswa = Siswa::where('role', 'siswa')->count();
             $cek = Limit::find(1);
+            if($request->limit < $siswa){
+                return redirect()->back()->with('error', 'jumlah limit tidak valid');
+            }
             if($cek){
                 $cek->update([
                   'limit' => $request->limit
@@ -56,8 +63,12 @@ class AprovalController extends Controller
                 return redirect()->back();
             }
         }
+        $siswa = Siswa::where('role', 'siswa')->count();
+        $limit= Limit::find(1);
+        $sisalimit = $limit->limit - $siswa;
+        
         $aprovals = Aproval::latest()->paginate(10);
-        return view('aproval.layout', compact('aprovals'));
+        return view('aproval.layout', compact('aprovals', 'limit', 'sisalimit'));
 
     }
 
