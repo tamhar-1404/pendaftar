@@ -37,7 +37,7 @@ class AprovalController extends Controller
             $limit = 0;
             $sisalimit = 0;
             if (!empty(Limit::first())) {
-                $limit= Limit::first()->limit;
+                $limit= Limit::find(1)->limit;
                 $sisalimit = $limit - $siswa;
             }
             $aprovals = Aproval::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(10);
@@ -69,8 +69,8 @@ class AprovalController extends Controller
         $siswa = Siswa::where('role', 'siswa')->count();
         $limit = 0;
         $sisalimit = 0;
-        if (!empty(Limit::find(1))) {
-            $limit= Limit::first()->limit;
+        if (!empty(Limit::first())) {
+            $limit= Limit::find(1)->limit;
             $sisalimit = $limit - $siswa;
         }
 
