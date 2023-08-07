@@ -183,7 +183,7 @@ class JurnalsiswaController extends Controller
     ]);
 
     $Jurnalsiswa->nama = Auth::user()->name;
-    $Jurnalsiswa->tanggal = Carbon::now()->format('Y-m-d');
+    $Jurnalsiswa->tanggal = $request->tanggal;
     $Jurnalsiswa->sekolah = Auth::user()->sekolah;
     $Jurnalsiswa->kegiatan = $request->kegiatan;
     $Jurnalsiswa->status = $request->status;
