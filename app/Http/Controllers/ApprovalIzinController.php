@@ -39,19 +39,21 @@ class ApprovalIzinController extends Controller
 
             $menunggu = ApprovalIzin::where('status', 'menunggu')->get();
             $terima = ApprovalIzin::where('status2', 'izin')->get();
-     
-            if ($request->has('cari')) {
-            $keyword = $request->cari;
-            $terima = ApprovalIzin::where('status2', 'izin')
-            ->where(function ($query) use ($keyword) {
-                $query->where('nama', 'LIKE', '%' . $keyword . '%')
-                    ->orWhere('sekolah', 'LIKE', '%' . $keyword . '%');
-            })->latest('created_at')->paginate(10);
-                
-        }
-                return view('approvalizin.index', compact('menunggu', 'terima'));
 
-            $terima = ApprovalIzin::latest()->paginate(10);
+            if ($request->has('cari')) {
+                $keyword = $request->cari;
+        
+                $terima = ApprovalIzin::where('status2', 'izin')
+                    ->where(function ($query) use ($keyword) {
+                        $query->where('nama', 'LIKE', '%' . $keyword . '%')
+                            ->orWhere('sekolah', 'LIKE', '%' . $keyword . '%');
+                    })->latest('created_at')->paginate(10);
+        
+                $terima->appends(['cari' => $keyword]);
+                return view('approvalizin.index', compact('menunggu', 'terima'));
+            }
+
+            $terima = ApprovalIzin::where('status2', 'izin')->latest()->paginate(10);
             return view('approvalizin.index', compact('menunggu', 'terima'));
 
         }
@@ -204,9 +206,9 @@ class ApprovalIzinController extends Controller
             ];
             Mail::to($email)->send(new tolakdataEmail($mailData));
             $izin->delete();
-            return back()->with("success", "Berhasil menolak izin");
+            return back()->with('success', 'Berhasil menolak izin');
         }
-         return redirect()->route('approvalizin.index')->with(['success' => 'Data Berhasil Disimpan!']);
+         return redirect()->route('approvalizin.index')->with('success', 'Data Berhasil Disimpan!');
     }
     /**
      * Remove the specified resource from Storage.
