@@ -68,7 +68,7 @@ Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
 // akhir siswa
 
 // login
-Route::resource('/login', App\Http\Controllers\LoginController::class);
+Route::resource('/login', App\Http\Controllers\LoginController::class)->middleware('guest');
 Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
 Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
 
