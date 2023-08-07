@@ -39,15 +39,20 @@ class ApprovalIzinController extends Controller
 
             $menunggu = ApprovalIzin::where('status', 'menunggu')->get();
             $terima = ApprovalIzin::where('status2', 'izin')->get();
-
+     
             if ($request->has('cari')) {
-                $keyword = $request->cari;
-                $aprovals = ApprovalIzin::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(10);
-                return view('approvalizin.index', compact('menunggu', 'terima', 'aprovals'));
-            }
+            $keyword = $request->cari;
+            $terima = ApprovalIzin::where('status2', 'izin')
+            ->where(function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('sekolah', 'LIKE', '%' . $keyword . '%');
+            })->latest('created_at')->paginate(10);
+                
+        }
+                return view('approvalizin.index', compact('menunggu', 'terima'));
 
-            $aprovals = ApprovalIzin::latest()->paginate(10);
-            return view('approvalizin.index', compact('menunggu', 'terima', 'aprovals'));
+            $terima = ApprovalIzin::latest()->paginate(10);
+            return view('approvalizin.index', compact('menunggu', 'terima'));
 
         }
         else{
