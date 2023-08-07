@@ -689,7 +689,6 @@
                                         enctype="multipart/form-data">
                                         @method('PUT')
                                         @csrf
-                                    
                                         <div>
                                             <label for="kegiatan"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>

@@ -176,8 +176,8 @@ class JurnalsiswaController extends Controller
     $oldImage = $Jurnalsiswa->image;
 
     $this->validate($request, [
-
-        'kegiatan' => 'required'
+        'kegiatan' => "required",
+        'image' => 'required|image|mimes:png,jpg,jpeg',
     ]);
 
     $Jurnalsiswa->nama = Auth()->user()->name;
