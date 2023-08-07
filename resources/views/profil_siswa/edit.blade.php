@@ -643,7 +643,7 @@
                                                 </div>
                                                 <div
                                                     class="col-span-1 sm:col-span-2 lg:col-span-3 mt-3 flex flex-col sm:flex-row gap-4 justify-end">
-                                                    <a href="{{ url()->previous() }}"
+                                                    <a href="{{ route('profile_siswa') }}"
                                                         class="btn btn-outline-danger">Batal</a>
                                                     <button type="submit"
                                                         class="btn btn-info mt-3 sm:mt-0">Simpan</button>

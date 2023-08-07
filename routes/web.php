@@ -69,7 +69,7 @@ Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
 // akhir siswa
 
 // login
-Route::resource('/login', App\Http\Controllers\LoginController::class);
+Route::resource('/login', App\Http\Controllers\LoginController::class)->middleware('guest');
 Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
 Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
 
@@ -82,7 +82,6 @@ Route::get('/keluar', [LoginController::class, 'Logout'])->name('keluar');
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
-
         Route::get('/grafik_absen_docx', [AbsensiadminController::class, 'grafik_absen_docx'])->name('grafik_absen_docx');
         Route::get('/export-to-docx-absen', [AbsensiadminController::class, 'exportToDocxabsen'])->name('exportToDocxabsen');
         Route::get('/absensi_pdf_admin', [AbsensiadminController::class, 'absen_pdf'])->name('absensi_pdf_admin');

@@ -102,7 +102,7 @@ class JurnalsiswaController extends Controller
             $hari = Carbon::now()->format('Y-m-d');
             $jam = Carbon::now()->format('H-i');
             // dd($jam > '16-00');
-            if($jam < '21-00'){
+            if($jam < '22-00'){
                 $data = Jurnalsiswa::where('nama', Auth()->user()->name)->where('tanggal', $hari)->exists();
                 if(!$data){
                     try {
@@ -126,7 +126,7 @@ class JurnalsiswaController extends Controller
                         return redirect()->route('jurnal_siswa.index')->with('success', 'Anda berhasil mengisi jurnal');
                     } catch (\Illuminate\Database\QueryException $e) {
                             return redirect()->back()->withInput()->withErrors(['tanggal' => 'Anda sudah melakukan pengumpulan']);
-                }
+                    }
                 }else{
                     return redirect()->back()->withInput()->withErrors(['tanggal' => 'Anda sudah melakukan pengumpulan']);
                 }

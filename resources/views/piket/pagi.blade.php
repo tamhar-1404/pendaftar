@@ -1382,8 +1382,12 @@
                                     @forelse ($laporan_piket as $data)
                                         <div class="w-1/3 h-56 bg-white drop-shadow ">
                                             <div class="flex ml-5 gap-3 mt-3">
-                                                <img src="admin/assets/images/profile-1.jpeg"
+                                                @foreach ($siswa as $sis)
+                                                    @if ($sis->name == $data->name)
+                                                    <img src="{{ asset('storage/Siswa/' . $sis->foto_siswa) }}"
                                                     class="w-14 rounded-full" alt="" srcset="">
+                                                    @endif
+                                                @endforeach
                                                 <div class=" font-normal mt-1">
                                                     <div class="font-bold"> {{ $data->name }}</div>
                                                     {{ $data->created_at }}

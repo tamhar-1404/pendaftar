@@ -51,6 +51,9 @@ class LaporanPiketController extends Controller
         $image = $request->file('bukti');
         $image->storeAs('public/image', $image->hashName());
         $today = Carbon::now()->format('l');
+
+        
+
         laporan_piket::create([
             'bukti' => $image->hashName(),
             'name' => Auth::user()->name,

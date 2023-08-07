@@ -121,11 +121,11 @@
             @endif
         </div>
         <div>
-                @if (session()->has('error'))
-                    <script>
-                        toastr.error("{{ session('error') }}")
-                    </script>
-                @endif
+            @if (session()->has('error'))
+                <script>
+                    toastr.error("{{ session('error') }}")
+                </script>
+            @endif
         </div>
         {{-- serch dan filter --}}
         <div class="flex justify-end items-center ">
@@ -258,7 +258,7 @@
                     </tbody>
                 </table>
 
-                <div class="kamu-tak-diajak">{{ $terima->links() }}</div>
+                <div class="kamu-tak-diajak mt-3">{{ $terima->links() }}</div>
             </div>
 
         </div>
