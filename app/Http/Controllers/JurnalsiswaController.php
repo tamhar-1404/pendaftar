@@ -182,9 +182,9 @@ class JurnalsiswaController extends Controller
         'kegiatan' => 'required'
     ]);
 
-    $Jurnalsiswa->nama = $request->nama;
-    $Jurnalsiswa->tanggal = $request->tanggal;
-    $Jurnalsiswa->sekolah = $request->sekolah;
+    $Jurnalsiswa->nama = Auth::user()->name;
+    $Jurnalsiswa->tanggal = Carbon::now()->format('Y-m-d');
+    $Jurnalsiswa->sekolah = Auth::user()->sekolah;
     $Jurnalsiswa->kegiatan = $request->kegiatan;
     $Jurnalsiswa->status = $request->status;
 
