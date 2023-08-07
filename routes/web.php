@@ -48,7 +48,8 @@ use App\Http\Controllers\ProfilsiswaController;
 Route::post('/find_rfid', [App\Http\Controllers\GetuserController::class, 'find_rfid'])->name('find_rfid');
 Route::post('/check_password', [App\Http\Controllers\GetuserController::class, 'check_password'])->name('check_password');
 Route::post('/cari_barang', [App\Http\Controllers\TransaksiController::class, 'cari'])->name('cari_barang');
-Route::post('/cari_siswa', [App\Http\Controllers\PiketController::class, 'cari'])->name('cari_siswa');
+Route::get('/cari_siswa', [App\Http\Controllers\PiketController::class, 'cari'])->name('cari_siswa');
+Route::post('/sedikit', [App\Http\Controllers\PiketController::class, 'dikit'])->name('sedikit');
 Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
 
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
