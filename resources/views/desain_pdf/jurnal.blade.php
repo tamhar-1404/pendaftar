@@ -47,9 +47,9 @@
                 <tr
                 class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 " style="border: 1px; ">
                 <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $loop->iteration }}</td>
-                <td class="whitespace-nowrap px-4 py-4">{{$items->siswa->name}}</td>
+                <td class="whitespace-nowrap px-4 py-4">{{$items->Siswa->name}}</td>
                 <td class="whitespace-nowrap px-4 py-4">{{$items->tanggal}}</td>
-                <td class="whitespace-nowrap px-4 py-4">{{$items->siswa->sekolah}}</td>
+                <td class="whitespace-nowrap px-4 py-4">{{$items->Siswa->sekolah}}</td>
                 <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$items->kegiatan}}</td>
                 <td class="whitespace-nowrap px-6 pl-17 py-4"><img
                     src="{{ asset('storage/image/' . $items->image) }}"
