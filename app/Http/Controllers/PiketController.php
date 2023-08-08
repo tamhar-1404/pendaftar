@@ -11,31 +11,20 @@ use App\Http\Requests\UpdatepiketRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\piket as pikets;
+use App\Models\Catatan;
 use Carbon\Carbon;
 
 class PiketController extends Controller
 {
     function cari(Request $request) {
         $keyword = $request->value;
-
-        $Cek = Anggota_piket::pluck('siswa_id')->toArray();
-        $siswa = Siswa::whereNotIn('id', $Cek)
-                      ->where('role', 'siswa')
-                      ->where('name', 'like', '%' . $keyword . '%')
-                      ->get()->toArray();
-
-
-        return $siswa;
-    }
-    function dikit(Request $request) {
-        $keyword = $request->value;
         $Cek = Anggota_piket::pluck('siswa_id')
          ->toArray();
-         $siswa_sedikit = Siswa::whereNotIn('id', $Cek)
+         $siswa = Siswa::whereNotIn('id', $Cek)
          ->where('role', 'siswa')
-         ->get()->toArray()->paginate(4);
+         ->get()->toArray();
 
-        return $siswa_sedikit;
+        return $siswa;
     }
     /**
      * Display a listing of the resource.
@@ -69,7 +58,7 @@ class PiketController extends Controller
          $rabu = Anggota_piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
          $kamis = Anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
          $jumat = Anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
-         $catat = Anggota_piket::where('siswa_id', '1')->where('waktu','catatan')->get();
+         $catatan = Catatan::get();
 
          $senin_sore= Anggota_piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'sore')->get();
          $selasa_sore = Anggota_piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'sore')->get();
@@ -86,7 +75,7 @@ class PiketController extends Controller
          $laporan_piket = Laporan_piket::all();
 
 
-         return view('piket.index', compact('laporan_piket','senin', 'selasa', 'rabu', 'kamis', 'jumat','senin_sore', 'selasa_sore', 'rabu_sore', 'kamis_sore', 'jumat_sore', 'siswa', 'catat'));
+         return view('piket.index', compact('laporan_piket','senin', 'selasa', 'rabu', 'kamis', 'jumat','senin_sore', 'selasa_sore', 'rabu_sore', 'kamis_sore', 'jumat_sore', 'siswa', 'catatan'));
      }
 
      private function isEmailSentToday()
@@ -281,6 +270,19 @@ class PiketController extends Controller
         return redirect()->back()->with('sukses', 'Data telah di edit');
     }
 
+    public function tambah(Request $request){
+        $this->validate($request,[
+            'catatan' => 'required',
+        ]);
+
+        Catatan::create([
+            'catatan' => $request->catatan,
+        ]);
+
+        return redirect()->route('piket.index');
+        
+    }
+
     /**
      * Display the specified resource.
      *
@@ -313,14 +315,22 @@ class PiketController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request->all());
-        $piket = Anggota_piket::findorfail($id);
+        $this->validate($request, [
+            'catatan' => 'required',
+        ]);
+        try {
+            $piket = Catatan::findOrFail($id);            
             $piket->update([
-                'hari' => $request->hari,
+                'catatan' => $request->catatan,
             ]);
-
-        return redirect()->back()->with('success', 'Data telah di edit');
-
+    
+            return redirect()->back()->with('success', 'Data telah di edit');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
+    
+    
 
     /**
      * Remove the specified resource from storage.
@@ -328,8 +338,16 @@ class PiketController extends Controller
      * @param  \App\Models\piket  $piket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(piket $piket)
+    public function destroy(string $id)
     {
-        //
+        
+            // Temukan item berdasarkan ID
+            $catatan = Catatan::findOrFail($id);
+
+            // Hapus item
+            $catatan->delete();
+
+            // Redirect atau berikan respons sesuai kebutuhan Anda
+            return redirect()->route('piket.index')->with('success', 'Item berhasil dihapus');
     }
 }
