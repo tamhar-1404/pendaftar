@@ -15,10 +15,7 @@ return new class extends Migration
     {
         Schema::create('approval_izins', function (Blueprint $table) {
             $table->id();
-            $table->string('foto')->nullable();
-            $table->string('nama')->nullable();
-            $table->string('sekolah')->nullable();
-            $table->string('email')->nullable();
+            $table->foreignId('siswa_id')->constrained('siswas')->onDelete('cascade')->onUpdate('cascade');
             $table->date('dari')->nullable();
             $table->date('sampai')->nullable();
             $table->string('keterangan')->nullable();
@@ -29,8 +26,6 @@ return new class extends Migration
             $table->string('status');
             $table->string('status2')->nullable();
             $table->timestamp('deleted_at')->nullable();
-            $table->foreignID('siswa_id');
-            $table->foreign('siswa_id')->references('id')->on('siswas')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
