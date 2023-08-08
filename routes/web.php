@@ -74,6 +74,8 @@ Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
 Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
 
 Route::get('/kode_beli', [transaksirfidController::class, 'index'])->name('kode_beli');
+Route::post('/postrfid', [transaksiController::class, 'postbeli'])->name('postrfid');
+Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
 Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
 
 Route::get('/keluar', [LoginController::class, 'Logout'])->name('keluar');

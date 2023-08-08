@@ -217,7 +217,9 @@ class ApprovalIzinController extends Controller
                 'content' => 'Absensi Anda telah ditolak dengan alasan: ' . $alasan,
             ];
             Mail::to($email)->send(new tolakdataEmail($mailData));
-            $izin->delete();
+            $izin->update([
+                'status'=>'tolak'
+            ]);
             return back()->with('success', 'Berhasil menolak izin');
         }
          return redirect()->route('approvalizin.index')->with('success', 'Data Berhasil Disimpan!');

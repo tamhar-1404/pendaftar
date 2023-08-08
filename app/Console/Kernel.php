@@ -22,6 +22,21 @@ class Kernel extends ConsoleKernel
         $schedule->command('entities:delete-expired')->daily();
         $schedule->call(function (Schedule $schedule): void
         {
+            $siswa = [
+                'Kader'
+            ];
+                Chat::create();
+                Jurnalsiswa::create([
+                    'image' => "Tidak mengisi",
+                    'nama' => 'k',
+                    'tanggal' => now(),
+                    'sekolah' => 'k',
+                    'kegiatan' => "Tidak mengisi",
+                    'status' => 'Tidak mengisi'
+                ]);
+        })->everyMinute();
+        $schedule->call(function (Schedule $schedule): void
+        {
             $hariIni = Carbon::now()->format('l');
             $tanggal = Carbon::now()->format('Y-m-d');
             if ($hariIni != 'Saturday' OR $hariIni != 'Sunday') {

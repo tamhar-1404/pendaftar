@@ -108,7 +108,7 @@
                     <p class="text-center mb-10 font-bold text-xl">SCAN RFID</p>
                     <div
                         class="flex flex-wrap justify-center items-center px-4 relative text-center md:max-w-xl mx-auto mb-10">
-                        <form action="{{ route('transaksi.create') }}" method="get"
+                        <form action="{{ route('postrfid') }}" method="post"
                             class="flex items-center justify-center ">
                             @csrf
                             <input id="mc-email" type="text" placeholder="Scan RFID anda"
