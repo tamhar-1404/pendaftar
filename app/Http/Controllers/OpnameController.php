@@ -19,20 +19,23 @@ class OpnameController extends Controller
     public function index(Request $request)
     {
         $barang = Barang::all();
+        
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $opname = Opname::where('barang_id', 'LIKE', '%' . $keyword . '%')->paginate(10);
-            return view('opname.index', compact('opname','barang'));
-
+            
+            $opname = Opname::whereHas('barang', function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', '%' . $keyword . '%');
+            })->paginate(10);
+    
             $opname->appends(['cari' => $keyword]);
-            return view('opname.index', compact('opname','barang'));
-
+            return view('opname.index', compact('opname', 'barang'));
+    
         }
+        
         $opname = Opname::latest()->paginate(10);
-        // dd($opname);
         return view('opname.index', compact('barang', 'opname'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
