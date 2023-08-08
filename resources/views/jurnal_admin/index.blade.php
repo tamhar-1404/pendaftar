@@ -155,7 +155,7 @@
                                   <p class="kamu-tak-diajak">  DOCX</p>
                                 </button>
                             </a>
-                          
+
                         </div>
                     </div>
                     <div id="grafik_siswa"
@@ -194,9 +194,9 @@
                                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                                     <td class="whitespace-nowrap px-4 py-4 font-medium">
                                                         {{ $loop->iteration }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $items->nama }}</td>
+                                                    <td class="whitespace-nowrap px-4 py-4">{{ $items->siswa->name }}</td>
                                                     <td class="whitespace-nowrap px-4 py-4">{{ $items->tanggal }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $items->sekolah }}</td>
+                                                    <td class="whitespace-nowrap px-4 py-4">{{ $items->siswa->sekolah }}</td>
                                                     <td
                                                         class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
                                                         {{ $items->kegiatan }}</td>
@@ -280,7 +280,7 @@
                                             Nama
                                         </p>
                                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                            {{ $modal->nama }}
+                                            {{ $modal->siswa->name }}
                                         </p>
                                     </div>
                                     <div>
@@ -298,7 +298,7 @@
                                             Sekolah
                                         </p>
                                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                            {{ $modal->sekolah }}
+                                            {{ $modal->siswa->sekolah }}
                                         </p>
                                     </div>
                                     <div>

@@ -132,10 +132,7 @@ class JurnaladminController extends Controller
             $siswa = Siswa::whereNotIn('name', $Cek)
             ->where('role', 'siswa')
             ->get();
-            return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua'));
 
-
-            $item->appends(['cari' => $keyword]);
             return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua'));
         }
         // $siswa = Siswa::all();
@@ -180,23 +177,23 @@ class JurnaladminController extends Controller
                 $tanggalAwal = trim($datesArray[0]);
                 $tanggalAkhir = trim($datesArray[0]);
             }
-            $semuaJurnal = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('nama','sekolah','tanggal','status')->get();
-            $tidakMengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->whereNot('status', 'mengisi')->select('nama','tanggal', 'sekolah')->get();
-            $mengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'mengisi')->select('nama','tanggal', 'kegiatan', 'image', 'id')->get();
+            $semuaJurnal = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('siswa_id','tanggal','status')->get();
+            $tidakMengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->whereNot('status', 'mengisi')->select('siswa_id','tanggal')->get();
+            $mengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'mengisi')->select('siswa_id','tanggal', 'kegiatan', 'image', 'id')->get();
             return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi'));
         }
 
         $Cek = Jurnalsiswa::whereDate('created_at', Carbon::today())
-        ->pluck('nama')
+        ->pluck('siswa_id')
         ->toArray();
         // dd()
-        $siswa = Siswa::whereNotIn('name', $Cek)
+        $siswa = Siswa::whereNotIn('id', $Cek)
         ->where('role', 'siswa')
         ->get();
 
-        $semuaJurnal = Jurnalsiswa::whereDate('tanggal', Carbon::now()->format('Y-m-d'))->select('nama','sekolah','tanggal','status')->get();
-        $tidakMengisi = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->whereNot('status', 'mengisi')->select('nama','tanggal', 'sekolah')->get();
-        $mengisi = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->where('status', 'mengisi')->select('nama','tanggal', 'kegiatan', 'image', 'id')->get();
+        $semuaJurnal = Jurnalsiswa::whereDate('tanggal', Carbon::now()->format('Y-m-d'))->select('siswa_id','tanggal','status')->get();
+        $tidakMengisi = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->whereNot('status', 'mengisi')->select('siswa_id','tanggal')->get();
+        $mengisi = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->where('status', 'mengisi')->select('siswa_id','tanggal', 'kegiatan', 'image', 'id')->get();
         return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa'));
     }
     /**

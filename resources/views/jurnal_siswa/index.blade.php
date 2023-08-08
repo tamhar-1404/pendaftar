@@ -601,11 +601,11 @@
                                                         class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                                         <td class="whitespace-nowrap px-6 py-2 font-medium">
                                                             {{ $loop->iteration }}</td>
-                                                        <td class="whitespace-nowrap px-6 py-2">{{ $items->nama }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $items->siswa->name }}
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 py-2">{{ $items->tanggal }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-6 py-2">{{ $items->sekolah }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $items->siswa->sekolah }}
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 py-2 overflow-hidden">
                                                             <div class="truncate">
@@ -768,7 +768,7 @@
                                         Nama
                                     </p>
                                     <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                        {{ $items->nama }}
+                                        {{ $items->siswa->name }}
                                     </p>
                                 </div>
                                 <div>
@@ -784,7 +784,7 @@
                                         Sekolah
                                     </p>
                                     <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                        {{ $modal->sekolah }}
+                                        {{ $modal->siswa->sekolah }}
                                     </p>
                                 </div>
                                 <div>

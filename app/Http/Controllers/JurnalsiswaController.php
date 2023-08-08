@@ -18,6 +18,7 @@ use App\Models\Siswa;
 use Illuminate\Support\Facades\View;
 use Exception;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use PhpOffice\PhpWord\Style\Table;
 use PhpOffice\PhpWord\Style\Cell;
 use PhpOffice\PhpWord\Style\Color;
@@ -39,15 +40,14 @@ class JurnalsiswaController extends Controller
                 $jam = Carbon::now()->format('H-i');
                 if ($jam > '22-00') {
                     $hari = Carbon::now()->format('Y-m-d');
-                    $yang_sudah_hari_ini = Jurnalsiswa::where('tanggal', $hari)->pluck('nama')->toArray();
-                    $cek_semua_siswa_yang_belum = Siswa::where('role', 'siswa')->whereNotIn('name', $yang_sudah_hari_ini);
+                    $yang_sudah_hari_ini = Jurnalsiswa::where('tanggal', $hari)->pluck('id')->toArray();
+                    $cek_semua_siswa_yang_belum = Siswa::where('role', 'siswa')->whereNotIn('id', $yang_sudah_hari_ini);
                     if ($cek_semua_siswa_yang_belum->exists()) {
                         foreach ($cek_semua_siswa_yang_belum->get() as $siswa) {
                             Jurnalsiswa::create([
                                 'image' => "Tidak mengisi",
-                                'nama' => $siswa->name,
+                                'siswa_id' => Auth::user()->Siswa->id,
                                 'tanggal' => $hari,
-                                'sekolah' => $siswa->sekolah,
                                 'kegiatan' => "Tidak mengisi",
                                 'status' => 'Tidak mengisi'
                             ]);
@@ -56,12 +56,11 @@ class JurnalsiswaController extends Controller
                 }
             }
         }
-    $userName = Auth::user()->name;
 
     if ($request->has('cari')) {
         $keyword = $request->cari;
 
-        $item = Jurnalsiswa::where('nama', $userName)
+        $item = Jurnalsiswa::where('siswa_id', Auth::user()->Siswa->id)
             ->where(function ($query) use ($keyword) {
                 $query->where('tanggal', 'LIKE', '%' . $keyword . '%')
                     ->orWhere('status', 'LIKE', '%' . $keyword . '%');
@@ -69,7 +68,7 @@ class JurnalsiswaController extends Controller
 
         $item->appends(['cari' => $keyword]);
     } else {
-        $item = Jurnalsiswa::where('nama', $userName)->where('status', 'mengisi')->latest('created_at')->paginate(5);
+        $item = Jurnalsiswa::where('siswa_id', Auth::user()->Siswa->id)->where('status', 'mengisi')->latest('created_at')->paginate(5);
     }
 
     return view('jurnal_siswa.index', compact('item'));
@@ -92,45 +91,42 @@ class JurnalsiswaController extends Controller
      * @param  \App\Http\Requests\StoreJurnalsiswaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
+        $siswa_id = Auth::user()->Siswa->id;
         $hariIni = Carbon::now()->format('l');
         if ($hariIni == 'Saturday' OR $hariIni == 'Sunday') {
             return redirect()->back()->with('error', 'Hari ini libur');
         } else {
-
             $hari = Carbon::now()->format('Y-m-d');
             $jam = Carbon::now()->format('H-i');
             // dd($jam > '16-00');
             if($jam < '22-00'){
-                $data = Jurnalsiswa::where('nama', Auth()->user()->name)->where('tanggal', $hari)->exists();
+                $data = Jurnalsiswa::where('siswa_id', $siswa_id)->where('tanggal', $hari)->exists();
                 if(!$data){
                     try {
-                        $this->validate($request, [
+                        $request->validate([
                             'kegiatan' => "required",
-                            'image' => 'required|image|mimes:png,jpg,jpeg',
+                            'image' => 'required|image|mimes:png,jpg,jpeg'
                         ]);
 
                         $image = $request->file('image');
                         $image->storeAs('public/image', $image->hashName());
 
                         Jurnalsiswa::create([
+                            'siswa_id' => $siswa_id,
                             'image' => $image->hashName(),
-                            'nama' => Auth()->user()->name,
                             'tanggal' => $hari,
-                            'sekolah' => Auth()->user()->sekolah,
                             'kegiatan' => $request->kegiatan,
                             'status' => 'mengisi'
                         ]);
-
                         return redirect()->route('jurnal_siswa.index')->with('success', 'Anda berhasil mengisi jurnal');
                     } catch (\Illuminate\Database\QueryException $e) {
-                            return redirect()->back()->withInput()->withErrors(['tanggal' => 'Anda sudah melakukan pengumpulan']);
+                        return redirect()->back()->withInput()->withErrors(['tanggal' => $e->getMessage()]);
                     }
                 }else{
                     return redirect()->back()->withInput()->withErrors(['tanggal' => 'Anda sudah melakukan pengumpulan']);
                 }
-
             }else{
                 return back()->with('error', 'Anda telat mengumpulkan jurnal');
             }
@@ -177,16 +173,17 @@ class JurnalsiswaController extends Controller
 
     $this->validate($request, [
         'kegiatan' => "required",
-        'image' => 'required|image|mimes:png,jpg,jpeg',
     ]);
 
-    $Jurnalsiswa->nama = Auth()->user()->name;
+    $Jurnalsiswa->siswa_id = Auth::user()->Siswa->id;
     $Jurnalsiswa->tanggal = $Jurnalsiswa->created_at;
-    $Jurnalsiswa->sekolah = Auth()->user()->sekolah;
     $Jurnalsiswa->kegiatan = $request->kegiatan;
     $Jurnalsiswa->status = $request->status;
 
     if ($request->hasFile('image')) {
+        $this->validate($request, [
+            'image' => 'required|image|mimes:png,jpg,jpeg',
+        ]);
         // Hapus gambar lama
         if ($oldImage != 'default.jpg') {
             Storage::delete('public/Image/' . $oldImage);
@@ -221,7 +218,7 @@ class JurnalsiswaController extends Controller
     Public function downloadPDF()
     {
         set_time_limit(0);
-        $data = Jurnalsiswa::where('nama',Auth::user()->name)->where('status', 'mengisi')->get();
+        $data = Jurnalsiswa::where('siswa_id', Auth::user()->Siswa->id)->where('status', 'mengisi')->get();
         $pdf = Pdf::loadView('desain_pdf.jurnal', ['data' => $data]);
         return $pdf->download('jurnal_siswa.pdf');
 
@@ -244,9 +241,9 @@ class JurnalsiswaController extends Controller
     $txt = '';
 
     foreach ($users as $user) {
-        $txt .= "Name: " . $user->name . "\n";
+        $txt .= "Name: " . $user->siswa->name . "\n";
         $txt .= "Tanggal: " . $user->Tanggal . "\n";
-        $txt .= "Sekolah: " . $user->Sekolah . "\n";
+        $txt .= "Sekolah: " . $user->siswa->sekolah . "\n";
         $txt .= "Kegiatan: " . $user->Kegiatan . "\n";
         $txt .= "Bukti: " . $user->Bukti . "\n";
         // Tambahkan kolom-kolom lain yang ingin Anda ambil datanya
@@ -264,7 +261,7 @@ class JurnalsiswaController extends Controller
 public function exportToDocx()
 {
     // Mendapatkan data dari database (contoh menggunakan model JurnalSiswa)
-    $users = JurnalSiswa::where('nama', Auth::user()->name)->where('status', 'mengisi')->get();
+    $users = JurnalSiswa::where('siswa_id', Auth::user()->Siswa->id)->where('status', 'mengisi')->get();
 
     // Membuat objek PhpWord
     $phpWord = new PhpWord();
