@@ -1341,7 +1341,7 @@
                                                         class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                                         <td class="whitespace-nowrap px-4 py-4 font-medium">
                                                             {{ $no++ }}</td>
-                                                        <td class="whitespace-nowrap px-4 py-4">{{ $jurnal->nama }}
+                                                        <td class="whitespace-nowrap px-4 py-4">{{ $jurnal->Siswa->name }}
                                                         </td>
                                                         <td class="whitespace-nowrap px-4 py-4">{{ $jurnal->tanggal }}
                                                         </td>
@@ -1428,7 +1428,7 @@
                                 Nama
                             </p>
                             <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                {{ $jurnal->nama }}
+                                {{ $jurnal->Siswa->name }}
                             </p>
                         </div>
                         <div>
@@ -1444,7 +1444,7 @@
                                 Sekolah
                             </p>
                             <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                {{ $jurnal->sekolah }}
+                                {{ $jurnal->Siswa->sekolah }}
                             </p>
                         </div>
                         <div>

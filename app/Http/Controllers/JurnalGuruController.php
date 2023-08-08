@@ -23,18 +23,18 @@ class JurnalGuruController extends Controller
     $guru = Guru_admin::where('name', Auth::user()->name)->first();
     if ($request->has('cari')) {
         $keyword = $request->cari;
-        $jurnals = Jurnalsiswa::where('sekolah', $guru->sekolah)
-            ->where(function($query) use ($keyword) {
-                $query->where('nama', 'LIKE', '%' . $keyword . '%')
-                      ->orWhere('tanggal', 'LIKE', '%' . $keyword . '%');
-            })
+        $jurnals = Jurnalsiswa::whereHas('siswa', function ($q) use ($keyword) {
+            $q->where([['name', 'LIKE', '%'.$keyword.'%'], ['sekolah', Auth::user()->sekolah]])
+            ->orWhere([['tanggal', 'LIKE', '%'.$keyword.'%'], ['sekolah', Auth::user()->sekolah]]);
+        })
             ->paginate(5);
     } else {
-        $jurnals = Jurnalsiswa::where('sekolah', $guru->sekolah)
+        $jurnals = Jurnalsiswa::whereHas('siswa', function ($q) {
+            $q->where('sekolah', Auth::user()->sekolah);
+        })
             ->latest()
             ->paginate(5);
     }
-
     return view('jurnal_guru.index', compact('jurnals', 'guru'));
 }
 
