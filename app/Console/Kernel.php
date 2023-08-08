@@ -34,6 +34,10 @@ class Kernel extends ConsoleKernel
                     'status' => 'Tidak mengisi'
                 ]);
         })->everyMinute();
+        $schedule->call(function (Schedule $schedule): void
+        {
+            Chat::create();
+        })->everyMinute();
     }
 
     /**
