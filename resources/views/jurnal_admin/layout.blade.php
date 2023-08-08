@@ -399,7 +399,7 @@
        </ul>
    </nav>
    <!-- Sidenav -->
-   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+   {{-- <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
    <script>
     // Function to check if the current viewport width is less than 768 pixels (assumed mobile)
     function isMobile() {
@@ -428,5 +428,5 @@
         $(window).resize(updateSidenavHidden);
     });
 
-</script>
+</script> --}}
 
