@@ -128,9 +128,9 @@
                                                         <div id="listsiswa"
                                                             class="overflow-x-hidden overflow-y-auto max-h-[400px]">
                                                             <div id="wadah">
-                                                                <div class="grid grid-cols-2">
+                                                                <div class="grid grid-cols-2 truncate">
                                                                     @foreach ($siswa as $data)
-                                                                        <div class="flex gap-3 items-center">
+                                                                        <div class="flex gap-3 items-center t">
                                                                             <input type="checkbox" name="nama_siswa[]"
                                                                                 value="{{ $data->id }}"
                                                                                 id="">

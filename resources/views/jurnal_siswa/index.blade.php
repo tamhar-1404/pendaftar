@@ -690,18 +690,6 @@
                                         @method('PUT')
                                         @csrf
                                         <div>
-                                            <input type="hidden" name="nama" class=""
-                                                value=" {{ Auth::user()->name }}" id="">
-                                        </div>
-                                        <div>
-                                            <input type="hidden" name="tanggal" id=""
-                                                value=" {{ Auth::user()->created_at }}">
-                                        </div>
-                                        <div>
-                                            <input type="hidden" name="sekolah" id=""
-                                                value=" {{ Auth::user()->sekolah }}">
-                                        </div>
-                                        <div>
                                             <label for="kegiatan"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
                                             <textarea name="kegiatan" class="w-full rounded-md" id="" cols="" rows="5">{{ $modal->kegiatan }}</textarea>

@@ -1694,8 +1694,8 @@
                                     </div>
                                     <div class="flex grow flex-col items-center px-4 pb-4 sm:px-5">
                                         <div class="avatar h-20 w-20">
-                                            <img class="rounded-full" src="{{ asset('storage/Siswa/' . $izin->foto) }}"
-                                                alt="avatar" />
+                                            <img class="rounded-full"
+                                                src="{{ asset('storage/Siswa/' . $izin->foto) }}" alt="avatar" />
                                         </div>
                                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
                                             {{ $izin->nama }}
@@ -1748,14 +1748,16 @@
                                                 });
                                             </script>
                                             <form id="reject-form{{ $izin->id }}"
-                                                action="{{ route('approvalizin.update', $izin->id) }}" method="post" onsubmit="alasan(event, {{$izin->id}})">
+                                                action="{{ route('approvalizin.update', $izin->id) }}" method="post"
+                                                onsubmit="alasan(event, {{ $izin->id }})">
                                                 @csrf
                                                 @method('PUT')
                                                 <input type="hidden" name="email" value="{{ $izin->email }}">
                                                 <input type="hidden" name="keterangan" value="tolak">
                                                 <button
                                                     class="btn h-7 w-7 rounded-full bg-error/10 p-0 text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25"
-                                                    id="reject-button{{ $izin->id }}" onclick="alasan(event, {{$izin->id}})">
+                                                    id="reject-button{{ $izin->id }}"
+                                                    onclick="alasan(event, {{ $izin->id }})">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5"
                                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -1914,6 +1916,7 @@
                                         @endforelse
                                     </tbody>
                                 </table>
+                                {{ $terima->links() }}
                             </div>
                         </div>
                     </div>

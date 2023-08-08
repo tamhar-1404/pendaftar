@@ -69,13 +69,13 @@ class SiswaController extends Controller
                       ->orWhere('jurusan', 'LIKE', '%' . $keyword . '%');
             })
             ->where('email', '!=', $userEmail)->where('role' , 'siswa')
-            ->paginate(8);
+            ->paginate(9);
 
             $siswas->appends(['cari' => $keyword]);
         } else {
             $siswas = Siswa::whereNot('email', $userEmail)
             ->where('role', 'siswa')
-            ->paginate(8);
+            ->paginate(9);
         }
 
         return view('siswamagang_siswa.index', compact('siswas'));
