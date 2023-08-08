@@ -748,11 +748,9 @@
                                                                     method="post" enctype="multipart/form-data">
                                                                     @csrf
                                                                     @method('PUT')
-                                                                    <input type="hidden" name="waktu"
-                                                                        value="{{ $data->waktu }}">
+
                                                                     <textarea name="hari" id="" cols="40" rows="5">{{ $data->hari }}</textarea>
-                                                                    <input type="hidden" name="nama_siswa[]"
-                                                                        value="{{ $data->nama_siswa }}">
+
 
                                                                     <button
                                                                         class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"

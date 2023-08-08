@@ -17,13 +17,25 @@ class PiketController extends Controller
 {
     function cari(Request $request) {
         $keyword = $request->value;
-        $Cek = Anggota_piket::pluck('siswa_id')
-         ->toArray();
-         $siswa = Siswa::whereNotIn('id', $Cek)
-         ->where('role', 'siswa')
-         ->get()->toArray();
+
+        $Cek = Anggota_piket::pluck('siswa_id')->toArray();
+        $siswa = Siswa::whereNotIn('id', $Cek)
+                      ->where('role', 'siswa')
+                      ->where('name', 'like', '%' . $keyword . '%')
+                      ->get()->toArray();
+
 
         return $siswa;
+    }
+    function dikit(Request $request) {
+        $keyword = $request->value;
+        $Cek = Anggota_piket::pluck('siswa_id')
+         ->toArray();
+         $siswa_sedikit = Siswa::whereNotIn('id', $Cek)
+         ->where('role', 'siswa')
+         ->get()->toArray()->paginate(4);
+
+        return $siswa_sedikit;
     }
     /**
      * Display a listing of the resource.
@@ -298,18 +310,14 @@ class PiketController extends Controller
      * @param  \App\Models\piket  $piket
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, piket $piket)
+    public function update(Request $request, $id)
     {
-        dd($request->all());
-
-        $nama_siswa = $request->input('nama_siswa');
-        foreach ($nama_siswa as $item) {
+        // dd($request->all());
+        $piket = Anggota_piket::findorfail($id);
             $piket->update([
-                'waktu' => $request->waktu,
                 'hari' => $request->hari,
-                'nama_siswa' => $item
             ]);
-        }
+
         return redirect()->back()->with('success', 'Data telah di edit');
 
     }
