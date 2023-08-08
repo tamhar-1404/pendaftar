@@ -38,32 +38,32 @@ class SiswamagangController extends Controller
         $Alfa = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', Auth()->user()->name)->count();
         // jurnal
 
-        $mengisi_jan = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 1)->count();
-        $mengisi_feb = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 2)->count();
-        $mengisi_mar = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 3)->count();
-        $mengisi_apr = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 4)->count();
-        $mengisi_mei = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 5)->count();
-        $mengisi_jun = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 6)->count();
-        $mengisi_jul = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 7)->count();
-        $mengisi_aug = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 8)->count();
-        $mengisi_sep = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 9)->count();
-        $mengisi_okt = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 10)->count();
-        $mengisi_nov = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
-        $mengisi_des = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
+        $mengisi_jan = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 1)->count();
+        $mengisi_feb = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 2)->count();
+        $mengisi_mar = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 3)->count();
+        $mengisi_apr = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 4)->count();
+        $mengisi_mei = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 5)->count();
+        $mengisi_jun = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 6)->count();
+        $mengisi_jul = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 7)->count();
+        $mengisi_aug = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 8)->count();
+        $mengisi_sep = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 9)->count();
+        $mengisi_okt = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 10)->count();
+        $mengisi_nov = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 11)->count();
+        $mengisi_des = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 12)->count();
 
 
-        $tdk_mengisi_jan = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 1)->count();
-        $tdk_mengisi_feb = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 2)->count();
-        $tdk_mengisi_mar = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 3)->count();
-        $tdk_mengisi_apr = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 4)->count();
-        $tdk_mengisi_mei = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 5)->count();
-        $tdk_mengisi_jun = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 6)->count();
-        $tdk_mengisi_jul = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 7)->count();
-        $tdk_mengisi_aug = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 8)->count();
-        $tdk_mengisi_sep = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 9)->count();
-        $tdk_mengisi_okt = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 10)->count();
-        $tdk_mengisi_nov = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 11)->count();
-        $tdk_mengisi_des = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', Auth()->user()->name)->whereMonth('tanggal', '=', 12)->count();
+        $tdk_mengisi_jan = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 1)->count();
+        $tdk_mengisi_feb = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 2)->count();
+        $tdk_mengisi_mar = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 3)->count();
+        $tdk_mengisi_apr = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 4)->count();
+        $tdk_mengisi_mei = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 5)->count();
+        $tdk_mengisi_jun = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 6)->count();
+        $tdk_mengisi_jul = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 7)->count();
+        $tdk_mengisi_aug = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 8)->count();
+        $tdk_mengisi_sep = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 9)->count();
+        $tdk_mengisi_okt = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 10)->count();
+        $tdk_mengisi_nov = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 11)->count();
+        $tdk_mengisi_des = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 12)->count();
 
         $user = Auth()->user();
         $tatib = TataTertib::limit(4)->get();

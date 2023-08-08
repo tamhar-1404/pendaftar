@@ -15,12 +15,11 @@ return new class extends Migration
     {
         Schema::create('jurnalsiswas', function (Blueprint $table) {
             $table->id();
-            $table->String('nama');
+            $table->foreignId('siswa_id')->constrained('siswas')->onDelete('cascade')->onUpdate('cascade');
             $table->date('tanggal');
-            $table->String('sekolah');
-            $table->String('kegiatan');
-            $table->String('image');
-            $table->String('status');
+            $table->longText('kegiatan');
+            $table->string('image');
+            $table->string('status');
             $table->timestamps();
         });
     }
