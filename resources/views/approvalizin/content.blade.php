@@ -1695,7 +1695,7 @@
                                     <div class="flex grow flex-col items-center px-4 pb-4 sm:px-5">
                                         <div class="avatar h-20 w-20">
                                             <img class="rounded-full"
-                                                src="{{ asset('storage/Siswa/' . $izin->foto) }}" alt="avatar" />
+                                                src="{{ asset('storage/Siswa/' . $izin->Siswa->foto_siswa) }}" alt="avatar" />
                                         </div>
                                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
                                             {{ $izin->nama }}
@@ -1712,7 +1712,7 @@
                                                 @csrf
                                                 @method('PUT')
                                                 <input type="hidden" name="keterangan" value="terima">
-                                                <input type="hidden" name="email" value="{{ $izin->email }}">
+                                                <input type="hidden" name="email" value="{{ $izin->Siswa->email }}">
                                                 <button type="submit"
                                                     class="btn h-7 w-7 rounded-full bg-success/10 p-0 text-success hover:bg-success/20 focus:bg-success/20 active:bg-success/25"
                                                     id="confirm-button">
@@ -1881,11 +1881,11 @@
                                                 </td>
                                                 <td
                                                     class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                    {{ $approval->nama }}
+                                                    {{ $approval->Siswa->name }}
                                                 </td>
                                                 <td
                                                     class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
-                                                    {{ $approval->sekolah }}
+                                                    {{ $approval->Siswa->sekolah }}
                                                 </td>
                                                 <td
                                                     class="whitespace-nowrap px-4 py-3 font-medium text-slate-600 dark:text-navy-100 sm:px-5">
