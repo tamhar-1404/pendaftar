@@ -7,8 +7,10 @@ use App\Http\Requests\Storeabsensi_guruRequest;
 use App\Http\Requests\Updateabsensi_guruRequest;
 use App\Models\ApprovalIzin;
 use App\Models\Guru_admin;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDO;
 
 class AbsensiGuruController extends Controller
 {
@@ -17,19 +19,21 @@ class AbsensiGuruController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $guru = Guru_admin::where('name', Auth::user()->name)->first();
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $terimas = ApprovalIzin::where([['sekolah', Auth()->user()->sekolah],['status', 'terimaabsen']])
-                ->where(function($query) use ($keyword) {
-                    $query->where('nama', 'LIKE', '%' . $keyword . '%')
-                          ->orWhere('tanggal', 'LIKE', '%' . $keyword . '%');
-                })
-                ->paginate(5);
+            $terimas = ApprovalIzin::whereHas('siswa', function ($q) use ($keyword) {
+                $q->where([['name', 'LIKE', '%'.$keyword.'%'],['sekolah', Auth::user()->sekolah]]);
+            })
+            ->latest()
+            ->paginate(5);
+            $terimas->appends(['cari' => $keyword]);
         } else {
-            $terimas = ApprovalIzin::where([['sekolah', Auth()->user()->sekolah],['status', 'terimaabsen']])->latest()->paginate(5);
+            $terimas = ApprovalIzin::whereHas('siswa', function ($q) {
+                $q->where('sekolah', Auth::user()->sekolah);
+            })->latest()->paginate(5);
         }
         return view('absensi_guru.index', compact('terimas', 'guru'));
     }

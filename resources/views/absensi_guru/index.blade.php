@@ -387,9 +387,9 @@
                                                         class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                                         <td class="whitespace-nowrap px-4 py-4 font-medium">
                                                             {{ $i++ }}</td>
-                                                        <td class="whitespace-nowrap px-4 py-4">{{ $terima->nama }}
+                                                        <td class="whitespace-nowrap px-4 py-4">{{ $terima->Siswa->name }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-4 py-4">{{ $terima->sekolah }}
+                                                        <td class="whitespace-nowrap px-4 py-4">{{ $terima->Siswa->sekolah }}
                                                         </td>
                                                         <td class="whitespace-nowrap px-4 py-4">{{ $terima->tanggal }}
                                                         </td>
