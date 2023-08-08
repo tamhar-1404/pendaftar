@@ -539,7 +539,7 @@
                             <div class="relative z-0 w-full mb-6 group">
                                 <p
                                     class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->Siswa->nama }}</p>
+                                    {{ $absen->Siswa->name }}</p>
                                 <label for="floating_email"
                                     class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">Nama</label>
                             </div>
@@ -650,9 +650,9 @@
                     <form action="{{ route('izin_update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <input type="hidden" name="nama" value="{{ $absen->nama }}">
-                        <input type="hidden" name="sekolah" value="{{ $absen->sekolah }}">
-                        <input type="hidden" name="email" value="{{ $absen->email }}">
+                        <input type="hidden" name="nama" value="{{ $absen->Siswa->name }}">
+                        <input type="hidden" name="sekolah" value="{{ $absen->Siswa->sekolah }}">
+                        <input type="hidden" name="email" value="{{ $absen->Siswa->email }}">
                         <input type="hidden" name="dari" value="{{ $absen->dari }}">
                         <input type="hidden" name="sampai" value="{{ $absen->sampai }}">
                         <input type="hidden" name="keterangan" value="{{ $absen->keterangan }}">

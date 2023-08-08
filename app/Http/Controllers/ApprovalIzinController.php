@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreApprovalIzinRequest;
 use App\Http\Requests\UpdateApprovalIzinRequest;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -31,7 +33,7 @@ class ApprovalIzinController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function index(Request $request)
+     public function index(Request $request): RedirectResponse|View
      {
         if(auth()->user()->role == 'Admin'){
             $today = date('Y-m-d');
@@ -68,7 +70,7 @@ class ApprovalIzinController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(ApprovalIzin $izin)
+    public function create(ApprovalIzin $izin): View
     {
 
         return view('approvalizin.content');
@@ -80,7 +82,7 @@ class ApprovalIzinController extends Controller
      * @param  \App\Http\Requests\StoreApprovalIzinRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, ApprovalIzin $approvalIzin)
+    public function store(Request $request, ApprovalIzin $approvalIzin): RedirectResponse
     {
         $this->validate($request, [
             'dari' => 'required|date|after_or_equal:today',
@@ -94,7 +96,6 @@ class ApprovalIzinController extends Controller
         }
         $image = $request->file('bukti');
         $image->storeAs('public/bukti_izin', $image->hashName());
-        $nama = Auth::user()->name;
         $dari = $request->dari;
         $tanggal_dari = Carbon::parse($dari)->format('Y-m-d');
         $data = ApprovalIzin::where('siswa_id', Auth::user()->Siswa->id)
@@ -118,10 +119,7 @@ class ApprovalIzinController extends Controller
 
         $user = Auth::user();
         ApprovalIzin::create([
-            'nama' => $user->name,
-            'sekolah' => $user->sekolah,
-            'foto' => $user->Siswa->foto_siswa,
-            'email' => $user->email,
+            'siswa_id' => $user->Siswa->id,
             'dari' => $request->dari,
             'sampai' => $request->sampai,
             'keterangan' => $request->keterangan,
@@ -131,7 +129,6 @@ class ApprovalIzinController extends Controller
             'bukti' => $image->hashName(),
             'tanggal' => Carbon::now()->format('Y-m-d'),
             'jam' => Carbon::now()->format('H:i'),
-            'siswa_id' => Auth()->user()->siswa_id
         ]);
 
         return redirect()->route('absensi_siswa.index')->with('success', 'Data Berhasil Disimpan!');
@@ -189,16 +186,12 @@ class ApprovalIzinController extends Controller
             $tanggalBerakhir = $izinSampai;
             while ($tanggalMulai <= $tanggalBerakhir) {
                 $existingRecord = ApprovalIzin::where([
-                    'nama' => $izin->nama,
-                    'sekolah' => $izin->sekolah,
-                    'email' => $izin->email,
+                    'siswa_id' => $izin->Siswa->id,
                     'dari' =>  $tanggalMulai->toDateString(),
                 ])->first();
                 if (!$existingRecord) {
                     ApprovalIzin::create([
-                        'nama' => $izin->nama,
-                        'sekolah' => $izin->sekolah,
-                        'email' => $izin->email,
+                        'siswa_id' => $izin->Siswa->id,
                         'dari' =>  $tanggalMulai->toDateString(),
                         'sampai' => $izin->sampai,
                         'keterangan' => $izin->keterangan,
@@ -208,7 +201,6 @@ class ApprovalIzinController extends Controller
                         'jam' => $request->filled('jam') ? $request->jam : now()->format('H:i'),
                         'status' => $izin->status,
                         'status2' => $izin->status2,
-                        'siswa_id' => Auth()->user()->siswa_id
                     ]);
                 }
                 $tanggalMulai->addDay();
@@ -241,27 +233,27 @@ class ApprovalIzinController extends Controller
 
     public function absen_siswa_pdf(){
         set_time_limit(0);
-        $data = ApprovalIzin::where('nama',Auth::user()->name)->get();
+        $data = ApprovalIzin::where('siswa_id', Auth::user()->Siswa->id)->get();
         $pdf = Pdf::loadView('desain_pdf.absensi', ['data' => $data]);
         return $pdf->download('absensi.pdf');
     }
     public function izin_update(Request $request) {
         // dd($request->all());
         if ($request->has('bukti')) {
-            $bukti_lama = ApprovalIzin::where('nama', $request->nama)->first()->bukti;
+            $bukti_lama = ApprovalIzin::where('siswa_id', Auth::user()->Siswa->id)->first()->bukti;
             if (file_exists(asset('bukti_izin' . $bukti_lama))) {
                 unlink(asset('bukti_izin' . $bukti_lama));
             }
             $image = $request->file('bukti');
             $iname = $image->hashName();
             $image->storeAs('public/bukti_izin', $iname);
-            ApprovalIzin::where('nama', $request->nama)->where('keterangan', 'izin')->update([
+            ApprovalIzin::where('siswa_id', Auth::user()->Siswa->id)->where('keterangan', 'izin')->update([
                 'deskripsi' => $request->deskripsi,
                 'bukti' => $iname,
             ]);
             return back()->with(['success' => 'Berhasil mengedit izin']);
         } else {
-            ApprovalIzin::where('nama', $request->nama)->where('keterangan', 'izin')->update([
+            ApprovalIzin::where('siswa_id', Auth::user()->Siswa->id)->where('keterangan', 'izin')->update([
                 'deskripsi' => $request->deskripsi,
             ]);
             return back()->with(['success' => 'Berhasil mengedit izin']);
