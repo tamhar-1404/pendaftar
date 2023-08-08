@@ -95,7 +95,7 @@ class JurnalsiswaController extends Controller
     {
         $siswa_id = Auth::user()->Siswa->id;
         $hariIni = Carbon::now()->format('l');
-        if ($hariIni == 'Saturday' OR $hariIni == 'Sunday') {
+        if ($hariIni == 'Saturday' || $hariIni == 'Sunday') {
             return redirect()->back()->with('error', 'Hari ini libur');
         } else {
             $hari = Carbon::now()->format('Y-m-d');
@@ -261,7 +261,7 @@ class JurnalsiswaController extends Controller
 public function exportToDocx()
 {
     // Mendapatkan data dari database (contoh menggunakan model JurnalSiswa)
-    $users = JurnalSiswa::where('siswa_id', Auth::user()->Siswa->id)->where('status', 'mengisi')->get();
+    $users = Jurnalsiswa::where('siswa_id', Auth::user()->Siswa->id)->where('status', 'mengisi')->get();
 
     // Membuat objek PhpWord
     $phpWord = new PhpWord();
@@ -298,9 +298,9 @@ public function exportToDocx()
 
 
 
-        $table->addCell(4000)->addText($user->nama, ['alignment' => 'center']);
+        $table->addCell(4000)->addText($user->siswa->name, ['alignment' => 'center']);
         $table->addCell(1500)->addText($user->tanggal, ['alignment' => 'center']);
-        $table->addCell(2500)->addText($user->sekolah, ['alignment' => 'center']);
+        $table->addCell(2500)->addText($user->siswa->sekolah, ['alignment' => 'center']);
         $table->addCell(3000)->addText($user->kegiatan, ['alignment' => 'center']);
         if (file_exists($imagePath)) {
             $table->addCell(2000)->addImage($imagePath, ['width' => 150, 'height' => 150, 'alignment' => 'center']);

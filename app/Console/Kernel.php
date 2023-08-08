@@ -40,7 +40,7 @@ class Kernel extends ConsoleKernel
                     ]);
                 }
             }
-        })->everyMinute();
+        })->dailyAt('23:59')->weekdays();
 
         $schedule->call(function () {
             $hariIni = Carbon::now()->format('l');
