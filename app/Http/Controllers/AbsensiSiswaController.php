@@ -40,10 +40,10 @@ class AbsensiSiswaController extends Controller
             $alfa = ApprovalIzin::where('keterangan', 'alfa')->Where('siswa_id', Auth()->user()->siswa_id)->count();
             $izinsakit = $izin + $sakit;
 
-            $all = ApprovalIzin::where('nama', $userName)->whereNot('status', 'menunggu')->count();
+            $all = ApprovalIzin::where('siswa_id', Auth()->user()->siswa_id)->whereNot('status', 'menunggu')->count();
             $cek_sudah_absen = ApprovalIzin::where([
                 ['tanggal', Carbon::now()->format('Y-m-d')],
-                ['nama', $userName]
+                ['siswa_id', Auth()->user()->siswa_id]
             ])->whereNotIn('keterangan', ['sakit', 'izin'])->exists();
 
 

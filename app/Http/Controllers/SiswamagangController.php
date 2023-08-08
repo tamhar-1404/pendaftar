@@ -30,13 +30,11 @@ class SiswamagangController extends Controller
      */
     public function index()
     {
-
-
         $Hadir = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('siswa_id', Auth()->user()->siswa_id)->count();
         $Telat = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('siswa_id', Auth()->user()->siswa_id)->count();
         $izin = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('siswa_id', Auth()->user()->siswa_id)->count();
         $Alfa = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('siswa_id', Auth()->user()->siswa_id)->count();
-        // jurnal
+         // jurnal
 
         $mengisi_jan = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 1)->count();
         $mengisi_feb = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 2)->count();
