@@ -21,15 +21,12 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('entities:delete-expired')->daily();
-
         $schedule->call(function () {
             $hariIni = Carbon::now()->format('l');
             $tanggal = Carbon::now()->format('Y-m-d');
-
             if ($hariIni != 'Saturday' && $hariIni != 'Sunday') {
                 $siswa_sudah = Jurnalsiswa::where('tanggal', $tanggal)->pluck('siswa_id')->toArray();
                 $siswa_belum = Siswa::where('role', 'siswa')->whereNotIn('id', $siswa_sudah)->get();
-
                 foreach ($siswa_belum as $siswa) {
                     Jurnalsiswa::create([
                         'siswa_id' => $siswa->id,
@@ -41,7 +38,6 @@ class Kernel extends ConsoleKernel
                 }
             }
         })->everyMinute();
-
         $schedule->call(function () {
             $hariIni = Carbon::now()->format('l');
             $tanggal = Carbon::now()->format('Y-m-d');
