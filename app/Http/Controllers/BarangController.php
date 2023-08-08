@@ -155,7 +155,7 @@ class BarangController extends Controller
 
             return redirect()->back()->with('success', 'Berhasil mengedit data');
         } catch (\Exception $e) {
-            return redirect()->back()->withErrors('Kode telah tersedia');
+            return redirect()->back()->withErrors('Masukan data yang valid');
         }
     }
 
