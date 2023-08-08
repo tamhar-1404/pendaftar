@@ -122,6 +122,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/jurnal_pdf', [JurnaladminController::class, 'jurnal_admin_pdf']);
         Route::get('/jurnal_docx', [JurnaladminController::class, 'admin_docx']);
         Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
+        Route::post('catatan', [PiketController::class, 'tambah'])->name('tambahCatatan');
 
 
     });

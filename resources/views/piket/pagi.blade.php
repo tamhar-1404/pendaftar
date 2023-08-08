@@ -15,6 +15,7 @@
         href="{{ asset('admin/assets/css/perfect-scrollbar.min.css') }}" />
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
@@ -688,13 +689,10 @@
                                                         <h3
                                                             class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                                                             Tambah Catatan</h3>
-                                                        <form class="space-y-6" action="{{ route('piket.store') }}"
+                                                        <form class="space-y-6" action="{{ route('tambahCatatan') }}"
                                                             method="post" enctype="multipart/form-data">
                                                             @csrf
-                                                            <input type="hidden" name="waktu" value="catatan">
-                                                            <textarea name="hari" id="" cols="40" rows="5"></textarea>
-                                                            <input type="hidden" name="nama_siswa[]" value="1">
-
+                                                            <textarea name="catatan" id="" cols="40" rows="5"></textarea>
                                                             <button
                                                                 class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                 type="submit">kirim</button>
@@ -707,12 +705,12 @@
 
 
                                         {{-- nama --}}
-                                        @foreach ($catat as $data)
+                                        @foreach ($catatan as $data)
                                             <div
-                                                class="text-sm font-medium text-left ml-5 mt-5 mb-3 flex items-center justify-between">
-                                                {{ $data->hari }}
-                                                <svg data-modal-target="authentication-modaledit{{ $data->hari }}"
-                                                    data-modal-toggle="authentication-modaledit{{ $data->hari }}"
+                                                class=" flex text-sm font-medium text-left ml-5 mt-5 mb-3 flex items-center justify-between">
+                                                {{ $data->catatan }}
+                                                <svg data-modal-target="authentication-modaledit{{ $data->id }}"
+                                                    data-modal-toggle="authentication-modaledit{{ $data->id }}"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none"
                                                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                     class="w-6 h-6 pt-2 pr-2">
@@ -720,7 +718,7 @@
                                                         d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                                 </svg>
                                                 <!-- Main modal -->
-                                                <div id="authentication-modaledit{{ $data->hari }}" tabindex="-1"
+                                                <div id="authentication-modaledit{{ $data->id }}" tabindex="-1"
                                                     aria-hidden="true"
                                                     class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                     <div class="relative w-full max-w-md max-h-full">
@@ -749,9 +747,7 @@
                                                                     @csrf
                                                                     @method('PUT')
 
-                                                                    <textarea name="hari" id="" cols="40" rows="5">{{ $data->hari }}</textarea>
-
-
+                                                                    <textarea name="catatan" id="" cols="40" rows="5">{{ $data->catatan }}</textarea>
                                                                     <button
                                                                         class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                         type="submit">kirim</button>
@@ -761,6 +757,16 @@
                                                     </div>
                                                 </div>
                                                 {{-- end modal --}}
+
+                                                <form action="{{ route('piket.destroy', $data->id) }}"
+                                                    style="margin-right: 10px; margin-left: -850px;" method="post"
+                                                    id="confirm-form-{{ $data->id }}">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" onclick="confirmDelete(event)">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
                                             </div>
                                         @endforeach
 
@@ -768,8 +774,37 @@
 
 
                                     </div>
+
                                 </div>
                             </div>
+                            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                            <script>
+                                function confirmDelete(event) {
+                                    event.preventDefault();
+
+                                    Swal.fire({
+                                        title: 'Konfirmasi',
+                                        text: 'Apakah Anda yakin ingin menghapus data ini?',
+                                        icon: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#3085d6',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: 'Ya, terima!',
+                                        cancelButtonText: 'Batal',
+                                        background: '#f5f5f5',
+                                        customClass: {
+                                            icon: 'swal-icon',
+                                            confirmButton: 'swal-button swal-button--confirm',
+                                            cancelButton: 'swal-button swal-button--cancel'
+                                        },
+                                        animation: false
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            event.target.closest('form').submit();
+                                        }
+                                    });
+                                }
+                            </script>
                             {{-- sterp 2 --}}
                             <div id="content2" class="card-content" style="display: none">
                                 <div class="flex grid-cols-5 gap-4  w-lg ">
@@ -1293,13 +1328,12 @@
                                                         <h3
                                                             class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                                                             Tambah Catatan</h3>
-                                                        <form class="space-y-6" action="{{ route('piket.store') }}"
-                                                            method="post" enctype="multipart/form-data">
+                                                        <form class="space-y-6"
+                                                            action="{{ route('tambahCatatan') }}" method="post"
+                                                            enctype="multipart/form-data">
                                                             @csrf
-                                                            <input type="hidden" name="waktu" value="catatan">
-                                                            <textarea name="hari" id="" cols="40" rows="5"></textarea>
-                                                            <input type="hidden" name="nama_siswa[]"
-                                                                value="catatan">
+
+                                                            <textarea name="catatan" id="" cols="40" rows="5"></textarea>
 
                                                             <button
                                                                 class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
@@ -1313,12 +1347,12 @@
 
 
                                         {{-- nama --}}
-                                        @forelse ($catat as $catat)
+                                        @forelse ($catatan as $catat)
                                             <div
                                                 class="text-sm font-medium text-left ml-5 mt-5 mb-3 flex items-center justify-between">
                                                 {{ $catat->hari }}
-                                                <svg data-modal-target="authentication-modaledit"
-                                                    data-modal-toggle="authentication-modaledit"
+                                                <svg data-modal-target="authentication-modaledit{{ $catat->id }}"
+                                                    data-modal-toggle="authentication-modaledit{{ $catat->id }}"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none"
                                                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                     class="w-6 h-6 pt-2 pr-2">
@@ -1326,7 +1360,8 @@
                                                         d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                                 </svg>
                                                 <!-- Main modal -->
-                                                <div id="authentication-modaledit" tabindex="-1" aria-hidden="true"
+                                                <div id="authentication-modaledit{{ $catat->id }}" tabindex="-1"
+                                                    aria-hidden="true"
                                                     class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                     <div class="relative w-full max-w-md max-h-full">
                                                         <!-- Modal content -->
@@ -1349,20 +1384,17 @@
                                                                     class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                                                                     Tambah Catatan</h3>
                                                                 <form class="space-y-6"
-                                                                    action="{{ route('piket.update', $catat->id) }}"
+                                                                    action="{{ route('tambahCatatan') }}"
                                                                     method="post" enctype="multipart/form-data">
                                                                     @csrf
-                                                                    @method('PUT')
-                                                                    <input type="hidden" name="waktu"
-                                                                        value="catatan">
-                                                                    <textarea name="hari" id="" cols="40" rows="5">{{ $catat->hari }}</textarea>
-                                                                    <input type="hidden" name="nama_siswa[]"
-                                                                        value="catatan">
+                                                                    @method('PUT') <!-- Use PUT method -->
+                                                                    <textarea name="catatan" id="" cols="40" rows="5"></textarea>
 
                                                                     <button
                                                                         class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                         type="submit">kirim</button>
                                                                 </form>
+
                                                             </div>
                                                         </div>
                                                     </div>
