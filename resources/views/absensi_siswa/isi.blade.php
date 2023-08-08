@@ -109,11 +109,11 @@
                     Izin</button>
                 <form action="{{ route('absensi_siswa.store') }}" method="post" id="absenform">
                     @csrf
-                    <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
+                    {{-- <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
                     <input type="hidden" name="sekolah" value="{{ Auth::user()->sekolah }}">
                     <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}" />
                     <input type="hidden" id="waktu" name="jam" value="{{ date('H:i') }}" />
-                    <input type="hidden" name="keterangan" value="Hadir">
+                    <input type="hidden" name="keterangan" value="Hadir"> --}}
                     <button type="submit"
                         class=" button_absen border border-green-500 px-3 py-2 rounded-lg text-green-500  font-bold"
                         id="btnabsen">Absen</button>

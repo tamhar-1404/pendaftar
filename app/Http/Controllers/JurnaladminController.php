@@ -180,10 +180,17 @@ class JurnaladminController extends Controller
                 $tanggalAwal = trim($datesArray[0]);
                 $tanggalAkhir = trim($datesArray[0]);
             }
+            $Cek = Jurnalsiswa::whereDate('created_at', Carbon::today())
+            ->pluck('nama')
+            ->toArray();
+            // dd()
+            $siswa = Siswa::whereNotIn('name', $Cek)
+            ->where('role', 'siswa')
+            ->get();
             $semuaJurnal = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('nama','sekolah','tanggal','status')->get();
             $tidakMengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->whereNot('status', 'mengisi')->select('nama','tanggal', 'sekolah')->get();
             $mengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'mengisi')->select('nama','tanggal', 'kegiatan', 'image', 'id')->get();
-            return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi'));
+            return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa'));
         }
 
         $Cek = Jurnalsiswa::whereDate('created_at', Carbon::today())

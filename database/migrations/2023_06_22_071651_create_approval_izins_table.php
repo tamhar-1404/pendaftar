@@ -22,13 +22,15 @@ return new class extends Migration
             $table->date('dari')->nullable();
             $table->date('sampai')->nullable();
             $table->string('keterangan')->nullable();
-            $table->string('deskripsi')->nullable();
+            $table->LongText('deskripsi')->nullable();
             $table->string('bukti')->nullable();
             $table->date('tanggal')->nullable();
             $table->time('jam')->nullable();
             $table->string('status');
             $table->string('status2')->nullable();
             $table->timestamp('deleted_at')->nullable();
+            $table->foreignID('siswa_id');
+            $table->foreign('siswa_id')->references('id')->on('siswas')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -22,6 +22,13 @@ class ApprovalIzin extends Model
         'tanggal',
         'jam',
         'status',
-        'status2'
+        'status2',
+        'siswa_id'
         ];
+
+
+        public function Siswa()
+        {
+            return $this->belongsTo(Siswa::class, 'siswa_id');
+        }
 }
