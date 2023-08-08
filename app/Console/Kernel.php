@@ -21,6 +21,10 @@ class Kernel extends ConsoleKernel
         {
             Chat::create();
         })->everyMinute();
+        $schedule->call(function (Schedule $schedule): void
+        {
+            Chat::create();
+        })->everyMinute();
     }
 
     /**

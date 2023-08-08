@@ -178,6 +178,7 @@ class JurnalsiswaController extends Controller
     $this->validate($request, [
 
         'kegiatan' => 'required'
+        
     ]);
 
     $Jurnalsiswa->nama = Auth()->user()->name;

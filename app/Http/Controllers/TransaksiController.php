@@ -60,7 +60,20 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+      dd($request);
+      $a = $request->rfid;
+      $data = User::where('RFID', $request->rfid)->first();
+      if (!$data) {
+          $message = 'RFID anda tidak ditemukan!';
+          return redirect()->back()->with('error', $message);
+      }
+      $user = $data->saldo;
+      $barang = Barang::all();
+      $makanan = Barang::where('kategori', 'makanan')->get();
+      $minuman = Barang::where('kategori', 'minuman')->get();
+      $saldo = User::where('rfid', $request->rfid)->first()->saldo;
+      // dd($saldo);
+      return view('transaksi.data', compact('data','barang','minuman' , 'user', 'saldo', 'makanan'));
     }
 
     /**
@@ -75,6 +88,22 @@ class TransaksiController extends Controller
     }
     public function nota(){
         return view('nota.index');
+    }
+    public function postbeli(Request $request){
+        // dd($request);
+        $a = $request->rfid;
+        $data = User::where('RFID', $request->rfid)->first();
+        if (!$data) {
+            $message = 'RFID anda tidak ditemukan!';
+            return redirect()->back()->with('error', $message);
+        }
+        $user = $data->saldo;
+        $barang = Barang::all();
+        $makanan = Barang::where('kategori', 'makanan')->get();
+        $minuman = Barang::where('kategori', 'minuman')->get();
+        $saldo = User::where('rfid', $request->rfid)->first()->saldo;
+        // dd($saldo);
+        return view('transaksi.data', compact('data','barang','minuman' , 'user', 'saldo', 'makanan'));
     }
     /**
      * Show the form for editing the specified resource.
