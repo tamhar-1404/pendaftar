@@ -38,7 +38,7 @@ class ApprovalIzinController extends Controller
             ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status' => 'terimaabsen', 'status2' => '']);
 
             $menunggu = ApprovalIzin::where('status', 'menunggu')->get();
-            $terima = ApprovalIzin::where('status2', 'izin')->get();
+            $terima = ApprovalIzin::where('status2', ['izin', 'tolak'])->get();
 
             if ($request->has('cari')) {
                 $keyword = $request->cari;
@@ -53,7 +53,8 @@ class ApprovalIzinController extends Controller
                 return view('approvalizin.index', compact('menunggu', 'terima'));
             }
 
-            $terima = ApprovalIzin::where('status2', 'izin')->latest()->paginate(10);
+            // $terima = ApprovalIzin::where('status2', ['izin', 'tolak'])->latest()->paginate(10); apa ini sudah benar?
+            $terima = ApprovalIzin::where('status2', ['izin', 'tolak'])->latest()->paginate(10);
             return view('approvalizin.index', compact('menunggu', 'terima'));
 
         }
@@ -130,6 +131,7 @@ class ApprovalIzinController extends Controller
             'bukti' => $image->hashName(),
             'tanggal' => Carbon::now()->format('Y-m-d'),
             'jam' => Carbon::now()->format('H:i'),
+            'siswa_id' => Auth()->user()->siswa_id
         ]);
 
         return redirect()->route('absensi_siswa.index')->with('success', 'Data Berhasil Disimpan!');
@@ -206,6 +208,7 @@ class ApprovalIzinController extends Controller
                         'jam' => $request->filled('jam') ? $request->jam : now()->format('H:i'),
                         'status' => $izin->status,
                         'status2' => $izin->status2,
+                        'siswa_id' => Auth()->user()->siswa_id
                     ]);
                 }
                 $tanggalMulai->addDay();
@@ -218,7 +221,8 @@ class ApprovalIzinController extends Controller
             ];
             Mail::to($email)->send(new tolakdataEmail($mailData));
             $izin->update([
-                'status'=>'tolak'
+                'status'=>'tolak',
+                'status2'=>'tolak'
             ]);
             return back()->with('success', 'Berhasil menolak izin');
         }

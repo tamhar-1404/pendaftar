@@ -399,3 +399,34 @@
        </ul>
    </nav>
    <!-- Sidenav -->
+   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+   <script>
+    // Function to check if the current viewport width is less than 768 pixels (assumed mobile)
+    function isMobile() {
+        return window.innerWidth < 768;
+    }
+
+    // Function to update the data-te-sidenav-hidden attribute value
+    function updateSidenavHidden() {
+        var sidenavElement = document.getElementById('sidenav-2');
+
+        if (isMobile()) {
+            // Set data-te-sidenav-hidden attribute to true for mobile view
+            sidenavElement.setAttribute('data-te-sidenav-hidden', 'true');
+            sidenavElement.Classlist.remove("data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800");
+            sidenavElement.classlist.add("data-[te-sidenav-hidden='true']:translate-x-0 dark:bg-zinc-800");
+        } else {
+            // Set data-te-sidenav-hidden attribute to false for non-mobile view
+            sidenavElement.classlist.remove("data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800");
+            sidenavElement.classlist.add("data-[te-sidenav-hidden='true']:translate-x-0 dark:bg-zinc-800");
+            sidenavElement.setAttribute('data-te-sidenav-hidden', 'false');
+        }
+    }
+
+    $(document).ready(function() {
+        updateSidenavHidden();
+        $(window).resize(updateSidenavHidden);
+    });
+
+</script>
+

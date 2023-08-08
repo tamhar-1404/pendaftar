@@ -25,4 +25,8 @@ class Siswa extends Model
     {
         return $this->belongsTo(user::class);
     }
+    public function Approvalizin()
+    {
+        return $this->HasMany(Approvalizin::class);
+    }
 }
