@@ -59,7 +59,6 @@ class Kernel extends ConsoleKernel
             }
         })->everyMinute();
     }
-
     /**
      * Register the commands for the application.
      *
