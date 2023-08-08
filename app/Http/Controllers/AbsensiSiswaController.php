@@ -48,10 +48,10 @@ class AbsensiSiswaController extends Controller
 
 
         $terima = ApprovalIzin::where('status', 'terimaabsen')
-        ->where('nama', Auth::user()->name)
+        ->where('siswa_id', Auth::user()->Siswa->id)
         ->get();
 
-        $terima = ApprovalIzin::where('nama', $userName)
+        $terima = ApprovalIzin::where('siswa_id', Auth::user()->Siswa->id)
         ->where('status', 'terimaabsen')
         ->where(function ($query) use ($keyword) {
             $query->where('tanggal', 'LIKE', '%' . $keyword . '%')
@@ -102,7 +102,7 @@ class AbsensiSiswaController extends Controller
         }
 
 
-        $cek_sudah_absen = ApprovalIzin::where([['tanggal', Carbon::now()->format('Y-m-d')], ['nama', auth()->user()->name]])->whereNotIn('keterangan', ['sakit','izin'])->exists();
+        $cek_sudah_absen = ApprovalIzin::where([['tanggal', Carbon::now()->format('Y-m-d')], ['siswa_id', Auth::user()->Siswa->id]])->whereNotIn('keterangan', ['sakit','izin'])->exists();
         // dd($cek_sudah_absen);
         $terima = ApprovalIzin::where('status', 'terimaabsen')->where('siswa_id', Auth::user()->siswa_id )
         ->latest()->paginate(5);
@@ -113,14 +113,13 @@ class AbsensiSiswaController extends Controller
         // dd($currentDay);
         // $currentDay = 'Sunday';
         $currentDateTime = date('Y-m-d');
-        $data= ApprovalIzin::where('nama', Auth::user()->name)->where('tanggal',$currentDateTime)->count();
+        $data= ApprovalIzin::where('siswa_id', Auth::user()->Siswa->id)->where('tanggal',$currentDateTime)->count();
         if($currentDay !== 'Saturday' && $currentDay !== 'Sunday'){
 
             if($data === 0){
                 if($currentHour > '16:00'){
                     ApprovalIzin::create([
-                        'nama' => Auth::user()->name,
-                        'sekolah'=> Auth::user()->sekolah ,
+                        'siswa_id' => Auth::user()->Siswa->id,
                         'tanggal' =>$currentDateTime ,
                         'jam' => $currentHour,
                         'keterangan' => 'Alfa',

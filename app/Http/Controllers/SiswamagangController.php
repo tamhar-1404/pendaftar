@@ -32,10 +32,10 @@ class SiswamagangController extends Controller
     {
 
 
-        $Hadir = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('nama', Auth()->user()->name)->count();
-        $Telat = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('nama', Auth()->user()->name)->count();
-        $izin = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('nama', Auth()->user()->name)->count();
-        $Alfa = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('nama', Auth()->user()->name)->count();
+        $Hadir = ApprovalIzin::where('keterangan', 'LIKE', 'Hadir')->where('siswa_id', Auth::user()->Siswa->id)->count();
+        $Telat = ApprovalIzin::where('keterangan', 'LIKE', 'Telat')->where('siswa_id', Auth::user()->Siswa->id)->count();
+        $izin = ApprovalIzin::where('keterangan', 'LIKE', 'izin')->where('siswa_id', Auth::user()->Siswa->id)->count();
+        $Alfa = ApprovalIzin::where('keterangan', 'LIKE', 'Alfa')->where('siswa_id', Auth::user()->Siswa->id)->count();
         // jurnal
 
         $mengisi_jan = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('siswa_id', Auth::user()->Siswa->id)->whereMonth('tanggal', '=', 1)->count();

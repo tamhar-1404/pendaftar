@@ -202,7 +202,7 @@
                                     {{ $no++ }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ $absen->nama }}
+                                    {{ $absen->Siswa->name }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $absen->tanggal }}
@@ -454,14 +454,14 @@
                         <div class="relative z-0 w-full mb-6 group">
                             <p
                                 class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                {{ $absen->nama }}</p>
+                                {{ $absen->Siswa->name }}</p>
                             <label for="floating_email"
                                 class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">Nama</label>
                         </div>
                         <div class="relative z-0 w-full mb-6 group">
                             <p
                                 class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                {{ $absen->sekolah }}</p>
+                                {{ $absen->Siswa->sekolah }}</p>
                             <label for="floating_email"
                                 class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">sekolah</label>
                         </div>
@@ -527,7 +527,6 @@
                     <form action="{{ route('izin_update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <input type="hidden" name="nama" value="{{ $absen->nama }}">
                         <div class="p-6 space-y-6">
                             <svg class="fill-black dark:fill-white" xmlns="http://www.w3.org/2000/svg" height="1em"
                                 viewBox="0 0 512 512">
@@ -540,14 +539,14 @@
                             <div class="relative z-0 w-full mb-6 group">
                                 <p
                                     class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->nama }}</p>
+                                    {{ $absen->Siswa->nama }}</p>
                                 <label for="floating_email"
                                     class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">Nama</label>
                             </div>
                             <div class="relative z-0 w-full mb-6 group">
                                 <p
                                     class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->sekolah }}</p>
+                                    {{ $absen->Siswa->sekolah }}</p>
                                 <label for="floating_email"
                                     class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">sekolah</label>
                             </div>
