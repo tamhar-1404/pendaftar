@@ -300,6 +300,8 @@ class PiketController extends Controller
      */
     public function update(Request $request, piket $piket)
     {
+        dd($request->all());
+
         $nama_siswa = $request->input('nama_siswa');
         foreach ($nama_siswa as $item) {
             $piket->update([
@@ -308,7 +310,7 @@ class PiketController extends Controller
                 'nama_siswa' => $item
             ]);
         }
-        return redirect()->back()->with('sukses', 'Data telah di edit');
+        return redirect()->back()->with('success', 'Data telah di edit');
 
     }
 
