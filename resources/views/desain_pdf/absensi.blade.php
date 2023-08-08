@@ -42,7 +42,7 @@
                 <tr
                 class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                 <td class="whitespace-nowrap px-4 py-4 font-medium">{{ $loop->iteration }}</td>
-                <td class="whitespace-nowrap px-4 py-4">{{$items->nama}}</td>
+                <td class="whitespace-nowrap px-4 py-4">{{$items->Siswa->name}}</td>
                 <td class="whitespace-nowrap px-4 py-4">{{$items->tanggal}}</td>
                 <td class="whitespace-nowrap px-4 py-4">{{$items->jam}}</td>
                 <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$items->keterangan}}</td>
