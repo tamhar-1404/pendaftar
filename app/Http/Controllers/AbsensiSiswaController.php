@@ -51,6 +51,7 @@ class AbsensiSiswaController extends Controller
         ->where('siswa_id', Auth::user()->Siswa->id)
         ->get();
 
+
         $terima = ApprovalIzin::where('siswa_id', Auth::user()->Siswa->id)
         ->where('status', 'terimaabsen')
         ->where(function ($query) use ($keyword) {
