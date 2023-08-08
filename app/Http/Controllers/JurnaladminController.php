@@ -120,50 +120,37 @@ class JurnaladminController extends Controller
 
             // $tanggalAkhir = $hari;
             $hari = $keyword;
-            $telat = ApprovalIzin::where('keterangan', 'telat')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('jam','nama', 'tanggal', 'keterangan')->get();
-            $hadir = ApprovalIzin::where('keterangan', 'hadir')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('jam','nama', 'tanggal', 'keterangan')->get();
-            $sakit = ApprovalIzin::WhereIn('keterangan', ['sakit', 'izin'])->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('nama', 'tanggal', 'keterangan')->get();
-            $alfa = ApprovalIzin::where('keterangan', 'alfa')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('nama', 'tanggal', 'keterangan')->get();
-            $semua = ApprovalIzin::WhereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('jam','nama', 'tanggal', 'keterangan')->get();
+            $telat = ApprovalIzin::where('keterangan', 'telat')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('jam','siswa_id', 'tanggal', 'keterangan')->get();
+            $hadir = ApprovalIzin::where('keterangan', 'hadir')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('jam','siswa_id', 'tanggal', 'keterangan')->get();
+            $sakit = ApprovalIzin::WhereIn('keterangan', ['sakit', 'izin'])->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('siswa_id', 'tanggal', 'keterangan')->get();
+            $alfa = ApprovalIzin::where('keterangan', 'alfa')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('siswa_id', 'tanggal', 'keterangan')->get();
+            $semua = ApprovalIzin::WhereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('jam','siswa_id', 'tanggal', 'keterangan')->get();
             $Cek = ApprovalIzin::whereDate('created_at', $today )
-            ->pluck('nama')
+            ->pluck('siswa_id')
             ->toArray();
 
-            $siswa = Siswa::whereNotIn('name', $Cek)
+            $siswa = Siswa::whereNotIn('id', $Cek)
             ->where('role', 'siswa')
             ->latest()->paginate(10);
-            return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua'));
-
-
             $siswa->appends(['cari' => $keyword]);
             return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua'));
         }
-        // $siswa = Siswa::all();
-        // foreach($siswa as $data){
-        //     $namasiswa = $data->nama;
-        //     $absen = ApprovalIzin::where('nama', $namasiswa)->Where('tanggal', $hari)->get();
-        //     if($absen->count() == 0){
-        //         ApprovalIzin::create([
-
-        //         ])
-        //     }
-        // }
         $Cek = ApprovalIzin::whereDate('created_at', Carbon::today())
-        ->pluck('nama')
+        ->pluck('siswa_id')
         ->toArray();
 
-        $siswa = Siswa::whereNotIn('name', $Cek)
+        $siswa = Siswa::whereNotIn('id', $Cek)
         ->where('role', 'siswa')
         ->get();
 
 
         $hari = Carbon::now()->format('Y-m-d');
-        $telat = ApprovalIzin::where('keterangan', 'telat')->Where('tanggal', $hari)->select('jam','nama', 'tanggal', 'keterangan')->get();
-        $hadir = ApprovalIzin::where('keterangan', 'hadir')->Where('tanggal', $hari)->select('jam','nama', 'tanggal', 'keterangan')->get();
+        $telat = ApprovalIzin::where('keterangan', 'telat')->Where('tanggal', $hari)->select('jam','siswa_id', 'tanggal', 'keterangan')->get();
+        $hadir = ApprovalIzin::where('keterangan', 'hadir')->Where('tanggal', $hari)->select('jam','siswa_id', 'tanggal', 'keterangan')->get();
         // dd($hadir);
-        $sakit = ApprovalIzin::Wherein('keterangan', ['sakit', 'izin'])->Where('tanggal', $hari)->select('nama', 'tanggal', 'keterangan')->get();
-        $alfa = ApprovalIzin::where('keterangan', 'alfa')->Where('tanggal', $hari)->select('nama', 'tanggal', 'keterangan')->get();
-        $semua = ApprovalIzin::Where('tanggal', $hari)->select('jam','nama', 'tanggal', 'keterangan')->get();
+        $sakit = ApprovalIzin::Wherein('keterangan', ['sakit', 'izin'])->Where('tanggal', $hari)->select('siswa_id', 'tanggal', 'keterangan')->get();
+        $alfa = ApprovalIzin::where('keterangan', 'alfa')->Where('tanggal', $hari)->select('siswa_id', 'tanggal', 'keterangan')->get();
+        $semua = ApprovalIzin::Where('tanggal', $hari)->select('jam','siswa_id', 'tanggal', 'keterangan')->get();
         return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua'));
     }
 
@@ -181,15 +168,15 @@ class JurnaladminController extends Controller
                 $tanggalAkhir = trim($datesArray[0]);
             }
             $Cek = Jurnalsiswa::whereDate('created_at', Carbon::today())
-            ->pluck('nama')
+            ->pluck('siswa_id')
             ->toArray();
             // dd()
-            $siswa = Siswa::whereNotIn('name', $Cek)
+            $siswa = Siswa::whereNotIn('id', $Cek)
             ->where('role', 'siswa')
             ->get();
-            $semuaJurnal = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('nama','sekolah','tanggal','status')->get();
-            $tidakMengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->whereNot('status', 'mengisi')->select('nama','tanggal', 'sekolah')->get();
-            $mengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'mengisi')->select('nama','tanggal', 'kegiatan', 'image', 'id')->get();
+            $semuaJurnal = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('siswa_id','sekolah','tanggal','status')->get();
+            $tidakMengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->whereNot('status', 'mengisi')->select('siswa_id','tanggal', 'sekolah')->get();
+            $mengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'mengisi')->select('siswa_id','tanggal', 'kegiatan', 'image', 'id')->get();
             return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa'));
         }
 
@@ -329,9 +316,9 @@ class JurnaladminController extends Controller
 
     // Menambahkan data dari database ke dokumen
     foreach ($users as $user) {
-        $section->addText($user->nama);
+        $section->addText($user->siswa->name);
         $section->addText($user->tanggal);
-        $section->addText($user->sekolah);
+        $section->addText($user->siswa->sekolah);
         $section->addText($user->kegiatan);
         // Tambahkan data lain yang Anda butuhkan
         $section->addText("--------------------"); // Pemisah antara setiap entri

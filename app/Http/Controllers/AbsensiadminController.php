@@ -333,9 +333,9 @@ class AbsensiadminController extends Controller
 
 
 
-          $table->addCell(4000)->addText($user->nama, ['alignment' => 'center']);
+          $table->addCell(4000)->addText($user->Siswa->name, ['alignment' => 'center']);
           $table->addCell(1500)->addText($user->tanggal, ['alignment' => 'center']);
-          $table->addCell(2500)->addText($user->sekolah, ['alignment' => 'center']);
+          $table->addCell(2500)->addText($user->Siswa->sekolah, ['alignment' => 'center']);
           $table->addCell(3000)->addText($user->keterangan, ['alignment' => 'center']);
         //   if($imagePath == "storage/image/". $user->image){
         //       $table->addCell(2000)->addImage($imagePath, ['width' => 150, 'height' => 150, 'alignment' => 'center']);
@@ -394,9 +394,9 @@ class AbsensiadminController extends Controller
 
 
 
-       $table->addCell(4000)->addText($user->nama, ['alignment' => 'center']);
+       $table->addCell(4000)->addText($user->Siswa->name, ['alignment' => 'center']);
        $table->addCell(1500)->addText($user->tanggal, ['alignment' => 'center']);
-       $table->addCell(2500)->addText($user->sekolah, ['alignment' => 'center']);
+       $table->addCell(2500)->addText($user->Siswa->sekolah, ['alignment' => 'center']);
        $table->addCell(3000)->addText($user->keterangan, ['alignment' => 'center']);
      //   if($imagePath == "storage/image/". $user->image){
      //       $table->addCell(2000)->addImage($imagePath, ['width' => 150, 'height' => 150, 'alignment' => 'center']);

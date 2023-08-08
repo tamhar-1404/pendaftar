@@ -37,7 +37,8 @@ class Kernel extends ConsoleKernel
                     ]);
                 }
             }
-        })->everyMinute();
+        })->dailyAt('23:59')->weekdays();
+
         $schedule->call(function () {
             $hariIni = Carbon::now()->format('l');
             $tanggal = Carbon::now()->format('Y-m-d');
@@ -53,7 +54,7 @@ class Kernel extends ConsoleKernel
                     ]);
                 }
             }
-        })->everyMinute();
+        })->dailyAt('23:59')->weekdays();
     }
     /**
      * Register the commands for the application.
