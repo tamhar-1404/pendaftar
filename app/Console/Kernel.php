@@ -12,6 +12,9 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+      protected $commands = [
+        \App\Console\Commands\JurnalCommand::class,
+    ];
     /**
      * Define the application's command schedule.
      *
@@ -21,40 +24,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('entities:delete-expired')->daily();
-        $schedule->call(function () {
-            $hariIni = Carbon::now()->format('l');
-            $tanggal = Carbon::now()->format('Y-m-d');
-            if ($hariIni != 'Saturday' && $hariIni != 'Sunday') {
-                $siswa_sudah = Jurnalsiswa::where('tanggal', $tanggal)->pluck('siswa_id')->toArray();
-                $siswa_belum = Siswa::where('role', 'siswa')->whereNotIn('id', $siswa_sudah)->get();
-                foreach ($siswa_belum as $siswa) {
-                    Jurnalsiswa::create([
-                        'siswa_id' => $siswa->id,
-                        'tanggal' => $tanggal,
-                        'kegiatan' => 'Kosong',
-                        'image' => 'Kosong.png',
-                        'status' => 'Tidak mengisi',
-                    ]);
-                }
-            }
-        })->dailyAt('23:59')->weekdays();
+        $schedule->command('command:jurnal')->everyMinute();
+        $schedule->command('command:absensi')->everyMinute();
 
-        $schedule->call(function () {
-            $hariIni = Carbon::now()->format('l');
-            $tanggal = Carbon::now()->format('Y-m-d');
-            if ($hariIni != 'Saturday' && $hariIni != 'Sunday') {
-                $siswa_sudah_absen = ApprovalIzin::where('tanggal', $tanggal)->pluck('siswa_id')->toArray();
-                $siswa_belum_jurnal = Siswa::where('role', 'siswa')->whereNotIn('id', $siswa_sudah_absen)->get();
-                foreach ($siswa_belum_jurnal as $siswa) {
-                    ApprovalIzin::create([
-                        'siswa_id' => $siswa->id,
-                        'tanggal' => $tanggal,
-                        'jam' => Carbon::now()->format('H:i'),
-                        'status' => 'Alfa',
-                    ]);
-                }
-            }
-        })->dailyAt('23:59')->weekdays();
     }
     /**
      * Register the commands for the application.
