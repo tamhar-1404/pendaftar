@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('waktu');
             $table->string('hari');
-            $table->string('deskripsi');
+            $table->longText('deskripsi');
             $table->string('bukti');
             $table->timestamps();
         });

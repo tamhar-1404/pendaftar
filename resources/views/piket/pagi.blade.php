@@ -759,7 +759,7 @@
                                                 {{-- end modal --}}
 
                                                 <form action="{{ route('piket.destroy', $data->id) }}"
-                                                    style="margin-right: 10px; margin-left: -800px;" method="post"
+                                                    style="margin-right: 10px; margin-left: -850px;" method="post"
                                                     id="confirm-form-{{ $data->id }}">
                                                     @method('DELETE')
                                                     @csrf
