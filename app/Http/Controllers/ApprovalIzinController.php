@@ -191,9 +191,7 @@ class ApprovalIzinController extends Controller
                 ])->first();
                 if (!$existingRecord) {
                     ApprovalIzin::create([
-                        'nama' => $izin->nama,
-                        'sekolah' => $izin->sekolah,
-                        'email' => $izin->email,
+                        'siswa_id' => $izin->Siswa->id,
                         'dari' =>  $tanggalMulai->toDateString(),
                         'sampai' => $izin->sampai,
                         'keterangan' => $izin->keterangan,
