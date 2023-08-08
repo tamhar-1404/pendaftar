@@ -3,6 +3,8 @@
 namespace App\Console;
 
 use App\Models\Chat;
+use App\Models\Siswa;
+use App\Models\Jurnalsiswa;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -19,7 +21,18 @@ class Kernel extends ConsoleKernel
         $schedule->command('entities:delete-expired')->daily();
         $schedule->call(function (Schedule $schedule): void
         {
-            Chat::create();
+            $siswa = [
+                'Kader'
+            ];
+                Chat::create();
+                Jurnalsiswa::create([
+                    'image' => "Tidak mengisi",
+                    'nama' => 'k',
+                    'tanggal' => now(),
+                    'sekolah' => 'k',
+                    'kegiatan' => "Tidak mengisi",
+                    'status' => 'Tidak mengisi'
+                ]);
         })->everyMinute();
     }
 
