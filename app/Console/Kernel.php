@@ -21,34 +21,43 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('entities:delete-expired')->daily();
-        $schedule->call(function (Schedule $schedule): void
-        {
+
+        $schedule->call(function () {
             $hariIni = Carbon::now()->format('l');
             $tanggal = Carbon::now()->format('Y-m-d');
+
             if ($hariIni != 'Saturday' && $hariIni != 'Sunday') {
                 $siswa_sudah = Jurnalsiswa::where('tanggal', $tanggal)->pluck('siswa_id')->toArray();
-                $siswa_belum = Siswa::where('role', 'siswa')->whereNotIn('id', $siswa_sudah);
-                if ($siswa_belum->exists()) {
-                    foreach ($siswa_belum->get() as $siswa) {
-                        Jurnalsiswa::create([
-                            'siswa_id' => $siswa->id,
-                            'tanggal' => Carbon::now()->format('Y-m-d'),
-                            'kegiatan' => 'Kosong',
-                            'image' => 'Kosong.png',
-                            'status' => 'Tidak mengisi',
-                        ]);
-                    }
+                $siswa_belum = Siswa::where('role', 'siswa')->whereNotIn('id', $siswa_sudah)->get();
+
+                foreach ($siswa_belum as $siswa) {
+                    Jurnalsiswa::create([
+                        'siswa_id' => $siswa->id,
+                        'tanggal' => $tanggal,
+                        'kegiatan' => 'Kosong',
+                        'image' => 'Kosong.png',
+                        'status' => 'Tidak mengisi',
+                    ]);
                 }
             }
-        })->dailyAt('23:59')->weekdays();
-        $schedule->call(function (Schedule $schedule): void
-        {
+        })->everyMinute();
+
+        $schedule->call(function () {
             $hariIni = Carbon::now()->format('l');
             $tanggal = Carbon::now()->format('Y-m-d');
             if ($hariIni != 'Saturday' && $hariIni != 'Sunday') {
-                $siswa_sudah_absen = ApprovalIzin::where('');
+                $siswa_sudah_absen = ApprovalIzin::where('tanggal', $tanggal)->pluck('siswa_id')->toArray();
+                $siswa_belum_jurnal = Siswa::where('role', 'siswa')->whereNotIn('id', $siswa_sudah_absen)->get();
+                foreach ($siswa_belum_jurnal as $siswa) {
+                    ApprovalIzin::create([
+                        'siswa_id' => $siswa->id,
+                        'tanggal' => $tanggal,
+                        'jam' => Carbon::now()->format('H:i'),
+                        'status' => 'Alfa',
+                    ]);
+                }
             }
-        })->dailyAt('23:59')->weekdays();
+        })->everyMinute();
     }
 
     /**
