@@ -46,22 +46,9 @@ class Kernel extends ConsoleKernel
             $hariIni = Carbon::now()->format('l');
             $tanggal = Carbon::now()->format('Y-m-d');
             if ($hariIni != 'Saturday' && $hariIni != 'Sunday') {
-                $sudah_absen = ApprovalIzin::where('tanggal', $tanggal)->where('status', 'terimaabsen')->select('nama')->get()->toArray();
-                $semua_siswa = Siswa::where('role', 'siswa')->whereNot('name', $sudah_absen)->exists();
-                if ($semua_siswa) {
-                    foreach ($semua_siswa->get() as $siswa) {
-                        ApprovalIzin::create([
-                            'nama' => $siswa->name,
-                            'sekolah' => $siswa->sekolah,
-                            'tanggal' => $tanggal,
-                            'jam' => Carbon::now()->format('H:i'),
-                            'keterangan' => 'Alfa',
-                            'status' => 'terimaabsen',
-                        ]);
-                    }
-                }
+                $siswa_sudah_absen = ApprovalIzin::where('');
             }
-        })->everyMinute();
+        })->dailyAt('23:59')->weekdays();
     }
 
     /**
