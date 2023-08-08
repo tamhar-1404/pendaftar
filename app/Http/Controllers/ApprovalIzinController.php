@@ -118,10 +118,6 @@ class ApprovalIzinController extends Controller
 
         $user = Auth::user();
         ApprovalIzin::create([
-            'nama' => $user->name,
-            'sekolah' => $user->sekolah,
-            'foto' => $user->Siswa->foto_siswa,
-            'email' => $user->email,
             'dari' => $request->dari,
             'sampai' => $request->sampai,
             'keterangan' => $request->keterangan,
@@ -196,9 +192,6 @@ class ApprovalIzinController extends Controller
                 ])->first();
                 if (!$existingRecord) {
                     ApprovalIzin::create([
-                        'nama' => $izin->nama,
-                        'sekolah' => $izin->sekolah,
-                        'email' => $izin->email,
                         'dari' =>  $tanggalMulai->toDateString(),
                         'sampai' => $izin->sampai,
                         'keterangan' => $izin->keterangan,

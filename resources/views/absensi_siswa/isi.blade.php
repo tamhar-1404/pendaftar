@@ -202,7 +202,7 @@
                                     {{ $no++ }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ $absen->nama }}
+                                    {{ $absen->siswa->name }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $absen->tanggal }}
