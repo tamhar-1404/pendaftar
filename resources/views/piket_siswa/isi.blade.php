@@ -154,6 +154,7 @@
                                         {{-- hari --}}
                                         <div class="text-left font-bold mt-0 ml-5">
                                             Catatan
+
                                         </div>
 
                                     </div>
@@ -162,12 +163,12 @@
 
                                     {{-- nama --}}
                                     @foreach ($catat as $data)
-                                    <div
-                                        class="text-sm font-medium text-left ml-5 mt-5 mb-3 flex items-center justify-between">
-                                        {{ $data->hari }}
+                                        <div
+                                            class="text-sm font-medium text-left ml-5 mt-5 mb-3 flex items-center justify-between">
+                                            {{ $data->catatan }}
 
-                                    </div>
-                                @endforeach
+                                        </div>
+                                    @endforeach
 
 
                                 </div>
@@ -459,7 +460,7 @@
                                 @forelse ($catat as $catat)
                                     <div
                                         class="text-sm font-medium text-left ml-5 mt-5 mb-3 flex items-center justify-between ">
-                                        {{ $catat->hari }}
+                                        {{ $catat->catatan }}
 
                                     </div>
                                 @empty
