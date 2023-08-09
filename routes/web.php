@@ -27,6 +27,7 @@ use App\Models\LupaPassword;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\OpnameController;
+use App\Http\Controllers\LaporanPiketController;
 use App\Http\Controllers\RestockController;
 use App\Http\Controllers\transaksirfidController;
 use App\Http\Controllers\TransaksiController;
@@ -122,6 +123,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/jurnal_pdf', [JurnaladminController::class, 'jurnal_admin_pdf']);
         Route::get('/jurnal_docx', [JurnaladminController::class, 'admin_docx']);
         Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
+        Route::get('/hapus_laporan_piket/{id}' , [LaporanPiketController::class , 'hapus'])->name('hapus/laporan/piket');
         Route::post('catatan', [PiketController::class, 'tambah'])->name('tambahCatatan');
 
 

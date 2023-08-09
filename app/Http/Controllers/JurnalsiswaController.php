@@ -35,6 +35,8 @@ class JurnalsiswaController extends Controller
     public function index(Request $request)
     {
         $hariIni = Carbon::now()->format('l');
+
+
     if ($request->has('cari')) {
         $keyword = $request->cari;
 
@@ -152,6 +154,10 @@ class JurnalsiswaController extends Controller
     $this->validate($request, [
         'kegiatan' => "required",
     ]);
+
+    if($Jurnalsiswa ->status === 'Tidak mengisi'){
+        return redirect()->back()->with('error', 'yahahaah hayuuk');
+    }
 
     $Jurnalsiswa->siswa_id = Auth::user()->Siswa->id;
     $Jurnalsiswa->tanggal = $Jurnalsiswa->created_at;

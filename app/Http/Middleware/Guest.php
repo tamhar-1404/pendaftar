@@ -20,11 +20,11 @@ class Guest
         if (Auth::check()) {
             $user = Auth::user();
             if ($user->role == 'Admin') {
-                return redirect()->back();
+                return redirect()->route('dudi.index');
             } elseif ($user->role == 'Siswa') {
-                return redirect()->back();
+                return redirect()->route('Siswamagang.index');
             } elseif ($user->role == 'guru') {
-                return redirect()->back();
+                return redirect()->route('guru.index');
             }
         }
         return $next($request);

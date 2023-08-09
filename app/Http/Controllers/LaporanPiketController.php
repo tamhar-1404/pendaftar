@@ -52,7 +52,7 @@ class LaporanPiketController extends Controller
         $image->storeAs('public/image', $image->hashName());
         $today = Carbon::now()->format('l');
 
-        
+
 
         laporan_piket::create([
             'bukti' => $image->hashName(),
@@ -105,8 +105,13 @@ class LaporanPiketController extends Controller
      * @param  \App\Models\laporan_piket  $laporan_piket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(laporan_piket $laporan_piket)
+    public function destroy(laporan_piket $laporan_piket, $id)
     {
-        //
+      //    
+    }
+    public function hapus($id) {
+        $laporan = Laporan_piket::find($id);
+        $laporan->delete();
+        return redirect()->back();
     }
 }
