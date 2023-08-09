@@ -79,7 +79,7 @@ class JurnalsiswaController extends Controller
             $hari = Carbon::now()->format('Y-m-d');
             $jam = Carbon::now()->format('H-i');
             // dd($jam > '16-00');
-            if($jam < '22-00'){
+            if($jam > '23:59'){
                 $data = Jurnalsiswa::where('siswa_id', $siswa_id)->where('tanggal', $hari)->exists();
                 if(!$data){
                     try {
