@@ -1966,7 +1966,7 @@
                                     </p>
 
                                     <p class="ml-5 mt-2 text-md text-gray-400">
-                                        {{ $izin->sekolah }}
+                                        {{ $izin->Siswa->sekolah }}
                                     </p>
                                     <p class=" text-md mt-4">
                                         email :
