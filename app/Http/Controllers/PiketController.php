@@ -279,7 +279,7 @@ class PiketController extends Controller
             'catatan' => $request->catatan,
         ]);
 
-        return redirect()->route('piket.index');
+        return redirect()->route('piket.index')->with('success', 'berhasil menambahkan catatan!');
         
     }
 

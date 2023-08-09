@@ -6,95 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin - Tolak</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <script>
-        theme: {
-            extend: {
-                blur: {
-                    xs: '3px',
-                }
-            },
-        },
-    </script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
-    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
-    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
-    <link rel="stylesheet" href="load/load.css">
-    <link href="/admin/assets/images/logo.png" rel="shortcut icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com/" />
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/perfect-scrollbar.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/style.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
-    <link defer rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/animate.css" />
-    {{--  <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />  --}}
-    <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>
-    <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
-    <script defer src="{{ asset('admin/assets/js/tippy-bundle.umd.min.js') }}"></script>
-    <script defer src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
-    <link rel="stylesheet" href="load/load.css">
-    <!-- CSS Assets -->
-    <link rel="stylesheet" href="admin/css/app.css" />
+    <!DOCTYPE html>
+    <html lang="en">
 
-    <!-- Javascript Assets -->
-    <script src="admin/js/app.js" defer></script>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Admin - Data Ditolak</title>
+        <script src="https://cdn.tailwindcss.com%22%3E/"></script>
+        <script>
             theme: {
-                fontFamily: {
-                    sans: ["Roboto", "sans-serif"],
-                    body: ["Roboto", "sans-serif"],
-                    mono: ["ui-monospace", "monospace"],
+                extend: {
+                    blur: {
+                        xs: '3px',
+                    }
                 },
             },
-            corePlugins: {
-                preflight: false,
-            },
-        };
-    </script>
-    <script src="assets_guru/js/perfect-scrollbar.min.js"></script>
-    <script defer src="assets_guru/js/popper.min.js"></script>
-    <script defer src="assets_guru/js/tippy-bundle.umd.min.js"></script>
-    <script defer src="assets_guru/js/sweetalert.min.js"></script>
-    <style>
-        /* Gaya untuk overlay popup */
-        .popup-overlay {
-          display: none;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.5);
-          z-index: 9999;
-        }
+        </script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
+        <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com/" />
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap"
+            rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" media="screen"
+            href="{{ asset('admin/assets/css/perfect-scrollbar.min.css') }}" />
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
+        <link rel="stylesheet" href="load/load.css">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+        {{--  <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />  --}}
+        <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>
+        <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
+        <script defer src="{{ asset('admin/assets/js/tippy-bundle.umd.min.js') }}"></script>
+        <script defer src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
+        {{--  <!-- Javascript Assets -->  --}}
+        <script src="admin/js/app.js" defer></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+        <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    fontFamily: {
+                        sans: ["Roboto", "sans-serif"],
+                        body: ["Roboto", "sans-serif"],
+                        mono: ["ui-monospace", "monospace"],
+                    },
+                },
+                corePlugins: {
+                    preflight: false,
+                },
+            };
+        </script>
 
-        /* Gaya untuk konten popup */
-        .popup-content {
-          display: none;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background-color: #fff;
-          padding: 20px;
-          border-radius: 5px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-      </style>
 </head>
 
 <body>
@@ -155,704 +120,476 @@
                     </div>
                 </div>
 
-        <div class="animate__animated p-6" :class="[$store.app.animation]">
-            <!-- start main content section -->
-            <div>
-                <ul class="flex space-x-2 rtl:space-x-reverse">
-
-                </ul>
-                <div class="pt-0">
-
-                    <div x-data="{ tab: 'semua' }">
-                        <ul
-                            class="mb-5 overflow-y-auto whitespace-nowrap border-b border-[#ebedf2] font-semibold dark:border-[#191e3a] sm:flex">
-                            <li class="inline-block">
-                                <a href="javascript:;"
-                                    class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
-                                    :class="{ '!border-primary text-primary': tab == 'password' }"
-                                    @click="tab='password'">
-
-                                    Tolak Izin
-                                </a>
-                            </li>
-                            <li class="inline-block">
-                                <a href="javascript:;"
-                                    class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
-                                    :class="{ '!border-primary text-primary': tab == 'semua' }"
-                                    @click="tab='semua'">
-                                    Tolak Pendaftaran
-                                </a>
-                            </li>
+                <div class="animate__animated p-6" :class="[$store.app.animation]">
+                    <!-- start main content section -->
+                    <div>
+                        <ul class="flex space-x-2 rtl:space-x-reverse">
 
                         </ul>
-                        <script>
-                            let mycheckbox = document.getElementById('tampil');
-                            let tabelsemua = document.getElementById('tabelsemua');
+                        <div class="pt-0">
 
-                            function cekCheckbox() {
-                                let tabelsemua = document.getElementById('tabelsemua');
-                                let mycheckbox = document.getElementById('tampil');
-                                if (mycheckbox.checked) {
-                                    tabelsemua.classList.remove('hidden');
-                                } else {
-                                    tabelsemua.classList.add('hidden');
-                                }
-                            }
-                            mycheckbox.addEventListener('checked', function() {
-                                if (mycheckbox.checked) {
-                                    tabelsemua.classList.remove('hidden');
-                                } else {
-                                    tabelsemua.classList.add('hidden');
-                                }
-                            })
-                        </script>
-                <template x-if="tab === 'semua'">
-                    <div class="flex flex-col">
-                        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                                <div class="overflow-hidden">
-                                    <table class="min-w-full text-left text-sm font-light">
-                                        <thead class="border-b font-medium dark:border-neutral-500 ">
-                                            <tr class="">
-                                                <th scope="col" class="px-6 py-4">#</th>
-                                                <th scope="col" class="px-6 py-4">Nama</th>
-                                                <th scope="col" class="px-6 py-4 ">Kelas</th>
-                                                <th scope="col" class="px-6 py-4">Jurusan</th>
-                                                <th scope="col" class="px-6 py-4">Sekolah</th>
-                                                <th scope="col" class="px-6 py-4">Alasan</th>
-                                                <th scope="col" class="px-6 py-4">Aksi</th>
+                            <div x-data="{ tab: 'semua' }">
+                                <ul
+                                    class="mb-5 overflow-y-auto whitespace-nowrap border-b border-[#ebedf2] font-semibold dark:border-[#191e3a] sm:flex">
+                                    <li class="inline-block">
+                                        <a href="javascript:;"
+                                            class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
+                                            :class="{ '!border-primary text-primary': tab == 'password' }"
+                                            @click="tab='password'">
 
-                                            </tr>
-                                        </thead>
-                                        @forelse ($tolaks as $tolak)
-                                            <tbody>
-                                                <?php
-                                                $no = 1;
-                                                ?>
-                                                <tr
-                                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">
-                                                        {{ $no++ }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $tolak->name }}</td>
-                                                    <td class="whitespace-nowrap px-6 py-4">{{ $tolak->kelas }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $tolak->jurusan }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $tolak->sekolah }}</td>
-                                                    <td
-                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                        {{ $tolak->alasan }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">
-                                                        <div class="w-16 flex cursor-pointer h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
-                                                        data-te-toggle="modal"
-                                                        data-modal-target="staticModal{{ $tolak->id }}"
-                                                        data-modal-toggle="staticModal{{ $tolak->id }}">
-                                                            <span class=" p-1 cursor-pointer  font-semibold dark:hover:text-black">Lihat</span>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                            Tolak Izin
+                                        </a>
+                                    </li>
+                                    <li class="inline-block">
+                                        <a href="javascript:;"
+                                            class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
+                                            :class="{ '!border-primary text-primary': tab == 'semua' }"
+                                            @click="tab='semua'">
+                                            Tolak Pendaftaran
+                                        </a>
+                                    </li>
 
-                                            </tbody>
-                                        @empty
-                                            <tr>
-                                                <td colspan="6" class="p-8 text-center">
-                                                    <div class="flex justify-center items-center">
-                                                        <img src="/admin/noData.png" alt="" width="280px">
+                                </ul>
+                                <script>
+                                    let mycheckbox = document.getElementById('tampil');
+                                    let tabelsemua = document.getElementById('tabelsemua');
+
+                                    function cekCheckbox() {
+                                        let tabelsemua = document.getElementById('tabelsemua');
+                                        let mycheckbox = document.getElementById('tampil');
+                                        if (mycheckbox.checked) {
+                                            tabelsemua.classList.remove('hidden');
+                                        } else {
+                                            tabelsemua.classList.add('hidden');
+                                        }
+                                    }
+                                    mycheckbox.addEventListener('checked', function() {
+                                        if (mycheckbox.checked) {
+                                            tabelsemua.classList.remove('hidden');
+                                        } else {
+                                            tabelsemua.classList.add('hidden');
+                                        }
+                                    })
+                                </script>
+                                <template x-if="tab === 'semua'">
+                                    <div class="flex flex-col">
+                                        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                                <div class="overflow-hidden">
+                                                    <table class="min-w-full text-left text-sm font-light">
+                                                        <thead class="border-b font-medium dark:border-neutral-500 ">
+                                                            <tr class="">
+                                                                <th scope="col" class="px-6 py-4">#</th>
+                                                                <th scope="col" class="px-6 py-4">Nama</th>
+                                                                <th scope="col" class="px-6 py-4 ">Kelas</th>
+                                                                <th scope="col" class="px-6 py-4">Jurusan</th>
+                                                                <th scope="col" class="px-6 py-4">Sekolah</th>
+                                                                <th scope="col" class="px-6 py-4">Alasan</th>
+                                                                <th scope="col" class="px-6 py-4">Aksi</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        @forelse ($tolaks as $tolak)
+                                                            <tbody>
+                                                                <?php
+                                                                $no = 1;
+                                                                ?>
+                                                                <tr
+                                                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">
+                                                                        {{ $no++ }}</td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">{{ $tolak->name }}</td>
+                                                                    <td class="whitespace-nowrap px-6 py-4">{{ $tolak->kelas }}</td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">{{ $tolak->jurusan }}</td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">{{ $tolak->sekolah }}</td>
+                                                                    <td
+                                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
+                                                                        {{ $tolak->alasan }}</td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">
+                                                                        <div class="w-16 flex cursor-pointer h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
+                                                                        data-te-toggle="modal"
+                                                                        data-modal-target="staticModal{{ $tolak->id }}"
+                                                                        data-modal-toggle="staticModal{{ $tolak->id }}">
+                                                                            <span class=" p-1 cursor-pointer  font-semibold dark:hover:text-black">Lihat</span>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        @empty
+                                                            <tr>
+                                                                <td colspan="6" class="p-8 text-center">
+                                                                    <div class="flex justify-center items-center">
+                                                                        <img src="/admin/noData.png" alt="" width="280px">
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @endforelse
+                                                    </table>
+                                                    {{ $tolaks->appends(['cari' => request('cari')])->links() }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- end tabel --}}
+                                    {{-- paginate --}}
+                                    @forelse ($tolaks as $modal)
+                                    {{-- modal --}}
+                                        <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
+                                            class="kamu-tak-diajak fixed top-0 left-0 right-0 z-[999] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative w-full max-w-2xl max-h-full">
+                                                <!-- Modal content -->
+                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                    <!-- Modal header -->
+                                                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                            Detail laporan
+                                                        </h3>
+                                                        <button type="button"
+                                                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                                            data-modal-hide="staticModal{{ $modal->id }}">
+                                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd"
+                                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                                    clip-rule="evenodd"></path>
+                                                            </svg>
+                                                        </button>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </table>
-                                    {{ $tolaks->appends(['cari' => request('cari')])->links() }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- end tabel --}}
-                    {{-- paginate --}}
-                    @forelse ($tolaks as $modal)
-                    {{-- modal --}}
-                        <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
-                            class="kamu-tak-diajak fixed top-0 left-0 right-0 z-[999] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                            <div class="relative w-full max-w-2xl max-h-full">
-                                <!-- Modal content -->
-                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                    <!-- Modal header -->
-                                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                            Detail laporan
-                                        </h3>
-                                        <button type="button"
-                                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                            data-modal-hide="staticModal{{ $modal->id }}">
-                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <!-- Modal body -->
-                                    <div class="flex w-full justify-center mt-10">
-                                        <img class="w-[20%] h-[20%] rounded-full" src="{{asset('storage/ditolak/'. $modal->foto_siswa)}}" alt="">
-                                    </div>
-                                    <div class="p-6 grid grid-cols-2 gap-5">
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                nama
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modal->name }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                Tanggal lahir
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modal->tanggal }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                Tanggal lahir
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modal->tempat }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                jurusan
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modal->jurusan }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                email
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modal->email }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                nomer telepon
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modal->no }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                sekolah
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modal->sekolah }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                alasan
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modal->alasan }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                kelas
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modal->kelas }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                nisn
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modal->nisn }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                jenis kelamin
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modal->jeniskelamin }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                alamat
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modal->alamat }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                magang awal
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modal->magang_awal }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                magang akhir
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modal->magang_akhir }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                Bukti
-                                            </p>
-                                            <img src="{{ asset('storage/ditolak/' . $modal->sp_diri) }}" alt=""
-                                                srcset="">
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                Bukti
-                                            </p>
-                                            <img src="{{ asset('storage/ditolak/' . $modal->sp_ortu) }}" alt=""
-                                                srcset="">
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                Bukti
-                                            </p>
-                                            <img src="{{ asset('storage/ditolak/' . $modal->cv) }}" alt=""
-                                                srcset="">
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                Bukti
-                                            </p>
-                                            <img src="{{ asset('storage/ditolak/' . $modal->skck) }}" alt=""
-                                                srcset="">
-                                        </div>
-
-                                    </div>
-                                    <!-- Modal footer -->
-                                    <div
-                                        class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                        <button data-modal-hide="staticModal{{ $modal->id }}" type=""
-                                            class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @empty
-                    @endforelse
-                </template>
-                <template x-if="tab === 'password'">
-                    <div class="flex flex-col">
-                        izin
-                        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                                <div class="overflow-hidden">
-                                    <table class="min-w-full text-left text-sm font-light">
-                                        <thead class="border-b font-medium dark:border-neutral-500 ">
-                                            <tr class="">
-                                                <th scope="col" class="px-6 py-4">#</th>
-                                                <th scope="col" class="px-6 py-4">Nama</th>
-                                                <th scope="col" class="px-6 py-4 ">tanggal</th>
-                                                <th scope="col" class="px-6 py-4">Keterangan</th>
-                                                <th scope="col" class="px-6 py-4">Sekolah</th>
-                                                <th scope="col" class="px-6 py-4">Alasan</th>
-                                                <th scope="col" class="px-6 py-4">Aksi</th>
-
-                                            </tr>
-                                        </thead>
-                                        @forelse ($izin as $data)
-                                            <tbody>
-                                                <?php
-                                                $no = 1;
-                                                ?>
-                                                <tr
-                                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">
-                                                        {{ $no++ }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $data->siswa->name }}</td>
-                                                    <td class="whitespace-nowrap px-6 py-4">{{ $data->dari }} -> {{$data->sampai}}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $data->keterangan }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $data->siswa->sekolah }}</td>
-                                                    <td
-                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                        {{ $data->alasan }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">
-                                                        <div class="w-16 flex cursor-pointer h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
-                                                        data-te-toggle="modal"
-                                                        data-modal-target="staticModal{{ $data->id }}izin"
-                                                        data-modal-toggle="staticModal{{ $data->id }}izin">
-                                                            <span class=" p-1 cursor-pointer  font-semibold dark:hover:text-black">Lihat</span>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-
-                                            </tbody>
-                                        @empty
-                                            <tr>
-                                                <td colspan="6" class="p-8 text-center">
-                                                    <div class="flex justify-center items-center">
-                                                        <img src="/admin/noData.png" alt="" width="280px">
+                                                    <!-- Modal body -->
+                                                    <div class="flex w-full justify-center mt-10">
+                                                        <img class="w-[20%] h-[20%] rounded-full" src="{{asset('storage/ditolak/'. $modal->foto_siswa)}}" alt="">
                                                     </div>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </table>
-                                    {{ $tolaks->appends(['cari' => request('cari')])->links() }}
-                                </div>
+                                                    <div class="p-6 grid grid-cols-2 gap-5">
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                nama
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modal->name }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                Tanggal lahir
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modal->tanggal }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                Tanggal lahir
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modal->tempat }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                jurusan
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modal->jurusan }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                email
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modal->email }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                nomer telepon
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modal->no }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                sekolah
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modal->sekolah }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                alasan
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modal->alasan }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                kelas
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modal->kelas }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                nisn
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modal->nisn }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                jenis kelamin
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modal->jeniskelamin }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                alamat
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modal->alamat }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                magang awal
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modal->magang_awal }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                magang akhir
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modal->magang_akhir }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                Bukti
+                                                            </p>
+                                                            <img src="{{ asset('storage/ditolak/' . $modal->sp_diri) }}" alt=""
+                                                                srcset="">
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                Bukti
+                                                            </p>
+                                                            <img src="{{ asset('storage/ditolak/' . $modal->sp_ortu) }}" alt=""
+                                                                srcset="">
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                Bukti
+                                                            </p>
+                                                            <img src="{{ asset('storage/ditolak/' . $modal->cv) }}" alt=""
+                                                                srcset="">
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                Bukti
+                                                            </p>
+                                                            <img src="{{ asset('storage/ditolak/' . $modal->skck) }}" alt=""
+                                                                srcset="">
+                                                        </div>
+
+                                                    </div>
+                                                    <!-- Modal footer -->
+                                                    <div
+                                                        class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                                        <button data-modal-hide="staticModal{{ $modal->id }}" type=""
+                                                            class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @empty
+                                    @endforelse
+                                </template>
+                                <template x-if="tab === 'password'">
+                                    <div class="flex flex-col">
+                                        izin
+                                        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                                <div class="overflow-hidden">
+                                                    <table class="min-w-full text-left text-sm font-light">
+                                                        <thead class="border-b font-medium dark:border-neutral-500 ">
+                                                            <tr class="">
+                                                                <th scope="col" class="px-6 py-4">#</th>
+                                                                <th scope="col" class="px-6 py-4">Nama</th>
+                                                                <th scope="col" class="px-6 py-4 ">tanggal</th>
+                                                                <th scope="col" class="px-6 py-4">Keterangan</th>
+                                                                <th scope="col" class="px-6 py-4">Sekolah</th>
+                                                                <th scope="col" class="px-6 py-4">Alasan</th>
+                                                                <th scope="col" class="px-6 py-4">Aksi</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        @forelse ($izin as $data)
+                                                            <tbody>
+                                                                <?php
+                                                                $no = 1;
+                                                                ?>
+                                                                <tr
+                                                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
+                                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">
+                                                                        {{ $no++ }}</td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">{{ $data->siswa->name }}</td>
+                                                                    <td class="whitespace-nowrap px-6 py-4">{{ $data->dari }} -> {{$data->sampai}}</td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">{{ $data->keterangan }}</td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">{{ $data->siswa->sekolah }}</td>
+                                                                    <td
+                                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
+                                                                        {{ $data->alasan }}</td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">
+                                                                        <div class="w-16 flex cursor-pointer h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
+                                                                        data-te-toggle="modal"
+                                                                        data-modal-target="staticModal{{ $data->id }}izin"
+                                                                        data-modal-toggle="staticModal{{ $data->id }}izin">
+                                                                            <span class=" p-1 cursor-pointer  font-semibold dark:hover:text-black">Lihat</span>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        @empty
+                                                            <tr>
+                                                                <td colspan="6" class="p-8 text-center">
+                                                                    <div class="flex justify-center items-center">
+                                                                        <img src="/admin/noData.png" alt="" width="280px">
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @endforelse
+                                                    </table>
+                                                    {{ $tolaks->appends(['cari' => request('cari')])->links() }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- end tabel --}}
+                                    {{-- paginate --}}
+                                    @forelse ($izin as $modalll)
+                                    {{-- modal --}}
+                                        <div id="staticModalizin{{ $modalll->id }}" tabindex="-1" aria-hidden="true"
+                                            class="kamu-tak-diajak fixed top-0 left-0 right-0 z-[999] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative w-full max-w-2xl max-h-full">
+                                                <!-- Modal content -->
+                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                    <!-- Modal header -->
+                                                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                            Detail Tolak Izin
+                                                        </h3>
+                                                        <button type="button"
+                                                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                                            data-modal-hide="staticModalizin{{ $modalll->id }}">
+                                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd"
+                                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                                    clip-rule="evenodd"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <!-- Modal body -->
+                                                    <div class="flex w-full justify-center mt-10">
+                                                        <img class="w-[20%] h-[20%] rounded-full" src="{{asset('storage/Siswa/'. $modalll->siswa->foto_siswa)}}" alt="">
+                                                    </div>
+                                                    <div class="p-6 grid grid-cols-2 gap-5">
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                nama
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modalll->siswa->name }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                Tanggal lahir
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modalll->dari }} -> {{$data->sampai}}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                Keterangan
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modalll->keterangan }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                Sekolah
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modalll->siswa->sekolah }}
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                Alasan
+                                                            </p>
+                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                                {{ $modalll->alasan }}
+                                                            </p>
+                                                        </div>
+
+                                                        <div>
+                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                                Bukti
+                                                            </p>
+                                                            <img src="{{ asset('storage/bukti_izin/' . $modalll->bukti) }}" alt=""
+                                                                srcset="">
+                                                        </div>
+
+                                                    </div>
+                                                    <!-- Modal footer -->
+                                                    <div
+                                                        class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                                        <button data-modal-hide="staticModalizin{{ $modalll->id }}" type=""
+                                                            class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @empty
+                                    @endforelse
+
+                                    {{-- end modal --}}
+                                </template>
+
                             </div>
                         </div>
+
                     </div>
-                    {{-- end tabel --}}
-                    {{-- paginate --}}
-                    @forelse ($izin as $modalll)
-                    {{-- modal --}}
-                        <div id="staticModalizin{{ $modalll->id }}" tabindex="-1" aria-hidden="true"
-                            class="kamu-tak-diajak fixed top-0 left-0 right-0 z-[999] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                            <div class="relative w-full max-w-2xl max-h-full">
-                                <!-- Modal content -->
-                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                    <!-- Modal header -->
-                                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                            Detail Tolak Izin
-                                        </h3>
-                                        <button type="button"
-                                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                            data-modal-hide="staticModalizin{{ $modalll->id }}">
-                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <!-- Modal body -->
-                                    <div class="flex w-full justify-center mt-10">
-                                        <img class="w-[20%] h-[20%] rounded-full" src="{{asset('storage/Siswa/'. $modalll->siswa->foto_siswa)}}" alt="">
-                                    </div>
-                                    <div class="p-6 grid grid-cols-2 gap-5">
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                nama
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modalll->siswa->name }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                Tanggal lahir
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modalll->dari }} -> {{$data->sampai}}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                Keterangan
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modalll->keterangan }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                Sekolah
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modalll->siswa->sekolah }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                Alasan
-                                            </p>
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $modalll->alasan }}
-                                            </p>
-                                        </div>
-
-                                        <div>
-                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                Bukti
-                                            </p>
-                                            <img src="{{ asset('storage/bukti_izin/' . $modalll->bukti) }}" alt=""
-                                                srcset="">
-                                        </div>
-
-                                    </div>
-                                    <!-- Modal footer -->
-                                    <div
-                                        class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                        <button data-modal-hide="staticModalizin{{ $modalll->id }}" type=""
-                                            class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @empty
-                    @endforelse
-
-                    {{-- end modal --}}
-                </template>
-
+                </div>
             </div>
         </div>
     </div>
 
 
 
-    {{-- end modal --}}
 
 
 
-
-
-    <!-- end main content section -->
-
-    <!-- start footer section -->
-    <!-- end footer section -->
-</div>
-</div>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 
-<script src="assets_guru/js/alpine-collaspe.min.js"></script>
-<script src="assets_guru/js/alpine-persist.min.js"></script>
-<script defer src="assets_guru/js/alpine-ui.min.js"></script>
-<script defer src="assets_guru/js/alpine-focus.min.js"></script>
+
 <script defer src="assets_guru/js/alpine.min.js"></script>
-<script src="assets_guru/js/custom.js"></script>
-
-
-<script>
-    document.addEventListener('alpine:init', () => {
-        // main section
-        Alpine.data('scrollToTop', () => ({
-            showTopButton: false,
-            init() {
-                window.onscroll = () => {
-                    this.scrollFunction();
-                };
-            },
-
-            scrollFunction() {
-                if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                    this.showTopButton = true;
-                } else {
-                    this.showTopButton = false;
-                }
-            },
-
-            goToTop() {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-            },
-        }));
-
-        // theme customization
-        Alpine.data('customizer', () => ({
-            showCustomizer: false,
-        }));
-
-        // sidebar section
-        Alpine.data('sidebar', () => ({
-            init() {
-                const selector = document.querySelector('.sidebar ul a[href="' + window.location
-                    .pathname + '"]');
-                if (selector) {
-                    selector.classList.add('active');
-                    const ul = selector.closest('ul.sub-menu');
-                    if (ul) {
-                        let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
-                        if (ele) {
-                            ele = ele[0];
-                            setTimeout(() => {
-                                ele.click();
-                            });
-                        }
-                    }
-                }
-            },
-        }));
-
-        // header section
-        Alpine.data('header', () => ({
-            init() {
-                const selector = document.querySelector('ul.horizontal-menu a[href="' + window
-                    .location.pathname + '"]');
-                if (selector) {
-                    selector.classList.add('active');
-                    const ul = selector.closest('ul.sub-menu');
-                    if (ul) {
-                        let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
-                        if (ele) {
-                            ele = ele[0];
-                            setTimeout(() => {
-                                ele.classList.add('active');
-                            });
-                        }
-                    }
-                }
-            },
-
-            notifications: [{
-                    id: 1,
-                    profile: 'user-profile.jpeg',
-                    message: '<strong class="text-sm mr-1">John Doe</strong>invite you to <strong>Prototyping</strong>',
-                    time: '45 min ago',
-                },
-                {
-                    id: 2,
-                    profile: 'profile-34.jpeg',
-                    message: '<strong class="text-sm mr-1">Adam Nolan</strong>mentioned you to <strong>UX Basics</strong>',
-                    time: '9h Ago',
-                },
-                {
-                    id: 3,
-                    profile: 'profile-16.jpeg',
-                    message: '<strong class="text-sm mr-1">Anna Morgan</strong>Upload a file',
-                    time: '9h Ago',
-                },
-            ],
-
-            messages: [{
-                    id: 1,
-                    image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-success-light dark:bg-success text-success dark:text-success-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>',
-                    title: 'Congratulations!',
-                    message: 'Your OS has been updated.',
-                    time: '1hr',
-                },
-                {
-                    id: 2,
-                    image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-info-light dark:bg-info text-info dark:text-info-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>',
-                    title: 'Did you know?',
-                    message: 'You can switch between artboards.',
-                    time: '2hr',
-                },
-                {
-                    id: 3,
-                    image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-danger-light dark:bg-danger text-danger dark:text-danger-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>',
-                    title: 'Something went wrong!',
-                    message: 'Send Reposrt',
-                    time: '2days',
-                },
-                {
-                    id: 4,
-                    image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-warning-light dark:bg-warning text-warning dark:text-warning-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">    <circle cx="12" cy="12" r="10"></circle>    <line x1="12" y1="8" x2="12" y2="12"></line>    <line x1="12" y1="16" x2="12.01" y2="16"></line></svg></span>',
-                    title: 'Warning',
-                    message: 'Your password strength is low.',
-                    time: '5days',
-                },
-            ],
-
-            languages: [{
-                    id: 1,
-                    key: 'Chinese',
-                    value: 'zh',
-                },
-                {
-                    id: 2,
-                    key: 'Danish',
-                    value: 'da',
-                },
-                {
-                    id: 3,
-                    key: 'English',
-                    value: 'en',
-                },
-                {
-                    id: 4,
-                    key: 'French',
-                    value: 'fr',
-                },
-                {
-                    id: 5,
-                    key: 'German',
-                    value: 'de',
-                },
-                {
-                    id: 6,
-                    key: 'Greek',
-                    value: 'el',
-                },
-                {
-                    id: 7,
-                    key: 'Hungarian',
-                    value: 'hu',
-                },
-                {
-                    id: 8,
-                    key: 'Italian',
-                    value: 'it',
-                },
-                {
-                    id: 9,
-                    key: 'Japanese',
-                    value: 'ja',
-                },
-                {
-                    id: 10,
-                    key: 'Polish',
-                    value: 'pl',
-                },
-                {
-                    id: 11,
-                    key: 'Portuguese',
-                    value: 'pt',
-                },
-                {
-                    id: 12,
-                    key: 'Russian',
-                    value: 'ru',
-                },
-                {
-                    id: 13,
-                    key: 'Spanish',
-                    value: 'es',
-                },
-                {
-                    id: 14,
-                    key: 'Swedish',
-                    value: 'sv',
-                },
-                {
-                    id: 15,
-                    key: 'Turkish',
-                    value: 'tr',
-                },
-            ],
-
-            removeNotification(value) {
-                this.notifications = this.notifications.filter((d) => d.id !== value);
-            },
-
-            removeMessage(value) {
-                this.messages = this.messages.filter((d) => d.id !== value);
-            },
-        }));
-    });
-</script>
-<script>
-    $(window).on('load', function() {
-        $('.spin_load').fadeOut();
-    });
-</script>
-
-
-</div>
-
 
 
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
@@ -862,48 +599,8 @@
         $('.spin_load').fadeOut();
     });
 </script>
-<script>
-    const instanceMode = te.Sidenav.getInstance(
-        document.getElementById("sidenav-2")
-    );
-    const modes = ["side"];
 
-    modes.forEach((mode) => {
-        const modeSwitch = document.getElementById(mode);
-        modeSwitch.addEventListener("click", () => {
-            const instance = te.Sidenav.getInstance(
-                document.getElementById("sidenav-2")
-            );
-            instance.changeMode(mode);
-            modes.forEach((el) => {
-                if (el === mode) {
-                    ["text-primary-600", "border-primary-600"].forEach((item) =>
-                        modeSwitch.classList.remove(item)
-                    );
-                    modeSwitch.className +=
-                        " bg-primary text-white hover:bg-primary-700 active:bg-primary-800 focus:bg-primary-700 border-transparent";
-                } else {
-                    const node = document.getElementById(el);
-                    node.className += " text-primary-600 border-primary-600";
-                    [
 
-                    ].forEach((item) => node.classList.remove(item));
-                }
-            });
-        });
-    });
-</script>
-<script>
-    // Initialization for ES Users
-    import {
-        sidenav - 2,
-        initTE,
-    } from "tw-elements";
-
-    initTE({
-        sidenav - 2
-    });
-</script>
 <script>
     function openModal(id) {
         $(`#staticModal${id}`).show();
