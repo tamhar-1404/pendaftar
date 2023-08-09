@@ -1752,7 +1752,7 @@
                                                 onsubmit="alasan(event, {{ $izin->id }})">
                                                 @csrf
                                                 @method('PUT')
-                                                <input type="hidden" name="email" value="{{ $izin->email }}">
+                                                <input type="hidden" name="email" value="{{ $izin->Siswa->email }}">
                                                 <input type="hidden" name="keterangan" value="tolak">
                                                 <button
                                                     class="btn h-7 w-7 rounded-full bg-error/10 p-0 text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25"
