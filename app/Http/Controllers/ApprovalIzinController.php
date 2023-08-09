@@ -211,10 +211,11 @@ class ApprovalIzinController extends Controller
             $mailData = [
                 'content' => 'Absensi Anda telah ditolak dengan alasan: ' . $alasan,
             ];
-            Mail::to($email)->send(new tolakdataEmail($mailData));
+            // Mail::to($email)->send(new tolakdataEmail($mailData));
             $izin->update([
                 'status'=>'tolak',
-                'status2'=>'tolak'
+                'status2'=>'tolak',
+                'alasan' => $alasan
             ]);
             return back()->with('success', 'Berhasil menolak izin');
         }

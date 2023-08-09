@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tolak;
+use App\Models\Approvalizin;
 use App\Http\Requests\StoretolakRequest;
 use App\Http\Requests\UpdatetolakRequest;
 use Illuminate\Http\Request;
@@ -22,7 +23,8 @@ class TolakController extends Controller
             return view('tolak.index', compact('tolaks'));
         }
         $tolaks = Tolak::latest()->paginate(5);
-        return view('tolak.index' , compact('tolaks'));
+        $izin = ApprovalIzin::where('status', 'tolak')->get();
+        return view('tolak.index' , compact('tolaks', 'izin'));
     }
 
     /**
