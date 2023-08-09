@@ -616,7 +616,7 @@
                                                             @if ($items->kegiatan != 'Tidak mengisi')
                                                             <img
                                                                 src="{{ asset('storage/image/' . $items->image) }}"
-                                                                width="50px" height="50px" alt="">
+                                                                width="50px" height="50px" alt="{{ $items->image }}">
                                                             @endif
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 py-2  kamu-tak-diajak">
