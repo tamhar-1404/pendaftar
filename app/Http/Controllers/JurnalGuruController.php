@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreJurnalGuruRequest;
 use App\Http\Requests\UpdateJurnalGuruRequest;
 use App\Models\Guru_admin;
+use Illuminate\Contracts\View\View;
 
 class JurnalGuruController extends Controller
 {
@@ -18,7 +19,7 @@ class JurnalGuruController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request): View
 {
     $guru = Guru_admin::where('name', Auth::user()->name)->first();
     if ($request->has('cari')) {
@@ -65,7 +66,7 @@ class JurnalGuruController extends Controller
      * @param  \App\Models\JurnalGuru  $jurnalGuru
      * @return \Illuminate\Http\Response
      */
-    public function show(JurnalGuru $jurnalGuru)
+    public function show(JurnalGuru $jurnalGuru): View
     {
         return view('jurnal_guru.grafik');
     }
