@@ -36,7 +36,6 @@ class JurnalCommand extends Command
         if ($hariIni != 'Saturday' && $hariIni != 'Sunday') {
             $siswa_sudah = Jurnalsiswa::where('tanggal', $tanggal)->pluck('siswa_id')->toArray();
             $siswa_belum = Siswa::where('role', 'siswa')->whereNotIn('id', $siswa_sudah)->get();
-
             foreach ($siswa_belum as $siswa) {
                 Jurnalsiswa::create([
                     'siswa_id' => $siswa->id,

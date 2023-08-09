@@ -200,6 +200,7 @@ class BlogController extends Controller
 
     public function destroy($id)
     {
+        $blog = Blog::find($id);
         if(Auth()->user()->role == 'Admin'){
             $blog = Blog::findOrFail($id);
             if ($blog->foto) {
