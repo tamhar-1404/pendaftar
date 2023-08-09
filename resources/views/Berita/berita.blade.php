@@ -126,7 +126,6 @@
                 </div>
             </div>
 
-
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <!-- Tempatkan di bawah halaman HTML sebelum tag penutup </body> -->
             <script>
@@ -191,6 +190,10 @@
                 <img src="/admin/noData.png" alt="" width="300px">
             </div>
         @endforelse
+
+    </div>
+    <div class="mt-3">
+        {{ $blog->appends(['cari' => request('cari')])->links() }}
     </div>
 </main>
 {{-- <script>
