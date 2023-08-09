@@ -1698,7 +1698,7 @@
                                                 src="{{ asset('storage/Siswa/' . $izin->Siswa->foto_siswa) }}" alt="avatar" />
                                         </div>
                                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
-                                            {{ $izin->nama }}
+                                            {{ $izin->Siswa->name }}
                                         </h3>
                                         <p class="text-xs+">{{ $izin->keterangan }}</p>
                                         <div class="flex justify-left items-left space-x-3">
@@ -1752,7 +1752,7 @@
                                                 onsubmit="alasan(event, {{ $izin->id }})">
                                                 @csrf
                                                 @method('PUT')
-                                                <input type="hidden" name="email" value="{{ $izin->email }}">
+                                                <input type="hidden" name="email" value="{{ $izin->Siswa->email }}">
                                                 <input type="hidden" name="keterangan" value="tolak">
                                                 <button
                                                     class="btn h-7 w-7 rounded-full bg-error/10 p-0 text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25"
@@ -1958,7 +1958,7 @@
                                     </p>
 
                                     <p class="ml-5 mt-2 text-md text-gray-400">
-                                        {{ $izin->nama }}
+                                        {{ $izin->Siswa->name }}
                                     </p>
 
                                     <p class=" text-md mt-4">
@@ -1966,7 +1966,7 @@
                                     </p>
 
                                     <p class="ml-5 mt-2 text-md text-gray-400">
-                                        {{ $izin->sekolah }}
+                                        {{ $izin->Siswa->sekolah }}
                                     </p>
                                     <p class=" text-md mt-4">
                                         email :

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tolak;
-use App\Models\Approvalizin;
+use App\Models\ApprovalIzin;
 use App\Http\Requests\StoretolakRequest;
 use App\Http\Requests\UpdatetolakRequest;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class TolakController extends Controller
@@ -15,7 +16,7 @@ class TolakController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
@@ -65,7 +66,7 @@ class TolakController extends Controller
      * @param  \App\Models\Tolak  $tolak
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tolak $tolak)
+    public function edit(Tolak $tolak): View
     {
         return view('tolak.detail', compact('tolak'));
     }
