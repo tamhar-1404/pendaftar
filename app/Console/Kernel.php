@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('entities:delete-expired')->daily();
-        $schedule->command('command:jurnal')->dailyAt('22:49')->weekdays();
-        $schedule->command('command:absensi')->dailyAt('22:47')->weekdays();
+        $schedule->command('command:jurnal')->dailyAt('23:59')->weekdays();
+        $schedule->command('command:absensi')->dailyAt('16:00')->weekdays();
     }
     /**
      * Register the commands for the application.
