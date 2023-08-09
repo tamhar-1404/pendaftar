@@ -27,6 +27,7 @@ class AbsensiGuruController extends Controller
             $terimas = ApprovalIzin::whereHas('siswa', function ($q) use ($keyword) {
                 $q->where([['name', 'LIKE', '%'.$keyword.'%'],['sekolah', Auth::user()->sekolah]]);
             })
+            ->orWhere('tanggal', 'LIKE', '%'.$keyword.'%')->whereRelation('siswa', 'sekolah', Auth::user()->sekolah)
             ->latest()
             ->paginate(5);
             $terimas->appends(['cari' => $keyword]);

@@ -40,8 +40,9 @@ class AbsensiCommand extends Command
                 ApprovalIzin::create([
                     'siswa_id' => $siswa->id,
                     'tanggal' => $tanggal,
+                    'keterangan'=>'Alfa',
                     'jam' => Carbon::now()->format('H:i'),
-                    'status' => 'Alfa',
+                    'status' => 'terimaabsen'
                 ]);
             }
         }

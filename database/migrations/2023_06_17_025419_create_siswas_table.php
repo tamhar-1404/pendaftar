@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('tanggal')->nullable();
             $table->string('jurusan')->nullable();
             $table->string('sekolah')->nullable();
-            $table->string('alamat')->nullable();
+            $table->longText('alamat')->nullable();
             $table->string('nisn')->nullable();
             $table->string('no')->nullable();
             $table->string('jeniskelamin')->nullable();
