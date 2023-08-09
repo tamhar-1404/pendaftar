@@ -205,6 +205,7 @@
                                                             width="100px" alt="">
                                                     </td>
                                                     <td class="whitespace-nowrap px-4 py-4 kamu-tak-diajak">
+                                                        @if ($items->kegiatan != "Tidak mengisi")
                                                         <button type="button"
                                                             class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
                                                             data-te-toggle="modal"
@@ -213,6 +214,7 @@
                                                             <span
                                                                 class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
                                                         </button>
+                                                        @endif
                                                     </td>
                                                 </tr>
 

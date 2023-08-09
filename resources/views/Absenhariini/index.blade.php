@@ -363,7 +363,7 @@
                                                             <span x-text="index+1"></span>
                                                           </td>
                                                           <td class="py-3">
-                                                            <span x-text="item.nama"></span>
+                                                            <span x-text="item.siswa.name"></span>
                                                           </td>
                                                           <td class="py-3">
                                                             <span x-text="item.tanggal"></span>
@@ -431,16 +431,16 @@
                                                 },
                                                 currentPage: 1,
                                                 sorted: {
-                                                    field: 'nama',
+                                                    field: 'siswa_id',
                                                     rule: 'asc'
                                                 },
                                                 initData() {
-                                                    this.items = hadir.sort(this.compareOnKey('nama', 'asc'))
+                                                    this.items = hadir.sort(this.compareOnKey('siswa_id', 'asc'))
                                                     this.showPages()
                                                 },
                                                 compareOnKey(key, rule) {
                                                     return function(a, b) {
-                                                    if (key === 'nama' || key === 'tanggal' || key === 'keterangan' || key === 'jam')  {
+                                                    if (key === 'siswa_id' || key === 'tanggal' || key === 'keterangan' || key === 'jam')  {
                                                         let comparison = 0
                                                         const fieldA = a[key].toUpperCase()
                                                         const fieldB = b[key].toUpperCase()
@@ -480,7 +480,7 @@
                                                     if (value.length > 1) {
                                                     const options = {
                                                         shouldSort: true,
-                                                        keys: ['nama'],
+                                                        keys: ['siswa_id'],
                                                         threshold: 0
                                                     }
                                                     const fuse = new Fuse(hadir, options)
