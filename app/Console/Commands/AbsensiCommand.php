@@ -33,21 +33,30 @@ class AbsensiCommand extends Command
     {
         $hariIni = Carbon::now()->format('l');
         $tanggal = Carbon::now()->format('Y-m-d');
+
         if ($hariIni != 'Saturday' && $hariIni != 'Sunday') {
-            $siswa_sudah_absen = ApprovalIzin::where('tanggal', $tanggal)->pluck('siswa_id')->toArray();
-            $siswa_belum_jurnal = Siswa::where('role', 'siswa')->whereNotIn('id', $siswa_sudah_absen)->get();
-            foreach ($siswa_belum_jurnal as $siswa) {
-                ApprovalIzin::create([
-                    'siswa_id' => $siswa->id,
-                    'tanggal' => $tanggal,
-                    'keterangan'=>'Alfa',
-                    'jam' => Carbon::now()->format('H:i'),
-                    'status' => 'terimaabsen'
-                ]);
+
+            $approv = ApprovalIzin::where('tanggal', $tanggal)->count();
+
+            if ($approv === 0) {
+                $siswa_sudah_absen = ApprovalIzin::where('tanggal', $tanggal)->pluck('siswa_id')->toArray();
+                $siswa_belum_jurnal = Siswa::where('role', 'siswa')->whereNotIn('id', $siswa_sudah_absen)->get();
+
+                foreach ($siswa_belum_jurnal as $siswa) {
+                    ApprovalIzin::create([
+                        'siswa_id' => $siswa->id,
+                        'tanggal' => $tanggal,
+                        'keterangan' => 'Alfa',
+                        'jam' => Carbon::now()->format('H:i'),
+                        'status' => 'terimaabsen'
+                    ]);
+                }
             }
         }
+
         $this->info('Absensi entries generated successfully.');
 
         return 0;
-    }
+
+}
 }

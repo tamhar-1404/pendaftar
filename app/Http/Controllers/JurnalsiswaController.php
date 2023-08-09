@@ -35,28 +35,6 @@ class JurnalsiswaController extends Controller
     public function index(Request $request)
     {
         $hariIni = Carbon::now()->format('l');
-        if ($hariIni !== 'Saturday' && $hariIni !== 'Sunday') {
-            if (Auth::user()->Siswa->role == 'siswa') {
-                $jam = Carbon::now()->format('H-i');
-                if ($jam > '22-00') {
-                    $hari = Carbon::now()->format('Y-m-d');
-                    $yang_sudah_hari_ini = Jurnalsiswa::where('tanggal', $hari)->pluck('id')->toArray();
-                    $cek_semua_siswa_yang_belum = Siswa::where('role', 'siswa')->whereNotIn('id', $yang_sudah_hari_ini);
-                    if ($cek_semua_siswa_yang_belum->exists()) {
-                        foreach ($cek_semua_siswa_yang_belum->get() as $siswa) {
-                            Jurnalsiswa::create([
-                                'image' => "Tidak mengisi",
-                                'siswa_id' => Auth::user()->Siswa->id,
-                                'tanggal' => $hari,
-                                'kegiatan' => "Tidak mengisi",
-                                'status' => 'Tidak mengisi'
-                            ]);
-                        }
-                    }
-                }
-            }
-        }
-
     if ($request->has('cari')) {
         $keyword = $request->cari;
 
