@@ -207,7 +207,7 @@
                                                                         {{ $tolak->alasan }}</td>
                                                                     <td class="whitespace-nowrap px-4 py-4">
                                                                         <div class="w-16 flex cursor-pointer h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
-                                                                        data-te-toggle="modal"
+                                                                        data-te-toggle="modal" onclick="openModal({{$tolak->id}})"
                                                                         data-modal-target="staticModal{{ $tolak->id }}"
                                                                         data-modal-toggle="staticModal{{ $tolak->id }}">
                                                                             <span class=" p-1 cursor-pointer  font-semibold dark:hover:text-black">Lihat</span>
@@ -233,191 +233,10 @@
                                     </div>
                                     {{-- end tabel --}}
                                     {{-- paginate --}}
-                                    @forelse ($tolaks as $modal)
-                                    {{-- modal --}}
-                                        <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
-                                            class="kamu-tak-diajak fixed top-0 left-0 right-0 z-[999] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                            <div class="relative w-full max-w-2xl max-h-full">
-                                                <!-- Modal content -->
-                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                    <!-- Modal header -->
-                                                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                                            Detail laporan
-                                                        </h3>
-                                                        <button type="button"
-                                                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                                            data-modal-hide="staticModal{{ $modal->id }}">
-                                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                                                xmlns="http://www.w3.org/2000/svg">
-                                                                <path fill-rule="evenodd"
-                                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                                    clip-rule="evenodd"></path>
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                    <!-- Modal body -->
-                                                    <div class="flex w-full justify-center mt-10">
-                                                        <img class="w-[20%] h-[20%] rounded-full" src="{{asset('storage/ditolak/'. $modal->foto_siswa)}}" alt="">
-                                                    </div>
-                                                    <div class="p-6 grid grid-cols-2 gap-5">
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                nama
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modal->name }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                Tanggal lahir
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modal->tanggal }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                Tanggal lahir
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modal->tempat }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                jurusan
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modal->jurusan }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                email
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modal->email }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                nomer telepon
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modal->no }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                sekolah
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modal->sekolah }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                alasan
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modal->alasan }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                kelas
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modal->kelas }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                nisn
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modal->nisn }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                jenis kelamin
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modal->jeniskelamin }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                alamat
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modal->alamat }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                magang awal
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modal->magang_awal }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                magang akhir
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modal->magang_akhir }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                Bukti
-                                                            </p>
-                                                            <img src="{{ asset('storage/ditolak/' . $modal->sp_diri) }}" alt=""
-                                                                srcset="">
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                Bukti
-                                                            </p>
-                                                            <img src="{{ asset('storage/ditolak/' . $modal->sp_ortu) }}" alt=""
-                                                                srcset="">
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                Bukti
-                                                            </p>
-                                                            <img src="{{ asset('storage/ditolak/' . $modal->cv) }}" alt=""
-                                                                srcset="">
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                Bukti
-                                                            </p>
-                                                            <img src="{{ asset('storage/ditolak/' . $modal->skck) }}" alt=""
-                                                                srcset="">
-                                                        </div>
 
-                                                    </div>
-                                                    <!-- Modal footer -->
-                                                    <div
-                                                        class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                                        <button data-modal-hide="staticModal{{ $modal->id }}" type=""
-                                                            class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @empty
-                                    @endforelse
                                 </template>
                                 <template x-if="tab === 'password'">
                                     <div class="flex flex-col">
-                                        izin
                                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                                 <div class="overflow-hidden">
@@ -452,7 +271,7 @@
                                                                         {{ $data->alasan }}</td>
                                                                     <td class="whitespace-nowrap px-4 py-4">
                                                                         <div class="w-16 flex cursor-pointer h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
-                                                                        data-te-toggle="modal"
+                                                                        data-te-toggle="modal" onclick="ModalIzin({{$data->id}})"
                                                                         data-modal-target="staticModal{{ $data->id }}izin"
                                                                         data-modal-toggle="staticModal{{ $data->id }}izin">
                                                                             <span class=" p-1 cursor-pointer  font-semibold dark:hover:text-black">Lihat</span>
@@ -477,98 +296,7 @@
                                         </div>
                                     </div>
                                     {{-- end tabel --}}
-                                    {{-- paginate --}}
-                                    @forelse ($izin as $modalll)
-                                    {{-- modal --}}
-                                        <div id="staticModalizin{{ $modalll->id }}" tabindex="-1" aria-hidden="true"
-                                            class="kamu-tak-diajak fixed top-0 left-0 right-0 z-[999] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                            <div class="relative w-full max-w-2xl max-h-full">
-                                                <!-- Modal content -->
-                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                    <!-- Modal header -->
-                                                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                                            Detail Tolak Izin
-                                                        </h3>
-                                                        <button type="button"
-                                                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                                            data-modal-hide="staticModalizin{{ $modalll->id }}">
-                                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                                                xmlns="http://www.w3.org/2000/svg">
-                                                                <path fill-rule="evenodd"
-                                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                                    clip-rule="evenodd"></path>
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                    <!-- Modal body -->
-                                                    <div class="flex w-full justify-center mt-10">
-                                                        <img class="w-[20%] h-[20%] rounded-full" src="{{asset('storage/Siswa/'. $modalll->siswa->foto_siswa)}}" alt="">
-                                                    </div>
-                                                    <div class="p-6 grid grid-cols-2 gap-5">
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                nama
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modalll->siswa->name }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                Tanggal lahir
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modalll->dari }} -> {{$data->sampai}}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                Keterangan
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modalll->keterangan }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                Sekolah
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modalll->siswa->sekolah }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                Alasan
-                                                            </p>
-                                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                                {{ $modalll->alasan }}
-                                                            </p>
-                                                        </div>
 
-                                                        <div>
-                                                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                                                Bukti
-                                                            </p>
-                                                            <img src="{{ asset('storage/bukti_izin/' . $modalll->bukti) }}" alt=""
-                                                                srcset="">
-                                                        </div>
-
-                                                    </div>
-                                                    <!-- Modal footer -->
-                                                    <div
-                                                        class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                                        <button data-modal-hide="staticModalizin{{ $modalll->id }}" type=""
-                                                            class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @empty
-                                    @endforelse
-
-                                    {{-- end modal --}}
                                 </template>
 
                             </div>
@@ -582,7 +310,280 @@
 
 
 
+    @forelse ($tolaks as $modal)
+    {{-- modal --}}
+        <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true" style=" backdrop-filter: blur(10px);"
+            class="kamu-tak-diajak fixed top-0 left-0 right-0 z-[999] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            Detail laporan
+                        </h3>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-hide="staticModal{{ $modal->id }}" onclick="closeModal({{$modal->id}})">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="flex w-full justify-center mt-10">
+                        <img class="w-[20%] h-[20%] rounded-full" src="{{asset('storage/ditolak/'. $modal->foto_siswa)}}" alt="">
+                    </div>
+                    <div class="p-6 grid grid-cols-2 gap-5">
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                nama
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->name }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Tanggal lahir
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->tanggal }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Tanggal lahir
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->tempat }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                jurusan
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->jurusan }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                email
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->email }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                nomer telepon
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->no }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                sekolah
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->sekolah }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                alasan
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->alasan }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                kelas
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->kelas }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                nisn
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->nisn }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                jenis kelamin
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->jeniskelamin }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                alamat
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->alamat }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                magang awal
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->magang_awal }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                magang akhir
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $modal->magang_akhir }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Bukti
+                            </p>
+                            <img src="{{ asset('storage/ditolak/' . $modal->sp_diri) }}" alt=""
+                                srcset="">
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Bukti
+                            </p>
+                            <img src="{{ asset('storage/ditolak/' . $modal->sp_ortu) }}" alt=""
+                                srcset="">
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Bukti
+                            </p>
+                            <img src="{{ asset('storage/ditolak/' . $modal->cv) }}" alt=""
+                                srcset="">
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Bukti
+                            </p>
+                            <img src="{{ asset('storage/ditolak/' . $modal->skck) }}" alt=""
+                                srcset="">
+                        </div>
 
+                    </div>
+                    <!-- Modal footer -->
+                    <div
+                        class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                        <button data-modal-hide="staticModal{{ $modal->id }}" type="button" onclick="closeModal({{$modal->id}})"
+                            class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @empty
+    @endforelse
+
+    {{-- izin --}}
+    @forelse ($izin as $data)
+    {{-- modal --}}
+        <div id="staticModalizin{{ $data->id }}" tabindex="-1" aria-hidden="true" style=" backdrop-filter: blur(10px);"
+            class="kamu-tak-diajak  fixed top-0 left-0 right-0 z-[999] hidden w-full justify-center p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full" >
+            <div class="relative w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            Detail Tolak Izin
+                        </h3>
+                        <button type="button" onclick="closeModalizin({{$data->id}})"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-hide="staticModaltolak{{ $data->id }}">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="flex w-full justify-center mt-10">
+                        <img class="w-[20%] h-[20%] rounded-full" src="{{asset('storage/Siswa/'. $data->siswa->foto_siswa)}}" alt="">
+                    </div>
+                    <div class="p-6 grid grid-cols-2 gap-5">
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                nama
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $data->siswa->name }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Tanggal lahir
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $data->dari }} -> {{$data->sampai}}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Keterangan
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $data->keterangan }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Sekolah
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $data->siswa->sekolah }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Alasan
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                {{ $data->alasan }}
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                Bukti
+                            </p>
+                            <img src="{{ asset('storage/bukti_izin/' . $data->bukti) }}" alt=""
+                                srcset="">
+                        </div>
+
+                    </div>
+                    <!-- Modal footer -->
+                    <div
+                        class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                        <button data-modal-hide="staticModaltolak{{ $data->id }}" type="" onclick="closeModalizin({{$data->id}})"
+                            class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @empty
+    @endforelse
+
+    {{-- end modal --}}
 
 
 
@@ -603,11 +604,25 @@
 
 <script>
     function openModal(id) {
+        // const modalpendaftaran = document.getElementById("staticModal"+id); apakah ini sudah benar ?
+        var display1 = document.getElementById("staticModal"+id);
+        display1.style.display = "flex";
+        console.log(id);
         $(`#staticModal${id}`).show();
+    }
+    function ModalIzin(id) {
+        // const modalpendaftaran = document.getElementById("staticModal"+id); apakah ini sudah benar ?
+        console.log(id);
+        var display = document.getElementById("staticModalizin"+id);
+        display.style.display = "flex";
+        $(`#staticModalizin${id}`).show();
     }
 
     function closeModal(id) {
         $(`#staticModal${id}`).hide();
+    }
+    function closeModalizin(id) {
+        $(`#staticModalizin${id}`).hide();
     }
 </script>
 
