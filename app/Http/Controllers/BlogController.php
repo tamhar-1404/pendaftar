@@ -26,7 +26,7 @@ class BlogController extends Controller
         if(Auth()->user()->role == 'Admin'){
             if ($request->has('cari')) {
                 $keyword = $request->cari;
-                $blog = Blog::Where('judul', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->latest()->paginate(6);
+                $blog = Blog::Where('judul', 'LIKE', '%' . $keyword . '%')->orWhere('tanggal', 'LIKE', '%' . $keyword . '%')->latest()->paginate(8);
                 return view('Berita.index', compact('blog'));
 
                 $blog->appends(['cari' => $keyword]);
@@ -34,7 +34,7 @@ class BlogController extends Controller
                 return view('Berita.index', compact('blog'));
             }
 
-            $blog = Blog::latest()->paginate(6);
+            $blog = Blog::latest()->paginate(8);
             return view('Berita.index', compact('blog'));
         }else{
             return redirect()->back();
