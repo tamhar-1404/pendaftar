@@ -17,6 +17,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use PhpOffice\PhpWord\IOFactory;
 use DB;
 use Carbon\Carbon; // Import Carbon untuk bekerja dengan tanggal
+use Illuminate\Contracts\View\View;
 
 class JurnaladminController extends Controller
 {
@@ -25,7 +26,7 @@ class JurnaladminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $item = Jurnalsiswa::all();
         if ($request->has('cari')) {
@@ -58,7 +59,6 @@ class JurnaladminController extends Controller
             $tdk_mengisi_des = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 12)->count();
 
             $item = Jurnalsiswa::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(10);
-            return view('jurnal_admin.index', compact('item','mengisi_jan','mengisi_feb','mengisi_mar','mengisi_apr','mengisi_mei','mengisi_jun','mengisi_jul','mengisi_aug','mengisi_sep','mengisi_okt','mengisi_nov','mengisi_des','tdk_mengisi_jan','tdk_mengisi_feb','tdk_mengisi_mar','tdk_mengisi_apr','tdk_mengisi_mei','tdk_mengisi_jun','tdk_mengisi_jul','tdk_mengisi_aug','tdk_mengisi_sep','tdk_mengisi_nov','tdk_mengisi_okt','tdk_mengisi_nov','tdk_mengisi_des'));
 
             $item->appends(['cari' => $keyword]);
             return view('jurnal_admin.index', compact('item'));
@@ -198,7 +198,7 @@ class JurnaladminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(Request $request): View
     {
         $item = JurnalSiswa::where('nama', 'LIKE', $request->serch)->GET();
         $siswa = $request->serch;

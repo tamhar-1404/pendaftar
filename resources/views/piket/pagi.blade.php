@@ -707,67 +707,70 @@
                                         {{-- nama --}}
                                         @foreach ($catatan as $data)
                                             <div
-                                                class=" flex text-sm font-medium text-left ml-5 mt-5 mb-3 flex items-center justify-between">
-                                                {{ $data->catatan }}
-                                                <svg data-modal-target="authentication-modaledit{{ $data->id }}"
-                                                    data-modal-toggle="authentication-modaledit{{ $data->id }}"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                    class="w-6 h-6 pt-2 pr-2">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                                </svg>
-                                                <!-- Main modal -->
-                                                <div id="authentication-modaledit{{ $data->id }}" tabindex="-1"
-                                                    aria-hidden="true"
-                                                    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                                    <div class="relative w-full max-w-md max-h-full">
-                                                        <!-- Modal content -->
-                                                        <div
-                                                            class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                            <button type="button"
-                                                                class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                                data-modal-hide="authentication-modaleditt{{ $data->hari }}">
-                                                                <svg aria-hidden="true" class="w-5 h-5"
-                                                                    fill="currentColor" viewBox="0 0 20 20"
-                                                                    xmlns="http://www.w3.org/2000/svg">
-                                                                    <path fill-rule="evenodd"
-                                                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                                        clip-rule="evenodd"></path>
-                                                                </svg>
-                                                                <span class="sr-only">Close modal</span>
-                                                            </button>
-                                                            <div class="px-6 py-6 lg:px-8">
-                                                                <h3
-                                                                    class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-                                                                    Edit Catatan</h3>
-                                                                <form class="space-y-6"
-                                                                    action="{{ route('piket.update', $data->id) }}"
-                                                                    method="post" enctype="multipart/form-data">
-                                                                    @csrf
-                                                                    @method('PUT')
+                                                class="flex text-sm font-medium text-left ml-5 mt-5 mb-3 items-center justify-between">
+                                                <span>{{ $data->catatan }}</span>
+                                                <div class="flex items-center">
+                                                    <button type="submit"
+                                                        data-modal-target="authentication-modaledit{{ $data->id }}"
+                                                        data-modal-toggle="authentication-modaledit{{ $data->id }}"
+                                                        class="text-blue-400 hover:text-blue-600 cursor-pointer">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </button>
 
-                                                                    <textarea name="catatan" id="" cols="40" rows="5">{{ $data->catatan }}</textarea>
-                                                                    <button
-                                                                        class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
-                                                                        type="submit">kirim</button>
-                                                                </form>
-                                                            </div>
+
+                                                    <form action="{{ route('piket.destroy', $data->id) }}"
+                                                        method="post" id="confirm-form-{{ $data->id }}"
+                                                        class="flex items-center">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="submit" onclick="confirmDelete(event)"
+                                                            class="text-red-500 hover:text-red-700 cursor-pointer"
+                                                            style="margin-right: 10px; margin-left: 10px;">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                            <!-- Main modal -->
+                                            <div id="authentication-modaledit{{ $data->id }}" tabindex="-1"
+                                                aria-hidden="true"
+                                                class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                <div class="relative w-full max-w-md max-h-full">
+                                                    <!-- Modal content -->
+                                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                        <button type="button"
+                                                            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                                            data-modal-hide="authentication-modaledit">
+                                                            <svg aria-hidden="true" class="w-5 h-5"
+                                                                fill="currentColor" viewBox="0 0 20 20"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd"
+                                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                                    clip-rule="evenodd"></path>
+                                                            </svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                        <div class="px-6 py-6 lg:px-8">
+                                                            <h3
+                                                                class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
+                                                                Edit Catatan</h3>
+                                                            <form class="space-y-6"
+                                                                action="{{ route('piket.update', $data->id) }}"
+                                                                method="post" enctype="multipart/form-data">
+                                                                @csrf
+                                                                @method('PUT')
+
+                                                                <textarea name="catatan" id="" cols="40" rows="5">{{ $data->catatan }}</textarea>
+                                                                <button
+                                                                    class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
+                                                                    type="submit">kirim</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{-- end modal --}}
-
-                                                <form action="{{ route('piket.destroy', $data->id) }}"
-                                                    style="margin-right: 10px; margin-left: -800px;" method="post"
-                                                    id="confirm-form-{{ $data->id }}">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit" onclick="confirmDelete(event)">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
                                             </div>
+                                            {{-- end modal --}}
                                         @endforeach
 
 
@@ -807,13 +810,14 @@
                             </script>
                             {{-- sterp 2 --}}
                             <div id="content2" class="card-content" style="display: none">
-                                <div class="flex grid-cols-5 gap-4  w-lg ">
+                                <div class="flex grid-cols-1 mb:grid-cols-3 lg:grid-cols-5 gap-4  w-lg "
+                                    id="#pagi">
                                     {{-- senin --}}
                                     <div
                                         class=" w-full h-full  rounded-md {{ strtolower($day) === 'monday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }}">
                                         {{-- button edit --}}
-                                        <div class="flex justify-end" data-modal-target="authentication-modal6"
-                                            data-modal-toggle="authentication-modal6">
+                                        <div class="flex justify-end" data-modal-target="authentication-modal1"
+                                            data-modal-toggle="authentication-modal1">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                 class="w-6 h-6 pt-2 pr-2">
@@ -826,19 +830,18 @@
                                             Senin
                                         </div>
                                         {{-- nama --}}
-                                        @forelse ( $senin_sore as $item)
-
+                                        @forelse ( $senin as $item)
                                             <div class="text-sm font-medium text-center mt-5">{{ $item->siswa->name }}
                                             </div>
                                             <!-- Main modal -->
-                                            <div id="authentication-modal6" tabindex="-1" aria-hidden="true"
+                                            <div id="authentication-modal1" tabindex="-1" aria-hidden="true"
                                                 class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 <div class="relative w-full max-w-md max-h-full">
                                                     <!-- Modal content -->
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal6">
+                                                            data-modal-hide="authentication-modal1">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -861,15 +864,17 @@
                                                                     value="{{ $item->waktu }}">
                                                                 <input type="hidden" name="hari"
                                                                     value="{{ $item->hari }}">
-                                                                @foreach ($senin as $item)
-                                                                    <div class="flex gap-3 items-center">
-                                                                        <input type="checkbox"
-                                                                            name="nama_siswa_rubah[]"
-                                                                            value="{{ $item->id }}"
-                                                                            id="">
-                                                                        <p>{{ $item->siswa->name }}</p>
-                                                                    </div>
-                                                                @endforeach
+                                                                <div class="grid grid-cols-2 w-full">
+                                                                    @foreach ($senin as $item)
+                                                                        <div class="flex gap-3 items-center">
+                                                                            <input type="checkbox"
+                                                                                name="nama_siswa_rubah[]"
+                                                                                value="{{ $item->id }}"
+                                                                                id="">
+                                                                            <p>{{ $item->siswa->name }}</p>
+                                                                        </div>
+                                                                    @endforeach
+                                                                </div>
                                                                 <h4>Centang yang ingin di tambahkan</h4>
                                                                 <div id="listsiswa">
                                                                     <div id="wadah">
@@ -910,8 +915,8 @@
                                     <div
                                         class=" w-full h-full {{ strtolower($day) === 'tuesday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md">
                                         {{-- button edit --}}
-                                        <div class="flex justify-end" data-modal-target="authentication-modal7"
-                                            data-modal-toggle="authentication-modal7">
+                                        <div class="flex justify-end" data-modal-target="authentication-modal2"
+                                            data-modal-toggle="authentication-modal2">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                 class="w-6 h-6 pt-2 pr-2">
@@ -924,18 +929,18 @@
                                             Selasa
                                         </div>
                                         {{-- nama --}}
-                                        @forelse ( $selasa_sore as $item)
+                                        @forelse ( $selasa as $item)
                                             <div class="text-sm font-medium text-center mt-5">{{ $item->siswa->name }}
                                             </div>
                                             <!-- Main modal -->
-                                            <div id="authentication-modal7" tabindex="-1" aria-hidden="true"
+                                            <div id="authentication-modal2" tabindex="-1" aria-hidden="true"
                                                 class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 <div class="relative w-full max-w-md max-h-full">
                                                     <!-- Modal content -->
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal7">
+                                                            data-modal-hide="authentication-modal2">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -983,7 +988,6 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -1005,8 +1009,8 @@
                                     <div
                                         class=" w-full h-full {{ strtolower($day) === 'wednesday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md">
                                         {{-- button edit --}}
-                                        <div class="flex justify-end" data-modal-target="authentication-modal8"
-                                            data-modal-toggle="authentication-modal8">
+                                        <div class="flex justify-end" data-modal-target="authentication-modal3"
+                                            data-modal-toggle="authentication-modal3">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                 class="w-6 h-6 pt-2 pr-2">
@@ -1019,18 +1023,18 @@
                                             Rabu
                                         </div>
                                         {{-- nama --}}
-                                        @forelse ( $rabu_sore as $item)
+                                        @forelse ( $rabu as $item)
                                             <div class="text-sm font-medium text-center mt-5">{{ $item->siswa->name }}
                                             </div>
                                             <!-- Main modal -->
-                                            <div id="authentication-modal8" tabindex="-1" aria-hidden="true"
+                                            <div id="authentication-modal3" tabindex="-1" aria-hidden="true"
                                                 class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 <div class="relative w-full max-w-md max-h-full">
                                                     <!-- Modal content -->
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal8">
+                                                            data-modal-hide="authentication-modal3">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1101,8 +1105,8 @@
                                     <div
                                         class=" w-full h-full {{ strtolower($day) === 'thursday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md ">
                                         {{-- button edit --}}
-                                        <div class="flex justify-end" data-modal-target="authentication-modal9"
-                                            data-modal-toggle="authentication-modal9">
+                                        <div class="flex justify-end" data-modal-target="authentication-modal4"
+                                            data-modal-toggle="authentication-modal4">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                 class="w-6 h-6 pt-2 pr-2">
@@ -1115,18 +1119,18 @@
                                             Kamis
                                         </div>
                                         {{-- nama --}}
-                                        @forelse ( $kamis_sore as $item)
+                                        @forelse ( $kamis as $item)
                                             <div class="text-sm font-medium text-center mt-5">{{ $item->siswa->name }}
                                             </div>
                                             <!-- Main modal -->
-                                            <div id="authentication-modal9" tabindex="-1" aria-hidden="true"
+                                            <div id="authentication-modal4" tabindex="-1" aria-hidden="true"
                                                 class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 <div class="relative w-full max-w-md max-h-full">
                                                     <!-- Modal content -->
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal9">
+                                                            data-modal-hide="authentication-modal4">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1197,8 +1201,8 @@
                                     <div
                                         class=" w-full h-full {{ strtolower($day) === 'friday' ? 'bg-blue-300' : 'bg-[#EAF1FF]' }} rounded-md">
                                         {{-- button edit --}}
-                                        <div class="flex justify-end" data-modal-target="authentication-modal10"
-                                            data-modal-toggle="authentication-modal10">
+                                        <div class="flex justify-end" data-modal-target="authentication-modal5"
+                                            data-modal-toggle="authentication-modal5">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                 class="w-6 h-6 pt-2 pr-2">
@@ -1211,19 +1215,19 @@
                                             Jumat
                                         </div>
                                         {{-- nama --}}
-                                        @forelse ( $jumat_sore as $item)
+                                        @forelse ( $jumat as $item)
                                             <div class="text-sm font-medium text-center mt-5">
                                                 {{ $item->siswa->name }}
                                             </div>
                                             <!-- Main modal -->
-                                            <div id="authentication-modal10" tabindex="-1" aria-hidden="true"
+                                            <div id="authentication-modal5" tabindex="-1" aria-hidden="true"
                                                 class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 <div class="relative w-full max-w-md max-h-full">
                                                     <!-- Modal content -->
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                         <button type="button"
                                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                            data-modal-hide="authentication-modal10">
+                                                            data-modal-hide="authentication-modal5">
                                                             <svg aria-hidden="true" class="w-5 h-5"
                                                                 fill="currentColor" viewBox="0 0 20 20"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1290,7 +1294,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex grid-cols-5 gap-1 w-lg mt-5">
+                                <div class="flex grid-cols-1 mb:grid-cols-3 gap-1 w-lg mt-5" id="#pagi">
                                     {{-- catatan --}}
                                     <div class=" w-full h-30 bg-[#EAF1FF] rounded-md">
 
@@ -1300,22 +1304,22 @@
                                             <div class="text-left font-bold mt-0 ml-5">
                                                 Catatan
                                             </div>
-                                            <button data-modal-target="authentication-modalcatat"
-                                                data-modal-toggle="authentication-modalcatat"
+                                            <button data-modal-target="authentication-modalcatatt"
+                                                data-modal-toggle="authentication-modalcatatt"
                                                 class=" mr-1 text-sm py-1 px-2 border border-blue-400 bg-white font-medium text-blue-400 rounded-md">Tambah</button>
                                             {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2 pr-2">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                             </svg> --}}
                                         </div>
                                         <!-- Main modal -->
-                                        <div id="authentication-modalcatat" tabindex="-1" aria-hidden="true"
+                                        <div id="authentication-modalcatatt" tabindex="-1" aria-hidden="true"
                                             class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                             <div class="relative w-full max-w-md max-h-full">
                                                 <!-- Modal content -->
                                                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                     <button type="button"
                                                         class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                        data-modal-hide="authentication-modalcatat">
+                                                        data-modal-hide="authentication-modalcatatt">
                                                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
                                                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
@@ -1332,9 +1336,7 @@
                                                             action="{{ route('tambahCatatan') }}" method="post"
                                                             enctype="multipart/form-data">
                                                             @csrf
-
                                                             <textarea name="catatan" id="" cols="40" rows="5"></textarea>
-
                                                             <button
                                                                 class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                 type="submit">kirim</button>
@@ -1343,69 +1345,83 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- end modal --}}
+                                        {{-- end modal --
 
 
                                         {{-- nama --}}
-                                        @forelse ($catatan as $catat)
+                                        @foreach ($catatan as $data)
                                             <div
-                                                class="text-sm font-medium text-left ml-5 mt-5 mb-3 flex items-center justify-between">
-                                                {{ $catat->hari }}
-                                                <svg data-modal-target="authentication-modaledit{{ $catat->id }}"
-                                                    data-modal-toggle="authentication-modaledit{{ $catat->id }}"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                    class="w-6 h-6 pt-2 pr-2">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                                </svg>
-                                                <!-- Main modal -->
-                                                <div id="authentication-modaledit{{ $catat->id }}" tabindex="-1"
-                                                    aria-hidden="true"
-                                                    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                                    <div class="relative w-full max-w-md max-h-full">
-                                                        <!-- Modal content -->
-                                                        <div
-                                                            class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                            <button type="button"
-                                                                class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                                data-modal-hide="authentication-modaleditt">
-                                                                <svg aria-hidden="true" class="w-5 h-5"
-                                                                    fill="currentColor" viewBox="0 0 20 20"
-                                                                    xmlns="http://www.w3.org/2000/svg">
-                                                                    <path fill-rule="evenodd"
-                                                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                                        clip-rule="evenodd"></path>
-                                                                </svg>
-                                                                <span class="sr-only">Close modal</span>
-                                                            </button>
-                                                            <div class="px-6 py-6 lg:px-8">
-                                                                <h3
-                                                                    class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-                                                                    Tambah Catatan</h3>
-                                                                <form class="space-y-6"
-                                                                    action="{{ route('tambahCatatan') }}"
-                                                                    method="post" enctype="multipart/form-data">
-                                                                    @csrf
-                                                                    @method('PUT') <!-- Use PUT method -->
-                                                                    <textarea name="catatan" id="" cols="40" rows="5"></textarea>
+                                                class="flex text-sm font-medium text-left ml-5 mt-5 mb-3 items-center justify-between">
+                                                <span>{{ $data->catatan }}</span>
+                                                <div class="flex items-center">
+                                                    <button type="submit"
+                                                        data-modal-target="authentication-modaleditt{{ $data->id }}"
+                                                        data-modal-toggle="authentication-modaleditt{{ $data->id }}"
+                                                        class="text-blue-400 hover:text-blue-600 cursor-pointer">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </button>
 
-                                                                    <button
-                                                                        class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
-                                                                        type="submit">kirim</button>
-                                                                </form>
 
-                                                            </div>
+                                                    <form action="{{ route('piket.destroy', $data->id) }}"
+                                                        method="post" id="confirm-form-{{ $data->id }}"
+                                                        class="flex items-center">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="submit" onclick="confirmDelete(event)"
+                                                            class="text-red-500 hover:text-red-700 cursor-pointer"
+                                                            style="margin-right: 10px; margin-left: 10px;">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                            <!-- Main modal -->
+                                            <div id="authentication-modaleditt{{ $data->id }}" tabindex="-1"
+                                                aria-hidden="true"
+                                                class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                <div class="relative w-full max-w-md max-h-full">
+                                                    <!-- Modal content -->
+                                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                        <button type="button"
+                                                            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                                            data-modal-hide="authentication-modaledittt">
+                                                            <svg aria-hidden="true" class="w-5 h-5"
+                                                                fill="currentColor" viewBox="0 0 20 20"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd"
+                                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                                    clip-rule="evenodd"></path>
+                                                            </svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                        <div class="px-6 py-6 lg:px-8">
+                                                            <h3
+                                                                class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
+                                                                Edit Catatan</h3>
+                                                            <form class="space-y-6"
+                                                                action="{{ route('piket.update', $data->id) }}"
+                                                                method="post" enctype="multipart/form-data">
+                                                                @csrf
+                                                                @method('PUT')
+
+                                                                <textarea name="catatan" id="" cols="40" rows="5">{{ $data->catatan }}</textarea>
+                                                                <button
+                                                                    class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
+                                                                    type="submit">kirim</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{-- end modal --}}
                                             </div>
-                                        @empty
-                                        @endforelse
+                                            {{-- end modal --}}
+                                        @endforeach
+
+
 
 
                                     </div>
+
                                 </div>
                             </div>
                             {{-- step 3 --}}

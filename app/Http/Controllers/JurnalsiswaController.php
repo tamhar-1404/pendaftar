@@ -68,7 +68,7 @@ class JurnalsiswaController extends Controller
 
         $item->appends(['cari' => $keyword]);
     } else {
-        $item = Jurnalsiswa::where('siswa_id', Auth::user()->Siswa->id)->where('status', 'mengisi')->latest('created_at')->paginate(5);
+        $item = Jurnalsiswa::where('siswa_id', Auth::user()->Siswa->id)->latest('created_at')->paginate(5);
     }
 
     return view('jurnal_siswa.index', compact('item'));

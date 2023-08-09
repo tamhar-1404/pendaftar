@@ -9,7 +9,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <title>Login</title>
     <script src="https://cdn.tailwindcss.com%22%3E/"></script>
     <script>
@@ -26,15 +27,19 @@
     <script src="lineone/js/app.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
+        rel="stylesheet" />
     <script>
         /**
-        * THIS SCRIPT REQUIRED FOR PREVENT FLICKERING IN SOME BROWSERS
-        */
+         * THIS SCRIPT REQUIRED FOR PREVENT FLICKERING IN SOME BROWSERS
+         */
         localStorage.getItem("_x_darkMode_on") === "true" &&
             document.documentElement.classList.add("dark");
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -42,7 +47,7 @@
 
 <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
 
-    @if(session()->has('limitbang'))
+    @if (session()->has('limitbang'))
         <script>
             toastr.error("{{ session('limitbang') }}");
         </script>
@@ -98,7 +103,8 @@
         <main class="flex w-full flex-col items-center bg-white dark:bg-navy-700 lg:max-w-md">
             <div class="flex w-full max-w-sm grow flex-col justify-center p-5">
                 <div class="text-center">
-                    <img class="mx-auto h-16 w-16 lg:hidden" src="{{ asset('admin/assets/images/Logo.png') }}" alt="logo" />
+                    <img class="mx-auto h-16 w-16 lg:hidden" src="{{ asset('admin/assets/images/Logo.png') }}"
+                        alt="logo" />
                     <div class="mt-4">
                         <h2 class="text-2xl font-semibold text-slate-600 dark:text-navy-100">
                             Selamat Datang
@@ -150,15 +156,15 @@
                                     type="checkbox" />
                                 <p class="line-clamp-1 cursor-pointer text-sm" onclick="showModal()">Kebijakan privasi
                                 </p>
-                                <div id="myModal" class="modal hidden">
+                                <div id="myModal" class="modal hidden ">
                                     <div class="modal-overlay"></div>
-                                    <div class="modal-content">
+                                    <div class="modal-content ">
                                         <span class="close absolute top-2 right-2 text-gray-600 cursor-pointer "
                                             onclick="closeModal()">&times;</span>
                                         <div class="modal-inner-content">
-                                            <img src="http://127.0.0.1:8000/siswa/images/hummasoft.png" class="w-40"
+                                            <img src="http://127.0.0.1:8000/siswa/images/hummasoft.png" class="w-1/2 md:w-40"
                                                 alt=""> <br>
-                                            <hr><br>
+                                            <hr  class="w-full my-4"><br>
                                             <h3 class="font-semibold">Privacy Policy untuk Hummasoft Technology
                                             </h3>
                                             <br>
@@ -237,6 +243,7 @@
                                         background-color: rgba(0, 0, 0, 0.5);
                                         backdrop-filter: blur(10px);
                                     }
+
                                     .modal-content {
                                         z-index: 60;
                                         position: fixed;
@@ -251,9 +258,25 @@
                                         overflow-y: auto;
                                         padding: 20px;
                                     }
+
+                                    @media (max-width: 768px) {
+
+                                        /* Atur breakpoint sesuai kebutuhan */
+                                        .modal-content {
+                                            top: 50%;
+                                            transform: translateY(-50, -50);
+                                            left: 50%;
+                                            width: 80%;
+                                            height: 80%;
+                                            border-radius: 10;
+                                            /* Hapus sudut bulat untuk tampilan penuh */
+                                        }
+                                    }
+
                                     .modal-inner-content {
                                         max-height: 100%;
                                     }
+
                                     .close {
                                         top: 10px;
                                         right: 10px;
@@ -265,6 +288,7 @@
                                         modal.classList.remove("hidden");
                                         document.body.style.overflow = "hidden";
                                     }
+
                                     function closeModal() {
                                         var modal = document.getElementById("myModal");
                                         modal.classList.add("hidden");

@@ -1353,6 +1353,7 @@
                                                                 alt="" srcset="" class="w-20">
                                                         </td>
                                                         <td class="whitespace-nowrap px-4 py-4">
+                                                            @if ($jurnal->kegiatan != 'Tidak mengisi')
                                                             <button
                                                                 class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
                                                                 data-te-toggle="modal"
@@ -1360,6 +1361,7 @@
                                                                 data-modal-toggle="staticModal{{ $jurnal->id }}">
                                                                 <span class=" p-1  font-semibold ">Lihat</span>
                                                             </button>
+                                                            @endif
                                                         </td>
                                                     </tr>
 

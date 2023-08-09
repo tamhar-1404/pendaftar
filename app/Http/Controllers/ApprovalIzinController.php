@@ -214,7 +214,8 @@ class ApprovalIzinController extends Controller
             Mail::to($email)->send(new tolakdataEmail($mailData));
             $izin->update([
                 'status'=>'tolak',
-                'status2'=>'tolak'
+                'status2'=>'tolak',
+                'alasan' => $alasan
             ]);
             return back()->with('success', 'Berhasil menolak izin');
         }

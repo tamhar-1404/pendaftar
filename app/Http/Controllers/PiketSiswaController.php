@@ -7,6 +7,7 @@ use App\Models\Anggota_piket;
 use App\Models\Piket;
 use App\Http\Requests\StorePiket_siswaRequest;
 use App\Http\Requests\UpdatePiket_siswaRequest;
+use App\Models\Catatan;
 
 class PiketSiswaController extends Controller
 {
@@ -24,7 +25,7 @@ class PiketSiswaController extends Controller
         $rabu = Anggota_piket::where('hari', 'LIKE', 'rabu')->where('waktu', 'LIKE', 'pagi')->get();
         $kamis = Anggota_piket::where('hari', 'LIKE', 'kamis')->where('waktu', 'LIKE', 'pagi')->get();
         $jumat = Anggota_piket::where('hari', 'LIKE', 'jumat')->where('waktu', 'LIKE', 'pagi')->get();
-        $catat = Anggota_piket::where('siswa_id', '1')->where('waktu','catatan')->get();
+        $catat = Catatan::all();
 
         $senin_sore= Anggota_piket::where('hari', 'LIKE', 'senin')->where('waktu', 'LIKE', 'sore')->get();
         $selasa_sore = Anggota_piket::where('hari', 'LIKE', 'selasa')->where('waktu', 'LIKE', 'sore')->get();
