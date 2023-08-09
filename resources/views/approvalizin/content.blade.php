@@ -1698,7 +1698,7 @@
                                                 src="{{ asset('storage/Siswa/' . $izin->Siswa->foto_siswa) }}" alt="avatar" />
                                         </div>
                                         <h3 class="pt-3 text-lg font-medium text-slate-700 dark:text-navy-100">
-                                            {{ $izin->nama }}
+                                            {{ $izin->Siswa->name }}
                                         </h3>
                                         <p class="text-xs+">{{ $izin->keterangan }}</p>
                                         <div class="flex justify-left items-left space-x-3">
@@ -1958,7 +1958,7 @@
                                     </p>
 
                                     <p class="ml-5 mt-2 text-md text-gray-400">
-                                        {{ $izin->nama }}
+                                        {{ $izin->Siswa->name }}
                                     </p>
 
                                     <p class=" text-md mt-4">
