@@ -35,11 +35,12 @@ class ApprovalIzinController extends Controller
 
      public function index(Request $request): RedirectResponse|View
      {
-        
-        User::select('users.*' , 'siswa_id')
-        ->leftJoin('siswas' , 'siswa_id')
-        ->leftJoin('approvalizins' , 'siswa_id')
+
+         User::select('users.*', 'users.siswa_id')
+         ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+        ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
         ->get();
+
 
         if(auth()->user()->role == 'Admin'){
             $today = date('Y-m-d');
