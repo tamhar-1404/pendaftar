@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('sps', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('deskripsi_1')->nullable(true);
-            $table->string('deskripsi_2')->nullable(true);
+            $table->longText('deskripsi_1')->nullable(true);
+            $table->longText('deskripsi_2')->nullable(true);
             $table->string('sp_1')->nullable(true);
             $table->string('sp_2')->nullable(true);
             $table->string('bukti_1')->nullable(true);

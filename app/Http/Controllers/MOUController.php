@@ -155,7 +155,7 @@ class MOUController extends Controller
             'no'=>$request->no,
             'alamat'=>$request->alamat
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'berhasil mengedit data!');
     }
 
     /**
