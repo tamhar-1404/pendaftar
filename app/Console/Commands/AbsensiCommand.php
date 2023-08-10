@@ -53,9 +53,7 @@ class AbsensiCommand extends Command
                 }
             }
         }
-
         $this->info('Absensi entries generated successfully.');
-
         return 0;
 
 }
