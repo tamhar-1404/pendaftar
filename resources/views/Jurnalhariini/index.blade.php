@@ -205,7 +205,7 @@
                                     class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
                                     :class="{ '!border-primary text-primary': tab == 'password' }"
                                     @click="tab='password'">
-                                   
+
                                     Tidak mengisi
                                 </a>
                             </li>
@@ -1133,8 +1133,6 @@
                                                                 <td class="py-3">
                                                                     <span x-text="item.sekolah"></span>
                                                                 </td>
-
-
                                                             </tr>
                                                             <tr x-show="showPopup" class="text-gray-900 text-xs">
                                                                 <td class="py-3" colspan="5">
