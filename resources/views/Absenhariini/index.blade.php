@@ -363,7 +363,7 @@
                                                             <span x-text="index+1"></span>
                                                           </td>
                                                           <td class="py-3">
-                                                            <span x-text="item.siswa.name"></span>
+                                                            <span x-text="item.user_name"></span>
                                                           </td>
                                                           <td class="py-3">
                                                             <span x-text="item.tanggal"></span>
@@ -431,16 +431,16 @@
                                                 },
                                                 currentPage: 1,
                                                 sorted: {
-                                                    field: 'siswa_id',
+                                                    field: 'user_name',
                                                     rule: 'asc'
                                                 },
                                                 initData() {
-                                                    this.items = hadir.sort(this.compareOnKey('siswa_id', 'asc'))
+                                                    this.items = hadir.sort(this.compareOnKey('user_name', 'asc'))
                                                     this.showPages()
                                                 },
                                                 compareOnKey(key, rule) {
                                                     return function(a, b) {
-                                                    if (key === 'siswa_id' || key === 'tanggal' || key === 'keterangan' || key === 'jam')  {
+                                                    if (key === 'user_name' || key === 'tanggal' || key === 'keterangan' || key === 'jam')  {
                                                         let comparison = 0
                                                         const fieldA = a[key].toUpperCase()
                                                         const fieldB = b[key].toUpperCase()
@@ -480,7 +480,7 @@
                                                     if (value.length > 1) {
                                                     const options = {
                                                         shouldSort: true,
-                                                        keys: ['siswa_id'],
+                                                        keys: ['user_name'],
                                                         threshold: 0
                                                     }
                                                     const fuse = new Fuse(hadir, options)
@@ -589,7 +589,7 @@
                                                                     <span x-text="index + 1"></span>
                                                                 </td>
                                                                 <td class="py-3">
-                                                                    <span x-text="item.nama"></span>
+                                                                    <span x-text="item.user_name"></span>
                                                                 </td>
                                                                 <td class="py-3">
                                                                     <span x-text="item.tanggal"></span>
@@ -650,16 +650,16 @@
                                                 },
                                                 currentPage: 1,
                                                 sorted: {
-                                                field: 'nama',
+                                                field: 'user_name',
                                                 rule: 'asc'
                                                 },
                                                 initData() {
-                                                this.items = dataTasikan.sort(this.compareOnKey('nama', 'asc'));
+                                                this.items = dataTasikan.sort(this.compareOnKey('user_name', 'asc'));
                                                 this.showPages();
                                                 },
                                                 compareOnKey(key, rule) {
                                                 return function(a, b) {
-                                                    if (key === 'nama' || key === 'tanggal' || key === 'keterangan' ) {
+                                                    if (key === 'user_name' || key === 'tanggal' || key === 'keterangan' ) {
                                                     let comparison = 0;
                                                     const fieldA = a[key].toUpperCase();
                                                     const fieldB = b[key].toUpperCase();
@@ -699,7 +699,7 @@
                                                 if (value.length > 1) {
                                                     const options = {
                                                     shouldSort: true,
-                                                    keys: ['nama'],
+                                                    keys: ['user_name'],
                                                     threshold: 0
                                                     }
                                                     const fuse = new Fuse(dataTasikan, options);
@@ -809,7 +809,7 @@
                                                                             <span x-text="index + 1"></span>
                                                                         </td>
                                                                         <td class="py-3">
-                                                                            <span x-text="item.nama"></span>
+                                                                            <span x-text="item.user_name"></span>
                                                                         </td>
                                                                         <td class="py-3">
                                                                             <span x-text="item.tanggal"></span>
@@ -872,16 +872,16 @@
                                                 },
                                                 currentPage: 1,
                                                 sorted: {
-                                                    field: 'nama',
+                                                    field: 'user_name',
                                                     rule: 'asc'
                                                 },
                                                 initData() {
-                                                    this.items = datatelat.sort(this.compareOnKey('nama', 'asc'))
+                                                    this.items = datatelat.sort(this.compareOnKey('user_name', 'asc'))
                                                     this.showPages()
                                                 },
                                                 compareOnKey(key, rule) {
                                                     return function (a, b) {
-                                                        if (key === 'nama' || key === 'tanggal' || key === 'keterangan' || key === 'jam') {
+                                                        if (key === 'user_name' || key === 'tanggal' || key === 'keterangan' || key === 'jam') {
                                                             let comparison = 0
                                                             const fieldA = a[key].toUpperCase()
                                                             const fieldB = b[key].toUpperCase()
@@ -921,7 +921,7 @@
                                                     if (value.length > 1) {
                                                         const options = {
                                                             shouldSort: true,
-                                                            keys: ['nama'],
+                                                            keys: ['user_name'],
                                                             threshold: 0
                                                         }
                                                         const fuse = new Fuse(datatelat, options)
@@ -1033,7 +1033,7 @@
                                                                             <span x-text="index + 1"></span>
                                                                         </td>
                                                                         <td class="py-3">
-                                                                            <span x-text="item.nama"></span>
+                                                                            <span x-text="item.user_name"></span>
                                                                         </td>
                                                                         <td class="py-3">
                                                                             <span x-text="item.tanggal"></span>
@@ -1096,16 +1096,16 @@
                                                 },
                                                 currentPage: 1,
                                                 sorted: {
-                                                    field: 'nama',
+                                                    field: 'user_name',
                                                     rule: 'asc'
                                                 },
                                                 initData() {
-                                                    this.items = dataalfa.sort(this.compareOnKey('nama', 'asc'))
+                                                    this.items = dataalfa.sort(this.compareOnKey('user_name', 'asc'))
                                                     this.showPages()
                                                 },
                                                 compareOnKey(key, rule) {
                                                     return function (a, b) {
-                                                        if (key === 'nama' || key === 'tanggal' || key === 'keterangan' || key === 'jam') {
+                                                        if (key === 'user_name' || key === 'tanggal' || key === 'keterangan' || key === 'jam') {
                                                             let comparison = 0
                                                             const fieldA = a[key].toUpperCase()
                                                             const fieldB = b[key].toUpperCase()
@@ -1145,7 +1145,7 @@
                                                     if (value.length > 1) {
                                                         const options = {
                                                             shouldSort: true,
-                                                            keys: ['nama'],
+                                                            keys: ['user_name'],
                                                             threshold: 0
                                                         }
                                                         const fuse = new Fuse(dataalfa, options)
@@ -1480,7 +1480,7 @@
                                                                             <span x-text="index + 1"></span>
                                                                         </td>
                                                                         <td class="py-3">
-                                                                            <span x-text="item.nama"></span>
+                                                                            <span x-text="item.user_name"></span>
                                                                         </td>
                                                                         <td class="py-3">
                                                                             <span x-text="item.tanggal"></span>
@@ -1543,16 +1543,16 @@
                                                 },
                                                 currentPage: 1,
                                                 sorted: {
-                                                    field: 'nama',
+                                                    field: 'user_name',
                                                     rule: 'asc'
                                                 },
                                                 initData() {
-                                                    this.items = datasemua.sort(this.compareOnKey('nama', 'asc'))
+                                                    this.items = datasemua.sort(this.compareOnKey('user_name', 'asc'))
                                                     this.showPages()
                                                 },
                                                 compareOnKey(key, rule) {
                                                     return function (a, b) {
-                                                        if (key === 'nama' || key === 'tanggal' || key === 'keterangan' || key === 'jam') {
+                                                        if (key === 'user_name' || key === 'tanggal' || key === 'keterangan' || key === 'jam') {
                                                             let comparison = 0
                                                             const fieldA = a[key].toUpperCase()
                                                             const fieldB = b[key].toUpperCase()
@@ -1592,7 +1592,7 @@
                                                     if (value.length > 1) {
                                                         const options = {
                                                             shouldSort: true,
-                                                            keys: ['nama'],
+                                                            keys: ['user_name'],
                                                             threshold: 0
                                                         }
                                                         const fuse = new Fuse(datasemua, options)
