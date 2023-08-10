@@ -47,8 +47,7 @@ class ApprovalIzinController extends Controller
 
                 $terima = ApprovalIzin::where('status2', 'izin')
                     ->where(function ($query) use ($keyword) {
-                        $query->where('nama', 'LIKE', '%' . $keyword . '%')
-                            ->orWhere('sekolah', 'LIKE', '%' . $keyword . '%');
+                        $query->where('tanggal', 'LIKE', '%' . $keyword . '%');
                     })->latest('created_at')->paginate(10);
 
                 $terima->appends(['cari' => $keyword]);
