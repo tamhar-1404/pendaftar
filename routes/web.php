@@ -95,6 +95,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
         Route::post('/absensi_date', [JurnaladminController::class, 'Absenhariini'])->name('absensi_date');
         Route::get('/Absenhariini', [JurnaladminController::class, 'Absenhariini'])->name('Absenhariini');
+        Route::get('/Belum_mengisi', [JurnaladminController::class, 'Belum_mengisi'])->name('Belum_mengisi');
         Route::get('Alfa', [AprovalController::class, 'Alfa'])->name('Alfa');
         Route::get('/Sakit.index', [AprovalController::class, 'Sakit'])->name('Sakit.index');
         Route::get('/Hadir.index', [AprovalController::class, 'Hadir'])->name('Hadir.index');

@@ -282,7 +282,7 @@
                                                         <thead class="border-b-2">
                                                             <tr>
                                                                 <th>#</th>
-                                                                <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
+                                                                <th @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
                                                                 <th @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">Sekolah</th>
                                                                 <th @click="sort('status', sorted.rule === 'asc' ? 'desc' : 'asc')">Status</th>
                                                             </tr>
@@ -294,7 +294,7 @@
                                                                         <span x-text="index + 1"></span>
                                                                     </td>
                                                                     <td class="py-3">
-                                                                        <span x-text="item.nama"></span>
+                                                                        <span x-text="item.name"></span>
                                                                     </td>
                                                                     <td class="py-3">
                                                                         <span x-text="item.sekolah"></span>
@@ -484,6 +484,7 @@
                                 <div class="w-full">
                                     <div class="w-full">
                                         <div class="">
+                                            {{-- Datatable tidak mengisi --}}
                                             <div x-data="dataTable1()"
                                                 x-init="
                                                 initData()
@@ -506,7 +507,7 @@
                                                     <thead class="border-b-2">
                                                         <tr>
                                                             <th>#</th>
-                                                            <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
+                                                            <th @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
                                                             <th @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
                                                             <th @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">Sekolah</th>
                                                             {{-- <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
@@ -520,7 +521,7 @@
                                                                     <span x-text="index + 1"></span>
                                                                 </td>
                                                                 <td class="py-3">
-                                                                    <span x-text="item.nama"></span>
+                                                                    <span x-text="item.name"></span>
                                                                 </td>
                                                                 <td class="py-3">
                                                                     <span x-text="item.tanggal"></span>
@@ -765,6 +766,7 @@
                                 <div class="w-full">
                                     <div class="w-full">
                                         <div >
+                                            {{-- Data table mengisi --}}
                                             <div x-data="dataTable()"
                                                 x-init="
                                                 initData()
@@ -787,9 +789,9 @@
                                                     <thead class="border-b-2">
                                                         <tr>
                                                             <th>#</th>
-                                                            <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
+                                                            <th @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
                                                             <th @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
-                                                            <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
+                                                            <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Kegiatan</th>
                                                             <th @click="sort('aksi', sorted.rule === 'asc' ? 'desc' : 'asc')">Aksi</th>
                                                         </tr>
                                                     </thead>
@@ -800,7 +802,7 @@
                                                                     <span id="i" x-text="index + 1"></span>
                                                                 </td>
                                                                 <td class="py-3">
-                                                                    <span x-text="item.nama"></span>
+                                                                    <span x-text="item.name"></span>
                                                                 </td>
                                                                 <td class="py-3">
                                                                     <span x-text="item.tanggal"></span>
@@ -1135,7 +1137,7 @@
                                                                     <span x-text="item.sekolah"></span>
                                                                 </td>
                                                                 <td class="py-3">
-                                                                    <span x-text="item.aksi"></span>
+                                                                    <button type="submit" class="border border-blue-400 px-2 py-1 hover:bg-blue-400 hover:text-white font-semibold rounded">Belum mengisi</button>
                                                                 </td>
 
 

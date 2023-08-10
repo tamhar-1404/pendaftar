@@ -175,29 +175,29 @@ class JurnaladminController extends Controller
         ->get();
 
         $hari = Carbon::now()->format('Y-m-d');
-        $telat = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+        $telat = User::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
             ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
             ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
             ->where('approval_izins.keterangan', '=', 'telat')->where('approval_izins.tanggal', $hari)
             ->get();
         // $telat = ApprovalIzin::where('keterangan', 'telat')->Where('tanggal', $hari)->select('jam','siswa_id', 'tanggal', 'keterangan')->get();
-        $hadir = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+        $hadir = User::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
         ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
         ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
         ->where('approval_izins.keterangan', '=', 'hadir')->where('approval_izins.tanggal', $hari)
         ->get();
         // dd($hadir);
-        $sakit = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+        $sakit = User::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
         ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
         ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
         ->where('approval_izins.keterangan', ['sakit', 'izin'])->where('approval_izins.tanggal', $hari)
         ->get();
-        $alfa = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+        $alfa = User::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
         ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
         ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
         ->where('approval_izins.keterangan', 'alfa')->where('approval_izins.tanggal', $hari)
         ->get();
-        $semua = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+        $semua = User::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
         ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
         ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
         ->where('approval_izins.tanggal', $hari)
@@ -239,9 +239,19 @@ class JurnaladminController extends Controller
         ->where('role', 'siswa')
         ->get();
 
-        $semuaJurnal = Jurnalsiswa::whereDate('tanggal', Carbon::now()->format('Y-m-d'))->select('siswa_id','tanggal','status')->get();
-        $tidakMengisi = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->whereNot('status', 'mengisi')->select('siswa_id','tanggal')->get();
-        $mengisi = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->where('status', 'mengisi')->select('siswa_id','tanggal', 'kegiatan', 'image', 'id')->get();
+        $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status')
+        ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
+        ->where('jurnalsiswas.tanggal', $hari)
+        ->get();
+        $tidakMengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status')
+        ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
+        ->where('jurnalsiswas.tanggal', $hari)
+        ->get();
+        $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan')
+        ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
+        ->where('jurnalsiswas.tanggal', $hari)
+        ->where('jurnalsiswas.status', "mengisi")
+        ->get();
         return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa'));
     }
     /**
@@ -318,7 +328,10 @@ class JurnaladminController extends Controller
     {
         //
     }
-
+    public function Belum_mengisi(Request $request)
+    {
+        $belum = Jurnalsiswa::create($request->all());
+    }
     /**
      * Update the specified resource in storage.
      *
