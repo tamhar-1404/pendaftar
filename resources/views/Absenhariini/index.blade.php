@@ -1261,10 +1261,9 @@
                                                                             <span x-text="item.sekolah"></span>
                                                                         </td>
                                                                         <td>
-                                                                            <button class="border border-blue-400 px-2 py-1 hover:bg-blue-400 hover:text-white rounded">Hadir</button>
-                                                                            <button class="border border-yellow-400 px-2 py-1 hover:bg-yellow-300 hover:text-white rounded">Izin</button>
-                                                                            <button class="border border-yellow-400 px-2 py-1 hover:bg-yellow-300 hover:text-white rounded">Sakit</button>
-                                                                            <button class="border border-red-400 px-2 py-1 hover:bg-red-500 hover:text-white rounded">Alfa</button>
+                                                                        <button class="border border-blue-400 px-2 py-1  hover:bg-blue-400 hover:text-white rounded">Hadir</button>
+                                                                        <button class="border border-yellow-400 px-2 py-1 hover:bg-yellow-400 hover:text-white  rounded">Izin</button>
+                                                                        <button class="border border-red-400 px-2 py-1 hover:bg-red-400 hover:text-white rounded">Alfa</button>
                                                                         </td>
                                                                         {{-- <td class="py-3">
                                                                             <span x-text="item.keterangan"></span>
