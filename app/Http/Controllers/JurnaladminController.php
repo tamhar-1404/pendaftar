@@ -328,9 +328,19 @@ class JurnaladminController extends Controller
     {
         //
     }
-    public function Belum_mengisi(Request $request)
+    public function belum_mengisi(Request $request)
     {
-        $belum = Jurnalsiswa::create($request->all());
+        $id = $request->id;
+        Jurnalsiswa::create([
+            'siswa_id' => $id,
+            'tanggal' => Carbon::now()->format('Y-m-d'),
+            'kegiatan' => 'Tidak mengisi',
+            'image' => 'Tidak mengisi',
+            'status' => 'Tidak mengisi',
+        ]);
+        return response()->json([
+            'status' => 'success',
+        ]);
     }
     /**
      * Update the specified resource in storage.

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin - Jurnal Hari Ini</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
         integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
@@ -1137,7 +1138,7 @@
                                                                     <span x-text="item.sekolah"></span>
                                                                 </td>
                                                                 <td class="py-3">
-                                                                    <button type="submit" class="border border-blue-400 px-2 py-1 hover:bg-blue-400 hover:text-white font-semibold rounded">Belum mengisi</button>
+                                                                    <button type="submit" class="border border-blue-400 px-2 py-1 hover:bg-blue-400 hover:text-white font-semibold rounded" @click="belum_mengisi(item.id)">Belum mengisi</button>
                                                                 </td>
 
 
@@ -1732,6 +1733,49 @@
     });
 </script>
 <script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    })
+    function belum_mengisi(id)
+    {
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "Yakin ingin melakukan ini?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Iya'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    method: 'POST',
+                    url: "{{ route('jurnal.belum_mengisi') }}",
+                    data: {
+                        id: id,
+                    },
+                    success: function (response) {
+                        if (response['status'] == 'success') {
+                            Swal.fire(
+                               'Berhasil!',
+                                'Berhasil!',
+                                'success'
+                            ).then((result) => {
+                                location.reload();
+                            })
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                    }
+                })
+            }
+        })
+    }
     function openModal(id) {
         $(`#staticModal${id}`).show();
     }
