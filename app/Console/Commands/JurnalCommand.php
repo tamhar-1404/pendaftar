@@ -46,9 +46,7 @@ class JurnalCommand extends Command
                 ]);
             }
         }
-
         $this->info('Jurnal entries generated successfully.');
-
         return 0;
     }
 }
