@@ -392,7 +392,9 @@
                         </script>
                     @enderror
                     @if (session()->has('error'))
-                        <div class="text-danger"><b>{{ session('error') }}</b></div>
+                    <script>
+                        toastr.error("{{session('error')}}")
+                    </script>
                     @endif
 
                     @if (session('success'))
@@ -631,6 +633,7 @@
                                                                         <i class="fa fa-eye"></i> </span>
                                                                     </div>
                                                                 </a>
+                                                             @if($items->kegiatan == 'mengisi')
                                                                 <a href="#">
                                                                     <div class=" w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
                                                                         data-te-toggle="modal"
@@ -640,6 +643,7 @@
                                                                         <i class="fa fa-pencil-square-o"></i> </span>
                                                                     </div>
                                                                 </a>
+                                                                @endif
                                                             </div>
                                                             @endif
                                                         </td>
