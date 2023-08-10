@@ -17,11 +17,12 @@ class TolakController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request): View
-    {
+    {   
         if ($request->has('cari')) {
+            $izin = ApprovalIzin::where('status', 'tolak')->get();
             $keyword = $request->cari;
             $tolaks = Tolak::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(5);
-            return view('tolak.index', compact('tolaks'));
+            return view('tolak.index', compact('tolaks','izin'));
         }
         $tolaks = Tolak::latest()->paginate(5);
         $izin = ApprovalIzin::where('status', 'tolak')->get();
