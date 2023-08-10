@@ -328,7 +328,10 @@ class JurnaladminController extends Controller
     {
         //
     }
-
+    public function Belum_mengisi(Request $request)
+    {
+        $belum = Jurnalsiswa::create($request->all());
+    }
     /**
      * Update the specified resource in storage.
      *

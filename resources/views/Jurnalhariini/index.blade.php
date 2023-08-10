@@ -1137,7 +1137,7 @@
                                                                     <span x-text="item.sekolah"></span>
                                                                 </td>
                                                                 <td class="py-3">
-                                                                    <span x-text="item.aksi"></span>
+                                                                    <button type="submit" class="border border-blue-400 px-2 py-1 hover:bg-blue-400 hover:text-white font-semibold rounded">Belum mengisi</button>
                                                                 </td>
 
 
