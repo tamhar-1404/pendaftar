@@ -232,7 +232,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
         <!-- Navbar End -->
         <div class=" relative flex items-center justify-center h-screen overflow-hidden">
-            <img src="{{ asset('admin/images/kamii.jpg') }}" class="absolute z-10 brightness-50 blur-xs" alt=""
+            <img src="{{ asset('admin/images/kamii.jpg') }}" style="filter: blur(5px) brightness(50%);  "  class="absolute z-10 brightness-50 blur-xs" alt=""
                 srcset="">
 
             <div class="absolute z-10 grid grid-cols-1 pb-8 text-center">

@@ -35,6 +35,12 @@ class ApprovalIzinController extends Controller
 
      public function index(Request $request): RedirectResponse|View
      {
+        
+        User::select('users.*' , 'siswa_id')
+        ->leftJoin('siswas' , 'siswa_id')
+        ->leftJoin('approvalizins' , 'siswa_id')
+        ->get();
+
         if(auth()->user()->role == 'Admin'){
             $today = date('Y-m-d');
             ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status' => 'terimaabsen', 'status2' => '']);
@@ -47,8 +53,7 @@ class ApprovalIzinController extends Controller
 
                 $terima = ApprovalIzin::where('status2', 'izin')
                     ->where(function ($query) use ($keyword) {
-                        $query->where('nama', 'LIKE', '%' . $keyword . '%')
-                            ->orWhere('sekolah', 'LIKE', '%' . $keyword . '%');
+                        $query->where('tanggal', 'LIKE', '%' . $keyword . '%');
                     })->latest('created_at')->paginate(10);
 
                 $terima->appends(['cari' => $keyword]);

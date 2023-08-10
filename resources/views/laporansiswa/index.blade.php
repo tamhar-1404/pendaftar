@@ -8,9 +8,10 @@
     <title>Admin - Laporan Siswa</title>
     <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <link rel="stylesheet" href="load/load.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"></script>
 </head>
 
 <body>
@@ -82,7 +83,7 @@
 
                     @error('success')
                         <script>
-                            toastr.success("Anda berhasil")
+                            toastr.success("{{ session('success') }}")
                         </script>
                     @enderror
 
