@@ -150,7 +150,7 @@ public function confirm(Aproval $aproval)
             'siswa_id' => $data->id,
         ]);
 
-        return redirect()->route('aproval.index');
+        return redirect()->route('aproval.index')->with('success', 'berhasil menerima anak magang');
     } else {
         return redirect()->back()->with('error', 'Maaf, tidak dapat melakukan konfirmasi pada data');
     }
@@ -214,7 +214,7 @@ public function Tolak(Request $request, Aproval $aproval)
 
         $aproval->delete();
 
-        return redirect()->route('aproval.index');
+        return redirect()->route('aproval.index')->with('success', 'berhasil menolak anak magang');
     } else {
         return redirect()->back()->with('error', 'Masukkan alasan penolakan.');
     }

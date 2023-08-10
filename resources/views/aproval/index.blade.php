@@ -150,6 +150,7 @@
                                                 <input id="inputrfid"
                                                     type="number" name="limit"
                                                     class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
+                                                <button type="submit" class="border border-2">kirim</button>
                                                 <div class="mt-6 flex justify-end">
                                                     <!-- Your additional content here if needed -->
                                                 </div>
@@ -296,6 +297,16 @@
 
 
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"></script>
+
+    @if (session()->has('success'))
+    <script>
+        toastr.success("{{ session('success') }}");
+    </script>
+@endif
 </body>
 
 

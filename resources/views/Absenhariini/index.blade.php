@@ -293,7 +293,7 @@
                                     :class="{ '!border-primary text-primary': tab == 'tidak_mengisi_absen' }"
                                     @click="tab='tidak_mengisi_absen'">
 
-                                    Belum mengisi absen
+                                    Pengecekan Admin
                                 </a>
                             </li>
                             <li class="inline-block active">
@@ -1243,9 +1243,7 @@
                                                                     <th>#</th>
                                                                     <th @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
                                                                     <th @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">sekolah</th>
-                                                                    <th>
-                                                                        Aksi
-                                                                    </th>
+                                                                    <th @click="sort('Aksi', sorted.rule === 'asc' ? 'desc' : 'asc')">Aksi</th>
                                                                     {{-- <th @click="sort('keterangan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
                                                                     <th @click="sort('jam', sorted.rule === 'asc' ? 'desc' : 'asc')">Jam</th> --}}
                                                                 </tr>

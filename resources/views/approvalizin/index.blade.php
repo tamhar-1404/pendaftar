@@ -55,7 +55,7 @@
         <script>
             toastr.success("{{ session('success') }}");
         </script>
-    @endif
+    @endif  
     @if (auth()->user()->role == 'Admin')
         <!-- screen loader -->
         <div
