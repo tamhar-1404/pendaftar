@@ -47,7 +47,7 @@ class AprovalController extends Controller
         }
         if($request->has('limit')){
             $this->validate($request, [
-                'limit' => 'required',
+                'limit' => 'required|max:225',
             ]);
             $siswa = Siswa::where('role', 'siswa')->count();
             $cek = Limit::find(1);
@@ -58,12 +58,12 @@ class AprovalController extends Controller
                 $cek->update([
                   'limit' => $request->limit
                 ]);
-                return redirect()->back();
+                return redirect()->back()->with('success', 'berhasil menambahkan limit!');
             }else{
                 Limit::create([
                   'limit' => $request->limit
                 ]);
-                return redirect()->back();
+                return redirect()->back()->with('success', 'berhasil menambahkan limit!');
             }
         }
         $siswa = Siswa::where('role', 'siswa')->count();

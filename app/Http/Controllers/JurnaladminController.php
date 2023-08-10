@@ -31,37 +31,43 @@ class JurnaladminController extends Controller
         $item = Jurnalsiswa::all();
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $mengisi_jan = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 1)->count();
-            $mengisi_feb = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 2)->count();
-            $mengisi_mar = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 3)->count();
-            $mengisi_apr = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 4)->count();
-            $mengisi_mei = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 5)->count();
-            $mengisi_jun = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 6)->count();
-            $mengisi_jul = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 7)->count();
-            $mengisi_aug = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 8)->count();
-            $mengisi_sep = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 9)->count();
-            $mengisi_okt = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 10)->count();
-            $mengisi_nov = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 11)->count();
-            $mengisi_des = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 12)->count();
+            $mengisi_jan = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 1)->count();
+            $mengisi_feb = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 2)->count();
+            $mengisi_mar = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 3)->count();
+            $mengisi_apr = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 4)->count();
+            $mengisi_mei = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 5)->count();
+            $mengisi_jun = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 6)->count();
+            $mengisi_jul = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 7)->count();
+            $mengisi_aug = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 8)->count();
+            $mengisi_sep = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 9)->count();
+            $mengisi_okt = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 10)->count();
+            $mengisi_nov = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 11)->count();
+            $mengisi_des = Jurnalsiswa::where('status', 'LIKE', 'mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 12)->count();
 
 
-            $tdk_mengisi_jan = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 1)->count();
-            $tdk_mengisi_feb = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 2)->count();
-            $tdk_mengisi_mar = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 3)->count();
-            $tdk_mengisi_apr = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 4)->count();
-            $tdk_mengisi_mei = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 5)->count();
-            $tdk_mengisi_jun = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 6)->count();
-            $tdk_mengisi_jul = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 7)->count();
-            $tdk_mengisi_aug = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 8)->count();
-            $tdk_mengisi_sep = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 9)->count();
-            $tdk_mengisi_okt = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 10)->count();
-            $tdk_mengisi_nov = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 11)->count();
-            $tdk_mengisi_des = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->where('nama', 'LIKE', $keyword)->whereMonth('tanggal', '=', 12)->count();
+            $tdk_mengisi_jan = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 1)->count();
+            $tdk_mengisi_feb = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 2)->count();
+            $tdk_mengisi_mar = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 3)->count();
+            $tdk_mengisi_apr = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 4)->count();
+            $tdk_mengisi_mei = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 5)->count();
+            $tdk_mengisi_jun = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 6)->count();
+            $tdk_mengisi_jul = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 7)->count();
+            $tdk_mengisi_aug = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 8)->count();
+            $tdk_mengisi_sep = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 9)->count();
+            $tdk_mengisi_okt = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 10)->count();
+            $tdk_mengisi_nov = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 11)->count();
+            $tdk_mengisi_des = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereRelation('siswa', 'name', 'LIKE', $keyword)->whereMonth('tanggal', '=', 12)->count();
 
-            $item = Jurnalsiswa::where('nama', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(10);
+            $item = Siswa::with(['jurnals' => function ($q) {
+                $q->where('tanggal', Carbon::now()->format('Y-m-d'));
+            }])
+            ->where('name', 'LIKE', '%'.$keyword.'%')
+            ->orWhere('sekolah', 'LIKE', '%'.$keyword.'%')
+            ->latest()
+            ->paginate(10);
 
             $item->appends(['cari' => $keyword]);
-            return view('jurnal_admin.index', compact('item'));
+            return view('jurnal_admin.index',compact( 'item','mengisi_jan','mengisi_feb','mengisi_mar','mengisi_apr','mengisi_mei','mengisi_jun','mengisi_jul','mengisi_aug','mengisi_sep','mengisi_okt','mengisi_nov','mengisi_des','tdk_mengisi_jan','tdk_mengisi_feb','tdk_mengisi_mar','tdk_mengisi_apr','tdk_mengisi_mei','tdk_mengisi_jun','tdk_mengisi_jul','tdk_mengisi_aug','tdk_mengisi_sep','tdk_mengisi_nov','tdk_mengisi_okt','tdk_mengisi_nov','tdk_mengisi_des'));
         }
 
 
@@ -92,7 +98,12 @@ class JurnaladminController extends Controller
         $tdk_mengisi_nov = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereMonth('tanggal', '=', 11)->count();
         $tdk_mengisi_des = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereMonth('tanggal', '=', 12)->count();
 
-        $item = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->latest()->paginate(10);
+        $item = Siswa::with(['jurnals' => function ($q) {
+            $q->where('tanggal', Carbon::now()->format('Y-m-d'));
+        }])
+        ->latest()
+        ->paginate(10);
+        // $item = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->latest()->paginate(10);
         return view('jurnal_admin.index',compact( 'item','mengisi_jan','mengisi_feb','mengisi_mar','mengisi_apr','mengisi_mei','mengisi_jun','mengisi_jul','mengisi_aug','mengisi_sep','mengisi_okt','mengisi_nov','mengisi_des','tdk_mengisi_jan','tdk_mengisi_feb','tdk_mengisi_mar','tdk_mengisi_apr','tdk_mengisi_mei','tdk_mengisi_jun','tdk_mengisi_jul','tdk_mengisi_aug','tdk_mengisi_sep','tdk_mengisi_nov','tdk_mengisi_okt','tdk_mengisi_nov','tdk_mengisi_des'));
 
     }
@@ -120,11 +131,31 @@ class JurnaladminController extends Controller
 
             // $tanggalAkhir = $hari;
             $hari = $keyword;
-            $telat = ApprovalIzin::where('keterangan', 'telat')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('jam','siswa_id', 'tanggal', 'keterangan')->get();
-            $hadir = ApprovalIzin::where('keterangan', 'hadir')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('jam','siswa_id', 'tanggal', 'keterangan')->get();
-            $sakit = ApprovalIzin::WhereIn('keterangan', ['sakit', 'izin'])->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('siswa_id', 'tanggal', 'keterangan')->get();
-            $alfa = ApprovalIzin::where('keterangan', 'alfa')->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('siswa_id', 'tanggal', 'keterangan')->get();
-            $semua = ApprovalIzin::WhereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('jam','siswa_id', 'tanggal', 'keterangan')->get();
+            $telat = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+                    ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+                    ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+                    ->where('approval_izins.keterangan', '=', 'telat')->whereBetween('approval_izins.tanggal',  [$tanggalAwal, $tanggalAkhir])
+                    ->get();
+            $hadir = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+            ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+            ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+            ->where('approval_izins.keterangan', '=', 'hadir')->whereBetween('approval_izins.tanggal',  [$tanggalAwal, $tanggalAkhir])
+            ->get();
+            $sakit = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+            ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+            ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+            ->where('approval_izins.keterangan',['sakit', 'izin'])->whereBetween('approval_izins.tanggal',  [$tanggalAwal, $tanggalAkhir])
+            ->get();
+            $alfa = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+            ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+            ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+            ->where('approval_izins.keterangan', '=', 'alfa')->whereBetween('approval_izins.tanggal',  [$tanggalAwal, $tanggalAkhir])
+            ->get();
+            $semua = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+            ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+            ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+            ->whereBetween('approval_izins.tanggal',  [$tanggalAwal, $tanggalAkhir])
+            ->get();
             $Cek = ApprovalIzin::whereDate('created_at', $today )
             ->pluck('siswa_id')
             ->toArray();
@@ -143,14 +174,34 @@ class JurnaladminController extends Controller
         ->where('role', 'siswa')
         ->get();
 
-
         $hari = Carbon::now()->format('Y-m-d');
-        $telat = ApprovalIzin::where('keterangan', 'telat')->Where('tanggal', $hari)->select('jam','siswa_id', 'tanggal', 'keterangan')->get();
-        $hadir = ApprovalIzin::where('keterangan', 'hadir')->Where('tanggal', $hari)->select('jam','siswa_id', 'tanggal', 'keterangan')->get();
+        $telat = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+            ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+            ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+            ->where('approval_izins.keterangan', '=', 'telat')->where('approval_izins.tanggal', $hari)
+            ->get();
+        // $telat = ApprovalIzin::where('keterangan', 'telat')->Where('tanggal', $hari)->select('jam','siswa_id', 'tanggal', 'keterangan')->get();
+        $hadir = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+        ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+        ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+        ->where('approval_izins.keterangan', '=', 'hadir')->where('approval_izins.tanggal', $hari)
+        ->get();
         // dd($hadir);
-        $sakit = ApprovalIzin::Wherein('keterangan', ['sakit', 'izin'])->Where('tanggal', $hari)->select('siswa_id', 'tanggal', 'keterangan')->get();
-        $alfa = ApprovalIzin::where('keterangan', 'alfa')->Where('tanggal', $hari)->select('siswa_id', 'tanggal', 'keterangan')->get();
-        $semua = ApprovalIzin::Where('tanggal', $hari)->select('jam','siswa_id', 'tanggal', 'keterangan')->get();
+        $sakit = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+        ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+        ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+        ->where('approval_izins.keterangan', ['sakit', 'izin'])->where('approval_izins.tanggal', $hari)
+        ->get();
+        $alfa = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+        ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+        ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+        ->where('approval_izins.keterangan', 'alfa')->where('approval_izins.tanggal', $hari)
+        ->get();
+        $semua = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+        ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+        ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+        ->where('approval_izins.tanggal', $hari)
+        ->get();
         return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua'));
     }
 
