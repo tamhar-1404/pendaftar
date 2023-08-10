@@ -1261,10 +1261,11 @@
                                                                             <span x-text="item.sekolah"></span>
                                                                         </td>
                                                                         <td>
-                                                                        <button class="border border-blue-400 px-2 py-1  hover:bg-blue-400 hover:text-white rounded">Hadir</button>
-                                                                        <button class="border border-yellow-400 px-2 py-1 hover:bg-yellow-400 hover:text-white  rounded">Izin</button>
-                                                                        <button class="border border-red-400 px-2 py-1 hover:bg-red-400 hover:text-white rounded">Alfa</button>
-                                                                        <button class="border border-yellow-400 px-2 py-1 hover:bg-yellow-400 hover:text-white rounded">Sakit</button>
+                                                                        
+                                                                        <button type="submit" class="border border-blue-400 px-2 py-1  hover:bg-blue-400 hover:text-white rounded" value="Hadir">Hadir</button>
+                                                                        <button type="submit" class="border border-yellow-400 px-2 py-1 hover:bg-yellow-400 hover:text-white  rounded" value="Izin">Izin</button>
+                                                                        <button type="submit" class="border border-red-400 px-2 py-1 hover:bg-red-400 hover:text-white rounded" value="Alfa">Alfa</button>
+                                                                        <button type="submit" class="border border-yellow-400 px-2 py-1 hover:bg-yellow-400 hover:text-white rounded" value="Sakit">Sakit</button>
                                                                         </td>
                                                                         {{-- <td class="py-3">
                                                                             <span x-text="item.keterangan"></span>

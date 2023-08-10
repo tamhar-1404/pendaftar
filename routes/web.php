@@ -85,6 +85,7 @@ Route::get('/keluar', [LoginController::class, 'Logout'])->name('keluar');
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
+
         Route::get('/grafik_absen_docx', [AbsensiadminController::class, 'grafik_absen_docx'])->name('grafik_absen_docx');
         Route::get('/export-to-docx-absen', [AbsensiadminController::class, 'exportToDocxabsen'])->name('exportToDocxabsen');
         Route::get('/absensi_pdf_admin', [AbsensiadminController::class, 'absen_pdf'])->name('absensi_pdf_admin');
@@ -94,6 +95,10 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
         Route::post('/absensi_date', [JurnaladminController::class, 'Absenhariini'])->name('absensi_date');
         Route::get('/Absenhariini', [JurnaladminController::class, 'Absenhariini'])->name('Absenhariini');
+        Route::get('Alfa', [AprovalController::class, 'Alfa'])->name('Alfa');
+        Route::get('/Sakit.index', [AprovalController::class, 'Sakit'])->name('Sakit.index');
+        Route::get('/Hadir.index', [AprovalController::class, 'Hadir'])->name('Hadir.index');
+        Route::get('/Izin.index', [AprovalController::class, 'Izin'])->name('Izin.index');
         Route::get('/Jurnalhariini', [JurnaladminController::class, 'Jurnalhariini'])->name('Jurnalhariini');
         Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
         Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);

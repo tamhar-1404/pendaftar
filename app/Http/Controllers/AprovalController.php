@@ -220,6 +220,54 @@ public function Tolak(Request $request, Aproval $aproval)
     }
 }
 
+    public function Alfa()
+    {
+        $user = User::all();
+        ApprovalIzin::create([
+            'siswa_id'=>$user->siswa_id,
+            'keterangan'=>'Alfa',
+            'bukti'=>'kosong',
+            'tanggal'=>Carbon::now()->format('Y-m-d'),
+            'jam'=> Carbon::now()->format('H:i') ,
+            'status'=>'terimaabsen'
+        ]);
+    }
+    public function Hadir()
+    {
+        $user = User::all();
+        ApprovalIzin::create([
+            'siswa_id'=>$user->siswa_id,
+            'keterangan'=>'Hadir',
+            'bukti'=>'kosong',
+            'tanggal'=>Carbon::now()->format('Y-m-d'),
+            'jam'=> Carbon::now()->format('H:i') ,
+            'status'=>'terimaabsen'
+        ]);
+    }
+    public function Izin(Request $request)
+    {
+        $user = User::all();
+        ApprovalIzin::create([
+            'siswa_id'=>$user->siswa_id,
+            'keterangan'=>'Izin',
+            'bukti'=>'kosong',
+            'tanggal'=>Carbon::now()->format('Y-m-d'),
+            'jam'=> Carbon::now()->format('H:i') ,
+            'status'=>'terimaabsen'
+        ]);
+    }
+    public function Sakit()
+    {
+        $user = User::all();
+        ApprovalIzin::create([
+            'siswa_id'=>$user->siswa_id,
+            'keterangan'=>'Sakit',
+            'bukti'=>'kosong',
+            'tanggal'=>Carbon::now()->format('Y-m-d'),
+            'jam'=> Carbon::now()->format('H:i') ,
+            'status'=>'terimaabsen'
+        ]);
+    }
 
     /**
      * Display the specified resource.
