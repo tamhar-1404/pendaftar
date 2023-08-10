@@ -69,8 +69,9 @@
                  <div class="dropdown flex-shrink-0" x-data="dropdown" @click.outside="open = false">
                      <a href="javascript:;" class="group relative" @click="toggle()">
 
-                        <span><img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                src="{{ asset('storage/Siswa/'.Auth::user()->siswa->foto_siswa) }}" alt="image" /></span>
+                         <span><img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
+                                 src="{{ asset('storage/Siswa/' . Auth::user()->siswa->foto_siswa) }}"
+                                 alt="image" /></span>
 
                      </a>
                      <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
@@ -79,18 +80,19 @@
                              <div class="flex items-center px-4 py-4">
                                  <div class="flex-none">
                                      <img class="h-10 w-10 rounded-md object-cover"
-                                         src="{{ asset('storage/Siswa/'.Auth::user()->siswa->foto_siswa) }}" alt="image" />
+                                         src="{{ asset('storage/Siswa/' . Auth::user()->siswa->foto_siswa) }}"
+                                         alt="image" />
                                  </div>
                                  <div class="ltr:pl-4 rtl:pr-4 truncate">
                                      <h4 class="text-base truncate">
-                                         {{Auth()->user()->name}}
+                                         {{ Auth()->user()->name }}
                                      </h4>
-                                    </div>
-                                </div>
+                                 </div>
+                             </div>
 
-                            </li>
+                         </li>
                          <li>
-                             <a href="{{ route('profile_siswa') }}" class="dark:hover:text-white" >
+                             <a href="{{ route('profile_siswa') }}" class="dark:hover:text-white">
                                  <svg class="h-4.5 w-4.5 ltr:mr-2 rtl:ml-2" width="18" height="18"
                                      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                      <circle cx="12" cy="6" r="4" stroke="currentColor"
@@ -113,7 +115,7 @@
                                      <path d="M12 15L12 2M12 2L15 5.5M12 2L9 5.5" stroke="currentColor"
                                          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                  </svg>
-                                 Sign Out
+                                 Log out
                              </a>
                          </li>
                      </ul>
@@ -184,7 +186,7 @@
              </li>
              <li class="menu nav-item relative">
                  <a href="javascript:;"
-                     class="nav-link {{ request()->routeIs('siswa_magang_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }}  {{ request()->routeIs('piket_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }} {{ request()->routeIs('tatib_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }}" >
+                     class="nav-link {{ request()->routeIs('siswa_magang_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }}  {{ request()->routeIs('piket_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }} {{ request()->routeIs('tatib_siswa.index') ? 'bg-blue-500 text-white hover:bg-blue-500' : '' }}">
                      <div class="flex items-center">
                          <svg class="group-hover:!text-primary" width="14" height="14" viewBox="0 0 20 20"
                              fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -222,7 +224,7 @@
                          <a href="{{ route('chat_siswa.index') }}">Chat</a>
                      </li> --}}
                      <li>
-                         <a href="{{route('siswamagang_siswa')}}">Siswa</a>
+                         <a href="{{ route('siswamagang_siswa') }}">Siswa</a>
                      </li>
                  </ul>
              </li>
@@ -266,13 +268,12 @@
 
              </li>
              @if (request()->routeIs('Siswamagang.index'))
-             <li class="mt-1.5">
-                 <button onclick="showStep(1)"
-                     class="border border-blue-400 px-4 py-1 text-blue-400 hover:bg-blue-400 hover:text-blue-600 hover:border-blue-600 rounded">Isi
-                     saldo</button>
+                 <li class="mt-1.5">
+                     <button onclick="showStep(1)"
+                         class="border border-blue-400 px-4 py-1 text-blue-400 hover:bg-blue-400 hover:text-blue-600 hover:border-blue-600 rounded">Isi
+                         saldo</button>
 
-             </li>
-
+                 </li>
              @endif
      </div>
      </ul>
