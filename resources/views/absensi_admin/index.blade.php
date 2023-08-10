@@ -304,7 +304,7 @@
                                                             @endif
                                                         </td>
                                                     @else
-                                                        <td class="whitespace-nowrap px-6 py-2">{{ Carbon::now()->format('Y-m-d') }}</td>
+                                                        <td class="whitespace-nowrap px-6 py-2">-</td>
                                                         <td class="whitespace-nowrap px-6 py-4">-</td>
                                                         <td class="whitespace-nowrap px-6 py-2">
                                                             <span class=" text-red-500">Belum datang</span>

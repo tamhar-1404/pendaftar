@@ -180,8 +180,8 @@
                                             <tr class="">
                                                 <th scope="col" class="px-6 py-4">#</th>
                                                 <th scope="col" class="px-6 py-4">Nama</th>
-                                                <th scope="col" class="px-6 py-4">Tanggal</th>
                                                 <th scope="col" class="px-6 py-4">Sekolah</th>
+                                                <th scope="col" class="px-6 py-4">Tanggal</th>
                                                 <th scope="col" class="px-6 py-4">kegiatan</th>
                                                 <th scope="col" class="px-6 py-4 ">bukti</th>
                                                 <th scope="col" class="kamu-tak-diajak px-6 py-4">Aksi</th>
@@ -194,28 +194,42 @@
                                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                                     <td class="whitespace-nowrap px-4 py-4 font-medium">
                                                         {{ $loop->iteration }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $items->siswa->name }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $items->tanggal }}</td>
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $items->siswa->sekolah }}</td>
+                                                        <td class="whitespace-nowrap px-4 py-4">{{ $items->name }}</td>
+                                                        <td class="whitespace-nowrap px-4 py-4">{{ $items->sekolah }}</td>
+                                                    @if (!empty($items->jurnals[0]))
+                                                    <td class="whitespace-nowrap px-4 py-4">{{ $items->jurnals[0]->tanggal }}</td>
                                                     <td
                                                         class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                        {{ $items->kegiatan }}</td>
+                                                        {{ $items->jurnals[0]->kegiatan }}</td>
                                                     <td class="whitespace-nowrap px-6 pl-17 py-4"><img
-                                                            src="{{ asset('storage/image/' . $items->image) }}"
+                                                            src="{{ asset('storage/image/' . $items->jurnals[0]->image) }}"
                                                             width="100px" alt="">
                                                     </td>
                                                     <td class="whitespace-nowrap px-4 py-4 kamu-tak-diajak">
-                                                        @if ($items->kegiatan != "Tidak mengisi")
+                                                        @if ($items->jurnals[0]->kegiatan != "Tidak mengisi")
                                                         <button type="button"
                                                             class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
                                                             data-te-toggle="modal"
-                                                            data-modal-target="staticModal{{ $items->id }}"
-                                                            data-modal-toggle="staticModal{{ $items->id }}">
+                                                            data-modal-target="staticModal{{ $items->jurnals[0]->id }}"
+                                                            data-modal-toggle="staticModal{{ $items->jurnals[0]->id }}">
                                                             <span
                                                                 class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
                                                         </button>
                                                         @endif
                                                     </td>
+                                                    @else
+                                                    <td class="whitespace-nowrap px-4 py-4">-</td>
+                                                    <td
+                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
+                                                        -
+                                                    </td>
+                                                    <td class="whitespace-nowrap px-6 pl-17 py-4">
+                                                        -
+                                                    </td>
+                                                    <td class="whitespace-nowrap px-4 py-4 kamu-tak-diajak">
+                                                        -
+                                                    </td>
+                                                    @endif
                                                 </tr>
 
                                                 {{-- end tabel --}}
@@ -252,7 +266,8 @@
                 </div>
                 @forelse ($item as $modal)
                     {{-- modal --}}
-                    <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
+                    @if (!empty($modal->jurnals[0]))
+                    <div id="staticModal{{ $modal->jurnals[0]->id }}" tabindex="-1" aria-hidden="true"
                         class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative w-full max-w-2xl max-h-full">
                             <!-- Modal content -->
@@ -265,7 +280,7 @@
                                     </h3>
                                     <button type="button"
                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                        data-modal-hide="staticModal{{ $modal->id }}">
+                                        data-modal-hide="staticModal{{ $modal->jurnals[0]->id }}">
                                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
@@ -282,7 +297,7 @@
                                             Nama
                                         </p>
                                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                            {{ $modal->siswa->name }}
+                                            {{ $modal->name }}
                                         </p>
                                     </div>
                                     <div>
@@ -291,7 +306,7 @@
                                             Tanggal
                                         </p>
                                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                            {{ $modal->tanggal }}
+                                            {{ $modal->jurnals[0]->tanggal }}
                                         </p>
                                     </div>
                                     <div>
@@ -300,7 +315,7 @@
                                             Sekolah
                                         </p>
                                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                            {{ $modal->siswa->sekolah }}
+                                            {{ $modal->sekolah }}
                                         </p>
                                     </div>
                                     <div>
@@ -309,7 +324,7 @@
                                             Kegiatan
                                         </p>
                                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                            {{ $modal->kegiatan }}
+                                            {{ $modal->jurnals[0]->kegiatan }}
                                         </p>
                                     </div>
                                     <div>
@@ -317,18 +332,19 @@
                                             class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                                             Bukti
                                         </p>
-                                        <img src="{{ asset('storage/image/' . $modal->image) }}" alt="">
+                                        <img src="{{ asset('storage/image/' . $modal->jurnals[0]->image) }}" alt="">
                                     </div>
                                 </div>
                                 <!-- Modal footer -->
                                 <div
                                     class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                    <button data-modal-hide="staticModal{{ $modal->id }}" type="button"
+                                    <button data-modal-hide="staticModal{{ $modal->jurnals[0]->id }}" type="button"
                                         class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endif
                 @empty
                 @endforelse
 
