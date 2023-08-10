@@ -205,7 +205,7 @@
                                     class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
                                     :class="{ '!border-primary text-primary': tab == 'password' }"
                                     @click="tab='password'">
-                                   
+
                                     Tidak mengisi
                                 </a>
                             </li>
@@ -215,7 +215,7 @@
                                     class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
                                     :class="{ '!border-primary text-primary': tab == 'belummengisi' }"
                                     @click="tab='belummengisi'">
-                                    Belum Mengisi
+                                    Pengecekan Admin
                                 </a>
                             </li>
                             <li class="inline-block">
@@ -1119,6 +1119,7 @@
                                                             <th>#</th>
                                                             <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
                                                             <th @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">Sekolah</th>
+                                                            <th @click="sort('Aksi', sorted.rule === 'asc' ? 'desc' : 'asc')">Aksi</th>
 
                                                     </thead>
                                                     <tbody>
@@ -1132,6 +1133,9 @@
                                                                 </td>
                                                                 <td class="py-3">
                                                                     <span x-text="item.sekolah"></span>
+                                                                </td>
+                                                                <td class="py-3">
+                                                                    <span x-text="item.aksi"></span>
                                                                 </td>
 
 

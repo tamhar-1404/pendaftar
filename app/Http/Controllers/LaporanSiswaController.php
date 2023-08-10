@@ -111,7 +111,7 @@ class LaporanSiswaController extends Controller
                 $izin->status = 'terima';
                 $izin->save();
             }
-            return redirect()->back();
+            return redirect()->back()->with('success', 'berhasil menerima laporan siswa');
      }
 
 
@@ -129,6 +129,6 @@ class LaporanSiswaController extends Controller
             $izin->status = 'tolak';
             $izin->save();
         }
-        return redirect()->back();
+        return redirect()->back()->with('success', 'berhasil menolak laporan');
     }
 }
