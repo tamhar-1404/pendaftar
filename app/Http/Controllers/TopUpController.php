@@ -10,6 +10,7 @@ use App\Mail\TerimaTopup;
 use App\Http\Requests\StoreTopUpRequest;
 use App\Http\Requests\UpdateTopUpRequest;
 use App\Mail\Topup as MailTopup;
+use Illuminate\Contracts\View\View;
 
 class TopUpController extends Controller
 {
@@ -18,20 +19,15 @@ class TopUpController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $TopUp = TopUp::Where('tanggal', 'LIKE', '%' . $keyword . '%')->
-            where('status', 'menunggu')->latest()->paginate(10);
-            return view('TopUp.index', compact('TopUp'));
-
+            $TopUp = TopUp::Where('tanggal', 'LIKE', '%' . $keyword . '%')
+                ->where('status', 'menunggu')->latest()->paginate(10);
             $TopUp->appends(['cari' => $keyword]);
-
-
             return view('TopUp.index', compact('TopUp'));
         }
-
         $TopUp = TopUp::where('status', 'menunggu')->latest()->paginate(10);
         return view('TopUp.index', compact('TopUp'));
     }

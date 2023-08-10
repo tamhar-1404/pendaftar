@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Siswa extends Model
 {
@@ -28,5 +29,20 @@ class Siswa extends Model
     public function Approvalizin()
     {
         return $this->HasMany(Approvalizin::class);
+    }
+
+    /**
+     * Get all of the comments for the Siswa
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function absens(): HasMany
+    {
+        return $this->hasMany(ApprovalIzin::class);
+    }
+
+    public function jurnals(): HasMany
+    {
+        return $this->hasMany(Jurnalsiswa::class);
     }
 }

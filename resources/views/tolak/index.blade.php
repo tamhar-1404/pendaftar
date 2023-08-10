@@ -60,14 +60,15 @@
             };
         </script>
 
-</head>
+    </head>
 
 <body>
     <style>
         .modal-backdrop {
-          background-color: rgba(0, 0, 255, 0.5); /* Blue color with 50% opacity */
+            background-color: rgba(0, 0, 255, 0.5);
+            /* Blue color with 50% opacity */
         }
-      </style>
+    </style>
     <!-- screen loader -->
     <div
         class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
@@ -196,21 +197,28 @@
                                                                 ?>
                                                                 <tr
                                                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">
+                                                                    <td
+                                                                        class="whitespace-nowrap px-4 py-4 font-medium">
                                                                         {{ $no++ }}</td>
-                                                                    <td class="whitespace-nowrap px-4 py-4">{{ $tolak->name }}</td>
-                                                                    <td class="whitespace-nowrap px-6 py-4">{{ $tolak->kelas }}</td>
-                                                                    <td class="whitespace-nowrap px-4 py-4">{{ $tolak->jurusan }}</td>
-                                                                    <td class="whitespace-nowrap px-4 py-4">{{ $tolak->sekolah }}</td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">
+                                                                        {{ $tolak->name }}</td>
+                                                                    <td class="whitespace-nowrap px-6 py-4">
+                                                                        {{ $tolak->kelas }}</td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">
+                                                                        {{ $tolak->jurusan }}</td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">
+                                                                        {{ $tolak->sekolah }}</td>
                                                                     <td
                                                                         class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
                                                                         {{ $tolak->alasan }}</td>
                                                                     <td class="whitespace-nowrap px-4 py-4">
                                                                         <div class="w-16 flex cursor-pointer h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
-                                                                        data-te-toggle="modal" onclick="openModal({{$tolak->id}})"
-                                                                        data-modal-target="staticModal{{ $tolak->id }}"
-                                                                        data-modal-toggle="staticModal{{ $tolak->id }}">
-                                                                            <span class=" p-1 cursor-pointer  font-semibold dark:hover:text-black">Lihat</span>
+                                                                            data-te-toggle="modal"
+                                                                            onclick="openModal({{ $tolak->id }})"
+                                                                            data-modal-target="staticModal{{ $tolak->id }}"
+                                                                            data-modal-toggle="staticModal{{ $tolak->id }}">
+                                                                            <span
+                                                                                class=" p-1 cursor-pointer  font-semibold dark:hover:text-black">Lihat</span>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -220,7 +228,8 @@
                                                             <tr>
                                                                 <td colspan="6" class="p-8 text-center">
                                                                     <div class="flex justify-center items-center">
-                                                                        <img src="/admin/noData.png" alt="" width="280px">
+                                                                        <img src="/admin/noData.png" alt=""
+                                                                            width="280px">
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -260,21 +269,29 @@
                                                                 ?>
                                                                 <tr
                                                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                                    <td class="whitespace-nowrap px-4 py-4 font-medium">
+                                                                    <td
+                                                                        class="whitespace-nowrap px-4 py-4 font-medium">
                                                                         {{ $no++ }}</td>
-                                                                    <td class="whitespace-nowrap px-4 py-4">{{ $data->siswa->name }}</td>
-                                                                    <td class="whitespace-nowrap px-6 py-4">{{ $data->dari }} -> {{$data->sampai}}</td>
-                                                                    <td class="whitespace-nowrap px-4 py-4">{{ $data->keterangan }}</td>
-                                                                    <td class="whitespace-nowrap px-4 py-4">{{ $data->siswa->sekolah }}</td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">
+                                                                        {{ $data->siswa->name }}</td>
+                                                                    <td class="whitespace-nowrap px-6 py-4">
+                                                                        {{ $data->dari }} -> {{ $data->sampai }}
+                                                                    </td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">
+                                                                        {{ $data->keterangan }}</td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">
+                                                                        {{ $data->siswa->sekolah }}</td>
                                                                     <td
                                                                         class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
                                                                         {{ $data->alasan }}</td>
                                                                     <td class="whitespace-nowrap px-4 py-4">
                                                                         <div class="w-16 flex cursor-pointer h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
-                                                                        data-te-toggle="modal" onclick="ModalIzin({{$data->id}})"
-                                                                        data-modal-target="staticModal{{ $data->id }}izin"
-                                                                        data-modal-toggle="staticModal{{ $data->id }}izin">
-                                                                            <span class=" p-1 cursor-pointer  font-semibold dark:hover:text-black">Lihat</span>
+                                                                            data-te-toggle="modal"
+                                                                            onclick="ModalIzin({{ $data->id }})"
+                                                                            data-modal-target="staticModal{{ $data->id }}izin"
+                                                                            data-modal-toggle="staticModal{{ $data->id }}izin">
+                                                                            <span
+                                                                                class=" p-1 cursor-pointer  font-semibold dark:hover:text-black">Lihat</span>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -284,7 +301,8 @@
                                                             <tr>
                                                                 <td colspan="6" class="p-8 text-center">
                                                                     <div class="flex justify-center items-center">
-                                                                        <img src="/admin/noData.png" alt="" width="280px">
+                                                                        <img src="/admin/noData.png" alt=""
+                                                                            width="280px">
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -311,8 +329,9 @@
 
 
     @forelse ($tolaks as $modal)
-    {{-- modal --}}
-        <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true" style=" backdrop-filter: blur(10px);"
+        {{-- modal --}}
+        <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
+            style=" backdrop-filter: blur(10px);"
             class="kamu-tak-diajak fixed top-0 left-0 right-0 z-[999] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-2xl max-h-full">
                 <!-- Modal content -->
@@ -324,7 +343,8 @@
                         </h3>
                         <button type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            data-modal-hide="staticModal{{ $modal->id }}" onclick="closeModal({{$modal->id}})">
+                            data-modal-hide="staticModal{{ $modal->id }}"
+                            onclick="closeModal({{ $modal->id }})">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
@@ -335,7 +355,8 @@
                     </div>
                     <!-- Modal body -->
                     <div class="flex w-full justify-center mt-10">
-                        <img class="w-[20%] h-[20%] rounded-full" src="{{asset('storage/ditolak/'. $modal->foto_siswa)}}" alt="">
+                        <img class="w-[20%] h-[20%] rounded-full"
+                            src="{{ asset('storage/ditolak/' . $modal->foto_siswa) }}" alt="">
                     </div>
                     <div class="p-6 grid grid-cols-2 gap-5">
                         <div>
@@ -468,22 +489,21 @@
                             <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                                 Bukti
                             </p>
-                            <img src="{{ asset('storage/ditolak/' . $modal->cv) }}" alt=""
-                                srcset="">
+                            <img src="{{ asset('storage/ditolak/' . $modal->cv) }}" alt="" srcset="">
                         </div>
                         <div>
                             <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                                 Bukti
                             </p>
-                            <img src="{{ asset('storage/ditolak/' . $modal->skck) }}" alt=""
-                                srcset="">
+                            <img src="{{ asset('storage/ditolak/' . $modal->skck) }}" alt="" srcset="">
                         </div>
 
                     </div>
                     <!-- Modal footer -->
                     <div
                         class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                        <button data-modal-hide="staticModal{{ $modal->id }}" type="button" onclick="closeModal({{$modal->id}})"
+                        <button data-modal-hide="staticModal{{ $modal->id }}" type="button"
+                            onclick="closeModal({{ $modal->id }})"
                             class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                     </div>
                 </div>
@@ -494,9 +514,10 @@
 
     {{-- izin --}}
     @forelse ($izin as $data)
-    {{-- modal --}}
-        <div id="staticModalizin{{ $data->id }}" tabindex="-1" aria-hidden="true" style=" backdrop-filter: blur(10px);"
-            class="kamu-tak-diajak  fixed top-0 left-0 right-0 z-[999] hidden w-full justify-center p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full" >
+        {{-- modal --}}
+        <div id="staticModalizin{{ $data->id }}" tabindex="-1" aria-hidden="true"
+            style=" backdrop-filter: blur(10px);"
+            class="kamu-tak-diajak  fixed top-0 left-0 right-0 z-[999] hidden w-full justify-center p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-2xl max-h-full">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -505,7 +526,7 @@
                         <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                             Detail Tolak Izin
                         </h3>
-                        <button type="button" onclick="closeModalizin({{$data->id}})"
+                        <button type="button" onclick="closeModalizin({{ $data->id }})"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                             data-modal-hide="staticModaltolak{{ $data->id }}">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
@@ -518,7 +539,8 @@
                     </div>
                     <!-- Modal body -->
                     <div class="flex w-full justify-center mt-10">
-                        <img class="w-[20%] h-[20%] rounded-full" src="{{asset('storage/Siswa/'. $data->siswa->foto_siswa)}}" alt="">
+                        <img class="w-[20%] h-[20%] rounded-full"
+                            src="{{ asset('storage/Siswa/' . $data->siswa->foto_siswa) }}" alt="">
                     </div>
                     <div class="p-6 grid grid-cols-2 gap-5">
                         <div>
@@ -534,7 +556,7 @@
                                 Tanggal lahir
                             </p>
                             <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                {{ $data->dari }} -> {{$data->sampai}}
+                                {{ $data->dari }} -> {{ $data->sampai }}
                             </p>
                         </div>
                         <div>
@@ -574,7 +596,8 @@
                     <!-- Modal footer -->
                     <div
                         class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                        <button data-modal-hide="staticModaltolak{{ $data->id }}" type="" onclick="closeModalizin({{$data->id}})"
+                        <button data-modal-hide="staticModaltolak{{ $data->id }}" type=""
+                            onclick="closeModalizin({{ $data->id }})"
                             class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                     </div>
                 </div>
@@ -587,44 +610,46 @@
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 
 
-<script defer src="assets_guru/js/alpine.min.js"></script>
+    <script defer src="assets_guru/js/alpine.min.js"></script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-<script>
-    $(window).on('load', function() {
-        $('.spin_load').fadeOut();
-    });
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
+        });
+    </script>
 
 
-<script>
-    function openModal(id) {
-        // const modalpendaftaran = document.getElementById("staticModal"+id); apakah ini sudah benar ?
-        var display1 = document.getElementById("staticModal"+id);
-        display1.style.display = "flex";
-        console.log(id);
-        $(`#staticModal${id}`).show();
-    }
-    function ModalIzin(id) {
-        // const modalpendaftaran = document.getElementById("staticModal"+id); apakah ini sudah benar ?
-        console.log(id);
-        var display = document.getElementById("staticModalizin"+id);
-        display.style.display = "flex";
-        $(`#staticModalizin${id}`).show();
-    }
+    <script>
+        function openModal(id) {
+            // const modalpendaftaran = document.getElementById("staticModal"+id); apakah ini sudah benar ?
+            var display1 = document.getElementById("staticModal" + id);
+            display1.style.display = "flex";
+            console.log(id);
+            $(`#staticModal${id}`).show();
+        }
 
-    function closeModal(id) {
-        $(`#staticModal${id}`).hide();
-    }
-    function closeModalizin(id) {
-        $(`#staticModalizin${id}`).hide();
-    }
-</script>
+        function ModalIzin(id) {
+            // const modalpendaftaran = document.getElementById("staticModal"+id); apakah ini sudah benar ?
+            console.log(id);
+            var display = document.getElementById("staticModalizin" + id);
+            display.style.display = "flex";
+            $(`#staticModalizin${id}`).show();
+        }
+
+        function closeModal(id) {
+            $(`#staticModal${id}`).hide();
+        }
+
+        function closeModalizin(id) {
+            $(`#staticModalizin${id}`).hide();
+        }
+    </script>
 
 </body>
 
