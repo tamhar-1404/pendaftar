@@ -287,27 +287,27 @@
                                             @forelse ($terima as $absen)
                                                 <tr
                                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
-                                                    <td class="whitespace-nowrap px-6 py-2 font-medium">
+                                                    <td class="whitespace-nowrap px-6 py-2 font-bold">
                                                         {{ $no++ }}</td>
-                                                    <td class="whitespace-nowrap px-6 py-2">{{ $absen->name }}</td>
-                                                    <td class="whitespace-nowrap px-6 py-2">{{ $absen->sekolah }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2 capitalize tracking-wide">{{ $absen->name }}</td>
+                                                    <td class="whitespace-nowrap px-6 py-2 uppercase">{{ $absen->sekolah }}</td>
                                                     @if (!empty($absen->absens[0]))
                                                         <td class="whitespace-nowrap px-6 py-2">{{ $absen->absens[0]->tanggal }}</td>
                                                         <td class="whitespace-nowrap px-6 py-4">{{ $absen->absens[0]->jam }}</td>
                                                         <td class="whitespace-nowrap px-6 py-2">
                                                             @if ($absen->absens[0]->keterangan === 'Hadir')
                                                             <span
-                                                            class=" text-green-500">{{ $absen->absens[0]->keterangan }}</span>
+                                                            class=" text-green-500 font-sans md:font-serif font-medium tracking-wide capitalize">{{ $absen->absens[0]->keterangan }}</span>
                                                             @else
                                                             <span
-                                                            class=" text-red-500">{{ $absen->absens[0]->keterangan }}</span>
+                                                            class=" text-red-600 font-sans md:font-serif font-medium tracking-wide capitalize">{{ $absen->absens[0]->keterangan }}</span>
                                                             @endif
                                                         </td>
                                                     @else
                                                         <td class="whitespace-nowrap px-6 py-2">-</td>
                                                         <td class="whitespace-nowrap px-6 py-4">-</td>
                                                         <td class="whitespace-nowrap px-6 py-2">
-                                                            <span class=" text-red-500">Belum datang</span>
+                                                            <span class=" text-red-500 font-sans md:font-serif font-medium tracking-wide capitalize">Belum hadir</span>
                                                         </td>
                                                     @endif
                                                 </tr>
