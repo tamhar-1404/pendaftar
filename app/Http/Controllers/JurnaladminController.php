@@ -92,7 +92,12 @@ class JurnaladminController extends Controller
         $tdk_mengisi_nov = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereMonth('tanggal', '=', 11)->count();
         $tdk_mengisi_des = Jurnalsiswa::where('status', 'LIKE', 'tidak_mengisi')->whereMonth('tanggal', '=', 12)->count();
 
-        $item = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->latest()->paginate(10);
+        $item = Siswa::with(['jurnals' => function ($q) {
+            $q->where('tanggal', Carbon::now()->format('Y-m-d'));
+        }])
+        ->latest()
+        ->paginate(10);
+        // $item = Jurnalsiswa::where('tanggal', Carbon::now()->format('Y-m-d'))->latest()->paginate(10);
         return view('jurnal_admin.index',compact( 'item','mengisi_jan','mengisi_feb','mengisi_mar','mengisi_apr','mengisi_mei','mengisi_jun','mengisi_jul','mengisi_aug','mengisi_sep','mengisi_okt','mengisi_nov','mengisi_des','tdk_mengisi_jan','tdk_mengisi_feb','tdk_mengisi_mar','tdk_mengisi_apr','tdk_mengisi_mei','tdk_mengisi_jun','tdk_mengisi_jul','tdk_mengisi_aug','tdk_mengisi_sep','tdk_mengisi_nov','tdk_mengisi_okt','tdk_mengisi_nov','tdk_mengisi_des'));
 
     }
