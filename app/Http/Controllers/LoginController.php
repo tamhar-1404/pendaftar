@@ -46,9 +46,11 @@ class LoginController extends Controller
 
     public function login(Request $request){
         $this->validate($request, [
-            'email' => 'required|exists:users,email',
-            'password' => 'required|min:6',
+            'email' => 'required|exists:users,email|max:225',
+            'password' => 'required|min:6|max:225',
         ],[
+            'email.max' => 'Masukan 225 karakter!',
+            'password.max' => 'Masukan 225 karakter!',
             'email.required' => 'Masukkan Email Anda !!',
             'email.exists' => 'Email Yang Anda Masukkan Belum Terdaftar !!',
             'password.required' => 'Masukkan Kata Sandi Anda !!',

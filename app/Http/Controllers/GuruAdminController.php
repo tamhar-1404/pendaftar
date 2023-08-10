@@ -63,12 +63,18 @@ class GuruAdminController extends Controller
      {
          $this->validate($request, [
              'image' => 'required|image|mimes:png,jpg,jpeg',
-             'name' => 'required',
-             'sekolah' => 'required',
-             'email' => 'required|unique:users,email',
-             'alamat' => 'required',
+             'name' => 'required|max:225',
+             'sekolah' => 'required|max:225',
+             'email' => 'required|unique:users,email|max:225',
+             'alamat' => 'required|max:250',
              'no' => 'required|unique:guru_admins,no|min:10|max:14',
-             'password' => 'required|min:6',
+             'password' => 'required|min:6|max:225',
+         ],[
+            'name.max' => 'nama maksimal 225 karakter',
+            'sekolah.max' => 'nama maksimal 225 karakter',
+            'email.max' => 'nama maksimal 225 karakter',
+            'alamat.max' => 'nama maksimal 225 karakter',
+            'password.max' => 'nama maksimal 250 karakter',
          ]);
 
          $password = $request->password; // Simpan password yang belum di-hash

@@ -2,25 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Aproval;
 use App\Models\User;
-use App\Models\Barang;
 use App\Models\Limit;
 use App\Models\Siswa;
 use App\Models\Tolak;
 use App\Models\TopUp;
-use Illuminate\Http\Request;
-use App\Http\Requests\StoreaprovalRequest;
-use App\Http\Requests\UpdateaprovalRequest;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 use App\Mail\DemoMail;
-use App\Mail\Konfirmasi;
+use App\Models\Barang;
+use App\Models\Aproval;
 use App\Mail\Guru_email;
+use App\Mail\Konfirmasi;
 use App\Mail\TolakEmail;
 use App\Mail\TolakTopup;
+use Illuminate\Support\Str;
+use App\Models\ApprovalIzin;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreaprovalRequest;
+use App\Http\Requests\UpdateaprovalRequest;
 
 class AprovalController extends Controller
 {
@@ -47,7 +49,7 @@ class AprovalController extends Controller
         }
         if($request->has('limit')){
             $this->validate($request, [
-                'limit' => 'required',
+                'limit' => 'required|max:225',
             ]);
             $siswa = Siswa::where('role', 'siswa')->count();
             $cek = Limit::find(1);
@@ -58,12 +60,12 @@ class AprovalController extends Controller
                 $cek->update([
                   'limit' => $request->limit
                 ]);
-                return redirect()->back();
+                return redirect()->back()->with('success', 'berhasil menambahkan limit!');
             }else{
                 Limit::create([
                   'limit' => $request->limit
                 ]);
-                return redirect()->back();
+                return redirect()->back()->with('success', 'berhasil menambahkan limit!');
             }
         }
         $siswa = Siswa::where('role', 'siswa')->count();
@@ -220,6 +222,54 @@ public function Tolak(Request $request, Aproval $aproval)
     }
 }
 
+    public function Alfa()
+    {
+        $user = User::all();
+        ApprovalIzin::create([
+            'siswa_id'=>$user->siswa_id,
+            'keterangan'=>'Alfa',
+            'bukti'=>'kosong',
+            'tanggal'=>Carbon::now()->format('Y-m-d'),
+            'jam'=> Carbon::now()->format('H:i') ,
+            'status'=>'terimaabsen'
+        ]);
+    }
+    public function Hadir()
+    {
+        $user = User::all();
+        ApprovalIzin::create([
+            'siswa_id'=>$user->siswa_id,
+            'keterangan'=>'Hadir',
+            'bukti'=>'kosong',
+            'tanggal'=>Carbon::now()->format('Y-m-d'),
+            'jam'=> Carbon::now()->format('H:i') ,
+            'status'=>'terimaabsen'
+        ]);
+    }
+    public function Izin(Request $request)
+    {
+        $user = User::all();
+        ApprovalIzin::create([
+            'siswa_id'=>$user->siswa_id,
+            'keterangan'=>'Izin',
+            'bukti'=>'kosong',
+            'tanggal'=>Carbon::now()->format('Y-m-d'),
+            'jam'=> Carbon::now()->format('H:i') ,
+            'status'=>'terimaabsen'
+        ]);
+    }
+    public function Sakit()
+    {
+        $user = User::all();
+        ApprovalIzin::create([
+            'siswa_id'=>$user->siswa_id,
+            'keterangan'=>'Sakit',
+            'bukti'=>'kosong',
+            'tanggal'=>Carbon::now()->format('Y-m-d'),
+            'jam'=> Carbon::now()->format('H:i') ,
+            'status'=>'terimaabsen'
+        ]);
+    }
 
     /**
      * Display the specified resource.

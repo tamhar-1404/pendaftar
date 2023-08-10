@@ -86,8 +86,10 @@ class JurnalsiswaController extends Controller
                 if(!$data){
                     try {
                         $request->validate([
-                            'kegiatan' => "required",
+                            'kegiatan' => "required|max:255",
                             'image' => 'required|image|mimes:png,jpg,jpeg'
+                        ],[
+                            'kegiatan.max' => 'jurnal maksimal 255 karakter'
                         ]);
 
                         $image = $request->file('image');
@@ -152,7 +154,9 @@ class JurnalsiswaController extends Controller
     $oldImage = $Jurnalsiswa->image;
 
     $this->validate($request, [
-        'kegiatan' => "required",
+        'kegiatan' => "required|max:255",
+    ],[
+        'kegiatan.max' => 'jurnal maksimal 255 karakter'
     ]);
 
     if($Jurnalsiswa ->status === 'Tidak mengisi'){

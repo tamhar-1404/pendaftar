@@ -76,6 +76,7 @@ class ApprovalIzinController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create(ApprovalIzin $izin): View
     {
 
@@ -139,6 +140,8 @@ class ApprovalIzinController extends Controller
 
         return redirect()->route('absensi_siswa.index')->with('success', 'Data Berhasil Disimpan!');
     }
+
+    
 
     /**
      * Display the specified resource.

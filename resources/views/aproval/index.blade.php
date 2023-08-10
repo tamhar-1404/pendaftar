@@ -13,10 +13,9 @@
             extend: {
                 blur: {
                     xs: '3px',
-                  }
+                }
             },
-          },
-
+        },
     </script>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
@@ -24,7 +23,7 @@
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
     <link rel="stylesheet" href="load/load.css">
     <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.css" rel="stylesheet">
-    <link href="toastr.css" rel="stylesheet"/>
+    <link href="toastr.css" rel="stylesheet" />
     <script src="toastr.js"></script>
     <script>
         tailwind.config = {
@@ -45,69 +44,86 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFz2uJRJw1++wJ/E=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <style>
-            /* CSS untuk tampilan modal */
-            .modal {
-                display: none;
-                position: fixed;
-                z-index: 1;
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                overflow: auto;
-                backdrop-filter: blur(2px);
-                background-color: rgba(0, 0, 0, 0.4);
-            }
+    <style>
+        /* CSS untuk tampilan modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            overflow: auto;
+            backdrop-filter: blur(2px);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
 
-            .modal-content {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                max-width: 500px;
-                width: 100%;
-                background-color: #fff;
-                border-radius: 10px;
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-                padding: 2rem;
-            }
-        </style>
-        <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
+        .modal-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 500px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+        }
+    </style>
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+</head>
 
-    </head>
-    <body>
+<body>
 
-        <div class="px-4 mt-2">
+    @if (session('success'))
+        <script>
+            toastr.success("{{ session('success') }}");
+        </script>
+    @endif
 
-            @if (session('error'))
-            <div id="alertDiv" class="bg-red-100 border border-red-400 text-red-700 px-2 py-2 rounded relative" role="alert">
+    <div class="px-4 mt-2">
+
+        @if (session('error'))
+            <div id="alertDiv" class="bg-red-100 border border-red-400 text-red-700 px-2 py-2 rounded relative"
+                role="alert">
                 <strong class="font-bold">Peringatan</strong>
                 <span class="block sm:inline">Limit tidak valid</span>
                 <span id="closeBtn" class="absolute top-0 bottom-0 right-0 px-2 py-1">
-                  <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+                    <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20">
+                        <title>Close</title>
+                        <path
+                            d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+                    </svg>
                 </span>
 
             </div>
-                @endif
-        </div>
-        <script>
-            // Get references to the elements
-            const alertDiv = document.getElementById('alertDiv');
-            const closeBtn = document.getElementById('closeBtn');
+        @endif
+    </div>
+    <script>
+        // Get references to the elements
+        const alertDiv = document.getElementById('alertDiv');
+        const closeBtn = document.getElementById('closeBtn');
 
-            // Function to close the alert
-            function closeAlert() {
-              alertDiv.style.display = 'none';
-            }
+        // Function to close the alert
+        function closeAlert() {
+            alertDiv.style.display = 'none';
+        }
 
-            // Attach a click event listener to the close button
-            closeBtn.addEventListener('click', closeAlert);
-          </script>
+        // Attach a click event listener to the close button
+        closeBtn.addEventListener('click', closeAlert);
+    </script>
 
     <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
         <div class="main-content">
@@ -135,42 +151,40 @@
                                             </span>
                                         </label>
                                         <div class="flex gap-5">
-                                            <button type="button"
-                                                id="tambah-rfid" style="background-color: rgb(29 78 216)"
-                                                class=" text-white font-bold py-2 px-4 rounded"
-                                                onclick="tambahRFID()">
-                                            Edit Limit
+                                            <button type="button" id="tambah-rfid"
+                                                style="background-color: rgb(29 78 216)"
+                                                class=" text-white font-bold py-2 px-4 rounded" onclick="tambahRFID()">
+                                                Edit Limit
                                             </button>
-                                            <div class="limit">Jumlah limit {{$limit}} dan sisa limit saat ini {{$sisalimit}}</div>
+                                            <div class="limit">Jumlah limit {{ $limit }} dan sisa limit saat ini
+                                                {{ $sisalimit }}</div>
                                         </div>
                                         <div id="modal-tambah-rfid"
                                             class="modal fixed inset-0 flex items-center justify-center">
                                             <div class="modal-content bg-white p-6">
                                                 <h2 class="text-2xl font-bold mb-4">Limit Pendaftaran </h2>
-                                                <input id="inputrfid"
-                                                    type="number" name="limit"
+                                                <input id="inputrfid" type="number" name="limit"
                                                     class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
-                                                <button type="submit" class="border border-2">kirim</button>
                                                 <div class="mt-6 flex justify-end">
                                                     <!-- Your additional content here if needed -->
                                                 </div>
                                             </div>
                                         </div>
-                                    <!-- Import script JavaScript -->
-                                    <script>
-                                        document.addEventListener("DOMContentLoaded", function() {
-                                            document.getElementById('tambah-rfid').addEventListener('click', function() {
-                                                document.getElementById('modal-tambah-rfid').style.display = "flex";
-                                                document.getElementById('inputrfid').focus();
+                                        <!-- Import script JavaScript -->
+                                        <script>
+                                            document.addEventListener("DOMContentLoaded", function() {
+                                                document.getElementById('tambah-rfid').addEventListener('click', function() {
+                                                    document.getElementById('modal-tambah-rfid').style.display = "flex";
+                                                    document.getElementById('inputrfid').focus();
+                                                });
+                                                document.getElementById('modal-tambah-rfid').addEventListener('click', function(
+                                                    event) {
+                                                    if (event.target === this || event.target.classList.contains('bg-red-500')) {
+                                                        this.style.display = "none";
+                                                    }
+                                                });
                                             });
-                                            document.getElementById('modal-tambah-rfid').addEventListener('click', function(
-                                                event) {
-                                                if (event.target === this || event.target.classList.contains('bg-red-500')) {
-                                                    this.style.display = "none";
-                                                }
-                                            });
-                                        });
-                                    </script>
+                                        </script>
                                     </form>
                                 </div>
 
@@ -215,7 +229,8 @@
                                                     // Misalnya, jika Anda memiliki elemen dengan ID 'search-results', Anda dapat memperbarui isinya dengan:
                                                     // $('#search-results').html(response);
                                                     console.log(
-                                                    response); // Cetak data respons dari server ke konsol untuk di-debug
+                                                        response
+                                                    ); // Cetak data respons dari server ke konsol untuk di-debug
                                                 },
                                                 error: function(error) {
                                                     console.error(error); // Tangani kesalahan jika terjadi
@@ -252,15 +267,19 @@
                                                 @endphp
                                                 @forelse ($aprovals as $aproval)
                                                     <tr class="text-sm">
-                                                        <td class="whitespace-nowrap px-6 py-2">{{ $no++ }}</td>
-                                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->name }}</td>
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $no++ }}
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->name }}
+                                                        </td>
                                                         <td class="whitespace-nowrap px-6 py-2">{{ $aproval->jurusan }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->kelas }}</td>
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->kelas }}
+                                                        </td>
                                                         <td class="whitespace-nowrap px-6 py-2">
                                                             {{ $aproval->magang_awal }}
                                                             -- {{ $aproval->magang_akhir }}</td>
-                                                        <td class="whitespace-nowrap px-6 py-2">{{ $aproval->sekolah }}
+                                                        <td class="whitespace-nowrap px-6 py-2">
+                                                            {{ $aproval->sekolah }}
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 py-2">
 
@@ -297,19 +316,18 @@
 
 
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"></script>
 
     @if (session()->has('success'))
-    <script>
-        toastr.success("{{ session('success') }}");
-    </script>
-@endif
+        <script>
+            toastr.success("{{ session('success') }}");
+        </script>
+    @endif
 </body>
 
 
 </html>
-
-

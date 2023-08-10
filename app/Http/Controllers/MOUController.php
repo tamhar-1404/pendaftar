@@ -49,11 +49,14 @@ class MOUController extends Controller
     {
         $this->validate($request ,[
             'logo'=>'required|mimes:jpg,jpeg,png',
-            'nama'=>'required',
-            'email'=>'required|unique:m_o_u_s,email',
+            'nama'=>'required|max:225',
+            'email'=>'required|unique:m_o_u_s,email|max:225',
             'no'=>'required||min:10|max:12|unique:m_o_u_s,no',
-            'alamat'=>'required'
+            'alamat'=>'required|max:250'
         ],[
+            'nama.max' => 'nama maksimal 225 karakter',
+            'email.max' => 'email maksimal 225 karakter',
+            'alamat.max' => 'alamat maksimal 250 karakter',
             'no.min' => 'telepon minimal 10 angka',
             'no.max' => 'telepon maximal 12 angka',
             'logo.mimes' => 'ekstensi harus jpg,png,jpeg',
@@ -114,11 +117,14 @@ class MOUController extends Controller
 
             $this->validate($request ,[
                 'logo'=>'required|mimes:jpg,jpeg,png|image',
-                'nama'=>'required',
-                'email'=>'required|unique:m_o_u_s,email,' . $data->id,
+                'nama'=>'required|max:225',
+                'email'=>'required|max:225|unique:m_o_u_s,email,' . $data->id,
                 'no'=>'required|min:10|max:12|unique:m_o_u_s,no,' . $data->id,
-                'alamat'=>'required'
+                'alamat'=>'required|max:250'
             ],[
+                'nama.max' => 'nama maksimal 225 karakter',
+                'email.max' => 'email maksimal 225 karakter',
+                'alamat.max' => 'alamat maksimal 250 karakter',
                 'no.min' => 'telepon minimal 10 angka',
                 'no.max' => 'telepon maximal 12 angka',
                 'logo.mimes' => 'ekstensi harus jpg,png,jpeg',
@@ -138,11 +144,14 @@ class MOUController extends Controller
         }
 
         $this->validate($request ,[
-            'nama'=>'required',
-            'email'=>'required|unique:m_o_u_s,email,' . $data->id,
+            'nama'=>'required|max:225',
+            'email'=>'required|max:225|unique:m_o_u_s,email,' . $data->id,
             'no'=>'required|min:10|max:12|unique:m_o_u_s,no,' . $data->id,
-            'alamat'=>'required'
+            'alamat'=>'required|max:250'
         ],[
+            'nama.max' => 'nama maksimal 225 karakter',
+            'email.max' => 'email maksimal 225 karakter',
+            'alamat.max' => 'alamat maksimal 250 karakter',
             'no.min' => 'telepon minimal 10 angka',
             'no.max' => 'telepon maximal 12 angka',
             'email.unique' => 'email sudah ada',
@@ -155,7 +164,7 @@ class MOUController extends Controller
             'no'=>$request->no,
             'alamat'=>$request->alamat
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'berhasil mengedit data!');
     }
 
     /**
