@@ -144,8 +144,9 @@ class SiswaController extends Controller
     public function update(Request $request, Siswa $siswa , User $user , $id)
     {
         $this->validate($request,[
-            'RFID'=>'required|unique:users,RFID',
+            'RFID'=>'required|unique:users,RFID|max:225',
         ], [
+            'RFID.max' => 'Maksimal 225 karakter yaa!',
             'RFID.required'=> 'RFID tidak boleh kosong',
             'RFID.unique'=> 'RFID ini telah digunakan',
         ]);

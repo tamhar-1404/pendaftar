@@ -106,7 +106,9 @@ class OpnameController extends Controller
     public function update(Request $request, Opname $opname)
     {
         $request->validate([
-            'stok' => 'required',
+            'stok' => 'required|max:225',
+        ],[
+            'stok.max' => 'maksimal 225 karakter'
         ]);
         $old_stok = (int) $opname->stok;
         $new_stok = (int) $request->stok;

@@ -67,10 +67,13 @@ class BlogController extends Controller
         if(Auth()->user()->role == 'Admin'){
             $this->validate($request, [
                 'foto' => 'required|image|mimes:png,jpg,jpeg',
-                'judul' => 'required',
-                'keterangan' => 'required',
+                'judul' => 'required|max:225',
+                'keterangan' => 'required|max:225',
                 'deskripsi'  => 'required',
                 'kategori'  => 'required'
+            ],[
+                'judul.max' => 'judul maksimal 225 karakter',
+                'keterangan.max' => 'keterangan maksimal 225 karakter'
             ]);
 
             $image = $request->file('foto');
@@ -143,11 +146,14 @@ class BlogController extends Controller
             $blog = Blog::find($id);
             if ($request->hasFile('foto')) {
                 $this->validate($request, [
-                    'judul' => 'required',
+                    'judul' => 'required|max:225',
                     'foto' => 'required|mimes:png,jpg,jpeg|image',
-                    'keterangan' => 'required',
+                    'keterangan' => 'required|max:225',
                     'deskripsi' => 'required',
                     'kategori' => 'required'
+                ],[
+                    'judul.max' => 'judul maksimal 225 karakter',
+                    'keterangan.max' => 'judul maksimal 225 karakter',
                 ]);
                 // Unggah dan simpan gambar baru
                 $image = $request->file('foto');
@@ -171,10 +177,13 @@ class BlogController extends Controller
                 return redirect()->route('Berita.index')->with('success', 'Berhasil memperbarui berita');
             } else {
                 $this->validate($request, [
-                    'judul' => 'required',
-                    'keterangan' => 'required',
+                    'judul' => 'required|max:225',
+                    'keterangan' => 'required|max:225',
                     'deskripsi' => 'required',
                     'kategori' => 'required'
+                ],[
+                    'judul.max' => 'judul maksimal 225 karakter',
+                    'keterangan.max' => 'judul maksimal 225 karakter',
                 ]);
                 $blog->update([
                     'judul' => $request->judul,

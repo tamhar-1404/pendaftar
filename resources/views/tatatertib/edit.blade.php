@@ -9,30 +9,30 @@
     <!-- CSS Assets -->
     <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{asset('load/load.css')}}">
+    <link rel="stylesheet" href="{{ asset('load/load.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script>
     <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
 
-        <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
-        <!-- Javascript Assets -->
-        <script src="{{ asset('admin/js/app.js') }}" defer></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
-        <script src="https://cdn.tailwindcss.com/3.3.0"></script>
-        <script>
-            tailwind.config = {
-                darkMode: "class",
-                theme: {
-                    fontFamily: {
-                        sans: ["Roboto", "sans-serif"],
-                        body: ["Roboto", "sans-serif"],
-                        mono: ["ui-monospace", "monospace"],
-                    },
+    <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
+    <!-- Javascript Assets -->
+    <script src="{{ asset('admin/js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                fontFamily: {
+                    sans: ["Roboto", "sans-serif"],
+                    body: ["Roboto", "sans-serif"],
+                    mono: ["ui-monospace", "monospace"],
                 },
-                corePlugins: {
-                    preflight: false,
-                },
-            };
-        </script>
+            },
+            corePlugins: {
+                preflight: false,
+            },
+        };
+    </script>
 
     <!-- Javascript Assets -->
     <script src="{{ asset('admin/js/app.js') }}" defer></script>
@@ -63,12 +63,12 @@
 
 <body>
     <div
-    class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
-    <div class="center">
-        <div class="ring">
+        class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
+        <div class="center">
+            <div class="ring">
+            </div>
+            <img src="{{ asset('load/logo.png') }}" alt="Deskripsi gambar" class="my-img">
         </div>
-        <img src="{{asset('load/logo.png')}}" alt="Deskripsi gambar" class="my-img">
-    </div>
     </div>
     @include('jurnal_admin.layout')
 
@@ -119,6 +119,18 @@
                                                 class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                                 value="{{ $tataTertib->judul }}" type="text" />
                                         </label>
+                                        @error('judul')
+                                            <div
+                                                class="alert flex space-x-2 rounded-lg border border-error px-4 py-2 text-error">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                                    fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                                <p>{{ $message }}</p>
+                                            </div>
+                                        @enderror
                                         <div>
                                             <span class="font-medium text-slate-600 dark:text-navy-100">Deskripsi</span>
                                             <div class="mt-1.5 w-full">
@@ -147,70 +159,71 @@
 
 
 
-<script>
-    $('#summernote').summernote({
-        placeholder: 'Deskripsi..',
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-    });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-<script>
-    $(window).on('load', function() {
-        $('.spin_load').fadeOut();
-    });
-</script>
-<script>
-    const instanceMode = te.Sidenav.getInstance(
-        document.getElementById("sidenav-2")
-    );
-    const modes = ["side"];
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Deskripsi..',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
+        });
+    </script>
+    <script>
+        const instanceMode = te.Sidenav.getInstance(
+            document.getElementById("sidenav-2")
+        );
+        const modes = ["side"];
 
-    modes.forEach((mode) => {
-        const modeSwitch = document.getElementById(mode);
-        modeSwitch.addEventListener("click", () => {
-            const instance = te.Sidenav.getInstance(
-                document.getElementById("sidenav-2")
-            );
-            instance.changeMode(mode);
-            modes.forEach((el) => {
-                if (el === mode) {
-                    ["text-primary-600", "border-primary-600"].forEach((item) =>
-                        modeSwitch.classList.remove(item)
-                    );
-                    modeSwitch.className +=
-                        " bg-primary text-white hover:bg-primary-700 active:bg-primary-800 focus:bg-primary-700 border-transparent";
-                } else {
-                    const node = document.getElementById(el);
-                    node.className += " text-primary-600 border-primary-600";
-                    [
+        modes.forEach((mode) => {
+            const modeSwitch = document.getElementById(mode);
+            modeSwitch.addEventListener("click", () => {
+                const instance = te.Sidenav.getInstance(
+                    document.getElementById("sidenav-2")
+                );
+                instance.changeMode(mode);
+                modes.forEach((el) => {
+                    if (el === mode) {
+                        ["text-primary-600", "border-primary-600"].forEach((item) =>
+                            modeSwitch.classList.remove(item)
+                        );
+                        modeSwitch.className +=
+                            " bg-primary text-white hover:bg-primary-700 active:bg-primary-800 focus:bg-primary-700 border-transparent";
+                    } else {
+                        const node = document.getElementById(el);
+                        node.className += " text-primary-600 border-primary-600";
+                        [
 
-                    ].forEach((item) => node.classList.remove(item));
-                }
+                        ].forEach((item) => node.classList.remove(item));
+                    }
+                });
             });
         });
-    });
-</script>
-<script>
-    // Initialization for ES Users
-    import {
-        sidenav - 2,
-        initTE,
-    } from "tw-elements";
+    </script>
+    <script>
+        // Initialization for ES Users
+        import {
+            sidenav - 2,
+            initTE,
+        } from "tw-elements";
 
-    initTE({
-        sidenav - 2
-    });
-</script>
+        initTE({
+            sidenav - 2
+        });
+    </script>
 </body>
+
 </html>
