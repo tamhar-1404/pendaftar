@@ -18,7 +18,7 @@
           },
 
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
@@ -1266,9 +1266,9 @@
                                                                         </td>
                                                                         <td>
                                                                         <button type="submit" class="border border-blue-400 px-2 py-1 hover:bg-blue-400 hover:text-white rounded" @click="openModal(item.id, 'Hadir')">Hadir</button>
-                                                                        <button type="submit" class="border border-yellow-400 px-2 py-1 hover:bg-yellow-400 hover:text-white  rounded" @click="openModal(item.id, 'izin')">Izin</button>
-                                                                        <button type="submit" class="border border-red-400 px-2 py-1 hover:bg-red-400 hover:text-white rounded" @click="openModal(item.id, 'alfa')">Alfa</button>
-                                                                        <button type="submit" class="border border-yellow-400 px-2 py-1 hover:bg-yellow-400 hover:text-white rounded" @click="openModal(item.id, 'sakit')">Sakit</button>
+                                                                        <button type="submit" class="border border-yellow-400 px-2 py-1 hover:bg-yellow-400 hover:text-white  rounded" @click="openModal(item.id, 'Izin')">Izin</button>
+                                                                        <button type="submit" class="border border-red-400 px-2 py-1 hover:bg-red-400 hover:text-white rounded" @click="openModal(item.id, 'Alfa')">Alfa</button>
+                                                                        <button type="submit" class="border border-yellow-400 px-2 py-1 hover:bg-yellow-400 hover:text-white rounded" @click="openModal(item.id, 'Sakit')">Sakit</button>
                                                                         </td>
                                                                         {{-- <td class="py-3">
                                                                             <span x-text="item.keterangan"></span>
