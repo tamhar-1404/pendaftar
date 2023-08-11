@@ -134,7 +134,7 @@ class SiswamagangController extends Controller
     {
         $user_id = auth()->user()->id;
         $this->validate($request, [
-            'saldo' => 'required|numeric|between:5000,100000|max:225',
+            'saldo' => 'required|numeric|between:5000,100000',
             'password' => 'required|min:6|max:225'
         ], [
             'saldo.max' => 'saldo hanya bisa 225 karakter',

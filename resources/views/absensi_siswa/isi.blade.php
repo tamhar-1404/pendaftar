@@ -132,7 +132,7 @@
         <div class="flex justify-end items-center ">
             {{-- serch --}}
             <div class="mr-4 ">
-              
+
             </div>
             {{-- filter --}}
             {{--  <div class="border-2 rounded-full border-gray-400 flex items-center mr-2 ">
@@ -148,7 +148,7 @@
         </div>
     </div>
 
-    <div class=" mt-3 col-span-2 p-2 flex gap-2">
+    <div class=" mt-3 col-span-1 md:col-span-2 lg:col-span-2 p-2 flex gap-2">
         <div class="w-full panel ">
             <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
