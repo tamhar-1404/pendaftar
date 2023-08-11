@@ -19,7 +19,9 @@
         },
     </script>
     <link rel="stylesheet" href="load/load.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -44,6 +46,11 @@
 </head>
 
 <body>
+    @if (session()->has('error'))
+        <script>
+            toastr.error("{{ session('error') }}")
+        </script>
+    @endif
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             <script>
@@ -60,15 +67,7 @@
             )
         </script>
     @endif
-    @if (session()->has('error'))
-        <script>
-            Swal.fire(
-                'Oops..!',
-                "{{ session('error') }}",
-                'error'
-            )
-        </script>
-    @endif
+
     <style>
         /* CSS untuk tampilan modal */
         .modal {

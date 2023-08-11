@@ -6,23 +6,26 @@ use Carbon\Carbon;
 use App\Models\Aproval;
 use App\Models\ApprovalIzin;
 use App\Models\User;
-use App\Models\Barang;
 use App\Models\Limit;
 use App\Models\Siswa;
 use App\Models\Tolak;
 use App\Models\TopUp;
-use Illuminate\Http\Request;
-use App\Http\Requests\StoreaprovalRequest;
-use App\Http\Requests\UpdateaprovalRequest;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 use App\Mail\DemoMail;
-use App\Mail\Konfirmasi;
+use App\Models\Barang;
+use App\Models\Aproval;
 use App\Mail\Guru_email;
+use App\Mail\Konfirmasi;
 use App\Mail\TolakEmail;
 use App\Mail\TolakTopup;
+use Illuminate\Support\Str;
+use App\Models\ApprovalIzin;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreaprovalRequest;
+use App\Http\Requests\UpdateaprovalRequest;
 
 class AprovalController extends Controller
 {

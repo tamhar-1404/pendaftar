@@ -95,11 +95,14 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
         Route::post('/absensi_date', [JurnaladminController::class, 'Absenhariini'])->name('absensi_date');
         Route::get('/Absenhariini', [JurnaladminController::class, 'Absenhariini'])->name('Absenhariini');
+        Route::get('/Belum_mengisi', [JurnaladminController::class, 'Belum_mengisi'])->name('Belum_mengisi');
         Route::get('Alfa', [AprovalController::class, 'Alfa'])->name('Alfa');
         Route::get('/Sakit.index', [AprovalController::class, 'Sakit'])->name('Sakit.index');
         Route::post('/Hadir.index', [AprovalController::class, 'Hadir'])->name('Hadir.index');
         Route::get('/Izin.index', [AprovalController::class, 'Izin'])->name('Izin.index');
         Route::get('/Jurnalhariini', [JurnaladminController::class, 'Jurnalhariini'])->name('Jurnalhariini');
+        // Post tidak mengisi jurnal
+        Route::post('/Jurnalhariini/belum_mengisi', [JurnaladminController::class, 'belum_mengisi'])->name('jurnal.belum_mengisi');
         Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
         Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
         Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
@@ -128,7 +131,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/jurnal_pdf', [JurnaladminController::class, 'jurnal_admin_pdf']);
         Route::get('/jurnal_docx', [JurnaladminController::class, 'admin_docx']);
         Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
-        Route::get('/hapus_laporan_piket/{id}' , [LaporanPiketController::class , 'hapus'])->name('hapus/laporan/piket');
+        Route::delete('/hapus_laporan_piket/{id}' , [LaporanPiketController::class , 'hapus'])->name('hapus/laporan/piket');
         Route::post('catatan', [PiketController::class, 'tambah'])->name('tambahCatatan');
         Route::post('/hadir_siswa', [App\Http\Controllers\JurnaladminController::class, 'hadir'])->name('hadir_siswa');
 

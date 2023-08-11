@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin - Jurnal Hari Ini</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
         integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
@@ -282,7 +283,7 @@
                                                         <thead class="border-b-2">
                                                             <tr>
                                                                 <th>#</th>
-                                                                <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
+                                                                <th @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
                                                                 <th @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">Sekolah</th>
                                                                 <th @click="sort('status', sorted.rule === 'asc' ? 'desc' : 'asc')">Status</th>
                                                             </tr>
@@ -294,7 +295,7 @@
                                                                         <span x-text="index + 1"></span>
                                                                     </td>
                                                                     <td class="py-3">
-                                                                        <span x-text="item.nama"></span>
+                                                                        <span x-text="item.name"></span>
                                                                     </td>
                                                                     <td class="py-3">
                                                                         <span x-text="item.sekolah"></span>
@@ -484,6 +485,7 @@
                                 <div class="w-full">
                                     <div class="w-full">
                                         <div class="">
+                                            {{-- Datatable tidak mengisi --}}
                                             <div x-data="dataTable1()"
                                                 x-init="
                                                 initData()
@@ -506,8 +508,8 @@
                                                     <thead class="border-b-2">
                                                         <tr>
                                                             <th>#</th>
-                                                            <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
-                                                            <th @click="sort('tan, soggal'rted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
+                                                            <th @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
+                                                            <th @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
                                                             <th @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">Sekolah</th>
                                                             {{-- <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
                                                             <th @click="sort('image', sorted.rule === 'asc' ? 'desc' : 'asc')">image</th> --}}
@@ -520,7 +522,7 @@
                                                                     <span x-text="index + 1"></span>
                                                                 </td>
                                                                 <td class="py-3">
-                                                                    <span x-text="item.nama"></span>
+                                                                    <span x-text="item.name"></span>
                                                                 </td>
                                                                 <td class="py-3">
                                                                     <span x-text="item.tanggal"></span>
@@ -765,6 +767,7 @@
                                 <div class="w-full">
                                     <div class="w-full">
                                         <div >
+                                            {{-- Data table mengisi --}}
                                             <div x-data="dataTable()"
                                                 x-init="
                                                 initData()
@@ -787,9 +790,9 @@
                                                     <thead class="border-b-2">
                                                         <tr>
                                                             <th>#</th>
-                                                            <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
+                                                            <th @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
                                                             <th @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
-                                                            <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
+                                                            <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Kegiatan</th>
                                                             <th @click="sort('aksi', sorted.rule === 'asc' ? 'desc' : 'asc')">Aksi</th>
                                                         </tr>
                                                     </thead>
@@ -800,7 +803,7 @@
                                                                     <span id="i" x-text="index + 1"></span>
                                                                 </td>
                                                                 <td class="py-3">
-                                                                    <span x-text="item.nama"></span>
+                                                                    <span x-text="item.name"></span>
                                                                 </td>
                                                                 <td class="py-3">
                                                                     <span x-text="item.tanggal"></span>
@@ -1135,7 +1138,7 @@
                                                                     <span x-text="item.sekolah"></span>
                                                                 </td>
                                                                 <td class="py-3">
-                                                                    <span x-text="item.aksi"></span>
+                                                                    <button type="submit" class="border border-blue-400 px-2 py-1 hover:bg-blue-400 hover:text-white font-semibold rounded" @click="belum_mengisi(item.id)">Belum mengisi</button>
                                                                 </td>
 
 
@@ -1730,6 +1733,49 @@
     });
 </script>
 <script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    })
+    function belum_mengisi(id)
+    {
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "Yakin ingin melakukan ini?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Iya'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    method: 'POST',
+                    url: "{{ route('jurnal.belum_mengisi') }}",
+                    data: {
+                        id: id,
+                    },
+                    success: function (response) {
+                        if (response['status'] == 'success') {
+                            Swal.fire(
+                               'Berhasil!',
+                                'Berhasil!',
+                                'success'
+                            ).then((result) => {
+                                location.reload();
+                            })
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                    }
+                })
+            }
+        })
+    }
     function openModal(id) {
         $(`#staticModal${id}`).show();
     }

@@ -49,9 +49,10 @@ class TataTertibController extends Controller
     public function store(Request $request, TataTertib  $tataTertib)
     {
             $this->validate($request, [
-                'judul' => 'required',
+                'judul' => 'required|max:225',
                 'deskripsi'  => 'required'
             ], [
+                'judul.max' => 'judul maksimal 225 karakter',
                 'judul.required' => 'Judul tidak boleh kosong',
                 'deskripsi.required' => 'Deskripsi tidak boleh kosong',
             ]);
@@ -98,9 +99,10 @@ class TataTertibController extends Controller
     {
         $tataTertib = TataTertib::findOrFail($id);
         $this->validate($request , [
-            'judul' => 'required',
+            'judul' => 'required|max:225',
             'deskripsi' => 'required'
         ], [
+            'judul.max' => 'judul maksimal 225 karakter',
             'judul.required' => 'Judul tidak boleh kosong',
             'deskripsi.required' => 'Deskripsi tidak boleh kosong',
         ]);
