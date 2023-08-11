@@ -602,9 +602,12 @@
                                                             <img
                                                                 src="{{ asset('storage/image/' . $items->image) }}"
                                                                 width="50px" height="50px" alt="{{ $items->image }}">
+                                                                @else
+                                                                {{ $items->image }}
                                                             @endif
+
                                                         </td>
-                                                        <td class="whitespace-nowrap px-6 py-2  kamu-tak-diajak">
+                                                        <td class="whitespace-nowrap px-6 py-2 kamu-tak-diajak">
                                                             <div class="flex gap-2">
                                                                 <a href="#">
                                                                     <div class="w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
@@ -790,8 +793,13 @@
                                     <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                                         Bukti
                                     </p>
+                                    @if ($items->kegiatan != 'Tidak mengisi' && $items->kegiatan != 'Kosong')
                                     <img id="preview-image" src="{{ asset('storage/image/' . $modal->image) }}"
                                         class="w-64 h-64" alt="" srcset="">
+                                        @else
+                                        {{ $items->image }}
+                                    @endif
+
                                 </div>
                             </div>
                             <!-- Modal footer -->
