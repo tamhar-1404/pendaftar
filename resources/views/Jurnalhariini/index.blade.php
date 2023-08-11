@@ -821,7 +821,7 @@
                                                             <tr x-show="showPopup" class="text-gray-900 text-xs">
                                                                 <td class="py-3" colspan="5">
                                                                     <div class="popup-content">
-                                                                        <p>Name: <span x-text="item.nama"></span></p>
+                                                                        <p>Name: <span x-text="item.name"></span></p>
                                                                         <p>Date: <span x-text="item.tanggal"></span></p>
                                                                         <p>Activity: <span x-text="item.kegiatan"></span></p>
                                                                         <!-- Add other data fields as needed -->
@@ -1120,7 +1120,7 @@
                                                     <thead class="border-b-2">
                                                         <tr>
                                                             <th>#</th>
-                                                            <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
+                                                            <th @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
                                                             <th @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">Sekolah</th>
                                                             <th @click="sort('Aksi', sorted.rule === 'asc' ? 'desc' : 'asc')">Aksi</th>
 
@@ -1146,7 +1146,7 @@
                                                             <tr x-show="showPopup" class="text-gray-900 text-xs">
                                                                 <td class="py-3" colspan="5">
                                                                     <div class="popup-content">
-                                                                        <p>Name: <span x-text="item.nama"></span></p>
+                                                                        <p>Name: <span x-text="item.name"></span></p>
                                                                         <p>Date: <span x-text="item.sekolah"></span></p>
                                                                         {{-- <p>Activity: <span x-text="item.kegiatan"></span></p> --}}
                                                                         <!-- Add other data fields as needed -->
