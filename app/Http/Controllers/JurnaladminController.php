@@ -266,7 +266,7 @@ class JurnaladminController extends Controller
         ->get();
         $tidakMengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status')
         ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
-        ->where('jurnalsiswas.tanggal', $hari)
+        ->where('jurnalsiswas.tanggal', $hari)->where('jurnalsiswas.status', "Tidak mengisi")
         ->get();
         $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan', 'jurnalsiswas.id as id')
         ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
