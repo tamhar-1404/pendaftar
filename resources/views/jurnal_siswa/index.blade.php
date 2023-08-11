@@ -615,14 +615,14 @@
                                                             </div>
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 pl-17 py-2">
-                                                            @if ($items->kegiatan != 'Tidak mengisi')
+                                                            @if ($items->kegiatan != 'Tidak mengisi' || $items->kegiatan != 'Kosong')
                                                             <img
                                                                 src="{{ asset('storage/image/' . $items->image) }}"
                                                                 width="50px" height="50px" alt="{{ $items->image }}">
                                                             @endif
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 py-2  kamu-tak-diajak">
-                                                            @if ($items->kegiatan != 'Tidak mengisi')
+                                                            @if ($items->kegiatan != 'Tidak mengisi' || $items->kegiatan != 'Kosong')
                                                             <div class="flex gap-2">
                                                                 <a href="#">
                                                                     <div class="w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
