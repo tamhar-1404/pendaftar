@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Aproval;
+use App\Models\ApprovalIzin;
 use App\Models\User;
 use App\Models\Barang;
 use App\Models\Limit;
@@ -232,23 +234,28 @@ public function Tolak(Request $request, Aproval $aproval)
             'status'=>'terimaabsen'
         ]);
     }
-    public function Hadir()
+    public function Hadir(Request $request)
     {
-        $user = User::all();
+        $id =  $request->id;
+        $keterangan = $request->keterangan;
+        // $user = User::findOrFail($request->siswa_id); // Ubah 'user_id' menjadi 'siswa_id'
         ApprovalIzin::create([
-            'siswa_id'=>$user->siswa_id,
-            'keterangan'=>'Hadir',
-            'bukti'=>'kosong',
-            'tanggal'=>Carbon::now()->format('Y-m-d'),
-            'jam'=> Carbon::now()->format('H:i') ,
-            'status'=>'terimaabsen'
+            'siswa_id' =>$id,
+            'keterangan' => $keterangan,
+            'bukti' => 'kosong',
+            'tanggal' => Carbon::now()->format('Y-m-d'),
+            'jam' => Carbon::now()->format('H:i'),
+            'status' => 'terimaabsen'
         ]);
+        return response()->json(['message' => 'Data berhasil disimpan.']);
     }
+
+
     public function Izin(Request $request)
     {
         $user = User::all();
         ApprovalIzin::create([
-            'siswa_id'=>$user->siswa_id,
+            'siswa_id'=>1,
             'keterangan'=>'Izin',
             'bukti'=>'kosong',
             'tanggal'=>Carbon::now()->format('Y-m-d'),

@@ -10,6 +10,7 @@ class ApprovalIzin extends Model
 {
     use SoftDeletes;
     protected $guarded = ['id'];
+    
 
 
         public function Siswa()

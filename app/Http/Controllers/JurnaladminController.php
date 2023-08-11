@@ -21,6 +21,17 @@ use Illuminate\Contracts\View\View;
 
 class JurnaladminController extends Controller
 {
+    public function hadir(Request $request) {
+        $id = $request->input('id'); // Mengambil id dari data POST
+        ApprovalIzin::create([
+            'siswa_id' => $id,
+            'tanggal' => Carbon::now()->format('Y-m-d'),
+            'jam' => Carbon::now()->format('H:i'),
+            'keterangan' => 'hadir',
+            'status' => 'terimaabsen'
+        ]);
+        return response()->json(['message' => 'Data berhasil disimpan.']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -303,8 +314,8 @@ class JurnaladminController extends Controller
      */
     public function show(Request $request)
     {
-        // $hasil = $request->input('serch');
-        // $item = jurnalsiswa::where('nama', 'like', '%'.$hasil.'%')->get();
+        // $halsiswasil = $request->input('serch');
+        // $item = jurna::where('nama', 'like', '%'.$hasil.'%')->get();
         // return view('jurnal_admin.grafik',compact('item'));
     }
 

@@ -1471,7 +1471,7 @@
                                         <!-- Main modal -->
                                         <div id="authentication-modal{{ $data->id }}" tabindex="-1"
                                             aria-hidden="true"
-                                            class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto inset-0 md:h-auto">
+                                            class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto inset-0 md:h-auto ">
                                             <div class="relative w-full max-w-md mx-auto">
                                                 <!-- Modal content -->
                                                 <div class="relative bg-white rounded-lg shadow-md dark:bg-gray-700">
@@ -1490,7 +1490,7 @@
                                                         <h3
                                                             class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                                                             Laporan Piket</h3>
-                                                        <div class="text-md font-normal">
+                                                        <div class="text-md font-normal lg:max-h-[80%] overflow-auto">
                                                             {{ $data->deskripsi }}
                                                         </div>
                                                     </div>

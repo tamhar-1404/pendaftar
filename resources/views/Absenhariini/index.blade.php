@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin - Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -30,6 +31,9 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/perfect-scrollbar.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/style.css" />
     <link defer rel="stylesheet" type="text/css" media="screen" href="assets_guru/css/animate.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="load/load.css">
     <style>
         /* CSS for the backdrop */
@@ -1261,11 +1265,11 @@
                                                                             <span x-text="item.sekolah"></span>
                                                                         </td>
                                                                         <td>
-                                                                        
-                                                                        <button type="submit" class="border border-blue-400 px-2 py-1  hover:bg-blue-400 hover:text-white rounded" value="Hadir">Hadir</button>
-                                                                        <button type="submit" class="border border-yellow-400 px-2 py-1 hover:bg-yellow-400 hover:text-white  rounded" value="Izin">Izin</button>
-                                                                        <button type="submit" class="border border-red-400 px-2 py-1 hover:bg-red-400 hover:text-white rounded" value="Alfa">Alfa</button>
-                                                                        <button type="submit" class="border border-yellow-400 px-2 py-1 hover:bg-yellow-400 hover:text-white rounded" value="Sakit">Sakit</button>
+
+                                                                        <button type="submit" class="border border-blue-400 px-2 py-1 hover:bg-blue-400 hover:text-white rounded" @click="openModal(item.id, 'Hadir')">Hadir</button>
+                                                                        <button type="submit" class="border border-yellow-400 px-2 py-1 hover:bg-yellow-400 hover:text-white  rounded" @click="openModal(item.id, 'izin')">Izin</button>
+                                                                        <button type="submit" class="border border-red-400 px-2 py-1 hover:bg-red-400 hover:text-white rounded" @click="openModal(item.id, 'alfa')">Alfa</button>
+                                                                        <button type="submit" class="border border-yellow-400 px-2 py-1 hover:bg-yellow-400 hover:text-white rounded" @click="openModal(item.id, 'sakit')">Sakit</button>
                                                                         </td>
                                                                         {{-- <td class="py-3">
                                                                             <span x-text="item.keterangan"></span>
@@ -1663,297 +1667,7 @@
 
             </div>
             <!-- end main content section -->
-            @forelse ($hadir as  $absen)
-            <div id="staticModal1{{ $absen->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-                class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative w-full max-w-2xl max-h-full">
-                    <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <!-- Modal header -->
-                        <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                Detail Absen
-                            </h3>
-                            <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                data-modal-hide="staticModal1{{ $absen->id }}">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="p-6 space-y-6">
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->nama }}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">Nama</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->sekolah }}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">sekolah</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->keterangan }}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">keterangan</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500  uppercase">
-                                    {{ $absen->tanggal}}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">tanggal</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->jam }}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">jam</label>
-                            </div>
-                        </div>
 
-                        <!-- Modal footer -->
-                        {{--  <div
-                            class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                            <a href="{{ route('absensi_siswa.index') }}" data-modal-hide="staticModal"
-                                class="text-gray-700  bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</a>
-                        </div>  --}}
-                    </div>
-                </div>
-            </div>
-            @empty
-            @endforelse
-            @forelse ($sakit as  $absen)
-            <div id="staticModal2{{ $absen->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-                class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative w-full max-w-2xl max-h-full">
-                    <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <!-- Modal header -->
-                        <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                Detail Absen
-                            </h3>
-                            <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                data-modal-hide="staticModal2{{ $absen->id }}">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="p-6 space-y-6">
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->nama }}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">Nama</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->sekolah }}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">sekolah</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->keterangan }}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">keterangan</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500  uppercase">
-                                    {{ $absen->tanggal}}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">tanggal</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->jam }}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">jam</label>
-                            </div>
-                        </div>
-
-                        <!-- Modal footer -->
-                        {{--  <div
-                            class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                            <a href="{{ route('absensi_siswa.index') }}" data-modal-hide="staticModal"
-                                class="text-gray-700  bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</a>
-                        </div>  --}}
-                    </div>
-                </div>
-            </div>
-            @empty
-            @endforelse
-
-            @forelse ($telat as  $absen)
-            <div id="staticModal3{{ $absen->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-                class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative w-full max-w-2xl max-h-full">
-                    <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <!-- Modal header -->
-                        <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                Detail Absen
-                            </h3>
-                            <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                data-modal-hide="staticModal3{{ $absen->id }}">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="p-6 space-y-6">
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->nama }}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">Nama</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->sekolah }}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">sekolah</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->keterangan }}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">keterangan</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500  uppercase">
-                                    {{ $absen->tanggal}}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">tanggal</label>
-                            </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <p
-                                    class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                    {{ $absen->jam }}</p>
-                                <label for="floating_email"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">jam</label>
-                            </div>
-                        </div>
-
-                        <!-- Modal footer -->
-                        {{--  <div
-                            class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                            <a href="{{ route('absensi_siswa.index') }}" data-modal-hide="staticModal"
-                                class="text-gray-700  bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</a>
-                        </div>  --}}
-                    </div>
-                </div>
-            </div>
-            @empty
-            @endforelse
-            @forelse ($alfa as  $absen)
-                <div id="staticModal4{{ $absen->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-                    class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                    <div class="relative w-full max-w-2xl max-h-full">
-                        <!-- Modal content -->
-                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                            <!-- Modal header -->
-                            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                    Detail Absen
-                                </h3>
-                                <button type="button"
-                                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                    data-modal-hide="staticModal4{{ $absen->id }}">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                            <!-- Modal body -->
-                            <div class="p-6 space-y-6">
-                                <div class="relative z-0 w-full mb-6 group">
-                                    <p
-                                        class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                        {{ $absen->nama }}</p>
-                                    <label for="floating_email"
-                                        class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">Nama</label>
-                                </div>
-                                <div class="relative z-0 w-full mb-6 group">
-                                    <p
-                                        class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                        {{ $absen->sekolah }}</p>
-                                    <label for="floating_email"
-                                        class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">sekolah</label>
-                                </div>
-                                <div class="relative z-0 w-full mb-6 group">
-                                    <p
-                                        class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                        {{ $absen->keterangan }}</p>
-                                    <label for="floating_email"
-                                        class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">keterangan</label>
-                                </div>
-                                <div class="relative z-0 w-full mb-6 group">
-                                    <p
-                                        class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500  uppercase">
-                                        {{ $absen->tanggal}}</p>
-                                    <label for="floating_email"
-                                        class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">tanggal</label>
-                                </div>
-                                <div class="relative z-0 w-full mb-6 group">
-                                    <p
-                                        class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 uppercase">
-                                        {{ $absen->jam }}</p>
-                                    <label for="floating_email"
-                                        class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">jam</label>
-                                </div>
-                            </div>
-
-                            <!-- Modal footer -->
-                            {{--  <div
-                                class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                <a href="{{ route('absensi_siswa.index') }}" data-modal-hide="staticModal"
-                                    class="text-gray-700  bg-white border border-gray-700 hover:text-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</a>
-                            </div>  --}}
-                        </div>
-                    </div>
-                </div>
-            @empty
-            @endforelse
-
-        {{--  modal2  --}}
 
 
 
@@ -1980,9 +1694,15 @@
 
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"></script>
+
     <script>
       $(window).on('load', function() {
           $('.spin_load').fadeOut();
@@ -2019,6 +1739,8 @@
             });
         });
     </script>
+
+
     <script>
         // Initialization for ES Users
         import {
@@ -2029,6 +1751,95 @@
         initTE({
             sidenav - 2
         });
+    </script>
+ <script>
+    function openModal(id, keterangan) {
+
+
+        if (id.value == "") {
+            console.log("Kosong")
+            $('#listmenu').empty();
+            $('#wadah').removeClass('hidden');
+            return;
+        } else {
+            console.log(keterangan);
+            $(document).ready(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+            });
+            $.ajax({
+                url: "{{route('Hadir.index')}}",
+                method: 'POST',
+                data: {
+                    id: id,
+                    keterangan : keterangan,
+                },
+                success: function(response) {
+                    reload();
+                    console.log(response);
+                    toastr.success("berhasil memberikan keterangan hadir");
+                    // Lakukan tindakan lain setelah berhasil, seperti menampilkan pesan atau mereload halaman
+                },
+                error: function (xhr, ajaxOptions, throwError) {
+                    alert(xhr);
+                    console.log(xhr);
+                    alert(throwError);
+                }
+            });
+        }
+    }
+
+    function closeModal(id) {
+        $(`#staticModal${id}`).hide();
+    }
+</script>
+
+
+    <script>
+            $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        });
+
+        function cari(data) {
+            if (data.value == "") {
+                console.log("Kosong")
+                $('#listmenu').empty();
+                $('#wadah').removeClass('hidden');
+                return;
+            } else {
+                $.ajax({
+                    url: "{{ route('cari_barang') }}",
+                    method: 'POST',
+                    data: {
+                        value: data.value,
+                    },
+                    success: function(response) {
+                        $('#wadah').addClass('hidden');
+                        $('#listmenu').empty();
+                        $.each(response, function(index, el) {
+                            let elemen = `<div class="w-[95%] mx-auto bg-white rounded shadow-md overflow-hidden mt-4 mb-5">
+                            <div class="flex justify-between px-5">
+                                <div id="makanan" class="font-bold text-">${el.nama}</div>
+                                <p class="text-gray-700">${el.harga}</p>
+                            </div>
+                        </div>`
+                            $('#listmenu').append(elemen);
+
+                            console.log("Nama : ", el.nama);
+                            console.log("Harga : ", el.harga);
+                        });
+                    }
+                })
+            }
+        }
+
     </script>
 </body>
 

@@ -507,7 +507,7 @@
                                                         <tr>
                                                             <th>#</th>
                                                             <th @click="sort('nama', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
-                                                            <th @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
+                                                            <th @click="sort('tan, soggal'rted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
                                                             <th @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">Sekolah</th>
                                                             {{-- <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
                                                             <th @click="sort('image', sorted.rule === 'asc' ? 'desc' : 'asc')">image</th> --}}

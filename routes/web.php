@@ -97,7 +97,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/Absenhariini', [JurnaladminController::class, 'Absenhariini'])->name('Absenhariini');
         Route::get('Alfa', [AprovalController::class, 'Alfa'])->name('Alfa');
         Route::get('/Sakit.index', [AprovalController::class, 'Sakit'])->name('Sakit.index');
-        Route::get('/Hadir.index', [AprovalController::class, 'Hadir'])->name('Hadir.index');
+        Route::post('/Hadir.index', [AprovalController::class, 'Hadir'])->name('Hadir.index');
         Route::get('/Izin.index', [AprovalController::class, 'Izin'])->name('Izin.index');
         Route::get('/Jurnalhariini', [JurnaladminController::class, 'Jurnalhariini'])->name('Jurnalhariini');
         Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
@@ -130,6 +130,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
         Route::get('/hapus_laporan_piket/{id}' , [LaporanPiketController::class , 'hapus'])->name('hapus/laporan/piket');
         Route::post('catatan', [PiketController::class, 'tambah'])->name('tambahCatatan');
+        Route::post('/hadir_siswa', [App\Http\Controllers\JurnaladminController::class, 'hadir'])->name('hadir_siswa');
+
 
 
     });
