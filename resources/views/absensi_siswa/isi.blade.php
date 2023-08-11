@@ -148,7 +148,7 @@
         </div>
     </div>
 
-    <div class=" mt-3 col-span-1 md:col-span-2 lg:col-span-2 p-2 flex gap-2">
+    <div class=" mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 p-2  gap-2">
         <div class="w-full panel ">
             <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
