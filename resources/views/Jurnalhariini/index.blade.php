@@ -905,16 +905,16 @@
                                         },
                                         currentPage: 1,
                                         sorted: {
-                                            field: 'nama',
+                                            field: 'mame',
                                             rule: 'asc'
                                         },
                                         initData() {
-                                            this.items = datamengisi.sort(this.compareOnKey('nama', 'asc'))
+                                            this.items = datamengisi.sort(this.compareOnKey('mame', 'asc'))
                                             this.showPages()
                                         },
                                         compareOnKey(key, rule) {
                                             return function (a, b) {
-                                                if (key === 'nama' || key === 'tanggal' || key === 'kegiatan' || key === 'image') {
+                                                if (key === 'mame' || key === 'tanggal' || key === 'kegiatan' || key === 'image') {
                                                     let comparison = 0
                                                     const fieldA = a[key].toUpperCase()
                                                     const fieldB = b[key].toUpperCase()
@@ -954,7 +954,7 @@
                                             if (value.length > 1) {
                                                 const options = {
                                                     shouldSort: true,
-                                                    keys: ['nama'],
+                                                    keys: ['mame'],
                                                     threshold: 0
                                                 }
                                                 const fuse = new Fuse(datamengisi, options)
