@@ -250,7 +250,6 @@ public function Tolak(Request $request, Aproval $aproval)
         return response()->json(['message' => 'Data berhasil disimpan.']);
     }
 
-
     public function Izin(Request $request)
     {
         $user = User::all();
