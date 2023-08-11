@@ -1785,8 +1785,8 @@
                             },
                             success: function(response) {
                                 location.reload();
-                                console.log(response);
-                                toastr.success("berhasil memberikan keterangan hadir");
+                                console.log(response.message);
+                                toastr.success(response.message);
                                 // Lakukan tindakan lain setelah berhasil, seperti menampilkan pesan atau mereload halaman
                             },
                             error: function(xhr, ajaxOptions, throwError) {
