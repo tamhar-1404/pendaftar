@@ -12,15 +12,12 @@ use App\Models\Tolak;
 use App\Models\TopUp;
 use App\Mail\DemoMail;
 use App\Models\Barang;
-use App\Models\Aproval;
 use App\Mail\Guru_email;
 use App\Mail\Konfirmasi;
 use App\Mail\TolakEmail;
 use App\Mail\TolakTopup;
 use Illuminate\Support\Str;
-use App\Models\ApprovalIzin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -240,6 +237,7 @@ public function Tolak(Request $request, Aproval $aproval)
     public function Hadir(Request $request)
     {
         $id =  $request->id;
+        return $id;
         $keterangan = $request->keterangan;
         // $user = User::findOrFail($request->siswa_id); // Ubah 'user_id' menjadi 'siswa_id'
         ApprovalIzin::create([
