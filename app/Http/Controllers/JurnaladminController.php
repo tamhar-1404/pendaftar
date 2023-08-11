@@ -244,7 +244,7 @@ class JurnaladminController extends Controller
             ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
             ->whereBetween('jurnalsiswas.tanggal', [$tanggalAwal, $tanggalAkhir])
             ->get();
-            $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan')
+            $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan', 'jurnalsiswas.id as id')
             ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
             ->whereBetween('jurnalsiswas.tanggal', [$tanggalAwal, $tanggalAkhir])
             ->where('jurnalsiswas.status', "mengisi")
@@ -268,7 +268,7 @@ class JurnaladminController extends Controller
         ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
         ->where('jurnalsiswas.tanggal', $hari)
         ->get();
-        $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan')
+        $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan', 'jurnalsiswas.id as id')
         ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
         ->where('jurnalsiswas.tanggal', $hari)
         ->where('jurnalsiswas.status', "mengisi")
