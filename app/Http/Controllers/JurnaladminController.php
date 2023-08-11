@@ -349,7 +349,7 @@ class JurnaladminController extends Controller
     {
         //
     }
-    public function belum_mengisi(Request $request)
+    public function Belum_mengisi(Request $request)
     {
         $id = $request->id;
         Jurnalsiswa::create([
