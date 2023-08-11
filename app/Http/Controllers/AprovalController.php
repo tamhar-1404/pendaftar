@@ -237,7 +237,6 @@ public function Tolak(Request $request, Aproval $aproval)
     public function Hadir(Request $request)
     {
         $id =  $request->id;
-        return $id;
         $keterangan = $request->keterangan;
         // $user = User::findOrFail($request->siswa_id); // Ubah 'user_id' menjadi 'siswa_id'
         ApprovalIzin::create([

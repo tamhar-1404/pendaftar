@@ -1784,7 +1784,7 @@
                                 keterangan: keterangan,
                             },
                             success: function(response) {
-                                reload();
+                                location.reload();
                                 console.log(response);
                                 toastr.success("berhasil memberikan keterangan hadir");
                                 // Lakukan tindakan lain setelah berhasil, seperti menampilkan pesan atau mereload halaman
