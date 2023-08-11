@@ -1760,11 +1760,10 @@
                     },
                     success: function (response) {
                         if (response['status'] == 'success') {
-                            Swal.fire(
-                               'Berhasil!',
-                                'Berhasil!',
-                                'success'
-                            ).then((result) => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                            }).then((result) => {
                                 location.reload();
                             })
                         }
