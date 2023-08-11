@@ -361,16 +361,16 @@
                                             },
                                             currentPage: 1,
                                             sorted: {
-                                                field: 'nama',
+                                                field: 'name',
                                                 rule: 'asc'
                                             },
                                             initData() {
-                                                this.items = datauser2.sort(this.compareOnKey('nama', 'asc'))
+                                                this.items = datauser2.sort(this.compareOnKey('name', 'asc'))
                                                 this.showPages()
                                             },
                                             compareOnKey(key, rule) {
                                                 return function (a, b) {
-                                                    if (key === 'nama' || key === 'status') {
+                                                    if (key === 'name' || key === 'status') {
                                                         let comparison = 0
                                                         const fieldA = a[key].toUpperCase()
                                                         const fieldB = b[key].toUpperCase()
