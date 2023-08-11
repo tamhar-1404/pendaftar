@@ -256,7 +256,7 @@
             </div>
 
         </div>
-        <div class="w-full md:1/2 lg:1/4 panel kamu-tak-diajak">
+        <div class="w-full md:1/4 lg:1/4 panel kamu-tak-diajak">
             <div class="w-full p-2 flex justify-center">
                 <div class="panel w-10/12">
                     <span class="font-bold flex justify-between">
