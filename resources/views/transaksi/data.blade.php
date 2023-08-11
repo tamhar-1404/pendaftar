@@ -262,7 +262,7 @@
 
                         </tbody>
                     </table>
-                    <input type="hidden" name="rfid_user" id="rfid-user">
+                <input type="hidden" name="rfid_user" id="rfid-user" value="{{$a}}">
                     <div class="flex justify-end px-8 mt-2">
                         <p id="total_keseluruhan" class="hidden text-base font-semibold text-gray-700">Rp. <span
                                 id="jumlah_semua" class="text-base font-semibold text-blue-400">0</span></p>
