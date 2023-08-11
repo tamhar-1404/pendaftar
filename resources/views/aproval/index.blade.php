@@ -174,8 +174,9 @@
                                         <!-- Import script JavaScript -->
                                         <script>
                                             function submitlimit() {
-                                                alert("A");
                                                 let limit = document.getElementById('inputlimit').value;
+                                                // alert(limit);
+                                                // console.log(limit);
                                                 window.location = "{{ route('aproval.index') }}?limit=" + limit;
                                             }
                                             document.addEventListener("DOMContentLoaded", function() {

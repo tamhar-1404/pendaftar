@@ -249,7 +249,7 @@ public function Tolak(Request $request, Aproval $aproval)
             'jam' => Carbon::now()->format('H:i'),
             'status' => 'terimaabsen'
         ]);
-        return response()->json(['message' => 'Data berhasil disimpan.']);
+        return response()->json(['message' => 'Data berhasil disimpan dengan keterangan '.$keterangan]);
     }
 
 

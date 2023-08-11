@@ -155,7 +155,7 @@ class JurnaladminController extends Controller
             $sakit = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
             ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
             ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
-            ->where('approval_izins.keterangan',['sakit', 'izin'])->whereBetween('approval_izins.tanggal',  [$tanggalAwal, $tanggalAkhir])
+            ->whereIn('approval_izins.keterangan',['sakit', 'izin'])->whereBetween('approval_izins.tanggal',  [$tanggalAwal, $tanggalAkhir])
             ->get();
             $alfa = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
             ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
@@ -201,7 +201,7 @@ class JurnaladminController extends Controller
         $sakit = User::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
         ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
         ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
-        ->where('approval_izins.keterangan', ['sakit', 'izin'])->where('approval_izins.tanggal', $hari)
+        ->whereIn('approval_izins.keterangan', ['sakit', 'izin'])->where('approval_izins.tanggal', $hari)
         ->get();
         $alfa = User::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
         ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
