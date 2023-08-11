@@ -31,6 +31,7 @@
 
             .print-container {
                 position: absolute;
+                overflow: hidden;
                 top: 20px;
                 left: 0;
             }

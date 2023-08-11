@@ -1394,7 +1394,7 @@
                                     Nama
                                 </p>
                                 <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    {{ $modal->nama }}
+                                    {{ $modal->name }}
                                 </p>
                             </div>
                             <div>
