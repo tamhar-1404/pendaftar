@@ -148,8 +148,8 @@
         </div>
     </div>
 
-    <div class=" mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 p-2  gap-2">
-        <div class="w-full panel ">
+    <div class="flex mt-3 col-span-2 p-2  gap-2">
+        <div class="w-full  panel ">
             <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -256,7 +256,8 @@
             </div>
 
         </div>
-        <div class=" panel w-full md:w-1/4 lg:w-1/4  kamu-tak-diajak">
+
+        <div class=" panel w-1/4  kamu-tak-diajak">
             <div class="w-full p-2 flex justify-center">
                 <div class="panel w-10/12">
                     <span class="font-bold flex justify-between">
