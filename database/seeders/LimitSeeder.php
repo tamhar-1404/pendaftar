@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\limit;
+
 
 class LimitSeeder extends Seeder
 {
@@ -14,6 +16,11 @@ class LimitSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $limit = [
+            [
+                'limit' => '50',
+            ],
+        ];
+        Limit::insert($limit);
     }
 }
