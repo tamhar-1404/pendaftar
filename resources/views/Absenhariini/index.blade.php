@@ -18,6 +18,7 @@
           },
 
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
@@ -1212,7 +1213,6 @@
                                     </script>
                                 </div>
                             </div>
-
                         </template>
                         <template x-if="tab === 'tidak_mengisi_absen'">
                             <div>
@@ -1265,7 +1265,6 @@
                                                                             <span x-text="item.sekolah"></span>
                                                                         </td>
                                                                         <td>
-
                                                                         <button type="submit" class="border border-blue-400 px-2 py-1 hover:bg-blue-400 hover:text-white rounded" @click="openModal(item.id, 'Hadir')">Hadir</button>
                                                                         <button type="submit" class="border border-yellow-400 px-2 py-1 hover:bg-yellow-400 hover:text-white  rounded" @click="openModal(item.id, 'izin')">Izin</button>
                                                                         <button type="submit" class="border border-red-400 px-2 py-1 hover:bg-red-400 hover:text-white rounded" @click="openModal(item.id, 'alfa')">Alfa</button>
@@ -1752,52 +1751,64 @@
             sidenav - 2
         });
     </script>
- <script>
-    function openModal(id, keterangan) {
+    <script>
+        function openModal(id, keterangan) {
+            if (id.value == "") {
+                console.log("Kosong");
+                $('#listmenu').empty();
+                $('#wadah').removeClass('hidden');
+                return;
+            } else {
+                // Mengganti pesan log dengan SweetAlert
+                Swal.fire({
+                    title: 'Apakah Anda yakin menerima ini?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Tidak'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(document).ready(function() {
+                            $.ajaxSetup({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }
+                            });
+                        });
 
-
-        if (id.value == "") {
-            console.log("Kosong")
-            $('#listmenu').empty();
-            $('#wadah').removeClass('hidden');
-            return;
-        } else {
-            console.log(keterangan);
-            $(document).ready(function() {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        $.ajax({
+                            url: "{{route('Hadir.index')}}",
+                            method: 'POST',
+                            data: {
+                                id: id,
+                                keterangan: keterangan,
+                            },
+                            success: function(response) {
+                                reload();
+                                console.log(response);
+                                toastr.success("berhasil memberikan keterangan hadir");
+                                // Lakukan tindakan lain setelah berhasil, seperti menampilkan pesan atau mereload halaman
+                            },
+                            error: function(xhr, ajaxOptions, throwError) {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Terjadi kesalahan saat melakukan permintaan.',
+                                    icon: 'error',
+                                    confirmButtonText: 'OK'
+                                });
+                                console.log(xhr);
+                                console.log(throwError);
+                            }
+                        });
                     }
                 });
-            });
-            $.ajax({
-                url: "{{route('Hadir.index')}}",
-                method: 'POST',
-                data: {
-                    id: id,
-                    keterangan : keterangan,
-                },
-                success: function(response) {
-                    reload();
-                    console.log(response);
-                    toastr.success("berhasil memberikan keterangan hadir");
-                    // Lakukan tindakan lain setelah berhasil, seperti menampilkan pesan atau mereload halaman
-                },
-                error: function (xhr, ajaxOptions, throwError) {
-                    alert(xhr);
-                    console.log(xhr);
-                    alert(throwError);
-                }
-            });
+            }
         }
-    }
 
-    function closeModal(id) {
-        $(`#staticModal${id}`).hide();
-    }
-</script>
-
-
+        function closeModal(id) {
+            $(`#staticModal${id}`).hide();
+        }
+    </script>
     <script>
             $(document).ready(function() {
             $.ajaxSetup({
