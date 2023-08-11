@@ -622,7 +622,7 @@
                                                             @endif
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 py-2  kamu-tak-diajak">
-                                                            @if ($items->kegiatan != 'Tidak mengisi')
+
                                                             <div class="flex gap-2">
                                                                 <a href="#">
                                                                     <div class="w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
@@ -633,7 +633,7 @@
                                                                         <i class="fa fa-eye"></i> </span>
                                                                     </div>
                                                                 </a>
-                                                             @if($items->kegiatan == 'mengisi')
+                                                             @if($items->kegiatan === 'mengisi')
                                                                 <a href="#">
                                                                     <div class=" w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
                                                                         data-te-toggle="modal"
@@ -645,7 +645,7 @@
                                                                 </a>
                                                                 @endif
                                                             </div>
-                                                            @endif
+
                                                         </td>
                                                     </tr>
                                                 @empty
