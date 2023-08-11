@@ -236,9 +236,19 @@ class JurnaladminController extends Controller
             $siswa = Siswa::whereNotIn('id', $Cek)
             ->where('role', 'siswa')
             ->get();
-            $semuaJurnal = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->select('siswa_id','sekolah','tanggal','status')->get();
-            $tidakMengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->whereNot('status', 'mengisi')->select('siswa_id','tanggal', 'sekolah')->get();
-            $mengisi = Jurnalsiswa::whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir])->where('status', 'mengisi')->select('siswa_id','tanggal', 'kegiatan', 'image', 'id')->get();
+            $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status')
+            ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
+            ->whereBetween('jurnalsiswas.tanggal', [$tanggalAwal, $tanggalAkhir])
+            ->get();
+            $tidakMengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status')
+            ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
+            ->whereBetween('jurnalsiswas.tanggal', [$tanggalAwal, $tanggalAkhir])
+            ->get();
+            $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan')
+            ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
+            ->whereBetween('jurnalsiswas.tanggal', [$tanggalAwal, $tanggalAkhir])
+            ->where('jurnalsiswas.status', "mengisi")
+            ->get();
             return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa'));
         }
 

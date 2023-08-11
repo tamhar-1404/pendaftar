@@ -163,15 +163,21 @@
                                             class="modal fixed inset-0 flex items-center justify-center">
                                             <div class="modal-content bg-white p-6">
                                                 <h2 class="text-2xl font-bold mb-4">Limit Pendaftaran </h2>
-                                                <input id="inputrfid" type="number" name="limit"
+                                                <input id="inputlimit" type="number" name="limit"
                                                     class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
                                                 <div class="mt-6 flex justify-end">
+                                                    <button class="border border-blue-400  px-2 py-1 hover:bg-blue-400 hover:text-white rounded" type="button" onclick="submitlimit()">Submit</button>
                                                     <!-- Your additional content here if needed -->
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Import script JavaScript -->
                                         <script>
+                                            function submitlimit() {
+                                                alert("A");
+                                                let limit = document.getElementById('inputlimit').value;
+                                                window.location = "{{ route('aproval.index') }}?limit=" + limit;
+                                            }
                                             document.addEventListener("DOMContentLoaded", function() {
                                                 document.getElementById('tambah-rfid').addEventListener('click', function() {
                                                     document.getElementById('modal-tambah-rfid').style.display = "flex";

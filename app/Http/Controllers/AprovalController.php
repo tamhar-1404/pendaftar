@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreaprovalRequest;
 use App\Http\Requests\UpdateaprovalRequest;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class AprovalController extends Controller
 {
@@ -31,7 +33,7 @@ class AprovalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request): View|RedirectResponse
     {
         if ($request->has('cari')) {
             $keyword = $request->cari;
