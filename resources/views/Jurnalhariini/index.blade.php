@@ -72,37 +72,38 @@
     <style>
         /* Gaya untuk overlay popup */
         .popup-overlay {
-          display: none;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.5);
-          z-index: 9999;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
         }
 
         /* Gaya untuk konten popup */
         .popup-content {
-          display: none;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background-color: #fff;
-          padding: 20px;
-          border-radius: 5px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
-      </style>
+    </style>
 </head>
 
 <body>
     <style>
         .modal-backdrop {
-          background-color: rgba(0, 0, 255, 0.5); /* Blue color with 50% opacity */
+            background-color: rgba(0, 0, 255, 0.5);
+            /* Blue color with 50% opacity */
         }
-      </style>
+    </style>
     <!-- screen loader -->
     <div
         class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
@@ -117,7 +118,59 @@
     <div class=" pl-[px] " id="content">
 
 
-        @include('jurnal_admin.nav')
+        <nav id="main-navbar"
+            class=" sticky relative left-0  right-0 top-0 flex z-9  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start fixed kamu-tak-diajak"
+            data-te-navbar-ref>
+
+            <div class="flex w-full flex-wrap items-center justify-between px-4  kamu-tak-diajak">
+                <div class="flex gap-4">
+                    <!-- Toggler -->
+                    <div class="flex items-center justify-between ltr:mr-2 rtl:ml-2 "
+                        style="
+            position: fixed">
+                        <a href="index-2.html" class="main-logo flex shrink-9 items-center">
+                            <img class="inline w-40 ltr:-ml-1 rtl:-mr-1 hidden"
+                                src="{{ asset('admin/assets/images/humma.png') }}" alt="image" />
+                        </a>
+                    </div>
+                    <button
+                        class="mt-0.5 inline-block rounded bg-info px-3 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-200 hover:shadow-lg "
+                        data-te-sidenav-toggle-ref data-te-target="#sidenav-2" aria-controls="#sidenav-2"
+                        aria-haspopup="true">
+                        <span class="block [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                                <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+
+                                <path fill="currentColor"
+                                    d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+                            </svg>
+                        </span>
+                    </button>
+
+                </div>
+
+                <ul class="relative flex items-center">
+
+                    <li class="relative" data-te-dropdown-ref>
+                        <a class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
+                            href="#" id="navbarDropdownMenuLink" role="button" data-te-dropdown-toggle-ref
+                            aria-expanded="false">
+                            <img src="{{ asset('admin/assets/images/Logo.png') }}" class="rounded-full"
+                                style="height: 32px; width: 32px" alt="Avatar" loading="lazy" />
+                        </a>
+                        <ul class="absolute left-auto right-0 z-[1000] float-left m-0 mt-5 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
+                            aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>
+
+                            <li>
+                                <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                                    href="{{ route('keluar') }}" data-te-dropdown-item-ref>Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
 
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <!-- start main content section -->
@@ -127,7 +180,7 @@
                 </ul>
                 <div class="pt-5">
                     <div class="mb-5 flex items-center justify-between">
-                        <h5 class="text-sm font-semibold dark:text-white-light">Jurnal Hari ini </h5>
+                        <h5 class="text-lg font-bold dark:text-white-light uppercase">Jurnal Hari ini </h5>
                         <!-- Date Range -->
                         <div class="card px-4 pb-4 sm:px-5">
 
@@ -136,7 +189,7 @@
                                 <div class="mt-5">
                                     <form action="" id="tanggal">
                                         <label class="relative flex">
-                                            <input x-init="$el._x_flatpickr = flatpickr($el, { mode: 'range', dateFormat: 'Y-m-d'})"
+                                            <input x-init="$el._x_flatpickr = flatpickr($el, { mode: 'range', dateFormat: 'Y-m-d' })"
                                                 class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                                 placeholder="Choose date..." type="text" name="cari"
                                                 value="{{ $hari }}" onchange="filterTanggal(this.value)" />
@@ -222,8 +275,7 @@
                             <li class="inline-block">
                                 <a href="javascript:;"
                                     class="flex gap-2 border-b border-transparent p-4 hover:border-primary hover:text-primary"
-                                    :class="{ '!border-primary text-primary': tab == 'semua' }"
-                                    @click="tab='semua'">
+                                    :class="{ '!border-primary text-primary': tab == 'semua' }" @click="tab='semua'">
                                     Semua
                                 </a>
                             </li>
@@ -250,459 +302,495 @@
                                 }
                             })
                         </script>
-                <template x-if="tab === 'semua'">
-                        <div>
-                            <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
-                                <input type="hidden" name="siswa_id">
-                                <input type="hidden" name="siswa_id">
+                        <template x-if="tab === 'semua'">
+                            <div>
+                                <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]"
+                                    enctype="multipart/form-data" method="POST">
+                                    <input type="hidden" name="siswa_id">
+                                    <input type="hidden" name="siswa_id">
 
-                                <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
-                                <div class="flex flex-col sm:flex-row">
-                                    <div class="w-full">
+                                    <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
+                                    <div class="flex flex-col sm:flex-row">
                                         <div class="w-full">
-                                            <div class="">
-                                                <div x-data="dataTable2()"
-                                                    x-init="
-                                                    initData()
+                                            <div class="w-full">
+                                                <div class="">
+                                                    <div x-data="dataTable2()" x-init="initData()
                                                     $watch('searchInput', value => {
                                                         search(value)
-                                                    })" class="">
-                                                    <div class="flex justify-between items-center">
-                                                        <div class="flex space-x-2 items-center">
-                                                            <p>Tampilkan</p>
-                                                            <select class="border border-1" x-model="view" @change="changeView()">
-                                                                <option value="5">5</option>
-                                                                <option value="10">10</option>
-                                                                <option value="25">25</option>
-                                                                <option value="50">50</option>
-                                                                <option value="100">100</option>
-                                                            </select>
+                                                    })"
+                                                        class="">
+                                                        <div class="flex justify-between items-center">
+                                                            <div class="flex space-x-2 items-center">
+                                                                <p>Tampilkan</p>
+                                                                <select class="border border-1" x-model="view"
+                                                                    @change="changeView()">
+                                                                    <option value="5">5</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="25">25</option>
+                                                                    <option value="50">50</option>
+                                                                    <option value="100">100</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <table class="mt-5">
-                                                        <thead class="border-b-2">
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
-                                                                <th @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">Sekolah</th>
-                                                                <th @click="sort('status', sorted.rule === 'asc' ? 'desc' : 'asc')">Status</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <template x-for="(item, index) in items" :key="index">
-                                                                <tr x-show="checkView(index + 1)" class="hover:bg-gray-200 text-gray-900 text-xs">
-                                                                    <td class="py-3">
-                                                                        <span x-text="index + 1"></span>
-                                                                    </td>
-                                                                    <td class="py-3">
-                                                                        <span x-text="item.name"></span>
-                                                                    </td>
-                                                                    <td class="py-3">
-                                                                        <span x-text="item.sekolah"></span>
-                                                                    </td>
-                                                                    <td class="py-3">
-                                                                        <span x-text="item.status"></span>
-                                                                    </td>
-                                                                    {{-- <td class="py-3">
+                                                        <table class="mt-5">
+                                                            <thead class="border-b-2">
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th
+                                                                        @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">
+                                                                        Name</th>
+                                                                    <th
+                                                                        @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">
+                                                                        Sekolah</th>
+                                                                    <th
+                                                                        @click="sort('status', sorted.rule === 'asc' ? 'desc' : 'asc')">
+                                                                        Status</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <template x-for="(item, index) in items"
+                                                                    :key="index">
+                                                                    <tr x-show="checkView(index + 1)"
+                                                                        class="hover:bg-gray-200 text-gray-900 text-xs">
+                                                                        <td class="py-3">
+                                                                            <span x-text="index + 1"></span>
+                                                                        </td>
+                                                                        <td class="py-3">
+                                                                            <span x-text="item.name"></span>
+                                                                        </td>
+                                                                        <td class="py-3">
+                                                                            <span x-text="item.sekolah"></span>
+                                                                        </td>
+                                                                        <td class="py-3">
+                                                                            <span x-text="item.status"></span>
+                                                                        </td>
+                                                                        {{-- <td class="py-3">
                                                                         <span x-text="item.kegiatan"></span>
                                                                     </td>
                                                                     <td class="py-3">
                                                                         <span x-text="item.image"></span>
                                                                     </td> --}}
+                                                                    </tr>
+                                                                </template>
+                                                                <tr x-show="isEmpty()">
+                                                                    <td colspan="5"
+                                                                        class="text-center py-3 text-gray-900 text-sm">
+                                                                        Tidak ada data yang cocok.</td>
                                                                 </tr>
-                                                            </template>
-                                                            <tr x-show="isEmpty()">
-                                                                <td colspan="5" class="text-center py-3 text-gray-900 text-sm">Tidak ada data yang cocok.</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <div class="flex mt-5">
-                                                        <div class="border px-2 cursor-pointer" @click.prevent="changePage(1)">
-                                                            <span class="text-gray-700">Pertama</span>
-                                                        </div>
-                                                        <div class="border px-2 cursor-pointer" @click="changePage(currentPage - 1)">
-                                                            <span class="text-gray-700"><</span>
-                                                        </div>
-                                                        <template x-for="item in pages">
-                                                            <div @click="changePage(item)" class="border px-2 cursor-pointer" x-bind:class="{ 'bg-gray-300': currentPage === item }">
-                                                                <span class="text-gray-700" x-text="item"></span>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="flex mt-5">
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click.prevent="changePage(1)">
+                                                                <span class="text-gray-700">Pertama</span>
                                                             </div>
-                                                        </template>
-                                                        <div class="border px-2 cursor-pointer" @click="changePage(currentPage + 1)">
-                                                            <span class="text-gray-700">></span>
-                                                        </div>
-                                                        <div class="border px-2 cursor-pointer" @click.prevent="changePage(pagination.lastPage)">
-                                                            <span class="text-gray-700">Terakhir</span>
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click="changePage(currentPage - 1)">
+                                                                <span class="text-gray-700">
+                                                                    << /span>
+                                                            </div>
+                                                            <template x-for="item in pages">
+                                                                <div @click="changePage(item)"
+                                                                    class="border px-2 cursor-pointer"
+                                                                    x-bind:class="{ 'bg-gray-300': currentPage === item }">
+                                                                    <span class="text-gray-700" x-text="item"></span>
+                                                                </div>
+                                                            </template>
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click="changePage(currentPage + 1)">
+                                                                <span class="text-gray-700">></span>
+                                                            </div>
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click.prevent="changePage(pagination.lastPage)">
+                                                                <span class="text-gray-700">Terakhir</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <script>
-                                    let datauser2 = @json($semuaJurnal);
-                                </script>
-                                <script>
-                                    window.dataTable2 = function () {
-                                        return {
-                                            items: [],
-                                            view: 5,
-                                            searchInput: '',
-                                            pages: [],
-                                            offset: 5,
-                                            pagination: {
-                                                total: datauser2.length,
-                                                lastPage: Math.ceil(datauser2.length / 5),
-                                                perPage: 5,
+                                    <script>
+                                        let datauser2 = @json($semuaJurnal);
+                                    </script>
+                                    <script>
+                                        window.dataTable2 = function() {
+                                            return {
+                                                items: [],
+                                                view: 5,
+                                                searchInput: '',
+                                                pages: [],
+                                                offset: 5,
+                                                pagination: {
+                                                    total: datauser2.length,
+                                                    lastPage: Math.ceil(datauser2.length / 5),
+                                                    perPage: 5,
+                                                    currentPage: 1,
+                                                    from: 1,
+                                                    to: 1 * 5
+                                                },
                                                 currentPage: 1,
-                                                from: 1,
-                                                to: 1 * 5
-                                            },
-                                            currentPage: 1,
-                                            sorted: {
-                                                field: 'name',
-                                                rule: 'asc'
-                                            },
-                                            initData() {
-                                                this.items = datauser2.sort(this.compareOnKey('name', 'asc'))
-                                                this.showPages()
-                                            },
-                                            compareOnKey(key, rule) {
-                                                return function (a, b) {
-                                                    if (key === 'name' || key === 'status') {
-                                                        let comparison = 0
-                                                        const fieldA = a[key].toUpperCase()
-                                                        const fieldB = b[key].toUpperCase()
-                                                        if (rule === 'asc') {
-                                                            if (fieldA > fieldB) {
-                                                                comparison = 1;
-                                                            } else if (fieldA < fieldB) {
-                                                                comparison = -1;
-                                                            }
-                                                        } else {
-                                                            if (fieldA < fieldB) {
-                                                                comparison = 1;
-                                                            } else if (fieldA > fieldB) {
-                                                                comparison = -1;
-                                                            }
-                                                        }
-                                                        return comparison
-                                                    } else {
-                                                        if (rule === 'asc') {
-                                                            return a.year - b.year
-                                                        } else {
-                                                            return b.year - a.year
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            checkView(index) {
-                                                return index > this.pagination.to || index < this.pagination.from ? false : true
-                                            },
-                                            checkPage(item) {
-                                                if (item <= this.currentPage + 5) {
-                                                    return true
-                                                }
-                                                return false
-                                            },
-                                            search(value) {
-                                                if (value.length > 1) {
-                                                    const options = {
-                                                        shouldSort: true,
-                                                        keys: ['name'],
-                                                        threshold: 0
-                                                    }
-                                                    const fuse = new Fuse(datauser2, options)
-                                                    this.items = fuse.search(value).map(elem => elem.item)
-                                                } else {
-                                                    this.items = datauser
-                                                }
-                                                this.changePage(1)
-                                                this.showPages()
-                                            },
-                                            sort(field, rule) {
-                                                this.items = this.items.sort(this.compareOnKey(field, rule))
-                                                this.sorted.field = field
-                                                this.sorted.rule = rule
-                                            },
-                                            changePage(page) {
-                                                if (page >= 1 && page <= this.pagination.lastPage) {
-                                                    this.currentPage = page
-                                                    const total = this.items.length
-                                                    const lastPage = Math.ceil(total / this.view) || 1
-                                                    const from = (page - 1) * this.view + 1
-                                                    let to = page * this.view
-                                                    if (page === lastPage) {
-                                                        to = total
-                                                    }
-                                                    this.pagination.total = total
-                                                    this.pagination.lastPage = lastPage
-                                                    this.pagination.perPage = this.view
-                                                    this.pagination.currentPage = page
-                                                    this.pagination.from = from
-                                                    this.pagination.to = to
+                                                sorted: {
+                                                    field: 'name',
+                                                    rule: 'asc'
+                                                },
+                                                initData() {
+                                                    this.items = datauser2.sort(this.compareOnKey('name', 'asc'))
                                                     this.showPages()
+                                                },
+                                                compareOnKey(key, rule) {
+                                                    return function(a, b) {
+                                                        if (key === 'name' || key === 'status') {
+                                                            let comparison = 0
+                                                            const fieldA = a[key].toUpperCase()
+                                                            const fieldB = b[key].toUpperCase()
+                                                            if (rule === 'asc') {
+                                                                if (fieldA > fieldB) {
+                                                                    comparison = 1;
+                                                                } else if (fieldA < fieldB) {
+                                                                    comparison = -1;
+                                                                }
+                                                            } else {
+                                                                if (fieldA < fieldB) {
+                                                                    comparison = 1;
+                                                                } else if (fieldA > fieldB) {
+                                                                    comparison = -1;
+                                                                }
+                                                            }
+                                                            return comparison
+                                                        } else {
+                                                            if (rule === 'asc') {
+                                                                return a.year - b.year
+                                                            } else {
+                                                                return b.year - a.year
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                checkView(index) {
+                                                    return index > this.pagination.to || index < this.pagination.from ? false : true
+                                                },
+                                                checkPage(item) {
+                                                    if (item <= this.currentPage + 5) {
+                                                        return true
+                                                    }
+                                                    return false
+                                                },
+                                                search(value) {
+                                                    if (value.length > 1) {
+                                                        const options = {
+                                                            shouldSort: true,
+                                                            keys: ['name'],
+                                                            threshold: 0
+                                                        }
+                                                        const fuse = new Fuse(datauser2, options)
+                                                        this.items = fuse.search(value).map(elem => elem.item)
+                                                    } else {
+                                                        this.items = datauser
+                                                    }
+                                                    this.changePage(1)
+                                                    this.showPages()
+                                                },
+                                                sort(field, rule) {
+                                                    this.items = this.items.sort(this.compareOnKey(field, rule))
+                                                    this.sorted.field = field
+                                                    this.sorted.rule = rule
+                                                },
+                                                changePage(page) {
+                                                    if (page >= 1 && page <= this.pagination.lastPage) {
+                                                        this.currentPage = page
+                                                        const total = this.items.length
+                                                        const lastPage = Math.ceil(total / this.view) || 1
+                                                        const from = (page - 1) * this.view + 1
+                                                        let to = page * this.view
+                                                        if (page === lastPage) {
+                                                            to = total
+                                                        }
+                                                        this.pagination.total = total
+                                                        this.pagination.lastPage = lastPage
+                                                        this.pagination.perPage = this.view
+                                                        this.pagination.currentPage = page
+                                                        this.pagination.from = from
+                                                        this.pagination.to = to
+                                                        this.showPages()
+                                                    }
+                                                },
+                                                showPages() {
+                                                    const pages = []
+                                                    let from = this.pagination.currentPage - Math.ceil(this.offset / 2)
+                                                    if (from < 1) {
+                                                        from = 1
+                                                    }
+                                                    let to = from + this.offset - 1
+                                                    if (to > this.pagination.lastPage) {
+                                                        to = this.pagination.lastPage
+                                                    }
+                                                    while (from <= to) {
+                                                        pages.push(from)
+                                                        from++
+                                                    }
+                                                    this.pages = pages
+                                                },
+                                                changeView() {
+                                                    this.changePage(1)
+                                                    this.showPages()
+                                                },
+                                                isEmpty() {
+                                                    return this.pagination.total ? false : true
                                                 }
-                                            },
-                                            showPages() {
-                                                const pages = []
-                                                let from = this.pagination.currentPage - Math.ceil(this.offset / 2)
-                                                if (from < 1) {
-                                                    from = 1
-                                                }
-                                                let to = from + this.offset - 1
-                                                if (to > this.pagination.lastPage) {
-                                                    to = this.pagination.lastPage
-                                                }
-                                                while (from <= to) {
-                                                    pages.push(from)
-                                                    from++
-                                                }
-                                                this.pages = pages
-                                            },
-                                            changeView() {
-                                                this.changePage(1)
-                                                this.showPages()
-                                            },
-                                            isEmpty() {
-                                                return this.pagination.total ? false : true
                                             }
                                         }
-                                    }
-                                </script>
+                                    </script>
+                                </div>
                             </div>
-                        </div>
-                </template>
-                <template x-if="tab === 'password'">
-                    <div>
-                        <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
-                            <input type="hidden" name="siswa_id">
-                            <input type="hidden" name="siswa_id">
+                        </template>
+                        <template x-if="tab === 'password'">
+                            <div>
+                                <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]"
+                                    enctype="multipart/form-data" method="POST">
+                                    <input type="hidden" name="siswa_id">
+                                    <input type="hidden" name="siswa_id">
 
-                            <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
-                            <div class="flex flex-col sm:flex-row">
-                                <div class="w-full">
-                                    <div class="w-full">
-                                        <div class="">
-                                            {{-- Datatable tidak mengisi --}}
-                                            <div x-data="dataTable1()"
-                                                x-init="
-                                                initData()
-                                                $watch('searchInput', value => {
-                                                    search(value)
-                                                })" class="">
-                                                <div class="flex justify-between items-center">
-                                                    <div class="flex space-x-2 items-center">
-                                                        <p>Tampilkan</p>
-                                                        <select class="border border-1" x-model="view" @change="changeView()">
-                                                            <option value="5">5</option>
-                                                            <option value="10">10</option>
-                                                            <option value="25">25</option>
-                                                            <option value="50">50</option>
-                                                            <option value="100">100</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <table class="mt-5">
-                                                    <thead class="border-b-2">
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">Name</th>
-                                                            <th @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
-                                                            <th @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">Sekolah</th>
-                                                            {{-- <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
+                                    <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
+                                    <div class="flex flex-col sm:flex-row">
+                                        <div class="w-full">
+                                            <div class="w-full">
+                                                <div class="">
+                                                    {{-- Datatable tidak mengisi --}}
+                                                    <div x-data="dataTable1()" x-init="initData()
+                                                    $watch('searchInput', value => {
+                                                        search(value)
+                                                    })"
+                                                        class="">
+                                                        <div class="flex justify-between items-center">
+                                                            <div class="flex space-x-2 items-center">
+                                                                <p>Tampilkan</p>
+                                                                <select class="border border-1" x-model="view"
+                                                                    @change="changeView()">
+                                                                    <option value="5">5</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="25">25</option>
+                                                                    <option value="50">50</option>
+                                                                    <option value="100">100</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <table class="mt-5">
+                                                            <thead class="border-b-2">
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th
+                                                                        @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">
+                                                                        Name</th>
+                                                                    <th
+                                                                        @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">
+                                                                        Tanggal</th>
+                                                                    <th
+                                                                        @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">
+                                                                        Sekolah</th>
+                                                                    {{-- <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Keterangan</th>
                                                             <th @click="sort('image', sorted.rule === 'asc' ? 'desc' : 'asc')">image</th> --}}
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <template x-for="(item, index) in items" :key="index">
-                                                            <tr x-show="checkView(index + 1)" class="hover:bg-gray-200 text-gray-900 text-xs">
-                                                                <td class="py-3">
-                                                                    <span x-text="index + 1"></span>
-                                                                </td>
-                                                                <td class="py-3">
-                                                                    <span x-text="item.name"></span>
-                                                                </td>
-                                                                <td class="py-3">
-                                                                    <span x-text="item.tanggal"></span>
-                                                                </td>
-                                                                <td class="py-3">
-                                                                    <span x-text="item.sekolah"></span>
-                                                                </td>
-                                                                {{-- <td class="py-3">
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <template x-for="(item, index) in items"
+                                                                    :key="index">
+                                                                    <tr x-show="checkView(index + 1)"
+                                                                        class="hover:bg-gray-200 text-gray-900 text-xs">
+                                                                        <td class="py-3">
+                                                                            <span x-text="index + 1"></span>
+                                                                        </td>
+                                                                        <td class="py-3">
+                                                                            <span x-text="item.name"></span>
+                                                                        </td>
+                                                                        <td class="py-3">
+                                                                            <span x-text="item.tanggal"></span>
+                                                                        </td>
+                                                                        <td class="py-3">
+                                                                            <span x-text="item.sekolah"></span>
+                                                                        </td>
+                                                                        {{-- <td class="py-3">
                                                                     <span x-text="item.kegiatan"></span>
                                                                 </td>
                                                                 <td class="py-3">
                                                                     <span x-text="item.image"></span>
                                                                 </td> --}}
-                                                            </tr>
-                                                        </template>
-                                                        <tr x-show="isEmpty()">
-                                                            <td colspan="5" class="text-center py-3 text-gray-900 text-sm">Tidak ada data yang cocok.</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div class="flex mt-5">
-                                                    <div class="border px-2 cursor-pointer" @click.prevent="changePage(1)">
-                                                        <span class="text-gray-700">Pertama</span>
-                                                    </div>
-                                                    <div class="border px-2 cursor-pointer" @click="changePage(currentPage - 1)">
-                                                        <span class="text-gray-700"><</span>
-                                                    </div>
-                                                    <template x-for="item in pages">
-                                                        <div @click="changePage(item)" class="border px-2 cursor-pointer" x-bind:class="{ 'bg-gray-300': currentPage === item }">
-                                                            <span class="text-gray-700" x-text="item"></span>
+                                                                    </tr>
+                                                                </template>
+                                                                <tr x-show="isEmpty()">
+                                                                    <td colspan="5"
+                                                                        class="text-center py-3 text-gray-900 text-sm">
+                                                                        Tidak ada data yang cocok.</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="flex mt-5">
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click.prevent="changePage(1)">
+                                                                <span class="text-gray-700">Pertama</span>
+                                                            </div>
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click="changePage(currentPage - 1)">
+                                                                <span class="text-gray-700">
+                                                                    << /span>
+                                                            </div>
+                                                            <template x-for="item in pages">
+                                                                <div @click="changePage(item)"
+                                                                    class="border px-2 cursor-pointer"
+                                                                    x-bind:class="{ 'bg-gray-300': currentPage === item }">
+                                                                    <span class="text-gray-700" x-text="item"></span>
+                                                                </div>
+                                                            </template>
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click="changePage(currentPage + 1)">
+                                                                <span class="text-gray-700">></span>
+                                                            </div>
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click.prevent="changePage(pagination.lastPage)">
+                                                                <span class="text-gray-700">Terakhir</span>
+                                                            </div>
                                                         </div>
-                                                    </template>
-                                                    <div class="border px-2 cursor-pointer" @click="changePage(currentPage + 1)">
-                                                        <span class="text-gray-700">></span>
-                                                    </div>
-                                                    <div class="border px-2 cursor-pointer" @click.prevent="changePage(pagination.lastPage)">
-                                                        <span class="text-gray-700">Terakhir</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <script>
+                                        let dataTidakMengisi = @json($tidakMengisi);
+                                    </script>
+                                    <script>
+                                        window.dataTable1 = function() {
+                                            return {
+                                                items: [],
+                                                view: 5,
+                                                searchInput: '',
+                                                pages: [],
+                                                offset: 5,
+                                                pagination: {
+                                                    total: dataTidakMengisi.length,
+                                                    lastPage: Math.ceil(dataTidakMengisi.length / 5),
+                                                    perPage: 5,
+                                                    currentPage: 1,
+                                                    from: 1,
+                                                    to: 1 * 5
+                                                },
+                                                currentPage: 1,
+                                                sorted: {
+                                                    field: 'name',
+                                                    rule: 'asc'
+                                                },
+                                                initData() {
+                                                    this.items = dataTidakMengisi.sort(this.compareOnKey('name', 'asc'))
+                                                    this.showPages()
+                                                },
+                                                compareOnKey(key, rule) {
+                                                    return function(a, b) {
+                                                        if (key === 'name' || key === 'sekolah') {
+                                                            let comparison = 0
+                                                            const fieldA = a[key].toUpperCase()
+                                                            const fieldB = b[key].toUpperCase()
+                                                            if (rule === 'asc') {
+                                                                if (fieldA > fieldB) {
+                                                                    comparison = 1;
+                                                                } else if (fieldA < fieldB) {
+                                                                    comparison = -1;
+                                                                }
+                                                            } else {
+                                                                if (fieldA < fieldB) {
+                                                                    comparison = 1;
+                                                                } else if (fieldA > fieldB) {
+                                                                    comparison = -1;
+                                                                }
+                                                            }
+                                                            return comparison
+                                                        } else {
+                                                            if (rule === 'asc') {
+                                                                return a.year - b.year
+                                                            } else {
+                                                                return b.year - a.year
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                checkView(index) {
+                                                    return index > this.pagination.to || index < this.pagination.from ? false : true
+                                                },
+                                                checkPage(item) {
+                                                    if (item <= this.currentPage + 5) {
+                                                        return true
+                                                    }
+                                                    return false
+                                                },
+                                                search(value) {
+                                                    if (value.length > 1) {
+                                                        const options = {
+                                                            shouldSort: true,
+                                                            keys: ['name'],
+                                                            threshold: 0
+                                                        }
+                                                        const fuse = new Fuse(dataTidakMengisi, options)
+                                                        this.items = fuse.search(value).map(elem => elem.item)
+                                                    } else {
+                                                        this.items = dataTidakMengisi
+                                                    }
+                                                    this.changePage(1)
+                                                    this.showPages()
+                                                },
+                                                sort(field, rule) {
+                                                    this.items = this.items.sort(this.compareOnKey(field, rule))
+                                                    this.sorted.field = field
+                                                    this.sorted.rule = rule
+                                                },
+                                                changePage(page) {
+                                                    if (page >= 1 && page <= this.pagination.lastPage) {
+                                                        this.currentPage = page
+                                                        const total = this.items.length
+                                                        const lastPage = Math.ceil(total / this.view) || 1
+                                                        const from = (page - 1) * this.view + 1
+                                                        let to = page * this.view
+                                                        if (page === lastPage) {
+                                                            to = total
+                                                        }
+                                                        this.pagination.total = total
+                                                        this.pagination.lastPage = lastPage
+                                                        this.pagination.perPage = this.view
+                                                        this.pagination.currentPage = page
+                                                        this.pagination.from = from
+                                                        this.pagination.to = to
+                                                        this.showPages()
+                                                    }
+                                                },
+                                                showPages() {
+                                                    const pages = []
+                                                    let from = this.pagination.currentPage - Math.ceil(this.offset / 2)
+                                                    if (from < 1) {
+                                                        from = 1
+                                                    }
+                                                    let to = from + this.offset - 1
+                                                    if (to > this.pagination.lastPage) {
+                                                        to = this.pagination.lastPage
+                                                    }
+                                                    while (from <= to) {
+                                                        pages.push(from)
+                                                        from++
+                                                    }
+                                                    this.pages = pages
+                                                },
+                                                changeView() {
+                                                    this.changePage(1)
+                                                    this.showPages()
+                                                },
+                                                isEmpty() {
+                                                    return this.pagination.total ? false : true
+                                                }
+                                            }
+                                        }
+                                    </script>
                                 </div>
                             </div>
-                            <script>
-                                let dataTidakMengisi = @json($tidakMengisi);
-                            </script>
-                            <script>
-                                window.dataTable1 = function () {
-                                    return {
-                                        items: [],
-                                        view: 5,
-                                        searchInput: '',
-                                        pages: [],
-                                        offset: 5,
-                                        pagination: {
-                                            total: dataTidakMengisi.length,
-                                            lastPage: Math.ceil(dataTidakMengisi.length / 5),
-                                            perPage: 5,
-                                            currentPage: 1,
-                                            from: 1,
-                                            to: 1 * 5
-                                        },
-                                        currentPage: 1,
-                                        sorted: {
-                                            field: 'name',
-                                            rule: 'asc'
-                                        },
-                                        initData() {
-                                            this.items = dataTidakMengisi.sort(this.compareOnKey('name', 'asc'))
-                                            this.showPages()
-                                        },
-                                        compareOnKey(key, rule) {
-                                            return function (a, b) {
-                                                if (key === 'name' || key === 'sekolah') {
-                                                    let comparison = 0
-                                                    const fieldA = a[key].toUpperCase()
-                                                    const fieldB = b[key].toUpperCase()
-                                                    if (rule === 'asc') {
-                                                        if (fieldA > fieldB) {
-                                                            comparison = 1;
-                                                        } else if (fieldA < fieldB) {
-                                                            comparison = -1;
-                                                        }
-                                                    } else {
-                                                        if (fieldA < fieldB) {
-                                                            comparison = 1;
-                                                        } else if (fieldA > fieldB) {
-                                                            comparison = -1;
-                                                        }
-                                                    }
-                                                    return comparison
-                                                } else {
-                                                    if (rule === 'asc') {
-                                                        return a.year - b.year
-                                                    } else {
-                                                        return b.year - a.year
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        checkView(index) {
-                                            return index > this.pagination.to || index < this.pagination.from ? false : true
-                                        },
-                                        checkPage(item) {
-                                            if (item <= this.currentPage + 5) {
-                                                return true
-                                            }
-                                            return false
-                                        },
-                                        search(value) {
-                                            if (value.length > 1) {
-                                                const options = {
-                                                    shouldSort: true,
-                                                    keys: ['name'],
-                                                    threshold: 0
-                                                }
-                                                const fuse = new Fuse(dataTidakMengisi, options)
-                                                this.items = fuse.search(value).map(elem => elem.item)
-                                            } else {
-                                                this.items = dataTidakMengisi
-                                            }
-                                            this.changePage(1)
-                                            this.showPages()
-                                        },
-                                        sort(field, rule) {
-                                            this.items = this.items.sort(this.compareOnKey(field, rule))
-                                            this.sorted.field = field
-                                            this.sorted.rule = rule
-                                        },
-                                        changePage(page) {
-                                            if (page >= 1 && page <= this.pagination.lastPage) {
-                                                this.currentPage = page
-                                                const total = this.items.length
-                                                const lastPage = Math.ceil(total / this.view) || 1
-                                                const from = (page - 1) * this.view + 1
-                                                let to = page * this.view
-                                                if (page === lastPage) {
-                                                    to = total
-                                                }
-                                                this.pagination.total = total
-                                                this.pagination.lastPage = lastPage
-                                                this.pagination.perPage = this.view
-                                                this.pagination.currentPage = page
-                                                this.pagination.from = from
-                                                this.pagination.to = to
-                                                this.showPages()
-                                            }
-                                        },
-                                        showPages() {
-                                            const pages = []
-                                            let from = this.pagination.currentPage - Math.ceil(this.offset / 2)
-                                            if (from < 1) {
-                                                from = 1
-                                            }
-                                            let to = from + this.offset - 1
-                                            if (to > this.pagination.lastPage) {
-                                                to = this.pagination.lastPage
-                                            }
-                                            while (from <= to) {
-                                                pages.push(from)
-                                                from++
-                                            }
-                                            this.pages = pages
-                                        },
-                                        changeView() {
-                                            this.changePage(1)
-                                            this.showPages()
-                                        },
-                                        isEmpty() {
-                                            return this.pagination.total ? false : true
-                                        }
-                                    }
-                                }
-                            </script>
-                        </div>
-                    </div>
-                </template>
-                <template x-if="tab === 'home'">
-                    {{-- <div>
+                        </template>
+                        <template x-if="tab === 'home'">
+                            {{-- <div>
 
 
                         <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]"
@@ -758,282 +846,312 @@
                         </div>
                         <div class="" class="mb-2">{{ $jurnalSudahKirim->links() }}</div>
                     </div> --}}
-                    <div>
-                        <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
-                            <input type="hidden" name="siswa_id">
-                            <input type="hidden" name="siswa_id">
-                            <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
-                            <div class="flex flex-col sm:flex-row">
-                                <div class="w-full">
-                                    <div class="w-full">
-                                        <div >
-                                            {{-- Data table mengisi --}}
-                                            <div x-data="dataTable()"
-                                                x-init="
-                                                initData()
-                                                $watch('searchInput', value => {
-                                                    search(value)
-                                                })" >
-                                                <div class="flex justify-between items-center">
-                                                    <div class="flex space-x-2 items-center">
-                                                        <p>Tampilkan</p>
-                                                        <select class="border border-1" x-model="view" @change="changeView()">
-                                                            <option value="5">5</option>
-                                                            <option value="10">10</option>
-                                                            <option value="25">25</option>
-                                                            <option value="50">50</option>
-                                                            <option value="100">100</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <table class="mt-5">
-                                                    <thead class="border-b-2">
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
-                                                            <th @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">Tanggal</th>
-                                                            <th @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">Kegiatan</th>
-                                                            <th @click="sort('aksi', sorted.rule === 'asc' ? 'desc' : 'asc')">Aksi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <template x-for="(item, index) in items" :key="index">
-                                                            <tr x-data="{ showPopup: false }" x-show="checkView(index + 1)" class="hover:bg-gray-200 text-gray-900 text-xs">
-                                                                <td class="py-3">
-                                                                    <span id="i" x-text="index + 1"></span>
-                                                                </td>
-                                                                <td class="py-3">
-                                                                    <span x-text="item.name"></span>
-                                                                </td>
-                                                                <td class="py-3">
-                                                                    <span x-text="item.tanggal"></span>
-                                                                </td>
-                                                                <td class="py-3">
-                                                                    <span x-text="item.kegiatan"></span>
-                                                                </td>
-                                                                <td class="py-3">
-                                                                    <span>
-                                                                        <button @click="openModal(item.id)" class="border border-blue-400 text-blue-400 px-4 py-1 hover:bg-blue-400 font-semibold hover:text-white rounded">Detail</button>
-                                                                    </span>
-                                                                </td>
-
-                                                            </tr>
-                                                            <tr x-show="showPopup" class="text-gray-900 text-xs">
-                                                                <td class="py-3" colspan="5">
-                                                                    <div class="popup-content">
-                                                                        <p>Name: <span x-text="item.name"></span></p>
-                                                                        <p>Date: <span x-text="item.tanggal"></span></p>
-                                                                        <p>Activity: <span x-text="item.kegiatan"></span></p>
-                                                                        <!-- Add other data fields as needed -->
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </template>
-                                                        <tr x-show="isEmpty()">
-                                                            <td colspan="5" class="text-center py-3 text-gray-900 text-sm">Tidak ada data yang cocok.</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div id="modal-tambah-rfid" class="modal fixed inset-0 flex items-center justify-center" style="display: none;">
-                                                    <div class="modal-content bg-white p-6">
-                                                        <h2 class="text-2xl font-bold mb-4">Tambah RFID</h2>
-                                                        <input id="inputrfid" type="text" name="RFID"
-                                                               class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
-                                                        <div class="mt-6 flex justify-end">
-
+                            <div>
+                                <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]"
+                                    enctype="multipart/form-data" method="POST">
+                                    <input type="hidden" name="siswa_id">
+                                    <input type="hidden" name="siswa_id">
+                                    <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
+                                    <div class="flex flex-col sm:flex-row">
+                                        <div class="w-full">
+                                            <div class="w-full">
+                                                <div>
+                                                    {{-- Data table mengisi --}}
+                                                    <div x-data="dataTable()" x-init="initData()
+                                                    $watch('searchInput', value => {
+                                                        search(value)
+                                                    })">
+                                                        <div class="flex justify-between items-center">
+                                                            <div class="flex space-x-2 items-center">
+                                                                <p>Tampilkan</p>
+                                                                <select class="border border-1" x-model="view"
+                                                                    @change="changeView()">
+                                                                    <option value="5">5</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="25">25</option>
+                                                                    <option value="50">50</option>
+                                                                    <option value="100">100</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <script>
-                                                    document.addEventListener("DOMContentLoaded", function() {
-                                                        // Mengaktifkan modal saat tombol diklik
-                                                        document.getElementById('tambah-rfid').addEventListener('click', function() {
-                                                            document.getElementById('modal-tambah-rfid').style.display = "flex";
-                                                            document.getElementById('inputrfid').focus();
-                                                        });
+                                                        <table class="mt-5">
+                                                            <thead class="border-b-2">
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th
+                                                                        @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">
+                                                                        Nama</th>
+                                                                    <th
+                                                                        @click="sort('tanggal', sorted.rule === 'asc' ? 'desc' : 'asc')">
+                                                                        Tanggal</th>
+                                                                    <th
+                                                                        @click="sort('kegiatan', sorted.rule === 'asc' ? 'desc' : 'asc')">
+                                                                        Kegiatan</th>
+                                                                    <th
+                                                                        @click="sort('aksi', sorted.rule === 'asc' ? 'desc' : 'asc')">
+                                                                        Aksi</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <template x-for="(item, index) in items"
+                                                                    :key="index">
+                                                                    <tr x-data="{ showPopup: false }"
+                                                                        x-show="checkView(index + 1)"
+                                                                        class="hover:bg-gray-200 text-gray-900 text-xs">
+                                                                        <td class="py-3">
+                                                                            <span id="i"
+                                                                                x-text="index + 1"></span>
+                                                                        </td>
+                                                                        <td class="py-3">
+                                                                            <span x-text="item.name"></span>
+                                                                        </td>
+                                                                        <td class="py-3">
+                                                                            <span x-text="item.tanggal"></span>
+                                                                        </td>
+                                                                        <td class="py-3">
+                                                                            <span x-text="item.kegiatan"></span>
+                                                                        </td>
+                                                                        <td class="py-3">
+                                                                            <span>
+                                                                                <button @click="openModal(item.id)"
+                                                                                    class="border border-blue-400 text-blue-400 px-4 py-1 hover:bg-blue-400 font-semibold hover:text-white rounded">Detail</button>
+                                                                            </span>
+                                                                        </td>
 
-                                                        // Menutup modal saat tombol Batal diklik atau saat mengklik area luar modal
-                                                        document.getElementById('modal-tambah-rfid').addEventListener('click', function(event) {
-                                                            if (event.target === this || event.target.classList.contains('bg-red-500')) {
-                                                                this.style.display = "none";
-                                                            }
-                                                        });
-                                                    });
-                                                </script>
-                                                <div class="flex mt-5">
-                                                    <div class="border px-2 cursor-pointer" @click.prevent="changePage(1)">
-                                                        <span class="text-gray-700">Pertama</span>
-                                                    </div>
-                                                    <div class="border px-2 cursor-pointer" @click="changePage(currentPage - 1)">
-                                                        <span class="text-gray-700"><</span>
-                                                    </div>
-                                                    <template x-for="item in pages">
-                                                        <div @click="changePage(item)" class="border px-2 cursor-pointer" x-bind:class="{ 'bg-gray-300': currentPage === item }">
-                                                            <span class="text-gray-700" x-text="item"></span>
+                                                                    </tr>
+                                                                    <tr x-show="showPopup"
+                                                                        class="text-gray-900 text-xs">
+                                                                        <td class="py-3" colspan="5">
+                                                                            <div class="popup-content">
+                                                                                <p>Name: <span
+                                                                                        x-text="item.name"></span></p>
+                                                                                <p>Date: <span
+                                                                                        x-text="item.tanggal"></span>
+                                                                                </p>
+                                                                                <p>Activity: <span
+                                                                                        x-text="item.kegiatan"></span>
+                                                                                </p>
+                                                                                <!-- Add other data fields as needed -->
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </template>
+                                                                <tr x-show="isEmpty()">
+                                                                    <td colspan="5"
+                                                                        class="text-center py-3 text-gray-900 text-sm">
+                                                                        Tidak ada data yang cocok.</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div id="modal-tambah-rfid"
+                                                            class="modal fixed inset-0 flex items-center justify-center"
+                                                            style="display: none;">
+                                                            <div class="modal-content bg-white p-6">
+                                                                <h2 class="text-2xl font-bold mb-4">Tambah RFID</h2>
+                                                                <input id="inputrfid" type="text" name="RFID"
+                                                                    class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
+                                                                <div class="mt-6 flex justify-end">
+
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </template>
-                                                    <div class="border px-2 cursor-pointer" @click="changePage(currentPage + 1)">
-                                                        <span class="text-gray-700">></span>
-                                                    </div>
-                                                    <div class="border px-2 cursor-pointer" @click.prevent="changePage(pagination.lastPage)">
-                                                        <span class="text-gray-700">Terakhir</span>
+                                                        <script>
+                                                            document.addEventListener("DOMContentLoaded", function() {
+                                                                // Mengaktifkan modal saat tombol diklik
+                                                                document.getElementById('tambah-rfid').addEventListener('click', function() {
+                                                                    document.getElementById('modal-tambah-rfid').style.display = "flex";
+                                                                    document.getElementById('inputrfid').focus();
+                                                                });
+
+                                                                // Menutup modal saat tombol Batal diklik atau saat mengklik area luar modal
+                                                                document.getElementById('modal-tambah-rfid').addEventListener('click', function(event) {
+                                                                    if (event.target === this || event.target.classList.contains('bg-red-500')) {
+                                                                        this.style.display = "none";
+                                                                    }
+                                                                });
+                                                            });
+                                                        </script>
+                                                        <div class="flex mt-5">
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click.prevent="changePage(1)">
+                                                                <span class="text-gray-700">Pertama</span>
+                                                            </div>
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click="changePage(currentPage - 1)">
+                                                                <span class="text-gray-700">
+                                                                    << /span>
+                                                            </div>
+                                                            <template x-for="item in pages">
+                                                                <div @click="changePage(item)"
+                                                                    class="border px-2 cursor-pointer"
+                                                                    x-bind:class="{ 'bg-gray-300': currentPage === item }">
+                                                                    <span class="text-gray-700" x-text="item"></span>
+                                                                </div>
+                                                            </template>
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click="changePage(currentPage + 1)">
+                                                                <span class="text-gray-700">></span>
+                                                            </div>
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click.prevent="changePage(pagination.lastPage)">
+                                                                <span class="text-gray-700">Terakhir</span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <script>
+                                        let datamengisi = @json($mengisi);
+                                    </script>
+                                    <script>
+                                        window.dataTable = function() {
+                                            return {
+                                                items: [],
+                                                view: 5,
+                                                searchInput: '',
+                                                pages: [],
+                                                offset: 5,
+                                                pagination: {
+                                                    total: datamengisi.length,
+                                                    lastPage: Math.ceil(datamengisi.length / 5),
+                                                    perPage: 5,
+                                                    currentPage: 1,
+                                                    from: 1,
+                                                    to: 1 * 5
+                                                },
+                                                currentPage: 1,
+                                                sorted: {
+                                                    field: 'name',
+                                                    rule: 'asc'
+                                                },
+                                                initData() {
+                                                    this.items = datamengisi.sort(this.compareOnKey('name', 'asc'))
+                                                    this.showPages()
+                                                },
+                                                compareOnKey(key, rule) {
+                                                    return function(a, b) {
+                                                        if (key === 'name' || key === 'tanggal' || key === 'kegiatan' || key === 'image') {
+                                                            let comparison = 0
+                                                            const fieldA = a[key].toUpperCase()
+                                                            const fieldB = b[key].toUpperCase()
+                                                            if (rule === 'asc') {
+                                                                if (fieldA > fieldB) {
+                                                                    comparison = 1;
+                                                                } else if (fieldA < fieldB) {
+                                                                    comparison = -1;
+                                                                }
+                                                            } else {
+                                                                if (fieldA < fieldB) {
+                                                                    comparison = 1;
+                                                                } else if (fieldA > fieldB) {
+                                                                    comparison = -1;
+                                                                }
+                                                            }
+                                                            return comparison
+                                                        } else {
+                                                            if (rule === 'asc') {
+                                                                return a.year - b.year
+                                                            } else {
+                                                                return b.year - a.year
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                checkView(index) {
+                                                    return index > this.pagination.to || index < this.pagination.from ? false : true
+                                                },
+                                                checkPage(item) {
+                                                    if (item <= this.currentPage + 5) {
+                                                        return true
+                                                    }
+                                                    return false
+                                                },
+                                                search(value) {
+                                                    if (value.length > 1) {
+                                                        const options = {
+                                                            shouldSort: true,
+                                                            keys: ['name'],
+                                                            threshold: 0
+                                                        }
+                                                        const fuse = new Fuse(datamengisi, options)
+                                                        this.items = fuse.search(value).map(elem => elem.item)
+                                                    } else {
+                                                        this.items = datamengisi
+                                                    }
+                                                    this.changePage(1)
+                                                    this.showPages()
+                                                },
+                                                sort(field, rule) {
+                                                    this.items = this.items.sort(this.compareOnKey(field, rule))
+                                                    this.sorted.field = field
+                                                    this.sorted.rule = rule
+                                                },
+                                                changePage(page) {
+                                                    if (page >= 1 && page <= this.pagination.lastPage) {
+                                                        this.currentPage = page
+                                                        const total = this.items.length
+                                                        const lastPage = Math.ceil(total / this.view) || 1
+                                                        const from = (page - 1) * this.view + 1
+                                                        let to = page * this.view
+                                                        if (page === lastPage) {
+                                                            to = total
+                                                        }
+                                                        this.pagination.total = total
+                                                        this.pagination.lastPage = lastPage
+                                                        this.pagination.perPage = this.view
+                                                        this.pagination.currentPage = page
+                                                        this.pagination.from = from
+                                                        this.pagination.to = to
+                                                        this.showPages()
+                                                    }
+                                                },
+                                                showPages() {
+                                                    const pages = []
+                                                    let from = this.pagination.currentPage - Math.ceil(this.offset / 2)
+                                                    if (from < 1) {
+                                                        from = 1
+                                                    }
+                                                    let to = from + this.offset - 1
+                                                    if (to > this.pagination.lastPage) {
+                                                        to = this.pagination.lastPage
+                                                    }
+                                                    while (from <= to) {
+                                                        pages.push(from)
+                                                        from++
+                                                    }
+                                                    this.pages = pages
+                                                },
+                                                changeView() {
+                                                    this.changePage(1)
+                                                    this.showPages()
+                                                },
+                                                isEmpty() {
+                                                    return this.pagination.total ? false : true
+                                                }
+                                            }
+                                        }
+                                    </script>
+                                    <!-- Pastikan Anda menggunakan alpine.js versi 2 -->
+
+                                    <script>
+                                        window.alpineModal = function() {
+                                            return {
+                                                showModal: false,
+                                                modalItemId: null,
+                                                openModal(itemId) {
+                                                    this.showModal = true;
+                                                    this.modalItemId = itemId;
+                                                },
+                                            };
+                                        }
+                                    </script>
                                 </div>
                             </div>
-                            <script>
-                                let datamengisi = @json($mengisi);
-                            </script>
-                            <script>
-                                window.dataTable = function () {
-                                    return {
-                                        items: [],
-                                        view: 5,
-                                        searchInput: '',
-                                        pages: [],
-                                        offset: 5,
-                                        pagination: {
-                                            total: datamengisi.length,
-                                            lastPage: Math.ceil(datamengisi.length / 5),
-                                            perPage: 5,
-                                            currentPage: 1,
-                                            from: 1,
-                                            to: 1 * 5
-                                        },
-                                        currentPage: 1,
-                                        sorted: {
-                                            field: 'name',
-                                            rule: 'asc'
-                                        },
-                                        initData() {
-                                            this.items = datamengisi.sort(this.compareOnKey('name', 'asc'))
-                                            this.showPages()
-                                        },
-                                        compareOnKey(key, rule) {
-                                            return function (a, b) {
-                                                if (key === 'name' || key === 'tanggal' || key === 'kegiatan' || key === 'image') {
-                                                    let comparison = 0
-                                                    const fieldA = a[key].toUpperCase()
-                                                    const fieldB = b[key].toUpperCase()
-                                                    if (rule === 'asc') {
-                                                        if (fieldA > fieldB) {
-                                                            comparison = 1;
-                                                        } else if (fieldA < fieldB) {
-                                                            comparison = -1;
-                                                        }
-                                                    } else {
-                                                        if (fieldA < fieldB) {
-                                                            comparison = 1;
-                                                        } else if (fieldA > fieldB) {
-                                                            comparison = -1;
-                                                        }
-                                                    }
-                                                    return comparison
-                                                } else {
-                                                    if (rule === 'asc') {
-                                                        return a.year - b.year
-                                                    } else {
-                                                        return b.year - a.year
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        checkView(index) {
-                                            return index > this.pagination.to || index < this.pagination.from ? false : true
-                                        },
-                                        checkPage(item) {
-                                            if (item <= this.currentPage + 5) {
-                                                return true
-                                            }
-                                            return false
-                                        },
-                                        search(value) {
-                                            if (value.length > 1) {
-                                                const options = {
-                                                    shouldSort: true,
-                                                    keys: ['name'],
-                                                    threshold: 0
-                                                }
-                                                const fuse = new Fuse(datamengisi, options)
-                                                this.items = fuse.search(value).map(elem => elem.item)
-                                            } else {
-                                                this.items = datamengisi
-                                            }
-                                            this.changePage(1)
-                                            this.showPages()
-                                        },
-                                        sort(field, rule) {
-                                            this.items = this.items.sort(this.compareOnKey(field, rule))
-                                            this.sorted.field = field
-                                            this.sorted.rule = rule
-                                        },
-                                        changePage(page) {
-                                            if (page >= 1 && page <= this.pagination.lastPage) {
-                                                this.currentPage = page
-                                                const total = this.items.length
-                                                const lastPage = Math.ceil(total / this.view) || 1
-                                                const from = (page - 1) * this.view + 1
-                                                let to = page * this.view
-                                                if (page === lastPage) {
-                                                    to = total
-                                                }
-                                                this.pagination.total = total
-                                                this.pagination.lastPage = lastPage
-                                                this.pagination.perPage = this.view
-                                                this.pagination.currentPage = page
-                                                this.pagination.from = from
-                                                this.pagination.to = to
-                                                this.showPages()
-                                            }
-                                        },
-                                        showPages() {
-                                            const pages = []
-                                            let from = this.pagination.currentPage - Math.ceil(this.offset / 2)
-                                            if (from < 1) {
-                                                from = 1
-                                            }
-                                            let to = from + this.offset - 1
-                                            if (to > this.pagination.lastPage) {
-                                                to = this.pagination.lastPage
-                                            }
-                                            while (from <= to) {
-                                                pages.push(from)
-                                                from++
-                                            }
-                                            this.pages = pages
-                                        },
-                                        changeView() {
-                                            this.changePage(1)
-                                            this.showPages()
-                                        },
-                                        isEmpty() {
-                                            return this.pagination.total ? false : true
-                                        }
-                                    }
-                                }
-                            </script>
-                            <!-- Pastikan Anda menggunakan alpine.js versi 2 -->
-
-                            <script>
-                                window.alpineModal = function () {
-                                    return {
-                                        showModal: false,
-                                        modalItemId: null,
-                                        openModal(itemId) {
-                                            this.showModal = true;
-                                            this.modalItemId = itemId;
-                                        },
-                                    };
-                                }
-                            </script>
-                        </div>
-                    </div>
-                </template>
-                <template x-if="tab === 'belummengisi'">
-                    {{-- <div>
+                        </template>
+                        <template x-if="tab === 'belummengisi'">
+                            {{-- <div>
 
 
                         <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]"
@@ -1089,709 +1207,737 @@
                         </div>
                         <div class="" class="mb-2">{{ $jurnalSudahKirim->links() }}</div>
                     </div> --}}
-                    <div>
-                        <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]" enctype="multipart/form-data" method="POST">
-                            <input type="hidden" name="siswa_id">
-                            <input type="hidden" name="siswa_id">
-                            <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
-                            <div class="flex flex-col sm:flex-row">
-                                <div class="w-full">
-                                    <div class="w-full">
-                                        <div >
-                                            <div x-data="dataTable3()"
-                                                x-init="
-                                                initData()
-                                                $watch('searchInput', value => {
-                                                    search(value)
-                                                })" >
-                                                <div class="flex justify-between items-center">
-                                                    <div class="flex space-x-2 items-center">
-                                                        <p>Tampilkan</p>
-                                                        <select class="border border-1" x-model="view" @change="changeView()">
-                                                            <option value="5">5</option>
-                                                            <option value="10">10</option>
-                                                            <option value="25">25</option>
-                                                            <option value="50">50</option>
-                                                            <option value="100">100</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <table class="mt-5">
-                                                    <thead class="border-b-2">
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">Nama</th>
-                                                            <th @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">Sekolah</th>
-                                                            <th @click="sort('Aksi', sorted.rule === 'asc' ? 'desc' : 'asc')">Aksi</th>
-
-                                                    </thead>
-                                                    <tbody>
-                                                        <template x-for="(item, index) in items" :key="index">
-                                                            <tr x-data="{ showPopup: false }" x-show="checkView(index + 1)" class="hover:bg-gray-200 text-gray-900 text-xs">
-                                                                <td class="py-3">
-                                                                    <span id="i" x-text="index + 1"></span>
-                                                                </td>
-                                                                <td class="py-3">
-                                                                    <span x-text="item.name"></span>
-                                                                </td>
-                                                                <td class="py-3">
-                                                                    <span x-text="item.sekolah"></span>
-                                                                </td>
-                                                                <td class="py-3">
-                                                                    <button type="submit" class="border border-blue-400 px-2 py-1 hover:bg-blue-400 hover:text-white font-semibold rounded" @click="belum_mengisi(item.id)">Belum mengisi</button>
-                                                                </td>
-
-
-                                                            </tr>
-                                                            <tr x-show="showPopup" class="text-gray-900 text-xs">
-                                                                <td class="py-3" colspan="5">
-                                                                    <div class="popup-content">
-                                                                        <p>Name: <span x-text="item.name"></span></p>
-                                                                        <p>Date: <span x-text="item.sekolah"></span></p>
-                                                                        {{-- <p>Activity: <span x-text="item.kegiatan"></span></p> --}}
-                                                                        <!-- Add other data fields as needed -->
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </template>
-                                                        <tr x-show="isEmpty()">
-                                                            <td colspan="5" class="text-center py-3 text-gray-900 text-sm">Tidak ada data yang cocok.</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div id="modal-tambah-rfid" class="modal fixed inset-0 flex items-center justify-center" style="display: none;">
-                                                    <div class="modal-content bg-white p-6">
-                                                        <h2 class="text-2xl font-bold mb-4">Tambah RFID</h2>
-                                                        <input id="inputrfid" type="text" name="RFID"
-                                                               class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
-                                                        <div class="mt-6 flex justify-end">
-
+                            <div>
+                                <div class="mb-5 rounded-md border border-[#ebedf2] bg-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]"
+                                    enctype="multipart/form-data" method="POST">
+                                    <input type="hidden" name="siswa_id">
+                                    <input type="hidden" name="siswa_id">
+                                    <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
+                                    <div class="flex flex-col sm:flex-row">
+                                        <div class="w-full">
+                                            <div class="w-full">
+                                                <div>
+                                                    <div x-data="dataTable3()" x-init="initData()
+                                                    $watch('searchInput', value => {
+                                                        search(value)
+                                                    })">
+                                                        <div class="flex justify-between items-center">
+                                                            <div class="flex space-x-2 items-center">
+                                                                <p>Tampilkan</p>
+                                                                <select class="border border-1" x-model="view"
+                                                                    @change="changeView()">
+                                                                    <option value="5">5</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="25">25</option>
+                                                                    <option value="50">50</option>
+                                                                    <option value="100">100</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <script>
-                                                    document.addEventListener("DOMContentLoaded", function() {
-                                                        // Mengaktifkan modal saat tombol diklik
-                                                        document.getElementById('tambah-rfid').addEventListener('click', function() {
-                                                            document.getElementById('modal-tambah-rfid').style.display = "flex";
-                                                            document.getElementById('inputrfid').focus();
-                                                        });
+                                                        <table class="mt-5">
+                                                            <thead class="border-b-2">
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th
+                                                                        @click="sort('name', sorted.rule === 'asc' ? 'desc' : 'asc')">
+                                                                        Nama</th>
+                                                                    <th
+                                                                        @click="sort('sekolah', sorted.rule === 'asc' ? 'desc' : 'asc')">
+                                                                        Sekolah</th>
+                                                                    <th
+                                                                        @click="sort('Aksi', sorted.rule === 'asc' ? 'desc' : 'asc')">
+                                                                        Aksi</th>
 
-                                                        // Menutup modal saat tombol Batal diklik atau saat mengklik area luar modal
-                                                        document.getElementById('modal-tambah-rfid').addEventListener('click', function(event) {
-                                                            if (event.target === this || event.target.classList.contains('bg-red-500')) {
-                                                                this.style.display = "none";
-                                                            }
-                                                        });
-                                                    });
-                                                </script>
-                                                <div class="flex mt-5">
-                                                    <div class="border px-2 cursor-pointer" @click.prevent="changePage(1)">
-                                                        <span class="text-gray-700">Pertama</span>
-                                                    </div>
-                                                    <div class="border px-2 cursor-pointer" @click="changePage(currentPage - 1)">
-                                                        <span class="text-gray-700"><</span>
-                                                    </div>
-                                                    <template x-for="item in pages">
-                                                        <div @click="changePage(item)" class="border px-2 cursor-pointer" x-bind:class="{ 'bg-gray-300': currentPage === item }">
-                                                            <span class="text-gray-700" x-text="item"></span>
+                                                            </thead>
+                                                            <tbody>
+                                                                <template x-for="(item, index) in items"
+                                                                    :key="index">
+                                                                    <tr x-data="{ showPopup: false }"
+                                                                        x-show="checkView(index + 1)"
+                                                                        class="hover:bg-gray-200 text-gray-900 text-xs">
+                                                                        <td class="py-3">
+                                                                            <span id="i"
+                                                                                x-text="index + 1"></span>
+                                                                        </td>
+                                                                        <td class="py-3">
+                                                                            <span x-text="item.name"></span>
+                                                                        </td>
+                                                                        <td class="py-3">
+                                                                            <span x-text="item.sekolah"></span>
+                                                                        </td>
+                                                                        <td class="py-3">
+                                                                            <button type="submit"
+                                                                                class="border border-blue-400 px-2 py-1 hover:bg-blue-400 hover:text-white font-semibold rounded"
+                                                                                @click="belum_mengisi(item.id)">Belum
+                                                                                mengisi</button>
+                                                                        </td>
+
+
+                                                                    </tr>
+                                                                    <tr x-show="showPopup"
+                                                                        class="text-gray-900 text-xs">
+                                                                        <td class="py-3" colspan="5">
+                                                                            <div class="popup-content">
+                                                                                <p>Name: <span
+                                                                                        x-text="item.name"></span></p>
+                                                                                <p>Date: <span
+                                                                                        x-text="item.sekolah"></span>
+                                                                                </p>
+                                                                                {{-- <p>Activity: <span x-text="item.kegiatan"></span></p> --}}
+                                                                                <!-- Add other data fields as needed -->
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </template>
+                                                                <tr x-show="isEmpty()">
+                                                                    <td colspan="5"
+                                                                        class="text-center py-3 text-gray-900 text-sm">
+                                                                        Tidak ada data yang cocok.</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div id="modal-tambah-rfid"
+                                                            class="modal fixed inset-0 flex items-center justify-center"
+                                                            style="display: none;">
+                                                            <div class="modal-content bg-white p-6">
+                                                                <h2 class="text-2xl font-bold mb-4">Tambah RFID</h2>
+                                                                <input id="inputrfid" type="text" name="RFID"
+                                                                    class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full">
+                                                                <div class="mt-6 flex justify-end">
+
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </template>
-                                                    <div class="border px-2 cursor-pointer" @click="changePage(currentPage + 1)">
-                                                        <span class="text-gray-700">></span>
-                                                    </div>
-                                                    <div class="border px-2 cursor-pointer" @click.prevent="changePage(pagination.lastPage)">
-                                                        <span class="text-gray-700">Terakhir</span>
+                                                        <script>
+                                                            document.addEventListener("DOMContentLoaded", function() {
+                                                                // Mengaktifkan modal saat tombol diklik
+                                                                document.getElementById('tambah-rfid').addEventListener('click', function() {
+                                                                    document.getElementById('modal-tambah-rfid').style.display = "flex";
+                                                                    document.getElementById('inputrfid').focus();
+                                                                });
+
+                                                                // Menutup modal saat tombol Batal diklik atau saat mengklik area luar modal
+                                                                document.getElementById('modal-tambah-rfid').addEventListener('click', function(event) {
+                                                                    if (event.target === this || event.target.classList.contains('bg-red-500')) {
+                                                                        this.style.display = "none";
+                                                                    }
+                                                                });
+                                                            });
+                                                        </script>
+                                                        <div class="flex mt-5">
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click.prevent="changePage(1)">
+                                                                <span class="text-gray-700">Pertama</span>
+                                                            </div>
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click="changePage(currentPage - 1)">
+                                                                <span class="text-gray-700">
+                                                                    << /span>
+                                                            </div>
+                                                            <template x-for="item in pages">
+                                                                <div @click="changePage(item)"
+                                                                    class="border px-2 cursor-pointer"
+                                                                    x-bind:class="{ 'bg-gray-300': currentPage === item }">
+                                                                    <span class="text-gray-700" x-text="item"></span>
+                                                                </div>
+                                                            </template>
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click="changePage(currentPage + 1)">
+                                                                <span class="text-gray-700">></span>
+                                                            </div>
+                                                            <div class="border px-2 cursor-pointer"
+                                                                @click.prevent="changePage(pagination.lastPage)">
+                                                                <span class="text-gray-700">Terakhir</span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <script>
+                                        let databelummengisi = @json($siswa);
+                                    </script>
+                                    <script>
+                                        window.dataTable3 = function() {
+                                            return {
+                                                items: [],
+                                                view: 5,
+                                                searchInput: '',
+                                                pages: [],
+                                                offset: 5,
+                                                pagination: {
+                                                    total: databelummengisi.length,
+                                                    lastPage: Math.ceil(databelummengisi.length / 5),
+                                                    perPage: 5,
+                                                    currentPage: 1,
+                                                    from: 1,
+                                                    to: 1 * 5
+                                                },
+                                                currentPage: 1,
+                                                sorted: {
+                                                    field: 'name',
+                                                    rule: 'asc'
+                                                },
+                                                initData() {
+                                                    this.items = databelummengisi.sort(this.compareOnKey('name', 'asc'))
+                                                    this.showPages()
+                                                },
+                                                compareOnKey(key, rule) {
+                                                    return function(a, b) {
+                                                        if (key === 'name' || key === 'sekolah') {
+                                                            let comparison = 0
+                                                            const fieldA = a[key].toUpperCase()
+                                                            const fieldB = b[key].toUpperCase()
+                                                            if (rule === 'asc') {
+                                                                if (fieldA > fieldB) {
+                                                                    comparison = 1;
+                                                                } else if (fieldA < fieldB) {
+                                                                    comparison = -1;
+                                                                }
+                                                            } else {
+                                                                if (fieldA < fieldB) {
+                                                                    comparison = 1;
+                                                                } else if (fieldA > fieldB) {
+                                                                    comparison = -1;
+                                                                }
+                                                            }
+                                                            return comparison
+                                                        } else {
+                                                            if (rule === 'asc') {
+                                                                return a.year - b.year
+                                                            } else {
+                                                                return b.year - a.year
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                checkView(index) {
+                                                    return index > this.pagination.to || index < this.pagination.from ? false : true
+                                                },
+                                                checkPage(item) {
+                                                    if (item <= this.currentPage + 5) {
+                                                        return true
+                                                    }
+                                                    return false
+                                                },
+                                                search(value) {
+                                                    if (value.length > 1) {
+                                                        const options = {
+                                                            shouldSort: true,
+                                                            keys: ['nama'],
+                                                            threshold: 0
+                                                        }
+                                                        const fuse = new Fuse(databelummengisi, options)
+                                                        this.items = fuse.search(value).map(elem => elem.item)
+                                                    } else {
+                                                        this.items = databelummengisi
+                                                    }
+                                                    this.changePage(1)
+                                                    this.showPages()
+                                                },
+                                                sort(field, rule) {
+                                                    this.items = this.items.sort(this.compareOnKey(field, rule))
+                                                    this.sorted.field = field
+                                                    this.sorted.rule = rule
+                                                },
+                                                changePage(page) {
+                                                    if (page >= 1 && page <= this.pagination.lastPage) {
+                                                        this.currentPage = page
+                                                        const total = this.items.length
+                                                        const lastPage = Math.ceil(total / this.view) || 1
+                                                        const from = (page - 1) * this.view + 1
+                                                        let to = page * this.view
+                                                        if (page === lastPage) {
+                                                            to = total
+                                                        }
+                                                        this.pagination.total = total
+                                                        this.pagination.lastPage = lastPage
+                                                        this.pagination.perPage = this.view
+                                                        this.pagination.currentPage = page
+                                                        this.pagination.from = from
+                                                        this.pagination.to = to
+                                                        this.showPages()
+                                                    }
+                                                },
+                                                showPages() {
+                                                    const pages = []
+                                                    let from = this.pagination.currentPage - Math.ceil(this.offset / 2)
+                                                    if (from < 1) {
+                                                        from = 1
+                                                    }
+                                                    let to = from + this.offset - 1
+                                                    if (to > this.pagination.lastPage) {
+                                                        to = this.pagination.lastPage
+                                                    }
+                                                    while (from <= to) {
+                                                        pages.push(from)
+                                                        from++
+                                                    }
+                                                    this.pages = pages
+                                                },
+                                                changeView() {
+                                                    this.changePage(1)
+                                                    this.showPages()
+                                                },
+                                                isEmpty() {
+                                                    return this.pagination.total ? false : true
+                                                }
+                                            }
+                                        }
+                                    </script>
+                                    <!-- Pastikan Anda menggunakan alpine.js versi 2 -->
+
+                                    <script>
+                                        window.alpineModal = function() {
+                                            return {
+                                                showModal: false,
+                                                modalItemId: null,
+                                                openModal(itemId) {
+                                                    this.showModal = true;
+                                                    this.modalItemId = itemId;
+                                                },
+                                            };
+                                        }
+                                    </script>
                                 </div>
                             </div>
-                            <script>
-                                let databelummengisi = @json($siswa);
-                            </script>
-                            <script>
-                                window.dataTable3 = function () {
-                                    return {
-                                        items: [],
-                                        view: 5,
-                                        searchInput: '',
-                                        pages: [],
-                                        offset: 5,
-                                        pagination: {
-                                            total: databelummengisi.length,
-                                            lastPage: Math.ceil(databelummengisi.length / 5),
-                                            perPage: 5,
-                                            currentPage: 1,
-                                            from: 1,
-                                            to: 1 * 5
-                                        },
-                                        currentPage: 1,
-                                        sorted: {
-                                            field: 'name',
-                                            rule: 'asc'
-                                        },
-                                        initData() {
-                                            this.items = databelummengisi.sort(this.compareOnKey('name', 'asc'))
-                                            this.showPages()
-                                        },
-                                        compareOnKey(key, rule) {
-                                            return function (a, b) {
-                                                if (key === 'name' || key === 'sekolah') {
-                                                    let comparison = 0
-                                                    const fieldA = a[key].toUpperCase()
-                                                    const fieldB = b[key].toUpperCase()
-                                                    if (rule === 'asc') {
-                                                        if (fieldA > fieldB) {
-                                                            comparison = 1;
-                                                        } else if (fieldA < fieldB) {
-                                                            comparison = -1;
-                                                        }
-                                                    } else {
-                                                        if (fieldA < fieldB) {
-                                                            comparison = 1;
-                                                        } else if (fieldA > fieldB) {
-                                                            comparison = -1;
-                                                        }
-                                                    }
-                                                    return comparison
-                                                } else {
-                                                    if (rule === 'asc') {
-                                                        return a.year - b.year
-                                                    } else {
-                                                        return b.year - a.year
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        checkView(index) {
-                                            return index > this.pagination.to || index < this.pagination.from ? false : true
-                                        },
-                                        checkPage(item) {
-                                            if (item <= this.currentPage + 5) {
-                                                return true
-                                            }
-                                            return false
-                                        },
-                                        search(value) {
-                                            if (value.length > 1) {
-                                                const options = {
-                                                    shouldSort: true,
-                                                    keys: ['nama'],
-                                                    threshold: 0
-                                                }
-                                                const fuse = new Fuse(databelummengisi, options)
-                                                this.items = fuse.search(value).map(elem => elem.item)
-                                            } else {
-                                                this.items = databelummengisi
-                                            }
-                                            this.changePage(1)
-                                            this.showPages()
-                                        },
-                                        sort(field, rule) {
-                                            this.items = this.items.sort(this.compareOnKey(field, rule))
-                                            this.sorted.field = field
-                                            this.sorted.rule = rule
-                                        },
-                                        changePage(page) {
-                                            if (page >= 1 && page <= this.pagination.lastPage) {
-                                                this.currentPage = page
-                                                const total = this.items.length
-                                                const lastPage = Math.ceil(total / this.view) || 1
-                                                const from = (page - 1) * this.view + 1
-                                                let to = page * this.view
-                                                if (page === lastPage) {
-                                                    to = total
-                                                }
-                                                this.pagination.total = total
-                                                this.pagination.lastPage = lastPage
-                                                this.pagination.perPage = this.view
-                                                this.pagination.currentPage = page
-                                                this.pagination.from = from
-                                                this.pagination.to = to
-                                                this.showPages()
-                                            }
-                                        },
-                                        showPages() {
-                                            const pages = []
-                                            let from = this.pagination.currentPage - Math.ceil(this.offset / 2)
-                                            if (from < 1) {
-                                                from = 1
-                                            }
-                                            let to = from + this.offset - 1
-                                            if (to > this.pagination.lastPage) {
-                                                to = this.pagination.lastPage
-                                            }
-                                            while (from <= to) {
-                                                pages.push(from)
-                                                from++
-                                            }
-                                            this.pages = pages
-                                        },
-                                        changeView() {
-                                            this.changePage(1)
-                                            this.showPages()
-                                        },
-                                        isEmpty() {
-                                            return this.pagination.total ? false : true
-                                        }
-                                    }
-                                }
-                            </script>
-                            <!-- Pastikan Anda menggunakan alpine.js versi 2 -->
-
-                            <script>
-                                window.alpineModal = function () {
-                                    return {
-                                        showModal: false,
-                                        modalItemId: null,
-                                        openModal(itemId) {
-                                            this.showModal = true;
-                                            this.modalItemId = itemId;
-                                        },
-                                    };
-                                }
-                            </script>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </div>
-    </div>
-
-    <style>
-        .modal-container{
-            top: 40%;
-            left: 50%;
-            transform:translate(-25%,-25%);
-        }
-
-    </style>
-
-        @forelse ($mengisi as $modal)
-        <div class="" style="">
-            <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
-                class="kamu-tak-diajak modal-container fixed  right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
-                x-data="{ showModal: true }"> <!-- Tambahkan atribut x-data dan variabel showModal -->
-                <div class="relative w-full max-w-2xl max-h-full">
-                    <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <!-- Modal header -->
-                        <div
-                            class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                Detail Jurnal
-                            </h3>
-                            <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                onclick="closeModal('{{$modal->id}}')">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="p-6 space-y-6">
-                            <div>
-                                <p
-                                    class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
-                                    Nama
-                                </p>
-                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    {{ $modal->name }}
-                                </p>
-                            </div>
-                            <div>
-                                <p
-                                    class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                    Tanggal
-                                </p>
-                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    {{ $modal->tanggal }}
-                                </p>
-                            </div>
-                            <div>
-                                <p
-                                    class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                    Sekolah
-                                </p>
-                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    {{ $modal->sekolah }}
-                                </p>
-                            </div>
-                            <div>
-                                <p
-                                    class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                    Kegiatan
-                                </p>
-                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    {{ $modal->kegiatan }}
-                                </p>
-                            </div>
-                            <div>
-                                <p
-                                    class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                    Bukti
-                                </p>
-                                <img src="{{ asset('storage/image/' . $modal->image) }}" alt="">
-                            </div>
-                        </div>
-                        <!-- Modal footer -->
-                        <div
-                            class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                            <button type="button"  onclick="closeModal('{{$modal->id}}')"
-                                class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
-                        </div>
+                        </template>
                     </div>
                 </div>
             </div>
+
+            <style>
+                .modal-container {
+                    top: 40%;
+                    left: 50%;
+                    transform: translate(-25%, -25%);
+                }
+            </style>
+
+            @forelse ($mengisi as $modal)
+                <div class="" style="">
+                    <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
+                        class="kamu-tak-diajak modal-container fixed  right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+                        x-data="{ showModal: true }"> <!-- Tambahkan atribut x-data dan variabel showModal -->
+                        <div class="relative w-full max-w-2xl max-h-full">
+                            <!-- Modal content -->
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <!-- Modal header -->
+                                <div
+                                    class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                        Detail Jurnal
+                                    </h3>
+                                    <button type="button"
+                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                        onclick="closeModal('{{ $modal->id }}')">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="p-6 space-y-6">
+                                    <div>
+                                        <p
+                                            class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
+                                            Nama
+                                        </p>
+                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                            {{ $modal->name }}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                            Tanggal
+                                        </p>
+                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                            {{ $modal->tanggal }}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                            Sekolah
+                                        </p>
+                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                            {{ $modal->sekolah }}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                            Kegiatan
+                                        </p>
+                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                            {{ $modal->kegiatan }}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                            Bukti
+                                        </p>
+                                        <img src="{{ asset('storage/image/' . $modal->image) }}" alt="">
+                                    </div>
+                                </div>
+                                <!-- Modal footer -->
+                                <div
+                                    class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                    <button type="button" onclick="closeModal('{{ $modal->id }}')"
+                                        class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @empty
+            @endforelse
+
+
+
+            <!-- end main content section -->
+
+            <!-- start footer section -->
+            <!-- end footer section -->
         </div>
-        @empty
-        @endforelse
+    </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="assets_guru/js/alpine-collaspe.min.js"></script>
+    <script src="assets_guru/js/alpine-persist.min.js"></script>
+    <script defer src="assets_guru/js/alpine-ui.min.js"></script>
+    <script defer src="assets_guru/js/alpine-focus.min.js"></script>
+    <script defer src="assets_guru/js/alpine.min.js"></script>
+    <script src="assets_guru/js/custom.js"></script>
 
 
+    <script>
+        document.addEventListener('alpine:init', () => {
+            // main section
+            Alpine.data('scrollToTop', () => ({
+                showTopButton: false,
+                init() {
+                    window.onscroll = () => {
+                        this.scrollFunction();
+                    };
+                },
 
-    <!-- end main content section -->
+                scrollFunction() {
+                    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                        this.showTopButton = true;
+                    } else {
+                        this.showTopButton = false;
+                    }
+                },
 
-    <!-- start footer section -->
-    <!-- end footer section -->
-</div>
-</div>
-</div>
+                goToTop() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                },
+            }));
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-<script src="assets_guru/js/alpine-collaspe.min.js"></script>
-<script src="assets_guru/js/alpine-persist.min.js"></script>
-<script defer src="assets_guru/js/alpine-ui.min.js"></script>
-<script defer src="assets_guru/js/alpine-focus.min.js"></script>
-<script defer src="assets_guru/js/alpine.min.js"></script>
-<script src="assets_guru/js/custom.js"></script>
+            // theme customization
+            Alpine.data('customizer', () => ({
+                showCustomizer: false,
+            }));
 
-
-<script>
-    document.addEventListener('alpine:init', () => {
-        // main section
-        Alpine.data('scrollToTop', () => ({
-            showTopButton: false,
-            init() {
-                window.onscroll = () => {
-                    this.scrollFunction();
-                };
-            },
-
-            scrollFunction() {
-                if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                    this.showTopButton = true;
-                } else {
-                    this.showTopButton = false;
-                }
-            },
-
-            goToTop() {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-            },
-        }));
-
-        // theme customization
-        Alpine.data('customizer', () => ({
-            showCustomizer: false,
-        }));
-
-        // sidebar section
-        Alpine.data('sidebar', () => ({
-            init() {
-                const selector = document.querySelector('.sidebar ul a[href="' + window.location
-                    .pathname + '"]');
-                if (selector) {
-                    selector.classList.add('active');
-                    const ul = selector.closest('ul.sub-menu');
-                    if (ul) {
-                        let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
-                        if (ele) {
-                            ele = ele[0];
-                            setTimeout(() => {
-                                ele.click();
-                            });
+            // sidebar section
+            Alpine.data('sidebar', () => ({
+                init() {
+                    const selector = document.querySelector('.sidebar ul a[href="' + window.location
+                        .pathname + '"]');
+                    if (selector) {
+                        selector.classList.add('active');
+                        const ul = selector.closest('ul.sub-menu');
+                        if (ul) {
+                            let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
+                            if (ele) {
+                                ele = ele[0];
+                                setTimeout(() => {
+                                    ele.click();
+                                });
+                            }
                         }
                     }
-                }
-            },
-        }));
+                },
+            }));
 
-        // header section
-        Alpine.data('header', () => ({
-            init() {
-                const selector = document.querySelector('ul.horizontal-menu a[href="' + window
-                    .location.pathname + '"]');
-                if (selector) {
-                    selector.classList.add('active');
-                    const ul = selector.closest('ul.sub-menu');
-                    if (ul) {
-                        let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
-                        if (ele) {
-                            ele = ele[0];
-                            setTimeout(() => {
-                                ele.classList.add('active');
-                            });
+            // header section
+            Alpine.data('header', () => ({
+                init() {
+                    const selector = document.querySelector('ul.horizontal-menu a[href="' + window
+                        .location.pathname + '"]');
+                    if (selector) {
+                        selector.classList.add('active');
+                        const ul = selector.closest('ul.sub-menu');
+                        if (ul) {
+                            let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
+                            if (ele) {
+                                ele = ele[0];
+                                setTimeout(() => {
+                                    ele.classList.add('active');
+                                });
+                            }
                         }
                     }
-                }
-            },
+                },
 
-            notifications: [{
-                    id: 1,
-                    profile: 'user-profile.jpeg',
-                    message: '<strong class="text-sm mr-1">John Doe</strong>invite you to <strong>Prototyping</strong>',
-                    time: '45 min ago',
-                },
-                {
-                    id: 2,
-                    profile: 'profile-34.jpeg',
-                    message: '<strong class="text-sm mr-1">Adam Nolan</strong>mentioned you to <strong>UX Basics</strong>',
-                    time: '9h Ago',
-                },
-                {
-                    id: 3,
-                    profile: 'profile-16.jpeg',
-                    message: '<strong class="text-sm mr-1">Anna Morgan</strong>Upload a file',
-                    time: '9h Ago',
-                },
-            ],
+                notifications: [{
+                        id: 1,
+                        profile: 'user-profile.jpeg',
+                        message: '<strong class="text-sm mr-1">John Doe</strong>invite you to <strong>Prototyping</strong>',
+                        time: '45 min ago',
+                    },
+                    {
+                        id: 2,
+                        profile: 'profile-34.jpeg',
+                        message: '<strong class="text-sm mr-1">Adam Nolan</strong>mentioned you to <strong>UX Basics</strong>',
+                        time: '9h Ago',
+                    },
+                    {
+                        id: 3,
+                        profile: 'profile-16.jpeg',
+                        message: '<strong class="text-sm mr-1">Anna Morgan</strong>Upload a file',
+                        time: '9h Ago',
+                    },
+                ],
 
-            messages: [{
-                    id: 1,
-                    image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-success-light dark:bg-success text-success dark:text-success-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>',
-                    title: 'Congratulations!',
-                    message: 'Your OS has been updated.',
-                    time: '1hr',
-                },
-                {
-                    id: 2,
-                    image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-info-light dark:bg-info text-info dark:text-info-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>',
-                    title: 'Did you know?',
-                    message: 'You can switch between artboards.',
-                    time: '2hr',
-                },
-                {
-                    id: 3,
-                    image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-danger-light dark:bg-danger text-danger dark:text-danger-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>',
-                    title: 'Something went wrong!',
-                    message: 'Send Reposrt',
-                    time: '2days',
-                },
-                {
-                    id: 4,
-                    image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-warning-light dark:bg-warning text-warning dark:text-warning-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">    <circle cx="12" cy="12" r="10"></circle>    <line x1="12" y1="8" x2="12" y2="12"></line>    <line x1="12" y1="16" x2="12.01" y2="16"></line></svg></span>',
-                    title: 'Warning',
-                    message: 'Your password strength is low.',
-                    time: '5days',
-                },
-            ],
+                messages: [{
+                        id: 1,
+                        image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-success-light dark:bg-success text-success dark:text-success-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>',
+                        title: 'Congratulations!',
+                        message: 'Your OS has been updated.',
+                        time: '1hr',
+                    },
+                    {
+                        id: 2,
+                        image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-info-light dark:bg-info text-info dark:text-info-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>',
+                        title: 'Did you know?',
+                        message: 'You can switch between artboards.',
+                        time: '2hr',
+                    },
+                    {
+                        id: 3,
+                        image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-danger-light dark:bg-danger text-danger dark:text-danger-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>',
+                        title: 'Something went wrong!',
+                        message: 'Send Reposrt',
+                        time: '2days',
+                    },
+                    {
+                        id: 4,
+                        image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-warning-light dark:bg-warning text-warning dark:text-warning-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">    <circle cx="12" cy="12" r="10"></circle>    <line x1="12" y1="8" x2="12" y2="12"></line>    <line x1="12" y1="16" x2="12.01" y2="16"></line></svg></span>',
+                        title: 'Warning',
+                        message: 'Your password strength is low.',
+                        time: '5days',
+                    },
+                ],
 
-            languages: [{
-                    id: 1,
-                    key: 'Chinese',
-                    value: 'zh',
-                },
-                {
-                    id: 2,
-                    key: 'Danish',
-                    value: 'da',
-                },
-                {
-                    id: 3,
-                    key: 'English',
-                    value: 'en',
-                },
-                {
-                    id: 4,
-                    key: 'French',
-                    value: 'fr',
-                },
-                {
-                    id: 5,
-                    key: 'German',
-                    value: 'de',
-                },
-                {
-                    id: 6,
-                    key: 'Greek',
-                    value: 'el',
-                },
-                {
-                    id: 7,
-                    key: 'Hungarian',
-                    value: 'hu',
-                },
-                {
-                    id: 8,
-                    key: 'Italian',
-                    value: 'it',
-                },
-                {
-                    id: 9,
-                    key: 'Japanese',
-                    value: 'ja',
-                },
-                {
-                    id: 10,
-                    key: 'Polish',
-                    value: 'pl',
-                },
-                {
-                    id: 11,
-                    key: 'Portuguese',
-                    value: 'pt',
-                },
-                {
-                    id: 12,
-                    key: 'Russian',
-                    value: 'ru',
-                },
-                {
-                    id: 13,
-                    key: 'Spanish',
-                    value: 'es',
-                },
-                {
-                    id: 14,
-                    key: 'Swedish',
-                    value: 'sv',
-                },
-                {
-                    id: 15,
-                    key: 'Turkish',
-                    value: 'tr',
-                },
-            ],
+                languages: [{
+                        id: 1,
+                        key: 'Chinese',
+                        value: 'zh',
+                    },
+                    {
+                        id: 2,
+                        key: 'Danish',
+                        value: 'da',
+                    },
+                    {
+                        id: 3,
+                        key: 'English',
+                        value: 'en',
+                    },
+                    {
+                        id: 4,
+                        key: 'French',
+                        value: 'fr',
+                    },
+                    {
+                        id: 5,
+                        key: 'German',
+                        value: 'de',
+                    },
+                    {
+                        id: 6,
+                        key: 'Greek',
+                        value: 'el',
+                    },
+                    {
+                        id: 7,
+                        key: 'Hungarian',
+                        value: 'hu',
+                    },
+                    {
+                        id: 8,
+                        key: 'Italian',
+                        value: 'it',
+                    },
+                    {
+                        id: 9,
+                        key: 'Japanese',
+                        value: 'ja',
+                    },
+                    {
+                        id: 10,
+                        key: 'Polish',
+                        value: 'pl',
+                    },
+                    {
+                        id: 11,
+                        key: 'Portuguese',
+                        value: 'pt',
+                    },
+                    {
+                        id: 12,
+                        key: 'Russian',
+                        value: 'ru',
+                    },
+                    {
+                        id: 13,
+                        key: 'Spanish',
+                        value: 'es',
+                    },
+                    {
+                        id: 14,
+                        key: 'Swedish',
+                        value: 'sv',
+                    },
+                    {
+                        id: 15,
+                        key: 'Turkish',
+                        value: 'tr',
+                    },
+                ],
 
-            removeNotification(value) {
-                this.notifications = this.notifications.filter((d) => d.id !== value);
-            },
+                removeNotification(value) {
+                    this.notifications = this.notifications.filter((d) => d.id !== value);
+                },
 
-            removeMessage(value) {
-                this.messages = this.messages.filter((d) => d.id !== value);
-            },
-        }));
-    });
-</script>
-<script>
-    $(window).on('load', function() {
-        $('.spin_load').fadeOut();
-    });
-</script>
-
-
-</div>
+                removeMessage(value) {
+                    this.messages = this.messages.filter((d) => d.id !== value);
+                },
+            }));
+        });
+    </script>
+    <script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
+        });
+    </script>
 
 
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-<script>
-    $(window).on('load', function() {
-        $('.spin_load').fadeOut();
-    });
-</script>
-<script>
-    const instanceMode = te.Sidenav.getInstance(
-        document.getElementById("sidenav-2")
-    );
-    const modes = ["side"];
 
-    modes.forEach((mode) => {
-        const modeSwitch = document.getElementById(mode);
-        modeSwitch.addEventListener("click", () => {
-            const instance = te.Sidenav.getInstance(
-                document.getElementById("sidenav-2")
-            );
-            instance.changeMode(mode);
-            modes.forEach((el) => {
-                if (el === mode) {
-                    ["text-primary-600", "border-primary-600"].forEach((item) =>
-                        modeSwitch.classList.remove(item)
-                    );
-                    modeSwitch.className +=
-                        " bg-primary text-white hover:bg-primary-700 active:bg-primary-800 focus:bg-primary-700 border-transparent";
-                } else {
-                    const node = document.getElementById(el);
-                    node.className += " text-primary-600 border-primary-600";
-                    [
 
-                    ].forEach((item) => node.classList.remove(item));
-                }
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
+        });
+    </script>
+    <script>
+        const instanceMode = te.Sidenav.getInstance(
+            document.getElementById("sidenav-2")
+        );
+        const modes = ["side"];
+
+        modes.forEach((mode) => {
+            const modeSwitch = document.getElementById(mode);
+            modeSwitch.addEventListener("click", () => {
+                const instance = te.Sidenav.getInstance(
+                    document.getElementById("sidenav-2")
+                );
+                instance.changeMode(mode);
+                modes.forEach((el) => {
+                    if (el === mode) {
+                        ["text-primary-600", "border-primary-600"].forEach((item) =>
+                            modeSwitch.classList.remove(item)
+                        );
+                        modeSwitch.className +=
+                            " bg-primary text-white hover:bg-primary-700 active:bg-primary-800 focus:bg-primary-700 border-transparent";
+                    } else {
+                        const node = document.getElementById(el);
+                        node.className += " text-primary-600 border-primary-600";
+                        [
+
+                        ].forEach((item) => node.classList.remove(item));
+                    }
+                });
             });
         });
-    });
-</script>
-<script>
-    // Initialization for ES Users
-    import {
-        sidenav - 2,
-        initTE,
-    } from "tw-elements";
+    </script>
+    <script>
+        // Initialization for ES Users
+        import {
+            sidenav - 2,
+            initTE,
+        } from "tw-elements";
 
-    initTE({
-        sidenav - 2
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
+        initTE({
+            sidenav - 2
         });
-    })
-    function belum_mengisi(id)
-    {
-        Swal.fire({
-            title: 'Apakah anda yakin?',
-            text: "Yakin ingin melakukan ini?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Iya'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    method: 'POST',
-                    url: "{{ route('jurnal.belum_mengisi') }}",
-                    data: {
-                        id: id,
-                    },
-                    success: function (response) {
-                        if (response['status'] == 'success') {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Berhasil',
-                            }).then((result) => {
-                                location.reload();
-                            })
-                        }
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(errorThrown);
-                    }
-                })
-            }
+    </script>
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
         })
-    }
-    function openModal(id) {
-        $(`#staticModal${id}`).show();
-    }
 
-    function closeModal(id) {
-        $(`#staticModal${id}`).hide();
-    }
-</script>
+        function belum_mengisi(id) {
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Yakin ingin melakukan ini?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Iya'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        method: 'POST',
+                        url: "{{ route('jurnal.belum_mengisi') }}",
+                        data: {
+                            id: id,
+                        },
+                        success: function(response) {
+                            if (response['status'] == 'success') {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil',
+                                }).then((result) => {
+                                    location.reload();
+                                })
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            console.log(errorThrown);
+                        }
+                    })
+                }
+            })
+        }
+
+        function openModal(id) {
+            $(`#staticModal${id}`).show();
+        }
+
+        function closeModal(id) {
+            $(`#staticModal${id}`).hide();
+        }
+    </script>
 
 </body>
 

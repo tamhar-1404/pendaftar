@@ -92,7 +92,59 @@
 
     <div class=" pl-[px] " id="content">
 
-        @include('jurnal_admin.nav')
+        <nav id="main-navbar"
+            class=" sticky relative left-0  right-0 top-0 flex z-9  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start fixed kamu-tak-diajak"
+            data-te-navbar-ref>
+
+            <div class="flex w-full flex-wrap items-center justify-between px-4  kamu-tak-diajak">
+                <div class="flex gap-4">
+                    <!-- Toggler -->
+                    <div class="flex items-center justify-between ltr:mr-2 rtl:ml-2 "
+                        style="
+            position: fixed">
+                        <a href="index-2.html" class="main-logo flex shrink-9 items-center">
+                            <img class="inline w-40 ltr:-ml-1 rtl:-mr-1 hidden"
+                                src="{{ asset('admin/assets/images/humma.png') }}" alt="image" />
+                        </a>
+                    </div>
+                    <button
+                        class="mt-0.5 inline-block rounded bg-info px-3 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-200 hover:shadow-lg "
+                        data-te-sidenav-toggle-ref data-te-target="#sidenav-2" aria-controls="#sidenav-2"
+                        aria-haspopup="true">
+                        <span class="block [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                                <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+
+                                <path fill="currentColor"
+                                    d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+                            </svg>
+                        </span>
+                    </button>
+
+                </div>
+
+                <ul class="relative flex items-center">
+
+                    <li class="relative" data-te-dropdown-ref>
+                        <a class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
+                            href="#" id="navbarDropdownMenuLink" role="button" data-te-dropdown-toggle-ref
+                            aria-expanded="false">
+                            <img src="{{ asset('admin/assets/images/Logo.png') }}" class="rounded-full"
+                                style="height: 32px; width: 32px" alt="Avatar" loading="lazy" />
+                        </a>
+                        <ul class="absolute left-auto right-0 z-[1000] float-left m-0 mt-5 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
+                            aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>
+
+                            <li>
+                                <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                                    href="{{ route('keluar') }}" data-te-dropdown-item-ref>Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <!-- start main content section -->
             <div x-data="basic" class="">
@@ -122,7 +174,8 @@
                                     class="kamu-tak-diajak flex gap-2 text-white bg-red-500 hover:bg-red-500 cus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5  py-2.5 mr-2 mb-2 dark:bg-red-500 dark:hover:bg-red-500 focus:outline-none dark:focus:ring-blue-800"
                                     @click="exportTable('csv')">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ltr:mr-2 rtl:ml-2 kamu-tak-diajak">
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-5 w-5 ltr:mr-2 rtl:ml-2 kamu-tak-diajak">
                                         <path
                                             d="M15.3929 4.05365L14.8912 4.61112L15.3929 4.05365ZM19.3517 7.61654L18.85 8.17402L19.3517 7.61654ZM21.654 10.1541L20.9689 10.4592V10.4592L21.654 10.1541ZM3.17157 20.8284L3.7019 20.2981H3.7019L3.17157 20.8284ZM20.8284 20.8284L20.2981 20.2981L20.2981 20.2981L20.8284 20.8284ZM14 21.25H10V22.75H14V21.25ZM2.75 14V10H1.25V14H2.75ZM21.25 13.5629V14H22.75V13.5629H21.25ZM14.8912 4.61112L18.85 8.17402L19.8534 7.05907L15.8947 3.49618L14.8912 4.61112ZM22.75 13.5629C22.75 11.8745 22.7651 10.8055 22.3391 9.84897L20.9689 10.4592C21.2349 11.0565 21.25 11.742 21.25 13.5629H22.75ZM18.85 8.17402C20.2034 9.3921 20.7029 9.86199 20.9689 10.4592L22.3391 9.84897C21.9131 8.89241 21.1084 8.18853 19.8534 7.05907L18.85 8.17402ZM10.0298 2.75C11.6116 2.75 12.2085 2.76158 12.7405 2.96573L13.2779 1.5653C12.4261 1.23842 11.498 1.25 10.0298 1.25V2.75ZM15.8947 3.49618C14.8087 2.51878 14.1297 1.89214 13.2779 1.5653L12.7405 2.96573C13.2727 3.16993 13.7215 3.55836 14.8912 4.61112L15.8947 3.49618ZM10 21.25C8.09318 21.25 6.73851 21.2484 5.71085 21.1102C4.70476 20.975 4.12511 20.7213 3.7019 20.2981L2.64124 21.3588C3.38961 22.1071 4.33855 22.4392 5.51098 22.5969C6.66182 22.7516 8.13558 22.75 10 22.75V21.25ZM1.25 14C1.25 15.8644 1.24841 17.3382 1.40313 18.489C1.56076 19.6614 1.89288 20.6104 2.64124 21.3588L3.7019 20.2981C3.27869 19.8749 3.02502 19.2952 2.88976 18.2892C2.75159 17.2615 2.75 15.9068 2.75 14H1.25ZM14 22.75C15.8644 22.75 17.3382 22.7516 18.489 22.5969C19.6614 22.4392 20.6104 22.1071 21.3588 21.3588L20.2981 20.2981C19.8749 20.7213 19.2952 20.975 18.2892 21.1102C17.2615 21.2484 15.9068 21.25 14 21.25V22.75ZM21.25 14C21.25 15.9068 21.2484 17.2615 21.1102 18.2892C20.975 19.2952 20.7213 19.8749 20.2981 20.2981L21.3588 21.3588C22.1071 20.6104 22.4392 19.6614 22.5969 18.489C22.7516 17.3382 22.75 15.8644 22.75 14H21.25ZM2.75 10C2.75 8.09318 2.75159 6.73851 2.88976 5.71085C3.02502 4.70476 3.27869 4.12511 3.7019 3.7019L2.64124 2.64124C1.89288 3.38961 1.56076 4.33855 1.40313 5.51098C1.24841 6.66182 1.25 8.13558 1.25 10H2.75ZM10.0298 1.25C8.15538 1.25 6.67442 1.24842 5.51887 1.40307C4.34232 1.56054 3.39019 1.8923 2.64124 2.64124L3.7019 3.7019C4.12453 3.27928 4.70596 3.02525 5.71785 2.88982C6.75075 2.75158 8.11311 2.75 10.0298 2.75V1.25Z"
                                             fill="currentColor" />
@@ -140,7 +193,8 @@
                                     class="flex gap-2 text-white bg-blue-400 hover:bg-blue-400 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-400 dark:hover:bg-blue-400 focus:outline-none dark:focus:ring-blue-800"
                                     @click="exportTable('txt')">
                                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ltr:mr-2 rtl:ml-2 kamu-tak-diajak">
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-5 w-5 ltr:mr-2 rtl:ml-2 kamu-tak-diajak">
                                         <path
                                             d="M15.3929 4.05365L14.8912 4.61112L15.3929 4.05365ZM19.3517 7.61654L18.85 8.17402L19.3517 7.61654ZM21.654 10.1541L20.9689 10.4592V10.4592L21.654 10.1541ZM3.17157 20.8284L3.7019 20.2981H3.7019L3.17157 20.8284ZM20.8284 20.8284L20.2981 20.2981L20.2981 20.2981L20.8284 20.8284ZM14 21.25H10V22.75H14V21.25ZM2.75 14V10H1.25V14H2.75ZM21.25 13.5629V14H22.75V13.5629H21.25ZM14.8912 4.61112L18.85 8.17402L19.8534 7.05907L15.8947 3.49618L14.8912 4.61112ZM22.75 13.5629C22.75 11.8745 22.7651 10.8055 22.3391 9.84897L20.9689 10.4592C21.2349 11.0565 21.25 11.742 21.25 13.5629H22.75ZM18.85 8.17402C20.2034 9.3921 20.7029 9.86199 20.9689 10.4592L22.3391 9.84897C21.9131 8.89241 21.1084 8.18853 19.8534 7.05907L18.85 8.17402ZM10.0298 2.75C11.6116 2.75 12.2085 2.76158 12.7405 2.96573L13.2779 1.5653C12.4261 1.23842 11.498 1.25 10.0298 1.25V2.75ZM15.8947 3.49618C14.8087 2.51878 14.1297 1.89214 13.2779 1.5653L12.7405 2.96573C13.2727 3.16993 13.7215 3.55836 14.8912 4.61112L15.8947 3.49618ZM10 21.25C8.09318 21.25 6.73851 21.2484 5.71085 21.1102C4.70476 20.975 4.12511 20.7213 3.7019 20.2981L2.64124 21.3588C3.38961 22.1071 4.33855 22.4392 5.51098 22.5969C6.66182 22.7516 8.13558 22.75 10 22.75V21.25ZM1.25 14C1.25 15.8644 1.24841 17.3382 1.40313 18.489C1.56076 19.6614 1.89288 20.6104 2.64124 21.3588L3.7019 20.2981C3.27869 19.8749 3.02502 19.2952 2.88976 18.2892C2.75159 17.2615 2.75 15.9068 2.75 14H1.25ZM14 22.75C15.8644 22.75 17.3382 22.7516 18.489 22.5969C19.6614 22.4392 20.6104 22.1071 21.3588 21.3588L20.2981 20.2981C19.8749 20.7213 19.2952 20.975 18.2892 21.1102C17.2615 21.2484 15.9068 21.25 14 21.25V22.75ZM21.25 14C21.25 15.9068 21.2484 17.2615 21.1102 18.2892C20.975 19.2952 20.7213 19.8749 20.2981 20.2981L21.3588 21.3588C22.1071 20.6104 22.4392 19.6614 22.5969 18.489C22.7516 17.3382 22.75 15.8644 22.75 14H21.25ZM2.75 10C2.75 8.09318 2.75159 6.73851 2.88976 5.71085C3.02502 4.70476 3.27869 4.12511 3.7019 3.7019L2.64124 2.64124C1.89288 3.38961 1.56076 4.33855 1.40313 5.51098C1.24841 6.66182 1.25 8.13558 1.25 10H2.75ZM10.0298 1.25C8.15538 1.25 6.67442 1.24842 5.51887 1.40307C4.34232 1.56054 3.39019 1.8923 2.64124 2.64124L3.7019 3.7019C4.12453 3.27928 4.70596 3.02525 5.71785 2.88982C6.75075 2.75158 8.11311 2.75 10.0298 2.75V1.25Z"
                                             fill="currentColor" />
@@ -152,7 +206,7 @@
                                             d="M13 2.5V5C13 7.35702 13 8.53553 13.7322 9.26777C14.4645 10 15.643 10 18 10H22"
                                             stroke="currentColor" stroke-width="1.5" />
                                     </svg>
-                                  <p class="kamu-tak-diajak">  DOCX</p>
+                                    <p class="kamu-tak-diajak"> DOCX</p>
                                 </button>
                             </a>
 
@@ -172,7 +226,8 @@
                         <div class="overflow-x-auto pt-8sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                 <div class="overflow-hidden">
-                                    <div class="w-80%  bg-white h-35 pb-5 text-same font-semibold dark:bg-transparent kamu-tak-diajak">
+                                    <div
+                                        class="w-80%  bg-white h-35 pb-5 text-same font-semibold dark:bg-transparent kamu-tak-diajak">
                                         DATA JURNAL
                                     </div>
                                     <table class="min-w-full text-left text-sm font-light">
@@ -194,41 +249,42 @@
                                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                                     <td class="whitespace-nowrap px-4 py-4 font-medium">
                                                         {{ $loop->iteration }}</td>
-                                                        <td class="whitespace-nowrap px-4 py-4">{{ $items->name }}</td>
-                                                        <td class="whitespace-nowrap px-4 py-4">{{ $items->sekolah }}</td>
+                                                    <td class="whitespace-nowrap px-4 py-4">{{ $items->name }}</td>
+                                                    <td class="whitespace-nowrap px-4 py-4">{{ $items->sekolah }}</td>
                                                     @if (!empty($items->jurnals[0]))
-                                                    <td class="whitespace-nowrap px-4 py-4">{{ $items->jurnals[0]->tanggal }}</td>
-                                                    <td
-                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                        {{ $items->jurnals[0]->kegiatan }}</td>
-                                                    <td class="whitespace-nowrap px-6 pl-17 py-4"><img
-                                                            src="{{ asset('storage/image/' . $items->jurnals[0]->image) }}"
-                                                            width="100px" alt="">
-                                                    </td>
-                                                    <td class="whitespace-nowrap px-4 py-4 kamu-tak-diajak">
-                                                        @if ($items->jurnals[0]->kegiatan != "Tidak mengisi")
-                                                        <button type="button"
-                                                            class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
-                                                            data-te-toggle="modal"
-                                                            data-modal-target="staticModal{{ $items->jurnals[0]->id }}"
-                                                            data-modal-toggle="staticModal{{ $items->jurnals[0]->id }}">
-                                                            <span
-                                                                class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
-                                                        </button>
-                                                        @endif
-                                                    </td>
+                                                        <td class="whitespace-nowrap px-4 py-4">
+                                                            {{ $items->jurnals[0]->tanggal }}</td>
+                                                        <td
+                                                            class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
+                                                            {{ $items->jurnals[0]->kegiatan }}</td>
+                                                        <td class="whitespace-nowrap px-6 pl-17 py-4"><img
+                                                                src="{{ asset('storage/image/' . $items->jurnals[0]->image) }}"
+                                                                width="100px" alt="">
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-4 py-4 kamu-tak-diajak">
+                                                            @if ($items->jurnals[0]->kegiatan != 'Tidak mengisi')
+                                                                <button type="button"
+                                                                    class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
+                                                                    data-te-toggle="modal"
+                                                                    data-modal-target="staticModal{{ $items->jurnals[0]->id }}"
+                                                                    data-modal-toggle="staticModal{{ $items->jurnals[0]->id }}">
+                                                                    <span
+                                                                        class=" p-1  font-semibold dark:hover:text-black">Lihat</span>
+                                                                </button>
+                                                            @endif
+                                                        </td>
                                                     @else
-                                                    <td class="whitespace-nowrap px-4 py-4">-</td>
-                                                    <td
-                                                        class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
-                                                        -
-                                                    </td>
-                                                    <td class="whitespace-nowrap px-6 pl-17 py-4">
-                                                        -
-                                                    </td>
-                                                    <td class="whitespace-nowrap px-4 py-4 kamu-tak-diajak">
-                                                        -
-                                                    </td>
+                                                        <td class="whitespace-nowrap px-4 py-4">-</td>
+                                                        <td
+                                                            class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
+                                                            -
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-6 pl-17 py-4">
+                                                            -
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-4 py-4 kamu-tak-diajak">
+                                                            -
+                                                        </td>
                                                     @endif
                                                 </tr>
 
@@ -267,83 +323,85 @@
                 @forelse ($item as $modal)
                     {{-- modal --}}
                     @if (!empty($modal->jurnals[0]))
-                    <div id="staticModal{{ $modal->jurnals[0]->id }}" tabindex="-1" aria-hidden="true"
-                        class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                        <div class="relative w-full max-w-2xl max-h-full">
-                            <!-- Modal content -->
-                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                <!-- Modal header -->
-                                <div
-                                    class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                        Detail Jurnal
-                                    </h3>
-                                    <button type="button"
-                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                        data-modal-hide="staticModal{{ $modal->jurnals[0]->id }}">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd"
-                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                <!-- Modal body -->
-                                <div class="p-6 space-y-6">
-                                    <div>
-                                        <p
-                                            class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
-                                            Nama
-                                        </p>
-                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                            {{ $modal->name }}
-                                        </p>
+                        <div id="staticModal{{ $modal->jurnals[0]->id }}" tabindex="-1" aria-hidden="true"
+                            class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative w-full max-w-2xl max-h-full">
+                                <!-- Modal content -->
+                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                    <!-- Modal header -->
+                                    <div
+                                        class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                            Detail Jurnal
+                                        </h3>
+                                        <button type="button"
+                                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                            data-modal-hide="staticModal{{ $modal->jurnals[0]->id }}">
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
                                     </div>
-                                    <div>
-                                        <p
-                                            class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                            Tanggal
-                                        </p>
-                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                            {{ $modal->jurnals[0]->tanggal }}
-                                        </p>
+                                    <!-- Modal body -->
+                                    <div class="p-6 space-y-6">
+                                        <div>
+                                            <p
+                                                class="text-base leading-relaxed font-bold  text-gray-800 dark:text-gray-400">
+                                                Nama
+                                            </p>
+                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                {{ $modal->name }}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p
+                                                class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                Tanggal
+                                            </p>
+                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                {{ $modal->jurnals[0]->tanggal }}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p
+                                                class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                Sekolah
+                                            </p>
+                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                {{ $modal->sekolah }}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p
+                                                class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                Kegiatan
+                                            </p>
+                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                {{ $modal->jurnals[0]->kegiatan }}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p
+                                                class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
+                                                Bukti
+                                            </p>
+                                            <img src="{{ asset('storage/image/' . $modal->jurnals[0]->image) }}"
+                                                alt="">
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p
-                                            class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                            Sekolah
-                                        </p>
-                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                            {{ $modal->sekolah }}
-                                        </p>
+                                    <!-- Modal footer -->
+                                    <div
+                                        class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                        <button data-modal-hide="staticModal{{ $modal->jurnals[0]->id }}"
+                                            type="button"
+                                            class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                                     </div>
-                                    <div>
-                                        <p
-                                            class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                            Kegiatan
-                                        </p>
-                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                            {{ $modal->jurnals[0]->kegiatan }}
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p
-                                            class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                            Bukti
-                                        </p>
-                                        <img src="{{ asset('storage/image/' . $modal->jurnals[0]->image) }}" alt="">
-                                    </div>
-                                </div>
-                                <!-- Modal footer -->
-                                <div
-                                    class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                    <button data-modal-hide="staticModal{{ $modal->jurnals[0]->id }}" type="button"
-                                        class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endif
                 @empty
                 @endforelse
