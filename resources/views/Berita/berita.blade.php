@@ -92,13 +92,12 @@
                         <a href="{{ route('Berita.show', $berita->id) }}">{{ Str::limit($berita->judul, 15) }}</a>
                     </h2>
                     <div class="flex items-center mt-2">
-                        <form action="{{ route('Berita.like', $berita->id) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="flex items-center bg-gray-200 rounded-full px-3 py-1 mr-2">
+
+                            <button type="submit" onclick="like({{$berita->id}})" class="flex items-center bg-gray-200 rounded-full px-3 py-1 mr-2">
                                 <i class="fas fa-thumbs-up mr-1"></i>
                                 Like
                             </button>
-                        </form>
+
                         <!-- Jumlah like, misalnya dari data berita -->
                         <span class="text-gray-500">{{ $berita->likes_count }} Likes</span>
                     </div>
@@ -230,3 +229,36 @@
         }
     });
 </script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+
+    function cari(data) {
+        if (data.value == "") {
+            console.log("Kosong")
+            return;
+        } else {
+            $.ajax({
+                url: "{{ route('Berita.like') }}",
+                method: 'POST',
+                data: {
+                    value: data.value,
+                },
+                success: function(response) {
+                    
+                }
+            })
+        }
+    }
+
+
+
+
+
+</script>

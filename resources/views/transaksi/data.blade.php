@@ -262,7 +262,7 @@
 
                         </tbody>
                     </table>
-                <input type="text" name="rfid_user" id="rfid-user" value="{{$a}}">
+                <input type="text" name="rfid_user" id="rfid-user" >
                     <div class="flex justify-end px-8 mt-2">
                         <p id="total_keseluruhan" class="hidden text-base font-semibold text-gray-700">Rp. <span
                                 id="jumlah_semua" class="text-base font-semibold text-blue-400">0</span></p>
@@ -297,9 +297,10 @@
                             }).then((result) => {
                                     if (result.isConfirmed) {
                                         document.getElementById("rfid-user").value = result.value;
-                                        var params = new URLSearchParams(window.location.href);
-                                        console.log(params.get('rfid'));
-                                        if (params.get('rfid') == result.value) {
+                                        var rfid = {!! $a !!};
+                                        console.log(result.value);
+                                        console.log(rfid);
+                                        if (rfid == result.value) {
                                             event.target.submit();
                                         } else {
                                             Swal.fire({
