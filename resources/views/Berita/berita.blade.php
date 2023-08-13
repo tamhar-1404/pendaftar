@@ -93,7 +93,7 @@
                     </h2>
                     <div class="flex items-center mt-2">
 
-                            <button type="submit" onclick="like({{$berita->id}})" class="flex items-center bg-gray-200 rounded-full px-3 py-1 mr-2">
+                            <button type="button" onclick="likeBerita({{ $berita->id }})" class="flex items-center bg-gray-200 rounded-full px-3 py-1 mr-2">
                                 <i class="fas fa-thumbs-up mr-1"></i>
                                 Like
                             </button>
@@ -229,30 +229,37 @@
         }
     });
 </script> --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    });
 
-    function cari(data) {
-        if (data.value == "") {
+    function likeBerita(beritaId) {
+        if (beritaId.value == "") {
             console.log("Kosong")
             return;
         } else {
+            $(document).ready(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+            });
+            console.log(beritaId);
             $.ajax({
                 url: "{{ route('Berita.like') }}",
                 method: 'POST',
                 data: {
-                    value: data.value,
+                    id : beritaId,
                 },
                 success: function(response) {
-                    
+                    if (response.data.status === 'hapus') {
+                        // Berita berhasil dihapus, lakukan tindakan sesuai kebutuhan.
+                        console.log("Berita dengan ID " + beritaId + " berhasil dihapus.");
+                    }else if(response.data.status === 'tambah'){
+                        console.log("Berita dengan ID " + beritaId + " berhasil ditambah.");
+
+                    }
                 }
+
             })
         }
     }

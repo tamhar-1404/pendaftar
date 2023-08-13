@@ -195,9 +195,10 @@ Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::c
 Route::resource('Lupapassword', App\Http\Controllers\LupaPasswordController::class);
 Route::post('/reset-password', [LupaPasswordController::class, 'update'])->name('password.update');
 Route::get('/reset-password/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
+Route::get('/get-users', [BlogController::class, 'Cek'])->name('get-user');
 
 Route::middleware(['auth'])->group(function () {
-    Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita.like');
+    Route::post('Berita/like', [BlogController::class, 'like'])->name('Berita.like');
     Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
     Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');
 });

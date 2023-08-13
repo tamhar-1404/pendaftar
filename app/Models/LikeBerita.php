@@ -9,7 +9,7 @@ class LikeBerita extends Model
 {
     use HasFactory;
 
-    protected $guarded = 'id';
+    protected $guarded = ['id'];
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
