@@ -1604,7 +1604,6 @@
                         <!-- Footer Blog Post -->
                         <div class="mt-5 flex space-x-3">
                             <div class="flex items-center mt-2">
-
                                 <button type="button" onclick="likeBerita({{ $berita->id }})"
                                     id="buttonLike{{ $berita->id }}"
                                     class="flex items-center  bg-gray-200 rounded-full px-3 py-1 mr-2">
