@@ -151,6 +151,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('piket_siswa', App\Http\Controllers\PiketSiswaController::class);
         Route::resource('chat_siswa', App\Http\Controllers\ChatSiswaController::class);
         Route::resource('jurnal_siswa', App\Http\Controllers\JurnalsiswaController::class);
+        Route::post('jurnal_siswa.update',[JurnalsiswaController::class,'update']);
         Route::resource('Siswamagang', App\Http\Controllers\SiswamagangController::class);
         Route::resource('/History_topup', App\Http\Controllers\HistoryTopupController::class);
         Route::get('/siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa'])->name('siswamagang_siswa');

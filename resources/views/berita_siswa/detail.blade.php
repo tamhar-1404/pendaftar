@@ -7,6 +7,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>siswa - Dashboad</title>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/x-icon" href="favicon.png" />
         <script src="https://cdn.tailwindcss.com%22%3E/"></script>
@@ -1548,7 +1549,259 @@
             </div>
 
             @include('Siswamagang.nav_siswa')
-            @include('berita_siswa.lihat')
+            <main class="main mt-9 px-7 w-full pb-9  ">
+                <div class="">
+                  <div class="">
+                    <div class="card lg:p-6 md:p-5 p-4 " >
+                      <!-- Author -->
+                      <div>
+                        <div class="flex items-center justify-between">
+                          <div class="flex items-center space-x-3">
+                            <div
+                              x-data="usePopper({
+                               offset: 12,
+                               placement: 'bottom',
+                               modifiers: [
+                                  {name: 'preventOverflow', options: {padding: 10}}
+                               ]
+                            })"
+                              class="flex"
+                              @mouseleave="isShowPopper = false"
+                              @mouseenter="isShowPopper = true"
+                            >
+                              <div x-ref="popperRef" class="avatar h-12 w-12">
+                                <img
+                                  class="mask is-squircle"
+                                  src="{{ asset('image/logo.png') }}"
+                                  alt="avatar"
+                                />
+                              </div>
+                              <div
+                                x-ref="popperRoot"
+                                class="popper-root"
+                                :class="isShowPopper && 'show'"
+                              >
+
+                              </div>
+                            </div>
+                            <div>
+                              <a
+                                href="#"
+                                class="font-medium text-slate-700 line-clamp-1 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
+                              >{{ $berita->name }}
+                              </a>
+                              @php
+                                  use Carbon\Carbon;
+                              @endphp
+                              <div class="mt-1.5 flex items-center text-xs">
+                                <span class="line-clamp-1">{{ Carbon::parse($berita->tanggal)->format('d M') }}</span>
+                                <div
+                                  class="mx-2 my-0.5 w-px self-stretch bg-white/20"
+                                ></div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="flex space-x-3">
+                            <div
+                              x-data="usePopper({placement:'bottom-end',offset:4})"
+                              @click.outside="isShowPopper && (isShowPopper = false)"
+                              class="inline-flex"
+                            >
+
+                              <div
+                                x-ref="popperRoot"
+                                class="popper-root"
+                                :class="isShowPopper && 'show'"
+                              >
+                                <div
+                                  class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
+                                >
+                                  <ul>
+                                    <li>
+                                      <a
+                                        href="#"
+                                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                                        >Action</a
+                                      >
+                                    </li>
+                                    <li>
+                                      <a
+                                        href="#"
+                                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                                        >Another Action</a
+                                      >
+                                    </li>
+                                    <li>
+                                      <a
+                                        href="#"
+                                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                                        >Something else</a
+                                      >
+                                    </li>
+                                  </ul>
+                                  <div
+                                    class="my-1 h-px bg-slate-150 dark:bg-navy-500"
+                                  ></div>
+                                  <ul>
+                                    <li>
+                                      <a
+                                        href="#"
+                                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                                        >Separated Link</a
+                                      >
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <!-- Blog Post -->
+                      <div
+                        class="mt-6 font-inter text-base text-slate-600 dark:text-navy-200"
+                      >
+                        <h1
+                          class="text-xl font-medium text-slate-900 dark:text-navy-50 lg:text-2xl"
+                        >
+                          {{ $berita->judul }}
+                        </h1>
+                        <h3 class="mt-1">
+                          {{ $berita->keterangan }}
+                        </h3>
+                        <img
+                          class="mt-5 h-80 w-full rounded-lg object-cover object-center"
+                          src="{{ asset('storage/fotoberita/' . $berita->foto) }}" alt="image" />
+                        <p
+                          class="mt-1 text-center text-xs+ text-slate-400 dark:text-navy-300"
+                        >
+                          <span> Photo by </span>
+                          <a href="#" class="underline">{{ $berita->name }}</a>
+                        </p>
+                        <br />
+                        <p>{!! $berita->deskripsi !!}</p>
+                      </div>
+
+                      <!-- Footer Blog Post -->
+                      <div class="mt-5 flex space-x-3">
+                        <button onclick="likeBerita({{ $berita->id }})" id="ButtonLike{{$berita->id}}"
+                            class="btn space-x-2 rounded-full border border-slate-300 px-4 text-xs+ font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-4.5 w-4.5 text-slate-400 dark:text-navy-300"  fill="currentColor"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" fill="currentColor"
+                                    d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z" />
+                            </svg>
+
+                            <span id="JumlahLike{{$berita->id}}"> {{ $berita->likes_count }}</span>
+                        </button>
+                        <button
+                          class="btn space-x-2 rounded-full border border-slate-300 px-4 text-xs+ font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4.5 w-4.5 text-slate-400 dark:text-navy-300"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"
+                            />
+                          </svg>
+
+                          <span> {{ count($berita->comments) }}</span>
+                        </button>
+                      </div>
+                    </div>
+
+
+                  </div>
+                  <div class="bg-white rounded p-4 mt-4 shadow">
+                    <form class="flex" method="POST" action="{{ route('comment.store') }}">
+                      @csrf
+                      <input type="hidden" name="blog_id" value="{{ $berita->id }}">
+                      <div class="flex flex-col w-full">
+                        <label for="txarea" class="font-medium text-gray-900 dark:text-white text-sm mb-2">Komentar</label>
+                        <div class="flex flex-row">
+                          <div class="flex flex-grow">
+                            <textarea class="w-full p-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Tulis komentar" name="comment" id="txarea"></textarea>
+                          </div>
+                          <div class="flex">
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2">Kirim</button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </form>
+                </div>
+                  @foreach ($berita->comments as $comment)
+                  <div class="bg-white p-4 mb-4 mt-4 rounded shadow">
+                      <div class="flex items-center mb-2">
+                      <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('storage/Siswa/' . $comment->user->Siswa?->foto_siswa) }}" alt="Profil Picture">
+                      <h4 class="text-lg font-bold">{{ $comment->user->name }}</h4>
+                      </div>
+                      <p class="text-gray-700 mb-2">{{ $comment->comment }}</p>
+                      <a href="#" class="text-blue-500 reply-button">Balas</a>
+
+                      <div class="reply-form hidden">
+                          <form action="{{ route('comment.reply') }}" method="POST">
+                          @csrf
+                          <input type="hidden" name="comment_id" value="{{ $comment->id }}">
+                          <div class="flex flex-row w-full">
+                              <div class="flex flex-grow">
+                                  <textarea class="w-full p-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Tulis balas" name="comment" id="txarea"></textarea>
+                              </div>
+                              <div class="flex">
+                                  <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg ml-2">Balas</button>
+                              </div>
+                          </div>
+                          </form>
+                      </div>
+                  </div>
+
+                  @if(count($comment->reply_comments) != 0)
+                  @foreach ($comment->reply_comments as $reply)
+                  <div class="bg-white p-4 ml-8 mt-2 shadow">
+                    <div class="flex items-center mb-2">
+                        <img class="w-8 h-8 rounded-full mr-2" src="{{ asset('storage/Siswa/' . $comment->user->Siswa?->foto_siswa) }}" alt="Profil Picture">
+                        <div class="flex flex-col">
+                            <h4 class="text-lg font-bold">{{ $reply->user->name }}</h4>
+                            <p class="text-sm font-light">{{ Carbon::parse($reply->created_at)->format('d M Y') }}</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-2"><i class="fa-solid fa-reply text-gray-500"></i> <span class="text-blue-500">{{ $reply->komentar->user->name }}</span> {{ $reply->comment }}</p>
+                </div>
+                  @endforeach
+                  @endif
+                  @endforeach
+                  </div>
+                </div>
+              </main>
+              <script>
+                // Ambil semua elemen tombol balas
+                var replyButtons = document.getElementsByClassName('reply-button');
+
+                // Loop melalui setiap tombol balas
+                for (var i = 0; i < replyButtons.length; i++) {
+                  // Tambahkan event listener pada setiap tombol balas
+                  replyButtons[i].addEventListener('click', function() {
+                    // Cari elemen form balasan terkait
+                    var replyForm = this.nextElementSibling;
+
+                    // Ubah visibilitas form balasan
+                    replyForm.classList.toggle('hidden');
+                  });
+                }
+
+              </script>
+
 
         </div>
         <script src="{{ asset('vristo/assets/js/alpine-collaspe.min.js') }}"></script>
@@ -1583,714 +1836,94 @@
 
             initTE({ Collapse });
         </script>
-        <script>
-            document.addEventListener('alpine:init', () => {
-                 //Carousel
-                 Alpine.data('carousel', () => ({
-                    items: ['carousel1.jpeg', 'carousel2.jpeg', 'carousel3.jpeg'],
+              <script>
 
-                    init() {
-                        // basic
-                        const swiper1 = new Swiper('#slider1', {
-                            navigation: {
-                                nextEl: '.swiper-button-next-ex1',
-                                prevEl: '.swiper-button-prev-ex1',
-                            },
-                            pagination: {
-                                el: '.swiper-pagination',
-                                clickable: true,
-                            },
-                        });
-                        // Autoplay
-                        const swiper2 = new Swiper('#slider2', {
-                            navigation: {
-                                nextEl: '.swiper-button-next-ex2',
-                                prevEl: '.swiper-button-prev-ex2',
-                            },
-                            autoplay: {
-                                delay: 2000,
-                            },
-                        });
-                        // vertical
-                        setTimeout(() => {
-                            const swiper3 = new Swiper('#slider3', {
-                                direction: 'vertical',
-                                pagination: {
-                                    el: '.swiper-pagination',
-                                    clickable: true,
-                                },
-                                autoplay: {
-                                    delay: 2000,
-                                },
-                            });
-                        });
-                        // Loop
-                        const swiper4 = new Swiper('#slider4', {
-                            slidesPerView: 1,
-                            spaceBetween: 30,
-                            loop: true,
-                            pagination: {
-                                el: '.swiper-pagination',
-                                clickable: true,
-                                type: 'fraction',
-                            },
-                            navigation: {
-                                nextEl: '.swiper-button-next-ex4',
-                                prevEl: '.swiper-button-prev-ex4',
-                            },
-                        });
-                        // Multiple Slides
-                        const swiper5 = new Swiper('#slider5', {
-                            navigation: {
-                                nextEl: '.swiper-button-next-ex5',
-                                prevEl: '.swiper-button-prev-ex5',
-                            },
-                            pagination: {
-                                el: '.swiper-pagination',
-                                clickable: true,
-                            },
-                            breakpoints: {
-                                1024: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 30,
-                                },
-                                768: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 40,
-                                },
-                                320: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 20,
-                                },
-                            },
-                        });
-                    },
-                }));
-                // main section
-                Alpine.data('scrollToTop', () => ({
-                    showTopButton: false,
-                    init() {
-                        window.onscroll = () => {
-                            this.scrollFunction();
-                        };
-                    },
-
-                    scrollFunction() {
-                        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                            this.showTopButton = true;
-                        } else {
-                            this.showTopButton = false;
+                $(document).ready(function() {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
-                    },
+                    });
+                });
+                function likeBerita(beritaId) {
+                    if (beritaId.value == "") {
+                        console.log("Kosong")
+                        return;
+                    } else {
+                        console.log(beritaId);
+                        $.ajax({
+                            url: "{{ route('Berita.like') }}",
+                            method: 'POST',
+                            data: {
+                                id : beritaId,
+                            },
+                            success: function(response) {
+                                if(response.action === 'tambah'){
+                                    const jumlah = document.getElementById("JumlahLike"+beritaId).innerHTML;
+                                    var penambahan = parseInt(jumlah) + 1;
+                                    document.getElementById("JumlahLike"+beritaId).innerHTML = penambahan.toString();
+                                    const button = document.getElementById("ButtonLike" + beritaId);
+                                    button.classList.add("bg-blue-300");
+                                    button.classList.add("text-white");
 
-                    goToTop() {
-                        document.body.scrollTop = 0;
-                        document.documentElement.scrollTop = 0;
-                    },
-                }));
-
-                // theme customization
-                Alpine.data('customizer', () => ({
-                    showCustomizer: false,
-                }));
-
-                // sidebar section
-                Alpine.data('sidebar', () => ({
-                    init() {
-                        const selector = document.querySelector('.sidebar ul a[href="' + window.location.pathname + '"]');
-                        if (selector) {
-                            selector.classList.add('active');
-                            const ul = selector.closest('ul.sub-menu');
-                            if (ul) {
-                                let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
-                                if (ele) {
-                                    ele = ele[0];
-                                    setTimeout(() => {
-                                        ele.click();
-                                    });
+                                    console.log(jumlah);
+                                    console.log(button);
+                                    console.log("awokawok");
                                 }
-                            }
-                        }
-                    },
-                }));
-
-                // header section
-                Alpine.data('header', () => ({
-                    init() {
-                        const selector = document.querySelector('ul.horizontal-menu a[href="' + window.location.pathname + '"]');
-                        if (selector) {
-                            selector.classList.add('active');
-                            const ul = selector.closest('ul.sub-menu');
-                            if (ul) {
-                                let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
-                                if (ele) {
-                                    ele = ele[0];
-                                    setTimeout(() => {
-                                        ele.classList.add('active');
-                                    });
+                                else if(response.action === 'hapus'){
+                                    const jumlah = document.getElementById("JumlahLike"+beritaId).innerHTML;
+                                    var penambahan = parseInt(jumlah) - 1;
+                                    document.getElementById("JumlahLike"+beritaId).innerHTML = penambahan.toString();
+                                    const button = document.getElementById("ButtonLike" + beritaId);
+                                    button.classList.remove("bg-blue-300")
+                                    button.classList.remove("text-white")
+                                    console.log("anjay");
                                 }
+                                 console.log(beritaId);
+                                 console.log(response);
+
+                            },
+                            error: function(error) {
+                                console.log('Terjadi kesalahan saat mengirim permintaan.');
+                                console.error(error);
+                                // Lakukan tindakan yang sesuai jika terjadi kesalahan.
                             }
-                        }
-                    },
 
-                    notifications: [
-                        {
-                            id: 1,
-                            profile: 'user-profile.jpeg',
-                            message: '<strong class="text-sm mr-1">John Doe</strong>invite you to <strong>Prototyping</strong>',
-                            time: '45 min ago',
-                        },
-                        {
-                            id: 2,
-                            profile: 'profile-34.jpeg',
-                            message: '<strong class="text-sm mr-1">Adam Nolan</strong>mentioned you to <strong>UX Basics</strong>',
-                            time: '9h Ago',
-                        },
-                        {
-                            id: 3,
-                            profile: 'profile-16.jpeg',
-                            message: '<strong class="text-sm mr-1">Anna Morgan</strong>Upload a file',
-                            time: '9h Ago',
-                        },
-                    ],
+                        })
+                    }
+                }
 
-                    messages: [
-                        {
-                            id: 1,
-                            image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-success-light dark:bg-success text-success dark:text-success-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>',
-                            title: 'Congratulations!',
-                            message: 'Your OS has been updated.',
-                            time: '1hr',
-                        },
-                        {
-                            id: 2,
-                            image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-info-light dark:bg-info text-info dark:text-info-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>',
-                            title: 'Did you know?',
-                            message: 'You can switch between artboards.',
-                            time: '2hr',
-                        },
-                        {
-                            id: 3,
-                            image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-danger-light dark:bg-danger text-danger dark:text-danger-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>',
-                            title: 'Something went wrong!',
-                            message: 'Send Reposrt',
-                            time: '2days',
-                        },
-                        {
-                            id: 4,
-                            image: '<span class="grid place-content-center w-9 h-9 rounded-full bg-warning-light dark:bg-warning text-warning dark:text-warning-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">    <circle cx="12" cy="12" r="10"></circle>    <line x1="12" y1="8" x2="12" y2="12"></line>    <line x1="12" y1="16" x2="12.01" y2="16"></line></svg></span>',
-                            title: 'Warning',
-                            message: 'Your password strength is low.',
-                            time: '5days',
-                        },
-                    ],
 
-                    languages: [
-                        {
-                            id: 1,
-                            key: 'Chinese',
-                            value: 'zh',
-                        },
-                        {
-                            id: 2,
-                            key: 'Danish',
-                            value: 'da',
-                        },
-                        {
-                            id: 3,
-                            key: 'English',
-                            value: 'en',
-                        },
-                        {
-                            id: 4,
-                            key: 'French',
-                            value: 'fr',
-                        },
-                        {
-                            id: 5,
-                            key: 'German',
-                            value: 'de',
-                        },
-                        {
-                            id: 6,
-                            key: 'Greek',
-                            value: 'el',
-                        },
-                        {
-                            id: 7,
-                            key: 'Hungarian',
-                            value: 'hu',
-                        },
-                        {
-                            id: 8,
-                            key: 'Italian',
-                            value: 'it',
-                        },
-                        {
-                            id: 9,
-                            key: 'Japanese',
-                            value: 'ja',
-                        },
-                        {
-                            id: 10,
-                            key: 'Polish',
-                            value: 'pl',
-                        },
-                        {
-                            id: 11,
-                            key: 'Portuguese',
-                            value: 'pt',
-                        },
-                        {
-                            id: 12,
-                            key: 'Russian',
-                            value: 'ru',
-                        },
-                        {
-                            id: 13,
-                            key: 'Spanish',
-                            value: 'es',
-                        },
-                        {
-                            id: 14,
-                            key: 'Swedish',
-                            value: 'sv',
-                        },
-                        {
-                            id: 15,
-                            key: 'Turkish',
-                            value: 'tr',
-                        },
-                    ],
 
-                    removeNotification(value) {
-                        this.notifications = this.notifications.filter((d) => d.id !== value);
-                    },
 
-                    removeMessage(value) {
-                        this.messages = this.messages.filter((d) => d.id !== value);
-                    },
-                }));
 
-                // content section
-                Alpine.data('sales', () => ({
-                    init() {
-                        isDark = this.$store.app.theme === 'dark' ? true : false;
-                        isRtl = this.$store.app.rtlClass === 'rtl' ? true : false;
-
-                        const revenueChart = null;
-                        const salesByCategory = null;
-                        const dailySales = null;
-                        const totalOrders = null;
-
-                        // revenue
-                        setTimeout(() => {
-                            this.revenueChart = new ApexCharts(this.$refs.revenueChart, this.revenueChartOptions);
-                            this.$refs.revenueChart.innerHTML = '';
-                            this.revenueChart.render();
-
-                            // sales by category
-                            this.salesByCategory = new ApexCharts(this.$refs.salesByCategory, this.salesByCategoryOptions);
-                            this.$refs.salesByCategory.innerHTML = '';
-                            this.salesByCategory.render();
-
-                            // daily sales
-                            this.dailySales = new ApexCharts(this.$refs.dailySales, this.dailySalesOptions);
-                            this.$refs.dailySales.innerHTML = '';
-                            this.dailySales.render();
-
-                            // total orders
-                            this.totalOrders = new ApexCharts(this.$refs.totalOrders, this.totalOrdersOptions);
-                            this.$refs.totalOrders.innerHTML = '';
-                            this.totalOrders.render();
-                        }, 300);
-
-                        this.$watch('$store.app.theme', () => {
-                            isDark = this.$store.app.theme === 'dark' ? true : false;
-
-                            this.revenueChart.updateOptions(this.revenueChartOptions);
-                            this.salesByCategory.updateOptions(this.salesByCategoryOptions);
-                            this.dailySales.updateOptions(this.dailySalesOptions);
-                            this.totalOrders.updateOptions(this.totalOrdersOptions);
+            </script>
+                <script>
+                   $(document).ready(function() {
+                        $.ajax({
+                            url: '/get-users',
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function(data) {
+                                data.forEach(function(dataItem) {
+                                    const beritaId = dataItem.berita_id;
+                                    const button = document.getElementById("ButtonLike" + beritaId);
+                                    if(button === null){
+                                        console.log("kosong");
+                                    }else{
+                                        button.classList.add("bg-blue-300");
+                                        button.classList.add("text-white");
+                                        console.log("Button: ", button); // Log the button element
+                                        console.log("Berita ID: ", beritaId); // Log the extracted beritaId
+                                    }
+                                });
+                            },
+                                 error: function(error) {
+                                console.log('Error:', error);
+                            }
                         });
-
-                        this.$watch('$store.app.rtlClass', () => {
-                            isRtl = this.$store.app.rtlClass === 'rtl' ? true : false;
-                            this.revenueChart.updateOptions(this.revenueChartOptions);
-                        });
-                    },
-
-                    // revenue
-                    get revenueChartOptions() {
-                        return {
-                            series: [
-                                {
-                                    name: 'Income',
-                                    data: [16800, 16800, 15500, 17800, 15500, 17000, 19000, 16000, 15000, 17000, 14000, 17000],
-                                },
-                                {
-                                    name: 'Expenses',
-                                    data: [16500, 17500, 16200, 17300, 16000, 19500, 16000, 17000, 16000, 19000, 18000, 19000],
-                                },
-                            ],
-                            chart: {
-                                height: 325,
-                                type: 'area',
-                                fontFamily: 'Nunito, sans-serif',
-                                zoom: {
-                                    enabled: false,
-                                },
-                                toolbar: {
-                                    show: false,
-                                },
-                            },
-                            dataLabels: {
-                                enabled: false,
-                            },
-                            stroke: {
-                                show: true,
-                                curve: 'smooth',
-                                width: 2,
-                                lineCap: 'square',
-                            },
-                            dropShadow: {
-                                enabled: true,
-                                opacity: 0.2,
-                                blur: 10,
-                                left: -7,
-                                top: 22,
-                            },
-                            colors: isDark ? ['#2196f3', '#e7515a'] : ['#1b55e2', '#e7515a'],
-                            markers: {
-                                discrete: [
-                                    {
-                                        seriesIndex: 0,
-                                        dataPointIndex: 6,
-                                        fillColor: '#1b55e2',
-                                        strokeColor: 'transparent',
-                                        size: 7,
-                                    },
-                                    {
-                                        seriesIndex: 1,
-                                        dataPointIndex: 5,
-                                        fillColor: '#e7515a',
-                                        strokeColor: 'transparent',
-                                        size: 7,
-                                    },
-                                ],
-                            },
-                            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                            xaxis: {
-                                axisBorder: {
-                                    show: false,
-                                },
-                                axisTicks: {
-                                    show: false,
-                                },
-                                crosshairs: {
-                                    show: true,
-                                },
-                                labels: {
-                                    offsetX: isRtl ? 2 : 0,
-                                    offsetY: 5,
-                                    style: {
-                                        fontSize: '12px',
-                                        cssClass: 'apexcharts-xaxis-title',
-                                    },
-                                },
-                            },
-                            yaxis: {
-                                tickAmount: 7,
-                                labels: {
-                                    formatter: (value) => {
-                                        return value / 1000 + 'K';
-                                    },
-                                    offsetX: isRtl ? -30 : -10,
-                                    offsetY: 0,
-                                    style: {
-                                        fontSize: '12px',
-                                        cssClass: 'apexcharts-yaxis-title',
-                                    },
-                                },
-                                opposite: isRtl ? true : false,
-                            },
-                            grid: {
-                                borderColor: isDark ? '#191e3a' : '#e0e6ed',
-                                strokeDashArray: 5,
-                                xaxis: {
-                                    lines: {
-                                        show: true,
-                                    },
-                                },
-                                yaxis: {
-                                    lines: {
-                                        show: false,
-                                    },
-                                },
-                                padding: {
-                                    top: 0,
-                                    right: 0,
-                                    bottom: 0,
-                                    left: 0,
-                                },
-                            },
-                            legend: {
-                                position: 'top',
-                                horizontalAlign: 'right',
-                                fontSize: '16px',
-                                markers: {
-                                    width: 10,
-                                    height: 10,
-                                    offsetX: -2,
-                                },
-                                itemMargin: {
-                                    horizontal: 10,
-                                    vertical: 5,
-                                },
-                            },
-                            tooltip: {
-                                marker: {
-                                    show: true,
-                                },
-                                x: {
-                                    show: false,
-                                },
-                            },
-                            fill: {
-                                type: 'gradient',
-                                gradient: {
-                                    shadeIntensity: 1,
-                                    inverseColors: !1,
-                                    opacityFrom: isDark ? 0.19 : 0.28,
-                                    opacityTo: 0.05,
-                                    stops: isDark ? [100, 100] : [45, 100],
-                                },
-                            },
-                        };
-                    },
-
-                    // sales by category
-                    get salesByCategoryOptions() {
-                        return {
-                            series: [985, 737, 270],
-                            chart: {
-                                type: 'donut',
-                                height: 460,
-                                fontFamily: 'Nunito, sans-serif',
-                            },
-                            dataLabels: {
-                                enabled: false,
-                            },
-                            stroke: {
-                                show: true,
-                                width: 25,
-                                colors: isDark ? '#0e1726' : '#fff',
-                            },
-                            colors: isDark ? ['#5c1ac3', '#e2a03f', '#e7515a', '#e2a03f'] : ['#e2a03f', '#5c1ac3', '#e7515a'],
-                            legend: {
-                                position: 'bottom',
-                                horizontalAlign: 'center',
-                                fontSize: '14px',
-                                markers: {
-                                    width: 10,
-                                    height: 10,
-                                    offsetX: -2,
-                                },
-                                height: 50,
-                                offsetY: 20,
-                            },
-                            plotOptions: {
-                                pie: {
-                                    donut: {
-                                        size: '65%',
-                                        background: 'transparent',
-                                        labels: {
-                                            show: true,
-                                            name: {
-                                                show: true,
-                                                fontSize: '29px',
-                                                offsetY: -10,
-                                            },
-                                            value: {
-                                                show: true,
-                                                fontSize: '26px',
-                                                color: isDark ? '#bfc9d4' : undefined,
-                                                offsetY: 16,
-                                                formatter: (val) => {
-                                                    return val;
-                                                },
-                                            },
-                                            total: {
-                                                show: true,
-                                                label: 'Total',
-                                                color: '#888ea8',
-                                                fontSize: '29px',
-                                                formatter: (w) => {
-                                                    return w.globals.seriesTotals.reduce(function (a, b) {
-                                                        return a + b;
-                                                    }, 0);
-                                                },
-                                            },
-                                        },
-                                    },
-                                },
-                            },
-                            labels: ['Apparel', 'Sports', 'Others'],
-                            states: {
-                                hover: {
-                                    filter: {
-                                        type: 'none',
-                                        value: 0.15,
-                                    },
-                                },
-                                active: {
-                                    filter: {
-                                        type: 'none',
-                                        value: 0.15,
-                                    },
-                                },
-                            },
-                        };
-                    },
-
-                    // daily sales
-                    get dailySalesOptions() {
-                        return {
-                            series: [
-                                {
-                                    name: 'Sales',
-                                    data: [44, 55, 41, 67, 22, 43, 21],
-                                },
-                                {
-                                    name: 'Last Week',
-                                    data: [13, 23, 20, 8, 13, 27, 33],
-                                },
-                            ],
-                            chart: {
-                                height: 160,
-                                type: 'bar',
-                                fontFamily: 'Nunito, sans-serif',
-                                toolbar: {
-                                    show: false,
-                                },
-                                stacked: true,
-                                stackType: '100%',
-                            },
-                            dataLabels: {
-                                enabled: false,
-                            },
-                            stroke: {
-                                show: true,
-                                width: 1,
-                            },
-                            colors: ['#e2a03f', '#e0e6ed'],
-                            responsive: [
-                                {
-                                    breakpoint: 480,
-                                    options: {
-                                        legend: {
-                                            position: 'bottom',
-                                            offsetX: -10,
-                                            offsetY: 0,
-                                        },
-                                    },
-                                },
-                            ],
-                            xaxis: {
-                                labels: {
-                                    show: false,
-                                },
-                                categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'],
-                            },
-                            yaxis: {
-                                show: false,
-                            },
-                            fill: {
-                                opacity: 1,
-                            },
-                            plotOptions: {
-                                bar: {
-                                    horizontal: false,
-                                    columnWidth: '25%',
-                                },
-                            },
-                            legend: {
-                                show: false,
-                            },
-                            grid: {
-                                show: false,
-                                xaxis: {
-                                    lines: {
-                                        show: false,
-                                    },
-                                },
-                                padding: {
-                                    top: 10,
-                                    right: -20,
-                                    bottom: -20,
-                                    left: -20,
-                                },
-                            },
-                        };
-                    },
-
-                    // total orders
-                    get totalOrdersOptions() {
-                        return {
-                            series: [
-                                {
-                                    name: 'Sales',
-                                    data: [28, 40, 36, 52, 38, 60, 38, 52, 36, 40],
-                                },
-                            ],
-                            chart: {
-                                height: 290,
-                                type: 'area',
-                                fontFamily: 'Nunito, sans-serif',
-                                sparkline: {
-                                    enabled: true,
-                                },
-                            },
-                            stroke: {
-                                curve: 'smooth',
-                                width: 2,
-                            },
-                            colors: isDark ? ['#00ab55'] : ['#00ab55'],
-                            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-                            yaxis: {
-                                min: 0,
-                                show: false,
-                            },
-                            grid: {
-                                padding: {
-                                    top: 125,
-                                    right: 0,
-                                    bottom: 0,
-                                    left: 0,
-                                },
-                            },
-                            fill: {
-                                opacity: 1,
-                                type: 'gradient',
-                                gradient: {
-                                    type: 'vertical',
-                                    shadeIntensity: 1,
-                                    inverseColors: !1,
-                                    opacityFrom: 0.3,
-                                    opacityTo: 0.05,
-                                    stops: [100, 100],
-                                },
-                            },
-                            tooltip: {
-                                x: {
-                                    show: false,
-                                },
-                            },
-                        };
-                    },
-                }));
-            });
-        </script>
+                    });
+                </script>
     </body>
 
 <!-- Mirrored from html.vristo.sbthemes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 May 2023 02:32:57 GMT -->

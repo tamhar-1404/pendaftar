@@ -148,48 +148,51 @@ class JurnalsiswaController extends Controller
      * @param  \App\Models\Jurnalsiswa  $Jurnalsiswa
      * @return \Illuminate\Http\Response
      */
-   Public function update(Request $request, $id)
-{
-    $Jurnalsiswa = Jurnalsiswa::find($id);
-    $oldImage = $Jurnalsiswa->image;
-
-    $this->validate($request, [
-        'kegiatan' => "required|max:255",
-    ],[
-        'kegiatan.max' => 'jurnal maksimal 255 karakter'
-    ]);
-
-    if($Jurnalsiswa ->status === 'Tidak mengisi'){
-        return redirect()->back()->with('error', 'yahahaah hayuuk');
-    }
-
-    $Jurnalsiswa->siswa_id = Auth::user()->Siswa->id;
-    $Jurnalsiswa->tanggal = $Jurnalsiswa->created_at;
-    $Jurnalsiswa->kegiatan = $request->kegiatan;
-    $Jurnalsiswa->status = $request->status;
-
-    if ($request->hasFile('image')) {
-        $this->validate($request, [
-            'image' => 'required|image|mimes:png,jpg,jpeg',
-        ]);
-        // Hapus gambar lama
-        if ($oldImage != 'default.jpg') {
-            Storage::delete('public/Image/' . $oldImage);
+    public function update(Request $request)
+    {
+        $id = $request->id;
+        $jurnalSiswa = Jurnalsiswa::find($id);
+        if (!$jurnalSiswa) {
+            return response()->json([
+                'error' => 'Data jurnal tidak ditemukan'
+            ]);
         }
+        $oldImage = $jurnalSiswa->image;
 
-        // Upload gambar baru
-        $image = $request->file('image');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->storeAs('public/image', $imageName);
-        $Jurnalsiswa->image = $imageName;
-    } else {
-        $Jurnalsiswa->image = $oldImage; // Menggunakan gambar lama jika tidak ada gambar yang diupload
+        $this->validate($request, [
+            'kegiatan' => 'required|max:255',
+            'image' => 'image|mimes:png,jpg,jpeg', // Validasi gambar opsional
+        ], [
+            'kegiatan.max' => 'Jurnal maksimal 255 karakter',
+            'image.image' => 'File harus berupa gambar',
+            'image.mimes' => 'Format gambar harus PNG, JPG, atau JPEG',
+        ]);
+
+        if ($jurnalSiswa->status === 'Tidak mengisi') {
+            return response()->json([
+                'status' => 'error',
+            ]);
+        }
+        $jurnalSiswa->kegiatan = $request->kegiatan;
+
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama
+            if ($oldImage != 'default.jpg') {
+                Storage::delete('public/image/' . $oldImage);
+            }
+
+            // Upload gambar baru
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public/image', $imageName);
+            $jurnalSiswa->image = $imageName;
+        } // Tidak perlu else karena image akan tetap gambar lama jika tidak diupload baru
+        $jurnalSiswa->save();
+        return response()->json([
+            'status' => 'success',
+        ]);
     }
 
-    $Jurnalsiswa->save();
-
-    return redirect()->route('jurnal_siswa.index')->with('success', 'Data berhasil diubah');
-}
 
 
     /**
