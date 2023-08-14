@@ -12,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Lineone - Blog Details</title>
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <!- - CSS Assets -->
@@ -42,10 +43,14 @@
             }
         </script>
 
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
@@ -1598,22 +1603,22 @@
 
                         <!-- Footer Blog Post -->
                         <div class="mt-5 flex space-x-3">
-                            <form action="{{ route('Berita.like', ['post' => $berita->id]) }}" method="post">
-                                @csrf
+                            <div class="flex items-center mt-2">
 
-                                <button
-                                    class="btn space-x-2 rounded-full border border-slate-300 px-4 text-xs+ font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90"
-                                    onclick="like({{ $berita->id }})">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="h-4.5 w-4.5 text-slate-400 dark:text-navy-300" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" fill="currentColor"
-                                            d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z" />
-                                    </svg>
-
-                                    <span> {{ $berita->likes_count }}</span>
+                                <button type="button" onclick="likeBerita({{ $berita->id }})"
+                                    id="buttonLike{{ $berita->id }}"
+                                    class="flex items-center  bg-gray-200 rounded-full px-3 py-1 mr-2">
+                                    <i class="fas fa-thumbs-up mr-1"></i>
+                                    Like
                                 </button>
-                            </form>
+
+                                <!-- Jumlah like, misalnya dari data berita -->
+                                <div class="flex gap-1">
+                                    <span id="JumlahLike{{ $berita->id }}"
+                                        class="text-gray-500">{{ $berita->likes_count }} </span>
+                                    <span>Likes</span>
+                                </div>
+                            </div>
                             <button
                                 class="btn space-x-2 rounded-full border border-slate-300 px-4 text-xs+ font-medium text-slate-700 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90">
                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -1696,6 +1701,74 @@
         @see https://alpinejs.dev/directives/teleport
       -->
     <div id="x-teleport-target"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        });
+
+        function likeBerita(beritaId) {
+            $.ajax({
+                url: "{{ route('Berita.like') }}",
+                method: 'POST',
+                data: {
+                    id: beritaId,
+                },
+                success: function(response) {
+                    const jumlahElement = $("#JumlahLike" + beritaId);
+                    const button = $("#buttonLike" + beritaId);
+
+                    if (response.action === 'tambah') {
+                        const jumlah = parseInt(jumlahElement.text()) + 1;
+                        jumlahElement.text(jumlah);
+                        button.addClass("bg-blue-300 text-white");
+                    } else if (response.action === 'hapus') {
+                        const jumlah = parseInt(jumlahElement.text()) - 1;
+                        jumlahElement.text(jumlah);
+                        button.removeClass("bg-blue-300 text-white");
+                    }
+
+                    console.log(beritaId);
+                    console.log(response);
+                },
+                error: function(error) {
+                    console.log('Terjadi kesalahan saat mengirim permintaan.');
+                    console.error(error);
+                    // Lakukan tindakan yang sesuai jika terjadi kesalahan.
+                }
+            });
+        }
+    </script>
+
+    <script>
+        $(window).on('load', function() {
+            $('.spin_load').fadeOut();
+            $.ajax({
+                url: '/get-users',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    data.forEach(function(item) {
+                        const beritaId = item.berita_id;
+                        const button = document.getElementById("buttonLike" + beritaId);
+                        button.classList.add("bg-blue-300");
+                        button.classList.add("text-white");
+                        console.log(button);
+                        console.log(beritaId);
+                    });
+                },
+                error: function(error) {
+                    console.log('Error:', error);
+                }
+            });
+        });
+    </script>
     <script>
         window.addEventListener("DOMContentLoaded", () => Alpine.start());
     </script>
