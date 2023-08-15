@@ -215,7 +215,7 @@
                                     <td class="whitespace-nowrap px-4 py-3 sm:px-5">
                                         <div class="avatar flex h-10 w-10">
                                             <img class="mask is-squircle"
-                                                src="{{ asset('Storage/mou/' . $mou->logo) }}" alt="avatar" />
+                                                src="{{ asset('Storage/Mou/' . $mou->logo) }}" alt="avatar" />
                                         </div>
                                     </td>
                                     <td
@@ -337,7 +337,7 @@
                                     <div class="avatar flex h-10 w-10">
                                         <input type="hidden" name="oldimage" value="{{ $mou->logo }}">
                                         <input type="hidden" name="id" value="{{ $mou->id }}">
-                                        <img class="mask is-squircle" src="{{ asset('Storage/mou/' . $mou->logo) }}"
+                                        <img class="mask is-squircle" src="{{ asset('Storage/Mou/' . $mou->logo) }}"
                                             alt="avatar" />
                                     </div>
                                     <input id="ctnFile" type="file" name="logo"
@@ -369,7 +369,7 @@
                                 </div>
                                 <div class="flex items-center justify-end mt-4">
                                     <div class="ml-auto">
-                                        <button
+                                        <button data-modal-hide="defaultModal{{ $mou->id }}" type="button"
                                             class="bg-transparent border border-gray-300 text-gray-800 hover:bg-gray-300 hover:text-gray-800 font-semibold py-2 px-4 rounded">
                                             Batal
                                         </button>
