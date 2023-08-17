@@ -83,7 +83,7 @@
                             </button>
 
                             <div class="flex gap-1">
-                                <span id="JumlahLike{{$berita->id}}" class="text-gray-500">{{ $berita->likes_count }} </span>
+                                <span id="JumlahLike{{$berita->id}}" class="text-gray-500 ">{{ $berita->likes_count }} </span>
                                 <span>Likes</span>
                             </div>
                     </div>
