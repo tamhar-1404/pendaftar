@@ -70,7 +70,7 @@ class PiketController extends Controller
 
          $siswa = Siswa::whereNotIn('id', $Cek)
          ->where('role', 'siswa')
-         ->latest()->paginate(4);
+         ->get();
         //  $siswa = Siswa::all();
          $laporan_piket = Laporan_piket::all();
 
@@ -280,7 +280,7 @@ class PiketController extends Controller
         ]);
 
         return redirect()->route('piket.index')->with('success', 'berhasil menambahkan catatan!');
-        
+
     }
 
     /**
@@ -319,18 +319,18 @@ class PiketController extends Controller
             'catatan' => 'required',
         ]);
         try {
-            $piket = Catatan::findOrFail($id);            
+            $piket = Catatan::findOrFail($id);
             $piket->update([
                 'catatan' => $request->catatan,
             ]);
-    
+
             return redirect()->back()->with('success', 'Data telah di edit');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
-    
-    
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -340,7 +340,7 @@ class PiketController extends Controller
      */
     public function destroy(string $id)
     {
-        
+
             // Temukan item berdasarkan ID
             $catatan = Catatan::findOrFail($id);
 

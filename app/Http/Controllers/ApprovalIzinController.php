@@ -92,8 +92,8 @@ class ApprovalIzinController extends Controller
     public function store(Request $request, ApprovalIzin $approvalIzin): RedirectResponse
     {
         $this->validate($request, [
-            'dari' => 'required|date|after_or_equal:today',
-            'sampai' => 'required|date|after:today',
+            'dari' => 'required|date',
+            'sampai' => 'required|date',
             'keterangan' => 'required',
             'deskripsi' => 'required',
             'bukti' => 'required|image|mimes:jpeg,jpg,png'
@@ -141,7 +141,7 @@ class ApprovalIzinController extends Controller
         return redirect()->route('absensi_siswa.index')->with('success', 'Data Berhasil Disimpan!');
     }
 
-    
+
 
     /**
      * Display the specified resource.

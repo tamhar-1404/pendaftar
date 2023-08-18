@@ -10,6 +10,7 @@ use App\Http\Requests\StoretransaksiRequest;
 use App\Http\Requests\UpdatetransaksiRequest;
 use App\Models\HistoryTransaksi;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 
 class TransaksiController extends Controller
@@ -38,7 +39,7 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        $a = Auth()->user()->RFID;
+        $a = session('rfid');
         // dd(Auth()->user()->RFID);
         $data = User::where('RFID', $a)->first();
         if (!$data) {
@@ -50,6 +51,9 @@ class TransaksiController extends Controller
         $makanan = Barang::where('kategori', 'makanan')->get();
         $minuman = Barang::where('kategori', 'minuman')->get();
         $saldo = User::where('rfid', $a)->first()->saldo;
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
         // dd($saldo);
         return view('transaksi.data', compact('data', 'barang', 'minuman', 'user', 'saldo', 'makanan'))->with('a', json_encode($a));
     }
@@ -113,11 +117,12 @@ class TransaksiController extends Controller
         $user = User::where('rfid', $credentials['rfid'])->first();
 
         if ($user) {
-            Auth::login($user);
+
 
             if ($user->role === 'Siswa') {
+                Auth::login($user);
                 // dd(Auth()->user()->role);
-                return redirect()->route('transaksi.create');
+                return redirect()->route('transaksi.create')->with('rfid', $credentials['rfid']);
             } else {
                 $message = 'Anda tidak memiliki izin untuk mengakses halaman ini.';
                 return redirect()->back()->with('error', $message);
