@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoretransaksiRequest;
 use App\Http\Requests\UpdatetransaksiRequest;
 use App\Models\HistoryTransaksi;
+use Illuminate\Support\Facades\Auth;
+
 
 class TransaksiController extends Controller
 {
@@ -34,11 +36,11 @@ class TransaksiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        // dd($request);
-        $a = $request->rfid;
-        $data = User::where('RFID', $request->rfid)->first();
+        $a = Auth()->user()->RFID;
+        // dd(Auth()->user()->RFID);
+        $data = User::where('RFID', $a)->first();
         if (!$data) {
             $message = 'RFID anda tidak ditemukan!';
             return redirect()->back()->with('error', $message);
@@ -47,9 +49,9 @@ class TransaksiController extends Controller
         $barang = Barang::all();
         $makanan = Barang::where('kategori', 'makanan')->get();
         $minuman = Barang::where('kategori', 'minuman')->get();
-        $saldo = User::where('rfid', $request->rfid)->first()->saldo;
+        $saldo = User::where('rfid', $a)->first()->saldo;
         // dd($saldo);
-        return view('transaksi.data', compact('data','barang','minuman' , 'user', 'saldo', 'makanan'));
+        return view('transaksi.data', compact('data', 'barang', 'minuman', 'user', 'saldo', 'makanan'))->with('a', json_encode($a));
     }
 
     /**
@@ -91,19 +93,41 @@ class TransaksiController extends Controller
     }
     public function postbeli(Request $request){
         // dd($request);
-        $a = $request->rfid;
-        $data = User::where('RFID', $request->rfid)->first();
-        if (!$data) {
+        // // dd('test');
+        // $a = $request->rfid;
+        // $data = User::where('RFID', $request->rfid)->first();
+        // if (!$data) {
+        //     $message = 'RFID anda tidak ditemukan!';
+        //     return redirect()->back()->with('error', $message);
+        // }
+        // $user = $data->saldo;
+        // $barang = Barang::all();
+        // $makanan = Barang::where('kategori', 'makanan')->get();
+        // $minuman = Barang::where('kategori', 'minuman')->get();
+        // $saldo = User::where('rfid', $request->rfid)->first()->saldo;
+        // // dd($saldo);
+        // return redirect()->route('transaksi.create')->compact('data', 'barang', 'minuman', 'user', 'saldo', 'makanan')->with('a', json_encode($a));
+
+
+        $credentials = $request->only('rfid');
+        $user = User::where('rfid', $credentials['rfid'])->first();
+
+        if ($user) {
+            Auth::login($user);
+
+            if ($user->role === 'Siswa') {
+                // dd(Auth()->user()->role);
+                return redirect()->route('transaksi.create');
+            } else {
+                $message = 'Anda tidak memiliki izin untuk mengakses halaman ini.';
+                return redirect()->back()->with('error', $message);
+            }
+        } else {
             $message = 'RFID anda tidak ditemukan!';
             return redirect()->back()->with('error', $message);
         }
-        $user = $data->saldo;
-        $barang = Barang::all();
-        $makanan = Barang::where('kategori', 'makanan')->get();
-        $minuman = Barang::where('kategori', 'minuman')->get();
-        $saldo = User::where('rfid', $request->rfid)->first()->saldo;
-        // dd($saldo);
-        return view('transaksi.data', compact('data', 'barang', 'minuman', 'user', 'saldo', 'makanan'))->with('a', json_encode($a));
+
+
     }
     /**
      * Show the form for editing the specified resource.

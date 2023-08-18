@@ -80,6 +80,7 @@ Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
 Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
 
 Route::get('/keluar', [LoginController::class, 'Logout'])->name('keluar');
+Route::get('/selesai', [LoginController::class, 'selesai'])->name('selesai');
 
 // Rute untuk mengirim email reset password
 
