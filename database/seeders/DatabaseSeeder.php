@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Hummasoft Technology',
                 'email' => 'admin@gmail.com',
-                'password' => Hash::make ('123456789'),
+                'password' => Hash::make ('hummasoftjaya'),
                 'role' => 'Admin',
                 'remember_token' => Str::random (60),
             ],
