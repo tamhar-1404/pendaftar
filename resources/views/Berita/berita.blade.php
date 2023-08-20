@@ -92,13 +92,12 @@
                         <a href="{{ route('Berita.show', $berita->id) }}">{{ Str::limit($berita->judul, 15) }}</a>
                     </h2>
                     <div class="flex items-center mt-2">
-                        <form action="{{ route('Berita.like', $berita->id) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="flex items-center bg-gray-200 rounded-full px-3 py-1 mr-2">
+
+                            <button type="button" onclick="likeBerita({{ $berita->id }})" class="flex items-center bg-gray-200 rounded-full px-3 py-1 mr-2">
                                 <i class="fas fa-thumbs-up mr-1"></i>
                                 Like
                             </button>
-                        </form>
+
                         <!-- Jumlah like, misalnya dari data berita -->
                         <span class="text-gray-500">{{ $berita->likes_count }} Likes</span>
                     </div>
@@ -230,3 +229,43 @@
         }
     });
 </script> --}}
+<script>
+
+    function likeBerita(beritaId) {
+        if (beritaId.value == "") {
+            console.log("Kosong")
+            return;
+        } else {
+            $(document).ready(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+            });
+            console.log(beritaId);
+            $.ajax({
+                url: "{{ route('Berita.like') }}",
+                method: 'POST',
+                data: {
+                    id : beritaId,
+                },
+                success: function(response) {
+                    if (response.data.status === 'hapus') {
+                        // Berita berhasil dihapus, lakukan tindakan sesuai kebutuhan.
+                        console.log("Berita dengan ID " + beritaId + " berhasil dihapus.");
+                    }else if(response.data.status === 'tambah'){
+                        console.log("Berita dengan ID " + beritaId + " berhasil ditambah.");
+
+                    }
+                }
+
+            })
+        }
+    }
+
+
+
+
+
+</script>

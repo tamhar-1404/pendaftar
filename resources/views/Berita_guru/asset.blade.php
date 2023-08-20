@@ -74,14 +74,18 @@
                     <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
                     <h2 class="text-xl font-semibold mt-2"><a href="{{ route('berita_guru.show', $berita->id) }}">{{ $berita->judul }}</a></h2>
                     <div class="flex items-center mt-2">
-                        <form action="{{ route('Berita.like', $berita->id) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="flex items-center bg-gray-200 rounded-full px-3 py-1 mr-2">
+
+                            <button type="button" onclick="likeBerita({{ $berita->id }})"
+                                id="buttonLike{{ $berita->id }}"
+                                class="flex items-center  bg-gray-200 rounded-full px-3 py-1 mr-2">
                                 <i class="fas fa-thumbs-up mr-1"></i>
                                 Like
                             </button>
-                        </form>
-                        <span class="text-gray-500">{{ $berita->likes_count }} Likes</span>
+
+                            <div class="flex gap-1">
+                                <span id="JumlahLike{{$berita->id}}" class="text-gray-500 ">{{ $berita->likes_count }} </span>
+                                <span>Likes</span>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -93,3 +97,87 @@
     </div>
 
 </main>
+<script>
+    $(window).on('load', function() {
+        $('.spin_load').fadeOut();
+        $.ajax({
+            url: '/get-users',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                data.forEach(function(item) {
+                    const beritaId = item.berita_id;
+                    const button = document.getElementById("buttonLike" + beritaId);
+                    button.classList.add("bg-blue-300");
+                    button.classList.add("text-white");
+                    console.log(button);
+                    console.log(beritaId);
+                });
+            },
+            error: function(error) {
+                console.log('Error:', error);
+            }
+        });
+    });
+</script>
+<script>
+
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+    function likeBerita(beritaId) {
+        if (beritaId.value == "") {
+            console.log("Kosong")
+            return;
+        } else {
+            console.log(beritaId);
+            $.ajax({
+                url: "{{ route('Berita.like') }}",
+                method: 'POST',
+                data: {
+                    id : beritaId,
+                },
+                success: function(response) {
+                    if(response.action === 'tambah'){
+                        const jumlah = document.getElementById("JumlahLike"+beritaId).innerHTML;
+                        var penambahan = parseInt(jumlah) + 1;
+                        document.getElementById("JumlahLike"+beritaId).innerHTML = penambahan.toString();
+                        const button = document.getElementById("buttonLike" + beritaId);
+                        button.classList.add("bg-blue-300");
+                        button.classList.add("text-white");
+
+                        console.log(jumlah);
+                        console.log("awokawok");
+                    }
+                    else if(response.action === 'hapus'){
+                        const jumlah = document.getElementById("JumlahLike"+beritaId).innerHTML;
+                        var penambahan = parseInt(jumlah) - 1;
+                        document.getElementById("JumlahLike"+beritaId).innerHTML = penambahan.toString();
+                        const button = document.getElementById("buttonLike" + beritaId);
+                        button.classList.remove("bg-blue-300")
+                        button.classList.remove("text-white")
+                        console.log("anjay");
+                    }
+                     console.log(beritaId);
+                     console.log(response);
+
+                },
+                error: function(error) {
+                    console.log('Terjadi kesalahan saat mengirim permintaan.');
+                    console.error(error);
+                    // Lakukan tindakan yang sesuai jika terjadi kesalahan.
+                }
+
+            })
+        }
+    }
+
+
+
+
+
+</script>

@@ -132,7 +132,7 @@
         <div class="flex justify-end items-center ">
             {{-- serch --}}
             <div class="mr-4 ">
-              
+
             </div>
             {{-- filter --}}
             {{--  <div class="border-2 rounded-full border-gray-400 flex items-center mr-2 ">
@@ -148,8 +148,8 @@
         </div>
     </div>
 
-    <div class=" mt-3 col-span-2 p-2 flex gap-2">
-        <div class="w-full panel ">
+    <div class="flex mt-3 col-span-2 p-2  gap-2">
+        <div class="w-full  panel ">
             <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -256,7 +256,8 @@
             </div>
 
         </div>
-        <div class="w-1/4 panel kamu-tak-diajak">
+
+        <div class=" panel w-1/4  kamu-tak-diajak">
             <div class="w-full p-2 flex justify-center">
                 <div class="panel w-10/12">
                     <span class="font-bold flex justify-between">

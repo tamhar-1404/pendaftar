@@ -132,6 +132,11 @@ class BlogController extends Controller
             return redirect()->back();
         }
     }
+    public function Cek()
+    {
+       $data = LikeBerita::where('user_id', Auth()->user()->id)->get();
+       return response()->json($data);
+    }
 
     /**
      * Update the specified resource in Storage.
@@ -240,38 +245,52 @@ class BlogController extends Controller
      }
 
 
-    public function like($blogId)
-    {
-        // dd($blogId);
-        $blog = Blog::find($blogId);
-        // dd($blogId);
-        $cekLike = LikeBerita::where('user_id', Auth::user()->id)->where('berita_id', $blogId)->exists();
-        if ($cekLike) {
+     public function like(Request $request)
+     {
+         $blogId = $request->id; // Ubah $blogid menjadi $blogId (penamaan variabel case-sensitive)
+
+         $blog = Blog::find($blogId);
+
+         if (!$blog) {
+             return response()->json([
+                 'status' => 'error',
+                 'message' => 'Berita tidak ditemukan.',
+             ], 404);
+         }
+        //  return $blog;
+
+         $user = Auth()->user();
+
+         $cekLike = LikeBerita::where('user_id', $user->id)->where('berita_id', $blogId)->exists();
+
+         if ($cekLike) {
             $blog->update([
-                'likes_count' =>  $blog->likes_count - 1,
+                'likes_count' => $blog->likes_count -1,
             ]);
-            LikeBerita::where('user_id', Auth::user()->id)->where('berita_id', $blogId)->delete();
-        }
-        else {
-            $a = [
-                'user_id' => Auth::user()->id,
-                'berita_id' => (integer) $blogId,
-            ];
-            // dd($a);
+             LikeBerita::where('user_id', $user->id)->where('berita_id', $blogId)->delete();
+             return response()->json([
+                 'status' => 'success',
+                 'action' => 'hapus',
+             ]);
+         } else {
             $blog->update([
-                'likes_count' =>  $blog->likes_count + 1,
+                'likes_count' => $blog->likes_count +1,
             ]);
 
-            // LikeBerita::create($a);
-            $model = new LikeBerita;
-            $model->user_id = Auth::user()->id;
-            $model->berita_id = (integer) $blogId;
-            $model->save();
+            $blog->update([
+                'like_count'
+            ]);
+             LikeBerita::create([
+                 'user_id' => Auth()->user()->id,
+                 'berita_id' => $blogId
+             ]);
+             return response()->json([
+                 'status' => 'success',
+                 'action' => 'tambah',
+             ]);
         }
-        // dd($currentLike);
+     }
 
-        return back()->with('success', 'Berhasil memberi like');
-    }
 
     public function unlike(Blog $blog, $blogId)
     {

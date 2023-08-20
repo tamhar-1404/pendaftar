@@ -65,7 +65,7 @@ class MOUController extends Controller
         ]);
 
         $image = $request->file('logo');
-        $image->storeAs('public/mou', $image->hashName());
+        $image->storeAs('public/Mou', $image->hashName());
 
         MOU::create([
             'logo'=>$image->hashName(),
@@ -106,14 +106,14 @@ class MOUController extends Controller
      * @param  \App\Models\MOU  $mOU
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MOU $mOU)
+    public function update(Request $request, MOU $mou)
     {
 
-        $data = mou::find($request->id);
+        $data = MOU::find($request->id);
         if ($request->logo != null) {
-            Storage::delete('public/mou' . $request->imageold);
+            Storage::delete('public/Mou/'. $mou->logo);
             $image = $request->file('logo');
-            $image->storeAs('public/mou', $image->hashName());
+            $image->storeAs('public/Mou', $image->hashName());
 
             $this->validate($request ,[
                 'logo'=>'required|mimes:jpg,jpeg,png|image',
@@ -175,9 +175,9 @@ class MOUController extends Controller
      */
     public function destroy(MOU $mou)
     {
-        Storage::delete('public/mou/'. $mou->logo);
+        Storage::delete('public/Mou/'. $mou->logo);
         //delete post
         $mou->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'data berhasil dihapus');
     }
 }

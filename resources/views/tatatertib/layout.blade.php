@@ -40,7 +40,7 @@
                                 </span>
                             </label>
                         </form>
-                        
+
                         {{-- <div x-ref="popperRoot" class="popper-root" :class="isShowPopper && 'show'">
                             <div
                                 class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700">
@@ -108,9 +108,9 @@
                                     <td
                                         class="whitespace-nowrap px-3 py-2 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
                                         {{ $row->judul }}</td>
-                                    <td class="whitespace-nowrap px-3 py-2 font-medium text-slate-700 dark:text-navy-100 lg:px-5"
+                                    <td class=" truncate whitespace-nowrap px-3 py-2 font-medium text-slate-700 dark:text-navy-100 lg:px-5"
                                         style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                        {!! Str::limit($row->deskripsi, 40) !!}
+                                        {!! $row->deskripsi !!}
                                     </td>
 
 

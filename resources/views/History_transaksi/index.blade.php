@@ -12,10 +12,9 @@
             extend: {
                 blur: {
                     xs: '3px',
-                  }
+                }
             },
-          },
-
+        },
     </script>
     <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <link rel="stylesheet" href="load/load.css">
@@ -82,8 +81,59 @@
 
     <div class=" pl-[px] " id="content">
 
+        <nav id="main-navbar"
+            class=" sticky relative left-0  right-0 top-0 flex z-9  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start fixed kamu-tak-diajak"
+            data-te-navbar-ref>
 
-        @include('jurnal_admin.nav')
+            <div class="flex w-full flex-wrap items-center justify-between px-4  kamu-tak-diajak">
+                <div class="flex gap-4">
+                    <!-- Toggler -->
+                    <div class="flex items-center justify-between ltr:mr-2 rtl:ml-2 "
+                        style="
+            position: fixed">
+                        <a href="index-2.html" class="main-logo flex shrink-9 items-center">
+                            <img class="inline w-40 ltr:-ml-1 rtl:-mr-1 hidden"
+                                src="{{ asset('admin/assets/images/humma.png') }}" alt="image" />
+                        </a>
+                    </div>
+                    <button
+                        class="mt-0.5 inline-block rounded bg-info px-3 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-200 hover:shadow-lg "
+                        data-te-sidenav-toggle-ref data-te-target="#sidenav-2" aria-controls="#sidenav-2"
+                        aria-haspopup="true">
+                        <span class="block [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                                <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+
+                                <path fill="currentColor"
+                                    d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+                            </svg>
+                        </span>
+                    </button>
+
+                </div>
+
+                <ul class="relative flex items-center">
+
+                    <li class="relative" data-te-dropdown-ref>
+                        <a class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
+                            href="#" id="navbarDropdownMenuLink" role="button" data-te-dropdown-toggle-ref
+                            aria-expanded="false">
+                            <img src="{{ asset('admin/assets/images/Logo.png') }}" class="rounded-full"
+                                style="height: 32px; width: 32px" alt="Avatar" loading="lazy" />
+                        </a>
+                        <ul class="absolute left-auto right-0 z-[1000] float-left m-0 mt-5 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
+                            aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>
+
+                            <li>
+                                <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
+                                    href="{{ route('keluar') }}" data-te-dropdown-item-ref>Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
 
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -117,8 +167,8 @@
                                                 <span
                                                     class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                                     <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-4 w-4 transition-colors duration-200" fill="currentColor"
-                                                        viewBox="0 0 24 24">
+                                                        class="h-4 w-4 transition-colors duration-200"
+                                                        fill="currentColor" viewBox="0 0 24 24">
                                                         <path
                                                             d="M3.316 13.781l.73-.171-.73.171zm0-5.457l.73.171-.73-.171zm15.473 0l.73-.171-.73.171zm0 5.457l.73.171-.73-.171zm-5.008 5.008l-.171-.73.171.73zm-5.457 0l-.171.73.171-.73zm0-15.473l-.171-.73.171.73zm5.457 0l.171-.73-.171.73zM20.47 21.53a.75.75 0 101.06-1.06l-1.06 1.06zM4.046 13.61a11.198 11.198 0 010-5.115l-1.46-.342a12.698 12.698 0 000 5.8l1.46-.343zm14.013-5.115a11.196 11.196 0 010 5.115l1.46.342a12.698 12.698 0 000-5.8l-1.46.343zm-4.45 9.564a11.196 11.196 0 01-5.114 0l-.342 1.46c1.907.448 3.892.448 5.8 0l-.343-1.46zM8.496 4.046a11.198 11.198 0 015.115 0l.342-1.46a12.698 12.698 0 00-5.8 0l.343 1.46zm0 14.013a5.97 5.97 0 01-4.45-4.45l-1.46.343a7.47 7.47 0 005.568 5.568l.342-1.46zm5.457 1.46a7.47 7.47 0 005.568-5.567l-1.46-.342a5.97 5.97 0 01-4.45 4.45l.342 1.46zM13.61 4.046a5.97 5.97 0 014.45 4.45l1.46-.343a7.47 7.47 0 00-5.568-5.567l-.342 1.46zm-5.457-1.46a7.47 7.47 0 00-5.567 5.567l1.46.342a5.97 5.97 0 014.45-4.45l-.343-1.46zm8.652 15.28l3.665 3.664 1.06-1.06-3.665-3.665-1.06 1.06z" />
                                                     </svg>
@@ -128,57 +178,57 @@
                                     </div>
 
 
-                                        <!-- Modal -->
-                                        <div id="modal"
-                                            class="fixed right-48 mt-32 flex items-center justify-center z-50 hidden">
-                                            <div class="absolute w-96 bg-white rounded-lg p-6 shadow-lg">
-                                                <div class="modal-header mb-4">
-                                                    <div class="flex items-center justify-between mb-4">
-                                                        <h5 class="text-xl font-bold">Filter Approval Siswa</h5>
-                                                        <button onclick="closeModal()"
-                                                            class="text-gray-500 ml-auto focus:outline-none">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
-                                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-
+                                    <!-- Modal -->
+                                    <div id="modal"
+                                        class="fixed right-48 mt-32 flex items-center justify-center z-50 hidden">
+                                        <div class="absolute w-96 bg-white rounded-lg p-6 shadow-lg">
+                                            <div class="modal-header mb-4">
+                                                <div class="flex items-center justify-between mb-4">
+                                                    <h5 class="text-xl font-bold">Filter Approval Siswa</h5>
+                                                    <button onclick="closeModal()"
+                                                        class="text-gray-500 ml-auto focus:outline-none">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                        </svg>
+                                                    </button>
                                                 </div>
 
+                                            </div>
 
-                                                <div class="modal-footer mt-4 flex justify-end gap-2">
-                                                    <button
-                                                        class="bg-white py-1 px-3 rounded-lg border border-gray-200 text-gray-300">Atur
-                                                        Ulang</button>
-                                                    <button
-                                                        class="bg-blue-400 py-1 px-3 rounded-lg border border-gray-200 text-white">Pakai</button>
-                                                </div>
+
+                                            <div class="modal-footer mt-4 flex justify-end gap-2">
+                                                <button
+                                                    class="bg-white py-1 px-3 rounded-lg border border-gray-200 text-gray-300">Atur
+                                                    Ulang</button>
+                                                <button
+                                                    class="bg-blue-400 py-1 px-3 rounded-lg border border-gray-200 text-white">Pakai</button>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <script>
-                                            function openModal() {
-                                                document.getElementById("modal").classList.remove("hidden");
+                                    <script>
+                                        function openModal() {
+                                            document.getElementById("modal").classList.remove("hidden");
+                                        }
+
+                                        function closeModal() {
+                                            document.getElementById("modal").classList.add("hidden");
+                                        }
+
+                                        function changeColor(checkbox) {
+                                            var label = document.getElementById("checkboxLabel");
+                                            if (checkbox.checked) {
+                                                label.classList.add("bg-gray-900 text-white");
+                                                label.classList.remove("bg-white");
+
+                                            } else {
+                                                label.classList.add("bg-white");
+                                                label.classList.remove("bg-blue-500");
                                             }
-
-                                            function closeModal() {
-                                                document.getElementById("modal").classList.add("hidden");
-                                            }
-
-                                            function changeColor(checkbox) {
-                                                var label = document.getElementById("checkboxLabel");
-                                                if (checkbox.checked) {
-                                                    label.classList.add("bg-gray-900 text-white");
-                                                    label.classList.remove("bg-white");
-
-                                                } else {
-                                                    label.classList.add("bg-white");
-                                                    label.classList.remove("bg-blue-500");
-                                                }
-                                            }
-                                        </script>
+                                        }
+                                    </script>
                                     </ul>
                                 </div>
                             </div>
@@ -230,13 +280,13 @@
                                                                     width="50" height="50" alt="">
                                                             </td>  --}}
                                                             <td class="whitespace-nowrap px-6 py-2">
-                                                                {{ "Rp " . number_format($items->harga, 0, ',', '.') }}
+                                                                {{ 'Rp ' . number_format($items->harga, 0, ',', '.') }}
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-2">
                                                                 {{ $items->stok }}
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-2">
-                                                                {{ "Rp " . number_format($items->total, 0, ',', '.') }}
+                                                                {{ 'Rp ' . number_format($items->total, 0, ',', '.') }}
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-2">
                                                                 {{ $items->tanggal }}
@@ -261,7 +311,8 @@
                                 </div>
                             </div>
                             <div class="w-full flex justify-end">
-                                <p> Total : <span class="text">{{ "Rp " . number_format($jumlah, 0, ',', '.') }}</span></p>
+                                <p> Total : <span
+                                        class="text">{{ 'Rp ' . number_format($jumlah, 0, ',', '.') }}</span></p>
                             </div>
                         </div>
                     </div>

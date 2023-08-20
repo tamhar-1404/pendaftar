@@ -34,7 +34,8 @@
     <!-- Add this line to include ApexCharts library -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.28.0/dist/apexcharts.min.js"></script>
     <script src="https://cdn.tailwindcss.com/"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"></script>
@@ -1106,6 +1107,7 @@
                 }]
             },
             options: {
+                responsive: true,
                 scales: {
                     y: {
                         beginAtZero: true
@@ -1137,8 +1139,9 @@
             }],
             chart: {
                 type: 'bar',
-                height: 350,
-                width: 850,
+                responsive: true,
+                width: '100%',
+                height: 'auto'
             },
             plotOptions: {
                 bar: {
@@ -1193,6 +1196,17 @@
 
         var chart = new ApexCharts(document.querySelector("#grafik_jurnal"), options);
         chart.render();
+
+        // Menggunakan window.resize untuk merespons perubahan ukuran jendela
+        window.addEventListener('resize', function() {
+            chart.updateOptions({
+                plotOptions: {
+                    bar: {
+                        columnWidth: '40%', // Ubah nilai ini sesuai dengan preferensi Anda
+                    }
+                }
+            });
+        });
     </script>
 
 

@@ -208,7 +208,7 @@ public function store(Request $request)
             return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
         }
     } catch (Exception $e) {
-        return back()->with('error', "Email sudah digunakan");
+        return back()->with('error', "Isi Form tidak valid");
     }
 
     try {
@@ -280,7 +280,7 @@ public function store(Request $request)
             return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
         }
     } catch (Exception $e) {
-        return back()->with('error', "Email sudah digunakan");
+        return back()->with('error', "Isi form tidak valid");
     }
 }
     /**
@@ -352,5 +352,12 @@ public function store(Request $request)
         request()->session()->invalidate();
         request()->session()->regenerateToken();
         return redirect()->route('login.index');
+    }
+    public function selesai()
+    {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect()->route('kode_beli');
     }
 }

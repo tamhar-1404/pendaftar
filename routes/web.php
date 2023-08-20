@@ -80,6 +80,7 @@ Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
 Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
 
 Route::get('/keluar', [LoginController::class, 'Logout'])->name('keluar');
+Route::get('/selesai', [LoginController::class, 'selesai'])->name('selesai');
 
 // Rute untuk mengirim email reset password
 
@@ -151,6 +152,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('piket_siswa', App\Http\Controllers\PiketSiswaController::class);
         Route::resource('chat_siswa', App\Http\Controllers\ChatSiswaController::class);
         Route::resource('jurnal_siswa', App\Http\Controllers\JurnalsiswaController::class);
+        Route::post('jurnal_siswa.update',[JurnalsiswaController::class,'update']);
         Route::resource('Siswamagang', App\Http\Controllers\SiswamagangController::class);
         Route::resource('/History_topup', App\Http\Controllers\HistoryTopupController::class);
         Route::get('/siswamagang_siswa' , [SiswaController::class,'siswamagang_siswa'])->name('siswamagang_siswa');
@@ -195,9 +197,10 @@ Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::c
 Route::resource('Lupapassword', App\Http\Controllers\LupaPasswordController::class);
 Route::post('/reset-password', [LupaPasswordController::class, 'update'])->name('password.update');
 Route::get('/reset-password/{token}', [LupaPasswordController::class, 'reset'])->name('password.reset');
+Route::get('/get-users', [BlogController::class, 'Cek'])->name('get-user');
 
 Route::middleware(['auth'])->group(function () {
-    Route::post('Berita/{post}/like', [BlogController::class, 'like'])->name('Berita.like');
+    Route::post('Berita/like', [BlogController::class, 'like'])->name('Berita.like');
     Route::post('comment/store', [BlogController::class, 'comment_store'])->name('comment.store');
     Route::post('comment/reply', [BlogController::class, 'reply_comment'])->name('comment.reply');
 });
