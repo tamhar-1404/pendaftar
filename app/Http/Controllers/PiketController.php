@@ -70,7 +70,7 @@ class PiketController extends Controller
 
          $siswa = Siswa::whereNotIn('id', $Cek)
          ->where('role', 'siswa')
-         ->get();
+         ->latest()->paginate(4);
         //  $siswa = Siswa::all();
          $laporan_piket = Laporan_piket::all();
 
