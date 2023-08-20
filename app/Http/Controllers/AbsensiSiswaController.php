@@ -169,6 +169,10 @@ class AbsensiSiswaController extends Controller
         else {
             $telat='telat';
             $keterangan = "Hadir";
+            $p = Carbon::now()->format('H:i');
+            if($p < '06.30'){
+                return redirect()->back()->with('error', 'Anda Masih belum bisa absen');
+            }
 
 
             $hari_ini = Carbon::now()->format('Y-m-d');
