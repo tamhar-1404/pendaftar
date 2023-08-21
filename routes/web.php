@@ -129,8 +129,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('barang', App\Http\Controllers\BarangController::class);
         Route::resource('opname', App\Http\Controllers\OpnameController::class);
         Route::resource('siswa_magang', App\Http\Controllers\SiswaController::class);
-        Route::get('/jurnal_pdf', [JurnaladminController::class, 'jurnal_admin_pdf']);
-        Route::get('/jurnal_docx', [JurnaladminController::class, 'admin_docx']);
+        Route::get('/jurnal_pdf', [JurnaladminController::class, 'jurnal_admin_pdf'])->name('jurnal_pdf');
+        Route::get('/jurnal_docx', [JurnaladminController::class, 'admin_docx'])->name('jurnal_docx');
         Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
         Route::delete('/hapus_laporan_piket/{id}' , [LaporanPiketController::class , 'hapus'])->name('hapus/laporan/piket');
         Route::post('catatan', [PiketController::class, 'tambah'])->name('tambahCatatan');

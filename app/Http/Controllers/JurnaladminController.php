@@ -385,8 +385,16 @@ class JurnaladminController extends Controller
     {
         //
     }
-    public function jurnal_admin_pdf()  {
+    public function jurnal_admin_pdf(Request $request)  {
         set_time_limit(0);
+        // dd($request->pencarian);
+        $datas = $request->pencarian;
+        if ($datas !== null){
+            $users = Siswa::Where('name', $datas)->first();
+            $data = JurnalSiswa::where('siswa_id', $users->id)->get();
+            $pdf = Pdf::loadView('desain_pdf.jurnal', ['data' => $data]);
+            return $pdf->download('jurnal_siswa.pdf');
+        }
         $data = JurnalSiswa::all();
         $pdf = Pdf::loadView('desain_pdf.jurnal', ['data' => $data]);
         return $pdf->download('jurnal_siswa.pdf');
@@ -398,10 +406,38 @@ class JurnaladminController extends Controller
         $pdf = Pdf::loadView('desain_pdf.jurnal', ['data' => $data]);
         return $pdf->download('jurnal_siswa.pdf');
     }
-    public function admin_docx()
+    public function admin_docx(Request $request)
 {
-    // Mendapatkan data dari database (contoh menggunakan model User)
     $users = JurnalSiswa::all();
+    // dd($request->pencarian);
+    $data = $request->pencarian;
+    if($data !== null){
+        $datas = Siswa::Where('name', $data)->first();
+        // Membuat objek PhpWord
+        $users = JurnalSiswa::Where('Siswa_id', $datas->id)->first();
+        $phpWord = new PhpWord();
+
+        // Membuat halaman baru
+        $section = $phpWord->addSection();
+
+        // Menambahkan data dari database ke dokumen
+
+        $section->addText($users->siswa->name);
+        $section->addText($users->tanggal);
+        $section->addText($users->siswa->sekolah);
+        $section->addText($users->kegiatan);
+        // Tambahkan data lain yang Anda butuhkan
+        $section->addText("--------------------"); // Pemisah antara setiap entri
+
+        // Menyimpan dokumen sebagai file .docx
+        $filename = "jurnal_siswa.docx";
+        $path = Storage_path('app/public/image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
+        $phpWord->save($path);
+
+        // Mengembalikan file dokumen untuk diunduh
+        return response()->download($path, $filename);
+    }
+    // Mendapatkan data dari database (contoh menggunakan model User)
 
     // Membuat objek PhpWord
     $phpWord = new PhpWord();

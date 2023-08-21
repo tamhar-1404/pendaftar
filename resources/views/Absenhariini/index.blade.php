@@ -1784,9 +1784,15 @@
                                 keterangan: keterangan,
                             },
                             success: function(response) {
-                                location.reload();
-                                console.log(response.message);
-                                toastr.success(response.message);
+                                // location.reload();
+                                // console.log(response.message);
+                                // toastr.success(response.message);
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil' + response.message,
+                                }).then((result) => {
+                                    location.reload();
+                                })
                                 // Lakukan tindakan lain setelah berhasil, seperti menampilkan pesan atau mereload halaman
                             },
                             error: function(xhr, ajaxOptions, throwError) {

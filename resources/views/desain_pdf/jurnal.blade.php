@@ -50,11 +50,15 @@
                 <td class="whitespace-nowrap px-4 py-4">{{$items->Siswa->name}}</td>
                 <td class="whitespace-nowrap px-4 py-4">{{$items->tanggal}}</td>
                 <td class="whitespace-nowrap px-4 py-4">{{$items->Siswa->sekolah}}</td>
-                <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$items->kegiatan}}</td>
-                <td class="whitespace-nowrap px-6 pl-17 py-4"><img
-                    src="{{ asset('storage/image/' . $items->image) }}"
-                    width="100px" alt="">
+                <td class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate " >{{$items->kegiatan}} || {{$items->image}}</td>
+                <td class="whitespace-nowrap px-6 pl-17 py-4">
+                    @if($items->image)
+                    <img src="{{ asset('storage/image/' . $items->image) }}" width="100px" alt="">
+                    @else
+                    gambar kosong
+                    @endif
                 </td>
+
 
               </tr>
 
