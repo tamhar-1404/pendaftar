@@ -87,6 +87,15 @@
 
     <!-- screen loader -->
     <!-- screen loader -->
+    <style>
+        @media (max-width: 768px) {
+            .ring {
+                width: 25%;
+                /* Tampilkan pada tampilan mobile dengan lebar 25% */
+                /* Tambahkan gaya lain sesuai kebutuhan untuk tampilan mobile */
+            }
+        }
+    </style>
     <div
         class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
         <div class="center">

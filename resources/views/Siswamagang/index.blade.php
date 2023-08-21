@@ -84,7 +84,15 @@
     <!-- sidebar menu overlay -->
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>
-
+    <style>
+        @media (max-width: 768px) {
+            .ring {
+                width: 25%;
+                /* Tampilkan pada tampilan mobile dengan lebar 25% */
+                /* Tambahkan gaya lain sesuai kebutuhan untuk tampilan mobile */
+            }
+        }
+    </style>
     <!-- screen loader -->
     <div
         class="screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
@@ -1146,7 +1154,7 @@
             plotOptions: {
                 bar: {
                     horizontal: false,
-                    columnWidth: '55%',
+                    columnWidth: '30%',
                     endingShape: 'rounded',
                     borderRadius: 7,
                 },
