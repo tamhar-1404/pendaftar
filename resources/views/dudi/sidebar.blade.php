@@ -348,11 +348,9 @@
                 }],
                 chart: {
                     type: 'bar',
-                    height: 400,
-                    width: 1150
-
-
-
+                    responsive: true,
+                    width: '95%',
+                    height: 'auto'
                 },
                 plotOptions: {
                     bar: {
@@ -413,6 +411,17 @@
 
             var chart = new ApexCharts(document.querySelector("#grafik_admin"), options);
             chart.render();
+
+            // Menggunakan window.resize untuk merespons perubahan ukuran jendela
+            window.addEventListener('resize', function() {
+                chart.updateOptions({
+                    plotOptions: {
+                        bar: {
+                            columnWidth: '10%', // Ubah nilai ini sesuai dengan preferensi Anda
+                        }
+                    }
+                });
+            });
         </script>
     </body>
 

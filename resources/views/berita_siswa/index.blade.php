@@ -38,7 +38,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('admin/css/app.css') }}" />
     <!-- Javascript Assets -->
-  
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
     <script>
@@ -62,7 +62,8 @@
     <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
     <script defer src="siswa/js/sweetalert.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -83,6 +84,16 @@
     <!-- sidebar menu overlay -->
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>
+
+    <style>
+        @media (max-width: 768px) {
+            .ring {
+                width: 25%;
+                /* Tampilkan pada tampilan mobile dengan lebar 25% */
+                /* Tambahkan gaya lain sesuai kebutuhan untuk tampilan mobile */
+            }
+        }
+    </style>
 
     <!-- screen loader -->
     <div
@@ -134,8 +145,8 @@
                         <a href="javascript:;"
                             class="collapse-icon flex h-8 w-8 items-center rounded-full transition duration-300 hover:bg-gray-500/10 rtl:rotate-180 dark:text-white-light dark:hover:bg-dark-light/10"
                             @click="$store.app.toggleSidebar()">
-                            <svg class="m-auto h-5 w-5" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="m-auto h-5 w-5" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5"
                                     stroke-linecap="round" stroke-linejoin="round" />
                                 <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor"
@@ -339,7 +350,7 @@
 
         @include('Siswamagang.nav_siswa')
 
-       <!-- Main Content Wrapper -->
+        <!-- Main Content Wrapper -->
         <main class="main w-full px-4 pb-8">
             <div class="flex items-center justify-between py-5 lg:py-6">
 
@@ -349,7 +360,8 @@
                         Berita
                     </h2>
 
-                    <div x-data="usePopper({ placement: 'bottom-start', offset: 4 })" @click.outside="isShowPopper && (isShowPopper = false)" class="inline-flex">
+                    <div x-data="usePopper({ placement: 'bottom-start', offset: 4 })" @click.outside="isShowPopper && (isShowPopper = false)"
+                        class="inline-flex">
 
 
 
@@ -388,16 +400,20 @@
                         <div class="p-4">
                             <span class="text-sm text-gray-500">{{ $berita->kategori }}</span>
                             <h2 class="text-xl font-semibold mt-2"><a
-                                    href="{{ route('berita_siswa.show', $berita->id) }}">{{ $berita->judul }}</a></h2>
+                                    href="{{ route('berita_siswa.show', $berita->id) }}">{{ $berita->judul }}</a>
+                            </h2>
                             <div class="flex items-center mt-2">
 
-                                <button type="button" onclick="likeBerita({{ $berita->id }})" id="buttonLike{{$berita->id}}" class="flex items-center  bg-gray-200 rounded-full px-3 py-1 mr-2">
+                                <button type="button" onclick="likeBerita({{ $berita->id }})"
+                                    id="buttonLike{{ $berita->id }}"
+                                    class="flex items-center  bg-gray-200 rounded-full px-3 py-1 mr-2">
                                     <i class="fas fa-thumbs-up mr-1"></i>
                                     Like
                                 </button>
                                 <!-- Jumlah like, misalnya dari data berita -->
                                 <div class="flex gap-1">
-                                    <span id="JumlahLike{{$berita->id}}" class="text-gray-500">{{ $berita->likes_count }} </span>
+                                    <span id="JumlahLike{{ $berita->id }}"
+                                        class="text-gray-500">{{ $berita->likes_count }} </span>
                                     <span>Likes</span>
                                 </div>
                             </div>
@@ -451,7 +467,6 @@
         });
     </script>
     <script>
-
         $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
@@ -459,6 +474,7 @@
                 }
             });
         });
+
         function likeBerita(beritaId) {
             if (beritaId.value == "") {
                 console.log("Kosong")
@@ -469,31 +485,30 @@
                     url: "{{ route('Berita.like') }}",
                     method: 'POST',
                     data: {
-                        id : beritaId,
+                        id: beritaId,
                     },
                     success: function(response) {
-                        if(response.action === 'tambah'){
-                            const jumlah = document.getElementById("JumlahLike"+beritaId).innerHTML;
+                        if (response.action === 'tambah') {
+                            const jumlah = document.getElementById("JumlahLike" + beritaId).innerHTML;
                             var penambahan = parseInt(jumlah) + 1;
-                            document.getElementById("JumlahLike"+beritaId).innerHTML = penambahan.toString();
+                            document.getElementById("JumlahLike" + beritaId).innerHTML = penambahan.toString();
                             const button = document.getElementById("buttonLike" + beritaId);
                             button.classList.add("bg-blue-300");
                             button.classList.add("text-white");
 
                             console.log(jumlah);
                             console.log("awokawok");
-                        }
-                        else if(response.action === 'hapus'){
-                            const jumlah = document.getElementById("JumlahLike"+beritaId).innerHTML;
+                        } else if (response.action === 'hapus') {
+                            const jumlah = document.getElementById("JumlahLike" + beritaId).innerHTML;
                             var penambahan = parseInt(jumlah) - 1;
-                            document.getElementById("JumlahLike"+beritaId).innerHTML = penambahan.toString();
+                            document.getElementById("JumlahLike" + beritaId).innerHTML = penambahan.toString();
                             const button = document.getElementById("buttonLike" + beritaId);
                             button.classList.remove("bg-blue-300")
                             button.classList.remove("text-white")
                             console.log("anjay");
                         }
-                         console.log(beritaId);
-                         console.log(response);
+                        console.log(beritaId);
+                        console.log(response);
 
                     },
                     error: function(error) {
@@ -505,11 +520,6 @@
                 })
             }
         }
-
-
-
-
-
     </script>
     <script>
         $(window).on('load', function() {

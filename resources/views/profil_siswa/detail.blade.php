@@ -46,6 +46,16 @@
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>
 
+    <style>
+        @media (max-width: 768px) {
+            .ring {
+                width: 25%;
+                /* Tampilkan pada tampilan mobile dengan lebar 25% */
+                /* Tambahkan gaya lain sesuai kebutuhan untuk tampilan mobile */
+            }
+        }
+    </style>
+
     <!-- screen loader -->
     <div
         class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
@@ -664,7 +674,8 @@
                                     @forelse ($data as $pelangaran)
                                         <div class="w-full h-screen pt-[100px] overflow-y-auto">
                                             <div id="staticModal{{ $pelangaran->id }}" tabindex="-1"
-                                                aria-hidden="true" style="backdrop-filter: blur(4px); scroll-behavior: smooth;"
+                                                aria-hidden="true"
+                                                style="backdrop-filter: blur(4px); scroll-behavior: smooth;"
                                                 class="kamu-tak-diajak fixed top-0 overscroll-auto left-0 right-0 z-[999] hidden w-120 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 <div class="relative w-full max-w-xl max-h-full">
                                                     <!-- Modal content -->

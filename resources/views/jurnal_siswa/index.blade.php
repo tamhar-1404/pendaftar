@@ -106,7 +106,15 @@
     <!-- sidebar menu overlay -->
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"
         @click="$store.app.toggleSidebar()"></div>
-
+    <style>
+        @media (max-width: 768px) {
+            .ring {
+                width: 25%;
+                /* Tampilkan pada tampilan mobile dengan lebar 25% */
+                /* Tambahkan gaya lain sesuai kebutuhan untuk tampilan mobile */
+            }
+        }
+    </style>
     <!-- screen loader -->
     <div
         class="screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
@@ -393,9 +401,9 @@
                         </script>
                     @enderror
                     @if (session()->has('error'))
-                    <script>
-                        toastr.error("{{session('error')}}")
-                    </script>
+                        <script>
+                            toastr.error("{{ session('error') }}")
+                        </script>
                     @endif
 
                     @if (session('success'))
@@ -587,11 +595,13 @@
                                                         class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:text-black-200 ">
                                                         <td class="whitespace-nowrap px-6 py-2 font-medium">
                                                             {{ $loop->iteration }}</td>
-                                                        <td class="whitespace-nowrap px-6 py-2">{{ $items->siswa->name }}
+                                                        <td class="whitespace-nowrap px-6 py-2">
+                                                            {{ $items->siswa->name }}
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 py-2">{{ $items->tanggal }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-6 py-2">{{ $items->siswa->sekolah }}
+                                                        <td class="whitespace-nowrap px-6 py-2">
+                                                            {{ $items->siswa->sekolah }}
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 py-2 overflow-hidden">
                                                             <div class="truncate">
@@ -600,10 +610,10 @@
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 pl-17 py-2">
                                                             @if ($items->kegiatan != 'Tidak mengisi' && $items->kegiatan != 'Kosong')
-                                                            <img
-                                                                src="{{ asset('storage/image/' . $items->image) }}"
-                                                                width="50px" height="50px" alt="{{ $items->image }}">
-                                                                @else
+                                                                <img src="{{ asset('storage/image/' . $items->image) }}"
+                                                                    width="50px" height="50px"
+                                                                    alt="{{ $items->image }}">
+                                                            @else
                                                                 {{ $items->image }}
                                                             @endif
 
@@ -619,16 +629,17 @@
                                                                         <i class="fa fa-eye"></i> </span>
                                                                     </div>
                                                                 </a>
-                                                             @if($items->status === 'mengisi')
-                                                                <a href="#">
-                                                                    <div class=" w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
-                                                                        data-te-toggle="modal"
-                                                                        data-modal-target="staticModal1{{ $items->id }}"
-                                                                        data-modal-toggle="staticModal1{{ $items->id }}" ">
+                                                                @if ($items->status === 'mengisi')
+                                                                    <a href="#">
+                                                                        <div class=" w-10 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent"
+                                                                            data-te-toggle="modal"
+                                                                            data-modal-target="staticModal1{{ $items->id }}"
+                                                                            data-modal-toggle="staticModal1{{ $items->id }}" ">
                                                             <span class=" p-1  font-semibold dark:hover:"text-black">
-                                                                        <i class="fa fa-pencil-square-o"></i> </span>
-                                                                    </div>
-                                                                </a>
+                                                                            <i class="fa fa-pencil-square-o"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                    </a>
                                                                 @endif
                                                             </div>
 
@@ -681,45 +692,44 @@
                                 <!-- Modal body -->
                                 <div class="p-6 space-y-6">
 
-                                        <div>
-                                            <label for="kegiatan"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
-                                            <textarea name="kegiatan" class="w-full rounded-md" id="kegiatan" cols="" rows="5">{{ $modal->kegiatan }}</textarea>
-                                        </div>
-                                        <div>
-                                            <label for="bukti"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti</label>
-                                            <img id="preview-image"
-                                                src="{{ asset('storage/image/' . $modal->image) }}" class="w-64 h-64"
-                                                alt="" srcset="">
-                                            <input type="file" name="image" id="image-input" placeholder=""
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                onchange="previewImage(event)">
-                                        </div>
+                                    <div>
+                                        <label for="kegiatan"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
+                                        <textarea name="kegiatan" class="w-full rounded-md" id="kegiatan" cols="" rows="5">{{ $modal->kegiatan }}</textarea>
+                                    </div>
+                                    <div>
+                                        <label for="bukti"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti</label>
+                                        <img id="preview-image" src="{{ asset('storage/image/' . $modal->image) }}"
+                                            class="w-64 h-64" alt="" srcset="">
+                                        <input type="file" name="image" id="image-input" placeholder=""
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                            onchange="previewImage(event)">
+                                    </div>
 
-                                        <script>
-                                            function previewImage(event) {
-                                                var input = event.target;
-                                                var reader = new FileReader();
+                                    <script>
+                                        function previewImage(event) {
+                                            var input = event.target;
+                                            var reader = new FileReader();
 
-                                                reader.onload = function() {
-                                                    var imgElement = document.getElementById("preview-image");
-                                                    imgElement.src = reader.result;
-                                                };
+                                            reader.onload = function() {
+                                                var imgElement = document.getElementById("preview-image");
+                                                imgElement.src = reader.result;
+                                            };
 
-                                                reader.readAsDataURL(input.files[0]);
-                                            }
-                                        </script>
+                                            reader.readAsDataURL(input.files[0]);
+                                        }
+                                    </script>
 
-                                        <input type="hidden" name="status" value="mengisi">
-                                        <div class="flex justify-end">
-                                        </div>
+                                    <input type="hidden" name="status" value="mengisi">
+                                    <div class="flex justify-end">
+                                    </div>
                                 </div>
                                 <!-- Modal footer -->
                                 <div
                                     class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
 
-                                    <button type="button" onclick="Update({{$modal->id}})"
+                                    <button type="button" onclick="Update({{ $modal->id }})"
                                         class="border text-blue-400 bg-white font-semibold border-blue-400  py-2.5 px-5 text-sm rounded-md hover:bg-blue-400 hover:text-white">Kirim</button>
                                 </div>
 
@@ -792,9 +802,9 @@
                                         Bukti
                                     </p>
                                     @if ($items->kegiatan != 'Tidak mengisi' && $items->kegiatan != 'Kosong')
-                                    <img id="preview-image" src="{{ asset('storage/image/' . $modal->image) }}"
-                                        class="w-64 h-64" alt="" srcset="">
-                                        @else
+                                        <img id="preview-image" src="{{ asset('storage/image/' . $modal->image) }}"
+                                            class="w-64 h-64" alt="" srcset="">
+                                    @else
                                         {{ $items->image }}
                                     @endif
 
@@ -999,8 +1009,7 @@
             window.print();
         }
     </script>
-     <script>
-
+    <script>
         document.addEventListener("DOMContentLoaded", function() {
             $.ajaxSetup({
                 headers: {
@@ -1008,47 +1017,42 @@
                 }
             });
         });
+
         function Update(jurnalId) {
-        if (jurnalId.value == "") {
-            console.log("Kosong");
-            return;
-        } else {
-            var kegiatan = document.getElementById("kegiatan").value;
-            var image = document.getElementById("image-input").files[0]; // Ambil file gambar
+            if (jurnalId.value == "") {
+                console.log("Kosong");
+                return;
+            } else {
+                var kegiatan = document.getElementById("kegiatan").value;
+                var image = document.getElementById("image-input").files[0]; // Ambil file gambar
 
-            var formData = new FormData();
-            formData.append("id", jurnalId);
-            formData.append("kegiatan", kegiatan);
+                var formData = new FormData();
+                formData.append("id", jurnalId);
+                formData.append("kegiatan", kegiatan);
 
-            if (image) {
-                formData.append("image", image);
-            }
-
-            $.ajax({
-                url: "jurnal_siswa.update",
-                method: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    console.log("Berhasil memperbarui jurnal.");
-                    if(response.status === 'success'){
-                        location.reload();
-                    }
-                },
-                error: function(error) {
-                    console.log("Terjadi kesalahan saat mengirim permintaan.");
-                    console.error(error);
+                if (image) {
+                    formData.append("image", image);
                 }
-            });
+
+                $.ajax({
+                    url: "jurnal_siswa.update",
+                    method: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        console.log("Berhasil memperbarui jurnal.");
+                        if (response.status === 'success') {
+                            location.reload();
+                        }
+                    },
+                    error: function(error) {
+                        console.log("Terjadi kesalahan saat mengirim permintaan.");
+                        console.error(error);
+                    }
+                });
+            }
         }
-    }
-
-
-
-
-
-
     </script>
 
 
