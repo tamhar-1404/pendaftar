@@ -353,4 +353,11 @@ public function store(Request $request)
         request()->session()->regenerateToken();
         return redirect()->route('login.index');
     }
+    public function selesai()
+    {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect()->route('kode_beli');
+    }
 }

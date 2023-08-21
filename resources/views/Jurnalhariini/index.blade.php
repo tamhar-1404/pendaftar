@@ -1508,18 +1508,19 @@
             </div>
 
             <style>
-                .modal-container {
+                /* .modal-container {
                     top: 40%;
                     left: 50%;
                     transform: translate(-25%, -25%);
-                }
+
+                } */
             </style>
 
             @forelse ($mengisi as $modal)
-                <div class="" style="">
-                    <div id="staticModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
-                        class="kamu-tak-diajak modal-container fixed  right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
-                        x-data="{ showModal: true }"> <!-- Tambahkan atribut x-data dan variabel showModal -->
+                <div id="staticModal{{ $modal->id }}"tabindex="-1" aria-hidden="true"style="backdrop-filter: blur(10px);"
+                    class="kamu-tak-diajak modal-container fixed  right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full "
+                    x-data="{ showModal: true }">
+                    <div class="flex justify-center items-center" style="mt-20"  > <!-- Tambahkan atribut x-data dan variabel showModal -->
                         <div class="relative w-full max-w-2xl max-h-full">
                             <!-- Modal content -->
                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">

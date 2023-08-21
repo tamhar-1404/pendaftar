@@ -750,6 +750,8 @@
                                     @endforeach
                                 @endif
                         @endforeach
+                    @endif
+                @endforeach
             </div>
     </div>
     </main>

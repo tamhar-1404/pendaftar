@@ -16,7 +16,9 @@ use Illuminate\Http\Request;
 use App\Mail\TerimaizinEmail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
+
+
+
 use App\Http\Requests\StoreApprovalIzinRequest;
 use App\Http\Requests\UpdateApprovalIzinRequest;
 use Illuminate\Contracts\View\View;
@@ -92,8 +94,8 @@ class ApprovalIzinController extends Controller
     public function store(Request $request, ApprovalIzin $approvalIzin): RedirectResponse
     {
         $this->validate($request, [
-            'dari' => 'required|date|after_or_equal:today',
-            'sampai' => 'required|date|after:today',
+            'dari' => 'required|date',
+            'sampai' => 'required|date',
             'keterangan' => 'required',
             'deskripsi' => 'required',
             'bukti' => 'required|image|mimes:jpeg,jpg,png'
@@ -141,7 +143,7 @@ class ApprovalIzinController extends Controller
         return redirect()->route('absensi_siswa.index')->with('success', 'Data Berhasil Disimpan!');
     }
 
-    
+
 
     /**
      * Display the specified resource.

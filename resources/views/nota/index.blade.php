@@ -134,7 +134,7 @@
         </div>
         <div class="w-full flex justify-end">
 
-            <a href="/kode_beli">
+            <a href="{{route('selesai')}}">
 
                 <button  style="background-color: #0095ff; padding: 0.25rem 0.75rem; color: #FFFFFF; font-weight: normal; border-radius: 0.25rem; margin-top: 0.25rem; margin-bottom: 0.5rem;">Selesai</button>
             </a>

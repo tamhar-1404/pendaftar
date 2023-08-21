@@ -52,7 +52,7 @@
 
 
         <nav id="main-navbar"
-            class=" sticky relative left-0  right-0 top-0 flex z-50  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start fixed kamu-tak-diajak"
+            class=" sticky relative left-0  right-0 top-0 flex z-20  flex-nowrap items-center justify-between bg-white py-[0.6rem] text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700 dark:bg-zinc-700 lg:flex-wrap lg:justify-start fixed kamu-tak-diajak"
             data-te-navbar-ref>
 
             <div class="flex w-full flex-wrap items-center justify-between px-4  kamu-tak-diajak">

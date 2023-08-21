@@ -162,7 +162,7 @@
                                         <span class="close absolute top-2 right-2 text-gray-600 cursor-pointer "
                                             onclick="closeModal()">&times;</span>
                                         <div class="modal-inner-content">
-                                            <img src="http://127.0.0.1:8000/siswa/images/hummasoft.png" class="w-1/2 md:w-40"
+                                            <img src="{{asset("siswa/images/hummasoft.png")}}" class="w-1/2 md:w-40"
                                                 alt=""> <br>
                                             <hr  class="w-full my-4"><br>
                                             <h3 class="font-semibold">Privacy Policy untuk Hummasoft Technology
