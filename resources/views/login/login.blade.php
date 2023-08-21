@@ -228,6 +228,9 @@
                                             <p>Dengan menggunakan situs web kami, Anda dengan ini menyetujui
                                                 Kebijakan
                                                 Privasi kami dan menyetujui syarat dan ketentuannya.</p> <br><br>
+                                                <div class="w-full flex justify-end items-end">
+                                                    <button type="button" class="border border-[#93c5fd] pb-2 px-2 py-1 hover:bg-blue-400 hover:text-white rounded" onclick="konfirmasi_button()">konfirmasi</button>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -346,6 +349,17 @@
     <div id="x-teleport-target"></div>
     <script>
         window.addEventListener("DOMContentLoaded", () => Alpine.start());
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        function konfirmasi_button(){
+            const rememberCheckbox = document.getElementById('remember-checkbox');
+            var modal = document.getElementById("myModal");
+            modal.classList.add("hidden");
+            document.body.style.overflow = "auto";
+            rememberCheckbox.checked = true;
+        }
     </script>
 </body>
 <!-- Mirrored from lineone.piniastudio.com/pages-login-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 May 2023 04:16:45 GMT -->
