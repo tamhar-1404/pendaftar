@@ -302,10 +302,68 @@ class AbsensiadminController extends Controller
     {
         //
     }
-    public function exportToDocxabsen()
+    public function exportToDocxabsen(Request $request)
 {
     // Mendapatkan data dari database (contoh menggunakan model User)
+
     $users = ApprovalIzin::all();
+
+    $data = $request->pencarian;
+    if($data !== null){
+        $datas = Siswa::Where('name', $data)->first();
+        $users = ApprovalIzin::where('siswa_id', $datas->id)->first();
+
+          // Membuat objek PhpWord
+      $phpWord = new PhpWord();
+
+      // Membuat halaman baru
+      $section = $phpWord->addSection();
+
+      // Judul tabel dengan border dan background abu-abu
+      $section->addText("Daftar Absensi Siswa", ['bold' => true, 'size' => 14, 'color' => '000000']);
+      $section->addTextBreak(1);
+      $titleStyle = array('borderSize' => 6, 'borderColor' => '000000', 'bgColor' => 'D3D3D3');
+      $section->addText(" ", $titleStyle);
+
+      // Membuat tabel
+      $table = $section->addTable();
+      $table->addRow();
+      $table->addCell(600, $titleStyle)->addText("No.", ['bold' => true, 'alignment' => 'center']);
+      $table->addCell(4000, $titleStyle)->addText("Nama", ['bold' => true, 'alignment' => 'center']);
+      $table->addCell(1500, $titleStyle)->addText("Tanggal", ['bold' => true, 'alignment' => 'center']);
+      $table->addCell(2500, $titleStyle)->addText("Sekolah", ['bold' => true, 'alignment' => 'center']);
+      $table->addCell(3000, $titleStyle)->addText("Keterangan", ['bold' => true, 'alignment' => 'center']);
+    //   $table->addCell(2000, $titleStyle)->addText("Bukti", ['bold' => true, 'alignment' => 'center']);
+
+      // Menambahkan data dari database ke tabel
+      $count = 1;
+
+          $table->addRow();
+          $table->addCell(600)->addText($count++, ['alignment' => 'center']);
+
+           // Menambahkan gambar berdasarkan nama file yang ada di kolom 'image'
+
+        //   $imagePath = 'storage/image/'. $users->image;
+          $table->addCell(4000)->addText($users->Siswa->name, ['alignment' => 'center']);
+          $table->addCell(1500)->addText($users->tanggal, ['alignment' => 'center']);
+          $table->addCell(2500)->addText($users->Siswa->sekolah, ['alignment' => 'center']);
+          $table->addCell(3000)->addText($users->keterangan, ['alignment' => 'center']);
+        //   if($imagePath == "storage/image/". $user->image){
+        //       $table->addCell(2000)->addImage($imagePath, ['width' => 150, 'height' => 150, 'alignment' => 'center']);
+        //   }else{
+        //       $table->addCell(2000)->addText('Gambar Tidak Ditemukan', ['alignment' => 'center']);
+        //   }
+
+
+      // Menyimpan dokumen sebagai file .docx
+      $filename = "database_export.docx";
+      $path = public_path('storage/image/' . $filename); // Sesuaikan dengan lokasi penyimpanan yang diinginkan
+      $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
+      $objWriter->save($path);
+
+      // Mengembalikan file dokumen untuk diunduh
+      return response()->download($path, $filename);
+    }
 
       // Membuat objek PhpWord
       $phpWord = new PhpWord();
@@ -423,15 +481,22 @@ class AbsensiadminController extends Controller
    return response()->download($path, $filename);
 }
 
-public function absen_pdf()  {
+public function absen_pdf(Request $request)  {
     set_time_limit(0);
+    $datas = $request->pencarian;
+    if($datas !== null)
+    {
+        $users = Siswa::where('name', $datas)->first();
+        $data = ApprovalIzin::where('siswa_id', $users->id)->get();
+        $pdf = Pdf::loadView('desain_pdf.absensi', ['data' => $data]);
+        return $pdf->download('absen_siswa.pdf');
+    }
     $data = ApprovalIzin::all();
     $pdf = Pdf::loadView('desain_pdf.absensi', ['data' => $data]);
     return $pdf->download('absen_siswa.pdf');
 }
 
 public function absen_pdf1(Request $request)  {
-    dd('awokawok');
     set_time_limit(0);
     $data = ApprovalIzin::where('nama' , $request->serch)->get;
     $pdf = Pdf::loadView('desain_pdf.absensi', ['data' => $data]);

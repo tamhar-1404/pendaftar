@@ -387,7 +387,7 @@
                                                             <div class="border px-2 cursor-pointer"
                                                                 @click="changePage(currentPage - 1)">
                                                                 <span class="text-gray-700">
-                                                                    << /span>
+                                                                    <</span>
                                                             </div>
                                                             <template x-for="item in pages">
                                                                 <div @click="changePage(item)"
@@ -632,7 +632,7 @@
                                                             <div class="border px-2 cursor-pointer"
                                                                 @click="changePage(currentPage - 1)">
                                                                 <span class="text-gray-700">
-                                                                    << /span>
+                                                                    <</span>
                                                             </div>
                                                             <template x-for="item in pages">
                                                                 <div @click="changePage(item)"
@@ -979,7 +979,7 @@
                                                             <div class="border px-2 cursor-pointer"
                                                                 @click="changePage(currentPage - 1)">
                                                                 <span class="text-gray-700">
-                                                                    << /span>
+                                                                    <</span>
                                                             </div>
                                                             <template x-for="item in pages">
                                                                 <div @click="changePage(item)"
@@ -1332,7 +1332,7 @@
                                                             <div class="border px-2 cursor-pointer"
                                                                 @click="changePage(currentPage - 1)">
                                                                 <span class="text-gray-700">
-                                                                    << /span>
+                                                                    <</span>
                                                             </div>
                                                             <template x-for="item in pages">
                                                                 <div @click="changePage(item)"
