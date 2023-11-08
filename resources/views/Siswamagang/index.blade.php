@@ -728,7 +728,6 @@
                             <div class="panel h-full xl:col-span-2 w-full ">
                                 <div class="mb-5 flex items-center dark:text-white-light">
                                     <h5 class="text-lg font-semibold">Jurnal</h5>
-
                                 </div>
                                 <div class="relative w-full  ">
                                     {{-- grafik --}}

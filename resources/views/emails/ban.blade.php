@@ -54,4 +54,4 @@
         <p>Mohon maaf anda telah dikeluarkan dan akun anda sudah tidak bisa digunakan, dengan alasan : {{ $data['alasan'] }}</p>
     </div>
 </body>
-</html>
+</html> 

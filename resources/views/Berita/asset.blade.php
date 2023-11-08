@@ -278,7 +278,6 @@
                             const button = document.getElementById("buttonLike" + beritaId);
                             button.classList.remove("text-blue-300");
                             button.classList.remove("border-blue-300");
-                            console.log("anjay");
                         }
                          console.log(beritaId);
                          console.log(response);

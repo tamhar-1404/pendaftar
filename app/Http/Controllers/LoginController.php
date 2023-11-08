@@ -136,18 +136,19 @@ public function store(Request $request)
 
     try {
         if($request->file('skck') === null){
+            // dd($request);
             $this->validate($request , [
                 'name'=>'required',
                 'tempat'=>'required',
-                'tanggal'=>'required',
+                'tanggal'=>'required|date',
                 'kelas'=>'required',
-                'nisn'=>'required:unique:users',
+                'nisn'=>'required|unique:users,nisn',
                 'jeniskelamin'=>'required',
                 'alamat'=>'required',
                 'sekolah'=>'required',
                 'jurusan'=>'required',
-                'magang_awal'=>'required',
-                'magang_akhir'=>'required',
+                'magang_awal'=>'required|date',
+                'magang_akhir'=>'required|date',
                 'foto_siswa'=>'required|image|mimes:jpg,jpeg,png',
                 'sp_diri'=>'required|image|mimes:jpg,jpeg,png',
                 'sp_ortu'=>'required|image|mimes:jpg,jpeg,png',
@@ -208,7 +209,7 @@ public function store(Request $request)
             return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
         }
     } catch (Exception $e) {
-        return back()->with('error', "Isi Form tidak valid");
+        return back()->with('error', $e->getMessage());
     }
 
     try {

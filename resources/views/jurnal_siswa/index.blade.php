@@ -598,7 +598,7 @@
                                                         <td class="whitespace-nowrap px-6 py-2">
                                                             {{ $items->siswa->name }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-6 py-2">{{ $items->tanggal }}
+                                                        <td class="whitespace-nowrap px-6 py-2">{{ \Carbon\Carbon::parse($items->created_at)->locale('id')->isoFormat('D MMMM Y ') }}
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 py-2">
                                                             {{ $items->siswa->sekolah }}
@@ -721,7 +721,7 @@
                                         }
                                     </script>
 
-                                    <input type="hidden" name="status" value="mengisi">
+
                                     <div class="flex justify-end">
                                     </div>
                                 </div>
@@ -803,7 +803,7 @@
                                     </p>
                                     @if ($items->kegiatan != 'Tidak mengisi' && $items->kegiatan != 'Kosong')
                                         <img id="preview-image" src="{{ asset('storage/image/' . $modal->image) }}"
-                                            class="w-64 h-64" alt="" srcset="">
+                                            class="w-full h-auto" alt="" srcset="">
                                     @else
                                         {{ $items->image }}
                                     @endif

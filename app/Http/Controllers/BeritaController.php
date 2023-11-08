@@ -90,7 +90,7 @@ class BeritaController extends Controller
      */
     public function destroy(Blog $blog )
     {
-        $blog->delete();
-        return redirect()->back();
+            $blog->delete();
+            return redirect()->back();
     }
 }

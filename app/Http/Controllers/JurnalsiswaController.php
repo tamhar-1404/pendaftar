@@ -81,7 +81,7 @@ class JurnalsiswaController extends Controller
             $hari = Carbon::now()->format('Y-m-d');
             $jam = Carbon::now()->format('H-i');
             // dd($jam > '16-00');
-            if($jam < '23:59'){
+            if($jam < '22:00'){
                 $data = Jurnalsiswa::where('siswa_id', $siswa_id)->where('tanggal', $hari)->exists();
                 if(!$data){
                     try {
@@ -160,7 +160,7 @@ class JurnalsiswaController extends Controller
         $oldImage = $jurnalSiswa->image;
 
         $this->validate($request, [
-            'kegiatan' => 'required|max:255',
+            'kegiatan' => 'required',
             'image' => 'image|mimes:png,jpg,jpeg', // Validasi gambar opsional
         ], [
             'kegiatan.max' => 'Jurnal maksimal 255 karakter',

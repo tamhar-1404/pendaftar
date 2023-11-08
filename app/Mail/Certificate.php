@@ -23,7 +23,7 @@ class Certificate extends Mailable
     {
         //
     }
-
+ 
     /**
      * Get the message envelope.
      *
