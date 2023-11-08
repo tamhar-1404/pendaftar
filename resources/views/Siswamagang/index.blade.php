@@ -545,14 +545,31 @@
             <div class="animate__animated p-0" :class="[$store.app.animation]">
                 <!-- start main content section -->
                 <div x-data="sales">
-                    <div class="flex justify-between p-2 lg:p-6">
-                        <div class="justify-start ">
-
-                            <h1>Dashboard</h1>
+                    <div class="flex justify-between lg:p-6">
+                        <div class=" flex justify-start">
+                            <h1 class="text-bold fs-6">Dashboard</h1>
                         </div>
-                        <div class="flex justify-end font-semibold bg-blue-400 text-white px-4 py-1 rounded">
-                            <h1>Saldo anda : <span id="a">Rp
-                                    {{ number_format($user->saldo ? $user->saldo : 0, 0, ',', '.') }}</span></h1>
+                        <div class="flex justify-header gap-3">
+                            <div class="">
+                                @if (auth()->user()->Siswa->role == 'siswa')
+                                <form action="{{ route('absen.index') }}" method="post" id="absenform">
+                                    @csrf
+                                    {{-- <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
+                                    <input type="hidden" name="sekolah" value="{{ Auth::user()->sekolah }}">
+                                    <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}" />
+                                    <input type="hidden" id="waktu" name="jam" value="{{ date('H:i') }}" />
+                                    <input type="hidden" name="keterangan" value="Hadir"> --}}
+                                    <button type="submit"
+                                        class=" button_absen border border-green-500 px-3 py-2 rounded-lg text-green-500  font-bold"
+                                        id="btnabsen">Absen</button>
+                                </form>
+                            @endif
+                            </div>
+                            <div class="flex justify-end font-semibold bg-blue-400 text-white  px-4 py-1 rounded">
+                                <h1 class="mt-1">Saldo anda : <span id="a">Rp
+                                        {{ number_format($user->saldo ? $user->saldo : 0, 0, ',', '.') }}</span></h1>
+                                        
+                            </div>
                         </div>
                     </div>
                     {{--  modal  --}}
