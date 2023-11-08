@@ -86,7 +86,7 @@ Route::get('/selesai', [LoginController::class, 'selesai'])->name('selesai');
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
-
+        Route::post('absen' ,[AbsensiSiswaController::class ,'absen'])->name('absen.index');
         Route::get('/grafik_absen_docx', [AbsensiadminController::class, 'grafik_absen_docx'])->name('grafik_absen_docx');
         Route::get('/export-to-docx-absen', [AbsensiadminController::class, 'exportToDocxabsen'])->name('exportToDocxabsen');
         Route::get('/absensi_pdf_admin', [AbsensiadminController::class, 'absen_pdf'])->name('absensi_pdf_admin');

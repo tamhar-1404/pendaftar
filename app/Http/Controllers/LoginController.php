@@ -142,7 +142,7 @@ public function store(Request $request)
                 'tempat'=>'required',
                 'tanggal'=>'required|date',
                 'kelas'=>'required',
-                'nisn'=>'required|unique:users,nisn',
+                'nisn'=>'required|unique:siswas,nisn',
                 'jeniskelamin'=>'required',
                 'alamat'=>'required',
                 'sekolah'=>'required',

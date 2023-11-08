@@ -86,7 +86,7 @@ class JurnalsiswaController extends Controller
                 if(!$data){
                     try {
                         $request->validate([
-                            'kegiatan' => "required|max:255",
+                            'kegiatan' => "required",
                             'image' => 'required|image|mimes:png,jpg,jpeg'
                         ],[
                             'kegiatan.max' => 'jurnal maksimal 255 karakter'
@@ -157,6 +157,7 @@ class JurnalsiswaController extends Controller
                 'error' => 'Data jurnal tidak ditemukan'
             ]);
         }
+        // if($jurnalSiswa->siswa_id != Auth()->user()->id)
         $oldImage = $jurnalSiswa->image;
 
         $this->validate($request, [

@@ -159,13 +159,19 @@ class ProfilsiswaController extends Controller
         if ($request->has('foto')) {
             $request->validate([
                 'foto' => 'required|image|mimes:png,jpg,jpeg',
-                'email' => 'required|email|unique:siswas,email,' . $siswa_id . '|ends_with:gmail.com',
+                'email' => 'required|email|unique:siswas,email,' . $siswa_id . '|ends_with:email.com',
                 'no' => 'required',
                 'alamat' => 'required',
             ], [
-                'foto.required' => 'Foto tidak boleh kosong',
-                'foto.image' => 'Foto hanya boleh gambar',
-                'foto.mimes' => 'Foto hanya jpg,jpeg,png',
+                'foto.required' => 'Kolom foto tidak boleh kosong.',
+                'foto.image' => 'Kolom foto hanya boleh berisi gambar.',
+                'foto.mimes' => 'Format gambar yang diperbolehkan hanya jpg, jpeg, dan png.',
+                'email.ends_with' => 'Alamat email harus diakhiri dengan "email.com".',
+                'email.required' => 'Kolom email tidak boleh kosong.',
+                'email.email' => 'Format email tidak valid.',
+                'email.unique' => 'Alamat email ini sudah digunakan.',
+                'no.required' => 'Kolom nomor tidak boleh kosong.',
+                'alamat.required' => 'Kolom alamat tidak boleh kosong.',
             ]);
             $old_foto = Siswa::find($siswa_id)->foto_siswa;
             if (File::exists(public_path('storage/Siswa/'.$old_foto))) {
