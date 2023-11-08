@@ -157,7 +157,11 @@ class JurnalsiswaController extends Controller
                 'error' => 'Data jurnal tidak ditemukan'
             ]);
         }
-        // if($jurnalSiswa->siswa_id != Auth()->user()->id)
+        if($jurnalSiswa->siswa_id != Auth()->user()->siswa_id){
+            return response()->json([
+                'error' => 'Data jurnal tidak ditemukan'
+            ]);
+        }
         $oldImage = $jurnalSiswa->image;
 
         $this->validate($request, [
