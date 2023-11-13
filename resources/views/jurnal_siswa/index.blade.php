@@ -418,13 +418,20 @@
                         @php
                             use Carbon\Carbon;
                         @endphp
-                        <div class="flex justify-between mb-14">
+                        <div class="flex justify-between mb-9">
                             <div class="mx-4 mb-4">
-                                <div class=" w-[100%] flex justify-center border place-items-center rounded border-blue-400 bg-[#008ffb]">
+                                <div >
                                     <div class="px-2">
-                                        <p class="text-xl font-bold my-1 kamu-tak-diajak text-white"><span class=" text-white">Hari ini
-                                                adalah : </span>
-                                            {{ Carbon::now()->format('d F Y') }}</p>
+                                        <div class="flex justify-header gap-3">
+                                            <div class="">
+                                                <p class="text-xl font-bold my-1 kamu-tak-diajak text-red-600">Hari ini
+                                                    adalah : </p>
+                                            </div>
+                                            <div class="">
+                                                <p class="text-xl font-bold my-1 kamu-tak-diaja">
+                                                    {{ Carbon::now()->format('d F Y') }}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -511,10 +518,11 @@
 
                         <div class="kamu-tak-diajak md:flex md:justify-between mx-4 items-center">
                             @if (Auth::user()->Siswa->role == 'siswa')
+                            <div class="flex justify-between">
                                 <button data-modal-target="authentication-modal"
-                                    data-modal-toggle="authentication-modal"
-                                    class="flex gap-2 h-10 items-center w-full md:w-[13%] text-white bg-[#008ffb] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-[#008ffb] dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                                    @click="exportTable('json')">
+                                        data-modal-toggle="authentication-modal"
+                                        class="flex gap-2 h-10 items-center w-full text-white bg-[#008ffb] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-[#008ffb] dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                                        @click="exportTable('json')">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -524,6 +532,7 @@
                                         Tambah
                                     </p>
                                 </button>
+                            </div>
                             @endif
 
                             {{-- modal --}}
@@ -578,7 +587,7 @@
                             {{-- end modal --}}
                             <form  method="get" class="flex justify-end">
                                 <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-3 gap-2 w-full">
-                                    <div class="mt-1">
+                                    <div class="mt-1 ">
                                         Tanggal Awal <br>
                                         <label class="relative flex">
                                           <input
