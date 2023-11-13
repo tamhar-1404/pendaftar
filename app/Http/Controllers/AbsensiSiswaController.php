@@ -221,7 +221,7 @@ class AbsensiSiswaController extends Controller
             }elseif ($currentDay === 'Saturday' && $currentDay === 'Sunday'){
                 return redirect()->back()->with('error', 'Anda tidak bisa absen pada hari Sabtu & Minggu');
             }
-            return redirect()->route('absensi_siswa.index')->with('success', 'anda berhasil absen');
+            return redirect()->back()->with('success', 'anda berhasil absen');
         }
     }
 
