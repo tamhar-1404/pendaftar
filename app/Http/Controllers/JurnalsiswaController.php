@@ -34,10 +34,10 @@ class JurnalsiswaController extends Controller
      */
     public function index(Request $request)
     {
-        $hariIni = Carbon::now()->format('l');
 
-        $date1 = $hariIni;
-        $date2 = $hariIni;
+
+
+        $hariIni = Carbon::now()->format('l');
 
     if ($request->has('cari')) {
         $keyword = $request->cari;
@@ -50,17 +50,23 @@ class JurnalsiswaController extends Controller
 
         $item->appends(['cari' => $keyword]);
     }else if($request->has('date1') && $request->has('date2')){
-        $date1 = $request->date1;
-        $date2 = $request->date2;
-        if($date2 < $date1){
-            // dd("awokaowka");
-            return redirect()->back()->with('error', 'tanggal harus valid');
+        if($request->date1 != null && $request->date2 != null){
+            $date1 = $request->date1;
+            $date2 = $request->date2;
+            if($date2 < $date1){
+                // dd("awokaowka");
+                return redirect()->back()->with('error', 'tanggal harus valid');
+            }
+            $keyword = $date1 ."&&" .$date2;
+            // dd($keyword);
+            $item = Jurnalsiswa::WhereBetween('created_at', [$date1, $date2])->where('siswa_id', Auth()->user()->siswa_id)->latest('created_at')->paginate(5)->withQueryString();
+            $item->appends(['cari' => $keyword]);
+        }else{
+            return redirect()->back()->with('error','Tanggal tidak boleh kosong');
         }
-        $keyword = $date1 ."&&" .$date2;
-        // dd($keyword);
-        $item = Jurnalsiswa::WhereBetween('created_at', [$date1, $date2])->where('siswa_id', Auth()->user()->siswa_id)->latest('created_at')->paginate(5)->withQueryString();
-        $item->appends(['cari' => $keyword]);
     } else {
+        $date1 = $hariIni;
+        $date2 = $hariIni;
         $item = Jurnalsiswa::where('siswa_id', Auth::user()->Siswa->id)->latest('created_at')->paginate(5);
     }
 
