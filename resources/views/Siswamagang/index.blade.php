@@ -552,7 +552,7 @@
                         <div class="flex justify-header gap-3">
                             <div class="">
                                 @if (auth()->user()->Siswa->role == 'siswa')
-                                <form action="{{ route('absen.index') }}" method="post" id="absenform">
+                                <form action="{{ route('absensi_siswa.store') }}" method="post" id="absenform">
                                     @csrf
                                     {{-- <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
                                     <input type="hidden" name="sekolah" value="{{ Auth::user()->sekolah }}">
