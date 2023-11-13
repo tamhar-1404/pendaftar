@@ -599,7 +599,7 @@
 
                                             </tbody>
                                 </table>
-                                {{ $siswas->appends(['cari' => request('cari')])->links() }}
+                                {{ $siswas->appends(['cari' => request('cari')])->onEachSide(0)->links() }}
                             </div>
                         </div>
                     </div>

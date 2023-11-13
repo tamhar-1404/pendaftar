@@ -622,7 +622,7 @@
 
                                         </tbody>
                             </table>
-                            {{ $TopUp->appends(['cari' => request('cari')])->links() }}
+                            {{ $TopUp->appends(['cari' => request('cari')])->onEachSide(0)->links() }}
                         </div>
                     </div>
                 </div>
