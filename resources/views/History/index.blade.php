@@ -526,7 +526,7 @@
                             <span>history transaksi /<span class="text-[#00B7FF]">
                                     {{ Auth::user()->name }}</span></span>
                         </div>
-                        <label class="relative hidden sm:flex">
+                        {{-- <label class="relative hidden sm:flex">
                             <form action="">
                                 <label class="relative hidden sm:flex">
                                     <input
@@ -535,7 +535,7 @@
                                         value="{{ request('cari') }}" />
                                 </label>
                             </form>
-                        </label>
+                        </label> --}}
                     </div>
                     @error('tanggal')
                         <div class="text-danger">Anda telah mengisi jurnal pada hari ini</div>

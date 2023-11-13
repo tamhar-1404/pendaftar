@@ -53,16 +53,16 @@ class BarangController extends Controller
     {
         $this->validate($request, [
             'nama' => 'required|max:225',
-            'harga' => 'required|max:225',
+            'harga' => 'required|max:225|numeric',
             'deskripsi' => 'required|max:225',
             'kategori' => 'required',
             'foto' => 'required|image|mimes:png,jpg,jpeg',
             'kode' => 'required|unique:barangs,kode|max:225',
         ],[
-            'nama.max' => 'nama maksimal 225 karakter', 
-            'harga.max' => 'harga maksimal 225 karakter', 
-            'deskripsi.max' => 'deskripsi maksimal 225 karakter', 
-            'kode.max' => 'kode maksimal 225 karakter', 
+            'nama.max' => 'nama maksimal 225 karakter',
+            'harga.max' => 'harga maksimal 225 karakter',
+            'deskripsi.max' => 'deskripsi maksimal 225 karakter',
+            'kode.max' => 'kode maksimal 225 karakter',
         ]);
 
         try {
@@ -123,14 +123,14 @@ class BarangController extends Controller
                     'nama' => 'required|max:225',
                     'foto' => 'required|image|mimes:png,jpg,jpeg',
                     'kode' => 'required|max:225|unique:barangs,kode,' . $barang->id,
-                    'harga' => 'required|max:225',
+                    'harga' => 'required|max:225|numeric',
                     'kategori' => 'required',
                     'deskripsi' => 'required|max:225'
                 ],[
-                    'nama.max' => 'nama maksimal 225 karakter', 
-                    'harga.max' => 'harga maksimal 225 karakter', 
-                    'deskripsi.max' => 'deskripsi maksimal 225 karakter', 
-                    'kode.max' => 'kode maksimal 225 karakter', 
+                    'nama.max' => 'nama maksimal 225 karakter',
+                    'harga.max' => 'harga maksimal 225 karakter',
+                    'deskripsi.max' => 'deskripsi maksimal 225 karakter',
+                    'kode.max' => 'kode maksimal 225 karakter',
                 ]);
                 $image = $request->file('foto');
                 $image->storeAs('public/pendataanbarang/', $image->hashName());
@@ -150,14 +150,14 @@ class BarangController extends Controller
                 $this->validate($request, [
                     'nama' => 'required|max:225',
                     'kode' => 'required|max:225|unique:barangs,kode,' . $barang->id,
-                    'harga' => 'required|max:225',
+                    'harga' => 'required|max:225|numeric',
                     'kategori' => 'required',
                     'deskripsi' => 'required|max:225'
                 ],[
-                    'nama.max' => 'nama maksimal 225 karakter', 
-                    'harga.max' => 'harga maksimal 225 karakter', 
-                    'deskripsi.max' => 'deskripsi maksimal 225 karakter', 
-                    'kode.max' => 'kode maksimal 225 karakter', 
+                    'nama.max' => 'nama maksimal 225 karakter',
+                    'harga.max' => 'harga maksimal 225 karakter',
+                    'deskripsi.max' => 'deskripsi maksimal 225 karakter',
+                    'kode.max' => 'kode maksimal 225 karakter',
                 ]);
                 $barang->update([
                     'nama' => $request->nama,
