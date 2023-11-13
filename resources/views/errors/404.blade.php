@@ -31,7 +31,7 @@
                     <p class="detail-text"><br> Halaman yang anda cari tidak di temukan</p>
 
                     <div class="back-btn">
-                        <a href="{{ route('Siswamagang.index') }}" class="btn">Kembali ke halaman</a>
+                        <a href="{{ route('/') }}" class="btn">Kembali ke halaman</a>
                     </div>
                 </div></div>
             </div>
