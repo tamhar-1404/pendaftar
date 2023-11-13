@@ -282,6 +282,7 @@ public function exportToDocx()
     $section->addText("Daftar Jurnal Siswa", ['bold' => true, 'size' => 14, 'color' => '000000']);
     $section->addTextBreak(1);
     $titleStyle = array('borderSize' => 6, 'borderColor' => '000000', 'bgColor' => 'D3D3D3');
+    $titleStyleBody = array('borderSize' => 6, 'borderColor' => '000000', 'bgColor' => 'D3D3D3');
     $section->addText(" ", $titleStyle);
 
     // Membuat tabel
@@ -298,7 +299,7 @@ public function exportToDocx()
     $count = 1;
     foreach ($users as $user) {
         $table->addRow();
-        $table->addCell(600)->addText($count++, ['alignment' => 'center']);
+        $table->addCell(600, $titleStyleBody)->addText($count++, ['alignment' => 'center']);
 
          // Menambahkan gambar berdasarkan nama file yang ada di kolom 'image'
 
@@ -307,14 +308,14 @@ public function exportToDocx()
 
 
 
-        $table->addCell(4000)->addText($user->siswa->name, ['alignment' => 'center']);
-        $table->addCell(1500)->addText($user->tanggal, ['alignment' => 'center']);
-        $table->addCell(2500)->addText($user->siswa->sekolah, ['alignment' => 'center']);
-        $table->addCell(3000)->addText($user->kegiatan, ['alignment' => 'center']);
+        $table->addCell(4000,  $titleStyleBody)->addText($user->siswa->name, ['alignment' => 'center']);
+        $table->addCell(1500,  $titleStyleBody)->addText($user->tanggal, ['alignment' => 'center']);
+        $table->addCell(2500,  $titleStyleBody)->addText($user->siswa->sekolah, ['alignment' => 'center']);
+        $table->addCell(3000,  $titleStyleBody)->addText($user->kegiatan, ['alignment' => 'center']);
         if (file_exists($imagePath)) {
-            $table->addCell(2000)->addImage($imagePath, ['width' => 150, 'height' => 150, 'alignment' => 'center']);
+            $table->addCell(2000,  $titleStyleBody)->addImage($imagePath, ['width' => 150, 'height' => 150, 'alignment' => 'center']);
         } else {
-            $table->addCell(2000)->addText('Gambar Tidak Ditemukan', ['alignment' => 'center']);
+            $table->addCell(2000,  $titleStyleBody)->addText('Gambar Tidak Ditemukan', ['alignment' => 'center']);
         }
 
     }
