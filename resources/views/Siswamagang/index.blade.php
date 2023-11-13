@@ -356,7 +356,7 @@
                             <span>Menu</span>
                         </h2>
 
-                        <li class="nav-item">
+                        <li class="nav-item ">
                             <ul class="flex-col justify-between w-full">
                                 <div>
                                     <li class="menu nav-item relative">
@@ -545,7 +545,7 @@
             <div class="animate__animated p-0" :class="[$store.app.animation]">
                 <!-- start main content section -->
                 <div x-data="sales">
-                    <div class="flex justify-between lg:p-6">
+                    <div class="flex justify-between p-5 lg:p-6">
                         <div class=" flex justify-start">
                             <h1 class="text-bold fs-6">Dashboard</h1>
                         </div>
@@ -568,7 +568,7 @@
                             <div class="flex justify-end font-semibold bg-blue-400 text-white  px-4 py-1 rounded">
                                 <h1 class="mt-1">Saldo anda : <span id="a">Rp
                                         {{ number_format($user->saldo ? $user->saldo : 0, 0, ',', '.') }}</span></h1>
-                                        
+
                             </div>
                         </div>
                     </div>

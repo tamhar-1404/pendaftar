@@ -509,11 +509,11 @@
                             </div>
                         </div>
 
-                        <div class="kamu-tak-diajak flex justify-between mx-4 items-center">
+                        <div class="kamu-tak-diajak md:flex md:justify-between mx-4 items-center">
                             @if (Auth::user()->Siswa->role == 'siswa')
                                 <button data-modal-target="authentication-modal"
                                     data-modal-toggle="authentication-modal"
-                                    class="flex gap-2 h-10 items-center  text-white bg-[#008ffb] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-[#008ffb] dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                                    class="flex gap-2 h-10 items-center w-full md:w-[13%] text-white bg-[#008ffb] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-[#008ffb] dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                                     @click="exportTable('json')">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -577,7 +577,7 @@
                             </div>
                             {{-- end modal --}}
                             <form  method="get" class="flex justify-end">
-                                <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-3 gap-2 lg:w-full">
+                                <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-3 gap-2 w-full">
                                     <div class="mt-1">
                                         Tanggal Awal <br>
                                         <label class="relative flex">
@@ -603,7 +603,7 @@
                                         </label>
                                     </div>
                                     <div class="flex items-end pb-2 ">
-                                        <button type="submit" class="border border-[#008ffb] text-lg  mt-1 p-0 rounded font-bold text-white bg-[#008ffb] w-full" style="height:60%">Cari</button>
+                                        <button type="submit"  class="border border-[#008ffb] text-lg  mt-1 p-0 rounded font-bold text-white bg-[#008ffb] w-full md:h-[60%]" >Cari</button>
                                     </div>
                                 </div>
                             </form>
