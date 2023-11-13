@@ -65,6 +65,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
+
     <style>
         /* Menyembunyikan tombol cetak saat mencetak */
         @media print {
@@ -417,78 +418,17 @@
                         @php
                             use Carbon\Carbon;
                         @endphp
-                        <p class="text-xl font-semibold mb-4 kamu-tak-diajak"><span class="text-red-600">Hari ini
-                                adalah : </span>
-                            {{ Carbon::now()->format('d F Y') }}</p>
-
-                        <div class="kamu-tak-diajak flex justify-between items-center">
-                            @if (Auth::user()->Siswa->role == 'siswa')
-                                <button data-modal-target="authentication-modal"
-                                    data-modal-toggle="authentication-modal"
-                                    class="flex gap-2 h-10 items-center  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                                    @click="exportTable('json')">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 4.5v15m7.5-7.5h-15" />
-                                    </svg>
-                                    <p class="kamu-tak-diajak">
-                                        Tambah
-                                    </p>
-                                </button>
-                            @endif
-                            {{-- modal --}}
-
-                            <!-- Main modal -->
-                            <div id="authentication-modal" tabindex="-1" aria-hidden="true"
-                                class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                <div class="relative w-full max-w-md max-h-full">
-                                    <!-- Modal content -->
-                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                        <button type="button"
-                                            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                            data-modal-hide="authentication-modal">
-                                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
-                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                            <span class="sr-only">Close modal</span>
-                                        </button>
-                                        <div class="px-6 py-6 lg:px-8">
-                                            <h3 class="mb-4 text-base font-medium text-gray-900 dark:text-white">Jurnal
-                                            </h3>
-                                            <form class="space-y-6" action="{{ route('jurnal_siswa.store') }}"
-                                                method="post" enctype="multipart/form-data">
-                                                @csrf
-
-                                                <div>
-                                                    <label for="kegiatan"
-                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
-                                                    <textarea name="kegiatan" class="w-full rounded-md" placeholder="kegiatan yang kamu lakukan" id=""
-                                                        cols="" rows="5"></textarea>
-                                                </div>
-                                                <div>
-                                                    <label for="bukti"
-                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti</label>
-                                                    <input type="file" name="image" id=""
-                                                        placeholder=""
-                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                        required>
-                                                </div>
-                                                <div class="flex justify-end">
-                                                    <button type="submit"
-                                                        class="border text-blue-400 bg-white font-semibold border-blue-400  py-1.5 px-3 text-sm rounded-md hover:bg-blue-400 hover:text-white">Kirim</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                        <div class="flex justify-between mb-14">
+                            <div class="mx-4 mb-4">
+                                <div class=" w-[100%] flex justify-center border place-items-center rounded border-blue-400 bg-[#008ffb]">
+                                    <div class="px-2">
+                                        <p class="text-xl font-bold my-1 kamu-tak-diajak text-white"><span class=" text-white">Hari ini
+                                                adalah : </span>
+                                            {{ Carbon::now()->format('d F Y') }}</p>
                                     </div>
                                 </div>
                             </div>
-                            {{-- end modal --}}
-
-                            <div class="kamu-tak-diajak mb-5 flex flex-wrap  mt-5 items-center">
+                            <div class="kamu-tak-diajak  flex flex-wrap   items-center">
                                 {{-- serch dan filter --}}
                                 <div class="kamu-tak-diajak flex justify-start items-center">
                                     {{-- serch --}}
@@ -568,6 +508,108 @@
 
                             </div>
                         </div>
+
+                        <div class="kamu-tak-diajak flex justify-between mx-4 items-center">
+                            @if (Auth::user()->Siswa->role == 'siswa')
+                                <button data-modal-target="authentication-modal"
+                                    data-modal-toggle="authentication-modal"
+                                    class="flex gap-2 h-10 items-center  text-white bg-[#008ffb] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-[#008ffb] dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                                    @click="exportTable('json')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                    <p class="kamu-tak-diajak">
+                                        Tambah
+                                    </p>
+                                </button>
+                            @endif
+
+                            {{-- modal --}}
+
+                            <!-- Main modal -->
+                            <div id="authentication-modal" tabindex="-1" aria-hidden="true"
+                                class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                <div class="relative w-full max-w-md max-h-full">
+                                    <!-- Modal content -->
+                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                        <button type="button"
+                                            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                            data-modal-hide="authentication-modal">
+                                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
+                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                            <span class="sr-only">Close modal</span>
+                                        </button>
+                                        <div class="px-6 py-6 lg:px-8">
+                                            <h2 class="mb-4 text-base font-medium text-gray-900 dark:text-white">Tambah Jurnal
+                                            </h2>
+                                            <form class="space-y-6" action="{{ route('jurnal_siswa.store') }}"
+                                                method="post" enctype="multipart/form-data">
+                                                @csrf
+
+                                                <div>
+                                                    <label for="kegiatan"
+                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
+                                                    <textarea name="kegiatan" class="w-full rounded-md" placeholder="kegiatan yang kamu lakukan" id=""
+                                                        cols="" rows="5"></textarea>
+                                                </div>
+                                                <div>
+                                                    <label for="bukti"
+                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti</label>
+                                                    <input type="file" name="image" id=""
+                                                        placeholder=""
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white "
+                                                        required>
+                                                </div>
+                                                <div class="flex justify-end">
+                                                    <button type="submit"
+                                                        class="border text-blue-400 bg-white font-semibold border-blue-400  py-1.5 px-3 text-sm rounded-md hover:bg-blue-400 hover:text-white">Kirim</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- end modal --}}
+                            <form  method="get" class="flex justify-end">
+                                <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-3 gap-2 lg:w-full">
+                                    <div class="mt-1">
+                                        Tanggal Awal <br>
+                                        <label class="relative flex">
+                                          <input
+                                            class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                            placeholder="Choose date..." name="date1"
+                                            type="date" value="{{$date1}}"
+                                          />
+                                        </label>
+                                    </div>
+                                    <div class="mt-1">
+                                        Tanggal Akhir <br>
+                                        <label class="relative flex">
+                                          <input
+                                            class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                            placeholder="Choose date..." name="date2"
+                                            type="date" value="{{$date2}}"
+                                          />
+                                          <span
+                                            class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent"
+                                          >
+                                          </span>
+                                        </label>
+                                    </div>
+                                    <div class="flex items-end pb-2 ">
+                                        <button type="submit" class="border border-[#008ffb] text-lg  mt-1 p-0 rounded font-bold text-white bg-[#008ffb] w-full" style="height:60%">Cari</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
 
                         {{-- tabel --}}
 
@@ -655,7 +697,7 @@
                                                 @endforelse
                                             </tbody>
                                         </table>
-                                        {{ $item->appends(['cari' => request('cari')])->links() }}
+                                        {{ $item->appends(['cari' => request('cari')])->onEachSide(0)->links() }}
                                     </div>
                                 </div>
                             </div>

@@ -360,7 +360,7 @@
                                     <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                                         Harga
                                     </p>
-                                    <input type="text" name="harga"
+                                    <input type="number" name="harga"
                                         class="border border-gray-400 w-full py-1 px-2 rounded"
                                         value="{{ $barang->harga }}" id="">
                                 </div>

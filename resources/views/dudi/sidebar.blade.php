@@ -349,7 +349,7 @@
                 chart: {
                     type: 'bar',
                     responsive: true,
-                    width: '95%',
+                    width: '100%',
                     height: 'auto'
                 },
                 plotOptions: {

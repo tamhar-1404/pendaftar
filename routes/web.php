@@ -29,7 +29,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\OpnameController;
 use App\Http\Controllers\LaporanPiketController;
 use App\Http\Controllers\RestockController;
-use App\Http\Controllers\transaksirfidController;
+use App\Http\Controllers\TransaksirfidController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProfilsiswaController;
@@ -74,8 +74,8 @@ Route::resource('/login', App\Http\Controllers\LoginController::class)->middlewa
 Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
 Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
 
-Route::get('/kode_beli', [transaksirfidController::class, 'index'])->name('kode_beli');
-Route::post('/postrfid', [transaksiController::class, 'postbeli'])->name('postrfid');
+Route::get('/kode_beli', [TransaksirfidController::class, 'index'])->name('kode_beli');
+Route::post('/postrfid', [TransaksiController::class, 'postbeli'])->name('postrfid');
 Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
 Route::resource('/transaksi', App\Http\Controllers\TransaksiController::class);
 
@@ -86,7 +86,7 @@ Route::get('/selesai', [LoginController::class, 'selesai'])->name('selesai');
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
-
+        Route::post('absen' ,[AbsensiSiswaController::class ,'absen'])->name('absen.index');
         Route::get('/grafik_absen_docx', [AbsensiadminController::class, 'grafik_absen_docx'])->name('grafik_absen_docx');
         Route::get('/export-to-docx-absen', [AbsensiadminController::class, 'exportToDocxabsen'])->name('exportToDocxabsen');
         Route::get('/absensi_pdf_admin', [AbsensiadminController::class, 'absen_pdf'])->name('absensi_pdf_admin');

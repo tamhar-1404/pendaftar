@@ -36,6 +36,8 @@ class JurnalsiswaController extends Controller
     {
         $hariIni = Carbon::now()->format('l');
 
+        $date1 = $hariIni;
+        $date2 = $hariIni;
 
     if ($request->has('cari')) {
         $keyword = $request->cari;
@@ -47,11 +49,22 @@ class JurnalsiswaController extends Controller
             })->latest('created_at')->paginate(5);
 
         $item->appends(['cari' => $keyword]);
+    }else if($request->has('date1') && $request->has('date2')){
+        $date1 = $request->date1;
+        $date2 = $request->date2;
+        if($date2 < $date1){
+            // dd("awokaowka");
+            return redirect()->back()->with('error', 'tanggal harus valid');
+        }
+        $keyword = $date1 ."&&" .$date2;
+        // dd($keyword);
+        $item = Jurnalsiswa::WhereBetween('created_at', [$date1, $date2])->where('siswa_id', Auth()->user()->siswa_id)->latest('created_at')->paginate(5)->withQueryString();
+        $item->appends(['cari' => $keyword]);
     } else {
         $item = Jurnalsiswa::where('siswa_id', Auth::user()->Siswa->id)->latest('created_at')->paginate(5);
     }
 
-    return view('jurnal_siswa.index', compact('item'));
+    return view('jurnal_siswa.index', compact('item', 'date1','date2'));
 }
 
 
@@ -86,7 +99,7 @@ class JurnalsiswaController extends Controller
                 if(!$data){
                     try {
                         $request->validate([
-                            'kegiatan' => "required|max:255",
+                            'kegiatan' => "required",
                             'image' => 'required|image|mimes:png,jpg,jpeg'
                         ],[
                             'kegiatan.max' => 'jurnal maksimal 255 karakter'
@@ -153,6 +166,11 @@ class JurnalsiswaController extends Controller
         $id = $request->id;
         $jurnalSiswa = Jurnalsiswa::find($id);
         if (!$jurnalSiswa) {
+            return response()->json([
+                'error' => 'Data jurnal tidak ditemukan'
+            ]);
+        }
+        if($jurnalSiswa->siswa_id != Auth()->user()->siswa_id){
             return response()->json([
                 'error' => 'Data jurnal tidak ditemukan'
             ]);
