@@ -24,7 +24,7 @@ class PiketController extends Controller
          ->where('role', 'siswa')
          ->get()->toArray();
 
-        return $siswa;
+        return response()->json(['siswa' => $siswa]);
     }
     /**
      * Display a listing of the resource.
@@ -300,10 +300,17 @@ class PiketController extends Controller
      * @param  \App\Models\piket  $piket
      * @return \Illuminate\Http\Response
      */
-    public function edit(piket $piket)
-    {
-        //
-    }
+        public function list()
+        {
+            $Cek = Anggota_piket::pluck('siswa_id')->toArray();
+
+            $siswa = Siswa::whereNotIn('id', $Cek)->where('role', 'siswa')->latest()->get();
+            // dd($siswa);
+
+            return response()->json(['siswa' => $siswa]);
+
+
+        }
 
     /**
      * Update the specified resource in storage.

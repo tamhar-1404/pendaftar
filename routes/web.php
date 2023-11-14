@@ -49,7 +49,6 @@ use App\Http\Controllers\ProfilsiswaController;
 Route::post('/find_rfid', [App\Http\Controllers\GetuserController::class, 'find_rfid'])->name('find_rfid');
 Route::post('/check_password', [App\Http\Controllers\GetuserController::class, 'check_password'])->name('check_password');
 Route::post('/cari_barang', [App\Http\Controllers\TransaksiController::class, 'cari'])->name('cari_barang');
-Route::get('/cari_siswa', [App\Http\Controllers\PiketController::class, 'cari'])->name('cari_siswa');
 Route::post('/sedikit', [App\Http\Controllers\PiketController::class, 'dikit'])->name('sedikit');
 Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
 
@@ -86,6 +85,7 @@ Route::get('/selesai', [LoginController::class, 'selesai'])->name('selesai');
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
+        Route::get('/cari_siswa', [App\Http\Controllers\PiketController::class, 'cari'])->name('cari_siswa');
         Route::post('absen' ,[AbsensiSiswaController::class ,'absen'])->name('absen.index');
         Route::get('/grafik_absen_docx', [AbsensiadminController::class, 'grafik_absen_docx'])->name('grafik_absen_docx');
         Route::get('/export-to-docx-absen', [AbsensiadminController::class, 'exportToDocxabsen'])->name('exportToDocxabsen');
@@ -122,6 +122,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/aproval/{aproval}/tolak', [App\Http\Controllers\AprovalController::class, 'Tolak'])->name('aproval.tolak');
         Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
         Route::get('send-email' , [MailController::class,'index']);
+        Route::get('List/Siswa' , [PiketController::class,'list'])->name('List/Siswa');
         Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
         // Admin
         Route::resource('/History_transaksi', App\Http\Controllers\HistoryTransaksiController::class);

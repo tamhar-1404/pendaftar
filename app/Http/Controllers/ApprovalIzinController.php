@@ -46,7 +46,7 @@ class ApprovalIzinController extends Controller
 
         if(auth()->user()->role == 'Admin'){
             $today = date('Y-m-d');
-            ApprovalIzin::whereDate('sampai', '<=', $today)->update(['status' => 'terimaabsen', 'status2' => '']);
+            ApprovalIzin::whereDate('sampai', '<', $today)->update(['status' => 'terimaabsen', 'status2' => '']);
 
             $menunggu = ApprovalIzin::where('status', 'menunggu')->get();
             $terima = ApprovalIzin::where('status2', ['izin', 'tolak'])->get();
