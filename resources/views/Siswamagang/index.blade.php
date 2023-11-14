@@ -28,7 +28,7 @@
     <script defer src="siswa/js/popper.min.js"></script>
     <script defer src="siswa/js/tippy-bundle.umd.min.js"></script>
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-    <script defer src="siswa/js/sweetalert.min.js"></script>
+    {{-- <script defer src="siswa/js/sweetalert.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
     <!-- Add this line to include ApexCharts library -->
@@ -48,7 +48,49 @@
             },
         },
     </script>
-
+    <script>
+        $(document).ready(function() {
+            // $('.swal2-success-fix').style('background color:transparent'); ?
+            // Iterate over each element with the class 'swal2-success-fix'
+            document.querySelectorAll('.swal2-success-fix').forEach(function(element) {
+            // Change the background color to transparent
+            element.style.backgroundColor = 'transparent';
+            });
+        });
+    </script>
+    <style>
+        [dir="ltr"] .swal2-popup .swal2-html-container {
+             padding-right: 0px !important;
+        }
+        [dir="rtl"] .swal2-popup .swal2-html-container {
+            padding-left: 0px !important;
+        }
+        [dir="ltr"] .swal2-popup .swal2-title {
+            padding-right: 0rem !important;
+        }
+        [dir="rtl"] .swal2-popup .swal2-title {
+            padding-left: 0rem !important;
+        }
+        .swal2-icon.swal2-success [class^="swal2-success-circular-line"][class$="right"] {
+            top: -0.6875em;
+            left: 1.875em;
+            transform: rotate(-45deg);
+            transform-origin: 0 3.75em;
+            border-radius: 0 7.5em 7.5em 0;
+            display: none;
+        }
+        div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=left] {
+            top: -0.4375em;
+            left: -2.0635em;
+            transform: rotate(-45deg);
+            transform-origin: 3.75em;
+            border-radius: 7.5em 0 0 7.5em;
+            display: none;
+        }
+        .swal2-success-fix{
+            background-color: transparent;
+        }
+    </style>
 </head>
 
 <body x-data="main"
@@ -56,21 +98,21 @@
     :class="[$store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout, $store.app
         .rtlClass
     ]">
-    @if (session()->has('error'))
+    @if (session()->has('errorIsi'))
         <script>
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: "{{ session('error') }}",
+                text: "{{ session('errorIsi') }}",
             })
         </script>
     @endif
-    @if (session()->has('success'))
+    @if (session()->has('successIsi'))
         <script>
             Swal.fire({
                 icon: 'success',
                 title: 'Berhasil...',
-                text: "{{ session('success') }}",
+                text: "{{ session('successIsi') }}",
             })
         </script>
     @endif
@@ -80,6 +122,17 @@
                 toastr.error("{{ $error }}");
             </script>
         @endforeach
+    @endif
+    @if (session()->has('error'))
+    <script>
+        toastr.error("{{ session('error') }}")
+    </script>
+    @endif
+
+    @if (session('success'))
+        <script>
+            toastr.success("{{ session('success') }}");
+        </script>
     @endif
     <!-- sidebar menu overlay -->
     <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{ 'hidden': !$store.app.sidebar }"

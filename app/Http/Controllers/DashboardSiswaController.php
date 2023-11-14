@@ -8,6 +8,7 @@ use App\Models\Jurnalsiswa;
 use Auth;
 use App\Http\Requests\StoreDashboard_siswaRequest;
 use App\Http\Requests\UpdateDashboard_siswaRequest;
+use App\Models\TataTertib;
 
 class DashboardSiswaController extends Controller
 {

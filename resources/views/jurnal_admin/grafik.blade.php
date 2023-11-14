@@ -26,11 +26,20 @@
         href="{{ asset('admin/assets/css/perfect-scrollbar.min.css') }}" />
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/style.css') }}" />
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="
+        https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js
+        "></script>
+        <link href="
+        https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css
+        " rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{--  <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('admin/assets/css/animate.css') }}" />  --}}
     <script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}"></script>
     <script defer src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
     <script defer src="{{ asset('admin/assets/js/tippy-bundle.umd.min.js') }}"></script>
-    <script defer src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
     {{--  <!-- Javascript Assets -->  --}}
     <script src="admin/js/app.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
@@ -74,6 +83,17 @@
     @include('jurnal_admin.layout')
 
     <div class="pl-[px] " id="content">
+        @if (session()->has('error'))
+        <script>
+            // Swal.fire({
+            //     icon: 'error',
+            //     title: 'error',
+            //     text: "{{ Session('error') }}",
+            // });
+            alert("{{ Session('error') }}")
+        </script>
+    @endif
+
 
         <!-- Navbar -->
         <nav id="main-navbar"

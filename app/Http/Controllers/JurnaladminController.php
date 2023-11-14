@@ -391,6 +391,11 @@ class JurnaladminController extends Controller
         $datas = $request->pencarian;
         if ($datas !== null){
             $users = Siswa::Where('name', $datas)->first();
+            // dd($users);
+            if($users === null){
+                // dd('test');
+                return redirect()->back()->with('error', 'data siswa masih kosong');
+            };
             $data = JurnalSiswa::where('siswa_id', $users->id)->get();
             $pdf = Pdf::loadView('desain_pdf.jurnal', ['data' => $data]);
             return $pdf->download('jurnal_siswa.pdf');
@@ -414,6 +419,9 @@ class JurnaladminController extends Controller
     if($data !== null){
         $datas = Siswa::Where('name', $data)->first();
         // Membuat objek PhpWord
+        if($datas === null){
+            return redirect()->back()->with('error', 'data siswa masih kosong');
+        };
         $users = JurnalSiswa::Where('Siswa_id', $datas->id)->first();
         $phpWord = new PhpWord();
 

@@ -38,6 +38,8 @@ class JurnalsiswaController extends Controller
 
 
         $hariIni = Carbon::now()->format('l');
+        $hariIniLengkap = Carbon::now()->format('Y-m-d');
+
 
     if ($request->has('cari')) {
         $keyword = $request->cari;
@@ -54,12 +56,14 @@ class JurnalsiswaController extends Controller
             $date1 = $request->date1;
             $date2 = $request->date2;
             if($date2 < $date1){
-                // dd("awokaowka");
                 return redirect()->back()->with('error', 'tanggal harus valid');
             }
-            $keyword = $date1 ."&&" .$date2;
-            // dd($keyword);
+            elseif($date1 === $date2 ){
+                return redirect()->back()->with('error', 'tanggal awal dan tanggal akhir tidak boleh sama ');
+
+            }
             $item = Jurnalsiswa::WhereBetween('created_at', [$date1, $date2])->where('siswa_id', Auth()->user()->siswa_id)->latest('created_at')->paginate(5)->withQueryString();
+            $keyword = $date1 ."&&" .$date2;
             $item->appends(['cari' => $keyword]);
         }else{
             return redirect()->back()->with('error','Tanggal tidak boleh kosong');

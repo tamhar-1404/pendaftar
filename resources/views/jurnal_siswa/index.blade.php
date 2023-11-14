@@ -727,7 +727,7 @@
                                 <div
                                     class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                        Detail Jurnal
+                                        Edit Jurnal
                                     </h3>
                                     <button type="button"
                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -752,7 +752,7 @@
                                         <label for="bukti"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bukti</label>
                                         <img id="preview-image" src="{{ asset('storage/image/' . $modal->image) }}"
-                                            class="w-64 h-64" alt="" srcset="">
+                                            class="w-[100%] h-[100%]" alt="" srcset="">
                                         <input type="file" name="image" id="image-input" placeholder=""
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                             onchange="previewImage(event)">

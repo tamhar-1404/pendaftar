@@ -68,7 +68,7 @@ class SiswamagangController extends Controller
         $password_user = User::find(Auth()->user()->id)->password;
         $mou = MOU::all();
         $foto = Siswa::where('id', Auth()->user()->siswa_id)->latest('created_at')->get();
-        
+
         return view('Siswamagang.index', compact('foto', 'tatib','mou', 'user', 'password_user', 'Hadir','Telat','izin','Alfa','mengisi_jan','mengisi_feb','mengisi_mar','mengisi_apr','mengisi_mei','mengisi_jun','mengisi_jul','mengisi_aug','mengisi_sep','mengisi_okt','mengisi_nov','mengisi_des','tdk_mengisi_jan','tdk_mengisi_feb','tdk_mengisi_mar','tdk_mengisi_apr','tdk_mengisi_mei','tdk_mengisi_jun','tdk_mengisi_jul','tdk_mengisi_aug','tdk_mengisi_sep','tdk_mengisi_nov','tdk_mengisi_okt','tdk_mengisi_nov','tdk_mengisi_des'));
     }
 
@@ -165,9 +165,9 @@ class SiswamagangController extends Controller
 
             Mail::to($user->email)->send(new Top());
 
-            return redirect()->back()->with('success', 'Transaksi Anda sedang diproses');
+            return redirect()->back()->with('successIsi', 'Transaksi Anda sedang diproses');
         }else{
-            return redirect()->back()->with('error', 'top up saldo minimal Rp.5000');
+            return redirect()->back()->with('errorIsi', 'top up saldo minimal Rp.5000');
         }
     }
 
