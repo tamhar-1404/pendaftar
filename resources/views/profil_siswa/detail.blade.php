@@ -656,8 +656,7 @@
                                         <tr class="text-sm bg-[#E2E8F0] col-span-4">
                                             <td class="px-6 py-4">{{ $loop->iteration }}</td>
                                             <td class="px-6 py-4">{{ $pelangaran->tanggal }}</td>
-                                            <td class="px-6 py-4">{{ $pelangaran->deskripsi }}</td>
-
+                                            <td style="width: 600px" class="px-6 py-4 text-ellipsis overflow-hidden " >{{ $pelangaran->deskripsi }}</td>
                                             <td class="px-6 py-4">
                                                 <button type="button" class="btn btn-outline-info"
                                                     data-te-toggle="modal"
@@ -672,10 +671,10 @@
                                     @endforelse
 
                                     @forelse ($data as $pelangaran)
-                                        <div class="w-full h-screen pt-[100px] overflow-y-auto">
+
                                             <div id="staticModal{{ $pelangaran->id }}" tabindex="-1"
                                                 aria-hidden="true"
-                                                style="backdrop-filter: blur(4px); scroll-behavior: smooth;"
+                                                style="backdrop-filter: blur(4px); scroll-behavior: smooth; height:100%"
                                                 class="kamu-tak-diajak fixed top-0 overscroll-auto left-0 right-0 z-[999] hidden w-120 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 <div class="relative w-full max-w-xl max-h-full">
                                                     <!-- Modal content -->
@@ -701,7 +700,7 @@
                                                             </button>
                                                         </div>
                                                         <!-- Modal body -->
-                                                        <div class="p-6 space-y-6">
+                                                        <div style="  height: 650px;  overflow: auto;" class="p-6 space-y-6 ">
                                                             <div>
                                                                 <p
                                                                     class="text-base leading-relaxed font-semibold  text-gray-800 dark:text-gray-400">
@@ -729,16 +728,15 @@
                                                                     class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
 
                                                                     Bukti Pelanggaran : <span></p><img
-                                                                    src="{{ asset('storage/laporansiswa/' . $pelangaran->bukti) }}"
-                                                                    width="100" /></span>
-
+                                                                    src="{{ asset('storage/laporansiswa/' . $pelangaran->bukti) }}" class="w-full"
+                                                                     /></span>
                                                             </div>
                                                         </div>
 
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+
                                     @empty
                                     @endforelse
 

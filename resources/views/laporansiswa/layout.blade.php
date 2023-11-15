@@ -176,9 +176,9 @@
                                                                 <div
                                                                     class="rounded-full bg-gray-300 p-0.5 dark:bg-gray-700">
                                                                     @foreach ($data_foto as $foto)
-                                                                        @if ($foto->name == $data->nama)
+                                                                        @if ($foto->name = $data->nama)
                                                                         <img class="h-8 w-8 rounded-full object-cover"
-                                                                            src="{{ asset('storage/siswa/' . $foto->foto_siswa) }}" />
+                                                                            src="{{ asset('storage/Siswa/' . $foto->foto_siswa) }}" />
                                                                         @endif
                                                                     @endforeach
                                                                 </div>
@@ -196,7 +196,7 @@
                                                 </div>
                                                 <div>
                                                     <h4 class="mt-4 font-semibold">{{ $data->nama }}</h4>
-                                                    <p class="mt-2 text-white-dark">{{ $data->deskripsi }}
+                                                    <p class="mt-2 text-white-dark truncate ">{{ $data->deskripsi }}
                                                     </p>
                                                 </div>
                                             </div>
@@ -219,12 +219,12 @@
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                    <form action="{{ route('laporansiswa.update', $data->id) }}"
+                                                    <form action="{{ route('laporansiswa.update', $data->id) }}" id="formTerima{{$data->id}}"
                                                         method="post">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="flex items-center mt-4">
-                                                            <button type="submit" class="text-success">
+                                                            <button type="button" class="text-success" onclick="TerimaLaporan({{$data->id}})">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
                                                                     stroke="currentColor" class="w-6 h-6">
@@ -234,11 +234,11 @@
                                                                 </svg>
                                                             </button>
                                                     </form>
-                                                    <form action="{{ route('laporansiswa.destroy', $data->id) }}"
+                                                    <form action="{{ route('laporansiswa.destroy', $data->id) }}" id="formTolak{{$data->id}}"
                                                         method="post">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit"
+                                                        <button type="button" onclick="TolakLaporan({{$data->id}})"
                                                             class="group text-danger ltr:ml-1 rtl:mr-2 mt-2">
                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                 viewBox="0 0 24 24" stroke-width="1.5"
@@ -522,6 +522,52 @@
         $(window).on('load', function() {
             $('.spin_load').fadeOut();
         });
+    </script>
+    <script>
+        function TerimaLaporan(id){
+            Swal.fire({
+            title: "Apa Kamu Yakin?",
+            text: "menerima laporan siswa ini",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya, Terima"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                var form = document.getElementById('formTerima'+id);
+                form.submit();
+                // Swal.fire({
+                // title: "Deleted!",
+                // text: "Your file has been deleted.",
+                // icon: "success"
+                // });
+            }
+            });
+        }
+    </script>
+    <script>
+        function TolakLaporan(id){
+            Swal.fire({
+            title: "Apa Kamu Yakin?",
+            text: "menerima laporan siswa ini",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya, Terima"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                var form = document.getElementById('formTolak'+id);
+                form.submit();
+                // Swal.fire({
+                // title: "Deleted!",
+                // text: "Your file has been deleted.",
+                // icon: "success"
+                // });
+            }
+            });
+        }
     </script>
     <script>
         document.addEventListener('alpine:init', () => {

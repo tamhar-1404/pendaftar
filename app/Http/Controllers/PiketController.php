@@ -20,7 +20,7 @@ class PiketController extends Controller
         $Cek = Anggota_piket::pluck('siswa_id')->toArray();
 
         $siswa = Siswa::whereNotIn('id', $Cek)->where('role', 'siswa')->orderBy('id', 'asc')
-        ->skip(1)->limit(100)->get();
+        ->skip(10)->limit(100)->get();
 
         return response()->json(['siswa' => $siswa]);
     }
@@ -67,8 +67,7 @@ class PiketController extends Controller
          ->toArray();
 
          $siswa = Siswa::whereNotIn('id', $Cek)
-         ->where('role', 'siswa')
-         ->latest()->paginate(4);
+         ->where('role', 'siswa');
         //  $siswa = Siswa::all();
          $laporan_piket = Laporan_piket::all();
 
@@ -302,7 +301,7 @@ class PiketController extends Controller
         {
             $Cek = Anggota_piket::pluck('siswa_id')->toArray();
 
-            $siswa = Siswa::whereNotIn('id', $Cek)->where('role', 'siswa')->orderBy('id', 'asc')->limit(1)->get();
+            $siswa = Siswa::whereNotIn('id', $Cek)->where('role', 'siswa')->orderBy('id', 'asc')->limit(10)->get();
             // dd($siswa);
 
             return response()->json(['siswa' => $siswa]);

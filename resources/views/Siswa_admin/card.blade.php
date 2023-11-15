@@ -2311,6 +2311,12 @@
                                                 </button>
                                             </li>
                                             <li>
+                                                <button ata-modal-target="extendModal{{ $siswa->id }}"
+                                                    data-modal-toggle="extendModal{{ $siswa->id }}"
+                                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Extend
+                                                </button>
+                                            </li>
+                                            <li>
                                                 <form action="{{ route('siswa.banned', ['id' => $siswa->id]) }}"
                                                     method="post" id="myForm" onsubmit="hapus(event)">
                                                     @csrf
@@ -2414,6 +2420,56 @@
                                 class="border border-red-400 px-2 py-1 hover:bg-red-400 hover:text-white rounded">kirim</button>
                         </div>
 
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="extendModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
+            class="kamu-tak-diajak fixed top-0 left-0 right-0 z-[150] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                          Extend
+                        </h3>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-hide="extendModal{{ $modal->id }}">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <form action="{{ route('Extend',$modal->id) }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
+                        <div class="p-5">
+                            <p class="font-semibold">
+                                Siswa dengan nama {{$modal->name}} akan berakhir magang pada  {{$modal->magang_akhir}}
+                            </p>
+                            <p class="font-semibold mt-4">
+                                Apakah anda ingin menambah tanggal akhir magang Siswa ini
+                            </p>
+                            <div class="mt-4">
+                                <label class="font-semibold mb-1" for="TanggalAkhir">Tanggal Akhir</label>
+                                <input class="border border-gray-600 border-solid w-full h-12 p-3 focus:border-blue-500 rounded" type="date" value="{{$modal->magang_akhir}}" name="TanggalAkhir" id="">
+                            </div>
+
+                        </div>
+                        <!-- Modal footer -->
+                        <div
+                            class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <button type="button"
+                                class="border border-blue-400 px-2 py-1 hover:bg-blue-400 hover:text-white rounded"
+                                data-modal-hide="extendModal{{ $modal->id }}">Kembali</button>
+                            <button type="submit"
+                                class="border border-red-400 px-2 py-1 hover:bg-red-400 hover:text-white rounded">kirim</button>
+                        </div>
                     </form>
                 </div>
             </div>

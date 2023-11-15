@@ -129,9 +129,8 @@
                                                         <div class="overflow-x-hidden overflow-y-auto max-h-[400px]">
 
                                                             <div class=" truncate">
-                                                                <div class="grid grid-cols-2" id="listSiswa"></div>
-                                                                <div class="grid grid-cols-2" id="listSiswaSelengkapnya"></div>
-
+                                                                <div class="grid grid-cols-2 listSiswa" id="listSiswa"></div>
+                                                                <div class="grid grid-cols-2 listSiswaSelengkapnya" id="listSiswaSelengkapnya"></div>
                                                                 {{-- @foreach ($siswa as $data)
                                                                         <div class="flex gap-3 items-center t">
                                                                             <input type="checkbox" name="nama_siswa[]"
@@ -141,7 +140,6 @@
                                                                         </div>
                                                                     @endforeach --}}
                                                             </div>
-
                                                         </div>
                                                         @if ($siswa->count() > 10)
                                                         <p class="text-blue-300 cursor-pointer " id="lihataselengkapnya"
@@ -237,24 +235,20 @@
                                                                     @endforeach
                                                                 </div>
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div id="listsiswa"
-                                                                    class="overflow-x-hidden overflow-y-auto max-h-[400px]">
-                                                                    <div id="wadah">
-                                                                        <div class="grid grid-cols-2 truncate">
-                                                                            @foreach ($siswa as $data)
-                                                                                <div class="flex gap-3 items-center t">
-                                                                                    <input type="checkbox"
-                                                                                        name="nama_siswa[]"
-                                                                                        value="{{ $data->id }}"
-                                                                                        id="">
-                                                                                    <p>{{ $data->name }}</p>
-                                                                                </div>
-                                                                            @endforeach
-                                                                        </div>
+                                                                <div class="overflow-x-hidden overflow-y-auto max-h-[400px]">
+
+                                                                    <div class=" truncate">
+                                                                        <div class="grid grid-cols-2 listSiswa" id="listSiswa"></div>
+                                                                        <div class="grid grid-cols-2 listSiswaSelengkapnya" id="listSiswaSelengkapnya"></div>
                                                                     </div>
+
                                                                 </div>
-                                                                <p class="text-blue-300 cursor-pointer "
+                                                                @if ($siswa->count() > 10)
+                                                                <p class="text-blue-300 cursor-pointer " id="lihataselengkapnya"
                                                                     onclick="lihatsemua()">lihat lainya </p>
+                                                                <p id="lihatSedikit" class="hidden" onclick="lihatsedikit()">
+                                                                </p>
+                                                                @endif
 
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
@@ -337,24 +331,20 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div id="listsiswa"
-                                                                    class="overflow-x-hidden overflow-y-auto max-h-[400px]">
-                                                                    <div id="wadah">
-                                                                        <div class="grid grid-cols-2 truncate">
-                                                                            @foreach ($siswa as $data)
-                                                                                <div class="flex gap-3 items-center t">
-                                                                                    <input type="checkbox"
-                                                                                        name="nama_siswa[]"
-                                                                                        value="{{ $data->id }}"
-                                                                                        id="">
-                                                                                    <p>{{ $data->name }}</p>
-                                                                                </div>
-                                                                            @endforeach
-                                                                        </div>
+                                                                <div class="overflow-x-hidden overflow-y-auto max-h-[400px]">
+
+                                                                    <div class=" truncate">
+                                                                        <div class="grid grid-cols-2 listSiswa" id="listSiswa"></div>
+                                                                        <div class="grid grid-cols-2 listSiswaSelengkapnya" id="listSiswaSelengkapnya"></div>
                                                                     </div>
+
                                                                 </div>
-                                                                <p class="text-blue-300 cursor-pointer "
+                                                                @if ($siswa->count() > 10)
+                                                                <p class="text-blue-300 cursor-pointer " id="lihataselengkapnya"
                                                                     onclick="lihatsemua()">lihat lainya </p>
+                                                                <p id="lihatSedikit" class="hidden" onclick="lihatsedikit()">
+                                                                </p>
+                                                                @endif
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -434,24 +424,20 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div id="listsiswa"
-                                                                    class="overflow-x-hidden overflow-y-auto max-h-[400px]">
-                                                                    <div id="wadah">
-                                                                        <div class="grid grid-cols-2 truncate">
-                                                                            @foreach ($siswa as $data)
-                                                                                <div class="flex gap-3 items-center t">
-                                                                                    <input type="checkbox"
-                                                                                        name="nama_siswa[]"
-                                                                                        value="{{ $data->id }}"
-                                                                                        id="">
-                                                                                    <p>{{ $data->name }}</p>
-                                                                                </div>
-                                                                            @endforeach
-                                                                        </div>
+                                                                <div class="overflow-x-hidden overflow-y-auto max-h-[400px]">
+
+                                                                    <div class=" truncate">
+                                                                        <div class="grid grid-cols-2 listSiswa" id="listSiswa"></div>
+                                                                        <div class="grid grid-cols-2 listSiswaSelengkapnya" id="listSiswaSelengkapnya"></div>
                                                                     </div>
+
                                                                 </div>
-                                                                <p class="text-blue-300 cursor-pointer "
+                                                                @if ($siswa->count() > 10)
+                                                                <p class="text-blue-300 cursor-pointer " id="lihataselengkapnya"
                                                                     onclick="lihatsemua()">lihat lainya </p>
+                                                                <p id="lihatSedikit" class="hidden" onclick="lihatsedikit()">
+                                                                </p>
+                                                                @endif
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -532,24 +518,20 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div id="listsiswa"
-                                                                    class="overflow-x-hidden overflow-y-auto max-h-[400px]">
-                                                                    <div id="wadah">
-                                                                        <div class="grid grid-cols-2 truncate">
-                                                                            @foreach ($siswa as $data)
-                                                                                <div class="flex gap-3 items-center t">
-                                                                                    <input type="checkbox"
-                                                                                        name="nama_siswa[]"
-                                                                                        value="{{ $data->id }}"
-                                                                                        id="">
-                                                                                    <p>{{ $data->name }}</p>
-                                                                                </div>
-                                                                            @endforeach
-                                                                        </div>
+                                                                <div class="overflow-x-hidden overflow-y-auto max-h-[400px]">
+
+                                                                    <div class=" truncate">
+                                                                        <div class="grid grid-cols-2 listSiswa" id="listSiswa"></div>
+                                                                        <div class="grid grid-cols-2 listSiswaSelengkapnya" id="listSiswaSelengkapnya"></div>
                                                                     </div>
+
                                                                 </div>
-                                                                <p class="text-blue-300 cursor-pointer "
+                                                                @if ($siswa->count() > 10)
+                                                                <p class="text-blue-300 cursor-pointer " id="lihataselengkapnya"
                                                                     onclick="lihatsemua()">lihat lainya </p>
+                                                                <p id="lihatSedikit" class="hidden" onclick="lihatsedikit()">
+                                                                </p>
+                                                                @endif
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -630,24 +612,20 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div id="listsiswa"
-                                                                    class="overflow-x-hidden overflow-y-auto max-h-[400px]">
-                                                                    <div id="wadah">
-                                                                        <div class="grid grid-cols-2 truncate">
-                                                                            @foreach ($siswa as $data)
-                                                                                <div class="flex gap-3 items-center t">
-                                                                                    <input type="checkbox"
-                                                                                        name="nama_siswa[]"
-                                                                                        value="{{ $data->id }}"
-                                                                                        id="">
-                                                                                    <p>{{ $data->name }}</p>
-                                                                                </div>
-                                                                            @endforeach
-                                                                        </div>
+                                                                <div class="overflow-x-hidden overflow-y-auto max-h-[400px]">
+
+                                                                    <div class=" truncate">
+                                                                        <div class="grid grid-cols-2 listSiswa" id="listSiswa"></div>
+                                                                        <div class="grid grid-cols-2 listSiswaSelengkapnya" id="listSiswaSelengkapnya"></div>
                                                                     </div>
+
                                                                 </div>
-                                                                <p class="text-blue-300 cursor-pointer "
+                                                                @if ($siswa->count() > 10)
+                                                                <p class="text-blue-300 cursor-pointer " id="lihataselengkapnya"
                                                                     onclick="lihatsemua()">lihat lainya </p>
+                                                                <p id="lihatSedikit" class="hidden" onclick="lihatsedikit()">
+                                                                </p>
+                                                                @endif
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -824,7 +802,7 @@
                                 }
                             </script>
                             {{-- sterp 2 --}}
-                            <div id="content2" class="card-content" style="display: none">
+                            <div id="content2" class="card-content hidden" >
                                 <div class="flex grid-cols-1 mb:grid-cols-3 lg:grid-cols-5 gap-4  w-lg "
                                     id="#pagi">
                                     {{-- senin --}}
@@ -891,24 +869,20 @@
                                                                     @endforeach
                                                                 </div>
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div id="listsiswa"
-                                                                    class="overflow-x-hidden overflow-y-auto max-h-[400px]">
-                                                                    <div id="wadah">
-                                                                        <div class="grid grid-cols-2 truncate">
-                                                                            @foreach ($siswa as $data)
-                                                                                <div class="flex gap-3 items-center t">
-                                                                                    <input type="checkbox"
-                                                                                        name="nama_siswa[]"
-                                                                                        value="{{ $data->id }}"
-                                                                                        id="">
-                                                                                    <p>{{ $data->name }}</p>
-                                                                                </div>
-                                                                            @endforeach
-                                                                        </div>
+                                                                <div class="overflow-x-hidden overflow-y-auto max-h-[400px]">
+
+                                                                    <div class=" truncate">
+                                                                        <div class="grid grid-cols-2 listSiswa" id="listSiswa"></div>
+                                                                        <div class="grid grid-cols-2 listSiswaSelengkapnya" id="listSiswaSelengkapnya"></div>
                                                                     </div>
+
                                                                 </div>
-                                                                <p class="text-blue-300 cursor-pointer "
+                                                                @if ($siswa->count() > 10)
+                                                                <p class="text-blue-300 cursor-pointer " id="lihataselengkapnya"
                                                                     onclick="lihatsemua()">lihat lainya </p>
+                                                                <p id="lihatSedikit" class="hidden" onclick="lihatsedikit()">
+                                                                </p>
+                                                                @endif
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -990,24 +964,20 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div id="listsiswa"
-                                                                    class="overflow-x-hidden overflow-y-auto max-h-[400px]">
-                                                                    <div id="wadah">
-                                                                        <div class="grid grid-cols-2 truncate">
-                                                                            @foreach ($siswa as $data)
-                                                                                <div class="flex gap-3 items-center t">
-                                                                                    <input type="checkbox"
-                                                                                        name="nama_siswa[]"
-                                                                                        value="{{ $data->id }}"
-                                                                                        id="">
-                                                                                    <p>{{ $data->name }}</p>
-                                                                                </div>
-                                                                            @endforeach
-                                                                        </div>
+                                                                <div class="overflow-x-hidden overflow-y-auto max-h-[400px]">
+
+                                                                    <div class=" truncate">
+                                                                        <div class="grid grid-cols-2 listSiswa" id="listSiswa"></div>
+                                                                        <div class="grid grid-cols-2 listSiswaSelengkapnya" id="listSiswaSelengkapnya"></div>
                                                                     </div>
+
                                                                 </div>
-                                                                <p class="text-blue-300 cursor-pointer "
+                                                                @if ($siswa->count() > 10)
+                                                                <p class="text-blue-300 cursor-pointer " id="lihataselengkapnya"
                                                                     onclick="lihatsemua()">lihat lainya </p>
+                                                                <p id="lihatSedikit" class="hidden" onclick="lihatsedikit()">
+                                                                </p>
+                                                                @endif
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -1087,24 +1057,20 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div id="listsiswa"
-                                                                    class="overflow-x-hidden overflow-y-auto max-h-[400px]">
-                                                                    <div id="wadah">
-                                                                        <div class="grid grid-cols-2 truncate">
-                                                                            @foreach ($siswa as $data)
-                                                                                <div class="flex gap-3 items-center t">
-                                                                                    <input type="checkbox"
-                                                                                        name="nama_siswa[]"
-                                                                                        value="{{ $data->id }}"
-                                                                                        id="">
-                                                                                    <p>{{ $data->name }}</p>
-                                                                                </div>
-                                                                            @endforeach
-                                                                        </div>
+                                                                <div class="overflow-x-hidden overflow-y-auto max-h-[400px]">
+
+                                                                    <div class=" truncate">
+                                                                        <div class="grid grid-cols-2 listSiswa" id="listSiswa"></div>
+                                                                        <div class="grid grid-cols-2 listSiswaSelengkapnya" id="listSiswaSelengkapnya"></div>
                                                                     </div>
+
                                                                 </div>
-                                                                <p class="text-blue-300 cursor-pointer "
+                                                                @if ($siswa->count() > 10)
+                                                                <p class="text-blue-300 cursor-pointer " id="lihataselengkapnya"
                                                                     onclick="lihatsemua()">lihat lainya </p>
+                                                                <p id="lihatSedikit" class="hidden" onclick="lihatsedikit()">
+                                                                </p>
+                                                                @endif
 
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
@@ -1186,24 +1152,20 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div id="listsiswa"
-                                                                    class="overflow-x-hidden overflow-y-auto max-h-[400px]">
-                                                                    <div id="wadah">
-                                                                        <div class="grid grid-cols-2 truncate">
-                                                                            @foreach ($siswa as $data)
-                                                                                <div class="flex gap-3 items-center t">
-                                                                                    <input type="checkbox"
-                                                                                        name="nama_siswa[]"
-                                                                                        value="{{ $data->id }}"
-                                                                                        id="">
-                                                                                    <p>{{ $data->name }}</p>
-                                                                                </div>
-                                                                            @endforeach
-                                                                        </div>
+                                                                <div class="overflow-x-hidden overflow-y-auto max-h-[400px]">
+
+                                                                    <div class=" truncate">
+                                                                        <div class="grid grid-cols-2 listSiswa" id="listSiswa"></div>
+                                                                        <div class="grid grid-cols-2 listSiswaSelengkapnya" id="listSiswaSelengkapnya"></div>
                                                                     </div>
+
                                                                 </div>
-                                                                <p class="text-blue-300 cursor-pointer "
+                                                                @if ($siswa->count() > 10)
+                                                                <p class="text-blue-300 cursor-pointer " id="lihataselengkapnya"
                                                                     onclick="lihatsemua()">lihat lainya </p>
+                                                                <p id="lihatSedikit" class="hidden" onclick="lihatsedikit()">
+                                                                </p>
+                                                                @endif
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -1285,24 +1247,20 @@
                                                                     </div>
                                                                 @endforeach
                                                                 <h4>Centang yang ingin di tambahkan</h4>
-                                                                <div id="listsiswa"
-                                                                    class="overflow-x-hidden overflow-y-auto max-h-[400px]">
-                                                                    <div id="wadah">
-                                                                        <div class="grid grid-cols-2 truncate">
-                                                                            @foreach ($siswa as $data)
-                                                                                <div class="flex gap-3 items-center t">
-                                                                                    <input type="checkbox"
-                                                                                        name="nama_siswa[]"
-                                                                                        value="{{ $data->id }}"
-                                                                                        id="">
-                                                                                    <p>{{ $data->name }}</p>
-                                                                                </div>
-                                                                            @endforeach
-                                                                        </div>
+                                                                <div class="overflow-x-hidden overflow-y-auto max-h-[400px]">
+
+                                                                    <div class=" truncate">
+                                                                        <div class="grid grid-cols-2 listSiswa" id="listSiswa"></div>
+                                                                        <div class="grid grid-cols-2 listSiswaSelengkapnya" id="listSiswaSelengkapnya"></div>
                                                                     </div>
+
                                                                 </div>
-                                                                <p class="text-blue-300 cursor-pointer "
+                                                                @if ($siswa->count() > 10)
+                                                                <p class="text-blue-300 cursor-pointer " id="lihataselengkapnya"
                                                                     onclick="lihatsemua()">lihat lainya </p>
+                                                                <p id="lihatSedikit" class="hidden" onclick="lihatsedikit()">
+                                                                </p>
+                                                                @endif
                                                                 <button
                                                                     class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
                                                                     type="submit">kirim</button>
@@ -1900,7 +1858,7 @@
                                         success: function(response) {
                                             // alert(response);
                                             console.log(response);
-                                            $('#listSiswa').empty();
+                                            $('.listSiswa').empty();
                                             $.each(response.siswa, function(index, item) {
                                                 // alert(item.id);
                                                 let elemen =
@@ -1910,7 +1868,7 @@
                                                                                 id="">
                                                                             <p>${item.name}</p>
                                                                         </div>`
-                                                $('#listSiswa').append(elemen);
+                                                $('.listSiswa').append(elemen);
                                                 // console.log("Harga : ", el.harga);
                                             });
                                         }
