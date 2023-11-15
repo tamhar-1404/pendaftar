@@ -17,12 +17,10 @@ use Carbon\Carbon;
 class PiketController extends Controller
 {
     function cari(Request $request) {
-        $keyword = $request->value;
-        $Cek = Anggota_piket::pluck('siswa_id')
-         ->toArray();
-         $siswa = Siswa::whereNotIn('id', $Cek)
-         ->where('role', 'siswa')
-         ->get()->toArray();
+        $Cek = Anggota_piket::pluck('siswa_id')->toArray();
+
+        $siswa = Siswa::whereNotIn('id', $Cek)->where('role', 'siswa')->orderBy('id', 'asc')
+        ->skip(1)->limit(100)->get();
 
         return response()->json(['siswa' => $siswa]);
     }
@@ -304,7 +302,7 @@ class PiketController extends Controller
         {
             $Cek = Anggota_piket::pluck('siswa_id')->toArray();
 
-            $siswa = Siswa::whereNotIn('id', $Cek)->where('role', 'siswa')->latest()->get();
+            $siswa = Siswa::whereNotIn('id', $Cek)->where('role', 'siswa')->orderBy('id', 'asc')->limit(1)->get();
             // dd($siswa);
 
             return response()->json(['siswa' => $siswa]);

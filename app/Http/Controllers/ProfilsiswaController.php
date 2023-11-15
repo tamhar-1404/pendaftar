@@ -158,15 +158,20 @@ class ProfilsiswaController extends Controller
         $siswa_id = Auth::user()->Siswa->id;
         if ($request->has('foto')) {
             $request->validate([
+                'name' => 'required|max:255',
+                'sekolah' => 'required|max:255',
                 'foto' => 'required|image|mimes:png,jpg,jpeg',
-                'email' => 'required|email|unique:siswas,email,' . $siswa_id . '|ends_with:gmail.com',
+                'email' => 'required|email|unique:siswas,email,' . $siswa_id,
                 'no' => 'required',
                 'alamat' => 'required',
             ], [
+                'name.required' => 'nama tidak boleh kosong',
+                'name.max' => 'nama tidak boleh lebih dari 255 huruf',
+                'sekolah.max' => 'sekolah tidak boleh lebih dari 255 huruf',
+                'sekolah.required' => 'sekolah tidak boleh kosong',
                 'foto.required' => 'Kolom foto tidak boleh kosong.',
                 'foto.image' => 'Kolom foto hanya boleh berisi gambar.',
                 'foto.mimes' => 'Format gambar yang diperbolehkan hanya jpg, jpeg, dan png.',
-                'email.ends_with' => 'Alamat email harus diakhiri dengan "gmail.com".',
                 'email.required' => 'Kolom email tidak boleh kosong.',
                 'email.email' => 'Format email tidak valid.',
                 'email.unique' => 'Alamat email ini sudah digunakan.',
@@ -181,27 +186,45 @@ class ProfilsiswaController extends Controller
             $nama_foto = $foto->hashName();
             $foto->storeAs('public/Siswa', $nama_foto);
             Siswa::find($siswa_id)->update([
+                'name' => $request->name,
+                'sekolah' => $request->sekolah,
                 'email' => $request->email,
                 'foto_siswa' => $nama_foto,
                 'no' => $request->no,
                 'alamat' => $request->alamat,
             ]);
             User::where('siswa_id', $siswa_id)->update([
+                'sekolah' => $request->sekolah,
                 'email' => $request->email,
             ]);
             return redirect()->route('profile_siswa')->with('success', 'Berhasil mengedit profil');
         }
         $request->validate([
-            'email' => 'required|email|unique:siswas,email,' . $siswa_id . '|ends_with:gmail.com',
+            'name' => 'required|max:255',
+            'sekolah' => 'required|max:255',
+            'email' => 'required|email|unique:siswas,email,' . $siswa_id ,
             'no' => 'required',
             'alamat' => 'required',
+        ],[
+            'name.required' => 'nama tidak boleh kosong',
+            'name.max' => 'nama tidak boleh lebih dari 255 huruf',
+            'sekolah.max' => 'sekolah tidak boleh lebih dari 255 huruf',
+            'sekolah.required' => 'sekolah tidak boleh kosong',
+            'email.required' => 'Kolom email tidak boleh kosong.',
+            'email.email' => 'Format email tidak valid.',
+            'email.unique' => 'Alamat email ini sudah digunakan.',
+            'no.required' => 'Kolom nomor tidak boleh kosong.',
+            'alamat.required' => 'Kolom alamat tidak boleh kosong.',
         ]);
         Siswa::find($siswa_id)->update([
+            'name' => $request->name,
+            'sekolah' => $request->sekolah,
             'email' => $request->email,
             'no' => $request->no,
             'alamat' => $request->alamat,
         ]);
         User::where('siswa_id', $siswa_id)->update([
+            'sekolah' => $request->sekolah,
             'email' => $request->email,
         ]);
         return redirect()->route('profile_siswa')->with('success', 'Berhasil mengedit profil');

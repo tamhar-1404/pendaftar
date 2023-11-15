@@ -130,6 +130,7 @@
 
                                                             <div class=" truncate">
                                                                 <div class="grid grid-cols-2" id="listSiswa"></div>
+                                                                <div class="grid grid-cols-2" id="listSiswaSelengkapnya"></div>
 
                                                                 {{-- @foreach ($siswa as $data)
                                                                         <div class="flex gap-3 items-center t">
@@ -143,9 +144,9 @@
 
                                                         </div>
 
-                                                        <p class="text-blue-300 cursor-pointer "
+                                                        <p class="text-blue-300 cursor-pointer " id="lihataselengkapnya"
                                                             onclick="lihatsemua()">lihat lainya </p>
-                                                        <p id="lihatsedikit" class="hidden" onclick="lihatsedikit()">
+                                                        <p id="lihatSedikit" class="hidden" onclick="lihatsedikit()">
                                                         </p>
 
                                                         <button
@@ -1547,7 +1548,7 @@
                                                         <div class="text-md font-normal max-h-[60vh] overflow-auto">
                                                             <p class="font-semibold">Bukti</p>
                                                             <img src="{{ asset('storage/image/' . $data->bukti) }}"
-                                                                alt="Image" class="w-64 h-64">
+                                                                alt="Image" class="w-full h-full">
                                                             <p class="font-semibold">Deskripsi : </p>
                                                             {{ $data->deskripsi }}
                                                         </div>
@@ -1863,25 +1864,20 @@
                                         url: "{{ route('cari_siswa') }}",
                                         method: 'GET',
                                         success: function(response) {
+                                            // alert(response);
                                             console.log(response);
-                                            $('#wadah').addClass('hidden');
-                                            // document.getElementById(el.id).checked = false
-                                            if (!$('#listsiswa input[type="checkbox"]:checked').length) {
-                                                $('#listsiswa').empty();
-                                            }
-                                            // $('#listsiswa').empty();
-                                            $.each(response, function(index, el) {
+                                            $('#listSiswaSelengkapnya').empty();
+                                            $.each(response.siswa, function(index, item) {
+                                                // alert(item.id);
                                                 let elemen =
-                                                    `<div class="" style="max-height:20px">
-                             <div class=" grid grid-cols-2 ">
-                                    <div class="flex gap-3 items-center">
-                                        <input type="checkbox" name="nama_siswa[]" value="${el.id}"  id=""><p>${el.name}</p>
-                                    </div>
-                                </div>
-                                </div>`
-                                                $('#listsiswa').append(elemen);
+                                                    `    <div class="flex gap-3 items-center t">
+                                                                            <input type="checkbox" name="nama_siswa[]"
+                                                                                value="${item.id}"
+                                                                                id="">
+                                                                            <p>${item.name}</p>
+                                                                        </div>`
+                                                $('#listSiswaSelengkapnya').append(elemen);
 
-                                                console.log("Nama : ", el.name);
                                                 // console.log("Harga : ", el.harga);
                                             });
                                         }
@@ -1920,6 +1916,25 @@
                                     })
                                 })
                             </script>
+                            <script>
+                                $(document).ready(function () {
+                                    $('#lihataselengkapnya').click(function () {
+                                        // Hide the element with ID lihataselengkapnya
+                                        $(this).addClass('hidden');
+                                        // Show the element with ID lihatSedikit
+                                        console.log($('#lihatSedikit'));
+                                        $('#lihatSedikit').removeClass('hidden');
+                                    });
+
+                                    $('#lihatSedikit').click(function () {
+                                        // Hide the element with ID lihatSedikit
+                                        $(this).addClass('hidden');
+                                        // Show the element with ID lihataselengkapnya
+                                        $('#lihataselengkapnya').removeClass('hidden');
+                                    });
+                                });
+                            </script>
+
 
 </body>
 

@@ -50,12 +50,11 @@
     </script>
     <script>
         $(document).ready(function() {
-            // $('.swal2-success-fix').style('background color:transparent'); ?
-            // Iterate over each element with the class 'swal2-success-fix'
+
             document.querySelectorAll('.swal2-success-fix').forEach(function(element) {
-            // Change the background color to transparent
             element.style.backgroundColor = 'transparent';
             });
+       
         });
     </script>
     <style>
@@ -90,6 +89,9 @@
         .swal2-success-fix{
             background-color: transparent;
         }
+        /* .apexcharts-canvas{
+            width: 100%;
+        } */
     </style>
 </head>
 

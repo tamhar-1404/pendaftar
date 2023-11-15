@@ -618,12 +618,21 @@
                                                     alt="image"
                                                     class="mx-auto h-20 w-20 rounded-full object-cover md:h-32 md:w-32" />
                                             </div>
-                                            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                                            <div class=" w-full grid grid-cols-1  gap-5 sm:grid-cols-2 lg:grid-cols-3">
                                                 <div>
                                                     <label for="ctnFile">Foto Profile</label>
                                                     <input id="ctnFile" name="foto" type="file"
                                                         class="form-input file:py-2 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-primary" />
                                                     @error('foto')
+                                                        <small class="text-red-500">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                                <div>
+                                                    <label for="telepon">Nama</label>
+                                                    <input id="telepon" type="text" name="name"
+                                                        placeholder="nomor telpon" value="{{ $siswa->name }}"
+                                                        class="form-input" />
+                                                    @error('no')
                                                         <small class="text-red-500">{{ $message }}</small>
                                                     @enderror
                                                 </div>
@@ -645,21 +654,33 @@
                                                         <small class="text-red-500">{{ $message }}</small>
                                                     @enderror
                                                 </div>
-                                                <div class="col-span-1 sm:col-span-2 lg:col-span-3">
+
+                                                <div>
+                                                    <label for="telepon">Sekolah</label>
+                                                    <input id="telepon" type="text" name="sekolah"
+                                                        placeholder="nomor telpon" value="{{ $siswa->sekolah }}"
+                                                        class="form-input" />
+                                                    @error('no')
+                                                        <small class="text-red-500">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-span-1 sm:col-span-1 lg:col-span-1">
                                                     <label for="alamat">Alamat</label>
-                                                    <textarea name="alamat" id="alamat" placeholder="Alamat" class="form-input">{{ $siswa->alamat }}</textarea>
+
+                                                    <textarea name="alamat" id="alamat" placeholder="Alamat" class="form-input"  rows="1">{{ $siswa->alamat }}</textarea>
                                                     @error('alamat')
                                                         <small class="text-red-500">{{ $message }}</small>
                                                     @enderror
                                                 </div>
-                                                <div
-                                                    class="col-span-1 sm:col-span-2 lg:col-span-3 mt-3 flex flex-col sm:flex-row gap-4 justify-end">
-                                                    <a href="{{ route('profile_siswa') }}"
-                                                        class="btn btn-outline-danger">Batal</a>
-                                                    <button type="submit"
-                                                        class="btn btn-info mt-3 sm:mt-0">Simpan</button>
-                                                </div>
                                             </div>
+                                        </div>
+                                        <div
+                                            class="col-span-1 sm:col-span-2 lg:col-span-3 mt-3 flex flex-col sm:flex-row gap-4 justify-end">
+                                            <a href="{{ route('profile_siswa') }}"
+                                                class="btn btn-outline-danger">Batal</a>
+                                            <button type="submit"
+                                                class="btn btn-info mt-3 sm:mt-0">Simpan</button>
+                                        </div>
                                     </form>
                                 </div>
                             </template>
