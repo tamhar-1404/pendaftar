@@ -67,8 +67,7 @@ class PiketController extends Controller
          ->toArray();
 
          $siswa = Siswa::whereNotIn('id', $Cek)
-         ->where('role', 'siswa')
-         ->latest()->paginate(4);
+         ->where('role', 'siswa')->count();
         //  $siswa = Siswa::all();
          $laporan_piket = Laporan_piket::all();
 

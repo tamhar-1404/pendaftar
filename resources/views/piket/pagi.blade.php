@@ -143,11 +143,12 @@
                                                             </div>
 
                                                         </div>
-
+                                                        @if ($siswa > 10)
                                                         <p class="text-blue-300 cursor-pointer " id="lihataselengkapnya"
                                                             onclick="lihatsemua()">lihat lainya </p>
                                                         <p id="lihatSedikit" class="hidden" onclick="lihatsedikit()">
                                                         </p>
+                                                        @endif
 
                                                         <button
                                                             class="py-1 px-3 border font-semibold border-blue-400 bg-white text-blue-400 hover:bg-blue-400 hover:text-white"
