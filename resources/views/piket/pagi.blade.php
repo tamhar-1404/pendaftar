@@ -143,7 +143,7 @@
                                                             </div>
 
                                                         </div>
-                                                        @if ($siswa > 10)
+                                                        @if ($siswa->count() > 10)
                                                         <p class="text-blue-300 cursor-pointer " id="lihataselengkapnya"
                                                             onclick="lihatsemua()">lihat lainya </p>
                                                         <p id="lihatSedikit" class="hidden" onclick="lihatsedikit()">
