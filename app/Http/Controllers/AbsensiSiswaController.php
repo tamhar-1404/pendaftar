@@ -147,6 +147,72 @@ class AbsensiSiswaController extends Controller
     {
         //
     }
+
+    public function AbsensiSiswa(Request $request)
+    {
+        // dd("adsdad");
+        $hariIni = Carbon::now()->format('l');
+        if ($hariIni == 'Saturday' OR $hariIni == 'Sunday') {
+            return response()->json(['error' => 'Hari ini libur']);
+        }
+        else {
+            $telat='telat';
+            $keterangan = "Hadir";
+            $p = Carbon::now()->format('H:i');
+            if($p < '06.30'){
+                return response()->json(['error'=> 'Anda Masih belum bisa absen']);
+            }
+
+
+            $hari_ini = Carbon::now()->format('Y-m-d');
+            $currentDay = Carbon::now()->format('D');
+            $cek_izin = ApprovalIzin::where([['tanggal', $hari_ini], ['keterangan', 'izin'], ['status2', 'izin']]);
+            $cek_izin_hari_ini = $cek_izin->exists();
+            if ($cek_izin_hari_ini) {
+                $tanggal_hari_ini = Carbon::parse($cek_izin->first()->tanggal);
+                $izin_sampai = Carbon::parse($cek_izin->first()->sampai);
+                while ($tanggal_hari_ini <= $izin_sampai) {
+                    $tanggal_hapus_kedepan = $tanggal_hari_ini->addDay()->format('Y-m-d');
+                    ApprovalIzin::where('siswa_id', auth()->user()->siswa_id)->where('tanggal', $tanggal_hapus_kedepan)->delete();
+                }
+                ApprovalIzin::where('siswa_id', auth()->user()->siswa_id)->where('tanggal', $hari_ini)->where('keterangan', 'izin')->delete();
+            }
+            // dd(Auth::user()->siswa_id, Carbon::now()->locale('id')->dayName);
+            $piket = Anggota_piket::where([['siswa_id', Auth::user()->siswa_id], ['hari', Carbon::now()->locale('id')->dayName], ['waktu', 'pagi']])->exists();
+            if ($piket) {
+                if (Carbon::now()->format('H:i') > '07:45') {
+                    $keterangan = $telat;
+                }
+            }
+            else {
+                if(Carbon::now()->format('H:i') > '08:00' ){
+                    $keterangan = $telat;
+                }
+            }
+            $nama = Auth::user()->name;
+            $tanggal = Carbon::now()->format('Y-m-d');
+            $cek = ApprovalIzin::where('siswa_id', Auth()->user()->siswa_id)->where('tanggal', $tanggal)->where('status', 'terimaabsen')->get();
+            if($cek->count() > 0){
+                return response()->json(['error' => 'Anda sudah absen']);
+            }
+            // dd($keterangan);
+            // $currentDay = 'Sunday';
+            if($currentDay !== 'Saturday' && $currentDay !== 'Sunday'){
+                $user = Auth::user()->siswa_id;
+
+                ApprovalIzin::create([
+                    'siswa_id' => $user,
+                    'tanggal' => Carbon::now()->format('Y-m-d'),
+                    'jam' => Carbon::now()->format('H:i'),
+                    'keterangan' => $keterangan,
+                    'status' => 'terimaabsen'
+                ]);
+            }elseif ($currentDay === 'Saturday' && $currentDay === 'Sunday'){
+                return response()->json(['error' => 'Anda tidak bisa absen pada hari Sabtu & Minggu']);
+            }
+            return response()->json(['success' => 'anda berhasil absen']);
+        }
+    }
     public function lihat()
     {
         return view('absensi_siswa.edit');

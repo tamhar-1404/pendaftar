@@ -26,7 +26,7 @@ class SiswaController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         $today = date('Y-m-d');
         if (Siswa::whereDate('magang_akhir', '<=', $today)->exists()) {
             $siswas = Siswa::whereDate('magang_akhir', '<=', $today)->get();
@@ -81,9 +81,20 @@ class SiswaController extends Controller
         return view('siswamagang_siswa.index', compact('siswas'));
     }
 
-    public function view()
+    public function Extend(Request $request, $id)
     {
-        //
+        $data = Siswa::FindOrFail($id);
+        $this->validate($request, [
+            'TanggalAkhir' => 'required|date|after_or_equal:' . $data->magang_akhir,
+        ], [
+            'TanggalAkhir.required' => 'Kolom tanggal akhir harus diisi.',
+            'TanggalAkhir.date' => 'Kolom tanggal akhir harus berupa tanggal.',
+            'TanggalAkhir.after_or_equal' => 'Tanggal akhir harus setelah atau sama dengan tanggal: ' . $data->magang_akhir,
+        ]);
+
+        $data->magang_akhir = $request->TanggalAkhir;
+        $data->save();
+        return redirect()->back()->with('success', 'Siswa Berhasil di Extend');
     }
 
     /**

@@ -15,6 +15,7 @@ use App\Http\Requests\StoreJurnalsiswaRequest;
 use App\Http\Requests\UpdateJurnalsiswaRequest;
 use App\Models\JurnalGuru;
 use App\Models\Siswa;
+use App\Models\User;
 use Illuminate\Support\Facades\View;
 use Exception;
 use Carbon\Carbon;
@@ -53,6 +54,7 @@ class JurnalsiswaController extends Controller
         $item->appends(['cari' => $keyword]);
     }else if($request->has('date1') && $request->has('date2')){
         if($request->date1 != null && $request->date2 != null){
+
             $date1 = $request->date1;
             $date2 = $request->date2;
             if($date2 < $date1){
@@ -61,16 +63,22 @@ class JurnalsiswaController extends Controller
             elseif($date1 === $date2 ){
                 return redirect()->back()->with('error', 'tanggal awal dan tanggal akhir tidak boleh sama ');
 
+            }else{
+                $item = Jurnalsiswa::whereBetween('created_at', [$date1, $date2])
+                ->where('siswa_id', auth()->user()->siswa_id)
+                ->latest('created_at')
+                ->paginate(5)
+                ->withQueryString();
+
+            $keyword = $date1 . '&&' . $date2;
+            $item = $item->appends(['cari' => $keyword]);
             }
-            $item = Jurnalsiswa::WhereBetween('created_at', [$date1, $date2])->where('siswa_id', Auth()->user()->siswa_id)->latest('created_at')->paginate(5)->withQueryString();
-            $keyword = $date1 ."&&" .$date2;
-            $item->appends(['cari' => $keyword]);
         }else{
             return redirect()->back()->with('error','Tanggal tidak boleh kosong');
         }
     } else {
-        $date1 = $hariIni;
-        $date2 = $hariIni;
+        $date1 = "";
+        $date2 = "";
         $item = Jurnalsiswa::where('siswa_id', Auth::user()->Siswa->id)->latest('created_at')->paginate(5);
     }
 
@@ -338,5 +346,29 @@ public function exportToDocx()
 
     // Mengembalikan file dokumen untuk diunduh
     return response()->download($path, $filename);
+}
+public function JurnalPrint(Request $request){
+    // dd($request->date1);
+    $dataSiswa = User::FindOrFail(Auth()->User()->id);
+    $data = Jurnalsiswa::where('siswa_id', Auth()->User()->siswa_id)->orderBy('tanggal', 'desc')->get();
+    // dd($data);
+     if($request->has('date1') && $request->has('date2')){
+        // dd("asdusd");
+        if($request->date1 != null && $request->date2 != null){
+            if($request->date2 < $request->date1){
+                return redirect()->back()->with('error', 'tanggal harus valid');
+            }
+            elseif($request->date1 === $request->date2 ){
+                return redirect()->back()->with('error', 'tanggal awal dan tanggal akhir tidak boleh sama ');
+
+            }else{
+                $data = Jurnalsiswa::where('siswa_id', Auth()->User()->siswa_id)->whereBetween('created_at', [$request->date1 , $request->date2])->orderBy('created_at', 'desc')->get();
+                // dd($data);
+            }
+        }
+    }
+    $jurnalAkhir = $data[0];
+    $jurnalAwal = $data[($data->count() - 1)];
+    return view('print.JurnalSiswa', compact('data', 'dataSiswa','jurnalAwal','jurnalAkhir'));
 }
 }

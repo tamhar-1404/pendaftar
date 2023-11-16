@@ -51,6 +51,15 @@
             </script>
         @endforeach
     @endif
+    @if (session()->has('success'))
+    <script>
+        Swal.fire(
+            'Berhasil!',
+            "{{ session('success') }}",
+            'success'
+        )
+    </script>
+    @endif
     @include('jurnal_admin.layout')
 
     <div class=" pl-[px] " id="content">

@@ -481,36 +481,40 @@
                                         </button>
                                     </a>
 
-
-                                    <button id="printButton" onclick="printPage()"
-                                        class=" kamu-tak-diajak flex gap-2  text-white bg-gray-600 hover:bg-gray-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                                        @click="exportTable('json')" @click="printTable">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ltr:mr-2 rtl:ml-2">
-                                            <path
-                                                d="M6 17.9827C4.44655 17.9359 3.51998 17.7626 2.87868 17.1213C2 16.2426 2 14.8284 2 12C2 9.17157 2 7.75736 2.87868 6.87868C3.75736 6 5.17157 6 8 6H16C18.8284 6 20.2426 6 21.1213 6.87868C22 7.75736 22 9.17157 22 12C22 14.8284 22 16.2426 21.1213 17.1213C20.48 17.7626 19.5535 17.9359 18 17.9827"
-                                                stroke="currentColor" stroke-width="1.5" />
-                                            <path opacity="0.5" d="M9 10H6" stroke="currentColor"
-                                                stroke-width="1.5" stroke-linecap="round" />
-                                            <path d="M19 14L5 14" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" />
-                                            <path
-                                                d="M18 14V16C18 18.8284 18 20.2426 17.1213 21.1213C16.2426 22 14.8284 22 12 22C9.17157 22 7.75736 22 6.87868 21.1213C6 20.2426 6 18.8284 6 16V14"
-                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                            <path opacity="0.5"
-                                                d="M17.9827 6C17.9359 4.44655 17.7626 3.51998 17.1213 2.87868C16.2427 2 14.8284 2 12 2C9.17158 2 7.75737 2 6.87869 2.87868C6.23739 3.51998 6.06414 4.44655 6.01733 6"
-                                                stroke="currentColor" stroke-width="1.5" />
-                                            <circle opacity="0.5" cx="17" cy="10" r="1"
-                                                fill="currentColor" />
-                                            <path opacity="0.5" d="M15 16.5H9" stroke="currentColor"
-                                                stroke-width="1.5" stroke-linecap="round" />
-                                            <path opacity="0.5" d="M13 19H9" stroke="currentColor"
-                                                stroke-width="1.5" stroke-linecap="round" />
-                                        </svg>
-                                        <p class="kamu-tak-diajak">
-                                            PRINT
-                                        </p>
-                                    </button>
+                                    <form action="/JurnalPrint" method="get"  target="blank">
+                                        @csrf
+                                        <input type="hidden" name="date1" value="{{$date1}}" >
+                                        <input type="hidden" name="date2" value="{{$date2}}" >
+                                        <button type="submit"
+                                            class=" kamu-tak-diajak flex gap-2  text-white bg-gray-600 hover:bg-gray-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                                            @click="exportTable('json')" @click="printTable">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ltr:mr-2 rtl:ml-2">
+                                                <path
+                                                    d="M6 17.9827C4.44655 17.9359 3.51998 17.7626 2.87868 17.1213C2 16.2426 2 14.8284 2 12C2 9.17157 2 7.75736 2.87868 6.87868C3.75736 6 5.17157 6 8 6H16C18.8284 6 20.2426 6 21.1213 6.87868C22 7.75736 22 9.17157 22 12C22 14.8284 22 16.2426 21.1213 17.1213C20.48 17.7626 19.5535 17.9359 18 17.9827"
+                                                    stroke="currentColor" stroke-width="1.5" />
+                                                <path opacity="0.5" d="M9 10H6" stroke="currentColor"
+                                                    stroke-width="1.5" stroke-linecap="round" />
+                                                <path d="M19 14L5 14" stroke="currentColor" stroke-width="1.5"
+                                                    stroke-linecap="round" />
+                                                <path
+                                                    d="M18 14V16C18 18.8284 18 20.2426 17.1213 21.1213C16.2426 22 14.8284 22 12 22C9.17157 22 7.75736 22 6.87868 21.1213C6 20.2426 6 18.8284 6 16V14"
+                                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                                <path opacity="0.5"
+                                                    d="M17.9827 6C17.9359 4.44655 17.7626 3.51998 17.1213 2.87868C16.2427 2 14.8284 2 12 2C9.17158 2 7.75737 2 6.87869 2.87868C6.23739 3.51998 6.06414 4.44655 6.01733 6"
+                                                    stroke="currentColor" stroke-width="1.5" />
+                                                <circle opacity="0.5" cx="17" cy="10" r="1"
+                                                    fill="currentColor" />
+                                                <path opacity="0.5" d="M15 16.5H9" stroke="currentColor"
+                                                    stroke-width="1.5" stroke-linecap="round" />
+                                                <path opacity="0.5" d="M13 19H9" stroke="currentColor"
+                                                    stroke-width="1.5" stroke-linecap="round" />
+                                            </svg>
+                                            <p class="kamu-tak-diajak">
+                                                PRINT
+                                            </p>
+                                        </button>
+                                    </form>
                                 </div>
 
                             </div>

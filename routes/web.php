@@ -133,7 +133,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/jurnal_pdf', [JurnaladminController::class, 'jurnal_admin_pdf'])->name('jurnal_pdf');
         Route::get('/jurnal_docx', [JurnaladminController::class, 'admin_docx'])->name('jurnal_docx');
         Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
-        Route::patch('/Extend' , [SiswaController::class , 'Extend'])->name('Extend');
+        Route::patch('/Extend/{id}' , [SiswaController::class , 'Extend'])->name('Extend');
         Route::delete('/hapus_laporan_piket/{id}' , [LaporanPiketController::class , 'hapus'])->name('hapus/laporan/piket');
         Route::post('catatan', [PiketController::class, 'tambah'])->name('tambahCatatan');
         Route::post('/hadir_siswa', [App\Http\Controllers\JurnaladminController::class, 'hadir'])->name('hadir_siswa');
@@ -161,10 +161,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('profil_siswa', [ProfilsiswaController::class, 'index'])->name('profile_siswa');
         Route::put('update_siswa', [ProfilsiswaController::class, 'update'])->name('update_siswa');
         Route::post('ganti_password', [ProfilsiswaController::class, 'ganti_password'])->name('ganti_password');
+        Route::post('Absensi/Siswa', [AbsensiSiswaController::class, 'AbsensiSiswa'])->name('Absensi/Siswa');
         Route::get('/export-to-docx', [JurnalsiswaController::class, 'exportToDocx']);
         Route::get('/download-pdf-JurnalSiswa', [JurnalsiswaController::class, 'downloadPDF']);
         Route::get('/absen_pdf1', [AbsensiadminController::class, 'absen_pdf1'])->name('absen_pdf1');
-        Route::get('/absensi_pdf', [ApprovalIzinController::class, 'absen_siswa_pdf']);
+        Route::get('/JurnalPrint', [JurnalsiswaController::class, 'JurnalPrint']);
 
     });
 

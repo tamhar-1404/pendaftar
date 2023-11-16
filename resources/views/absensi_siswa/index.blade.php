@@ -11,7 +11,6 @@
     <title>siswa - Dashboad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="css/app.css" />
     <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
@@ -72,7 +71,7 @@
             toastr.success("{{ session('success') }}");
         </script>
     @endif
-    {{-- 
+    {{--
     @if (session()->has('error'))
         <div class="text-danger"><b>{{ session('error') }}</b></div>
     @endif --}}
