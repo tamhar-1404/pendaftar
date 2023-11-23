@@ -1576,7 +1576,7 @@
                                             Kegiatan
                                         </p>
                                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                            {{ $modal->kegiatan }}
+                                            {{ $modal->kegiatan }} || {{$modal->image}}
                                         </p>
                                     </div>
                                     <div>

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link rel="stylesheet" href="{{ asset('load/load.css') }}">
@@ -54,7 +55,7 @@
             document.querySelectorAll('.swal2-success-fix').forEach(function(element) {
             element.style.backgroundColor = 'transparent';
             });
-       
+
         });
     </script>
     <style>
@@ -607,17 +608,9 @@
                         <div class="flex justify-header gap-3">
                             <div class="">
                                 @if (auth()->user()->Siswa->role == 'siswa')
-                                <form action="{{ route('absensi_siswa.store') }}" method="post" id="absenform">
-                                    @csrf
-                                    {{-- <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
-                                    <input type="hidden" name="sekolah" value="{{ Auth::user()->sekolah }}">
-                                    <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}" />
-                                    <input type="hidden" id="waktu" name="jam" value="{{ date('H:i') }}" />
-                                    <input type="hidden" name="keterangan" value="Hadir"> --}}
-                                    <button type="submit"
-                                        class=" button_absen border border-green-500 px-3 py-2 rounded-lg text-green-500  font-bold"
-                                        id="btnabsen">Absen</button>
-                                </form>
+                                <button type="button" onclick="Absen()"
+                                    class=" button_absen border border-green-500 px-3 py-2 rounded-lg text-green-500  font-bold"
+                                    >Absen</button>
                             @endif
                             </div>
                             <div class="flex justify-end font-semibold bg-blue-400 text-white  px-4 py-1 rounded">
@@ -1150,6 +1143,7 @@
     <script defer src="siswa/js/apexcharts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     {{-- <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-e lements.umd.min.js"></script> --}}
     <script>
@@ -1287,7 +1281,46 @@
             });
         });
     </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
 
+            });
+
+
+            function Absen() {
+                   $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                var formData = "absen";
+                $.ajax({
+                    url: "Absensi/Siswa",
+                    method: "POST",
+                    data:  formData,
+                    success: function(response) {
+
+                        if (response.success) {
+                            toastr.success(response.success);
+                        }else{
+                            toastr.error(response.error);
+                        }
+                    },
+                    error: function(error) {
+                        console.log("Terjadi kesalahan saat mengirim permintaan.");
+                        console.error(error);
+                    }
+                });
+            }
+
+        </script>
+    <script>
+        $(document).ready(function(){
+            $('#btnAbsen').click(function(){
+
+            });
+        })
+    </script>
 
 
 
