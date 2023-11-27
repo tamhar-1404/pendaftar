@@ -1228,7 +1228,7 @@
                                         <label class="relative hidden px-4 mt-1 sm:flex">
                                             <input
                                                 class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                                placeholder="Search here..." type="text" name="cari"
+                                                placeholder="Cari jurnal siswa" type="text" name="cari"
                                                 value="{{ request('cari') }}" />
                                         </label>
                                     </form>
@@ -1317,6 +1317,10 @@
 
                         {{-- tabel --}}
 
+                        @php
+                            use Carbon\Carbon;
+                        @endphp
+
                         <div class="flex flex-col w-full">
                             <div class="w-full">
                                 <div class="inline-block min-w-full py-2 w-full ">
@@ -1335,6 +1339,7 @@
                                             @forelse ($jurnals as  $jurnal)
                                                 @php
                                                     $no = 1;
+
                                                 @endphp
                                                 <tbody>
                                                     <tr
@@ -1343,7 +1348,7 @@
                                                             {{ $no++ }}</td>
                                                         <td class="whitespace-nowrap px-4 py-4">{{ $jurnal->Siswa->name }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-4 py-4">{{ $jurnal->tanggal }}
+                                                        <td class="whitespace-nowrap px-4 py-4">{{ Carbon::parse($jurnal->tanggal)->format('d F Y') }}
                                                         </td>
                                                         <td
                                                             class="whitespace-nowrap px-4 py-4 max-w-sm overflow-hidden truncate ">
@@ -1355,7 +1360,7 @@
                                                         <td class="whitespace-nowrap px-4 py-4">
                                                             @if ($jurnal->kegiatan != 'Tidak mengisi')
                                                             <button
-                                                                class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-[#00B7FF] hover:text-white dark:bg-transparent "
+                                                                class="w-16 flex h-8 bg-white rounded-md border-2 border-[#00B7FF] justify-center items-center text-[#00B7FF] hover:bg-blue hover:text-blue dark:bg-transparent "
                                                                 data-te-toggle="modal"
                                                                 data-modal-target="staticModal{{ $jurnal->id }}"
                                                                 data-modal-toggle="staticModal{{ $jurnal->id }}">
@@ -1438,7 +1443,7 @@
                                 Tanggal
                             </p>
                             <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                {{ $jurnal->tanggal }}
+                                {{ Carbon::parse($jurnal->tanggal)->format('d F Y') }}
                             </p>
                         </div>
                         <div>

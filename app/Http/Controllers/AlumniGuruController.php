@@ -6,6 +6,7 @@ use App\Models\Alumni_guru;
 use App\Models\Siswa;
 use App\Http\Requests\StoreAlumni_guruRequest;
 use App\Http\Requests\UpdateAlumni_guruRequest;
+use App\Models\Guru_admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class AlumniGuruController extends Controller
@@ -17,15 +18,16 @@ class AlumniGuruController extends Controller
      */
     public function index(Request $request)
     {
+        $guru = Guru_admin::where('email' , auth()->user()->email)->first();
         $siswaLogin = Auth::user();
         if ($request->has('cari')) {
             $keyword = $request->cari;
             $siswas = Siswa::where([['role', 'alumni'], ['sekolah', $siswaLogin->sekolah], ['name', 'LIKE', '%'.$keyword.'%']])->get();
-            return view('alumni_guru.index' , compact('siswas'));
+            return view('alumni_guru.index' , compact('siswas', 'guru'));
         }
         $siswas = Siswa::where([['role', 'alumni'], ['sekolah', $siswaLogin->sekolah]])
                        ->get();
-        return view('alumni_guru.index' , compact('siswas'));
+        return view('alumni_guru.index' , compact('siswas', 'guru'));
     }
 
     /**

@@ -280,7 +280,7 @@
                                         <label class="relative hidden px-4 mt-1 sm:flex">
                                             <input
                                                 class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                                placeholder="Search here..." type="text" name="cari"
+                                                placeholder="Cari nama siswa" type="text" name="cari"
                                                 value="{{ request('cari') }}" />
                                         </label>
                                     </form>
@@ -363,6 +363,10 @@
 
                         {{-- tabel --}}
 
+                        @php
+                            use Carbon\Carbon;
+                        @endphp
+
                         <div class="flex flex-col w-full">
                             <div class="overflow-x-auto w-full mt-5 sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full w-full py-2 sm:px-6 lg:px-8">
@@ -391,7 +395,7 @@
                                                         </td>
                                                         <td class="whitespace-nowrap px-4 py-4">{{ $terima->Siswa->sekolah }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-4 py-4">{{ $terima->tanggal }}
+                                                        <td class="whitespace-nowrap px-4 py-4">{{ Carbon::parse($terima->tanggal)->format('d F Y') }}
                                                         </td>
                                                         <td class="whitespace-nowrap px-4 py-4">{{ $terima->jam }}
                                                         </td>
