@@ -385,7 +385,7 @@
                                 <label for="photo" class="block font-bold text-sm mb-1">Foto Siswa :</label>
                                 <input type="file" id="photo" name="foto_siswa"
                                     class="w-full px-4 py-1 text-sm border rounded" required>
-                                    <p class="text-xs text-black ">Foto siswa harus berformat "JPG,PNG"</p>
+                                    <p class="text-sm font-light italic bg-red ">Foto siswa harus berformat "JPG,PNG"</p>
                                 <div id="file-warning-siswa" class="text-red-500 text-sm mt-1"></div>
                             </div>
                             <div class="mb-4">
@@ -393,7 +393,7 @@
                                     :</label>
                                 <input type="file" ty id="sp_diri" name="sp_diri"
                                     class="w-full text-sm px-4 py-1 border rounded" required>
-                                    <p class="text-xs text-black ">Surat Pernyataan Siswa harus berformat "JPG,PNG"</p>
+                                    <p class="text-sm font-light italic bg-red ">Surat Pernyataan Siswa harus berformat "JPG,PNG"</p>
 
                                 <div id="file-warning-diri" class="text-red-500 text-sm mt-1"></div>
                             </div>
@@ -402,7 +402,7 @@
                                     :</label>
                                 <input type="file" ty id="sp_ortu" name="sp_ortu"
                                     class="w-full text-sm px-4 py-1 border rounded" required>
-                                    <p class="text-xs text-black ">Surat Pernyataan Orang Tua harus berformat "JPG,PNG"</p>
+                                    <p class="text-sm font-light italic bg-red ">Surat Pernyataan Orang Tua harus berformat "JPG,PNG"</p>
 
                                 <div id="file-warning-ortu" class="text-red-500 text-sm mt-1"></div>
                             </div>
@@ -411,7 +411,7 @@
                                         class="font-light italic bg-red">(opsional)</span> :</label>
                                 <input type="file" id="skck" name="skck"
                                     class="w-full text-sm px-4 py-1 border rounded">
-                                    <p class="text-xs text-black ">Surat SKCK harus berformat "JPG,PNG"</p>
+                                    <p class="text-sm font-light italic bg-red ">Surat SKCK harus berformat "JPG,PNG"</p>
 
                                 <div id="file-warning-skck" class="text-red-500 text-sm mt-1"></div>
                             </div>
@@ -419,7 +419,7 @@
                                 <label for="cv" class="block font-bold text-sm mb-1">CV:</label>
                                 <input type="file" id="cv" name="cv"
                                     class="w-full text-sm px-4 py-1 border rounded" required>
-                                    <p class="text-xs text-black ">Surat CV harus berformat "JPG,PNG"</p>
+                                    <p class="text-sm font-light italic bg-red ">Surat CV harus berformat "JPG,PNG"</p>
 
                                 <div id="file-warning-cv" class="text-red-500 text-sm mt-1"></div>
                             </div>
@@ -786,7 +786,6 @@
                 const year = today.getFullYear();
 
                 const todayFormatted = `${year}-${month}-${day}`;
-                console.log(todayFormatted);
 
                 var radio = {};
 
@@ -997,11 +996,6 @@
 
                     }
                 });
-
-                console.log(tanggallahir);
-
-
-
 
                 return isValid;
             }
