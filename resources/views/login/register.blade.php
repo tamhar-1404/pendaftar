@@ -106,20 +106,20 @@
                         <div class="step active ">
                             <div class="mb-4">
                                 <label for="name" class="block font-bold mb-1 text-sm">Nama :</label>
-                                <input type="text" placeholder="Nama" id="name" name="name"
+                                <input type="text" placeholder="Nama" id="name" name="name" value="{{old('name')}}"
                                     class="w-full px-4 py-1 text-sm border rounded" required>
                                 <span id="nameError" class="text-red-500 text-xs mt-1"></span>
                             </div>
                             <div class="flex justify-between gap-0">
                                 <div class="mb-4">
                                     <label for="name" class="block font-bold text-sm mb-1">Tempat :</label>
-                                    <input type="text" id="tempat" name="tempat" placeholder="Tempat lahir"
+                                    <input type="text" id="tempat" name="tempat" placeholder="Tempat lahir" value="{{old('tempat')}}"
                                         class="w-full px-4 py-1 text-sm border rounded" required>
                                     <span id="tempatError" class="text-red-500 text-xs mt-1"></span>
                                 </div>
                                 <div class="mb-4">
                                     <label for="birthdate" class="block font-bold text-sm mb-1">Tanggal Lahir :</label>
-                                    <input type="date" id="tanggallahir" name="tanggal"
+                                    <input type="date" id="tanggallahir" name="tanggal" value="{{old('tanggal')}}"
                                         class="w-full px-4 py-1 text-sm border rounded" required>
                                     <div id="warning-tanggal-lahir" class="text-red-500 text-sm mt-1"></div>
 
@@ -127,7 +127,7 @@
                             </div>
                             <div class="mb-4">
                                 <label for="nisn" class="block font-bold mb-1 text-sm">NISN / NIM:</label>
-                                <input type="number" id="nisn" name="nisn" placeholder="Masukkan nisn / nim"
+                                <input type="number" id="nisn" name="nisn" placeholder="Masukkan nisn / nim" value="{{old('nisn')}}"
                                     class="w-full px-4 py-1 text-sm border rounded" min="0" required>
                             </div>
 
@@ -137,10 +137,10 @@
                                     class="w-full px-4 py-1 text-sm border rounded @error('kelas') is-invalid @enderror"
                                     required>
                                     <option class="text-sm" value="" disabled selected>Pilih kelas</option>
-                                    <option class="text-sm" value="10">10</option>
-                                    <option class="text-sm" value="11">11</option>
-                                    <option class="text-sm" value="12">12</option>
-                                    <option class="text-sm" value="Mahasiswa">Mahasiswa</option>
+                                    <option class="text-sm" value="10" {{ (old('kelas') == "10") ? "selected" : "" }}>10</option>
+                                    <option class="text-sm" value="11" {{ (old('kelas') == "11") ? "selected" : "" }}>11</option>
+                                    <option class="text-sm" value="12" {{ (old('kelas') == "12") ? "selected" : "" }}>12</option>
+                                    <option class="text-sm" value="Mahasiswa" {{ (old('kelas') == "Mahasiswa") ? "selected" : "" }}>Mahasiswa</option>
                                 </select>
                                 <div id="kelas-warning" class="text-red-500 text-sm mt-1"></div>
                             </div>
@@ -244,10 +244,10 @@
                             <div class=" flex justify-between">
                                 <div class="flex gap-2">
                                     <input class="text-sm" type="radio" name="jeniskelamin" id="radio"
-                                        value="laki-laki">
+                                        value="laki-laki" {{(old('jeniskelamin') == 'laki-laki') ? "selected" : ""}}>
                                     <p>Laki-laki</p>
                                     <input class="text-sm" type="radio" name="jeniskelamin" id="radio"
-                                        value="Perempuan">
+                                        value="Perempuan" {{(old('jeniskelamin') == 'Perempuan') ? "selected" : ""}}>
                                     <p>Perempuan </p>
                                     <span></span>
                                 </div>
@@ -262,7 +262,7 @@
                         <div class="step">
                             <div class="mb-4">
                                 <label for="address" class="block font-bold text-sm mb-1">Alamat :</label>
-                                <textarea id="alamat" name="alamat" class=" px-2 border items-center text-sm w-full h-8 rounded" required></textarea>
+                                <textarea id="alamat" name="alamat" class=" px-2 border items-center text-sm w-full h-8 rounded" required>{{old('alamat')}}</textarea>
                                 <span id="alamatError" class="text-red-500 text-xs mt-1"></span>
                             </div>
                             <script>
@@ -291,7 +291,7 @@
                             </script>
                             <div class="mb-4">
                                 <label for="school" class="block font-bold text-sm mb-1">Nomer tlp :</label>
-                                <input type="number" id="nomor" name="no" min="0"
+                                <input type="number" id="nomor" name="no" min="0" value="{{old('no')}}"
                                     class="w-full px-4 py-1 border rounded" required>
                             </div>
                             <div class="mb-4">
@@ -299,9 +299,9 @@
                                 <select name="jurusan" class="w-full px-4 py-1 border rounded" id="jurusan"
                                     required>
                                     <option value="" disabled selected>Pilih jurusan</option>
-                                    <option value="RPL">RPL</option>
-                                    <option value="Multimedia">Multimedia</option>
-                                    <option value="TI">TI</option>
+                                    <option value="RPL" {{old("jurusan") == "RPL" ? "selected" : ""}}>RPL</option>
+                                    <option value="Multimedia" {{old("jurusan") == "Multimedia" ? "selected" : ""}}>Multimedia</option>
+                                    <option value="TI" {{old("jurusan") == "TI" ? "selected" : ""}}>TI</option>
                                 </select>
                                 <div id="kelas-warning2" class="text-red-500 text-sm mt-1"></div>
                             </div>
@@ -328,7 +328,7 @@
                             <div class="mb-4">
                                 <label for="school" class="block font-bold text-sm mb-1">Sekolah / Universitas
                                     :</label>
-                                <input type="text" id="sekolah" name="sekolah"
+                                <input type="text" id="sekolah" name="sekolah" value="{{old('jurusan')}}"
                                     class="w-full px-4 py-1 text-sm border rounded" required>
                                 <span id="sekolahError" class="text-red-500 text-xs mt-1"></span>
                             </div>
@@ -360,14 +360,14 @@
                                 <div class="">
                                     <label for="internship-start" class="block font-bold text-sm mb-1">Mulai Magang
                                         :</label>
-                                    <input type="date" id="mulai-magang" name="magang_awal"
+                                    <input type="date" id="mulai-magang" name="magang_awal" value="{{old('magang_awal')}}"
                                         class="w-full px-4 text-sm py-1 border rounded" required>
                                     <div id="warning-tanggal-magang" class="text-red-500 text-sm mt-1"></div>
                                 </div>
                                 <div class="">
                                     <label for="internship-end" class="block font-bold text-sm mb-1">Selesai
                                         Magang:</label>
-                                    <input type="date" id="akhir-magang" name="magang_akhir"
+                                    <input type="date" id="akhir-magang" name="magang_akhir" value="{{old('magang_akhir')}}"
                                         class="w-full px-4 py-1 text-sm border rounded" required>
                                 </div>
                             </div>
@@ -434,7 +434,7 @@
                         <div class="step">
                             <div class="mb-4">
                                 <label for="email" class="block font-bold mb-1">Email:</label>
-                                <input type="email" id="email" name="email"
+                                <input type="email" id="email" name="email" value="{{old('email')}}"
                                     class="w-full px-4 py-1 text-sm border rounded" required>
                                 <span id="emailError" class="text-red-500 text-xs mt-1"></span>
                             </div>

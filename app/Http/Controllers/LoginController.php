@@ -130,8 +130,7 @@ public function store(Request $request)
     }
 
     if (User::where('email', $request->email)->exists() || Siswa::where('email', $request->email)->exists() || Guru_admin::where('email', $request->email)->exists() || MOU::where('email', $request->email)->exists() || Tolak::where('email', $request->email)->exists() ) {
-        return back()->with('error', 'Email sudah digunakan');
-        // return "Duplikat";
+        return back()->with('error', 'Email sudah digunakan')->withInput();
     }
 
     try {
