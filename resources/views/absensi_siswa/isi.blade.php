@@ -61,7 +61,9 @@
 </head>
 
 <body>
-
+    @php
+        use Carbon\Carbon;
+    @endphp
     <div class="mt-3 ml-4 font-bold">Data Absensi</div>
     <div class="kamu-tak-diajak flex justify-between  px-5 gap-2">
         <div class="mb-5 flex flex-wrap gap-1 mt-5 items-center">
@@ -212,7 +214,7 @@
                                     {{ $absen->Siswa->name }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $absen->tanggal }}
+                                    {{ Carbon::parse($absen->tanggal)->format('d F Y') }}
                                 </td>
                                 <td class="px-6 py-4">
                                     @if ($absen->keterangan === 'izin')
@@ -430,11 +432,6 @@
             </div>
         </div>
     </div>
-
-    {{--  modal2  --}}
-    @php
-        use Carbon\Carbon;
-    @endphp
     @forelse ($terima as  $absen)
         <div id="staticModal1{{ $absen->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
             class="kamu-tak-diajak fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -483,7 +480,7 @@
                         <div class="relative z-0 w-full mb-6 group">
                             <p
                                 class="py-2.5 px-0 w-full text-sm text-gray-900 border-0 border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500  uppercase">
-                                {{ Carbon::parse($absen->tanggal)->format('d M Y') }}</p>
+                                {{ Carbon::parse($absen->tanggal)->format('d F Y') }}</p>
                             <label for="floating_email"
                                 class="absolute text-sm text-gray-500 dark:text-gray-400 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] capitalize">tanggal</label>
                         </div>
