@@ -88,7 +88,7 @@
                 </button>
                 <input x-effect="$store.global.isSearchbarActive && $nextTick(() => $el.focus() );"
                     class="form-input h-8 w-full bg-transparent placeholder-slate-400 dark:placeholder-navy-300"
-                    type="text" placeholder="Search heree..." />
+                    type="text" placeholder="Cari berita" />
             </div>
             <div x-data="{ activeTab: 'tabAll' }"
                 class="is-scrollbar-hidden flex shrink-0 overflow-x-auto bg-slate-100 px-2 text-slate-600 dark:bg-navy-800 dark:text-navy-200">
@@ -425,7 +425,7 @@
                                 <label class="relative hidden px-4 mt-1 sm:flex">
                                     <input
                                         class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        placeholder="Search here..." type="text" name="cari"
+                                        placeholder="Cari berita" type="text" name="cari"
                                         value="{{ request('cari') }}" />
                                 </label>
                             </form>

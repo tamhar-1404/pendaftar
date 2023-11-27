@@ -54,7 +54,7 @@
                     <label class="relative hidden px-4 mt-1 sm:flex">
                         <input
                             class="form-input peer h-9 w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                            placeholder="Search heree..." type="text" name="cari" value="{{ request('cari') }}" />
+                            placeholder="Cari berita" type="text" name="cari" value="{{ request('cari') }}" />
                     </label>
                 </form>
 
