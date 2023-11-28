@@ -149,8 +149,6 @@
     <div x-data="customizer">
         <div class="fixed inset-0 z-[51] hidden bg-[black]/60 px-4 transition-[display]"
             :class="{ '!block': showCustomizer }" @click="showCustomizer = false"></div>
-
-
     </div>
     </nav>
     </div>
@@ -349,7 +347,7 @@
                 </div>
             </nav>
         </div>
-
+        
         <!-- Sisipkan kode JavaScript berikut di akhir halaman HTML Anda -->
         <script>
             document.addEventListener("DOMContentLoaded", function() {
@@ -420,7 +418,7 @@
                         @endphp
                         <div class="flex justify-between mb-9">
                             <div class="mx-4 mb-4">
-                                <div >
+                                <div>
                                     <div class="px-2">
                                         <div class="flex justify-header gap-3">
                                             <div class="">
@@ -481,10 +479,10 @@
                                         </button>
                                     </a>
 
-                                    <form action="/JurnalPrint" method="get"  target="blank">
+                                    <form action="/JurnalPrint" method="get" target="blank">
                                         @csrf
-                                        <input type="hidden" name="date1" value="{{$date1}}" >
-                                        <input type="hidden" name="date2" value="{{$date2}}" >
+                                        <input type="hidden" name="date1" value="{{ $date1 }}">
+                                        <input type="hidden" name="date2" value="{{ $date2 }}">
                                         <button type="submit"
                                             class=" kamu-tak-diajak flex gap-2  text-white bg-gray-600 hover:bg-gray-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                                             @click="exportTable('json')" @click="printTable">
@@ -499,7 +497,8 @@
                                                     stroke-linecap="round" />
                                                 <path
                                                     d="M18 14V16C18 18.8284 18 20.2426 17.1213 21.1213C16.2426 22 14.8284 22 12 22C9.17157 22 7.75736 22 6.87868 21.1213C6 20.2426 6 18.8284 6 16V14"
-                                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                                    stroke="currentColor" stroke-width="1.5"
+                                                    stroke-linecap="round" />
                                                 <path opacity="0.5"
                                                     d="M17.9827 6C17.9359 4.44655 17.7626 3.51998 17.1213 2.87868C16.2427 2 14.8284 2 12 2C9.17158 2 7.75737 2 6.87869 2.87868C6.23739 3.51998 6.06414 4.44655 6.01733 6"
                                                     stroke="currentColor" stroke-width="1.5" />
@@ -522,23 +521,22 @@
 
                         <div class="kamu-tak-diajak md:flex md:justify-between mx-4 items-center">
                             @if (Auth::user()->Siswa->role == 'siswa')
-                            <div class="flex justify-between">
-                                <button data-modal-target="authentication-modal"
+                                <div class="flex justify-between">
+                                    <button data-modal-target="authentication-modal"
                                         data-modal-toggle="authentication-modal"
                                         class="flex gap-2 h-10 items-center w-full text-white bg-[#008ffb] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-[#008ffb] dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                                         @click="exportTable('json')">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 4.5v15m7.5-7.5h-15" />
-                                    </svg>
-                                    <p class="kamu-tak-diajak">
-                                        Tambah
-                                    </p>
-                                </button>
-                            </div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M12 4.5v15m7.5-7.5h-15" />
+                                        </svg>
+                                        <p class="kamu-tak-diajak">
+                                            Tambah
+                                        </p>
+                                    </button>
+                                </div>
                             @endif
-
                             {{-- modal --}}
 
                             <!-- Main modal -->
@@ -559,12 +557,12 @@
                                             <span class="sr-only">Close modal</span>
                                         </button>
                                         <div class="px-6 py-6 lg:px-8">
-                                            <h2 class="mb-4 text-base font-medium text-gray-900 dark:text-white">Tambah Jurnal
+                                            <h2 class="mb-4 text-base font-medium text-gray-900 dark:text-white">Tambah
+                                                Jurnal
                                             </h2>
-                                            <form class="space-y-6" action="{{ route('jurnal_siswa.store') }}"
-                                                method="post" enctype="multipart/form-data">
+                                            <form class="space-y-6" id="form-create" method="post"
+                                                enctype="multipart/form-data">
                                                 @csrf
-
                                                 <div>
                                                     <label for="kegiatan"
                                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
@@ -589,34 +587,32 @@
                                 </div>
                             </div>
                             {{-- end modal --}}
-                            <form  method="get" class="flex justify-end">
+                            <form method="get" class="flex justify-end">
                                 <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-3 gap-2 w-full">
                                     <div class="mt-1 ">
                                         Tanggal Awal <br>
                                         <label class="relative flex">
-                                          <input
-                                            class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                            placeholder="Choose date..." name="date1"
-                                            type="date" value="{{$date1}}"
-                                          />
+                                            <input
+                                                class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                placeholder="Choose date..." name="date1" type="date"
+                                                value="{{ $date1 }}" />
                                         </label>
                                     </div>
                                     <div class="mt-1">
                                         Tanggal Akhir <br>
                                         <label class="relative flex">
-                                          <input
-                                            class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                            placeholder="Choose date..." name="date2"
-                                            type="date" value="{{$date2}}"
-                                          />
-                                          <span
-                                            class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent"
-                                          >
-                                          </span>
+                                            <input
+                                                class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                placeholder="Choose date..." name="date2" type="date"
+                                                value="{{ $date2 }}" />
+                                            <span
+                                                class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                                            </span>
                                         </label>
                                     </div>
                                     <div class="flex items-end pb-2 ">
-                                        <button type="submit"  class="border border-[#008ffb] text-lg  mt-1 p-0 rounded font-bold text-white bg-[#008ffb] w-full md:h-[60%]" >Cari</button>
+                                        <button type="submit"
+                                            class="border border-[#008ffb] text-lg  mt-1 p-0 rounded font-bold text-white bg-[#008ffb] w-full md:h-[60%]">Cari</button>
                                     </div>
                                 </div>
                             </form>
@@ -653,7 +649,8 @@
                                                         <td class="whitespace-nowrap px-6 py-2">
                                                             {{ $items->siswa->name }}
                                                         </td>
-                                                        <td class="whitespace-nowrap px-6 py-2">{{ \Carbon\Carbon::parse($items->created_at)->locale('id')->isoFormat('D MMMM Y ') }}
+                                                        <td class="whitespace-nowrap px-6 py-2">
+                                                            {{ \Carbon\Carbon::parse($items->created_at)->locale('id')->isoFormat('D MMMM Y ') }}
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 py-2">
                                                             {{ $items->siswa->sekolah }}
@@ -879,11 +876,122 @@
 
         </div>
     </div>
+    <script>
+        get()
+        function get() {
+            $.ajax({
+                url: "{{ route('data.ajax') }}",
+                type: 'GET',
+                dataType: 'JSON',
+                data: {
+                    title: $('#search-name').val(),
+                    classroom: $('#classroom').val(),
+                    semester: $('#search-school-year').val()
+                },
+                beforeSend: function() {
+                    $('#data').html('')
+                    $('#loading').html(showLoading())
+                    $('#pagination').html('')
+                },
+                success: function(response) {
+                    if (response.data.length > 0) {
+                        $('#loading').html('')
+                        $.each(response.data, function(index, data) {
+                            $('#data').append(examData(data))
+                        })
+                    } else {
+                        $('#data').html(showNoData('Soal belum tersedia'))
+                    }
+                }
+            })
+        }
+    </script>
+    <style>
+        body {
+            overflow: hidden;
+        }
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #fff;
+            /* change if the mask should have another color then white */
+            z-index: 99;
+            /* makes sure it stays on top */
+            display: none; /* sembunyikan preloader secara default */
+        }
+
+        #status {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            /* centers the loading animation horizontally one the screen */
+            top: 50%;
+            /* centers the loading animation vertically one the screen */
+            background-image: url(https://raw.githubusercontent.com/niklausgerber/PreLoadMe/master/img/status.gif);
+            /* path to your loading animation */
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: -100px 0 0 -100px;
+            /* is width and height divided by two */
+        }
+    </style>
+
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
 
     {{--  <!-- Swiper JS -->  --}}
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     {{--  <!-- Initialize Swiper -->  --}}
     <script>
+        $('#form-create').submit(function(e) {
+            e.preventDefault();
+            $('#preloader').show();
+            const token = localStorage.getItem('token');
+            var formData = new FormData(this);
+            // Get the value of the "item[]" input
+            const itemValue = formData.get('image[]');
+            // Check if the value is not null and not empty
+            if (itemValue !== null && itemValue.trim() === '') {
+                // Handle error (show validation message or prevent form submission)
+                formData.append("image", []);
+            }
+            $.ajax({
+                url: "{{ route('jurnal_siswa.store') }}",
+                type: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + token,
+                },
+                dataType: "JSON",
+                processData: false,
+                contentType: false,
+                data: formData,
+                success: function(response) {
+                    $('#preloader').fadeOut();
+                    get();
+                    $('.btn-close').click();
+                    Swal.fire({
+                        'title': 'Berhasil!',
+                        'icon': 'success',
+                        'text': response.message,
+                    });
+                    emptyForm('form-create');
+                },
+                error: function(response) {
+                    $('#preloader').fadeOut();
+                    var response = response.responseJSON;
+                    var status = response.meta.code;
+                    if (status == 422) {
+                        handleValidate(response.data, 'create');
+                    }
+                }
+            });
+        });
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 3,
             spaceBetween: 30,
@@ -899,12 +1007,11 @@
                 prevEl: ".swiper-button-prev",
             },
         });
+
     </script>
     <style>
         /* === Google Font Import - Poppins === */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-
 
         section {
             position: relative;

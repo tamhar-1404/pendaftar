@@ -163,6 +163,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('ganti_password', [ProfilsiswaController::class, 'ganti_password'])->name('ganti_password');
         Route::post('Absensi/Siswa', [AbsensiSiswaController::class, 'AbsensiSiswa'])->name('Absensi/Siswa');
         Route::get('/export-to-docx', [JurnalsiswaController::class, 'exportToDocx']);
+        Route::get('/data', [JurnalsiswaController::class, 'data'])->name('data.ajax');
         Route::get('/download-pdf-JurnalSiswa', [JurnalsiswaController::class, 'downloadPDF']);
         Route::get('/absen_pdf1', [AbsensiadminController::class, 'absen_pdf1'])->name('absen_pdf1');
         Route::get('/JurnalPrint', [JurnalsiswaController::class, 'JurnalPrint']);

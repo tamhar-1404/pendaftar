@@ -40,8 +40,6 @@ class JurnalsiswaController extends Controller
 
         $hariIni = Carbon::now()->format('l');
         $hariIniLengkap = Carbon::now()->format('Y-m-d');
-
-
     if ($request->has('cari')) {
         $keyword = $request->cari;
 
@@ -82,9 +80,13 @@ class JurnalsiswaController extends Controller
         $item = Jurnalsiswa::where('siswa_id', Auth::user()->Siswa->id)->latest('created_at')->paginate(5);
     }
 
-    return view('jurnal_siswa.index', compact('item', 'date1','date2'));
+    return view('jurnal_siswa.index' ,compact('item','date1','date2'));
 }
-
+public function data ()
+{
+    $item = Jurnalsiswa::where('siswa_id', Auth::user()->Siswa->id)->get();
+    return response()->json($item);
+}
 
     /**
      * Show the form for creating a new resource.
