@@ -15,6 +15,7 @@ use App\Http\Requests\StoreSiswaRequest;
 use Carbon\Carbon;
 use App\Http\Requests\UpdateSiswaRequest;
 use App\Mail\EmailLulus as MailEmailLulus;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
 class SiswaController extends Controller
@@ -233,5 +234,18 @@ return view('rfid.index', compact('users'));
         ]);
         User::where('name', $siswa->name)->update(['role' => 'banned']);
         return back()->with('success', 'Berhasil banned');
+    }
+
+    /**
+     * unban
+     *
+     * @param  mixed $student
+     * @return RedirectResponse
+     */
+    public function unban(Siswa $student) : RedirectResponse
+    {
+        $student->update(['role' =>  'siswa']);
+        $student->user->update(['role' => 'Siswa']);
+        return back()->with('success', 'Berhasil memperbarui data');
     }
 }
