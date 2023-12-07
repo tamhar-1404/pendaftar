@@ -10,6 +10,7 @@
     <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <script>
         theme: {
+            
             extend: {
                 blur: {
                     xs: '3px',

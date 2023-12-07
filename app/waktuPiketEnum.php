@@ -6,7 +6,7 @@ class waktuPiketEnum
 {
     const Pagi = 'Pagi';
     const Sore = 'Sore';
-    // Tambahkan nilai enum lainnya jika diperlukan.
+    // Tambahkan nilai enum lainnya jika diperlukan
 }
 
 

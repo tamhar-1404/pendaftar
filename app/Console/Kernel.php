@@ -3,7 +3,6 @@
 namespace App\Console;
 
 use App\Models\ApprovalIzin;
-use App\Models\Chat;
 use App\Models\Jurnalsiswa;
 use App\Models\Siswa;
 use Carbon\Carbon;

@@ -13,6 +13,7 @@
                                 <th scope="col" class="px-6 py-2">NAMA</th>
                                 <th scope="col" class="px-6 py-2">Sekolah</th>
                                 <th scope="col" class="px-6 py-2">Jurusan</th>
+
                                 <th scope="col" class="px-6 py-2 kamu-tak-diajak">AKSI</th>
                             </tr>
                         </thead>
@@ -40,7 +41,7 @@
                                 </tr>
                             @empty
                                 <div class="border border-red-400 bg-red-400 py-2 rounded text-white">
-                                    <p class="mb-0 px-5"> 
+                                    <p class="mb-0 px-5">
                                         Data tidak tersedia
                                     </p>
                                 </div>
@@ -58,17 +59,17 @@
     event.preventDefault(); // Menghentikan aksi submit form yang bawaan
 
     Swal.fire({
-      title: 'Apakah Anda yakin ingin menghapus?',
-      text: 'Tindakan ini tidak dapat dibatalkan!',
+      title: 'Apakah Anda yakin ingin membuka blokir?',
+      text: 'Blokir akan terbuka',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Ya, hapus!',
+      confirmButtonText: 'Ya, Buka!',
       cancelButtonText: 'Batal'
     }).then((result) => {
       if (result.isConfirmed) {
-        document.getElementById('myForm').submit(); // Mengirimkan formulir setelah tombol "Ya" diklik
+        document.getElementById('myForm').submit(); 
       }
     });
   }

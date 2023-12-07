@@ -13,6 +13,7 @@
                     <table id="data-table" class="min-w-full text-left text-sm font-light print-container">
                         <thead class="border-b font-medium dark:border-neutral-500 ">
                             <tr class="">
+                                
                                 <th scope="col" class="px-6 py-2">#</th>
                                 <th scope="col" class="px-6 py-2">NAMA</th>
                                 <th scope="col" class="px-6 py-2">TANGGAL</th>

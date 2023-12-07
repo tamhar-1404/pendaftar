@@ -142,9 +142,8 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/hapus_laporan_piket/{id}' , [LaporanPiketController::class , 'hapus'])->name('hapus/laporan/piket');
         Route::post('catatan', [PiketController::class, 'tambah'])->name('tambahCatatan');
         Route::post('/hadir_siswa', [App\Http\Controllers\JurnaladminController::class, 'hadir'])->name('hadir_siswa');
-
         //Reset password
-        Route::patch('student/reset-password/{student}', [SiswaController::class, 'resetPassword']);
+        Route::patch('student/reset-password/{student}', [SiswaController::class, 'resetPassword'])->name('reset-admin-password/');
 
     });
 
