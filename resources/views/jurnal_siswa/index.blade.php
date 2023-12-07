@@ -948,50 +948,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     {{--  <!-- Initialize Swiper -->  --}}
     <script>
-        $('#form-create').submit(function(e) {
-            e.preventDefault();
-            $('#preloader').show();
-            const token = localStorage.getItem('token');
-            var formData = new FormData(this);
-            // Get the value of the "item[]" input
-            const itemValue = formData.get('image[]');
-            // Check if the value is not null and not empty
-            if (itemValue !== null && itemValue.trim() === '') {
-                // Handle error (show validation message or prevent form submission)
-                formData.append("image", []);
-            }
-            $.ajax({
-                url: "{{ route('jurnal_siswa.store') }}",
-                type: "POST",
-                headers: {
-                    'Accept': 'application/json',
-                    'Authorization': 'Bearer ' + token,
-                },
-                dataType: "JSON",
-                processData: false,
-                contentType: false,
-                data: formData,
-                success: function(response) {
-                    $('#preloader').fadeOut();
-                    get();
-                    $('.btn-close').click();
-                    Swal.fire({
-                        'title': 'Berhasil!',
-                        'icon': 'success',
-                        'text': response.message,
-                    });
-                    emptyForm('form-create');
-                },
-                error: function(response) {
-                    $('#preloader').fadeOut();
-                    var response = response.responseJSON;
-                    var status = response.meta.code;
-                    if (status == 422) {
-                        handleValidate(response.data, 'create');
-                    }
-                }
-            });
-        });
+        
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 3,
             spaceBetween: 30,
