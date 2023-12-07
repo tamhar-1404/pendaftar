@@ -127,6 +127,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('List/Siswa' , [PiketController::class,'list'])->name('List/Siswa');
         Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
         // Admin
+        Route::get('report', function () {
+            return view('report.index');
+        })->name('report');
         Route::resource('/History_transaksi', App\Http\Controllers\HistoryTransaksiController::class);
         Route::resource('TopUp', App\Http\Controllers\TopUpController::class);
         Route::resource('barang', App\Http\Controllers\BarangController::class);
