@@ -15,6 +15,7 @@ use App\Http\Requests\StoreSiswaRequest;
 use Carbon\Carbon;
 use App\Http\Requests\UpdateSiswaRequest;
 use App\Mail\EmailLulus as MailEmailLulus;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -247,5 +248,16 @@ return view('rfid.index', compact('users'));
         $student->update(['role' =>  'siswa']);
         $student->user->update(['role' => 'Siswa']);
         return back()->with('success', 'Berhasil memperbarui data');
+    }
+
+    /**
+     * blockedStudent
+     *
+     * @return View
+     */
+    public function blockedStudent(): View
+    {
+        $students = Siswa::where([['status', 'Dikeluarkan'], ['role', 'Alumni']])->get();
+        return view('', compact('students'));
     }
 }
