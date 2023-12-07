@@ -124,6 +124,8 @@ public function confirm(Aproval $aproval)
             Tolak::where('nisn', $aproval->nisn)->delete();
         }
 
+        $aproval->status = null;
+
         // Create a new Siswa record with the data from $aproval
         $data = Siswa::create($aproval->toArray());
 
