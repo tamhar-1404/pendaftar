@@ -373,4 +373,19 @@ public function JurnalPrint(Request $request){
     $jurnalAwal = $data[($data->count() - 1)];
     return view('print.JurnalSiswa', compact('data', 'dataSiswa','jurnalAwal','jurnalAkhir'));
 }
+
+    /**
+     * totalNotSend
+     *
+     * @param  mixed $request
+     * @return View
+     */
+    public function totalNotSend(Request $request): View {
+        $total = Siswa::when($request->siswa, function ($query) use ($request) {
+            $query->where('name', 'LIKE', '%'.$request->siswa.'%');
+        })->whereNull('status')->withCount(['jurnals as total_belum_mengumpulkan' => function ($query) {
+            $query->where('status', 'Tidak mengisi');
+        }])->get();
+        dd($total);
+    }
 }

@@ -144,7 +144,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/hadir_siswa', [App\Http\Controllers\JurnaladminController::class, 'hadir'])->name('hadir_siswa');
         //Reset password
         Route::patch('student/reset-password/{student}', [SiswaController::class, 'resetPassword'])->name('reset-admin-password/');
-
+        //Total not send
+        Route::get('journal/total-not-send', [JurnalsiswaController::class, 'totalNotSend'])->name('student.not_send');
     });
 
     Route::middleware(['role:Siswa'])->group(function () {
