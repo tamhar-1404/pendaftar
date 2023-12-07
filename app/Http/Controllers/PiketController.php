@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\HariEnum;
 use App\Models\Piket;
 use App\Models\Siswa;
 use App\Models\Anggota_piket;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\piket as pikets;
 use App\Models\Catatan;
+use App\waktuPiketEnum;
 use Carbon\Carbon;
 
 class PiketController extends Controller
@@ -193,9 +195,30 @@ class PiketController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'waktu' =>"required",
-            'hari' => "required",
+            'waktu' => [
+                    'required',
+                    'in:' . implode(',', [
+                    waktuPiketEnum::Pagi,
+                    waktuPiketEnum::Sore,
+                ]),
+            ],
+            'hari' =>  [
+                'required',
+                'in:' . implode(',', [
+                HariEnum::Senin,
+                HariEnum::Selasa,
+                HariEnum::Rabu,
+                HariEnum::Kamis,
+                HariEnum::Jumat,
+            ]),
+        ],
             'nama_siswa' => "required"
+        ],[
+            'waktu.required' => 'waktu harus di isi',
+            'waktu.in' => 'waktu tidak valid',
+            'hari.in' => 'hari tidak valid',
+            'hari.required' => 'hari harus di isi',
+            'nama_siswa.required' => 'harus memilih minimlah 1 siswa'
         ]);
         $hari = $request->input('hari');
         $waktu = $request->input('waktu');

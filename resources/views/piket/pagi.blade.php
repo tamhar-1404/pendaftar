@@ -30,6 +30,13 @@
 </head>
 
 <body>
+    @if ($errors->any())
+    @foreach ($errors->all() as $error)
+        <script>
+            toastr.error("{{ $error }}");
+        </script>
+    @endforeach
+@endif
 
     <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
         <div class="">
@@ -56,17 +63,17 @@
                             {{-- {{$day}} --}}
                             <div class="flex gap-4 mb-3 justify-between">
                                 <div class="flex gap-4 mb-3">
-                                    <button type="button" id="button" onclick="toggleContent('')"
+                                    <button type="button" id="buttonPagi" onclick="toggleContent('content1')"
                                         class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
                                         Pagi
                                     </button>
 
-                                    <button type="button" id="button" onclick="toggleContent('content2')"
+                                    <button type="button" id="buttonSore" onclick="toggleContent('content2')"
                                         class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
                                         Sore
                                     </button>
 
-                                    <button type="button" id="button" onclick="toggleContent('content3')"
+                                    <button type="button" id="buttonLaporan" onclick="toggleContent('content3')"
                                         class=" outline outline-[#24AEE4] px-4 py-1 mb-2 rounded-md font-semibold hover:bg-[#24AEE4] hover:text-white ">
                                         Laporan
                                     </button>
@@ -823,7 +830,7 @@
                                             Senin
                                         </div>
                                         {{-- nama --}}
-                                        @forelse ( $senin as $item)
+                                        @forelse ( $senin_sore as $item)
                                             <div class="text-sm font-medium text-center mt-5">{{ $item->siswa->name }}
                                             </div>
                                             <!-- Main modal -->
@@ -920,7 +927,7 @@
                                             Selasa
                                         </div>
                                         {{-- nama --}}
-                                        @forelse ( $selasa as $item)
+                                        @forelse ( $selasa_sore as $item)
                                             <div class="text-sm font-medium text-center mt-5">{{ $item->siswa->name }}
                                             </div>
                                             <!-- Main modal -->
@@ -1013,7 +1020,7 @@
                                             Rabu
                                         </div>
                                         {{-- nama --}}
-                                        @forelse ( $rabu as $item)
+                                        @forelse ( $rabu_sore as $item)
                                             <div class="text-sm font-medium text-center mt-5">{{ $item->siswa->name }}
                                             </div>
                                             <!-- Main modal -->
@@ -1108,7 +1115,7 @@
                                             Kamis
                                         </div>
                                         {{-- nama --}}
-                                        @forelse ( $kamis as $item)
+                                        @forelse ( $kamis_sore as $item)
                                             <div class="text-sm font-medium text-center mt-5">{{ $item->siswa->name }}
                                             </div>
                                             <!-- Main modal -->
@@ -1202,7 +1209,7 @@
                                             Jumat
                                         </div>
                                         {{-- nama --}}
-                                        @forelse ( $jumat as $item)
+                                        @forelse ( $jumat_sore as $item)
                                             <div class="text-sm font-medium text-center mt-5">
                                                 {{ $item->siswa->name }}
                                             </div>
@@ -1520,107 +1527,6 @@
                                 </div>
                             </div>
 
-                            {{-- <script>
-        document.addEventListener("DOMContentLoaded", function() {
-          const form = document.getElementById("wizardForm");
-          const steps = Array.from(form.getElementsByClassName("step"));
-          const nextButtons = Array.from(form.querySelectorAll("[id^=nextStep]"));
-          const prevButtons = Array.from(form.querySelectorAll("[id^=prevStep]"));
-
-          let currentStep = 0;
-
-          function showStep(stepIndex) {
-            steps.forEach(function(step, index) {
-              if (index === stepIndex) {
-                step.classList.add("active");
-              } else {
-                step.classList.remove("active");
-              }
-            });
-          }
-
-          function validateStep(stepIndex) {
-            const step = steps[stepIndex];
-            const inputs = Array.from(step.getElementsByTagName("input"));
-            const textareas = Array.from(step.getElementsByTagName("textarea"));
-
-            let isValid = true;
-
-            inputs.forEach(function(input) {
-              if (!input.checkValidity()) {
-                input.classList.add("border-red-500");
-                input.placeholder = "Masukan data ";
-                isValid = false;
-              } else {
-                input.classList.remove("border-red-500");
-                input.placeholder = "";
-
-              }
-
-            });
-
-            inputs.forEach(function(input) {
-            if (!input.checkValidity()) {
-                if (input.type === "radio") {
-                var radioGroup = input.parentNode;
-                var errorMessage = radioGroup.querySelector(".error-message");
-
-                if (!errorMessage) {
-                    errorMessage = document.createElement("span");
-                    errorMessage.className = "error-message text-red-500";
-                    radioGroup.appendChild(errorMessage);
-                }
-
-                errorMessage.textContent = "Pilih salah satu opsi.";
-                } else {
-                input.classList.add("border-red-500");
-                input.placeholder = "Masukan data";
-                }
-
-                isValid = false;
-            } else {
-                input.classList.remove("border-red-500");
-                input.placeholder = "";
-            }
-            });
-
-
-            textareas.forEach(function(textarea) {
-              if (!textarea.checkValidity()) {
-                textarea.classList.add("border-red-500");
-                textarea.placeholder = "jangan di kosongkan";
-                isValid = false;
-              } else {
-                textarea.classList.remove("border-red-500");
-                textarea.placeholder = "";
-
-              }
-            });
-
-            return isValid;
-          }
-
-          nextButtons.forEach(function(button) {
-            button.addEventListener("click", function() {
-              if (validateStep(currentStep)) {
-                currentStep++;
-                showStep(currentStep);
-              }
-            });
-          });
-
-          prevButtons.forEach(function(button) {
-            button.addEventListener("click", function() {
-              currentStep--;
-              showStep(currentStep);
-            });
-          });
-
-
-
-        });
-      </script> --}}
-
 
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
                             <!-- Main modal -->
@@ -1767,51 +1673,6 @@
                                     });
                                 });
                             </script>
-                            {{-- <script>
-            var cari = document.getElementById("cari_siswa");
-            cari.addEventListener("keyup", function() {
-                console.log(cari.value);
-                if (cari.value == "") {
-                    console.log("Kosong")
-                    // $('#listsiswa').empty();
-                    // $('#wadah').removeClass('hidden');
-                    return;
-                } else {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    url: "{{ route('cari_siswa') }}",
-                    method: 'POST',
-                    data: {
-                        value: cari.value,
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        $('#wadah').addClass('hidden');
-                        // document.getElementById(el.id).checked = false
-                        if (!$('#listsiswa input[type="checkbox"]:checked').length) {
-                            $('#listsiswa').empty();
-                        }else if(!$('#listsiswa input[type="checkbox"]:checked').length === 0){
-                            $('#listsiswa').empty();
-                        }
-                        $.each(response, function(index, el) {
-                            let elemen =
-                            `<div class="flex gap-3 items-center">
-                                    <input type="checkbox" name="nama_siswa[]" value="${el.id}"   id="${el.id}"><p>${el.name}</p>
-                            </div>`
-                            $('#listsiswa').append(elemen);
-
-                            console.log("Nama : ", el.name);
-                            // console.log("Harga : ", el.harga);
-                        });
-                    }
-                })
-            }
-        })
-        </script> --}}
                             <script>
                                 function lihatsemua() {
                                     $.ajaxSetup({
@@ -1833,7 +1694,7 @@
                                                                             <input type="checkbox" name="nama_siswa[]"
                                                                                 value="${item.id}"
                                                                                 id="">
-                                                                            <p>${item.name}</p>
+                                                                            <p class="truncate">${item.name}</p>
                                                                         </div>`
                                                 $('#listSiswaSelengkapnya').append(elemen);
 
@@ -1843,8 +1704,6 @@
                                     })
                                 }
                             </script>
-
-
                             <script>
                                 $(document).ready(function() {
                                     $.ajaxSetup({
@@ -1866,7 +1725,7 @@
                                                                             <input type="checkbox" name="nama_siswa[]"
                                                                                 value="${item.id}"
                                                                                 id="">
-                                                                            <p>${item.name}</p>
+                                                                            <p class="truncate">${item.name}</p>
                                                                         </div>`
                                                 $('.listSiswa').append(elemen);
                                                 // console.log("Harga : ", el.harga);
@@ -1893,6 +1752,7 @@
                                     });
                                 });
                             </script>
+
 
 
 </body>
