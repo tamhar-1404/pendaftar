@@ -109,7 +109,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
         Route::put('/siswa_admin/banned/{id}', [App\Http\Controllers\SiswaController::class, 'banned'])->name('siswa.banned');
         Route::patch('siswa-admin/unban/{student}', [SiswaController::class, 'unban'])->name('siswa.unban');
-        Route::get('blocked-students', [SiswaController::class, 'blockedStudent']);
+        Route::get('unblock-siswa', [SiswaController::class, 'blockedStudent'])->name('unblock-siswa');
         Route::resource('/alumni_admin', App\Http\Controllers\SiswaAlumniController::class);
         Route::resource('/guru_admin', App\Http\Controllers\GuruAdminController::class);
         Route::resource('/absensi_admin', App\Http\Controllers\AbsensiadminController::class);

@@ -116,8 +116,9 @@
             </div>
         </nav>
 
-
-        @include('Siswa_admin.card')
+        <div class="p-8">
+        @include('unblock_siswa.tabel')
+        </div>
     </div>
 
 

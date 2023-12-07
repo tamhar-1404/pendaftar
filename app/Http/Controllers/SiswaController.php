@@ -258,7 +258,7 @@ return view('rfid.index', compact('users'));
     public function blockedStudent(): View
     {
         $students = Siswa::where('status', 'Dikeluarkan')->get();
-        return view('', compact('students'));
+        return view('unblock_siswa.index', compact('students'));
     }
 
     /**
