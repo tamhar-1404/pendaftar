@@ -47,7 +47,7 @@ class SiswaController extends Controller
 
         if ($request->has('cari')) {
             $keyword = $request->cari;
-            $siswas = Siswa::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(8);
+            $siswas = Siswa::whereNull('status')->where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(8);
 
 
             $siswas->appends(['cari' => $keyword]);
@@ -259,7 +259,6 @@ return view('rfid.index', compact('users'));
     {
         $students = Siswa::where('status', 'Dikeluarkan')->get();
         return view('unblock_siswa.index', compact('students'));
-        
     }
 
     /**

@@ -192,7 +192,6 @@
                             </div>
                             <div class="card px-4 pb-4 flex sm:px-5">
                                 <div class="max-w-xl">
-
                                     <div class="mt-5">
                                         <form action="" id="tanggal">
                                             <label class="relative flex">
@@ -244,6 +243,54 @@
                                                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                             </svg>
                                         </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card px-4 pb-4 flex sm:px-5">
+                                <div class="max-w-xl">
+
+                                    <div class="mt-5">
+                                        <form action="" class="flex mt-6">
+                                            <input type="date" name="TanggalTunggal" class="border rounded-l p-1" value="{{$Tanggal}}" >
+                                            <button type="submit" class="border rounded-r bg-[#0ca5e9] text-white    ">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l5.6 5.6q.275.275.275.7t-.275.7q-.275.275-.7.275t-.7-.275l-5.6-5.6q-.75.6-1.725.95T9.5 16Zm0-2q1.875 0 3.188-1.312T14 9.5q0-1.875-1.312-3.187T9.5 5Q7.625 5 6.313 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14Z"/></svg>
+                                            </button>
+                                        </form>
+                                        {{-- <script>
+                                            let clickCounter = 0;
+
+                                            function filterTanggal(data) {
+                                                const str = data;
+                                                const keyword = "to";
+                                                const regex = new RegExp(`\\b${keyword}\\b`, "i");
+
+                                                const result = str.match(regex);
+                                                const selectedDate = parseDate(str);
+
+                                                if (result || (!result && clickCounter === 1)) {
+                                                    document.getElementById('tanggal').submit();
+                                                } else {
+                                                    clickCounter = 0; // Reset click counter if "to" keyword is not present and not auto-submitting
+                                                    clickCounter++;
+                                                }
+                                            }
+
+                                            function parseDate(dateStr) {
+                                                const dates = dateStr.split(" to ");
+                                                return dates.length === 2 ? dates[0] : null;
+                                            }
+                                        </script> --}}
+
+                                        {{-- <span
+                                            class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-5 w-5 transition-colors duration-200" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                            </svg>
+                                        </span> --}}
                                         </label>
                                     </div>
                                 </div>

@@ -79,7 +79,7 @@
                </ul>
            </li>
            {{-- hari ini --}}
-           <li class="relative" id="hari_ini">
+           <li class="relative" id="">
                <a href=""
                    class="flex h-12  cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ebg-blue-400 dark:text-gray-300 hover:bg-blue-400 hover:text-white"
                    data-te-sidenav-link-ref>
