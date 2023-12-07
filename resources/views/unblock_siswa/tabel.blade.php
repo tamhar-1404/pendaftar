@@ -32,11 +32,10 @@
                                         {{ $student->jurusan }}
                                     </td>
                                     <td scope="col" class="px-6 py-2">
-                                        <form action="{{ route('siswa.unban',$student->id) }}" method="POST">
+                                        <form id="myForm" action="{{ route('siswa.unban',$student->id) }}" method="POST">
                                             @csrf
                                             @method('PATCH')
-                                            <button type="submit" class="border py-1 px-4 bg-blue-400 text-white rounded">Buka block</button>
-                                        </form>
+                                            <button type="submit" class="border py-1 px-4 bg-blue-400 text-white rounded" onclick="showConfirmation(event)">Buka block</button>                                        </form>
                                     </td>
                                 </tr>
                             @empty
@@ -53,3 +52,24 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function showConfirmation(event) {
+    event.preventDefault(); // Menghentikan aksi submit form yang bawaan
+
+    Swal.fire({
+      title: 'Apakah Anda yakin ingin menghapus?',
+      text: 'Tindakan ini tidak dapat dibatalkan!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, hapus!',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        document.getElementById('myForm').submit(); // Mengirimkan formulir setelah tombol "Ya" diklik
+      }
+    });
+  }
+</script>
