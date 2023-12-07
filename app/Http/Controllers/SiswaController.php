@@ -246,7 +246,7 @@ return view('rfid.index', compact('users'));
     public function unban(Siswa $student) : RedirectResponse
     {
         $student->update(['status' => "", 'role' => 'siswa']);
-        $student->user->update(['role' => 'Siswa']);
+        $student->user()->update(['role' => 'Siswa']);
         return back()->with('success', 'Berhasil memperbarui data');
     }
 
