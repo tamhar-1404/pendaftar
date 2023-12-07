@@ -231,7 +231,6 @@ return view('rfid.index', compact('users'));
         }
         Mail::to($email)->send(new Banned($data));
         $siswa->update([
-            'role' => 'Alumni',
             'status' => 'Dikeluarkan',
         ]);
         User::where('name', $siswa->name)->update(['role' => 'banned']);
@@ -246,7 +245,7 @@ return view('rfid.index', compact('users'));
      */
     public function unban(Siswa $student) : RedirectResponse
     {
-        $student->update(['role' =>  'siswa']);
+        $student->update(['status' => "", 'role' => 'siswa']);
         $student->user->update(['role' => 'Siswa']);
         return back()->with('success', 'Berhasil memperbarui data');
     }
@@ -258,7 +257,7 @@ return view('rfid.index', compact('users'));
      */
     public function blockedStudent(): View
     {
-        $students = Siswa::where([['status', 'Dikeluarkan']])->get();
+        $students = Siswa::where('status', 'Dikeluarkan')->get();
         return view('', compact('students'));
     }
 
