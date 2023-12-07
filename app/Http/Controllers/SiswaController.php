@@ -259,7 +259,6 @@ return view('rfid.index', compact('users'));
     {
         $students = Siswa::where('status', 'Dikeluarkan')->get();
         return view('unblock_siswa.index', compact('students'));
-        
     }
 
     /**
@@ -270,7 +269,7 @@ return view('rfid.index', compact('users'));
      * @return RedirectResponse
      */
     public function resetPassword(Siswa $student): RedirectResponse {
-        $student->user()->update(['password' => Hash::make('password')]);
+        User::wherer('name', $student->name)->update(['password' => Hash::make('password')]);
         return back()->with('success', 'Berhasil mereset password, password baru : password');
     }
 }
