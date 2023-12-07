@@ -236,7 +236,7 @@ class JurnaladminController extends Controller
             $siswa = Siswa::whereNotIn('id', $Cek)
             ->where('role', 'siswa')
             ->get();
-            $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status')
+            $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id')
             ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
             ->whereBetween('jurnalsiswas.tanggal', [$tanggalAwal, $tanggalAkhir])
             ->get();
@@ -260,7 +260,7 @@ class JurnaladminController extends Controller
         ->where('role', 'siswa')
         ->get();
 
-        $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status')
+        $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id')
         ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
         ->where('jurnalsiswas.tanggal', $hari)
         ->get();
