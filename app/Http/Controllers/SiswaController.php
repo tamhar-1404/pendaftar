@@ -34,7 +34,7 @@ class SiswaController extends Controller
         if (Siswa::whereDate('magang_akhir', '<=', $today)->exists()) {
             $siswas = Siswa::whereDate('magang_akhir', '<=', $today)->get();
             foreach ($siswas as $siswa) {
-                if (!EmailLulus::where('email', $siswa->email)->where('tanggal', Carbon::now()->format('Y-m-d'))->exists()) {
+                if (!EmailLulus::where('email', $siswa->email)->exists()) {
                     Mail::to($siswa->email)->send(new MailEmailLulus);
                     EmailLulus::create([
                         'email' => $siswa->email,
@@ -55,7 +55,7 @@ class SiswaController extends Controller
 
         }
 
-        $siswas = Siswa::where('role', 'siswa')->latest()->paginate(8);
+        $siswas = Siswa::whereNull('status')->latest()->paginate(8);
 
         return view('Siswa_admin.index', compact('siswas'));
     }
@@ -246,7 +246,7 @@ return view('rfid.index', compact('users'));
     public function unban(Siswa $student) : RedirectResponse
     {
         $student->update(['status' => "", 'role' => 'siswa']);
-        $student->user->update(['role' => 'Siswa']);
+        $student->user()->update(['role' => 'Siswa']);
         return back()->with('success', 'Berhasil memperbarui data');
     }
 
