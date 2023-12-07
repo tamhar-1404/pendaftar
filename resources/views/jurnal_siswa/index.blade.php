@@ -396,7 +396,7 @@
                     @enderror
                     @error('kegiatan')
                         <script>
-                            toastr.error("Kegiatan tidak boleh kosong")
+                            toastr.error("{{ $message }}")
                         </script>
                     @enderror
                     @if (session()->has('error'))
