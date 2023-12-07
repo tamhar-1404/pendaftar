@@ -129,7 +129,6 @@ public function confirm(Aproval $aproval)
         // Create a new Siswa record with the data from $aproval
         $data = Siswa::create($aproval->toArray());
 
-        // Move the file from pendaftaran to Siswa folder
         $foto_siswa = $aproval->foto_siswa;
         Storage::move('public/pendaftaran/' . $foto_siswa, 'public/Siswa/' . $foto_siswa);
 

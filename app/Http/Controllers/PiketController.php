@@ -7,8 +7,6 @@ use App\Models\Piket;
 use App\Models\Siswa;
 use App\Models\Anggota_piket;
 use App\Models\Laporan_piket;
-use App\Http\Requests\StorepiketRequest;
-use App\Http\Requests\UpdatepiketRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\piket as pikets;

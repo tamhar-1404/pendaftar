@@ -13,6 +13,7 @@
                                 <th scope="col" class="px-6 py-2">NAMA</th>
                                 <th scope="col" class="px-6 py-2">Sekolah</th>
                                 <th scope="col" class="px-6 py-2">Jurusan</th>
+
                                 <th scope="col" class="px-6 py-2 kamu-tak-diajak">AKSI</th>
                             </tr>
                         </thead>
@@ -40,7 +41,7 @@
                                 </tr>
                             @empty
                                 <div class="border border-red-400 bg-red-400 py-2 rounded text-white">
-                                    <p class="mb-0 px-5"> 
+                                    <p class="mb-0 px-5">
                                         Data tidak tersedia
                                     </p>
                                 </div>

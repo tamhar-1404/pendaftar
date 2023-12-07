@@ -294,7 +294,6 @@ class JurnaladminController extends Controller
             $Cek = Jurnalsiswa::whereDate('created_at', Carbon::today())
             ->pluck('siswa_id')
             ->toArray();
-            // dd()
             $siswa = Siswa::whereNotIn('id', $Cek)
             ->where('name', $request->pencarian)
             ->get();

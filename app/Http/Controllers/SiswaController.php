@@ -259,10 +259,12 @@ return view('rfid.index', compact('users'));
     {
         $students = Siswa::where('status', 'Dikeluarkan')->get();
         return view('unblock_siswa.index', compact('students'));
+        
     }
 
     /**
      * resetPassword
+     *
      *
      * @param  mixed $student
      * @return RedirectResponse
