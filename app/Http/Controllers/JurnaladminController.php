@@ -218,6 +218,7 @@ class JurnaladminController extends Controller
 
     public function Jurnalhariini(Request $request) {
         $hari = Carbon::now()->format('Y-m-d');
+        $keyword='';
         if ($request->has('cari')) {
             $keyword = $request->cari;
             $hari = $keyword;
@@ -258,7 +259,47 @@ class JurnaladminController extends Controller
                 $query->where('name', 'LIKE', '%'.$request->siswa.'%');
             })
             ->get();
-            return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa'));
+            return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa','keyword'));
+        }elseif($request->has('pencarian')){
+            $Cek = Jurnalsiswa::whereDate('created_at', Carbon::today())
+            ->pluck('siswa_id')
+            ->toArray();
+            // dd()
+            $siswa = Siswa::whereNotIn('id', $Cek)
+            ->where('role', 'siswa')
+            ->get();
+
+            $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id')
+            ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
+            ->where('jurnalsiswas.tanggal', $hari)
+            ->when($request->pencarian, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%'.$request->pencarian.'%');
+            })
+            ->get();
+            $tidakMengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status')
+            ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
+            ->where('jurnalsiswas.tanggal', $hari)->where('jurnalsiswas.status', "Tidak mengisi")
+            ->when($request->pencarian, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%'.$request->pencarian.'%');
+            })
+            ->get();
+            $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id')
+            ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
+            ->where('jurnalsiswas.tanggal', $hari)
+            ->where('jurnalsiswas.status', "mengisi")
+            ->when($request->pencarian, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%'.$request->pencarian.'%');
+            })
+            ->get();
+            $Cek = Jurnalsiswa::whereDate('created_at', Carbon::today())
+            ->pluck('siswa_id')
+            ->toArray();
+            // dd()
+            $siswa = Siswa::whereNotIn('id', $Cek)
+            ->where('name', $request->pencarian)
+            ->get();
+            $keyword = $request->pencarian;
+            return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa','keyword'));
         }
 
         $Cek = Jurnalsiswa::whereDate('created_at', Carbon::today())
@@ -291,7 +332,7 @@ class JurnaladminController extends Controller
             $query->where('name', 'LIKE', '%'.$request->siswa.'%');
         })
         ->get();
-        return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa'));
+        return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa','keyword'));
     }
     /**
      * Show the form for creating a new resource.
