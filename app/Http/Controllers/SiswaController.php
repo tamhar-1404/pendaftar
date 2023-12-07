@@ -18,6 +18,7 @@ use App\Mail\EmailLulus as MailEmailLulus;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class SiswaController extends Controller
 {
@@ -259,5 +260,16 @@ return view('rfid.index', compact('users'));
     {
         $students = Siswa::where([['status', 'Dikeluarkan'], ['role', 'Alumni']])->get();
         return view('', compact('students'));
+    }
+
+    /**
+     * resetPassword
+     *
+     * @param  mixed $student
+     * @return RedirectResponse
+     */
+    public function resetPassword(Siswa $student): RedirectResponse {
+        $student->user->update(['password' => Hash::make('password')]);
+        return back()->with('success', 'Berhasil mereset password');
     }
 }

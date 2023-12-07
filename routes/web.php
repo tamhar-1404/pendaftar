@@ -140,7 +140,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('catatan', [PiketController::class, 'tambah'])->name('tambahCatatan');
         Route::post('/hadir_siswa', [App\Http\Controllers\JurnaladminController::class, 'hadir'])->name('hadir_siswa');
 
-
+        //Reset password
+        Route::patch('student/reset-password/{student}', [SiswaController::class, 'resetPassword']);
 
     });
 
