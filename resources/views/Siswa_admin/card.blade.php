@@ -33,8 +33,6 @@
 </head>
 
 <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
-
-
     <!-- screen loader -->
     <div
         class="spin_load  screen_loader animate__animated fixed inset-0 z-[60] grid place-content-center bg-[#fafafa] dark:bg-[#060818]">
@@ -50,7 +48,7 @@
     <!-- Page Wrapper -->
     <div id="root" class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900" x-cloak>
         <!-- Sidebar -->
-     
+
 
 
 
@@ -78,8 +76,8 @@
                     <div class="flex">
                         <button
                             class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:hidden sm:h-9 sm:w-9">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" stroke="currentColor"
-                                fill="none" viewBox="0 0 24 24">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" stroke="currentColor" fill="none"
+                                viewBox="0 0 24 24">
                                 <circle cx="10.2" cy="10.2" r="7.2" stroke-width="1.5">
                                 </circle>
                                 <path stroke-width="1.5" stroke-linecap="round" d="M21 21l-3.6-3.6" />
@@ -87,16 +85,15 @@
                         </button>
                         <button x-ref="popperRef" @click="isShowPopper = !isShowPopper"
                             class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:h-9 sm:w-9">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                viewBox="0 0 24 24">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24">
                                 <path fill="currentColor"
                                     d="M3 5.109C3 4.496 3.47 4 4.05 4h16.79c.58 0 1.049.496 1.049 1.109 0 .612-.47 1.108-1.05 1.108H4.05C3.47 6.217 3 5.721 3 5.11zM5.798 12.5c0-.612.47-1.109 1.05-1.109H18.04c.58 0 1.05.497 1.05 1.109s-.47 1.109-1.05 1.109H6.848c-.58 0-1.05-.497-1.05-1.109zM9.646 18.783c-.58 0-1.05.496-1.05 1.108 0 .613.47 1.109 1.05 1.109h5.597c.58 0 1.05-.496 1.05-1.109 0-.612-.47-1.108-1.05-1.108H9.646z" />
                             </svg>
                         </button>
                         <button
                             class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:h-9 sm:w-9">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -120,7 +117,6 @@
                                             d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
                                     </svg>
                                 </button>
-
                                 <div x-ref="popperRoot" class="popper-root" :class="isShowPopper && 'show'">
                                     <div
                                         class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700">
@@ -128,6 +124,14 @@
                                             <li>
                                                 <a href="{{ route('siswa_admin.edit', $siswa->id) }}"
                                                     class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Detail</a>
+                                            </li>
+                                            <li>
+                                                <form id="reset" action="{{ route('reset-admin-password/', $siswa->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <button type="submit" onclick="showConfirmation(event)"
+                                                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Reset Password</button>
+                                                </form>
                                             </li>
 
                                             <li>
@@ -184,6 +188,36 @@
             </div>
         </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function showConfirmation(event) {
+    event.preventDefault(); // Menghentikan aksi submit form yang bawaan
+
+    Swal.fire({
+      title: 'Reset Password',
+      text: 'Password akan ke reset menjadi "password"',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, Reset!',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        document.getElementById('reset').submit(); // Mengirimkan formulir setelah tombol "Ya" diklik
+      }
+    });
+  }
+</script>
+@if(session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: '{{ session('success') }}',
+    });
+</script>
+@endif
     @forelse ($siswas as $modal)
         {{-- modal --}}
         <div id="defaultModal{{ $modal->id }}" tabindex="-1" aria-hidden="true"
@@ -258,7 +292,7 @@
                     <!-- Modal header -->
                     <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                         <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                          Extend
+                            Extend
                         </h3>
                         <button type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -271,19 +305,23 @@
                             </svg>
                         </button>
                     </div>
-                    <form action="{{ route('Extend',$modal->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('Extend', $modal->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="p-5">
                             <p class="font-semibold">
-                                Siswa dengan nama {{$modal->name}} akan berakhir magang pada  {{$modal->magang_akhir}}
+                                Siswa dengan nama {{ $modal->name }} akan berakhir magang pada
+                                {{ $modal->magang_akhir }}
                             </p>
                             <p class="font-semibold mt-4">
                                 Apakah anda ingin menambah tanggal akhir magang Siswa ini
                             </p>
                             <div class="mt-4">
                                 <label class="font-semibold mb-1" for="TanggalAkhir">Tanggal Akhir</label>
-                                <input class="border border-gray-600 border-solid w-full h-12 p-3 focus:border-blue-500 rounded" type="date" value="{{$modal->magang_akhir}}" name="TanggalAkhir" id="">
+                                <input
+                                    class="border border-gray-600 border-solid w-full h-12 p-3 focus:border-blue-500 rounded"
+                                    type="date" value="{{ $modal->magang_akhir }}" name="TanggalAkhir"
+                                    id="">
                             </div>
 
                         </div>
@@ -342,11 +380,11 @@
             })
         }
     </script>
-    @if (session()->has('sukses'))\
-    <script>
-        alert({{session('sukses')}})
-    </script>
-
+    @if (session()->has('sukses'))
+        \
+        <script>
+            alert({{ session('sukses') }})
+        </script>
     @endif
 </body>
 

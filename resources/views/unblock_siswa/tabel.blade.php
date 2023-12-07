@@ -59,17 +59,17 @@
     event.preventDefault(); // Menghentikan aksi submit form yang bawaan
 
     Swal.fire({
-      title: 'Apakah Anda yakin ingin menghapus?',
-      text: 'Tindakan ini tidak dapat dibatalkan!',
+      title: 'Apakah Anda yakin ingin membuka blokir?',
+      text: 'Blokir akan terbuka',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Ya, hapus!',
+      confirmButtonText: 'Ya, Buka!',
       cancelButtonText: 'Batal'
     }).then((result) => {
       if (result.isConfirmed) {
-        document.getElementById('myForm').submit(); // Mengirimkan formulir setelah tombol "Ya" diklik
+        document.getElementById('myForm').submit(); 
       }
     });
   }

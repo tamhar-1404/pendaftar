@@ -246,7 +246,7 @@ return view('rfid.index', compact('users'));
     public function unban(Siswa $student) : RedirectResponse
     {
         $student->update(['status' => null, 'role' => 'siswa']);
-        $student->user()->update(['role' => 'Siswa']);
+        User::where('name', $student->name)->update(['role' =>'Siswa']);
         return back()->with('success', 'Berhasil memperbarui data');
     }
 
@@ -270,7 +270,7 @@ return view('rfid.index', compact('users'));
      * @return RedirectResponse
      */
     public function resetPassword(Siswa $student): RedirectResponse {
-        $student->user()->update(['password' => Hash::make('password')]);
-        return back()->with('success', 'Berhasil mereset password, password baru : password');
+        User::where('name', $student->name)->update(['password' => Hash::make('password')]);
+                return back()->with('success', 'Berhasil mereset password, password baru : password');
     }
 }
