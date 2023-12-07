@@ -95,7 +95,7 @@
                                d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H192c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
                        </svg>
                    </span>
-                   <span>Hari ini</span>
+                   <span>Pendataan Admin</span>
                    <span
                        class="absolute  right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none "
                        data-te-sidenav-rotate-icon-ref>
@@ -118,6 +118,12 @@
                        <a href="{{ route('Absenhariini') }}"
                            class="flex h-6 cursor-pointer {{ request()->routeIs('Absenhariini') ? 'text-blue-400' : 'text-gray-600' }} mt-2 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] outline-none transition duration-300 ease-linear hover:text-blue-400"
                            data-te-sidenav-link-ref>Absensi</a>
+
+                   </li>
+                   <li class="relative">
+                       <a href="{{ route('report') }}"
+                           class="flex h-6 cursor-pointer {{ request()->routeIs('report') ? 'text-blue-400' : 'text-gray-600' }} mt-2 items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] outline-none transition duration-300 ease-linear hover:text-blue-400"
+                           data-te-sidenav-link-ref>Report</a>
 
                    </li>
 
@@ -167,6 +173,12 @@
                        <a href="{{ route('rfid') }}"
                            class="flex h-6 cursor-pointer {{ request()->routeIs('rfid.index') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
                            data-te-sidenav-link-ref>RFID</a>
+                   </li>
+                   <li class="relative">
+                       {{-- <a href="{{ route('rfid') }}" --}}
+                       <a href="{{ route('unblock-siswa') }}"
+                           class="flex h-6 cursor-pointer {{ request()->routeIs('unblock-siswa') ? 'bg-blue-500 text-white' : '' }}  items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-500 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 hover:bg-blue-500 hover:text-white"
+                           data-te-sidenav-link-ref>Block Siswa</a>
                    </li>
 
                </ul>
