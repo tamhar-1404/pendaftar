@@ -268,7 +268,7 @@ return view('rfid.index', compact('users'));
      * @return RedirectResponse
      */
     public function resetPassword(Siswa $student): RedirectResponse {
-        $student->user->update(['password' => Hash::make('password')]);
-        return back()->with('success', 'Berhasil mereset password');
+        $student->user()->update(['password' => Hash::make('password')]);
+        return back()->with('success', 'Berhasil mereset password, password baru : password');
     }
 }
