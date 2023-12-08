@@ -181,77 +181,86 @@
                     <div class="mb-5 flex items-center justify-between">
                         <h5 class="text-sm font-semibold dark:text-white-light">Absensi Hari ini </h5>
                         <!-- Date Range -->
-                        <div class=" pb-0 sm:px-5">
-
+                        <form action="" id="tanggal">
+                        <div class=" pb-0 sm:px-5 flex gap-2">
+                            <div class="mt-2 font-semibold max-w-xl">
+                                Filter Nama
+                                <div class="mt-2">
+                                    <label class="relative flex">
+                                        <input type="text" value="{{$Nama}}" placeholder="Masukan Nama Siswa" name="Nama" class="border border-gray-500 rounded h-9 p-3"  id="">
+                                    </label>
+                                </div>
+                            </div>
                             <div class="mt-2 font-semibold max-w-xl">
                                 Filter Tanggal
-                            <div class="mt-2">
-                                <form action="" id="tanggal">
-                                    <label class="relative flex">
-                                        <input x-init="$el._x_flatpickr = flatpickr($el, { mode: 'range', dateFormat: 'Y-m-d'})"
-                                            class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                            placeholder="Choose date..." type="text" name="cari"
-                                            value="{{ $hari }}" onchange="filterTanggal(this.value)" />
-                                        <button type="submit" class="hidden">Submit</button>
-                                </form>
+                                <div class="mt-2">
+
+                                        <label class="relative flex">
+                                            <input x-init="$el._x_flatpickr = flatpickr($el, { mode: 'range', dateFormat: 'Y-m-d'})"
+                                                class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                placeholder="Choose date..." type="text" name="cari"
+                                                value="{{ $hari }}" onchange="filterTanggal(this.value)" />
+                                            <button type="submit" class="border ml-2 px-2 py-1 rounded">Submit</button>
 
 
-                                    <script>
-                                        let clickCounter = 0;
 
-                                        function filterTanggal(data) {
-                                            const str = data;
-                                            const keyword = "to";
-                                            const regex = new RegExp(`\\b${keyword}\\b`, "i");
+                                        <script>
+                                            let clickCounter = 0;
 
-                                            const result = str.match(regex);
-                                            const selectedDate = parseDate(str);
+                                            function filterTanggal(data) {
+                                                const str = data;
+                                                const keyword = "to";
+                                                const regex = new RegExp(`\\b${keyword}\\b`, "i");
 
-                                            if (result || (!result && clickCounter === 1)) {
-                                                document.getElementById('tanggal').submit();
-                                            } else {
-                                                clickCounter = 0; // Reset click counter if "to" keyword is not present and not auto-submitting
-                                                clickCounter++;
+                                                const result = str.match(regex);
+                                                const selectedDate = parseDate(str);
+
+                                                if (result || (!result && clickCounter === 1)) {
+                                                    document.getElementById('tanggal').submit();
+                                                } else {
+                                                    clickCounter = 0; // Reset click counter if "to" keyword is not present and not auto-submitting
+                                                    clickCounter++;
+                                                }
                                             }
-                                        }
 
-                                        function parseDate(dateStr) {
-                                            const dates = dateStr.split(" to ");
-                                            return dates.length === 2 ? dates[0] : null;
+                                            function parseDate(dateStr) {
+                                                const dates = dateStr.split(" to ");
+                                                return dates.length === 2 ? dates[0] : null;
+                                            }
+                                        </script>
+                                    <script>
+                                        function getCurrentDate() {
+                                            const now = new Date();
+                                            const year = now.getFullYear();
+                                            const month = String(now.getMonth() + 1).padStart(2, '0');
+                                            const day = String(now.getDate()).padStart(2, '0');
+                                            return `${year}-${month}-${day}`;
                                         }
                                     </script>
-                                <script>
-                                    function getCurrentDate() {
-                                        const now = new Date();
-                                        const year = now.getFullYear();
-                                        const month = String(now.getMonth() + 1).padStart(2, '0');
-                                        const day = String(now.getDate()).padStart(2, '0');
-                                        return `${year}-${month}-${day}`;
-                                    }
-                                </script>
-                                <span
-                                    class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent"
-                                >
-                                    <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 transition-colors duration-200"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
+                                    <span
+                                        class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent"
                                     >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                                    />
-                                    </svg>
-                                </span>
-                                </label>
-                            </div>
+                                        <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-5 w-5 transition-colors duration-200"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                        />
+                                        </svg>
+                                    </span>
+                                    </label>
+                                </div>
                             </div>
 
                         </div>
+                    </form>
                     </div>
                     <div x-data="{ tab: 'semua' }">
                         <ul

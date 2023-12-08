@@ -129,7 +129,8 @@ class JurnaladminController extends Controller
         // dd($request);
         $hari = Carbon::now()->format('Y-m-d');
         $today = Carbon::now()->format('Y-m-d');
-        if ($request->has('cari')) {
+        $Nama = "";
+        if ($request->has('cari') && $request->has('Nama')) {
             $keyword = $request->cari;
             $datesArray = explode('to', $keyword);
             if(count($datesArray) > 1){
@@ -139,7 +140,62 @@ class JurnaladminController extends Controller
                 $tanggalAwal = trim($datesArray[0]);
                 $tanggalAkhir = trim($datesArray[0]);
             }
+            $DataSiswa = Siswa::where('name', $request->Nama)->first();
 
+
+            // $tanggalAkhir = $hari;
+            $Nama = $request->Nama;
+            $hari = $keyword;
+            $telat = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+                    ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+                    ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+                    ->where('approval_izins.keterangan', '=', 'telat')->whereBetween('approval_izins.tanggal',  [$tanggalAwal, $tanggalAkhir])
+                    ->where('siswas.name', 'LIKE', '%' . $request->Nama . '%')
+                    ->get();
+            $hadir = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+            ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+            ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+            ->where('approval_izins.keterangan', '=', 'hadir')->whereBetween('approval_izins.tanggal',  [$tanggalAwal, $tanggalAkhir])
+            ->where('siswas.name', 'LIKE', '%' . $request->Nama . '%')
+            ->get();
+            $sakit = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+            ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+            ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+            ->whereIn('approval_izins.keterangan',['sakit', 'izin'])->whereBetween('approval_izins.tanggal',  [$tanggalAwal, $tanggalAkhir])
+            ->where('siswas.name', 'LIKE', '%' . $request->Nama . '%')
+            ->get();
+            $alfa = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+            ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+            ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+            ->where('approval_izins.keterangan', '=', 'alfa')->whereBetween('approval_izins.tanggal',  [$tanggalAwal, $tanggalAkhir])
+            ->where('siswas.name', 'LIKE', '%' . $request->Nama . '%')
+            ->get();
+            $semua = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+            ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+            ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+            ->whereBetween('approval_izins.tanggal',  [$tanggalAwal, $tanggalAkhir])
+            ->where('siswas.name', 'LIKE', '%' . $request->Nama . '%')
+            ->get();
+            $Cek = ApprovalIzin::whereDate('created_at', $today )
+            ->pluck('siswa_id')
+            ->toArray();
+
+            $siswa = Siswa::whereNotIn('id', $Cek)
+            ->where('role', 'siswa')
+            ->latest()->paginate(10);
+            $siswa->appends(['cari' => $keyword]);
+            return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua','Nama'));
+        }elseif($request->has('cari')){
+            $keyword = $request->cari;
+            $datesArray = explode('to', $keyword);
+            if(count($datesArray) > 1){
+                $tanggalAwal = trim($datesArray[0]);
+                $tanggalAkhir = trim($datesArray[1]);
+            }else{
+                $tanggalAwal = trim($datesArray[0]);
+                $tanggalAkhir = trim($datesArray[0]);
+            }
+            $DataSiswa = Siswa::where('name', $request->Nama)->first();
             // $tanggalAkhir = $hari;
             $hari = $keyword;
             $telat = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
@@ -175,7 +231,48 @@ class JurnaladminController extends Controller
             ->where('role', 'siswa')
             ->latest()->paginate(10);
             $siswa->appends(['cari' => $keyword]);
-            return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua'));
+            return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua', 'Nama'));
+
+        }elseif ($request->has('Nama')) {
+             $Nama = $request->Nama;
+            $telat = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+                    ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+                    ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+                    ->where('approval_izins.keterangan', '=', 'telat')
+                    ->where('siswas.name', 'LIKE', '%' . $request->Nama . '%')
+                    ->get();
+            $hadir = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+            ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+            ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+            ->where('approval_izins.keterangan', '=', 'hadir')
+            ->where('siswas.name', 'LIKE', '%' . $request->Nama . '%')
+            ->get();
+            $sakit = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+            ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+            ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+            ->whereIn('approval_izins.keterangan',['sakit', 'izin'])
+            ->where('siswas.name', 'LIKE', '%' . $request->Nama . '%')
+            ->get();
+            $alfa = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+            ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+            ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+            ->where('approval_izins.keterangan', '=', 'alfa')
+            ->where('siswas.name', 'LIKE', '%' . $request->Nama . '%')
+            ->get();
+            $semua = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
+            ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
+            ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
+
+            ->where('siswas.name', 'LIKE', '%' . $request->Nama . '%')
+            ->get();
+            $Cek = ApprovalIzin::whereDate('created_at', $today )
+            ->pluck('siswa_id')
+            ->toArray();
+
+            $siswa = Siswa::whereNotIn('id', $Cek)
+            ->where('role', 'siswa')
+            ->latest()->paginate(10);
+            return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua','Nama'));
         }
         $Cek = ApprovalIzin::whereDate('created_at', Carbon::today())
         ->pluck('siswa_id')
@@ -213,7 +310,7 @@ class JurnaladminController extends Controller
         ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
         ->where('approval_izins.tanggal', $hari)
         ->get();
-        return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua'));
+        return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua','Nama'));
     }
 
     public function Jurnalhariini(Request $request) {
@@ -323,7 +420,7 @@ class JurnaladminController extends Controller
             ->where('jurnalsiswas.tanggal', $hari)
             ->where('jurnalsiswas.status', "mengisi")
             ->get();
-            
+
             $Tanggal = $hari;
             return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa','keyword','Tanggal'));
         }
