@@ -182,7 +182,7 @@ class JurnaladminController extends Controller
 
             $siswa = Siswa::whereNotIn('id', $Cek)
             ->where('role', 'siswa')
-            ->where('name',$request->Nama)
+            ->where('name', 'LIKE', '%' . $request->Nama . '%')
             ->latest()->paginate(10);
             $siswa->appends(['cari' => $keyword]);
             return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua','Nama'));
