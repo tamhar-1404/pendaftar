@@ -347,7 +347,7 @@
                 </div>
             </nav>
         </div>
-        
+
         <!-- Sisipkan kode JavaScript berikut di akhir halaman HTML Anda -->
         <script>
             document.addEventListener("DOMContentLoaded", function() {
@@ -907,9 +907,7 @@
         }
     </script>
     <style>
-        body {
-            overflow: hidden;
-        }
+       
         #preloader {
             position: fixed;
             top: 0;
@@ -948,7 +946,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     {{--  <!-- Initialize Swiper -->  --}}
     <script>
-        
+
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 3,
             spaceBetween: 30,
