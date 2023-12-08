@@ -182,6 +182,7 @@ class JurnaladminController extends Controller
 
             $siswa = Siswa::whereNotIn('id', $Cek)
             ->where('role', 'siswa')
+            ->where('name',$request->Nama)
             ->latest()->paginate(10);
             $siswa->appends(['cari' => $keyword]);
             return view('Absenhariini.index', compact('hadir', 'telat', 'sakit', 'alfa', 'hari', 'siswa', 'today', 'semua','Nama'));
@@ -262,7 +263,6 @@ class JurnaladminController extends Controller
             $semua = user::select('approval_izins.jam', 'users.name as user_name', 'approval_izins.keterangan', 'approval_izins.tanggal')
             ->leftJoin('siswas', 'users.siswa_id', '=', 'siswas.id')
             ->leftJoin('approval_izins', 'users.siswa_id', '=', 'approval_izins.siswa_id')
-
             ->where('siswas.name', 'LIKE', '%' . $request->Nama . '%')
             ->get();
             $Cek = ApprovalIzin::whereDate('created_at', $today )
