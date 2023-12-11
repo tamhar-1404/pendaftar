@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Api\AttendanceController;
+use App\Http\Controllers\Api\JournalController;
+use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\StudentController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +19,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('login', [LoginController::class, 'login']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('logout', [LoginController::class, 'logout']);
+    Route::get('user', [UserController::class, 'user']);
+
+    // Attendance
+    Route::get('attendance', [AttendanceController::class, 'index']);
+    Route::post('attendance', [AttendanceController::class, 'store']);
+
+    // Journal
+    Route::get('journal', [JournalController::class, 'index']);
+    Route::post('journal', [JournalController::class, 'store']);
+
+    Route::get('list-students', [StudentController::class, 'index']);
 });
