@@ -568,8 +568,8 @@
                                                         <label for="kegiatan"
                                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
                                                             <span id="count">
+                                                                Jumlah Karakter: 
                                                                 <span id="Jumlah">0</span>
-                                                                /150
                                                             </span>
                                                     </div>
                                                     <textarea name="kegiatan" id="Kegiatan" class="w-full rounded-md" oninput="Count()" placeholder="kegiatan yang kamu lakukan" id=""
