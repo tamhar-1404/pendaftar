@@ -32,6 +32,29 @@ class JurnaladminController extends Controller
         ]);
         return response()->json(['message' => 'Data berhasil disimpan.']);
     }
+
+public function share()
+{
+    $jurnalSiswa = JurnalSiswa::where('status', 'Tidak mengisi')->get();
+    $message = "Assalamualaikum wr.wb.\n\nSelamat pagi.\nMohon maaf mengganggu waktunya.\nIzin melaporkan  jurnal harian siswa magang\nPada hari ini siswa magang melakukan ~absensi~ pada website http://pkl.hummatech.com/.\n Ada beberapa siswa magang yang tidak mengisi jurnal harian. Untuk kedepannya siswa magang diharapkan untuk mengisi jurnal harian tepat waktu.\n\nPada hari ini, berikut daftar siswa magang yang belum mengisi jurnal harian:\n\n";
+    if ($jurnalSiswa->isNotEmpty()) {
+        foreach ($jurnalSiswa as $jurnal) {
+            $siswa = Siswa::find($jurnal->siswa_id);
+            if ($siswa && $siswa->name) {
+                $message .= "- " . $siswa->name . "\n";
+            }
+        }
+        $message .= "\nMengingatkan kepada seluruh siswa magang untuk menjaga konsistensi dalam mengisi absensi dan jurnal harian sebagai bentuk tanggung jawab sebagai siswa magang.\n\nTerima kasih.\n\nWassalamualaikum wr.wb.";
+
+        // Membentuk URL WhatsApp dengan nomor telepon dan pesan
+        $whatsappUrl = 'https://api.whatsapp.com/send?phone='  . '&text=' . urlencode($message);
+
+        // Mengarahkan pengguna ke URL WhatsApp
+        return redirect($whatsappUrl);
+    }
+
+    return "Tidak ada siswa yang belum mengisi jurnal atau semua jurnal telah terisi.";
+}
     /**
      * Display a listing of the resource.
      *
@@ -712,4 +735,5 @@ class JurnaladminController extends Controller
        // Mengembalikan file dokumen untuk diunduh
        return response()->download($path, $filename);
 }
+
 }

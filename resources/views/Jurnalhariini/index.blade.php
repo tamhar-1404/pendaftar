@@ -363,8 +363,16 @@
                                     enctype="multipart/form-data" method="POST">
                                     <input type="hidden" name="siswa_id">
                                     <input type="hidden" name="siswa_id">
-
-                                    <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
+                                    <div class="flex justify-between">
+                                        <div class="">
+                                            <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
+                                        </div>
+                                        <div class="">
+                                                <a href="{{ route('share') }}" target="_blank" class="border py-2 px-4 text-white rounded-lg bg-blue-500">
+                                                    Share
+                                                </a>
+                                        </div>
+                                    </div>
                                     <div class="flex flex-col sm:flex-row">
                                         <div class="w-full">
                                             <div class="w-full">

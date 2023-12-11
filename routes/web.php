@@ -102,6 +102,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/Hadir.index', [AprovalController::class, 'Hadir'])->name('Hadir.index');
         Route::get('/Izin.index', [AprovalController::class, 'Izin'])->name('Izin.index');
         Route::get('/Jurnalhariini', [JurnaladminController::class, 'Jurnalhariini'])->name('Jurnalhariini');
+        Route::get('/share', [JurnaladminController::class, 'share'])->name('share');
         // Post tidak mengisi jurnal
         Route::post('/Jurnalhariini/belum_mengisi', [JurnaladminController::class, 'belum_mengisi'])->name('jurnal.belum_mengisi');
         Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
