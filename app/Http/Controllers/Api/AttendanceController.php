@@ -20,7 +20,7 @@ class AttendanceController extends Controller
      */
     public function index(): JsonResponse
     {
-        $data = ApprovalIzin::whereRelation('Siswa', 'id', auth()->user()->Siswa->id)->where('status', 'terimaabsen')->get();
+        $data = ApprovalIzin::whereRelation('Siswa', 'id', auth()->user()->Siswa->id)->where('status', 'terimaabsen')->latest()->take(15)->get();
         return ResponseHelper::success(AttendanceResource::collection($data));
     }
 
