@@ -568,7 +568,7 @@
                                                         <label for="kegiatan"
                                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
                                                             <span id="count">
-                                                                Jumlah Karakter: 
+                                                                Jumlah Karakter:
                                                                 <span id="Jumlah">0</span>
                                                             </span>
                                                     </div>
@@ -1181,7 +1181,7 @@
        function Count(){
         var kegiatanValue = $('#Kegiatan').val();
         $('#Jumlah').html(kegiatanValue.length);
-        if(kegiatanValue.length < 150){
+        if(kegiatanValue.length > 0 && kegiatanValue.length < 150){
             $('#count').css('color','red');
         }else if(kegiatanValue.length > 150){
             $('#count').css('color','green');
