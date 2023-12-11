@@ -564,9 +564,15 @@
                                                 enctype="multipart/form-data">
                                                 @csrf
                                                 <div>
-                                                    <label for="kegiatan"
-                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
-                                                    <textarea name="kegiatan" class="w-full rounded-md" placeholder="kegiatan yang kamu lakukan" id=""
+                                                    <div class="flex justify-between">
+                                                        <label for="kegiatan"
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kegiatan</label>
+                                                            <span id="count">
+                                                                <span id="Jumlah">0</span>
+                                                                /150
+                                                            </span>
+                                                    </div>
+                                                    <textarea name="kegiatan" id="Kegiatan" class="w-full rounded-md" oninput="Count()" placeholder="kegiatan yang kamu lakukan" id=""
                                                         cols="" rows="5"></textarea>
                                                 </div>
                                                 <div>
@@ -907,7 +913,7 @@
         }
     </script>
     <style>
-       
+
         #preloader {
             position: fixed;
             top: 0;
@@ -1169,6 +1175,19 @@
                     }
                 });
             }
+        }
+    </script>
+    <script>
+       function Count(){
+        var kegiatanValue = $('#Kegiatan').val();
+        $('#Jumlah').html(kegiatanValue.length);
+        if(kegiatanValue.length < 150){
+            $('#count').css('color','red');
+        }else if(kegiatanValue.length > 150){
+            $('#count').css('color','green');
+        }else{
+            $('#count').css('color','black');
+        }
         }
     </script>
 
