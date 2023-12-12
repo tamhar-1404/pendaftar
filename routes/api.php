@@ -32,6 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Journal
     Route::get('journal', [JournalController::class, 'index']);
     Route::post('journal', [JournalController::class, 'store']);
+    Route::put('journal/{jurnal}', [JournalController::class, 'update']);
 
     Route::get('list-students', [StudentController::class, 'index']);
 });

@@ -199,7 +199,7 @@ public function data ()
 
         $this->validate($request, [
             'kegiatan' => 'required',
-            'image' => 'image|mimes:png,jpg,jpeg', // Validasi gambar opsional
+            'image' => 'image|mimes:png,jpg,jpeg',
         ], [
             'kegiatan.max' => 'Jurnal maksimal 255 karakter',
             'image.image' => 'File harus berupa gambar',
@@ -224,7 +224,7 @@ public function data ()
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->storeAs('public/image', $imageName);
             $jurnalSiswa->image = $imageName;
-        } // Tidak perlu else karena image akan tetap gambar lama jika tidak diupload baru
+        }
         $jurnalSiswa->save();
         return response()->json([
             'status' => 'success',

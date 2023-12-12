@@ -9,6 +9,7 @@ use App\Models\Jurnalsiswa;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class JournalController extends Controller
 {
@@ -67,5 +68,38 @@ class JournalController extends Controller
             }
         }
 
+
+    }
+    public function update(Jurnalsiswa $jurnal, Request $request): JsonResponse
+    {
+        $oldImage = $jurnal->image;
+        $this->validate($request, [
+            'kegiatan' => 'required',
+            'image' => 'image|mimes:png,jpg,jpeg',
+        ], [
+            'kegiatan.max' => 'Jurnal maksimal 255 karakter',
+            'image.image' => 'File harus berupa gambar',
+            'image.mimes' => 'Format gambar harus PNG, JPG, atau JPEG',
+        ]);
+
+        if ($jurnal->status === 'Tidak mengisi') {
+            return response()->json([
+                'status' => 'error',
+            ]);
+        }
+        $jurnal->kegiatan = $request->kegiatan;
+
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama
+            if ($oldImage != 'default.jpg') {
+                Storage::delete('public/image/' . $oldImage);
+            }
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public/image', $imageName);
+            $jurnal->image = $imageName;
+        }
+        $jurnal->save();
+        return ResponseHelper::success(null, "Berhasil mengubah");
     }
 }
