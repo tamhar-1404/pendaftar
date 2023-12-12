@@ -373,7 +373,7 @@
                                                     <form action="{{ route('share') }}" target="_blank" method="POST" class="">
                                                         @csrf
                                                         <input type="date" name="tanggal" class="form-control border py-2 px-4 rounded">
-                                                        <button type="submit" target="_blank" class="border py-2 px-4 text-white rounded-lg bg-blue-500">Submit</button>
+                                                        <button type="submit" target="_blank" class="border py-2 px-4 text-white rounded-lg bg-blue-500">Share</button>
                                                     </form>
                                                 </div>
                                             </div>
