@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AttendanceResource extends JsonResource
@@ -22,7 +23,7 @@ class AttendanceResource extends JsonResource
             'information' => $this->keterangan,
             'description' => $this->deskripsi,
             'proof' => $this->bukti,
-            'date' => $this->tanggal,
+            'date' => Carbon::parse($this->tanggal)->format('d F Y'),
             'status' => $this->status,
         ];
     }
