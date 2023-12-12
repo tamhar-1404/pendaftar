@@ -103,6 +103,8 @@ class AttendanceController extends Controller
         $dari = $request->dari;
         $tanggal_dari = Carbon::parse($dari)->format('Y-m-d');
         $data = ApprovalIzin::where('siswa_id', auth()->user()->Siswa->id)
+                            ->whereNot('status', 'tolak')
+                            ->whereNot('status2', 'tolak')
                             ->where(function ($query) use ($tanggal_dari) {
                                 $query->whereNotNull('created_at')
                                       ->whereDate('created_at', $tanggal_dari);
@@ -114,6 +116,8 @@ class AttendanceController extends Controller
         }
         $cek_dulu_gk_sih = ApprovalIzin::where('siswa_id', auth()->user()->Siswa->id)
                         ->where('dari', $dari)
+                        ->whereNot('status', 'tolak')
+                        ->whereNot('status2', 'tolak')
                         ->exists();
         if ($cek_dulu_gk_sih) {
             return ResponseHelper::error(null, 'Anda sudah memiliki izin pada tanggal ini');
