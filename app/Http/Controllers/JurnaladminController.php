@@ -44,7 +44,7 @@ public function share()
                 $message .= "- " . $siswa->name . "\n";
             }
         }
-        $message .= "\nMengingatkan kepada seluruh siswa magang untuk menjaga konsistensi dalam mengisi absensi dan jurnal harian sebagai bentuk tanggung jawab sebagai siswa magang.\n\nTerima kasih.\n\nWassalamualaikum wr.wb.";
+        $message .= "\nMengingatkan kepada seluruh siswa magang untuk menjaga konsistensi dalam mengisi Absensi dan jurnal harian sebagai bentuk tanggung jawab sebagai siswa magang.\n\nTerima kasih.\n\nWassalamualaikum wr.wb.";
 
         // Membentuk URL WhatsApp dengan nomor telepon dan pesan
         $whatsappUrl = 'https://api.whatsapp.com/send?phone='  . '&text=' . urlencode($message);
