@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Attendance
     Route::get('attendance', [AttendanceController::class, 'index']);
     Route::post('attendance', [AttendanceController::class, 'store']);
+    Route::post('permission', [AttendanceController::class, 'permission']);
 
     // Journal
     Route::get('journal', [JournalController::class, 'index']);

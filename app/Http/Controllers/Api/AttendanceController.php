@@ -79,4 +79,62 @@ class AttendanceController extends Controller
             return ResponseHelper::success(null, 'Berhasil Absen');
         }
     }
+
+    /**
+     * permission
+     *
+     * @param  mixed $request
+     * @return JsonResponse
+     */
+    public function permission(Request $request): JsonResponse
+    {
+        $this->validate($request, [
+            'dari' => 'required|date',
+            'sampai' => 'required|date',
+            'keterangan' => 'required',
+            'deskripsi' => 'required',
+            'bukti' => 'required|image|mimes:jpeg,jpg,png'
+        ]);
+        if($request-> dari > $request->sampai ){
+            return ResponseHelper::error(null, 'tanggal izin tidak valid');
+        }
+        $image = $request->file('bukti');
+        $image->storeAs('public/bukti_izin', $image->hashName());
+        $dari = $request->dari;
+        $tanggal_dari = Carbon::parse($dari)->format('Y-m-d');
+        $data = ApprovalIzin::where('siswa_id', auth()->user()->Siswa->id)
+                            ->where(function ($query) use ($tanggal_dari) {
+                                $query->whereNotNull('created_at')
+                                      ->whereDate('created_at', $tanggal_dari);
+                            })
+                            ->orWhereNull('created_at')
+                            ->doesntExist();
+        if (!$data) {
+            return ResponseHelper::error(null, 'Anda sudah memiliki izin pada tanggal ini');
+        }
+        $cek_dulu_gk_sih = ApprovalIzin::where('siswa_id', auth()->user()->Siswa->id)
+                        ->where('dari', $dari)
+                        ->exists();
+        if ($cek_dulu_gk_sih) {
+            return ResponseHelper::error(null, 'Anda sudah memiliki izin pada tanggal ini');
+        }
+        $image = $request->file('bukti');
+        $image->storeAs('public/bukti_izin', $image->hashName());
+
+        $user = auth()->user();
+        ApprovalIzin::create([
+            'siswa_id' => $user->Siswa->id,
+            'dari' => $request->dari,
+            'sampai' => $request->sampai,
+            'keterangan' => $request->keterangan,
+            'deskripsi' => $request->deskripsi,
+            'status' => 'menunggu',
+            'status2' => 'menunggu',
+            'bukti' => $image->hashName(),
+            'tanggal' => Carbon::now()->format('Y-m-d'),
+            'jam' => Carbon::now()->format('H:i'),
+        ]);
+
+        return ResponseHelper::success(null, "Berhasil mengajukan izin");
+    }
 }
