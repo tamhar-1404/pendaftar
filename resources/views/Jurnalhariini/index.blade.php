@@ -368,9 +368,15 @@
                                             <h6 class="mb-5 text-lg font-bold">Tanggal : {{ $hari }}</h6>
                                         </div>
                                         <div class="">
-                                                <a href="{{ route('share') }}" target="_blank" class="border py-2 px-4 text-white rounded-lg bg-blue-500">
-                                                    Share
-                                                </a>
+                                            <div class="flex justify-header gap-3">
+                                                <div class="">
+                                                    <form action="{{ route('share') }}" target="_blank" method="POST" class="">
+                                                        @csrf
+                                                        <input type="date" name="tanggal" class="form-control border py-2 px-4 rounded">
+                                                        <button type="submit" target="_blank" class="border py-2 px-4 text-white rounded-lg bg-blue-500">Submit</button>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="flex flex-col sm:flex-row">
