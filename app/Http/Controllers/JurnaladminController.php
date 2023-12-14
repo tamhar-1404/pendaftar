@@ -374,7 +374,7 @@ class JurnaladminController extends Controller
             $siswa = Siswa::whereNotIn('id', $Cek)
             ->where('role', 'siswa')
             ->get();
-            $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id')
+            $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id','jurnalsiswas.created_at')
             ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
             ->whereBetween('jurnalsiswas.tanggal', [$tanggalAwal, $tanggalAkhir])
             ->when($request->siswa, function ($query) use ($request) {
@@ -388,7 +388,7 @@ class JurnaladminController extends Controller
                 $query->where('name', 'LIKE', '%'.$request->siswa.'%');
             })
             ->get();
-            $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status','jurnalsiswas.image', 'jurnalsiswas.kegiatan', 'jurnalsiswas.id as id')
+            $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status','jurnalsiswas.image', 'jurnalsiswas.kegiatan', 'jurnalsiswas.id as id','jurnalsiswas.created_at')
             ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
             ->whereBetween('jurnalsiswas.tanggal', [$tanggalAwal, $tanggalAkhir])
             ->where('jurnalsiswas.status', "mengisi")
@@ -406,7 +406,7 @@ class JurnaladminController extends Controller
             ->where('role', 'siswa')
             ->get();
 
-            $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id')
+            $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id','jurnalsiswas.created_at')
             ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
             ->where('jurnalsiswas.tanggal', $hari)
             ->when($request->pencarian, function ($query) use ($request) {
@@ -420,7 +420,7 @@ class JurnaladminController extends Controller
                 $query->where('name', 'LIKE', '%'.$request->pencarian.'%');
             })
             ->get();
-            $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id')
+            $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id','jurnalsiswas.created_at')
             ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
             ->where('jurnalsiswas.tanggal', $hari)
             ->where('jurnalsiswas.status', "mengisi")
@@ -446,7 +446,7 @@ class JurnaladminController extends Controller
             ->where('role', 'siswa')
             ->get();
 
-            $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id')
+            $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id','jurnalsiswas.created_at')
             ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
             ->where('jurnalsiswas.tanggal', $hari)
             ->get();
@@ -454,7 +454,7 @@ class JurnaladminController extends Controller
             ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
             ->where('jurnalsiswas.tanggal', $hari)->where('jurnalsiswas.status', "Tidak mengisi")
             ->get();
-            $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id')
+            $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id','jurnalsiswas.created_at')
             ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
             ->where('jurnalsiswas.tanggal', $hari)
             ->where('jurnalsiswas.status', "mengisi")
