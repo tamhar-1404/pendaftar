@@ -37,37 +37,37 @@ class JurnaladminController extends Controller
     {
         $tanggal = request()->input('tanggal');
         $tanggalFormatted = Carbon::parse($tanggal)->isoFormat('D MMMM Y');
-    
+
         $jurnalSiswa = JurnalSiswa::where('status', 'Tidak mengisi')
                                  ->whereDate('created_at', $tanggal)
                                  ->get();
-    
+
         if ($jurnalSiswa->isNotEmpty()) {
             $message = "Assalamualaikum wr.wb.\n\nSelamat pagi.\nMohon maaf mengganggu waktunya.\nIzin melaporkan jurnal harian siswa magang\nPada hari ini siswa magang melakukan Absensi pada website http://pkl.hummatech.com/.\n Ada beberapa siswa magang yang tidak mengisi jurnal harian. Untuk kedepannya siswa magang diharapkan untuk mengisi jurnal harian tepat waktu.\n\nPada tanggal " . $tanggalFormatted . ", berikut daftar siswa magang yang belum mengisi jurnal harian:\n\n";
-    
+
             foreach ($jurnalSiswa as $jurnal) {
                 $siswa = Siswa::find($jurnal->siswa_id);
                 if ($siswa && $siswa->name) {
                     $message .= "- " . $siswa->name . "\n";
                 }
             }
-    
+
             $message .= "\nMengingatkan kepada seluruh siswa magang untuk menjaga konsistensi dalam mengisi Absensi dan jurnal harian sebagai bentuk tanggung jawab sebagai siswa magang.\n\nTerima kasih.\n\nWassalamualaikum wr.wb.";
-    
+
             // Membentuk URL WhatsApp dengan nomor telepon dan pesan
             $whatsappUrl = 'https://api.whatsapp.com/send?phone='  . '&text=' . urlencode($message);
-    
+
             // Mengarahkan pengguna ke URL WhatsApp
             return redirect($whatsappUrl);
         }
-    
+
         // Tampilkan jika tidak ada siswa yang belum mengisi jurnal
         $message = "Assalamualaikum wr.wb.\n\nSelamat pagi.\nMohon maaf mengganggu waktunya.\nIzin melaporkan jurnal harian siswa magang\nPada tanggal " . $tanggalFormatted . ", berikut daftar siswa magang yang belum mengisi jurnal harian:
 \n  - NIHIL\n\nTerima kasih.\nWassalamualaikum wr.wb.";
-    
+
         // Membentuk URL WhatsApp dengan nomor telepon dan pesan
         $whatsappUrl = 'https://api.whatsapp.com/send?phone='  . '&text=' . urlencode($message);
-    
+
         // Mengarahkan pengguna ke URL WhatsApp
         return redirect($whatsappUrl);
     }
@@ -472,7 +472,7 @@ class JurnaladminController extends Controller
         ->where('role', 'siswa')
         ->get();
 
-        $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id')
+        $semuaJurnal = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id','jurnalsiswas.created_at')
         ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
         ->where('jurnalsiswas.tanggal', $hari)
         ->when($request->siswa, function ($query) use ($request) {
@@ -486,7 +486,7 @@ class JurnaladminController extends Controller
             $query->where('name', 'LIKE', '%'.$request->siswa.'%');
         })
         ->get();
-        $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id')
+        $mengisi = Siswa::select('siswas.name as name', 'jurnalsiswas.tanggal', 'siswas.sekolah', 'jurnalsiswas.status', 'jurnalsiswas.kegiatan','jurnalsiswas.image', 'jurnalsiswas.id as id','jurnalsiswas.created_at')
         ->leftJoin('jurnalsiswas', 'siswas.id', '=', 'jurnalsiswas.siswa_id')
         ->where('jurnalsiswas.tanggal', $hari)
         ->where('jurnalsiswas.status', "mengisi")
