@@ -114,7 +114,7 @@ public function data ()
             $hari = Carbon::now()->format('Y-m-d');
             $jam = Carbon::now()->format('H-i');
             // dd($jam > '16-00');
-            if($jam < '23:59'){
+            if($jam > '16:00' && $jam < '23:59'){
                 $data = Jurnalsiswa::where('siswa_id', $siswa_id)->where('tanggal', $hari)->exists();
                 if(!$data){
                     try {
@@ -143,7 +143,7 @@ public function data ()
                     return redirect()->back()->withInput()->withErrors(['tanggal' => 'Anda sudah melakukan pengumpulan']);
                 }
             }else{
-                return back()->with('error', 'Anda telat mengumpulkan jurnal');
+                return back()->with('error', 'Waktu pengumpulan adalah jam 4 sore sampai 12 malam');
             }
         }
 
