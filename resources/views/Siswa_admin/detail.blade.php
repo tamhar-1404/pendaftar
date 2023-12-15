@@ -214,6 +214,14 @@
                                     </svg>
                                     <span class="whitespace-nowrap" dir="ltr">{{ $siswa->no }}</span>
                                 </li>
+                                <li class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M15 22v-2h4V10H5v4H3V6q0-.825.588-1.412T5 4h1V2h2v2h8V2h2v2h1q.825 0 1.413.588T21 6v14q0 .825-.587 1.413T19 22h-4Zm-7 2l-1.4-1.4L9.175 20H1v-2h8.175L6.6 15.4L8 14l5 5l-5 5ZM5 8h14V6H5v2Zm0 0V6v2Z"/></svg>
+                                    <span class="whitespace-nowrap" dir="ltr">{{ \Carbon\Carbon::parse($siswa->magang_awal)->locale('id')->isoFormat('D MMMM Y ') }}</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M10.95 18.35L7.4 14.8l1.45-1.45l2.1 2.1l4.2-4.2l1.45 1.45l-5.65 5.65ZM5 22q-.825 0-1.412-.587T3 20V6q0-.825.588-1.412T5 4h1V2h2v2h8V2h2v2h1q.825 0 1.413.588T21 6v14q0 .825-.587 1.413T19 22H5Zm0-2h14V10H5v10ZM5 8h14V6H5v2Zm0 0V6v2Z"/></svg>
+                                    <span class="whitespace-nowrap" dir="ltr">{{ \Carbon\Carbon::parse($siswa->magang_akhir)->locale('id')->isoFormat('D MMMM Y ') }}</span>
+                                </li>
                             </ul>
                             <ul class="mt-7  justify-center gap-2">
                                <li class="font-bold">Status</li>
