@@ -33,6 +33,7 @@ use App\Http\Controllers\TransaksirfidController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProfilsiswaController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
