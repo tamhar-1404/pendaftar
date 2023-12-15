@@ -13,10 +13,10 @@ class ReportController extends Controller
         $date = Carbon::now();
         $month = $date->format('m');
         $data = Siswa::with(['jurnals' => function ($query) use ($month) {
-            $query->whereMonth('created_at', $month);
+            $query->whereMonth('created_at', $month)->where('status', 'Tidak mengisi');
         }, 'absens' => function ($query) use ($month) {
-            $query->whereMonth('created_at', $month);
-        }])->get();
+            $query->whereMonth('created_at', $month)->whereIn('status', ['telat','alfa']);
+        }])->orderBy('name', 'asc')->get();
         return view('report.index', compact('data'));
     }
 }

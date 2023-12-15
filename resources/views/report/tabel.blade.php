@@ -20,7 +20,7 @@
                                 <th scope="col" class="px-6 py-2">JUMLAH JURNAL</th>
                                 <th scope="col" class="px-6 py-2">JUMLAH ABSEN</th>
                                 {{-- <th scope="col" class="px-6 py-2 "></th> --}}
-                                <th scope="col" class="px-6 py-2 kamu-tak-diajak">AKSI</th>
+                                {{-- <th scope="col" class="px-6 py-2 kamu-tak-diajak">AKSI</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -32,9 +32,9 @@
                                 <th scope="col" class="px-6 py-2">{{$item->jurnals->count()}}</th>
                                 <th scope="col" class="px-6 py-2">{{$item->absens->count()}}</th>
                                 {{-- <th scope="col" class="px-6 py-2 "></th> --}}
-                                <th scope="col" class="px-6 py-2 kamu-tak-diajak">
+                                {{-- <th scope="col" class="px-6 py-2 kamu-tak-diajak">
                                     <button class="p-2 bg-blue-500 rounded-lg text-white">Lihat</button>
-                                </th>
+                                </th> --}}
                             </tr>
                             @empty
 
