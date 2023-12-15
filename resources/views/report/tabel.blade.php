@@ -42,6 +42,7 @@
                         </tbody>
                     </table>
                 </div>
+                {{ $data->onEachSide(0)->links() }}
             </div>
         </div>
     </div>

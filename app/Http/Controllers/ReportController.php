@@ -16,7 +16,7 @@ class ReportController extends Controller
             $query->whereMonth('created_at', $month)->where('status', 'Tidak mengisi');
         }, 'absens' => function ($query) use ($month) {
             $query->whereMonth('created_at', $month)->whereIn('status', ['telat','alfa']);
-        }])->orderBy('name', 'asc')->get();
+        }])->orderBy('name', 'asc')->paginate(15);
         return view('report.index', compact('data'));
     }
 }
