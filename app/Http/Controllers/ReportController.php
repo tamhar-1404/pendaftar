@@ -25,7 +25,7 @@ class ReportController extends Controller
         }, 'absens' => function ($query) use ($month) {
             $query->whereMonth('created_at', $month)->whereIn('status', ['telat','alfa']);
         }])->orderBy('name', 'asc')->paginate(15);
-        $data->appends(['cari' => $MonthYear]);
+        $data->appends(['month' => $MonthYear]);
         return view('report.index', compact('data','MonthYear'));
     }
 }

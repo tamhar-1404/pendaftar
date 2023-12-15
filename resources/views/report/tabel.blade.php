@@ -52,7 +52,7 @@
                         </tbody>
                     </table>
                 </div>
-                {{ $data->appends(['cari' => request('cari')])->onEachSide(0)->links() }}
+                {{ $data->appends(['month' => request('month')])->onEachSide(0)->links() }}
             </div>
         </div>
     </div>
