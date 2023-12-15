@@ -17,6 +17,7 @@ class ReportController extends Controller
             $MonthYear = \DateTime::createFromFormat('Y-m',$request->input('month'));
             $month = $MonthYear->format('m');
             $MonthYear = $MonthYear->format('Y-m');
+
         }
         // dd($month);
         $data = Siswa::with(['jurnals' => function ($query) use ($month) {
@@ -24,6 +25,7 @@ class ReportController extends Controller
         }, 'absens' => function ($query) use ($month) {
             $query->whereMonth('created_at', $month)->whereIn('status', ['telat','alfa']);
         }])->orderBy('name', 'asc')->paginate(15);
+        $data->appends(['cari' => $MonthYear]);
         return view('report.index', compact('data','MonthYear'));
     }
 }

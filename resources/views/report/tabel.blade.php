@@ -30,7 +30,7 @@
                         </thead>
                         <tbody>
                             @forelse ($data as $item)
-                            <tr>
+                            <tr class="border-b-2">
                                 <th scope="col" class="px-6 py-2">{{$loop->iteration}}</th>
                                 <th scope="col" class="px-6 py-2">{{$item->name}}</th>
                                 <th scope="col" class="px-6 py-2">{{$item->sekolah}}</th>
@@ -42,12 +42,17 @@
                                 </th> --}}
                             </tr>
                             @empty
-
+                            <td colspan="6" class="p-8 text-center">
+                                <div class="flex justify-center items-center">
+                                    <img src="/admin/noData.png" alt=""
+                                        width="280px">
+                                </div>
+                            </td>
                             @endforelse
                         </tbody>
                     </table>
                 </div>
-                {{ $data->onEachSide(0)->links() }}
+                {{ $data->appends(['cari' => request('cari')])->onEachSide(0)->links() }}
             </div>
         </div>
     </div>
