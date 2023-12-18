@@ -16,11 +16,17 @@ class JournalController extends Controller
     /**
      * index
      *
+     * @param  mixed $request
      * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $data = Jurnalsiswa::where('siswa_id', auth()->user()->siswa_id)->latest()->get();
+        $data = Jurnalsiswa::where('siswa_id', auth()->user()->siswa_id)
+            ->when($request->limit, function ($query) use ($request) {
+                $query->take((int) $request->limit);
+            })
+            ->latest()
+            ->get();
         return ResponseHelper::success(JournalResource::collection($data));
     }
 
@@ -67,33 +73,35 @@ class JournalController extends Controller
                 return ResponseHelper::error(null, 'Anda telat mengumpulkan jurnal');
             }
         }
-
-
     }
+
+    /**
+     * update
+     *
+     * @param  mixed $jurnal
+     * @param  mixed $request
+     * @return JsonResponse
+     */
     public function update(Jurnalsiswa $jurnal, Request $request): JsonResponse
     {
-        $oldImage = $jurnal->image;
         $this->validate($request, [
-            'kegiatan' => 'required',
-            'image' => 'image|mimes:png,jpg,jpeg',
+            'kegiatan' => 'required|max:225|min:100',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg',
         ], [
             'kegiatan.max' => 'Jurnal maksimal 255 karakter',
+            'kegiatan.min' => 'Jurnal maksimal 100 karakter',
             'image.image' => 'File harus berupa gambar',
             'image.mimes' => 'Format gambar harus PNG, JPG, atau JPEG',
         ]);
 
+        $oldImage = $jurnal->image;
         if ($jurnal->status === 'Tidak mengisi') {
-            return response()->json([
-                'status' => 'error',
-            ]);
+            return ResponseHelper::error(null, "Tidak bisa mengedit");
         }
         $jurnal->kegiatan = $request->kegiatan;
 
         if ($request->hasFile('image')) {
-            // Hapus gambar lama
-            if ($oldImage != 'default.jpg') {
-                Storage::delete('public/image/' . $oldImage);
-            }
+            if ($oldImage != 'default.jpg') Storage::delete('public/image/' . $oldImage);
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->storeAs('public/image', $imageName);

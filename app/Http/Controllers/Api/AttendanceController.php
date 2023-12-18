@@ -16,14 +16,26 @@ class AttendanceController extends Controller
     /**
      * index
      *
+     * @param  mixed $request
      * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $data = ApprovalIzin::whereRelation('Siswa', 'id', auth()->user()->Siswa->id)->where('status', 'terimaabsen')->latest()->take(15)->get();
+        $data = ApprovalIzin::whereRelation('Siswa', 'id', auth()->user()->Siswa->id)
+            ->where('status', 'terimaabsen')
+            ->when($request->limit, function ($query) use ($request) {
+                return $query->take((int) $request->limit);
+            })
+            ->latest()
+            ->get();
         return ResponseHelper::success(AttendanceResource::collection($data));
     }
 
+    /**
+     * store
+     *
+     * @return JsonResponse
+     */
     public function store(): JsonResponse
     {
         $hariIni = Carbon::now()->format('l');

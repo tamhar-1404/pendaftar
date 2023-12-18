@@ -33,6 +33,7 @@ use App\Http\Controllers\TransaksirfidController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProfilsiswaController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -126,11 +127,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
         Route::get('send-email' , [MailController::class,'index']);
         Route::get('List/Siswa' , [PiketController::class,'list'])->name('List/Siswa');
+        Route::get('report' , [ReportController::class,'index'])->name('report');
         Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
-        // Admin
-        Route::get('report', function () {
-            return view('report.index');
-        })->name('report');
+       
         Route::resource('/History_transaksi', App\Http\Controllers\HistoryTransaksiController::class);
         Route::resource('TopUp', App\Http\Controllers\TopUpController::class);
         Route::resource('barang', App\Http\Controllers\BarangController::class);
