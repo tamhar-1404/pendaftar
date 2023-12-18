@@ -454,8 +454,7 @@
                                     document.write(new Date().getFullYear())
                                 </script> Hummasoft. Design with <i
                                     class="mdi mdi-heart text-red-700"></i>
-                                by <a href="https://shreethemes.in/" target="_blank" class="text-reset">Yowis
-                                    Iki</a>.
+                                by <a href="javascript:void(0)" target="_blank" class="text-reset">Hummatech</a>.
                             </p>
                         </div>
                     </div>
