@@ -21,6 +21,7 @@ class UserResource extends JsonResource
             'rfid' => $this->RFID,
             'saldo' => $this->saldo,
             'sekolah' => $this->sekolah,
+            'student' => StudentResource::make($this->Siswa),
         ];
     }
 }
