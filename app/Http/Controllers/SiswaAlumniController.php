@@ -89,7 +89,7 @@ class SiswaAlumniController extends Controller
     public function edit(SiswaAlumni $siswaAlumni, $id)
     {
         $alumni = Siswa::find($id);
-    $pelanggaran = LaporanSiswa::where('name', $alumni->name)->paginate(5);
+        $pelanggaran = LaporanSiswa::where('name', $alumni->name)->paginate(5);
         // $alumni = Siswa::where('role', 'alumni')->get();
         return view('alumni_admin.detail', compact('alumni', 'pelanggaran'));
     }

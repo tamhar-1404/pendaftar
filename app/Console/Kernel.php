@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('entities:delete-expired')->daily();
         $schedule->command('command:jurnal')->dailyAt('23:59');
         $schedule->command('command:absensi')->dailyAt('23:59');
+        $schedule->command('command:Lulus')->dailyAt('16:00');
     }
     /**
      * Register the commands for the application.
