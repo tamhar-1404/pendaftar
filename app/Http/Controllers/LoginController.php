@@ -197,11 +197,11 @@ public function store(Request $request)
 
             if ($skck !== null) {
                 $skck->storeAs('public/pendaftaran', $skck->hashName());
-            }else{
                 $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
                 $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
                 $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
                 $cv->storeAs('public/pendaftaran', $cv->hashName());
+            }else{
             }
 
             $data = Aproval::create([
