@@ -133,203 +133,210 @@ public function store(Request $request)
         return back()->with('error', 'Email sudah digunakan')->withInput();
     }
 
+    try {
+        if($request->file('skck') === null){
+            // dd($request);
+            $this->validate($request , [
+                'name'=>'required',
+                'tempat'=>'required',
+                'tanggal'=>'required|date',
+                'kelas'=>'required',
+                'nisn'=>'required|unique:siswas,nisn',
+                'jeniskelamin'=>'required',
+                'alamat'=>'required',
+                'sekolah'=>'required',
+                'jurusan'=>'required',
+                'magang_awal'=>'required|date',
+                'magang_akhir'=>'required|date',
+                'foto_siswa'=>'required|image|mimes:jpg,jpeg,png',
+                'sp_diri'=>'required|image|mimes:jpg,jpeg,png',
+                'sp_ortu'=>'required|image|mimes:jpg,jpeg,png',
+                'cv'=>'required|image|mimes:jpg,jpeg,png',
+                'email'=>'required|unique:users,email',
+                'password'=>'required|min:6',
+                'confirm-password'=>'required|min:6',
+            ],[
+                'name.required' => 'Nama tidak boleh kosong',
+                'tempat.required' => 'Tempat tidak boleh kosong',
+                'tanggal.required' => 'Tanggal tidak boleh kosong',
+                'tanggal.date' => 'Tanggal harus dalam format tanggal yang valid',
+                'kelas.required' => 'Harap pilih salah satu kelas',
+                'nisn.required' => 'NISN tidak boleh kosong',
+                'nisn.unique' => 'NISN sudah terdaftar',
+                'jeniskelamin.required' => 'Jenis kelamin tidak boleh kosong',
+                'alamat.required' => 'Alamat tidak boleh kosong',
+                'sekolah.required' => 'Sekolah tidak boleh kosong',
+                'jurusan.required' => 'Jurusan tidak boleh kosong',
+                'magang_awal.required' => 'Tanggal awal magang tidak boleh kosong',
+                'magang_awal.date' => 'Tanggal awal magang harus dalam format tanggal yang valid',
+                'magang_akhir.required' => 'Tanggal akhir magang tidak boleh kosong',
+                'magang_akhir.date' => 'Tanggal akhir magang harus dalam format tanggal yang valid',
+                'foto_siswa.required' => 'Foto siswa tidak boleh kosong',
+                'foto_siswa.image' => 'Foto siswa harus berupa gambar',
+                'foto_siswa.mimes' => 'Foto siswa harus berformat jpg, jpeg, atau png',
+                'sp_diri.required' => 'Surat pernyataan diri tidak boleh kosong',
+                'sp_diri.image' => 'Surat pernyataan diri harus berupa gambar',
+                'sp_diri.mimes' => 'Surat pernyataan diri harus berformat jpg, jpeg, atau png',
+                'sp_ortu.required' => 'Surat pernyataan orang tua tidak boleh kosong',
+                'sp_ortu.image' => 'Surat pernyataan orang tua harus berupa gambar',
+                'sp_ortu.mimes' => 'Surat pernyataan orang tua harus berformat jpg, jpeg, atau png',
+                'cv.required' => 'CV tidak boleh kosong',
+                'cv.image' => 'CV harus berupa gambar',
+                'cv.mimes' => 'CV harus berformat jpg, jpeg, atau png',
+                'email.required' => 'Email tidak boleh kosong',
+                'email.unique' => 'Email sudah terdaftar',
+                'password.required' => 'Password tidak boleh kosong',
+                'password.min' => 'Password harus minimal 6 karakter',
+                'confirm-password.required' => 'Konfirmasi password tidak boleh kosong',
+                'confirm-password.min' => 'Konfirmasi password harus minimal 6 karakter',
+            ]);
+            $foto_siswa = $request->file('foto_siswa');
+            $sp_diri = $request->file('sp_diri');
+            $sp_ortu = $request->file('sp_ortu');
+            $cv = $request->file('cv');
 
-    if($request->file('skck') === null){
-        // dd($request);
-        $this->validate($request , [
-            'name'=>'required',
-            'tempat'=>'required',
-            'tanggal'=>'required|date',
-            'kelas'=>'required',
-            'nisn'=>'required|unique:siswas,nisn',
-            'jeniskelamin'=>'required',
-            'alamat'=>'required',
-            'sekolah'=>'required',
-            'jurusan'=>'required',
-            'magang_awal'=>'required|date',
-            'magang_akhir'=>'required|date',
-            'foto_siswa'=>'required|image|mimes:jpg,jpeg,png',
-            'sp_diri'=>'required|image|mimes:jpg,jpeg,png',
-            'sp_ortu'=>'required|image|mimes:jpg,jpeg,png',
-            'cv'=>'required|image|mimes:jpg,jpeg,png',
-            'email'=>'required|unique:users,email',
-            'password'=>'required|min:6',
-            'confirm-password'=>'required|min:6',
-        ],[
-            'name.required' => 'Nama tidak boleh kosong',
-            'tempat.required' => 'Tempat tidak boleh kosong',
-            'tanggal.required' => 'Tanggal tidak boleh kosong',
-            'tanggal.date' => 'Tanggal harus dalam format tanggal yang valid',
-            'kelas.required' => 'Harap pilih salah satu kelas',
-            'nisn.required' => 'NISN tidak boleh kosong',
-            'nisn.unique' => 'NISN sudah terdaftar',
-            'jeniskelamin.required' => 'Jenis kelamin tidak boleh kosong',
-            'alamat.required' => 'Alamat tidak boleh kosong',
-            'sekolah.required' => 'Sekolah tidak boleh kosong',
-            'jurusan.required' => 'Jurusan tidak boleh kosong',
-            'magang_awal.required' => 'Tanggal awal magang tidak boleh kosong',
-            'magang_awal.date' => 'Tanggal awal magang harus dalam format tanggal yang valid',
-            'magang_akhir.required' => 'Tanggal akhir magang tidak boleh kosong',
-            'magang_akhir.date' => 'Tanggal akhir magang harus dalam format tanggal yang valid',
-            'foto_siswa.required' => 'Foto siswa tidak boleh kosong',
-            'foto_siswa.image' => 'Foto siswa harus berupa gambar',
-            'foto_siswa.mimes' => 'Foto siswa harus berformat jpg, jpeg, atau png',
-            'sp_diri.required' => 'Surat pernyataan diri tidak boleh kosong',
-            'sp_diri.image' => 'Surat pernyataan diri harus berupa gambar',
-            'sp_diri.mimes' => 'Surat pernyataan diri harus berformat jpg, jpeg, atau png',
-            'sp_ortu.required' => 'Surat pernyataan orang tua tidak boleh kosong',
-            'sp_ortu.image' => 'Surat pernyataan orang tua harus berupa gambar',
-            'sp_ortu.mimes' => 'Surat pernyataan orang tua harus berformat jpg, jpeg, atau png',
-            'cv.required' => 'CV tidak boleh kosong',
-            'cv.image' => 'CV harus berupa gambar',
-            'cv.mimes' => 'CV harus berformat jpg, jpeg, atau png',
-            'email.required' => 'Email tidak boleh kosong',
-            'email.unique' => 'Email sudah terdaftar',
-            'password.required' => 'Password tidak boleh kosong',
-            'password.min' => 'Password harus minimal 6 karakter',
-            'confirm-password.required' => 'Konfirmasi password tidak boleh kosong',
-            'confirm-password.min' => 'Konfirmasi password harus minimal 6 karakter',
-        ]);
-        $foto_siswa = $request->file('foto_siswa');
-        $sp_diri = $request->file('sp_diri');
-        $sp_ortu = $request->file('sp_ortu');
-        $cv = $request->file('cv');
+            $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
+            $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
+            $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
+            $cv->storeAs('public/pendaftaran', $cv->hashName());
 
-        $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
-        $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
-        $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
-        $cv->storeAs('public/pendaftaran', $cv->hashName());
+            $data = Aproval::create([
+                'name' => $request->name,
+                'tempat' => $request->tempat,
+                'tanggal' => $request->tanggal,
+                'kelas' => $request->kelas,
+                'nisn' => $request->nisn,
+                'jeniskelamin' => $request->jeniskelamin,
+                'alamat' => $request->alamat,
+                'sekolah' => $request->sekolah,
+                'jurusan' => $request->jurusan,
+                'magang_awal' => $request->magang_awal,
+                'magang_akhir' => $request->magang_akhir,
+                'foto_siswa' => $foto_siswa->hashName(),
+                'sp_diri' => $sp_diri->hashName(),
+                'sp_ortu' => $sp_ortu->hashName(),
+                'cv' => $cv->hashName(),
+                'email' => $request->email,
+                'no' => $request->no,
+                'password' => Hash::make($request->password),
+                'remember_token' => Str::random(60)
+            ]);
 
-        $data = Aproval::create([
-            'name' => $request->name,
-            'tempat' => $request->tempat,
-            'tanggal' => $request->tanggal,
-            'kelas' => $request->kelas,
-            'nisn' => $request->nisn,
-            'jeniskelamin' => $request->jeniskelamin,
-            'alamat' => $request->alamat,
-            'sekolah' => $request->sekolah,
-            'jurusan' => $request->jurusan,
-            'magang_awal' => $request->magang_awal,
-            'magang_akhir' => $request->magang_akhir,
-            'foto_siswa' => $foto_siswa->hashName(),
-            'sp_diri' => $sp_diri->hashName(),
-            'sp_ortu' => $sp_ortu->hashName(),
-            'cv' => $cv->hashName(),
-            'email' => $request->email,
-            'no' => $request->no,
-            'password' => Hash::make($request->password),
-            'remember_token' => Str::random(60)
-        ]);
+            // Kirim email konfirmasi
+            Mail::to($data->email)->send(new Konfimasi());
+            $email_admin = User::where('role', 'Admin')->first()->email;
+            $data = [
+                'nama' => $request->name,
+            ];
+            Mail::to($email_admin)->send(new PendaftaranAdmin($data));
 
-        // Kirim email konfirmasi
-        Mail::to($data->email)->send(new Konfimasi());
-        $email_admin = User::where('role', 'Admin')->first()->email;
-        $data = [
-            'nama' => $request->name,
-        ];
-        Mail::to($email_admin)->send(new PendaftaranAdmin($data));
+            return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
+        }
 
-        return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
-    }else{
-        $this->validate($request , [
-            'name'=>'required',
-            'tempat'=>'required',
-            'tanggal'=>'required',
-            'kelas'=>'required',
-            'nisn'=>'required|unique:siswas,nisn',
-            'jeniskelamin'=>'required',
-            'alamat'=>'required',
-            'sekolah'=>'required',
-            'jurusan'=>'required',
-            'magang_awal'=>'required',
-            'magang_akhir'=>'required',
-            'foto_siswa'=>'required|image|mimes:jpg,jpeg,png',
-            'sp_diri'=>'required|image|mimes:jpg,jpeg,png',
-            'sp_ortu'=>'required|image|mimes:jpg,jpeg,png',
-            'cv'=>'required|image|mimes:jpg,jpeg,png',
-            'skck'=>'required|image|mimes:jpg,jpeg,png',
-            'email'=>'required|unique:users,email',
-            'password'=>'required|min:6',
-        ],[
-            'name.required' => 'Nama tidak boleh kosong',
-            'tempat.required' => 'Tempat tidak boleh kosong',
-            'tanggal.required' => 'Tanggal tidak boleh kosong',
-            'tanggal.date' => 'Tanggal harus dalam format tanggal yang valid',
-            'kelas.required' => 'Harap pilih salah satu kelas',
-            'nisn.required' => 'NISN tidak boleh kosong',
-            'nisn.unique' => 'NISN sudah terdaftar',
-            'jeniskelamin.required' => 'Jenis kelamin tidak boleh kosong',
-            'alamat.required' => 'Alamat tidak boleh kosong',
-            'sekolah.required' => 'Sekolah tidak boleh kosong',
-            'jurusan.required' => 'Jurusan tidak boleh kosong',
-            'magang_awal.required' => 'Tanggal awal magang tidak boleh kosong',
-            'magang_awal.date' => 'Tanggal awal magang harus dalam format tanggal yang valid',
-            'magang_akhir.required' => 'Tanggal akhir magang tidak boleh kosong',
-            'magang_akhir.date' => 'Tanggal akhir magang harus dalam format tanggal yang valid',
-            'foto_siswa.required' => 'Foto siswa tidak boleh kosong',
-            'foto_siswa.image' => 'Foto siswa harus berupa gambar',
-            'foto_siswa.mimes' => 'Foto siswa harus berformat jpg, jpeg, atau png',
-            'sp_diri.required' => 'Surat pernyataan diri tidak boleh kosong',
-            'sp_diri.image' => 'Surat pernyataan diri harus berupa gambar',
-            'sp_diri.mimes' => 'Surat pernyataan diri harus berformat jpg, jpeg, atau png',
-            'sp_ortu.required' => 'Surat pernyataan orang tua tidak boleh kosong',
-            'sp_ortu.image' => 'Surat pernyataan orang tua harus berupa gambar',
-            'sp_ortu.mimes' => 'Surat pernyataan orang tua harus berformat jpg, jpeg, atau png',
-            'cv.required' => 'CV tidak boleh kosong',
-            'cv.image' => 'CV harus berupa gambar',
-            'cv.mimes' => 'CV harus berformat jpg, jpeg, atau png',
-            'skck.required' => 'SKCK tidak boleh kosong',
-            'skck.image' => 'SKCK harus berupa gambar',
-            'skck.mimes' => 'SKCK harus berformat jpg, jpeg, atau png',
-            'email.required' => 'Email tidak boleh kosong',
-            'email.unique' => 'Email sudah terdaftar',
-            'password.required' => 'Password tidak boleh kosong',
-            'password.min' => 'Password harus minimal 6 karakter',
-        ]);
+
+        if($request->file('skck') !== null){
+            $this->validate($request , [
+                'name'=>'required',
+                'tempat'=>'required',
+                'tanggal'=>'required',
+                'kelas'=>'required',
+                'nisn'=>'required|unique:siswas,nisn',
+                'jeniskelamin'=>'required',
+                'alamat'=>'required',
+                'sekolah'=>'required',
+                'jurusan'=>'required',
+                'magang_awal'=>'required',
+                'magang_akhir'=>'required',
+                'foto_siswa'=>'required|image|mimes:jpg,jpeg,png',
+                'sp_diri'=>'required|image|mimes:jpg,jpeg,png',
+                'sp_ortu'=>'required|image|mimes:jpg,jpeg,png',
+                'cv'=>'required|image|mimes:jpg,jpeg,png',
+                'skck'=>'required|image|mimes:jpg,jpeg,png',
+                'email'=>'required|unique:users,email',
+                'password'=>'required|min:6',
+            ],[
+                'name.required' => 'Nama tidak boleh kosong',
+                'tempat.required' => 'Tempat tidak boleh kosong',
+                'tanggal.required' => 'Tanggal tidak boleh kosong',
+                'tanggal.date' => 'Tanggal harus dalam format tanggal yang valid',
+                'kelas.required' => 'Harap pilih salah satu kelas',
+                'nisn.required' => 'NISN tidak boleh kosong',
+                'nisn.unique' => 'NISN sudah terdaftar',
+                'jeniskelamin.required' => 'Jenis kelamin tidak boleh kosong',
+                'alamat.required' => 'Alamat tidak boleh kosong',
+                'sekolah.required' => 'Sekolah tidak boleh kosong',
+                'jurusan.required' => 'Jurusan tidak boleh kosong',
+                'magang_awal.required' => 'Tanggal awal magang tidak boleh kosong',
+                'magang_awal.date' => 'Tanggal awal magang harus dalam format tanggal yang valid',
+                'magang_akhir.required' => 'Tanggal akhir magang tidak boleh kosong',
+                'magang_akhir.date' => 'Tanggal akhir magang harus dalam format tanggal yang valid',
+                'foto_siswa.required' => 'Foto siswa tidak boleh kosong',
+                'foto_siswa.image' => 'Foto siswa harus berupa gambar',
+                'foto_siswa.mimes' => 'Foto siswa harus berformat jpg, jpeg, atau png',
+                'sp_diri.required' => 'Surat pernyataan diri tidak boleh kosong',
+                'sp_diri.image' => 'Surat pernyataan diri harus berupa gambar',
+                'sp_diri.mimes' => 'Surat pernyataan diri harus berformat jpg, jpeg, atau png',
+                'sp_ortu.required' => 'Surat pernyataan orang tua tidak boleh kosong',
+                'sp_ortu.image' => 'Surat pernyataan orang tua harus berupa gambar',
+                'sp_ortu.mimes' => 'Surat pernyataan orang tua harus berformat jpg, jpeg, atau png',
+                'cv.required' => 'CV tidak boleh kosong',
+                'cv.image' => 'CV harus berupa gambar',
+                'cv.mimes' => 'CV harus berformat jpg, jpeg, atau png',
+                'skck.required' => 'SKCK tidak boleh kosong',
+                'skck.image' => 'SKCK harus berupa gambar',
+                'skck.mimes' => 'SKCK harus berformat jpg, jpeg, atau png',
+                'email.required' => 'Email tidak boleh kosong',
+                'email.unique' => 'Email sudah terdaftar',
+                'password.required' => 'Password tidak boleh kosong',
+                'password.min' => 'Password harus minimal 6 karakter',
+            ]);
+
+            
+            $foto_siswa = $request->file('foto_siswa');
+            $sp_diri = $request->file('sp_diri');
+            $sp_ortu = $request->file('sp_ortu');
+            $skck = $request->file('skck');
+            $cv = $request->file('cv');
+
+            $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
+            $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
+            $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
+            $skck->storeAs('public/pendaftaran', $skck->hashName());
+            $cv->storeAs('public/pendaftaran', $cv->hashName());
+
+            $data = aproval::create([
+                'name' => $request->name,
+                'tempat' => $request->tempat,
+                'tanggal' => $request->tanggal,
+                'kelas' => $request->kelas,
+                'nisn' => $request->nisn,
+                'jeniskelamin' => $request->jeniskelamin,
+                'alamat' => $request->alamat,
+                'sekolah' => $request->sekolah,
+                'jurusan' => $request->jurusan,
+                'magang_awal' => $request->magang_awal,
+                'magang_akhir' => $request->magang_akhir,
+                'foto_siswa' => $foto_siswa->hashName(),
+                'sp_diri' => $sp_diri->hashName(),
+                'sp_ortu' => $sp_ortu->hashName(),
+                'skck' => $skck->hashName(),
+                'cv' => $cv->hashName(),
+                'email' => $request->email,
+                'no' => $request->no,
+                'password' => Hash::make($request->password),
+                'remember_token' => Str::random(60)
+            ]);
+
+            // Kirim email konfirmasi
+            Mail::to($data->email)->send(new Konfimasi());
+
+            return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
+        }
+    } catch (Exception $e) {
+        return back()->with('error', $e->getMessage());
     }
 
-    if($request->file('skck') !== null){
-        $foto_siswa = $request->file('foto_siswa');
-        $sp_diri = $request->file('sp_diri');
-        $sp_ortu = $request->file('sp_ortu');
-        $skck = $request->file('skck');
-        $cv = $request->file('cv');
 
-        $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
-        $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
-        $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
-        $skck->storeAs('public/pendaftaran', $skck->hashName());
-        $cv->storeAs('public/pendaftaran', $cv->hashName());
-
-        $data = aproval::create([
-            'name' => $request->name,
-            'tempat' => $request->tempat,
-            'tanggal' => $request->tanggal,
-            'kelas' => $request->kelas,
-            'nisn' => $request->nisn,
-            'jeniskelamin' => $request->jeniskelamin,
-            'alamat' => $request->alamat,
-            'sekolah' => $request->sekolah,
-            'jurusan' => $request->jurusan,
-            'magang_awal' => $request->magang_awal,
-            'magang_akhir' => $request->magang_akhir,
-            'foto_siswa' => $foto_siswa->hashName(),
-            'sp_diri' => $sp_diri->hashName(),
-            'sp_ortu' => $sp_ortu->hashName(),
-            'skck' => $skck->hashName(),
-            'cv' => $cv->hashName(),
-            'email' => $request->email,
-            'no' => $request->no,
-            'password' => Hash::make($request->password),
-            'remember_token' => Str::random(60)
-        ]);
-
-        // Kirim email konfirmasi
-        Mail::to($data->email)->send(new Konfimasi());
-
-        return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
-    }
 }
     /**
      * Display the specified resource.
