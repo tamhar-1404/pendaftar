@@ -211,7 +211,6 @@ public function store(Request $request)
         return back()->with('error', $e->getMessage());
     }
 
-    try {
         $this->validate($request , [
             'name'=>'required',
             'tempat'=>'required',
@@ -238,6 +237,7 @@ public function store(Request $request)
             'sp_ortu.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
             'cv.mimes' => 'masukan gambar dengan ekstensi jpg, jpeg, png',
         ]);
+        
         if($request->file('skck') !== null){
             $foto_siswa = $request->file('foto_siswa');
             $sp_diri = $request->file('sp_diri');
@@ -279,9 +279,6 @@ public function store(Request $request)
 
             return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
         }
-    } catch (Exception $e) {
-        return back()->with('error', "Isi form tidak valid");
-    }
 }
     /**
      * Display the specified resource.
