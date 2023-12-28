@@ -242,6 +242,7 @@ public function store(Request $request)
             return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
         
     } catch (Exception $e) {
+        
         return back()->with('error', $e->getMessage());
     }
 }
