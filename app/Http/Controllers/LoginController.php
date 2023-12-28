@@ -216,7 +216,7 @@ public function store(Request $request)
             'tempat'=>'required',
             'tanggal'=>'required',
             'kelas'=>'required',
-            'nisn'=>'required:unique:users',
+            'nisn'=>'required',
             'jeniskelamin'=>'required',
             'alamat'=>'required',
             'sekolah'=>'required',
