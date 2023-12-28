@@ -202,6 +202,10 @@ public function store(Request $request)
                 $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
                 $cv->storeAs('public/pendaftaran', $cv->hashName());
             }else{
+                $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
+                $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
+                $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
+                $cv->storeAs('public/pendaftaran', $cv->hashName());
             }
 
             $data = Aproval::create([
