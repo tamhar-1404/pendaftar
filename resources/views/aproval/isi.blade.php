@@ -109,15 +109,12 @@
 
                                     Swal.fire({
                                         title: 'Hapus',
-                                        input: 'text',
                                         inputLabel: 'Yakin mau hapus?',
                                         showCancelButton: true,
-                                        confirmButtonText: 'Kirim',
+                                        confirmButtonText: 'Hapus',
                                         cancelButtonText: 'Batal',
-                                        confirmButtonColor: '#00B7FF',
-                                        cancelButtonColor: '#FF0000',
-                                        allowOutsideClick: false,
-
+                                        confirmButtonColor: '#ff0000',
+                                        allowOutsideClick: true,
                                     }).then((result) => {
                                         if (result.isConfirmed) {
                                             event.target.submit()
