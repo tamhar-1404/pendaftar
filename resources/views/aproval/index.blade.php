@@ -283,8 +283,8 @@
                                                         <td class="whitespace-nowrap px-6 py-2">{{ $aproval->kelas }}
                                                         </td>
                                                         <td class="whitespace-nowrap px-6 py-2">
-                                                            {{ $aproval->magang_awal }}
-                                                            -- {{ $aproval->magang_akhir }}</td>
+                                                            {{ \Carbon\Carbon::parse($aproval->magang_awal)->format('d F Y') }}
+                                                            -- {{ \Carbon\Carbon::parse($aproval->magang_akhir)->format('d F Y') }}</td>
                                                         <td class="whitespace-nowrap px-6 py-2">
                                                             {{ $aproval->sekolah }}
                                                         </td>
