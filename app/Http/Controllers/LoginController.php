@@ -227,7 +227,7 @@ public function store(Request $request)
             'nama' => $request->name,
         ];
         Mail::to($email_admin)->send(new PendaftaranAdmin($data));
-        return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
+        return redirect()->route('login.index')->with('berhasil_daftar', 'Silahkan tunggu konfirmasi dari admin!');
     } catch (Exception $e) {
 
         return back()->with('error', $e->getMessage())->withInput();
