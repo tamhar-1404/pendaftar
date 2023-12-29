@@ -18,7 +18,7 @@ class NisnRule implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        return Aproval::where('nisn', $value)->exists() || Siswa::where('nisn', $value)->exists();
+        return !Aproval::where('nisn', $value)->exists() || !Siswa::where('nisn', $value)->exists();
     }
 
     /**
