@@ -19,7 +19,6 @@ use App\Models\Guru_admin;
 use App\Models\MOU;
 use App\Models\Tolak;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\QueryException;
@@ -71,7 +70,7 @@ class LoginController extends Controller
                 $siswa = Siswa::where('id', $data)->first();
                 $tanggal = $siswa->magang_awal;
                 if($tanggal > now()){
-                    return redirect()->back()->with('error', 'anda masih belum masuk magang');;
+                    return redirect()->back()->with('error', 'anda masih belum masuk magang');
                 }
                 return redirect()->route('Siswamagang.index');
 
@@ -85,7 +84,7 @@ class LoginController extends Controller
         }
 
         // Autentikasi gagal
-    return redirect()->back()->with('error', 'Email / password salah');
+    return redirect()->back()->with('error', 'Email / password salah')->withInput();
     }
 
 
@@ -240,10 +239,10 @@ public function store(Request $request)
             Mail::to($email_admin)->send(new PendaftaranAdmin($data));
 
             return redirect()->route('login.index')->with('berhasil_daftar', 'silangkan Tunggu proses selama paling lama 2 hari.');
-        
+
     } catch (Exception $e) {
-        
-        return back()->with('error', $e->getMessage());
+
+        return back()->with('error', $e->getMessage())->withInput();
     }
 }
     /**
