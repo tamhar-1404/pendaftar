@@ -238,7 +238,7 @@ return view('rfid.index', compact('users'));
     }
 
     public function lulus (Request $request, $id){
-        $siswa = Siswa::find($id);
+        $siswa = Siswa::findOrfail($id);
         $siswa->update([
             'status' => 'Lulus',
         ]);
