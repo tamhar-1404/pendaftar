@@ -124,7 +124,7 @@ public function store(Request $request)
         if ($total_semua_siswa > $limit) return redirect()->route('login.index')->with('limitbang', "Kuota pendaftaran sudah habis")->withInput();
     }
 
-    if (Aproval::where('email', $request->email)->orWhere('nisn', $request->nisn)->exists()) {
+    if (Aproval::where('email', $request->email)->where('nisn', $request->nisn)->exists()) {
         return to_route('login.index')->with('berhasil_daftar', 'Silahkan menunggu konfirmasi dari admin');
     }
     try {
