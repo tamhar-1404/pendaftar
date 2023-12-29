@@ -17,6 +17,7 @@ use App\Models\Guru_admin;
 use App\Models\MOU;
 use App\Models\Tolak;
 use App\Models\User;
+use App\Rules\EmailRule;
 use App\Rules\NisnRule;
 use Carbon\Carbon;
 use Exception;
@@ -123,8 +124,6 @@ public function store(Request $request)
         if ($total_semua_siswa > $limit) return redirect()->route('login.index')->with('limitbang', "Kuota pendaftaran sudah habis")->withInput();
     }
 
-    if (User::where('email', $request->email)->exists() || Siswa::where('email', $request->email)->exists() || Guru_admin::where('email', $request->email)->exists() || MOU::where('email', $request->email)->exists() || Tolak::where('email', $request->email)->exists()) return back()->with('error', 'Email sudah digunakan')->withInput();
-
     try {
         $this->validate($request , [
             'name'=>'required',
@@ -143,7 +142,7 @@ public function store(Request $request)
             'sp_ortu'=>'required|image|mimes:jpg,jpeg,png',
             'cv'=>'required|image|mimes:jpg,jpeg,png',
             'skck' => 'nullable|image',
-            'email'=>'required|unique:users,email',
+            'email'=> ['required', 'email', new EmailRule],
             'password'=>'required|min:6',
             'confirm-password'=>'required|min:6',
         ],[
