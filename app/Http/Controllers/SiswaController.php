@@ -237,6 +237,15 @@ return view('rfid.index', compact('users'));
         return back()->with('success', 'Berhasil banned');
     }
 
+    public function lulus (Request $request, $id){
+        $siswa = Siswa::find($id);
+        $siswa->update([
+            'status' => 'Lulus',
+        ]);
+        User::where('name', $siswa->name)->update(['role' => 'Alumni']);
+        return back()->with('success', 'Siswa telah lulus');
+    }
+
     /**
      * unban
      *

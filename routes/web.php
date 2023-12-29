@@ -92,7 +92,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/export-to-docx-absen', [AbsensiadminController::class, 'exportToDocxabsen'])->name('exportToDocxabsen');
         Route::get('/absensi_pdf_admin', [AbsensiadminController::class, 'absen_pdf'])->name('absensi_pdf_admin');
         Route::resource('/History_Admin', App\Http\Controllers\HistoryAdminController::class);
-            // Route khusus untuk admin
+        // Route khusus untuk admin
         Route::resource('/Berita', App\Http\Controllers\BlogController::class);
         Route::resource('/aproval', App\Http\Controllers\AprovalController::class);
         Route::post('/absensi_date', [JurnaladminController::class, 'Absenhariini'])->name('absensi_date');
@@ -109,6 +109,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
         Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
         Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
+        Route::put('lulus/{id}' , [SiswaController::class ,'lulus']);
         Route::put('/siswa_admin/banned/{id}', [App\Http\Controllers\SiswaController::class, 'banned'])->name('siswa.banned');
         Route::patch('siswa-admin/unban/{student}', [SiswaController::class, 'unban'])->name('siswa.unban');
         Route::get('unblock-siswa', [SiswaController::class, 'blockedStudent'])->name('unblock-siswa');
@@ -129,7 +130,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('List/Siswa' , [PiketController::class,'list'])->name('List/Siswa');
         Route::get('report' , [ReportController::class,'index'])->name('report');
         Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
-       
         Route::resource('/History_transaksi', App\Http\Controllers\HistoryTransaksiController::class);
         Route::resource('TopUp', App\Http\Controllers\TopUpController::class);
         Route::resource('barang', App\Http\Controllers\BarangController::class);
