@@ -108,8 +108,7 @@
                                     event.preventDefault();
 
                                     Swal.fire({
-                                        title: 'Hapus',
-                                        inputLabel: 'Yakin mau hapus?',
+                                        title: 'Yakin mau hapus?',
                                         showCancelButton: true,
                                         confirmButtonText: 'Hapus',
                                         cancelButtonText: 'Batal',

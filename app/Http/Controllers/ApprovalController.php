@@ -17,6 +17,6 @@ class ApprovalController extends Controller
     public function destroy(Aproval $approval): RedirectResponse
     {
         $approval->delete();
-        return redirect()->back()->with('success', 'Berhasil menghapus data');
+        return to_route('aproval.index')->with('success', 'Berhasil menghapus data');
     }
 }

@@ -87,7 +87,7 @@ Route::get('/selesai', [LoginController::class, 'selesai'])->name('selesai');
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
-        Route::delete('approval/{approval}', [ApprovalController::class, 'destroy'])->name('approval.delete');
+        Route::delete('approval/{approval}/delete', [ApprovalController::class, 'destroy'])->name('approval.delete');
         Route::get('/cari_siswa', [App\Http\Controllers\PiketController::class, 'cari'])->name('cari_siswa');
         Route::post('absen' ,[AbsensiSiswaController::class ,'absen'])->name('absen.index');
         Route::get('/grafik_absen_docx', [AbsensiadminController::class, 'grafik_absen_docx'])->name('grafik_absen_docx');
