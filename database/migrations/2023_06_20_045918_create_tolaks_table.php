@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('tempat')->nullable();
             $table->string('tanggal')->nullable();
             $table->string('kelas')->nullable();
-            $table->string('nisn')->unique();
+            $table->string('nisn')->nullable();
             $table->enum('jeniskelamin', ['Laki-laki', 'Perempuan'])->nullable();
             $table->string('alamat')->nullable();
             $table->string('sekolah')->nullable();
@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('sp_ortu')->nullable();
             $table->string('skck')->nullable();
             $table->string('cv')->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('no');

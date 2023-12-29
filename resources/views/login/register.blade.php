@@ -247,7 +247,7 @@
                                         value="laki-laki" {{(old('jeniskelamin') == 'laki-laki') ? "selected" : ""}}>
                                     <p>Laki-laki</p>
                                     <input class="text-sm" type="radio" name="jeniskelamin" id="radio"
-                                        value="Perempuan" {{(old('jeniskelamin') == 'Perempuan') ? "selected" : ""}}>
+                                        value="Perempuan" {{ (old('jeniskelamin') == 'Perempuan') ? "selected" : "" }}>
                                     <p>Perempuan </p>
                                     <span></span>
                                 </div>
