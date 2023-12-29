@@ -92,6 +92,39 @@
                                     });
                                 }
                             </script>
+                            <form id=""
+                                action="{{ route('approval.delete', $aproval->id) }}" method="POST"
+                                onsubmit="return confirmDelete(event)">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="border border-red-500 hover:bg-red-500 hover:text-white text-red-500 hover:border-red-700 text-sm font-semibold py-1 px-4 rounded-md outline-none focus:outline-none">
+                                    Hapus
+                                </button>
+                            </form>
+
+                            <script>
+                                function confirmDelete(event) {
+                                    event.preventDefault();
+
+                                    Swal.fire({
+                                        title: 'Hapus',
+                                        input: 'text',
+                                        inputLabel: 'Yakin mau hapus?',
+                                        showCancelButton: true,
+                                        confirmButtonText: 'Kirim',
+                                        cancelButtonText: 'Batal',
+                                        confirmButtonColor: '#00B7FF',
+                                        cancelButtonColor: '#FF0000',
+                                        allowOutsideClick: false,
+
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            event.target.submit()
+                                        }
+                                    });
+                                }
+                            </script>
                             <form id="confirm-form-{{ $aproval->id }}"
                                 action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">
                                 @csrf
