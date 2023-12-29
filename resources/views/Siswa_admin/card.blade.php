@@ -133,6 +133,14 @@
                                                         class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Reset Password</button>
                                                 </form>
                                             </li>
+                                            <li>
+                                                <form id="lulus" action="{{ route('lulus/', $siswa->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="submit" onclick="LulusConfirmation(event)"
+                                                        class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Lulus</button>
+                                                </form>
+                                            </li>
 
                                             <li>
                                                 <button ata-modal-target="defaultModal{{ $siswa->id }}"
@@ -205,6 +213,24 @@
     }).then((result) => {
       if (result.isConfirmed) {
         document.getElementById('reset').submit(); // Mengirimkan formulir setelah tombol "Ya" diklik
+      }
+    });
+  }
+  function LulusConfirmation(event) {
+    event.preventDefault(); // Menghentikan aksi submit form yang bawaan
+
+    Swal.fire({
+      title: 'Luluskan',
+      text: 'Apakah anda yakin ingin meluluskan siswa ini ?"',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, Luluskan!',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        document.getElementById('lulus').submit(); // Mengirimkan formulir setelah tombol "Ya" diklik
       }
     });
   }
