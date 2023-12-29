@@ -241,8 +241,9 @@ return view('rfid.index', compact('users'));
         $siswa = Siswa::findOrfail($id);
         $siswa->update([
             'status' => 'Lulus',
+            'role' => 'alumni',
         ]);
-        User::where('name', $siswa->name)->update(['role' => 'Alumni']);
+        User::where('name', $siswa->name)->update(['role' => 'Siswa']);
         return back()->with('success', 'Siswa telah lulus');
     }
 
