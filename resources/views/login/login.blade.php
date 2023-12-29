@@ -55,8 +55,8 @@
     @if (session()->has('berhasil_daftar'))
         <script>
             Swal.fire({
-                title: "Data Anda berhasil dikirim",
-                text: "silangkan Tunggu proses selama paling lama 2 hari.",
+                title: "Berhasil!",
+                text: "{{ session('berhasil_daftar') }}",
                 icon: "info",
                 showCancelButton: false,
                 confirmButtonColor: "#3085d6",

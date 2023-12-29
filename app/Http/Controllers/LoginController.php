@@ -124,6 +124,9 @@ public function store(Request $request)
         if ($total_semua_siswa > $limit) return redirect()->route('login.index')->with('limitbang', "Kuota pendaftaran sudah habis")->withInput();
     }
 
+    if (Aproval::where('email', $request->email)->orWhere('nisn', $request->nisn)->exists()) {
+        return to_route('login.index')->with('berhasil_daftar', 'Silahkan menunggu konfirmasi dari admin');
+    }
     try {
         $this->validate($request , [
             'name'=>'required',
@@ -227,7 +230,7 @@ public function store(Request $request)
             'nama' => $request->name,
         ];
         Mail::to($email_admin)->send(new PendaftaranAdmin($data));
-        return redirect()->route('login.index')->with('berhasil_daftar', 'Silahkan tunggu konfirmasi dari admin!');
+        return redirect()->route('login.index')->with('berhasil_daftar', 'Data anda berhasil di kirim, Silahkan menunggu konfirmasi dari admin');
     } catch (Exception $e) {
 
         return back()->with('error', $e->getMessage())->withInput();
