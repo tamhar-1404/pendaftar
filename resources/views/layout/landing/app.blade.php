@@ -62,7 +62,7 @@
         }
 
         body.loaded #preloader {
-            opacity: 0;
+            display: none;
         }
     </style>
     @include('layout.landing.header')
