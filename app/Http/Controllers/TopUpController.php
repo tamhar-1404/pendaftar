@@ -15,21 +15,20 @@ use Illuminate\Contracts\View\View;
 class TopUpController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * index
      *
-     * @return \Illuminate\Http\Response
+     * @param  mixed $request
+     * @return View
      */
     public function index(Request $request): View
     {
-        if ($request->has('cari')) {
-            $keyword = $request->cari;
-            $TopUp = TopUp::Where('tanggal', 'LIKE', '%' . $keyword . '%')
-                ->where('status', 'menunggu')->latest()->paginate(10);
-            $TopUp->appends(['cari' => $keyword]);
-            return view('TopUp.index', compact('TopUp'));
-        }
-        $TopUp = TopUp::where('status', 'menunggu')->latest()->paginate(10);
-        return view('TopUp.index', compact('TopUp'));
+        $topUp = TopUp::query()
+            ->when($request->cari, function ($query) use ($request) {
+                $query->where('tanggal', 'LIKE', '%' . $request->cari . '%');
+            })
+            ->where('status', 'menunggu')->latest()->paginate(10);
+        $topUp->appends(['cari' => $request->cari]);
+        return view('master.approval.topup', compact('topUp'));
     }
 
 
@@ -112,7 +111,7 @@ class TopUpController extends Controller
         //     'user' => $user
         // ];
         $saldo = ['saldo'=> $request->saldo, 'total_saldo'=>$user->saldo, 'name'=>$user->name];
-        Mail::to($user->email)->send(new TerimaTopup($saldo));
+        // Mail::to($user->email)->send(new TerimaTopup($saldo));
 
         return redirect()->back()->with('success', 'Berhasil menerima top up');
     }

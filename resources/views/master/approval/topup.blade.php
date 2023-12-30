@@ -29,14 +29,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($topUp as $item)
                                     <tr>
-                                        <th>1</th>
-                                        <td>Abdul kader</td>
-                                        <td>12</td>
-                                        <td>12</td>
-                                        <td>12.000</td>
-                                        <td>12 januari 2023 - 12 desember 2026</td>
-                                        <td>smkn 1 kraksaan</td>
+                                        <th>{{ $loop->iteration }}</th>
+                                        <td>{{ $item->user->name }}</td>
+                                        <td>{{ $item->user->email }}</td>
+                                        <td>{{ $item->user->RFID }}</td>
+                                        <td>{{ $item->user->sekolah }}</td>
+                                        <td>{{ $item->saldo }}</td>
+                                        <td>{{ Carbon\Carbon::parse($item->tanggal)->locale('id_ID')->isoFormat('DD MMMM Y') }}</td>
                                         <td>
                                             <div class="d-flex justify-content-header  gap-2">
                                                 <div class="">
@@ -50,8 +51,9 @@
                                                         </button>
                                                 </div>
                                             </div>
-                                    </td>
+                                        </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

@@ -19,9 +19,9 @@
                         <span key="t-dashboards">Approval</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/pendaftaran" key="t-tui-calendar">Pendaftaran</a></li>
-                        <li><a href="/izin" key="t-full-calendar">Izin & Sakit</a></li>
-                        <li><a href="/topup" key="t-full-calendar">TopUp</a></li>
+                        <li><a href="{{ route('registration.index') }}" key="t-tui-calendar">Pendaftaran</a></li>
+                        <li><a href="{{ route('permission.index') }}" key="t-full-calendar">Izin & Sakit</a></li>
+                        <li><a href="{{ route('TopUp.index') }}" key="t-full-calendar">TopUp</a></li>
                     </ul>
                 </li>
                 <li>

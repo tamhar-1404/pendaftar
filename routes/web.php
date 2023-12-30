@@ -33,7 +33,9 @@ use App\Http\Controllers\RestockController;
 use App\Http\Controllers\TransaksirfidController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfilsiswaController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TolakController;
 
@@ -88,11 +90,11 @@ Route::get('/selesai', [LoginController::class, 'selesai'])->name('selesai');
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
-        // admin baru 
+        // admin baru
         Route::get('master', function () {return view('master.index');});
-        Route::get('pendaftaran', function () {return view('master.approval.index');});
-        Route::get('izin', function () {return view('master.approval.permission');});
-        Route::get('topup', function () {return view('master.approval.topup');});
+        Route::get('pendaftaran', [RegistrationController::class, 'index'])->name('registration.index');
+        Route::get('izin', [PermissionController::class, 'index'])->name('permission.index');
+        Route::resource('TopUp', TopUpController::class);
         Route::get('data-rfid', function () {return view('master.user.rfid');});
         Route::get('data-banned', function () {return view('master.user.banned');});
         Route::get('data-ditolak', function () {return view('master.user.rejected');});
@@ -101,7 +103,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('data-alumni', function () {return view('master.user.alumni');});
         Route::get('data-jurnal', function () {return view('master.data-collection.index');});
 
-        // end 
+        // end
         Route::delete('approval/{approval}/delete', [ApprovalController::class, 'destroy'])->name('approval.delete');
         Route::get('/cari_siswa', [App\Http\Controllers\PiketController::class, 'cari'])->name('cari_siswa');
         Route::post('absen' ,[AbsensiSiswaController::class ,'absen'])->name('absen.index');
@@ -151,7 +153,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('report' , [ReportController::class,'index'])->name('report');
         Route::resource('/jurnal_admin', App\Http\Controllers\JurnaladminController::class);
         Route::resource('/History_transaksi', App\Http\Controllers\HistoryTransaksiController::class);
-        Route::resource('TopUp', App\Http\Controllers\TopUpController::class);
         Route::resource('barang', App\Http\Controllers\BarangController::class);
         Route::resource('opname', App\Http\Controllers\OpnameController::class);
         Route::resource('siswa_magang', App\Http\Controllers\SiswaController::class);
