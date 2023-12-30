@@ -55,7 +55,7 @@
                         <span key="t-dashboards">Transaksi</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#" key="t-tui-calendar">Pendataan barang</a></li>
+                        <li><a href="pendataan-barang" key="t-tui-calendar">Pendataan barang</a></li>
                         <li><a href="#" key="t-full-calendar">Opname</a></li>
                     </ul>
                 </li>
