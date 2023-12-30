@@ -17,7 +17,7 @@
                         <img src="{{ asset('admin/hummasoft.png') }}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('siswa/images/hummasoft.png') }}" alt="" height="22">
+                        <img src="{{ asset('Logo.png') }}" alt="" height="22">
                     </span>
                 </a>
             </div>
