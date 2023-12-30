@@ -127,6 +127,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/rubah', [PiketController::class, 'rubah'])->name('rubah');
         Route::resource('/mou', App\Http\Controllers\MOUController::class);
         Route::resource('/tolak', App\Http\Controllers\TolakController::class);
+        Route::post('update-to-student/{reject}', [TolakController::class, 'changeToStudent'])->name('reject.change-to-student');
         Route::get('/download-file-rejected/{reject}', [TolakController::class, 'downloadFiles'])->name('reject.download-file');
         Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
         Route::post('/aproval/{aproval}/confirm', [App\Http\Controllers\AprovalController::class, 'confirm'])->name('aproval.confirm');

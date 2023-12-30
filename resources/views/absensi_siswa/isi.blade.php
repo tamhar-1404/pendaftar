@@ -111,27 +111,27 @@
                         @csrf
                         <button type="button" class="button_absen border border-green-500 px-3 py-2 rounded-lg text-green-500 font-bold" id="btnabsen">Absen</button>
                     </form>
-                    
+
                     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
                     <script>
                         document.getElementById("btnabsen").addEventListener("click", function(event) {
                             event.preventDefault(); // Mencegah perilaku default tombol submit
-                    
+
                             // Mendapatkan lokasi pengguna
                             navigator.geolocation.getCurrentPosition(function(position) {
                                 var userLatitude = position.coords.latitude;
                                 var userLongitude = position.coords.longitude;
-                    
+
                                 // Lokasi yang ditentukan
-                                var targetLatitude = -7.8489484;
-                                var targetLongitude = 113.3768192;
-                    
+                                var targetLatitude = -7.90006616455074;
+                                var targetLongitude =  112.60688536546687;
+
                                 // Menghitung jarak antara lokasi pengguna dan lokasi yang ditentukan (dalam meter)
                                 var distance = getDistance(userLatitude, userLongitude, targetLatitude, targetLongitude);
-                    
+
                                 // Jarak maksimal (dalam meter) di mana sweet alert akan muncul
-                                var maxDistance = 5000;
-                    
+                                var maxDistance = 15;
+
                                 // Menampilkan sweet alert jika jarak melebihi batas maksimal
                                 if (distance > maxDistance) {
                                     Swal.fire({
@@ -146,7 +146,7 @@
                                 }
                             });
                         });
-                    
+
                         // Menghitung jarak antara dua titik koordinat menggunakan Haversine formula
                         function getDistance(lat1, lon1, lat2, lon2) {
                             var R = 6371; // Radius bumi dalam kilometer
@@ -159,7 +159,7 @@
                             var distance = R * c * 1000; // Mengonversi ke meter
                             return distance;
                         }
-                    
+
                         // Mengonversi sudut dalam derajat menjadi radian
                         function toRadians(degrees) {
                             return degrees * (Math.PI / 180);

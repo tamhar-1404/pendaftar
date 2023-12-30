@@ -6,6 +6,9 @@ use App\Models\Tolak;
 use App\Models\ApprovalIzin;
 use App\Http\Requests\StoretolakRequest;
 use App\Http\Requests\UpdatetolakRequest;
+use App\Models\Siswa;
+use App\Models\StudentFile;
+use App\Models\User;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -30,6 +33,38 @@ class TolakController extends Controller
         $tolaks = Tolak::latest()->paginate(5);
         $izin = ApprovalIzin::where('status', 'tolak')->get();
         return view('tolak.index' , compact('tolaks', 'izin'));
+    }
+
+    /**
+     * changeToStudent
+     *
+     * @param  mixed $reject
+     * @return void
+     */
+    public function changeToStudent(Tolak $reject)
+    {
+        $reject->status = null;
+        $createStudent = Siswa::create($reject->toArray());
+        Storage::move('public/pendaftaran/' . $reject->foto_siswa, 'public/Siswa/' . $reject->foto_siswa);
+        $fileStudent = [
+            'student_id' => $createStudent->id,
+            'sp_diri' => $reject->sp_diri,
+            'sp_ortu' => $reject->sp_ortu,
+            'skck' => $reject->skck,
+            'cv' => $reject->cv,
+        ];
+        StudentFile::create($fileStudent);
+        $reject->delete();
+        User::create([
+            'name' => $reject->name,
+            'email' => $reject->email,
+            'sekolah' => $reject->sekolah,
+            'password' => $reject->password,
+            'role' => 'Siswa',
+            'remember_token' => $reject->remember_token,
+            'siswa_id' => $createStudent->id,
+        ]);
+        return redirect()->back()->with('success', 'Berhasil memperbarui');
     }
 
     /**
