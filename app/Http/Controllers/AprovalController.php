@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreaprovalRequest;
 use App\Http\Requests\UpdateaprovalRequest;
+use App\Models\StudentFile;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -131,15 +132,22 @@ public function confirm(Aproval $aproval)
 
         $foto_siswa = $aproval->foto_siswa;
         Storage::move('public/pendaftaran/' . $foto_siswa, 'public/Siswa/' . $foto_siswa);
-
+        $dataStudent = [
+            'student_id' => $data->id,
+            'sp_diri' => $aproval->sp_diri,
+            'sp_ortu' => $aproval->sp_ortu,
+            'skck' => $aproval->skck,
+            'cv' => $aproval->cv,
+        ];
+        StudentFile::create($dataStudent);
         // Delete files from pendaftaran folder
-        Storage::delete([
-            'public/pendaftaran/' . $aproval->foto_siswa,
-            'public/pendaftaran/' . $aproval->skck,
-            'public/pendaftaran/' . $aproval->cv,
-            'public/pendaftaran/' . $aproval->sp_ortu,
-            'public/pendaftaran/' . $aproval->sp_diri,
-        ]);
+        // Storage::delete([
+        //     'public/pendaftaran/' . $aproval->foto_siswa,
+        //     'public/pendaftaran/' . $aproval->skck,
+        //     'public/pendaftaran/' . $aproval->cv,
+        //     'public/pendaftaran/' . $aproval->sp_ortu,
+        //     'public/pendaftaran/' . $aproval->sp_diri,
+        // ]);
 
         // Delete the $aproval record
         $aproval->delete();
@@ -210,12 +218,6 @@ public function Tolak(Request $request, Aproval $aproval)
             $guruEmails = $guruList->pluck('email')->toArray();
             Mail::to($guruEmails)->send(new TolakEmail($pesanguru)); // Mengirim email ke guru dengan nama sekolah yang sama
         }
-
-        Storage::move('public/pendaftaran/' . $foto_siswa, 'public/ditolak/' . $foto_siswa);
-        Storage::move('public/pendaftaran/' . $sp_diri, 'public/ditolak/' . $sp_diri);
-        Storage::move('public/pendaftaran/' . $sp_ortu, 'public/ditolak/' . $sp_ortu);
-        Storage::move('public/pendaftaran/' . $skck, 'public/ditolak/' . $skck);
-        Storage::move('public/pendaftaran/' . $cv, 'public/ditolak/' . $cv);
 
         $aproval->delete();
 

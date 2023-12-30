@@ -408,7 +408,7 @@
                     <!-- Modal body -->
                     <div class="flex w-full justify-center mt-10">
                         <img class="w-[20%] h-[20%] rounded-full"
-                            src="{{ asset('storage/ditolak/' . $modal->foto_siswa) }}" alt="">
+                            src="{{ asset('storage/pendaftaran/' . $modal->foto_siswa) }}" alt="">
                     </div>
                     <div class="p-6 grid grid-cols-2 gap-5">
                         <div>
@@ -424,12 +424,12 @@
                                 Tanggal lahir
                             </p>
                             <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                {{ $modal->tanggal }}
+                                {{ \Carbon\Carbon::parse($modal->tanggal)->format('d F Y') }}
                             </p>
                         </div>
                         <div>
                             <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                Tanggal lahir
+                                Tempat lahir
                             </p>
                             <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                                 {{ $modal->tempat }}
@@ -512,7 +512,7 @@
                                 magang awal
                             </p>
                             <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                {{ $modal->magang_awal }}
+                                {{ \Carbon\Carbon::parse($modal->magang_awal)->format('d F Y') }}
                             </p>
                         </div>
                         <div>
@@ -520,36 +520,36 @@
                                 magang akhir
                             </p>
                             <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                {{ $modal->magang_akhir }}
+                                {{ \Carbon\Carbon::parse($modal->magang_akhir)->format('d F Y') }}
                             </p>
                         </div>
                         <div>
                             <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                Bukti
+                                Surat Pernyataan Diri
                             </p>
-                            <img src="{{ asset('storage/ditolak/' . $modal->sp_diri) }}" alt=""
+                            <img src="{{ asset('storage/pendaftaran/' . $modal->sp_diri) }}" alt=""
                                 srcset="">
                         </div>
                         <div>
                             <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                Bukti
+                                Surat Pernyataan Orang Tua
                             </p>
-                            <img src="{{ asset('storage/ditolak/' . $modal->sp_ortu) }}" alt=""
+                            <img src="{{ asset('storage/pendaftaran/' . $modal->sp_ortu) }}" alt=""
                                 srcset="">
                         </div>
                         <div>
                             <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                Bukti
+                                CV
                             </p>
-                            <img src="{{ asset('storage/ditolak/' . $modal->cv) }}" alt="" srcset="">
+                            <img src="{{ asset('storage/pendaftaran/' . $modal->cv) }}" alt="" srcset="">
                         </div>
                         <div>
                             <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
-                                Bukti
+                                SKCK
                             </p>
-                            <img src="{{ asset('storage/ditolak/' . $modal->skck) }}" alt="" srcset="">
+                            <img src="{{ asset('storage/pendaftaran/' . $modal->skck) }}" alt="" srcset="">
                         </div>
-
+                        <a href="{{ route('reject.download-file', [$modal->id]) }}" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Download Semua</a>
                     </div>
                     <!-- Modal footer -->
                     <div

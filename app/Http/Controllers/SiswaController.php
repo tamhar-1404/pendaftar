@@ -15,10 +15,13 @@ use App\Http\Requests\StoreSiswaRequest;
 use Carbon\Carbon;
 use App\Http\Requests\UpdateSiswaRequest;
 use App\Mail\EmailLulus as MailEmailLulus;
+use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use ZipArchive;
 
 class SiswaController extends Controller
 {
@@ -58,6 +61,45 @@ class SiswaController extends Controller
         $siswas = Siswa::whereNull('status')->latest()->paginate(8);
 
         return view('Siswa_admin.index', compact('siswas'));
+    }
+
+    /**
+     * downloadFiles
+     *
+     * @param  mixed $student
+     * @return void
+     */
+    public function downloadFiles(Siswa $student)
+    {
+        try {
+
+            $fileName = str_replace(' ', '_', $student->name) . '_' . now()->format('Y-m-d-H-i-s') .'.zip';
+            $studentFile = $student->studentFile;
+            $zip = new ZipArchive;
+            if ($zip->open(storage_path('app/public/'.$fileName), ZipArchive::CREATE) === TRUE) {
+                if (Storage::exists('public/pendaftaran/'. $studentFile->sp_diri)) {
+                    $zip->addFile(storage_path('app/public/pendaftaran/'.$studentFile->sp_diri), basename($studentFile->sp_diri));
+                }
+                if (Storage::exists('public/pendaftaran/'. $studentFile->sp_ortu)) {
+                    $zip->addFile(storage_path('app/public/pendaftaran/'.$studentFile->sp_ortu), basename($studentFile->sp_ortu));
+                }
+                if ($studentFile->skck != null) {
+                    if (Storage::exists('public/pendaftaran/'. $studentFile->skck)) {
+                        $zip->addFile(storage_path('app/public/pendaftaran/'.$studentFile->skck), basename($studentFile->skck));
+                    }
+                }
+                if (Storage::exists('public/pendaftaran/'. $studentFile->cv)) {
+                    $zip->addFile(storage_path('app/public/pendaftaran/'.$studentFile->cv), basename($studentFile->cv));
+                }
+                $zip->close();
+                return response()->download(storage_path('app/public/'.$fileName))->deleteFileAfterSend(true);
+            } else {
+                return abort(404, "Dokumen tidak ditemukan");
+            }
+        }
+        catch (Exception $e) {
+            return abort(404, "Dokumen tidak ditemukan");
+        }
     }
 
 
@@ -143,7 +185,6 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::find($id);
         $user = User::find($id);
-        // dd($siswa);
         return view('Siswa_admin.detail',compact('siswa','user'));
     }
 

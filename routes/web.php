@@ -35,6 +35,7 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProfilsiswaController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\TolakController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,6 +112,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/dudi', App\Http\Controllers\DashboardController::class);
         Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
         Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
+        Route::get('download-student-files/{student}', [SiswaController::class, 'downloadFiles'])->name('siswa.download-file');
         Route::put('lulus/{id}' , [SiswaController::class ,'lulus'])->name('lulus/');
         Route::put('/siswa_admin/banned/{id}', [App\Http\Controllers\SiswaController::class, 'banned'])->name('siswa.banned');
         Route::patch('siswa-admin/unban/{student}', [SiswaController::class, 'unban'])->name('siswa.unban');
@@ -124,6 +126,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/rubah', [PiketController::class, 'rubah'])->name('rubah');
         Route::resource('/mou', App\Http\Controllers\MOUController::class);
         Route::resource('/tolak', App\Http\Controllers\TolakController::class);
+        Route::get('/download-file-rejected/{reject}', [TolakController::class, 'downloadFiles'])->name('reject.download-file');
         Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
         Route::post('/aproval/{aproval}/confirm', [App\Http\Controllers\AprovalController::class, 'confirm'])->name('aproval.confirm');
         Route::post('/aproval/{aproval}/tolak', [App\Http\Controllers\AprovalController::class, 'Tolak'])->name('aproval.tolak');

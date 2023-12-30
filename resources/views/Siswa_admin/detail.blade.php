@@ -252,6 +252,7 @@
                         <div class="flex items-center justify-between mb-5">
                           <h5 class="text-lg font-semibold dark:text-white-light">Pelanggaran</h5>
                           <div class="flex items-center space-x-2">
+                            <a href="{{ route('siswa.download-file', $siswa->id) }}" class="btn btn-outline-primary w-73 h-27">Download Berkas</a>
                             <a href="{{ route('siswa_admin.index') }}" class="btn btn-outline-danger w-73 h-27">Kembali</a>
                           </div>
                         </div>
