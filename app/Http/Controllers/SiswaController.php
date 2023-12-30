@@ -32,10 +32,8 @@ class SiswaController extends Controller
      */
     public function index(Request $request)
     {
-
-        $today = date('Y-m-d');
-        if (Siswa::whereDate('magang_akhir', '<=', $today)->exists()) {
-            $siswas = Siswa::whereDate('magang_akhir', '<=', $today)->get();
+        if (Siswa::whereDate('magang_akhir', '<=', now())->exists()) {
+            $siswas = Siswa::whereDate('magang_akhir', '<=', now())->get();
             foreach ($siswas as $siswa) {
                 if (!EmailLulus::where('email', $siswa->email)->exists()) {
                     Mail::to($siswa->email)->send(new MailEmailLulus);
@@ -45,22 +43,18 @@ class SiswaController extends Controller
                     ]);
                 }
             }
-            Siswa::whereDate('magang_akhir', '<=', $today)->update(['role' => 'alumni', 'status' => 'lulus']);
+            Siswa::whereDate('magang_akhir', '<=', now())->update(['role' => 'alumni', 'status' => 'lulus']);
         }
 
-        if ($request->has('cari')) {
-            $keyword = $request->cari;
-            $siswas = Siswa::whereNull('status')->where('name', 'LIKE', '%' . $keyword . '%')->orWhere('jurusan', 'LIKE', '%' . $keyword . '%')->paginate(8);
+        $siswas = Siswa::query()
+            ->whereNull('status')
+            ->when($request->cari, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->cari . '%')->orWhere('jurusan', 'LIKE', '%' . $request->cari . '%');
+            })
+            ->latest()
+            ->paginate(8);
 
-
-            $siswas->appends(['cari' => $keyword]);
-            return view('Siswa_admin.index', compact('siswas'));
-
-        }
-
-        $siswas = Siswa::whereNull('status')->latest()->paginate(8);
-
-        return view('Siswa_admin.index', compact('siswas'));
+        return view('master.user.index', compact('siswas'));
     }
 
     /**

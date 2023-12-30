@@ -98,7 +98,7 @@ Route::middleware(['auth'])->group(function () {
         // Route::get('data-rfid', function () {return view('master.user.rfid');}); // Done
         Route::get('data-banned', function () {return view('master.user.banned');});
         Route::get('data-ditolak', function () {return view('master.user.rejected');});
-        Route::get('data-siswa', function () {return view('master.user.index');});
+        // Route::get('data-siswa', function () {return view('master.user.index');}); // Done
         Route::get('data-penanggung-jawab', function () {return view('master.user.person-responsible');});
         Route::get('data-alumni', function () {return view('master.user.alumni');});
         Route::get('data-jurnal', function () {return view('master.data-collection.index');});
