@@ -130,7 +130,7 @@
                                 var distance = getDistance(userLatitude, userLongitude, targetLatitude, targetLongitude);
 
                                 // Jarak maksimal (dalam meter) di mana sweet alert akan muncul
-                                var maxDistance = 15;
+                                var maxDistance = 50;
 
                                 // Menampilkan sweet alert jika jarak melebihi batas maksimal
                                 if (distance > maxDistance) {
