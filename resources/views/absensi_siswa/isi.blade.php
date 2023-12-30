@@ -60,10 +60,9 @@
 
 </head>
 
-<body>
-    @php
-        use Carbon\Carbon;
-    @endphp
+<body onload="disableButtonIfFar()"> @php
+    use Carbon\Carbon;
+@endphp
     <div class="mt-3 ml-4 font-bold">Data Absensi</div>
     <div class="kamu-tak-diajak flex justify-between  px-5 gap-2">
         <div class="mb-5 flex flex-wrap gap-1 mt-5 items-center">
@@ -89,8 +88,7 @@
                     <path
                         d="M6 17.9827C4.44655 17.9359 3.51998 17.7626 2.87868 17.1213C2 16.2426 2 14.8284 2 12C2 9.17157 2 7.75736 2.87868 6.87868C3.75736 6 5.17157 6 8 6H16C18.8284 6 20.2426 6 21.1213 6.87868C22 7.75736 22 9.17157 22 12C22 14.8284 22 16.2426 21.1213 17.1213C20.48 17.7626 19.5535 17.9359 18 17.9827"
                         stroke="currentColor" stroke-width="1.5" />
-                    <path opacity="0.5" d="M9 10H6" stroke="currentColor" stroke-width="1.5"
-                        stroke-linecap="round" />
+                    <path opacity="0.5" d="M9 10H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                     <path d="M19 14L5 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                     <path
                         d="M18 14V16C18 18.8284 18 20.2426 17.1213 21.1213C16.2426 22 14.8284 22 12 22C9.17157 22 7.75736 22 6.87868 21.1213C6 20.2426 6 18.8284 6 16V14"
@@ -101,8 +99,7 @@
                     <circle opacity="0.5" cx="17" cy="10" r="1" fill="currentColor" />
                     <path opacity="0.5" d="M15 16.5H9" stroke="currentColor" stroke-width="1.5"
                         stroke-linecap="round" />
-                    <path opacity="0.5" d="M13 19H9" stroke="currentColor" stroke-width="1.5"
-                        stroke-linecap="round" />
+                    <path opacity="0.5" d="M13 19H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                 </svg>
                 PRINT
             </button>
@@ -110,17 +107,64 @@
                 <button data-modal-target="staticModal" data-modal-toggle="staticModal"
                     class="button_izin bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg ">Tambah
                     Izin</button>
-                <form action="{{ route('absensi_siswa.store') }}" method="post" id="absenform">
-                    @csrf
-                    {{-- <input type="hidden" name="nama" value="{{ Auth::user()->name }}">
-                    <input type="hidden" name="sekolah" value="{{ Auth::user()->sekolah }}">
-                    <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}" />
-                    <input type="hidden" id="waktu" name="jam" value="{{ date('H:i') }}" />
-                    <input type="hidden" name="keterangan" value="Hadir"> --}}
-                    <button type="submit"
-                        class=" button_absen border border-green-500 px-3 py-2 rounded-lg text-green-500  font-bold"
-                        id="btnabsen">Absen</button>
-                </form>
+                    <form action="{{ route('absensi_siswa.store') }}" method="post" id="absenform">
+                        @csrf
+                        <button type="button" class="button_absen border border-green-500 px-3 py-2 rounded-lg text-green-500 font-bold" id="btnabsen">Absen</button>
+                    </form>
+                    
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+                    <script>
+                        document.getElementById("btnabsen").addEventListener("click", function(event) {
+                            event.preventDefault(); // Mencegah perilaku default tombol submit
+                    
+                            // Mendapatkan lokasi pengguna
+                            navigator.geolocation.getCurrentPosition(function(position) {
+                                var userLatitude = position.coords.latitude;
+                                var userLongitude = position.coords.longitude;
+                    
+                                // Lokasi yang ditentukan
+                                var targetLatitude = -7.8490064;
+                                var targetLongitude = 113.3717158;
+                    
+                                // Menghitung jarak antara lokasi pengguna dan lokasi yang ditentukan (dalam meter)
+                                var distance = getDistance(userLatitude, userLongitude, targetLatitude, targetLongitude);
+                    
+                                // Jarak maksimal (dalam meter) di mana sweet alert akan muncul
+                                var maxDistance = 1000000;
+                    
+                                // Menampilkan sweet alert jika jarak melebihi batas maksimal
+                                if (distance > maxDistance) {
+                                    Swal.fire({
+                                        icon: 'warning',
+                                        title: 'Absensi Diluar Area Kantor',
+                                        text: 'Silahkan melakukan absensi di area sekitar kantor.',
+                                        confirmButtonText: 'OK'
+                                    });
+                                } else {
+                                    // Jika jarak dalam batas maksimal, kirim form absensi
+                                    document.getElementById("absenform").submit();
+                                }
+                            });
+                        });
+                    
+                        // Menghitung jarak antara dua titik koordinat menggunakan Haversine formula
+                        function getDistance(lat1, lon1, lat2, lon2) {
+                            var R = 6371; // Radius bumi dalam kilometer
+                            var dLat = toRadians(lat2 - lat1);
+                            var dLon = toRadians(lon2 - lon1);
+                            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                                Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
+                                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                            var distance = R * c * 1000; // Mengonversi ke meter
+                            return distance;
+                        }
+                    
+                        // Mengonversi sudut dalam derajat menjadi radian
+                        function toRadians(degrees) {
+                            return degrees * (Math.PI / 180);
+                        }
+                    </script>
             @endif
         </div>
         <div>
@@ -150,15 +194,17 @@
         </div>
     </div>
     <style>
-        @media (min-width: 780px){
-            .box{
+        @media (min-width: 780px) {
+            .box {
                 display: flex;
             }
-            .w-penuh{
-                width:20%;
+
+            .w-penuh {
+                width: 20%;
             }
-            .w-penuh-1{
-                width:80%;
+
+            .w-penuh-1 {
+                width: 80%;
             }
         }
     </style>

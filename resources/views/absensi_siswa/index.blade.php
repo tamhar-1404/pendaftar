@@ -52,7 +52,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 </head>
 
-<body x-data="main"
+<body  x-data="main"
     class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased bg-[#F6F5FF]"
     :class="[$store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme, $store.app.menu, $store.app.layout, $store.app
         .rtlClass
