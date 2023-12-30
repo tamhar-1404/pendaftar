@@ -56,7 +56,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="pendataan-barang" key="t-tui-calendar">Pendataan barang</a></li>
-                        <li><a href="#" key="t-full-calendar">Opname</a></li>
+                        <li><a href="transaksi-opname" key="t-full-calendar">Opname</a></li>
                     </ul>
                 </li>
                 <li>
@@ -65,21 +65,21 @@
                         <span key="t-dashboards">History</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#" key="t-tui-calendar">TopUp</a></li>
-                        <li><a href="#" key="t-full-calendar">Transaksi</a></li>
+                        <li><a href="history-topup" key="t-tui-calendar">TopUp</a></li>
+                        <li><a href="history-transaksi" key="t-full-calendar">Transaksi</a></li>
                     </ul>
                 </li>
 
 
                 <li>
-                    <a href="chat.html" class="waves-effect">
+                    <a href="master-jurnal" class="waves-effect">
                         <i class="bx bx-chat"></i>
                         <span key="t-chat">Jurnal</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="apps-filemanager.html" class="waves-effect">
+                    <a href="master-absensi" class="waves-effect">
                         <i class="bx bx-file"></i>
                         <span key="t-file-manager">Absensi</span>
                     </a>
@@ -90,9 +90,9 @@
                         <span key="t-dashboards">Peraturan</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#" key="t-tui-calendar">Tata Tertib</a></li>
-                        <li><a href="#" key="t-full-calendar">Laporan Siswa</a></li>
-                        <li><a href="#" key="t-full-calendar">Laporan Sp</a></li>
+                        <li><a href="data-tertib" key="t-tui-calendar">Tata Tertib</a></li>
+                        <li><a href="laporan-siswa" key="t-full-calendar">Laporan Siswa</a></li>
+                        <li><a href="laporan-sp" key="t-full-calendar">Laporan Sp</a></li>
                     </ul>
                 </li>
                 <li>
@@ -101,9 +101,9 @@
                         <span key="t-dashboards">Lainnya</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#" key="t-tui-calendar">Berita</a></li>
-                        <li><a href="#" key="t-full-calendar">Jadwal Piket</a></li>
-                        <li><a href="#" key="t-full-calendar">MOU</a></li>
+                        <li><a href="news" key="t-tui-calendar">Berita</a></li>
+                        <li><a href="piket-siswa" key="t-full-calendar">Jadwal Piket</a></li>
+                        <li><a href="data-mou" key="t-full-calendar">MOU</a></li>
                     </ul>
                 </li>
             </ul>

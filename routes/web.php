@@ -92,6 +92,15 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
         // admin baru
         Route::get('master', function () {return view('master.index');});
+        Route::get('master-jurnal', function () {return view('master.jurnal');});
+        Route::get('data-tertib', function () {return view('master.regulation.index');});
+        Route::get('laporan-siswa', function () {return view('master.regulation.report-student');});
+        Route::get('laporan-sp', function () {return view('master.regulation.report-sp');});
+        Route::get('news', function () {return view('master.news.index');});
+        Route::get('detail-news', function () {return view('master.news.detail');});
+        Route::get('piket-siswa', function () {return view('master.all.report-piket');});
+        Route::get('data-mou    ', function () {return view('master.all.mou');});
+        Route::get('master-absensi', function () {return view('master.absensi');});
         Route::get('pendaftaran', [RegistrationController::class, 'index'])->name('registration.index');
         Route::get('izin', [PermissionController::class, 'index'])->name('permission.index');
         Route::resource('TopUp', TopUpController::class);
@@ -101,6 +110,8 @@ Route::middleware(['auth'])->group(function () {
         // Route::get('data-siswa', function () {return view('master.user.index');}); // Done
         Route::get('data-penanggung-jawab', function () {return view('master.user.person-responsible');});
         Route::get('data-alumni', function () {return view('master.user.alumni');});
+        Route::get('history-topup', function () {return view('master.history.index');});
+        Route::get('history-transaksi', function () {return view('master.history.transaksi');});
         Route::get('pendataan-barang', function () {return view('master.transaksi.goods-data-collection');});
         Route::get('transaksi-opname', function () {return view('master.transaksi.opname');});
         Route::get('data-jurnal', function () {return view('master.data-collection.index');});
