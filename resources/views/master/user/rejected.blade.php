@@ -33,14 +33,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($tolaks as $siswa)
                                     <tr>
-                                        <th>1</th>
-                                        <td>Abdul kader</td>
-                                        <td>kader@gmail.com</td>
-                                        <td>12</td>
-                                        <td>12</td>
-                                        <td>12 januari 2023 - 12 desember 2026</td>
-                                        <td>smkn 1 kraksaan</td>
+                                        <th>{{ $loop->iteration }}</th>
+                                        <td>{{ $siswa->name }}</td>
+                                        <td>{{ $siswa->email }}</td>
+                                        <td>{{ $siswa->jurusan }}</td>
+                                        <td>{{ $siswa->kelas }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($siswa->magang_awal)->format('d F Y') }} - {{ \Carbon\Carbon::parse($siswa->magang_akhir)->format('d F Y') }}</td>
+                                        <td>{{ $siswa->sekolah }}</td>
                                         <td>
                                             <div class="d-flex justify-content-header gap-2">
                                                 <div class="">
@@ -49,13 +50,18 @@
                                                     </button>
                                                 </div>
                                                 <div class="">
-                                                    <button class="btn btn-sm btn-success">
-                                                        Terima
-                                                    </button>
+                                                    <form action="{{ route('reject.change-to-student', $siswa->id) }}" method="post">
+                                                        @csrf
+                                                        @method('POST')
+                                                        <button class="btn btn-sm btn-success">
+                                                            Terima
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

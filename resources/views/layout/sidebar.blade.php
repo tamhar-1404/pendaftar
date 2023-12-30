@@ -45,8 +45,8 @@
                         <li><a href="{{ route('alumni_admin.index') }}" key="t-full-calendar">Alumni</a></li>
                         <li><a href="data-penanggung-jawab" key="t-full-calendar">Penanggung Jawab</a></li>
                         <li><a href="{{ route('rfid') }}" key="t-full-calendar">RFID</a></li>
-                        <li><a href="data-ditolak" key="t-full-calendar">Siswa Ditolak</a></li>
-                        <li><a href="data-banned" key="t-full-calendar">Banned Siswa</a></li>
+                        <li><a href="{{ route('list-rejected') }}" key="t-full-calendar">Siswa Ditolak</a></li>
+                        <li><a href="{{ route('list-banned') }}" key="t-full-calendar">Banned Siswa</a></li>
                     </ul>
                 </li>
                 <li>

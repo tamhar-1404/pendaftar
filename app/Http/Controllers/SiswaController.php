@@ -303,7 +303,8 @@ class SiswaController extends Controller
     public function blockedStudent(): View
     {
         $students = Siswa::where('status', 'Dikeluarkan')->get();
-        return view('unblock_siswa.index', compact('students'));
+        return view('master.user.banned', compact('students'));
+        // return view('unblock_siswa.index', compact('students'));
     }
 
     /**

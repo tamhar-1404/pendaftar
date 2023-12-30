@@ -36,6 +36,24 @@ class TolakController extends Controller
     }
 
     /**
+     * listRejected
+     *
+     * @param  mixed $request
+     * @return View
+     */
+    public function listRejected(Request $request): View
+    {
+        $tolaks = Tolak::query()
+            ->when($request->cari, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->cari . '%')
+                    ->orWhere('sekolah', 'LIKE', '%' . $request->cari . '%');
+            })
+            ->latest()
+            ->paginate(5);
+        return view('master.user.rejected', compact('tolaks'));
+    }
+
+    /**
      * changeToStudent
      *
      * @param  mixed $reject

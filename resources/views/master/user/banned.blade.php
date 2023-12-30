@@ -35,18 +35,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($students as $siswa)
                                     <tr>
-                                        <th>1</th>
-                                        <td>Abdul kader</td>
-                                        <td>kader@gmail.com</td>
-                                        <td>12</td>
-                                        <td>12</td>
-                                        <td>12 januari 2023 - 12 desember 2026</td>
-                                        <td>smkn 1 kraksaan</td>
-                                        <td><button class="btn btn-sm btn-info">
-                                            Buka Banned
-                                        </button></td>
+                                        <th>{{ $loop->iteration }}</th>
+                                        <td>{{ $siswa->name }}</td>
+                                        <td>{{ $siswa->email }}</td>
+                                        <td>{{ $siswa->jurusan }}</td>
+                                        <td>{{ $siswa->kelas }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($siswa->magang_awal)->format('d F Y') }} - {{ \Carbon\Carbon::parse($siswa->magang_akhir)->format('d F Y') }}</td>
+                                        <td>{{ $siswa->sekolah }}</td>
+                                        <td>
+                                            <form action="{{ route('siswa.unban', $siswa->id) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button class="btn btn-sm btn-info">
+                                                Buka Banned
+                                                </button>
+                                            </form>
+                                        </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
