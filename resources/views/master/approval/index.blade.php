@@ -1,0 +1,65 @@
+    @extends('layout.app')
+    @section('content')
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0 font-size-18">Approval Pendaftaran</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div class="">
+                                <h4 class="card-title">Data Pendaftar</h4>
+                            </div>
+                            <div class="">
+                                <div class="d-flex justify-content-header gap-2">
+                                    <div class="">
+                                        <button class="btn btn-info">Edit Limit</button>
+                                    </div>
+                                    <div class="">
+                                        <p class=" mt-2 text-dark">Jumlah limit 50 dan sisa limit saat ini 49</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-rep-plugin">
+                            <div class="table-responsive mb-0" data-pattern="priority-columns">
+                                <table id="tech-companies-1" class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th data-priority="1">Nama</th>
+                                            <th data-priority="3">Jurusan</th>
+                                            <th data-priority="1">Kelas</th>
+                                            <th data-priority="3">Masa Magang</th>
+                                            <th data-priority="3">Sekolah</th>
+                                            <th data-priority="6">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>1</th>
+                                            <td>Abdul kader</td>
+                                            <td>12</td>
+                                            <td>12</td>
+                                            <td>12 januari 2023 - 12 desember 2026</td>
+                                            <td>smkn 1 kraksaan</td>
+                                            <td><button class="btn btn-sm btn-outline-info">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M12 16q1.875 0 3.188-1.313T16.5 11.5q0-1.875-1.313-3.188T12 7q-1.875 0-3.188 1.313T7.5 11.5q0 1.875 1.313 3.188T12 16Zm0-1.8q-1.125 0-1.913-.788T9.3 11.5q0-1.125.788-1.913T12 8.8q1.125 0 1.913.788T14.7 11.5q0 1.125-.787 1.913T12 14.2Zm0 4.8q-3.65 0-6.65-2.038T1 11.5q1.35-3.425 4.35-5.463T12 4q3.65 0 6.65 2.038T23 11.5q-1.35 3.425-4.35 5.463T12 19Zm0-7.5Zm0 5.5q2.825 0 5.188-1.488T20.8 11.5q-1.25-2.525-3.613-4.013T12 6Q9.175 6 6.812 7.488T3.2 11.5q1.25 2.525 3.613 4.013T12 17Z"/></svg>
+                                            </button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div>
+    @endsection

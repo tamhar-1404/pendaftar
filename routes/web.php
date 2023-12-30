@@ -88,6 +88,20 @@ Route::get('/selesai', [LoginController::class, 'selesai'])->name('selesai');
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
+        // admin baru 
+        Route::get('master', function () {return view('master.index');});
+        Route::get('pendaftaran', function () {return view('master.approval.index');});
+        Route::get('izin', function () {return view('master.approval.permission');});
+        Route::get('topup', function () {return view('master.approval.topup');});
+        Route::get('data-rfid', function () {return view('master.user.rfid');});
+        Route::get('data-banned', function () {return view('master.user.banned');});
+        Route::get('data-ditolak', function () {return view('master.user.rejected');});
+        Route::get('data-siswa', function () {return view('master.user.index');});
+        Route::get('data-penanggung-jawab', function () {return view('master.user.person-responsible');});
+        Route::get('data-alumni', function () {return view('master.user.alumni');});
+        Route::get('data-jurnal', function () {return view('master.data-collection.index');});
+
+        // end 
         Route::delete('approval/{approval}/delete', [ApprovalController::class, 'destroy'])->name('approval.delete');
         Route::get('/cari_siswa', [App\Http\Controllers\PiketController::class, 'cari'])->name('cari_siswa');
         Route::post('absen' ,[AbsensiSiswaController::class ,'absen'])->name('absen.index');
@@ -126,6 +140,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/rubah', [PiketController::class, 'rubah'])->name('rubah');
         Route::resource('/mou', App\Http\Controllers\MOUController::class);
         Route::resource('/tolak', App\Http\Controllers\TolakController::class);
+        Route::post('update-to-student/{reject}', [TolakController::class, 'changeToStudent'])->name('reject.change-to-student');
         Route::get('/download-file-rejected/{reject}', [TolakController::class, 'downloadFiles'])->name('reject.download-file');
         Route::resource('/pelanggaran', App\Http\Controllers\PelanggaranController::class);
         Route::post('/aproval/{aproval}/confirm', [App\Http\Controllers\AprovalController::class, 'confirm'])->name('aproval.confirm');
