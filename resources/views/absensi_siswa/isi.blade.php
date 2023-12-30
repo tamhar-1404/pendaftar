@@ -123,14 +123,14 @@
                                 var userLongitude = position.coords.longitude;
                     
                                 // Lokasi yang ditentukan
-                                var targetLatitude = -7.8490064;
-                                var targetLongitude = 113.3717158;
+                                var targetLatitude = -7.9000687;
+                                var targetLongitude = 112.6043111;
                     
                                 // Menghitung jarak antara lokasi pengguna dan lokasi yang ditentukan (dalam meter)
                                 var distance = getDistance(userLatitude, userLongitude, targetLatitude, targetLongitude);
                     
                                 // Jarak maksimal (dalam meter) di mana sweet alert akan muncul
-                                var maxDistance = 1000000;
+                                var maxDistance = 1000;
                     
                                 // Menampilkan sweet alert jika jarak melebihi batas maksimal
                                 if (distance > maxDistance) {
