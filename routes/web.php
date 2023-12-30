@@ -95,7 +95,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('pendaftaran', [RegistrationController::class, 'index'])->name('registration.index');
         Route::get('izin', [PermissionController::class, 'index'])->name('permission.index');
         Route::resource('TopUp', TopUpController::class);
-        Route::get('data-rfid', function () {return view('master.user.rfid');});
+        // Route::get('data-rfid', function () {return view('master.user.rfid');}); // Done
         Route::get('data-banned', function () {return view('master.user.banned');});
         Route::get('data-ditolak', function () {return view('master.user.rejected');});
         Route::get('data-siswa', function () {return view('master.user.index');});

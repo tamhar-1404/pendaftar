@@ -35,18 +35,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($users as $user)
                                     <tr>
-                                        <th>1</th>
-                                        <td>Abdul kader</td>
-                                        <td>kader@gmail.com</td>
-                                        <td>12</td>
-                                        <td>12</td>
-                                        <td>12 januari 2023 - 12 desember 2026</td>
-                                        <td>smkn 1 kraksaan</td>
+                                        <th>{{ $loop->iteration }}</th>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->Siswa->jurusan }}</td>
+                                        <td>{{ $user->Siswa->kelas }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($user->Siswa->magang_awal)->locale('id')->isoFormat('D MMMM Y ') }} - {{ \Carbon\Carbon::parse($user->Siswa->magang_akhir)->locale('id')->isoFormat('D MMMM Y ') }}</td>
+                                        <td>{{ $user->sekolah }}</td>
                                         <td><button class="btn btn-sm btn-info">
                                             Daftarkan
                                         </button></td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

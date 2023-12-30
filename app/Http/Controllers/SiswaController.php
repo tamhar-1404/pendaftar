@@ -211,26 +211,26 @@ class SiswaController extends Controller
         ]);
         return redirect()->back()->with('success', 'Berhasil menambah rfid');
     }
+
+    /**
+     * rfid
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function rfid(Request $request)
     {
-        if ($request->has('cari')) {
-            $keyword = $request->cari;
-            $users = User::where('role', 'Siswa')
-                         ->where(function ($query) use ($keyword) {
-                             $query->where('name', 'LIKE', '%' . $keyword . '%')
-                                   ->orWhere('sekolah', 'LIKE', '%' . $keyword . '%');
-                         })
-                         ->whereNull('RFID')
-                         ->paginate(10);
-            return view('rfid.index', compact('users'));
-        }
+        $users = User::query()
+            ->where('role', 'Siswa')
+            ->when($request->cari, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%'. $request->cari .'%')
+                    ->orWhere('sekolah', 'LIKE', '%' . $request->cari . '%');
+            })
+            ->whereNull('RFID')
+            ->latest()
+            ->paginate(10);
 
-        $users = User::where('role', 'Siswa')
-        ->whereNull('RFID')
-        ->latest('created_at')
-        ->paginate(10);
-
-return view('rfid.index', compact('users'));
+        return view('master.user.rfid', compact('users'));
 
     }
 
