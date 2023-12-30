@@ -238,7 +238,7 @@
                                                                 <th scope="col" class="px-6 py-4">Jurusan</th>
                                                                 <th scope="col" class="px-6 py-4">Sekolah</th>
                                                                 <th scope="col" class="px-6 py-4">Alasan</th>
-                                                                <th scope="col" class="px-6 py-4">Aksi</th>
+                                                                <th scope="col" class="px-6 py-4" colspan="2">Aksi</th>
 
                                                             </tr>
                                                         </thead>
@@ -272,6 +272,13 @@
                                                                             <span
                                                                                 class=" p-1 cursor-pointer  font-semibold dark:hover:text-black">Lihat</span>
                                                                         </div>
+                                                                    </td>
+                                                                    <td class="whitespace-nowrap px-4 py-4">
+                                                                        <form action="{{ route('reject.change-to-student', $tolak->id) }}" method="POST">
+                                                                            @csrf
+                                                                            @method('POST')
+                                                                            <button type="submit" class="p-1 cursor-pointer  font-semibold dark:hover:text-black">Ubah Jadi Jiswa</button>
+                                                                        </form>
                                                                     </td>
                                                                 </tr>
 
