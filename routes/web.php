@@ -88,7 +88,12 @@ Route::get('/selesai', [LoginController::class, 'selesai'])->name('selesai');
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
+        // admin baru 
         Route::get('master', function () {return view('master.index');});
+        Route::get('pendaftaran', function () {return view('master.approval.index');});
+        Route::get('izin', function () {return view('master.approval.permission');});
+
+        // end 
         Route::delete('approval/{approval}/delete', [ApprovalController::class, 'destroy'])->name('approval.delete');
         Route::get('/cari_siswa', [App\Http\Controllers\PiketController::class, 'cari'])->name('cari_siswa');
         Route::post('absen' ,[AbsensiSiswaController::class ,'absen'])->name('absen.index');
