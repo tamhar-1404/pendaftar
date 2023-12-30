@@ -93,6 +93,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('pendaftaran', function () {return view('master.approval.index');});
         Route::get('izin', function () {return view('master.approval.permission');});
         Route::get('topup', function () {return view('master.approval.topup');});
+        Route::get('data-jurnal', function () {return view('master.data-collection.index');});
 
         // end 
         Route::delete('approval/{approval}/delete', [ApprovalController::class, 'destroy'])->name('approval.delete');
