@@ -76,7 +76,7 @@ Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
 // login
 Route::resource('/login', App\Http\Controllers\LoginController::class)->middleware('guest');
 Route::post('/postlogin', [LoginController::class, 'login'])->name('postlogin');
-Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
+// Route::get('/', [LoginController::class, 'halaman_awal'])->name('/');
 
 Route::get('/kode_beli', [TransaksirfidController::class, 'index'])->name('kode_beli');
 Route::post('/postrfid', [TransaksiController::class, 'postbeli'])->name('postrfid');
@@ -87,6 +87,7 @@ Route::get('/keluar', [LoginController::class, 'Logout'])->name('keluar');
 Route::get('/selesai', [LoginController::class, 'selesai'])->name('selesai');
 
 // Rute untuk mengirim email reset password
+Route::get('/', function () {return view('landing-page.index');});
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {

@@ -52,6 +52,8 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
         }
 
         #loader {
@@ -74,7 +76,7 @@
         }
 
         body.loaded #preloader {
-            display: none;
+            opacity: 0;
         }
     </style>
     <!-- <body data-layout="horizontal" data-topbar="dark"> -->
@@ -189,11 +191,11 @@
     @yield('script')
     <script>
         window.addEventListener('load', function() {
-  const preloader = document.getElementById('preloader');
-  preloader.style.animation = 'none';
-  preloader.style.opacity = 0;
-  document.body.classList.add('loaded');
-});
+            const preloader = document.getElementById('preloader');
+            preloader.style.animation = 'none';
+            preloader.style.opacity = 0;
+            document.body.classList.add('loaded');
+        });
     </script>
     <script src="{{ asset('assets-admin/libs/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
