@@ -24,6 +24,7 @@ class AttendanceResource extends JsonResource
             'description' => $this->deskripsi,
             'proof' => $this->bukti,
             'date' => Carbon::parse($this->tanggal)->format('d F Y'),
+            'time' => Carbon::parse($this->created_at)->format('H:i:s'),
             'status' => $this->status,
         ];
     }
