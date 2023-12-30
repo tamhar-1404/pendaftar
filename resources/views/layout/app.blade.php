@@ -70,11 +70,11 @@
                         <div class="col-sm-6">
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> © Skote.
+                            </script> © Hummatech.
                         </div>
                         <div class="col-sm-6">
                             <div class="text-sm-end d-none d-sm-block">
-                                Design & Develop by Themesbrand
+                                Design & Develop by Hummatech
                             </div>
                         </div>
                     </div>

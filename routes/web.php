@@ -93,6 +93,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('pendaftaran', function () {return view('master.approval.index');});
         Route::get('izin', function () {return view('master.approval.permission');});
         Route::get('topup', function () {return view('master.approval.topup');});
+        Route::get('data-rfid', function () {return view('master.user.rfid');});
+        Route::get('data-banned', function () {return view('master.user.banned');});
+        Route::get('data-ditolak', function () {return view('master.user.rejected');});
+        Route::get('data-siswa', function () {return view('master.user.index');});
+        Route::get('data-penanggung-jawab', function () {return view('master.user.person-responsible');});
+        Route::get('data-alumni', function () {return view('master.user.alumni');});
         Route::get('data-jurnal', function () {return view('master.data-collection.index');});
 
         // end 

@@ -21,7 +21,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="/pendaftaran" key="t-tui-calendar">Pendaftaran</a></li>
                         <li><a href="/izin" key="t-full-calendar">Izin & Sakit</a></li>
-                        <li><a href="#" key="t-full-calendar">TopUp</a></li>
+                        <li><a href="/topup" key="t-full-calendar">TopUp</a></li>
                     </ul>
                 </li>
                 <li>
@@ -30,7 +30,7 @@
                         <span key="t-dashboards">Pendataan Admin</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#" key="t-tui-calendar">Jurnal</a></li>
+                        <li><a href="/data-jurnal" key="t-tui-calendar">Jurnal</a></li>
                         <li><a href="#" key="t-full-calendar">Absensi</a></li>
                         <li><a href="#" key="t-full-calendar">Report</a></li>
                     </ul>
@@ -41,12 +41,12 @@
                         <span key="t-dashboards">User</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#" key="t-tui-calendar">Siswa</a></li>
-                        <li><a href="#" key="t-full-calendar">Alumni</a></li>
-                        <li><a href="#" key="t-full-calendar">Penanggung Jawab</a></li>
-                        <li><a href="#" key="t-full-calendar">RFID</a></li>
-                        <li><a href="#" key="t-full-calendar">Siswa Ditolak</a></li>
-                        <li><a href="#" key="t-full-calendar">Banned Siswa</a></li>
+                        <li><a href="data-siswa" key="t-tui-calendar">Siswa</a></li>
+                        <li><a href="data-alumni" key="t-full-calendar">Alumni</a></li>
+                        <li><a href="data-penanggung-jawab" key="t-full-calendar">Penanggung Jawab</a></li>
+                        <li><a href="data-rfid" key="t-full-calendar">RFID</a></li>
+                        <li><a href="data-ditolak" key="t-full-calendar">Siswa Ditolak</a></li>
+                        <li><a href="data-banned" key="t-full-calendar">Banned Siswa</a></li>
                     </ul>
                 </li>
                 <li>
