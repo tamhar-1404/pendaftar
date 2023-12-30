@@ -19,21 +19,21 @@ class SiswaAlumniController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-{
-    $item = Siswa::all();
-    if ($request->has('cari')) {
-        $keyword = $request->cari;
-        $alumni = Siswa::where([['role', 'alumni'], ['name', 'LIKE', '%' . $keyword . '%']])->orWhere([['role', 'alumni'], ['jurusan', 'LIKE', '%' .$keyword. '%']])->paginate(8);
-        $alumni->appends(['cari' => $keyword]);
-        $list_alumni = Siswa::where([['role', 'alumni'], ['name', 'LIKE', '%' . $keyword . '%']])->orWhere([['role', 'alumni'], ['jurusan', 'LIKE', '%' .$keyword. '%']])->get();
-
-        return view('alumni_admin.index', compact('alumni', 'list_alumni'));
+    {
+        $alumni = Siswa::query()
+            ->where('role', 'alumni')
+            ->latest()
+            ->paginate(8);
+        $list_alumni = Siswa::query()
+            ->where('role', 'alumni')
+            ->when($request->cari, function ($query) use ($request) {
+                $query->where([['role', 'alumni'], ['name', 'LIKE', '%' . $request->cari . '%']])
+                    ->orWhere([['role', 'alumni'], ['jurusan', 'LIKE', '%' .$request->cari. '%']]);
+            })
+            ->get();
+        $list_alumni->append(['cari' => $request->cari]);
+        return view('master.user.alumni', compact('alumni', 'list_alumni'));
     }
-
-    $alumni = Siswa::where('role', 'alumni')->latest()->paginate(8);
-    $list_alumni = Siswa::where('role', 'alumni')->get();
-    return view('alumni_admin.index', compact('alumni', 'list_alumni'));
-}
 
 
     /**

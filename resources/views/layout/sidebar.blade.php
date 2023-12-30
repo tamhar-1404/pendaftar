@@ -41,10 +41,10 @@
                         <span key="t-dashboards">User</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="data-siswa" key="t-tui-calendar">Siswa</a></li>
-                        <li><a href="data-alumni" key="t-full-calendar">Alumni</a></li>
+                        <li><a href="{{ route('siswa_admin.index') }}" key="t-tui-calendar">Siswa</a></li>
+                        <li><a href="{{ route('alumni_admin.index') }}" key="t-full-calendar">Alumni</a></li>
                         <li><a href="data-penanggung-jawab" key="t-full-calendar">Penanggung Jawab</a></li>
-                        <li><a href="data-rfid" key="t-full-calendar">RFID</a></li>
+                        <li><a href="{{ route('rfid') }}" key="t-full-calendar">RFID</a></li>
                         <li><a href="data-ditolak" key="t-full-calendar">Siswa Ditolak</a></li>
                         <li><a href="data-banned" key="t-full-calendar">Banned Siswa</a></li>
                     </ul>
