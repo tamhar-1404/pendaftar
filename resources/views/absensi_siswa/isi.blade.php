@@ -123,8 +123,8 @@
                                 var userLongitude = position.coords.longitude;
                     
                                 // Lokasi yang ditentukan
-                                var targetLatitude = -7.8489484;
-                                var targetLongitude = 113.3768192;
+                                var targetLatitude = -7.9000687;
+                                var targetLongitude = 112.6043111;
                     
                                 // Menghitung jarak antara lokasi pengguna dan lokasi yang ditentukan (dalam meter)
                                 var distance = getDistance(userLatitude, userLongitude, targetLatitude, targetLongitude);
