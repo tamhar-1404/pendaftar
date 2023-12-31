@@ -55,8 +55,8 @@
                         <span key="t-dashboards">Transaksi</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="pendataan-barang" key="t-tui-calendar">Pendataan barang</a></li>
-                        <li><a href="transaksi-opname" key="t-full-calendar">Opname</a></li>
+                        <li><a href="{{ route('barang.index') }}" key="t-tui-calendar">Pendataan barang</a></li>
+                        <li><a href="{{ route('opname.index') }}" key="t-full-calendar">Opname</a></li>
                     </ul>
                 </li>
                 <li>

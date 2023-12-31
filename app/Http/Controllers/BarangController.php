@@ -19,18 +19,15 @@ class BarangController extends Controller
      */
     public function index(Request $request)
     {
-        $barangs = Barang::all();
-        if ($request->has('cari')) {
-            $keyword = $request->cari;
-            $barangs = Barang::where('nama', 'LIKE', '%' . $keyword . '%')->paginate(10);
-            return view('barang.index', compact('barangs'));
-
-            $barangs->appends(['cari' => $keyword]);
-            return view('barang.index', compact('barangs'));
-
-        }
-        $barangs = Barang::latest()->paginate(10);
-        return view('barang.index',compact('barangs'));
+        $barangs = Barang::query()
+            ->when($request->cari, function ($query) use ($request) {
+                $query->where('nama', 'LIKE', '%' . $request->cari . '%');
+            })
+            ->latest()
+            ->paginate(10);
+        $barangs->appends(['cari' => $request->cari]);
+        return view('master.transaksi.goods-data-collection', compact('barangs'));
+        // return view('barang.index',compact('barangs'));
     }
 
     /**
