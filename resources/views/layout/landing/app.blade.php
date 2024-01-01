@@ -4,7 +4,7 @@
 <!-- Mirrored from 99webpage.com/theme-review/landingpage/smooth/home-alt2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Dec 2023 17:40:34 GMT -->
 
 <head>
-    <title>Smooth software company landing page</title>
+    <title>PKL HUMMATECH</title>
 
     <meta charset="utf-8">
     <meta name="keywords"
