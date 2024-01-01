@@ -34,11 +34,30 @@
                                 <th data-priority="3">Kategori</th>
                                 <th data-priority="3">Deskripsi</th>
                                 <th data-priority="3">Stok</th>
-                                <th data-priority="3">Aksi</th>
+                                <th data-priority="3" colspan="2">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            @forelse ($barangs as $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->nama }}</td>
+                                <td><div class="avatar-sm mx-auto">
+                                    <img class="avatar-title rounded-circle bg-primary-subtle text-primary " src="{{ asset('storage/pendataanbarang/' . $item->foto) }}">
+                                </div></td>
+                                <td>{{ $item->kode }}</td>
+                                <td>{{ $item->harga }}</td>
+                                <td>{{ $item->kategori }}</td>
+                                <td>{{ $item->deskripsi }}</td>
+                                <td>{{ $item->stok }}</td>
+                                <td><button class="btn btn-info">Edit</button></td>
+                                <td><button class="btn btn-danger">Hapus</button></td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="10"><center>Tidak ada data</center></td>
+                            </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

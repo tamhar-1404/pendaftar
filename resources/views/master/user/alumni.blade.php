@@ -3,13 +3,13 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18">Data Siswa</h4>
+            <h4 class="mb-sm-0 font-size-18">Data Alumni</h4>
         </div>
     </div>
 </div>
 
 <div class="row">
-    @foreach ($list_alumni as $siswa)
+    @forelse ($list_alumni as $siswa)
     <div class="col-xl-3 col-sm-6">
         <div class="card text-center">
             <div class="card-body">
@@ -31,7 +31,9 @@
             </div>
         </div>
     </div>
-    @endforeach
+    @empty
+    
+    @endforelse
 </div>
 <!-- end row -->
 

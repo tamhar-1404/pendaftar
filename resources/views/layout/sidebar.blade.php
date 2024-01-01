@@ -43,7 +43,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('siswa_admin.index') }}" key="t-tui-calendar">Siswa</a></li>
                         <li><a href="{{ route('alumni_admin.index') }}" key="t-full-calendar">Alumni</a></li>
-                        <li><a href="data-penanggung-jawab" key="t-full-calendar">Penanggung Jawab</a></li>
+                        <li><a href="{{ route('guru_admin.index') }}" key="t-full-calendar">Penanggung Jawab</a></li>
                         <li><a href="{{ route('rfid') }}" key="t-full-calendar">RFID</a></li>
                         <li><a href="{{ route('list-rejected') }}" key="t-full-calendar">Siswa Ditolak</a></li>
                         <li><a href="{{ route('list-banned') }}" key="t-full-calendar">Banned Siswa</a></li>
@@ -55,8 +55,8 @@
                         <span key="t-dashboards">Transaksi</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="pendataan-barang" key="t-tui-calendar">Pendataan barang</a></li>
-                        <li><a href="transaksi-opname" key="t-full-calendar">Opname</a></li>
+                        <li><a href="{{ route('barang.index') }}" key="t-tui-calendar">Pendataan barang</a></li>
+                        <li><a href="{{ route('opname.index') }}" key="t-full-calendar">Opname</a></li>
                     </ul>
                 </li>
                 <li>

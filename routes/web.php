@@ -109,12 +109,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('data-banned', [SiswaController::class, 'blockedStudent'])->name('list-banned');
         Route::get('data-ditolak', [TolakController::class, 'listRejected'])->name('list-rejected');
         // Route::get('data-siswa', function () {return view('master.user.index');}); // Done
-        Route::get('data-penanggung-jawab', function () {return view('master.user.person-responsible');});
-        Route::get('data-alumni', function () {return view('master.user.alumni');});
+        // Route::get('data-penanggung-jawab', function () {return view('master.user.person-responsible');}); // Done
         Route::get('history-topup', function () {return view('master.history.index');});
         Route::get('history-transaksi', function () {return view('master.history.transaksi');});
-        Route::get('pendataan-barang', function () {return view('master.transaksi.goods-data-collection');});
-        Route::get('transaksi-opname', function () {return view('master.transaksi.opname');});
+        // Route::get('pendataan-barang', function () {return view('master.transaksi.goods-data-collection');});
+        // Route::get('transaksi-opname', function () {return view('master.transaksi.opname');});
+
         Route::get('data-jurnal', function () {return view('master.data-collection.index');});
 
         // end

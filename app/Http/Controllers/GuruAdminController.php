@@ -22,17 +22,16 @@ class GuruAdminController extends Controller
      */
     public function index(Request $request)
     {
-        $guru_admin = Guru_admin::all();
-    if ($request->has('cari')) {
-        $keyword = $request->cari;
-        $guru_admin = Guru_admin::where('name', 'LIKE', '%' . $keyword . '%')->orWhere('sekolah', 'LIKE', '%' . $keyword . '%')->paginate(8);
-
-        $guru_admin->appends(['cari' => $keyword]);
-        return view('guru_admin.index', compact('guru_admin'));
-
-    }
-        $guru_admin =  Guru_admin::latest()->paginate(8);
-        return view('guru_admin.index' , compact('guru_admin'));
+        $teachers =  Guru_admin::query()
+            ->when($request->cari, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->cari . '%')
+                    ->orWhere('sekolah', 'LIKE', '%' . $request->cari . '%');
+            })
+            ->latest()
+            ->paginate(8);
+            $teachers->appends(['cari' => $request->cari]);
+        return view('master.user.person-responsible', compact('teachers'));
+        // return view('guru_admin.index' , compact('guru_admin'));
     }
 
     /**

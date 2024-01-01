@@ -35,7 +35,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($students as $siswa)
+                                    @forelse ($students as $siswa)
                                     <tr>
                                         <th>{{ $loop->iteration }}</th>
                                         <td>{{ $siswa->name }}</td>
@@ -54,7 +54,11 @@
                                             </form>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                    @empty
+                                    <tr>
+                                        <td colspan="8"><center>Tidak ada data</center></td>
+                                    </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

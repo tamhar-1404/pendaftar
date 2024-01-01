@@ -60,11 +60,28 @@
                                 <th data-priority="3">Kategori</th>
                                 <th data-priority="3">Tanggal</th>
                                 <th data-priority="3">Stok</th>
-                                <th data-priority="3">Aksi</th>
+                                <th data-priority="3" colspan="2">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            @forelse ($opname as $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->barang->nama }}</td>
+                                <td>{{ $item->barang->foto }}</td>
+                                <td>{{ $item->barang->kode }}</td>
+                                <td>{{ $item->barang->harga }}</td>
+                                <td>{{ $item->barang->kategori }}</td>
+                                <td>{{ Carbon\Carbon::parse($item->tanggal)->locale('id_ID')->isoFormat('DD MMMM Y') }}</td>
+                                <td>{{ $item->stok }}</td>
+                                <td><button class="btn btn-info">Edit</button></td>
+                                <td><button class="btn btn-danger">Hapus</button></td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="10"><center>Tidak ada data</center></td>
+                            </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

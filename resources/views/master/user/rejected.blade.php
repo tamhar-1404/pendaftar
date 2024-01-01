@@ -33,7 +33,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($tolaks as $siswa)
+                                    @forelse ($tolaks as $siswa)
                                     <tr>
                                         <th>{{ $loop->iteration }}</th>
                                         <td>{{ $siswa->name }}</td>
@@ -61,7 +61,11 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                    @empty
+                                    <tr>
+                                        <td colspan="8"><center>Tidak ada data</center></td>
+                                    </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
