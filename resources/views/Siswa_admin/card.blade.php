@@ -156,7 +156,7 @@
                                             </li>
                                             <li>
                                                 <form action="{{ route('siswa.banned', ['id' => $siswa->id]) }}"
-                                                    method="post" id="myForm" onsubmit="hapus(event)">
+                                                    method="post" id="myForm-{{ $siswa->id }}" onsubmit="hapus(event, {{ $siswa->id }})">
                                                     @csrf
                                                     @method('PUT')
                                                     <input type="hidden" name="alasan" id="alasanPenolakan">
@@ -378,7 +378,7 @@
     <script>
         window.addEventListener("DOMContentLoaded", () => Alpine.start());
 
-        function hapus(event) {
+        function hapus(event, id) {
             event.preventDefault();
 
             Swal.fire({
@@ -400,7 +400,7 @@
                 if (result.isConfirmed) {
                     document.getElementById('alasanPenolakan').value = result.value;
                     // console.log(result.value)
-                    document.getElementById('myForm').submit();
+                    document.getElementById('myForm-' + id).submit();
 
                 }
             })
