@@ -24,6 +24,7 @@ use App\Http\Controllers\PiketController;
 use App\Http\Controllers\AbsensiSiswaController;
 use App\Http\Controllers\ApprovalController;
 use App\Http\Controllers\ApprovalIzinController;
+use App\Http\Controllers\DashboardAdminController;
 use App\Models\LupaPassword;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
@@ -92,7 +93,7 @@ Route::get('/', function () {return view('landing-page.index');});
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
         // admin baru
-        Route::get('master', function () {return view('master.index');})->name('master');
+        Route::get('master', [DashboardAdminController::class, 'index'])->name('master');
         Route::get('master-jurnal', function () {return view('master.jurnal');});
         Route::get('data-tertib', function () {return view('master.regulation.index');});
         Route::get('laporan-siswa', function () {return view('master.regulation.report-student');});

@@ -173,6 +173,55 @@ class AttendanceController extends Controller
     }
 
     /**
+     * doAttendanceNow
+     *
+     * @param  mixed $rfid
+     * @return mixed
+     */
+    private function doAttendanceNow($rfid): mixed
+    {
+        $today = now()->format('l');
+        $student = $this->getStudentByRfid($rfid);
+        if (!$attendance = Attendance::query()->where(['student_id' => $student->id])->whereDate('created_at', now()->format('Y-m-d'))->first()) {
+            $attendance = Attendance::query()
+                ->create(['student_id' => $student->id]);
+        }
+        $attendance_id = $attendance->id;
+        $time = now()->format('H:i:s');
+        $attendanceRule = AttendanceRule::query()
+            ->where('day', $today)
+            ->first();$attendanceRule = AttendanceRule::query()
+            ->where('day', $today)
+            ->first();
+        if ($time >= $attendanceRule->checkin_starts && $time <= $attendanceRule->checkin_ends) {
+            return AttendanceDetail::query()
+                ->updateOrCreate(
+                    ['attendance_id' => $attendance_id, 'status' => 'present'],
+                    ['status' => 'present']
+                );
+        } else if ($time >= $attendanceRule->break_starts && $time <= $attendanceRule->break_ends) {
+            return AttendanceDetail::query()
+                ->updateOrCreate(
+                    ['attendance_id' => $attendance_id, 'status' => 'break'],
+                    ['status' => 'break']
+                );
+        } else if ($time >= $attendanceRule->return_starts && $time <= $attendanceRule->return_ends) {
+            return AttendanceDetail::query()
+                ->updateOrCreate(
+                    ['attendance_id' => $attendance_id, 'status' => 'return_break'],
+                    ['status' => 'return_break']
+                );
+        } else if ($time >= $attendanceRule->checkout_starts && $time <= $attendanceRule->checkout_ends) {
+            return AttendanceDetail::query()
+                ->updateOrCreate(
+                    ['attendance_id' => $attendance_id, 'status' => 'return'],
+                    ['status' => 'return']
+                );
+        }
+        return null;
+    }
+
+    /**
      * attendanceByRfid
      *
      * @param  mixed $rfid
@@ -182,44 +231,19 @@ class AttendanceController extends Controller
     {
         $today = now()->format('l');
         $student = $this->getStudentByRfid($rfid);
-        if (!$attendance = Attendance::query()->where(['student_id' => $student->id])->whereDate('created_at', now()->format('Y-m-d'))->first()) {
-            $attendance = Attendance::query()
-                ->create(['student_id' => $student->id]);
-        }
 
-        $attendance_id = $attendance->id;
-        $time = now()->format('H:i:s');
+
         $attendanceRule = AttendanceRule::query()
             ->where('day', $today)
             ->first();
         if (!$attendanceRule) return ResponseHelper::error(null, "Tidak ada jam masuk hari ini!");
-        if ($time >= $attendanceRule->checkin_starts && $time <= $attendanceRule->checkin_ends) {
-            AttendanceDetail::query()
-                ->updateOrCreate(
-                    ['attendance_id' => $attendance_id, 'status' => 'present'],
-                    ['status' => 'present']
-                );
-        } else if ($time >= $attendanceRule->break_starts && $time <= $attendanceRule->break_ends) {
-            AttendanceDetail::query()
-                ->updateOrCreate(
-                    ['attendance_id' => $attendance_id, 'status' => 'break'],
-                    ['status' => 'break']
-                );
-        } else if ($time >= $attendanceRule->return_starts && $time <= $attendanceRule->return_ends) {
-            AttendanceDetail::query()
-                ->updateOrCreate(
-                    ['attendance_id' => $attendance_id, 'status' => 'return_break'],
-                    ['status' => 'return_break']
-                );
-        } else if ($time >= $attendanceRule->checkout_starts && $time <= $attendanceRule->checkout_ends) {
-            AttendanceDetail::query()
-                ->updateOrCreate(
-                    ['attendance_id' => $attendance_id, 'status' => 'return'],
-                    ['status' => 'return']
-                );
+        $doAttendance = $this->doAttendanceNow($rfid);
+        if (!$doAttendance) {
+            return ResponseHelper::error(null, "Belum waktunya absen!");
         }
-        else {
-            return ResponseHelper::error(null, "Belum waktunya absen");
+
+        if  (!$doAttendance->wasRecentlyCreated) {
+            return ResponseHelper::error(null, "Anda sudah absen");
         }
 
         return ResponseHelper::success(null, "Berhasil absen");
