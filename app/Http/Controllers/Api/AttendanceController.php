@@ -162,11 +162,14 @@ class AttendanceController extends Controller
 
     private function getStudentByRfid($rfid): mixed
     {
-        $user = User::query()
-            ->where('RFID', $rfid)
-            ->first();
+        $query = User::query()
+            ->where('RFID', $rfid);
+        if (!$query->exists()) {
+            return ResponseHelper::error(null, "Siswa tidak ditemukan");
+        }
+        $user = $query->first();
         return Siswa::query()
-            ->findOrFail($user->siswa_id);
+            ->find($user->siswa_id);
     }
 
     /**
