@@ -23,7 +23,7 @@
                 <li><a href="javascript:void(0)">Galery</a></li>
                 <li><a href="javascript:void(0)">FAQ</a></li>
                 <li><a href="javascript:void(0)">Testimoni</a></li>
-                <li><a href="{{ route('login.index') }}" class="btn">Login</a></li>
+                <li><a href="{{ route('auth-login') }}" class="btn">Login</a></li>
             </ul>
         </nav>
     </header>

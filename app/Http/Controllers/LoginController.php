@@ -304,7 +304,7 @@ public function store(Request $request)
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        return redirect()->route('login.index');
+        return redirect()->route('auth-login');
     }
     public function selesai()
     {

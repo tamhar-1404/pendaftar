@@ -51,7 +51,7 @@ use App\Http\Controllers\TolakController;
 |
 */
 
-Route::get('auth-login', function () {return view('auth.login');});
+Route::get('auth-login', function () {return view('auth.login');})->name('auth-login');
 Route::get('auth-register', function () {return view('auth.register');});
 
 // Admin
