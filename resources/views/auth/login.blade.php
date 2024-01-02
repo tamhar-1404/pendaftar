@@ -65,7 +65,42 @@
 </head>
 
 <body class="auth-body-bg">
-
+    @if (session()->has('limitbang'))
+        <script>
+            toastr.error("{{ session('limitbang') }}");
+        </script>
+    @endif
+    @if (session()->has('berhasil_daftar'))
+        <script>
+            Swal.fire({
+                title: "Berhasil!",
+                text: "{{ session('berhasil_daftar') }}",
+                icon: "info",
+                showCancelButton: false,
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "OK",
+                timer: 3000
+            });
+        </script>
+    @endif
+    @if (session()->has('success'))
+        <script>
+            Swal.fire(
+                'Berhasil!',
+                "{{ session('success') }}",
+                'success'
+            )
+        </script>
+    @endif
+    @if (session()->has('error'))
+        <script>
+            Swal.fire(
+                'Oops..!',
+                "{{ session('error') }}",
+                'error'
+            )
+        </script>
+    @endif
     <div>
         <div class="container-fluid p-0">
             <div class="row g-0">
