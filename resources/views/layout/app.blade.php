@@ -109,6 +109,7 @@
             document.body.classList.add('loaded');
         });
     </script>
+    
     <script src="{{ asset('assets-admin/libs/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/metismenu/metisMenu.min.js') }}"></script>
