@@ -54,7 +54,7 @@
                 <img src="{{ asset('assets-landing/images/businessman-with-laptop.png') }}" class="img-fluid" alt="Business Man with Laptop" />
             </div>
             <div class="col-lg-4 align-self-center mb-40">
-                <h2>WEB DEVLOPER</h2>
+                <h2>WEB DEVELOPER</h2>
                 <p>
                     Tim web developer kami memiliki pengalaman luas dalam mengembangkan situs web yang dioptimalkan untuk pengalaman pengguna yang terbaik. Kami berkomitmen untuk menciptakan situs yang tidak hanya indah, tetapi juga mudah digunakan dan berkinerja tinggi.
                 </p>
@@ -74,7 +74,7 @@
                 <img src="{{ asset('assets-landing/images/lady-with-handphone.png') }}" class="img-fluid" alt="Lady with handphone" />
             </div>
             <div class="col-lg-4 align-self-center mb-40">
-                <h2>MOBILE DEVLOPER</h2>
+                <h2>MOBILE DEVELOPER</h2>
                 <p>
                     Kami memahami bahwa pengembangan aplikasi mobile adalah tentang menciptakan pengalaman yang mulus dan intuitif. Dengan kombinasi desain yang menarik dan pengkodean yang kuat, kami menciptakan aplikasi mobile yang memikat dan mudah digunakan.                </p>
             </div>
@@ -93,7 +93,7 @@
                 <img src="{{ asset('assets-landing/images/using-software.png') }}" class="img-fluid" alt="Using Software" />
             </div>
             <div class="col-lg-4 align-self-center mb-40">
-                <h2>DESAINER</h2>
+                <h2>UI UX DESIGNER</h2>
                 <p>
                     Kami menciptakan desain yang memikat dan berarti. Dari tipografi yang indah hingga tata letak yang inovatif, kami menghadirkan desain yang menonjol dan memberikan pesan yang jelas kepada audiens Anda.                </p>
             </div>

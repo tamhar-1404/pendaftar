@@ -14,7 +14,7 @@
         <div class="card text-center">
             <div class="card-body">
                 <div class="avatar-sm mx-auto mb-4">
-                    <img class="avatar-title rounded-circle bg-primary-subtle text-primary " src="{{ asset('storage/Siswa/' . $siswa->foto_siswa) }}">
+                    <img class="avatar-title rounded-circle bg-primary-subtle text-primary" style="object-fit: cover" src="{{ asset('storage/Siswa/' . $siswa->foto_siswa) }}">
                 </div>
                 <h5 class="font-size-15 mb-1"><a href="javascript: void(0);" class="text-dark">{{ $siswa->name }}</a></h5>
                 <p class="text-muted">{{ $siswa->sekolah }}</p>
