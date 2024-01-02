@@ -49,7 +49,7 @@
                 <div class="tab-content crypto-buy-sell-nav-content p-4">
                     {{-- mengisi --}}
                     <div class="tab-pane active" id="buy" role="tabpanel">
-<<<<<<< Updated upstream
+
                         <div class="table-responsive">
                             <table id="example" class="table table-striped" style="width:100%">
                                 <thead>
@@ -532,43 +532,7 @@
                                 </tfoot>
                             </table>
                         </div>
-=======
-                        <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 datatable">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama</th>
-                                    <th>Tanggal</th>
-                                    <th>Aksi</th>
-                                    <th>Kegiatan</th>
-                                </tr>
-                            </thead>
 
-
-                            <tbody>
-                                @forelse ($mengisi as $data )
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$data->name}}</td>
-                                    <td>{{$data->tanggal}}</td>
-                                    <td>
-                                        <span>
-                                            <button @click="openModal(item.id)"
-                                                class="border rounded bg-primary font-semibold text-white" style="">Detail</button>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <p class="text-kegiatan" style="max-width: 20%">
-                                            {{$data->kegiatan}}
-                                        </p>
-                                    </td>
-                                </tr>
-                                @empty
-
-                                @endforelse
-                            </tbody>
-                        </table>
->>>>>>> Stashed changes
                     </div>
 
                     <div class="tab-pane" id="sell" role="tabpanel">
