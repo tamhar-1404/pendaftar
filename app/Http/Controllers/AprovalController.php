@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreaprovalRequest;
 use App\Http\Requests\UpdateaprovalRequest;
+use App\Mail\RegistrationAcceptedMail;
 use App\Models\StudentFile;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -162,6 +163,8 @@ public function confirm(Aproval $aproval)
             'remember_token' => $aproval->remember_token,
             'siswa_id' => $data->id,
         ]);
+
+        Mail::to($aproval->email)->send(new RegistrationAcceptedMail);
 
         return redirect()->route('aproval.index')->with('success', 'berhasil menerima anak magang');
     } else {
