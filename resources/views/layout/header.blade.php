@@ -1,3 +1,15 @@
+<link href="{{ asset('my-assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+<link href="{{ asset('my-assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('my-assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+<script src="{{ asset('my-assets/js/plugin.js') }}"></script>
+
+<script src="{{ asset('my-assets/libs/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('my-assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('my-assets/libs/metismenu/metisMenu.min.js') }}"></script>
+<script src="{{ asset('my-assets/libs/simplebar/simplebar.min.js') }}"></script>
+<script src="{{ asset('my-assets/libs/node-waves/waves.min.js') }}"></script>
+<script src="{{ asset('my-assets/js/app.js') }}"></script>
+
 <header id="page-topbar">
     <div class="navbar-header">
         <div class="d-flex">
