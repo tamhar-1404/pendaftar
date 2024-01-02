@@ -13,14 +13,7 @@
         content="Smooth is a HTML5 Landing Page Build using Gulp, SCSS, and Bootstrap4. It was designed to promote your App, services or business projects.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="99webpage">
-
-    <link rel="icon" type="image/png" href="{{ asset('favicon-landing/smooth-favicon-16x16.png') }}" sizes="16x16">
-    <link rel="icon" type="image/png" href="favicon-landing/smooth-favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="favicon-landing/smooth-favicon-144x144.png" sizes="144x144">
-    <link rel="icon" type="image/png" href="favicon-landing/smooth-favicon-196x196.png" sizes="196x196">
-
-    <link rel="apple-touch-icon" href="favicon-landing/smooth-favicon-196x196.png">
-
+    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
     <!-- Template stylesheet -->
     <link rel="stylesheet" href="{{ asset('assets-landing/css/style.min.css') }}">
 </head>
@@ -179,7 +172,4 @@
     <!-- Template custome JavaScript -->
     <script src="{{ asset('assets-landing/js/scripts.min.js') }}"></script>
 </body>
-
-<!-- Mirrored from 99webpage.com/theme-review/landingpage/smooth/home-alt2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Dec 2023 17:40:54 GMT -->
-
 </html>
