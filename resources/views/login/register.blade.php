@@ -772,7 +772,7 @@
                 const step = steps[stepIndex];
                 const inputs = Array.from(step.getElementsByTagName("input"));
                 const textareas = Array.from(step.getElementsByTagName("textarea"));
-                var minValue = 10;
+                var minValue = 5;
                 var minValuenomor = 11;
                 var maxValuenama = 225;
                 var maxValuetempat = 225;

@@ -173,10 +173,10 @@
                                                     <button class="btn btn-light " type="button" id="password-addon"><i
                                                             class="mdi mdi-eye-outline"></i></button>
                                                 </div>
-                                                @error('password')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
                                             </div>
+                                            @error('password')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                             <div class="mt-3 d-grid">
                                                 <button class="btn btn-primary waves-effect waves-light"
                                                     type="submit">Log In</button>
