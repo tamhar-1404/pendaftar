@@ -15,7 +15,7 @@
         type="text/css" />
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-    <script src="{{ asset('js/plugin.js') }}"></script>
+    {{-- <script src="{{ asset('js/plugin.js') }}"></script> --}}
     <link href="{{ asset('assets-admin/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
