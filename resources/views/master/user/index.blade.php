@@ -9,7 +9,7 @@
 </div>
 
 <div class="row">
-    @foreach ($siswas as $siswa)
+    @forelse ($siswas as $siswa)
     <div class="col-xl-3 col-sm-6">
         <div class="card text-center">
             <div class="card-body">
@@ -28,17 +28,16 @@
             </div>
         </div>
     </div>
-    @endforeach
-</div>
-<!-- end row -->
-
-<div class="row">
-    <div class="col-12">
-        <div class="text-center my-3">
-            <a href="javascript:void(0);" class="text-success"><i class="bx bx-hourglass bx-spin me-2"></i> Load more </a>
+    @empty
+    <div class="d-flex justify-content-center">
+        <div class="">
+            <img src="{{ asset('nodata.png') }}" width="300px" height="300px" alt="" srcset="">
+            <p class="fs-5 text-center mt-4 text-dark" style="font-weight: 500">
+                Data Tidak Tersedia
+            </p>
         </div>
-    </div> <!-- end col-->
+    </div>
+    @endforelse
 </div>
 <!-- end row -->
-
 @endsection

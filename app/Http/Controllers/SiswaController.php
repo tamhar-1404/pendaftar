@@ -190,7 +190,7 @@ class SiswaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, Siswa $siswa , User $user , $id)
+    public function update(Request $request, User $user , $id)
     {
         $this->validate($request,[
             'RFID'=>'required|unique:users,RFID|max:225',
@@ -223,8 +223,16 @@ class SiswaController extends Controller
             ->whereNull('RFID')
             ->latest()
             ->paginate(10);
+        $siswas = User::query()
+            ->where('role', 'Siswa')
+            ->when($request->cari, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%'. $request->cari .'%')
+                    ->orWhere('sekolah', 'LIKE', '%' . $request->cari . '%');
+            })
+            ->latest()
+            ->paginate(10);
 
-        return view('master.user.rfid', compact('users'));
+        return view('master.user.rfid', compact('users','siswas'));
 
     }
 

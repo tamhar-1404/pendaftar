@@ -32,18 +32,15 @@
         </div>
     </div>
     @empty
-    
+    <div class="d-flex justify-content-center">
+        <div class="">
+            <img src="{{ asset('nodata.png') }}" width="300px" height="300px" alt="" srcset="">
+            <p class="fs-5 text-center mt-4 text-dark" style="font-weight: 500">
+                Data Tidak Tersedia
+            </p>
+        </div>
+    </div>
     @endforelse
 </div>
 <!-- end row -->
-
-<div class="row">
-    <div class="col-12">
-        <div class="text-center my-3">
-            <a href="javascript:void(0);" class="text-success"><i class="bx bx-hourglass bx-spin me-2"></i> Load more </a>
-        </div>
-    </div> <!-- end col-->
-</div>
-<!-- end row -->
-
 @endsection

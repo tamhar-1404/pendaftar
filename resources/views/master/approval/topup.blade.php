@@ -29,7 +29,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($topUp as $item)
+                                    @forelse ($topUp as $item)
                                     <tr>
                                         <th>{{ $loop->iteration }}</th>
                                         <td>{{ $item->user->name }}</td>
@@ -53,7 +53,20 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                    @empty
+                                    <tr>
+                                        <td colspan="8" class="text-center">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="">
+                                                    <img src="{{ asset('nodata.png') }}" width="300px" height="300px" alt="" srcset="">
+                                                    <p class="fs-5 text-center mt-4 text-dark" style="font-weight: 500">
+                                                        Data Tidak Tersedia
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

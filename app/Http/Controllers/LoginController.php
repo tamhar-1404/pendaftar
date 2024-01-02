@@ -63,7 +63,7 @@ class LoginController extends Controller
             $user = Auth::user();
             // Periksa peran pengguna dan arahkan ke rute yang sesuai
             if ($user->role == 'Admin') {
-                return redirect()->route('dudi.index');
+                return redirect()->route('master');
             } elseif ($user->role == 'Siswa') {
                 $data = $user->siswa_id;
                 $siswa = Siswa::where('id', $data)->first();

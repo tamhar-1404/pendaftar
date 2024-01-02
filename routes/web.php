@@ -173,6 +173,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/jurnal_pdf', [JurnaladminController::class, 'jurnal_admin_pdf'])->name('jurnal_pdf');
         Route::get('/jurnal_docx', [JurnaladminController::class, 'admin_docx'])->name('jurnal_docx');
         Route::get('/rfid' , [SiswaController::class , 'rfid'])->name('rfid');
+        Route::put('rfid/{id}', [SiswaController::class ,'update']);
         Route::patch('/Extend/{id}' , [SiswaController::class , 'Extend'])->name('Extend');
         Route::delete('/hapus_laporan_piket/{id}' , [LaporanPiketController::class , 'hapus'])->name('hapus/laporan/piket');
         Route::post('catatan', [PiketController::class, 'tambah'])->name('tambahCatatan');

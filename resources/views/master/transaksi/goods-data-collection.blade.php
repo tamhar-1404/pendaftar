@@ -55,7 +55,16 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="10"><center>Tidak ada data</center></td>
+                                <td colspan="9" class="text-center">
+                                    <div class="d-flex justify-content-center">
+                                        <div class="">
+                                            <img src="{{ asset('nodata.png') }}" width="300px" height="300px" alt="" srcset="">
+                                            <p class="fs-5 text-center mt-4 text-dark" style="font-weight: 500">
+                                                Data Tidak Tersedia
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                             @endforelse
                         </tbody>
