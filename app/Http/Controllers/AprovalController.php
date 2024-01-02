@@ -300,6 +300,10 @@ public function Tolak(Request $request, Aproval $aproval)
      * @param  \App\Models\Aproval  $Aproval
      * @return \Illuminate\Http\Response
      */
+    // public function edit(Aproval $aproval)
+    // {
+    //     return view('master.approval.detail' , compact('aproval'));
+    // }
     public function edit(Aproval $aproval)
     {
         return view('aproval.edit' , compact('aproval'));
