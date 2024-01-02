@@ -31,7 +31,7 @@
                     <p class="detail-text"><br> Halaman yang anda cari tidak di temukan</p>
 
                     <div class="back-btn">
-                        <a href="{{ route('/') }}" class="btn">Kembali ke halaman</a>
+                        <button  class="btn" onclick="history.back()">Kembali ke halaman</button>
                     </div>
                 </div></div>
             </div>
