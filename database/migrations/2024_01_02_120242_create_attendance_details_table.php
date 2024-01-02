@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('attendance_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->enum('status', ['present', 'break', 'return_break', 'return']);
+            $table->boolean('late')->default(0);
+            $table->time('late_time')->nullable();
             $table->timestamps();
         });
     }

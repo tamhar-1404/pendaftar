@@ -230,7 +230,6 @@ class AttendanceController extends Controller
     public function attendanceByRfid($rfid): JsonResponse
     {
         $today = now()->format('l');
-        $student = $this->getStudentByRfid($rfid);
 
 
         $attendanceRule = AttendanceRule::query()
