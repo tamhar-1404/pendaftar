@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sipjaki Kabupaten Pasuruan</title>
+    <title>PKL HUMMATECH</title>
     <link rel="shortcut icon" type="{{ asset('image/png') }}" href="{{ asset('assets-admin/sipjaki.png') }}" />
     <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
@@ -67,7 +67,7 @@
     </style>
 </head>
 
-<body>
+<body data-sidebar="dark">
     <div class="layout-wraper">
         @include('layout.header')
         @include('layout.sidebar')
@@ -109,7 +109,7 @@
             document.body.classList.add('loaded');
         });
     </script>
-    
+
     <script src="{{ asset('assets-admin/libs/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/metismenu/metisMenu.min.js') }}"></script>
