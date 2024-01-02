@@ -75,7 +75,7 @@
                             width="450" height="300" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-                        <div class="footer__widget-contact">
+                        <div class="footer__widget-contact mt-4">
                             <i class="fa fa-phone"></i>
                             <p>(021) 111-222-333-44</p>
                         </div>
