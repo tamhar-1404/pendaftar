@@ -15,7 +15,7 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-calendar"></i>
+                        <i class="bx bx-check-double"></i>
                         <span key="t-dashboards">Approval</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -26,7 +26,7 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-calendar"></i>
+                        <i class="bx bx-bar-chart-alt-2"></i>
                         <span key="t-dashboards">Pendataan Admin</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -37,7 +37,7 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-calendar"></i>
+                        <i class="bx bx-user"></i>
                         <span key="t-dashboards">User</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -51,7 +51,7 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-calendar"></i>
+                        <i class="bx bx-money"></i>
                         <span key="t-dashboards">Transaksi</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -61,7 +61,7 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-calendar"></i>
+                        <i class="bx bx-history"></i>
                         <span key="t-dashboards">History</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -73,20 +73,20 @@
 
                 <li>
                     <a href="master-jurnal" class="waves-effect">
-                        <i class="bx bx-chat"></i>
+                        <i class="bx bx-book"></i>
                         <span key="t-chat">Jurnal</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="master-absensi" class="waves-effect">
-                        <i class="bx bx-file"></i>
+                        <i class="bx bx-user-check"></i>
                         <span key="t-file-manager">Absensi</span>
                     </a>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-calendar"></i>
+                        <i class="bx bx-shield-quarter"></i>
                         <span key="t-dashboards">Peraturan</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -97,7 +97,7 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-calendar"></i>
+                        <i class="bx bx-customize"></i>
                         <span key="t-dashboards">Lainnya</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
