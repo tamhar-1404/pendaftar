@@ -154,7 +154,7 @@
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">Email</label>
                                                 <input type="text" class="form-control" id="email" name="email"
-                                                    placeholder="Enter username">
+                                                    placeholder="Enter Email">
                                                 @error('email')
                                                     <div class="text-sm text-danger font-medium">{{ $message }}</div>
                                                 @enderror
