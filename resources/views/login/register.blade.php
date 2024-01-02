@@ -591,7 +591,7 @@
                         <p class="line-clamp-1">
                             <span>Sudah punya Akun?</span>
                             <a class="text-blue-400 transition-colors hover:text-info-focus dark:text-accent-light dark:hover:text-accent"
-                                href="{{ route('login.index') }}">Login</a>
+                                href="{{ route('auth-login') }}">Login</a>
                         </p>
                     </div>
                 </div>
