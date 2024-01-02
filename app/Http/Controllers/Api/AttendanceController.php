@@ -9,6 +9,7 @@ use App\Models\Anggota_piket;
 use App\Models\ApprovalIzin;
 use App\Models\Attendance;
 use App\Models\AttendanceDetail;
+use App\Models\AttendanceRule;
 use App\Models\Siswa;
 use App\Models\User;
 use Carbon\Carbon;
@@ -176,6 +177,7 @@ class AttendanceController extends Controller
      */
     public function attendanceByRfid($rfid): JsonResponse
     {
+        $today = now()->format('l');
         $student = $this->getStudentByRfid($rfid);
         if (!$attendance = Attendance::query()->where(['student_id' => $student->id])->whereDate('created_at', now()->format('Y-m-d'))->first()) {
             $attendance = Attendance::query()
@@ -184,25 +186,29 @@ class AttendanceController extends Controller
 
         $attendance_id = $attendance->id;
         $time = now()->format('H:i:s');
-        if ($time >= '07:00:00' && $time <= '08:00:00') {
+        $attendanceRule = AttendanceRule::query()
+            ->where('day', $today)
+            ->first();
+        if (!$attendanceRule) return ResponseHelper::error(null, "Tidak ada jam masuk hari ini!");
+        if ($time >= $attendanceRule->checkin_starts && $time <= $attendanceRule->checkin_ends) {
             AttendanceDetail::query()
                 ->updateOrCreate(
                     ['attendance_id' => $attendance_id, 'status' => 'present'],
                     ['status' => 'present']
                 );
-        } else if ($time >= '11:00:00' && $time <= '12:30:00') {
+        } else if ($time >= $attendanceRule->break_starts && $time <= $attendanceRule->break_ends) {
             AttendanceDetail::query()
                 ->updateOrCreate(
                     ['attendance_id' => $attendance_id, 'status' => 'break'],
                     ['status' => 'break']
                 );
-        } else if ($time >= '12:30:00' && $time <= '13:00:00') {
+        } else if ($time >= $attendanceRule->return_starts && $time <= $attendanceRule->return_ends) {
             AttendanceDetail::query()
                 ->updateOrCreate(
                     ['attendance_id' => $attendance_id, 'status' => 'return_break'],
                     ['status' => 'return_break']
                 );
-        } else if ($time >= '15:00:00' && $time <= '20:00:00') {
+        } else if ($time >= $attendanceRule->checkout_starts && $time <= $attendanceRule->checkout_ends) {
             AttendanceDetail::query()
                 ->updateOrCreate(
                     ['attendance_id' => $attendance_id, 'status' => 'return'],
