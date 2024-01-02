@@ -119,6 +119,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('data-jurnal', function () {return view('master.data-collection.index');});
 
         // end
+
+        Route::post('attendance-rule', [AbsensiadminController::class, 'attendanceRule'])->name('attendance.rule');
+
         Route::delete('approval/{approval}/delete', [ApprovalController::class, 'destroy'])->name('approval.delete');
         Route::get('/cari_siswa', [App\Http\Controllers\PiketController::class, 'cari'])->name('cari_siswa');
         Route::post('absen' ,[AbsensiSiswaController::class ,'absen'])->name('absen.index');

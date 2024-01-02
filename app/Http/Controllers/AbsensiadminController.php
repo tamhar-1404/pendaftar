@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\AttendanceRuleRequest;
 use Illuminate\Http\Request;
 use App\Models\Absensiadmin;
 use App\Models\ApprovalIzin;
 use App\Http\Requests\StoreAbsensiadminRequest;
 use App\Http\Requests\UpdateAbsensiadminRequest;
+use App\Models\AttendanceRule;
 use App\Models\Siswa;
 use Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -16,6 +19,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 use Carbon\Carbon; // Import Carbon untuk bekerja dengan tanggal
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class AbsensiadminController extends Controller
 {
@@ -502,5 +506,18 @@ public function absen_pdf1(Request $request)  {
     $pdf = Pdf::loadView('desain_pdf.absensi', ['data' => $data]);
     return $pdf->download('absen_siswa.pdf');
 }
+
+    /**
+     * attendanceRule
+     *
+     * @param  mixed $request
+     * @return RedirectResponse
+     */
+    public function attendanceRule(AttendanceRuleRequest $request): RedirectResponse
+    {
+        $data = $request->validated();
+        AttendanceRule::query()->updateOrCreate(['day' => $data['day']], $data);
+        return redirect()->back()->with('success', 'Berhasil memperbarui');
+    }
 
 }

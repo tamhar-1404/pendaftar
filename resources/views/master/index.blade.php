@@ -43,7 +43,7 @@
                     <div class="tab-content mt-4">
                         <div class="tab-pane active" id="senin" role="tabpanel">
                             <div class="table-responsive" data-simplebar style="max-height: 330px;">
-                                <form action="" method="post">
+                                <form action="{{ route('attendance.rule') }}" method="post">
                                     <input type="hidden" name="day" value="monday">
                                     @csrf
                                     @method('POST')
@@ -202,7 +202,7 @@
                         </div>
                         <div class="tab-pane" id="selasa" role="tabpanel">
                             <div class="table-responsive" data-simplebar style="max-height: 330px;">
-                                <form action="" method="post">
+                                <form action="{{ route('attendance.rule') }}" method="post">
                                     <input type="hidden" name="day" value="tuesday">
                                     @csrf
                                     @method('POST')
@@ -361,7 +361,7 @@
                         </div>
                         <div class="tab-pane" id="rabu" role="tabpanel">
                             <div class="table-responsive" data-simplebar style="max-height: 330px;">
-                                <form action="" method="post">
+                                <form action="{{ route('attendance.rule') }}" method="post">
                                     <input type="hidden" name="day" value="wednesday">
                                     @csrf
                                     @method('POST')
@@ -520,7 +520,7 @@
                         </div>
                         <div class="tab-pane" id="kamis" role="tabpanel">
                             <div class="table-responsive" data-simplebar style="max-height: 330px;">
-                                <form action="" method="post">
+                                <form action="{{ route('attendance.rule') }}" method="post">
                                     <input type="hidden" name="day" value="thursday">
                                     @csrf
                                     @method('POST')
@@ -679,7 +679,7 @@
                         </div>
                         <div class="tab-pane" id="jumat" role="tabpanel">
                             <div class="table-responsive" data-simplebar style="max-height: 330px;">
-                                <form action="" method="post">
+                                <form action="{{ route('attendance.rule') }}" method="post">
                                     <input type="hidden" name="day" value="friday">
                                     @csrf
                                     @method('POST')

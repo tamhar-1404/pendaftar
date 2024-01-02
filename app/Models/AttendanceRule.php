@@ -13,6 +13,5 @@ class AttendanceRule extends Model
     public $incrementing = false;
     public $keyType = 'char';
 
-    protected $fillable = ['id', 'day', 'checkin_starts', 'checkin_ends', 'break_starts', 'break_ends', 'checkout_starts', 'return_starts', 'return_ends', 'checkout_ends'];
     protected $guarded = [];
 }
