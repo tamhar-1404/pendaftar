@@ -183,7 +183,7 @@
                                             class="card-logo-light">
                                     </a>
                                 </div>
-                                <div id="basic-example">
+                                <div id="basic-example" class="mt-5">
                                     <!-- Seller Details -->
                                     <h3>Seller Details</h3>
                                     <section>
@@ -352,7 +352,13 @@
                                         </div>
                                     </section>
                                 </div>
-
+                                <div class="mt-4 text-center text-xs+">
+                                    <p class="line-clamp-1">
+                                        <span>Sudah punya Akun?</span>
+                                        <a class="text-blue-400 transition-colors hover:text-info-focus dark:text-accent-light dark:hover:text-accent"
+                                            href="{{ route('auth-login') }}">Login</a>
+                                    </p>
+                                </div>
                                 <div class="mt-4 mt-md-5 text-center">
                                     <p class="mb-0">©
                                         <script>
