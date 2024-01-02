@@ -187,18 +187,18 @@
                                     <!-- Seller Details -->
                                     <h3>Seller Details</h3>
                                     <section>
-                                        <form>
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label for="basicpill-firstname-input">First name</label>
-                                                        <input type="text" class="form-control" id="basicpill-firstname-input" placeholder="Enter Your First Name">
+                                                        <label for="basicpill-firstname-input">Nama</label>
+                                                        <input type="text" class="form-control" id="basicpill-firstname-input" name="name" placeholder="Nama">
                                                     </div>
                                                 </div>
+
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label for="basicpill-lastname-input">Last name</label>
-                                                        <input type="text" class="form-control" id="basicpill-lastname-input" placeholder="Enter Your Last Name">
+                                                        <label for="basicpill-lastname-input">NISN / NIM</label>
+                                                        <input type="text" class="form-control" id="basicpill-lastname-input" name="nisn" placeholder="Tempat">
                                                     </div>
                                                 </div>
                                             </div>
@@ -206,131 +206,193 @@
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label for="basicpill-phoneno-input">Phone</label>
-                                                        <input type="text" class="form-control" id="basicpill-phoneno-input" placeholder="Enter Your Phone No.">
+                                                        <label for="basicpill-phoneno-input">Tempat</label>
+                                                        <input type="text" class="form-control" id="basicpill-phoneno-input" name="tempat" placeholder="NISN / NIM">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label for="basicpill-email-input">Email</label>
-                                                        <input type="email" class="form-control" id="basicpill-email-input" placeholder="Enter Your Email ID">
+                                                        <label for="basicpill-email-input">Tanggal</label>
+                                                        <input type="date" class="form-control" name="tanggal" id="basicpill-email-input">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="mb-3">
-                                                        <label for="basicpill-address-input">Address</label>
-                                                        <textarea id="basicpill-address-input" class="form-control" rows="2" placeholder="Enter Your Address"></textarea>
+                                                        <label for="basicpill-address-input">Kelas</label>
+                                                        <select class="form-select" name="kelas">
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
+                                                            <option value="13">13</option>
+                                                            <option value="Mahasiswa">Mahasiswa</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
+                                                <h5 class="font-size-14 mb-2">Jenis Kelamin</h5>
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="radio" name="jeniskelamin" id="formRadios1" checked="" value="Perempuan">
+                                                    <label class="form-check-label" for="formRadios1">
+                                                        Perempuan
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="jeniskelamin" id="formRadios2" value="Laki laki">
+                                                    <label class="form-check-label" for="formRadios2">
+                                                        Laki laki
+                                                    </label>
+                                                </div>
                                     </section>
 
                                     <!-- Company Document -->
                                     <h3>Company</h3>
                                     <section>
-                                        <form>
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label for="basicpill-pancard-input">PAN Card</label>
-                                                        <input type="text" class="form-control" id="basicpill-pancard-input" placeholder="Enter Your PAN No.">
+                                                        <label for="basicpill-pancard-input">Alamat</label>
+                                                        <input type="text" class="form-control" id="basicpill-pancard-input" name="alamat">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label for="basicpill-vatno-input">VAT/TIN No.</label>
-                                                        <input type="text" class="form-control" id="basicpill-vatno-input"  placeholder="Enter Your VAT/TIN No.">
+                                                        <label for="basicpill-vatno-input">Nomor</label>
+                                                        <input type="number" class="form-control" id="basicpill-vatno-input" name="no">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label for="basicpill-cstno-input">CST No.</label>
-                                                        <input type="text" class="form-control" id="basicpill-cstno-input" placeholder="Enter Your CST No.">
+                                                        <label for="basicpill-address-input">Jurusan</label>
+                                                        <select class="form-select" name="jurusan">
+                                                            <option value="RPL">RPL</option>
+                                                            <option value="Multimedia">Multimedia</option>
+                                                            <option value="TI">TI</option>
+                                                        </select>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label for="basicpill-servicetax-input">Service Tax No.</label>
-                                                        <input type="text" class="form-control" id="basicpill-servicetax-input" placeholder="Enter Your Service Tax No.">
+                                                        <label for="basicpill-servicetax-input">Sekolah / Universitas</label>
+                                                        <input type="text" class="form-control" id="basicpill-servicetax-input">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label for="basicpill-companyuin-input">Company UIN</label>
-                                                        <input type="text" class="form-control" id="basicpill-companyuin-input" placeholder="Enter Your Company UIN">
+                                                        <label for="basicpill-companyuin-input">Mulai PKL</label>
+                                                        <input type="date" class="form-control" name="magang_awal" id="basicpill-companyuin-input">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label for="basicpill-declaration-input">Declaration</label>
-                                                        <input type="text" class="form-control" id="basicpill-Declaration-input" placeholder="Declaration Details">
+                                                        <label for="basicpill-declaration-input">Akhir PKL</label>
+                                                        <input type="date" class="form-control" name="magang_akhir" id="basicpill-Declaration-input" placeholder="Declaration Details">
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
                                     </section>
 
                                     <!-- Bank Details -->
                                     <h3>Bank Details</h3>
                                     <section>
                                         <div>
-                                            <form>
+
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
-                                                            <label for="basicpill-namecard-input">Name on Card</label>
-                                                            <input type="text" class="form-control" id="basicpill-namecard-input" placeholder="Enter Your Name on Card">
+                                                            <div>
+                                                                <label for="formFileSm" class="form-label">Foto siswa</label>
+                                                                <input class="form-control form-control-sm" id="formFileSm" type="file" name="foto_siswa">
+                                                            </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
-                                                            <label>Credit Card Type</label>
-                                                            <select class="form-select">
-                                                                  <option selected>Select Card Type</option>
-                                                                  <option value="AE">American Express</option>
-                                                                  <option value="VI">Visa</option>
-                                                                  <option value="MC">MasterCard</option>
-                                                                  <option value="DI">Discover</option>
-                                                            </select>
+                                                            <div>
+                                                                <label for="formFileSm" class="form-label">Surat Pernyataan Diri</label>
+                                                                <input class="form-control form-control-sm" id="formFileSm" type="file" name="sp_diri">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
-                                                            <label for="basicpill-cardno-input">Credit Card Number</label>
-                                                            <input type="text" class="form-control" id="basicpill-cardno-input"  placeholder="Credit Card Number">
+                                                            <div>
+                                                                <label for="formFileSm" class="form-label">Surat Pernyataan Orang Tua</label>
+                                                                <input class="form-control form-control-sm" id="formFileSm" type="file" name="sp_ortu">
+                                                            </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
-                                                            <label for="basicpill-card-verification-input">Card Verification Number</label>
-                                                            <input type="text" class="form-control" id="basicpill-card-verification-input" placeholder="Credit Verification Number">
+                                                            <div>
+                                                                <label for="formFileSm" class="form-label">SKCK (opsional)</label>
+                                                                <input class="form-control form-control-sm" id="formFileSm" type="file" name="skck">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
-                                                            <label for="basicpill-expiration-input">Expiration Date</label>
-                                                            <input type="text" class="form-control" id="basicpill-expiration-input" placeholder="Card Expiration Date">
+                                                            <div>
+                                                                <label for="formFileSm" class="form-label">CV</label>
+                                                                <input class="form-control form-control-sm" id="formFileSm" type="file" name="cv">
+                                                            </div>
                                                         </div>
                                                     </div>
 
                                                 </div>
-                                            </form>
+
+                                          </div>
+                                    </section>
+                                    <h3>Bank Details</h3>
+                                    <section>
+                                        <div>
+
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <div>
+                                                                <label for="basicpill-phoneno-input">Email</label>
+                                                                <input type="email" class="form-control" id="basicpill-phoneno-input" name="email">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <div>
+                                                                <label for="basicpill-phoneno-input">Password</label>
+                                                        <input type="password" class="form-control" id="basicpill-phoneno-input" name="password">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <div>
+                                                                <label for="basicpill-phoneno-input">Konfirmasi password</label>
+                                                        <input type="password" class="form-control" id="basicpill-phoneno-input" name="confirm-password">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
                                           </div>
                                     </section>
 
