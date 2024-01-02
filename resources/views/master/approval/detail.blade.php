@@ -108,13 +108,22 @@
                                         <div class="col-6">
                                             <h4 class="mt-1 mb-1">{{ $aproval->name }}</h4>
                                         </div>
-                                        <div class="col-6 text-end ">
-                                            <button type="button" class="btn btn-danger waves-effect waves-light mt-2 me-1">
-                                                <i class="bx bx-cart me-2"></i> Tolak
-                                            </button>
-                                            <button type="button" class="btn btn-success waves-effect  mt-2 waves-light">
-                                                <i class="bx bx-shopping-bag me-2"></i>Terima
-                                            </button>
+                                        <div class="col-6 text-end  d-flex justify-end float-right">
+                                            <form id="reject-form-{{ $aproval->id }}" class="ms-auto"
+                                                action="{{ route('aproval.tolak', $aproval->id) }}" method="POST"
+                                                onsubmit="return confirmReject(event)">
+                                                @csrf
+                                                <input type="hidden" name="alasan" id="alasan-input-{{ $aproval->id }}">
+                                                <button type="submit" class="btn btn-danger waves-effect waves-light mt-2 me-1">
+                                                     Tolak
+                                                </button>
+                                            </form>
+                                            <form id="confirm-form-{{ $aproval->id }}"
+                                                action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">@csrf
+                                                <button type="submit" class="btn btn-success waves-effect  mt-2 waves-light">
+                                                    </i>Terima
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
 
@@ -198,11 +207,27 @@
                                             <h6 class="mb-1">Pernyataan Diri Sendiri :</h6>
                                             <div class="image-container">
                                                 <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_diri) }}" alt="" class="hover-image">
-                                                <div class="overlay" onclick="openModal(this)">
+                                                <div class="overlay" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center-sp-diri">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div>
+                                                <div class="modal fade bs-example-modal-center-sp-diri" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Pernyataan Diri Sendiri</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body text-center">
+                                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_diri) }}" alt="" class="hover-image">
+                                                                <button type="button" class="btn btn-primary waves-effect waves-light mt-2 me-1">
+                                                                    Download
+                                                                </button>
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal-dialog -->
+                                                </div><!-- /.modal -->
                                             </div>
                                         </div>
                                     </div>
@@ -217,12 +242,28 @@
                                             <h6 class="mb-1">Pernyataan Orang Tua :</h6>
                                             <div class="image-container">
                                                 <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_diri) }}" alt="" class="hover-image">
-                                                <div class="overlay ">
+                                                <div class="overlay " data-bs-toggle="modal" data-bs-target=".bs-example-modal-center-sp-ortu">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="modal fade bs-example-modal-center-sp-ortu" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Pernyataan Diri Sendiri</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body text-center">
+                                                            <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_diri) }}" alt="" class="hover-image">
+                                                            <button type="button" class="btn btn-primary waves-effect waves-light mt-2 me-1">
+                                                                Download
+                                                            </button>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
                                         </div>
 
                                     </div>
@@ -237,11 +278,27 @@
                                             <h6 class="mb-1">CV :</h6>
                                             <div class="image-container">
                                                 <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_diri) }}" alt="" class="hover-image">
-                                                <div class="overlay">
+                                                <div class="overlay" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center-cv">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div>
+                                                <div class="modal fade bs-example-modal-center-cv" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Pernyataan Diri Sendiri</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body text-center">
+                                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_diri) }}" alt="" class="hover-image">
+                                                                <button type="button" class="btn btn-primary waves-effect waves-light mt-2 me-1">
+                                                                    Download
+                                                                </button>
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal-dialog -->
+                                                </div><!-- /.modal -->
                                             </div>
                                         </div>
 
@@ -258,11 +315,30 @@
                                             @if (  $aproval->skck != null)
                                             <div class="image-container">
                                                 <img src="{{ asset('storage/pendaftaran/'. $aproval->skck) }}" alt="" class="hover-image">
-                                                <div class="overlay">
+                                                <div class="overlay" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center-Skck">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div>
+                                                <div class="modal fade bs-example-modal-center-skck" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Pernyataan Diri Sendiri</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body text-center">
+                                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_diri) }}" alt="" class="hover-image">
+                                                                <a id="downloadLink" class="download-link hidden" href="#"
+                                                                download>>
+                                                                <button type="button" class="btn btn-primary waves-effect waves-light mt-2 me-1 download-button">
+                                                                    Download
+                                                                </button>
+                                                                </a>
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal-dialog -->
+                                                </div><!-- /.modal -->
                                             </div>
                                             @else
                                             <div class="image-container">
@@ -286,4 +362,80 @@
             </div>
         </div>
         <!-- end row -->
+        <script>
+            document.getElementById('confirm-form-{{ $aproval->id }}').addEventListener('submit', function(event) {
+                event.preventDefault();
+                Swal.fire({
+                    title: 'Konfirmasi',
+                    text: 'Apakah Anda yakin ingin menerima siswa ini?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, terima!',
+                    cancelButtonText: 'Batal',
+                    background: '#f5f5f5',
+                    customClass: {
+                        icon: 'swal-icon',
+                        confirmButton: 'swal-button swal-button--confirm',
+                        cancelButton: 'swal-button swal-button--cancel'
+                    },
+                    animation: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Sukses',
+                            text: 'Siswa berhasil diterima',
+                            icon: 'success',
+                            timer: 2000,
+                            showConfirmButton: false,
+                            background: '#f5f5f5',
+                            customClass: {
+                                icon: 'swal-icon',
+                                popup: 'swal-popup',
+                                title: 'swal-title',
+                                confirmButton: 'swal-button swal-button--confirm'
+                            },
+                            animation: false
+                        });
+                        setTimeout(() => {
+                            this.submit();
+                        }, 2000);
+                    }
+                });
+            });
+        </script>
+           <script>
+            function confirmReject(event) {
+                event.preventDefault();
+
+                Swal.fire({
+                    title: 'Penolakan',
+                    input: 'text',
+                    inputLabel: 'Masukkan alasan penolakan:',
+                    showCancelButton: true,
+                    confirmButtonText: 'Kirim',
+                    cancelButtonText: 'Batal',
+                    confirmButtonColor: '#00B7FF',
+                    cancelButtonColor: '#FF0000',
+                    allowOutsideClick: false,
+                    inputValidator: (value) => {
+                        if (!value || value.trim() === '') {
+                            return 'Harap masukkan alasan penolakan.';
+                        }
+                    },
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById("alasan-input-{{ $aproval->id }}").value = result.value;
+
+                        Swal.fire({
+                            title: 'Data berhasil ditolak',
+                            icon: 'success',
+                        }).then(() => {
+                            event.target.submit();
+                        });
+                    }
+                });
+            }
+        </script>
 @endsection
