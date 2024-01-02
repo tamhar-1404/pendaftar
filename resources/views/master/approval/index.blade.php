@@ -20,11 +20,30 @@
                         <div class="">
                             <div class="d-flex justify-content-header gap-2">
                                 <div class="">
-                                    <button class="btn btn-info">Edit Limit</button>
+                                    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit Limit</button>
                                 </div>
                                 <div class="">
                                     <p class=" mt-2 text-dark">Jumlah limit {{ $limit }} dan sisa limit saat ini {{ $sisalimit }}</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <form action="">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input class="form-control" type="number" name="limit" min="1" placeholder="Enter Number" id="example-number-input">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -51,9 +70,13 @@
                                         <td>{{ $approval->kelas }}</td>
                                         <td>{{ Carbon\Carbon::parse($approval->magang_awal)->locale('id_ID')->isoFormat('DD MMMM Y') }} - {{ Carbon\Carbon::parse($approval->magang_akhir)->locale('id_ID')->isoFormat('DD MMMM Y') }}</td>
                                         <td>{{ $approval->sekolah }}</td>
-                                        <td><button class="btn btn-sm btn-outline-info">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M12 16q1.875 0 3.188-1.313T16.5 11.5q0-1.875-1.313-3.188T12 7q-1.875 0-3.188 1.313T7.5 11.5q0 1.875 1.313 3.188T12 16Zm0-1.8q-1.125 0-1.913-.788T9.3 11.5q0-1.125.788-1.913T12 8.8q1.125 0 1.913.788T14.7 11.5q0 1.125-.787 1.913T12 14.2Zm0 4.8q-3.65 0-6.65-2.038T1 11.5q1.35-3.425 4.35-5.463T12 4q3.65 0 6.65 2.038T23 11.5q-1.35 3.425-4.35 5.463T12 19Zm0-7.5Zm0 5.5q2.825 0 5.188-1.488T20.8 11.5q-1.25-2.525-3.613-4.013T12 6Q9.175 6 6.812 7.488T3.2 11.5q1.25 2.525 3.613 4.013T12 17Z"/></svg>
-                                        </button></td>
+                                        <td>
+                                            <a href="{{ route('aproval.edit', $approval->id) }}">
+                                                <button class="btn btn-sm btn-outline-info">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M12 16q1.875 0 3.188-1.313T16.5 11.5q0-1.875-1.313-3.188T12 7q-1.875 0-3.188 1.313T7.5 11.5q0 1.875 1.313 3.188T12 16Zm0-1.8q-1.125 0-1.913-.788T9.3 11.5q0-1.125.788-1.913T12 8.8q1.125 0 1.913.788T14.7 11.5q0 1.125-.787 1.913T12 14.2Zm0 4.8q-3.65 0-6.65-2.038T1 11.5q1.35-3.425 4.35-5.463T12 4q3.65 0 6.65 2.038T23 11.5q-1.35 3.425-4.35 5.463T12 19Zm0-7.5Zm0 5.5q2.825 0 5.188-1.488T20.8 11.5q-1.25-2.525-3.613-4.013T12 6Q9.175 6 6.812 7.488T3.2 11.5q1.25 2.525 3.613 4.013T12 17Z"/></svg>
+                                            </button>
+                                            </a>
+                                        </td>
                                     </tr>
                                     @empty
                                     <tr>
