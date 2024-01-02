@@ -65,7 +65,42 @@
 </head>
 
 <body class="auth-body-bg">
-
+    @if (session()->has('limitbang'))
+        <script>
+            toastr.error("{{ session('limitbang') }}");
+        </script>
+    @endif
+    @if (session()->has('berhasil_daftar'))
+        <script>
+            Swal.fire({
+                title: "Berhasil!",
+                text: "{{ session('berhasil_daftar') }}",
+                icon: "info",
+                showCancelButton: false,
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "OK",
+                timer: 3000
+            });
+        </script>
+    @endif
+    @if (session()->has('success'))
+        <script>
+            Swal.fire(
+                'Berhasil!',
+                "{{ session('success') }}",
+                'success'
+            )
+        </script>
+    @endif
+    @if (session()->has('error'))
+        <script>
+            Swal.fire(
+                'Oops..!',
+                "{{ session('error') }}",
+                'error'
+            )
+        </script>
+    @endif
     <div>
         <div class="container-fluid p-0">
             <div class="row g-0">
@@ -178,7 +213,7 @@
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                             <div class="mt-3 d-grid">
-                                                <button class="btn btn-primary waves-effect waves-light"
+                                                <button class="btn btn-info waves-effect waves-light"
                                                     type="submit">Log In</button>
                                             </div>
                                         </form>

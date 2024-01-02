@@ -20,11 +20,30 @@
                         <div class="">
                             <div class="d-flex justify-content-header gap-2">
                                 <div class="">
-                                    <button class="btn btn-info">Edit Limit</button>
+                                    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit Limit</button>
                                 </div>
                                 <div class="">
                                     <p class=" mt-2 text-dark">Jumlah limit {{ $limit }} dan sisa limit saat ini {{ $sisalimit }}</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <form action="">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input class="form-control" type="number" name="limit" min="1" placeholder="Enter Number" id="example-number-input">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

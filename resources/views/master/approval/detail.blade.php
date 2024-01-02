@@ -109,7 +109,7 @@
                                             <h4 class="mt-1 mb-1">{{ $aproval->name }}</h4>
                                         </div>
                                         <div class="col-6 text-end  d-flex justify-end float-right">
-                                            <form id="reject-form-{{ $aproval->id }}"
+                                            <form id="reject-form-{{ $aproval->id }}" class="ms-auto"
                                                 action="{{ route('aproval.tolak', $aproval->id) }}" method="POST"
                                                 onsubmit="return confirmReject(event)">
                                                 @csrf
