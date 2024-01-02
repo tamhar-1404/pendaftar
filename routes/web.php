@@ -92,7 +92,7 @@ Route::get('/', function () {return view('landing-page.index');});
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
         // admin baru
-        Route::get('master', function () {return view('master.index');});
+        Route::get('master', function () {return view('master.index');})->name('master');
         Route::get('master-jurnal', function () {return view('master.jurnal');});
         Route::get('data-tertib', function () {return view('master.regulation.index');});
         Route::get('laporan-siswa', function () {return view('master.regulation.report-student');});
