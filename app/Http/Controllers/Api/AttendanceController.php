@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\AttendanceResource;
 use App\Models\Anggota_piket;
 use App\Models\ApprovalIzin;
+use App\Models\Attendance;
+use App\Models\AttendanceDetail;
+use App\Models\Siswa;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -38,6 +42,7 @@ class AttendanceController extends Controller
      */
     public function store(): JsonResponse
     {
+
         $hariIni = Carbon::now()->format('l');
         if ($hariIni == 'Saturday' OR $hariIni == 'Sunday') {
             return ResponseHelper::error(null, "Hari ini libur");
@@ -152,5 +157,63 @@ class AttendanceController extends Controller
         ]);
 
         return ResponseHelper::success(null, "Berhasil mengajukan izin");
+    }
+
+    private function getStudentByRfid($rfid): mixed
+    {
+        $user = User::query()
+            ->where('RFID', $rfid)
+            ->first();
+        return Siswa::query()
+            ->findOrFail($user->siswa_id);
+    }
+
+    /**
+     * attendanceByRfid
+     *
+     * @param  mixed $rfid
+     * @return JsonResponse
+     */
+    public function attendanceByRfid($rfid): JsonResponse
+    {
+        $student = $this->getStudentByRfid($rfid);
+        if (!$attendance = Attendance::query()->where(['student_id' => $student->id])->whereDate('created_at', now()->format('Y-m-d'))->first()) {
+            $attendance = Attendance::query()
+                ->create(['student_id' => $student->id]);
+        }
+
+        $attendance_id = $attendance->id;
+        $time = now()->format('H:i:s');
+        if ($time >= '07:00:00' && $time <= '08:00:00') {
+            AttendanceDetail::query()
+                ->updateOrCreate(
+                    ['attendance_id' => $attendance_id, 'status' => 'present'],
+                    ['status' => 'present']
+                );
+        } else if ($time >= '11:00:00' && $time <= '12:30:00') {
+            AttendanceDetail::query()
+                ->updateOrCreate(
+                    ['attendance_id' => $attendance_id, 'status' => 'break'],
+                    ['status' => 'break']
+                );
+        } else if ($time >= '12:30:00' && $time <= '13:00:00') {
+            AttendanceDetail::query()
+                ->updateOrCreate(
+                    ['attendance_id' => $attendance_id, 'status' => 'return_break'],
+                    ['status' => 'return_break']
+                );
+        } else if ($time >= '15:00:00' && $time <= '20:00:00') {
+            AttendanceDetail::query()
+                ->updateOrCreate(
+                    ['attendance_id' => $attendance_id, 'status' => 'return'],
+                    ['status' => 'return']
+                );
+        }
+        else {
+            return ResponseHelper::error(null, "Belum waktunya absen");
+        }
+
+        return ResponseHelper::success(null, "Berhasil absen");
+
     }
 }

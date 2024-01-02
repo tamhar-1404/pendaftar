@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('login', [LoginController::class, 'login']);
+Route::post('attendance-rfid/{rfid}', [AttendanceController::class, 'attendanceByRfid']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [LoginController::class, 'logout']);
     Route::get('user', [UserController::class, 'user']);

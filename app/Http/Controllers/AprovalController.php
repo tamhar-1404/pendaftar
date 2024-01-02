@@ -109,14 +109,14 @@ public function confirm(Aproval $aproval)
 {
     if ($aproval->status === 'menunggu') {
         // Send DemoMail to the email associated with $aproval
-        Mail::to($aproval->email)->send(new DemoMail($aproval));
+        // Mail::to($aproval->email)->send(new DemoMail($aproval));
 
         // Get all users with role 'guru' and the same school as $aproval
         $users = User::where('role', 'guru')->where('sekolah', $aproval->sekolah)->get();
 
         // Send Guru_email to each guru's email
         foreach ($users as $user) {
-            Mail::to($user->email)->send(new Guru_email($aproval->name));
+            // Mail::to($user->email)->send(new Guru_email($aproval->name));
         }
 
         // Check if there are any records in Tolak with the same nisn as $aproval, and delete them

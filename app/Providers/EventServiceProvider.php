@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\AttendanceRule;
 use App\Models\StudentFile;
+use App\Observers\AttendanceRuleObserver;
 use App\Observers\StudentFileObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -30,6 +32,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         StudentFile::observe(StudentFileObserver::class);
+        AttendanceRule::observe(AttendanceRuleObserver::class);
     }
 
     /**
