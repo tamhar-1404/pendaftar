@@ -51,27 +51,23 @@ use App\Http\Controllers\TolakController;
 |
 */
 
+Route::get('auth-login', function () {return view('auth.login');});
+Route::get('auth-register', function () {return view('auth.register');});
+
 // Admin
 Route::post('/find_rfid', [App\Http\Controllers\GetuserController::class, 'find_rfid'])->name('find_rfid');
 Route::post('/check_password', [App\Http\Controllers\GetuserController::class, 'check_password'])->name('check_password');
 Route::post('/cari_barang', [App\Http\Controllers\TransaksiController::class, 'cari'])->name('cari_barang');
 Route::post('/sedikit', [App\Http\Controllers\PiketController::class, 'dikit'])->name('sedikit');
 Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
-
 Route::put('/saldo/{user}', [SiswamagangController::class, 'saldo'])->name('saldo');
 Route::get('lihat' , [AbsensiSiswaController::class , 'lihat'])->name('lihat');
-
-
 // akhir admin
 
 // Siswa
 // Route::get('/print', [JurnalsiswaController::class, 'print']);
 // Route::get('/getData', [JurnalsiswaController::class, 'getData']);
 // Route::get('/txt', [JurnalsiswaController::class, 'printjurnal']);
-
-
-
-
 // akhir siswa
 
 // login

@@ -20,13 +20,10 @@
             <!-- End Header menu for mobile -->
             <ul class="menu">
                 <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="about-us.html">Galery</a></li>
-                <li><a href="services.html">FAQ</a></li>
-                <li><a href="pricing.html">Testimoni</a></li>
-            </ul>
-            <ul class="attributes">
-                <li class="header__button"><a href="{{ route('login.index') }}"
-                        class="btn btn-info btn-rounded btn-xs btn-header">Login</a></li>
+                <li><a href="javascript:void(0)">Galery</a></li>
+                <li><a href="javascript:void(0)">FAQ</a></li>
+                <li><a href="javascript:void(0)">Testimoni</a></li>
+                <li><a href="{{ route('login.index') }}" class="btn">Login</a></li>
             </ul>
         </nav>
     </header>

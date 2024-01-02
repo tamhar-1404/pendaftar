@@ -65,10 +65,16 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-5">
                     <div class="footer__widget">
-                        <img src="assets/brand/logo.png" class="footer__widget-logo" alt="Smooth" />
-                        <p>St.Kemacetan timur No.13 Block Q2 Jakarta - Indonesia</p>
+                        <img src="{{ asset('assets-landing/images/logolandingpng.png') }}" class="logo" height="35"
+                            alt="Smooth" /> <br> <br>
+
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.9521457686383!2d112.60202044519203!3d-7.900068658338178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7881c2c4637501%3A0x10433eaf1fb2fb4c!2sHummasoft%20(Hummatech%20Digital%20Indonesia)!5e0!3m2!1sid!2sid!4v1704185895366!5m2!1sid!2sid"
+                            width="450" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+
                         <div class="footer__widget-contact">
                             <i class="fa fa-phone"></i>
                             <p>(021) 111-222-333-44</p>
@@ -134,7 +140,7 @@
                     <div class="footer__subfooter">
                         <div class="row">
                             <div class="col-md-6">
-                                <p>© <a href="#">99webpage</a> | Web Design Indonesia 2020. All Rights Reserved.
+                                <p>© <a href="javascript:void(0)">Pkl.hummatech.com</a> | Design & Develop by Hummatech.
                                 </p>
                             </div>
                             <div class="col-md-6 text-right">
@@ -172,4 +178,5 @@
     <!-- Template custome JavaScript -->
     <script src="{{ asset('assets-landing/js/scripts.min.js') }}"></script>
 </body>
+
 </html>

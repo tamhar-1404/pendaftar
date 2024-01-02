@@ -76,7 +76,7 @@
         }
 
         body.loaded #preloader {
-            opacity: 0;
+            display: none;
         }
     </style>
     <!-- <body data-layout="horizontal" data-topbar="dark"> -->
