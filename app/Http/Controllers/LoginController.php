@@ -192,8 +192,12 @@ public function store(Request $request)
         $cv = $request->file('cv');
 
         $foto_siswa->storeAs('public/pendaftaran', $foto_siswa->hashName());
-        $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
-        $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
+        if ($request->hasFile('sp_diri')) {
+            $sp_diri->storeAs('public/pendaftaran', $sp_diri->hashName());
+        }
+        if ($request->hasFile('sp_ortu')) {
+            $sp_ortu->storeAs('public/pendaftaran', $sp_ortu->hashName());
+        }
         $cv->storeAs('public/pendaftaran', $cv->hashName());
         if ($skck !== null) {
             $skck->storeAs('public/pendaftaran', $skck->hashName());
@@ -212,8 +216,8 @@ public function store(Request $request)
             'magang_awal' => $request->magang_awal,
             'magang_akhir' => $request->magang_akhir,
             'foto_siswa' => $foto_siswa->hashName(),
-            'sp_diri' => $sp_diri->hashName(),
-            'sp_ortu' => $sp_ortu->hashName(),
+            'sp_diri' => ($sp_diri != null) ? $sp_diri->hashName() : null,
+            'sp_ortu' => ($sp_ortu != null) ? $sp_ortu->hashName() : null,
             'skck' => ($skck !== null) ? $skck->hashName() : null,
             'cv' => $cv->hashName(),
             'email' => $request->email,

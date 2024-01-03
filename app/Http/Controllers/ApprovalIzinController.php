@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests\StoreApprovalIzinRequest;
 use App\Http\Requests\UpdateApprovalIzinRequest;
+use App\Models\Attendance;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
@@ -201,6 +202,12 @@ class ApprovalIzinController extends Controller
                     'dari' =>  $tanggalMulai->toDateString(),
                 ])->first();
                 if (!$existingRecord) {
+                    Attendance::query()
+                        ->create([
+                            'student_id' => $approvalIzin->siswa_id,
+                            'status' => $approvalIzin->keterangan,
+                            'created_at' => $tanggalMulai->toDateString(),
+                        ]);
                     ApprovalIzin::create([
                         'siswa_id' => $izin->Siswa->id,
                         'dari' =>  $tanggalMulai->toDateString(),

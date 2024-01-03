@@ -211,7 +211,7 @@
                                                         <label for="basicpill-lastname-input">NISN / NIM</label>
                                                         <input type="text" class="form-control"
                                                             id="basicpill-lastname-input" name="nisn"
-                                                            placeholder="Tempat">
+                                                            placeholder="NISN">
                                                         @error('nisn')
                                                             <p class="text-danger">
                                                                 {{ $message }}
@@ -227,7 +227,7 @@
                                                         <label for="basicpill-phoneno-input">Tempat</label>
                                                         <input type="text" class="form-control"
                                                             id="basicpill-phoneno-input" name="tempat"
-                                                            placeholder="NISN / NIM">
+                                                            placeholder="Tempat">
                                                         @error('tempat')
                                                             <p class="text-danger">
                                                                 {{ $message }}
@@ -277,7 +277,7 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="jeniskelamin"
-                                                    id="formRadios2" value="Laki laki">
+                                                    id="formRadios2" value="Laki-laki">
                                                 <label class="form-check-label" for="formRadios2">
                                                     Laki laki
                                                 </label>
