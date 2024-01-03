@@ -10,12 +10,12 @@
         <div class="row mt-3">
             <div class="col">
                 <div class="text-center alert alert-danger fs-6" role="alert">
-                    Belum Hadir 
+                    belum Hadir
                 </div>
             </div>
             <div class="col">
                 <div class="alert text-center alert-warning fs-6" role="alert">
-                    Izin, Sakit, Telat, 
+                    izin, sakit, telat,
                 </div>
             </div>
             <div class="col">
@@ -48,6 +48,7 @@
                             <th>Istirahat</th>
                             <th>Kembali</th>
                             <th>Pulang</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -93,6 +94,10 @@
                                         </div>
                                         @endif
                                     @endforeach
+                                @else
+                                <div class="btn btn-soft-danger waves-effect waves-light">
+                                    Belum Hadir
+                                </div>
                                 @endif
                             </td>
                             <td>
@@ -104,6 +109,10 @@
                                         </div>
                                         @endif
                                     @endforeach
+                                @else
+                                <div class="btn btn-soft-danger waves-effect waves-light">
+                                    Belum Hadir
+                                </div>
                                 @endif
                             </td>
                             <td>
@@ -121,6 +130,10 @@
                                             @endif
                                         @endif
                                     @endforeach
+                                @else
+                                <div class="btn btn-soft-danger waves-effect waves-light">
+                                    Belum Hadir
+                                </div>
                                 @endif
                             </td>
                             <td>
@@ -132,6 +145,15 @@
                                         </div>
                                         @endif
                                     @endforeach
+                                @else
+                                <div class="btn btn-soft-danger waves-effect waves-light">
+                                    Belum Hadir
+                                </div>
+                                @endif
+                            </td>
+                            <td>
+                                @if (isset($student->attendances[0]))
+                                <a href="{{ route('attendance.detail', $student->attendances[0]->id) }}" class="btn btn-primary waves-effect waves-light">Detail</a>
                                 @endif
                             </td>
                         </tr>

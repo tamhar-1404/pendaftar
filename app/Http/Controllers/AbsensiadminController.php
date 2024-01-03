@@ -537,6 +537,7 @@ public function absen_pdf1(Request $request)  {
                 $query->where('name', 'LIKE', '%' . $request->name . '%');
             })
             ->whereNull('status')
+            ->orderBy('name')
             ->get();
 
         $attendanceRule = AttendanceRule::query()
