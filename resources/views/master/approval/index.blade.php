@@ -33,11 +33,11 @@
                             <div class="modal-content">
                                 <form action="">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                        <h5 class="modal-title" id="staticBackdropLabel">Atur Limit</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <input class="form-control" type="number" name="limit" min="1" placeholder="Enter Number" id="example-number-input">
+                                        <input class="form-control" type="number" name="limit" min="1" placeholder="Masukkan Limit" value="{{ $limit }}" id="example-number-input">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
