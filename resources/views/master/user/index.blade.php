@@ -19,7 +19,11 @@
                                     <span class="fa fa-ellipsis-v"></span>
                                 </p>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Hapus</a>
+                                    <form action="{{ route('student.delete') }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="dropdown-item">Hapus</button>
+                                    </form>
                                     <a class="dropdown-item" href="#">Banned</a>
                                     <a class="dropdown-item" href="#">Keluarkan</a>
                                 </div>
