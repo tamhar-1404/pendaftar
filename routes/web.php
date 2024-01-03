@@ -113,6 +113,7 @@ Route::middleware(['auth'])->group(function () {
         // Route::get('transaksi-opname', function () {return view('master.transaksi.opname');});
 
         Route::get('data-jurnal', function () {return view('master.data-collection.index');});
+        Route::get('data-absensi', function () {return view('master.data-collection.absensi');});
 
         // end
 
