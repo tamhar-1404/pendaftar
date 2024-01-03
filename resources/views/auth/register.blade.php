@@ -89,13 +89,14 @@
             });
         </script>
     @endif
-    @if (session()->has('success'))
+    @if (session('berhasil_daftar'))
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script>
-            Swal.fire(
-                'Berhasil!',
-                "{{ session('success') }}",
-                'success'
-            )
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '{{ session('berhasil_daftar') }}',
+            })
         </script>
     @endif
     @if (session()->has('error'))
@@ -237,7 +238,7 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label for="basicpill-email-input">Tanggal</label>
+                                                        <label for="basicpill-email-input">Tanggal Lahir</label>
                                                         <input type="date" class="form-control" name="tanggal"
                                                             id="basicpill-email-input">
                                                         @error('tanggal')
@@ -407,6 +408,9 @@
                                                                     Pernyataan Diri (opsional)</label>
                                                                 <input class="form-control form-control-sm"
                                                                     id="formFileSm" type="file" name="sp_diri">
+                                                                    <p class="text-danger">
+                                                                        Surat Pernyataan Diri Harus Berformat .jpg, .jpeg, atau .png
+                                                                    </p>
                                                                 @error('sp_diri')
                                                                     <p class="text-danger">
                                                                         {{ $message }}
@@ -424,6 +428,9 @@
                                                                     Pernyataan Orang Tua (opsional)</label>
                                                                 <input class="form-control form-control-sm"
                                                                     id="formFileSm" type="file" name="sp_ortu">
+                                                                    <p class="text-danger">
+                                                                        Surat Pernyataan Orang Tua Harus Berformat .jpg, .jpeg, atau .png
+                                                                    </p>
                                                                 @error('sp_ortu')
                                                                     <p class="text-danger">
                                                                         {{ $message }}
@@ -440,6 +447,9 @@
                                                                     (opsional)</label>
                                                                 <input class="form-control form-control-sm"
                                                                     id="formFileSm" type="file" name="skck">
+                                                                    <p class="text-danger">
+                                                                        SKCK Harus Berformat .jpg, .jpeg, atau .png
+                                                                    </p>
                                                                 @error('skck')
                                                                     <p class="text-danger">
                                                                         {{ $message }}
@@ -456,6 +466,9 @@
                                                                 <label for="formFileSm" class="form-label">CV</label>
                                                                 <input class="form-control form-control-sm"
                                                                     id="formFileSm" type="file" name="cv">
+                                                                    <p class="text-danger">
+                                                                        CV  Harus Berformat .jpg, .jpeg, atau .png
+                                                                    </p>
                                                                 @error('cv')
                                                                     <p class="text-danger">
                                                                         {{ $message }}

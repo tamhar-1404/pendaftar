@@ -31,9 +31,17 @@
                             </div>
                             <div>
                             </div>
-                            <div class="d-flex justify-content-header">
+                            <div class="d-flex justify-content-header gap-2">
                                 <div class="">
-                                    
+                                    <button type="button" class="btn btn-secondary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6V1h5v2H4v3H2Zm18 0V3h-3V1h5v5h-2ZM2 23v-5h2v3h3v2H2Zm15 0v-2h3v-3h2v5h-5ZM7 18h10V6H7v12Zm0 2q-.825 0-1.413-.588T5 18V6q0-.825.588-1.413T7 4h10q.825 0 1.413.588T19 6v12q0 .825-.588 1.413T17 20H7Zm2-10h6V8H9v2Zm0 3h6v-2H9v2Zm0 3h6v-2H9v2Zm-2 2V6v12Z"/></svg>
+                                    </button>
+                                </div>
+                                <div class="">
+                                    <button class="btn btn-danger">Tolak</button>
+                                </div>
+                                <div class="">
+                                    <button class="btn btn-success">Terima</button>
                                 </div>
                             </div>
                         </div>
