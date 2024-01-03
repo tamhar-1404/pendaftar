@@ -251,7 +251,7 @@
                                             </div>
                                             @else
                                             <div class="image-container">
-                                                <img src="{{ asset('nodata.png') }}" alt="" class="hover-image">
+                                                <img src="{{ asset('nodata.png') }}" style="object-fit: cover" alt="" class="hover-image">
                                                 {{-- <div class="overlay">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
@@ -298,7 +298,7 @@
                                             </div><!-- /.modal -->
                                             @else
                                             <div class="image-container">
-                                                <img src="{{ asset('nodata.png') }}" alt="" class="hover-image">
+                                                <img src="{{ asset('nodata.png') }}" style="object-fit: cover" alt="" class="hover-image">
                                                 {{-- <div class="overlay">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
@@ -385,7 +385,7 @@
                                             </div>
                                             @else
                                             <div class="image-container">
-                                                <img src="{{ asset('nodata.png') }}" alt="" class="hover-image">
+                                                <img src="{{ asset('nodata.png') }}" style="object-fit: cover" alt="" class="hover-image">
                                                 {{-- <div class="overlay">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
