@@ -531,7 +531,8 @@ public function absen_pdf1(Request $request)  {
     {
         $students = Siswa::query()
             ->with(['attendances' => function ($query) {
-                $query->whereDate('created_at', now());
+                $query->whereDate('created_at', now())
+                    ->orderBy('created_at');
             }])
             ->when($request->name, function ($query) use ($request) {
                 $query->where('name', 'LIKE', '%' . $request->name . '%');
