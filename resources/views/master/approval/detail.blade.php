@@ -106,33 +106,43 @@
                                 <div class="mt-4 mt-xl-3">
                                     <div class="row">
                                         <div class="col-6">
-                                            <h4 class="mt-1 mb-1">{{ $aproval->name }}</h4>
                                         </div>
-                                        <div class="col-6 text-end  d-flex justify-end float-right">
-                                            <form id="delete-form-{{ $aproval->id }}" class="ms-auto"
-                                                action="{{ route('approval.delete', $aproval->id) }}" method="POST"
-                                                onsubmit="return confirmDelete(event)">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger waves-effect waves-light mt-2 me-1">
-                                                     Hapus
-                                                </button>
-                                            </form>
-                                            <form id="reject-form-{{ $aproval->id }}" class="ms-auto"
-                                                action="{{ route('aproval.tolak', $aproval->id) }}" method="POST"
-                                                onsubmit="return confirmReject(event)">
-                                                @csrf
-                                                <input type="hidden" name="alasan" id="alasan-input-{{ $aproval->id }}">
-                                                <button type="submit" class="btn btn-danger waves-effect waves-light mt-2 me-1">
-                                                     Tolak
-                                                </button>
-                                            </form>
-                                            <form id="confirm-form-{{ $aproval->id }}"
-                                                action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">@csrf
-                                                <button type="submit" class="btn btn-success waves-effect  mt-2 waves-light">
-                                                    </i>Terima
-                                                </button>
-                                            </form>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="">
+                                                <h4 class="mt-1 mb-1">{{ $aproval->name }}</h4>
+                                            </div>
+                                            <div class="d-flex justify-between">
+                                                <div class="">
+                                                    <form id="delete-form-{{ $aproval->id }}" class="ms-auto"
+                                                        action="{{ route('approval.delete', $aproval->id) }}" method="POST"
+                                                        onsubmit="return confirmDelete(event)">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger waves-effect waves-light mt-2 me-1">
+                                                             Hapus
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                                <div class="">
+                                                    <form id="reject-form-{{ $aproval->id }}" class="ms-auto"
+                                                        action="{{ route('aproval.tolak', $aproval->id) }}" method="POST"
+                                                        onsubmit="return confirmReject(event)">
+                                                        @csrf
+                                                        <input type="hidden" name="alasan" id="alasan-input-{{ $aproval->id }}">
+                                                        <button type="submit" class="btn btn-warning waves-effect waves-light mt-2 me-1">
+                                                             Tolak
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                                <div class="">
+                                                    <form id="confirm-form-{{ $aproval->id }}"
+                                                        action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">@csrf
+                                                        <button type="submit" class="btn btn-success waves-effect  mt-2 waves-light">
+                                                            </i>Terima
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
