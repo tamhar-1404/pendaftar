@@ -235,17 +235,17 @@ class AttendanceController extends Controller
         $attendanceRule = AttendanceRule::query()
             ->where('day', $today)
             ->first();
-        if (!$attendanceRule) return ResponseHelper::error(null, "Tidak ada jam masuk hari ini!");
+        if (!$attendanceRule) return ResponseHelper::error(null, "Tidak ada jam absen hari ini");
         $doAttendance = $this->doAttendanceNow($rfid);
         if (!$doAttendance) {
-            return ResponseHelper::error(null, "Belum waktunya absen!");
+            return ResponseHelper::error(null, "Jam absensi tidak tersedia");
         }
 
         if  (!$doAttendance->wasRecentlyCreated) {
-            return ResponseHelper::error(null, "Anda sudah absen");
+            return ResponseHelper::error(null, "Anda telah absensi pada jam ini");
         }
 
-        return ResponseHelper::success(null, "Berhasil absen");
+        return ResponseHelper::success(null, "Berhasil absensi");
 
     }
 }
