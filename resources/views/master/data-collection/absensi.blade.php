@@ -20,20 +20,74 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @forelse ($students as $student)
                         <tr>
-                            <td>1</td>
-                            <td>Abdul Kader</td>
-                            <td>Smkn 1 kraksaan</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $student->name }}</td>
+                            <td>{{ $student->sekolah }}</td>
                             <td>
-                                <div class="bg-danger col-6 rounded">
-                                    <p class="badge text-center badge-danger mb-0">Belum Hadir</p>
+                                @if (isset($student->attendances[0]))
+                                    @if (date('H:i:s', strtotime($student->attendances[0]->created_at)) >= '08:00:00')
+                                    <div class="btn btn-soft-warning waves-effect waves-light">
+                                        Telat
+                                    </div>
+                                    @else
+                                    <div class="btn btn-soft-success waves-effect waves-light">
+                                        Hadir
+                                    </div>
+                                    @endif
+                                @else
+                                <div class="btn btn-soft-danger waves-effect waves-light">
+                                    Belum Hadir
                                 </div>
+                                @endif
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>
+                                @if (isset($student->attendances[0]))
+                                    @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
+                                        @if ($detailAttendance->status == 'break')
+                                        <div class="btn btn-soft-success waves-effect waves-light">
+                                            Hadir
+                                        </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </td>
+                            <td>
+                                @if (isset($student->attendances[0]))
+                                    @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
+                                        @if ($detailAttendance->status == 'return_break')
+                                            @if (date('H:i:s', strtotime($detailAttendance->created_at)) <= '13:00:00')
+                                            <div class="btn btn-soft-success waves-effect waves-light">
+                                                Hadir
+                                            </div>
+                                            @else
+                                            <div class="btn btn-soft-warning waves-effect waves-light">
+                                                Terlambat
+                                            </div>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </td>
+                            <td>
+                                @if (isset($student->attendances[0]))
+                                    @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
+                                        @if ($detailAttendance->status == 'return')
+                                        <div class="btn btn-soft-success waves-effect waves-light">
+                                            Hadir
+                                        </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-primary waves-effect waves-light">Detail</a>
+                            </td>
                         </tr>
+                        @empty
+
+                        @endforelse
                     </tbody>
                 </table>
             </div>
