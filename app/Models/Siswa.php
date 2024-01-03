@@ -56,4 +56,14 @@ class Siswa extends Model
     {
         return $this->hasOne(StudentFile::class, 'student_id');
     }
+
+    /**
+     * attendances
+     *
+     * @return HasMany
+     */
+    public function attendances(): HasMany
+    {
+        return $this->hasMany(Attendance::class, 'student_id', 'id');
+    }
 }

@@ -8,6 +8,7 @@ use App\Models\Absensiadmin;
 use App\Models\ApprovalIzin;
 use App\Http\Requests\StoreAbsensiadminRequest;
 use App\Http\Requests\UpdateAbsensiadminRequest;
+use App\Models\Attendance;
 use App\Models\AttendanceRule;
 use App\Models\Siswa;
 use Auth;
@@ -518,6 +519,16 @@ public function absen_pdf1(Request $request)  {
         $data = $request->validated();
         AttendanceRule::query()->updateOrCreate(['day' => $data['day']], $data);
         return redirect()->back()->with('success', 'Berhasil memperbarui');
+    }
+    public function listAttendance(Request $request): View
+    {
+        $students = Siswa::query()
+            ->with(['attendances' => function ($query) {
+                $query->whereDate('created_at', now());
+            }])
+            ->whereNull('status')
+            ->get();
+        return view('master.data-collection.absensi', compact('students'));
     }
 
 }
