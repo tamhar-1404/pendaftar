@@ -98,7 +98,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('news', function () {return view('master.news.index');});
         Route::get('detail-news', function () {return view('master.news.detail');});
         Route::get('piket-siswa', function () {return view('master.all.report-piket');});
-        Route::get('data-mou    ', function () {return view('master.all.mou');});
+        Route::get('data-mou', function () {return view('master.all.mou');});
         Route::get('master-absensi', function () {return view('master.absensi');});
         Route::get('pendaftaran', [RegistrationController::class, 'index'])->name('registration.index');
         Route::get('izin', [PermissionController::class, 'index'])->name('permission.index');
