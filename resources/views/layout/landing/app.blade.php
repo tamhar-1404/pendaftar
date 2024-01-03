@@ -7,10 +7,9 @@
     <title>PKL HUMMATECH</title>
 
     <meta charset="utf-8">
-    <meta name="keywords"
-        content="Landing page, software, (SaaS) services, Bootstrap 4 template, plugins, app, SEO friendly, business, Sass, Gulp">
+    <meta name="keywords">
     <meta name="description"
-        content="Smooth is a HTML5 Landing Page Build using Gulp, SCSS, and Bootstrap4. It was designed to promote your App, services or business projects.">
+        content="PT Hummatech berkomitmen untuk mencapai keunggulan dalam segala hal yang mereka lakukan. Mereka terus berusaha menjadi yang terbaik dalam industri perangkat lunak.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="99webpage">
     <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
