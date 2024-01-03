@@ -1,10 +1,18 @@
 @extends('layout.app')
 @section('content')
 <h4 class="mb-3">
-    Halaman Absensi Siswa
+    Halaman Absensi Hari ini
 </h4>
     <div class="card">
         <div class="card-body">
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <form action="">
+                        <label for="formrow-email-input" class="form-label">Cari siswa</label>
+                        <input class="form-control" type="search" value="{{ request()->name }}" placeholder="Cari nama disini..." name="name" id="example-search-input">
+                    </form>
+                </div>
+            </div>
             <div class="table-responsive">
                 <table id="example" class="table table-striped" style="width:100%">
                     <thead>
@@ -27,7 +35,7 @@
                             <td>{{ $student->sekolah }}</td>
                             <td>
                                 @if (isset($student->attendances[0]))
-                                    @if (date('H:i:s', strtotime($student->attendances[0]->created_at)) >= '08:00:00')
+                                    @if (date('H:i:s', strtotime($student->attendances[0]->created_at)) >= $attendanceRule?->checkin_ends ?? "08:00:00")
                                     <div class="btn btn-soft-warning waves-effect waves-light">
                                         Telat
                                     </div>
@@ -57,7 +65,7 @@
                                 @if (isset($student->attendances[0]))
                                     @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
                                         @if ($detailAttendance->status == 'return_break')
-                                            @if (date('H:i:s', strtotime($detailAttendance->created_at)) <= '13:00:00')
+                                            @if (date('H:i:s', strtotime($detailAttendance->created_at)) <= $attendanceRule?->return_ends ?? '13:00:00')
                                             <div class="btn btn-soft-success waves-effect waves-light">
                                                 Hadir
                                             </div>
