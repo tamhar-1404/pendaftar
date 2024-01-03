@@ -17,7 +17,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignId('student_id')->constrained('siswas')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('sp_diri');
-            $table->string('sp_ortu');
+            $table->string('sp_ortu')->nullable();
             $table->string('skck')->nullable();
             $table->string('cv');
             $table->timestamps();

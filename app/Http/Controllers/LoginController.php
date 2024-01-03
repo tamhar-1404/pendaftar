@@ -100,7 +100,7 @@ class LoginController extends Controller
             $limit = (int) Limit::find(1)->limit;
             if ($total_semua_siswa >= $limit) {
                 // dd("awokwok");
-                return redirect()->route('login.index')->with('limitbang', "Kuota pendaftaran sudah habis");
+                return redirect()->route('auth-login')->with('limitbang', "Kuota pendaftaran sudah habis");
             }
         }
         return view('login.register');
@@ -121,11 +121,11 @@ public function store(Request $request)
     $total_semua_siswa = Siswa::where('role', 'siswa')->count() + Aproval::count();
     if (!empty(Limit::first())) {
         $limit = Limit::find(1)->limit;
-        if ($total_semua_siswa > $limit) return redirect()->route('login.index')->with('limitbang', "Kuota pendaftaran sudah habis")->withInput();
+        if ($total_semua_siswa > $limit) return redirect()->route('auth-login')->with('limitbang', "Kuota pendaftaran sudah habis")->withInput();
     }
 
     if (Aproval::where('email', $request->email)->where('nisn', $request->nisn)->exists()) {
-        return to_route('login.index')->with('berhasil_daftar', 'Silahkan menunggu konfirmasi dari admin');
+        return to_route('auth-login')->with('berhasil_daftar', 'Silahkan menunggu konfirmasi dari admin');
     }
         $this->validate($request , [
             'name'=>'required',
@@ -233,7 +233,7 @@ public function store(Request $request)
             'nama' => $request->name,
         ];
         // Mail::to($email_admin)->send(new PendaftaranAdmin($data));
-        return redirect()->route('login.index')->with('berhasil_daftar', 'Data anda berhasil di kirim, Silahkan menunggu konfirmasi dari admin');
+        return redirect()->route('auth-login')->with('berhasil_daftar', 'Data anda berhasil di kirim, Silahkan menunggu konfirmasi dari admin');
 }
     /**
      * Display the specified resource.
