@@ -3,6 +3,29 @@
 <h4 class="mb-3">
     Halaman Absensi Hari ini
 </h4>
+<div class="card">
+    <div class="card-body">
+
+        <h4 class="card-title">Keterangan</h4>
+        <div class="row mt-3">
+            <div class="col">
+                <div class="text-center alert alert-danger fs-6" role="alert">
+                    belum Hadir 
+                </div>
+            </div>
+            <div class="col">
+                <div class="alert text-center alert-warning fs-6" role="alert">
+                    izin, sakit, telat, 
+                </div>
+            </div>
+            <div class="col">
+                <div class="alert text-center alert-success fs-6" role="alert">
+                     sudah absen
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="card">
         <div class="card-body">
             <div class="col-md-3">
@@ -119,7 +142,18 @@
                             </td>
                         </tr>
                         @empty
-
+                        <tr>
+                            <td colspan="9">
+                                <div class="d-flex justify-content-center">
+                                    <div class="">
+                                        <img src="{{ asset('nodata.png') }}" width="300px" height="300px" alt="" srcset="">
+                                        <p class="fs-5 text-center mt-4 text-dark" style="font-weight: 500">
+                                            Data Tidak Tersedia
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
                         @endforelse
                     </tbody>
                 </table>
