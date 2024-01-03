@@ -25,7 +25,8 @@
             <div class="card-footer bg-transparent border-top">
                 <div class="contact-links d-flex font-size-20">
                     <div class="flex-fill">
-                        <a href="javascript: void(0);"><i class="bx bx-user-circle"></i></a>
+                        <a href="student-detail/{{ $siswa->id }}"><i class="bx bx-user-circle"></i></a>
+
                     </div>
                 </div>
             </div>

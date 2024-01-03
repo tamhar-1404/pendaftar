@@ -56,15 +56,12 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">Detail Pendaftar</h4>
-
-                {{-- <div class="page-title-right">
-                        <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                            <li class="breadcrumb-item active">Product Detail</li>
-                        </ol>
-                    </div> --}}
-
+                <div class="">
+                    <h4 class="mb-sm-0 font-size-18">Detail Pendaftar</h4>
+                </div>
+                <div class="">
+                    <button class="btn btn-info" onclick="history.back()">Kembali</button>
+                </div>
             </div>
         </div>
     </div>
@@ -208,8 +205,8 @@
                                     <div class="col-md-12">
                                         <h6 class="mb-1">Pernyataan Diri Sendiri :</h6>
                                         <div class="image-container">
-                                            <img src="{{ asset('storage/siswa/' . $aproval->sp_diri) }}"
-                                                alt="" class="hover-image">
+                                            <img src="{{ asset('storage/siswa/' . $aproval->sp_diri) }}" alt=""
+                                                class="hover-image">
                                             <div class="overlay" data-bs-toggle="modal"
                                                 data-bs-target=".bs-example-modal-center-sp-diri">
                                                 <div class="icon">
@@ -291,8 +288,8 @@
                                     <div class="col-md-12">
                                         <h6 class="mb-1">CV :</h6>
                                         <div class="image-container">
-                                            <img src="{{ asset('storage/siswa/' . $aproval->cv) }}"
-                                                alt="" class="hover-image">
+                                            <img src="{{ asset('storage/siswa/' . $aproval->cv) }}" alt=""
+                                                class="hover-image">
                                             <div class="overlay" data-bs-toggle="modal"
                                                 data-bs-target=".bs-example-modal-center-cv">
                                                 <div class="icon">
@@ -336,14 +333,13 @@
                                             <div class="image-container">
                                                 <img src="{{ asset('storage/pendaftaran/' . $aproval->skck) }}"
                                                     alt="" class="hover-image">
-                                                <div class="overlay" data-bs-toggle="modal"
-                                                    data-bs-target=".skck">
+                                                <div class="overlay" data-bs-toggle="modal" data-bs-target=".skck">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div>
-                                                <div class="modal fade skck" tabindex="-1"
-                                                    role="dialog" aria-hidden="true">
+                                                <div class="modal fade skck" tabindex="-1" role="dialog"
+                                                    aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
