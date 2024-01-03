@@ -116,7 +116,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('data-jurnal', [JurnaladminController::class, 'Jurnalhariini']);
         // Route::get('data-jurnal', function () {return view('master.data-collection.index');});
         Route::get('data-absensi', [AbsensiadminController::class, 'listAttendance'])->name('list.attendance.admin');
-        Route::get('attendance-detail/{attendance}', [AbsensiadminController::class, 'attendanceDetail']);
+        Route::get('attendance-detail/{attendance}', [AbsensiadminController::class, 'attendanceDetail'])->name('attendance.detail');
         // end
 
         Route::post('attendance-rule', [AbsensiadminController::class, 'attendanceRule'])->name('attendance.rule');
