@@ -164,9 +164,9 @@ class SiswaController extends Controller
      * @param  \App\Models\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function show(Siswa $siswa)
+    public function show(Siswa $student)
     {
-       $aproval = $siswa;
+       $aproval = $student;
        return view('master.user.detail-student', compact('aproval'));
     }
 
