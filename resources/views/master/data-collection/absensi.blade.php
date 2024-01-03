@@ -36,9 +36,26 @@
                             <td>{{ $student->sekolah }}</td>
                             <td>
                                 @if (isset($student->attendances[0]))
+                                    @if ($student->attendances[0]->status == 'masuk')
+                                    <div class="btn btn-soft-success waves-effect waves-light">
+                                        {{ $student->attendances[0]->status }}
+                                    </div>
+                                    @endif
+                                    @if ($student->attendances[0]->status == 'izin')
                                     <div class="btn btn-soft-warning waves-effect waves-light">
                                         {{ $student->attendances[0]->status }}
                                     </div>
+                                    @endif
+                                    @if ($student->attendances[0]->status == 'sakit')
+                                    <div class="btn btn-soft-warning waves-effect waves-light">
+                                        {{ $student->attendances[0]->status }}
+                                    </div>
+                                    @endif
+                                    @if ($student->attendances[0]->status == 'alpha')
+                                    <div class="btn btn-soft-danger waves-effect waves-light">
+                                        {{ $student->attendances[0]->status }}
+                                    </div>
+                                    @endif
                                 @else
                                 <div class="btn btn-soft-danger waves-effect waves-light">
                                     Belum Hadir
