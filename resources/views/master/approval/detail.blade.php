@@ -428,26 +428,7 @@
                     },
                     animation: false
                 }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Sukses',
-                            text: 'Siswa berhasil diterima',
-                            icon: 'success',
-                            timer: 2000,
-                            showConfirmButton: false,
-                            background: '#f5f5f5',
-                            customClass: {
-                                icon: 'swal-icon',
-                                popup: 'swal-popup',
-                                title: 'swal-title',
-                                confirmButton: 'swal-button swal-button--confirm'
-                            },
-                            animation: false
-                        });
-                        setTimeout(() => {
-                            this.submit();
-                        }, 2000);
-                    }
+                    this.submit();
                 });
             });
         </script>
@@ -473,13 +454,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         document.getElementById("alasan-input-{{ $aproval->id }}").value = result.value;
-
-                        Swal.fire({
-                            title: 'Data berhasil ditolak',
-                            icon: 'success',
-                        }).then(() => {
-                            event.target.submit();
-                        });
+                        event.target.submit();
                     }
                 });
             }

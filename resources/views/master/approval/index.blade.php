@@ -9,6 +9,15 @@
         </div>
         <!-- end page title -->
 
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: "Berhasil",
+                text: "{{ session('success') }}",
+                icon: "success"
+            });
+        </script>
+    @endif
     <div class="row">
         <div class="col-12">
             <div class="card">
