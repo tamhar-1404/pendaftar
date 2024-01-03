@@ -9,6 +9,11 @@
     </div>
     <!-- end page title -->
 
+    @if (session('success'))
+        <script>
+            alert("Berhasil")
+        </script>
+    @endif
     <div class="row">
         <div class="col-12">
             <div class="card">
