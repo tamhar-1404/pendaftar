@@ -48,7 +48,6 @@
                             <th>Istirahat</th>
                             <th>Kembali</th>
                             <th>Pulang</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -167,11 +166,7 @@
                                 </div>
                                 @endif
                             </td>
-                            <td>
-                                @if (isset($student->attendances[0]))
-                                <a href="{{ route('attendance.detail', $student->attendances[0]->id) }}" class="btn btn-primary waves-effect waves-light">Detail</a>
-                                @endif
-                            </td>
+
                         </tr>
                         @empty
                         <tr>
