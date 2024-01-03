@@ -92,6 +92,10 @@
                                         <div class="btn btn-soft-success waves-effect waves-light">
                                             {{date('H:i', strtotime($detailAttendance->created_at))}}
                                         </div>
+                                        @else
+                                        <div class="btn btn-soft-danger waves-effect waves-light">
+                                            Belum Hadir
+                                        </div>
                                         @endif
                                     @endforeach
                                 @else
@@ -106,6 +110,10 @@
                                         @if ($detailAttendance->status == 'break')
                                         <div class="btn btn-soft-success waves-effect waves-light">
                                             {{date('H:i', strtotime($detailAttendance->created_at))}}
+                                        </div>
+                                        @else
+                                        <div class="btn btn-soft-danger waves-effect waves-light">
+                                            Belum Hadir
                                         </div>
                                         @endif
                                     @endforeach
@@ -128,7 +136,11 @@
                                                 {{ date('H:i', strtotime($detailAttendance->created_at)) }}
                                             </div>
                                             @endif
-                                        @endif
+                                            @else
+                                            <div class="btn btn-soft-danger waves-effect waves-light">
+                                                Belum Hadir
+                                            </div>
+                                            @endif
                                     @endforeach
                                 @else
                                 <div class="btn btn-soft-danger waves-effect waves-light">
@@ -142,6 +154,10 @@
                                         @if ($detailAttendance->status == 'return')
                                         <div class="btn btn-soft-success waves-effect waves-light">
                                             {{ date('H:i', strtotime($detailAttendance->created_at)) }}
+                                        </div>
+                                        @else
+                                        <div class="btn btn-soft-danger waves-effect waves-light">
+                                            Belum Hadir
                                         </div>
                                         @endif
                                     @endforeach
