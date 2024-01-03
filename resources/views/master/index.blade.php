@@ -63,6 +63,11 @@
                                                     <div class="">
                                                         <input type="time" name="checkin_starts" class="form-control"
                                                             placeholder="Sampai" value="{{ $senin->checkin_starts ?? '' }}">
+                                                            @error('checkin_starts')
+                                                                <p class="text-danger">
+                                                                    {{ $message }}
+                                                                </p>
+                                                            @enderror
                                                     </div>
                                                 </td>
                                                 <td>
@@ -74,6 +79,11 @@
                                                     <div class="">
                                                         <input type="time" name="checkin_ends" class="form-control"
                                                             placeholder="Sampai" value="{{ $senin->checkin_ends ?? '' }}">
+                                                            @error('checkin_ends')
+                                                                <p class="text-danger">
+                                                                    {{ $message }}
+                                                                </p>
+                                                            @enderror
                                                     </div>
                                                 </td>
                                             </tr>
@@ -99,6 +109,11 @@
                                                     <div class="">
                                                         <input type="time" name="break_starts" class="form-control"
                                                             placeholder="Sampai" value="{{ $senin->break_starts ?? '' }}">
+                                                            @error('break_starts')
+                                                                <p class="text-danger">
+                                                                    {{ $message }}
+                                                                </p>
+                                                            @enderror
                                                     </div>
                                                 </td>
                                                 <td>
@@ -110,6 +125,11 @@
                                                     <div class="">
                                                         <input type="time" name="break_ends" class="form-control"
                                                             placeholder="Sampai" value="{{ $senin->break_ends ?? '' }}">
+                                                            @error('break_ends')
+                                                                <p class="text-danger">
+                                                                    {{ $message }}
+                                                                </p>
+                                                            @enderror
                                                     </div>
                                                 </td>
                                             </tr>
@@ -135,6 +155,11 @@
                                                     <div class="">
                                                         <input type="time" name="return_starts" class="form-control"
                                                             placeholder="Sampai" value="{{ $senin->return_starts ?? '' }}">
+                                                            @error('return_starts')
+                                                                <p class="text-danger">
+                                                                    {{ $message }}
+                                                                </p>
+                                                            @enderror
                                                     </div>
                                                 </td>
                                                 <td>
@@ -146,6 +171,11 @@
                                                     <div class="">
                                                         <input type="time" name="return_ends" class="form-control"
                                                             placeholder="Sampai" value="{{ $senin->return_ends ?? '' }}">
+                                                            @error('return_ends')
+                                                                <p class="text-danger">
+                                                                    {{ $message }}
+                                                                </p>
+                                                            @enderror
                                                     </div>
                                                 </td>
                                             </tr>
@@ -170,6 +200,11 @@
                                                     <div class="">
                                                         <input type="time" name="checkout_starts" class="form-control"
                                                             placeholder="Sampai" value="{{ $senin->checkout_starts ?? '' }}">
+                                                            @error('checkout_starts')
+                                                                <p class="text-danger">
+                                                                    {{ $message }}
+                                                                </p>
+                                                            @enderror
                                                     </div>
                                                 </td>
                                                 <td>
@@ -181,6 +216,11 @@
                                                     <div class="">
                                                         <input type="time" name="checkout_ends" class="form-control"
                                                             placeholder="Sampai" value="{{ $senin->checkout_ends ?? '' }}">
+                                                            @error('checkout_ends')
+                                                                <p class="text-danger">
+                                                                    {{ $message }}
+                                                                </p>
+                                                            @enderror
                                                     </div>
                                                 </td>
                                             </tr>

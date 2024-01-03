@@ -114,6 +114,8 @@ Route::middleware(['auth'])->group(function () {
         // Route::get('transaksi-opname', function () {return view('master.transaksi.opname');});
 
         Route::get('data-jurnal', [JurnaladminController::class, 'Jurnalhariini']);
+        // Route::get('data-jurnal', function () {return view('master.data-collection.index');});
+        Route::get('data-absensi', [AbsensiadminController::class, 'listAttendance'])->name('list.attendance.admin');
 
         // end
 

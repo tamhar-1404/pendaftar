@@ -193,7 +193,7 @@ class AttendanceController extends Controller
             ->first();$attendanceRule = AttendanceRule::query()
             ->where('day', $today)
             ->first();
-        if ($time >= $attendanceRule->checkin_starts && $time <= $attendanceRule->checkin_ends) {
+        if ($time >= $attendanceRule->checkin_starts && $time <= Carbon::createFromFormat('H:i:s', $attendanceRule->checkin_ends)->addMinutes(40)->format('H:i:s')) {
             return AttendanceDetail::query()
                 ->updateOrCreate(
                     ['attendance_id' => $attendance_id, 'status' => 'present'],
@@ -205,7 +205,7 @@ class AttendanceController extends Controller
                     ['attendance_id' => $attendance_id, 'status' => 'break'],
                     ['status' => 'break']
                 );
-        } else if ($time >= $attendanceRule->return_starts && $time <= $attendanceRule->return_ends) {
+        } else if ($time >= $attendanceRule->return_starts && $time <= Carbon::createFromFormat('H:i:s', $attendanceRule->return_ends)->addMinutes(40)->format('H:i:s')) {
             return AttendanceDetail::query()
                 ->updateOrCreate(
                     ['attendance_id' => $attendance_id, 'status' => 'return_break'],
@@ -235,17 +235,17 @@ class AttendanceController extends Controller
         $attendanceRule = AttendanceRule::query()
             ->where('day', $today)
             ->first();
-        if (!$attendanceRule) return ResponseHelper::error(null, "Tidak ada jam masuk hari ini!");
+        if (!$attendanceRule) return ResponseHelper::error(null, "Tidak ada jam absen hari ini");
         $doAttendance = $this->doAttendanceNow($rfid);
         if (!$doAttendance) {
-            return ResponseHelper::error(null, "Belum waktunya absen!");
+            return ResponseHelper::error(null, "Jam absensi tidak tersedia");
         }
 
         if  (!$doAttendance->wasRecentlyCreated) {
-            return ResponseHelper::error(null, "Anda sudah absen");
+            return ResponseHelper::error(null, "Anda telah absensi pada jam ini");
         }
 
-        return ResponseHelper::success(null, "Berhasil absen");
+        return ResponseHelper::success(null, "Berhasil absensi");
 
     }
 }
