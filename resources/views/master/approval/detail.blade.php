@@ -224,6 +224,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-md-12">
                                             <h6 class="mb-1">Pernyataan Diri Sendiri :</h6>
+                                            @if (  $aproval->sp_diri != null)
                                             <div class="image-container">
                                                 <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_diri) }}" alt="" class="hover-image">
                                                 <div class="overlay" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center-sp-diri">
@@ -248,6 +249,18 @@
                                                     </div><!-- /.modal-dialog -->
                                                 </div><!-- /.modal -->
                                             </div>
+                                            @else
+                                            <div class="image-container">
+                                                <img src="{{ asset('nodata.png') }}" style="object-fit: cover" alt="" class="hover-image">
+                                                {{-- <div class="overlay">
+                                                    <div class="icon">
+                                                        <i class="fa fa-eye"></i>
+                                                    </div>
+                                                </div> --}}
+
+                                            </div>
+                                            @endif
+
                                         </div>
                                     </div>
                                 </div>
@@ -259,6 +272,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-md-12">
                                             <h6 class="mb-1">Pernyataan Orang Tua :</h6>
+                                            @if (  $aproval->sp_ortu != null)
                                             <div class="image-container">
                                                 <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_ortu) }}" style="object-fit: cover" alt="" class="hover-image">
                                                 <div class="overlay " data-bs-toggle="modal" data-bs-target=".bs-example-modal-center-sp-ortu">
@@ -283,6 +297,18 @@
                                                     </div><!-- /.modal-content -->
                                                 </div><!-- /.modal-dialog -->
                                             </div><!-- /.modal -->
+                                            @else
+                                            <div class="image-container">
+                                                <img src="{{ asset('nodata.png') }}" style="object-fit: cover" alt="" class="hover-image">
+                                                {{-- <div class="overlay">
+                                                    <div class="icon">
+                                                        <i class="fa fa-eye"></i>
+                                                    </div>
+                                                </div> --}}
+
+                                            </div>
+                                            @endif
+
                                         </div>
 
                                     </div>
@@ -361,12 +387,13 @@
                                             </div>
                                             @else
                                             <div class="image-container">
-                                                <img src="{{ asset('nodata.png') }}" alt="" class="hover-image">
+                                                <img src="{{ asset('nodata.png') }}" style="object-fit: cover" alt="" class="hover-image">
                                                 {{-- <div class="overlay">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div> --}}
+
                                             </div>
                                             @endif
                                         </div>
@@ -458,22 +485,19 @@
             }
             function confirmDelete(event) {
                 event.preventDefault();
-
                 Swal.fire({
-                    title: 'Hapus',
-                    confirmButtonText: 'Hapus',
-                    cancelButtonText: 'Batal',
-                    allowOutsideClick: true,
+                    title: 'Apakah Anda yakin?',
+                    text: "Anda tidak akan dapat mengembalikan ini!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, hapus itu!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Data berhasil dihapus',
-                            icon: 'success',
-                        }).then(() => {
-                            event.target.submit();
-                        });
+                        event.target.submit();
                     }
-                });
+                })
             }
         </script>
 @endsection

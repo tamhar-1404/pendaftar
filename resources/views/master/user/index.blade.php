@@ -20,10 +20,10 @@
                                     <span class="fa fa-ellipsis-v"></span>
                                 </p>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <form id="deleteForm" action="{{ route('student.delete', $siswa->id) }}" method="post">
+                                    <form id="deleteForm{{ $siswa->id }}" action="{{ route('student.delete', $siswa->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button id="deleteButton" type="submit" class="dropdown-item">Hapus</button>
+                                        <button onclick="showConfirm(event, {{ $siswa->id }})" type="submit" class="dropdown-item">Hapus</button>
                                     </form>
                                     <form id="resetForm" action="{{ route('reset-admin-password/', $siswa->id) }}"
                                         method="POST">
@@ -63,12 +63,31 @@
                 </div>
             </div>
         @endforelse
+        <div class="d-flex justify-content-center">
+            {{ $siswas->links() }}
+        </div>
     </div>
     <!-- end row -->
 @endsection
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
+        function showConfirm(e, id) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda tidak akan dapat mengembalikan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus itu!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('deleteForm' + id).submit();
+                }
+            })
+        }
         document.getElementById('deleteButton').addEventListener('click', function(e) {
             e.preventDefault();
             Swal.fire({
