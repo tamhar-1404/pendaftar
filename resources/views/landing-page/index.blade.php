@@ -119,7 +119,6 @@
                         <div class="testimoni">
                             <blockquote>Mei ne audire fabulas. Ea mea quas putent, sit an lucilius <strong>repudiandae</strong>, mei ut appetere electram maluisset.</blockquote>
                             <p class="testimoni__author"><a href="#">Alexandro Oddol</a></p>
-                            <a href="#" class="testimoni__avatar"><img src="assets/images/testimoni-avatar01.png" class="testimoni__avatar-image" alt="Alexandro Oddol" /></a>
                         </div>
                     </div>
                     <!-- End testimoni 01 -->
@@ -129,7 +128,6 @@
                         <div class="testimoni">
                             <blockquote>Ea est molestie tincidunt, eam partem facete at. <strong>Mea in modo</strong> dolores concludaturque, euismod liberavisse</blockquote>
                             <p class="testimoni__author"><a href="#">Alexandro Oddol</a></p>
-                            <a href="#" class="testimoni__avatar"><img src="assets/images/testimoni-avatar02.png" class="testimoni__avatar-image" alt="Alexandro Oddol" /></a>
                         </div>
                     </div>
                     <!-- End testimoni 02 -->
@@ -139,14 +137,13 @@
                         <div class="testimoni">
                             <blockquote>Homero sapientem per id, id sonet veniam commune vis, <strong>ei nam nonumy</strong> fuisset pro primis consequat.</blockquote>
                             <p class="testimoni__author"><a href="#">Alexandro Oddol</a></p>
-                            <a href="#" class="testimoni__avatar"><img src="assets/images/testimoni-avatar03.png" class="testimoni__avatar-image" alt="Alexandro Oddol" /></a>
                         </div>
                     </div>
                     <!-- End testimoni 03 -->
                 </div>
             </div>
         </div>
-        <div class="row">
+        {{-- <div class="row">
             <div class="col">
                 <div class="divider"></div>
                 <div class="owl-active-nav">
@@ -207,7 +204,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </section>
  <!-- End Section -->
@@ -231,12 +228,9 @@
                                 <a href="#" class="article__card-comment"><i class="fa fa-comments"></i> 23</a>
                                 <h4 class="article__card-title"><a href="#">Sit in pertinax petentium est ne mucius</a></h4>
                             </div>
-                            <div class="article__card-image">
-                                <img src="assets/images/blog/thumbnail/img-blog-thumbnail-01.jpg" class="img-fluid" alt="Image article" />
-                            </div>
+                            
                             <div class="article__card-footer">
                                 <div class="article__card-author">
-                                    <img src="assets/images/avatar-man.jpg" class="article__card-avatar" alt="Author Avatar" />
                                     <p><strong>Posted by :</strong> <i class="fa fa-user"></i> <a href="#">Ence iif</a></p>
                                     <a href="#">29 Des 2018</a>
                                 </div>
@@ -254,12 +248,9 @@
                                 <a href="#" class="article__card-comment"><i class="fa fa-comments"></i> 10</a>
                                 <h4 class="article__card-title"><a href="#">Mei ne audire fabulas ea mea quas putent</a></h4>
                             </div>
-                            <div class="article__card-image">
-                                <img src="assets/images/blog/thumbnail/img-blog-thumbnail-02.jpg" class="img-fluid" alt="Image article" />
-                            </div>
+                            
                             <div class="article__card-footer">
                                 <div class="article__card-author">
-                                    <img src="assets/images/avatar-women.jpg" class="article__card-avatar" alt="Author Avatar" />
                                     <p><strong>Posted by :</strong> <i class="fa fa-user"></i> <a href="#">Rinna noor</a></p>
                                     <a href="#">29 Des 2018</a>
                                 </div>
@@ -277,12 +268,9 @@
                                 <a href="#" class="article__card-comment"><i class="fa fa-comments"></i> 23</a>
                                 <h4 class="article__card-title"><a href="#">Sit in pertinax petentium est ne mucius</a></h4>
                             </div>
-                            <div class="article__card-image">
-                                <img src="assets/images/blog/thumbnail/img-blog-thumbnail-03.jpg" class="img-fluid" alt="Image article" />
-                            </div>
+                           
                             <div class="article__card-footer">
                                 <div class="article__card-author">
-                                    <img src="assets/images/avatar-man.jpg" class="article__card-avatar" alt="Author Avatar" />
                                     <p><strong>Posted by :</strong> <i class="fa fa-user"></i> <a href="#">Ence iif</a></p>
                                     <a href="#">29 Des 2018</a>
                                 </div>
@@ -300,12 +288,9 @@
                                 <a href="#" class="article__card-comment"><i class="fa fa-comments"></i> 23</a>
                                 <h4 class="article__card-title"><a href="#">Sit in pertinax petentium est ne mucius</a></h4>
                             </div>
-                            <div class="article__card-image">
-                                <img src="assets/images/blog/thumbnail/img-blog-thumbnail-01.jpg" class="img-fluid" alt="Image article" />
-                            </div>
+                            
                             <div class="article__card-footer">
                                 <div class="article__card-author">
-                                    <img src="assets/images/avatar-man.jpg" class="article__card-avatar" alt="Author Avatar" />
                                     <p><strong>Posted by :</strong> <i class="fa fa-user"></i> <a href="#">Ence iif</a></p>
                                     <a href="#">29 Des 2018</a>
                                 </div>
@@ -323,12 +308,9 @@
                                 <a href="#" class="article__card-comment"><i class="fa fa-comments"></i> 10</a>
                                 <h4 class="article__card-title"><a href="#">Mei ne audire fabulas ea mea quas putent</a></h4>
                             </div>
-                            <div class="article__card-image">
-                                <img src="assets/images/blog/thumbnail/img-blog-thumbnail-02.jpg" class="img-fluid" alt="Image article" />
-                            </div>
+                            
                             <div class="article__card-footer">
                                 <div class="article__card-author">
-                                    <img src="assets/images/avatar-women.jpg" class="article__card-avatar" alt="Author Avatar" />
                                     <p><strong>Posted by :</strong> <i class="fa fa-user"></i> <a href="#">Rinna noor</a></p>
                                     <a href="#">29 Des 2018</a>
                                 </div>
@@ -346,12 +328,9 @@
                                 <a href="#" class="article__card-comment"><i class="fa fa-comments"></i> 23</a>
                                 <h4 class="article__card-title"><a href="#">Sit in pertinax petentium est ne mucius</a></h4>
                             </div>
-                            <div class="article__card-image">
-                                <img src="assets/images/blog/thumbnail/img-blog-thumbnail-03.jpg" class="img-fluid" alt="Image article" />
-                            </div>
+                            
                             <div class="article__card-footer">
                                 <div class="article__card-author">
-                                    <img src="assets/images/avatar-man.jpg" class="article__card-avatar" alt="Author Avatar" />
                                     <p><strong>Posted by :</strong> <i class="fa fa-user"></i> <a href="#">Ence iif</a></p>
                                     <a href="#">29 Des 2018</a>
                                 </div>
