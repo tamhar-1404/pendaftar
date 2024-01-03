@@ -111,38 +111,7 @@
                                             <div class="">
                                                 <h4 class="mt-1 mb-1">{{ $aproval->name }}</h4>
                                             </div>
-                                            <div class="d-flex justify-between">
-                                                <div class="">
-                                                    <form id="delete-form-{{ $aproval->id }}" class="ms-auto"
-                                                        action="{{ route('approval.delete', $aproval->id) }}" method="POST"
-                                                        onsubmit="return confirmDelete(event)">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button type="submit" class="btn btn-danger waves-effect waves-light mt-2 me-1">
-                                                             Hapus
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                                <div class="">
-                                                    <form id="reject-form-{{ $aproval->id }}" class="ms-auto"
-                                                        action="{{ route('aproval.tolak', $aproval->id) }}" method="POST"
-                                                        onsubmit="return confirmReject(event)">
-                                                        @csrf
-                                                        <input type="hidden" name="alasan" id="alasan-input-{{ $aproval->id }}">
-                                                        <button type="submit" class="btn btn-warning waves-effect waves-light mt-2 me-1">
-                                                             Tolak
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                                <div class="">
-                                                    <form id="confirm-form-{{ $aproval->id }}"
-                                                        action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">@csrf
-                                                        <button type="submit" class="btn btn-success waves-effect  mt-2 waves-light">
-                                                            </i>Terima
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
 
@@ -260,7 +229,7 @@
                                         <div class="col-md-12">
                                             <h6 class="mb-1">Pernyataan Orang Tua :</h6>
                                             <div class="image-container">
-                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_ortu) }}" alt="" class="hover-image">
+                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_diri) }}" alt="" class="hover-image">
                                                 <div class="overlay " data-bs-toggle="modal" data-bs-target=".bs-example-modal-center-sp-ortu">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
@@ -275,7 +244,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body text-center">
-                                                            <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_ortu) }}" alt="" class="hover-image">
+                                                            <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_diri) }}" alt="" class="hover-image">
                                                             <button type="button" class="btn btn-primary waves-effect waves-light mt-2 me-1">
                                                                 Download
                                                             </button>
@@ -296,7 +265,7 @@
                                         <div class="col-md-12">
                                             <h6 class="mb-1">CV :</h6>
                                             <div class="image-container">
-                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->skck) }}" alt="" class="hover-image">
+                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_diri) }}" alt="" class="hover-image">
                                                 <div class="overlay" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center-cv">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
@@ -306,7 +275,7 @@
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title">SKCK</h5>
+                                                                <h5 class="modal-title">Pernyataan Diri Sendiri</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body text-center">

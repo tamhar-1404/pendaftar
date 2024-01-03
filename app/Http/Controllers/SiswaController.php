@@ -167,7 +167,7 @@ class SiswaController extends Controller
     public function show(Siswa $siswa)
     {
        $aproval = $siswa;
-       return view('', compact('aproval'));
+       return view('master.user.detail-student', compact('aproval'));
     }
 
     /**
