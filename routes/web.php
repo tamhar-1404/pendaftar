@@ -146,6 +146,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/approvalizin', App\Http\Controllers\ApprovalIzinController::class);
         Route::resource('/siswa_admin', App\Http\Controllers\SiswaController::class);
         Route::delete('delete-student/{student}', [SiswaController::class, 'destroy'])->name('student.delete');
+        Route::get('student-detail/{student}', [SiswaController::class, 'show'])->name('student.detail');
         Route::get('download-student-files/{student}', [SiswaController::class, 'downloadFiles'])->name('siswa.download-file');
         Route::put('lulus/{id}' , [SiswaController::class ,'lulus'])->name('lulus/');
         Route::put('/siswa_admin/banned/{id}', [App\Http\Controllers\SiswaController::class, 'banned'])->name('siswa.banned');
