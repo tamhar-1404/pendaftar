@@ -9,6 +9,11 @@
     </div>
     <!-- end page title -->
 
+    @if (session('success'))
+        <script>
+            alert("Berhasil")
+        </script>
+    @endif
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -157,7 +162,7 @@
                         @csrf
                         @method('PUT')
                         <label for="">RFID</label>
-                        <input type="text" name="RFID" class="form-control" placeholder="Masukkan RFID">
+                        <input type="text" autofocus name="RFID" class="form-control" placeholder="Masukkan RFID">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
