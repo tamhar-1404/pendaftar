@@ -166,7 +166,8 @@ class SiswaController extends Controller
      */
     public function show(Siswa $siswa)
     {
-       //
+       $aproval = $siswa;
+       return view('', compact('aproval'));
     }
 
     /**
@@ -247,15 +248,11 @@ class SiswaController extends Controller
         // ]);
         // return redirect()->back();
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Siswa  $siswa
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Siswa $siswa)
+
+    public function destroy(Siswa $student)
     {
-        //
+        $student->delete();
+        return redirect()->back()->with('success', 'Berhasil hapus siswa');
     }
     public function banned(Request $request, $id) {
         // dd($id);
