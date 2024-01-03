@@ -193,7 +193,7 @@ class AttendanceController extends Controller
             ->first();$attendanceRule = AttendanceRule::query()
             ->where('day', $today)
             ->first();
-        if ($time >= $attendanceRule->checkin_starts && $time <= Carbon::createFromFormat('H:i:s', $attendanceRule->checkin_ends)->addMinutes(30)->format('H:i:s')) {
+        if ($time >= $attendanceRule->checkin_starts && $time <= Carbon::createFromFormat('H:i:s', $attendanceRule->checkin_ends)->addMinutes(60)->format('H:i:s')) {
             return AttendanceDetail::query()
                 ->updateOrCreate(
                     ['attendance_id' => $attendance_id, 'status' => 'present'],
