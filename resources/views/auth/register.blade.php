@@ -238,7 +238,7 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label for="basicpill-email-input">Tanggal</label>
+                                                        <label for="basicpill-email-input">Tanggal Lahir</label>
                                                         <input type="date" class="form-control" name="tanggal"
                                                             id="basicpill-email-input">
                                                         @error('tanggal')
