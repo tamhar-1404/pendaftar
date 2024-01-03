@@ -176,13 +176,13 @@ class ApprovalIzinController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id, ApprovalIzin $approvalIzin)
+    public function update(Request $request, ApprovalIzin $approvalizin)
     {
         $cek = $request->keterangan;
         $email = $request->input('email');
         $alasan = $request->input('alasan');
         if ($cek == 'terima') {
-            $izin = ApprovalIzin::findOrFail($id);
+            $izin = $approvalizin;
             if ($izin->status === 'menunggu') {
                 $izin->status = 'terimaabsen';
                 $izin->status2 = 'izin';
@@ -196,6 +196,7 @@ class ApprovalIzinController extends Controller
             $izinSampai = Carbon::parse($izin->sampai);
             $tanggalMulai = $izinDari;
             $tanggalBerakhir = $izinSampai;
+            $today = now();
             while ($tanggalMulai <= $tanggalBerakhir) {
                 $existingRecord = ApprovalIzin::where([
                     'siswa_id' => $izin->Siswa->id,
@@ -204,9 +205,9 @@ class ApprovalIzinController extends Controller
                 if (!$existingRecord) {
                     Attendance::query()
                         ->create([
-                            'student_id' => $approvalIzin->siswa_id,
-                            'status' => $approvalIzin->keterangan,
-                            'created_at' => $tanggalMulai->toDateString(),
+                            'student_id' => $approvalizin->siswa_id,
+                            'status' => $approvalizin->keterangan,
+                            'created_at' => $today,
                         ]);
                     ApprovalIzin::create([
                         'siswa_id' => $izin->Siswa->id,
@@ -222,10 +223,11 @@ class ApprovalIzinController extends Controller
                     ]);
                 }
                 $tanggalMulai->addDay();
+                $today->addDay();
             }
         }
         if ($cek == 'tolak') {
-            $izin = ApprovalIzin::findOrFail($id);
+            $izin = $approvalizin;
             $mailData = [
                 'content' => 'Absensi Anda telah ditolak dengan alasan: ' . $alasan,
             ];
