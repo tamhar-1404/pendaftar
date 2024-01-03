@@ -257,7 +257,7 @@
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div> --}}
-                                               
+
                                             </div>
                                             @endif
 
@@ -305,7 +305,7 @@
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div> --}}
-                                               
+
                                             </div>
                                             @endif
 
@@ -393,7 +393,7 @@
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div> --}}
-                                               
+
                                             </div>
                                             @endif
                                         </div>
@@ -485,22 +485,19 @@
             }
             function confirmDelete(event) {
                 event.preventDefault();
-
                 Swal.fire({
-                    title: 'Hapus',
-                    confirmButtonText: 'Hapus',
-                    cancelButtonText: 'Batal',
-                    allowOutsideClick: true,
+                    title: 'Apakah Anda yakin?',
+                    text: "Anda tidak akan dapat mengembalikan ini!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, hapus itu!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Data berhasil dihapus',
-                            icon: 'success',
-                        }).then(() => {
-                            event.target.submit();
-                        });
+                        event.target.submit();
                     }
-                });
+                })
             }
         </script>
 @endsection
