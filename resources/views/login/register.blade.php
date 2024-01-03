@@ -106,20 +106,22 @@
                         <div class="step active ">
                             <div class="mb-4">
                                 <label for="name" class="block font-bold mb-1 text-sm">Nama :</label>
-                                <input type="text" placeholder="Nama" id="name" name="name" value="{{old('name')}}"
-                                    class="w-full px-4 py-1 text-sm border rounded" required>
+                                <input type="text" placeholder="Nama" id="name" name="name"
+                                    value="{{ old('name') }}" class="w-full px-4 py-1 text-sm border rounded"
+                                    required>
                                 <span id="nameError" class="text-red-500 text-xs mt-1"></span>
                             </div>
                             <div class="flex justify-between gap-0">
                                 <div class="mb-4">
                                     <label for="name" class="block font-bold text-sm mb-1">Tempat :</label>
-                                    <input type="text" id="tempat" name="tempat" placeholder="Tempat lahir" value="{{old('tempat')}}"
-                                        class="w-full px-4 py-1 text-sm border rounded" required>
+                                    <input type="text" id="tempat" name="tempat" placeholder="Tempat lahir"
+                                        value="{{ old('tempat') }}" class="w-full px-4 py-1 text-sm border rounded"
+                                        required>
                                     <span id="tempatError" class="text-red-500 text-xs mt-1"></span>
                                 </div>
                                 <div class="mb-4">
                                     <label for="birthdate" class="block font-bold text-sm mb-1">Tanggal Lahir :</label>
-                                    <input type="date" id="tanggallahir" name="tanggal" value="{{old('tanggal')}}"
+                                    <input type="date" id="tanggallahir" name="tanggal" value="{{ old('tanggal') }}"
                                         class="w-full px-4 py-1 text-sm border rounded" required>
                                     <div id="warning-tanggal-lahir" class="text-red-500 text-sm mt-1"></div>
 
@@ -127,8 +129,9 @@
                             </div>
                             <div class="mb-4">
                                 <label for="nisn" class="block font-bold mb-1 text-sm">NISN / NIM:</label>
-                                <input type="number" id="nisn" name="nisn" placeholder="Masukkan nisn / nim" value="{{old('nisn')}}"
-                                    class="w-full px-4 py-1 text-sm border rounded" min="0" required>
+                                <input type="number" id="nisn" name="nisn" placeholder="Masukkan nisn / nim"
+                                    value="{{ old('nisn') }}" class="w-full px-4 py-1 text-sm border rounded"
+                                    min="0" required>
                             </div>
 
                             <div class="mb-4">
@@ -137,10 +140,14 @@
                                     class="w-full px-4 py-1 text-sm border rounded @error('kelas') is-invalid @enderror"
                                     required>
                                     <option class="text-sm" value="" disabled selected>Pilih kelas</option>
-                                    <option class="text-sm" value="10" {{ (old('kelas') == "10") ? "selected" : "" }}>10</option>
-                                    <option class="text-sm" value="11" {{ (old('kelas') == "11") ? "selected" : "" }}>11</option>
-                                    <option class="text-sm" value="12" {{ (old('kelas') == "12") ? "selected" : "" }}>12</option>
-                                    <option class="text-sm" value="Mahasiswa" {{ (old('kelas') == "Mahasiswa") ? "selected" : "" }}>Mahasiswa</option>
+                                    <option class="text-sm" value="10"
+                                        {{ old('kelas') == '10' ? 'selected' : '' }}>10</option>
+                                    <option class="text-sm" value="11"
+                                        {{ old('kelas') == '11' ? 'selected' : '' }}>11</option>
+                                    <option class="text-sm" value="12"
+                                        {{ old('kelas') == '12' ? 'selected' : '' }}>12</option>
+                                    <option class="text-sm" value="Mahasiswa"
+                                        {{ old('kelas') == 'Mahasiswa' ? 'selected' : '' }}>Mahasiswa</option>
                                 </select>
                                 <div id="kelas-warning" class="text-red-500 text-sm mt-1"></div>
                             </div>
@@ -244,10 +251,12 @@
                             <div class=" flex justify-between">
                                 <div class="flex gap-2">
                                     <input class="text-sm" type="radio" name="jeniskelamin" id="radio"
-                                        value="laki-laki" {{(old('jeniskelamin') == 'laki-laki') ? "selected" : ""}}>
+                                        value="laki-laki"
+                                        {{ old('jeniskelamin') == 'laki-laki' ? 'selected' : '' }}>
                                     <p>Laki-laki</p>
                                     <input class="text-sm" type="radio" name="jeniskelamin" id="radio"
-                                        value="Perempuan" {{ (old('jeniskelamin') == 'Perempuan') ? "selected" : "" }}>
+                                        value="Perempuan"
+                                        {{ old('jeniskelamin') == 'Perempuan' ? 'selected' : '' }}>
                                     <p>Perempuan </p>
                                     <span></span>
                                 </div>
@@ -262,7 +271,7 @@
                         <div class="step">
                             <div class="mb-4">
                                 <label for="address" class="block font-bold text-sm mb-1">Alamat :</label>
-                                <textarea id="alamat" name="alamat" class=" px-2 border items-center text-sm w-full h-8 rounded" required>{{old('alamat')}}</textarea>
+                                <textarea id="alamat" name="alamat" class=" px-2 border items-center text-sm w-full h-8 rounded" required>{{ old('alamat') }}</textarea>
                                 <span id="alamatError" class="text-red-500 text-xs mt-1"></span>
                             </div>
                             <script>
@@ -291,17 +300,19 @@
                             </script>
                             <div class="mb-4">
                                 <label for="school" class="block font-bold text-sm mb-1">Nomer tlp :</label>
-                                <input type="number" id="nomor" name="no" min="0" value="{{old('no')}}"
-                                    class="w-full px-4 py-1 border rounded" required>
+                                <input type="number" id="nomor" name="no" min="0"
+                                    value="{{ old('no') }}" class="w-full px-4 py-1 border rounded" required>
                             </div>
                             <div class="mb-4">
                                 <label for="major" class="block font-bold mb-1 text-sm">Jurusan :</label>
                                 <select name="jurusan" class="w-full px-4 py-1 border rounded" id="jurusan"
                                     required>
                                     <option value="" disabled selected>Pilih jurusan</option>
-                                    <option value="RPL" {{old("jurusan") == "RPL" ? "selected" : ""}}>RPL</option>
-                                    <option value="Multimedia" {{old("jurusan") == "Multimedia" ? "selected" : ""}}>Multimedia</option>
-                                    <option value="TI" {{old("jurusan") == "TI" ? "selected" : ""}}>TI</option>
+                                    <option value="RPL" {{ old('jurusan') == 'RPL' ? 'selected' : '' }}>RPL
+                                    </option>
+                                    <option value="Multimedia" {{ old('jurusan') == 'Multimedia' ? 'selected' : '' }}>
+                                        Multimedia</option>
+                                    <option value="TI" {{ old('jurusan') == 'TI' ? 'selected' : '' }}>TI</option>
                                 </select>
                                 <div id="kelas-warning2" class="text-red-500 text-sm mt-1"></div>
                             </div>
@@ -328,7 +339,7 @@
                             <div class="mb-4">
                                 <label for="school" class="block font-bold text-sm mb-1">Sekolah / Universitas
                                     :</label>
-                                <input type="text" id="sekolah" name="sekolah" value="{{old('jurusan')}}"
+                                <input type="text" id="sekolah" name="sekolah" value="{{ old('jurusan') }}"
                                     class="w-full px-4 py-1 text-sm border rounded" required>
                                 <span id="sekolahError" class="text-red-500 text-xs mt-1"></span>
                             </div>
@@ -360,14 +371,16 @@
                                 <div class="">
                                     <label for="internship-start" class="block font-bold text-sm mb-1">Mulai Magang
                                         :</label>
-                                    <input type="date" id="mulai-magang" name="magang_awal" value="{{old('magang_awal')}}"
+                                    <input type="date" id="mulai-magang" name="magang_awal"
+                                        value="{{ old('magang_awal') }}"
                                         class="w-full px-4 text-sm py-1 border rounded" required>
                                     <div id="warning-tanggal-magang" class="text-red-500 text-sm mt-1"></div>
                                 </div>
                                 <div class="">
                                     <label for="internship-end" class="block font-bold text-sm mb-1">Selesai
                                         Magang:</label>
-                                    <input type="date" id="akhir-magang" name="magang_akhir" value="{{old('magang_akhir')}}"
+                                    <input type="date" id="akhir-magang" name="magang_akhir"
+                                        value="{{ old('magang_akhir') }}"
                                         class="w-full px-4 py-1 text-sm border rounded" required>
                                 </div>
                             </div>
@@ -385,7 +398,7 @@
                                 <label for="photo" class="block font-bold text-sm mb-1">Foto Siswa :</label>
                                 <input type="file" id="photo" name="foto_siswa"
                                     class="w-full px-4 py-1 text-sm border rounded" required>
-                                    <p class="text-sm font-light italic bg-red ">Foto siswa harus berformat "JPG,PNG"</p>
+                                <p class="text-sm font-light italic bg-red ">Foto siswa harus berformat "JPG,PNG"</p>
                                 <div id="file-warning-siswa" class="text-red-500 text-sm mt-1"></div>
                             </div>
                             <div class="mb-4">
@@ -393,7 +406,8 @@
                                     :</label>
                                 <input type="file" ty id="sp_diri" name="sp_diri"
                                     class="w-full text-sm px-4 py-1 border rounded" required>
-                                    <p class="text-sm font-light italic bg-red ">Surat Pernyataan Siswa harus berformat "JPG,PNG"</p>
+                                <p class="text-sm font-light italic bg-red ">Surat Pernyataan Siswa harus berformat
+                                    "JPG,PNG"</p>
 
                                 <div id="file-warning-diri" class="text-red-500 text-sm mt-1"></div>
                             </div>
@@ -402,7 +416,8 @@
                                     :</label>
                                 <input type="file" ty id="sp_ortu" name="sp_ortu"
                                     class="w-full text-sm px-4 py-1 border rounded" required>
-                                    <p class="text-sm font-light italic bg-red ">Surat Pernyataan Orang Tua harus berformat "JPG,PNG"</p>
+                                <p class="text-sm font-light italic bg-red ">Surat Pernyataan Orang Tua harus berformat
+                                    "JPG,PNG"</p>
 
                                 <div id="file-warning-ortu" class="text-red-500 text-sm mt-1"></div>
                             </div>
@@ -411,7 +426,7 @@
                                         class="font-light italic bg-red">(opsional)</span> :</label>
                                 <input type="file" id="skck" name="skck"
                                     class="w-full text-sm px-4 py-1 border rounded">
-                                    <p class="text-sm font-light italic bg-red ">Surat SKCK harus berformat "JPG,PNG"</p>
+                                <p class="text-sm font-light italic bg-red ">Surat SKCK harus berformat "JPG,PNG"</p>
 
                                 <div id="file-warning-skck" class="text-red-500 text-sm mt-1"></div>
                             </div>
@@ -419,7 +434,7 @@
                                 <label for="cv" class="block font-bold text-sm mb-1">CV:</label>
                                 <input type="file" id="cv" name="cv"
                                     class="w-full text-sm px-4 py-1 border rounded" required>
-                                    <p class="text-sm font-light italic bg-red ">Surat CV harus berformat "JPG,PNG"</p>
+                                <p class="text-sm font-light italic bg-red ">Surat CV harus berformat "JPG,PNG"</p>
 
                                 <div id="file-warning-cv" class="text-red-500 text-sm mt-1"></div>
                             </div>
@@ -434,7 +449,7 @@
                         <div class="step">
                             <div class="mb-4">
                                 <label for="email" class="block font-bold mb-1">Email:</label>
-                                <input type="email" id="email" name="email" value="{{old('email')}}"
+                                <input type="email" id="email" name="email" value="{{ old('email') }}"
                                     class="w-full px-4 py-1 text-sm border rounded" required>
                                 <span id="emailError" class="text-red-500 text-xs mt-1"></span>
                             </div>
@@ -599,26 +614,20 @@
         </main>
     </div>
 
-    <script></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const nextButton1 = document.getElementById("nextStep3");
-            const fileInput1 = document.getElementById("sp_diri"); // Note: Changed 'fileInput' to 'photo'
+            const fileInput1 = document.getElementById("sp_diri");
             const fileWarning1 = document.getElementById("file-warning-diri");
 
             nextButton1.addEventListener("click", function() {
-                if (fileInput1.files.length === 0) {
-                    // File input is empty, no need to show the warning
-                    fileWarning1.textContent = "";
-                    return;
-                }
+                fileWarning1.textContent = ""; // Clear the warning
 
-                if (!validateFileType(fileInput1)) {
+                if (fileInput1.files.length !== 0 && !validateFileType(fileInput1)) {
+                    // File input is not empty and the file type is not valid
                     fileWarning1.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
-                } else {
-                    fileWarning1.textContent = ""; // Clear the warning if the file is valid
-                    // Perform any other actions here to proceekd to the next step if needed
                 }
+                // Perform any other actions here to proceed to the next step if needed
             });
 
             function validateFileType(input) {
@@ -716,40 +725,6 @@
                 return allowedExtensions.includes(fileExtension);
             }
         });
-        // document.addEventListener("DOMContentLoaded", function() {
-        //     const nextButton5 = document.getElementById("nextStep3");
-        //     const fileInput5 = document.getElementById("skck"); // Note: Changed 'fileInput' to 'photo'
-        //     const fileWarning5 = document.getElementById("file-warning-skck");
-
-        //     nextButton5.addEventListener("click", function() {
-        //         // if (fileInput5.files.length === 0) {
-        //         //     // File input is empty, no need to show the warning
-        //         //     fileWarning5.textContent = "";
-        //         //     return;
-        //         // }
-
-        //         if (!validateFileType(fileInput5)) {
-        //             fileWarning5.textContent = "Masukkan gambar dengan ekstensi jpg, jpeg, atau png.";
-        //         } else {
-        //             fileWarning5.textContent = ""; // Clear the warning if the file is valid
-        //             // Perform any other actions here to proceed to the next step if needed
-        //         }
-        //     });
-
-        //     function validateFileType(input) {
-        //         const allowedExtensions = ["jpg", "jpeg", "png"]; // Allowed file extensions
-        //         const fileName = input.value;
-        //         const fileExtension = fileName.split('.').pop().toLowerCase(); // Get the file extension
-        //         if (allowedExtensions.includes(fileExtension)) {
-        //         console.log("File extension is allowed.");
-        //         } else {
-        //         console.log("File extension is not allowed.");
-        //         }
-        //         return allowedExtensions.includes(fileExtension);
-        //     }
-        // });
-
-
         document.addEventListener("DOMContentLoaded", function() {
             const form = document.getElementById("wizardForm");
             const steps = Array.from(form.getElementsByClassName("step"));
@@ -918,7 +893,7 @@
                 });
 
                 inputs.forEach(function(input) {
-                    if (input.type === "file" && input.id !== "skck") {
+                    if (input.type === "file" && input.id !== "skck" && input.id !== "sp_diri") {
                         if (input.files.length === 0) {
                             var errorMessage = input.parentNode.querySelector(".error-message");
 

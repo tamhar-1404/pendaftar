@@ -20,26 +20,20 @@
                     <div class="carousel-item active" data-bs-interval="3000">
                         @endif
                         <div class="bg-light p-3 d-flex mb-3 rounded">
-                            <img src="{{ asset('assets-admin/images/users/avatar-4.jpg') }}" alt=""
+                            <img src="{{ asset('storage/Siswa/' . $item->Siswa->foto_siswa) }}" style="object-fit: cover" alt=""
                                 class="avatar-sm rounded me-3">
                             <div class="flex-grow-1">
                                 <h5 class="font-size-15 mb-2"><a href="candidate-overview.html"
                                         class="text-body">{{ $item->Siswa->name }}y</a> <span
-                                        class="badge badge-soft-info">Izin</span></h5>
+                                        class="badge badge-soft-info">{{ $item->keterangan }}</span></h5>
                                 <p class="mb-0 text-muted"><i
                                         class="bx bx-map text-body align-middle"></i>{{ $item->Siswa->sekolah }}</p>
                             </div>
                             <div>
-                                <div class="dropdown">
-                                    <button class="btn btn-soft-primary" type="button" id="dropdownMenuButton11"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class='bx bx-dots-vertical-rounded'></i>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton11">
-                                        <li><a class="dropdown-item" href="candidate-overview.html"> Detail</a></li>
-                                        <li><a class="dropdown-item" href="#">Tolak</a></li>
-                                        <li><a class="dropdown-item" href="#">Terima</a></li>
-                                    </ul>
+                            </div>
+                            <div class="d-flex justify-content-header">
+                                <div class="">
+                                    
                                 </div>
                             </div>
                         </div>

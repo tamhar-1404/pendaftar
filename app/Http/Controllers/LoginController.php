@@ -127,7 +127,6 @@ public function store(Request $request)
     if (Aproval::where('email', $request->email)->where('nisn', $request->nisn)->exists()) {
         return to_route('login.index')->with('berhasil_daftar', 'Silahkan menunggu konfirmasi dari admin');
     }
-    try {
         $this->validate($request , [
             'name'=>'required',
             'tempat'=>'required',
@@ -141,8 +140,8 @@ public function store(Request $request)
             'magang_awal'=>'required|date',
             'magang_akhir'=>'required|date|after:magang_awal',
             'foto_siswa'=>'required|image|mimes:jpg,jpeg,png',
-            'sp_diri'=>'required|image|mimes:jpg,jpeg,png',
-            'sp_ortu'=>'required|image|mimes:jpg,jpeg,png',
+            'sp_diri'=>'image|mimes:jpg,jpeg,png',
+            'sp_ortu'=>'image|mimes:jpg,jpeg,png',
             'cv'=>'required|image|mimes:jpg,jpeg,png',
             'skck' => 'nullable|image',
             'email'=> ['required', 'email', new EmailRule],
@@ -231,10 +230,6 @@ public function store(Request $request)
         ];
         // Mail::to($email_admin)->send(new PendaftaranAdmin($data));
         return redirect()->route('login.index')->with('berhasil_daftar', 'Data anda berhasil di kirim, Silahkan menunggu konfirmasi dari admin');
-    } catch (Exception $e) {
-
-        return back()->with('error', $e->getMessage())->withInput();
-    }
 }
     /**
      * Display the specified resource.

@@ -23,11 +23,12 @@
     <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('assets-admin/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-        <!-- Icons Css -->
-        <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <!-- App Css-->
-        <link href="{{ asset('assets-admin/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
+        type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{ asset('assets-admin/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
     <style>
         #preloader {
             position: fixed;
@@ -183,234 +184,341 @@
                                             class="card-logo-light">
                                     </a>
                                 </div>
-                                <form action="{{ route('login.store') }}" enctype="multipart/form-data">
+                                <form action="{{ route('login.store') }}" method="post" id="form-create"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     @method('POST')
                                     <div id="basic-example" class="mt-5">
                                         <!-- Seller Details -->
                                         <h3>Tahap 1</h3>
                                         <section>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="basicpill-firstname-input">Nama</label>
-                                                            <input type="text" class="form-control" id="basicpill-firstname-input" name="name" placeholder="Nama">
-                                                        </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-firstname-input">Nama</label>
+                                                        <input type="text" class="form-control"
+                                                            id="basicpill-firstname-input" name="name"
+                                                            placeholder="Nama">
+                                                        @error('name')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-lastname-input">NISN / NIM</label>
+                                                        <input type="text" class="form-control"
+                                                            id="basicpill-lastname-input" name="nisn"
+                                                            placeholder="Tempat">
+                                                        @error('nisn')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="basicpill-lastname-input">NISN / NIM</label>
-                                                            <input type="text" class="form-control" id="basicpill-lastname-input" name="nisn" placeholder="Tempat">
-                                                        </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-phoneno-input">Tempat</label>
+                                                        <input type="text" class="form-control"
+                                                            id="basicpill-phoneno-input" name="tempat"
+                                                            placeholder="NISN / NIM">
+                                                        @error('tempat')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </div>
-
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="basicpill-phoneno-input">Tempat</label>
-                                                            <input type="text" class="form-control" id="basicpill-phoneno-input" name="tempat" placeholder="NISN / NIM">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="basicpill-email-input">Tanggal</label>
-                                                            <input type="date" class="form-control" name="tanggal" id="basicpill-email-input">
-                                                        </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-email-input">Tanggal</label>
+                                                        <input type="date" class="form-control" name="tanggal"
+                                                            id="basicpill-email-input">
+                                                        @error('tanggal')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="mb-3">
-                                                            <label for="basicpill-address-input">Kelas</label>
-                                                            <select class="form-select" name="kelas">
-                                                                <option value="10">10</option>
-                                                                <option value="11">11</option>
-                                                                <option value="12">12</option>
-                                                                <option value="13">13</option>
-                                                                <option value="Mahasiswa">Mahasiswa</option>
-                                                            </select>
-                                                        </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-address-input">Kelas</label>
+                                                        <select class="form-select" name="kelas">
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
+                                                            <option value="13">13</option>
+                                                            <option value="Mahasiswa">Mahasiswa</option>
+                                                        </select>
+                                                        @error('kelas')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </div>
-                                                    <h5 class="font-size-14 mb-2">Jenis Kelamin</h5>
-                                                    <div class="form-check mb-3">
-                                                        <input class="form-check-input" type="radio" name="jeniskelamin" id="formRadios1" checked="" value="Perempuan">
-                                                        <label class="form-check-label" for="formRadios1">
-                                                            Perempuan
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="jeniskelamin" id="formRadios2" value="Laki laki">
-                                                        <label class="form-check-label" for="formRadios2">
-                                                            Laki laki
-                                                        </label>
-                                                    </div>
+                                            </div>
+                                            <h5 class="font-size-14 mb-2">Jenis Kelamin</h5>
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="radio" name="jeniskelamin"
+                                                    id="formRadios1" checked="" value="Perempuan">
+                                                <label class="form-check-label" for="formRadios1">
+                                                    Perempuan
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="jeniskelamin"
+                                                    id="formRadios2" value="Laki laki">
+                                                <label class="form-check-label" for="formRadios2">
+                                                    Laki laki
+                                                </label>
+                                            </div>
+                                            @error('jeniskelamin')
+                                                <p class="text-danger">
+                                                    {{ $message }}
+                                                </p>
+                                            @enderror
                                         </section>
 
                                         <!-- Company Document -->
                                         <h3>Tahap 2</h3>
                                         <section>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="basicpill-pancard-input">Alamat</label>
-                                                            <input type="text" class="form-control" id="basicpill-pancard-input" name="alamat">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="basicpill-vatno-input">Nomor</label>
-                                                            <input type="number" class="form-control" id="basicpill-vatno-input" name="no">
-                                                        </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-pancard-input">Alamat</label>
+                                                        <input type="text" class="form-control"
+                                                            id="basicpill-pancard-input" name="alamat">
+                                                        @error('alamat')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="basicpill-address-input">Jurusan</label>
-                                                            <select class="form-select" name="jurusan">
-                                                                <option value="RPL">RPL</option>
-                                                                <option value="Multimedia">Multimedia</option>
-                                                                <option value="TI">TI</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="basicpill-servicetax-input">Sekolah / Universitas</label>
-                                                            <input type="text" class="form-control" id="basicpill-servicetax-input">
-                                                        </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-vatno-input">Nomor</label>
+                                                        <input type="number" class="form-control"
+                                                            id="basicpill-vatno-input" name="no">
+                                                        @error('no')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="basicpill-companyuin-input">Mulai PKL</label>
-                                                            <input type="date" class="form-control" name="magang_awal" id="basicpill-companyuin-input">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="basicpill-declaration-input">Akhir PKL</label>
-                                                            <input type="date" class="form-control" name="magang_akhir" id="basicpill-Declaration-input" placeholder="Declaration Details">
-                                                        </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-address-input">Jurusan</label>
+                                                        <select class="form-select" name="jurusan">
+                                                            <option value="RPL">RPL</option>
+                                                            <option value="Multimedia">Multimedia</option>
+                                                            <option value="TI">TI</option>
+                                                        </select>
+                                                        @error('jurusan')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-servicetax-input">Sekolah /
+                                                            Universitas</label>
+                                                        <input type="text" class="form-control"
+                                                            id="basicpill-servicetax-input" name="sekolah">
+                                                        @error('sekolah')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-companyuin-input">Mulai PKL</label>
+                                                        <input type="date" class="form-control" name="magang_awal"
+                                                            id="basicpill-companyuin-input">
+                                                        @error('magang_awal')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-declaration-input">Akhir PKL</label>
+                                                        <input type="date" class="form-control"
+                                                            name="magang_akhir" id="basicpill-Declaration-input"
+                                                            placeholder="Declaration Details">
+                                                        @error('magang_akhir')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </section>
-
                                         <!-- Bank Details -->
                                         <h3>Tahap 3</h3>
                                         <section>
                                             <div>
-
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <div>
-                                                                    <label for="formFileSm" class="form-label">Foto siswa</label>
-                                                                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="foto_siswa">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <div>
-                                                                    <label for="formFileSm" class="form-label">Surat Pernyataan Diri</label>
-                                                                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="sp_diri">
-                                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <div>
+                                                                <label for="formFileSm" class="form-label">Foto
+                                                                    siswa</label>
+                                                                <input class="form-control form-control-sm"
+                                                                    id="formFileSm" type="file" name="foto_siswa">
+                                                                @error('foto_siswa')
+                                                                    <p class="text-danger">
+                                                                        {{ $message }}
+                                                                    </p>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <div>
-                                                                    <label for="formFileSm" class="form-label">Surat Pernyataan Orang Tua</label>
-                                                                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="sp_ortu">
-                                                                </div>
-                                                            </div>
-                                                        </div>
 
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <div>
-                                                                    <label for="formFileSm" class="form-label">SKCK (opsional)</label>
-                                                                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="skck">
-                                                                </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <div>
+                                                                <label for="formFileSm" class="form-label">Surat
+                                                                    Pernyataan Diri (opsional)</label>
+                                                                <input class="form-control form-control-sm"
+                                                                    id="formFileSm" type="file" name="sp_diri">
+                                                                @error('sp_diri')
+                                                                    <p class="text-danger">
+                                                                        {{ $message }}
+                                                                    </p>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <div>
-                                                                    <label for="formFileSm" class="form-label">CV</label>
-                                                                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="cv">
-                                                                </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <div>
+                                                                <label for="formFileSm" class="form-label">Surat
+                                                                    Pernyataan Orang Tua (opsional)</label>
+                                                                <input class="form-control form-control-sm"
+                                                                    id="formFileSm" type="file" name="sp_ortu">
+                                                                @error('sp_ortu')
+                                                                    <p class="text-danger">
+                                                                        {{ $message }}
+                                                                    </p>
+                                                                @enderror
                                                             </div>
                                                         </div>
-
                                                     </div>
 
-                                              </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <div>
+                                                                <label for="formFileSm" class="form-label">SKCK
+                                                                    (opsional)</label>
+                                                                <input class="form-control form-control-sm"
+                                                                    id="formFileSm" type="file" name="skck">
+                                                                @error('skck')
+                                                                    <p class="text-danger">
+                                                                        {{ $message }}
+                                                                    </p>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <div>
+                                                                <label for="formFileSm" class="form-label">CV</label>
+                                                                <input class="form-control form-control-sm"
+                                                                    id="formFileSm" type="file" name="cv">
+                                                                @error('cv')
+                                                                    <p class="text-danger">
+                                                                        {{ $message }}
+                                                                    </p>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
                                         </section>
                                         <h3>Tahap 4</h3>
                                         <section>
                                             <div>
 
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <div>
-                                                                    <label for="basicpill-phoneno-input">Email</label>
-                                                                    <input type="email" class="form-control" id="basicpill-phoneno-input" name="email">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <div>
-                                                                    <label for="basicpill-phoneno-input">Password</label>
-                                                            <input type="password" class="form-control" id="basicpill-phoneno-input" name="password">
-                                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <div>
+                                                                <label for="basicpill-phoneno-input">Email</label>
+                                                                <input type="email" class="form-control"
+                                                                    id="basicpill-phoneno-input" name="email">
+                                                                @error('email')
+                                                                    <p class="text-danger">
+                                                                        {{ $message }}
+                                                                    </p>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <div>
-                                                                    <label for="basicpill-phoneno-input">Konfirmasi password</label>
-                                                            <input type="password" class="form-control" id="basicpill-phoneno-input" name="confirm-password">
-                                                                </div>
+
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <div>
+                                                                <label for="basicpill-phoneno-input">Password</label>
+                                                                <input type="password" class="form-control"
+                                                                    id="basicpill-phoneno-input" name="password">
+                                                                @error('password')
+                                                                    <p class="text-danger">
+                                                                        {{ $message }}
+                                                                    </p>
+                                                                @enderror
                                                             </div>
                                                         </div>
-
-
                                                     </div>
-
-                                              </div>
-                                        </section>
-
-                                        <!-- Confirm Details -->
-                                        <h3>Tahap 5</h3>
-                                        <section>
-                                            <div class="row justify-content-center">
-                                                <div class="col-lg-6">
-                                                    <div class="text-center">
-                                                        <div class="mb-4">
-                                                            <i class="mdi mdi-check-circle-outline text-success display-4"></i>
-                                                        </div>
-                                                        <div>
-                                                            <h5>Konfirmasi</h5>
-                                                            <p class="text-muted">If several languages coalesce, the grammar of the resulting</p>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <div>
+                                                                <label for="basicpill-phoneno-input">Konfirmasi
+                                                                    password</label>
+                                                                <input type="password" class="form-control"
+                                                                    id="basicpill-phoneno-input"
+                                                                    name="confirm-password">
+                                                                @error('confirm-password')
+                                                                    <p class="text-danger">
+                                                                        {{ $message }}
+                                                                    </p>
+                                                                @enderror
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

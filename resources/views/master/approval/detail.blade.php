@@ -260,7 +260,7 @@
                                         <div class="col-md-12">
                                             <h6 class="mb-1">Pernyataan Orang Tua :</h6>
                                             <div class="image-container">
-                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_ortu) }}" alt="" class="hover-image">
+                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_ortu) }}" style="object-fit: cover" alt="" class="hover-image">
                                                 <div class="overlay " data-bs-toggle="modal" data-bs-target=".bs-example-modal-center-sp-ortu">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
@@ -296,7 +296,7 @@
                                         <div class="col-md-12">
                                             <h6 class="mb-1">CV :</h6>
                                             <div class="image-container">
-                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->cv) }}" alt="" class="hover-image">
+                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->cv) }}" style="object-fit: cover" alt="" class="hover-image">
                                                 <div class="overlay" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center-cv">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
@@ -333,7 +333,7 @@
                                             <h6 class="mb-1">SKCK :</h6>
                                             @if (  $aproval->skck != null)
                                             <div class="image-container">
-                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->skck) }}" alt="" class="hover-image">
+                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->skck) }}" alt="" style="object-fit: cover" class="hover-image">
                                                 <div class="overlay" data-bs-toggle="modal" data-bs-target=".skck">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>

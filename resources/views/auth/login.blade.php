@@ -218,8 +218,8 @@
                                             </div>
                                         </form>
                                         <div class="mt-5 text-center">
-                                            <p>Belum Punya Akun ? <a href="{{ route('login.create') }}"
-                                                    class="fw-medium text-primary"> Register </a> </p>
+                                            <p>Belum Punya Akun ? <a href="/auth-register"
+                                                    class="fw-medium text-primary"> Daftar </a> </p>
                                         </div>
                                     </div>
                                 </div>
