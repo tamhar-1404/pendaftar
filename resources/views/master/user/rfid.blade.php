@@ -162,7 +162,7 @@
                         @csrf
                         @method('PUT')
                         <label for="">RFID</label>
-                        <input type="text" name="RFID" class="form-control" placeholder="Masukkan RFID">
+                        <input type="text" autofocus name="RFID" class="form-control" placeholder="Masukkan RFID">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
