@@ -20,6 +20,7 @@
                             <th>No</th>
                             <th>Siswa</th>
                             <th>Sekolah</th>
+                            <th>Keterangan</th>
                             <th>Masuk</th>
                             <th>Istirahat</th>
                             <th>Kembali</th>
@@ -35,15 +36,9 @@
                             <td>{{ $student->sekolah }}</td>
                             <td>
                                 @if (isset($student->attendances[0]))
-                                    @if (date('H:i:s', strtotime($student->attendances[0]->created_at)) >= $attendanceRule?->checkin_ends ?? "08:00:00")
                                     <div class="btn btn-soft-warning waves-effect waves-light">
-                                        Telat
+                                        {{ $student->attendances[0]->status }}
                                     </div>
-                                    @else
-                                    <div class="btn btn-soft-success waves-effect waves-light">
-                                        Hadir
-                                    </div>
-                                    @endif
                                 @else
                                 <div class="btn btn-soft-danger waves-effect waves-light">
                                     Belum Hadir
@@ -53,9 +48,20 @@
                             <td>
                                 @if (isset($student->attendances[0]))
                                     @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
+                                        @if ($detailAttendance->status == 'present')
+                                        <div class="btn btn-soft-success waves-effect waves-light">
+                                            {{date('H:i', strtotime($detailAttendance->created_at))}}
+                                        </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </td>
+                            <td>
+                                @if (isset($student->attendances[0]))
+                                    @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
                                         @if ($detailAttendance->status == 'break')
                                         <div class="btn btn-soft-success waves-effect waves-light">
-                                            Hadir
+                                            {{date('H:i', strtotime($detailAttendance->created_at))}}
                                         </div>
                                         @endif
                                     @endforeach
@@ -67,11 +73,11 @@
                                         @if ($detailAttendance->status == 'return_break')
                                             @if (date('H:i:s', strtotime($detailAttendance->created_at)) <= $attendanceRule?->return_ends ?? '13:00:00')
                                             <div class="btn btn-soft-success waves-effect waves-light">
-                                                Hadir
+                                                {{ date('H:i', strtotime($detailAttendance->created_at)) }}
                                             </div>
                                             @else
                                             <div class="btn btn-soft-warning waves-effect waves-light">
-                                                Terlambat
+                                                {{ date('H:i', strtotime($detailAttendance->created_at)) }}
                                             </div>
                                             @endif
                                         @endif
@@ -83,7 +89,7 @@
                                     @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
                                         @if ($detailAttendance->status == 'return')
                                         <div class="btn btn-soft-success waves-effect waves-light">
-                                            Hadir
+                                            {{ date('H:i', strtotime($detailAttendance->created_at)) }}
                                         </div>
                                         @endif
                                     @endforeach

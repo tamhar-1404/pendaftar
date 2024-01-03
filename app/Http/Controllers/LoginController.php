@@ -229,7 +229,7 @@ public function store(Request $request)
         $data = [
             'nama' => $request->name,
         ];
-        Mail::to($email_admin)->send(new PendaftaranAdmin($data));
+        // Mail::to($email_admin)->send(new PendaftaranAdmin($data));
         return redirect()->route('login.index')->with('berhasil_daftar', 'Data anda berhasil di kirim, Silahkan menunggu konfirmasi dari admin');
     } catch (Exception $e) {
 
