@@ -8,11 +8,16 @@
 
     <meta charset="utf-8">
     <meta name="keywords">
-    <meta name="description"
-        content="PT Hummatech berkomitmen untuk mencapai keunggulan dalam segala hal yang mereka lakukan. Mereka terus berusaha menjadi yang terbaik dalam industri perangkat lunak.">
+    <meta name="description" content="Improve your skill with hummatech internship.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="99webpage">
-    <link href="/admin/assets/images/Logo.png" rel="shortcut icon">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Judul Halaman Anda">
+    <meta property="og:description" content="Deskripsi Halaman Anda">
+    <meta property="og:image" content="{{ asset('assets-landing/images/nama-gambar.jpg') }}">
+    <meta property="og:url" content="https://i.postimg.cc/zvwRpVpN/mobilelogo.png">
+    
     <!-- Template stylesheet -->
     <link rel="stylesheet" href="{{ asset('assets-landing/css/style.min.css') }}">
 </head>
