@@ -10,7 +10,7 @@
     <meta name="keywords">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
     <!-- Open Graph tags -->
-    <meta property="og:description" content="DImprove your skill with hummatech internship.">
+    <meta property="og:description" content="Improve your skill with hummatech internship.">
     <meta property="og:image" content="https://i.postimg.cc/zvwRpVpN/mobilelogo.png">
     
     <!-- Template stylesheet -->
