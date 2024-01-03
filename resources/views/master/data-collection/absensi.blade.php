@@ -90,7 +90,9 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="" class="btn btn-primary waves-effect waves-light">Detail</a>
+                                @if (isset($student->attendances[0]))
+                                <a href="{{ route('attendance.detail', $student->attendances[0]->id) }}" class="btn btn-primary waves-effect waves-light">Detail</a>
+                                @endif
                             </td>
                         </tr>
                         @empty
