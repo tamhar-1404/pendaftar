@@ -89,15 +89,16 @@
             });
         </script>
     @endif
-    @if (session()->has('success'))
-        <script>
-            Swal.fire(
-                'Berhasil!',
-                "{{ session('success') }}",
-                'success'
-            )
-        </script>
-    @endif
+    @if (session('berhasil_daftar'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '{{ session('berhasil_daftar') }}',
+        })
+    </script>
+@endif
     @if (session()->has('error'))
         <script>
             Swal.fire(
