@@ -33,15 +33,29 @@
                             </div>
                             <div class="d-flex justify-content-header gap-2">
                                 <div class="">
-                                    <button type="button" class="btn btn-secondary">
+                                    <button type="button" class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target=".dvorak{{ $item->id }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6V1h5v2H4v3H2Zm18 0V3h-3V1h5v5h-2ZM2 23v-5h2v3h3v2H2Zm15 0v-2h3v-3h2v5h-5ZM7 18h10V6H7v12Zm0 2q-.825 0-1.413-.588T5 18V6q0-.825.588-1.413T7 4h10q.825 0 1.413.588T19 6v12q0 .825-.588 1.413T17 20H7Zm2-10h6V8H9v2Zm0 3h6v-2H9v2Zm0 3h6v-2H9v2Zm-2 2V6v12Z"/></svg>
                                     </button>
+
+
                                 </div>
                                 <div class="">
-                                    <button class="btn btn-danger">Tolak</button>
+                                    <form action="{{ route('approvalizin.update', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="email" value="{{ $item->Siswa->email }}">
+                                        <input type="hidden" name="keterangan" value="tolak">
+                                        <button class="btn btn-danger" type="submit">Tolak</button>
+                                    </form>
                                 </div>
                                 <div class="">
-                                    <button class="btn btn-success">Terima</button>
+                                    <form action="{{ route('approvalizin.update', $item->id) }}" method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="keterangan" value="terima">
+                                        <input type="hidden" name="email" value="{{ $item->Siswa->email }}">
+                                        <button class="btn btn-success" type="submit">Terima</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -55,6 +69,21 @@
                         </div>
                     </div>
                     @endforelse
+                    @foreach ($menunggu as $item)
+                    <div class="modal fade bs-example-modal-xl dvorak{{ $item->id }}" id="dvorak" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="myExtraLargeModalLabel">Bukti</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{ asset('storage/bukti_izin/' . $item->bukti) }}" alt="">
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                    @endforeach
 
                     </div>
                     {{-- Tutup div e --}}

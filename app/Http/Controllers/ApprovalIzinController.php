@@ -237,9 +237,9 @@ class ApprovalIzinController extends Controller
                 'status2'=>'tolak',
                 'alasan' => $alasan
             ]);
-            return back()->with('success', 'Berhasil menolak izin');
+            return redirect()->back()->with('success', 'Berhasil menolak izin');
         }
-         return redirect()->route('approvalizin.index')->with('success', 'Data Berhasil Disimpan!');
+         return redirect()->back()->with('success', 'Data Berhasil Disimpan!');
     }
     /**
      * Remove the specified resource from Storage.
