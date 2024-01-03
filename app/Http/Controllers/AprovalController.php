@@ -166,7 +166,7 @@ public function confirm(Aproval $aproval)
 
         Mail::to($aproval->email)->send(new RegistrationAcceptedMail);
 
-        return redirect()->route('aproval.index')->with('success', 'berhasil menerima anak magang');
+        return redirect()->route('registration.index')->with('success', 'berhasil menerima anak magang');
     } else {
         return redirect()->back()->with('error', 'Maaf, tidak dapat melakukan konfirmasi pada data');
     }
