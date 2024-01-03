@@ -494,7 +494,8 @@ class JurnaladminController extends Controller
             $query->where('name', 'LIKE', '%'.$request->siswa.'%');
         })
         ->get();
-        return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa','keyword','Tanggal'));
+        // dd($mengisi);
+        return view('master.data-collection.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa','keyword','Tanggal'));
     }
     /**
      * Show the form for creating a new resource.

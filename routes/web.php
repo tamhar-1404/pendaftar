@@ -39,6 +39,7 @@ use App\Http\Controllers\ProfilsiswaController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TolakController;
+use App\Models\Jurnaladmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,7 +113,7 @@ Route::middleware(['auth'])->group(function () {
         // Route::get('pendataan-barang', function () {return view('master.transaksi.goods-data-collection');});
         // Route::get('transaksi-opname', function () {return view('master.transaksi.opname');});
 
-        Route::get('data-jurnal', function () {return view('master.data-collection.index');});
+        Route::get('data-jurnal', [JurnaladminController::class, 'Jurnalhariini']);
 
         // end
 
