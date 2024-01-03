@@ -271,7 +271,7 @@
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Pernyataan Diri Sendiri</h5>
+                                                            <h5 class="modal-title">Pernyataan Orang Tua</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body text-center">
@@ -296,7 +296,7 @@
                                         <div class="col-md-12">
                                             <h6 class="mb-1">CV :</h6>
                                             <div class="image-container">
-                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->skck) }}" alt="" class="hover-image">
+                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->cv) }}" alt="" class="hover-image">
                                                 <div class="overlay" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center-cv">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
@@ -306,11 +306,11 @@
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title">SKCK</h5>
+                                                                <h5 class="modal-title">CV</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body text-center">
-                                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_diri) }}" alt="" class="hover-image">
+                                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->cv) }}" alt="" class="hover-image">
                                                                 <button type="button" class="btn btn-primary waves-effect waves-light mt-2 me-1">
                                                                     Download
                                                                 </button>
@@ -343,11 +343,11 @@
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title">Pernyataan Diri Sendiri</h5>
+                                                                <h5 class="modal-title">SKCK</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body text-center">
-                                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->sp_diri) }}" alt="" class="hover-image">
+                                                                <img src="{{ asset('storage/pendaftaran/'. $aproval->skck) }}" alt="" class="hover-image">
                                                                 <a id="downloadLink" class="download-link hidden" href="#"
                                                                 download>>
                                                                 <button type="button" class="btn btn-primary waves-effect waves-light mt-2 me-1 download-button">
