@@ -257,9 +257,7 @@
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div> --}}
-                                                <p class="text-dark fs-5" style="font-weight: 500">
-                                                    No Data
-                                                </p>
+                                               
                                             </div>
                                             @endif
 
@@ -307,9 +305,7 @@
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div> --}}
-                                                <p class="text-dark fs-5" style="font-weight: 500">
-                                                    No Data
-                                                </p>
+                                               
                                             </div>
                                             @endif
 
@@ -397,9 +393,7 @@
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div> --}}
-                                                <p class="text-dark fs-5" style="font-weight: 500">
-                                                    No Data
-                                                </p>
+                                               
                                             </div>
                                             @endif
                                         </div>
