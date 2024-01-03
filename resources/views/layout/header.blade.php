@@ -5,7 +5,7 @@
             <div class="navbar-brand-box">
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{ asset('admin/hummasoft.png') }}" alt="" height="22">
+                        <img src="{{ asset('mobilelogo.png') }}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
                         <img src="{{ asset('assets-landing/images/logolandingpng.png') }}" alt="" height="22">
@@ -14,7 +14,7 @@
 
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ asset('admin/hummasoft.png') }}" alt="" height="22">
+                        <img src="{{ asset('mobilelogo.png') }}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
                         <img src="{{ asset('Logo.png') }}" alt="" height="22">
