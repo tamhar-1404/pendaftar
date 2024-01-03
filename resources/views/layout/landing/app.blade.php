@@ -19,45 +19,6 @@
 </head>
 
 <body>
-    <style>
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 0.5s ease-out;
-        }
-
-        #loader {
-            border: 16px solid #f3f3f3;
-            border-top: 16px solid #3498db;
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        body.loaded #preloader {
-            display: none;
-        }
-    </style>
     @include('layout.landing.header')
 
     @yield('content')
@@ -158,9 +119,6 @@
         </div>
     </footer>
     <!-- End Footer -->
-    <div id="preloader">
-        <div id="loader"></div>
-    </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -168,14 +126,7 @@
 
     <!-- Template main JavaScript -->
     <script src="{{ asset('assets-landing/js/main.min.js') }}"></script>
-    <script>
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            preloader.style.animation = 'none';
-            preloader.style.opacity = 0;
-            document.body.classList.add('loaded');
-        });
-    </script>
+
     <!-- Template custome JavaScript -->
     <script src="{{ asset('assets-landing/js/scripts.min.js') }}"></script>
 </body>
