@@ -334,12 +334,12 @@
                                             @if (  $aproval->skck != null)
                                             <div class="image-container">
                                                 <img src="{{ asset('storage/pendaftaran/'. $aproval->skck) }}" alt="" class="hover-image">
-                                                <div class="overlay" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center-Skck">
+                                                <div class="overlay" data-bs-toggle="modal" data-bs-target=".skck">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div>
-                                                <div class="modal fade bs-example-modal-center-skck" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal fade skck" tabindex="-1" role="dialog" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
