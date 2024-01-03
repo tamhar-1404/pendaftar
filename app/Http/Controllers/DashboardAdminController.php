@@ -29,7 +29,7 @@ class DashboardAdminController extends Controller
             ->where('day', DayEnum::THURSDAY->value)
             ->first();
         $jumat = AttendanceRule::query()
-            ->where('day', DayEnum::MONDAY->value)
+            ->where('day', DayEnum::FRIDAY->value)
             ->first();
 
         $studentCount = Siswa::query()
