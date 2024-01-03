@@ -15,17 +15,24 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-end">
                             <div class="dropdown">
-                                <p id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <p id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
                                     <span class="fa fa-ellipsis-v"></span>
                                 </p>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <form action="{{ route('student.delete', $siswa->id) }}" method="post">
+                                    <form id="deleteForm" action="{{ route('student.delete', $siswa->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="dropdown-item">Hapus</button>
+                                        <button id="deleteButton" type="submit" class="dropdown-item">Hapus</button>
+                                    </form>
+                                    <form id="resetForm" action="{{ route('reset-admin-password/', $siswa->id) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" id="resetButton" class="dropdown-item">Reset
+                                            Password</button>
                                     </form>
                                     <a class="dropdown-item" href="#">Banned</a>
-                                    <a class="dropdown-item" href="#">Keluarkan</a>
                                 </div>
                             </div>
                         </div>
@@ -58,4 +65,41 @@
         @endforelse
     </div>
     <!-- end row -->
+@endsection
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        document.getElementById('deleteButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda tidak akan dapat mengembalikan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus itu!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('deleteForm').submit();
+                }
+            })
+        });
+        document.getElementById('resetButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Password Akan Ke Reset Menjadi 'Password'",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, reset!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('resetForm').submit();
+                }
+            })
+        });
+    </script>
 @endsection
