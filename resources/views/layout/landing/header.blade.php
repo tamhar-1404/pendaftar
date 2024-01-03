@@ -26,7 +26,7 @@
                 <li>
                     <div class="d-flex justify-content-header">
                         <div class="">
-                            <button onclick="window.location.href='{{ route('login.create') }}'" class="btn btn-warning text-white btn-sm mt-4">Daftar</button>
+                            <button onclick="window.location.href='/auth-register'" class="btn btn-warning text-white btn-sm mt-4">Daftar</button>
                         </div>
                         <div class="px-4">
                             <button onclick="window.location.href='{{ route('auth-login') }}'" class="btn btn-info btn-sm mt-4">Login</button>

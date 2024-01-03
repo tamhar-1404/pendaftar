@@ -10,17 +10,17 @@
         <div class="row mt-3">
             <div class="col">
                 <div class="text-center alert alert-danger fs-6" role="alert">
-                    belum Hadir 
+                    Belum Hadir 
                 </div>
             </div>
             <div class="col">
                 <div class="alert text-center alert-warning fs-6" role="alert">
-                    izin, sakit, telat, 
+                    Izin, Sakit, Telat, 
                 </div>
             </div>
             <div class="col">
                 <div class="alert text-center alert-success fs-6" role="alert">
-                     sudah absen
+                     Sudah Absen
                 </div>
             </div>
         </div>
@@ -48,7 +48,6 @@
                             <th>Istirahat</th>
                             <th>Kembali</th>
                             <th>Pulang</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,7 +74,7 @@
                                     </div>
                                     @endif
                                     @if ($student->attendances[0]->status == 'alpha')
-                                    <div class="btn btn-soft-danger waves-effect waves-light">
+                                    <div class="btn btn-soft-danger non-active waves-effect waves-light">
                                         {{ $student->attendances[0]->status }}
                                     </div>
                                     @endif
@@ -133,11 +132,6 @@
                                         </div>
                                         @endif
                                     @endforeach
-                                @endif
-                            </td>
-                            <td>
-                                @if (isset($student->attendances[0]))
-                                <a href="{{ route('attendance.detail', $student->attendances[0]->id) }}" class="btn btn-primary waves-effect waves-light">Detail</a>
                                 @endif
                             </td>
                         </tr>
