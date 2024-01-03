@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table id="example" class="table table-striped" style="width:100%">
+                <table id="students-table" class="table table-striped" style="width:100%">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -157,4 +157,14 @@
     </div>
 @endsection
 @section('script')
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const table = document.getElementById("students-table");
+        const rows = Array.from(table.getElementsByTagName("tr"));
+        const reversedRows = rows.reverse();
+        reversedRows.forEach(row => {
+            table.appendChild(row);
+        });
+    });
+</script>
 @endsection
