@@ -63,6 +63,7 @@
                 </div>
             </div>
         @endforelse
+        {{ $siswas->links() }}
     </div>
     <!-- end row -->
 @endsection
