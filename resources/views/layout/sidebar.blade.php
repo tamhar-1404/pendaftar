@@ -31,7 +31,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="/data-jurnal" key="t-tui-calendar">Jurnal</a></li>
-                        <li><a href="#" key="t-full-calendar">Absensi</a></li>
+                        <li><a href="   data-absensi" key="t-full-calendar">Absensi</a></li>
                         <li><a href="#" key="t-full-calendar">Report</a></li>
                     </ul>
                 </li>

@@ -384,7 +384,7 @@
                 <div class="h-full bg-white dark:bg-[#0e1726]">
                     <div class="flex items-center justify-between px-4 py-3">
                         <a href="#" class="main-logo flex shrink-0 items-center">
-                            <img class="ml-[5px] w-20 flex-none" src="{{ asset('siswa/images/hummasoft.png') }}"
+                            <img class="ml-[5px] w-20 flex-none" src="{{ asset('assets-landing/images/logolandingpng.png') }}"
                                 alt="image" />
 
                         </a>
