@@ -6,7 +6,7 @@
 <div class="card">
     <div class="card-body">
 
-        <h4 class="card-title">Keterangan</h4>
+        <h4 class="card-title">Informasi</h4>
         <div class="row mt-3">
             <div class="col">
                 <div class="text-center alert alert-danger fs-6" role="alert">
