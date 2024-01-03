@@ -198,7 +198,7 @@
                                                     <div class="mb-3">
                                                         <label for="basicpill-firstname-input">Nama</label>
                                                         <input type="text" class="form-control"
-                                                            id="basicpill-firstname-input" name="name"
+                                                            id="basicpill-firstname-input" name="name" value="{{ old('name') }}"
                                                             placeholder="Nama">
                                                         @error('name')
                                                             <p class="text-danger">
@@ -211,7 +211,7 @@
                                                     <div class="mb-3">
                                                         <label for="basicpill-lastname-input">NISN / NIM</label>
                                                         <input type="text" class="form-control"
-                                                            id="basicpill-lastname-input" name="nisn"
+                                                            id="basicpill-lastname-input" name="nisn"  value="{{ old('nisn') }}"
                                                             placeholder="NISN">
                                                         @error('nisn')
                                                             <p class="text-danger">
@@ -227,7 +227,7 @@
                                                     <div class="mb-3">
                                                         <label for="basicpill-phoneno-input">Tempat</label>
                                                         <input type="text" class="form-control"
-                                                            id="basicpill-phoneno-input" name="tempat"
+                                                            id="basicpill-phoneno-input" name="tempat" value="{{ old('tempat') }}"
                                                             placeholder="Tempat">
                                                         @error('tempat')
                                                             <p class="text-danger">
@@ -239,7 +239,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         <label for="basicpill-email-input">Tanggal Lahir</label>
-                                                        <input type="date" class="form-control" name="tanggal"
+                                                        <input type="date" class="form-control" name="tanggal" value="{{ old('tanggal') }}"
                                                             id="basicpill-email-input">
                                                         @error('tanggal')
                                                             <p class="text-danger">
@@ -254,11 +254,16 @@
                                                     <div class="mb-3">
                                                         <label for="basicpill-address-input">Kelas</label>
                                                         <select class="form-select" name="kelas">
-                                                            <option value="10">10</option>
-                                                            <option value="11">11</option>
-                                                            <option value="12">12</option>
-                                                            <option value="13">13</option>
-                                                            <option value="Mahasiswa">Mahasiswa</option>
+                                                            <option  value="10"
+                                                            {{ old('kelas') == '10' ? 'selected' : '' }}>10</option>
+                                                            <option  value="11"
+                                                            {{ old('kelas') == '11' ? 'selected' : '' }}>11</option>
+                                                            <option  value="12"
+                                                            {{ old('kelas') == '12' ? 'selected' : '' }}>12</option>
+                                                            <option  value="13"
+                                                            {{ old('kelas') == '13' ? 'selected' : '' }}>13</option>
+                                                            <option  value="Mahasiswa"
+                                                            {{ old('kelas') == 'Mahasiswa' ? 'selected' : '' }}>Mahasiswa</option>
                                                         </select>
                                                         @error('kelas')
                                                             <p class="text-danger">
@@ -270,15 +275,15 @@
                                             </div>
                                             <h5 class="font-size-14 mb-2">Jenis Kelamin</h5>
                                             <div class="form-check mb-3">
-                                                <input class="form-check-input" type="radio" name="jeniskelamin"
-                                                    id="formRadios1" checked="" value="Perempuan">
+                                                <input class="form-check-input" type="radio" name="jeniskelamin" id="formRadios1" value="Perempuan" {{ old('jeniskelamin') == 'Perempuan' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="formRadios1">
                                                     Perempuan
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="jeniskelamin"
-                                                    id="formRadios2" value="Laki-laki">
+                                                <input class="form-check-input"  type="radio" name="jeniskelamin" id="formRadios2"
+                                                value="laki-laki"
+                                                {{ old('jeniskelamin') == 'laki-laki' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="formRadios2">
                                                     Laki laki
                                                 </label>
@@ -298,7 +303,7 @@
                                                     <div class="mb-3">
                                                         <label for="basicpill-pancard-input">Alamat</label>
                                                         <input type="text" class="form-control"
-                                                            id="basicpill-pancard-input" name="alamat">
+                                                            id="basicpill-pancard-input" name="alamat" value="{{ old('alamat') }}">
                                                         @error('alamat')
                                                             <p class="text-danger">
                                                                 {{ $message }}
@@ -311,7 +316,7 @@
                                                     <div class="mb-3">
                                                         <label for="basicpill-vatno-input">Nomor</label>
                                                         <input type="number" class="form-control"
-                                                            id="basicpill-vatno-input" name="no">
+                                                            id="basicpill-vatno-input" name="no" value="{{ old('no') }}">
                                                         @error('no')
                                                             <p class="text-danger">
                                                                 {{ $message }}
@@ -325,9 +330,11 @@
                                                     <div class="mb-3">
                                                         <label for="basicpill-address-input">Jurusan</label>
                                                         <select class="form-select" name="jurusan">
-                                                            <option value="RPL">RPL</option>
-                                                            <option value="Multimedia">Multimedia</option>
-                                                            <option value="TI">TI</option>
+                                                            <option value="RPL" {{ old('jurusan') == 'RPL' ? 'selected' : '' }}>RPL
+                                                            </option>
+                                                            <option value="Multimedia" {{ old('jurusan') == 'Multimedia' ? 'selected' : '' }}>
+                                                                Multimedia</option>
+                                                            <option value="TI" {{ old('jurusan') == 'TI' ? 'selected' : '' }}>TI</option>
                                                         </select>
                                                         @error('jurusan')
                                                             <p class="text-danger">
@@ -342,7 +349,7 @@
                                                         <label for="basicpill-servicetax-input">Sekolah /
                                                             Universitas</label>
                                                         <input type="text" class="form-control"
-                                                            id="basicpill-servicetax-input" name="sekolah">
+                                                            id="basicpill-servicetax-input" name="sekolah" value="{{ old('sekolah') }}" >
                                                         @error('sekolah')
                                                             <p class="text-danger">
                                                                 {{ $message }}
@@ -355,7 +362,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         <label for="basicpill-companyuin-input">Mulai PKL</label>
-                                                        <input type="date" class="form-control" name="magang_awal"
+                                                        <input type="date" class="form-control" name="magang_awal" value="{{ old('magang_awal') }}"
                                                             id="basicpill-companyuin-input">
                                                         @error('magang_awal')
                                                             <p class="text-danger">
@@ -369,7 +376,7 @@
                                                     <div class="mb-3">
                                                         <label for="basicpill-declaration-input">Akhir PKL</label>
                                                         <input type="date" class="form-control"
-                                                            name="magang_akhir" id="basicpill-Declaration-input"
+                                                            name="magang_akhir" id="basicpill-Declaration-input" value="{{ old('magang_akhir') }}"
                                                             placeholder="Declaration Details">
                                                         @error('magang_akhir')
                                                             <p class="text-danger">
@@ -492,7 +499,7 @@
                                                             <div>
                                                                 <label for="basicpill-phoneno-input">Email</label>
                                                                 <input type="email" class="form-control"
-                                                                    id="basicpill-phoneno-input" name="email">
+                                                                    id="basicpill-phoneno-input" name="email" value="{{ old('email') }}">
                                                                 @error('email')
                                                                     <p class="text-danger">
                                                                         {{ $message }}
