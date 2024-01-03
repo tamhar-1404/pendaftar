@@ -109,6 +109,15 @@
                                             <h4 class="mt-1 mb-1">{{ $aproval->name }}</h4>
                                         </div>
                                         <div class="col-6 text-end  d-flex justify-end float-right">
+                                            <form id="delete-form-{{ $aproval->id }}" class="ms-auto"
+                                                action="{{ route('approval.delete', $aproval->id) }}" method="POST"
+                                                onsubmit="return confirmDelete(event)">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger waves-effect waves-light mt-2 me-1">
+                                                     Hapus
+                                                </button>
+                                            </form>
                                             <form id="reject-form-{{ $aproval->id }}" class="ms-auto"
                                                 action="{{ route('aproval.tolak', $aproval->id) }}" method="POST"
                                                 onsubmit="return confirmReject(event)">
@@ -430,6 +439,25 @@
 
                         Swal.fire({
                             title: 'Data berhasil ditolak',
+                            icon: 'success',
+                        }).then(() => {
+                            event.target.submit();
+                        });
+                    }
+                });
+            }
+            function confirmDelete(event) {
+                event.preventDefault();
+
+                Swal.fire({
+                    title: 'Hapus',
+                    confirmButtonText: 'Hapus',
+                    cancelButtonText: 'Batal',
+                    allowOutsideClick: true,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Data berhasil dihapus',
                             icon: 'success',
                         }).then(() => {
                             event.target.submit();

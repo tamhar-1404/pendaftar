@@ -520,15 +520,40 @@ public function absen_pdf1(Request $request)  {
         AttendanceRule::query()->updateOrCreate(['day' => $data['day']], $data);
         return redirect()->back()->with('success', 'Berhasil memperbarui');
     }
+
+    /**
+     * listAttendance
+     *
+     * @param  mixed $request
+     * @return View
+     */
     public function listAttendance(Request $request): View
     {
         $students = Siswa::query()
             ->with(['attendances' => function ($query) {
                 $query->whereDate('created_at', now());
             }])
+            ->when($request->name, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->name . '%');
+            })
             ->whereNull('status')
             ->get();
-        return view('master.data-collection.absensi', compact('students'));
+
+        $attendanceRule = AttendanceRule::query()
+            ->where('day', now()->format('l'))
+            ->first();
+        return view('master.data-collection.absensi', compact('students', 'attendanceRule'));
+    }
+
+    /**
+     * attendanceDetail
+     *
+     * @param  mixed $attendance
+     * @return View
+     */
+    public function attendanceDetail(Attendance $attendance): View
+    {
+        return view('master.data-collection.detail-absensi', compact('attendance'));
     }
 
 }
