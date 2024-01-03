@@ -530,14 +530,15 @@ public function absen_pdf1(Request $request)  {
     public function listAttendance(Request $request): View
     {
         $students = Siswa::query()
+            ->withCount('attendances')
             ->with(['attendances' => function ($query) {
-                $query->whereDate('created_at', now())
-                    ->orderBy('created_at');
+                $query->whereDate('created_at', now());
             }])
             ->when($request->name, function ($query) use ($request) {
                 $query->where('name', 'LIKE', '%' . $request->name . '%');
             })
             ->whereNull('status')
+            ->orderBy('attendances_count')
             ->get();
 
         $attendanceRule = AttendanceRule::query()
