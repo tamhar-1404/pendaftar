@@ -19,7 +19,7 @@
                                     <span class="fa fa-ellipsis-v"></span>
                                 </p>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <form action="{{ route('student.delete') }}" method="post">
+                                    <form action="{{ route('student.delete', $siswa->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="dropdown-item">Hapus</button>
