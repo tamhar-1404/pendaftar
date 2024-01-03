@@ -250,6 +250,8 @@ class SiswaController extends Controller
 
     public function destroy(Siswa $siswa)
     {
+        User::where('siswa_id', $siswa->id)
+            ->delete();
         $siswa->delete();
         return redirect()->back()->with('success', 'Berhasil hapus siswa');
     }
