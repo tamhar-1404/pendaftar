@@ -107,10 +107,11 @@
                 <button data-modal-target="staticModal" data-modal-toggle="staticModal"
                     class="button_izin bg-blue-400 flex border hover:border-blue-400 p-2 text-white font-semibold rounded-lg ">Tambah
                     Izin</button>
-                    <form action="{{ route('absensi_siswa.store') }}" method="post" id="absenform">
+                    {{-- button absen --}}
+                    {{-- <form action="{{ route('absensi_siswa.store') }}" method="post" id="absenform">
                         @csrf
                         <button type="button" class="button_absen border border-green-500 px-3 py-2 rounded-lg text-green-500 font-bold" id="btnabsen">Absen</button>
-                    </form>
+                    </form> --}}
 
                     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
                     <script>
