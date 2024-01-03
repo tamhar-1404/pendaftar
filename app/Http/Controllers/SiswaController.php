@@ -248,9 +248,9 @@ class SiswaController extends Controller
         // return redirect()->back();
     }
 
-    public function destroy(Siswa $siswa)
+    public function destroy(Siswa $student)
     {
-        $siswa->delete();
+        $student->delete();
         return redirect()->back()->with('success', 'Berhasil hapus siswa');
     }
     public function banned(Request $request, $id) {
