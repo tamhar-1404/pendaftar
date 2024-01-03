@@ -44,7 +44,7 @@ class TolakEmail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.tolakEmail',
+            view: 'emails.registration-rejected',
         );
     }
 
