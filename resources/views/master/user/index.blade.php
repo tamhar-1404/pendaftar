@@ -63,7 +63,9 @@
                 </div>
             </div>
         @endforelse
-        {{ $siswas->links() }}
+        <div class="d-flex justify-content-center">
+            {{ $siswas->links() }}
+        </div>
     </div>
     <!-- end row -->
 @endsection
