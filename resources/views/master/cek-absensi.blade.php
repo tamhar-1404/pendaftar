@@ -11,7 +11,7 @@
                 <div class="">
                 </div>
             </div>
-            <form method="post">
+            <form>
                 <div class="row mb-4">
                     <div class="col-12 col-xxl-3 mt-2 col-lg-4">
                         <div class="">
