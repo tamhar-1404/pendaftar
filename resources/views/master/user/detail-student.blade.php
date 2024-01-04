@@ -204,9 +204,9 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <h6 class="mb-1">Pernyataan Diri Sendiri :</h6>
-                                        @if ($aproval->sp_diri != null)
+                                        @if ($aproval->studentFile->sp_diri != null)
                                         <div class="image-container">
-                                            <img src="{{ asset('storage/siswa/' . $aproval->sp_diri) }}" alt=""
+                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->sp_diri) }}" alt=""
                                                 class="hover-image">
                                             <div class="overlay" data-bs-toggle="modal"
                                                 data-bs-target=".bs-example-modal-center-sp-diri">
@@ -224,7 +224,7 @@
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body text-center">
-                                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->sp_diri) }}"
+                                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->sp_diri) }}"
                                                                 alt="" class="hover-image">
                                                             <button type="button"
                                                                 class="btn btn-primary waves-effect waves-light mt-2 me-1">
@@ -257,7 +257,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <h6 class="mb-1">Pernyataan Orang Tua :</h6>
-                                        @if ($aproval->sp_ortu != null)
+                                        @if ($aproval->studentFile->sp_ortu != null)
                                         <div class="image-container">
                                             <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->sp_ortu) }}"
                                                 alt="" class="hover-image">
@@ -312,7 +312,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <h6 class="mb-1">CV :</h6>
-                                        @if ($aproval->cv != null)
+                                        @if ($aproval->studentFile->cv != null)
                                         <div class="image-container">
                                             <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->cv) }}" alt=""
                                                 class="hover-image">
