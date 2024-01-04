@@ -6,9 +6,6 @@
                 <div class="">
                     <h4 class="card-title mb-3">Data Siswa</h4>
                 </div>
-                <div class="">
-                    <h4 class="card-title mb-3">Tanggal : {{ \Carbon\Carbon::now()->locale('id_ID')->isoFormat('DD MMMM Y') }}</h4>
-                </div>
             </div>
             <div class="col-md-3">
                 <div class="">
