@@ -204,36 +204,47 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <h6 class="mb-1">Pernyataan Diri Sendiri :</h6>
-                                        <div class="image-container">
-                                            <img src="{{ asset('storage/siswa/' . $aproval->sp_diri) }}" alt=""
-                                                class="hover-image">
-                                            <div class="overlay" data-bs-toggle="modal"
-                                                data-bs-target=".bs-example-modal-center-sp-diri">
-                                                <div class="icon">
-                                                    <i class="fa fa-eye"></i>
+                                        @if ($aproval->sp_diri != null)
+                                            <div class="image-container">
+                                                <img src="{{ asset('storage/siswa/' . $aproval->sp_diri) }}" alt=""
+                                                    class="hover-image">
+                                                <div class="overlay" data-bs-toggle="modal"
+                                                    data-bs-target=".bs-example-modal-center-sp-diri">
+                                                    <div class="icon">
+                                                        <i class="fa fa-eye"></i>
+                                                    </div>
                                                 </div>
+                                                <div class="modal fade bs-example-modal-center-sp-diri" tabindex="-1"
+                                                    role="dialog" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Pernyataan Diri Sendiri</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body text-center">
+                                                                <img src="{{ asset('storage/pendaftaran/' . $aproval->sp_diri) }}"
+                                                                    alt="" class="hover-image">
+                                                                <button type="button"
+                                                                    class="btn btn-primary waves-effect waves-light mt-2 me-1">
+                                                                    Download
+                                                                </button>
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal-dialog -->
+                                                </div><!-- /.modal -->
                                             </div>
-                                            <div class="modal fade bs-example-modal-center-sp-diri" tabindex="-1"
-                                                role="dialog" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Pernyataan Diri Sendiri</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body text-center">
-                                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->sp_diri) }}"
-                                                                alt="" class="hover-image">
-                                                            <button type="button"
-                                                                class="btn btn-primary waves-effect waves-light mt-2 me-1">
-                                                                Download
-                                                            </button>
-                                                        </div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal-dialog -->
-                                            </div><!-- /.modal -->
-                                        </div>
+                                        @else
+                                            <div class="image-container">
+                                                <img src="{{ asset('nodata.png') }}" alt="" class="hover-image">
+                                                {{-- <div class="overlay">
+                                                    <div class="icon">
+                                                        <i class="fa fa-eye"></i>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -245,6 +256,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <h6 class="mb-1">Pernyataan Orang Tua :</h6>
+                                        @if ($aproval->sp_ortu != null)
                                         <div class="image-container">
                                             <img src="{{ asset('storage/pendaftaran/' . $aproval->sp_ortu) }}"
                                                 alt="" class="hover-image">
@@ -255,6 +267,17 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @else
+                                            <div class="image-container">
+                                                <img src="{{ asset('nodata.png') }}" alt="" class="hover-image">
+                                                {{-- <div class="overlay">
+                                                    <div class="icon">
+                                                        <i class="fa fa-eye"></i>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                        @endif
+                                        
                                         <div class="modal fade bs-example-modal-center-sp-ortu" tabindex="-1"
                                             role="dialog" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
