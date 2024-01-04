@@ -89,7 +89,22 @@
                         <div class="">
                             <h4 class="card-title">Data Siswa</h4>
                         </div>
-
+                    </div>
+                    <div class="col-12 col-xxl-3 mt-2 col-lg-4">
+                        <div class="">
+                            <form action="">
+                                <div class="input-group">
+                                    <input name="name" type="text" value="{{ request()->name }}" class="form-control"
+                                        placeholder="Search">
+                                    <div class="input-group-append">
+                                        <button class="btn text-white"
+                                            style="background-color: #1B3061; border-radius: 0 5px 5px 0;" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="table-rep-plugin">
                         <div class="table-responsive mb-0" data-pattern="priority-columns">
@@ -103,6 +118,7 @@
                                         <th data-priority="1">Kelas</th>
                                         <th data-priority="3">Masa Magang</th>
                                         <th data-priority="3">Sekolah</th>
+                                        <th data-priority="3">RFID</th>
                                         <th data-priority="6">Aksi</th>
                                     </tr>
                                 </thead>
@@ -119,6 +135,7 @@
                                                 {{ \Carbon\Carbon::parse($user->Siswa->magang_akhir)->locale('id')->isoFormat('D MMMM Y ') }}
                                             </td>
                                             <td>{{ $user->sekolah }}</td>
+                                            <td>{{ $user->RFID }}</td>
                                             <td>
                                                 <button id="daftarkan" id="{{ $user->id }}"
                                                     data-id="{{ $user->id }}" class="btn daftarkan btn-sm btn-warning">
@@ -142,6 +159,7 @@
                                     @endforelse
                                 </tbody>
                             </table>
+                            {{ $siswas->links() }}
                         </div>
                     </div>
                 </div>

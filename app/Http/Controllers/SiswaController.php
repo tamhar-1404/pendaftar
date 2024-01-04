@@ -226,10 +226,10 @@ class SiswaController extends Controller
             ->paginate(10);
         $siswas = User::query()
             ->where('role', 'Siswa')
-            ->when($request->cari, function ($query) use ($request) {
-                $query->where('name', 'LIKE', '%'. $request->cari .'%')
-                    ->orWhere('sekolah', 'LIKE', '%' . $request->cari . '%');
+            ->when($request->name, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%'. $request->name .'%');
             })
+            ->whereNotNull('RFID')
             ->latest()
             ->paginate(10);
 
