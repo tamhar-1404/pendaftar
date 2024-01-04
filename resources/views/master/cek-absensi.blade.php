@@ -109,7 +109,12 @@
                                                 {{ date('H:i', strtotime($detailAttendance->created_at)) }}
                                             </div>
                                             @endif
+                                        @else
+                                        <div class="btn btn-soft-danger waves-effect waves-light">
+                                            -
+                                        </div>
                                         @endif
+
                                     @endforeach
                                 @else
                                 <div class="btn btn-soft-danger waves-effect waves-light">
