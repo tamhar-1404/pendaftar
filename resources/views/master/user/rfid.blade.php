@@ -31,8 +31,6 @@
                                         <th>No</th>
                                         <th data-priority="1">Nama</th>
                                         <th data-priority="3">Email</th>
-                                        <th data-priority="3">Jurusan</th>
-                                        <th data-priority="1">Kelas</th>
                                         <th data-priority="3">Masa Magang</th>
                                         <th data-priority="3">Sekolah</th>
                                         <th data-priority="6">Aksi</th>
@@ -44,8 +42,6 @@
                                             <th>{{ $loop->iteration }}</th>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->Siswa->jurusan }}</td>
-                                            <td>{{ $user->Siswa->kelas }}</td>
                                             <td>{{ \Carbon\Carbon::parse($user->Siswa->magang_awal)->locale('id')->isoFormat('D MMMM Y ') }}
                                                 -
                                                 {{ \Carbon\Carbon::parse($user->Siswa->magang_akhir)->locale('id')->isoFormat('D MMMM Y ') }}
@@ -117,8 +113,6 @@
                                         <th>No</th>
                                         <th data-priority="1">Nama</th>
                                         <th data-priority="3">Email</th>
-                                        <th data-priority="3">Jurusan</th>
-                                        <th data-priority="1">Kelas</th>
                                         <th data-priority="3">Masa Magang</th>
                                         <th data-priority="3">Sekolah</th>
                                         <th data-priority="3">RFID</th>
@@ -131,8 +125,6 @@
                                             <th>{{ $loop->iteration }}</th>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->Siswa->jurusan }}</td>
-                                            <td>{{ $user->Siswa->kelas }}</td>
                                             <td>{{ \Carbon\Carbon::parse($user->Siswa->magang_awal)->locale('id')->isoFormat('D MMMM Y ') }}
                                                 -
                                                 {{ \Carbon\Carbon::parse($user->Siswa->magang_akhir)->locale('id')->isoFormat('D MMMM Y ') }}
