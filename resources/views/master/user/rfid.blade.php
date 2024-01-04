@@ -53,7 +53,7 @@
                                             <td>{{ $user->sekolah }}</td>
                                             <td>
                                                 <button id="daftarkan" id="{{ $user->id }}"
-                                                    data-id="{{ $user->id }}" class="btn btn-sm btn-info">
+                                                    data-id="{{ $user->id }}" class="btn daftarkan btn-sm btn-info">
                                                     Daftarkan
                                                 </button>
                                             </td>
@@ -121,7 +121,7 @@
                                             <td>{{ $user->sekolah }}</td>
                                             <td>
                                                 <button id="daftarkan" id="{{ $user->id }}"
-                                                    data-id="{{ $user->id }}" class="btn btn-sm btn-warning">
+                                                    data-id="{{ $user->id }}" class="btn daftarkan btn-sm btn-warning">
                                                     Ganti RFID
                                                 </button>
                                             </td>
@@ -177,7 +177,7 @@
 @section('script')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $('#daftarkan').click(function() {
+        $('.daftarkan').click(function() {
             const formData = $(this).data();
             var actionUrl = `/rfid/${formData['id']}`;
             $('#form-update').attr('action', actionUrl);
