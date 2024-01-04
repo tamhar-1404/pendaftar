@@ -606,13 +606,13 @@
                             <h1 class="text-bold fs-6">Dashboard</h1>
                         </div>
                         <div class="flex justify-header gap-3">
-                            <div class="">
+                            {{-- <div class="">
                                 @if (auth()->user()->Siswa->role == 'siswa')
                                 <button type="button" onclick="Absen()"
                                     class=" button_absen border border-green-500 px-3 py-2 rounded-lg text-green-500  font-bold"
                                     >Absen</button>
                             @endif
-                            </div>
+                            </div> --}}
                             <div class="flex justify-end font-semibold bg-blue-400 text-white  px-4 py-1 rounded">
                                 <h1 class="mt-1">Saldo anda : <span id="a">Rp
                                         {{ number_format($user->saldo ? $user->saldo : 0, 0, ',', '.') }}</span></h1>
