@@ -204,6 +204,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <h6 class="mb-1">Pernyataan Diri Sendiri :</h6>
+                                        @if ($aproval->sp_diri != null)
                                         <div class="image-container">
                                             <img src="{{ asset('storage/siswa/' . $aproval->sp_diri) }}" alt=""
                                                 class="hover-image">
@@ -234,6 +235,17 @@
                                                 </div><!-- /.modal-dialog -->
                                             </div><!-- /.modal -->
                                         </div>
+                                        @else
+                                            <div class="image-container">
+                                                <img src="{{ asset('nodata.png') }}" alt="" class="hover-image">
+                                                {{-- <div class="overlay">
+                                                    <div class="icon">
+                                                        <i class="fa fa-eye"></i>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                        @endif
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -300,6 +312,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <h6 class="mb-1">CV :</h6>
+                                        @if ($aproval->cv != null)
                                         <div class="image-container">
                                             <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->cv) }}" alt=""
                                                 class="hover-image">
@@ -330,6 +343,16 @@
                                                 </div><!-- /.modal-dialog -->
                                             </div><!-- /.modal -->
                                         </div>
+                                        @else
+                                            <div class="image-container">
+                                                <img src="{{ asset('nodata.png') }}" alt="" class="hover-image">
+                                                {{-- <div class="overlay">
+                                                    <div class="icon">
+                                                        <i class="fa fa-eye"></i>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                        @endif
                                     </div>
 
                                 </div>
