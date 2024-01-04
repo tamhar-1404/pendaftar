@@ -11,40 +11,38 @@
                 <div class="">
                 </div>
             </div>
-            <div class="row mb-4">
-                <div class="col-12 col-xxl-3 mt-2 col-lg-4">
-                    <div class="">
-                        <form action="">
-                            <div class="input-group">
-                                <input name="name" type="text" value="{{ request()->name }}" class="form-control"
-                                    placeholder="Search">
-                                <div class="input-group-append">
-                                    <button class="btn text-white"
-                                        style="background-color: #1B3061; border-radius: 0 5px 5px 0;" type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
+            <form method="post">
+                <div class="row mb-4">
+                    <div class="col-12 col-xxl-3 mt-2 col-lg-4">
+                        <div class="">
+                                <div class="input-group">
+                                    <input name="name" type="text" value="{{ request()->name }}" class="form-control"
+                                        placeholder="Search">
+                                    <div class="input-group-append">
+                                        <button class="btn text-white"
+                                            style="background-color: #1B3061; border-radius: 0 5px 5px 0;" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                        </div>
+                    </div>
+                    <div class="col-12 col-xxl-3 mt-2 col-lg-4">
+                        <div class="">
+                                <div class="input-group">
+                                    <input name="date" type="date" value="{{ request()->date }}" class="form-control"
+                                        placeholder="Search">
+                                    <div class="input-group-append">
+                                        <button class="btn text-white"
+                                            style="background-color: #1B3061; border-radius: 0 5px 5px 0;" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-12 col-xxl-3 mt-2 col-lg-4">
-                    <div class="">
-                        <form action="">
-                            <div class="input-group">
-                                <input name="date" type="date" value="{{ request()->date }}" class="form-control"
-                                    placeholder="Search">
-                                <div class="input-group-append">
-                                    <button class="btn text-white"
-                                        style="background-color: #1B3061; border-radius: 0 5px 5px 0;" type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            </form>
             <div class="table-responsive">
                 <table id="example" class="table table-striped" style="width:100%">
                     <thead>
