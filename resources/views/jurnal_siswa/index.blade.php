@@ -859,11 +859,11 @@
                                     <p class="text-base leading-relaxed font-bold text-gray-800 dark:text-gray-400">
                                         Bukti
                                     </p>
-                                    @if ($items->kegiatan != 'Tidak mengisi' && $items->kegiatan != 'Kosong')
+                                    @if ($modal->kegiatan != 'Tidak mengisi' && $modal->kegiatan != 'Kosong')
                                         <img id="preview-image" src="{{ asset('storage/image/' . $modal->image) }}"
                                             class="w-full h-auto" alt="" srcset="">
                                     @else
-                                        {{ $items->image }}
+                                        {{ $modal->image }}
                                     @endif
 
                                 </div>
