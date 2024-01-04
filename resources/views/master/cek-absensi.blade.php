@@ -62,90 +62,96 @@
                     </thead>
                     <tbody>
                         @forelse ($students as $student)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $student->name }}</td>
-                                <td>{{ $student->sekolah }}</td>
-                                <td>{{ \Carbon\Carbon::parse(request()->date)->locale('id_ID')->isoFormat('DD MMMM Y') }}</td>
-                                <td>
-                                    @if (isset($student->attendances[0]))
-                                        @if ($student->attendances[0]->status == 'masuk')
-                                            <div class="btn btn-soft-success waves-effect waves-light">
-                                                {{ $student->attendances[0]->status }}
-                                            </div>
-                                        @endif
-                                        @if ($student->attendances[0]->status == 'izin')
-                                            <div class="btn btn-soft-warning waves-effect waves-light">
-                                                {{ $student->attendances[0]->status }}
-                                            </div>
-                                        @endif
-                                        @if ($student->attendances[0]->status == 'sakit')
-                                            <div class="btn btn-soft-warning waves-effect waves-light">
-                                                {{ $student->attendances[0]->status }}
-                                            </div>
-                                        @endif
-                                        @if ($student->attendances[0]->status == 'alpha')
-                                            <div class="btn btn-soft-danger non-active waves-effect waves-light">
-                                                {{ $student->attendances[0]->status }}
-                                            </div>
-                                        @endif
-                                    @else
-                                        <div class="btn btn-soft-danger waves-effect waves-light">
-                                            Belum Hadir
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $student->name }}</td>
+                            <td>{{ $student->sekolah }}</td>
+                            {{-- <td>{{ \Carbon\Carbon::parse($student->created_at)->format('d F Y') }}</td> --}}
+                            <td>
+                                @if (isset($student->attendances[0]))
+                                    @if ($student->attendances[0]->status == 'masuk')
+                                        <div class="btn btn-soft-success waves-effect waves-light">
+                                            {{ $student->attendances[0]->status }}
                                         </div>
                                     @endif
-                                </td>
-                                <td>
-                                    @if (isset($student->attendances[0]))
-                                        @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
-                                            @if ($detailAttendance->status == 'present')
+                                    @if ($student->attendances[0]->status == 'izin')
+                                        <div class="btn btn-soft-warning waves-effect waves-light">
+                                            {{ $student->attendances[0]->status }}
+                                        </div>
+                                    @endif
+                                    @if ($student->attendances[0]->status == 'sakit')
+                                        <div class="btn btn-soft-warning waves-effect waves-light">
+                                            {{ $student->attendances[0]->status }}
+                                        </div>
+                                    @endif
+                                    @if ($student->attendances[0]->status == 'alpha')
+                                        <div class="btn btn-soft-danger non-active waves-effect waves-light">
+                                            {{ $student->attendances[0]->status }}
+                                        </div>
+                                    @endif
+                                @else
+                                    <div class="btn btn-soft-danger waves-effect waves-light">
+                                        Belum Hadir
+                                    </div>
+                                @endif
+                            </td>
+                            <td>
+                                @if (isset($student->attendances[0]))
+                                    @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
+                                        @if ($detailAttendance->status == 'present')
+                                            @if (date('H:i:s', strtotime($detailAttendance->created_at)) <= \Carbon\Carbon::createFromFormat('H:i:s',  $attendanceRule?->checkin_ends ?? '08:00:00')->addMinutes(1)->format('H:i:s'))
+                                            <div class="btn btn-soft-success waves-effect waves-light">
+                                                {{ date('H:i', strtotime($detailAttendance->created_at)) }}
+                                            </div>
+                                            @else
+                                            <div class="btn btn-soft-warning waves-effect waves-light">
+                                                {{ date('H:i', strtotime($detailAttendance->created_at)) }}
+                                            </div>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </td>
+                            <td>
+                                @if (isset($student->attendances[0]))
+                                    @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
+                                        @if ($detailAttendance->status == 'break')
+                                            <div class="btn btn-soft-success waves-effect waves-light">
+                                                {{ date('H:i', strtotime($detailAttendance->created_at)) }}
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </td>
+                            <td>
+                                @if (isset($student->attendances[0]))
+                                    @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
+                                        @if ($detailAttendance->status == 'return_break')
+                                            @if (date('H:i:s', strtotime($detailAttendance->created_at)) <= \Carbon\Carbon::createFromFormat('H:i:s',  $attendanceRule?->return_ends ?? '13:00:00')->addMinutes(1)->format('H:i:s'))
                                                 <div class="btn btn-soft-success waves-effect waves-light">
                                                     {{ date('H:i', strtotime($detailAttendance->created_at)) }}
                                                 </div>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                </td>
-                                <td>
-                                    @if (isset($student->attendances[0]))
-                                        @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
-                                            @if ($detailAttendance->status == 'break')
-                                                <div class="btn btn-soft-success waves-effect waves-light">
+                                            @else
+                                                <div class="btn btn-soft-warning waves-effect waves-light">
                                                     {{ date('H:i', strtotime($detailAttendance->created_at)) }}
                                                 </div>
                                             @endif
-                                        @endforeach
-                                    @endif
-                                </td>
-                                <td>
-                                    @if (isset($student->attendances[0]))
-                                        @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
-                                            @if ($detailAttendance->status == 'return_break')
-                                                @if (date('H:i:s', strtotime($detailAttendance->created_at)) <= $attendanceRule?->return_ends ?? '13:00:00')
-                                                    <div class="btn btn-soft-success waves-effect waves-light">
-                                                        {{ date('H:i', strtotime($detailAttendance->created_at)) }}
-                                                    </div>
-                                                @else
-                                                    <div class="btn btn-soft-warning waves-effect waves-light">
-                                                        {{ date('H:i', strtotime($detailAttendance->created_at)) }}
-                                                    </div>
-                                                @endif
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                </td>
-                                <td>
-                                    @if (isset($student->attendances[0]))
-                                        @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
-                                            @if ($detailAttendance->status == 'return')
-                                                <div class="btn btn-soft-success waves-effect waves-light">
-                                                    {{ date('H:i', strtotime($detailAttendance->created_at)) }}
-                                                </div>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                </td>
-                            </tr>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </td>
+                            <td>
+                                @if (isset($student->attendances[0]))
+                                    @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
+                                        @if ($detailAttendance->status == 'return')
+                                            <div class="btn btn-soft-success waves-effect waves-light">
+                                                {{ date('H:i', strtotime($detailAttendance->created_at)) }}
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </td>
+                        </tr>
                         @empty
                             <tr>
                                 <td colspan="9">
