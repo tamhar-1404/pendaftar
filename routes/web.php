@@ -96,6 +96,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('laporan-siswa', function () {return view('master.regulation.report-student');});
         Route::get('laporan-sp', function () {return view('master.regulation.report-sp');});
         Route::get('news', function () {return view('master.news.index');});
+        Route::get('cek-absensi', function () {return view('master.cek-absensi');});
         Route::get('detail-news', function () {return view('master.news.detail');});
         Route::get('piket-siswa', function () {return view('master.all.report-piket');});
         Route::get('data-mou', function () {return view('master.all.mou');});
