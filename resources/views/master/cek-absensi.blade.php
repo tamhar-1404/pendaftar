@@ -66,7 +66,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $student->name }}</td>
                                 <td>{{ $student->sekolah }}</td>
-                                <td>{{ \Carbon\Carbon::parse( request()->date )->format('d F Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse(request()->date)->locale('id_ID')->isoFormat('DD MMMM Y') }}</td>
                                 <td>
                                     @if (isset($student->attendances[0]))
                                         @if ($student->attendances[0]->status == 'masuk')
