@@ -159,7 +159,9 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                            {{ $siswas->links() }}
+                            <div class="d-flex justify-content-end">
+                                {{ $siswas->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
