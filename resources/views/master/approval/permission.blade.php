@@ -105,12 +105,12 @@
                             <table id="tech-companies-1" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th data-priority="1">Nama</th>
-                                        <th data-priority="3">Sekolah</th>
-                                        <th data-priority="1">Dari Tanggal</th>
-                                        <th data-priority="3">Sampai Tanggal</th>
-                                        <th data-priority="3">Keterangan</th>
+                                        <th style="background-color: #1B3061" class="text-white">No</th>
+                                        <th style="background-color: #1B3061" class="text-white" data-priority="1">Nama</th>
+                                        <th style="background-color: #1B3061" class="text-white" data-priority="3">Sekolah</th>
+                                        <th style="background-color: #1B3061" class="text-white" data-priority="1">Dari Tanggal</th>
+                                        <th style="background-color: #1B3061" class="text-white" data-priority="3">Sampai Tanggal</th>
+                                        <th style="background-color: #1B3061" class="text-white" data-priority="3">Keterangan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
