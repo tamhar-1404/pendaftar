@@ -56,15 +56,15 @@
                 <table id="example" class="table table-striped" style="width:100%">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Siswa</th>
-                            <th>Sekolah</th>
-                            {{-- <th>Tanggal</th> --}}
-                            <th>Keterangan</th>
-                            <th>Masuk</th>
-                            <th>Istirahat</th>
-                            <th>Kembali</th>
-                            <th>Pulang</th>
+                            <th style="background-color: #1B3061" class="text-white">No</th>
+                            <th style="background-color: #1B3061" class="text-white">Siswa</th>
+                            <th style="background-color: #1B3061" class="text-white">Sekolah</th>
+                            {{-- <th style="background-color: #1B3061" class="text-white">Tanggal</th> --}}
+                            <th style="background-color: #1B3061" class="text-white">Keterangan</th>
+                            <th style="background-color: #1B3061" class="text-white">Masuk</th>
+                            <th style="background-color: #1B3061" class="text-white">Istirahat</th>
+                            <th style="background-color: #1B3061" class="text-white">Kembali</th>
+                            <th style="background-color: #1B3061" class="text-white">Pulang</th>
                         </tr>
                     </thead>
                     <tbody>
