@@ -55,12 +55,12 @@
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
-            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <div class="d-flex justify-content-between">
                 <div class="">
                     <h4 class="mb-sm-0 font-size-18">Detail Pendaftar</h4>
                 </div>
                 <div class="">
-                    <button class="btn btn-info" onclick="history.back()">Kembali</button>
+                    <button class="btn btn-secondary" onclick="history.back()">Kembali</button>
                 </div>
             </div>
         </div>
@@ -81,7 +81,7 @@
                                             <div class="tab-pane fade show active" id="product-1" role="tabpanel"
                                                 aria-labelledby="product-1-tab">
                                                 <div class="rounded-circle " style="">
-                                                    <img src="{{ asset('storage/Siswa/' . $aproval->foto_siswa) }}"
+                                                    <img src="{{ asset('storage/pendaftaran/' . $aproval->foto_siswa) }}"
                                                         alt="" class=" mx-auto d-block  rounded-circle"
                                                         style="min-width:250px; min-height: 250px; max-width:250px; max-height: 250px; object-fit: cover">
                                                 </div>
@@ -110,9 +110,49 @@
                                         <div class="">
                                             <h4 class="mt-1 mb-1">{{ $aproval->name }}</h4>
                                         </div>
-
+                                        <div class="d-flex justify-between">
+                                            <div class="">
+                                                <form id="delete-form-{{ $aproval->id }}" class="ms-auto"
+                                                    action="{{ route('approval.delete', $aproval->id) }}" method="POST"
+                                                    onsubmit="return confirmDelete(event)">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit"
+                                                        class="btn btn-danger waves-effect waves-light mt-2 me-1">
+                                                        Hapus
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            <div class="">
+                                                <form id="reject-form-{{ $aproval->id }}" class="ms-auto"
+                                                    action="{{ route('aproval.tolak', $aproval->id) }}" method="POST"
+                                                    onsubmit="return confirmReject(event)">
+                                                    @csrf
+                                                    <input type="hidden" name="alasan"
+                                                        id="alasan-input-{{ $aproval->id }}">
+                                                    <button type="submit"
+                                                        class="btn btn-warning waves-effect waves-light mt-2 me-1">
+                                                        Tolak
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            <div class="">
+                                                <form id="confirm-form-{{ $aproval->id }}"
+                                                    action="{{ route('aproval.confirm', $aproval->id) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit"
+                                                        class="btn btn-success waves-effect  mt-2 waves-light">
+                                                        </i>Terima
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+
+
+
                                 <p class="text-muted mb-2">{{ $aproval->email }}</p>
                                 <p class="text-muted mb-4">{{ $aproval->alamat }}</p>
                                 <div class="row mb-3">
@@ -204,48 +244,51 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <h6 class="mb-1">Pernyataan Diri Sendiri :</h6>
-                                        @if ($aproval->studentFile->sp_diri != null)
-                                        <div class="image-container">
-                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->sp_diri) }}" alt=""
-                                                class="hover-image">
-                                            <div class="overlay" data-bs-toggle="modal"
-                                                data-bs-target=".bs-example-modal-center-sp-diri">
-                                                <div class="icon">
-                                                    <i class="fa fa-eye"></i>
+                                        @if ($aproval->sp_diri != null)
+                                            <div class="image-container">
+                                                <img src="{{ asset('storage/pendaftaran/' . $aproval->sp_diri) }}"
+                                                    style="object-fit:cover" alt="" class="hover-image">
+                                                <div class="overlay" data-bs-toggle="modal"
+                                                    data-bs-target=".bs-example-modal-center-sp-diri">
+                                                    <div class="icon">
+                                                        <i class="fa fa-eye"></i>
+                                                    </div>
                                                 </div>
+                                                <div class="modal fade bs-example-modal-center-sp-diri" tabindex="-1"
+                                                    role="dialog" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Pernyataan Diri Sendiri</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body text-center">
+                                                                <img src="{{ asset('storage/pendaftaran/' . $aproval->sp_diri) }}"
+                                                                    alt="" class="img-fluid cursor-pointer">
+                                                                <a href="{{ asset('storage/pendaftaran/' . $aproval->sp_diri) }}"
+                                                                    download
+                                                                    class="btn btn-primary waves-effect waves-light mt-2 me-1">
+                                                                    Download
+                                                                </a>
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal-dialog -->
+                                                </div><!-- /.modal -->
                                             </div>
-                                            <div class="modal fade bs-example-modal-center-sp-diri" tabindex="-1"
-                                                role="dialog" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Pernyataan Diri Sendiri</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body text-center">
-                                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->sp_diri) }}"
-                                                                alt="" class="hover-image">
-                                                            <button type="button"
-                                                                class="btn btn-primary waves-effect waves-light mt-2 me-1">
-                                                                Download
-                                                            </button>
-                                                        </div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal-dialog -->
-                                            </div><!-- /.modal -->
-                                        </div>
                                         @else
                                             <div class="image-container">
-                                                <img src="{{ asset('nodata.png') }}" alt="" class="hover-image">
+                                                <img src="{{ asset('nodata.png') }}" style="object-fit: cover"
+                                                    alt="" class="hover-image">
                                                 {{-- <div class="overlay">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div> --}}
+
                                             </div>
                                         @endif
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -257,49 +300,51 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <h6 class="mb-1">Pernyataan Orang Tua :</h6>
-                                        @if ($aproval->studentFile->sp_ortu != null)
-                                        <div class="image-container">
-                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->sp_ortu) }}"
-                                                alt="" class="hover-image">
-                                            <div class="overlay " data-bs-toggle="modal"
-                                                data-bs-target=".bs-example-modal-center-sp-ortu">
-                                                <div class="icon">
-                                                    <i class="fa fa-eye"></i>
+                                        @if ($aproval->sp_ortu != null)
+                                            <div class="image-container">
+                                                <img src="{{ asset('storage/pendaftaran/' . $aproval->sp_ortu) }}"
+                                                    style="object-fit: cover" alt="" class="hover-image">
+                                                <div class="overlay " data-bs-toggle="modal"
+                                                    data-bs-target=".bs-example-modal-center-sp-ortu">
+                                                    <div class="icon">
+                                                        <i class="fa fa-eye"></i>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        
-                                        <div class="modal fade bs-example-modal-center-sp-ortu" tabindex="-1"
-                                            role="dialog" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">Pernyataan Orang Tua</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body text-center">
-                                                        <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->sp_ortu) }}"
-                                                            alt="" class="hover-image">
-                                                        <button type="button"
-                                                            class="btn btn-primary waves-effect waves-light mt-2 me-1">
-                                                            Download
-                                                        </button>
-                                                    </div>
-                                                </div><!-- /.modal-content -->
-                                            </div><!-- /.modal-dialog -->
-                                        </div><!-- /.modal -->
+                                            <div class="modal fade bs-example-modal-center-sp-ortu" tabindex="-1"
+                                                role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Pernyataan Orang Tua</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body text-center">
+                                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->sp_ortu) }}"
+                                                                alt="" class="img-fluid cursor-pointer">
+                                                            <a href="{{ asset('storage/pendaftaran/' . $aproval->sp_ortu) }}"
+                                                                download
+                                                                class="btn btn-primary waves-effect waves-light mt-2 me-1">
+                                                                Download
+                                                            </a>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
                                         @else
                                             <div class="image-container">
-                                                <img src="{{ asset('nodata.png') }}" alt="" class="hover-image">
+                                                <img src="{{ asset('nodata.png') }}" style="object-fit: cover"
+                                                    alt="" class="hover-image">
                                                 {{-- <div class="overlay">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div> --}}
+
                                             </div>
                                         @endif
-                                        
+
                                     </div>
 
                                 </div>
@@ -312,47 +357,37 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <h6 class="mb-1">CV :</h6>
-                                        @if ($aproval->studentFile->cv != null)
                                         <div class="image-container">
-                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->cv) }}" alt=""
-                                                class="hover-image">
+                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->cv) }}"
+                                                style="object-fit: cover" alt="" class="hover-image">
                                             <div class="overlay" data-bs-toggle="modal"
                                                 data-bs-target=".bs-example-modal-center-cv">
                                                 <div class="icon">
                                                     <i class="fa fa-eye"></i>
                                                 </div>
                                             </div>
-                                            <div class="modal fade bs-example-modal-center-cv" tabindex="-1"
-                                                role="dialog" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">CV</h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body text-center">
-                                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->cv) }}"
-                                                                alt="" class="hover-image">
-                                                            <button type="button"
-                                                                class="btn btn-primary waves-effect waves-light mt-2 me-1">
-                                                                Download
-                                                            </button>
-                                                        </div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal-dialog -->
-                                            </div><!-- /.modal -->
                                         </div>
-                                        @else
-                                            <div class="image-container">
-                                                <img src="{{ asset('nodata.png') }}" alt="" class="hover-image">
-                                                {{-- <div class="overlay">
-                                                    <div class="icon">
-                                                        <i class="fa fa-eye"></i>
+                                        <div class="modal fade bs-example-modal-center-cv" tabindex="-1" role="dialog"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">CV</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
                                                     </div>
-                                                </div> --}}
-                                            </div>
-                                        @endif
+                                                    <div class="modal-body text-center">
+                                                        <img src="{{ asset('storage/pendaftaran/' . $aproval->cv) }}"
+                                                            alt="" class="img-fluid hover-image">
+                                                        <a href="{{ asset('storage/pendaftaran/' . $aproval->cv) }}"
+                                                            download
+                                                            class="btn btn-primary waves-effect waves-light mt-2 me-1">
+                                                            Download
+                                                        </a>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div>
                                     </div>
 
                                 </div>
@@ -365,10 +400,10 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <h6 class="mb-1">SKCK :</h6>
-                                        @if ($aproval->studentFile->skck != null)
+                                        @if ($aproval->skck != null)
                                             <div class="image-container">
-                                                <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->skck) }}"
-                                                    alt="" class="hover-image">
+                                                <img src="{{ asset('storage/pendaftaran/' . $aproval->skck) }}"
+                                                    alt="" style="object-fit: cover" class="hover-image">
                                                 <div class="overlay" data-bs-toggle="modal" data-bs-target=".skck">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
@@ -376,22 +411,20 @@
                                                 </div>
                                                 <div class="modal fade skck" tabindex="-1" role="dialog"
                                                     aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title">Pernyataan Diri Sendiri</h5>
+                                                                <h5 class="modal-title">SKCK</h5>
                                                                 <button type="button" class="btn-close"
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body text-center">
-                                                                <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->skck) }}"
-                                                                    alt="" class="hover-image">
-                                                                <a id="downloadLink" class="download-link hidden"
-                                                                    href="#" download>>
-                                                                    <button type="button"
-                                                                        class="btn btn-primary waves-effect waves-light mt-2 me-1 download-button">
-                                                                        Download
-                                                                    </button>
+                                                                <img src="{{ asset('storage/pendaftaran/' . $aproval->skck) }}"
+                                                                    alt="" class="img-fluid cursor-pointer">
+                                                                <a href="{{ asset('storage/pendaftaran/' . $aproval->skck) }}"
+                                                                    download
+                                                                    class="btn btn-primary waves-effect waves-light mt-2 me-1">
+                                                                    Download
                                                                 </a>
                                                             </div>
                                                         </div><!-- /.modal-content -->
@@ -400,12 +433,14 @@
                                             </div>
                                         @else
                                             <div class="image-container">
-                                                <img src="{{ asset('nodata.png') }}" alt="" class="hover-image">
+                                                <img src="{{ asset('nodata.png') }}" style="object-fit: cover"
+                                                    alt="" class="hover-image">
                                                 {{-- <div class="overlay">
                                                     <div class="icon">
                                                         <i class="fa fa-eye"></i>
                                                     </div>
                                                 </div> --}}
+
                                             </div>
                                         @endif
                                     </div>
@@ -440,26 +475,7 @@
                 },
                 animation: false
             }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        title: 'Sukses',
-                        text: 'Siswa berhasil diterima',
-                        icon: 'success',
-                        timer: 2000,
-                        showConfirmButton: false,
-                        background: '#f5f5f5',
-                        customClass: {
-                            icon: 'swal-icon',
-                            popup: 'swal-popup',
-                            title: 'swal-title',
-                            confirmButton: 'swal-button swal-button--confirm'
-                        },
-                        animation: false
-                    });
-                    setTimeout(() => {
-                        this.submit();
-                    }, 2000);
-                }
+                this.submit();
             });
         });
     </script>
@@ -485,35 +501,26 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     document.getElementById("alasan-input-{{ $aproval->id }}").value = result.value;
-
-                    Swal.fire({
-                        title: 'Data berhasil ditolak',
-                        icon: 'success',
-                    }).then(() => {
-                        event.target.submit();
-                    });
+                    event.target.submit();
                 }
             });
         }
 
         function confirmDelete(event) {
             event.preventDefault();
-
             Swal.fire({
-                title: 'Hapus',
-                confirmButtonText: 'Hapus',
-                cancelButtonText: 'Batal',
-                allowOutsideClick: true,
+                title: 'Apakah Anda yakin?',
+                text: "Anda tidak akan dapat mengembalikan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus itu!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Swal.fire({
-                        title: 'Data berhasil dihapus',
-                        icon: 'success',
-                    }).then(() => {
-                        event.target.submit();
-                    });
+                    event.target.submit();
                 }
-            });
+            })
         }
     </script>
 @endsection
