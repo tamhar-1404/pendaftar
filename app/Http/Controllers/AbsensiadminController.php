@@ -560,4 +560,49 @@ public function absen_pdf1(Request $request)  {
         return view('master.data-collection.detail-absensi', compact('attendance'));
     }
 
+    /**
+     * checkAttendance
+     *
+     * @param  mixed $request
+     * @return View
+     */
+    public function checkAttendance(Request $request): View
+    {
+        $students = Siswa::query()
+            ->when($request->date, function ($query) use ($request) {
+                $query->withCount(['attendances' => function ($query) use ($request) {
+                    $query->whereDate('created_at', $request->date);
+                }])
+                ->with(['attendances' => function ($query) use ($request) {
+                    $query->whereDate('created_at', $request->date);
+                }])
+                ->when($request->name, function ($query) use ($request) {
+                    $query->where('name', 'LIKE', '%' . $request->name . '%');
+                })
+                ->orderByDesc('attendances_count');
+            }, function ($query) use ($request) {
+                $query->withCount(['attendances' => function ($query) {
+                    $query->whereDate('created_at', now());
+                }])
+                ->with(['attendances' => function ($query) {
+                    $query->whereDate('created_at', now());
+                }])
+                ->when($request->name, function ($query) use ($request) {
+                    $query->where('name', 'LIKE', '%' . $request->name . '%');
+                })
+                ->orderByDesc('attendances_count');
+            })
+            ->whereNull('status')
+            ->get();
+
+        $attendanceRule = AttendanceRule::query()
+            ->when($request->date, function ($query) use ($request) {
+                $query->where('day', Carbon::createFromFormat('Y-m-d', $request->date)->format('l'));
+            }, function ($query) {
+                $query->where('day', now()->format('l'));
+            })
+            ->first();
+        return view('master.cek-absensi',  compact('students', 'attendanceRule'));
+    }
+
 }
