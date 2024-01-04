@@ -182,9 +182,8 @@
                                         <th style="background-color: #1B3061" class="text-white">No</th>
                                         <th style="background-color: #1B3061" class="text-white">Nama</th>
                                         <th style="background-color: #1B3061" class="text-white">Tanggal</th>
-                                        <th style="background-color: #1B3061" class="text-white">Status</th>
-                                        <th style="background-color: #1B3061" class="text-white">Kegiatan</th>
-                                        <th style="background-color: #1B3061" class="text-white">Aksi</th>
+                                        <th style="background-color: #1B3061" class="text-white">Sekolah</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
