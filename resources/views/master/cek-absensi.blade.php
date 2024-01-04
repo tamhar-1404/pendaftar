@@ -111,6 +111,10 @@
                                             @endif
                                         @endif
                                     @endforeach
+                                @else
+                                <div class="btn btn-soft-danger waves-effect waves-light">
+                                    Belum Hadir
+                                </div>
                                 @endif
                             </td>
                             <td>
@@ -122,6 +126,10 @@
                                             </div>
                                         @endif
                                     @endforeach
+                                @else
+                                <div class="btn btn-soft-danger waves-effect waves-light">
+                                    Belum Hadir
+                                </div>
                                 @endif
                             </td>
                             <td>
@@ -139,6 +147,10 @@
                                             @endif
                                         @endif
                                     @endforeach
+                                @else
+                                <div class="btn btn-soft-danger waves-effect waves-light">
+                                    Belum Hadir
+                                </div>
                                 @endif
                             </td>
                             <td>
@@ -150,6 +162,10 @@
                                             </div>
                                         @endif
                                     @endforeach
+                                @else
+                                <div class="btn btn-soft-danger waves-effect waves-light">
+                                    Belum Hadir
+                                </div>
                                 @endif
                             </td>
                         </tr>
