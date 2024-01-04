@@ -58,6 +58,16 @@ class Siswa extends Model
     }
 
     /**
+     * hasOneUser
+     *
+     * @return HasOne
+     */
+    public function hasOneUser(): HasOne
+    {
+        return $this->hasOne(User::class, 'siswa_id');
+    }
+
+    /**
      * attendances
      *
      * @return HasMany
