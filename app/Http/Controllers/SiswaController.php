@@ -234,7 +234,7 @@ class SiswaController extends Controller
             })
             ->when($request->name, function ($query) use ($request) {
                 $query->where('name', 'LIKE', '%'. $request->name .'%')
-                    ->where('RFID', 'LIKE', '%' . $request->name . '%');
+                    ->orWhere('RFID', 'LIKE', '%' . $request->name . '%');
             })
             ->whereNotNull('RFID')
             ->latest()
