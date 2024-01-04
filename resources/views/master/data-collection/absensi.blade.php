@@ -137,11 +137,11 @@
                                             @if ($detailAttendance->status == 'return_break')
                                                 @if (date('H:i:s', strtotime($detailAttendance->created_at)) <= Carbon::createFromFormat('H:i:s',  $attendanceRule?->return_ends ?? '13:00:00')->addMinutes(1)->format('H:i:s'))
                                                     <div class="btn btn-soft-success waves-effect waves-light">
-                                                        {{ date('H:i', strtotime($detailAttendance->created_at)) }}
+                                                        {{ date('H:i:s', strtotime($detailAttendance->created_at)) }}
                                                     </div>
                                                 @else
                                                     <div class="btn btn-soft-warning waves-effect waves-light">
-                                                        {{ date('H:i', strtotime($detailAttendance->created_at)) }}
+                                                        {{ date('H:i:s', strtotime($detailAttendance->created_at)) }}
                                                     </div>
                                                 @endif
                                             @endif
