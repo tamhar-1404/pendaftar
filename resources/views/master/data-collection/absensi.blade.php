@@ -33,7 +33,7 @@
                     <h4 class="card-title mb-4">Data Siswa</h4>
                 </div>
                 <div class="">
-                    <h4 class="card-title mb-4">Tanggal : {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}</h4>
+                    <h4 class="card-title mb-4">Tanggal : {{ \Carbon\Carbon::now()->locale('id_ID')->isoFormat('DD MMMM Y') }}</h4>
                 </div>
             </div>
             <div class="col-md-3">
