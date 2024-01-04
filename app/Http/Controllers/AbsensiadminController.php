@@ -530,6 +530,9 @@ public function absen_pdf1(Request $request)  {
     public function listAttendance(Request $request): View
     {
         $students = Siswa::query()
+            ->whereRelation('hasOneUser', function ($query) {
+                $query->whereNotNull('RFID');
+            })
             ->withCount(['attendances' => function ($query) {
                 $query->whereDate('created_at', now());
             }])
