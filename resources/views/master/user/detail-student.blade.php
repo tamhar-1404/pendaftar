@@ -256,16 +256,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @else
-                                            <div class="image-container">
-                                                <img src="{{ asset('nodata.png') }}" alt="" class="hover-image">
-                                                {{-- <div class="overlay">
-                                                    <div class="icon">
-                                                        <i class="fa fa-eye"></i>
-                                                    </div>
-                                                </div> --}}
-                                            </div>
-                                        @endif
                                         
                                         <div class="modal fade bs-example-modal-center-sp-ortu" tabindex="-1"
                                             role="dialog" aria-hidden="true">
@@ -287,6 +277,17 @@
                                                 </div><!-- /.modal-content -->
                                             </div><!-- /.modal-dialog -->
                                         </div><!-- /.modal -->
+                                        @else
+                                            <div class="image-container">
+                                                <img src="{{ asset('nodata.png') }}" alt="" class="hover-image">
+                                                {{-- <div class="overlay">
+                                                    <div class="icon">
+                                                        <i class="fa fa-eye"></i>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                        @endif
+                                        
                                     </div>
 
                                 </div>
