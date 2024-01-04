@@ -205,7 +205,7 @@
                                     <div class="col-md-12">
                                         <h6 class="mb-1">Pernyataan Diri Sendiri :</h6>
                                         <div class="image-container">
-                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->sp_diri) }}" alt=""
+                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->sp_diri) }}" alt=""
                                                 class="hover-image">
                                             <div class="overlay" data-bs-toggle="modal"
                                                 data-bs-target=".bs-example-modal-center-sp-diri">
@@ -223,7 +223,7 @@
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body text-center">
-                                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->sp_diri) }}"
+                                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->sp_diri) }}"
                                                                 alt="" class="hover-image">
                                                             <button type="button"
                                                                 class="btn btn-primary waves-effect waves-light mt-2 me-1">
@@ -246,7 +246,7 @@
                                     <div class="col-md-12">
                                         <h6 class="mb-1">Pernyataan Orang Tua :</h6>
                                         <div class="image-container">
-                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->sp_ortu) }}"
+                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->sp_ortu) }}"
                                                 alt="" class="hover-image">
                                             <div class="overlay " data-bs-toggle="modal"
                                                 data-bs-target=".bs-example-modal-center-sp-ortu">
@@ -265,7 +265,7 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body text-center">
-                                                        <img src="{{ asset('storage/pendaftaran/' . $aproval->sp_ortu) }}"
+                                                        <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->sp_ortu) }}"
                                                             alt="" class="hover-image">
                                                         <button type="button"
                                                             class="btn btn-primary waves-effect waves-light mt-2 me-1">
@@ -288,7 +288,7 @@
                                     <div class="col-md-12">
                                         <h6 class="mb-1">CV :</h6>
                                         <div class="image-container">
-                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->cv) }}" alt=""
+                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->cv) }}" alt=""
                                                 class="hover-image">
                                             <div class="overlay" data-bs-toggle="modal"
                                                 data-bs-target=".bs-example-modal-center-cv">
@@ -306,7 +306,7 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body text-center">
-                                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->cv) }}"
+                                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->cv) }}"
                                                                 alt="" class="hover-image">
                                                             <button type="button"
                                                                 class="btn btn-primary waves-effect waves-light mt-2 me-1">
@@ -329,9 +329,9 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <h6 class="mb-1">SKCK :</h6>
-                                        @if ($aproval->skck != null)
+                                        @if ($aproval->studentFile->skck != null)
                                             <div class="image-container">
-                                                <img src="{{ asset('storage/pendaftaran/' . $aproval->skck) }}"
+                                                <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->skck) }}"
                                                     alt="" class="hover-image">
                                                 <div class="overlay" data-bs-toggle="modal" data-bs-target=".skck">
                                                     <div class="icon">
@@ -348,7 +348,7 @@
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body text-center">
-                                                                <img src="{{ asset('storage/pendaftaran/' . $aproval->skck) }}"
+                                                                <img src="{{ asset('storage/pendaftaran/' . $aproval->studentFile->skck) }}"
                                                                     alt="" class="hover-image">
                                                                 <a id="downloadLink" class="download-link hidden"
                                                                     href="#" download>>
