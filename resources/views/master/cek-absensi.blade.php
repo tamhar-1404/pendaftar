@@ -113,7 +113,7 @@
                                     @endforeach
                                 @else
                                 <div class="btn btn-soft-danger waves-effect waves-light">
-                                    Belum Hadir
+                                    -
                                 </div>
                                 @endif
                             </td>
@@ -128,7 +128,7 @@
                                     @endforeach
                                 @else
                                 <div class="btn btn-soft-danger waves-effect waves-light">
-                                    Belum Hadir
+                                    -
                                 </div>
                                 @endif
                             </td>
@@ -149,7 +149,7 @@
                                     @endforeach
                                 @else
                                 <div class="btn btn-soft-danger waves-effect waves-light">
-                                    Belum Hadir
+                                    -
                                 </div>
                                 @endif
                             </td>
@@ -164,7 +164,7 @@
                                     @endforeach
                                 @else
                                 <div class="btn btn-soft-danger waves-effect waves-light">
-                                    Belum Hadir
+                                    -
                                 </div>
                                 @endif
                             </td>
