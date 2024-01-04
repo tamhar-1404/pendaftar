@@ -81,7 +81,7 @@
                                             <div class="tab-pane fade show active" id="product-1" role="tabpanel"
                                                 aria-labelledby="product-1-tab">
                                                 <div class="rounded-circle " style="">
-                                                    <img src="{{ asset('storage/siswa/' . $aproval->foto_siswa) }}"
+                                                    <img src="{{ asset('storage/Siswa/' . $aproval->foto_siswa) }}"
                                                         alt="" class=" mx-auto d-block  rounded-circle"
                                                         style="min-width:250px; min-height: 250px; max-width:250px; max-height: 250px; object-fit: cover">
                                                 </div>
@@ -205,7 +205,7 @@
                                     <div class="col-md-12">
                                         <h6 class="mb-1">Pernyataan Diri Sendiri :</h6>
                                         <div class="image-container">
-                                            <img src="{{ asset('storage/siswa/' . $aproval->sp_diri) }}" alt=""
+                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->sp_diri) }}" alt=""
                                                 class="hover-image">
                                             <div class="overlay" data-bs-toggle="modal"
                                                 data-bs-target=".bs-example-modal-center-sp-diri">
@@ -288,7 +288,7 @@
                                     <div class="col-md-12">
                                         <h6 class="mb-1">CV :</h6>
                                         <div class="image-container">
-                                            <img src="{{ asset('storage/siswa/' . $aproval->cv) }}" alt=""
+                                            <img src="{{ asset('storage/pendaftaran/' . $aproval->cv) }}" alt=""
                                                 class="hover-image">
                                             <div class="overlay" data-bs-toggle="modal"
                                                 data-bs-target=".bs-example-modal-center-cv">
