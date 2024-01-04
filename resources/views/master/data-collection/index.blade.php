@@ -80,12 +80,12 @@
                             <table id="example" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Tanggal</th>
-                                        <th>Status</th>
-                                        <th>Kegiatan</th>
-                                        <th>Aksi</th>
+                                        <th style="background-color: #1B3061" class="text-white">No</th>
+                                        <th style="background-color: #1B3061" class="text-white">Nama</th>
+                                        <th style="background-color: #1B3061" class="text-white">Tanggal</th>
+                                        <th style="background-color: #1B3061" class="text-white">Status</th>
+                                        <th style="background-color: #1B3061" class="text-white">Kegiatan</th>
+                                        <th style="background-color: #1B3061" class="text-white">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -179,12 +179,12 @@
                             <table id="TidakMengisi" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Tanggal</th>
-                                        <th>Status</th>
-                                        <th>Kegiatan</th>
-                                        <th>Aksi</th>
+                                        <th style="background-color: #1B3061" class="text-white">No</th>
+                                        <th style="background-color: #1B3061" class="text-white">Nama</th>
+                                        <th style="background-color: #1B3061" class="text-white">Tanggal</th>
+                                        <th style="background-color: #1B3061" class="text-white">Status</th>
+                                        <th style="background-color: #1B3061" class="text-white">Kegiatan</th>
+                                        <th style="background-color: #1B3061" class="text-white">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -208,12 +208,12 @@
                             <table id="Semua" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Tanggal</th>
-                                        <th>Status</th>
-                                        <th>Kegiatan</th>
-                                        <th>Aksi</th>
+                                        <th style="background-color: #1B3061" class="text-white">No</th>
+                                        <th style="background-color: #1B3061" class="text-white">Nama</th>
+                                        <th style="background-color: #1B3061" class="text-white">Tanggal</th>
+                                        <th style="background-color: #1B3061" class="text-white">Status</th>
+                                        <th style="background-color: #1B3061" class="text-white">Kegiatan</th>
+                                        <th style="background-color: #1B3061" class="text-white">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
