@@ -107,7 +107,7 @@
                                     @if (isset($student->attendances[0]))
                                         @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
                                             @if ($detailAttendance->status == 'present')
-                                                @if (date('H:i:s', strtotime($detailAttendance->created_at)) <= Carbon::createFromFormat('H:i:s',  $attendanceRule?->checkin_ends ?? '08:00:00')->addSeconds(59)->format('H:i:s'))
+                                                @if (date('H:i:s', strtotime($detailAttendance->created_at)) <= Carbon::createFromFormat('H:i:s',  $attendanceRule?->checkin_ends ?? '08:00:00')->addMinutes(1)->format('H:i:s'))
                                                 <div class="btn btn-soft-success waves-effect waves-light">
                                                     {{ date('H:i', strtotime($detailAttendance->created_at)) }}
                                                 </div>
@@ -135,7 +135,7 @@
                                     @if (isset($student->attendances[0]))
                                         @foreach ($student->attendances[0]->detailAttendances as $detailAttendance)
                                             @if ($detailAttendance->status == 'return_break')
-                                                @if (date('H:i:s', strtotime($detailAttendance->created_at)) <= Carbon::createFromFormat('H:i:s',  $attendanceRule?->return_ends ?? '13:01:00')->addSeconds(59)->format('H:i:s'))
+                                                @if (date('H:i:s', strtotime($detailAttendance->created_at)) <= Carbon::createFromFormat('H:i:s',  $attendanceRule?->return_ends ?? '13:00:00')->addMinutes(1)->format('H:i:s'))
                                                     <div class="btn btn-soft-success waves-effect waves-light">
                                                         {{ date('H:i', strtotime($detailAttendance->created_at)) }}
                                                     </div>
