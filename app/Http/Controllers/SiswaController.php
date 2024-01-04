@@ -217,6 +217,9 @@ class SiswaController extends Controller
     {
         $users = User::query()
             ->where('role', 'Siswa')
+            ->whereRelation('Siswa', function ($query) {
+                $query->whereNull('status');
+            })
             ->when($request->cari, function ($query) use ($request) {
                 $query->where('name', 'LIKE', '%'. $request->cari .'%')
                     ->orWhere('sekolah', 'LIKE', '%' . $request->cari . '%');
@@ -226,6 +229,9 @@ class SiswaController extends Controller
             ->paginate(10);
         $siswas = User::query()
             ->where('role', 'Siswa')
+            ->whereRelation('Siswa', function ($query) {
+                $query->whereNull('status');
+            })
             ->when($request->name, function ($query) use ($request) {
                 $query->where('name', 'LIKE', '%'. $request->name .'%')
                     ->where('RFID', 'LIKE', '%' . $request->name . '%');
