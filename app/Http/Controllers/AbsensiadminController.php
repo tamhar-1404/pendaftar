@@ -530,7 +530,9 @@ public function absen_pdf1(Request $request)  {
     public function listAttendance(Request $request): View
     {
         $students = Siswa::query()
-            ->withCount('attendances')
+            ->withCount(['attendances' => function ($query) {
+                $query->whereDate('created_at', now());
+            }])
             ->with(['attendances' => function ($query) {
                 $query->whereDate('created_at', now());
             }])

@@ -160,16 +160,20 @@ class AttendanceController extends Controller
         return ResponseHelper::success(null, "Berhasil mengajukan izin");
     }
 
+    /**
+     * getStudentByRfid
+     *
+     * @param  mixed $rfid
+     * @return mixed
+     */
     private function getStudentByRfid($rfid): mixed
     {
         $query = User::query()
             ->where('RFID', $rfid);
-        if (!$query->exists()) {
-            return ResponseHelper::error(null, "Siswa tidak ditemukan");
-        }
+        if (!$query->exists()) return ResponseHelper::error(null, "Siswa tidak ditemukan");
         $user = $query->first();
         return Siswa::query()
-            ->find($user->siswa_id);
+            ->findOrFail($user->siswa_id);
     }
 
     /**
@@ -191,7 +195,7 @@ class AttendanceController extends Controller
         $attendanceRule = AttendanceRule::query()
             ->where('day', $today)
             ->first();
-        
+
         if ($time >= $attendanceRule->checkin_starts && $time <= Carbon::createFromFormat('H:i:s', $attendanceRule->checkin_ends)->addMinutes(40)->format('H:i:s')) {
             return AttendanceDetail::query()
                 ->updateOrCreate(
@@ -229,22 +233,13 @@ class AttendanceController extends Controller
     public function attendanceByRfid($rfid): JsonResponse
     {
         $today = now()->format('l');
-
-
         $attendanceRule = AttendanceRule::query()
             ->where('day', $today)
             ->first();
         if (!$attendanceRule) return ResponseHelper::error(null, "Tidak ada jam absen hari ini");
         $doAttendance = $this->doAttendanceNow($rfid);
-        if (!$doAttendance) {
-            return ResponseHelper::error(null, "Jam absensi tidak tersedia");
-        }
-
-        if  (!$doAttendance->wasRecentlyCreated) {
-            return ResponseHelper::error(null, "Anda telah absensi pada jam ini");
-        }
-
+        if (!$doAttendance) return ResponseHelper::error(null, "Jam absensi tidak tersedia");
+        if (!$doAttendance->wasRecentlyCreated) return ResponseHelper::error(null, "Anda telah absensi pada jam ini");
         return ResponseHelper::success(null, "Berhasil absensi");
-
     }
 }
