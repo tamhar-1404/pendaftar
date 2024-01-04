@@ -70,21 +70,6 @@
                         <li><a href="history-transaksi" key="t-full-calendar">Transaksi</a></li>
                     </ul>
                 </li>
-
-
-                <li>
-                    <a href="master-jurnal" class="waves-effect">
-                        <i class="bx bx-book"></i>
-                        <span key="t-chat">Jurnal</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="master-absensi" class="waves-effect">
-                        <i class="bx bx-user-check"></i>
-                        <span key="t-file-manager">Absensi</span>
-                    </a>
-                </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-shield-quarter"></i>
