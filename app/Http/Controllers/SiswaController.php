@@ -227,7 +227,8 @@ class SiswaController extends Controller
         $siswas = User::query()
             ->where('role', 'Siswa')
             ->when($request->name, function ($query) use ($request) {
-                $query->where('name', 'LIKE', '%'. $request->name .'%');
+                $query->where('name', 'LIKE', '%'. $request->name .'%')
+                    ->where('RFID', 'LIKE', '%' . $request->name . '%');
             })
             ->whereNotNull('RFID')
             ->latest()
