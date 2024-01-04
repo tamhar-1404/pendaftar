@@ -4,33 +4,35 @@
         <div class="card-body">
             <div class="d-flex justify-content-between">
                 <div class="">
-                    <h4 class="card-title mb-4">Data Siswa</h4>
+                    <h4 class="card-title mb-3">Data Siswa</h4>
                 </div>
                 <div class="">
-                    <h4 class="card-title mb-4">Tanggal : {{ \Carbon\Carbon::now()->locale('id_ID')->isoFormat('DD MMMM Y') }}</h4>
+                    <h4 class="card-title mb-3">Tanggal : {{ \Carbon\Carbon::now()->locale('id_ID')->isoFormat('DD MMMM Y') }}</h4>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="mb-3">
+                <div class="">
                 </div>
             </div>
-            <div class="d-flex justify-content-between mb-3">
-                <div class="">
-                    <form action="">
-                        <div class="input-group">
-                            <input name="name" type="text" value="{{ request()->name }}" class="form-control"
-                                placeholder="Search">
-                            <div class="input-group-append">
-                                <button class="btn text-white"
-                                    style="background-color: #1B3061; border-radius: 0 5px 5px 0;" type="submit">
-                                    <i class="fa fa-search"></i>
-                                </button>
+            <div class="row mb-4">
+                <div class="col-12 col-xxl-3 mt-2 col-lg-4">
+                    <div class="">
+                        <form action="">
+                            <div class="input-group">
+                                <input name="name" type="text" value="{{ request()->name }}" class="form-control"
+                                    placeholder="Search">
+                                <div class="input-group-append">
+                                    <button class="btn text-white"
+                                        style="background-color: #1B3061; border-radius: 0 5px 5px 0;" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-                <div class="">
-                    <div class="d-flex justify-content-header">
+                <div class="col-12 col-xxl-3 mt-2 col-lg-4">
+                    <div class="">
                         <form action="">
                             <div class="input-group">
                                 <input name="date" type="date" value="{{ request()->date }}" class="form-control"
