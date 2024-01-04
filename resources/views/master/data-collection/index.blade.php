@@ -37,15 +37,22 @@
         <div class="card-body">
             <div class="float-end">
                 <div class="dropdown">
-                    <form action="{{ route('share') }}" target="_blank" method="POST" class="d-flex">
-                        @csrf
-                        <input type="date" name="tanggal" class="form-control border py-2 px-4 rounded">
-                        <button type="submit" class="btn btn-light d-flex"><i class="mdi mdi-wallet me-1"></i> <span
-                                class="d-none d-sm-inline-block">Kirim</span></button>
+                    <form action="" class="flex mt-6">
+                        <div class="d-flex justify-content-end gap-2">
+                            <div class="">
+                                <input type="date" id="TanggalTunggal" name="TanggalTunggal"  class="form-control" value="{{$Tanggal}}" >
+                            </div>
+                            <div class="">
+                                <button type="submit" class="btn btn-info">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l5.6 5.6q.275.275.275.7t-.275.7q-.275.275-.7.275t-.7-.275l-5.6-5.6q-.75.6-1.725.95T9.5 16Zm0-2q1.875 0 3.188-1.312T14 9.5q0-1.875-1.312-3.187T9.5 5Q7.625 5 6.313 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14Z"/></svg>
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
             <h4 class="card-title mb-4">Data Jurnal</h4>
+
             <div class="crypto-buy-sell-nav">
                 <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
                     <li class="nav-item">

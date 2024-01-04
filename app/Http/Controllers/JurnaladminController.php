@@ -461,7 +461,7 @@ class JurnaladminController extends Controller
             ->get();
 
             $Tanggal = $hari;
-            return view('Jurnalhariini.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa','keyword','Tanggal'));
+            return view('master.data-collection.index', compact('semuaJurnal', 'hari', 'tidakMengisi', 'mengisi', 'siswa','keyword','Tanggal'));
         }
 
         $Cek = Jurnalsiswa::whereDate('created_at', Carbon::today())

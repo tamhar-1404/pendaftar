@@ -249,7 +249,6 @@
                             </div>
                             <div class="card px-4 pb-4 flex sm:px-5">
                                 <div class="max-w-xl">
-
                                     <div class="mt-5">
                                         <form action="" class="flex mt-6">
                                             <input type="date" id="TanggalTunggal" name="TanggalTunggal"  class="border rounded-l p-1" value="{{$Tanggal}}" >
