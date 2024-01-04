@@ -110,9 +110,7 @@
                                             </div>
                                             @endif
                                         @endif
-
                                     @endforeach
-
                                 @endif
                             </td>
                             <td>
@@ -124,10 +122,6 @@
                                             </div>
                                         @endif
                                     @endforeach
-                                @else
-                                <div class="btn btn-soft-danger waves-effect waves-light">
-                                    -
-                                </div>
                                 @endif
                             </td>
                             <td>
