@@ -240,6 +240,6 @@ class AttendanceController extends Controller
         $doAttendance = $this->doAttendanceNow($rfid);
         if (!$doAttendance) return ResponseHelper::error(null, "Jam absensi tidak tersedia");
         if (!$doAttendance->wasRecentlyCreated) return ResponseHelper::error(null, "Anda telah absensi pada jam ini");
-        return ResponseHelper::success(null, "Berhasil absensi");
+        return ResponseHelper::success($this->getStudentByRfid($rfid), "Berhasil absensi");
     }
 }
