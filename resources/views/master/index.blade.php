@@ -63,11 +63,11 @@
                                                     <div class="">
                                                         <input type="time" name="checkin_starts" class="form-control"
                                                             placeholder="Sampai" value="{{ $senin->checkin_starts ?? '' }}">
-                                                            @error('checkin_starts')
-                                                                <p class="text-danger">
-                                                                    {{ $message }}
-                                                                </p>
-                                                            @enderror
+                                                        @error('checkin_starts')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </td>
                                                 <td>
@@ -79,11 +79,11 @@
                                                     <div class="">
                                                         <input type="time" name="checkin_ends" class="form-control"
                                                             placeholder="Sampai" value="{{ $senin->checkin_ends ?? '' }}">
-                                                            @error('checkin_ends')
-                                                                <p class="text-danger">
-                                                                    {{ $message }}
-                                                                </p>
-                                                            @enderror
+                                                        @error('checkin_ends')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </td>
                                             </tr>
@@ -109,11 +109,11 @@
                                                     <div class="">
                                                         <input type="time" name="break_starts" class="form-control"
                                                             placeholder="Sampai" value="{{ $senin->break_starts ?? '' }}">
-                                                            @error('break_starts')
-                                                                <p class="text-danger">
-                                                                    {{ $message }}
-                                                                </p>
-                                                            @enderror
+                                                        @error('break_starts')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </td>
                                                 <td>
@@ -125,11 +125,11 @@
                                                     <div class="">
                                                         <input type="time" name="break_ends" class="form-control"
                                                             placeholder="Sampai" value="{{ $senin->break_ends ?? '' }}">
-                                                            @error('break_ends')
-                                                                <p class="text-danger">
-                                                                    {{ $message }}
-                                                                </p>
-                                                            @enderror
+                                                        @error('break_ends')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </td>
                                             </tr>
@@ -155,11 +155,11 @@
                                                     <div class="">
                                                         <input type="time" name="return_starts" class="form-control"
                                                             placeholder="Sampai" value="{{ $senin->return_starts ?? '' }}">
-                                                            @error('return_starts')
-                                                                <p class="text-danger">
-                                                                    {{ $message }}
-                                                                </p>
-                                                            @enderror
+                                                        @error('return_starts')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </td>
                                                 <td>
@@ -171,11 +171,11 @@
                                                     <div class="">
                                                         <input type="time" name="return_ends" class="form-control"
                                                             placeholder="Sampai" value="{{ $senin->return_ends ?? '' }}">
-                                                            @error('return_ends')
-                                                                <p class="text-danger">
-                                                                    {{ $message }}
-                                                                </p>
-                                                            @enderror
+                                                        @error('return_ends')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </td>
                                             </tr>
@@ -199,12 +199,13 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkout_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $senin->checkout_starts ?? '' }}">
-                                                            @error('checkout_starts')
-                                                                <p class="text-danger">
-                                                                    {{ $message }}
-                                                                </p>
-                                                            @enderror
+                                                            placeholder="Sampai"
+                                                            value="{{ $senin->checkout_starts ?? '' }}">
+                                                        @error('checkout_starts')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </td>
                                                 <td>
@@ -215,12 +216,13 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkout_ends" class="form-control"
-                                                            placeholder="Sampai" value="{{ $senin->checkout_ends ?? '' }}">
-                                                            @error('checkout_ends')
-                                                                <p class="text-danger">
-                                                                    {{ $message }}
-                                                                </p>
-                                                            @enderror
+                                                            placeholder="Sampai"
+                                                            value="{{ $senin->checkout_ends ?? '' }}">
+                                                        @error('checkout_ends')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </td>
                                             </tr>
@@ -261,7 +263,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkin_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $selasa->checkin_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $selasa->checkin_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -272,7 +275,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkin_ends" class="form-control"
-                                                            placeholder="Sampai" value="{{ $selasa->checkin_ends ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $selasa->checkin_ends ?? '' }}">
                                                     </div>
                                                 </td>
                                             </tr>
@@ -297,7 +301,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="break_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $selasa->break_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $selasa->break_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -333,7 +338,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="return_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $selasa->return_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $selasa->return_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -344,7 +350,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="return_ends" class="form-control"
-                                                            placeholder="Sampai" value="{{ $selasa->return_ends ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $selasa->return_ends ?? '' }}">
                                                     </div>
                                                 </td>
                                             </tr>
@@ -368,7 +375,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkout_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $selasa->checkout_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $selasa->checkout_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -379,7 +387,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkout_ends" class="form-control"
-                                                            placeholder="Sampai" value="{{ $selasa->checkout_ends ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $selasa->checkout_ends ?? '' }}">
                                                     </div>
                                                 </td>
                                             </tr>
@@ -420,7 +429,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkin_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $rabu->checkin_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $rabu->checkin_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -492,7 +502,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="return_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $rabu->return_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $rabu->return_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -527,7 +538,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkout_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $rabu->checkout_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $rabu->checkout_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -538,7 +550,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkout_ends" class="form-control"
-                                                            placeholder="Sampai" value="{{ $rabu->checkout_ends ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $rabu->checkout_ends ?? '' }}">
                                                     </div>
                                                 </td>
                                             </tr>
@@ -579,7 +592,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkin_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $kamis->checkin_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $kamis->checkin_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -590,7 +604,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkin_ends" class="form-control"
-                                                            placeholder="Sampai" value="{{ $kamis->checkin_ends ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $kamis->checkin_ends ?? '' }}">
                                                     </div>
                                                 </td>
                                             </tr>
@@ -615,7 +630,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="break_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $kamis->break_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $kamis->break_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -651,7 +667,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="return_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $kamis->return_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $kamis->return_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -686,7 +703,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkout_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $kamis->checkout_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $kamis->checkout_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -697,7 +715,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkout_ends" class="form-control"
-                                                            placeholder="Sampai" value="{{ $kamis->checkout_ends ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $kamis->checkout_ends ?? '' }}">
                                                     </div>
                                                 </td>
                                             </tr>
@@ -738,7 +757,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkin_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $jumat->checkin_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $jumat->checkin_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -749,7 +769,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkin_ends" class="form-control"
-                                                            placeholder="Sampai" value="{{ $jumat->checkin_ends ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $jumat->checkin_ends ?? '' }}">
                                                     </div>
                                                 </td>
                                             </tr>
@@ -774,7 +795,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="break_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $jumat->break_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $jumat->break_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -810,7 +832,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="return_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $jumat->return_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $jumat->return_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -845,7 +868,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkout_starts" class="form-control"
-                                                            placeholder="Sampai" value="{{ $jumat->checkout_starts ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $jumat->checkout_starts ?? '' }}">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -856,7 +880,8 @@
                                                 <td>
                                                     <div class="">
                                                         <input type="time" name="checkout_ends" class="form-control"
-                                                            placeholder="Sampai" value="{{ $jumat->checkout_ends ?? '' }}">
+                                                            placeholder="Sampai"
+                                                            value="{{ $jumat->checkout_ends ?? '' }}">
                                                     </div>
                                                 </td>
                                             </tr>
@@ -936,7 +961,109 @@
                 </div>
             </div>
             <!-- end row -->
-
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Siswa Absensi</h4>
+                            <div data-simplebar style="max-height: 376px;">
+                                <div class="vstack gap-4">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        Nama
+                                                    </th>
+                                                    <th>
+                                                        Sekolah
+                                                    </th>
+                                                    <th>
+                                                        Jam Absensi
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex">
+                                                            <img src="{{ asset('assets-admin/images/companies/wechat.svg') }}"
+                                                                alt="" height="40" class="rounded">
+                                                            <div class="ms-2 flex-grow-1">
+                                                                <h6 class="mb-1 font-size-15 mt-2"><p
+                                                                        class="text-body">Marketing Director</p></h6>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="mb-1 font-size-15 mt-2"><p
+                                                            class="text-body">SMKN 1 KRAKSAAN</p></h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="mb-1 font-size-15 mt-2"><p
+                                                            class="text-body">08:00</p></h6>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Siswa Tidak Mengisi Jurnal</h4>
+                            <div data-simplebar style="max-height: 376px;">
+                                <div class="vstack gap-4">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        Nama
+                                                    </th>
+                                                    <th>
+                                                        Sekolah
+                                                    </th>
+                                                    <th>
+                                                        Tidak Mengisi
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex">
+                                                            <img src="{{ asset('assets-admin/images/companies/wechat.svg') }}"
+                                                                alt="" height="40" class="rounded">
+                                                            <div class="ms-2 flex-grow-1">
+                                                                <h6 class="mb-1 font-size-15 mt-2"><p
+                                                                        class="text-body">Marketing Director</p></h6>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="mb-1 font-size-15 mt-2"><p
+                                                            class="text-body">SMKN 1 KRAKSAAN</p></h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="mb-1 font-size-15 mt-2"><p
+                                                            class="text-body">08:00</p></h6>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- 
             <div class="card">
                 <div class="card-body">
                     <div class="d-sm-flex flex-wrap">
@@ -959,7 +1086,7 @@
                     <div id="stacked-column-chart" class="apex-charts"
                         data-colors='["--bs-primary", "--bs-warning", "--bs-success"]' dir="ltr"></div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <!-- end row -->
