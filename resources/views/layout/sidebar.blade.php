@@ -37,7 +37,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="/menu-divisi" class="waves-effect">
                         <i class="bx bx-home-circle"></i>
                         <span key="t-chat">Divisi</span>
                     </a>

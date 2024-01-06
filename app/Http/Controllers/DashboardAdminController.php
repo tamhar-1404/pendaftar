@@ -38,7 +38,7 @@ class DashboardAdminController extends Controller
                 if ($data) DiligentStudent::query()->updateOrCreate(['day' => $day], ['attendance_id' => $data->id]);
             }
         }
-
+        $absensis = DiligentStudent::get();
         $totalTidakMengumpulkanJurnal = Jurnalsiswa::query()
             ->whereDate('created_at', '>=', now()->previous(Carbon::MONDAY)->toDateString())
             ->whereDate('created_at', '<=', now())
@@ -48,6 +48,7 @@ class DashboardAdminController extends Controller
             ->select('siswa_id', DB::raw('count(*) as total_kosong'))
             ->groupBy('siswa_id')
             ->get();
+            // dd($totalTidakMengumpulkanJurnal);
 
         $senin = AttendanceRule::query()
             ->where('day', DayEnum::MONDAY->value)
@@ -75,6 +76,6 @@ class DashboardAdminController extends Controller
             ->count();
         $rejectedCount = Tolak::query()
             ->count();
-        return view('master.index', compact('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'studentCount', 'pendingCount', 'rejectedCount'));
+        return view('master.index', compact('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'studentCount', 'pendingCount', 'rejectedCount','totalTidakMengumpulkanJurnal','absensis'));
     }
 }

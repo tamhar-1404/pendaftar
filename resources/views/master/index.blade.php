@@ -984,6 +984,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @forelse ($absensis as $absensi)
                                                 <tr>
                                                     <td>
                                                         <div class="d-flex">
@@ -991,7 +992,7 @@
                                                                 alt="" height="40" class="rounded">
                                                             <div class="ms-2 flex-grow-1">
                                                                 <h6 class="mb-1 font-size-15 mt-2"><p
-                                                                        class="text-body">Marketing Director</p></h6>
+                                                                        class="text-body">Abdul kader</p></h6>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -1004,6 +1005,9 @@
                                                             class="text-body">08:00</p></h6>
                                                     </td>
                                                 </tr>
+                                                @empty
+                                                    
+                                                @endforelse
                                             </tbody>
                                         </table>
                                     </div>
@@ -1012,58 +1016,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4">Siswa Tidak Mengisi Jurnal</h4>
-                            <div data-simplebar style="max-height: 376px;">
-                                <div class="vstack gap-4">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        Nama
-                                                    </th>
-                                                    <th>
-                                                        Sekolah
-                                                    </th>
-                                                    <th>
-                                                        Tidak Mengisi
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <img src="{{ asset('assets-admin/images/companies/wechat.svg') }}"
-                                                                alt="" height="40" class="rounded">
-                                                            <div class="ms-2 flex-grow-1">
-                                                                <h6 class="mb-1 font-size-15 mt-2"><p
-                                                                        class="text-body">Marketing Director</p></h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="mb-1 font-size-15 mt-2"><p
-                                                            class="text-body">SMKN 1 KRAKSAAN</p></h6>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="mb-1 font-size-15 mt-2"><p
-                                                            class="text-body">08:00</p></h6>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- 
+            </div>            {{-- 
             <div class="card">
                 <div class="card-body">
                     <div class="d-sm-flex flex-wrap">
@@ -1090,4 +1043,64 @@
         </div>
     </div>
     <!-- end row -->
+    <div class="">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Siswa Tidak Mengisi Jurnal</h4>
+                <div data-simplebar style="max-height: 376px;">
+                    <div class="vstack gap-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            No
+                                        </th>
+                                        <th>
+                                            Nama
+                                        </th>
+                                        <th>
+                                            Sekolah
+                                        </th>
+                                        <th>
+                                            Tidak Mengisi
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($totalTidakMengumpulkanJurnal as $index=>$totalTidakMengumpulkanJurna)
+                                    <tr>
+                                        <td>
+                                            {{ $index + 1 }}
+                                        </td>
+                                        <td>
+                                            <div class="d-flex">
+                                                <img src="{{ asset('storage/Siswa/' . $totalTidakMengumpulkanJurna->siswa->foto_siswa) }}"
+                                                    alt="" height="40" class="rounded">
+                                                <div class="ms-2 flex-grow-1">
+                                                    <h6 class="mb-1 font-size-15 mt-2"><p
+                                                            class="text-body">{{ $totalTidakMengumpulkanJurna->siswa->name }}</p></h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h6 class="mb-1 font-size-15 mt-2"><p
+                                                class="text-body">{{ $totalTidakMengumpulkanJurna->siswa->sekolah }}</p></h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="mb-1 font-size-15 mt-2"><p
+                                                class="text-body">{{ $totalTidakMengumpulkanJurna->total_kosong }}</p></h6>
+                                        </td>
+                                    </tr>
+                                    @empty
+                                        kosong
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
