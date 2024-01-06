@@ -39,6 +39,16 @@ class DashboardAdminController extends Controller
             }
         }
 
+        $totalTidakMengumpulkanJurnal = Jurnalsiswa::query()
+            ->whereDate('created_at', '>=', now()->previous(Carbon::MONDAY)->toDateString())
+            ->whereDate('created_at', '<=', now())
+            ->with('siswa')
+            ->whereRelation('siswa', 'status', '=', null)
+            ->where('status', 'Tidak mengisi')
+            ->select('siswa_id', DB::raw('count(*) as total_kosong'))
+            ->groupBy('siswa_id')
+            ->get();
+
         $senin = AttendanceRule::query()
             ->where('day', DayEnum::MONDAY->value)
             ->first();
