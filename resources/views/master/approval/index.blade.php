@@ -103,6 +103,9 @@
                                     @endforelse
                                 </tbody>
                             </table>
+                            <div class="d-flex justify-content-right">
+                                {{ $approvals->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>

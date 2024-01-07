@@ -26,14 +26,27 @@ class AttendanceController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        $data = ApprovalIzin::whereRelation('Siswa', 'id', auth()->user()->Siswa->id)
-            ->where('status', 'terimaabsen')
-            ->when($request->limit, function ($query) use ($request) {
-                return $query->take((int) $request->limit);
-            })
-            ->latest()
+        $data = Attendance::query()
+            ->with('detailAttendances')
+            ->whereDate('created_at', '<=', now())
+            ->where('student_id', auth()->user()->Siswa->id)
             ->get();
         return ResponseHelper::success(AttendanceResource::collection($data));
+    }
+
+    /**
+     * attendanceToday
+     *
+     * @return JsonResponse
+     */
+    public function attendanceToday(): JsonResponse
+    {
+        $data = Attendance::query()
+            ->with('detailAttendances')
+            ->whereDate('created_at', now())
+            ->where('student_id', auth()->user()->Siswa->id)
+            ->first();
+        return ResponseHelper::success(AttendanceResource::make($data));
     }
 
     /**

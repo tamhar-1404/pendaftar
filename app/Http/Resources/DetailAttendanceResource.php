@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AttendanceResource extends JsonResource
+class DetailAttendanceResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,8 +18,7 @@ class AttendanceResource extends JsonResource
         return [
             'id' => $this->id,
             'status' => $this->status,
-            'date' => Carbon::parse($this->created_at)->locale('id_ID')->isoFormat('DD MMMM Y'),
-            'detail_attendances' => DetailAttendanceResource::collection($this->detailAttendances),
+            'time' => Carbon::parse($this->created_at)->format('H:i:s')
         ];
     }
 }
