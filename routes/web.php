@@ -87,6 +87,7 @@ Route::get('/selesai', [LoginController::class, 'selesai'])->name('selesai');
 // Rute untuk mengirim email reset password
 Route::get('/', function () {return view('landing-page.index');});
 Route::get('/menu-divisi', function () {return view('master.divisi.index');});
+Route::get('/menu-persentasi', function () {return view('master.persentasi.index');});
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Admin'])->group(function () {
