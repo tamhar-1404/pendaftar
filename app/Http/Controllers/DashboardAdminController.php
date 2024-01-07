@@ -47,6 +47,7 @@ class DashboardAdminController extends Controller
             ->where('status', 'Tidak mengisi')
             ->select('siswa_id', DB::raw('count(*) as total_kosong'))
             ->groupBy('siswa_id')
+            ->orderByDesc('total_kosong')
             ->get();
             // dd($totalTidakMengumpulkanJurnal);
 
