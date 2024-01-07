@@ -26,6 +26,7 @@
                         </div>
                         <form id="form-create" method="post">
                             @csrf
+                            @method('POST')
                             <div class="modal-body">
                                 <label for="">Divisi</label>
                                 <input type="text" class="form-control" name="name">
@@ -178,9 +179,9 @@
         $('#form-create').submit(function(e) {
             $('.preloader').show();
             e.preventDefault();
-            var $form = $(this); // Inisialisasi variabel $form di luar fungsi success
+            var $form = $(this); 
             $.ajax({
-                url: "https://hummatask.hummatech.com/api/divisi-store",
+                url: "https://hummatask.hummatech.com/api/divisi",
                 type: "POST",
                 data: $form.serialize(),
                 success: function(response) {
