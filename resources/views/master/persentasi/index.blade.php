@@ -57,7 +57,7 @@
                     </form>
                     @if (request()->has('Mingguan') || request()->has('Bulanan'))
                     <div class="d-flex " style="justify-content: end;">
-                        <a href="/menu-persentasi">
+                        <a href="menu-persentasi">
                             <button class="btn btn-danger p-1 mt-1" >
                                 Reset FIlter
                             </button>
