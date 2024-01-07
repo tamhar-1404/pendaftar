@@ -88,6 +88,7 @@ Route::get('/selesai', [LoginController::class, 'selesai'])->name('selesai');
 Route::get('/', function () {return view('landing-page.index');});
 // Route::get('/menu-divisi', function () {return view('master.divisi.index');});
 Route::get('menu-persentasi', function () {return view('master.persentasi.index');});
+Route::get('menu-mentor', function () {return view('master.Mentor.index');});
 Route::get('menu-divisi', function () {return view('master.divisi.index');});
 
 Route::middleware(['auth'])->group(function () {
