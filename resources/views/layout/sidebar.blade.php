@@ -55,6 +55,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('siswa_admin.index') }}" key="t-tui-calendar">Siswa</a></li>
+                        <li><a href="siswa-hummataks" key="t-tui-calendar">Pengguna Hummatask</a></li>
                         <li><a href="menu-mentor" key="t-tui-calendar">Mentor</a></li>
                         <li><a href="{{ route('alumni_admin.index') }}" key="t-full-calendar">Alumni</a></li>
                         <li><a href="{{ route('guru_admin.index') }}" key="t-full-calendar">Penanggung Jawab</a></li>
