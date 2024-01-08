@@ -17,29 +17,7 @@
                     <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#myModal">Tambah Divisi</button>
                 </div>
             </div>
-            <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="myModalLabel">Tambah Data</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form action="https://hummatask.hummatech.com/api/divisionStore" method="post">
-                            @csrf
-                            @method('POST')
-                            <div class="modal-body">
-                                <label for="">Divisi</label>
-                                <input name="name" type="text" class="form-control">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary waves-effect"
-                                    data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
-                            </div>
-                        </form>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div>
+            
             <div class="d-flex justify-content-between">
                 <div class="">
                 </div>
@@ -47,6 +25,30 @@
             <div class="row" id="data">
             </div>
         </div>
+    </div>
+    <div id="modal-delete" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Hapus Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="form-delete" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <div class="modal-body">
+                        <h6>
+                            Apakah Anda Yakin Ingin Menghapus
+                        </h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary waves-effect"
+                            data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
     </div>
 @endsection
 @section('script')
@@ -137,7 +139,7 @@
                                                 </button>
                                             </span>
                                             <span>
-                                                <button data-bs-toggle="modal" class=" btn btn-sm btn-danger" style="">
+                                                <button data-bs-toggle="modal" class=" btn btn-sm btn-danger btn-delete" data-id="${item.id}" id="${item.id}" style="">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                         viewBox="0 0 48 48">
                                                         <defs>
@@ -170,8 +172,6 @@
                             $('#form-update').data('id', formData['id'])
                             $('#modal-edit').modal('show')
                         })
-                        $('#pagination').html(handlePaginate(response.data.paginate))
-
                         $('.btn-delete').click(function() {
                             $('#form-delete').data('id', $(this).data('id'))
                             $('#modal-delete').modal('show')
@@ -197,6 +197,33 @@
                     console.error(textStatus, errorThrown);
                 }
             });
+        });
+        $('#form-delete').submit(function(e) {
+            $('.preloader').show();
+            e.preventDefault()
+            const id = $(this).data('id')
+            $.ajax({
+                url: "https://hummatask.hummatech.com/api/division/" + id,
+                type: 'DELETE',
+                success: function(response) {
+                    $('.preloader').fadeOut();
+                    console.log(response)
+                    get(1)
+                    $('#modal-delete').modal('hide')
+                    Swal.fire({
+                        title: 'Berhasil!',
+                        icon: 'success',
+                        text: response.message
+                    })
+                },
+                error: function(response) {
+                    console.log(response)
+                }
+            });
+            $('.btn-delete').click(function()
+            {
+                $('.preloader').show();
+            })
         });
     </script>
 @endsection
