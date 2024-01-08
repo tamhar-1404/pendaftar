@@ -27,7 +27,7 @@
         </div>
     </div>
     <div id="modal-delete" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">Hapus Data</h5>
@@ -37,9 +37,9 @@
                     @csrf
                     @method('DELETE')
                     <div class="modal-body">
-                        <h6>
+                        <h5 style="font-weight: 600" class="text-dark">
                             Apakah Anda Yakin Ingin Menghapus
-                        </h6>
+                        </h5>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary waves-effect"
@@ -68,7 +68,6 @@
             var initialText = titleLink.innerText.trim();
             avatarSpan.innerText = initialText.charAt(0);
         });
-
         function get(page) {
             const token = localStorage.getItem('token')
             $.ajax({
