@@ -28,11 +28,12 @@
                         </div>
                         <form id="form-create" method="post">
                             @csrf
+                            @method('POST')
                             <div class="modal-body">
                                 <label for="">Nama</label>
-                                <input type="text" class="form-control mb-2" name="name">
+                                <input type="text" class="form-control mb-2" name="username">
                                 <label for="">Email</label>
-                                <input type="email" class="form-control mb-2" name="Email">
+                                <input type="email" class="form-control mb-2" name="email">
                                 <label for="">Divisi</label>
                                 <select name="Divisi" class="form-control form-select select2" id="Divisi">
                                 </select>
@@ -102,7 +103,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form id="form-create" method="post">
+                                            <form id="" method="post">
                                                 @csrf
                                                 <div class="modal-body">
                                                     <label for="">Nama</label>
@@ -159,7 +160,7 @@
          function get(page) {
             const token = localStorage.getItem('token')
             $.ajax({
-                url: "https://hummatask.hummatech.com/api/divisi",
+                url: "https://hummatask.hummatech.com/api/division",
                 type: 'GET',
                 dataType: "JSON",
                 data: {
@@ -176,7 +177,7 @@
                     if (response.divisis.length > 0) {
                         $.each(response.divisis, function(index, item) {
                             let row = `<option value="${item.id}"  >${item.name}</option>`;
-                            $('#Divisi').html(row)
+                            $('#Divisi').append(row)
                         })
                     } else {
                         $('#loading').html(showNoData('Tahun ajaran Tidak Ada!'))
@@ -193,6 +194,60 @@
         $('#js-example-basic-single').select2({
             dropdownParent: $('#myModal')
         });
+
+        $('#form-create').submit(function(e) {
+            $('.preloader').show();
+            e.preventDefault();
+            var $form = $(this);
+            $.ajax({
+                url: "https://hummatask.hummatech.com/api/tambah-mentor",
+                type: "POST",
+                data: $form.serialize(),
+                success: function(response) {
+                    $('.preloader').fadeOut();
+                    get(1)
+                    Swal.fire({
+                        title: 'Berhasil!',
+                        icon: 'success',
+                        text: response.message
+                    }).then(function() {
+                        $form.trigger('reset'); // Menghapus isi formulir
+                        $('#myModal').modal('hide'); // Menutup modal
+                    });
+                    get(1)
+                },
+                error: function(response) {
+                    var errorData = response
+                        .responseJSON; // Ini bergantung pada format respons dari server Anda
+
+                    if (errorData && errorData.data && errorData.data.school_year) {
+                        $('.preloader').fadeOut();
+                        var errorMessage = errorData.data.school_year[0];
+                        $('#modal-create').modal('hide')
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: errorMessage,
+                            showConfirmButton: true,
+                            timer: 2000
+                        });
+                    } else {
+                        $('.preloader').fadeOut();
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: response,
+                            confirmButtonText: 'OK'
+                        })
+                        // var response = response.responseJSON
+                        // var status = response.meta.code
+                        // if (status == 422) {
+                        //     handleValidate(response.data, 'create')
+                        // }
+                    }
+                }
+            })
+        })
 
     </script>
 @endsection
