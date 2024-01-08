@@ -988,17 +988,17 @@
                                                 <tr>
                                                     <td>
                                                         <div class="d-flex">
-                                                            <img src="{{ asset('assets-admin/images/companies/wechat.svg') }}"
+                                                            <img src="{{ asset('storage/Siswa/' . $absensi->attendance->student->foto_siswa) }}"
                                                                 alt="" height="40" class="rounded">
                                                             <div class="ms-2 flex-grow-1">
                                                                 <h6 class="mb-1 font-size-15 mt-2"><p
-                                                                        class="text-body">Abdul kader</p></h6>
+                                                                        class="text-body">{{ $absensi->attendance->student->name }}</p></h6>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <h6 class="mb-1 font-size-15 mt-2"><p
-                                                            class="text-body">SMKN 1 KRAKSAAN</p></h6>
+                                                            class="text-body">{{ $absensi->attendance->student->sekolah }}</p></h6>
                                                     </td>
                                                     <td>
                                                         <h6 class="mb-1 font-size-15 mt-2"><p

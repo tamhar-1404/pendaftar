@@ -39,6 +39,7 @@ class DashboardAdminController extends Controller
             }
         }
         $absensis = DiligentStudent::get();
+        // dd($absensis);
         $totalTidakMengumpulkanJurnal = Jurnalsiswa::query()
             ->whereDate('created_at', '>=', now()->previous(Carbon::MONDAY)->toDateString())
             ->whereDate('created_at', '<=', now())
